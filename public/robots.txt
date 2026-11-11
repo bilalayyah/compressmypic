@@ -1,0 +1,6 @@
+# robots.txt for CompressMyPic
+User-agent: *
+Allow: /
+
+# Sitemap URL
+Sitemap: https://YOURDOMAIN.com/sitemap.xml

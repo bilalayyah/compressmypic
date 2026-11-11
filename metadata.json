@@ -1,0 +1,6 @@
+{
+  "name": "CompressMyPic - Free Online Image Compressor",
+  "description": "Compress JPG, PNG and WebP images online for free. Reduce image file size, optimize photos, and download compressed images securely without uploading them to a server.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
