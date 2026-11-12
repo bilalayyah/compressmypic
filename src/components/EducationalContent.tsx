@@ -1,5 +1,68 @@
 import React from 'react';
-import { HardDrive, Globe, Share2, Gauge, Wifi, Check, Sparkles } from 'lucide-react';
+import { HardDrive, Globe, Share2, Gauge, Wifi, Check, Sparkles, Upload, SlidersHorizontal, Download, Image as ImageIcon, FileImage } from 'lucide-react';
+
+const howItWorksSteps = [
+  {
+    icon: Upload,
+    step: 'Step 1',
+    title: 'Upload your images',
+    description: 'Drag and drop your JPG, PNG or WebP images into the upload area, click Browse Files to select them, or paste an image with Ctrl+V. You can upload multiple images at once, up to 20 MB per image.',
+  },
+  {
+    icon: SlidersHorizontal,
+    step: 'Step 2',
+    title: 'Adjust quality and choose your format',
+    description: 'Choose a Low, Balanced or High preset, or move the quality slider from 10% to 100%, and choose to keep the original format or convert to JPG, PNG or WebP. Watch the live before-and-after file size for every image and use the interactive comparison slider to check the visual result.',
+  },
+  {
+    icon: Download,
+    step: 'Step 3',
+    title: 'Download your compressed images',
+    description: 'Download each compressed image individually, or click Download All (ZIP) to download the whole batch in one file. Your images are compressed right in your browser, so there is nothing to wait for and nothing to upload.',
+  },
+];
+
+const features = [
+  {
+    title: 'Compress JPG, PNG & WebP',
+    description: 'A single image compressor for the formats you actually use. Compress JPG and JPEG photos, compress PNG graphics while keeping transparency, and compress WebP images for the smallest files.',
+  },
+  {
+    title: 'Reduce Image Size Without Losing Quality',
+    description: 'Smart compression removes redundant data and metadata while keeping the picture looking virtually identical to the original. The Balanced preset is the best starting point, and the before-and-after comparison lets you verify the quality yourself.',
+  },
+  {
+    title: 'Bulk Image Compressor – Compress Multiple Images at Once',
+    description: 'This bulk image compressor and batch image compressor lets you compress multiple images at once with the same settings, then download them all together with the Download All (ZIP) button instead of saving files one by one.',
+  },
+  {
+    title: 'Compress Images for WhatsApp, Instagram & Facebook',
+    description: 'Shrink photos so they send fast on WhatsApp and upload smoothly to Instagram and Facebook. Smaller files use less mobile data and are far less likely to be rejected for being too large.',
+  },
+  {
+    title: 'Reduce Image Size to 20KB, 50KB, 100KB or 200KB',
+    description: 'Lower the quality slider step by step and watch the live before-and-after size until you reach your target — 200KB, 100KB, 50KB or even 20KB. Switching the output format to WebP usually gets you there with less visible quality loss.',
+  },
+];
+
+const useCases = [
+  {
+    title: 'Optimize images for web',
+    description: 'Optimize images for web pages to load faster, improve Core Web Vitals and rank better. Smaller images mean faster pages, happier visitors and lower hosting bandwidth.',
+  },
+  {
+    title: 'Compress images for email attachment',
+    description: 'Compress images for an email attachment so your photos fit inside attachment size limits. Attach the smaller downloads instead of the large originals and your emails will send without bouncing.',
+  },
+  {
+    title: 'Compress photo for website',
+    description: 'Compress a photo for your website, blog, portfolio or online store before you upload it. Product photos, banners and blog images stay sharp while taking up far less space on your server.',
+  },
+  {
+    title: 'Reduce photo file size',
+    description: 'Reduce photo file size from a phone or camera before sharing, backing up or printing. Large photos become quick to send, easy to store and simple to manage.',
+  },
+];
 
 export const EducationalContent: React.FC = () => {
   return (
@@ -11,10 +74,10 @@ export const EducationalContent: React.FC = () => {
             What Is Image Compression?
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-            Image compression is the process of reducing the file size of a graphics file in bytes without degrading the visual quality of the picture beyond an acceptable threshold. When a camera or smartphone captures a photograph, it records vast amounts of granular color data, metadata (such as shutter speed and camera model), and minute pixel variations that human vision cannot readily distinguish.
+            Image compression is the process of reducing the file size of a graphics file in bytes without degrading the visual quality of the picture beyond an acceptable threshold. When a camera or smartphone saves a photo, it stores a huge amount of data — much of which the human eye cannot easily distinguish when removed or simplified. CompressMyPic is a free online image optimizer and image size reducer that works as a photo compressor and photo size reducer for JPG, PNG and WebP files.
           </p>
           <p className="mt-3 text-base sm:text-lg text-slate-600 leading-relaxed">
-            By analyzing these patterns, image compression algorithms restructure or selectively discard redundant information. The resulting file requires significantly less storage capacity and transfers over the internet much faster, all while preserving the visual clarity required for web display, email attachments, and document publishing.
+            By analyzing these patterns, image compression algorithms restructure or selectively discard redundant information. The resulting file requires significantly less storage capacity and transfers much faster across the internet. This guide shows you how to compress image without losing quality, using the quality slider, presets and format choice built into CompressMyPic.
           </p>
         </div>
 
@@ -26,7 +89,6 @@ export const EducationalContent: React.FC = () => {
           <p className="mt-3 text-base text-slate-600">
             Unoptimized images represent one of the single largest bottlenecks for website performance, storage overhead, and mobile data consumption. Compressing your images provides immediate tangible benefits:
           </p>
-
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
               <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-3">
@@ -34,191 +96,188 @@ export const EducationalContent: React.FC = () => {
               </div>
               <h3 className="text-base font-bold text-slate-900">Faster Website Loading</h3>
               <p className="mt-1.5 text-sm text-slate-600 leading-normal">
-                Pages with compressed images render up to 70% faster, improving your Google Core Web Vitals (Largest Contentful Paint) and boosting search engine rankings.
+                Pages with compressed images render up to 70% faster, improving your Google Core Web Vitals (Largest Contentful Paint) and boosting search engine rankings. When you reduce image size for website pages, visitors stay longer and bounce less.
               </p>
             </div>
-
             <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
               <div className="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center mb-3">
                 <HardDrive className="w-5 h-5" />
               </div>
               <h3 className="text-base font-bold text-slate-900">Reduced Storage Overhead</h3>
               <p className="mt-1.5 text-sm text-slate-600 leading-normal">
-                Cut down cloud hosting, server disk usage, and backup storage costs by storing streamlined image files that require a fraction of original disk space.
+                Cut down cloud hosting, server disk usage, and backup storage costs by storing streamlined image files instead of bloated originals.
               </p>
             </div>
-
             <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
               <div className="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center mb-3">
                 <Share2 className="w-5 h-5" />
               </div>
               <h3 className="text-base font-bold text-slate-900">Easier Image Sharing</h3>
               <p className="mt-1.5 text-sm text-slate-600 leading-normal">
-                Never get stopped by strict email attachment limits or messaging upload quotas. Compressed photos attach swiftly without hitting size ceiling barriers.
+                Never get stopped by strict email attachment limits or messaging upload quotas. Compressed photos attach and send instantly, even on slow mobile connections or limited data plans.
               </p>
             </div>
-
             <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
               <div className="w-9 h-9 rounded-lg bg-cyan-50 text-cyan-600 flex items-center justify-center mb-3">
                 <Wifi className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-bold text-slate-900">Lower Bandwidth Consumption</h3>
+              <h3 className="text-base font-bold text-slate-900">Reduced Bandwidth Consumption</h3>
               <p className="mt-1.5 text-sm text-slate-600 leading-normal">
-                Visitors on mobile networks or capped data plans load your media seamlessly without burning through cellular allowances.
+                Save your users money on mobile data plans and prevent visitors from abandoning your site. Smaller files mean faster downloads — especially on slower mobile connections.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Section 3: How to Compress Images Online Step-by-Step */}
+        {/* Section 3: How It Works */}
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">How It Works</h2>
+          <p className="mt-3 text-base text-slate-600">
+            Compressing your photos takes seconds — no account, no software, no upload. Here is how to compress image without losing quality in three simple steps.
+          </p>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {howItWorksSteps.map((step) => {
+              const Icon = step.icon;
+              return (
+                <div key={step.step} className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+                  <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-3">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <p className="text-xs font-bold uppercase tracking-wide text-blue-600">{step.step}</p>
+                  <h3 className="mt-1 text-base font-bold text-slate-900">{step.title}</h3>
+                  <p className="mt-1.5 text-sm text-slate-600 leading-normal">{step.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Section 4: Features */}
         <div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            How to Compress Images Online: Step-by-Step Guide
+            Why Use This Free Image Compressor?
           </h2>
           <p className="mt-3 text-base text-slate-600">
-            CompressMyPic makes image optimization straightforward and safe right inside your browser window:
+            CompressMyPic is a free image compressor with no signup and no watermark — built for everyday photos, website images and social media uploads.
           </p>
-
-          <div className="mt-6 space-y-4">
-            <div className="flex items-start gap-4 p-4 bg-white border border-slate-200 rounded-xl">
-              <div className="w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shrink-0">
-                1
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {features.map((feature) => (
+              <div key={feature.title} className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+                <h3 className="text-base font-bold text-slate-900">{feature.title}</h3>
+                <p className="mt-1.5 text-sm text-slate-600 leading-normal">{feature.description}</p>
               </div>
-              <div>
-                <h3 className="text-base font-bold text-slate-900">Upload or Drag Your Files</h3>
-                <p className="mt-1 text-sm text-slate-600 leading-normal">
-                  Drop JPG, PNG, or WebP images into the designated drop area or click "Browse Files". You can select multiple images simultaneously or even paste them with Ctrl+V.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 p-4 bg-white border border-slate-200 rounded-xl">
-              <div className="w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shrink-0">
-                2
-              </div>
-              <div>
-                <h3 className="text-base font-bold text-slate-900">Select Compression Preset or Quality</h3>
-                <p className="mt-1 text-sm text-slate-600 leading-normal">
-                  Choose from Low, Balanced, or High compression presets, or slide the Custom Quality bar to set your exact target from 10% to 100%. Choose whether to keep original format or convert to modern WebP.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 p-4 bg-white border border-slate-200 rounded-xl">
-              <div className="w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shrink-0">
-                3
-              </div>
-              <div>
-                <h3 className="text-base font-bold text-slate-900">Inspect Before &amp; After Comparison</h3>
-                <p className="mt-1 text-sm text-slate-600 leading-normal">
-                  Click the "Compare" button on any result card to open the interactive split-screen slider. Inspect pixel sharpness side by side to ensure your image looks crisp.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 p-4 bg-white border border-slate-200 rounded-xl">
-              <div className="w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shrink-0">
-                4
-              </div>
-              <div>
-                <h3 className="text-base font-bold text-slate-900">Download Optimized Files</h3>
-                <p className="mt-1 text-sm text-slate-600 leading-normal">
-                  Download individual files with one click, or click "Download All (ZIP)" to retrieve your entire batch packaged neatly together.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
-        {/* Section 4: Supported Image Formats Compared */}
+        {/* Section 5: Image Format Guide */}
         <div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            Supported Image Formats: JPG vs PNG vs WebP
+            Compress JPG, PNG and WebP: Which Format Should You Choose?
           </h2>
           <p className="mt-3 text-base text-slate-600">
-            Selecting the right image format for your specific media type is fundamental to achieving high visual fidelity at minimal file weights:
+            JPG, PNG, and WebP each serve a different purpose. Understanding their strengths helps you make the best choice for your specific project.
           </p>
-
-          <div className="mt-6 overflow-x-auto">
-            <table className="w-full text-left text-sm border-collapse border border-slate-200 bg-white rounded-xl overflow-hidden">
-              <thead className="bg-slate-100 text-slate-700 font-semibold border-b border-slate-200">
-                <tr>
-                  <th className="py-3 px-4">Format</th>
-                  <th className="py-3 px-4">Compression Type</th>
-                  <th className="py-3 px-4">Alpha Transparency</th>
-                  <th className="py-3 px-4">Best Used For</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 text-slate-600">
-                <tr>
-                  <td className="py-3 px-4 font-bold text-slate-900">JPEG / JPG</td>
-                  <td className="py-3 px-4">Lossy</td>
-                  <td className="py-3 px-4 text-rose-600 font-medium">No (Solid background)</td>
-                  <td className="py-3 px-4">Photographs, complex gradients, banners with rich natural scenery.</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-bold text-slate-900">PNG</td>
-                  <td className="py-3 px-4">Lossless</td>
-                  <td className="py-3 px-4 text-emerald-600 font-medium">Yes (Full alpha)</td>
-                  <td className="py-3 px-4">Logos, icons, screenshots with text, illustrations needing transparent cutout areas.</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-bold text-slate-900">WebP</td>
-                  <td className="py-3 px-4">Both Lossy &amp; Lossless</td>
-                  <td className="py-3 px-4 text-emerald-600 font-medium">Yes (Full alpha)</td>
-                  <td className="py-3 px-4">Modern web applications, e-commerce stores, responsive blog banners (25–35% smaller than JPG).</td>
-                </tr>
-              </tbody>
-            </table>
+          <div className="mt-8 space-y-5">
+            <div className="flex gap-4 bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+              <div className="w-10 h-10 flex-shrink-0 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
+                <ImageIcon className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-slate-900">JPG Compressor — Compress JPG Online Free</h3>
+                <p className="mt-1.5 text-sm text-slate-600 leading-normal">
+                  Best for photographs on your website, blog, or portfolio. Compress JPG online free and compress JPEG to 100KB by lowering the quality slider while watching the live size. JPEG compression is lossy — it permanently removes some visual data that the human eye struggles to perceive. As a result, you can shrink a photo from megabytes to kilobytes with virtually no visible quality loss.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-4 bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+              <div className="w-10 h-10 flex-shrink-0 rounded-lg bg-violet-50 text-violet-600 flex items-center justify-center">
+                <FileImage className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-slate-900">PNG Compressor — Compress PNG Online Free</h3>
+                <p className="mt-1.5 text-sm text-slate-600 leading-normal">
+                  Best for graphics, screenshots, logos, and images that require transparency, such as logos, icons, or illustrations. Compress PNG online free here while keeping full transparency for sharp, pixel-perfect graphics. Converting a PNG to WebP often makes it much smaller.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-4 bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+              <div className="w-10 h-10 flex-shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+                <Sparkles className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-slate-900">Compress WebP Image — The Modern Format</h3>
+                <p className="mt-1.5 text-sm text-slate-600 leading-normal">
+                  Best for web optimisation. WebP offers excellent lossy and lossless compression that is typically 25-35% smaller than JPEG or PNG. Compress WebP image files for the smallest size at similar quality, and use WebP when you want to optimize images for web pages without visible quality loss. It is the best choice for most websites.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-5 rounded-xl border border-blue-100 bg-blue-50/50 p-4 flex gap-3">
+            <Check className="w-5 h-5 flex-shrink-0 text-blue-600 mt-0.5" />
+            <p className="text-sm text-slate-700 leading-relaxed">
+              <strong className="text-slate-900">Compare the Visual Difference:</strong> Not sure how much compression is acceptable? Use the before-and-after comparison option in the tool. Our interactive slider tool lets you inspect the original image and the compressed version side-by-side to spot any visual artifacts or quality loss before you download.
+            </p>
           </div>
         </div>
 
-        {/* Section 5: Lossy vs Lossless Compression */}
+        {/* Section 6: Use Cases */}
         <div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            Lossy vs Lossless Compression Explained
+            What Can You Use This Image Compressor For?
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-            Understanding the distinction between lossy and lossless algorithms empowers you to make informed decisions for your project requirements:
+          <p className="mt-3 text-base text-slate-600">
+            One free image compressor covers the most common reasons people need to reduce image size.
           </p>
-
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
-              <h3 className="text-base font-bold text-slate-900">Lossy Compression</h3>
-              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                Lossy algorithms permanently remove non-essential pixel nuances that the human eye is least sensitive to. By tolerating a slight, nearly invisible loss in absolute numerical data, files can shrink by <strong>50% to 80%</strong>. This is ideal for photos, blog illustrations, and social media imagery where microscopic pixel parity is unnecessary.
-              </p>
-            </div>
-
-            <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
-              <h3 className="text-base font-bold text-slate-900">Lossless Compression</h3>
-              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                Lossless algorithms compress data similar to a ZIP archive: every original pixel value is preserved completely. Unnecessary embedded color profiles, camera metadata, and duplicate coding structures are stripped. Reductions are typically around <strong>10% to 30%</strong>, making this suitable for medical imagery, archival photography, technical blueprints, and vector-rendered logos.
-              </p>
-            </div>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {useCases.map((useCase) => (
+              <div key={useCase.title} className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+                <h3 className="text-base font-bold text-slate-900">{useCase.title}</h3>
+                <p className="mt-1.5 text-sm text-slate-600 leading-normal">{useCase.description}</p>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Section 6: How Much Can You Reduce Image Size? */}
+        {/* Section 7: Why Image Size Matters */}
         <div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            How Much Can You Reduce Image Size?
+            Why Image Size Matters
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-            Compression savings are never a static, one-size-fits-all number. The actual reduction depends on three pivotal variables:
+          <p className="mt-3 text-base text-slate-600">
+            Large, high-resolution image files are the result of the rapid advancement in camera technology — images are now 2-3x larger than they were just a few years ago. When you reduce image size for website pages and optimize images for web use, your site loads faster, uses less bandwidth and ranks better in search results.
           </p>
-          <ul className="mt-4 space-y-2 text-base text-slate-600">
-            <li className="flex items-start gap-2">
-              <Check className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-              <span><strong>Original Compression State:</strong> An uncompressed raw export from a digital camera can often be reduced by 80% or more, whereas an image previously exported with aggressive web compression might only yield 5% to 15% further reduction.</span>
+          <p className="mt-3 text-base text-slate-600">
+            When searching for a good compressor, look for one that: 1) does not compromise on quality, 2) keeps your data private (client-side processing), and 3) processes images fast without running your files through a distant server. That is exactly what CompressMyPic is built for.
+          </p>
+        </div>
+
+        {/* Section 8: Optimization Tips */}
+        <div className="bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs">
+          <h2 className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+            <Zap className="w-5 h-5 text-blue-600" />
+            Optimization Tips: Reduce Image Size Without Losing Quality
+          </h2>
+          <ul className="mt-3 space-y-3">
+            <li className="flex gap-3 text-sm text-slate-600 leading-relaxed">
+              <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+              <span><strong className="text-slate-900">Start with the Balanced Preset:</strong> The Balanced preset (70% quality) offers the optimal trade-off for most images — dramatically smaller files with great visual similarity to the original.</span>
             </li>
-            <li className="flex items-start gap-2">
-              <Check className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-              <span><strong>Image Visual Complexity:</strong> Simple graphics with flat background colors or repeating patterns compress substantially more efficiently than photographs featuring intricate textures such as foliage, water ripples, or grain.</span>
+            <li className="flex gap-3 text-sm text-slate-600 leading-relaxed">
+              <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+              <span><strong className="text-slate-900">Choose the right format:</strong> For photographs, JPG or WebP will always outperform PNG in file size. For logos and line graphics with transparency, use PNG.</span>
             </li>
-            <li className="flex items-start gap-2">
-              <Check className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-              <span><strong>Selected Target Quality:</strong> Selecting a balanced 70% quality yields dramatic file reductions with negligible visual difference. Dropping to 50% yields maximum byte savings for fast previews, while 85% is suited for portfolio photography.</span>
+            <li className="flex gap-3 text-sm text-slate-600 leading-relaxed">
+              <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+              <span><strong className="text-slate-900">Aim for a target size:</strong> For website use, aim for images under 200 KB. For emails and messages, stay under 1 MB to ensure fast delivery. Use the quality slider and the live size display to reach your target size.</span>
+            </li>
+            <li className="flex gap-3 text-sm text-slate-600 leading-relaxed">
+              <Gauge className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+              <span><strong className="text-slate-900">Find the sweet spot:</strong> Set the quality slider to 85-90% for hero images where quality matters; 70-80% is typically the ideal balance for general website use; 50-60% is better for thumbnails or when size is the top priority.</span>
+            </li>
+            <li className="flex gap-3 text-sm text-slate-600 leading-relaxed">
+              <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+              <span><strong className="text-slate-900">Try WebP for the smallest files:</strong> Switching the output format to WebP usually shrinks a JPG or PNG by another 25-35% at similar quality — a simple way to reduce image size without losing quality.</span>
             </li>
           </ul>
         </div>
