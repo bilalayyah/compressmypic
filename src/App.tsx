@@ -13,6 +13,7 @@ import { ComparisonModal } from './components/ComparisonModal';
 import { EducationalContent } from './components/EducationalContent';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
+import { ShareSection } from './components/ShareSection';
 import { AdSlot } from './components/AdSlot';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
@@ -443,6 +444,8 @@ export default function App() {
             </div>
           </main>
 
+          {/* Share Section */}
+                    <ShareSection />
           {/* Reserved AdSlot 2: Between Tool and Educational Content */}
           <div className="px-4">
             <AdSlot slotId="mid-content-banner" format="horizontal" />
