@@ -14,7 +14,6 @@ import { EducationalContent } from './components/EducationalContent';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { LegalModal } from './components/LegalModal';
-import { ConfigSettingsModal } from './components/ConfigSettingsModal';
 import { AdSlot } from './components/AdSlot';
 import { CompressionSettings, ImageItem, ModalType } from './types';
 import { compressSingleImage, detectTransparency, loadImageFromFile } from './utils/compressor';
@@ -374,7 +373,6 @@ export default function App() {
       {/* 6. Footer */}
       <Footer
         onOpenModal={(type) => setActiveModal(type)}
-        onOpenSettings={() => setActiveModal('settings')}
       />
 
       {/* Modals */}
@@ -385,17 +383,9 @@ export default function App() {
         />
       )}
 
-      {activeModal && activeModal !== 'settings' && activeModal !== 'comparison' && (
+      {activeModal && activeModal !== 'comparison' && (
         <LegalModal
           type={activeModal}
-          onClose={() => setActiveModal(null)}
-        />
-      )}
-
-      {activeModal === 'settings' && (
-        <ConfigSettingsModal
-          settings={settings}
-          onUpdateSettings={handleUpdateSettings}
           onClose={() => setActiveModal(null)}
         />
       )}
