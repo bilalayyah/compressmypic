@@ -9,7 +9,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Col 1: Brand Info */}
           <div className="space-y-4 md:col-span-1">
             <a
@@ -136,6 +136,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </ul>
           </div>
 
+          {/* Guides */}
+          <div>
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">Guides</h4>
+            <ul className="space-y-2 text-xs text-slate-400">
+              <li><a href="/guides/compress-images-for-whatsapp" onClick={(e) => { e.preventDefault(); onNavigate('/guides/compress-images-for-whatsapp'); }} className="hover:text-white transition-colors block text-left">How to compress images for WhatsApp without losing quality</a></li>
+              <li><a href="/guides/jpg-vs-png-vs-webp" onClick={(e) => { e.preventDefault(); onNavigate('/guides/jpg-vs-png-vs-webp'); }} className="hover:text-white transition-colors block text-left">JPG vs PNG vs WebP: Which Format Should You Use?</a></li>
+              <li><a href="/guides/reduce-image-size-to-100kb" onClick={(e) => { e.preventDefault(); onNavigate('/guides/reduce-image-size-to-100kb'); }} className="hover:text-white transition-colors block text-left">How to Reduce Image Size to 100KB for Web &amp; Email</a></li>
+            </ul>
+          </div>
           {/* Col 4: Tool Formats */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">
