@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ArrowLeft, Shield, Cpu, Lock, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Shield, Cpu, Lock, CheckCircle2, Users, Layers } from 'lucide-react';
 
 interface AboutPageProps {
   onNavigate: (path: string) => void;
@@ -7,7 +7,9 @@ interface AboutPageProps {
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
   useEffect(() => {
-    document.title = 'About Us - CompressMyPic';
+    document.title = 'About CompressMyPic – Free Online Image Compressor';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) metaDescription.setAttribute('content', 'About CompressMyPic – a free online image compressor for JPG, PNG and WebP. Compress images online free, with no signup, no watermark and no server upload.');
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
@@ -41,13 +43,29 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
               <Cpu className="w-5 h-5 text-blue-600" />
-              <span>How the Tool Works</span>
+              <span>What Is CompressMyPic?</span>
             </h2>
             <p>
-              Traditional image compression websites upload your sensitive personal photos or company graphics to remote servers, process them remotely, and send them back down. In contrast, <strong>CompressMyPic operates 100% inside your web browser</strong> using modern HTML5 Canvas, OffscreenCanvas, and native browser encoding APIs.
+              CompressMyPic is a free online image compressor and image optimizer that helps you reduce image size without losing quality. It is a photo compressor and photo size reducer for the formats people use every day: JPG, PNG and WebP. Use it to compress JPG to 100KB, compress PNG online free, compress WebP images, or reduce a photo file size before sharing it on WhatsApp, Instagram, Facebook or email.
             </p>
             <p>
-              When you select or drag and drop an image, your browser allocates a temporary memory buffer, draws the picture onto an invisible canvas, re-encodes the pixel array at your chosen quality level, and delivers the compressed blob back into your hands. Nothing is ever sent across the wire.
+              Traditional image compression websites upload your sensitive personal photos or company graphics to a server owned by someone else. That practice raises legitimate concerns, which is exactly why we built CompressMyPic the opposite way — as a tool that does everything on your own device.
+            </p>
+            <p>
+              When you select or drag and drop an image, your browser allocates a temporary memory buffer, draws the picture onto an HTML Canvas element, applies the compression algorithm, and then exports the new file — all within your own browser tab. No networking infrastructure, databases, or cloud servers are involved in the process of compressing your images.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+              <Layers className="w-5 h-5 text-blue-600" />
+              <span>Supported Formats: JPG, PNG and WebP</span>
+            </h2>
+            <p>
+              As a JPG compressor, CompressMyPic lets you compress JPG online free and reduce JPEG file size while keeping your photos looking sharp — try the Balanced preset or lower the quality slider and watch the live before-and-after size to reach targets such as 100KB or 200KB. As a PNG compressor, it lets you compress PNG online free while keeping transparency for logos and graphics. And when you compress WebP images, you get the smallest files of all: WebP is typically 25-35% smaller than JPEG at similar quality, which makes it the best choice to optimize images for web pages.
+            </p>
+            <p>
+              You can keep the original format of each image, or convert between JPG, PNG and WebP. The quality slider (10% to 100%), the Low, Balanced and High presets, and the live before-and-after size display give you full control over the balance between file size and image quality — without ever claiming an exact target-KB input box that the tool does not have.
             </p>
           </section>
 
@@ -60,25 +78,37 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
                 <div className="font-bold text-slate-900 text-sm mb-1">Absolute Privacy</div>
                 <p className="text-xs text-slate-600">
-                  Zero files ever touch an external server or database. Your photos and sensitive graphics stay strictly on your local device.
+                  Zero files ever touch an external server or database. Your photos and sensitive graphics stay strictly on your local device. Because compression happens client-side, your work is never seen by anyone else.
                 </p>
               </div>
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">No Registration</div>
+                <div className="font-bold text-slate-900 text-sm mb-1">Simple and Free</div>
                 <p className="text-xs text-slate-600">
-                  No accounts, passwords, email verification, or credit card requirements. Jump straight to compressing immediately.
+                  No software installation, no paid plans, no hidden fees, no account creation, no email verification, and no trial limits. Compress image online free — it is genuinely free, with no signup and no watermark on your compressed images.
                 </p>
               </div>
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Honest Metrics</div>
+                <div className="font-bold text-slate-900 text-sm mb-1">Quality That You Control</div>
                 <p className="text-xs text-slate-600">
-                  Real before-and-after calculations generated from actual in-memory file blobs, not estimated or exaggerated figures.
+                  We support fine-grained control: drag the Quality slider in real time, select any of the Low, Balanced, or High presets, choose the output file format, and compare every image side-by-side to spot differences instantly. Reduce image size without losing quality, on your terms.
                 </p>
               </div>
               <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Sustainable &amp; Lightweight</div>
+                <div className="font-bold text-slate-900 text-sm mb-1">Bulk Image Compressor</div>
                 <p className="text-xs text-slate-600">
-                  Eliminates server compute overhead by using your client device's GPU/CPU, drastically reducing server energy waste.
+                  Compress multiple images at once with the same settings and download them all together with the Download All (ZIP) button — a batch image compressor for photo libraries, product catalogues and website image folders.
+                </p>
+              </div>
+              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
+                <div className="font-bold text-slate-900 text-sm mb-1">Automatic Safety Checks</div>
+                <p className="text-xs text-slate-600">
+                  The compressor detects transparency in your images. If you select JPEG output for a transparent PNG, we show a warning because JPEG does not support transparency — so you never lose your alpha channel by accident.
+                </p>
+              </div>
+              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
+                <div className="font-bold text-slate-900 text-sm mb-1">Fast Performance</div>
+                <p className="text-xs text-slate-600">
+                  Because all processing happens locally on your device there is no waiting for files to go up and come down from a server. You can compress photos quickly, even large files up to 20 MB per image, on desktop or mobile.
                 </p>
               </div>
             </div>
@@ -86,30 +116,70 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Lock className="w-5 h-5 text-indigo-600" />
-              <span>Browser Compatibility</span>
+              <Users className="w-5 h-5 text-blue-600" />
+              <span>Who Is CompressMyPic For?</span>
             </h2>
             <p>
-              CompressMyPic is fully compatible with all modern standards-compliant web browsers, including Google Chrome, Mozilla Firefox, Apple Safari (desktop and iOS), Microsoft Edge, and mobile browsers on Android and iOS.
+              CompressMyPic is for anyone who needs smaller images: bloggers and website owners who want to optimize images for web and reduce image size for website pages; photographers who need to reduce photo file size before sharing or delivering proofs; online sellers who compress a photo for a website or store listing; students and office workers who compress images for an email attachment; and anyone who wants to compress an image for WhatsApp, Instagram or Facebook so it sends faster and uses less mobile data.
+            </p>
+            <p>
+              It works on desktop and mobile browsers, needs no installation, and never asks you to sign up — just open the site, upload your images, and download the smaller files.
             </p>
           </section>
 
-          <section className="pt-4 border-t border-slate-200">
-            <p className="text-sm text-slate-500">
-              Have questions or feedback? Feel free to visit our{' '}
-              <a
-                href="/contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  onNavigate('/contact');
-                }}
-                className="text-blue-600 hover:underline font-semibold"
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+              <Lock className="w-5 h-5 text-emerald-600" />
+              <span>Privacy &amp; Security</span>
+            </h2>
+            <p>
+              At CompressMyPic, we believe privacy is a critical right, not an optional feature. In modern times, many websites collect data by default, even an image compression tool. We take a privacy-first approach by relying on modern browser technology to process your media locally on your computer.
+            </p>
+            <p>
+              Your files remain in your browser memory and are immediately cleared when you close the tab or refresh the page. Because no image processing happens on remote servers, we cannot collect image data, even if we wanted to. That is the design and the promise of the tool.
+            </p>
+            <p>
+              To learn exactly how we handle privacy, please visit our{' '}
+              <button
+                type="button"
+                onClick={() => onNavigate('/privacy')}
+                className="text-blue-600 hover:text-blue-700 font-semibold cursor-pointer"
               >
-                Contact Page
-              </a>{' '}
-              or reach us directly at <span className="font-mono text-slate-700">bilalayyah@gmail.com</span>.
+                Privacy Policy
+              </button>
+              {' '}page.
             </p>
           </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+              <span>Our Mission</span>
+            </h2>
+            <p>
+              We believe the best tools are the simplest, fastest, and most transparent ones. Our mission is to provide a fast, reliable, and completely free image compressor to everyone — with no hidden trade-offs, no ads that track you, no server uploads, and no compromises on your privacy. Whether you compress a single JPG or a whole batch of WebP images, the tool should just work.
+            </p>
+            <p>
+              Have a question, an idea, or found something we can improve? We would love to hear from you. You can reach us directly through the site.
+            </p>
+          </section>
+
+          <div className="pt-2 flex flex-col sm:flex-row gap-3">
+            <button
+              type="button"
+              onClick={() => onNavigate('/')}
+              className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors cursor-pointer"
+            >
+              Start Compressing Images
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigate('/contact')}
+              className="flex-1 px-4 py-2.5 rounded-xl bg-white text-slate-900 text-sm font-bold border border-slate-200 shadow-xs hover:bg-slate-50 transition-colors cursor-pointer"
+            >
+              Contact Us
+            </button>
+          </div>
         </div>
       </div>
     </div>
