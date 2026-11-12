@@ -41,7 +41,7 @@ const FAQ_DATA: FaqItem[] = [
   {
     id: 'faq-7',
     question: 'What image formats are supported?',
-    answer: 'CompressMyPic supports JPG (JPEG), PNG and WebP. You can keep the original format or convert between them - for example, compress JPG files as JPEG, compress PNG files while keeping transparency, or convert to WebP for the smallest files.',
+    answer: 'CompressMyPic supports JPG (JPEG), PNG, WebP and HEIC — including photos taken on iPhones, which save as HEIC by default. You can keep the original format or convert between them - for example, compress JPG files as JPEG, compress PNG files while keeping transparency, or convert to WebP for the smallest files.',
   },
   {
     id: 'faq-8',
