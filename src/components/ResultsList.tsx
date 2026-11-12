@@ -30,7 +30,8 @@ export const ResultsList: React.FC<ResultsListProps> = ({
   const totalOriginalBytes = images.reduce((acc, img) => acc + img.originalSize, 0);
   const doneImages = images.filter((img) => img.status === 'done' && img.compressedSize !== null);
   const totalCompressedBytes = doneImages.reduce((acc, img) => acc + (img.compressedSize || 0), 0);
-  const totalSpaceSaved = Math.max(0, totalOriginalBytes - totalCompressedBytes);
+  const totalSpaceSaved = doneImages.reduce((acc, img) => acc + (img.spaceSaved || 0), 0);
+  const stillProcessing = images.some((img) => img.status === 'compressing');
   const overallPercentage = totalOriginalBytes > 0 && doneImages.length === images.length
     ? Math.round(((totalOriginalBytes - totalCompressedBytes) / totalOriginalBytes) * 100)
     : null;
@@ -56,13 +57,13 @@ export const ResultsList: React.FC<ResultsListProps> = ({
             <div>
               <span className="text-xs text-slate-400 block">Total Compressed:</span>
               <span className="text-lg font-bold font-mono text-white tabular-nums">
-                {doneImages.length > 0 ? formatBytes(totalCompressedBytes) : 'Processing...'}
+                {stillProcessing ? 'Processing...' : formatBytes(totalCompressedBytes)}
               </span>
             </div>
             <div>
               <span className="text-xs text-slate-400 block">Total Saved:</span>
               <span className="text-lg font-bold font-mono text-emerald-400 tabular-nums">
-                {doneImages.length > 0 ? formatBytes(totalSpaceSaved) : '0 Bytes'}
+                {stillProcessing ? 'Processing...' : formatBytes(totalSpaceSaved)}
               </span>
             </div>
             {overallPercentage !== null && overallPercentage > 0 && (
