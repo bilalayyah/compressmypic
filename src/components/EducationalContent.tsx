@@ -1,5 +1,5 @@
 import React from 'react';
-import { HardDrive, Globe, Share2, Gauge, Wifi, Check, Sparkles, Upload, SlidersHorizontal, Download, Image as ImageIcon, FileImage } from 'lucide-react';
+import { HardDrive, Globe, Share2, Gauge, Wifi, Check, Sparkles, Zap, Upload, SlidersHorizontal, Download, Image as ImageIcon, FileImage } from 'lucide-react';
 
 const howItWorksSteps = [
   {
