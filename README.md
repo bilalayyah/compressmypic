@@ -1,4 +1,5 @@
 # CompressMyPic — Professional Online Image Compressor
+> **Live site:** [compressmypic.online](https://compressmypic.online/) — Free online image compressor — reduce JPG, PNG and WebP size without losing quality.
 
 CompressMyPic is a production-ready, client-side image compression web application built with React, TypeScript, Vite, and Tailwind CSS. All image processing executes directly inside the user's web browser using native HTML5 Canvas APIs, ensuring absolute privacy, zero server uploads, and near-instant processing speeds.
 
