@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { MessageCircle, FileImage, Zap } from 'lucide-react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { UploadZone } from './components/UploadZone';
@@ -479,7 +480,34 @@ export default function App() {
           <EducationalContent />
 
           {/* FAQ Section */}
-          <FaqSection />
+          {/* Guides Section */}
+      <section className="py-16 sm:py-20 bg-slate-50 border-t border-slate-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Guides</h2>
+          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">Step-by-step guides to get smaller files without losing visible quality.</p>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <a href="/guides/compress-images-for-whatsapp" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/compress-images-for-whatsapp'); }} className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 transition-shadow">
+              <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-3"><MessageCircle className="w-5 h-5" /></div>
+              <h3 className="text-base font-bold text-slate-900">How to compress images for WhatsApp without losing quality</h3>
+              <p className="mt-1.5 text-sm text-slate-600 leading-normal">Shrink photos before sending so they stay sharp and send fast.</p>
+              <span className="mt-3 inline-block text-sm font-semibold text-blue-600">Read guide →</span>
+            </a>
+            <a href="/guides/jpg-vs-png-vs-webp" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/jpg-vs-png-vs-webp'); }} className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 transition-shadow">
+              <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-3"><FileImage className="w-5 h-5" /></div>
+              <h3 className="text-base font-bold text-slate-900">JPG vs PNG vs WebP: Which Format Should You Use?</h3>
+              <p className="mt-1.5 text-sm text-slate-600 leading-normal">File size, quality and transparency compared, so you can pick the right format.</p>
+              <span className="mt-3 inline-block text-sm font-semibold text-blue-600">Read guide →</span>
+            </a>
+            <a href="/guides/reduce-image-size-to-100kb" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/reduce-image-size-to-100kb'); }} className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 transition-shadow">
+              <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-3"><Zap className="w-5 h-5" /></div>
+              <h3 className="text-base font-bold text-slate-900">How to Reduce Image Size to 100KB for Web &amp; Email</h3>
+              <p className="mt-1.5 text-sm text-slate-600 leading-normal">Step-by-step: hit 100KB without losing visible quality.</p>
+              <span className="mt-3 inline-block text-sm font-semibold text-blue-600">Read guide →</span>
+            </a>
+          </div>
+        </div>
+      </section>
+      <FaqSection />
 
           {/* Reserved AdSlot 3: Near Bottom of Page */}
           <div className="px-4 pb-6">
