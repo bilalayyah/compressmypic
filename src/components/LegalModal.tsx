@@ -206,7 +206,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
               )}
 
               <div className="pt-3 border-t border-slate-100 text-xs text-slate-500 space-y-1">
-                <p><strong>Direct Inquiries:</strong> support@compressmypic.example.com (Editable placeholder)</p>
+                <p><strong>Direct Inquiries:</strong> bilalayyah@gmail.com</p>
                 <p><strong>Support Availability:</strong> Monday – Friday, 9:00 AM – 5:00 PM UTC</p>
               </div>
             </div>
