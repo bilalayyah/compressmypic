@@ -1,13 +1,12 @@
 import React from 'react';
-import { Layers, ShieldCheck, Heart, Settings } from 'lucide-react';
+import { Layers, ShieldCheck, Heart } from 'lucide-react';
 import { ModalType } from '../types';
 
 interface FooterProps {
   onOpenModal: (type: ModalType) => void;
-  onOpenSettings: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenModal, onOpenSettings }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
   return (
     <footer className="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
@@ -114,16 +113,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal, onOpenSettings }) =
               <li>JPEG / JPG (Quality 10%–100%)</li>
               <li>PNG (Transparency preserved)</li>
               <li>WebP (Modern high-efficiency)</li>
-              <li className="pt-2">
-                <button
-                  type="button"
-                  onClick={onOpenSettings}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg transition-colors text-xs"
-                >
-                  <Settings className="w-3.5 h-3.5 text-blue-400" />
-                  <span>Config &amp; AdSense Settings</span>
-                </button>
-              </li>
             </ul>
           </div>
         </div>
