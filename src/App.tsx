@@ -24,7 +24,7 @@ import { GuideWhatsAppPage } from './pages/GuideWhatsAppPage';
 import { GuideFormatsPage } from './pages/GuideFormatsPage';
 import { Guide100kbPage } from './pages/Guide100kbPage';
 import { CompressionSettings, ImageItem } from './types';
-import { compressSingleImage, detectTransparency, loadImageFromFile } from './utils/compressor';
+import { compressSingleImage, detectTransparency, loadImageFromFile, toDecodableBlob } from './utils/compressor';
 import { createZipArchive, triggerDownload } from './utils/zip';
 
 export default function App() {
@@ -98,7 +98,7 @@ export default function App() {
       document.title = 'Free Image Compressor Online – Reduce Image Size to 100KB';
       if (canonicalLink) canonicalLink.href = `${baseDomain}/`;
     }
-  const descriptions: Record<string, string> = { '/': 'Compress image online free — reduce image size without losing quality. Compress JPG, PNG and WebP with no signup and no watermark, right in your browser.', '/about': 'About CompressMyPic – a free online image compressor for JPG, PNG and WebP. Compress images online free, with no signup, no watermark and no server upload.', '/contact': 'Contact CompressMyPic – get help with the free online image compressor. Compress images online free and reduce image size without losing quality.', '/privacy': 'Privacy Policy for CompressMyPic – the free online image compressor. Your images are compressed in your browser and never uploaded to a server.', '/terms': 'Terms of Service for CompressMyPic – the free online image compressor. Compress images online free, no signup, no watermark.', '/guides/compress-images-for-whatsapp': 'Learn how to compress images for WhatsApp without losing quality. Free, private, no signup — shrink photos before sending so they stay sharp and send fast.', '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP explained simply: file size, quality and transparency compared, so you can pick the right format for photos, logos and websites.', '/guides/reduce-image-size-to-100kb': 'Reduce image size to 100KB for websites and email with a free online compressor. Step-by-step guide — no signup, no watermark, images stay on your device.' }; const metaDescription = document.querySelector('meta[name="description"]'); if (metaDescription) metaDescription.setAttribute('content', descriptions[currentPath] || descriptions['/']); }, [currentPath]);
+  const descriptions: Record<string, string> = { '/': 'Compress image online free — reduce image size without losing quality. Compress JPG, PNG, WebP and HEIC with no signup and no watermark, right in your browser.', '/about': 'About CompressMyPic – a free online image compressor for JPG, PNG and WebP. Compress images online free, with no signup, no watermark and no server upload.', '/contact': 'Contact CompressMyPic – get help with the free online image compressor. Compress images online free and reduce image size without losing quality.', '/privacy': 'Privacy Policy for CompressMyPic – the free online image compressor. Your images are compressed in your browser and never uploaded to a server.', '/terms': 'Terms of Service for CompressMyPic – the free online image compressor. Compress images online free, no signup, no watermark.', '/guides/compress-images-for-whatsapp': 'Learn how to compress images for WhatsApp without losing quality. Free, private, no signup — shrink photos before sending so they stay sharp and send fast.', '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP explained simply: file size, quality and transparency compared, so you can pick the right format for photos, logos and websites.', '/guides/reduce-image-size-to-100kb': 'Reduce image size to 100KB for websites and email with a free online compressor. Step-by-step guide — no signup, no watermark, images stay on your device.' }; const metaDescription = document.querySelector('meta[name="description"]'); if (metaDescription) metaDescription.setAttribute('content', descriptions[currentPath] || descriptions['/']); }, [currentPath]);
 
   const handleNavigate = (path: string) => {
     if (path.includes('#')) {
@@ -203,9 +203,16 @@ export default function App() {
 
     for (const file of newFiles) {
       const id = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-      const previewUrl = URL.createObjectURL(file);
+      let previewUrl = URL.createObjectURL(file);
 
       try {
+        // HEIC/HEIF photos cannot be displayed by the browser directly:
+        // use the converted JPEG for the thumbnail preview.
+        const decodable = await toDecodableBlob(file);
+        if (decodable !== file) {
+          URL.revokeObjectURL(previewUrl);
+          previewUrl = URL.createObjectURL(decodable);
+        }
         const img = await loadImageFromFile(file);
         const hasAlpha = await detectTransparency(img);
 
