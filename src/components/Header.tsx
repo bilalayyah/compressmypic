@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Layers, Menu, X, ArrowUpRight, ChevronDown } from 'lucide-react';
 
 interface HeaderProps {
   onNavigate: (path: string) => void;
@@ -8,10 +8,12 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToTool }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [guidesOpen, setGuidesOpen] = useState(false);
 
   const handleNav = (path: string) => {
     onNavigate(path);
     setMobileMenuOpen(false);
+    setGuidesOpen(false);
   };
 
   return (
@@ -84,6 +86,19 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToTool }) =>
           >
             Contact
           </a>
+                  <div className="relative">
+            <button type="button" onClick={() => setGuidesOpen(!guidesOpen)} className="flex items-center gap-1 text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors" aria-expanded={guidesOpen} aria-haspopup="true">
+              Guides
+              <ChevronDown className="w-4 h-4" />
+            </button>
+            {guidesOpen && (
+              <div className="absolute left-0 top-full mt-2 w-72 rounded-xl border border-slate-200 bg-white py-2 shadow-lg">
+                <a href="/guides/compress-images-for-whatsapp" onClick={(e) => { e.preventDefault(); handleNav('/guides/compress-images-for-whatsapp'); }} className="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600">How to compress images for WhatsApp without losing quality</a>
+                <a href="/guides/jpg-vs-png-vs-webp" onClick={(e) => { e.preventDefault(); handleNav('/guides/jpg-vs-png-vs-webp'); }} className="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600">JPG vs PNG vs WebP: Which Format Should You Use?</a>
+                <a href="/guides/reduce-image-size-to-100kb" onClick={(e) => { e.preventDefault(); handleNav('/guides/reduce-image-size-to-100kb'); }} className="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600">How to Reduce Image Size to 100KB for Web &amp; Email</a>
+              </div>
+            )}
+          </div>
         </nav>
 
         {/* Zone 3: Primary Action Button */}
@@ -164,11 +179,20 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToTool }) =>
           >
             Contact Us
           </a>
+          <div className="pt-3 border-t border-slate-100">
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Guides</p>
+            <div className="mt-3 flex flex-col gap-4">
+              <a href="/guides/compress-images-for-whatsapp" onClick={(e) => { e.preventDefault(); handleNav('/guides/compress-images-for-whatsapp'); }} className="hover:text-blue-600 transition-colors">How to compress images for WhatsApp without losing quality</a>
+              <a href="/guides/jpg-vs-png-vs-webp" onClick={(e) => { e.preventDefault(); handleNav('/guides/jpg-vs-png-vs-webp'); }} className="hover:text-blue-600 transition-colors">JPG vs PNG vs WebP: Which Format Should You Use?</a>
+              <a href="/guides/reduce-image-size-to-100kb" onClick={(e) => { e.preventDefault(); handleNav('/guides/reduce-image-size-to-100kb'); }} className="hover:text-blue-600 transition-colors">How to Reduce Image Size to 100KB for Web &amp; Email</a>
+            </div>
+          </div>
           <div className="pt-2">
             <button
               type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
+    setGuidesOpen(false);
                 onScrollToTool();
               }}
               className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 active:bg-blue-800 transition-colors shadow-sm"
