@@ -13,12 +13,41 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
   const [contactSubject, setContactSubject] = useState('');
   const [contactMessage, setContactMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   if (!type || type === 'comparison' || type === 'settings') return null;
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setSubmitError(null);
+    setIsSending(true);
+    try {
+      // Send the message via FormSubmit (free) — every submission is emailed
+      // to bilalayyah@gmail.com. No backend needed.
+      const formData = new FormData();
+      formData.append('name', contactName);
+      formData.append('email', contactEmail);
+      formData.append('subject', contactSubject);
+      formData.append('message', contactMessage);
+      formData.append('_subject', `CompressMyPic contact: ${contactSubject}`);
+      formData.append('_template', 'table');
+      formData.append('_captcha', 'false');
+
+      const response = await fetch('https://formsubmit.co/ajax/bilalayyah@gmail.com', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: formData,
+      });
+      if (!response.ok) {
+        throw new Error('Failed to send message. Please try again.');
+      }
+      setIsSubmitted(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Failed to send message. Please try again.');
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -159,12 +188,19 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
                     ></textarea>
                   </div>
 
+                  {submitError && (
+                    <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
+                      {submitError}
+                    </p>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-sm rounded-lg transition-colors cursor-pointer flex items-center justify-center gap-2 shadow-xs"
+                    disabled={isSending}
+                    className="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-blue-400 text-white font-semibold text-sm rounded-lg transition-colors cursor-pointer flex items-center justify-center gap-2 shadow-xs"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Send Message</span>
+                    <span>{isSending ? 'Sending...' : 'Send Message'}</span>
                   </button>
                 </form>
               )}
