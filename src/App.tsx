@@ -66,7 +66,7 @@ export default function App() {
   // Update document title and canonical tag based on active route
   useEffect(() => {
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    const baseDomain = 'https://compressmypic.pages.dev';
+    const baseDomain = 'https://compressmypic.online';
 
     if (currentPath === '/about') {
       document.title = 'About Us - CompressMyPic';

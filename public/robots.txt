@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap URL
-Sitemap: https://compressmypic.pages.dev/sitemap.xml
+Sitemap: https://compressmypic.online/sitemap.xml
