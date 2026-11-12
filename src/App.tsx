@@ -69,22 +69,22 @@ export default function App() {
     const baseDomain = 'https://compressmypic.online';
 
     if (currentPath === '/about') {
-      document.title = 'About Us - CompressMyPic';
+      document.title = 'About CompressMyPic – Free Online Image Compressor';
       if (canonicalLink) canonicalLink.href = `${baseDomain}/about`;
     } else if (currentPath === '/contact') {
-      document.title = 'Contact Us - CompressMyPic';
+      document.title = 'Contact CompressMyPic – Free Online Image Compressor';
       if (canonicalLink) canonicalLink.href = `${baseDomain}/contact`;
     } else if (currentPath === '/privacy') {
-      document.title = 'Privacy Policy - CompressMyPic';
+      document.title = 'Privacy Policy – CompressMyPic Free Image Compressor';
       if (canonicalLink) canonicalLink.href = `${baseDomain}/privacy`;
     } else if (currentPath === '/terms') {
-      document.title = 'Terms of Service - CompressMyPic';
+      document.title = 'Terms of Service – CompressMyPic Free Image Compressor';
       if (canonicalLink) canonicalLink.href = `${baseDomain}/terms`;
     } else {
-      document.title = 'Free Image Compressor Online - Compress JPG, PNG & WebP';
+      document.title = 'Free Image Compressor Online – Reduce Image Size to 100KB';
       if (canonicalLink) canonicalLink.href = `${baseDomain}/`;
     }
-  }, [currentPath]);
+  const descriptions: Record<string, string> = { '/': 'Compress image online free — reduce image size without losing quality. Compress JPG, PNG and WebP with no signup and no watermark, right in your browser.', '/about': 'About CompressMyPic – a free online image compressor for JPG, PNG and WebP. Compress images online free, with no signup, no watermark and no server upload.', '/contact': 'Contact CompressMyPic – get help with the free online image compressor. Compress images online free and reduce image size without losing quality.', '/privacy': 'Privacy Policy for CompressMyPic – the free online image compressor. Your images are compressed in your browser and never uploaded to a server.', '/terms': 'Terms of Service for CompressMyPic – the free online image compressor. Compress images online free, no signup, no watermark.' }; const metaDescription = document.querySelector('meta[name="description"]'); if (metaDescription) metaDescription.setAttribute('content', descriptions[currentPath] || descriptions['/']); }, [currentPath]);
 
   const handleNavigate = (path: string) => {
     if (path.includes('#')) {
