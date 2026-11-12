@@ -33,12 +33,83 @@ export async function detectTransparency(img: HTMLImageElement): Promise<boolean
 }
 
 /**
- * Loads a File into an HTMLImageElement
+ * HEIC/HEIF brand identifiers found in the ftyp box of HEIC files
+ * (iPhone photos and some Android phones save in this format).
  */
-export function loadImageFromFile(file: File): Promise<HTMLImageElement> {
+const HEIC_BRANDS = ['heic', 'heix', 'hevc', 'hevx', 'heim', 'heis', 'hevm', 'hevs', 'mif1', 'msf1'];
+
+/**
+ * Detects HEIC/HEIF files by MIME type, file extension, or the ftyp magic
+ * bytes at the start of the file. The magic-bytes check catches files that
+ * arrive with a generic MIME type or a misleading .jpg name.
+ */
+export async function isHeicFile(file: File | Blob): Promise<boolean> {
+  const type = (file.type || '').toLowerCase();
+  if (type === 'image/heic' || type === 'image/heif') return true;
+
+  const name = (file as File).name || '';
+  if (/\.(heic|heif)$/i.test(name)) return true;
+
+  try {
+    const header = new Uint8Array(await file.slice(0, 12).arrayBuffer());
+    if (header.length < 12) return false;
+    const box = String.fromCharCode(header[4], header[5], header[6], header[7]);
+    const brand = String.fromCharCode(header[8], header[9], header[10], header[11]);
+    return box === 'ftyp' && HEIC_BRANDS.includes(brand);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Converts a HEIC/HEIF blob to JPEG using heic2any (client-side, the file
+ * never leaves the device). The decoder library is loaded lazily, only when
+ * a HEIC file is actually detected, so other users never download it.
+ */
+async function convertHeicToJpeg(blob: Blob): Promise<Blob> {
+  const heic2any = (await import('heic2any')).default;
+  const result = await heic2any({ blob, toType: 'image/jpeg', quality: 0.92 });
+  const converted = Array.isArray(result) ? result[0] : result;
+  if (!converted) {
+    throw new Error('HEIC conversion produced no output.');
+  }
+  return converted;
+}
+
+// Cache HEIC conversions per source file so the same photo is converted
+// only once even though it is loaded twice (preview + compression).
+const heicConversionCache = new WeakMap<Blob, Promise<Blob>>();
+
+/**
+ * Returns a blob the browser can decode: the original file for JPG/PNG/WebP,
+ * or a converted JPEG for HEIC/HEIF files.
+ */
+export async function toDecodableBlob(file: File | Blob): Promise<Blob> {
+  if (!(await isHeicFile(file))) return file;
+  let cached = heicConversionCache.get(file);
+  if (!cached) {
+    cached = convertHeicToJpeg(file);
+    heicConversionCache.set(file, cached);
+  }
+  return cached;
+}
+
+/**
+ * Loads a File into an HTMLImageElement. HEIC/HEIF files are converted to
+ * JPEG first, because browsers cannot decode HEIC natively.
+ */
+export async function loadImageFromFile(file: File | Blob): Promise<HTMLImageElement> {
+  let decodable: Blob;
+  try {
+    decodable = await toDecodableBlob(file);
+  } catch (err) {
+    console.error('Failed to convert HEIC image', err);
+    throw new Error('Failed to convert HEIC image. The file may be corrupted or in an unsupported format.');
+  }
+
   return new Promise((resolve, reject) => {
     const img = new Image();
-    const objectUrl = URL.createObjectURL(file);
+    const objectUrl = URL.createObjectURL(decodable);
 
     img.onload = () => {
       URL.revokeObjectURL(objectUrl);
