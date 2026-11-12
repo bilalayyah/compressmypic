@@ -16,7 +16,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+  const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/heic', 'image/heif'];
 
   const validateAndForwardFiles = useCallback((rawFiles: FileList | File[]) => {
     setErrorMessage(null);
@@ -31,10 +31,10 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
     for (const file of filesArray) {
       // Validate mime type
       const isTypeAllowed = allowedTypes.includes(file.type.toLowerCase()) || 
-        /\.(jpe?g|png|webp)$/i.test(file.name);
+        /\.(jpe?g|png|webp|heic|heif)$/i.test(file.name);
 
       if (!isTypeAllowed) {
-        errors.push(`"${file.name}" is not a supported format (JPG, PNG, WebP).`);
+        errors.push(`"${file.name}" is not a supported format (JPG, PNG, WebP, HEIC).`);
         continue;
       }
 
@@ -133,7 +133,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
           ref={fileInputRef}
           type="file"
           multiple
-          accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp"
+          accept="image/jpeg,image/png,image/webp,image/heic,image/heif,.jpg,.jpeg,.png,.webp,.heic,.heif"
           onChange={handleFileInputChange}
           className="hidden"
           disabled={disabled}
@@ -156,7 +156,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-xs text-slate-500">
             <span className="inline-flex items-center gap-1 font-medium bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">
               <FileImage className="w-3.5 h-3.5" />
-              JPG, PNG, WebP
+              JPG, PNG, WebP, HEIC
             </span>
             <span className="font-medium bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">
               Max {maxFileSizeMB} MB per image
