@@ -24,7 +24,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToTool }) =>
             e.preventDefault();
             handleNav('/');
           }}
-          className="flex items-center gap-2.5 text-xl font-bold tracking-tight text-slate-900 whitespace-nowrap shrink-0 group"
+          aria-label="CompressMyPic – Free online image compressor logo" className="flex items-center gap-2.5 text-xl font-bold tracking-tight text-slate-900 whitespace-nowrap shrink-0 group"
         >
           <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-sm group-hover:bg-blue-700 transition-colors">
             <Layers className="w-5 h-5" />
