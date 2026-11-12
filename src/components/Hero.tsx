@@ -9,15 +9,12 @@ export const Hero: React.FC = () => {
         <Lock className="w-3.5 h-3.5 text-blue-600" />
         <span>100% Private Client-Side Compression · No Server Uploads</span>
       </div>
-
       <h1 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold text-slate-900 tracking-tight text-balance leading-tight sm:leading-tight">
-        Compress Images Online for Free
+        Free Image Compressor – Compress Images Online &amp; Reduce Size Without Losing Quality
       </h1>
-
       <p className="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed text-balance">
-        Reduce image file sizes without sacrificing noticeable quality. Fast, secure, and easy image compression directly in your browser.
+        Reduce image file sizes without sacrificing noticeable quality. Compress image online free with our free image compressor and photo compressor — an online image optimizer for JPG, PNG and WebP. Fast, secure, no signup, no watermark, and easy image compression directly in your browser.
       </p>
-
       {/* Trust Badges Bar */}
       <div className="mt-6 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs sm:text-sm text-slate-500 font-medium">
         <div className="flex items-center gap-1.5">
