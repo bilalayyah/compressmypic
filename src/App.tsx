@@ -13,18 +13,31 @@ import { ComparisonModal } from './components/ComparisonModal';
 import { EducationalContent } from './components/EducationalContent';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
-import { LegalModal } from './components/LegalModal';
 import { AdSlot } from './components/AdSlot';
-import { CompressionSettings, ImageItem, ModalType } from './types';
+import { AboutPage } from './pages/AboutPage';
+import { ContactPage } from './pages/ContactPage';
+import { PrivacyPage } from './pages/PrivacyPage';
+import { TermsPage } from './pages/TermsPage';
+import { CompressionSettings, ImageItem } from './types';
 import { compressSingleImage, detectTransparency, loadImageFromFile } from './utils/compressor';
 import { createZipArchive, triggerDownload } from './utils/zip';
 
 export default function App() {
+  const [currentPath, setCurrentPath] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const path = window.location.pathname.toLowerCase().replace(/\/$/, '') || '/';
+      if (['/about', '/contact', '/privacy', '/terms'].includes(path)) {
+        return path;
+      }
+    }
+    return '/';
+  });
+
   const [images, setImages] = useState<ImageItem[]>([]);
   const [isCompressing, setIsCompressing] = useState<boolean>(false);
   const [isZipping, setIsZipping] = useState<boolean>(false);
   const [zipProgress, setZipProgress] = useState<number>(0);
-  
+
   // Settings state
   const [settings, setSettings] = useState<CompressionSettings>({
     preset: 'balanced',
@@ -35,15 +48,76 @@ export default function App() {
     backgroundColor: '#ffffff',
   });
 
-  // Modal views
-  const [activeModal, setActiveModal] = useState<ModalType>(null);
   const [comparisonTarget, setComparisonTarget] = useState<ImageItem | null>(null);
 
   const toolRef = useRef<HTMLDivElement>(null);
 
+  // Handle client-side routing and browser back/forward buttons
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname.toLowerCase().replace(/\/$/, '') || '/';
+      setCurrentPath(path);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Update document title and canonical tag based on active route
+  useEffect(() => {
+    const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    const baseDomain = 'https://compressmypic.pages.dev';
+
+    if (currentPath === '/about') {
+      document.title = 'About Us - CompressMyPic';
+      if (canonicalLink) canonicalLink.href = `${baseDomain}/about`;
+    } else if (currentPath === '/contact') {
+      document.title = 'Contact Us - CompressMyPic';
+      if (canonicalLink) canonicalLink.href = `${baseDomain}/contact`;
+    } else if (currentPath === '/privacy') {
+      document.title = 'Privacy Policy - CompressMyPic';
+      if (canonicalLink) canonicalLink.href = `${baseDomain}/privacy`;
+    } else if (currentPath === '/terms') {
+      document.title = 'Terms of Service - CompressMyPic';
+      if (canonicalLink) canonicalLink.href = `${baseDomain}/terms`;
+    } else {
+      document.title = 'Free Image Compressor Online - Compress JPG, PNG & WebP';
+      if (canonicalLink) canonicalLink.href = `${baseDomain}/`;
+    }
+  }, [currentPath]);
+
+  const handleNavigate = (path: string) => {
+    if (path.includes('#')) {
+      const [route, hash] = path.split('#');
+      const targetRoute = route || '/';
+      if (currentPath !== targetRoute) {
+        window.history.pushState(null, '', path);
+        setCurrentPath(targetRoute);
+      }
+      setTimeout(() => {
+        const el = document.getElementById(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+      return;
+    }
+
+    window.history.pushState(null, '', path);
+    setCurrentPath(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const scrollToTool = () => {
-    setActiveModal(null);
-    toolRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (currentPath !== '/') {
+      window.history.pushState(null, '', '/');
+      setCurrentPath('/');
+      setTimeout(() => {
+        toolRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      toolRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   // Revoke object URLs on unmount or removal
@@ -73,7 +147,6 @@ export default function App() {
           currentSettings.backgroundColor
         );
 
-        // Revoke old compressed preview if exists
         if (item.compressedPreviewUrl) {
           URL.revokeObjectURL(item.compressedPreviewUrl);
         }
@@ -175,10 +248,9 @@ export default function App() {
       }
     }
 
-    // Add to state and compress concurrently
     setImages((prev) => [...prev, ...initialItems]);
 
-    // Compress each new item
+    // Compress each newly added item
     const processedItems: ImageItem[] = [];
     for (const item of initialItems) {
       if (item.status === 'error') {
@@ -206,7 +278,6 @@ export default function App() {
     if (images.length === 0) return;
     setIsCompressing(true);
 
-    // Set all to compressing
     setImages((prev) =>
       prev.map((img) => ({
         ...img,
@@ -303,90 +374,101 @@ export default function App() {
     <div className="min-h-screen flex flex-col bg-white text-slate-800">
       {/* 1. Header */}
       <Header
-        onOpenModal={(type) => setActiveModal(type)}
+        onNavigate={handleNavigate}
         onScrollToTool={scrollToTool}
       />
 
-      {/* Reserved AdSlot 1: Below Header */}
+      {/* Reserved AdSlot 1: Below Header (stays invisible until real AdSense IDs supplied) */}
       <div className="px-4">
         <AdSlot slotId="header-top-banner" format="horizontal" />
       </div>
 
-      {/* 2. Hero Section */}
-      <Hero />
+      {/* 2. Page Router */}
+      {currentPath === '/about' ? (
+        <main className="flex-1">
+          <AboutPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/contact' ? (
+        <main className="flex-1">
+          <ContactPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/privacy' ? (
+        <main className="flex-1">
+          <PrivacyPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/terms' ? (
+        <main className="flex-1">
+          <TermsPage onNavigate={handleNavigate} />
+        </main>
+      ) : (
+        /* HOME / COMPRESSOR APPLICATION */
+        <>
+          <Hero />
 
-      {/* 3. Main Image Compressor Application Workspace */}
-      <main ref={toolRef} className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 pb-16">
-        <div className="space-y-6">
-          {/* Upload Dropzone */}
-          <UploadZone
-            onFilesSelected={handleFilesSelected}
-            maxFileSizeMB={settings.maxFileSizeMB}
-            disabled={isCompressing}
-          />
+          <main ref={toolRef} className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 pb-16">
+            <div className="space-y-6">
+              {/* Upload Dropzone */}
+              <UploadZone
+                onFilesSelected={handleFilesSelected}
+                maxFileSizeMB={settings.maxFileSizeMB}
+                disabled={isCompressing}
+              />
 
-          {/* Compression Settings & Controls */}
-          {images.length > 0 && (
-            <CompressionControls
-              settings={settings}
-              onUpdateSettings={handleUpdateSettings}
-              onCompressAll={handleCompressAll}
-              onClearAll={handleClearAll}
-              totalImagesCount={images.length}
-              hasTransparentImages={hasTransparentImages}
-              isCompressing={isCompressing}
-            />
-          )}
+              {/* Compression Settings & Controls */}
+              {images.length > 0 && (
+                <CompressionControls
+                  settings={settings}
+                  onUpdateSettings={handleUpdateSettings}
+                  onCompressAll={handleCompressAll}
+                  onClearAll={handleClearAll}
+                  totalImagesCount={images.length}
+                  hasTransparentImages={hasTransparentImages}
+                  isCompressing={isCompressing}
+                />
+              )}
 
-          {/* Results List and Download Panel */}
-          {images.length > 0 && (
-            <ResultsList
-              images={images}
-              onDownloadSingle={handleDownloadSingle}
-              onDownloadAllZip={handleDownloadAllZip}
-              onRemoveImage={handleRemoveImage}
-              onOpenComparison={(img) => setComparisonTarget(img)}
-              onRecompressSingle={handleRecompressSingle}
-              isZipping={isZipping}
-              zipProgress={zipProgress}
-            />
-          )}
-        </div>
-      </main>
+              {/* Results List and Download Panel */}
+              {images.length > 0 && (
+                <ResultsList
+                  images={images}
+                  onDownloadSingle={handleDownloadSingle}
+                  onDownloadAllZip={handleDownloadAllZip}
+                  onRemoveImage={handleRemoveImage}
+                  onOpenComparison={(img) => setComparisonTarget(img)}
+                  onRecompressSingle={handleRecompressSingle}
+                  isZipping={isZipping}
+                  zipProgress={zipProgress}
+                />
+              )}
+            </div>
+          </main>
 
-      {/* Reserved AdSlot 2: Between Tool and Educational Content */}
-      <div className="px-4">
-        <AdSlot slotId="mid-content-banner" format="horizontal" />
-      </div>
+          {/* Reserved AdSlot 2: Between Tool and Educational Content */}
+          <div className="px-4">
+            <AdSlot slotId="mid-content-banner" format="horizontal" />
+          </div>
 
-      {/* 4. Educational Content Section */}
-      <EducationalContent />
+          {/* Educational Content Section */}
+          <EducationalContent />
 
-      {/* 5. FAQ Section */}
-      <FaqSection />
+          {/* FAQ Section */}
+          <FaqSection />
 
-      {/* Reserved AdSlot 3: Near Bottom of Page */}
-      <div className="px-4 pb-6">
-        <AdSlot slotId="footer-bottom-banner" format="horizontal" />
-      </div>
+          {/* Reserved AdSlot 3: Near Bottom of Page */}
+          <div className="px-4 pb-6">
+            <AdSlot slotId="footer-bottom-banner" format="horizontal" />
+          </div>
+        </>
+      )}
 
-      {/* 6. Footer */}
-      <Footer
-        onOpenModal={(type) => setActiveModal(type)}
-      />
+      {/* 3. Footer */}
+      <Footer onNavigate={handleNavigate} />
 
-      {/* Modals */}
+      {/* Comparison Modal */}
       {comparisonTarget && (
         <ComparisonModal
           image={comparisonTarget}
           onClose={() => setComparisonTarget(null)}
-        />
-      )}
-
-      {activeModal && activeModal !== 'comparison' && (
-        <LegalModal
-          type={activeModal}
-          onClose={() => setActiveModal(null)}
         />
       )}
     </div>

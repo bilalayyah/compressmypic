@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { Layers, Menu, X, ArrowUpRight } from 'lucide-react';
-import { ModalType } from '../types';
 
 interface HeaderProps {
-  onOpenModal: (type: ModalType) => void;
+  onNavigate: (path: string) => void;
   onScrollToTool: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenModal, onScrollToTool }) => {
+export const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToTool }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleNavClick = (action: () => void) => {
-    action();
+  const handleNav = (path: string) => {
+    onNavigate(path);
     setMobileMenuOpen(false);
   };
 
@@ -20,10 +19,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenModal, onScrollToTool }) =
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-8">
         {/* Zone 1: Brand Wordmark */}
         <a
-          href="#"
+          href="/"
           onClick={(e) => {
             e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            handleNav('/');
           }}
           className="flex items-center gap-2.5 text-xl font-bold tracking-tight text-slate-900 whitespace-nowrap shrink-0 group"
         >
@@ -36,41 +35,55 @@ export const Header: React.FC<HeaderProps> = ({ onOpenModal, onScrollToTool }) =
         {/* Zone 2: Navigation Links */}
         <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
           <a
-            href="#"
+            href="/"
             onClick={(e) => {
               e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+              handleNav('/');
             }}
             className="hover:text-blue-600 transition-colors whitespace-nowrap shrink-0"
           >
             Home
           </a>
           <a
-            href="#how-it-works"
+            href="/#how-it-works"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav('/#how-it-works');
+            }}
             className="hover:text-blue-600 transition-colors whitespace-nowrap shrink-0"
           >
             How It Works
           </a>
           <a
-            href="#faq"
+            href="/#faq"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav('/#faq');
+            }}
             className="hover:text-blue-600 transition-colors whitespace-nowrap shrink-0"
           >
             FAQ
           </a>
-          <button
-            type="button"
-            onClick={() => onOpenModal('about')}
-            className="hover:text-blue-600 transition-colors whitespace-nowrap shrink-0 text-left"
+          <a
+            href="/about"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav('/about');
+            }}
+            className="hover:text-blue-600 transition-colors whitespace-nowrap shrink-0"
           >
             About
-          </button>
-          <button
-            type="button"
-            onClick={() => onOpenModal('contact')}
-            className="hover:text-blue-600 transition-colors whitespace-nowrap shrink-0 text-left"
+          </a>
+          <a
+            href="/contact"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav('/contact');
+            }}
+            className="hover:text-blue-600 transition-colors whitespace-nowrap shrink-0"
           >
             Contact
-          </button>
+          </a>
         </nav>
 
         {/* Zone 3: Primary Action Button */}
@@ -102,47 +115,62 @@ export const Header: React.FC<HeaderProps> = ({ onOpenModal, onScrollToTool }) =
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-5 space-y-2">
           <a
-            href="#"
+            href="/"
             onClick={(e) => {
               e.preventDefault();
-              handleNavClick(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
+              handleNav('/');
             }}
             className="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-md"
           >
             Home
           </a>
           <a
-            href="#how-it-works"
-            onClick={() => setMobileMenuOpen(false)}
+            href="/#how-it-works"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav('/#how-it-works');
+            }}
             className="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-md"
           >
             How It Works
           </a>
           <a
-            href="#faq"
-            onClick={() => setMobileMenuOpen(false)}
+            href="/#faq"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav('/#faq');
+            }}
             className="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-md"
           >
             FAQ
           </a>
-          <button
-            type="button"
-            onClick={() => handleNavClick(() => onOpenModal('about'))}
-            className="block w-full text-left px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-md"
+          <a
+            href="/about"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav('/about');
+            }}
+            className="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-md"
           >
             About Us
-          </button>
-          <button
-            type="button"
-            onClick={() => handleNavClick(() => onOpenModal('contact'))}
-            className="block w-full text-left px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-md"
+          </a>
+          <a
+            href="/contact"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav('/contact');
+            }}
+            className="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-md"
           >
             Contact Us
-          </button>
+          </a>
           <div className="pt-2">
             <button
               type="button"
-              onClick={() => handleNavClick(onScrollToTool)}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onScrollToTool();
+              }}
               className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 active:bg-blue-800 transition-colors shadow-sm"
             >
               <span>Compress Images</span>

@@ -125,7 +125,7 @@ git push -u origin main
 ## ⚙️ Configuration & Customization
 
 ### 1. Domain & Canonical URLs
-In `index.html` and `public/sitemap.xml`, replace the placeholder `https://YOURDOMAIN.com` with your actual live domain.
+The site is configured for production at `https://compressmypic.pages.dev/`. Canonical links, Open Graph metadata, sitemap, and robots.txt are pre-configured.
 
 ### 2. Google AdSense Integration
 Once your Google AdSense account is approved:

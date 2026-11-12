@@ -1,24 +1,30 @@
 import React from 'react';
-import { Layers, ShieldCheck, Heart } from 'lucide-react';
-import { ModalType } from '../types';
+import { Layers, ShieldCheck } from 'lucide-react';
 
 interface FooterProps {
-  onOpenModal: (type: ModalType) => void;
+  onNavigate: (path: string) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Col 1: Brand Info */}
           <div className="space-y-4 md:col-span-1">
-            <div className="flex items-center gap-2.5 text-white font-bold text-lg tracking-tight">
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('/');
+              }}
+              className="flex items-center gap-2.5 text-white font-bold text-lg tracking-tight"
+            >
               <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center text-white">
                 <Layers className="w-4 h-4" />
               </div>
               <span>Compress<span className="text-blue-500">MyPic</span></span>
-            </div>
+            </a>
             <p className="text-xs text-slate-400 leading-relaxed">
               Fast, secure, and private browser-native image compression. Optimize JPG, PNG, and WebP images without uploading your data to any external server.
             </p>
@@ -36,10 +42,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
             <ul className="space-y-2 text-xs">
               <li>
                 <a
-                  href="#"
+                  href="/"
                   onClick={(e) => {
                     e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    onNavigate('/');
                   }}
                   className="hover:text-white transition-colors"
                 >
@@ -47,12 +53,26 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
                 </a>
               </li>
               <li>
-                <a href="#how-it-works" className="hover:text-white transition-colors">
+                <a
+                  href="/#how-it-works"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/#how-it-works');
+                  }}
+                  className="hover:text-white transition-colors"
+                >
                   How It Works
                 </a>
               </li>
               <li>
-                <a href="#faq" className="hover:text-white transition-colors">
+                <a
+                  href="/#faq"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/#faq');
+                  }}
+                  className="hover:text-white transition-colors"
+                >
                   Frequently Asked Questions
                 </a>
               </li>
@@ -66,45 +86,57 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button
-                  type="button"
-                  onClick={() => onOpenModal('privacy')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="/privacy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/privacy');
+                  }}
+                  className="hover:text-white transition-colors block text-left"
                 >
                   Privacy Policy
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onOpenModal('terms')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="/terms"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/terms');
+                  }}
+                  className="hover:text-white transition-colors block text-left"
                 >
                   Terms of Service
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onOpenModal('about')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="/about"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/about');
+                  }}
+                  className="hover:text-white transition-colors block text-left"
                 >
                   About Us
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onOpenModal('contact')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="/contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/contact');
+                  }}
+                  className="hover:text-white transition-colors block text-left"
                 >
                   Contact Support
-                </button>
+                </a>
               </li>
             </ul>
           </div>
 
-          {/* Col 4: Tool Config & Supported Formats */}
+          {/* Col 4: Tool Formats */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">
               Format Support
@@ -113,6 +145,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
               <li>JPEG / JPG (Quality 10%–100%)</li>
               <li>PNG (Transparency preserved)</li>
               <li>WebP (Modern high-efficiency)</li>
+              <li className="pt-2 text-slate-500">
+                Processed locally via HTML5 Canvas
+              </li>
             </ul>
           </div>
         </div>
@@ -121,7 +156,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
         <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>© {new Date().getFullYear()} CompressMyPic. All rights reserved. Free client-side image compression utility.</p>
           <div className="flex items-center gap-4">
-            <span>Built for speed, privacy, and web performance</span>
+            <span>Contact: bilalayyah@gmail.com</span>
           </div>
         </div>
       </div>
