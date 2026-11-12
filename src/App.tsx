@@ -19,6 +19,9 @@ import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { TermsPage } from './pages/TermsPage';
+import { GuideWhatsAppPage } from './pages/GuideWhatsAppPage';
+import { GuideFormatsPage } from './pages/GuideFormatsPage';
+import { Guide100kbPage } from './pages/Guide100kbPage';
 import { CompressionSettings, ImageItem } from './types';
 import { compressSingleImage, detectTransparency, loadImageFromFile } from './utils/compressor';
 import { createZipArchive, triggerDownload } from './utils/zip';
@@ -27,7 +30,7 @@ export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
     if (typeof window !== 'undefined') {
       const path = window.location.pathname.toLowerCase().replace(/\/$/, '') || '/';
-      if (['/about', '/contact', '/privacy', '/terms'].includes(path)) {
+      if (['/about', '/contact', '/privacy', '/terms', '/guides/compress-images-for-whatsapp', '/guides/jpg-vs-png-vs-webp', '/guides/reduce-image-size-to-100kb'].includes(path)) {
         return path;
       }
     }
@@ -80,12 +83,21 @@ export default function App() {
       if (canonicalLink) canonicalLink.href = `${baseDomain}/privacy`;
     } else if (currentPath === '/terms') {
       document.title = 'Terms of Service – CompressMyPic Free Image Compressor';
-      if (canonicalLink) canonicalLink.href = `${baseDomain}/terms`;
+          if (canonicalLink) canonicalLink.href = `${baseDomain}/terms`;
+    } else if (currentPath === '/guides/compress-images-for-whatsapp') {
+          document.title = 'Compress Images for WhatsApp Without Losing Quality';
+          if (canonicalLink) canonicalLink.href = `${baseDomain}/guides/compress-images-for-whatsapp`;
+    } else if (currentPath === '/guides/jpg-vs-png-vs-webp') {
+          document.title = 'JPG vs PNG vs WebP: Which Format Should You Use?';
+          if (canonicalLink) canonicalLink.href = `${baseDomain}/guides/jpg-vs-png-vs-webp`;
+    } else if (currentPath === '/guides/reduce-image-size-to-100kb') {
+          document.title = 'How to Reduce Image Size to 100KB for Web & Email';
+          if (canonicalLink) canonicalLink.href = `${baseDomain}/guides/reduce-image-size-to-100kb`;
     } else {
       document.title = 'Free Image Compressor Online – Reduce Image Size to 100KB';
       if (canonicalLink) canonicalLink.href = `${baseDomain}/`;
     }
-  const descriptions: Record<string, string> = { '/': 'Compress image online free — reduce image size without losing quality. Compress JPG, PNG and WebP with no signup and no watermark, right in your browser.', '/about': 'About CompressMyPic – a free online image compressor for JPG, PNG and WebP. Compress images online free, with no signup, no watermark and no server upload.', '/contact': 'Contact CompressMyPic – get help with the free online image compressor. Compress images online free and reduce image size without losing quality.', '/privacy': 'Privacy Policy for CompressMyPic – the free online image compressor. Your images are compressed in your browser and never uploaded to a server.', '/terms': 'Terms of Service for CompressMyPic – the free online image compressor. Compress images online free, no signup, no watermark.' }; const metaDescription = document.querySelector('meta[name="description"]'); if (metaDescription) metaDescription.setAttribute('content', descriptions[currentPath] || descriptions['/']); }, [currentPath]);
+  const descriptions: Record<string, string> = { '/': 'Compress image online free — reduce image size without losing quality. Compress JPG, PNG and WebP with no signup and no watermark, right in your browser.', '/about': 'About CompressMyPic – a free online image compressor for JPG, PNG and WebP. Compress images online free, with no signup, no watermark and no server upload.', '/contact': 'Contact CompressMyPic – get help with the free online image compressor. Compress images online free and reduce image size without losing quality.', '/privacy': 'Privacy Policy for CompressMyPic – the free online image compressor. Your images are compressed in your browser and never uploaded to a server.', '/terms': 'Terms of Service for CompressMyPic – the free online image compressor. Compress images online free, no signup, no watermark.', '/guides/compress-images-for-whatsapp': 'Learn how to compress images for WhatsApp without losing quality. Free, private, no signup — shrink photos before sending so they stay sharp and send fast.', '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP explained simply: file size, quality and transparency compared, so you can pick the right format for photos, logos and websites.', '/guides/reduce-image-size-to-100kb': 'Reduce image size to 100KB for websites and email with a free online compressor. Step-by-step guide — no signup, no watermark, images stay on your device.' }; const metaDescription = document.querySelector('meta[name="description"]'); if (metaDescription) metaDescription.setAttribute('content', descriptions[currentPath] || descriptions['/']); }, [currentPath]);
 
   const handleNavigate = (path: string) => {
     if (path.includes('#')) {
@@ -401,6 +413,18 @@ export default function App() {
         <main className="flex-1">
           <TermsPage onNavigate={handleNavigate} />
         </main>
+            ) : currentPath === '/guides/compress-images-for-whatsapp' ? (
+              <main className="flex-1">
+                        <GuideWhatsAppPage onNavigate={handleNavigate} />
+              </main>
+            ) : currentPath === '/guides/jpg-vs-png-vs-webp' ? (
+              <main className="flex-1">
+                        <GuideFormatsPage onNavigate={handleNavigate} />
+              </main>
+            ) : currentPath === '/guides/reduce-image-size-to-100kb' ? (
+              <main className="flex-1">
+                        <Guide100kbPage onNavigate={handleNavigate} />
+              </main>
       ) : (
         /* HOME / COMPRESSOR APPLICATION */
         <>
