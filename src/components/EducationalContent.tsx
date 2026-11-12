@@ -6,7 +6,7 @@ const howItWorksSteps = [
     icon: Upload,
     step: 'Step 1',
     title: 'Upload your images',
-    description: 'Drag and drop your JPG, PNG or WebP images into the upload area, click Browse Files to select them, or paste an image with Ctrl+V. You can upload multiple images at once, up to 20 MB per image.',
+    description: 'Drag and drop your JPG, PNG, WebP or HEIC images into the upload area, click Browse Files to select them, or paste an image with Ctrl+V. You can upload multiple images at once, up to 20 MB per image.',
   },
   {
     icon: SlidersHorizontal,
@@ -24,7 +24,7 @@ const howItWorksSteps = [
 
 const features = [
   {
-    title: 'Compress JPG, PNG & WebP',
+    title: 'Compress JPG, PNG, WebP & HEIC',
     description: 'A single image compressor for the formats you actually use. Compress JPG and JPEG photos, compress PNG graphics while keeping transparency, and compress WebP images for the smallest files.',
   },
   {
