@@ -15,9 +15,17 @@ interface AdSlotProps {
  */
 export const AdSlot: React.FC<AdSlotProps> = ({
   slotId,
+  adClient,
+  adSlot,
   className = '',
   format = 'horizontal',
 }) => {
+  // No real AdSense IDs configured yet — render nothing so the page stays clean
+  // (no fake "Reserved Ad Placement" boxes) until AdSense is approved and wired in.
+  if (!adClient || !adSlot) {
+    return null;
+  }
+
   return (
     <aside
       aria-label="Advertisement Container"
