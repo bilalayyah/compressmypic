@@ -5162,25 +5162,37 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Target File Size Compressor',
     shortDescription: 'Compress any image to your exact custom KB or MB limit.',
     category: 'compress',
-    seoTitle: 'Target File Size Image Compressor – Compress to Exact KB or MB',
+    seoTitle: 'Target File Size Compressor – Hit Exact KB or MB Limits',
     seoDescription:
-      'Compress any image to your exact target file size in KB or MB online free. Intelligent quality binary search and dimension scaling with honest results in your browser.',
+      'Hit exact upload caps with our target file size compressor in your browser. Type any KB or MB limit and use binary quality search and pixel scaling locally.',
     h1: 'Target File Size Image Compressor',
     subtitle:
-      'Enter any custom KB or MB limit (like 30KB, 150KB, or 2MB) and let our binary quality + scaling optimizer hit your exact size target locally in your browser.',
+      'Enter any exact KB or MB upload limit—such as 35 KB for an ID badge, 150 KB for a web hero, or 2 MB for an attachment—with our browser-native target file size compressor. Built for designers, developers, and applicants dealing with non-standard portal rules, it pairs binary quality search with optional pixel scaling on files up to 25 MB cleanly on your own device.',
     howToSteps: [
       {
-        title: 'Set your exact KB or MB goal',
-        description: 'Type any target file size or click quick presets like 20KB, 100KB, or 1MB.',
-      },
-      {
-        title: 'Upload images',
-        description: 'Drop one or many JPG, PNG, WebP, HEIC, BMP, or SVG files.',
-      },
-      {
-        title: 'Inspect & download',
+        title: 'Enter your custom KB or MB limit',
         description:
-          'Verify whether each file hit the exact target, read honest notes if scaling/format limits apply, and download.',
+          'Type any numeric target from 1 KB to 10,240 KB (or switch to MB up to 20 MB), or tap a quick preset chip like 20 KB, 50 KB, 100 KB, 200 KB, 500 KB, or 1 MB.',
+      },
+      {
+        title: 'Drop one or many images up to 25 MB',
+        description:
+          'Upload JPG, PNG, WebP, HEIC, GIF, BMP, or SVG files into the dropzone to start automatic target optimization immediately.',
+      },
+      {
+        title: 'Pick Output Format and fallback controls',
+        description:
+          'Select Original, JPG, WebP, or PNG, keep intelligent dimension scaling active if high-res files need pixel reduction, and enable Auto-convert PNG for heavy graphics.',
+      },
+      {
+        title: 'Read target diagnostics and compare quality',
+        description:
+          'Check the Target Compression Summary for achieved vs. missed items, inspect side-by-side sharpness with Compare, or click Keep original if any tiny input grew.',
+      },
+      {
+        title: 'Adjust target anytime or download ZIP',
+        description:
+          'Tweak your custom threshold and click Compress to [target] to re-run the queue, then save single files or click Download All (ZIP).',
       },
     ],
     features: [
@@ -5205,14 +5217,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Why couldn’t my image reach a tiny target like 5KB?',
+        question: 'What custom KB and MB range can I type into this target file size compressor?',
         answer:
-          'Every image file has minimum format headers and encoded block overhead. If 5KB is impossible without destroying readability, the tool reports the smallest honest size achieved.',
+          'In KB mode you can enter any integer from 1 KB up to 10,240 KB (10 MB), defaulting to 150 KB when the page opens. Switching the unit pill to MB lets you target anywhere from 1 MB up to 20 MB, with instant quick-fill chips for 20 KB, 50 KB, 100 KB, 200 KB, 500 KB, and 1 MB.',
       },
       {
-        question: 'Should I keep Allow Dimension Scaling enabled?',
+        question: 'How does switching between KB and MB units recalculate my current number?',
         answer:
-          'Yes, especially when compressing multi-megabyte photos below 200KB. Quality reduction alone on a 4000×3000px image often hits a floor around 250–400KB.',
+          'Clicking MB divides your current KB target by 1,024 and rounds to at least 1 MB so you never accidentally drop from kilobytes to a tiny byte cap. Tapping back to KB multiplies by 1,024 cleanly up to the 10,240 KB limit.',
+      },
+      {
+        question: 'Why does the optimizer test quality binary search at 100% resolution before shrinking dimensions?',
+        answer:
+          'Many images under moderate limits like 150 KB, 300 KB, or 1.5 MB can hit the target solely by trimming JPEG or WebP compression overhead without discarding pixels. Checking 35%–94% quality at full dimensions first ensures pixel width and height stay intact whenever possible.',
+      },
+      {
+        question: 'When does intelligent dimension scaling automatically step in?',
+        answer:
+          'If even 35% lossy quality at full width cannot squeeze the image beneath your byte threshold and Allow intelligent dimension scaling is checked, the engine steps down through progressive scale factors from 82% toward 10%. At each step it runs a fresh quality search and picks the highest resolution that meets your exact ceiling.',
+      },
+      {
+        question: 'What happens when a portal needs both an ultra-tight KB cap and no resizing?',
+        answer:
+          'Uncheck Allow intelligent dimension scaling to lock your width and height at 100%. The compressor then pushes lossy JPG or WebP quality down as low as 5% at full dimensions and honestly informs you if the raw image complexity cannot physically fit inside your requested KB.',
+      },
+      {
+        question: 'Why do impossible caps like 2 KB or 3 KB trigger an honest miss notice?',
+        answer:
+          'Every valid JPEG, WebP, or PNG contains mandatory file headers, Huffman tables, and color quantization blocks that occupy several hundred bytes even on a tiny grid. Rather than crashing or faking numbers, the card displays the smallest real encoded size achievable alongside actionable suggestions.',
+      },
+      {
+        question: 'What does the Auto-convert large PNGs toggle accomplish when Format stays on Original?',
+        answer:
+          'Lossless PNG files ignore quality sliders and shrink purely through downscaling, which can blur screenshots or product graphics if forced under a tight KB cap. With Auto-convert enabled, oversized opaque PNGs switch to JPG while transparent PNGs switch to WebP whenever PNG alone misses or drops below 65% scale.',
+      },
+      {
+        question: 'Can I batch compress mixed photos to the exact same custom KB threshold at once?',
+        answer:
+          'Yes. Drop any mix of JPG, PNG, WebP, HEIC, GIF, BMP, or SVG images up to 25 MB each into the queue, and every file optimizes independently against your active KB or MB goal.',
+      },
+      {
+        question: 'How does the Target Compression Summary track partial batch success?',
+        answer:
+          'When compressing a multi-file batch against a strict custom cap, the dark summary banner counts exactly how many files cleared your target versus how many could not fit honestly, alongside total bytes saved. Each individual card explains its exact final quality percentage and scale ratio.',
+      },
+      {
+        question: 'What filename is assigned to custom target downloads and batch ZIPs?',
+        answer:
+          'Single downloads append your target kilobyte tag—producing names like brochure_150kb.jpg—while multi-file ZIP exports save cleanly as compressmypic_<value><unit>.zip. Your untouched originals remain safely separate on disk.',
+      },
+      {
+        question: 'How does the tool handle transparent backgrounds if I select JPG for a strict custom KB limit?',
+        answer:
+          'Choosing JPG exposes the Transparent PNG matte color swatch (pure white #ffffff by default). Any alpha-transparent region fills cleanly with your chosen background color before JPEG compression runs, preventing solid black borders.',
+      },
+      {
+        question: 'Why did a file smaller than my custom target show a Grew warning?',
+        answer:
+          'If you ask for a 300 KB limit on an image that was already compressed down to 180 KB, decoding onto HTML5 Canvas and re-saving at high quality can expand it to 240 KB. Click Keep original on that card to retain your lighter 180 KB source file.',
+      },
+      {
+        question: 'Does custom target compression strip sensitive EXIF metadata from documents or photos?',
+        answer:
+          'Yes. Rendering pixels through HTML5 Canvas automatically strips embedded camera previews, shutter metadata, and GPS coordinates, keeping personal files private while devoting every kilobyte to visual clarity.',
+      },
+      {
+        question: 'Can I change my custom KB value after images have finished without re-uploading?',
+        answer:
+          'Yes. Edit the numeric target or tap another preset chip anytime and click the Compress to [target] button to re-optimize your entire loaded list immediately in memory.',
+      },
+      {
+        question: 'How accurate is the final byte count relative to binary kilobyte limits?',
+        answer:
+          'The engine converts KB to exact binary bytes (KB × 1024) and treats your entry as a strict upper bound, never exceeding it unless physically impossible under locked constraints. Its binary search typically stops within 96% to 100% of that limit to preserve maximum detail.',
+      },
+      {
+        question: 'Are private client proofs, contracts, or medical scans uploaded during target calculation?',
+        answer:
+          'No. Binary search iterations, image scaling, WebAssembly HEIC decoding, and ZIP packaging all run strictly inside your browser session with zero external network transfers.',
+      },
+      {
+        question: 'Can I preview fine text or details at my custom KB limit before saving?',
+        answer:
+          'Yes. Click Compare on any finished result card to open an interactive before-and-after split curtain and inspect sharp edges directly against the original upload.',
+      },
+      {
+        question: 'When is it better to pick a fixed tool like 50 KB or 100 KB instead of this custom tool?',
+        answer:
+          'Use fixed pages when your workflow always targets standard portal benchmarks like 50 KB passports or 200 KB Shopify uploads. Open this custom target file size compressor whenever forms ask for quirky ceilings like 30 KB, 75 KB, 250 KB, or 1.5 MB.',
+      },
+      {
+        question: 'What happens if I upload an animated GIF and aim for 400 KB here?',
+        answer:
+          'Because Canvas-based KB targeting processes static raster frames, animated GIF uploads optimize and export their opening frame as a still image. Use our dedicated GIF Compressor if you need to shrink looping multi-frame animations cleanly.',
+      },
+      {
+        question: 'What happens if I set a high MB goal like 5 MB on a 1 MB image?',
+        answer:
+          'Any image already beneath your custom MB cap clears immediately on the top quality pass at full dimensions. If re-encoding inflates byte weight unnecessarily, you can click Keep original right on the card to keep your lighter source file.',
       },
     ],
     relatedSlugs: [
@@ -5227,25 +5329,42 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Bulk Image Resizer',
     shortDescription: 'Resize dozens of images by max dimensions, width, or % + ZIP.',
     category: 'resize',
-    seoTitle: 'Bulk Image Resizer Online Free – Batch Resize & ZIP Download',
+    seoTitle: 'Bulk Image Resizer Online Free – Batch Resize & ZIP',
     seoDescription:
-      'Bulk resize multiple JPG, PNG, WebP, and HEIC images online free. Fit within max WxH, set uniform width, or scale by percentage with single ZIP download in browser.',
+      'Scale dozens of photos with our free bulk image resizer right in your browser. Choose Fit Max WxH, Uniform Width, Exact pixels, or %, then download one ZIP.',
     h1: 'Free Online Bulk Image Resizer',
     subtitle:
-      'Resize dozens of mixed-orientation photos in one pass — fit within a max bounding box, standardize column widths, or scale by percentage without enlarging smaller shots.',
+      'Standardize pixel dimensions across entire product shoots, blog folders, and photo albums using our free bulk image resizer running locally in your browser. Designed for e-commerce sellers, content teams, and photographers, it handles mixed portrait and landscape batches via Fit Max W × H, Uniform Width, Exact W × H, or Percentage scaling up to 25 MB per file with instant ZIP export.',
     howToSteps: [
       {
-        title: 'Upload multiple images',
-        description: 'Drag and drop product photos, screenshots, or camera folders.',
-      },
-      {
-        title: 'Pick batch resize strategy',
+        title: 'Drop multiple images into the batch queue',
         description:
-          'Choose Fit Max W×H (ideal for mixed landscape/portrait), Uniform Width, Exact W×H, or Percentage Scale.',
+          'Upload any mix of JPG, PNG, WebP, HEIC, GIF, BMP, or SVG files up to 25 MB each from your computer or phone.',
       },
       {
-        title: 'Resize & export ZIP',
-        description: 'Inspect before/after dimensions per file and download the full batch as a ZIP.',
+        title: 'Pick a Batch Resize Strategy',
+        description:
+          'Choose Fit Max W × H for mixed orientations, Uniform Width for fixed-column layouts, Exact W × H for strict grids, or Percentage (%) to scale uniformly.',
+      },
+      {
+        title: 'Set target dimensions or quick size presets',
+        description:
+          'Enter pixels from 1 to 12,000 px (or click Full HD 1920px, Blog 1200px, E-commerce 1000×1000, or Thumbnail 600px), or slide scale from 10% to 200%.',
+      },
+      {
+        title: 'Configure upscale protection and fit behavior',
+        description:
+          'Keep Do not enlarge smaller images checked to protect tiny icons, or pick Contain, Cover, or Stretch when Exact W × H is selected.',
+      },
+      {
+        title: 'Choose Output Format, Quality, and Matte BG',
+        description:
+          'Keep Original or convert outputs to JPG, PNG, or WebP alongside a 10%–100% quality slider and custom matte background color for JPG.',
+      },
+      {
+        title: 'Run Bulk Resize and Download All (ZIP)',
+        description:
+          'Review each card’s old-to-new pixel dimensions and click Download All (ZIP) to save bulk_resized_compressmypic.zip locally.',
       },
     ],
     features: [
@@ -5270,13 +5389,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'What is the difference between Fit Max W×H and Exact W×H?',
+        question: 'How does Fit Max W × H handle a folder mixing horizontal landscapes and vertical portraits?',
         answer:
-          'Fit Max W×H preserves each photo’s natural aspect ratio so its longest side stays within your limit. Exact W×H forces every output to identical pixel dimensions using Contain, Cover, or Stretch.',
+          'Fit Max W × H treats your width and height entries (default 1200×1200 px) as an invisible bounding box while preserving every photo’s natural aspect ratio. A 4000×2000 landscape becomes 1200×600, while a 2000×4000 portrait becomes 600×1200—with zero cropping or stretching.',
       },
       {
-        question: 'Can I avoid enlarging icons or small thumbnails in a mixed batch?',
-        answer: 'Yes. Leave "Do not enlarge smaller images" checked.',
+        question: 'When is Uniform Width better than Fit Max W × H?',
+        answer:
+          'Pick Uniform Width whenever building vertical newsletters, CMS article columns, or responsive gallery streams where every image must share the exact same horizontal width. Each photo scales height proportionally so nothing gets stretched or cropped.',
+      },
+      {
+        question: 'What do Contain, Cover, and Stretch do under Exact W × H mode?',
+        answer:
+          'Contain fits the full image inside your exact pixel box with clean padding margins, while Cover fills every pixel edge-to-edge by center-cropping overhanging sides. Stretch forces non-matching aspect ratios to fit exact target pixels directly.',
+      },
+      {
+        question: 'How does Percentage (%) batch scaling work?',
+        answer:
+          'Percentage mode multiplies every uploaded image’s own original width and height by your chosen slider factor (10% to 200%, with 25%, 50%, 75%, 100%, and 150% quick buttons). Choosing 50% turns a 4000×3000 photo into 2000×1500 and a 1000×800 icon into 500×400 in the same pass.',
+      },
+      {
+        question: 'Why should I leave Do not enlarge smaller images enabled in mixed batches?',
+        answer:
+          'If a folder contains both 4000 px DSLR shots and 400 px badges, forcing a small badge up to 1200 px stretches pixels and introduces blur. Leaving Do not enlarge checked downscales large photos cleanly while keeping smaller files at their sharp original dimensions.',
+      },
+      {
+        question: 'What do the four quick pixel preset buttons set?',
+        answer:
+          'Tapping Full HD 1920px fills 1920×1080, Blog 1200px sets 1200×1200, E-commerce 1000×1000 sets 1000×1000, and Thumbnail 600px sets 600×600. You can still adjust either pixel field manually up to 12,000 px afterward.',
+      },
+      {
+        question: 'Can I convert an entire folder to WebP or JPG while batch resizing?',
+        answer:
+          'Yes. Switch Output Format from Original to WebP, JPG, or PNG before clicking Bulk Resize (N) to both rescale pixel dimensions and modernize file formats in a single canvas pass.',
+      },
+      {
+        question: 'What happens to transparent PNG logos if I resize them with Output Format set to JPG?',
+        answer:
+          'Choosing JPG exposes the Matte BG color picker (#ffffff white by default). Any transparent background or soft drop shadow renders cleanly over your chosen matte color before JPEG encoding.',
+      },
+      {
+        question: 'Does keeping Output Format on PNG preserve alpha transparency during batch resizing?',
+        answer:
+          'Yes, exporting as PNG keeps transparent backgrounds and soft alpha edges completely intact across every resized item. Keeping Output Format on Original also preserves transparency for PNG and WebP uploads.',
+      },
+      {
+        question: 'How can I verify that resized photos still look crisp before downloading the ZIP?',
+        answer:
+          'Click any thumbnail card or the Compare button on a completed item to launch the interactive before-and-after comparison viewer. You can drag the divider side-by-side to verify sharp edges before exporting the batch.',
+      },
+      {
+        question: 'What is the maximum file size and pixel limit per image in Bulk Image Resizer?',
+        answer:
+          'Each uploaded image can be up to 25 MB, and pixel inputs range from 1 px up to 12,000 px per side. Keep in mind that exporting huge 10,000+ px canvases across dozens of images depends on your device’s available browser RAM.',
+      },
+      {
+        question: 'Are iPhone HEIC and vector SVG files supported inside the same resize queue?',
+        answer:
+          'Yes. HEIC/HEIF photos decode locally via client-side WebAssembly and SVG graphics rasterize smoothly onto HTML5 Canvas before scaling alongside standard JPG, PNG, WebP, GIF, and BMP uploads.',
+      },
+      {
+        question: 'Can I tweak settings and resize the whole batch again without re-dropping files?',
+        answer:
+          'Yes. Adjust strategy, pixel limits, format, or the 10%–100% quality slider anytime and click Bulk Resize (N) to reprocess all queued images immediately in browser memory.',
+      },
+      {
+        question: 'Does the live progress counter show how far along large folders are?',
+        answer:
+          'Yes. While processing runs, the action button displays Resizing (X/Y)... alongside spinning thumbnails so you always know exact batch progress.',
+      },
+      {
+        question: 'Are confidential client catalogs or family albums sent to cloud servers for resizing?',
+        answer:
+          'Never. Every resize calculation, Canvas draw step, and ZIP bundle executes locally on your device, keeping private photography and unreleased merchandise 100% on-device.',
+      },
+      {
+        question: 'Does Bulk Image Resizer remove EXIF camera details and GPS coordinates?',
+        answer:
+          'Yes. Because HTML5 Canvas re-draws pixel data to target dimensions without copying raw EXIF headers, location tags and camera serials are stripped automatically.',
+      },
+      {
+        question: 'What is the downloaded ZIP archive named?',
+        answer:
+          'Clicking Download All (ZIP) generates bulk_resized_compressmypic.zip locally in your browser. It packages every successfully resized file from your queue cleanly in one archive.',
+      },
+      {
+        question: 'Can I remove one accidental file from a 20-image batch before exporting the ZIP?',
+        answer:
+          'Yes. Click the trash icon on any individual card to delete only that image without interrupting the remaining 19 resized results.',
+      },
+      {
+        question: 'How does Bulk Image Resizer differ from Bulk Image Compressor?',
+        answer:
+          'Bulk Image Compressor keeps original pixel widths and heights untouched while reducing file size via lossy compression. By contrast, this bulk image resizer actively changes pixel dimensions and bounding boxes in batch alongside optional format and quality settings.',
+      },
+      {
+        question: 'Can I add extra photos to an already finished resize batch?',
+        answer:
+          'Yes. Drag additional files onto the upload dropzone anytime and they automatically process with your active resize strategy and join the final Download All (ZIP) summary.',
       },
     ],
     relatedSlugs: [
@@ -5291,26 +5501,42 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Bulk Image Converter',
     shortDescription: 'Convert multiple JPG, PNG, HEIC, SVG & BMP files at once + ZIP.',
     category: 'convert',
-    seoTitle: 'Bulk Image Converter Online Free – Batch Format Conversion + ZIP',
+    seoTitle: 'Bulk Image Converter Free – Batch Format Change & ZIP',
     seoDescription:
-      'Bulk convert JPG, PNG, WebP, HEIC, SVG, BMP, and GIF images to WebP, JPG, or PNG in your browser. Batch progress, quality slider, and single ZIP download.',
+      'Switch mixed folders with our free bulk image converter in your browser. Turn HEIC, PNG, SVG, AVIF, and BMP batches into WebP, JPG, or PNG with ZIP export.',
     h1: 'Free Bulk Image Converter',
     subtitle:
-      'Convert folders of mixed formats — including iPhone HEIC, transparent PNGs, SVGs, and legacy BMPs — cleanly into WebP, JPG, or PNG in one browser batch.',
+      'Unify mixed folders of Apple HEIC shots, AVIF web downloads, SVG icons, transparent PNGs, and legacy BMP bitmaps in one pass with our free bulk image converter. Built for developers, content managers, and everyday users standardizing whole asset libraries, it converts batches up to 25 MB per file cleanly into WebP, JPG, or PNG locally with optional filename suffixes and single-ZIP download.',
     howToSteps: [
       {
-        title: 'Drop mixed-format files',
-        description: 'Upload JPG, PNG, WebP, HEIC, SVG, BMP, GIF, or AVIF files together.',
+        title: 'Drop a mixed-format batch of images',
+        description:
+          'Upload any combination of JPG, PNG, WebP, HEIC, SVG, BMP, GIF, or AVIF files up to 25 MB each into the dropzone.',
       },
       {
-        title: 'Choose WebP, JPG, or PNG',
+        title: 'Choose target format: WebP, JPG, or PNG',
         description:
-          'Set your output format, quality slider, optional filename suffix (like _web), and JPEG matte color.',
+          'Pick WebP (Smallest Web) for site speed, JPG (Universal) for broad sharing, or PNG (Lossless Alpha) for crisp graphics.',
       },
       {
-        title: 'Download all in ZIP',
+        title: 'Optional filename suffix and Transparent Fill',
         description:
-          'Review each file’s output size and download individually or together as one ZIP archive.',
+          'Enter an optional filename suffix like _web (or leave blank) and select a Transparent Fill matte color if converting alpha images to JPG.',
+      },
+      {
+        title: 'Set output quality percentage',
+        description:
+          'Adjust the 10%–100% quality slider for WebP or JPG exports (automatically disabled when Lossless PNG is active).',
+      },
+      {
+        title: 'Review batch totals and visual comparisons',
+        description:
+          'Inspect per-file byte changes and the Bulk Conversion Summary banner, and open Compare on sample items to verify crispness.',
+      },
+      {
+        title: 'Save individual files or Download All (ZIP)',
+        description:
+          'Click Download on single cards or Download All (ZIP) to export bulk_converted_webp.zip, bulk_converted_jpg.zip, or bulk_converted_png.zip.',
       },
     ],
     features: [
@@ -5333,13 +5559,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Can I batch convert dozens of iPhone HEIC photos to JPG?',
+        question: 'Can I mix different input file types in the same Bulk Image Converter queue?',
         answer:
-          'Yes! Select all your .heic files, pick JPG, and click Download All (ZIP) — everything decodes privately on your device.',
+          'Yes. You can drop Apple HEIC, modern AVIF, transparent PNG, vector SVG, legacy BMP, GIF, WebP, and JPG files into the same upload pass and export the whole collection in one uniform format.',
       },
       {
-        question: 'Does bulk converting to PNG or WebP keep transparency?',
-        answer: 'Yes. Both PNG and WebP preserve full alpha transparency.',
+        question: 'Why does Optional Filename Suffix help when converting batches?',
+        answer:
+          'Typing a tag like _web or _v2 appends that suffix right before the new file extension, producing clean names such as hero_web.webp. That prevents newly converted assets from colliding with similarly named source files in shared project folders.',
+      },
+      {
+        question: 'How does the Bulk Conversion Summary calculate total batch impact?',
+        answer:
+          'Once files finish processing, the dark summary banner sums original bytes across every converted file and displays total converted bytes beside it. That lets you check storage or bandwidth changes across an entire folder immediately.',
+      },
+      {
+        question: 'What happens if I unify transparent PNGs and SVGs into JPG format?',
+        answer:
+          'Selecting JPG (Universal) reveals the Transparent Fill color picker (#ffffff white by default). Any alpha-transparent region in your PNGs or SVGs blends smoothly onto that chosen background hue instead of turning solid black.',
+      },
+      {
+        question: 'Why is the Quality slider disabled when PNG (Lossless Alpha) is selected?',
+        answer:
+          'PNG uses lossless DEFLATE encoding that preserves every decoded pixel identically without lossy quality levels. Whenever you pick WebP or JPG, the 10%–100% quality slider unlocks immediately.',
+      },
+      {
+        question: 'Can I convert a folder of mixed photos twice—once to WebP and once to JPG—without re-uploading?',
+        answer:
+          'Yes. Switch Convert Batch To Format from WebP to JPG anytime, optionally update your Filename Suffix, and click Convert All (N) to re-process the cached files in memory and grab a second ZIP.',
+      },
+      {
+        question: 'How does ZIP naming identify which target format I exported?',
+        answer:
+          'Clicking Download All (ZIP) builds bulk_converted_webp.zip, bulk_converted_jpg.zip, or bulk_converted_png.zip directly in your browser. Having the format in the filename keeps multiple format exports easy to tell apart in your Downloads folder.',
+      },
+      {
+        question: 'Does unifying everything into WebP keep alpha transparency on PNG logos and SVG icons?',
+        answer:
+          'Yes. Both WebP (Smallest Web) and PNG (Lossless Alpha) retain full 8-bit transparency from transparent PNGs, WebPs, and standalone SVG files cleanly.',
+      },
+      {
+        question: 'What happens if an older browser cannot decode a mixed AVIF file inside my batch?',
+        answer:
+          'If a file uses a codec your browser lacks support for, such as AVIF on an outdated browser, only that specific card displays an explicit error notice. Every other JPG, PNG, or HEIC item in the same batch finishes normally.',
+      },
+      {
+        question: 'Are iPhone HEIC batches converted on a remote cloud server?',
+        answer:
+          'No. Even Apple HEIC and HEIF decoding runs locally inside your browser tab via client-side WebAssembly before HTML5 Canvas encodes your chosen output format.',
+      },
+      {
+        question: 'How large can individual files be inside Bulk Image Converter?',
+        answer:
+          'Each individual image in your batch queue can be up to 25 MB. That headroom easily covers high-megapixel camera shots, layered PNG exports, and uncompressed BMP archives.',
+      },
+      {
+        question: 'What happens when animated GIFs are included in a bulk conversion folder?',
+        answer:
+          'HTML5 Canvas rasterizes the opening frame of any uploaded .gif into a crisp static WebP, JPG, or PNG file while keeping full width and height. Use our GIF Compressor if you want to keep looping frame animation intact.',
+      },
+      {
+        question: 'Does bulk format conversion change original image width and height?',
+        answer:
+          'No, every output keeps 100% of its original pixel width and height untouched. Use Bulk Image Resizer instead whenever you need to resize or cap image dimensions at the same time.',
+      },
+      {
+        question: 'Why might converting compressed JPEGs to PNG make the batch summary total look larger?',
+        answer:
+          'Lossless PNG stores far more data per photographic pixel than lossy JPEG. Unless a workflow strictly requires .png, converting mixed web batches to WebP at 85% usually saves substantial space while retaining crisp quality.',
+      },
+      {
+        question: 'Are embedded EXIF camera tags kept after converting a mixed folder?',
+        answer:
+          'No. Rendering images through HTML5 Canvas removes EXIF metadata blocks, camera serials, and GPS tags across every converted file cleanly.',
+      },
+      {
+        question: 'Can I compare original and converted pixels on individual cards before exporting the ZIP?',
+        answer:
+          'Yes. Click Compare on any completed file card to inspect fine edges and colors side-by-side in the split comparison viewer.',
+      },
+      {
+        question: 'What happens if I add more files after converting my first batch?',
+        answer:
+          'Newly dropped files convert automatically using your currently selected target format, quality, suffix, and matte fill. They then merge cleanly into your active queue and the shared ZIP summary.',
+      },
+      {
+        question: 'Are external web fonts or linked remote images inside SVG files included during batch conversion?',
+        answer:
+          'For browser security, HTML5 Canvas sandboxes standalone SVGs and blocks fetching remote URLs or external webfonts. Self-contained SVGs with paths, gradients, and inline CSS convert cleanly.',
+      },
+      {
+        question: 'Can I remove a single failed or unwanted image from the converted list?',
+        answer:
+          'Yes. Click the trash button on any card to exclude it from the list and rebuild the summary and ZIP download from the remaining files.',
+      },
+      {
+        question: 'When should I pick this bulk converter vs. single-pair converters like HEIC to JPG?',
+        answer:
+          'Single-pair tools pre-configure strict file filters and defaults for one specific migration path. Open this bulk image converter whenever a folder holds several different extensions that all need to become WebP, JPG, or PNG at once.',
       },
     ],
     relatedSlugs: [
@@ -5354,26 +5671,42 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Web Image Optimizer',
     shortDescription: 'Optimize hero, product & card images for Core Web Vitals speed.',
     category: 'compress',
-    seoTitle: 'Web Image Optimizer Free – Speed Up Websites & Core Web Vitals',
+    seoTitle: 'Web Image Optimizer Free – Speed Up Core Web Vitals',
     seoDescription:
-      'Optimize website images for fast loading and Core Web Vitals (LCP). One-click WebP presets for Hero banners, E-commerce products, thumbnails, and OG cards.',
+      'Shrink heavy page assets with our free web image optimizer in your browser. Pick WebP presets, strip EXIF tags, copy responsive HTML img tags, and save ZIPs.',
     h1: 'Web Image Optimizer (Core Web Vitals Ready)',
     subtitle:
-      'Turn heavy raw graphics into fast-loading WebP or JPG website assets using battle-tested dimension caps, EXIF stripping, and copyable responsive HTML tags.',
+      'Prepare fast-loading website graphics engineered for Core Web Vitals (LCP and CLS) using our free web image optimizer directly in your browser. Built for front-end developers, Shopify merchants, and technical SEOs, it pairs battle-tested WebP and JPG slot presets up to 25 MB per file with automatic EXIF removal, copyable HTML <img> tags, and single-ZIP downloads.',
     howToSteps: [
       {
-        title: 'Pick a web use-case preset',
+        title: 'Select one of 5 Web Performance Presets',
         description:
-          'Choose Hero Banner (1600px WebP), Product Photo (1200px WebP), Thumbnail (640px WebP), or customize settings.',
+          'Pick Hero / Banner (1600px WebP 80%), E-Commerce Product (1200px WebP 82%), Card / Thumbnail (640px WebP 75%), Social OG / Email (1200px JPG 82%), or Retina 2× Graphic (1920px WebP 88%).',
       },
       {
-        title: 'Upload website images',
-        description: 'Drop raw JPG, PNG, SVG, or HEIC assets — metadata is stripped automatically.',
+        title: 'Customize Web Format, Max Dimension, or Quality',
+        description:
+          'Switch among WebP, JPG, or PNG, adjust Max Dimension (Long Edge) from 640 px to 1920 px (or Keep Original Dimensions), and tune Quality from 20% to 95%.',
       },
       {
-        title: 'Download assets & copy HTML',
+        title: 'Drop raw website assets into the upload zone',
         description:
-          'Compare before/after page weight, copy `<img width height loading="lazy" />` snippets, and download individual files or ZIP.',
+          'Upload JPG, PNG, WebP, HEIC, SVG, BMP, GIF, or AVIF images up to 25 MB each with Only downscale larger images checked to avoid bloating small icons.',
+      },
+      {
+        title: 'Review page weight savings and Compare quality',
+        description:
+          'Check the Web Performance Summary for total page weight saved, verify Web-Ready badges per card, and inspect edges side-by-side via Compare.',
+      },
+      {
+        title: 'Copy responsive <img> HTML snippets',
+        description:
+          'Click Copy <img> on any finished card to grab ready-to-paste markup with width, height, loading="lazy", and decoding="async".',
+      },
+      {
+        title: 'Download single -web assets or ZIP bundle',
+        description:
+          'Save individual <name>-web files or click Download All (ZIP) to download web_optimized_compressmypic.zip cleanly.',
       },
     ],
     features: [
@@ -5398,14 +5731,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Why does Web Image Optimizer default to WebP?',
+        question: 'How do the five Web Performance Presets map to real website slots?',
         answer:
-          'WebP typically cuts file weight by 25–35% compared to JPG and 70%+ compared to PNG while supporting transparency and universal modern browser compatibility.',
+          'Hero / Banner caps at 1600 px WebP (80%), E-Commerce Product caps at 1200 px WebP (82%), Card / Thumbnail caps at 640 px WebP (75%), Social OG / Email outputs 1200 px JPG (82%) for scraper compatibility, and Retina 2× Graphic preserves up to 1920 px WebP (88%). Clicking any preset also re-optimizes loaded files automatically.',
       },
       {
-        question: 'Why include width and height attributes in the copied <img> tag?',
+        question: 'How does the Copy <img> button help improve Core Web Vitals scores?',
         answer:
-          'Explicit width and height let browsers reserve exact aspect-ratio space before images finish loading, eliminating Cumulative Layout Shift (CLS).',
+          'Clicking Copy <img> copies a semantic HTML tag containing exact output width and height attributes plus loading="lazy" and decoding="async". Explicit dimensions let browsers reserve exact space during page layout to eliminate Cumulative Layout Shift (CLS).',
+      },
+      {
+        question: 'Should I keep loading="lazy" on my above-the-fold Hero image after copying the HTML tag?',
+        answer:
+          'For cards and images below the fold, loading="lazy" is ideal. For your single top Hero / Banner LCP image immediately visible on load, remove loading="lazy" (or set fetchpriority="high") in your code so the browser fetches it immediately.',
+      },
+      {
+        question: 'Why does Social OG / Email switch Web Format from WebP to JPG?',
+        answer:
+          'Some social link scrapers, older Slack/Outlook versions, and newsletter platforms still reject or fail to render WebP OpenGraph previews reliably. Choosing 1200 px JPG at 82% gives fast loading alongside rock-solid preview cards everywhere.',
+      },
+      {
+        question: 'Why does Only downscale larger images protect UI icons and small thumbnails?',
+        answer:
+          'With that checkbox enabled, uploading a 400×400 px author avatar while E-Commerce Product (Max 1200px) is selected leaves the avatar at 400×400 px rather than blurring it upward to 1200 px. Unchecking it scales smaller assets up to the chosen long edge if strictly required.',
+      },
+      {
+        question: 'How does EXIF and GPS metadata stripping cut extra web page weight?',
+        answer:
+          'Camera exports frequently embed 30 KB–150 KB of thumbnail previews, Lightroom edit histories, and GPS coordinates inside EXIF blocks. Re-encoding on HTML5 Canvas strips all non-pixel overhead cleanly before deployment.',
+      },
+      {
+        question: 'Why do downloaded files automatically end with -web in their filename?',
+        answer:
+          'Each output appends -web before its extension, producing clean filenames such as sneaker-web.webp. That lets developers drop production assets into public folders without overwriting raw high-resolution masters.',
+      },
+      {
+        question: 'How does the alt attribute inside Copy <img> get generated?',
+        answer:
+          'The snippet automatically strips the file extension and converts hyphens and underscores from your original filename into readable spaces inside alt="...". Be sure to refine it into a descriptive human phrase when pasting into production HTML.',
+      },
+      {
+        question: 'Why does Web Image Optimizer default to E-Commerce Product (Max 1200px · WebP 82%)?',
+        answer:
+          '1200 px wide at 82% WebP delivers crisp product zoom quality on both Retina phones and standard laptops while shrinking multi-megabyte DSLR files down by 80%–95%. It avoids both over-soft 640 px crops and bloated 4000 px originals.',
+      },
+      {
+        question: 'Why might an already-compressed small PNG turn red with a Grew warning when Web Format is PNG?',
+        answer:
+          'Re-encoding a tiny palette-indexed PNG through full-color HTML5 Canvas without changing dimensions can produce a slightly heavier lossless PNG. Switch Web Format to WebP to keep transparency at a fraction of the byte weight.',
+      },
+      {
+        question: 'Can I batch optimize 30 raw blog images for Lighthouse speed in one click?',
+        answer:
+          'Yes. Drop up to 25 MB per file across your blog media set, inspect the Web Performance Summary showing total page weight saved, and grab web_optimized_compressmypic.zip whenever 2 or more files finish.',
+      },
+      {
+        question: 'Why is the Quality slider capped at 20% to 95% instead of 100% here?',
+        answer:
+          'Saving WebP or JPG at 100% quality explodes byte weight exponentially with virtually zero visible difference on web displays, hurting Largest Contentful Paint (LCP). Capping at 95% keeps Retina 2× graphics razor-sharp without accidental 10 MB payloads.',
+      },
+      {
+        question: 'Does WebP output keep transparent backgrounds from uploaded PNGs and SVGs?',
+        answer:
+          'Yes. Whenever Web Format is set to WEBP or PNG, full alpha transparency stays completely intact, whereas selecting JPG composites transparent areas onto clean white (#ffffff).',
+      },
+      {
+        question: 'Are staging site screenshots or unreleased product launches uploaded to external servers?',
+        answer:
+          'No. Preset resizing, WebP encoding, EXIF removal, and HTML tag generation all run strictly inside your browser tab, keeping embargoed marketing graphics private.',
+      },
+      {
+        question: 'Can I customize a mix of settings after clicking a Web Performance Preset?',
+        answer:
+          'Yes. Manually changing Web Format, Max Dimension, or Quality switches the active preset indicator cleanly to custom so you can click Optimize for Web (N) with your exact tailored recipe.',
+      },
+      {
+        question: 'What happens if I upload an Apple iPhone HEIC shot directly for my blog?',
+        answer:
+          'Client-side WebAssembly decodes HEIC and HEIF photos up to 25 MB natively inside your browser tab. Your browser then resizes them to your chosen Max Dimension and encodes lightweight WebP or JPG assets ready to publish.',
+      },
+      {
+        question: 'How does the Card / Thumbnail preset compare against Retina 2× Graphic?',
+        answer:
+          'Card / Thumbnail caps long edges at 640 px with 75% WebP to keep multi-card archive grids ultra-lightweight. By contrast, Retina 2× Graphic permits up to 1920 px at 88% WebP so high-DPI showcase screenshots stay razor-sharp.',
+      },
+      {
+        question: 'Does Keep Original Dimensions still compress and strip EXIF metadata?',
+        answer:
+          'Yes. Selecting Keep Original Dimensions leaves pixel width and height untouched while still converting to your chosen Web Format, applying your quality slider, and removing hidden EXIF tags.',
+      },
+      {
+        question: 'Can I visually verify crisp UI text in screenshots before publishing to my docs?',
+        answer:
+          'Yes. Clicking Compare on any card opens the side-by-side comparison viewer so you can inspect text clarity before deploying.',
+      },
+      {
+        question: 'When should I use this web image optimizer instead of Bulk Image Compressor?',
+        answer:
+          'Use Bulk Image Compressor when you want to retain original dimensions across mixed archives. Pick this web image optimizer when building production web pages that benefit from responsive dimension caps, WebP presets, EXIF stripping, and copyable <img> HTML tags.',
       },
     ],
     relatedSlugs: [
@@ -5420,26 +5843,42 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'GIF Compressor',
     shortDescription: 'Compress animated GIFs by reducing palette colors, scale & frames.',
     category: 'compress',
-    seoTitle: 'Free Online GIF Compressor – Shrink Animated GIF Size in Browser',
+    seoTitle: 'GIF Compressor Online Free – Shrink Animated GIF Size',
     seoDescription:
-      'Compress animated GIF files online free in your browser. Reduce palette colors, scale dimensions, or drop redundant frames while keeping smooth animation timing.',
+      'Reduce looping animations with our free GIF compressor in your browser. Lower palette colors, scale dimensions, or drop redundant frames with live previews.',
     h1: 'Free Online Animated GIF Compressor',
     subtitle:
-      'Shrink heavy animated GIFs right inside your browser by optimizing color palettes, scaling resolution, or reducing frame rate — with live before/after playback.',
+      'Shrink heavy looping GIF87a and GIF89a animations cleanly right inside your browser with our free animated GIF compressor without turning them into static stills. Tailored for Slack, Discord, email marketers, and documentation authors handling files up to 30 MB, it pairs three real compression levers—Color Palette Limit, Output Scale, and Frame Rate Optimization—with live side-by-side animated playback.',
     howToSteps: [
       {
-        title: 'Upload your animated GIF',
-        description: 'Drop any GIF87a or GIF89a animation up to 30 MB.',
+        title: 'Drop an animated or static GIF up to 30 MB',
+        description:
+          'Upload any .gif file (up to 30 MB) into the dropzone to decode its frames, dimensions, disposal methods, and timing delays locally.',
       },
       {
-        title: 'Tune colors, scale & frame rate',
+        title: 'Pick a quick preset or dial in custom settings',
         description:
-          'Pick Light, Balanced, or Max Shrink presets, or dial in palette colors (16–256), scale percentage, and frame skipping.',
+          'Click Light (192 colors, 100%), Balanced (96 colors, 85%), or Max Shrink (64 colors, 75%, drop every 2nd frame), or adjust each lever manually.',
       },
       {
-        title: 'Preview & download compressed GIF',
+        title: 'Lower Color Palette Limit (16–256 colors)',
         description:
-          'Watch both Original and Compressed animations side-by-side and download your lighter .gif.',
+          'Drag the Color Palette Limit slider from 256 down toward 32 or 16 colors (or click quick 256, 128, 64, 32 buttons) to shrink LZW color tables.',
+      },
+      {
+        title: 'Adjust Output Scale and Frame Rate Optimization',
+        description:
+          'Pick an Output Scale preset (100%, 85%, 75%, 50%, or 25%) and optionally drop every 2nd or 2-of-3 frames while automatically preserving real playback speed.',
+      },
+      {
+        title: 'Run Compress GIF and compare live animations',
+        description:
+          'Watch the live Original vs. Compressed animated previews side by side and review exact bytes, frame count, and percentage savings.',
+      },
+      {
+        title: 'Download Compressed GIF',
+        description:
+          'Click Download Compressed GIF to save <filename>_compressed.gif locally with zero server round-trips or watermarks.',
       },
     ],
     features: [
@@ -5466,18 +5905,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Does GIF Compressor keep my GIF animated?',
+        question: 'Does this GIF compressor preserve full animation timing, loop counts, and motion?',
         answer:
-          'Yes! Every frame, timing delay, transparency mask, and loop setting is decoded and re-encoded into a genuine animated GIF.',
+          'Yes. It decodes every individual GIF frame, per-frame millisecond delay, disposal method, and loop metadata locally, then re-encodes a genuine animated GIF89a file rather than flattening it into a still image.',
       },
       {
-        question: 'Why did re-encoding at 100% scale and 128 colors not shrink my already-tiny GIF?',
+        question: 'How does dropping frames keep animation speed natural instead of making it play in fast-forward?',
         answer:
-          'Some GIFs are already heavily palette-optimized with small delta rectangles. Lowering Colors (64 or 32), Scale (75% or 50%), or enabling Frame Dropping usually yields big reductions.',
+          'When you pick Drop Every 2nd Frame or Keep 1 of Every 3 Frames, the compressor sums the millisecond durations of skipped frames into the remaining kept frames. Total loop runtime stays accurate while total frame data shrinks by half to two-thirds.',
       },
       {
-        question: 'Are my GIFs uploaded anywhere?',
-        answer: 'No. Decoding and re-encoding run 100% locally in your browser memory.',
+        question: 'What exact settings do Light, Balanced, and Max Shrink apply?',
+        answer:
+          'Light sets 192 palette colors at 100% scale keeping all frames, while Balanced drops to 96 colors and 85% scale keeping all frames. Max Shrink combines 64 colors, 75% scale, and Drop Every 2nd Frame for aggressive Discord or Slack file caps.',
+      },
+      {
+        question: 'Why did my initial Balanced or 128-color compression turn out slightly larger than an existing tiny GIF?',
+        answer:
+          'Well-optimized GIFs created by desktop tools often rely on tiny dirty-rectangle bounding patches between frames, whereas Canvas re-encoding builds clean quantized full frames. If the amber notice appears, drop Color Palette Limit to 64 or 32 colors, lower Output Scale to 75% or 50%, or drop every 2nd frame.',
+      },
+      {
+        question: 'Which lever cuts animated GIF file size the fastest without ruining screen recordings?',
+        answer:
+          'Lowering Output Scale from 100% down to 75% or 50% cuts pixel area by 44% to 75% immediately while keeping UI text readable. Pairing 75% scale with 64–96 palette colors works especially well for documentation screencasts.',
+      },
+      {
+        question: 'Why are Frame Rate Optimization buttons disabled on a 1-frame or 2-frame GIF?',
+        answer:
+          'Dropping every second or third frame on a 1- or 2-frame file would leave zero motion behind. Those frame-skipping buttons automatically lock whenever a decoded GIF has 2 or fewer frames.',
+      },
+      {
+        question: 'What is the largest animated GIF file size supported by GIF Compressor?',
+        answer:
+          'You can upload GIF87a or GIF89a animations up to 30 MB per file. Progress displays cleanly as Compressing GIF (X%)... while your browser quantizes and re-encodes each kept frame.',
+      },
+      {
+        question: 'Does reducing Color Palette Limit below 64 colors affect photographic reaction GIFs differently than UI screencasts?',
+        answer:
+          'Yes. Flat software UI animations with limited brand colors still look sharp at 32 or 64 colors, whereas live-action video clips with skin gradients show posterization at very low palettes—so lowering scale or frame rate slightly is often cleaner for movie clips.',
+      },
+      {
+        question: 'Can I preview both the original and compressed animations side-by-side before downloading?',
+        answer:
+          'Yes. Right beneath the dark byte summary bar, two live animated players display Original and Compressed GIFs simultaneously with exact pixel dimensions and file sizes so you can spot any jerkiness or banding immediately.',
+      },
+      {
+        question: 'What is the minimum output resolution when choosing 25% Output Scale on small sticker GIFs?',
+        answer:
+          'Output dimensions are safely clamped to a minimum of 16×16 pixels per side. That prevents tiny reaction GIFs from collapsing into invalid zero-pixel files even at the 25% scale option.',
+      },
+      {
+        question: 'Can I run multiple compression tests on the same uploaded GIF without refreshing?',
+        answer:
+          'Yes. The decoded frame buffer stays cached in memory, so you can adjust Color Palette Limit (16–256), Output Scale, or Frame Rate Optimization freely and click Compress GIF again in seconds.',
+      },
+      {
+        question: 'How does the GIF compressor run inside my browser without uploading large animations to a server?',
+        answer:
+          'It decodes frames directly from the uploaded ArrayBuffer in JavaScript and lazy-loads a lightweight LZW GIF encoder and color quantizer on demand. Private Slack screencasts, bug reports, and product demos never leave your device.',
+      },
+      {
+        question: 'Why do GIFs compress less dramatically than MP4 videos of the same clip?',
+        answer:
+          'GIF is a 1989 lossless-LZW 256-color frame format without modern temporal inter-frame motion compensation. Combining moderate downscaling (75%–50%), lower palettes (64–96 colors), and 2× frame skipping gives the best possible byte savings within the standard .gif specification.',
+      },
+      {
+        question: 'Does compressing an animated GIF with transparent pixels preserve background transparency?',
+        answer:
+          'Yes. Transparency indices and frame disposal methods decoded from your source GIF are tracked across frames during browser re-encoding.',
+      },
+      {
+        question: 'What filename is used when saving the optimized animation?',
+        answer:
+          'Clicking Download Compressed GIF exports a sanitized filename ending in _compressed.gif, such as demo_walkthrough_compressed.gif. Your original master animation stays completely untouched on disk.',
+      },
+      {
+        question: 'Can I shrink a GIF to meet Discord 8 MB/10 MB or Slack upload limits?',
+        answer:
+          'Yes. Drop any animation up to 30 MB, test Balanced or Max Shrink, check the live Compressed size readout right at the top of the summary card, and adjust Output Scale to 50% if you need further weight reduction.',
+      },
+      {
+        question: 'Does Reset clear all cached frame memory cleanly?',
+        answer:
+          'Yes. Clicking Reset revokes active blob URLs and clears decoded frame buffers from browser memory so you can load another heavy GIF smoothly.',
+      },
+      {
+        question: 'How is GIF Compressor different from GIF Maker?',
+        answer:
+          'GIF Maker builds brand-new animations from separate JPG, PNG, or WebP still images. By contrast, this GIF compressor takes an existing heavy .gif animation and shrinks its file size via palette, scale, and frame reduction.',
+      },
+      {
+        question: 'Can I upload static single-frame .gif files as well?',
+        answer:
+          'Yes. Static single-frame GIFs load as 1-frame files where you can shrink dimensions via Output Scale and lower Color Palette Limit down to 16 colors cleanly.',
+      },
+      {
+        question: 'Are watermarks, frame caps, or server queues applied to compressed GIFs?',
+        answer:
+          'No. Compression executes locally at full browser speed with zero watermarks, zero signups, and unlimited re-runs.',
       },
     ],
     relatedSlugs: ['/gif-maker', '/bulk-image-compressor', '/image-resizer', '/'],
@@ -5487,24 +6012,37 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'HEIC to JPG',
     shortDescription: 'Convert Apple iPhone HEIC/HEIF photos to universal JPG in browser.',
     category: 'convert',
-    seoTitle: 'HEIC to JPG Converter Free Online – Convert iPhone Photos Locally',
+    seoTitle: 'HEIC to JPG Converter Free – Convert iPhone Photos',
     seoDescription:
-      'Convert HEIC and HEIF images to universal JPG online free. 100% browser-based via client-side WebAssembly decoding — private, batch ZIP, no server upload.',
+      'Turn Apple photos into universal files with our free HEIC to JPG converter. Local WebAssembly decoding runs privately in your browser with batch ZIP export.',
     h1: 'Free Online HEIC to JPG Converter',
     subtitle:
-      'Turn Apple iPhone HEIC and HEIF photos into universally compatible JPG files right inside your browser — private, fast, and supporting batch ZIP download.',
+      'Transform Apple iPhone and iPad HEIC or HEIF camera roll shots into universally readable .jpg files with our free HEIC to JPG converter running locally in your browser. Ideal for Windows users, job applicants, and photo labs that reject Apple’s High Efficiency format, it decodes up to 25 MB per file via client-side WebAssembly with adjustable quality and single-ZIP batch downloads.',
     howToSteps: [
       {
-        title: 'Drop HEIC or HEIF photos',
-        description: 'Select one or dozens of .heic / .heif images directly from your iPhone, Mac, or PC.',
+        title: 'Drop Apple HEIC or HEIF photos',
+        description:
+          'Select or drag one or many .heic or .heif images (up to 25 MB each) straight from your iPhone, Mac, cloud backup, or Windows folder.',
       },
       {
-        title: 'Adjust JPG quality',
-        description: 'Keep the balanced 90% default for near-lossless photos or lower quality for smaller email attachments.',
+        title: 'Wait briefly for local WebAssembly decoding',
+        description:
+          'The page loads client-side WebAssembly (heic2any) directly inside your browser tab to decode Apple’s HEVC image container privately.',
       },
       {
-        title: 'Download JPG or ZIP',
-        description: 'Compare before and after visually and download individual JPGs or all files in a single ZIP archive.',
+        title: 'Adjust JPG Output Quality (20%–100%)',
+        description:
+          'Keep the near-lossless 90% default for family portraits and prints, or slide closer to 75%–85% for lighter email attachments, then click Re-convert All.',
+      },
+      {
+        title: 'Review pixel dimensions and size comparison',
+        description:
+          'Check original HEIC vs. output JPG byte counts on each card and launch the Compare slider to verify crisp detail.',
+      },
+      {
+        title: 'Download JPG files or Download All (ZIP)',
+        description:
+          'Save individual .jpg photos directly or click Download All (ZIP) to download compressmypic_heic_to_jpg.zip in one click.',
       },
     ],
     features: [
@@ -5527,12 +6065,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Are my iPhone HEIC photos uploaded to a server?',
-        answer: 'No. HEIC decoding and JPG encoding run 100% locally in your browser memory via WebAssembly and HTML5 Canvas.',
+        question: 'Why do Windows PCs, older software, and upload forms reject .heic photos from iPhones?',
+        answer:
+          'Apple adopted the HEIC container (built on HEVC video compression) starting in iOS 11 to save storage space on iPhones and iPads. Because many Windows installations, government portals, CMS backends, and desktop editors lack licensed HEVC codecs, converting HEIC to standard JPG makes your photos open everywhere instantly.',
       },
       {
-        question: 'Does it support both .heic and .heif extensions?',
-        answer: 'Yes. Both .heic and .heif containers are decoded automatically and exported as standard .jpg files.',
+        question: 'How does this HEIC to JPG converter decode Apple files inside a standard web browser?',
+        answer:
+          'Most browsers cannot natively render HEIC pixels in standard image tags on Windows or Linux. This tool runs the client-side heic2any WebAssembly decoder right inside your own tab so your browser translates HEIC streams into RGB pixels cleanly without remote cloud servers.',
+      },
+      {
+        question: 'Are personal camera roll shots, ID selfies, or family vacations uploaded anywhere during conversion?',
+        answer:
+          'Never. Both the WebAssembly HEIC decode step and the HTML5 Canvas JPEG encode step occur locally in your browser’s memory, so personal photos never leave your computer or phone.',
+      },
+      {
+        question: 'What is the difference between .heic and .heif files here?',
+        answer:
+          'HEIF is the underlying High Efficiency Image File standard, while HEIC is Apple’s filename extension for HEVC-encoded HEIF containers. Both .heic and .heif extensions (and matching MIME types) are accepted and decoded seamlessly into .jpg.',
+      },
+      {
+        question: 'Why does the converted JPG file often turn out larger in megabytes than the original HEIC?',
+        answer:
+          'Apple’s HEVC encoding packs image data roughly twice as tightly as classic JPEG at similar visual quality. Expanding a 1.8 MB HEIC into a high-detail 90% JPG commonly yields a 2.5 MB–3.5 MB file—and lowering JPG Output Quality toward 80% helps trim that size back down if needed.',
+      },
+      {
+        question: 'Why is 90% set as the default JPG Output Quality for iPhone photos?',
+        answer:
+          'At 90%, standard JPEG retains fine skin texture, hair detail, and portrait-mode background bokeh without noticeable compression blocks. You can slide anywhere between 20% and 100% and hit Re-convert All anytime.',
+      },
+      {
+        question: 'Does converting iPhone Live Photos (.heic) keep video motion or export a still JPG?',
+        answer:
+          'When you upload the .heic still component from an iPhone Live Photo, the decoder extracts that high-resolution frame and exports it as a universal .jpg photograph. Motion video tracks inside paired MOV clips are not bundled into the static JPEG.',
+      },
+      {
+        question: 'Can I drop an entire vacation album of HEIC files and download one ZIP?',
+        answer:
+          'Yes. Select dozens of .heic or .heif files (up to 25 MB per file) in one pass, wait while your browser decodes each photo locally, and click Download All (ZIP) to save compressmypic_heic_to_jpg.zip.',
+      },
+      {
+        question: 'Are Apple iPhone GPS coordinates and location tags kept in the exported JPG?',
+        answer:
+          'No. Encoding through HTML5 Canvas strips embedded EXIF GPS locations, camera serial numbers, and timestamps automatically—giving you extra privacy before posting converted JPGs online.',
+      },
+      {
+        question: 'Why might decoding a 12-megapixel or 48-megapixel iPhone ProRAW/HEIC take a second or two per file?',
+        answer:
+          'HEVC decompression in WebAssembly requires heavier CPU math than standard JPEG decoding, especially on 24 MP or 48 MP iPhone Pro photos. Processing batches locally means conversion speed depends smoothly on your device processor rather than upload bandwidth.',
+      },
+      {
+        question: 'What happens to vertical vs. horizontal iPhone camera orientation during HEIC to JPG conversion?',
+        answer:
+          'Modern browsers read embedded orientation flags when decoding the image onto Canvas. That ensures vertical selfies and landscape shots export upright without sideways rotation.',
+      },
+      {
+        question: 'Why did a file named image.heic fail with an invalid HEIC error notice?',
+        answer:
+          'Occasionally third-party messaging apps save corrupted containers or mislabeled files with a .heic extension, or exceed the 25 MB limit. Trying an original copy exported via AirDrop, iCloud Photos, or Apple Files resolves damaged wrapper headers.',
+      },
+      {
+        question: 'What is the maximum size per HEIC or HEIF photo accepted here?',
+        answer:
+          'Individual files up to 25 MB are supported in the queue. That ceiling easily covers standard 12 MP, 24 MP, and 48 MP iPhone HEIC camera captures.',
+      },
+      {
+        question: 'Can I visually compare the decoded JPG against the original HEIC preview before saving?',
+        answer:
+          'Yes. Click any result thumbnail or the Compare button to verify sharpness side-by-side inside the interactive comparison modal.',
+      },
+      {
+        question: 'Will iPhone Display P3 wide-gamut colors look accurate after converting to JPG?',
+        answer:
+          'During browser Canvas rendering, wide-gamut colors map cleanly into standard sRGB JPEG space. As a result, colors render consistently across Windows monitors, web browsers, and photo print kiosks without washed-out shifts.',
+      },
+      {
+        question: 'How can I stop future iPhone photos from saving as HEIC instead of JPG?',
+        answer:
+          'On your iPhone you can open Settings, go to Camera, tap Formats, and pick Most Compatible for new shots. However, keeping High Efficiency saves roughly half your phone storage—and you can convert specific HEIC batches to JPG anytime right here.',
+      },
+      {
+        question: 'Do I lose pixel resolution when turning a 4032×3024 HEIC into JPG?',
+        answer:
+          'No. Output JPGs keep 100% of the decoded pixel width and height untouched unless you choose to resize them separately afterward.',
+      },
+      {
+        question: 'Can I paste or convert HEIC files from Android, Chromebook, Linux, or Windows browsers?',
+        answer:
+          'Yes. Because heic2any WebAssembly runs inside Chrome, Firefox, Edge, and Safari regardless of operating system, you can open and convert iPhone .heic attachments cleanly even on Linux or Windows machines without installing extensions.',
+      },
+      {
+        question: 'What should I do if I need to shrink the newly converted JPG under 100 KB for a job portal?',
+        answer:
+          'Either lower JPG Output Quality right here and click Re-convert All to trim file size quickly. If you still need strict byte-level targeting, jump directly to Compress Image to 100KB via our linked tools.',
+      },
+      {
+        question: 'Does this converter accept JPG or PNG files too, or strictly HEIC and HEIF?',
+        answer:
+          'This page intentionally filters exclusively for .heic and .heif inputs so Apple photo batches stay clean. Use our Bulk Image Converter if your folder mixes HEIC alongside PNG, WebP, and BMP files.',
       },
     ],
     relatedSlugs: ['/image-converter', '/bulk-image-converter', '/jpg-to-webp', '/remove-image-metadata'],
@@ -5542,24 +6172,37 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'JPG to PNG',
     shortDescription: 'Convert JPG/JPEG photos to lossless PNG images in your browser.',
     category: 'convert',
-    seoTitle: 'JPG to PNG Converter Free Online – Lossless Browser Conversion',
+    seoTitle: 'JPG to PNG Converter Free – Lossless Image Transform',
     seoDescription:
-      'Convert JPG and JPEG images to lossless PNG online free in your browser. Zero upload, batch ZIP download, sharp pixel fidelity, and instant visual comparison.',
+      'Change JPEG photos to lossless files with our free JPG to PNG converter. Convert single or batch images in your browser with pixel fidelity and ZIP export.',
     h1: 'Free Online JPG to PNG Converter',
     subtitle:
-      'Convert JPG and JPEG images into lossless PNG files locally in your browser — ideal when workflows, print portals, or editors strictly require .png uploads.',
+      'Convert standard .jpg and .jpeg photographs cleanly into lossless .png files using our free JPG to PNG converter running directly inside your browser. Built for print shops, graphic editors, and web forms that strictly require PNG uploads, it locks in existing pixels without extra lossy compression damage on batches up to 25 MB per image with instant ZIP export.',
     howToSteps: [
       {
-        title: 'Upload JPG files',
-        description: 'Drag and drop one or multiple .jpg or .jpeg images from any device.',
+        title: 'Drop JPG or JPEG photos up to 25 MB each',
+        description:
+          'Upload one or many .jpg or .jpeg images from your computer, phone, or camera card into the upload dropzone.',
       },
       {
-        title: 'Automatic lossless conversion',
-        description: 'Your browser decodes each JPEG and encodes a crisp, lossless PNG immediately.',
+        title: 'Confirm Lossless PNG Encoding mode',
+        description:
+          'Note that the quality slider automatically hides and displays the Lossless PNG Encoding panel since PNG never introduces lossy compression artifacts.',
       },
       {
-        title: 'Compare & download',
-        description: 'Inspect the result in the before/after viewer and download individual PNGs or a batch ZIP.',
+        title: 'Inspect original JPG vs. converted PNG sizes',
+        description:
+          'Review pixel dimensions and byte counts per file card, and open Compare to verify pixel fidelity side-by-side.',
+      },
+      {
+        title: 'Add extra JPEG files anytime or remove outliers',
+        description:
+          'Drop more .jpg files into the active session or remove single cards with the trash button before bundling.',
+      },
+      {
+        title: 'Download single PNGs or Download All (ZIP)',
+        description:
+          'Click Download PNG on any result card or Download All (ZIP) to save compressmypic_jpg_to_png.zip locally.',
       },
     ],
     features: [
@@ -5582,12 +6225,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Why is the converted PNG larger than my original JPG?',
-        answer: 'JPG uses lossy compression while PNG is lossless. Converting a photo to PNG preserves every pixel without adding JPEG artifacts, which naturally produces a larger file.',
+        question: 'Why does the quality slider disappear on this JPG to PNG converter?',
+        answer:
+          'Unlike JPEG or WebP, PNG uses lossless DEFLATE compression where every pixel is encoded identically without a quality percentage trade-off. Replacing the slider with the Lossless PNG Encoding card prevents misleading guesswork.',
       },
       {
-        question: 'Will converting JPG to PNG automatically make the background transparent?',
-        answer: 'No. Standard JPG files have no transparency channel. If you want a transparent background, pair conversion with an editor or add a custom backdrop.',
+        question: 'If converting JPG to PNG is lossless, why can’t it erase pre-existing blurry JPEG blocks?',
+        answer:
+          'Lossless PNG freezes the exact pixels currently stored inside your JPEG so no additional generation loss happens when you edit, crop, or re-save the file later. However, it cannot magically reconstruct fine textures that were already discarded when the original camera photo was saved as JPG.',
+      },
+      {
+        question: 'Why does a 300 KB JPG often expand into a 1.5 MB–3 MB PNG after conversion?',
+        answer:
+          'JPEG throws away subtle color variations across 8×8 pixel blocks to stay small, whereas PNG records exact lossless RGB pixel data across the entire frame. Continuous-tone photographs naturally require far more bytes in lossless PNG than in compressed JPG.',
+      },
+      {
+        question: 'When is converting JPG to PNG genuinely useful despite the larger file size?',
+        answer:
+          'Converting to PNG is essential when print vendors, software UI importers, badge portals, or pixel-art editors strictly demand .png files. It also protects images when you plan to overlay crisp text and edit repeatedly without compounding JPEG re-compression artifacts.',
+      },
+      {
+        question: 'Does converting a JPG with a solid white background to PNG make that background transparent?',
+        answer:
+          'No. Standard JPEG files store zero alpha transparency information, so converting JPG to PNG produces a fully opaque .png image preserving the white backdrop. Pair it with our Background Remover afterward if you need an alpha cutout.',
+      },
+      {
+        question: 'Why shouldn’t you just rename a .jpg file extension to .png manually?',
+        answer:
+          'Changing only the filename suffix leaves raw JPEG binary bytes inside, causing strict upload validators, HTML canvas loaders, and print software to reject or fail opening the file. Running real Canvas decoding and PNG re-encoding writes valid PNG chunks and headers.',
+      },
+      {
+        question: 'Do converted PNG files retain exact pixel width and height from my original JPEGs?',
+        answer:
+          'Yes. Every exported .png maintains 100% of the source JPG’s natural width and height with zero cropping or automatic resizing.',
+      },
+      {
+        question: 'Can I batch convert 20 JPG scans into PNG files and save one ZIP?',
+        answer:
+          'Yes. Drop multiple .jpg or .jpeg files (up to 25 MB each) together, wait briefly while your browser encodes each PNG locally, and click Download All (ZIP) to download compressmypic_jpg_to_png.zip.',
+      },
+      {
+        question: 'Does converting JPG to PNG remove hidden camera EXIF tags and GPS metadata?',
+        answer:
+          'Yes. Decoding a JPEG onto HTML5 Canvas and writing a fresh PNG discards JPEG EXIF headers, camera models, and GPS coordinates automatically.',
+      },
+      {
+        question: 'Are scanned IDs, receipts, or personal portraits sent to external servers during PNG conversion?',
+        answer:
+          'Never. JPEG decoding, Canvas rendering, PNG DEFLATE encoding, and ZIP archiving run strictly inside local browser memory on your computer or phone.',
+      },
+      {
+        question: 'What happens if my input is a JPEG saved with CMYK print colors instead of RGB?',
+        answer:
+          'Modern browsers convert JPEG pixel streams into standard 8-bit sRGB RGBA color space when drawing onto HTML5 Canvas. That guarantees your output .png renders accurately across web browsers, slides, and mobile screens.',
+      },
+      {
+        question: 'How does the Change column display file size growth cleanly?',
+        answer:
+          'Turning compressed JPGs into lossless PNGs almost always increases byte size. Because of that, each card’s Change cell honestly reports the exact positive +X% difference alongside original JPG and final PNG byte sizes.',
+      },
+      {
+        question: 'Can I use the Compare viewer to confirm zero color shifting between the JPG and PNG?',
+        answer:
+          'Yes. Click any card thumbnail or the Compare button to inspect pixels side-by-side in the interactive split curtain before downloading.',
+      },
+      {
+        question: 'Why does the converted PNG help before running multiple rounds of annotation or text overlays?',
+        answer:
+          'Re-saving a JPEG repeatedly degrades edges slightly each time lossy quantization runs again. Converting a source asset to PNG once creates a lossless intermediate master that withstands repeated graphics edits cleanly.',
+      },
+      {
+        question: 'Are both .jpg and .jpeg extensions accepted seamlessly?',
+        answer:
+          'Yes. The upload zone accepts both .jpg and .jpeg extensions and outputs standardized .png files keeping your sanitized original base filename.',
+      },
+      {
+        question: 'Can I also convert PNG, WebP, or HEIC images on this specific page?',
+        answer:
+          'This page intentionally accepts only JPG/JPEG inputs for clean single-step conversion to PNG. Use our Image Converter or Bulk Image Converter if your source folder includes other file formats.',
+      },
+      {
+        question: 'What is the maximum size allowed per uploaded JPEG?',
+        answer:
+          'Each individual .jpg or .jpeg file can be up to 25 MB. That generous ceiling easily covers high-resolution camera exports, DSLR photographs, and wide digital artwork.',
+      },
+      {
+        question: 'Why might a portrait photo stored as .jpg export upright even if taken sideways on a camera?',
+        answer:
+          'Modern browsers automatically read embedded EXIF orientation tags while painting the decoded JPEG onto HTML5 Canvas. That bakes the upright orientation permanently into the new PNG pixels so it displays right-side up in every app.',
+      },
+      {
+        question: 'Will exported PNGs open in Photoshop, Illustrator, Figma, Canva, and PowerPoint?',
+        answer:
+          'Yes. Standard 8-bit RGBA .png files created by HTML5 Canvas are universally compatible across every desktop design app, office suite, browser, and mobile operating system.',
+      },
+      {
+        question: 'How fast is browser-based JPG to PNG conversion compared to cloud converters?',
+        answer:
+          'Because there is zero file upload or download wait time for multi-megabyte photos, local Canvas conversion completes in milliseconds per file directly on your own CPU. Batches finish rapidly without waiting in remote server queues.',
       },
     ],
     relatedSlugs: ['/png-to-jpg', '/jpg-to-webp', '/image-converter', '/add-background-to-image'],
@@ -5597,24 +6332,37 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'PNG to JPG',
     shortDescription: 'Convert heavy PNGs to lightweight JPG with custom background matte.',
     category: 'convert',
-    seoTitle: 'PNG to JPG Converter Free Online – Shrink PNGs & Pick Background Color',
+    seoTitle: 'PNG to JPG Converter Free – Shrink PNGs & Pick Matte BG',
     seoDescription:
-      'Convert PNG to smaller JPG online free in your browser. Choose a custom matte background color for transparent PNGs, adjust quality, and download batch ZIPs.',
+      'Turn heavy PNG files into lightweight photos with our free PNG to JPG converter. Pick a custom matte color for transparent areas, tune quality, and save ZIPs.',
     h1: 'Free Online PNG to JPG Converter',
     subtitle:
-      'Shrink oversized PNG screenshots and graphics into fast, lightweight JPG files — with a custom matte color picker for transparent backgrounds.',
+      'Shrink bulky PNG screenshots, Retina captures, and graphic exports into fast, lightweight .jpg files with our free PNG to JPG converter in your browser. Tailored for bloggers, marketers, and email senders dealing with oversized PNG attachments up to 25 MB each, it pairs a quality slider with a custom Transparent Background Matte Color picker so alpha areas never turn solid black.',
     howToSteps: [
       {
-        title: 'Drop PNG images',
-        description: 'Upload one or multiple .png screenshots, product photos, or graphics.',
+        title: 'Drop PNG images up to 25 MB each',
+        description:
+          'Upload one or multiple .png screenshots, product renders, or transparent cutouts into the dropzone.',
       },
       {
-        title: 'Set quality & matte color',
-        description: 'Pick your JPG quality percentage and choose white, black, or any hex color for transparent pixels.',
+        title: 'Pick a Transparent Background Matte Color',
+        description:
+          'Click White (#ffffff), Black (#000000), Light Gray (#f8fafc), or the native color swatch to control how transparent pixels flatten behind opaque subjects.',
       },
       {
-        title: 'Download smaller JPGs',
-        description: 'Check the byte savings and download each JPG or the full batch as a ZIP.',
+        title: 'Set JPG Output Quality (20%–100%)',
+        description:
+          'Keep the crisp 88% default or drag between 20% (tiny file) and 100% (max detail), then click Re-convert All.',
+      },
+      {
+        title: 'Verify byte savings and sharp edges via Compare',
+        description:
+          'Check the percentage saved per card and inspect text or product edges in the interactive before-and-after comparison viewer.',
+      },
+      {
+        title: 'Download JPG files or Download All (ZIP)',
+        description:
+          'Save individual converted .jpg photos right away or bundle batches together into compressmypic_png_to_jpg.zip.',
       },
     ],
     features: [
@@ -5637,12 +6385,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'What happens to transparent areas when converting PNG to JPG?',
-        answer: 'Because JPG does not support alpha transparency, transparent areas are filled cleanly using the Matte Background Color selector (white by default).',
+        question: 'Why do macOS and Windows screenshots save as multi-megabyte PNGs that shrink dramatically as JPG?',
+        answer:
+          'Desktop operating systems default to lossless PNG for screenshots, which stores millions of uncompressed Retina screen pixels faithfully—often exceeding 3 MB to 8 MB per capture. Converting photographic or rich-UI PNGs into 85%–90% JPG typically trims 60% to 85% off file weight for fast email and Slack sharing.',
       },
       {
-        question: 'What quality setting is best for PNG to JPG?',
-        answer: '85%–90% delivers virtually indistinguishable visual quality while dramatically reducing file size compared to PNG.',
+        question: 'How does the Transparent Background Matte Color selector prevent ugly black boxes?',
+        answer:
+          'Because the JPEG specification has no alpha transparency channel, naive converters often default empty alpha pixels to #000000 black, ruining dark logos or shadowed cutouts. Painting your selected matte color (white by default, plus black, light gray, or any custom hex) onto the canvas first blends semi-transparent edges cleanly.',
+      },
+      {
+        question: 'Can I pick dark charcoal or a specific website brand color behind a transparent PNG logo before saving JPG?',
+        answer:
+          'Yes. Click the color input square beside the White, Black, and Light Gray quick buttons under Transparent Background Matte Color to pick any exact hex value, then click Re-convert All to preview and export.',
+      },
+      {
+        question: 'What JPG Output Quality percentage keeps screenshot typography crisp without bloated files?',
+        answer:
+          'Keeping JPG Output Quality around 88% (the default) to 95% keeps sharp edges around software UI text and charts clean. Dropping below 70% can introduce faint mosquito noise around high-contrast red or blue letters due to JPEG chroma subsampling.',
+      },
+      {
+        question: 'Why might a tiny 20 KB flat monochrome PNG icon actually grow slightly when converted to 88% JPG?',
+        answer:
+          'Indexed-palette PNG excels at flat two-color graphics with sharp solid areas, whereas JPEG’s 8×8 cosine blocks add overhead on tiny logos. Always check the Change column—for flat transparent icons meant for websites, WebP or keeping PNG is usually smaller than JPG.',
+      },
+      {
+        question: 'How should I decide between PNG to JPG and PNG to WebP?',
+        answer:
+          'Choose PNG to JPG when attachments must open in Microsoft Word, PDF builders, legacy email programs, print labs, or portals rejecting WebP, or when you intentionally need a solid white backdrop. Choose PNG to WebP when deploying assets to websites where preserving transparency and maximum speed matter.',
+      },
+      {
+        question: 'Does converting transparent product cutouts onto a white #ffffff matte help on marketplace listings?',
+        answer:
+          'Yes. Marketplaces like Amazon and eBay commonly prefer crisp opaque white-background JPGs for main product thumbnails rather than alpha PNGs, and white compresses very efficiently inside JPEG.',
+      },
+      {
+        question: 'Can I convert a whole batch of 25 Retina PNG screenshots into JPG at once?',
+        answer:
+          'Yes. Drop multiple .png files up to 25 MB each into the queue, choose your quality and matte fill color, and download everything together in compressmypic_png_to_jpg.zip.',
+      },
+      {
+        question: 'What happens to soft drop shadows around a transparent PNG window capture when flattened to JPG?',
+        answer:
+          'Alpha-blended drop shadows composite naturally over your chosen Matte Color rather than clipping into hard jagged outlines. That produces smooth, clean shading on white or tinted backgrounds ready for slides and articles.',
+      },
+      {
+        question: 'Are confidential dashboards, receipts, or design mocks uploaded to a cloud API?',
+        answer:
+          'No. Canvas matte compositing, JPEG compression, and ZIP generation all execute locally inside your browser tab, so sensitive captures never leave your computer.',
+      },
+      {
+        question: 'Does PNG to JPG conversion change pixel width or height?',
+        answer:
+          'No. Every converted .jpg retains 100% of your original PNG’s exact width and height. Use Image Resizer or Bulk Image Resizer if you also want to downscale Retina captures to 1× dimensions.',
+      },
+      {
+        question: 'Why does the quality slider span 20% to 100%?',
+        answer:
+          'Dragging toward 20% shows how aggressive compression cuts size when ultra-tiny files are mandatory, while 85%–90% hits the visual sweet spot for crisp photos and slides. Choosing 100% delivers maximum JPEG detail whenever byte weight is secondary.',
+      },
+      {
+        question: 'Can I change Matte Color or Quality after seeing the first conversion results?',
+        answer:
+          'Yes. Pick a different matte swatch or move the slider anytime and click Re-convert All to regenerate every loaded file without re-uploading.',
+      },
+      {
+        question: 'Does converting PNG to JPG strip embedded PNG text chunks like creation software or comments?',
+        answer:
+          'Yes. Drawing pixels onto HTML5 Canvas strips embedded tEXt, iTXt, and ICC profile blocks, keeping output JPGs lean and clean.',
+      },
+      {
+        question: 'Can I verify before/after edge sharpness on converted UI screenshots before downloading?',
+        answer:
+          'Yes. Click Compare on any card to drag the split viewer across text labels and icons against the lossless PNG original.',
+      },
+      {
+        question: 'What file types does this dedicated PNG to JPG page accept?',
+        answer:
+          'It filters cleanly for .png files up to 25 MB per file so you do not accidentally flatten non-PNG inputs. For mixed batches containing WebP or BMP files, try Bulk Image Converter.',
+      },
+      {
+        question: 'Does the converter support transparent interlaced (Adam7) PNGs?',
+        answer:
+          'Yes. Your browser’s native image decoder reads both standard and interlaced PNG streams cleanly before painting onto the Canvas matte background.',
+      },
+      {
+        question: 'Will Windows Photos, macOS Preview, WhatsApp, and older printers open the exported JPG?',
+        answer:
+          'Yes. Standard baseline RGB .jpg outputs carry the broadest compatibility of any digital image format across phones, browsers, office suites, and print kiosks.',
+      },
+      {
+        question: 'What is the downloaded single filename vs. batch ZIP filename?',
+        answer:
+          'Single downloads keep your sanitized original filename with a .jpg extension. Batches of 2 or more export neatly bundled inside compressmypic_png_to_jpg.zip.',
+      },
+      {
+        question: 'Can I convert PNG screenshots from mobile iOS or Android browsers cleanly?',
+        answer:
+          'Yes. The matte swatches, quality slider, visual comparison inspector, and ZIP export work directly in Safari on iOS and Chrome on Android with no app download needed.',
       },
     ],
     relatedSlugs: ['/jpg-to-png', '/png-to-webp', '/compress-image-to-100kb', '/image-converter'],
