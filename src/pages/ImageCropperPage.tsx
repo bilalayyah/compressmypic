@@ -15,7 +15,10 @@ import type { SupportedLang } from '../locales/config';
 import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
 import type { UploadZoneStrings } from '../components/UploadZone';
 import type { ComparisonModalStrings } from '../components/ComparisonModal';
-import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
+import { toSpanishPath } from '../locales/es/slugs';
+import { toPortuguesePath } from '../locales/pt/slugs';
+import { toFrenchPath } from '../locales/fr/slugs';
+import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import { OutputFormatChoice } from '../types';
@@ -38,6 +41,20 @@ export interface PageEsStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PagePtStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageFrStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface ImageCropperPageProps {
   onNavigate: (path: string) => void;
   lang?: SupportedLang;
@@ -45,6 +62,8 @@ interface ImageCropperPageProps {
   toolRegistry?: Record<string, ToolDefinition>;
   categoryLabels?: Array<{ id: string; label: string }>;
   esStrings?: PageEsStrings;
+  ptStrings?: PagePtStrings;
+  frStrings?: PageFrStrings;
 }
 
 interface CropRect {
@@ -79,10 +98,16 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
   toolRegistry,
   categoryLabels,
   esStrings,
+  ptStrings,
+  frStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG['/image-cropper'];
-  const t = (key: string, fallback: string) =>
-    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+  const t = (key: string, fallback: string) => {
+    if (lang === 'pt' && ptStrings?.toolUi) return (ptStrings.toolUi[key] as string | undefined) ?? fallback;
+    if (lang === 'fr' && frStrings?.toolUi) return (frStrings.toolUi[key] as string | undefined) ?? fallback;
+    if (lang === 'es' && esStrings?.toolUi) return (esStrings.toolUi[key] as string | undefined) ?? fallback;
+    return fallback;
+  };
   const [sourceFile, setSourceFile] = useState<File | null>(null);
   const [imageInfo, setImageInfo] = useState<LoadedImageInfo | null>(null);
   const imageInfoRef = useRef<LoadedImageInfo | null>(null);
@@ -333,9 +358,9 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={esStrings?.layoutUi}
-      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
-      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      ui={lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
+      alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
     >
@@ -350,7 +375,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
             title={t('uploadTitle', 'Drop an image to crop interactively')}
-            strings={esStrings?.uploadZone}
+            strings={lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">

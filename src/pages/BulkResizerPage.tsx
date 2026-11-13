@@ -15,7 +15,10 @@ import type { SupportedLang } from '../locales/config';
 import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
 import type { UploadZoneStrings } from '../components/UploadZone';
 import type { ComparisonModalStrings } from '../components/ComparisonModal';
-import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
+import { toSpanishPath } from '../locales/es/slugs';
+import { toPortuguesePath } from '../locales/pt/slugs';
+import { toFrenchPath } from '../locales/fr/slugs';
+import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import { ComparisonModal } from '../components/ComparisonModal';
@@ -38,6 +41,20 @@ export interface PageEsStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PagePtStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageFrStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface BulkResizerPageProps {
   onNavigate: (path: string) => void;
   lang?: SupportedLang;
@@ -45,6 +62,8 @@ interface BulkResizerPageProps {
   toolRegistry?: Record<string, ToolDefinition>;
   categoryLabels?: Array<{ id: string; label: string }>;
   esStrings?: PageEsStrings;
+  ptStrings?: PagePtStrings;
+  frStrings?: PageFrStrings;
 }
 
 type BulkResizeStrategy = 'bounding' | 'width' | 'exact' | 'percentage';
@@ -56,10 +75,18 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
   toolRegistry,
   categoryLabels,
   esStrings,
+  ptStrings,
+  frStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG['/bulk-image-resizer'];
   const t = (key: string, fallback: string) =>
-    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+    lang === 'pt' && ptStrings?.toolUi
+      ? ((ptStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'fr' && frStrings?.toolUi
+      ? ((frStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'es' && esStrings?.toolUi
+      ? ((esStrings.toolUi[key] as string | undefined) ?? fallback)
+      : fallback;
   const [items, setItems] = useState<ImageItem[]>([]);
   const itemsRef = useRef<ImageItem[]>([]);
   itemsRef.current = items;
@@ -323,9 +350,9 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={esStrings?.layoutUi}
-      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
-      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      ui={lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
+      alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
     >
@@ -339,7 +366,7 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
           allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
           supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
           title={t('uploadTitle', 'Drop multiple images to bulk resize')}
-          strings={esStrings?.uploadZone}
+          strings={lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
         />
 
         <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
@@ -720,24 +747,24 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
           image={comparisonTarget}
           onClose={() => setComparisonTarget(null)}
           titlePrefix={t('comparisonTitlePrefix', 'Bulk Resize Comparison')}
-          beforeLabel={esStrings?.comparisonModal.beforeLabel}
+          beforeLabel={lang === 'pt' ? ptStrings?.comparisonModal.beforeLabel : lang === 'fr' ? frStrings?.comparisonModal.beforeLabel : esStrings?.comparisonModal.beforeLabel}
           afterLabel={t('comparisonAfterLabel', 'Resized (After)')}
-          closeLabel={esStrings?.comparisonModal.closeLabel}
-          instruction={esStrings?.comparisonModal.instruction}
-          sliderLabel={esStrings?.comparisonModal.sliderLabel}
-          sideBySideLabel={esStrings?.comparisonModal.sideBySideLabel}
-          zoomInLabel={esStrings?.comparisonModal.zoomInLabel}
-          zoomOutLabel={esStrings?.comparisonModal.zoomOutLabel}
-          originalLabel={esStrings?.comparisonModal.originalLabel}
-          outputLabel={esStrings?.comparisonModal.outputLabel}
-          reductionLabel={esStrings?.comparisonModal.reductionLabel}
-          sizeChangeLabel={esStrings?.comparisonModal.sizeChangeLabel}
-          qualityLabel={esStrings?.comparisonModal.qualityLabel}
-          formatLabel={esStrings?.comparisonModal.formatLabel}
-          modalAriaLabel={esStrings?.comparisonModal.modalAriaLabel}
-          altCompressed={esStrings?.comparisonModal.altCompressed}
-          altOriginal={esStrings?.comparisonModal.altOriginal}
-          altProcessed={esStrings?.comparisonModal.altProcessed}
+          closeLabel={lang === 'pt' ? ptStrings?.comparisonModal.closeLabel : lang === 'fr' ? frStrings?.comparisonModal.closeLabel : esStrings?.comparisonModal.closeLabel}
+          instruction={lang === 'pt' ? ptStrings?.comparisonModal.instruction : lang === 'fr' ? frStrings?.comparisonModal.instruction : esStrings?.comparisonModal.instruction}
+          sliderLabel={lang === 'pt' ? ptStrings?.comparisonModal.sliderLabel : lang === 'fr' ? frStrings?.comparisonModal.sliderLabel : esStrings?.comparisonModal.sliderLabel}
+          sideBySideLabel={lang === 'pt' ? ptStrings?.comparisonModal.sideBySideLabel : lang === 'fr' ? frStrings?.comparisonModal.sideBySideLabel : esStrings?.comparisonModal.sideBySideLabel}
+          zoomInLabel={lang === 'pt' ? ptStrings?.comparisonModal.zoomInLabel : lang === 'fr' ? frStrings?.comparisonModal.zoomInLabel : esStrings?.comparisonModal.zoomInLabel}
+          zoomOutLabel={lang === 'pt' ? ptStrings?.comparisonModal.zoomOutLabel : lang === 'fr' ? frStrings?.comparisonModal.zoomOutLabel : esStrings?.comparisonModal.zoomOutLabel}
+          originalLabel={lang === 'pt' ? ptStrings?.comparisonModal.originalLabel : lang === 'fr' ? frStrings?.comparisonModal.originalLabel : esStrings?.comparisonModal.originalLabel}
+          outputLabel={lang === 'pt' ? ptStrings?.comparisonModal.outputLabel : lang === 'fr' ? frStrings?.comparisonModal.outputLabel : esStrings?.comparisonModal.outputLabel}
+          reductionLabel={lang === 'pt' ? ptStrings?.comparisonModal.reductionLabel : lang === 'fr' ? frStrings?.comparisonModal.reductionLabel : esStrings?.comparisonModal.reductionLabel}
+          sizeChangeLabel={lang === 'pt' ? ptStrings?.comparisonModal.sizeChangeLabel : lang === 'fr' ? frStrings?.comparisonModal.sizeChangeLabel : esStrings?.comparisonModal.sizeChangeLabel}
+          qualityLabel={lang === 'pt' ? ptStrings?.comparisonModal.qualityLabel : lang === 'fr' ? frStrings?.comparisonModal.qualityLabel : esStrings?.comparisonModal.qualityLabel}
+          formatLabel={lang === 'pt' ? ptStrings?.comparisonModal.formatLabel : lang === 'fr' ? frStrings?.comparisonModal.formatLabel : esStrings?.comparisonModal.formatLabel}
+          modalAriaLabel={lang === 'pt' ? ptStrings?.comparisonModal.modalAriaLabel : lang === 'fr' ? frStrings?.comparisonModal.modalAriaLabel : esStrings?.comparisonModal.modalAriaLabel}
+          altCompressed={lang === 'pt' ? ptStrings?.comparisonModal.altCompressed : lang === 'fr' ? frStrings?.comparisonModal.altCompressed : esStrings?.comparisonModal.altCompressed}
+          altOriginal={lang === 'pt' ? ptStrings?.comparisonModal.altOriginal : lang === 'fr' ? frStrings?.comparisonModal.altOriginal : esStrings?.comparisonModal.altOriginal}
+          altProcessed={lang === 'pt' ? ptStrings?.comparisonModal.altProcessed : lang === 'fr' ? frStrings?.comparisonModal.altProcessed : esStrings?.comparisonModal.altProcessed}
         />
       )}
     </ToolPageLayout>

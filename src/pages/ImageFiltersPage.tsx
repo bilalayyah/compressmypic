@@ -14,7 +14,10 @@ import type { SupportedLang } from '../locales/config';
 import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
 import type { UploadZoneStrings } from '../components/UploadZone';
 import type { ComparisonModalStrings } from '../components/ComparisonModal';
-import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
+import { toSpanishPath } from '../locales/es/slugs';
+import { toPortuguesePath } from '../locales/pt/slugs';
+import { toFrenchPath } from '../locales/fr/slugs';
+import { getAlternates } from '../locales/alternates';
 
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
@@ -44,6 +47,20 @@ export interface PageEsStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PagePtStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageFrStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface ImageFiltersPageProps {
   onNavigate: (path: string) => void;
   lang?: SupportedLang;
@@ -51,6 +68,8 @@ interface ImageFiltersPageProps {
   toolRegistry?: Record<string, ToolDefinition>;
   categoryLabels?: Array<{ id: string; label: string }>;
   esStrings?: PageEsStrings;
+  ptStrings?: PagePtStrings;
+  frStrings?: PageFrStrings;
 }
 
 export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({
@@ -60,10 +79,15 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({
   toolRegistry,
   categoryLabels,
   esStrings,
+  ptStrings,
+  frStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG['/image-filters'];
-  const t = (key: string, fallback: string) =>
-    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+  const t = (key: string, fallback: string) => {
+    const table =
+      lang === 'pt' ? ptStrings?.toolUi : lang === 'fr' ? frStrings?.toolUi : lang === 'es' ? esStrings?.toolUi : undefined;
+    return table ? (table[key] as string | undefined) ?? fallback : fallback;
+  };
 
   const FILTER_PRESET_LABEL_KEYS: Record<string, string> = {
     original: 'presetOriginal',
@@ -249,9 +273,9 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={esStrings?.layoutUi}
-      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
-      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      ui={lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
+      alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
     >
@@ -266,7 +290,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
             title={t('uploadTitle', 'Drop an image to apply filters')}
-            strings={esStrings?.uploadZone}
+            strings={lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -469,24 +493,24 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({
           image={modalItem}
           onClose={closeModal}
           titlePrefix={t('comparisonTitlePrefix', 'Filter Comparison')}
-          beforeLabel={esStrings?.comparisonModal.beforeLabel}
+          beforeLabel={(lang === 'pt' ? ptStrings?.comparisonModal.beforeLabel : lang === 'fr' ? frStrings?.comparisonModal.beforeLabel : esStrings?.comparisonModal.beforeLabel)}
           afterLabel={t('comparisonAfterLabel', 'Filtered')}
-          closeLabel={esStrings?.comparisonModal.closeLabel}
-          instruction={esStrings?.comparisonModal.instruction}
-          sliderLabel={esStrings?.comparisonModal.sliderLabel}
-          sideBySideLabel={esStrings?.comparisonModal.sideBySideLabel}
-          zoomInLabel={esStrings?.comparisonModal.zoomInLabel}
-          zoomOutLabel={esStrings?.comparisonModal.zoomOutLabel}
-          originalLabel={esStrings?.comparisonModal.originalLabel}
-          outputLabel={esStrings?.comparisonModal.outputLabel}
-          reductionLabel={esStrings?.comparisonModal.reductionLabel}
-          sizeChangeLabel={esStrings?.comparisonModal.sizeChangeLabel}
-          qualityLabel={esStrings?.comparisonModal.qualityLabel}
-          formatLabel={esStrings?.comparisonModal.formatLabel}
-          modalAriaLabel={esStrings?.comparisonModal.modalAriaLabel}
-          altCompressed={esStrings?.comparisonModal.altCompressed}
-          altOriginal={esStrings?.comparisonModal.altOriginal}
-          altProcessed={esStrings?.comparisonModal.altProcessed}
+          closeLabel={(lang === 'pt' ? ptStrings?.comparisonModal.closeLabel : lang === 'fr' ? frStrings?.comparisonModal.closeLabel : esStrings?.comparisonModal.closeLabel)}
+          instruction={(lang === 'pt' ? ptStrings?.comparisonModal.instruction : lang === 'fr' ? frStrings?.comparisonModal.instruction : esStrings?.comparisonModal.instruction)}
+          sliderLabel={(lang === 'pt' ? ptStrings?.comparisonModal.sliderLabel : lang === 'fr' ? frStrings?.comparisonModal.sliderLabel : esStrings?.comparisonModal.sliderLabel)}
+          sideBySideLabel={(lang === 'pt' ? ptStrings?.comparisonModal.sideBySideLabel : lang === 'fr' ? frStrings?.comparisonModal.sideBySideLabel : esStrings?.comparisonModal.sideBySideLabel)}
+          zoomInLabel={(lang === 'pt' ? ptStrings?.comparisonModal.zoomInLabel : lang === 'fr' ? frStrings?.comparisonModal.zoomInLabel : esStrings?.comparisonModal.zoomInLabel)}
+          zoomOutLabel={(lang === 'pt' ? ptStrings?.comparisonModal.zoomOutLabel : lang === 'fr' ? frStrings?.comparisonModal.zoomOutLabel : esStrings?.comparisonModal.zoomOutLabel)}
+          originalLabel={(lang === 'pt' ? ptStrings?.comparisonModal.originalLabel : lang === 'fr' ? frStrings?.comparisonModal.originalLabel : esStrings?.comparisonModal.originalLabel)}
+          outputLabel={(lang === 'pt' ? ptStrings?.comparisonModal.outputLabel : lang === 'fr' ? frStrings?.comparisonModal.outputLabel : esStrings?.comparisonModal.outputLabel)}
+          reductionLabel={(lang === 'pt' ? ptStrings?.comparisonModal.reductionLabel : lang === 'fr' ? frStrings?.comparisonModal.reductionLabel : esStrings?.comparisonModal.reductionLabel)}
+          sizeChangeLabel={(lang === 'pt' ? ptStrings?.comparisonModal.sizeChangeLabel : lang === 'fr' ? frStrings?.comparisonModal.sizeChangeLabel : esStrings?.comparisonModal.sizeChangeLabel)}
+          qualityLabel={(lang === 'pt' ? ptStrings?.comparisonModal.qualityLabel : lang === 'fr' ? frStrings?.comparisonModal.qualityLabel : esStrings?.comparisonModal.qualityLabel)}
+          formatLabel={(lang === 'pt' ? ptStrings?.comparisonModal.formatLabel : lang === 'fr' ? frStrings?.comparisonModal.formatLabel : esStrings?.comparisonModal.formatLabel)}
+          modalAriaLabel={(lang === 'pt' ? ptStrings?.comparisonModal.modalAriaLabel : lang === 'fr' ? frStrings?.comparisonModal.modalAriaLabel : esStrings?.comparisonModal.modalAriaLabel)}
+          altCompressed={(lang === 'pt' ? ptStrings?.comparisonModal.altCompressed : lang === 'fr' ? frStrings?.comparisonModal.altCompressed : esStrings?.comparisonModal.altCompressed)}
+          altOriginal={(lang === 'pt' ? ptStrings?.comparisonModal.altOriginal : lang === 'fr' ? frStrings?.comparisonModal.altOriginal : esStrings?.comparisonModal.altOriginal)}
+          altProcessed={(lang === 'pt' ? ptStrings?.comparisonModal.altProcessed : lang === 'fr' ? frStrings?.comparisonModal.altProcessed : esStrings?.comparisonModal.altProcessed)}
         />
       )}
     </ToolPageLayout>

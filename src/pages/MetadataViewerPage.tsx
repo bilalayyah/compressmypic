@@ -17,7 +17,10 @@ import type { SupportedLang } from '../locales/config';
 import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
 import type { UploadZoneStrings } from '../components/UploadZone';
 import type { ComparisonModalStrings } from '../components/ComparisonModal';
-import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
+import { toSpanishPath } from '../locales/es/slugs';
+import { toPortuguesePath } from '../locales/pt/slugs';
+import { toFrenchPath } from '../locales/fr/slugs';
+import { getAlternates } from '../locales/alternates';
 import {
   EXTENDED_ALLOWED_EXT_REGEX,
   EXTENDED_ALLOWED_MIME_TYPES,
@@ -34,6 +37,20 @@ export interface PageEsStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PagePtStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageFrStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface MetadataViewerPageProps {
   onNavigate: (path: string) => void;
   lang?: SupportedLang;
@@ -41,6 +58,8 @@ interface MetadataViewerPageProps {
   toolRegistry?: Record<string, ToolDefinition>;
   categoryLabels?: Array<{ id: string; label: string }>;
   esStrings?: PageEsStrings;
+  ptStrings?: PagePtStrings;
+  frStrings?: PageFrStrings;
 }
 
 export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
@@ -50,9 +69,29 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
   toolRegistry,
   categoryLabels,
   esStrings,
+  ptStrings,
+  frStrings,
 }) => {
-  const t = (key: string, fallback: string) =>
-    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+  const t = (key: string, fallback: string) => {
+    if (lang === 'pt' && ptStrings?.toolUi) return (ptStrings.toolUi[key] as string | undefined) ?? fallback;
+    if (lang === 'fr' && frStrings?.toolUi) return (frStrings.toolUi[key] as string | undefined) ?? fallback;
+    if (lang === 'es' && esStrings?.toolUi) return (esStrings.toolUi[key] as string | undefined) ?? fallback;
+    return fallback;
+  };
+  // GPS warning: the translated sentence embeds the inline link text, so split
+  // the sentence on the link text and render the link button between the parts.
+  // ES has no gpsWarningLink key; 'Eliminar metadatos' is the exact substring
+  // embedded in the ES gpsWarning table string (src/locales/es/ui.ts).
+  const gpsWarningLinkText =
+    lang === 'pt' || lang === 'fr'
+      ? t('gpsWarningLink', 'Remove Image Metadata')
+      : lang === 'es'
+        ? 'Eliminar metadatos'
+        : 'Remove Image Metadata';
+  const gpsWarningParts = t(
+    'gpsWarning',
+    'Sharing this image as-is can reveal where the photo was taken. Use Remove Image Metadata before posting online.'
+  ).split(gpsWarningLinkText);
   const activeTool = tool ?? TOOL_BY_SLUG['/image-metadata-viewer'];
   const [report, setReport] = useState<ImageMetadataReport | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -116,9 +155,9 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={esStrings?.layoutUi}
-      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
-      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      ui={lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
+      alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
     >
@@ -133,7 +172,7 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
           allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
           supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
           title={t('uploadTitle', 'Drop an image to inspect EXIF & metadata')}
-          strings={esStrings?.uploadZone}
+          strings={lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
         />
 
         {errorMsg && (
@@ -226,15 +265,15 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
                     {t('latitude', 'Latitude:')} {report.gpsCoords.latitude} · {t('longitude', 'Longitude:')} {report.gpsCoords.longitude}
                   </p>
                   <p className="text-xs text-amber-700 mt-1">
-                    Sharing this image as-is can reveal where the photo was taken. Use{' '}
+                    {gpsWarningParts[0]}
                     <button
                       type="button"
                       onClick={() => onNavigate('/remove-image-metadata')}
                       className="underline font-semibold cursor-pointer"
                     >
-                      Remove Image Metadata
-                    </button>{' '}
-                    before posting online.
+                      {gpsWarningLinkText}
+                    </button>
+                    {gpsWarningParts[1]}
                   </p>
                 </div>
               </div>

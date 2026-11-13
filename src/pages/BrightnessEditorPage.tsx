@@ -14,6 +14,20 @@ export interface PageEsStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PagePtStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageFrStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface BrightnessEditorPageProps {
   onNavigate: (path: string) => void;
   lang?: SupportedLang;
@@ -21,6 +35,8 @@ interface BrightnessEditorPageProps {
   toolRegistry?: Record<string, ToolDefinition>;
   categoryLabels?: Array<{ id: string; label: string }>;
   esStrings?: PageEsStrings;
+  ptStrings?: PagePtStrings;
+  frStrings?: PageFrStrings;
 }
 
 export const BrightnessEditorPage: React.FC<BrightnessEditorPageProps> = ({
@@ -30,6 +46,8 @@ export const BrightnessEditorPage: React.FC<BrightnessEditorPageProps> = ({
   toolRegistry,
   categoryLabels,
   esStrings,
+  ptStrings,
+  frStrings,
 }) => {
   return (
     <ToneEditorTool
@@ -40,6 +58,8 @@ export const BrightnessEditorPage: React.FC<BrightnessEditorPageProps> = ({
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
       esStrings={esStrings}
+      ptStrings={ptStrings}
+      frStrings={frStrings}
     />
   );
 };

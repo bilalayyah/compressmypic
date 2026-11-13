@@ -13,6 +13,20 @@ export interface PageEsStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PagePtStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageFrStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface Props {
   onNavigate: (path: string) => void;
   lang?: SupportedLang;
@@ -20,6 +34,8 @@ interface Props {
   toolRegistry?: Record<string, ToolDefinition>;
   categoryLabels?: Array<{ id: string; label: string }>;
   esStrings?: PageEsStrings;
+  ptStrings?: PagePtStrings;
+  frStrings?: PageFrStrings;
 }
 
 export const TargetFileSizePage: React.FC<Props> = ({
@@ -29,6 +45,8 @@ export const TargetFileSizePage: React.FC<Props> = ({
   toolRegistry,
   categoryLabels,
   esStrings,
+  ptStrings,
+  frStrings,
 }) => (
   <TargetSizeCompressorTool
     slug="/target-file-size-compressor"
@@ -40,5 +58,7 @@ export const TargetFileSizePage: React.FC<Props> = ({
     toolRegistry={toolRegistry}
     categoryLabels={categoryLabels}
     esStrings={esStrings}
+    ptStrings={ptStrings}
+    frStrings={frStrings}
   />
 );
