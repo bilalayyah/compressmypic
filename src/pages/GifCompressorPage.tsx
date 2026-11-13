@@ -20,6 +20,8 @@ import { toPortuguesePath } from '../locales/pt/slugs';
 import { toFrenchPath } from '../locales/fr/slugs';
 import { toGermanPath } from '../locales/de/slugs';
 import { toItalianPath } from '../locales/it/slugs';
+import { toIndonesianPath } from '../locales/id/slugs';
+import { toRussianPath } from '../locales/ru/slugs';
 import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
@@ -66,6 +68,20 @@ export interface PageItStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageIdStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageRuStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 
 interface GifCompressorPageProps {
   onNavigate: (path: string) => void;
@@ -78,6 +94,8 @@ interface GifCompressorPageProps {
   frStrings?: PageFrStrings;
   deStrings?: PageDeStrings;
   itStrings?: PageItStrings;
+  idStrings?: PageIdStrings;
+  ruStrings?: PageRuStrings;
 }
 
 export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
@@ -91,10 +109,16 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
   frStrings,
   deStrings,
   itStrings,
+  idStrings,
+  ruStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG['/gif-compressor'];
   const t = (key: string, fallback: string) =>
-    lang === 'de' && deStrings?.toolUi
+    lang === 'id' && idStrings?.toolUi
+      ? ((idStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'ru' && ruStrings?.toolUi
+      ? ((ruStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'de' && deStrings?.toolUi
       ? ((deStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'it' && itStrings?.toolUi
       ? ((itStrings.toolUi[key] as string | undefined) ?? fallback)
@@ -226,8 +250,8 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
-      canonicalPath={lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
+      ui={lang === 'id' ? idStrings?.layoutUi : lang === 'ru' ? ruStrings?.layoutUi : lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
+      canonicalPath={lang === 'id' ? toIndonesianPath(activeTool.slug) : lang === 'ru' ? toRussianPath(activeTool.slug) : lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
       alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
@@ -243,7 +267,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
           allowedExtensionsRegex={/\.gif$/i}
           supportedFormatsLabel="GIF (Animated or Static)"
           title={t('uploadTitle', 'Drop an animated GIF to compress')}
-          strings={lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
+          strings={lang === 'id' ? idStrings?.uploadZone : lang === 'ru' ? ruStrings?.uploadZone : lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
         />
 
         {errorMessage && (
@@ -493,7 +517,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                 {!result.isSmaller && (
                   <div className="p-3.5 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900 flex items-start gap-2.5">
                     <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                    {((lang === 'de' && deStrings) || (lang === 'it' && itStrings) || (lang === 'es' && esStrings) || (lang === 'pt' && ptStrings) || (lang === 'fr' && frStrings)) ? (
+                    {((lang === 'id' && idStrings) || (lang === 'ru' && ruStrings) || (lang === 'de' && deStrings) || (lang === 'it' && itStrings) || (lang === 'es' && esStrings) || (lang === 'pt' && ptStrings) || (lang === 'fr' && frStrings)) ? (
                       <p>
                         {t(
                           'notSmallerNotice',
@@ -513,7 +537,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                 {result.isSmaller && (
                   <div className="p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                    {((lang === 'de' && deStrings) || (lang === 'it' && itStrings) || (lang === 'es' && esStrings) || (lang === 'pt' && ptStrings) || (lang === 'fr' && frStrings)) ? (
+                    {((lang === 'id' && idStrings) || (lang === 'ru' && ruStrings) || (lang === 'de' && deStrings) || (lang === 'it' && itStrings) || (lang === 'es' && esStrings) || (lang === 'pt' && ptStrings) || (lang === 'fr' && frStrings)) ? (
                       <span>
                         {t(
                           'compressedByNotice',

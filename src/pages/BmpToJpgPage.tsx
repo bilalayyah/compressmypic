@@ -40,6 +40,20 @@ export interface PageItStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageIdStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageRuStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 
 interface BmpToJpgPageProps {
   onNavigate: (path: string) => void;
@@ -52,6 +66,8 @@ interface BmpToJpgPageProps {
   frStrings?: PageFrStrings;
   deStrings?: PageDeStrings;
   itStrings?: PageItStrings;
+  idStrings?: PageIdStrings;
+  ruStrings?: PageRuStrings;
 }
 
 export const BmpToJpgPage: React.FC<BmpToJpgPageProps> = ({
@@ -65,9 +81,15 @@ export const BmpToJpgPage: React.FC<BmpToJpgPageProps> = ({
   frStrings,
   deStrings,
   itStrings,
+  idStrings,
+  ruStrings,
 }) => {
   const t = (key: string, fallback: string) =>
-    lang === 'de' && deStrings?.toolUi
+    lang === 'id' && idStrings?.toolUi
+      ? ((idStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'ru' && ruStrings?.toolUi
+      ? ((ruStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'de' && deStrings?.toolUi
       ? ((deStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'it' && itStrings?.toolUi
       ? ((itStrings.toolUi[key] as string | undefined) ?? fallback)
@@ -98,6 +120,8 @@ export const BmpToJpgPage: React.FC<BmpToJpgPageProps> = ({
     frStrings={frStrings}
     deStrings={deStrings}
     itStrings={itStrings}
+    idStrings={idStrings}
+    ruStrings={ruStrings}
     onNavigate={onNavigate}
     />
   );

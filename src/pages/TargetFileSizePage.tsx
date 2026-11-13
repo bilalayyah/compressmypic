@@ -40,6 +40,20 @@ export interface PageItStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageIdStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageRuStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 
 interface Props {
   onNavigate: (path: string) => void;
@@ -52,6 +66,8 @@ interface Props {
   frStrings?: PageFrStrings;
   deStrings?: PageDeStrings;
   itStrings?: PageItStrings;
+  idStrings?: PageIdStrings;
+  ruStrings?: PageRuStrings;
 }
 
 export const TargetFileSizePage: React.FC<Props> = ({
@@ -65,6 +81,8 @@ export const TargetFileSizePage: React.FC<Props> = ({
   frStrings,
   deStrings,
   itStrings,
+  idStrings,
+  ruStrings,
 }) => (
   <TargetSizeCompressorTool
     slug="/target-file-size-compressor"
@@ -80,5 +98,7 @@ export const TargetFileSizePage: React.FC<Props> = ({
     frStrings={frStrings}
     deStrings={deStrings}
     itStrings={itStrings}
+    idStrings={idStrings}
+    ruStrings={ruStrings}
   />
 );
