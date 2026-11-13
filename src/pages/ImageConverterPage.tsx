@@ -10,6 +10,12 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import { ComparisonModal } from '../components/ComparisonModal';
@@ -24,12 +30,33 @@ import {
 import { formatBytes } from '../utils/formatters';
 import { createFilesZipArchive, triggerDownload } from '../utils/zip';
 
-interface ImageConverterPageProps {
-  onNavigate: (path: string) => void;
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
 }
 
-export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/image-converter'];
+interface ImageConverterPageProps {
+  onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
+}
+
+export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/image-converter'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
   const [items, setItems] = useState<ImageItem[]>([]);
   const itemsRef = useRef<ImageItem[]>([]);
   itemsRef.current = items;
@@ -86,7 +113,7 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
       return {
         ...item,
         status: 'error',
-        errorMessage: err instanceof Error ? err.message : 'Conversion failed.',
+        errorMessage: err instanceof Error ? err.message : t('errorConversionFailed', 'Conversion failed.'),
       };
     }
   };
@@ -144,7 +171,7 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
           outputFilename: file.name,
           quality,
           status: 'error',
-          errorMessage: 'Unsupported or corrupted image file.',
+          errorMessage: t('errorUnsupportedFile', 'Unsupported or corrupted image file.'),
           spaceSaved: null,
           compressionPercentage: null,
         });
@@ -220,7 +247,16 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
   };
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         <UploadZone
           onFilesSelected={handleFilesSelected}
@@ -230,6 +266,7 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
           allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
           allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
           supportedFormatsLabel="JPG, PNG, WebP, HEIC, SVG, BMP, GIF, AVIF"
+          strings={esStrings?.uploadZone}
         />
 
         {items.length > 0 && (
@@ -237,14 +274,14 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Convert To Format
+                  {t('convertToFormat', 'Convert To Format')}
                 </span>
                 <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
                   {(
                     [
-                      { id: 'webp', label: 'WebP (Smallest Web)' },
-                      { id: 'jpeg', label: 'JPG (Universal)' },
-                      { id: 'png', label: 'PNG (Lossless Alpha)' },
+                      { id: 'webp', label: t('formatWebp', 'WebP (Smallest Web)') },
+                      { id: 'jpeg', label: t('formatJpg', 'JPG (Universal)') },
+                      { id: 'png', label: t('formatPng', 'PNG (Lossless Alpha)') },
                     ] as const
                   ).map((f) => (
                     <button
@@ -266,7 +303,7 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
               {targetFormat === 'jpeg' && (
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                    Transparency Fill Color
+                    {t('transparencyFillColor', 'Transparency Fill Color')}
                   </span>
                   <div className="flex items-center gap-2">
                     <input
@@ -285,7 +322,7 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
               <div className="flex-1 max-w-md">
                 <div className="flex justify-between text-xs mb-1.5">
                   <span className="font-semibold text-slate-700">
-                    Quality ({targetFormat === 'png' ? 'Lossless PNG' : `${quality}%`})
+                    {t('quality', 'Quality')} ({targetFormat === 'png' ? t('qualityLosslessPng', 'Lossless PNG') : `${quality}%`})
                   </span>
                 </div>
                 <input
@@ -309,12 +346,12 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
                   {isProcessing ? (
                     <>
                       <RotateCcw className="w-4 h-4 animate-spin" />
-                      <span>Converting...</span>
+                      <span>{t('converting', 'Converting...')}</span>
                     </>
                   ) : (
                     <>
                       <Play className="w-4 h-4 fill-current" />
-                      <span>Convert All ({items.length})</span>
+                      <span>{t('convertAll', 'Convert All ({count})').replace('{count}', String(items.length))}</span>
                     </>
                   )}
                 </button>
@@ -325,7 +362,7 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
                   className="inline-flex items-center gap-1.5 px-3.5 py-2.5 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-sm font-medium rounded-xl cursor-pointer"
                 >
                   <Trash2 className="w-4 h-4" />
-                  <span className="hidden sm:inline">Clear</span>
+                  <span className="hidden sm:inline">{t('clear', 'Clear')}</span>
                 </button>
               </div>
             </div>
@@ -338,10 +375,12 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
               <div className="bg-slate-900 text-white rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
-                    Conversion Complete
+                    {t('conversionComplete', 'Conversion Complete')}
                   </span>
                   <p className="text-sm font-semibold mt-0.5">
-                    {doneItems.length} files converted to {targetFormat === 'jpeg' ? 'JPG' : targetFormat.toUpperCase()}
+                    {t('filesConverted', '{count} files converted to {format}')
+                      .replace('{count}', String(doneItems.length))
+                      .replace('{format}', targetFormat === 'jpeg' ? 'JPG' : targetFormat.toUpperCase())}
                   </p>
                 </div>
                 <button
@@ -351,7 +390,7 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl cursor-pointer"
                 >
                   <FileArchive className="w-4 h-4" />
-                  <span>{isZipping ? 'Creating ZIP...' : 'Download All (ZIP)'}</span>
+                  <span>{isZipping ? t('creatingZip', 'Creating ZIP...') : t('downloadAllZip', 'Download All (ZIP)')}</span>
                 </button>
               </div>
             )}
@@ -397,7 +436,7 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
                         {isDone && (
                           <span className="inline-flex items-center gap-1 text-xs text-emerald-700 font-medium">
                             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                            Converted to {item.outputExtension.replace('.', '').toUpperCase()}
+                            {t('convertedStatus', 'Converted to {ext}').replace('{ext}', item.outputExtension.replace('.', '').toUpperCase())}
                           </span>
                         )}
                         {isErr && (
@@ -419,7 +458,7 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
                           className="px-3 py-2 text-slate-700 hover:bg-slate-100 text-xs font-semibold rounded-lg flex items-center gap-1.5 cursor-pointer"
                         >
                           <SplitSquareVertical className="w-4 h-4 text-blue-600" />
-                          <span>Compare</span>
+                          <span>{t('compare', 'Compare')}</span>
                         </button>
                         <button
                           type="button"
@@ -430,7 +469,7 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
                           className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg cursor-pointer"
                         >
                           <Download className="w-4 h-4" />
-                          <span>Download</span>
+                          <span>{t('download', 'Download')}</span>
                         </button>
                       </>
                     )}
@@ -438,7 +477,7 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
                       type="button"
                       onClick={() => handleRemove(item.id)}
                       className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
-                      aria-label={`Remove ${item.name}`}
+                      aria-label={t('removeImage', 'Remove {name}').replace('{name}', item.name)}
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -454,8 +493,25 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
         <ComparisonModal
           image={comparisonTarget}
           onClose={() => setComparisonTarget(null)}
-          titlePrefix="Format Conversion Comparison"
-          afterLabel="Converted (After)"
+          titlePrefix={t('comparisonTitlePrefix', 'Format Conversion Comparison')}
+          beforeLabel={esStrings?.comparisonModal.beforeLabel}
+          afterLabel={t('comparisonAfterLabel', 'Converted (After)')}
+          closeLabel={esStrings?.comparisonModal.closeLabel}
+          instruction={esStrings?.comparisonModal.instruction}
+          sliderLabel={esStrings?.comparisonModal.sliderLabel}
+          sideBySideLabel={esStrings?.comparisonModal.sideBySideLabel}
+          zoomInLabel={esStrings?.comparisonModal.zoomInLabel}
+          zoomOutLabel={esStrings?.comparisonModal.zoomOutLabel}
+          originalLabel={esStrings?.comparisonModal.originalLabel}
+          outputLabel={esStrings?.comparisonModal.outputLabel}
+          reductionLabel={esStrings?.comparisonModal.reductionLabel}
+          sizeChangeLabel={esStrings?.comparisonModal.sizeChangeLabel}
+          qualityLabel={esStrings?.comparisonModal.qualityLabel}
+          formatLabel={esStrings?.comparisonModal.formatLabel}
+          modalAriaLabel={esStrings?.comparisonModal.modalAriaLabel}
+          altCompressed={esStrings?.comparisonModal.altCompressed}
+          altOriginal={esStrings?.comparisonModal.altOriginal}
+          altProcessed={esStrings?.comparisonModal.altProcessed}
         />
       )}
     </ToolPageLayout>

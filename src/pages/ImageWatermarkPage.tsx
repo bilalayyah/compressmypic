@@ -10,6 +10,12 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import { OutputFormatChoice } from '../types';
@@ -25,8 +31,20 @@ import { resolveOutputFormat } from '../utils/compressor';
 import { formatBytes, getBaseFilename, sanitizeFilename } from '../utils/formatters';
 import { triggerDownload } from '../utils/zip';
 
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface ImageWatermarkPageProps {
   onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
 }
 
 const ANCHOR_POSITIONS: { label: string; x: number; y: number }[] = [
@@ -41,8 +59,17 @@ const ANCHOR_POSITIONS: { label: string; x: number; y: number }[] = [
   { label: 'BR', x: 0.86, y: 0.88 },
 ];
 
-export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/image-watermark'];
+export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/image-watermark'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
   const [sourceFile, setSourceFile] = useState<File | null>(null);
   const [imageInfo, setImageInfo] = useState<LoadedImageInfo | null>(null);
   const imageInfoRef = useRef<LoadedImageInfo | null>(null);
@@ -96,7 +123,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
         ctx.shadowColor = 'rgba(0, 0, 0, 0.35)';
         ctx.shadowBlur = Math.max(2, Math.round(fontPx * 0.14));
         ctx.fillStyle = textColor;
-        ctx.fillText(text || 'Watermark', 0, 0);
+        ctx.fillText(text || t('fallbackWatermarkText', 'Watermark'), 0, 0);
       } else if (logoInfo) {
         const targetW = Math.max(16, (logoScalePct / 100) * canvasW);
         const targetH = (targetW / logoInfo.width) * logoInfo.height;
@@ -182,7 +209,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
       setSourceFile(file);
       setImageInfo(info);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unable to load image.');
+      setError(err instanceof Error ? err.message : t('errorUnableToLoadImage', 'Unable to load image.'));
     }
   };
 
@@ -196,7 +223,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
       setLogoInfo(info);
       setWatermarkMode('image');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unable to load logo image.');
+      setError(err instanceof Error ? err.message : t('errorUnableToLoadLogo', 'Unable to load logo image.'));
     }
   };
 
@@ -233,14 +260,23 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
       const base = sanitizeFilename(getBaseFilename(sourceFile.name));
       triggerDownload(blob, `${base}_watermarked${extension}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Watermark export failed.');
+      setError(err instanceof Error ? err.message : t('errorWatermarkExportFailed', 'Watermark export failed.'));
     } finally {
       setIsExporting(false);
     }
   };
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         {!imageInfo ? (
           <UploadZone
@@ -251,7 +287,8 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
             allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
-            title="Drop an image to add a text or logo watermark"
+            title={t('uploadTitle', 'Drop an image to add a text or logo watermark')}
+            strings={esStrings?.uploadZone}
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -259,7 +296,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
                   <Stamp className="w-3.5 h-3.5 text-blue-600" />
-                  {tiled ? 'Tiled Preview' : 'Drag on Image to Position'}
+                  {tiled ? t('tiledPreview', 'Tiled Preview') : t('dragToPosition', 'Drag on Image to Position')}
                 </span>
                 <button
                   type="button"
@@ -267,7 +304,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
                   className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
-                  <span>Change Image</span>
+                  <span>{t('changeImage', 'Change Image')}</span>
                 </button>
               </div>
 
@@ -296,7 +333,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
             <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Watermark Type
+                  {t('watermarkType', 'Watermark Type')}
                 </span>
                 <div className="grid grid-cols-2 gap-1 p-1 bg-slate-100 rounded-xl">
                   <button
@@ -306,7 +343,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
                       watermarkMode === 'text' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
                     }`}
                   >
-                    Text Watermark
+                    {t('modeText', 'Text Watermark')}
                   </button>
                   <button
                     type="button"
@@ -315,7 +352,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
                       watermarkMode === 'image' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
                     }`}
                   >
-                    Logo Image
+                    {t('modeLogo', 'Logo Image')}
                   </button>
                 </div>
               </div>
@@ -324,13 +361,13 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
                 <div className="space-y-3">
                   <div>
                     <label className="text-xs font-semibold text-slate-700 block mb-1">
-                      Watermark Text
+                      {t('watermarkTextLabel', 'Watermark Text')}
                     </label>
                     <input
                       type="text"
                       value={text}
                       onChange={(e) => setText(e.target.value)}
-                      placeholder="© Your Brand"
+                      placeholder={t('placeholderBrand', '© Your Brand')}
                       className="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -342,11 +379,11 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
                         onChange={(e) => setTextColor(e.target.value)}
                         className="w-8 h-8 rounded-lg border border-slate-200 cursor-pointer p-0.5"
                       />
-                      <span>Text Color</span>
+                      <span>{t('textColor', 'Text Color')}</span>
                     </label>
                     <div className="flex-1">
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="font-semibold text-slate-700">Size</span>
+                        <span className="font-semibold text-slate-700">{t('size', 'Size')}</span>
                         <span className="font-mono text-blue-600">{fontSizePct}%</span>
                       </div>
                       <input
@@ -375,12 +412,12 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
                     className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 border border-slate-200 text-slate-700 text-xs font-semibold rounded-xl cursor-pointer"
                   >
                     <Upload className="w-4 h-4" />
-                    <span>{logoInfo ? 'Change Logo Image' : 'Upload Logo (PNG / SVG)'}</span>
+                    <span>{logoInfo ? t('changeLogo', 'Change Logo Image') : t('uploadLogo', 'Upload Logo (PNG / SVG)')}</span>
                   </button>
                   {logoInfo && (
                     <div>
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="font-semibold text-slate-700">Logo Width</span>
+                        <span className="font-semibold text-slate-700">{t('logoWidth', 'Logo Width')}</span>
                         <span className="font-mono text-blue-600">{logoScalePct}%</span>
                       </div>
                       <input
@@ -399,7 +436,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-semibold text-slate-700">Opacity</span>
+                    <span className="font-semibold text-slate-700">{t('opacity', 'Opacity')}</span>
                     <span className="font-mono text-blue-600">{opacity}%</span>
                   </div>
                   <input
@@ -413,7 +450,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
                 </div>
                 <div>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-semibold text-slate-700">Rotation</span>
+                    <span className="font-semibold text-slate-700">{t('rotation', 'Rotation')}</span>
                     <span className="font-mono text-blue-600">{rotation}°</span>
                   </div>
                   <input
@@ -431,7 +468,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
                 <label className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
                   <span className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
                     <Grid className="w-3.5 h-3.5 text-blue-600" />
-                    <span>Tiled Repeat Pattern</span>
+                    <span>{t('tiledRepeatPattern', 'Tiled Repeat Pattern')}</span>
                   </span>
                   <input
                     type="checkbox"
@@ -444,7 +481,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
                 {tiled ? (
                   <div>
                     <div className="flex justify-between text-xs mb-1">
-                      <span className="font-semibold text-slate-700">Tile Spacing</span>
+                      <span className="font-semibold text-slate-700">{t('tileSpacing', 'Tile Spacing')}</span>
                       <span className="font-mono text-blue-600">{tileSpacingPct}%</span>
                     </div>
                     <input
@@ -460,7 +497,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
                   <div>
                     <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1 mb-1.5">
                       <Move className="w-3 h-3" />
-                      Anchor Presets (or drag on image)
+                      {t('anchorPresets', 'Anchor Presets (or drag on image)')}
                     </span>
                     <div className="grid grid-cols-3 gap-1.5">
                       {ANCHOR_POSITIONS.map((a) => (
@@ -496,14 +533,14 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
                         format === fmt ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
                       }`}
                     >
-                      {fmt === 'original' ? 'Orig' : fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
+                      {fmt === 'original' ? t('formatOrig', 'Orig') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
                     </button>
                   ))}
                 </div>
                 {format !== 'png' && (
                   <div>
                     <div className="flex justify-between text-xs mb-1">
-                      <span className="font-semibold text-slate-700">Quality</span>
+                      <span className="font-semibold text-slate-700">{t('quality', 'Quality')}</span>
                       <span className="font-mono text-slate-700">{quality}%</span>
                     </div>
                     <input
@@ -523,7 +560,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({ onNaviga
                   className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer disabled:opacity-60"
                 >
                   {isExporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
-                  <span>{isExporting ? 'Exporting...' : 'Download Watermarked Image'}</span>
+                  <span>{isExporting ? t('exporting', 'Exporting...') : t('downloadWatermarked', 'Download Watermarked Image')}</span>
                 </button>
               </div>
             </div>

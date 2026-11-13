@@ -10,6 +10,12 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import { OutputFormatChoice } from '../types';
@@ -25,8 +31,20 @@ import { resolveOutputFormat } from '../utils/compressor';
 import { formatBytes, getBaseFilename, sanitizeFilename } from '../utils/formatters';
 import { triggerDownload } from '../utils/zip';
 
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface ImageCropperPageProps {
   onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
 }
 
 interface CropRect {
@@ -54,8 +72,17 @@ const ASPECT_PRESETS: AspectPreset[] = [
   { id: '9:16', label: '9:16', ratio: 9 / 16 },
 ];
 
-export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/image-cropper'];
+export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/image-cropper'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
   const [sourceFile, setSourceFile] = useState<File | null>(null);
   const [imageInfo, setImageInfo] = useState<LoadedImageInfo | null>(null);
   const imageInfoRef = useRef<LoadedImageInfo | null>(null);
@@ -228,7 +255,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
       setAspectId('free');
       setZoom(1);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unable to load image.');
+      setError(err instanceof Error ? err.message : t('errorUnableToLoadImage', 'Unable to load image.'));
     }
   };
 
@@ -260,7 +287,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
       canvas.width = pixelCrop.w;
       canvas.height = pixelCrop.h;
       const ctx = canvas.getContext('2d', { alpha: true });
-      if (!ctx) throw new Error('Unable to initialize canvas context.');
+      if (!ctx) throw new Error(t('errorCanvasContext', 'Unable to initialize canvas context.'));
 
       if (mimeType === 'image/jpeg') {
         ctx.fillStyle = '#ffffff';
@@ -284,7 +311,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
       const base = sanitizeFilename(getBaseFilename(sourceFile.name));
       triggerDownload(blob, `${base}_${pixelCrop.w}x${pixelCrop.h}_cropped${extension}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Crop export failed.');
+      setError(err instanceof Error ? err.message : t('errorCropExportFailed', 'Crop export failed.'));
     } finally {
       setIsExporting(false);
     }
@@ -302,7 +329,16 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
   ];
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         {!imageInfo ? (
           <UploadZone
@@ -313,7 +349,8 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
             allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
-            title="Drop an image to crop interactively"
+            title={t('uploadTitle', 'Drop an image to crop interactively')}
+            strings={esStrings?.uploadZone}
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -323,7 +360,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
                 <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
                   <Crop className="w-4 h-4 text-blue-600" />
                   <span>
-                    Selection:{' '}
+                    {t('selection', 'Selection:')}{' '}
                     <strong className="font-mono text-blue-600">
                       {pixelCrop.w} × {pixelCrop.h}px
                     </strong>
@@ -336,7 +373,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
                       type="button"
                       onClick={() => setZoom((z) => Math.max(1, Number((z - 0.25).toFixed(2))))}
                       className="p-1.5 text-slate-700 hover:bg-white rounded-md cursor-pointer"
-                      aria-label="Zoom out"
+                      aria-label={t('zoomOut', 'Zoom out')}
                     >
                       <ZoomOut className="w-4 h-4" />
                     </button>
@@ -347,7 +384,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
                       type="button"
                       onClick={() => setZoom((z) => Math.min(3, Number((z + 0.25).toFixed(2))))}
                       className="p-1.5 text-slate-700 hover:bg-white rounded-md cursor-pointer"
-                      aria-label="Zoom in"
+                      aria-label={t('zoomIn', 'Zoom in')}
                     >
                       <ZoomIn className="w-4 h-4" />
                     </button>
@@ -356,7 +393,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
                     type="button"
                     onClick={handleClear}
                     className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
-                    aria-label="Remove image"
+                    aria-label={t('removeImage', 'Remove image')}
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -374,7 +411,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
                 >
                   <img
                     src={imageInfo.previewUrl}
-                    alt="Crop source"
+                    alt={t('cropSourceAlt', 'Crop source')}
                     draggable={false}
                     className="block max-h-[460px] w-auto h-auto pointer-events-none mx-auto"
                     style={zoom > 1 ? { maxHeight: `${460 * zoom}px` } : undefined}
@@ -420,7 +457,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
               <div className="flex justify-between text-xs text-slate-500 font-mono">
                 <span className="truncate max-w-xs">{sourceFile?.name}</span>
                 <span>
-                  Original: {imageInfo.width}×{imageInfo.height}px · {sourceFile ? formatBytes(sourceFile.size) : ''}
+                  {t('originalLabel', 'Original:')} {imageInfo.width}×{imageInfo.height}px · {sourceFile ? formatBytes(sourceFile.size) : ''}
                 </span>
               </div>
             </div>
@@ -428,7 +465,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
             {/* Crop Controls */}
             <div className="lg:col-span-4 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
               <div className="flex items-center justify-between">
-                <h2 className="text-base font-bold text-slate-900">Crop Options</h2>
+                <h2 className="text-base font-bold text-slate-900">{t('cropOptions', 'Crop Options')}</h2>
                 <button
                   type="button"
                   onClick={() => {
@@ -439,13 +476,13 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
                   className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:underline cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
-                  <span>Select Full</span>
+                  <span>{t('selectFull', 'Select Full')}</span>
                 </button>
               </div>
 
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Aspect Ratio Preset
+                  {t('aspectRatioPreset', 'Aspect Ratio Preset')}
                 </span>
                 <div className="grid grid-cols-4 gap-1.5">
                   {ASPECT_PRESETS.map((preset) => (
@@ -459,7 +496,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
                           : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
                       }`}
                     >
-                      {preset.label}
+                      {preset.id === 'free' ? t('aspectFree', preset.label) : preset.label}
                     </button>
                   ))}
                 </div>
@@ -467,11 +504,11 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
 
               <div className="grid grid-cols-2 gap-2.5 text-xs">
                 <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200">
-                  <span className="text-slate-500 block">Crop Width</span>
+                  <span className="text-slate-500 block">{t('cropWidth', 'Crop Width')}</span>
                   <span className="font-mono font-bold text-slate-900">{pixelCrop.w} px</span>
                 </div>
                 <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200">
-                  <span className="text-slate-500 block">Crop Height</span>
+                  <span className="text-slate-500 block">{t('cropHeight', 'Crop Height')}</span>
                   <span className="font-mono font-bold text-slate-900">{pixelCrop.h} px</span>
                 </div>
               </div>
@@ -479,7 +516,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
               <div className="pt-4 border-t border-slate-100 space-y-4">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                    Output Format
+                    {t('outputFormat', 'Output Format')}
                   </span>
                   <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-xl">
                     {(['original', 'jpeg', 'png', 'webp'] as OutputFormatChoice[]).map((fmt) => (
@@ -491,7 +528,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
                           format === fmt ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
                         }`}
                       >
-                        {fmt === 'original' ? 'Original' : fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
+                        {fmt === 'original' ? t('formatOriginal', 'Original') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
                       </button>
                     ))}
                   </div>
@@ -500,7 +537,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
                 {format !== 'png' && (
                   <div>
                     <div className="flex justify-between text-xs mb-1">
-                      <span className="font-semibold text-slate-700">Quality</span>
+                      <span className="font-semibold text-slate-700">{t('quality', 'Quality')}</span>
                       <span className="font-mono font-bold text-slate-700">{quality}%</span>
                     </div>
                     <input
@@ -521,7 +558,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({ onNavigate }
                   className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer disabled:opacity-60"
                 >
                   {isExporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
-                  <span>{isExporting ? 'Cropping...' : 'Crop & Download'}</span>
+                  <span>{isExporting ? t('cropping', 'Cropping...') : t('cropAndDownload', 'Crop & Download')}</span>
                 </button>
               </div>
             </div>

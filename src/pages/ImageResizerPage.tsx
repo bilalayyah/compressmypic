@@ -12,6 +12,12 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import { ComparisonModal } from '../components/ComparisonModal';
@@ -27,21 +33,42 @@ import {
 import { formatBytes } from '../utils/formatters';
 import { createFilesZipArchive, triggerDownload } from '../utils/zip';
 
-interface ImageResizerPageProps {
-  onNavigate: (path: string) => void;
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
 }
 
-const SOCIAL_PRESETS = [
-  { label: 'Instagram Post (1080×1080)', width: 1080, height: 1080 },
-  { label: 'Instagram Story (1080×1920)', width: 1080, height: 1920 },
-  { label: 'YouTube Thumb (1280×720)', width: 1280, height: 720 },
-  { label: 'Facebook Cover (851×315)', width: 851, height: 315 },
-  { label: 'X Header (1500×500)', width: 1500, height: 500 },
-  { label: 'Full HD (1920×1080)', width: 1920, height: 1080 },
-];
+interface ImageResizerPageProps {
+  onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
+}
 
-export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/image-resizer'];
+export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/image-resizer'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+
+  const SOCIAL_PRESETS = [
+    { label: t('presetInstagramPost', 'Instagram Post (1080×1080)'), width: 1080, height: 1080 },
+    { label: t('presetInstagramStory', 'Instagram Story (1080×1920)'), width: 1080, height: 1920 },
+    { label: t('presetYouTubeThumb', 'YouTube Thumb (1280×720)'), width: 1280, height: 720 },
+    { label: t('presetFacebookCover', 'Facebook Cover (851×315)'), width: 851, height: 315 },
+    { label: t('presetXHeader', 'X Header (1500×500)'), width: 1500, height: 500 },
+    { label: t('presetFullHd', 'Full HD (1920×1080)'), width: 1920, height: 1080 },
+  ];
   const [items, setItems] = useState<ImageItem[]>([]);
   const itemsRef = useRef<ImageItem[]>([]);
   itemsRef.current = items;
@@ -128,7 +155,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
       return {
         ...item,
         status: 'error',
-        errorMessage: err instanceof Error ? err.message : 'Resize failed.',
+        errorMessage: err instanceof Error ? err.message : t('errorResizeFailed', 'Resize failed.'),
       };
     }
   };
@@ -186,7 +213,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
           outputFilename: file.name,
           quality,
           status: 'error',
-          errorMessage: 'Corrupted or unreadable image file.',
+          errorMessage: t('errorCorruptedFile', 'Corrupted or unreadable image file.'),
           spaceSaved: null,
           compressionPercentage: null,
         });
@@ -303,7 +330,16 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
   };
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         <UploadZone
           onFilesSelected={handleFilesSelected}
@@ -313,6 +349,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
           allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
           allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
           supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
+          strings={esStrings?.uploadZone}
         />
 
         {items.length > 0 && (
@@ -320,7 +357,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Resize Mode
+                  {t('resizeMode', 'Resize Mode')}
                 </span>
                 <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
                   <button
@@ -332,7 +369,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
                         : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
-                    By Pixels (W × H)
+                    {t('modeByPixels', 'By Pixels (W × H)')}
                   </button>
                   <button
                     type="button"
@@ -343,14 +380,14 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
                         : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
-                    By Percentage (%)
+                    {t('modeByPercentage', 'By Percentage (%)')}
                   </button>
                 </div>
               </div>
 
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Output Format
+                  {t('outputFormat', 'Output Format')}
                 </span>
                 <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
                   {(['original', 'jpeg', 'png', 'webp'] as OutputFormatChoice[]).map((fmt) => (
@@ -364,7 +401,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
                           : 'text-slate-600 hover:text-slate-900'
                       }`}
                     >
-                      {fmt === 'original' ? 'Original' : fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
+                      {fmt === 'original' ? t('formatOriginal', 'Original') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
                     </button>
                   ))}
                 </div>
@@ -376,7 +413,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      Width (px)
+                      {t('widthLabel', 'Width (px)')}
                     </label>
                     <input
                       type="number"
@@ -384,13 +421,13 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
                       max={12000}
                       value={targetWidth || ''}
                       onChange={(e) => handleWidthChange(e.target.value)}
-                      placeholder="Auto"
+                      placeholder={t('placeholderAuto', 'Auto')}
                       className="w-full px-3.5 py-2.5 text-sm font-mono border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      Height (px)
+                      {t('heightLabel', 'Height (px)')}
                     </label>
                     <input
                       type="number"
@@ -398,7 +435,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
                       max={12000}
                       value={targetHeight || ''}
                       onChange={(e) => handleHeightChange(e.target.value)}
-                      placeholder="Auto"
+                      placeholder={t('placeholderAuto', 'Auto')}
                       className="w-full px-3.5 py-2.5 text-sm font-mono border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -417,19 +454,19 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
                       ) : (
                         <Link2Off className="w-4 h-4" />
                       )}
-                      <span>{lockAspectRatio ? 'Aspect Ratio Locked' : 'Unlocked (Custom)'}</span>
+                      <span>{lockAspectRatio ? t('aspectRatioLocked', 'Aspect Ratio Locked') : t('aspectRatioUnlocked', 'Unlocked (Custom)')}</span>
                     </button>
                   </div>
                 </div>
 
                 {!lockAspectRatio && (
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-xs font-semibold text-slate-600">Fit Mode:</span>
+                    <span className="text-xs font-semibold text-slate-600">{t('fitModeLabel', 'Fit Mode:')}</span>
                     {(
                       [
-                        { id: 'contain', label: 'Contain (No Crop)' },
-                        { id: 'cover', label: 'Cover (Center Crop)' },
-                        { id: 'exact', label: 'Stretch Exact' },
+                        { id: 'contain', label: t('fitContain', 'Contain (No Crop)') },
+                        { id: 'cover', label: t('fitCover', 'Cover (Center Crop)') },
+                        { id: 'exact', label: t('fitStretchExact', 'Stretch Exact') },
                       ] as { id: ResizeFitMode; label: string }[]
                     ).map((m) => (
                       <button
@@ -450,7 +487,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
 
                 <div>
                   <span className="text-xs font-semibold text-slate-500 block mb-2">
-                    Quick Social &amp; Web Presets
+                    {t('quickPresets', 'Quick Social & Web Presets')}
                   </span>
                   <div className="flex flex-wrap gap-2">
                     {SOCIAL_PRESETS.map((p) => (
@@ -470,7 +507,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
               <div>
                 <div className="flex items-center justify-between text-xs mb-2">
                   <span className="font-semibold text-slate-700">
-                    Scale Percentage:{' '}
+                    {t('scalePercentage', 'Scale Percentage:')}{' '}
                     <strong className="text-blue-600 font-mono text-sm">{percentage}%</strong>
                   </span>
                   <div className="flex gap-1.5">
@@ -506,11 +543,11 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
               <div className="flex-1 max-w-md">
                 <div className="flex justify-between text-xs mb-1.5">
                   <span className="font-semibold text-slate-700">
-                    Output Quality: <strong className="text-blue-600 font-mono">{quality}%</strong>
+                    {t('outputQuality', 'Output Quality:')}{' '}<strong className="text-blue-600 font-mono">{quality}%</strong>
                   </span>
                   {format === 'jpeg' && (
                     <label className="flex items-center gap-1.5 text-slate-600">
-                      <span>Matte BG:</span>
+                      <span>{t('matteBg', 'Matte BG:')}</span>
                       <input
                         type="color"
                         value={backgroundColor}
@@ -540,12 +577,12 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
                   {isProcessing ? (
                     <>
                       <RotateCcw className="w-4 h-4 animate-spin" />
-                      <span>Resizing...</span>
+                      <span>{t('resizing', 'Resizing...')}</span>
                     </>
                   ) : (
                     <>
                       <Play className="w-4 h-4 fill-current" />
-                      <span>Resize All ({items.length})</span>
+                      <span>{t('resizeAll', 'Resize All ({count})').replace('{count}', String(items.length))}</span>
                     </>
                   )}
                 </button>
@@ -556,7 +593,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
                   className="inline-flex items-center gap-1.5 px-3.5 py-2.5 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-sm font-medium rounded-xl cursor-pointer"
                 >
                   <Trash2 className="w-4 h-4" />
-                  <span className="hidden sm:inline">Clear</span>
+                  <span className="hidden sm:inline">{t('clear', 'Clear')}</span>
                 </button>
               </div>
             </div>
@@ -569,10 +606,12 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
               <div className="bg-slate-900 text-white rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
-                    Batch Ready
+                    {t('batchReady', 'Batch Ready')}
                   </span>
                   <p className="text-sm font-semibold mt-0.5">
-                    {doneItems.length} resized {doneItems.length === 1 ? 'image' : 'images'} ready to download
+                    {doneItems.length === 1
+                      ? t('batchReadySingular', '{count} resized image ready to download').replace('{count}', String(doneItems.length))
+                      : t('batchReadyPlural', '{count} resized images ready to download').replace('{count}', String(doneItems.length))}
                   </p>
                 </div>
                 <button
@@ -582,7 +621,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl cursor-pointer"
                 >
                   <FileArchive className="w-4 h-4" />
-                  <span>{isZipping ? 'Creating ZIP...' : 'Download All (ZIP)'}</span>
+                  <span>{isZipping ? t('creatingZip', 'Creating ZIP...') : t('downloadAllZip', 'Download All (ZIP)')}</span>
                 </button>
               </div>
             )}
@@ -626,8 +665,9 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
                         {isDone && (
                           <span className="inline-flex items-center gap-1 text-xs text-emerald-700 font-medium">
                             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                            Resized ({formatBytes(item.originalSize)} →{' '}
-                            {formatBytes(item.compressedSize || 0)})
+                            {t('resizedStatus', 'Resized ({original} → {converted})')
+                              .replace('{original}', formatBytes(item.originalSize))
+                              .replace('{converted}', formatBytes(item.compressedSize || 0))}
                           </span>
                         )}
                         {isErr && (
@@ -649,7 +689,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
                           className="px-3 py-2 text-slate-700 hover:bg-slate-100 text-xs font-semibold rounded-lg flex items-center gap-1.5 cursor-pointer"
                         >
                           <SplitSquareVertical className="w-4 h-4 text-blue-600" />
-                          <span>Compare</span>
+                          <span>{t('compare', 'Compare')}</span>
                         </button>
                         <button
                           type="button"
@@ -660,7 +700,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
                           className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg cursor-pointer"
                         >
                           <Download className="w-4 h-4" />
-                          <span>Download</span>
+                          <span>{t('download', 'Download')}</span>
                         </button>
                       </>
                     )}
@@ -668,7 +708,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
                       type="button"
                       onClick={() => handleRemove(item.id)}
                       className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
-                      aria-label={`Remove ${item.name}`}
+                      aria-label={t('removeImage', 'Remove {name}').replace('{name}', item.name)}
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -684,8 +724,25 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({ onNavigate }
         <ComparisonModal
           image={comparisonTarget}
           onClose={() => setComparisonTarget(null)}
-          titlePrefix="Resize Comparison"
-          afterLabel="Resized (After)"
+          titlePrefix={t('comparisonTitlePrefix', 'Resize Comparison')}
+          beforeLabel={esStrings?.comparisonModal.beforeLabel}
+          afterLabel={t('comparisonAfterLabel', 'Resized (After)')}
+          closeLabel={esStrings?.comparisonModal.closeLabel}
+          instruction={esStrings?.comparisonModal.instruction}
+          sliderLabel={esStrings?.comparisonModal.sliderLabel}
+          sideBySideLabel={esStrings?.comparisonModal.sideBySideLabel}
+          zoomInLabel={esStrings?.comparisonModal.zoomInLabel}
+          zoomOutLabel={esStrings?.comparisonModal.zoomOutLabel}
+          originalLabel={esStrings?.comparisonModal.originalLabel}
+          outputLabel={esStrings?.comparisonModal.outputLabel}
+          reductionLabel={esStrings?.comparisonModal.reductionLabel}
+          sizeChangeLabel={esStrings?.comparisonModal.sizeChangeLabel}
+          qualityLabel={esStrings?.comparisonModal.qualityLabel}
+          formatLabel={esStrings?.comparisonModal.formatLabel}
+          modalAriaLabel={esStrings?.comparisonModal.modalAriaLabel}
+          altCompressed={esStrings?.comparisonModal.altCompressed}
+          altOriginal={esStrings?.comparisonModal.altOriginal}
+          altProcessed={esStrings?.comparisonModal.altProcessed}
         />
       )}
     </ToolPageLayout>

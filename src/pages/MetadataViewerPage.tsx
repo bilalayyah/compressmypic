@@ -10,8 +10,14 @@ import {
   Trash2,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import {
   EXTENDED_ALLOWED_EXT_REGEX,
   EXTENDED_ALLOWED_MIME_TYPES,
@@ -21,12 +27,33 @@ import {
 import { ImageMetadataReport, extractImageMetadata } from '../utils/metadata';
 import { triggerDownload } from '../utils/zip';
 
-interface MetadataViewerPageProps {
-  onNavigate: (path: string) => void;
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
 }
 
-export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/image-metadata-viewer'];
+interface MetadataViewerPageProps {
+  onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
+}
+
+export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+  const activeTool = tool ?? TOOL_BY_SLUG['/image-metadata-viewer'];
   const [report, setReport] = useState<ImageMetadataReport | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [isInspecting, setIsInspecting] = useState<boolean>(false);
@@ -57,7 +84,7 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({ onNaviga
       setPreviewUrl(info.previewUrl);
     } catch (err) {
       setReport(null);
-      setErrorMsg(err instanceof Error ? err.message : 'Unable to parse image metadata.');
+      setErrorMsg(err instanceof Error ? err.message : t('unableToParse', 'Unable to parse image metadata.'));
     } finally {
       setIsInspecting(false);
     }
@@ -85,7 +112,16 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({ onNaviga
   };
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         <UploadZone
           onFilesSelected={handleFilesSelected}
@@ -96,7 +132,8 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({ onNaviga
           allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
           allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
           supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
-          title="Drop an image to inspect EXIF & metadata"
+          title={t('uploadTitle', 'Drop an image to inspect EXIF & metadata')}
+          strings={esStrings?.uploadZone}
         />
 
         {errorMsg && (
@@ -129,12 +166,12 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({ onNaviga
                     {report.hasSensitiveMetadata ? (
                       <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-800 border border-amber-200">
                         <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
-                        Embedded metadata found ({report.sensitiveSummary.length} tag types)
+                        {t('embeddedMetadataFound', 'Embedded metadata found ({count} tag types)').replace('{count}', String(report.sensitiveSummary.length))}
                       </span>
                     ) : (
                       <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200">
                         <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                        No EXIF, GPS, or hidden camera tags detected
+                        {t('noTagsDetected', 'No EXIF, GPS, or hidden camera tags detected')}
                       </span>
                     )}
                   </div>
@@ -149,7 +186,7 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({ onNaviga
                     className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl cursor-pointer"
                   >
                     <ShieldOff className="w-4 h-4" />
-                    <span>Strip Metadata</span>
+                    <span>{t('stripMetadata', 'Strip Metadata')}</span>
                   </button>
                 )}
                 <button
@@ -158,7 +195,7 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({ onNaviga
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-xl cursor-pointer"
                 >
                   {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
-                  <span>{copied ? 'Copied JSON' : 'Copy JSON'}</span>
+                  <span>{copied ? t('copiedJson', 'Copied JSON') : t('copyJson', 'Copy JSON')}</span>
                 </button>
                 <button
                   type="button"
@@ -166,13 +203,13 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({ onNaviga
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
-                  <span>Export JSON</span>
+                  <span>{t('exportJson', 'Export JSON')}</span>
                 </button>
                 <button
                   type="button"
                   onClick={handleClear}
                   className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-xl cursor-pointer"
-                  title="Clear"
+                  title={t('clear', 'Clear')}
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>
@@ -184,9 +221,9 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({ onNaviga
               <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                 <div className="text-sm text-amber-900">
-                  <p className="font-bold">GPS Location Coordinates Detected</p>
+                  <p className="font-bold">{t('gpsDetected', 'GPS Location Coordinates Detected')}</p>
                   <p className="text-xs font-mono mt-1">
-                    Latitude: {report.gpsCoords.latitude} · Longitude: {report.gpsCoords.longitude}
+                    {t('latitude', 'Latitude:')} {report.gpsCoords.latitude} · {t('longitude', 'Longitude:')} {report.gpsCoords.longitude}
                   </p>
                   <p className="text-xs text-amber-700 mt-1">
                     Sharing this image as-is can reveal where the photo was taken. Use{' '}
@@ -207,7 +244,7 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({ onNaviga
             <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
               <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
                 <h3 className="text-sm font-bold text-slate-900">
-                  Extracted Metadata ({report.entries.length} properties)
+                  {t('extractedMetadata', 'Extracted Metadata ({count} properties)').replace('{count}', String(report.entries.length))}
                 </h3>
               </div>
               <div className="divide-y divide-slate-100">
@@ -223,7 +260,7 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({ onNaviga
                       <span className="font-semibold text-slate-800">{entry.key}</span>
                       {entry.sensitive && (
                         <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">
-                          Privacy Tag
+                          {t('privacyTag', 'Privacy Tag')}
                         </span>
                       )}
                     </div>

@@ -10,8 +10,14 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { OutputFormatChoice } from '../types';
 import { removeImageMetadata } from '../utils/metadata';
 import { formatBytes } from '../utils/formatters';
@@ -35,12 +41,33 @@ interface CleanItem {
   afterTagsCount: number;
 }
 
-interface RemoveMetadataPageProps {
-  onNavigate: (path: string) => void;
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
 }
 
-export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/remove-image-metadata'];
+interface RemoveMetadataPageProps {
+  onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
+}
+
+export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+  const activeTool = tool ?? TOOL_BY_SLUG['/remove-image-metadata'];
   const [items, setItems] = useState<CleanItem[]>([]);
   const itemsRef = useRef<CleanItem[]>([]);
   itemsRef.current = items;
@@ -84,7 +111,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({ onNaviga
       return {
         ...item,
         status: 'error',
-        errorMessage: err instanceof Error ? err.message : 'Failed to strip metadata.',
+        errorMessage: err instanceof Error ? err.message : t('failedToStrip', 'Failed to strip metadata.'),
       };
     }
   };
@@ -160,13 +187,23 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({ onNaviga
   };
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         <UploadZone
           onFilesSelected={handleFilesSelected}
           maxFileSizeMB={20}
           disabled={isProcessing}
-          title="Drop photos to strip EXIF, GPS & metadata"
+          title={t('uploadTitle', 'Drop photos to strip EXIF, GPS & metadata')}
+          strings={esStrings?.uploadZone}
         />
 
         {items.length > 0 && (
@@ -174,7 +211,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({ onNaviga
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Stripping Method
+                  {t('strippingMethod', 'Stripping Method')}
                 </span>
                 <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
                   <button
@@ -186,7 +223,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({ onNaviga
                         : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
-                    Lossless Binary Strip (JPG/PNG)
+                    {t('losslessStrip', 'Lossless Binary Strip (JPG/PNG)')}
                   </button>
                   <button
                     type="button"
@@ -197,14 +234,14 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({ onNaviga
                         : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
-                    Full Canvas Re-encode
+                    {t('fullCanvasReencode', 'Full Canvas Re-encode')}
                   </button>
                 </div>
               </div>
 
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Output Format
+                  {t('outputFormat', 'Output Format')}
                 </span>
                 <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
                   {(['original', 'jpeg', 'png', 'webp'] as OutputFormatChoice[]).map((fmt) => (
@@ -218,7 +255,11 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({ onNaviga
                           : 'text-slate-600 hover:text-slate-900'
                       }`}
                     >
-                      {fmt === 'original' ? 'Original' : fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
+                      {fmt === 'original'
+                        ? t('formatOriginal', 'Original')
+                        : fmt === 'jpeg'
+                          ? t('formatJpg', 'JPG')
+                          : fmt.toUpperCase()}
                     </button>
                   ))}
                 </div>
@@ -228,7 +269,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({ onNaviga
             <div className="pt-4 border-t border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="flex-1 max-w-md">
                 <span className="text-xs font-semibold text-slate-700 block mb-1.5">
-                  Re-encode Quality (used for WebP/HEIC or Full Re-encode):{' '}
+                  {t('reencodeQuality', 'Re-encode Quality (used for WebP/HEIC or Full Re-encode):')}{' '}
                   <strong className="text-blue-600 font-mono">{quality}%</strong>
                 </span>
                 <input
@@ -251,12 +292,12 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({ onNaviga
                   {isProcessing ? (
                     <>
                       <RotateCcw className="w-4 h-4 animate-spin" />
-                      <span>Cleaning...</span>
+                      <span>{t('cleaning', 'Cleaning...')}</span>
                     </>
                   ) : (
                     <>
                       <Play className="w-4 h-4 fill-current" />
-                      <span>Re-clean All</span>
+                      <span>{t('recleanAll', 'Re-clean All')}</span>
                     </>
                   )}
                 </button>
@@ -266,7 +307,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({ onNaviga
                   className="inline-flex items-center gap-1.5 px-3.5 py-2.5 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-sm font-medium rounded-xl cursor-pointer"
                 >
                   <Trash2 className="w-4 h-4" />
-                  <span>Clear</span>
+                  <span>{t('clear', 'Clear')}</span>
                 </button>
               </div>
             </div>
@@ -279,10 +320,10 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({ onNaviga
               <div className="bg-slate-900 text-white rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
-                    Privacy Verified
+                    {t('privacyVerified', 'Privacy Verified')}
                   </span>
                   <p className="text-sm font-semibold mt-0.5">
-                    {doneItems.length} clean images ready with metadata stripped
+                    {t('cleanImagesReady', '{count} clean images ready with metadata stripped').replace('{count}', String(doneItems.length))}
                   </p>
                 </div>
                 <button
@@ -292,7 +333,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({ onNaviga
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl cursor-pointer"
                 >
                   <FileArchive className="w-4 h-4" />
-                  <span>{isZipping ? 'Creating ZIP...' : 'Download All Clean (ZIP)'}</span>
+                  <span>{isZipping ? t('creatingZip', 'Creating ZIP...') : t('downloadAllCleanZip', 'Download All Clean (ZIP)')}</span>
                 </button>
               </div>
             )}
@@ -320,20 +361,22 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({ onNaviga
                           <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">
                             <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                             {item.beforeTagsCount > 0
-                              ? `Stripped ${item.beforeTagsCount} metadata tags → ${item.afterTagsCount} remaining`
-                              : 'Verified clean (0 EXIF/GPS tags)'}
+                              ? t('strippedTags', 'Stripped {before} metadata tags → {after} remaining')
+                                  .replace('{before}', String(item.beforeTagsCount))
+                                  .replace('{after}', String(item.afterTagsCount))
+                              : t('verifiedClean', 'Verified clean (0 EXIF/GPS tags)')}
                           </span>
                           <span className="text-[11px] font-medium text-slate-500">
                             {item.methodUsed === 'lossless-strip'
-                              ? 'Lossless binary strip'
-                              : 'Clean Canvas export'}
+                              ? t('losslessBinaryStrip', 'Lossless binary strip')
+                              : t('cleanCanvasExport', 'Clean Canvas export')}
                           </span>
                         </div>
                       </>
                     )}
                     {item.status === 'processing' && (
                       <span className="text-xs text-blue-600 font-medium animate-pulse">
-                        Scrubbing EXIF &amp; GPS headers...
+                        {t('scrubbing', 'Scrubbing EXIF & GPS headers...')}
                       </span>
                     )}
                     {item.status === 'error' && (
@@ -353,14 +396,14 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({ onNaviga
                       className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg cursor-pointer"
                     >
                       <Download className="w-4 h-4" />
-                      <span>Download Clean</span>
+                      <span>{t('downloadClean', 'Download Clean')}</span>
                     </button>
                   )}
                   <button
                     type="button"
                     onClick={() => handleRemove(item.id)}
                     className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
-                    aria-label={`Remove ${item.name}`}
+                    aria-label={t('removeItem', 'Remove {name}').replace('{name}', item.name)}
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
