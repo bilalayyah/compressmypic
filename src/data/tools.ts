@@ -1077,25 +1077,40 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     category: 'create',
     seoTitle: 'Free Favicon Generator – Create favicon.ico & App Icons',
     seoDescription:
-      'Generate a complete website favicon package (favicon.ico, 16x16, 32x32, Apple Touch 180x180, Android 192/512, and site.webmanifest) free in your browser.',
+      'Use our free favicon generator to build a multi-size favicon.ico, Apple Touch, Android Chrome icons, site.webmanifest, and HTML snippet right in your browser.',
     h1: 'Free Online Favicon Generator',
     subtitle:
-      'Turn any logo or image into a complete favicon package — including multi-size favicon.ico, Apple Touch Icon, Android Chrome icons, site.webmanifest, and copyable HTML.',
+      'Designed for web developers, startup founders, bloggers, and indie makers, this free favicon generator turns any logo or graphic into a ready-to-deploy browser and mobile icon pack. Preview your icon on light and dark tabs, tune padding, corner radius, and background fill, and download everything locally with zero server uploads.',
     howToSteps: [
       {
-        title: 'Upload your logo or icon',
+        title: 'Upload your logo or icon graphic',
         description:
-          'Upload a PNG, SVG, JPG, or WebP image. Square logos with transparent backgrounds give the sharpest results.',
+          'Drop a PNG, SVG, JPG, WebP, or HEIC image up to 20 MB (square PNG or SVG works best) or paste from your clipboard with Ctrl+V.',
       },
       {
-        title: 'Customize padding, shape & background',
+        title: 'Choose Background Fill',
         description:
-          'Adjust inner padding, add rounded corners or a circular mask, and choose transparent or solid background fill.',
+          'Keep the Transparent checkbox enabled for clean cut-out icons, or uncheck it to pick a solid hex backdrop color.',
       },
       {
-        title: 'Download your Favicon ZIP',
+        title: 'Adjust Padding and Corner Radius',
         description:
-          'Download individual sizes or grab the full ZIP containing favicon.ico, all PNG sizes, site.webmanifest, and copy the HTML snippet.',
+          'Slide Padding between 0% and 25% for breathing room and drag Corner Radius from 0% to 50% for rounded squares or circular badges.',
+      },
+      {
+        title: 'Inspect the Browser Tab Previews',
+        description:
+          'Check the live 16×16 scale previews rendered inside both the light My Website tab and the Dark Mode Tab mockup.',
+      },
+      {
+        title: 'Download individual files or the full ZIP',
+        description:
+          'Save individual icon sizes from the generated cards or click Download All (ZIP) to download favicon_package_compressmypic.zip.',
+      },
+      {
+        title: 'Copy the HTML head snippet',
+        description:
+          'Click Copy HTML in the dark HTML <head> Snippet panel and paste the <link> tags directly into your website template.',
       },
     ],
     features: [
@@ -1122,19 +1137,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'What files are included in the downloaded Favicon ZIP?',
+        question: 'Which exact icon sizes and files are packed inside the favicon ZIP?',
         answer:
-          'The ZIP includes favicon.ico (16×16, 32×32, 48×48), favicon-16x16.png, favicon-32x32.png, favicon-48x48.png, apple-touch-icon.png (180×180), android-chrome-192x192.png, android-chrome-512x512.png, and site.webmanifest.',
+          'Downloading the ZIP bundles a multi-frame favicon.ico (16×16, 32×32, and 48×48), separate favicon-16x16.png, favicon-32x32.png, and favicon-48x48.png files, apple-touch-icon.png (180×180), android-chrome-192x192.png, and android-chrome-512x512.png. It also generates a ready-to-upload site.webmanifest JSON file.',
       },
       {
-        question: 'What image size should I upload?',
+        question: 'Is favicon.ico a genuine multi-frame ICO binary or a renamed PNG?',
         answer:
-          'For best results, upload a square PNG or SVG at least 512×512 pixels. Non-square logos are centered automatically without stretching.',
+          'Our favicon generator writes a real Windows ICONDIR binary container with separate 32-bit RGBA PNG directory entries for 16×16, 32×32, and 48×48 frames. Older desktop browsers and Windows shortcuts pick the sharpest matching frame automatically without rendering artifacts.',
       },
       {
-        question: 'Can I make a rounded or circular favicon?',
+        question: 'What source dimensions and format work best for sharp browser tab icons?',
         answer:
-          'Yes. Use the Corner Radius slider (up to 50% for a full circle) and optional padding/background color controls.',
+          'Start with a clean square PNG or self-contained SVG at 512×512 pixels or larger so downscaling produces crisp edges at 16×16 and 512×512 alike. Tiny low-resolution sources stretched up to 512×512 PWA splash icons can appear soft.',
+      },
+      {
+        question: 'What happens if I upload a rectangular logo instead of a square one?',
+        answer:
+          'Rectangular graphics are centered proportionally inside each square icon canvas without stretching or squashing your brand mark. Empty space on the top/bottom or left/right fills with either transparency or your selected background color.',
+      },
+      {
+        question: 'Why does the generator show both light and dark browser tab previews?',
+        answer:
+          'Dark icons can vanish against Dark Mode browser tabs, while white logos disappear on light browser themes. Viewing both the light My Website tab and Dark Mode Tab side by side lets you add padding or a solid background pill before deploying.',
+      },
+      {
+        question: 'How do Padding and Corner Radius work together on an app icon?',
+        answer:
+          'Padding (0% to 25%) shrinks your logo slightly inward from the square boundary so rounded corners do not clip graphic edges. Raising Corner Radius toward 20% creates iOS-style squircles, while 50% clips the entire icon into a full circle.',
+      },
+      {
+        question: 'Should Apple Touch Icons use a solid background instead of transparent?',
+        answer:
+          'iOS Safari often composites transparent areas of apple-touch-icon.png onto black when users pin a site to their Home Screen. If your logo uses dark shapes, uncheck Transparent under Background Fill and choose white or your brand color.',
+      },
+      {
+        question: 'What is included inside the generated site.webmanifest file?',
+        answer:
+          'The manifest JSON declares paths to /android-chrome-192x192.png and /android-chrome-512x512.png, sets display to standalone, and syncs theme_color and background_color with your chosen Background Fill. You can open it in any text editor to customize your site name.',
+      },
+      {
+        question: 'Where should I upload the generated favicon files on my website?',
+        answer:
+          'Place favicon.ico, all generated PNG icons, and site.webmanifest in your site’s root public directory so URLs like /favicon.ico and /apple-touch-icon.png resolve cleanly. Then paste the copied HTML <head> Snippet inside your main HTML <head> section.',
+      },
+      {
+        question: 'Can I download just favicon.ico or apple-touch-icon.png without the ZIP?',
+        answer:
+          'Yes, each icon size appears as its own preview card showing exact dimensions and byte size alongside a dedicated Download button. You can grab single assets individually or click Download All (ZIP) for the complete package.',
+      },
+      {
+        question: 'Does uploading an SVG logo create crisp 16×16 icons?',
+        answer:
+          'Yes, inline SVG vectors rasterize directly inside the browser onto each target pixel grid from 16×16 up to 512×512. Just ensure your SVG uses embedded shapes and colors rather than external linked images or remote web fonts.',
+      },
+      {
+        question: 'Can I convert an iPhone HEIC photo or WebP graphic into a site favicon?',
+        answer:
+          'Yes, the upload dropzone accepts PNG, SVG, JPG, WebP, GIF, BMP, and iPhone HEIC/HEIF files up to 20 MB. HEIC images decode locally in your browser before the icon package builds.',
+      },
+      {
+        question: 'Are brand logos or unreleased app icons sent to external servers?',
+        answer:
+          'No, Canvas resizing, binary ICO packing, manifest generation, and ZIP archiving run strictly inside your own browser tab. Your unreleased brand marks never travel across any network.',
+      },
+      {
+        question: 'Why did my old favicon still appear in Chrome after uploading new files?',
+        answer:
+          'Browsers cache favicons aggressively for days, even after you replace files on your server. Hard-refreshing with Ctrl+Shift+R (or opening an Incognito window) forces your browser to fetch the new favicon.ico and PNG icons.',
+      },
+      {
+        question: 'Do changes to Padding, Corner Radius, or Background Fill update every size at once?',
+        answer:
+          'Yes, moving any slider or toggling Background Fill immediately rebuilds favicon.ico, all six PNG icon dimensions, the light/dark tab previews, and site.webmanifest together. You never need to re-upload your logo between tweaks.',
+      },
+      {
+        question: 'Does the HTML <head> Snippet work with React, Next.js, or plain HTML sites?',
+        answer:
+          'Yes, the standard <link rel="icon">, <link rel="apple-touch-icon">, and <link rel="manifest"> tags work across static HTML sites, WordPress headers, Vite/React index.html, and server templates. Simply paste them inside <head> and place the files at your web root.',
+      },
+      {
+        question: 'Can I create a circular favicon from a square avatar or badge?',
+        answer:
+          'Yes, keep Transparent checked under Background Fill and drag Corner Radius all the way to 50%. All PNG icons and the embedded favicon.ico frames clip cleanly into a smooth anti-aliased circle.',
+      },
+      {
+        question: 'Why is 192×192 and 512×512 required alongside favicon.ico?',
+        answer:
+          'Modern Android Chrome and Progressive Web App install prompts look for 192×192 home-screen icons and 512×512 splash icons declared in site.webmanifest. Including both ensures mobile shortcuts look sharp alongside classic desktop browser tabs.',
+      },
+      {
+        question: 'Can I paste a logo graphic straight from my clipboard into the favicon tool?',
+        answer:
+          'Yes, copy an image or screenshot to your clipboard and press Ctrl+V (or Cmd+V on Mac) on the page. It feeds immediately into the generator and renders the full icon set.',
+      },
+      {
+        question: 'Is there any watermark, account requirement, or cost for generating favicon packs?',
+        answer:
+          'No, the favicon generator is 100% free for personal and commercial websites with no watermarks, accounts, or daily build limits. Only a 20 MB source file ceiling applies so browser memory stays fast.',
       },
     ],
     relatedSlugs: ['/image-resizer', '/image-converter', '/image-color-picker', '/'],
@@ -1144,27 +1244,37 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Color Picker',
     shortDescription: 'Pick exact pixel colors from any image in HEX, RGB, HSL & CMYK.',
     category: 'developer',
-    seoTitle: 'Image Color Picker Online – Get HEX, RGB & HSL from Any Image',
+    seoTitle: 'Image Color Picker – Extract HEX, RGB & HSL Codes Free',
     seoDescription:
-      'Pick exact colors from any JPG, PNG, WebP, or SVG image online. Interactive pixel magnifier shows HEX, RGB, HSL, and CMYK values with one-click copy.',
-    h1: 'Image Color Picker (Eyedropper Tool)',
+      'Sample exact pixel colors with our online image color picker. Inspect HEX, RGB, HSL, and CMYK values with a live pixel loupe and export CSS variables locally.',
+    h1: 'Free Online Image Color Picker',
     subtitle:
-      'Hover or tap anywhere on an image to inspect exact pixel colors with a live magnifier loupe. Get instant HEX, RGB, HSL, and CMYK codes with one-click copy.',
+      'Built for web designers, frontend developers, brand stylists, and illustrators, our browser image color picker samples exact RGBA pixels from any photo, logo, or screenshot. Hover to inspect an 11×11 magnified loupe with live HEX readout, click pixels to save swatches, and export CSS custom properties without uploading your files.',
     howToSteps: [
       {
-        title: 'Upload or paste an image',
+        title: 'Upload an image or paste a screenshot',
         description:
-          'Drop a screenshot, logo, or photo, or press Ctrl+V to paste directly from your clipboard.',
+          'Drop a JPG, PNG, WebP, HEIC, SVG, BMP, or GIF file up to 20 MB, or press Ctrl+V to paste a screenshot straight from your clipboard.',
       },
       {
-        title: 'Hover & click to pick pixels',
+        title: 'Hover with the live Pixel Inspector loupe',
         description:
-          'Move across the canvas to see the magnified pixel grid and click or tap to save colors to your palette.',
+          'Move your cursor over the image canvas to see exact (x, y) pixel coordinates and an 11×11 zoomed crosshair grid updating the swatch in real time.',
       },
       {
-        title: 'Copy HEX, RGB, HSL or CSS',
+        title: 'Click pixels to pin and build swatches',
         description:
-          'Copy any color format in one click or export your collected swatches as CSS variables or JSON.',
+          'Click any spot on the canvas to lock its color into the Pixel Inspector and add it to Picked Swatches (up to 24 unique colors).',
+      },
+      {
+        title: 'Copy HEX, RGB, HSL, or CMYK values',
+        description:
+          'Click the copy icon next to HEX, RGB, HSL, or CMYK in the Pixel Inspector—or click any saved swatch pill—to copy the code immediately.',
+      },
+      {
+        title: 'Export your palette as CSS variables',
+        description:
+          'Click Export CSS in the Picked Swatches card to download picked-colors.css with clean :root custom properties ready for your stylesheet.',
       },
     ],
     features: [
@@ -1191,19 +1301,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'How accurate is the color picker?',
+        question: 'Does this image color picker sample from the full-resolution file or a shrunk preview?',
         answer:
-          'It reads the exact 8-bit RGBA pixel values directly from the full-resolution image canvas, not a downscaled thumbnail.',
+          'Every hover and click maps pointer coordinates proportionally onto an offscreen full-resolution HTML5 Canvas matching your image’s true naturalWidth × naturalHeight. Even if a large 4K photo scales down visually to fit your screen, getImageData reads the exact underlying pixel.',
       },
       {
-        question: 'Can I paste a screenshot directly into the color picker?',
+        question: 'How does the 11×11 magnified loupe help target thin lines or small icons?',
         answer:
-          'Yes! Take a screenshot and press Ctrl+V (or Cmd+V on Mac) anywhere on the page to load it instantly.',
+          'Moving across the canvas updates an 88×88 nearest-neighbor zoomed loupe displaying an 11×11 pixel grid around your cursor with a double-outlined crosshair on the exact active pixel. That prevents accidentally sampling anti-aliased border pixels next to crisp edges.',
       },
       {
-        question: 'What color formats can I copy?',
+        question: 'Which color code formats are calculated automatically for every picked pixel?',
         answer:
-          'You can copy HEX (#2563EB), RGB (rgb(37, 99, 235)), HSL, CMYK, or export your saved palette as CSS variables or JSON.',
+          'The Pixel Inspector converts the sampled RGB triplet simultaneously into uppercase HEX (#RRGGBB), CSS rgb(r, g, b), CSS hsl(h, s%, l%), and percentage CMYK values. Each row has its own one-click copy button.',
+      },
+      {
+        question: 'How many colors can I collect in Picked Swatches at one time?',
+        answer:
+          'Clicking different parts of your photo stores up to 24 unique HEX swatches in chronological order (skipping duplicates automatically). Clicking any saved swatch pill restores it in the inspector and copies its HEX code straight to your clipboard.',
+      },
+      {
+        question: 'What does the Export CSS button download?',
+        answer:
+          'Clicking Export CSS generates a picked-colors.css stylesheet containing a :root block with numbered custom properties (--color-1, --color-2, etc.) and inline RGB comments for every color in Picked Swatches. If you haven’t clicked multiple pixels yet, it exports your currently selected pixel.',
+      },
+      {
+        question: 'Why is a color already displayed right when an image loads?',
+        answer:
+          'On initial load, the inspector automatically samples the exact center pixel of your uploaded image so you immediately see live HEX, RGB, HSL, and CMYK readouts before moving your mouse. Moving or clicking anywhere updates those readouts instantly.',
+      },
+      {
+        question: 'Can I paste a screenshot directly with Ctrl+V to sample UI colors?',
+        answer:
+          'Yes, copy a webpage snippet, app UI, or design mockup to your clipboard and press Ctrl+V (or Cmd+V on Mac) while the upload area is open. It loads straight onto the sampling canvas without saving a temporary file first.',
+      },
+      {
+        question: 'Which file types can I inspect with the eyedropper tool?',
+        answer:
+          'You can load JPG, PNG, WebP, iPhone HEIC/HEIF, SVG, BMP, and GIF images up to 20 MB each. Vector SVGs rasterize cleanly onto Canvas so you can sample exact rendered fill colors directly.',
+      },
+      {
+        question: 'How accurate are the CMYK values shown in the Pixel Inspector?',
+        answer:
+          'CMYK percentages are computed mathematically from sRGB pixel values using standard RGB-to-CMYK conversion formulas. For commercial offset printing requiring strict ICC press profiles, treat them as helpful starting approximations rather than calibrated ink proofs.',
+      },
+      {
+        question: 'What happens if I sample a transparent area on a PNG logo?',
+        answer:
+          'HTML5 Canvas reads red, green, and blue channels at that coordinate—fully transparent Canvas pixels default to 0, 0, 0 (#000000) when RGB channels are empty. Sample directly over opaque strokes or shapes to inspect your true artwork colors.',
+      },
+      {
+        question: 'Are private UI mockups or client brand assets uploaded to any server?',
+        answer:
+          'No, pixel reading via Canvas getImageData runs strictly in your local browser memory. Unreleased designs, confidential screenshots, and personal photos never leave your computer or phone.',
+      },
+      {
+        question: 'Does the color picker work on Chrome, Safari, and Firefox without browser extensions?',
+        answer:
+          'Yes, unlike the experimental EyeDropper browser API that only works in desktop Chromium, our HTML5 Canvas sampler runs across Firefox, Safari, Edge, and Chrome. No browser extensions, special permissions, or plugins are required.',
+      },
+      {
+        question: 'How do I switch to a different photo after picking swatches?',
+        answer:
+          'Click the New Image button in the top-right corner of the canvas header at any time. That clears the active image, resets the Picked Swatches list cleanly, and returns you to the upload zone.',
+      },
+      {
+        question: 'Can I inspect exact pixel coordinates alongside the color value?',
+        answer:
+          'Yes, the Pixel Inspector header displays live x and y coordinates (for example, x:412, y:198) in monospace type as you hover over the canvas. That helps you match specific pixels consistently across large assets.',
+      },
+      {
+        question: 'Why does clicking a color inside a JPEG photo vary slightly between adjacent pixels?',
+        answer:
+          'JPEG compression uses chroma subsampling and block transforms that introduce slight pixel-to-pixel variations across flat surfaces. Using the 11×11 loupe lets you pick a clean representative pixel away from compressed edges.',
+      },
+      {
+        question: 'Can I tap colors accurately on an iPad or smartphone touchscreen?',
+        answer:
+          'Yes, tapping any area of the canvas on mobile triggers the sampler at your tap location, pins the swatch, updates all four color formats, and adds the HEX code to Picked Swatches. You can also tap any saved swatch pill to copy it.',
+      },
+      {
+        question: 'Does this tool replace my saved swatches if I click the same hex color twice?',
+        answer:
+          'No, Picked Swatches checks for matching HEX strings automatically and ignores duplicates. That keeps your collected palette tidy even if you sample the same background or brand color multiple times.',
+      },
+      {
+        question: 'Why use HSL alongside HEX and RGB when styling websites?',
+        answer:
+          'HSL (Hue, Saturation, Lightness) makes it easy for CSS developers to derive lighter hover states or darker borders by adjusting only the lightness percentage while keeping hue constant. Having both HEX and HSL side by side saves manual conversion.',
+      },
+      {
+        question: 'What is the maximum image file size allowed in the color picker?',
+        answer:
+          'Individual uploaded images can be up to 20 MB in file size. That ceiling easily handles high-megapixel camera photos, large Figma PNG exports, and full-page screenshots.',
+      },
+      {
+        question: 'Is there any cost, account, or limit on how many colors I can sample?',
+        answer:
+          'No, the image color picker is completely free with no accounts or paywalls. You can upload unlimited images and export CSS color palettes with zero watermarks.',
       },
     ],
     relatedSlugs: ['/favicon-generator', '/image-dimensions-checker', '/image-resizer', '/'],
@@ -1213,27 +1408,37 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Dimensions Checker',
     shortDescription: 'Check width, height, aspect ratio, megapixels & print size.',
     category: 'developer',
-    seoTitle: 'Image Dimensions Checker – Check Pixel Size & Aspect Ratio',
+    seoTitle: 'Image Dimensions Checker – Pixel Size & Aspect Ratio',
     seoDescription:
-      'Check exact image width, height, aspect ratio, orientation, megapixels, transparency, and print size for multiple images instantly in your browser.',
-    h1: 'Image Dimensions & Aspect Ratio Checker',
+      'Use this free image dimensions checker to inspect pixel width, height, aspect ratio, megapixels, alpha, and 300 DPI print size across batches in your browser.',
+    h1: 'Image Dimensions Checker & Ratio Tool',
     subtitle:
-      'Instantly inspect exact pixel dimensions, simplified aspect ratios, megapixels, orientation, transparency, and 300 DPI print sizes for one or dozens of images.',
+      'Ideal for e-commerce managers, ad buyers, UI developers, and print designers, our image dimensions checker reads pixel width, height, aspect ratio, megapixels, and 300 DPI print size in seconds. Drop entire batches of assets, validate minimum pixel requirements, and export clean CSV or JSON reports privately on your device.',
     howToSteps: [
       {
-        title: 'Upload images to inspect',
+        title: 'Drop or select one or multiple images',
         description:
-          'Drop one or more JPG, PNG, WebP, HEIC, GIF, BMP, SVG, or AVIF images into the dropzone.',
+          'Upload JPG, PNG, WebP, HEIC, SVG, BMP, GIF, or AVIF files up to 20 MB each into the dropzone, or paste via Ctrl+V.',
       },
       {
-        title: 'Review dimensions & ratios',
+        title: 'Inspect pixel dimensions and aspect ratios',
         description:
-          'View exact width × height, orientation, simplified aspect ratio (e.g. 16:9), megapixels, file size, and print dimensions.',
+          'Review exact Width × Height (px), Megapixels, Orientation (Landscape, Portrait, Square), and simplified/decimal Aspect Ratio in the table.',
       },
       {
-        title: 'Validate rules or export report',
+        title: 'Verify file weight, format, and Alpha channel',
         description:
-          'Optionally check images against minimum/maximum dimension rules and export the table as CSV or JSON.',
+          'Check Size / Format column values to spot true detected container types, byte counts, and whether transparent Alpha pixels exist.',
+      },
+      {
+        title: 'Check estimated 300 DPI print size',
+        description:
+          'Look at the Print @300 DPI column to see maximum crisp physical print dimensions in inches (W" × H") before uploading to print labs.',
+      },
+      {
+        title: 'Run minimum spec checks and export CSV or JSON',
+        description:
+          'Enter optional Min Width Check (px) and Min Height Check (px) rules to flag Pass or Below Min, then click Export CSV or Export JSON.',
       },
     ],
     features: [
@@ -1260,19 +1465,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Does checking dimensions modify or compress my images?',
+        question: 'Does running this image dimensions checker alter or re-save my images?',
         answer:
-          'No. The tool only reads image dimensions and properties in your browser memory without altering any files.',
+          'No, the checker reads natural pixel dimensions, file bytes, and container properties purely in browser memory. Nothing is compressed, cropped, overwritten, or uploaded to external servers.',
       },
       {
-        question: 'What print size does the checker calculate?',
+        question: 'Which image file formats can I inspect in a batch?',
         answer:
-          'It estimates physical print width and height in inches and centimeters at standard 300 DPI (high-quality print) and 72 DPI (screen).',
+          'You can drop JPG, PNG, WebP, iPhone HEIC/HEIF, SVG, BMP, GIF, and browser-supported AVIF images up to 20 MB per file. Mixed formats can be dropped together in the same batch table.',
       },
       {
-        question: 'Can I check SVG and HEIC image dimensions too?',
+        question: 'How does the Min Width Check and Min Height Check validator work?',
         answer:
-          'Yes. It supports JPG, PNG, WebP, HEIC, GIF, BMP, SVG, and AVIF files right in your browser.',
+          'Typing a pixel threshold into Min Width Check (px) or Min Height Check (px) adds a live Spec Check column to the table. Every row immediately displays a green Pass badge or an amber Below Min alert so undersized creatives stand out fast.',
+      },
+      {
+        question: 'How are common aspect ratios like 16:9 or 4:5 matched vs exact ratios?',
+        answer:
+          'First, the calculator computes the mathematically reduced width:height ratio via greatest common divisor and decimal ratio (for example, 1.78:1). When an image matches or sits very close to standard frame ratios like 16:9, 4:3, 3:2, 1:1, 4:5, or 9:16, it displays that recognizable label directly.',
+      },
+      {
+        question: 'How is the Print @300 DPI dimension calculated from pixels?',
+        answer:
+          'Print width and height in inches are computed by dividing pixel width and height by 300 pixels per inch (for example, 3000 × 2400 px equals 10.0" × 8.0" at 300 DPI). The exported JSON also retains 72 DPI screen-scale print equivalents.',
+      },
+      {
+        question: 'What columns are included when I click Export CSV?',
+        answer:
+          'Clicking Export CSV downloads image-dimensions-report.csv with ten structured columns: Filename, Width (px), Height (px), Orientation, Aspect Ratio, Megapixels, File Size (Bytes), Format, Transparency, and Print Size @300DPI. Filenames containing commas or quotes are properly CSV-escaped.',
+      },
+      {
+        question: 'What does Export JSON save compared to CSV?',
+        answer:
+          'Export JSON writes a formatted image-dimensions-report.json array containing clean metadata objects for every inspected row (omitting internal preview URLs and temporary row IDs). Developers and QA scripts can parse it straight into automated asset checks.',
+      },
+      {
+        question: 'How does the checker detect whether a PNG or WebP actually has Alpha transparency?',
+        answer:
+          'Instead of guessing from the file extension, the loader scans pixel alpha bytes on Canvas to verify whether any pixel has opacity below 255. Images with true transparent regions show an Alpha tag right under their format.',
+      },
+      {
+        question: 'Can I append additional folders or batches to an existing dimension table?',
+        answer:
+          'Yes, dropping or browsing more images adds new rows right onto the bottom of your existing table without wiping earlier entries. Click Clear anytime you want to reset the table for a fresh project.',
+      },
+      {
+        question: 'Why do iPhone photos display Landscape vs Portrait accurately here?',
+        answer:
+          'Modern browsers normalize EXIF camera rotation automatically when decoding JPEG and HEIC images into natural dimensions. That guarantees a vertical smartphone shot reports Portrait orientation and tall pixel bounds correctly.',
+      },
+      {
+        question: 'How are megapixels (MP) calculated for my images?',
+        answer:
+          'Megapixels equal (Width × Height) divided by 1,000,000, rounded to two decimal places (for instance, 1920 × 1080 = 2.07 MP). That matches standard camera sensor and print marketplace reporting.',
+      },
+      {
+        question: 'What happens if I upload a file with a misleading extension, like a WebP named .jpg?',
+        answer:
+          'Our inspector reads the underlying binary type resolved during decoding rather than trusting the filename suffix blindly. You will see the true detected format alongside the exact byte weight in the Size / Format column.',
+      },
+      {
+        question: 'Can I check intrinsic dimensions of SVG graphics as well?',
+        answer:
+          'Yes, self-contained SVG files with width/height attributes or a viewBox decode natively inside the browser. The dimensions table reads their rendered pixel width, height, and aspect ratio cleanly.',
+      },
+      {
+        question: 'Are unreleased ad creatives or confidential product shots sent online?',
+        answer:
+          'Never — all image decoding, transparency detection, spec checking, and CSV/JSON generation execute inside your own browser tab. Zero bytes leave your device.',
+      },
+      {
+        question: 'Can I paste a clipboard image directly to verify its pixel resolution?',
+        answer:
+          'Yes, press Ctrl+V (or Cmd+V on Mac) to append a copied screenshot or graphic straight into the dimensions table. You can immediately read its exact pixel size, megapixel count, and aspect ratio.',
+      },
+      {
+        question: 'Why might an Amazon, Etsy, or Shopify product image fail Min Width Check?',
+        answer:
+          'Many marketplaces require at least 1000 px or 1200 px on the shortest or longest side to enable zoom previews. Entering 1200 into Min Width Check lets you audit an entire product catalog before uploading.',
+      },
+      {
+        question: 'What happens if one unreadable file is mixed into a large batch drop?',
+        answer:
+          'If a file exceeds the 20 MB limit or fails browser decoding, UploadZone flags or skips that invalid item gracefully. Every valid image in the same drop still populates normally in your dimensions table.',
+      },
+      {
+        question: 'Can I use this dimension checker on a phone or tablet?',
+        answer:
+          'Yes, open the tool in iOS Safari or Android Chrome, pick photos from your camera roll, and inspect exact pixel dimensions and megapixel sizes on the go. The table scrolls horizontally on narrow screens so no columns are clipped.',
+      },
+      {
+        question: 'How can I fix an image that fails my minimum spec check or wrong aspect ratio?',
+        answer:
+          'Click the linked Image Resizer or Image Cropper cards in Related Free Image Tools below the guide. You can crop to an exact 16:9, 4:5, or 1:1 ratio or scale dimensions directly in your browser.',
+      },
+      {
+        question: 'Is there any daily limit or fee for batch dimension reports?',
+        answer:
+          'No, inspecting unlimited batches of images up to 20 MB per file is completely free. You can download CSV and JSON reports as often as needed without accounts or watermarks.',
       },
     ],
     relatedSlugs: ['/image-resizer', '/image-metadata-viewer', '/image-color-picker', '/'],
@@ -1588,16 +1878,43 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Blur & Pixelate Image',
     shortDescription: 'Blur or pixelate the whole photo or brush sensitive areas only.',
     category: 'crop-edit',
-    seoTitle: 'Blur & Pixelate Image Online Free – Censor Faces & Text',
+    seoTitle: 'Blur & Pixelate Image Free – Censor Faces & Text Online',
     seoDescription:
-      'Blur or pixelate an entire image or paint with a censor brush to hide faces, license plates, and sensitive details privately in your browser.',
+      'Easily blur or pixelate image areas online using a smooth censor brush or whole-frame mode. Hide faces, license plates, and private text right in your browser.',
     h1: 'Blur & Pixelate Image Online',
     subtitle:
-      'Apply smooth blur or mosaic pixelation to an entire photo, or paint directly over faces, license plates, and private text with the interactive censor brush.',
+      'Made for journalists, teachers, marketplace sellers, and everyday privacy users, this browser tool lets you blur or pixelate image details permanently before sharing online. Paint selectively over faces, license plates, or addresses with the interactive censor brush, or apply smooth blur and pixelation across the whole frame locally.',
     howToSteps: [
-      { title: 'Upload your image', description: 'Drop any JPG, PNG, WebP, or HEIC photo to edit privately.' },
-      { title: 'Choose Whole Image or Brush Area', description: 'Pick Blur or Pixelate, adjust strength, and either apply globally or brush specific regions.' },
-      { title: 'Download censored image', description: 'Inspect the result and download clean JPG, PNG, or WebP output.' },
+      {
+        title: 'Upload a photo or screenshot',
+        description:
+          'Drop any JPG, PNG, WebP, HEIC, GIF, BMP, or SVG image up to 20 MB into the dropzone, or paste directly with Ctrl+V.',
+      },
+      {
+        title: 'Pick Brush Area or Whole Image',
+        description:
+          'Keep Brush Area selected to censor only painted regions like faces and numbers, or switch to Whole Image to blur or pixelate the entire frame.',
+      },
+      {
+        title: 'Choose Pixelate Mosaic or Smooth Blur',
+        description:
+          'Toggle between blocky Pixelate Mosaic tiles or Smooth Blur depending on the style you want.',
+      },
+      {
+        title: 'Set strength and Brush Size',
+        description:
+          'Adjust Mosaic Block Size (4–60 px) or Blur Radius (2–50 px), and tune Brush Size (2%–20%) when painting selectively.',
+      },
+      {
+        title: 'Paint over sensitive details',
+        description:
+          'Click and drag directly across faces, license plates, or private text on the preview canvas; click Undo or Reset Brush anytime.',
+      },
+      {
+        title: 'Choose format and download',
+        description:
+          'Pick Orig, JPG, PNG, or WebP output, set Quality (10%–100%) for lossy formats, and click Download Image to save locally.',
+      },
     ],
     features: [
       { title: 'Interactive Censor Brush', description: 'Paint over faces, addresses, or license plates with adjustable brush size and stroke undo.' },
@@ -1606,9 +1923,106 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       { title: 'Full-Resolution Export', description: 'Brush coordinates map accurately to full original image pixels for crisp exports.' },
     ],
     faqs: [
-      { question: 'Is the blurred or pixelated data permanently removed in the download?', answer: 'Yes. The exported image flattens the blurred or pixelated pixels into a new bitmap with no reversible layers.' },
-      { question: 'Can I undo brush strokes if I make a mistake?', answer: 'Yes. Use Undo Stroke or Clear Strokes at any time before downloading.' },
-      { question: 'Can I combine whole-image blur and brush pixelation?', answer: 'You can switch between Blur and Pixelate modes and adjust strength before exporting.' },
+      {
+        question: 'Can blurred or pixelated regions ever be unblurred or reversed from the downloaded file?',
+        answer:
+          'No, exporting flattens your strokes directly into a single flat raster bitmap (JPG, PNG, or WebP) with no hidden layers or undo history inside the image. Once downloaded, the original sharp pixels behind the censored mask are permanently gone.',
+      },
+      {
+        question: 'Why is Pixelate Mosaic often safer than light Smooth Blur for hiding text?',
+        answer:
+          'Aggressive Mosaic Block Size (20 px to 60 px) merges characters into large solid color squares, destroying fine letter outlines completely. Very small blur radii can sometimes leave faint word shapes guessable, so using a higher Blur Radius or Pixelate Mosaic gives stronger redaction.',
+      },
+      {
+        question: 'How does the Brush Area mode keep crisp areas outside my strokes untouched?',
+        answer:
+          'In Brush Area mode, your base image draws at full clarity while each painted stroke acts as an offscreen alpha mask compositing only the blurred or pixelated region on top. Unpainted parts of the photo stay completely sharp.',
+      },
+      {
+        question: 'Can I mix both pixelated strokes and blurred strokes on the same image?',
+        answer:
+          'Yes, every stroke stores the Effect Style (Pixelate Mosaic or Smooth Blur), strength, and brush radius active when you painted it. You can pixelate a license plate first, switch to Smooth Blur, and brush a background face on the same photo.',
+      },
+      {
+        question: 'Does painting on the scaled preview map accurately to huge camera photos?',
+        answer:
+          'Yes, all pointer coordinates save in normalized 0-to-1 ratios alongside proportional brush and effect scaling. When you click Download Image, the composite renders onto a full-resolution canvas matching your source dimensions.',
+      },
+      {
+        question: 'How can I fix a slip while painting over a face or address?',
+        answer:
+          'Click the Undo button above the preview canvas to remove only your most recent stroke without clearing earlier redactions. If you want to start clean, click Reset Brush to erase every stroke immediately.',
+      },
+      {
+        question: 'What does switching Target Area to Whole Image do?',
+        answer:
+          'Whole Image applies your active Smooth Blur radius or Pixelate Mosaic block size evenly across every pixel from edge to edge. It is handy for creating dreamy background plates, hero backdrops, or retro pixel-art textures without brushing.',
+      },
+      {
+        question: 'Are unredacted photos with faces, IDs, or private addresses sent to any server?',
+        answer:
+          'Never — uploading uncensored sensitive images to a remote server would compromise privacy before you even hide anything. Every canvas mask, blur pass, and final download executes strictly inside your browser.',
+      },
+      {
+        question: 'How big should I set Brush Size and Mosaic Block Size for small screenshots?',
+        answer:
+          'For chat screenshots or mobile captures, a Brush Size of 4%–8% targets single lines of text or usernames cleanly without smearing nearby messages. Setting Mosaic Block Size around 12–24 px usually obscures small text legibly.',
+      },
+      {
+        question: 'Which image file formats can I blur or pixelate here?',
+        answer:
+          'You can upload JPG, PNG, WebP, iPhone HEIC/HEIF, GIF, BMP, and SVG images up to 20 MB per file. Note that multi-frame animated GIFs censor and export their opening frame as a static file.',
+      },
+      {
+        question: 'Can I censor sensitive parts of a screenshot pasted with Ctrl+V?',
+        answer:
+          'Yes, take a screenshot to your clipboard and press Ctrl+V (or Cmd+V on Mac) while the upload dropzone is visible. It opens directly in Brush Area mode ready to redact and save.',
+      },
+      {
+        question: 'Does exporting preserve transparent backgrounds on PNG or WebP graphics?',
+        answer:
+          'Yes, keeping Orig (for PNG/WebP) or choosing PNG or WebP keeps alpha transparency intact around non-rectangular stickers or UI cutouts. Choosing JPG exports an opaque JPEG image.',
+      },
+      {
+        question: 'Why are Undo and Reset Brush buttons only visible in Brush Area mode?',
+        answer:
+          'Those buttons manage individual painted brush strokes, so they hide automatically when you toggle to Whole Image mode. Switching back to Brush Area restores your saved strokes right where you left them.',
+      },
+      {
+        question: 'Can I use my finger or Apple Pencil on a phone or tablet to paint censor strokes?',
+        answer:
+          'Yes, the canvas attaches touch-none Pointer events specifically built for mobile touchscreens and styluses. You can drag censor strokes across faces or text smoothly without accidentally scrolling the page.',
+      },
+      {
+        question: 'Does censoring and exporting also strip EXIF camera GPS tags?',
+        answer:
+          'Yes, rendering the redacted composite through a fresh HTML5 Canvas omits original JPEG EXIF headers and GPS coordinates automatically. That protects both visual details and hidden file metadata.',
+      },
+      {
+        question: 'Why does Quality hide when I choose PNG output?',
+        answer:
+          'PNG uses lossless pixel compression, so lossy quality percentages do not apply. Select Orig (when editing a JPEG), JPG, or WebP if you want to tune the 10%–100% Quality slider.',
+      },
+      {
+        question: 'What filename is used when I save my blurred or pixelated photo?',
+        answer:
+          'The downloader keeps your sanitized base filename and appends _blur or _pixelate based on your active Effect Style. That lets you keep censored exports (like receipt_pixelate.png) cleanly organized next to originals.',
+      },
+      {
+        question: 'What if I want to blur a whole portrait background cleanly without painting?',
+        answer:
+          'Use Whole Image mode when you want uniform background softening behind overlay graphics or UI cards. For isolating a subject on a clean backdrop, pair it with our Background Remover tool.',
+      },
+      {
+        question: 'How strong can Smooth Blur and Pixelate Mosaic go?',
+        answer:
+          'Blur Radius ranges from subtle 2 px smoothing up to heavy 50 px Gaussian-style blurring. Mosaic Block Size spans fine 4 px tiles up to chunky 60 px blocks scaled proportionally to your source resolution.',
+      },
+      {
+        question: 'Are there any watermarks, daily limits, or signups for censoring photos?',
+        answer:
+          'No, you can blur or pixelate photos up to 20 MB per file with zero watermarks or signups. All local processing stays completely free across unlimited exports.',
+      },
     ],
     relatedSlugs: ['/remove-image-metadata', '/image-cropper', '/image-filters', '/'],
   },
@@ -1617,16 +2031,43 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Add Text to Image',
     shortDescription: 'Add draggable styled text overlays with fonts, outline & shadow.',
     category: 'crop-edit',
-    seoTitle: 'Add Text to Image Online Free – Custom Fonts, Outline & Shadow',
+    seoTitle: 'Add Text to Image Free – Fonts, Outlines & Drag Layers',
     seoDescription:
-      'Add custom text overlays to JPG, PNG, and WebP images online free. Drag to position, change fonts, colors, bold/italic, rotation, outline, and shadow.',
+      'Use our browser editor to add text to image files free with draggable layers, 5 fonts, bold/italic styles, outline strokes, shadows, and rotation—no watermark.',
     h1: 'Add Text to Image Online',
     subtitle:
-      'Create memes, social captions, or annotated screenshots with draggable text layers, custom fonts, bold/italic styles, rotation, outlines, and drop shadows.',
+      'Built for content creators, social media managers, teachers, and meme makers, this private tool makes it easy to add text to image files without heavyweight design apps. Layer multiple headlines or multi-line captions, customize fonts, outlines, shadows, and rotation, and export cleanly with zero watermarks.',
     howToSteps: [
-      { title: 'Upload an image', description: 'Select any photo or screenshot from your device or paste with Ctrl+V.' },
-      { title: 'Add & style text layers', description: 'Type your text, choose font, size, color, bold/italic, outline, shadow, and rotation.' },
-      { title: 'Drag to position & download', description: 'Drag text layers directly on the image and export your finished graphic.' },
+      {
+        title: 'Upload an image or paste from clipboard',
+        description:
+          'Drop a JPG, PNG, WebP, HEIC, GIF, BMP, or SVG photo up to 20 MB into the dropzone, or paste directly with Ctrl+V.',
+      },
+      {
+        title: 'Type multi-line text and manage layers',
+        description:
+          'Edit your copy inside Text Content (Enter adds line breaks) and click Add to stack extra layers like Text 1, Text 2, or delete unwanted ones.',
+      },
+      {
+        title: 'Pick font, fill color, Bold, and Italic',
+        description:
+          'Choose among Inter, Impact, Georgia, Courier, or Trebuchet, set your text Fill color picker, and toggle Bold or Italic styling.',
+      },
+      {
+        title: 'Adjust Size, Rotation, Outline, and Shadow',
+        description:
+          'Slide Size (2%–22%) and Rotation (-180° to +180°), then customize Text Outline color and width (1–10) plus optional Drop Shadow.',
+      },
+      {
+        title: 'Drag layers directly on the image',
+        description:
+          'Click and drag any text block straight on the preview canvas to position headlines, meme captions, or screenshot callouts precisely.',
+      },
+      {
+        title: 'Choose output format and download',
+        description:
+          'Select Orig, JPG, PNG, or WebP output, set Quality (10%–100%) for lossy files, and click Download Image with Text.',
+      },
     ],
     features: [
       { title: 'Multiple Draggable Text Layers', description: 'Add headlines, captions, and callouts and drag each one independently on the canvas.' },
@@ -1635,9 +2076,106 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       { title: 'Clean Full-Resolution Export', description: 'No watermarks added — download directly in JPG, PNG, or WebP.' },
     ],
     faqs: [
-      { question: 'Can I add more than one text block to a photo?', answer: 'Yes. Click Add Text Layer to place multiple independent text overlays anywhere on the image.' },
-      { question: 'How do I make white text readable on bright photos?', answer: 'Enable Text Outline (with a dark stroke color) and/or Drop Shadow for crisp contrast.' },
-      { question: 'Are my photos uploaded anywhere?', answer: 'No. Text rendering and export happen 100% locally in your browser.' },
+      {
+        question: 'Can I add multiple separate headlines or top-and-bottom meme captions?',
+        answer:
+          'Yes, click the Add button next to the Text 1 tab to create Text 2, Text 3, and as many independent text layers as you need. Each layer keeps its own font, color, size, rotation, outline, and drag position on the image.',
+      },
+      {
+        question: 'Which fonts are built into the Add Text to Image editor?',
+        answer:
+          'You can switch instantly between five reliable system-matched families: Inter / Clean Sans, Impact / Meme Display, Georgia / Classic Serif, Courier / Monospace, and Trebuchet / Rounded Sans. All five work reliably offline without waiting for external font downloads.',
+      },
+      {
+        question: 'How do I create classic white meme text with a thick dark border?',
+        answer:
+          'Select Impact / Meme Display, leave Bold active and Fill set to white (#ffffff), and keep Text Outline checked with a dark outline color like #0f172a or black. Drag the outline thickness slider toward 6–10 for unmistakable contrast.',
+      },
+      {
+        question: 'Does hitting Enter inside Text Content create multi-line captions?',
+        answer:
+          'Yes, Text Content supports full multi-line line breaks centered neatly with a 1.22 line-height multiplier. That makes stacking multi-line quotes, tutorial callouts, or long captions effortless without creating separate layers per line.',
+      },
+      {
+        question: 'How do I select and move one specific layer when I have several on the photo?',
+        answer:
+          'Click a layer tab (Text 1, Text 2, etc.) in the right panel to switch active typography controls. You can also click directly near any text block on the canvas—the editor grabs whichever layer is closest to your pointer.',
+      },
+      {
+        question: 'Can I tilt text diagonally at custom angles?',
+        answer:
+          'Yes, drag the Rotation slider anywhere between -180° and +180° for each active text layer. Each block pivots smoothly around its center coordinates for angled stamps, callouts, or playful captions.',
+      },
+      {
+        question: 'How does text Size (2%–22%) scale on small vs 4K photos?',
+        answer:
+          'Font size scales as a percentage of your output image width (with a 12 px minimum floor). That keeps proportions consistent between the on-screen preview and full-resolution exported files.',
+      },
+      {
+        question: 'Are screenshots or family photos uploaded anywhere when adding captions?',
+        answer:
+          'No, Canvas compositing renders every font glyph, stroke, shadow, and rotation locally inside your browser tab. Your base images and finished graphics never leave your device.',
+      },
+      {
+        question: 'What happens to transparent PNG stickers if I export with text added?',
+        answer:
+          'Choosing Orig (from PNG/WebP), PNG, or WebP preserves transparent areas around your graphic cleanly. If you pick JPG output, transparent regions flatten smoothly onto a solid white backdrop.',
+      },
+      {
+        question: 'How do I remove an extra text layer without clearing the whole image?',
+        answer:
+          'Select the layer tab you want to discard and click the trash icon next to the Add button. When only one layer remains, clearing its text box hides it temporarily without losing the editor.',
+      },
+      {
+        question: 'Can I change the background photo without losing my styled text layers?',
+        answer:
+          'Click Change Image in the preview header to return to the dropzone and load another file. Your existing text layers and styling stay ready so you can reuse the same caption setup across photos.',
+      },
+      {
+        question: 'Which image file formats can I open to add text?',
+        answer:
+          'The editor opens JPG, PNG, WebP, iPhone HEIC/HEIF, GIF, BMP, and SVG files up to 20 MB each. Animated GIFs export as a single static captioned frame.',
+      },
+      {
+        question: 'Can I drag and drop text layers using a smartphone touchscreen?',
+        answer:
+          'Yes, canvas dragging relies on touch-none Pointer events designed for fingers and styluses. You can reposition captions cleanly in iOS Safari and Android Chrome without scrolling the page.',
+      },
+      {
+        question: 'How does Drop Shadow improve legibility alongside Text Outline?',
+        answer:
+          'Drop Shadow casts a soft dark blur scaled proportionally to your font size beneath the lettering. Enabling Drop Shadow without an outline creates clean editorial subtitles, while pairing both maximizes readability over busy textures.',
+      },
+      {
+        question: 'Can I paste a screenshot via Ctrl+V to annotate it quickly?',
+        answer:
+          'Yes, copy any screenshot or slide and press Ctrl+V (or Cmd+V on Mac) on the page before loading a file. It loads right into the canvas ready for text callouts and clean export.',
+      },
+      {
+        question: 'Why does the Quality slider disappear when PNG is chosen?',
+        answer:
+          'PNG encodes images losslessly without a compression quality percentage slider. Pick Orig (for JPEGs), JPG, or WebP if you want to adjust export Quality from 10% to 100%.',
+      },
+      {
+        question: 'Does adding text via Canvas remove hidden camera EXIF GPS tags?',
+        answer:
+          'Yes, drawing onto a fresh HTML5 Canvas creates a brand-new bitmap without copying over EXIF headers. Your GPS location and camera metadata stay stripped from the saved export.',
+      },
+      {
+        question: 'What filename is saved when downloading an annotated photo?',
+        answer:
+          'Downloaded files keep your sanitized base filename and append _text plus your chosen extension (such as meme_text.jpg). That avoids overwriting your original unannotated picture.',
+      },
+      {
+        question: 'How is this different from the Image Watermark tool?',
+        answer:
+          'Image Watermark focuses on single or diagonal tiled brand stamps and uploaded PNG/SVG logos. Add Text to Image instead provides multiple independent draggable text layers, 5 fonts, bold/italic controls, and thick meme strokes.',
+      },
+      {
+        question: 'Does CompressMyPic place any logo or watermark on images exported here?',
+        answer:
+          'No, your downloaded files contain only your image and the exact text layers you created. Everything runs free in your browser with zero watermarks and no signup.',
+      },
     ],
     relatedSlugs: ['/image-watermark', '/image-border-generator', '/image-filters', '/'],
   },
@@ -1646,16 +2184,43 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Border Generator',
     shortDescription: 'Add solid or gradient borders, frames, rounded corners & shadows.',
     category: 'crop-edit',
-    seoTitle: 'Image Border & Frame Generator Online Free – Solid & Gradient',
+    seoTitle: 'Image Border Generator Free – Solid, Gradient & Polaroid',
     seoDescription:
-      'Add solid or gradient borders, Polaroid frames, rounded corners, and drop shadows to images free in your browser. Instant preview and download.',
-    h1: 'Image Border & Frame Generator',
+      'Frame photos fast with our free image border generator. Apply solid, linear gradient, or Polaroid frames, rounded corners, and drop shadows locally in browser.',
+    h1: 'Free Image Border Generator',
     subtitle:
-      'Frame photos with solid colors, custom gradients, Polaroid-style borders, rounded corners, and soft drop shadows — processed locally at full resolution.',
+      'Crafted for photographers, Etsy shop owners, portfolio designers, and social creators, our free image border generator wraps any picture in crisp gallery mattes, two-color gradients, or classic Polaroid frames. Fine-tune border thickness, inner and outer corner radii, and elevation shadows right in your browser before exporting.',
     howToSteps: [
-      { title: 'Upload your image', description: 'Drop any JPG, PNG, WebP, or HEIC image.' },
-      { title: 'Pick frame style & border size', description: 'Choose Solid, Gradient, or Polaroid styles, set border thickness, corner radius, and shadow.' },
-      { title: 'Export framed image', description: 'Download your bordered image in PNG, JPG, or WebP.' },
+      {
+        title: 'Drop or select an image to frame',
+        description:
+          'Upload any JPG, PNG, WebP, HEIC, GIF, BMP, or SVG photo up to 20 MB, or paste via Ctrl+V.',
+      },
+      {
+        title: 'Pick a Quick Frame Preset or Border Style',
+        description:
+          'Click Classic White, Polaroid Frame, Dark Studio, or Gradient Glow presets, or switch manually between Solid, Gradient, and Polaroid styles.',
+      },
+      {
+        title: 'Customize frame colors and gradient angle',
+        description:
+          'Set Border Color in Solid/Polaroid mode, or choose Start Color, End Color, and Gradient Angle (0°–360°) for linear gradient frames.',
+      },
+      {
+        title: 'Adjust Border Size and corner radii',
+        description:
+          'Slide Border Size (1%–25%) along with independent Frame Radius (0%–30%) and Photo Radius (0%–30%) sliders.',
+      },
+      {
+        title: 'Choose Drop Shadow and preview format',
+        description:
+          'Select none, soft, medium, or deep Drop Shadow and pick PNG, JPG, or WEBP output while checking the checkerboard preview.',
+      },
+      {
+        title: 'Download your framed image',
+        description:
+          'Click Download Framed Image to render the border and shadow at full source resolution and save <name>_framed.',
+      },
     ],
     features: [
       { title: 'Solid & Gradient Borders', description: 'Create clean gallery mattes or vibrant two-color linear gradient frames.' },
@@ -1664,8 +2229,106 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       { title: 'Lossless PNG Support', description: 'Export PNG to preserve transparent outer corners around shadows and rounded frames.' },
     ],
     faqs: [
-      { question: 'Can I make a Polaroid-style photo border?', answer: 'Yes. Choose the Polaroid preset for a classic white frame with extra space along the bottom edge.' },
-      { question: 'How do I keep the area outside a rounded border transparent?', answer: 'Select PNG or WebP as the output format so outer corners and drop shadows stay transparent.' },
+      {
+        question: 'How does the Polaroid Border Style differ from a standard Solid border?',
+        answer:
+          'Solid borders wrap uniform padding around all four edges of your photo, whereas Polaroid adds 3.2× extra white frame height along the bottom edge to replicate classic instant film prints. Clicking the Polaroid Frame preset configures clean proportions in one click.',
+      },
+      {
+        question: 'Why do Drop Shadows disappear when I switch output format to JPG?',
+        answer:
+          'JPG files do not support an alpha transparency channel for soft semi-transparent elevation shadows to fade cleanly onto page backgrounds. Our renderer preserves Drop Shadow padding in transparent PNG and WebP exports while keeping crisp border edges on solid-white JPGs.',
+      },
+      {
+        question: 'What is the difference between Frame Radius and Photo Radius?',
+        answer:
+          'Frame Radius (0%–30%) curves the outer corners of the colored border itself, while Photo Radius (0%–30%) curves the inner corners of your photograph inside that matte. Matching or contrasting both lets you build sleek UI cards or sharp gallery mattes.',
+      },
+      {
+        question: 'How does the Gradient Glow frame calculate angle and colors?',
+        answer:
+          'Selecting Gradient style reveals Start Color, End Color, and a 0°–360° Gradient Angle slider that draws a full diagonal or directional linear gradient behind your photo. You can click Gradient Glow under Quick Frame Presets for an instant blue-to-emerald card style.',
+      },
+      {
+        question: 'Does adding a border crop any edge of my original photo?',
+        answer:
+          'No, the image border generator expands the canvas outward around your full original image width and height rather than covering your pixels. Only setting Photo Radius above 0% softly rounds the four inner image corners.',
+      },
+      {
+        question: 'How is Border Size (1%–25%) calculated on tall vs wide photos?',
+        answer:
+          'Border thickness computes as a percentage of your image’s shorter dimension—min(width, height). That keeps top, bottom, and side margins evenly balanced on both 16:9 banners and 4:5 portraits.',
+      },
+      {
+        question: 'What do the four Quick Frame Presets configure automatically?',
+        answer:
+          'Classic White sets a 10% white gallery matte with soft shadow, while Polaroid Frame adds an instant-print bottom margin. Dark Studio applies a slate frame, and Gradient Glow creates a 135° blue-to-emerald gradient border.',
+      },
+      {
+        question: 'Why does the preview show a gray-and-white checkerboard around my frame?',
+        answer:
+          'That checkerboard visualizes true transparent pixels outside rounded frame corners and inside soft drop shadows. When exported as PNG or WebP, those checkerboard regions remain completely see-through on any website or presentation slide.',
+      },
+      {
+        question: 'Does framing run locally without uploading my photography?',
+        answer:
+          'Yes, gradient painting, corner clipping, shadow rendering, and Blob exporting happen strictly inside HTML5 Canvas on your device. Nothing ever uploads to external servers.',
+      },
+      {
+        question: 'Which image file formats can be loaded into the border generator?',
+        answer:
+          'You can drop JPG, PNG, WebP, iPhone HEIC/HEIF, GIF, BMP, and SVG images up to 20 MB each. Animated GIFs export as a framed static first frame.',
+      },
+      {
+        question: 'Can I change the frame color of a Quick Frame Preset after clicking it?',
+        answer:
+          'Yes, presets simply populate the Border Style, color, radius, and shadow controls for you. You can tweak Border Color, resize margins, or switch Drop Shadow immediately afterward.',
+      },
+      {
+        question: 'How can I make a dark charcoal or pastel gallery frame with zero shadow?',
+        answer:
+          'Pick Solid style, click Border Color to select any custom hex shade, and drag both Frame Radius and Photo Radius to 0%. Then click none under Drop Shadow for crisp flat borders.',
+      },
+      {
+        question: 'Will my downloaded framed image be full resolution?',
+        answer:
+          'Yes, the on-screen preview scales down purely to fit comfortably inside your layout. Clicking Download Framed Image builds a brand-new Canvas at your original photo’s exact pixel resolution plus the scaled frame and shadow.',
+      },
+      {
+        question: 'Should I export PNG or WebP when keeping transparent rounded frame corners?',
+        answer:
+          'Choose PNG when you want lossless sharpness around thin borders and print assets. Pick WebP for fast, lightweight website cards that still preserve transparent outer corners and elevation shadows.',
+      },
+      {
+        question: 'Can I paste a screenshot straight from my clipboard to wrap it in a card frame?',
+        answer:
+          'Yes, press Ctrl+V (or Cmd+V on Mac) on the upload zone right after taking a screenshot. Pairing a rounded border, gradient frame, and medium Drop Shadow turns raw screenshots into polished presentation visuals.',
+      },
+      {
+        question: 'Does adding a border remove hidden camera EXIF GPS data?',
+        answer:
+          'Yes, compositing onto HTML5 Canvas creates a clean framed bitmap. Source camera EXIF headers and GPS coordinates are excluded automatically from your downloaded PNG, JPG, or WebP.',
+      },
+      {
+        question: 'How do I load a second photo while testing frames?',
+        answer:
+          'Click Change Image in the top-right corner of the preview panel to pick another photo. All your active border colors, gradient angles, corner radii, and shadow choices stay intact.',
+      },
+      {
+        question: 'What filename does the framed image save with?',
+        answer:
+          'Exports preserve your sanitized original filename with _framed appended before .png, .jpg, or .webp. For example, a file named portrait.jpg saves cleanly as portrait_framed.png.',
+      },
+      {
+        question: 'Does the border generator work smoothly on mobile browsers?',
+        answer:
+          'Yes, every preset card, range slider, and color picker works cleanly in iOS Safari and Android Chrome. You can frame Polaroids or product shots right from your smartphone camera roll.',
+      },
+      {
+        question: 'Are there any watermarks, paywalls, or signup limits on framed photos?',
+        answer:
+          'No, every framed photo downloads completely watermark-free and free of charge. Only the standard 20 MB per-file check applies to keep local browser memory smooth.',
+      },
     ],
     relatedSlugs: ['/round-image-corners', '/add-background-to-image', '/image-filters', '/'],
   },
@@ -1674,16 +2337,43 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Round Image Corners',
     shortDescription: 'Round corners uniformly or per-corner with transparent PNG output.',
     category: 'crop-edit',
-    seoTitle: 'Round Image Corners Online Free – Transparent PNG Corner Clipper',
+    seoTitle: 'Round Image Corners Free – Transparent PNG Corner Clipper',
     seoDescription:
-      'Round image corners online free with uniform or per-corner radius sliders and transparent PNG or solid background output directly in your browser.',
+      'Easily round image corners online for free with uniform or per-corner sliders, circle avatar preset, and transparent PNG or WebP export right in your browser.',
     h1: 'Round Image Corners Online',
     subtitle:
-      'Create smooth rounded corners or circular avatars from any photo. Control all four corners together or individually with crisp transparent PNG export.',
+      'Designed for UI designers, newsletter authors, bloggers, and social users creating sleek cards or avatars, this browser tool lets you round image corners cleanly at full resolution. Curve all four corners uniformly, toggle individual per-corner sliders, or snap to a full circle with transparent PNG/WebP output.',
     howToSteps: [
-      { title: 'Upload your image', description: 'Drop a JPG, PNG, WebP, HEIC, or SVG image.' },
-      { title: 'Set corner radius', description: 'Drag the uniform radius slider or toggle Per-Corner mode to customize Top-Left, Top-Right, Bottom-Right, and Bottom-Left.' },
-      { title: 'Download PNG or WebP', description: 'Keep transparent corners with PNG/WebP or pick a solid background fill.' },
+      {
+        title: 'Drop or choose your image',
+        description:
+          'Upload a JPG, PNG, WebP, HEIC, GIF, BMP, or SVG photo up to 20 MB into the dropzone, or paste via Ctrl+V.',
+      },
+      {
+        title: 'Adjust All Corners Radius or click Full Circle / Pill',
+        description:
+          'Drag the All Corners Radius slider (0%–100%, showing exact pixel curvature) or click Full Circle / Pill to snap to 100%.',
+      },
+      {
+        title: 'Optionally enable Individual Per-Corner Control',
+        description:
+          'Toggle Individual Per-Corner Control to style Top Left, Top Right, Bottom Left, and Bottom Right corners independently.',
+      },
+      {
+        title: 'Pick Transparent or Solid Color outer fill',
+        description:
+          'Keep Transparent (PNG/WebP) active for see-through rounded corners, or switch to Solid Color and choose any hex backdrop.',
+      },
+      {
+        title: 'Select output format (PNG, WebP, or JPG)',
+        description:
+          'Pick PNG for lossless alpha edges, WebP for lighter transparent web assets, or JPG for opaque solid-corner backgrounds.',
+      },
+      {
+        title: 'Download your rounded image',
+        description:
+          'Inspect the checkerboard preview and click Download Rounded Image to export <name>_rounded at full original dimensions.',
+      },
     ],
     features: [
       { title: 'Uniform & Per-Corner Radius', description: 'Round all corners evenly up to a pill/circle, or style each corner independently.' },
@@ -1692,8 +2382,106 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       { title: 'Full-Resolution Output', description: 'Keeps your exact original pixel dimensions while clipping the corners cleanly.' },
     ],
     faqs: [
-      { question: 'Why should I choose PNG or WebP for rounded corners?', answer: 'JPG does not support transparency, so PNG or WebP is needed if you want invisible corners on any website background.' },
-      { question: 'Can I turn a square photo into a circle?', answer: 'Yes. Set the corner radius to 50% on a square image (or use our Image Cropper first for 1:1).' },
+      {
+        question: 'Why must I use PNG or WebP to keep rounded corners see-through?',
+        answer:
+          'The JPEG format does not support an alpha transparency channel, so corners outside a rounded mask would always turn solid white or opaque. PNG and WebP preserve smooth 8-bit anti-aliased transparency so your rounded card or avatar blends seamlessly over any webpage or slide color.',
+      },
+      {
+        question: 'How does the Full Circle / Pill shortcut work on square vs rectangular photos?',
+        answer:
+          'Clicking Full Circle / Pill sets All Corners Radius to 100% of half the shorter side—min(width, height) / 2. On a 1:1 square image, that cuts a perfect circle; on a wider banner, it forms a smooth stadium pill shape.',
+      },
+      {
+        question: 'What happens if I want only the top two corners rounded for a blog card?',
+        answer:
+          'Check Individual Per-Corner Control to unlock four separate sliders for Top Left, Top Right, Bottom Left, and Bottom Right (each 0%–100%). Set Bottom Left and Bottom Right to 0% while rounding only the top corners.',
+      },
+      {
+        question: 'How do I make a square portrait first if my photo is rectangular?',
+        answer:
+          'Open our Image Cropper tool (linked in Related Free Image Tools below), select the 1:1 aspect ratio preset, and download your square crop. Then drop that square file here and click Full Circle / Pill for a crisp circular avatar.',
+      },
+      {
+        question: 'What does the live pixel readout next to All Corners Radius mean?',
+        answer:
+          'Alongside the 0%–100% slider, the label calculates the exact corner curve in true output pixels (for example, 120px (24%)) relative to your original image dimensions. That makes matching CSS border-radius values straightforward.',
+      },
+      {
+        question: 'When should I choose Solid Color under Outer Corner Fill instead of Transparent?',
+        answer:
+          'Pick Solid Color when you plan to export a lightweight JPG, match a specific dark-mode card background, or upload to an app that replaces transparent PNG alpha with black. You can pick white or any exact hex code with the color swatch.',
+      },
+      {
+        question: 'What happens automatically if I click Transparent (PNG/WebP) while JPG is selected?',
+        answer:
+          'JPG files cannot store alpha transparency in outer corners. Clicking Transparent (PNG/WebP) therefore switches Output Format to PNG automatically so your rounded corners stay see-through.',
+      },
+      {
+        question: 'Does rounding corners shrink my photo’s width and height?',
+        answer:
+          'No, the exported image keeps your exact original width and height in pixels. Only the outer corner regions are clipped smoothly using quadratic corner curves.',
+      },
+      {
+        question: 'Why do curved edges look smooth instead of jagged pixels?',
+        answer:
+          'HTML5 Canvas clips along vector quadratic Bézier paths with high-quality smoothing enabled. That creates soft sub-pixel anti-aliasing along curves that blends naturally against dark or light page backgrounds.',
+      },
+      {
+        question: 'Are portraits or profile avatars uploaded to any server during corner clipping?',
+        answer:
+          'No, path clipping and PNG/WebP encoding run strictly inside your browser tab via HTML5 Canvas. Personal photos and brand logos never leave your device.',
+      },
+      {
+        question: 'Which input formats can be rounded in this tool?',
+        answer:
+          'Drop JPG, PNG, WebP, iPhone HEIC/HEIF, GIF, BMP, or SVG files up to 20 MB each. Animated GIFs export a rounded static first frame.',
+      },
+      {
+        question: 'Can I paste a clipboard screenshot directly to round its corners?',
+        answer:
+          'Yes, take a screenshot and press Ctrl+V (or Cmd+V on Mac) when the upload zone is active. It opens straight inside the checkerboard preview ready for corner rounding.',
+      },
+      {
+        question: 'What happens to my Individual Per-Corner values if I uncheck per-corner mode?',
+        answer:
+          'Unchecking Individual Per-Corner Control reverts the canvas to the single All Corners Radius slider so all four corners stay uniform. Re-checking it seeds all four corner sliders cleanly from your current uniform radius.',
+      },
+      {
+        question: 'Does rounding corners also remove embedded EXIF GPS tags?',
+        answer:
+          'Yes, rendering pixels through a clean Canvas clip strips original JPEG EXIF and GPS headers automatically. That protects privacy whenever you share rounded avatars or product thumbnails online.',
+      },
+      {
+        question: 'How do I replace the current image while keeping my corner radius setup?',
+        answer:
+          'Click Change Image above the preview stage to upload a new photo. Your uniform radius, per-corner values, fill mode, and output format remain active for fast repeat exports.',
+      },
+      {
+        question: 'What filename is assigned to downloaded rounded images?',
+        answer:
+          'The downloader keeps your sanitized original filename and adds _rounded before .png, .webp, or .jpg. For example, avatar.jpg downloads cleanly as avatar_rounded.png.',
+      },
+      {
+        question: 'Should I choose PNG or WebP when exporting rounded web graphics?',
+        answer:
+          'Pick PNG for maximum compatibility across older apps and lossless edge crispness. Pick WebP when you want substantially smaller website assets that still keep full alpha corner transparency.',
+      },
+      {
+        question: 'Can I use Round Image Corners on iOS or Android mobile browsers?',
+        answer:
+          'Yes, all sliders, checkboxes, and format toggles adapt smoothly to mobile screens in Safari and Chrome. You can round corners on portraits directly from your phone camera roll.',
+      },
+      {
+        question: 'How does this tool differ from Image Border Generator?',
+        answer:
+          'Round Image Corners clips your photo cleanly at its original dimensions without adding outer padding. Image Border Generator instead wraps colored mattes, gradients, or Polaroid frames around your picture.',
+      },
+      {
+        question: 'Are there any watermarks, fees, or daily limits on rounded exports?',
+        answer:
+          'No, you can round corners on unlimited photos up to 20 MB per file completely free. No watermarks, accounts, or paywalls ever appear on downloads.',
+      },
     ],
     relatedSlugs: ['/image-border-generator', '/image-cropper', '/add-background-to-image', '/'],
   },
@@ -1702,16 +2490,38 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Brightness Editor',
     shortDescription: 'Brighten or darken photos with live before/after preview.',
     category: 'crop-edit',
-    seoTitle: 'Image Brightness Editor Online Free – Lighten Dark Photos',
+    seoTitle: 'Image Brightness Editor Free – Lighten or Darken Photos',
     seoDescription:
-      'Adjust photo brightness online free from -100% to +100% with quick presets, live before-and-after comparison, and private browser export.',
-    h1: 'Online Image Brightness Editor',
+      'Adjust photo lighting fast with our free image brightness editor. Slide from -100% to +100%, use quick presets, compare before and after, and export privately.',
+    h1: 'Free Online Image Brightness Editor',
     subtitle:
-      'Brighten underexposed photos or tone down overly bright shots using real-time pixel adjustment and before/after comparison — right in your browser.',
+      'Built for photographers fixing underexposed shots, real estate agents brightening rooms, and sellers polishing product photos, our browser image brightness editor adjusts illumination smoothly without uploading originals. Dial the slider from -100% to +100%, test instant lighting presets, and inspect results with live split comparison.',
     howToSteps: [
-      { title: 'Upload your photo', description: 'Select any JPG, PNG, WebP, or HEIC image.' },
-      { title: 'Adjust brightness or pick a preset', description: 'Move the Brightness slider from -100% to +100% or click a preset while comparing before and after.' },
-      { title: 'Download adjusted image', description: 'Export at full original resolution in your preferred format.' },
+      {
+        title: 'Drop or select a photo to brighten or darken',
+        description:
+          'Upload any JPG, PNG, WebP, HEIC, GIF, BMP, or SVG image up to 20 MB into the dropzone, or paste via Ctrl+V.',
+      },
+      {
+        title: 'Adjust the Brightness Level slider or Quick Presets',
+        description:
+          'Move Brightness Level from -100% Darker to +100% Brighter, or click Dark (-30%), Dim (-15%), Original (0%), Bright (+15%), Vibrant (+30%), or High Key (+50%).',
+      },
+      {
+        title: 'Compare After, Before, and Split Compare views',
+        description:
+          'Switch between After, Before, and Split Compare tabs—or launch Fullscreen Compare—to verify shadow and highlight detail.',
+      },
+      {
+        title: 'Select Output Format and Quality',
+        description:
+          'Pick Original, JPG, PNG, or WEBP output and adjust the Quality slider (10%–100%) when saving lossy formats.',
+      },
+      {
+        title: 'Download your edited image',
+        description:
+          'Click Download Edited Image to process the brightness curve at full original resolution and save <name>_brightness locally.',
+      },
     ],
     features: [
       { title: 'Real-Time Pixel Adjustment', description: 'Instant preview across desktop and mobile browsers without server round-trips.' },
@@ -1720,8 +2530,106 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       { title: 'Private Client-Side Processing', description: 'Your personal photos stay strictly inside your browser.' },
     ],
     faqs: [
-      { question: 'Does adjusting brightness change my image dimensions?', answer: 'No. Your photo keeps its exact original width and height.' },
-      { question: 'Which format should I download?', answer: 'Keep Original format for simplicity, or choose WebP/JPG for smaller web files.' },
+      {
+        question: 'How does the Brightness Level slider change pixels without washing out colors immediately?',
+        answer:
+          'Moving Brightness Level between -100% Darker and +100% Brighter adjusts luminance smoothly across the frame in real time inside HTML5 Canvas. Checking Split Compare or Fullscreen Compare lets you brighten dark shadows without clipping bright whites.',
+      },
+      {
+        question: 'Why does my photo automatically preview at +15% right after uploading?',
+        answer:
+          'The editor initializes at Bright (+15%) so you immediately see a subtle exposure lift upon loading. Click Original (0%) or Reset in Brightness Controls anytime to compare from neutral baseline.',
+      },
+      {
+        question: 'What Quick Presets are included for one-click exposure testing?',
+        answer:
+          'Six presets cover common adjustments: Dark (-30%), Dim (-15%), Original (0%), Bright (+15%), Vibrant (+30%), and High Key (+50%). Clicking any card snaps the slider immediately while still letting you fine-tune by 1% steps.',
+      },
+      {
+        question: 'How do After, Before, Split Compare, and Fullscreen Compare differ?',
+        answer:
+          'After shows your edited canvas, Before reveals the untouched original image, and Split Compare adds an interactive Before/After slider directly inside the viewport. Clicking Fullscreen Compare renders a full-resolution Blob and opens the detailed comparison modal.',
+      },
+      {
+        question: 'Does brightening a photo reduce its pixel resolution or dimensions?',
+        answer:
+          'No, the live preview scales up to 1000 px purely for smooth interactive slider response. Clicking Download Edited Image renders a full-resolution Canvas preserving your image’s exact original width and height.',
+      },
+      {
+        question: 'When should I darken a photo using negative values like -15% or -30%?',
+        answer:
+          'Negative brightness values tone down overexposed phone shots and harsh window glare cleanly. Dimming a bright hero photograph also creates better contrast behind white overlay headlines.',
+      },
+      {
+        question: 'Does the image brightness editor preserve transparent backgrounds on PNGs?',
+        answer:
+          'Yes, keeping Original (for PNG/WebP) or picking PNG or WebP preserves transparent areas cleanly against the checkerboard viewport. If you pick JPG output, transparent regions flatten smoothly onto solid white.',
+      },
+      {
+        question: 'Are personal family photos or client proofs uploaded to external servers?',
+        answer:
+          'No, pixel brightness transforms and format encoding run locally in your browser using HTML5 Canvas. Your images never leave your computer or smartphone.',
+      },
+      {
+        question: 'Which image file formats can I brighten or darken here?',
+        answer:
+          'You can open JPG, PNG, WebP, iPhone HEIC/HEIF, GIF, BMP, and SVG files up to 20 MB each. Animated GIFs export their brightened opening frame as a static image.',
+      },
+      {
+        question: 'Can I paste a dark screenshot straight from my clipboard to lighten it?',
+        answer:
+          'Yes, press Ctrl+V (or Cmd+V on Mac) on the upload zone after copying a dark screenshot or slide. It loads straight into the live viewport ready to adjust and export.',
+      },
+      {
+        question: 'What happens if I push brightness all the way to +100%?',
+        answer:
+          'Extreme positive settings brighten midtones strongly and push highlights toward pure white, which is useful for stylized high-key graphics but can clip highlight textures in portraits. Aim for +10% to +35% for natural exposure recovery.',
+      },
+      {
+        question: 'Can I adjust contrast or color vibrancy after brightening an image?',
+        answer:
+          'Yes, download your brightened photo first, then click Image Contrast Editor or Image Saturation Editor in Related Free Image Tools below. Splitting adjustments across dedicated tools lets you fine-tune contrast punch or color richness precisely.',
+      },
+      {
+        question: 'Why does Quality disappear when I select PNG under Output Format?',
+        answer:
+          'PNG uses lossless compression without a variable percentage quality level. Switch to Original (for JPEGs), JPG, or WebP to reveal and adjust the 10%–100% Quality slider (defaulting to 90%).',
+      },
+      {
+        question: 'How do I undo all brightness changes quickly?',
+        answer:
+          'Click the blue Reset button in the top-right corner of Brightness Controls at any time. You can also click the Original (0%) preset card to return straight to zero adjustment.',
+      },
+      {
+        question: 'Does exporting an edited photo strip camera EXIF GPS location tags?',
+        answer:
+          'Yes, drawing onto a fresh HTML5 Canvas builds a clean output bitmap without copying over EXIF camera data. Any GPS coordinates or device serial numbers are stripped automatically.',
+      },
+      {
+        question: 'Can I load another photo right after exporting without refreshing the page?',
+        answer:
+          'Yes, click the red trash icon (Remove image) in the preview toolbar at any time. That clears the active photo cleanly and takes you straight back to the upload dropzone.',
+      },
+      {
+        question: 'What filename is used when I click Download Edited Image?',
+        answer:
+          'The exporter keeps your sanitized original filename and appends _brightness plus your selected format extension. For example, kitchen.jpg saves cleanly as kitchen_brightness.jpg.',
+      },
+      {
+        question: 'Does the editor work reliably on iPhone Safari and Android Chrome?',
+        answer:
+          'Yes, every preset card, range slider, and split comparison view works smoothly on mobile touchscreens. You can lighten dark camera-roll shots directly in Safari or Chrome on your phone.',
+      },
+      {
+        question: 'Why might a dark compressed JPEG show faint block noise when brightened strongly?',
+        answer:
+          'Shadows in heavily compressed JPEGs often hold quantization artifacts hidden in darkness; lifting brightness by +40% or more makes existing shadow noise visible. Keeping adjustments moderate (+15% to +30%) maintains cleaner tones.',
+      },
+      {
+        question: 'Is there any watermark, account signup, or limit on brightening photos?',
+        answer:
+          'No, the image brightness editor is completely free with zero watermarks or signups. You can brighten or darken unlimited photos up to 20 MB per file.',
+      },
     ],
     relatedSlugs: ['/image-contrast-editor', '/image-saturation-editor', '/image-filters', '/'],
   },
