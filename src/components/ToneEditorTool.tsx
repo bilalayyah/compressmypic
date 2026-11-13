@@ -23,6 +23,8 @@ import { toGermanPath } from '../locales/de/slugs';
 import { toItalianPath } from '../locales/it/slugs';
 import { toIndonesianPath } from '../locales/id/slugs';
 import { toRussianPath } from '../locales/ru/slugs';
+import { toJapanesePath } from '../locales/ja/slugs';
+import { toKoreanPath } from '../locales/ko/slugs';
 import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from './ToolPageLayout';
 import { UploadZone } from './UploadZone';
@@ -155,6 +157,20 @@ export interface PageRuStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageJaStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageKoStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface ToneEditorToolProps {
   tool?: ToolDefinition;
   mode: ToneMode;
@@ -169,11 +185,13 @@ interface ToneEditorToolProps {
   itStrings?: PageItStrings;
   idStrings?: PageIdStrings;
   ruStrings?: PageRuStrings;
+  jaStrings?: PageJaStrings;
+  koStrings?: PageKoStrings;
 }
 
 // English slug per mode — only used for the English tool-registry fallback
 // when no `tool` prop is passed. The localized strings table is NOT picked by
-// mode: App passes the per-tool bundle (`idStrings` / `ruStrings` / `deStrings` / `itStrings` / `esStrings` / `ptStrings` / `frStrings`) selected by slug.
+// mode: App passes the per-tool bundle (`jaStrings` / `koStrings` / `idStrings` / `ruStrings` / `deStrings` / `itStrings` / `esStrings` / `ptStrings` / `frStrings`) selected by slug.
 const MODE_SLUG: Record<ToneMode, string> = {
   brightness: '/image-brightness-editor',
   contrast: '/image-contrast-editor',
@@ -216,13 +234,15 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
   itStrings,
   idStrings,
   ruStrings,
+  jaStrings,
+  koStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG[MODE_SLUG[mode]];
   const cfg = MODE_CONFIG[mode];
   const ModeIcon = cfg.Icon;
-  // Active language's page-strings bundle (id/ru/de/it/es/pt/fr); English uses defaults.
+  // Active language's page-strings bundle (ja/ko/id/ru/de/it/es/pt/fr); English uses defaults.
   const pageStrings =
-    lang === 'id' ? idStrings : lang === 'ru' ? ruStrings : lang === 'de' ? deStrings : lang === 'it' ? itStrings : lang === 'pt' ? ptStrings : lang === 'fr' ? frStrings : lang === 'es' ? esStrings : undefined;
+    lang === 'ja' ? jaStrings : lang === 'ko' ? koStrings : lang === 'id' ? idStrings : lang === 'ru' ? ruStrings : lang === 'de' ? deStrings : lang === 'it' ? itStrings : lang === 'pt' ? ptStrings : lang === 'fr' ? frStrings : lang === 'es' ? esStrings : undefined;
   const activeToolUi = pageStrings?.toolUi;
   const t = (key: string, fallback: string) =>
     activeToolUi ? (activeToolUi[key] as string | undefined) ?? fallback : fallback;
@@ -399,12 +419,16 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
       lang={lang}
       ui={pageStrings?.layoutUi}
       canonicalPath={
-        lang === 'id'
-          ? toIndonesianPath(activeTool.slug)
-          : lang === 'ru'
-            ? toRussianPath(activeTool.slug)
-            : lang === 'de'
-              ? toGermanPath(activeTool.slug)
+        lang === 'ja'
+          ? toJapanesePath(activeTool.slug)
+          : lang === 'ko'
+            ? toKoreanPath(activeTool.slug)
+            : lang === 'id'
+              ? toIndonesianPath(activeTool.slug)
+              : lang === 'ru'
+                ? toRussianPath(activeTool.slug)
+                : lang === 'de'
+                  ? toGermanPath(activeTool.slug)
           : lang === 'it'
             ? toItalianPath(activeTool.slug)
             : lang === 'pt'
