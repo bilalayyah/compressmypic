@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ChevronRight,
   Lock,
@@ -29,6 +29,148 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
   const relatedTools = tool.relatedSlugs
     .map((slug) => TOOL_BY_SLUG[slug])
     .filter((t): t is ToolDefinition => Boolean(t));
+
+  useEffect(() => {
+    const canonicalUrl = `https://compressmypic.online${tool.slug === '/' ? '/' : tool.slug}`;
+    const seoTitle = tool.seoTitle;
+    const seoDescription = tool.seoDescription;
+
+    const prevTitle = document.title;
+    document.title = seoTitle;
+
+    const restorableAttrs: Array<{ el: Element; attr: string; prev: string | null }> = [];
+    const createdElements: Element[] = [];
+
+    const setMetaTag = (
+      selector: string,
+      attrKey: 'name' | 'property',
+      attrVal: string,
+      content: string,
+      preserveIfExists = false
+    ) => {
+      let el = document.head.querySelector<HTMLMetaElement>(selector);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attrKey, attrVal);
+        el.setAttribute('content', content);
+        document.head.appendChild(el);
+        createdElements.push(el);
+      } else if (!preserveIfExists) {
+        restorableAttrs.push({ el, attr: 'content', prev: el.getAttribute('content') });
+        el.setAttribute('content', content);
+      }
+    };
+
+    const setCanonicalLink = (href: string) => {
+      let el = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+      if (!el) {
+        el = document.createElement('link');
+        el.setAttribute('rel', 'canonical');
+        el.setAttribute('href', href);
+        document.head.appendChild(el);
+        createdElements.push(el);
+      } else {
+        restorableAttrs.push({ el, attr: 'href', prev: el.getAttribute('href') });
+        el.setAttribute('href', href);
+      }
+    };
+
+    setMetaTag('meta[name="description"]', 'name', 'description', seoDescription);
+    setCanonicalLink(canonicalUrl);
+    setMetaTag('meta[name="robots"]', 'name', 'robots', 'index, follow');
+
+    setMetaTag('meta[property="og:title"]', 'property', 'og:title', seoTitle);
+    setMetaTag('meta[property="og:description"]', 'property', 'og:description', seoDescription);
+    setMetaTag('meta[property="og:url"]', 'property', 'og:url', canonicalUrl);
+    setMetaTag('meta[property="og:type"]', 'property', 'og:type', 'website');
+    setMetaTag(
+      'meta[property="og:image"]',
+      'property',
+      'og:image',
+      'https://compressmypic.online/og-image.png',
+      true
+    );
+
+    setMetaTag('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image', true);
+    setMetaTag('meta[name="twitter:title"]', 'name', 'twitter:title', seoTitle);
+    setMetaTag('meta[name="twitter:description"]', 'name', 'twitter:description', seoDescription);
+    setMetaTag(
+      'meta[name="twitter:image"]',
+      'name',
+      'twitter:image',
+      'https://compressmypic.online/og-image.png',
+      true
+    );
+
+    return () => {
+      document.title = prevTitle;
+      for (const item of restorableAttrs) {
+        if (item.prev === null) {
+          item.el.removeAttribute(item.attr);
+        } else {
+          item.el.setAttribute(item.attr, item.prev);
+        }
+      }
+      for (const el of createdElements) {
+        el.remove();
+      }
+    };
+  }, [tool]);
+
+  useEffect(() => {
+    const slugKey = tool.slug.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'home';
+    const scriptId = `tool-${slugKey}-jsonld`;
+    const canonicalUrl = `https://compressmypic.online${tool.slug === '/' ? '/' : tool.slug}`;
+
+    const graph: Record<string, unknown>[] = [];
+    if (tool.howToSteps.length > 0) {
+      graph.push({
+        '@type': 'HowTo',
+        name: `How to Use ${tool.name} — ${tool.h1}`,
+        description: tool.subtitle || tool.seoDescription,
+        url: canonicalUrl,
+        step: tool.howToSteps.map((s, i) => ({
+          '@type': 'HowToStep',
+          position: i + 1,
+          name: s.title,
+          text: s.description,
+        })),
+      });
+    }
+    if (tool.faqs.length > 0) {
+      graph.push({
+        '@type': 'FAQPage',
+        name: tool.seoTitle || `${tool.name} — Frequently Asked Questions`,
+        url: canonicalUrl,
+        mainEntity: tool.faqs.map((f) => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: { '@type': 'Answer', text: f.answer },
+        })),
+      });
+    }
+
+    if (graph.length === 0) return;
+
+    const prev = document.getElementById(scriptId);
+    if (prev) prev.remove();
+
+    const jsonLd = {
+      '@context': 'https://schema.org',
+      '@graph': graph,
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = scriptId;
+    script.text = JSON.stringify(jsonLd);
+    document.head.appendChild(script);
+
+    return () => {
+      const existing = document.getElementById(scriptId);
+      if (existing) existing.remove();
+    };
+  }, [tool]);
 
   return (
     <div className="bg-white dark:bg-slate-950">
@@ -101,7 +243,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
               How to Use {tool.name}
             </h2>
             <p className="mt-2 text-base text-slate-600">
-              Complete your task in three quick steps — right inside your browser.
+              Follow these simple steps to complete your task — right inside your browser.
             </p>
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
               {tool.howToSteps.map((step, index) => (

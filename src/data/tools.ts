@@ -71,27 +71,42 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Resizer',
     shortDescription: 'Resize images by exact pixels, percentage, or social presets.',
     category: 'resize',
-    seoTitle: 'Free Online Image Resizer – Resize JPG, PNG & WebP in Browser',
+    seoTitle: 'Free Online Image Resizer – Resize Photos by Pixel or %',
     seoDescription:
-      'Resize images online free by exact pixels, percentage, or social media presets. Batch resize JPG, PNG, WebP and HEIC privately in your browser with ZIP download.',
+      'Use our free image resizer to scale photos by exact pixels, percentage, or social presets in your browser. Batch resize privately with instant ZIP download.',
     h1: 'Free Online Image Resizer',
     subtitle:
-      'Resize single or multiple images by exact width and height, percentage scale, or ready-made social media presets — 100% private in your browser.',
+      'Our browser-based image resizer lets web designers, online sellers, bloggers, and everyday users scale photos to exact pixel dimensions or percentage ratios in seconds. Lock aspect ratio to avoid distortion, apply one-click social media presets, or process an entire folder locally with zero server uploads.',
     howToSteps: [
       {
-        title: 'Upload your images',
+        title: 'Upload one or multiple images',
         description:
-          'Drag and drop one or many JPG, PNG, WebP, HEIC, GIF, BMP, or SVG images, or paste directly with Ctrl+V.',
+          'Drag and drop JPG, PNG, WebP, HEIC, GIF, BMP, or SVG files up to 20 MB each into the upload area, browse from your device, or paste directly with Ctrl+V.',
       },
       {
-        title: 'Choose dimensions or preset',
+        title: 'Pick Pixels or Percentage mode',
         description:
-          'Enter custom pixel dimensions with aspect-ratio lock, pick a percentage scale, or select an Instagram, YouTube, or HD preset.',
+          'Switch between By Pixels (W × H) to enter exact dimensions up to 12,000 px, or By Percentage (%) to scale between 10% and 200% using the slider or quick buttons.',
       },
       {
-        title: 'Resize & download',
+        title: 'Set aspect lock, fit mode, or presets',
         description:
-          'Click Resize All, inspect the before-and-after comparison, and download files individually or together as a ZIP archive.',
+          'Keep Aspect Ratio Locked for proportional scaling, or unlock it to choose Contain, Cover, or Stretch Exact — or click a preset like Instagram Post, YouTube Thumb, or Full HD.',
+      },
+      {
+        title: 'Choose output format and quality',
+        description:
+          'Select Original, JPG, PNG, or WebP output, adjust the Output Quality slider from 10% to 100%, and pick a Matte BG color if exporting as JPG.',
+      },
+      {
+        title: 'Apply settings and compare visually',
+        description:
+          'Click Resize All to process your batch, then open the Compare view on any card to inspect sharpness and before-and-after byte savings side by side.',
+      },
+      {
+        title: 'Download individual files or a ZIP archive',
+        description:
+          'Save each resized image with its Download button, or click Download All (ZIP) when resizing two or more files together.',
       },
     ],
     features: [
@@ -118,24 +133,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Does resizing an image reduce its quality?',
+        question: 'How does By Pixels differ from By Percentage in the Image Resizer?',
         answer:
-          'Downscaling an image uses high-quality bicubic Canvas smoothing to keep edges sharp. Upscaling slightly is supported, though enlarging small photos significantly can appear softer.',
+          'By Pixels lets you enter an exact width and height in pixels (up to 12,000 px) or apply social media presets directly. By Percentage scales every uploaded image proportionally between 10% and 200% using either the slider or the 25%, 50%, 75%, 150%, and 200% quick buttons.',
       },
       {
-        question: 'How do I keep the aspect ratio when resizing?',
+        question: 'What happens when Aspect Ratio Locked is turned on or off?',
         answer:
-          'Keep the Lock Aspect Ratio toggle enabled. When you enter a new width, the height updates automatically in proportion (and vice versa).',
+          'When Aspect Ratio Locked is enabled, typing a new width automatically updates the height in exact proportion to your first uploaded photo (and vice versa). Unlocking it lets you enter independent width and height values and reveals the Contain, Cover, and Stretch Exact fit options.',
       },
       {
-        question: 'Can I resize multiple images to the same dimensions at once?',
+        question: 'When should I choose Contain, Cover, or Stretch Exact?',
         answer:
-          'Yes. Upload multiple files, enter your target dimensions or preset, and click Resize All to process the entire batch and download as a ZIP.',
+          'Choose Contain (No Crop) when you want the entire subject kept inside your target box without trimming any edges. Choose Cover (Center Crop) to fill exact preset dimensions cleanly by trimming overflow, or Stretch Exact if matching fixed pixel bounds matters more than preserving proportion.',
       },
       {
-        question: 'Are my photos uploaded to a server?',
+        question: 'Which social media and screen presets are built in?',
         answer:
-          'No. Everything runs inside your browser tab using local HTML5 Canvas memory, so your images never leave your device.',
+          'You get one-click presets for Instagram Post (1080×1080), Instagram Story (1080×1920), YouTube Thumb (1280×720), Facebook Cover (851×315), X Header (1500×500), and Full HD (1920×1080). Clicking any preset switches to By Pixels mode and fills in those exact dimensions.',
+      },
+      {
+        question: 'Can I enlarge a small image beyond its original resolution?',
+        answer:
+          'Yes, you can enter larger pixel values or scale up to 200% in By Percentage mode using HTML5 Canvas interpolation. Keep in mind that enlarging low-resolution graphics significantly makes edges appear softer because Canvas stretches existing pixels rather than inventing new detail.',
+      },
+      {
+        question: 'What is the maximum pixel dimension and file size allowed when resizing?',
+        answer:
+          'Each uploaded image can be up to 20 MB, and pixel inputs support widths and heights up to 12,000 px. Very large canvases can consume significant browser RAM on mobile devices, so staying within 4,000–6,000 px keeps processing quick.',
+      },
+      {
+        question: 'Which input formats work in this image resizer?',
+        answer:
+          'You can upload JPG, PNG, WebP, iPhone HEIC/HEIF, GIF, BMP, and SVG files. HEIC images are decoded locally in your browser before Canvas resizing, and you can export the results as Original, JPG, PNG, or WebP.',
+      },
+      {
+        question: 'Does resizing preserve transparent backgrounds on PNG and WebP files?',
+        answer:
+          'Yes, transparency stays intact whenever you keep Original format (for PNG/WebP) or explicitly select PNG or WebP output. If you switch Output Format to JPG, transparent areas fill with your chosen Matte BG color (white by default).',
+      },
+      {
+        question: 'How does batch resizing handle mixed landscape and portrait photos?',
+        answer:
+          'When you upload a batch in By Pixels mode with Aspect Ratio Locked, each photo preserves its own natural proportions using the width limit rather than warping portraits into landscape frames. If you want fixed identical dimensions across a batch, unlock aspect ratio and choose Contain or Cover.',
+      },
+      {
+        question: 'Why does the first upload automatically fill in Width and Height?',
+        answer:
+          'When you drop your first photo into an empty queue, the resizer seeds Width at up to 1,200 px and computes the matching Height proportionally. You can override those numbers immediately and click Resize All to re-run every image in the list.',
+      },
+      {
+        question: 'How do I inspect sharpness after shrinking a photo?',
+        answer:
+          'Click Compare on any finished result card or click its thumbnail to open the before-and-after comparison modal. It shows the original and resized dimensions, byte savings, and a split slider so you can check fine details before downloading.',
+      },
+      {
+        question: 'Can I change output format and resize at the same time?',
+        answer:
+          'Yes, you can pick JPG, PNG, or WebP in the Output Format selector and adjust the Output Quality slider (10% to 100%) before clicking Resize All. This lets you shrink dimensions and convert to a lightweight web format in a single pass.',
+      },
+      {
+        question: 'Are animated GIFs still animated after resizing here?',
+        answer:
+          'No, HTML5 Canvas renders the first frame of a GIF when resizing to static dimensions and exports a single-frame image. If you want to keep animations intact while reducing file weight, use our dedicated GIF Compressor tool instead.',
+      },
+      {
+        question: 'Are my photos uploaded to an external server during resizing?',
+        answer:
+          'No, all resizing happens inside your browser tab using local HTML5 Canvas memory and JavaScript. Your original and resized images never travel across a network or touch any remote storage.',
+      },
+      {
+        question: 'How do I download dozens of resized images without clicking one by one?',
+        answer:
+          'Whenever two or more images finish resizing, a Batch Ready bar appears above the list with a Download All (ZIP) button. Clicking it packages every resized file into a single resized_images_compressmypic.zip download.',
+      },
+      {
+        question: 'Can I paste a screenshot from my clipboard to resize it?',
+        answer:
+          'Yes, press Ctrl+V (or Cmd+V on Mac) while on the page to drop a copied screenshot directly into the upload queue. It immediately loads dimensions and resizes using your current width, height, or percentage settings.',
+      },
+      {
+        question: 'Why did my resized PNG become larger in bytes even at smaller pixels?',
+        answer:
+          'If you convert a compressed JPG into lossless PNG while resizing, PNG keeps raw lossless pixel encoding and can weigh more than the source JPEG. Switch Output Format to WebP or JPG at 80%–85% quality for much smaller web files.',
+      },
+      {
+        question: 'What quality setting is best when exporting resized JPG or WebP images?',
+        answer:
+          'The default 85% setting balances crisp edges and clean gradients with small file sizes for websites, blog posts, and marketplaces. Drop quality toward 65%–75% if you need stricter kilobyte savings, or push to 95%–100% for print preparation.',
+      },
+      {
+        question: 'Can I resize vector SVG graphics cleanly to high-resolution PNGs?',
+        answer:
+          'Yes, uploading an inline SVG lets you enter larger target pixel dimensions before rasterizing it onto Canvas. Self-contained SVGs with inline shapes and gradients scale sharply, though external font or image links inside SVGs are blocked by browser security.',
+      },
+      {
+        question: 'Does this image resizer work offline or on mobile phones?',
+        answer:
+          'Yes, it works smoothly on iOS Safari, Android Chrome, and desktop browsers with touch-friendly sliders and presets. Because calculations run locally inside your browser once the page is loaded, nothing is bottlenecked by upload speed.',
       },
     ],
     relatedSlugs: ['/', '/image-converter', '/rotate-flip-image', '/image-dimensions-checker'],
@@ -145,27 +240,42 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Converter',
     shortDescription: 'Convert JPG, PNG, WebP, HEIC, BMP, GIF & SVG in your browser.',
     category: 'convert',
-    seoTitle: 'Free Online Image Converter – Convert JPG, PNG, WebP & HEIC',
+    seoTitle: 'Free Online Image Converter – JPG, PNG, WebP & HEIC',
     seoDescription:
-      'Convert images between JPG, PNG, and WebP free online. Supports HEIC, SVG, BMP, GIF, and AVIF input with batch conversion and ZIP download in your browser.',
+      'Fast browser image converter for JPG, PNG, WebP, HEIC, SVG, BMP, GIF, and AVIF. Convert batches privately on your device with quality control and ZIP export.',
     h1: 'Free Online Image Converter',
     subtitle:
-      'Convert JPG, PNG, WebP, HEIC, SVG, BMP, GIF, and AVIF images to clean JPG, PNG, or WebP files locally in your browser — no upload required.',
+      'Built for iPhone photographers, web developers, marketers, and office teams, this browser image converter switches seamlessly between JPG, PNG, WebP, HEIC, SVG, BMP, GIF, and AVIF. Adjust output quality, pick a matte fill for transparent cutouts, and convert whole batches locally without uploading files.',
     howToSteps: [
       {
-        title: 'Add files to convert',
+        title: 'Add one or multiple image files',
         description:
-          'Drop JPG, PNG, WebP, HEIC, SVG, BMP, GIF, or AVIF images into the upload zone (up to 20 MB per file).',
+          'Drop JPG, PNG, WebP, HEIC, SVG, BMP, GIF, or AVIF images (up to 20 MB each) into the upload zone, select files from disk, or paste via Ctrl+V.',
       },
       {
-        title: 'Pick target format & quality',
+        title: 'Pick your output format',
         description:
-          'Select JPG, PNG, or WebP output, adjust quality for lossy formats, and pick a background color if flattening transparent images to JPG.',
+          'Choose WebP (Smallest Web), JPG (Universal), or PNG (Lossless Alpha) under Convert To Format.',
       },
       {
-        title: 'Download converted files',
+        title: 'Set transparency fill for JPG output',
         description:
-          'Preview the converted output size and download each file or package the whole batch as a ZIP archive.',
+          'When converting transparent PNG, WebP, or SVG graphics to JPG, click the Transparency Fill Color swatch to choose white, black, or any hex backdrop.',
+      },
+      {
+        title: 'Tune the quality slider if needed',
+        description:
+          'Drag the Quality slider between 10% and 100% for WebP or JPG outputs (the slider automatically disables for lossless PNG).',
+      },
+      {
+        title: 'Convert and inspect results',
+        description:
+          'Click Convert All to re-encode your queue with updated settings, then click Compare on any item to check visual fidelity and byte change.',
+      },
+      {
+        title: 'Download individual files or ZIP',
+        description:
+          'Save each converted file via its Download button, or click Download All (ZIP) to download the entire batch together.',
       },
     ],
     features: [
@@ -192,24 +302,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Can I convert iPhone HEIC photos to JPG or PNG?',
+        question: 'Which input and output formats does this image converter support?',
         answer:
-          'Yes. CompressMyPic automatically detects HEIC and HEIF files and decodes them locally in your browser before converting them to JPG, PNG, or WebP.',
+          'You can feed in JPG, PNG, WebP, iPhone HEIC/HEIF, SVG, BMP, GIF, and browser-decoded AVIF files up to 20 MB per image. Outputs export cleanly as WebP (Smallest Web), JPG (Universal), or PNG (Lossless Alpha).',
       },
       {
-        question: 'Which output format should I choose: JPG, PNG, or WebP?',
+        question: 'How are Apple iPhone HEIC and HEIF photos converted without a server?',
         answer:
-          'Choose WebP for the smallest web files with transparency support, JPG for maximum compatibility with photos, and PNG for lossless graphics and logos.',
+          'Our converter loads a client-side WebAssembly HEIC decoder directly inside your browser tab. It decodes the HEIC container locally on your CPU and renders the photo onto HTML5 Canvas to export standard JPG, PNG, or WebP files.',
       },
       {
-        question: 'What happens to transparent backgrounds when converting PNG to JPG?',
+        question: 'Why is the Quality slider disabled when PNG is selected?',
         answer:
-          'Because JPG does not support transparency, transparent pixels are filled with your chosen matte background color (white by default).',
+          'PNG uses lossless DEFLATE compression, meaning it encodes every pixel accurately without throwing away visual detail at a percentage quality level. The slider becomes active as soon as you switch to WebP or JPG.',
       },
       {
-        question: 'Does the converter add watermarks or limit file counts?',
+        question: 'What happens to transparent areas when converting PNG or WebP to JPG?',
         answer:
-          'No. Conversion is completely free with no watermarks, no signup, and no daily limits.',
+          'Because JPG does not support an alpha transparency channel, transparent pixels must be flattened onto a solid backdrop. Use the Transparency Fill Color picker (white by default) to blend transparent edges cleanly onto any color.',
+      },
+      {
+        question: 'Can I convert AVIF images saved from modern websites into JPG or PNG?',
+        answer:
+          'Yes, modern versions of Chrome, Edge, Firefox, and Safari decode AVIF files natively inside your browser. Once decoded, the tool exports them to universal JPG, PNG, or WebP without any external cloud service.',
+      },
+      {
+        question: 'Are vector SVG logos preserved nicely when converted to PNG or WebP?',
+        answer:
+          'Yes, self-contained SVG files with inline paths, fills, and gradients rasterize cleanly at their intrinsic dimensions with transparent backgrounds preserved. Note that SVGs relying on external web fonts or remote image URLs are restricted by browser Canvas security.',
+      },
+      {
+        question: 'Does converting a lossy JPG into PNG restore missing photo detail?',
+        answer:
+          'No, re-saving an already compressed JPG as PNG cannot recover detail discarded during original JPEG encoding, and it usually increases file size significantly. Choose PNG only if you need lossless storage before future multi-step editing.',
+      },
+      {
+        question: 'Can I mix different formats in a single batch conversion?',
+        answer:
+          'Yes, you can drop HEIC photos, BMP screenshots, PNG logos, and AVIF downloads together into the same queue. Every valid file converts to your selected target format and downloads cleanly in one ZIP archive.',
+      },
+      {
+        question: 'What happens if I upload an animated GIF to the general converter?',
+        answer:
+          'Canvas draws the initial frame of the GIF and converts that frame to a static WebP, JPG, or PNG file. If you want to shrink an animated GIF while keeping motion intact, switch to our GIF Compressor tool.',
+      },
+      {
+        question: 'Why did WebP output cut my PNG screenshot size so dramatically?',
+        answer:
+          'Unlike lossless PNG, WebP at 85% quality combines modern predictive compression with full alpha transparency support. That commonly shrinks large UI screenshots and product cutouts while keeping crisp readability and smooth edges.',
+      },
+      {
+        question: 'How do I check before-and-after quality before saving converted images?',
+        answer:
+          'Click Compare on any converted card (or click its thumbnail) to launch the interactive comparison modal. You can compare original vs converted byte sizes and drag the split handle across edges and text.',
+      },
+      {
+        question: 'Are my photos or sensitive screenshots ever sent over the internet?',
+        answer:
+          'Never — all decoding, color flattening, and re-encoding happen strictly inside your local browser memory. Nothing is uploaded, stored on servers, or shared with third parties.',
+      },
+      {
+        question: 'What quality setting is recommended for converting photos to WebP or JPG?',
+        answer:
+          'The default 85% works reliably for both WebP web assets and universal JPG sharing without noticeable compression blocking. You can raise it to 92%–95% for portfolio shots or lower it to 70%–75% for tight bandwidth limits.',
+      },
+      {
+        question: 'How are output filenames generated after conversion?',
+        answer:
+          'Each converted file keeps your sanitized base filename and swaps in the new .webp, .jpg, or .png extension automatically. You can see the exact output filename and converted byte size on each card before downloading.',
+      },
+      {
+        question: 'Can I convert BMP bitmaps from older Windows software to WebP or JPG?',
+        answer:
+          'Yes, uncompressed .bmp files decode natively in the browser and convert immediately to compact JPG or WebP files. Eliminating uncompressed bitmap headers routinely cuts storage weight dramatically.',
+      },
+      {
+        question: 'What if one file in my batch is corrupted or unreadable?',
+        answer:
+          'Each image processes independently, so a single corrupted or unsupported file shows an inline error badge without halting the rest of your queue. All valid images still convert and package into your ZIP download.',
+      },
+      {
+        question: 'Does converting via HTML5 Canvas strip hidden EXIF camera metadata?',
+        answer:
+          'Yes, drawing an image onto Canvas and encoding a fresh JPG, PNG, or WebP produces a clean bitmap without EXIF GPS tags or camera serial metadata. That protects privacy when sharing converted files online.',
+      },
+      {
+        question: 'Can I convert images pasted directly from my clipboard?',
+        answer:
+          'Yes, copying an image or taking a screenshot and pressing Ctrl+V anywhere on the page adds it directly to the converter queue. It immediately encodes to your active target format.',
+      },
+      {
+        question: 'Is there a daily cap or file count limit on batch conversions?',
+        answer:
+          'No, there are no accounts, watermarks, or daily conversion quotas. You are only bounded by the 20 MB per-file check and your device’s available browser RAM.',
+      },
+      {
+        question: 'When should I choose Download All (ZIP) vs single-file Download?',
+        answer:
+          'Use the per-card Download button when saving a single converted photo quickly. Whenever two or more images finish converting, click Download All (ZIP) in the batch summary bar to bundle them into converted_images_compressmypic.zip.',
       },
     ],
     relatedSlugs: ['/', '/image-resizer', '/image-to-pdf', '/favicon-generator'],
@@ -219,27 +409,42 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Rotate & Flip Image',
     shortDescription: 'Rotate 90°, 180°, custom angles, and flip images horizontally or vertically.',
     category: 'crop-edit',
-    seoTitle: 'Rotate & Flip Image Online Free – Mirror & Straighten Photos',
+    seoTitle: 'Rotate Image Online Free – Turn 90°, Flip & Straighten',
     seoDescription:
-      'Rotate images 90°, 180°, or any custom angle and flip horizontally or vertically online for free. Batch edit JPG, PNG, WebP & HEIC privately in your browser.',
+      'Quickly rotate image files 90°, 180°, or any custom angle and flip horizontally or vertically in your browser. Batch process photos with instant ZIP download.',
     h1: 'Rotate & Flip Image Online',
     subtitle:
-      'Fix sideways photos, mirror images horizontally or vertically, or straighten tilted shots with custom angle rotation — processed instantly on your device.',
+      'Fix sideways camera shots, mirror backwards selfies, and straighten tilted horizons when you rotate image files right in your browser. Ideal for photographers, students scanning documents, and content creators, everything transforms locally at full resolution with batch ZIP export.',
     howToSteps: [
       {
-        title: 'Upload one or more photos',
+        title: 'Upload one or many images',
         description:
-          'Drag and drop JPG, PNG, WebP, HEIC, or other images you want to rotate or mirror.',
+          'Drag and drop JPG, PNG, WebP, HEIC, GIF, BMP, or SVG files up to 20 MB each into the dropzone, or paste directly with Ctrl+V.',
       },
       {
-        title: 'Rotate or flip',
+        title: 'Use quick 90° and 180° turns',
         description:
-          'Use quick 90° left/right/180° buttons, fine-tune with the custom angle slider (-180° to +180°), and toggle horizontal or vertical flip.',
+          'Click Rotate 90° Left, Rotate 90° Right, or 180° under Quick Rotate & Flip to spin every image in the queue immediately.',
       },
       {
-        title: 'Preview & download',
+        title: 'Mirror horizontally or vertically',
         description:
-          'Inspect the live transformed result and download individual images or a single ZIP archive.',
+          'Toggle Flip Horizontal to mirror left-to-right or Flip Vertical to invert top-to-bottom — combine either with any rotation angle.',
+      },
+      {
+        title: 'Fine-tune custom angles (-180° to +180°)',
+        description:
+          'Drag the Rotation Angle slider to straighten crooked shots by exact degrees, then click Apply Angle (or Reset to 0° anytime).',
+      },
+      {
+        title: 'Pick your Output Format',
+        description:
+          'Select Original, JPG, PNG, or WebP to match your destination workflow; changes re-render across your images immediately.',
+      },
+      {
+        title: 'Compare visually and download',
+        description:
+          'Click Compare on any card to check before-and-after orientation, then click Download or Download All (ZIP) for batches.',
       },
     ],
     features: [
@@ -266,19 +471,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Will rotating a photo 90 degrees crop the edges?',
+        question: 'Does rotating a photo at a custom angle like 15° chop off the corners?',
         answer:
-          'No. The canvas automatically swaps width and height for 90°/270° rotations and expands bounding dimensions for custom angles so your entire image stays intact.',
+          'No, the tool computes the expanded trigonometric bounding width and height automatically for non-90° angles. That expands the Canvas just enough so every pixel of your original corners stays inside the frame.',
       },
       {
-        question: 'Can I flip and rotate the same image together?',
+        question: 'What fills the triangular corners created by a custom tilt angle?',
         answer:
-          'Yes. You can combine any rotation angle with horizontal and/or vertical flipping and see the live preview update immediately.',
+          'If you keep Original format on a PNG/WebP or choose PNG/WebP output, those extra outer corners stay completely transparent. If your output resolves to JPG, which does not support alpha, the corners fill with clean solid white.',
       },
       {
-        question: 'Is transparency preserved when rotating a PNG?',
+        question: 'Can I rotate 90° and flip horizontally at the same time?',
         answer:
-          'Yes. When outputting PNG or WebP, transparent backgrounds remain transparent even when rotating at custom angles.',
+          'Yes, Flip Horizontal and Flip Vertical act as independent toggles alongside any rotation angle. Each result card badge displays your exact combined state, such as Rotated 90° · Flipped H.',
+      },
+      {
+        question: 'Why does rotating by 90° or 270° swap pixel width and height?',
+        answer:
+          'Turning a 1920×1080 landscape image by 90° rotates its axes so it becomes a 1080×1920 portrait image. Keeping exact swapped bounds prevents stretching or cropping any side of your photo.',
+      },
+      {
+        question: 'How do I fix a backwards selfie with mirrored text?',
+        answer:
+          'Upload the photo, click Reset to 0° if you do not want a 90° turn (the tool defaults to 90° on load), and enable Flip Horizontal. Text on shirts or signs flips back to normal reading direction immediately.',
+      },
+      {
+        question: 'Why do images rotate 90° automatically right after upload?',
+        answer:
+          'The default Quick Rotate state starts at 90° so common sideways photos turn upright on drop. You can adjust with Rotate 90° Left, 180°, the angle slider, or click Reset to 0° whenever you only want to flip.',
+      },
+      {
+        question: 'Which image formats can I rotate and flip here?',
+        answer:
+          'Upload JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, or SVG files up to 20 MB each. Export options cover Original, JPG, PNG, and WebP via local HTML5 Canvas rendering.',
+      },
+      {
+        question: 'Can I batch rotate a folder of sideways phone photos together?',
+        answer:
+          'Yes, drop as many photos as your browser handles cleanly, click your desired rotation or flip buttons once, and every item updates together. When multiple files finish, Download All (ZIP) exports rotated_images_compressmypic.zip.',
+      },
+      {
+        question: 'Does rotating a transparent PNG keep its transparent background?',
+        answer:
+          'Yes, transparent regions remain transparent when Original (from PNG/WebP), PNG, or WebP output is selected. That works for both crisp 90° rotations and arbitrary tilt straightening.',
+      },
+      {
+        question: 'How can I undo multiple turns without reloading the page?',
+        answer:
+          'Click Reset to 0° right above the Rotation Angle slider at any time. That immediately clears rotation back to 0° and turns off both Horizontal and Vertical flips across the queue.',
+      },
+      {
+        question: 'Why might my file size change slightly after rotating a JPEG?',
+        answer:
+          'Rotating pixels inside HTML5 Canvas re-encodes the JPEG at 90% quality rather than modifying DCT blocks losslessly. Choosing PNG output preserves pixels losslessly if you want zero compression artifacts.',
+      },
+      {
+        question: 'Is there an easy way to inspect before and after straightening?',
+        answer:
+          'Click Compare on any card (or click its thumbnail preview) to open the Rotate & Flip Comparison modal. You can inspect aligned edges with the interactive before/after slider before saving.',
+      },
+      {
+        question: 'Does this tool respect iPhone photo orientation correctly?',
+        answer:
+          'Yes, modern browsers and our HEIC loader normalize EXIF orientation when decoding into Canvas before applying your selected angle. What you see on the card thumbnail matches the pixels inside your downloaded file.',
+      },
+      {
+        question: 'Can I straighten a tilted document scan by small 1° increments?',
+        answer:
+          'Yes, drag the Rotation Angle slider between -180° and +180° (step 1°) and release to preview the straightened document. Click Apply Angle if you adjust it via keyboard arrows to apply across all queued files.',
+      },
+      {
+        question: 'Are any of my documents or personal photos uploaded to a server?',
+        answer:
+          'No, rotation and flipping run 100% locally in your web browser via Canvas 2D transforms. Your images never leave your computer or smartphone.',
+      },
+      {
+        question: 'What happens if I rotate an animated GIF?',
+        answer:
+          'Rotating a GIF extracts and transforms the first frame into a static image. Animated multi-frame rotation is not supported directly in this tool.',
+      },
+      {
+        question: 'Can I mirror or rotate screenshots pasted straight from my clipboard?',
+        answer:
+          'Yes, press Ctrl+V (or Cmd+V) anywhere on the page after copying an image or screenshot. It joins the batch queue and applies your active rotation and flip settings immediately.',
+      },
+      {
+        question: 'Is there any limit on file size or number of turns?',
+        answer:
+          'Individual uploads can be up to 20 MB per file so your browser stays responsive. Within that cap, you can rotate, flip, reset, and re-export as many photos as you need with no account, daily limit, or watermark.',
+      },
+      {
+        question: 'Can I switch output format to WebP while rotating a batch of PNGs?',
+        answer:
+          'Yes, clicking WebP under Output Format immediately re-transforms and exports your batch as lightweight rotated WebP images. You can switch formats back and forth freely without re-uploading.',
+      },
+      {
+        question: 'Does Rotate & Flip work cleanly on touchscreen phones and tablets?',
+        answer:
+          'Yes, all rotation buttons, flip toggles, and the touch-enabled angle slider work in mobile Safari and Android Chrome. You can also download single photos directly to your device camera roll or Downloads folder.',
       },
     ],
     relatedSlugs: ['/image-resizer', '/', '/image-converter', '/remove-image-metadata'],
@@ -288,27 +578,42 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image to PDF',
     shortDescription: 'Combine JPG, PNG, WebP & HEIC images into a multi-page PDF.',
     category: 'convert',
-    seoTitle: 'Image to PDF Converter Free – Combine Photos to PDF Online',
+    seoTitle: 'Free Image to PDF Converter – Combine Photos to PDF',
     seoDescription:
-      'Convert JPG, PNG, WebP, and HEIC images into a single multi-page PDF free in your browser. Reorder pages, set A4/Letter size, margins, and download privately.',
+      'Turn multiple photos into one document with our browser image to PDF converter. Reorder pages, pick A4 or Letter size, set margins, and save directly offline.',
     h1: 'Image to PDF Converter',
     subtitle:
-      'Combine one or many images into a clean, multi-page PDF document right in your browser. Reorder pages, choose A4, Letter, or Fit-to-Image, and download instantly.',
+      'Ideal for students, freelancers, accountants, and anyone submitting IDs or receipts, this private image to PDF converter merges multiple photos into one crisp multi-page PDF. Reorder pages freely, pick A4, US Letter, or Fit-to-Image dimensions, adjust margins and quality, and build your document locally with zero server uploads.',
     howToSteps: [
       {
-        title: 'Upload your images',
+        title: 'Drop images to include in your PDF',
         description:
-          'Select or drop JPG, PNG, WebP, HEIC, GIF, BMP, or SVG files. Each image becomes a page in your PDF.',
+          'Upload one or multiple JPG, PNG, WebP, HEIC, GIF, BMP, or SVG files up to 20 MB each (or paste with Ctrl+V). Each image becomes one page.',
       },
       {
-        title: 'Reorder & configure layout',
+        title: 'Arrange page order',
         description:
-          'Arrange image order with move up/down controls, then pick Page Size (A4, US Letter, or Fit to Image), orientation, margins, and quality.',
+          'Review the Page Order list below the controls and use the Up, Down, or Remove buttons to sequence receipts, slides, or scans accurately.',
       },
       {
-        title: 'Generate & download PDF',
+        title: 'Select Page Size and Orientation',
         description:
-          'Click Create PDF to build your PDF locally in milliseconds and save it straight to your device.',
+          'Pick A4 (210 × 297 mm), US Letter (8.5 × 11 in), or Fit to Image Size, and choose Auto (Match Photo), Portrait, or Landscape orientation.',
+      },
+      {
+        title: 'Adjust Margins and Image Placement',
+        description:
+          'Choose No Margin (Full Bleed), Small Margin, or Medium Margin, and select Contain (Full Image) or Cover (Fill Page).',
+      },
+      {
+        title: 'Set filename and PDF Image Quality',
+        description:
+          'Customize the PDF Filename (ending in .pdf) and slide PDF Image Quality between 40% and 98% to balance sharpness against total document size.',
+      },
+      {
+        title: 'Create and download your PDF',
+        description:
+          'Click Create & Download PDF to generate the file locally; an emerald confirmation banner also lets you click Download PDF Again.',
       },
     ],
     features: [
@@ -335,19 +640,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Is it safe to convert personal documents or IDs to PDF here?',
+        question: 'Is this image to PDF converter safe for passports, IDs, and tax receipts?',
         answer:
-          'Yes. Unlike server-based PDF converters, CompressMyPic builds the PDF file directly inside your browser. Your files never leave your computer or phone.',
+          'Yes, your documents never upload to any remote server or cloud queue. Our JavaScript PDF builder encodes every page inside your local browser RAM and writes the finished .pdf directly to your device.',
       },
       {
-        question: 'How many images can I combine into one PDF?',
+        question: 'What page size choices are supported?',
         answer:
-          'You can combine dozens of images into a single multi-page PDF, limited only by your device’s browser memory.',
+          'You can standardize every page onto A4 (210 × 297 mm) or US Letter (8.5 × 11 in) for consistent printing and filing. Alternatively, choose Fit to Image Size so each PDF page matches its photo’s native dimensions and aspect ratio.',
       },
       {
-        question: 'Can I keep the original photo orientation on each page?',
+        question: 'How does Auto Orientation work with mixed horizontal and vertical photos?',
         answer:
-          'Yes. Leave Orientation set to Auto and landscape photos will get landscape pages while portrait photos get portrait pages.',
+          'When Orientation is set to Auto (Match Photo), landscape images automatically receive landscape pages while portrait images receive portrait pages. You can lock every page to Portrait or Landscape whenever uniform printing layout is needed.',
+      },
+      {
+        question: 'What is the difference between Contain and Cover placement?',
+        answer:
+          'Contain (Full Image) scales each photo proportionally so the entire picture fits inside your chosen margins with nothing cut off. Cover (Fill Page) enlarges the photo to fill the entire printable area edge-to-edge, trimming any overflow.',
+      },
+      {
+        question: 'Why is the Orientation dropdown disabled when Fit to Image Size is picked?',
+        answer:
+          'Fit to Image Size sizes every individual PDF page dynamically to the exact aspect ratio of its photo, so portrait vs landscape override does not apply. Switch Page Size to A4 or US Letter if you want manual Portrait/Landscape control.',
+      },
+      {
+        question: 'Can I reorder pages after uploading multiple files at once?',
+        answer:
+          'Yes, scroll to the Page Order section where every page shows a numbered badge, thumbnail, pixel dimensions, and file size. Use the Up and Down arrow buttons on any row to rearrange pages before clicking Create & Download PDF.',
+      },
+      {
+        question: 'How does the PDF Image Quality slider affect file size?',
+        answer:
+          'Lowering PDF Image Quality toward 60%–75% compresses the embedded JPEG streams inside the PDF, keeping multi-page scans compact for strict email or portal upload caps. Pushing toward 90%–98% preserves sharper small text on dense documents.',
+      },
+      {
+        question: 'Which image file formats can I combine into a PDF?',
+        answer:
+          'You can mix JPG, PNG, WebP, iPhone HEIC/HEIF, GIF, BMP, and SVG images (up to 20 MB per file) inside a single PDF document. They are decoded locally in the browser and normalized smoothly onto PDF pages.',
+      },
+      {
+        question: 'What happens to transparent PNG or WebP images inside a PDF?',
+        answer:
+          'Because standard PDF pages have a white paper canvas, transparent backgrounds composite cleanly onto solid white before embedding. That prevents unexpected dark artifacts behind logos or scanned signatures.',
+      },
+      {
+        question: 'Can I customize the output filename before saving?',
+        answer:
+          'Yes, type any document title into the PDF Filename field (defaulting to compressmypic-document.pdf). If you leave off the .pdf suffix, the exporter appends .pdf automatically when downloading.',
+      },
+      {
+        question: 'How many pages can I merge into one PDF document?',
+        answer:
+          'There is no artificial page-count limit—you can combine dozens of photos or receipts into one multi-page PDF. Practical capacity depends only on your device’s available browser memory and each image’s pixel resolution.',
+      },
+      {
+        question: 'How do No Margin, Small Margin, and Medium Margin differ?',
+        answer:
+          'No Margin (Full Bleed) extends placement all the way to the paper borders, ideal for borderless artwork or Fit-to-Image exports. Small Margin and Medium Margin add clean white borders around each page for standard printing and readability.',
+      },
+      {
+        question: 'Can I add more photos after already inspecting the Page Order list?',
+        answer:
+          'Yes, simply drop or browse additional files into the upload box at the top and they append to the end of your Page Order list. You can then reorder or delete individual pages before generating the updated PDF.',
+      },
+      {
+        question: 'Does the tool add a footer logo, page stamp, or watermark to my PDF?',
+        answer:
+          'No, CompressMyPic produces completely clean PDF pages containing only your images inside your selected margins. No branding, headers, or watermarks are ever added.',
+      },
+      {
+        question: 'Why does a progress message show Encoding page X of Y?',
+        answer:
+          'Multi-page PDFs encode each image sequentially in browser memory to avoid freezing your browser tab or spiking RAM usage. Once the final page encodes, the green confirmation bar displays total page count and exact PDF byte size.',
+      },
+      {
+        question: 'What if I lose or close the automatic browser download dialog?',
+        answer:
+          'Keep the tab open—the emerald confirmation card stays visible with a Download PDF Again button. Clicking it re-triggers saving the exact generated Blob instantly without re-encoding.',
+      },
+      {
+        question: 'Can I paste screenshots directly into the PDF builder?',
+        answer:
+          'Yes, press Ctrl+V (or Cmd+V on Mac) to append a clipboard screenshot straight into your Page Order queue. That makes bundling multiple bug screenshots or chat receipts into one PDF fast.',
+      },
+      {
+        question: 'Does generating a PDF upload any metadata like EXIF GPS tags?',
+        answer:
+          'No, each page image is decoded and drawn onto HTML5 Canvas before being embedded into the PDF byte stream. As a result, original camera EXIF headers and GPS coordinates are excluded automatically during conversion.',
+      },
+      {
+        question: 'Can I convert iPhone HEIC camera photos straight to PDF without converting to JPG first?',
+        answer:
+          'Yes, drop .heic or .heif photos directly into the upload zone and the browser decodes them locally on the fly. They appear right in your Page Order list ready to combine into A4 or Letter PDFs.',
+      },
+      {
+        question: 'Does the Image to PDF tool work on smartphones and Chromebooks?',
+        answer:
+          'Yes, everything runs in standard browser JavaScript on iOS, Android, Windows, macOS, and ChromeOS. You do not need Adobe Acrobat, browser extensions, or desktop PDF software installed.',
       },
     ],
     relatedSlugs: ['/image-converter', '/', '/remove-image-metadata', '/image-resizer'],
@@ -357,27 +747,37 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Metadata Viewer',
     shortDescription: 'Inspect EXIF camera settings, GPS coordinates, and PNG/WebP data.',
     category: 'privacy',
-    seoTitle: 'Free Image Metadata & EXIF Viewer – Inspect Photo Details',
+    seoTitle: 'Image Metadata Viewer – Inspect EXIF & GPS Data Free',
     seoDescription:
-      'View hidden EXIF metadata, camera model, exposure settings, GPS coordinates, and PNG/WebP chunks locally in your browser without uploading photos.',
+      'Inspect camera EXIF tags, GPS coordinates, timestamps, and PNG or WebP chunks with our private image metadata viewer. Copy or export full metadata JSON locally.',
     h1: 'Image Metadata & EXIF Viewer',
     subtitle:
-      'Inspect hidden EXIF tags, camera settings, timestamps, GPS coordinates, and PNG/WebP headers directly in your browser without uploading private photos.',
+      'Built for photographers checking lens settings, developers debugging headers, and anyone checking privacy before posting, our browser image metadata viewer inspects raw file bytes locally. Reveal hidden EXIF tags, GPS coordinates, timestamps, and PNG or WebP chunks without uploading a single pixel.',
     howToSteps: [
       {
-        title: 'Drop an image to inspect',
+        title: 'Drop or select an image to inspect',
         description:
-          'Upload any JPG, PNG, WebP, HEIC, or other image file. Inspection runs instantaneously on the raw local bytes.',
+          'Upload a JPG, PNG, WebP, HEIC, GIF, BMP, or SVG image up to 20 MB (or paste via Ctrl+V). Raw binary headers parse immediately on your device.',
       },
       {
-        title: 'Review EXIF, Camera & GPS tags',
+        title: 'Check the Summary & Privacy Risk banner',
         description:
-          'See file properties, camera make/model, lens, shutter speed, ISO, timestamps, and any embedded GPS location coordinates.',
+          'View detected container format, dimensions, file size, and whether sensitive embedded metadata tag types were found.',
       },
       {
-        title: 'Export report or strip privacy tags',
+        title: 'Review any GPS Location alert',
         description:
-          'Copy or download the metadata as JSON, or jump straight to Remove Image Metadata to scrub sensitive data before sharing.',
+          'If GPSIFD tags exist, a warning box highlights the exact decoded Latitude and Longitude and offers a one-click jump to Remove Image Metadata.',
+      },
+      {
+        title: 'Browse the Extracted Metadata table',
+        description:
+          'Scroll through grouped entries (Camera, EXIF, GPS, PNG/WebP chunks, File info) with amber Privacy Tag labels marking sensitive fields.',
+      },
+      {
+        title: 'Copy or export JSON, or strip tags',
+        description:
+          'Click Copy JSON to copy the full report, Export JSON to save a .json file, or click Strip Metadata to scrub private tags cleanly.',
       },
     ],
     features: [
@@ -404,19 +804,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Why does my photo show no EXIF data?',
+        question: 'What kind of hidden information can this image metadata viewer uncover?',
         answer:
-          'Messaging apps (like WhatsApp), social platforms, and images already exported by web editors often strip EXIF metadata before you save them.',
+          'Depending on the container format, our parser extracts TIFF IFD0, ExifIFD, and GPSIFD fields locally from your image headers. This reveals details like camera make and model, lens specs, shutter speed, ISO, aperture, timestamps, editing software, copyright notes, and decimal GPS coordinates.',
       },
       {
-        question: 'Can this tool read GPS coordinates from smartphone photos?',
+        question: 'Does it inspect PNG and WebP technical headers as well as JPEG EXIF?',
         answer:
-          'Yes. Original JPEG photos taken with location services enabled include GPSIFD tags that our parser decodes into decimal latitude and longitude locally.',
+          'Yes, beyond standard JPEG EXIF segments, the viewer reads technical chunks embedded inside PNG and WebP files. You can see PNG IHDR bit-depth, pHYs physical DPI density, tEXt/iTXt/tIME text chunks, PNG eXIf blocks, and WebP VP8X alpha or animation flags.',
       },
       {
-        question: 'What about iPhone HEIC files?',
+        question: 'Why does a photo downloaded from WhatsApp or Instagram show zero EXIF tags?',
         answer:
-          'File info and pixel dimensions are inspected for HEIC files; JPEG, PNG, and WebP support full binary chunk and EXIF tag extraction in the browser.',
+          'Social networks and messaging apps strip EXIF, camera, and GPS headers automatically when you upload photos through their servers. Original files straight from your phone camera roll or DSLR retain full metadata.',
+      },
+      {
+        question: 'How does the tool detect whether a photo reveals my location?',
+        answer:
+          'When GPSIFD rational tags exist in the image header, the viewer converts degrees, minutes, and seconds into decimal Latitude and Longitude automatically. Any detected coordinates trigger an amber GPS Location Coordinates Detected banner right above the properties table.',
+      },
+      {
+        question: 'What do the amber Privacy Tag labels mean in the metadata table?',
+        answer:
+          'Entries flagged with an amber Privacy Tag badge contain personal or device-identifying information. Typical examples include GPS coordinates, exact capture timestamps, photographer/artist names, camera serial numbers, and device model strings.',
+      },
+      {
+        question: 'Can I strip sensitive metadata right after inspecting an image?',
+        answer:
+          'Yes, whenever sensitive tags are detected, an orange Strip Metadata button appears in the summary bar (plus a link inside the GPS warning box). Clicking it takes you straight to our Remove Image Metadata tool.',
+      },
+      {
+        question: 'How does JSON export work for developers or documentation?',
+        answer:
+          'Click Copy JSON in the summary bar to place the structured ImageMetadataReport onto your clipboard right away. If you need a file for audits or bug reports, click Export JSON to download <filename>_metadata.json locally.',
+      },
+      {
+        question: 'Why are full binary EXIF chunks not extracted for some HEIC or GIF files?',
+        answer:
+          'Our deep binary chunk parser targets JPEG, PNG, and WebP containers natively in JavaScript. For HEIC, GIF, BMP, and SVG files, the viewer reports reliable container info, file size, and pixel dimensions accurately.',
+      },
+      {
+        question: 'Are private photos with GPS location ever uploaded when I inspect them?',
+        answer:
+          'No, binary inspection runs 100% locally in your browser using File ArrayBuffer byte parsing. Sending private unstripped photos over the internet would defeat privacy, so zero bytes leave your computer or phone.',
+      },
+      {
+        question: 'Does viewing metadata modify, compress, or delete anything in my file?',
+        answer:
+          'No, the Image Metadata Viewer is strictly read-only. It reads headers from browser memory to show you what is inside without changing your original file.',
+      },
+      {
+        question: 'Can I inspect multiple files back to back without refreshing?',
+        answer:
+          'Yes, click the red trash icon (Clear) in the summary bar to reset back to the upload zone at any time. You can then drop or paste your next image to generate a fresh metadata report.',
+      },
+      {
+        question: 'Why does pasting a screenshot with Ctrl+V usually show no camera tags?',
+        answer:
+          'Operating system clipboards pass raw raster bitmaps rather than original camera JPEG files. Because clipboard images lack camera headers, pasted screenshots show container dimensions and format info without EXIF or GPS blocks.',
+      },
+      {
+        question: 'What is the maximum file size supported for metadata inspection?',
+        answer:
+          'You can inspect individual images up to 20 MB in size right in your browser. That ceiling easily covers full-resolution DSLR JPEGs, detailed PNG exports, and uncompressed BMP files.',
+      },
+      {
+        question: 'How can I verify that another tool actually removed all EXIF tags from a photo?',
+        answer:
+          'Drop the cleaned output file back into this image metadata viewer to inspect its raw bytes. If scrubbing succeeded, the green status banner confirms No EXIF, GPS, or hidden camera tags detected and no GPS alert appears.',
+      },
+      {
+        question: 'Does the viewer detect Adobe XMP or PNG text comments?',
+        answer:
+          'Yes, PNG tEXt and iTXt key-value text chunks—such as Software, Author, Comment, or Creation Time—are extracted cleanly into the metadata table. Any embedded PNG eXIf blocks and WebP EXIF chunks are decoded alongside them.',
+      },
+      {
+        question: 'What does the pHYs chunk mean on PNG screenshots?',
+        answer:
+          'The PNG pHYs chunk stores physical pixel density (DPI / pixels per meter) intended for print or layout scaling. Our viewer reads and converts those values so you can see whether an image specifies 72 DPI, 96 DPI, or 300 DPI.',
+      },
+      {
+        question: 'Why is the filename extension sometimes different from containerFormat?',
+        answer:
+          'Sometimes a PNG or WebP file gets renamed with a .jpg extension (or vice versa). Because our viewer inspects actual binary magic bytes rather than trusting the filename alone, it reports the true underlying container format.',
+      },
+      {
+        question: 'Can I check image metadata on iPhone or Android mobile browsers?',
+        answer:
+          'Yes, open the page in mobile Safari or Chrome and pick a photo directly from your camera roll. You can check hidden GPS coordinates and camera details on your phone before posting pictures online.',
+      },
+      {
+        question: 'Why did my DSLR photo show lens focal length and shutter speed?',
+        answer:
+          'Digital cameras record exposure telemetry inside the ExifIFD binary directory at the moment you press the shutter. Fields like ISO, F-Number, Exposure Time, Focal Length, Flash, and Metering Mode are decoded locally for you to read.',
+      },
+      {
+        question: 'Is there any fee or signup required to inspect unlimited photos?',
+        answer:
+          'No, inspecting image metadata and exporting JSON reports is completely free with no accounts or paywalls. You can check as many photos up to 20 MB as you need with zero watermarks or daily caps.',
       },
     ],
     relatedSlugs: ['/remove-image-metadata', '/image-dimensions-checker', '/', '/image-converter'],
@@ -426,27 +911,37 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Remove Image Metadata',
     shortDescription: 'Strip EXIF, GPS location, camera info & comments privately.',
     category: 'privacy',
-    seoTitle: 'Remove Image Metadata & EXIF Online Free – Strip GPS Data',
+    seoTitle: 'Remove Image Metadata Free – Strip EXIF & GPS Tags',
     seoDescription:
-      'Remove EXIF metadata, GPS location, camera model, and hidden tags from JPG, PNG, WebP, and HEIC images privately in your browser with lossless stripping.',
-    h1: 'Remove Image Metadata (EXIF & GPS Stripper)',
+      'Safely remove image metadata including EXIF camera details and GPS location directly in your browser. Lossless binary stripping for JPG and PNG with ZIP export.',
+    h1: 'Remove Image Metadata Online',
     subtitle:
-      'Protect your privacy before sharing photos online. Permanently strip EXIF camera details, GPS coordinates, timestamps, and hidden text chunks locally in your browser.',
+      'Designed for marketplace sellers, journalists, parents, and privacy-conscious users, this tool lets you remove image metadata permanently before sharing photos online. Strip EXIF camera models, GPS coordinates, capture timestamps, and hidden text chunks locally in your browser using lossless binary removal or clean Canvas re-encoding.',
     howToSteps: [
       {
-        title: 'Upload photos to clean',
+        title: 'Drop photos you want to scrub',
         description:
-          'Drag and drop one or multiple JPG, PNG, WebP, or HEIC images — nothing is uploaded to any server.',
+          'Upload one or many JPG, PNG, WebP, or HEIC images (up to 20 MB each) into the upload box, or paste with Ctrl+V.',
       },
       {
-        title: 'Choose Lossless Strip or Clean Re-encode',
+        title: 'Review automatic stripping and verification badges',
         description:
-          'Lossless mode strips JPEG APP1-APP15/COM segments and PNG text/eXIf chunks without recompressing a single pixel.',
+          'Files scrub immediately upon upload and re-scan automatically, showing how many metadata tags were stripped (e.g. → 0 remaining).',
       },
       {
-        title: 'Verify & download clean images',
+        title: 'Choose Stripping Method if adjusting settings',
         description:
-          'See the exact count of metadata tags removed (verified to 0) and download individually or as a ZIP.',
+          'Keep Lossless Binary Strip (JPG/PNG) for zero pixel re-encoding on JPEGs and PNGs, or pick Full Canvas Re-encode to flatten pixels cleanly.',
+      },
+      {
+        title: 'Optionally set Output Format and Quality',
+        description:
+          'Select Original, JPG, PNG, or WebP output, adjust Re-encode Quality (50%–100%) for WebP/HEIC/Canvas re-encode, and click Re-clean All.',
+      },
+      {
+        title: 'Download clean files or a batch ZIP',
+        description:
+          'Click Download Clean on individual verified cards or click Download All Clean (ZIP) to save clean_images_no_metadata.zip.',
       },
     ],
     features: [
@@ -473,19 +968,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Does lossless metadata removal reduce image quality?',
+        question: 'How does Lossless Binary Strip work without hurting photo quality?',
         answer:
-          'No! When Lossless Strip is used on JPG or PNG files, only the metadata segments are removed while the compressed pixel data stays byte-for-byte untouched.',
+          'On JPEG and PNG files kept in their original format, our binary cleaner parses the container structure directly. It removes metadata segments (JPEG APP1–APP15/COM and PNG eXIf/tEXt/iTXt/tIME) without decoding or recompressing a single pixel.',
       },
       {
-        question: 'What metadata is removed?',
+        question: 'What happens when I upload WebP or HEIC files to remove metadata?',
         answer:
-          'EXIF camera make/model, lens details, capture date/time, GPS latitude/longitude/altitude, XMP Adobe packets, IPTC tags, JPEG comments, and PNG text/time/eXIf chunks.',
+          'Lossless binary segment stripping applies to JPG and PNG inputs. For HEIC or WebP inputs—or whenever you switch Output Format or pick Full Canvas Re-encode—the tool draws pixels onto a fresh HTML5 Canvas to guarantee all metadata headers are dropped.',
       },
       {
-        question: 'How can I confirm the metadata is really gone?',
+        question: 'How do I know for sure that GPS location and EXIF tags were removed?',
         answer:
-          'The tool automatically re-scans each cleaned file and displays the before/after tag counts, and you can also inspect the downloaded file in our Image Metadata Viewer.',
+          'After cleaning each image, our tool runs our metadata parser a second time on the output Blob and displays an emerald badge (for example, Stripped X metadata tags → 0 remaining or Verified clean). Nothing is guessed.',
+      },
+      {
+        question: 'Which metadata types are targeted when cleaning photos?',
+        answer:
+          'The cleaner strips EXIF camera make, model, lens details, serial numbers, shutter settings, and capture timestamps. It also removes GPS latitude/longitude/altitude tags, Adobe XMP packets, IPTC fields, JPEG comments, and PNG text or time chunks.',
+      },
+      {
+        question: 'When should I choose Full Canvas Re-encode instead of Lossless Binary Strip?',
+        answer:
+          'Pick Full Canvas Re-encode when you want a brand-new compressed bitmap with zero inherited binary segments whatsoever. It is also used automatically whenever you change Output Format or upload WebP and HEIC photos.',
+      },
+      {
+        question: 'Which upload formats are accepted by Remove Image Metadata?',
+        answer:
+          'The upload dropzone accepts JPG (JPEG), PNG, WebP, and iPhone HEIC/HEIF files up to 20 MB per file. From there, you can export clean files in Original, JPG, PNG, or WebP format.',
+      },
+      {
+        question: 'Does the Re-encode Quality slider affect Lossless Binary Strip files?',
+        answer:
+          'No, Lossless Binary Strip skips pixel re-encoding altogether so your JPEG/PNG visual bits remain untouched regardless of the slider. The Re-encode Quality slider (50%–100%) only applies to WebP/HEIC inputs or Full Canvas Re-encode exports.',
+      },
+      {
+        question: 'Can I remove metadata from a whole folder of listing photos at once?',
+        answer:
+          'Yes, drop multiple photos together and wait a moment for the automatic verification badges to turn green across all cards. Then click Download All Clean (ZIP) to download clean_images_no_metadata.zip.',
+      },
+      {
+        question: 'Are my uncleaned photos with GPS coordinates uploaded anywhere?',
+        answer:
+          'Never — scrubbing sensitive GPS and device headers only protects privacy when it happens locally. All binary byte slicing and Canvas exporting occur inside your own browser memory.',
+      },
+      {
+        question: 'Why did a photo show Verified clean (0 EXIF/GPS tags) right after upload?',
+        answer:
+          'That means the source file already contained zero EXIF, GPS, or text metadata chunks (common for screenshots or images downloaded from messaging apps). Our cleaner still verifies the output cleanly.',
+      },
+      {
+        question: 'Does stripping metadata reduce file size too?',
+        answer:
+          'Yes, camera photos often carry embedded EXIF preview thumbnails, Adobe XMP XML blocks, and color or comment segments. Stripping those in Lossless Binary Strip mode frequently trims tens of kilobytes with zero change in image sharpness.',
+      },
+      {
+        question: 'Does Lossless Binary Strip preserve transparent PNG backgrounds?',
+        answer:
+          'Yes, PNG image data chunks (IDAT) and alpha transparency remain byte-for-byte untouched. Only ancillary text, EXIF, and timestamp chunks are excised from the file.',
+      },
+      {
+        question: 'What happens if an iPhone photo was rotated via an EXIF Orientation tag?',
+        answer:
+          'Stripping the raw APP1 block losslessly deletes the Orientation flag, whereas Full Canvas Re-encode or HEIC decoding bakes upright pixel orientation directly into the exported canvas. If a vertical JPEG looks sideways after lossless stripping, switch to Full Canvas Re-encode and click Re-clean All.',
+      },
+      {
+        question: 'Can I convert a clean PNG directly to WebP or JPG while removing metadata?',
+        answer:
+          'Yes, pick JPG or WebP under Output Format, set Re-encode Quality, and click Re-clean All. Each file re-encodes cleanly through Canvas with all metadata stripped and the chosen format applied.',
+      },
+      {
+        question: 'Are my original files on disk altered or overwritten?',
+        answer:
+          'No, web browsers cannot overwrite files directly in your local folders. Clicking Download Clean saves a separate scrubbed copy while leaving your originals untouched.',
+      },
+      {
+        question: 'Can I double-check the cleaned output in an independent inspector?',
+        answer:
+          'Yes, drop any downloaded file into our Image Metadata Viewer right after saving. It parses the raw binary headers independently so you can confirm zero GPS coordinates or camera tags remain.',
+      },
+      {
+        question: 'Does the cleaner work on mobile phones before posting to marketplaces?',
+        answer:
+          'Yes, open the page in iOS Safari or Android Chrome and pick photos directly from your phone camera roll. Once the green verified badges appear, you can download clean copies straight to your device.',
+      },
+      {
+        question: 'Can I paste a clipboard image into Remove Image Metadata?',
+        answer:
+          'Yes, press Ctrl+V (or Cmd+V on Mac) to drop a copied image or screenshot straight into the upload queue. It scrubs any residual chunks automatically and readies the clean download.',
+      },
+      {
+        question: 'Why does the Re-clean All button exist if cleaning starts automatically?',
+        answer:
+          'Files scrub immediately upon drop using your active settings. If you later change Stripping Method, switch Output Format, or adjust Re-encode Quality, clicking Re-clean All applies those updated options across the entire batch.',
+      },
+      {
+        question: 'Is there any limit on file count or cost to strip EXIF data?',
+        answer:
+          'Each uploaded file can be up to 20 MB so your browser memory stays smooth. Beyond that per-file cap, you can remove image metadata from unlimited photos with zero watermarks, signups, or fees.',
       },
     ],
     relatedSlugs: ['/image-metadata-viewer', '/', '/image-converter', '/image-to-pdf'],
@@ -702,16 +1282,43 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Cropper',
     shortDescription: 'Crop photos interactively with drag handles, aspect ratios & zoom.',
     category: 'crop-edit',
-    seoTitle: 'Free Online Image Cropper – Crop JPG, PNG & WebP in Browser',
+    seoTitle: 'Free Online Image Cropper – Crop Photos & Set Ratios',
     seoDescription:
-      'Crop images online free with an interactive drag-and-resize crop box, aspect ratio presets (1:1, 4:3, 16:9), zoom, and instant download in your browser.',
+      'Interactive browser image cropper with drag handles, 1:1 to 16:9 aspect presets, and zoom up to 300%. Crop JPG, PNG, WebP, and HEIC locally with zero uploads.',
     h1: 'Free Online Image Cropper',
     subtitle:
-      'Drag and resize the crop frame directly over your photo, lock popular aspect ratios like 1:1, 4:3, or 16:9, zoom in for precision, and export locally.',
+      'Built for social creators, designers, students, and e-commerce sellers, our interactive image cropper lets you frame and trim photos accurately right inside your browser. Lock popular ratios from 1:1 to 16:9, zoom up to 300% for tight edges, and export clean crops locally with zero uploads.',
     howToSteps: [
-      { title: 'Upload an image', description: 'Drop or browse any JPG, PNG, WebP, HEIC, or SVG image.' },
-      { title: 'Adjust crop area & ratio', description: 'Drag the crop box or corner handles, choose Free or a preset aspect ratio, and zoom if needed.' },
-      { title: 'Crop & download', description: 'Pick JPG, PNG, or WebP output and download your cropped image immediately.' },
+      {
+        title: 'Upload an image to crop',
+        description:
+          'Drop a JPG, PNG, WebP, HEIC, GIF, BMP, or SVG image up to 20 MB into the dropzone, browse from your device, or paste with Ctrl+V.',
+      },
+      {
+        title: 'Select an aspect ratio preset',
+        description:
+          'Keep Free for unrestricted trimming or click 1:1, 4:3, 16:9, 3:2, 4:5, or 9:16 under Aspect Ratio Preset to lock framing.',
+      },
+      {
+        title: 'Drag the frame and resize handles',
+        description:
+          'Move the crop box over your subject using the rule-of-thirds grid and pull any of the 8 edge or corner handles while watching live Crop Width and Height.',
+      },
+      {
+        title: 'Zoom in or reset full canvas',
+        description:
+          'Use the Zoom buttons (100% to 300% in 25% steps) for precise edge alignment, or click Select Full to reset to the entire image.',
+      },
+      {
+        title: 'Pick output format and quality',
+        description:
+          'Choose Original, JPG, PNG, or WebP output, and adjust the Quality slider (10% to 100%) when saving lossy formats.',
+      },
+      {
+        title: 'Crop and download your file',
+        description:
+          'Click Crop & Download to render the selected rectangle at full source resolution and save it with dimensions in the filename.',
+      },
     ],
     features: [
       { title: 'Interactive Drag & Resize Handles', description: 'Smooth mouse and touch pointer handles let you crop any region down to exact pixels.' },
@@ -720,9 +1327,106 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       { title: '100% Private Local Processing', description: 'Your photos are cropped on your device via HTML5 Canvas with zero server uploads.' },
     ],
     faqs: [
-      { question: 'Does cropping reduce image quality outside the cropped area?', answer: 'No. The cropped region is extracted at full original resolution from your uploaded image.' },
-      { question: 'Can I crop a photo to an exact 1:1 square for a profile picture?', answer: 'Yes. Select the 1:1 aspect ratio preset and drag the handles to frame your subject cleanly.' },
-      { question: 'Does the cropper work on mobile touchscreens?', answer: 'Yes. Pointer events support both mouse dragging and finger touch gestures on iOS and Android.' },
+      {
+        question: 'Does cropping cut away quality inside the selected rectangle?',
+        answer:
+          'No, the image cropper extracts your selected coordinates straight from the full original resolution stored in browser memory rather than the scaled preview box. When saving as lossless PNG, pixels inside your crop remain identical to the source.',
+      },
+      {
+        question: 'What aspect ratio presets are built into the crop options?',
+        answer:
+          'You can switch between Free (any rectangle), 1:1 (square avatars), 4:3, 16:9 (widescreen/YouTube), 3:2 (DSLR standard), 4:5 (Instagram portrait), and 9:16 (Stories/Reels). Clicking a preset centers a matching frame automatically.',
+      },
+      {
+        question: 'How do the 8 resize handles behave when an aspect ratio preset is active?',
+        answer:
+          'All four corner handles and edge handles maintain your selected proportion automatically while clamping cleanly inside the image borders. To adjust width and height independently again, simply click the Free preset.',
+      },
+      {
+        question: 'What is the rule-of-thirds grid inside the selection box for?',
+        answer:
+          'The subtle 3×3 grid divides your crop frame into thirds so you can align horizons, eyes, or product centers accurately while dragging. It is purely a visual guide on screen and never appears in your exported image.',
+      },
+      {
+        question: 'How far can I zoom in for detailed framing?',
+        answer:
+          'Use the Zoom In (+) and Zoom Out (-) buttons in the viewport bar to zoom smoothly from 100% up to 300% in 25% increments. When zoomed past 100%, scroll inside the preview stage to trim fine borders.',
+      },
+      {
+        question: 'What does the Select Full button in Crop Options do?',
+        answer:
+          'Clicking Select Full switches Aspect Ratio back to Free, expands the crop box to cover 100% of your image width and height, and resets Zoom to 100%. It gives you a clean starting point without re-uploading.',
+      },
+      {
+        question: 'Can I see exact output pixel dimensions before downloading?',
+        answer:
+          'Yes, both the Selection readout above the stage and the Crop Width / Crop Height cards in Crop Options update live in pixels as you drag. The exported filename also includes those exact cropped dimensions (for example, photo_1080x1080_cropped.jpg).',
+      },
+      {
+        question: 'Does cropping work with finger gestures on phones and tablets?',
+        answer:
+          'Yes, the crop box and handles use touch-action-safe Pointer events designed for both desktop mice and mobile touchscreens. You can drag the frame and pull handles comfortably on iOS and Android.',
+      },
+      {
+        question: 'Does cropping preserve transparent backgrounds on PNGs and WebPs?',
+        answer:
+          'Yes, keeping Original format (from PNG/WebP) or choosing PNG or WebP keeps full alpha transparency intact inside the cropped region. Choosing JPG flattens transparent pixels cleanly onto solid white.',
+      },
+      {
+        question: 'Why does the Quality slider disappear when PNG is selected?',
+        answer:
+          'PNG uses lossless compression, so a lossy percentage quality setting does not apply. Switch Output Format to Original (for JPEGs), JPG, or WebP to reveal the 10%–100% Quality slider.',
+      },
+      {
+        question: 'Can I crop multiple different images at once?',
+        answer:
+          'This interactive cropper handles one image at a time so you can inspect and frame each subject individually with drag handles and zoom. Once downloaded, click the trash icon to load your next photo immediately.',
+      },
+      {
+        question: 'Which file formats can be uploaded into the cropper?',
+        answer:
+          'You can crop JPG, PNG, WebP, iPhone HEIC/HEIF, GIF, BMP, and SVG images up to 20 MB per file. Note that animated GIFs crop their initial frame as a static output.',
+      },
+      {
+        question: 'Are private portraits or IDs uploaded to a server when cropped?',
+        answer:
+          'No, the entire canvas draw and blob encoding execute locally inside your web browser. Nothing is transmitted over a network or saved externally.',
+      },
+      {
+        question: 'Can I paste a screenshot straight from my clipboard to trim it?',
+        answer:
+          'Yes, take a screenshot and press Ctrl+V (or Cmd+V on Mac) on the page while no image is loaded. It opens straight inside the crop viewport ready to frame.',
+      },
+      {
+        question: 'How do I crop a rectangular photo into a clean square profile avatar?',
+        answer:
+          'Click the 1:1 button under Aspect Ratio Preset, drag the white square over the face or logo, and adjust corner handles until satisfied. Then click Crop & Download to save an exact square image.',
+      },
+      {
+        question: 'What quality setting is default when exporting JPG or WebP crops?',
+        answer:
+          'Quality defaults to 92% so cropped JPEGs and WebPs keep crisp photographic texture without bloated file weight. Slide down toward 75%–85% if you also want smaller upload size.',
+      },
+      {
+        question: 'Does cropping strip embedded EXIF GPS location data too?',
+        answer:
+          'Yes, exporting the cropped region through a fresh HTML5 Canvas creates a clean bitmap without original JPEG EXIF or GPS tags. That helps protect your location and device privacy when sharing trimmed shots.',
+      },
+      {
+        question: 'Why does the stage darken everything outside my selection box?',
+        answer:
+          'The semi-transparent dark overlay dims the regions that will be trimmed away. That visual contrast helps you judge composition and rule-of-thirds balance cleanly before clicking Crop & Download.',
+      },
+      {
+        question: 'Can I replace the current photo quickly after downloading a crop?',
+        answer:
+          'Yes, click the red trash icon in the top-right corner of the crop viewport header at any time. That clears the active photo and returns cleanly to the upload zone for your next image.',
+      },
+      {
+        question: 'Is there any cost, signup, or watermark on cropped exports?',
+        answer:
+          'No, the image cropper is completely free with no accounts or paywalls. Every cropped photo exports cleanly at full resolution with zero watermarks added.',
+      },
     ],
     relatedSlugs: ['/image-resizer', '/rotate-flip-image', '/round-image-corners', '/'],
   },
@@ -731,16 +1435,43 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Watermark',
     shortDescription: 'Add custom text or logo watermarks, drag or tile across photos.',
     category: 'crop-edit',
-    seoTitle: 'Add Watermark to Image Free – Text & Logo Watermark Online',
+    seoTitle: 'Add Image Watermark Free – Custom Text & Logo Tool',
     seoDescription:
-      'Add custom text or logo watermarks to images online free. Adjust font size, opacity, rotation, drag position, or tile across the whole photo in your browser.',
-    h1: 'Add Watermark to Image Online',
+      'Protect photos with an image watermark right in your browser. Add custom text or transparent PNG/SVG logos, drag to place or tile diagonally, and export safely.',
+    h1: 'Free Online Image Watermark Tool',
     subtitle:
-      'Protect your photos and artwork with customizable text or logo watermarks. Drag to position, use corner presets, or tile diagonally across the entire image.',
+      'Designed for photographers, illustrators, Etsy sellers, and digital agencies, this private browser tool adds a crisp text or logo image watermark without server uploads. Drag your mark freely across the canvas, snap to 9 anchor presets, or repeat a tilted pattern across the whole photo.',
     howToSteps: [
-      { title: 'Upload your main photo', description: 'Drop the JPG, PNG, WebP, or HEIC image you want to watermark.' },
-      { title: 'Customize text or logo watermark', description: 'Enter watermark text or upload a logo PNG, then adjust size, opacity, rotation, or enable Tiled mode.' },
-      { title: 'Position & download', description: 'Drag the watermark directly on the preview or pick a 9-grid anchor, then download your file.' },
+      {
+        title: 'Upload your base photo',
+        description:
+          'Drop a JPG, PNG, WebP, HEIC, GIF, BMP, or SVG image up to 20 MB into the dropzone, browse from disk, or paste via Ctrl+V.',
+      },
+      {
+        title: 'Pick Text Watermark or Logo Image',
+        description:
+          'Choose Text Watermark to type custom brand text, pick color, and adjust Size (2%–20%), or choose Logo Image to upload a transparent PNG or SVG logo (5%–60% width).',
+      },
+      {
+        title: 'Adjust Opacity and Rotation',
+        description:
+          'Set Opacity from subtle 5% up to solid 100%, and tilt Rotation anywhere from -180° to +180° in real time.',
+      },
+      {
+        title: 'Position freely or enable Tiled Repeat Pattern',
+        description:
+          'Drag your watermark directly on the preview image, click a 9-point Anchor Preset (TL to BR), or toggle Tiled Repeat Pattern and adjust Tile Spacing (15%–60%).',
+      },
+      {
+        title: 'Select output format and quality',
+        description:
+          'Choose Orig, JPG, PNG, or WebP output, and set Quality (10%–100%) when saving lossy formats.',
+      },
+      {
+        title: 'Download your watermarked image',
+        description:
+          'Click Download Watermarked Image to composite the overlay at full original image resolution and save <name>_watermarked.',
+      },
     ],
     features: [
       { title: 'Text & Logo Watermarks', description: 'Use crisp custom typography or upload your transparent PNG/SVG brand logo.' },
@@ -749,9 +1480,106 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       { title: 'Client-Side Privacy', description: 'Watermark proofs and portfolio shots locally without sending originals to external servers.' },
     ],
     faqs: [
-      { question: 'Can I make a subtle semi-transparent watermark?', answer: 'Yes. Use the Opacity slider (from 5% to 100%) to make your watermark subtle or bold.' },
-      { question: 'Can I use my own transparent PNG logo as a watermark?', answer: 'Yes. Switch to Logo Watermark mode and upload any PNG or SVG logo.' },
-      { question: 'Does tiled mode work with rotation?', answer: 'Yes. Both single and tiled watermarks support custom rotation angles.' },
+      {
+        question: 'Can I use both custom text and my own transparent logo as an image watermark?',
+        answer:
+          'Yes, switch between Text Watermark and Logo Image at the top of the controls panel. Text mode supports custom phrasing, hex color, and size scaling, while Logo mode accepts transparent PNG, SVG, or any supported logo file.',
+      },
+      {
+        question: 'How does the Tiled Repeat Pattern protect client proofs better than a single corner stamp?',
+        answer:
+          'Single corner marks can easily be cropped away, whereas enabling Tiled Repeat Pattern stamps your rotated text or logo in a staggered grid across the whole frame. Use the Tile Spacing slider (15% to 60%) to control grid density.',
+      },
+      {
+        question: 'Why are Anchor Presets hidden when Tiled Repeat Pattern is turned on?',
+        answer:
+          'Anchor Presets and drag-to-position apply to placing a single watermark at specific coordinates (TL, TC, TR, ML, C, MR, BL, BC, BR). Turn off Tiled Repeat Pattern anytime you want to drag or snap a single stamp.',
+      },
+      {
+        question: 'How is text size calculated across small thumbnails vs huge camera photos?',
+        answer:
+          'Font Size (2% to 20%) and Logo Width (5% to 60%) scale proportionally relative to your image width. That ensures your watermark looks consistent on both an 800 px product thumbnail and a 4000 px high-resolution proof.',
+      },
+      {
+        question: 'Does the preview canvas downsample my downloaded output?',
+        answer:
+          'No, the interactive preview fits up to 900 px wide purely for responsive dragging on your screen. When you click Download Watermarked Image, the exporter builds a full-resolution canvas matching your original photo’s exact pixel dimensions.',
+      },
+      {
+        question: 'Can I make white watermark text readable over light backgrounds?',
+        answer:
+          'Yes, Text Watermark automatically renders a subtle dark drop shadow behind your lettering. That keeps white or light-colored watermarks crisp and readable across bright skies, white product backdrops, and highlights.',
+      },
+      {
+        question: 'What opacity and rotation ranges work best for unobtrusive proof protection?',
+        answer:
+          'For subtle corner branding, try 40%–65% Opacity at 0° rotation anchored to Bottom-Right (BR). For strong stock-proof protection, use Tiled Repeat Pattern at 25%–40% Opacity with a -25° or -35° diagonal angle.',
+      },
+      {
+        question: 'How do I drag a single watermark into an exact custom spot?',
+        answer:
+          'With Tiled Repeat Pattern unchecked, click or press down directly anywhere on the preview canvas and drag your pointer. The watermark follows smoothly and clamps slightly inside edges so it never clips off.',
+      },
+      {
+        question: 'Which image formats are supported for base photos and uploaded logos?',
+        answer:
+          'Both the main photo and logo upload support JPG, PNG, WebP, iPhone HEIC/HEIF, GIF, BMP, and SVG up to 20 MB. Note that animated GIFs render as a single watermarked static frame.',
+      },
+      {
+        question: 'Does exporting preserve transparency if my base image is a transparent PNG?',
+        answer:
+          'Yes, selecting Orig (from PNG/WebP), PNG, or WebP preserves full alpha transparency outside your artwork while compositing the watermark on top. Selecting JPG fills transparent areas with solid white.',
+      },
+      {
+        question: 'Are unwatermarked original proofs ever uploaded to external servers?',
+        answer:
+          'No, keeping unwatermarked client proofs private is essential. Every canvas composite, tile pass, and final image export runs strictly inside your local browser memory with zero network uploads.',
+      },
+      {
+        question: 'Can I upload a new base photo without losing my text, opacity, or angle settings?',
+        answer:
+          'Yes, click Change Image in the preview header whenever you want to stamp another photo. Your current watermark text, uploaded logo, opacity, rotation angle, and tiling layout stay configured automatically.',
+      },
+      {
+        question: 'Can I replace the uploaded brand logo later without reloading the tool?',
+        answer:
+          'Yes, while Logo Image mode is selected, click Change Logo Image to pick a different PNG or SVG file at any time. Your existing base photo updates immediately.',
+      },
+      {
+        question: 'Why does Quality disappear when PNG output is selected?',
+        answer:
+          'PNG outputs are lossless bitmaps, so percentage compression quality does not apply. Switch to Orig (for JPEG sources), JPG, or WebP to adjust the Quality slider between 10% and 100%.',
+      },
+      {
+        question: 'Can I paste a photo directly from my clipboard to watermark it?',
+        answer:
+          'Yes, copy an image or screenshot and press Ctrl+V (or Cmd+V on Mac) when the upload zone is open. It loads directly into the watermark editor.',
+      },
+      {
+        question: 'Is the watermark permanently flattened into the downloaded file?',
+        answer:
+          'Yes, the watermark is painted straight onto the output bitmap and saved as a flattened JPG, PNG, or WebP (<name>_watermarked). There are no editable layers left inside the exported image.',
+      },
+      {
+        question: 'What happens if I leave the Watermark Text input blank?',
+        answer:
+          'If you clear the Watermark Text field completely, the renderer temporarily displays "Watermark" on the preview canvas. That prevents an invisible empty selection while you type a new label.',
+      },
+      {
+        question: 'Can I position and export watermarked photos on a smartphone or iPad?',
+        answer:
+          'Yes, dragging across the preview canvas uses touch-friendly Pointer events alongside responsive sliders. You can easily stamp portfolio shots or proofs directly inside mobile Safari or Chrome.',
+      },
+      {
+        question: 'Does watermarking strip camera EXIF GPS tags when exporting?',
+        answer:
+          'Yes, rendering onto a fresh HTML5 Canvas creates a clean output file without copying over camera EXIF headers. Your GPS location and device serial metadata stay excluded from the downloaded proof.',
+      },
+      {
+        question: 'Does CompressMyPic add any extra badge next to my own watermark?',
+        answer:
+          'No, only the exact text or logo you configure is drawn onto your photo. We never add any external branding, corner badges, or site watermarks to your exports.',
+      },
     ],
     relatedSlugs: ['/add-text-to-image', '/image-border-generator', '/remove-image-metadata', '/'],
   },
