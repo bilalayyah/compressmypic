@@ -22,6 +22,8 @@ import { toPortuguesePath } from '../locales/pt/slugs';
 import { toFrenchPath } from '../locales/fr/slugs';
 import { toGermanPath } from '../locales/de/slugs';
 import { toItalianPath } from '../locales/it/slugs';
+import { toIndonesianPath } from '../locales/id/slugs';
+import { toRussianPath } from '../locales/ru/slugs';
 import { getAlternates } from '../locales/alternates';
 import {
   EXTENDED_ALLOWED_EXT_REGEX,
@@ -66,6 +68,20 @@ export interface PageItStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageIdStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageRuStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface MetadataViewerPageProps {
   onNavigate: (path: string) => void;
   lang?: SupportedLang;
@@ -77,6 +93,8 @@ interface MetadataViewerPageProps {
   frStrings?: PageFrStrings;
   deStrings?: PageDeStrings;
   itStrings?: PageItStrings;
+  idStrings?: PageIdStrings;
+  ruStrings?: PageRuStrings;
 }
 
 export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
@@ -90,8 +108,12 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
   frStrings,
   deStrings,
   itStrings,
+  idStrings,
+  ruStrings,
 }) => {
   const t = (key: string, fallback: string) => {
+    if (lang === 'id' && idStrings?.toolUi) return (idStrings.toolUi[key] as string | undefined) ?? fallback;
+    if (lang === 'ru' && ruStrings?.toolUi) return (ruStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'de' && deStrings?.toolUi) return (deStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'it' && itStrings?.toolUi) return (itStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'pt' && ptStrings?.toolUi) return (ptStrings.toolUi[key] as string | undefined) ?? fallback;
@@ -104,7 +126,7 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
   // ES has no gpsWarningLink key; 'Eliminar metadatos' is the exact substring
   // embedded in the ES gpsWarning table string (src/locales/es/ui.ts).
   const gpsWarningLinkText =
-    lang === 'pt' || lang === 'fr' || lang === 'de' || lang === 'it'
+    lang === 'pt' || lang === 'fr' || lang === 'de' || lang === 'it' || lang === 'id' || lang === 'ru'
       ? t('gpsWarningLink', 'Remove Image Metadata')
       : lang === 'es'
         ? 'Eliminar metadatos'
@@ -176,8 +198,8 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
-      canonicalPath={lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
+      ui={lang === 'id' ? idStrings?.layoutUi : lang === 'ru' ? ruStrings?.layoutUi : lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
+      canonicalPath={lang === 'id' ? toIndonesianPath(activeTool.slug) : lang === 'ru' ? toRussianPath(activeTool.slug) : lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
       alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
@@ -193,7 +215,7 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
           allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
           supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
           title={t('uploadTitle', 'Drop an image to inspect EXIF & metadata')}
-          strings={lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
+          strings={lang === 'id' ? idStrings?.uploadZone : lang === 'ru' ? ruStrings?.uploadZone : lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
         />
 
         {errorMsg && (
