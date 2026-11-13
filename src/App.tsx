@@ -76,6 +76,8 @@ import { SUPPORTED_LANGS, LANG_STORAGE_KEY, type SupportedLang } from './locales
 import { ES_PATH_BY_EN, EN_PATH_BY_ES, ES_HOME_ALIAS, ES_ALL_TOOLS_PATH } from './locales/es/slugs';
 import { PT_PATH_BY_EN, EN_PATH_BY_PT, PT_HOME_ALIAS, PT_ALL_TOOLS_PATH } from './locales/pt/slugs';
 import { FR_PATH_BY_EN, EN_PATH_BY_FR, FR_HOME_ALIAS, FR_ALL_TOOLS_PATH } from './locales/fr/slugs';
+import { DE_PATH_BY_EN, EN_PATH_BY_DE, DE_HOME_ALIAS, DE_ALL_TOOLS_PATH } from './locales/de/slugs';
+import { IT_PATH_BY_EN, EN_PATH_BY_IT, IT_HOME_ALIAS, IT_ALL_TOOLS_PATH } from './locales/it/slugs';
 import { getAlternates } from './locales/alternates';
 import { AboutPageEs } from './pages/es/AboutPageEs';
 import { ContactPageEs } from './pages/es/ContactPageEs';
@@ -101,6 +103,22 @@ import { AllToolsPageFr } from './pages/fr/AllToolsPageFr';
 import { GuideWhatsAppPageFr } from './pages/fr/GuideWhatsAppPageFr';
 import { GuideFormatsPageFr } from './pages/fr/GuideFormatsPageFr';
 import { Guide100kbPageFr } from './pages/fr/Guide100kbPageFr';
+import { AboutPageDe } from './pages/de/AboutPageDe';
+import { ContactPageDe } from './pages/de/ContactPageDe';
+import { PrivacyPageDe } from './pages/de/PrivacyPageDe';
+import { TermsPageDe } from './pages/de/TermsPageDe';
+import { AllToolsPageDe } from './pages/de/AllToolsPageDe';
+import { GuideWhatsAppPageDe } from './pages/de/GuideWhatsAppPageDe';
+import { GuideFormatsPageDe } from './pages/de/GuideFormatsPageDe';
+import { Guide100kbPageDe } from './pages/de/Guide100kbPageDe';
+import { AboutPageIt } from './pages/it/AboutPageIt';
+import { ContactPageIt } from './pages/it/ContactPageIt';
+import { PrivacyPageIt } from './pages/it/PrivacyPageIt';
+import { TermsPageIt } from './pages/it/TermsPageIt';
+import { AllToolsPageIt } from './pages/it/AllToolsPageIt';
+import { GuideWhatsAppPageIt } from './pages/it/GuideWhatsAppPageIt';
+import { GuideFormatsPageIt } from './pages/it/GuideFormatsPageIt';
+import { Guide100kbPageIt } from './pages/it/Guide100kbPageIt';
 
 const RemoveBackgroundPage = React.lazy(() =>
   import('./pages/RemoveBackgroundPage').then((m) => ({ default: m.RemoveBackgroundPage }))
@@ -209,6 +227,26 @@ function parsePath(rawPathname: string): ParsedPath {
     if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'fr' };
     return { path: '/', lang: 'fr' }; // unknown French path → French home
   }
+  // German prefix: /de/<german-slug>
+  if (p === '/de' || p.startsWith('/de/')) {
+    const rest = p === '/de' ? '/' : p.slice(3); // keep leading '/'
+    if (rest === '/') return { path: '/', lang: 'de' };
+    if (rest === DE_HOME_ALIAS.slice(3)) return { path: '/', lang: 'de' }; // /de/bilder-komprimieren → /de/
+    if (rest === DE_ALL_TOOLS_PATH.slice(3)) return { path: DE_ALL_TOOLS_PATH, lang: 'de' };
+    const enPath = EN_PATH_BY_DE[p]; // keys carry the '/de' prefix (see slug map)
+    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'de' };
+    return { path: '/', lang: 'de' }; // unknown German path → German home
+  }
+  // Italian prefix: /it/<italian-slug>
+  if (p === '/it' || p.startsWith('/it/')) {
+    const rest = p === '/it' ? '/' : p.slice(3); // keep leading '/'
+    if (rest === '/') return { path: '/', lang: 'it' };
+    if (rest === IT_HOME_ALIAS.slice(3)) return { path: '/', lang: 'it' }; // /it/comprimere-immagini → /it/
+    if (rest === IT_ALL_TOOLS_PATH.slice(3)) return { path: IT_ALL_TOOLS_PATH, lang: 'it' };
+    const enPath = EN_PATH_BY_IT[p]; // keys carry the '/it' prefix (see slug map)
+    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'it' };
+    return { path: '/', lang: 'it' }; // unknown Italian path → Italian home
+  }
   return KNOWN_ROUTES.includes(p) ? { path: p, lang: 'en' } : { path: '/', lang: 'en' };
 }
 
@@ -222,17 +260,25 @@ function toLocalizedPath(enPath: string, lang: SupportedLang): string {
   if (
     enPath === ES_ALL_TOOLS_PATH ||
     enPath === PT_ALL_TOOLS_PATH ||
-    enPath === FR_ALL_TOOLS_PATH
+    enPath === FR_ALL_TOOLS_PATH ||
+    enPath === DE_ALL_TOOLS_PATH ||
+    enPath === IT_ALL_TOOLS_PATH
   ) {
     return lang === 'es'
       ? ES_ALL_TOOLS_PATH
       : lang === 'pt'
         ? PT_ALL_TOOLS_PATH
-        : FR_ALL_TOOLS_PATH;
+        : lang === 'fr'
+          ? FR_ALL_TOOLS_PATH
+          : lang === 'de'
+            ? DE_ALL_TOOLS_PATH
+            : IT_ALL_TOOLS_PATH;
   }
   if (lang === 'es') return ES_PATH_BY_EN[enPath] ?? enPath;
   if (lang === 'pt') return PT_PATH_BY_EN[enPath] ?? enPath;
   if (lang === 'fr') return FR_PATH_BY_EN[enPath] ?? enPath;
+  if (lang === 'de') return DE_PATH_BY_EN[enPath] ?? enPath;
+  if (lang === 'it') return IT_PATH_BY_EN[enPath] ?? enPath;
   return enPath;
 }
 
@@ -263,7 +309,21 @@ interface FrLocale {
   toolUi: typeof import('./locales/fr/ui').TOOL_UI_FR;
 }
 
-type AnyLocale = EsLocale | PtLocale | FrLocale;
+interface DeLocale {
+  ui: typeof import('./locales/de/ui').DE;
+  tools: typeof import('./locales/de/tools').TOOL_BY_SLUG_DE;
+  categories: typeof import('./locales/de/tools').TOOL_CATEGORIES_DE;
+  toolUi: typeof import('./locales/de/ui').TOOL_UI_DE;
+}
+
+interface ItLocale {
+  ui: typeof import('./locales/it/ui').IT;
+  tools: typeof import('./locales/it/tools').TOOL_BY_SLUG_IT;
+  categories: typeof import('./locales/it/tools').TOOL_CATEGORIES_IT;
+  toolUi: typeof import('./locales/it/ui').TOOL_UI_IT;
+}
+
+type AnyLocale = EsLocale | PtLocale | FrLocale | DeLocale | ItLocale;
 
 export default function App() {
   const [route, setRoute] = useState<ParsedPath>(() => {
@@ -278,12 +338,14 @@ export default function App() {
   const [esLocale, setEsLocale] = useState<EsLocale | null>(null);
   const [ptLocale, setPtLocale] = useState<PtLocale | null>(null);
   const [frLocale, setFrLocale] = useState<FrLocale | null>(null);
+  const [deLocale, setDeLocale] = useState<DeLocale | null>(null);
+  const [itLocale, setItLocale] = useState<ItLocale | null>(null);
   const [localeLoading, setLocaleLoading] = useState(false);
 
   // The active non-English locale (null for English). Defined early so the
   // SEO effect below can read tool titles/descriptions from it.
   const activeLocale: AnyLocale | null =
-    lang === 'es' ? esLocale : lang === 'pt' ? ptLocale : lang === 'fr' ? frLocale : null;
+    lang === 'es' ? esLocale : lang === 'pt' ? ptLocale : lang === 'fr' ? frLocale : lang === 'de' ? deLocale : lang === 'it' ? itLocale : null;
   const activeUi = activeLocale?.ui ?? null;
 
   // Generic loader — later languages add one branch each; only the selected
@@ -317,7 +379,25 @@ export default function App() {
       setFrLocale({ ui: uiMod.FR, tools: toolsMod.TOOL_BY_SLUG_FR, categories: toolsMod.TOOL_CATEGORIES_FR, toolUi: uiMod.TOOL_UI_FR });
       setLocaleLoading(false);
     }
-  }, [esLocale, ptLocale, frLocale]);
+    if (target === 'de' && !deLocale) {
+      setLocaleLoading(true);
+      const [uiMod, toolsMod] = await Promise.all([
+        import('./locales/de/ui'),
+        import('./locales/de/tools'),
+      ]);
+      setDeLocale({ ui: uiMod.DE, tools: toolsMod.TOOL_BY_SLUG_DE, categories: toolsMod.TOOL_CATEGORIES_DE, toolUi: uiMod.TOOL_UI_DE });
+      setLocaleLoading(false);
+    }
+    if (target === 'it' && !itLocale) {
+      setLocaleLoading(true);
+      const [uiMod, toolsMod] = await Promise.all([
+        import('./locales/it/ui'),
+        import('./locales/it/tools'),
+      ]);
+      setItLocale({ ui: uiMod.IT, tools: toolsMod.TOOL_BY_SLUG_IT, categories: toolsMod.TOOL_CATEGORIES_IT, toolUi: uiMod.TOOL_UI_IT });
+      setLocaleLoading(false);
+    }
+  }, [esLocale, ptLocale, frLocale, deLocale, itLocale]);
 
   const [images, setImages] = useState<ImageItem[]>([]);
   const [isCompressing, setIsCompressing] = useState<boolean>(false);
@@ -377,13 +457,13 @@ export default function App() {
       base && base !== '/' && raw.toLowerCase().startsWith(base.toLowerCase())
         ? raw.slice(base.length) || '/'
         : raw;
-    // Only languages with shipped locale files redirect (es/pt/fr for now);
+    // Only languages with shipped locale files redirect (es/pt/fr/de/it for now);
     // a stored code for a not-yet-built language must not send the user to a
     // URL prefix the router cannot resolve.
     const storedLang = localStorage.getItem(LANG_STORAGE_KEY);
     if (
       noBase === '/' &&
-      (storedLang === 'es' || storedLang === 'pt' || storedLang === 'fr')
+      (storedLang === 'es' || storedLang === 'pt' || storedLang === 'fr' || storedLang === 'de' || storedLang === 'it')
     ) {
       window.history.replaceState(null, '', withBasePath(`/${storedLang}/`));
       setLang(storedLang);
@@ -457,6 +537,30 @@ export default function App() {
       '/guides/reduce-image-size-to-100kb': 'Comment réduire une image à 100 Ko pour le web et l’e-mail',
     };
 
+    const staticTitlesDe: Record<string, string> = {
+      '/': deLocale?.ui.homeMeta.seoTitle ?? '',
+      '/about': 'Über CompressMyPic – Kostenloser Online-Bildkomprimierer',
+      '/contact': 'Kontakt – CompressMyPic',
+      '/privacy': 'Datenschutzerklärung – CompressMyPic',
+      '/terms': 'Nutzungsbedingungen – CompressMyPic',
+      [DE_ALL_TOOLS_PATH]: 'Alle Tools – CompressMyPic',
+      '/guides/compress-images-for-whatsapp': 'Bilder für WhatsApp komprimieren ohne Qualitätsverlust',
+      '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: Welches Format sollten Sie verwenden?',
+      '/guides/reduce-image-size-to-100kb': 'Bild auf 100 KB verkleinern für Web & E-Mail',
+    };
+
+    const staticTitlesIt: Record<string, string> = {
+      '/': itLocale?.ui.homeMeta.seoTitle ?? '',
+      '/about': 'Chi siamo – CompressMyPic, compressore di immagini online gratuito',
+      '/contact': 'Contattaci - CompressMyPic',
+      '/privacy': 'Informativa sulla privacy - CompressMyPic',
+      '/terms': 'Termini di servizio - CompressMyPic',
+      [IT_ALL_TOOLS_PATH]: 'Tutti gli strumenti – CompressMyPic',
+      '/guides/compress-images-for-whatsapp': 'Comprimere immagini per WhatsApp senza perdere qualità',
+      '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: quale formato dovresti usare?',
+      '/guides/reduce-image-size-to-100kb': 'Come ridurre le dimensioni di un’immagine a 100 KB per siti web ed email',
+    };
+
     const staticDescriptionsEs: Record<string, string> = {
       '/': esLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'Acerca de CompressMyPic: un compresor de imágenes online gratis para JPG, PNG y WebP, sin registro, sin marca de agua y sin subir nada a ningún servidor.',
@@ -493,10 +597,34 @@ export default function App() {
       '/guides/reduce-image-size-to-100kb': 'Réduisez la taille d’une image à 100 Ko pour les sites web et l’e-mail avec un compresseur online gratuit. Guide pas à pas, sans inscription ni filigrane.',
     };
 
+    const staticDescriptionsDe: Record<string, string> = {
+      '/': deLocale?.ui.homeMeta.seoDescription ?? '',
+      '/about': 'Über CompressMyPic: ein kostenloser Online-Bildkomprimierer für JPG, PNG und WebP, ohne Anmeldung, ohne Wasserzeichen und ohne Upload auf einen Server.',
+      '/contact': 'Haben Sie Fragen, Feedback oder brauchen Sie Hilfe? Wenden Sie sich über das Formular unten an unser Team oder kontaktieren Sie uns direkt per E-Mail.',
+      '/privacy': 'CompressMyPic verarbeitet Ihre Bilder lokal in Ihrem Browser: Sie werden niemals auf unsere Server hochgeladen, und wir erfassen, speichern oder teilen Ihre Bilder nicht.',
+      '/terms': 'Mit der Nutzung von CompressMyPic stimmen Sie diesen Nutzungsbedingungen zu. Lesen Sie die Bedingungen für erlaubte Nutzung, Verantwortlichkeiten und Einschränkungen des kostenlosen Dienstes.',
+      [DE_ALL_TOOLS_PATH]: 'Entdecken Sie die 48 kostenlosen Tools von CompressMyPic zum Komprimieren, Konvertieren und Bearbeiten von Bildern online, direkt in Ihrem Browser und ohne Anmeldung.',
+      '/guides/compress-images-for-whatsapp': 'Lernen Sie, Bilder für WhatsApp zu komprimieren, ohne Qualität zu verlieren. Kostenlos und privat, ohne Anmeldung: Verkleinern Sie Ihre Fotos vor dem Senden, damit sie scharf ankommen.',
+      '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP einfach erklärt: Vergleichen Sie Größe, Qualität und Transparenz, um das richtige Format für Ihre Fotos, Logos und Websites zu wählen.',
+      '/guides/reduce-image-size-to-100kb': 'Verkleinern Sie ein Bild auf 100 KB für Websites und E-Mails mit einem kostenlosen Online-Komprimierer. Schritt-für-Schritt-Anleitung, ohne Anmeldung und ohne Wasserzeichen.',
+    };
+
+    const staticDescriptionsIt: Record<string, string> = {
+      '/': itLocale?.ui.homeMeta.seoDescription ?? '',
+      '/about': 'Chi è CompressMyPic: un compressore di immagini online gratuito per JPG, PNG e WebP, senza registrazione, senza filigrana e senza caricare nulla su nessun server.',
+      '/contact': 'Hai domande, commenti o hai bisogno di aiuto? Scrivi al nostro team con il modulo qui sotto, oppure contattaci direttamente via email.',
+      '/privacy': 'CompressMyPic elabora le tue immagini localmente nel tuo browser: non vengono mai caricate sui nostri server e non raccogliamo, archiviamo né condividiamo le tue immagini.',
+      '/terms': 'Accedendo a CompressMyPic e utilizzandolo, accetti di rispettare i presenti Termini di servizio. Leggi le condizioni d’uso consentito, le responsabilità e i limiti del servizio gratuito.',
+      [IT_ALL_TOOLS_PATH]: 'Scopri i 48 strumenti gratuiti di CompressMyPic per comprimere, convertire e modificare immagini online, direttamente nel tuo browser e senza registrazione.',
+      '/guides/compress-images-for-whatsapp': 'Impara a comprimere le immagini per WhatsApp senza perdere qualità. Gratis e privato, senza registrazione: riduci le tue foto prima di inviarle, così arrivano nitide.',
+      '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP spiegato in modo semplice: confronta dimensioni, qualità e trasparenza per scegliere il formato giusto per le tue foto, i tuoi loghi e i tuoi siti.',
+      '/guides/reduce-image-size-to-100kb': 'Riduci le dimensioni di un’immagine a 100 KB per siti web ed email con un compressore online gratuito. Guida passo passo, senza registrazione né filigrana.',
+    };
+
     const langTitles =
-      lang === 'es' ? staticTitlesEs : lang === 'pt' ? staticTitlesPt : lang === 'fr' ? staticTitlesFr : undefined;
+      lang === 'es' ? staticTitlesEs : lang === 'pt' ? staticTitlesPt : lang === 'fr' ? staticTitlesFr : lang === 'de' ? staticTitlesDe : lang === 'it' ? staticTitlesIt : undefined;
     const langDescriptions =
-      lang === 'es' ? staticDescriptionsEs : lang === 'pt' ? staticDescriptionsPt : lang === 'fr' ? staticDescriptionsFr : undefined;
+      lang === 'es' ? staticDescriptionsEs : lang === 'pt' ? staticDescriptionsPt : lang === 'fr' ? staticDescriptionsFr : lang === 'de' ? staticDescriptionsDe : lang === 'it' ? staticDescriptionsIt : undefined;
     const nextTitle =
       toolMeta?.seoTitle ||
       langTitles?.[currentPath] ||
@@ -559,14 +687,18 @@ export default function App() {
     const isDirectoryPath =
       currentPath === ES_ALL_TOOLS_PATH ||
       currentPath === PT_ALL_TOOLS_PATH ||
-      currentPath === FR_ALL_TOOLS_PATH;
+      currentPath === FR_ALL_TOOLS_PATH ||
+      currentPath === DE_ALL_TOOLS_PATH ||
+      currentPath === IT_ALL_TOOLS_PATH;
     const hasLocalizedEquivalent =
       currentPath === '/' ||
       isDirectoryPath ||
       Boolean(
         ES_PATH_BY_EN[currentPath] ??
           PT_PATH_BY_EN[currentPath] ??
-          FR_PATH_BY_EN[currentPath]
+          FR_PATH_BY_EN[currentPath] ??
+          DE_PATH_BY_EN[currentPath] ??
+          IT_PATH_BY_EN[currentPath]
       );
     const toolPageOwnedByLayout =
       isToolPage && lang !== 'en' && Boolean(activeLocale?.tools[currentPath]);
@@ -581,6 +713,8 @@ export default function App() {
         { lang: 'es', href: `${baseDomain}${toLocalizedPath(currentPath, 'es')}` },
         { lang: 'pt', href: `${baseDomain}${toLocalizedPath(currentPath, 'pt')}` },
         { lang: 'fr', href: `${baseDomain}${toLocalizedPath(currentPath, 'fr')}` },
+        { lang: 'de', href: `${baseDomain}${toLocalizedPath(currentPath, 'de')}` },
+        { lang: 'it', href: `${baseDomain}${toLocalizedPath(currentPath, 'it')}` },
         { lang: 'x-default', href: `${baseDomain}${enEquivalent}` },
       ]);
     } else if (isToolPage && hasLocalizedEquivalent && lang === 'en') {
@@ -593,7 +727,7 @@ export default function App() {
     } else {
       removeHreflangLinks();
     }
-  }, [currentPath, lang, esLocale, ptLocale, frLocale]);
+  }, [currentPath, lang, esLocale, ptLocale, frLocale, deLocale, itLocale]);
 
   const handleNavigate = (path: string) => {
     if (path.includes('#')) {
@@ -641,7 +775,9 @@ export default function App() {
     const isDirectoryPath =
       route.path === ES_ALL_TOOLS_PATH ||
       route.path === PT_ALL_TOOLS_PATH ||
-      route.path === FR_ALL_TOOLS_PATH;
+      route.path === FR_ALL_TOOLS_PATH ||
+      route.path === DE_ALL_TOOLS_PATH ||
+      route.path === IT_ALL_TOOLS_PATH;
     const target =
       next === 'en'
         ? isDirectoryPath
@@ -960,7 +1096,7 @@ export default function App() {
   const categoryLabels = activeLocale ? activeLocale.categories : TOOL_CATEGORIES;
   const showLocaleLoading = lang !== 'en' && localeLoading && !activeLocale;
   const localeLoadingText =
-    lang === 'pt' ? 'Carregando…' : lang === 'fr' ? 'Chargement…' : 'Cargando…';
+    lang === 'de' ? 'Wird geladen…' : lang === 'it' ? 'Caricamento…' : lang === 'pt' ? 'Carregando…' : lang === 'fr' ? 'Chargement…' : 'Cargando…';
 
   // Languages that have a translation of the CURRENT page (the switcher guard).
   // route.path is the English path for tools/legal/guides (parsePath maps the
@@ -971,12 +1107,14 @@ export default function App() {
     if (
       route.path === ES_ALL_TOOLS_PATH ||
       route.path === PT_ALL_TOOLS_PATH ||
-      route.path === FR_ALL_TOOLS_PATH
+      route.path === FR_ALL_TOOLS_PATH ||
+      route.path === DE_ALL_TOOLS_PATH ||
+      route.path === IT_ALL_TOOLS_PATH
     ) {
       return true;
     }
     const map =
-      l === 'es' ? ES_PATH_BY_EN : l === 'pt' ? PT_PATH_BY_EN : l === 'fr' ? FR_PATH_BY_EN : undefined;
+      l === 'es' ? ES_PATH_BY_EN : l === 'pt' ? PT_PATH_BY_EN : l === 'fr' ? FR_PATH_BY_EN : l === 'de' ? DE_PATH_BY_EN : l === 'it' ? IT_PATH_BY_EN : undefined;
     return map !== undefined && map[route.path] !== undefined;
   };
   const availableLanguages: SupportedLang[] = SUPPORTED_LANGS.filter((l) => pageHasLang(l));
@@ -984,7 +1122,7 @@ export default function App() {
   // Homepage (compressor app). Extracted so the English and Spanish home
   // branches render the same DOM; `strings` is the Spanish bundle, or null
   // for English (components fall back to their English defaults).
-  const renderHome = (strings: EsLocale['ui'] | PtLocale['ui'] | FrLocale['ui'] | null) => (
+  const renderHome = (strings: EsLocale['ui'] | PtLocale['ui'] | FrLocale['ui'] | DeLocale['ui'] | ItLocale['ui'] | null) => (
     <>
           <Hero strings={strings?.hero} />
 
@@ -1144,6 +1282,14 @@ export default function App() {
         <main className="flex-1">
           <AllToolsPageFr onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
         </main>
+      ) : currentPath === DE_ALL_TOOLS_PATH ? (
+        <main className="flex-1">
+          <AllToolsPageDe onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
+        </main>
+      ) : currentPath === IT_ALL_TOOLS_PATH ? (
+        <main className="flex-1">
+          <AllToolsPageIt onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
+        </main>
       ) : lang === 'es' && currentPath === '/about' ? (
         <main className="flex-1">
           <AboutPageEs onNavigate={handleNavigate} />
@@ -1155,6 +1301,14 @@ export default function App() {
       ) : lang === 'fr' && currentPath === '/about' ? (
         <main className="flex-1">
           <AboutPageFr onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'de' && currentPath === '/about' ? (
+        <main className="flex-1">
+          <AboutPageDe onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'it' && currentPath === '/about' ? (
+        <main className="flex-1">
+          <AboutPageIt onNavigate={handleNavigate} />
         </main>
       ) : lang === 'es' && currentPath === '/contact' ? (
         <main className="flex-1">
@@ -1168,6 +1322,14 @@ export default function App() {
         <main className="flex-1">
           <ContactPageFr onNavigate={handleNavigate} />
         </main>
+      ) : lang === 'de' && currentPath === '/contact' ? (
+        <main className="flex-1">
+          <ContactPageDe onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'it' && currentPath === '/contact' ? (
+        <main className="flex-1">
+          <ContactPageIt onNavigate={handleNavigate} />
+        </main>
       ) : lang === 'es' && currentPath === '/privacy' ? (
         <main className="flex-1">
           <PrivacyPageEs onNavigate={handleNavigate} />
@@ -1180,6 +1342,14 @@ export default function App() {
         <main className="flex-1">
           <PrivacyPageFr onNavigate={handleNavigate} />
         </main>
+      ) : lang === 'de' && currentPath === '/privacy' ? (
+        <main className="flex-1">
+          <PrivacyPageDe onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'it' && currentPath === '/privacy' ? (
+        <main className="flex-1">
+          <PrivacyPageIt onNavigate={handleNavigate} />
+        </main>
       ) : lang === 'es' && currentPath === '/terms' ? (
         <main className="flex-1">
           <TermsPageEs onNavigate={handleNavigate} />
@@ -1191,6 +1361,14 @@ export default function App() {
       ) : lang === 'fr' && currentPath === '/terms' ? (
         <main className="flex-1">
           <TermsPageFr onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'de' && currentPath === '/terms' ? (
+        <main className="flex-1">
+          <TermsPageDe onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'it' && currentPath === '/terms' ? (
+        <main className="flex-1">
+          <TermsPageIt onNavigate={handleNavigate} />
         </main>
       ) : currentPath === '/about' ? (
         <main className="flex-1">
@@ -1220,6 +1398,14 @@ export default function App() {
               <main className="flex-1">
                 <GuideWhatsAppPageFr onNavigate={handleNavigate} />
               </main>
+            ) : lang === 'de' && currentPath === '/guides/compress-images-for-whatsapp' ? (
+              <main className="flex-1">
+                <GuideWhatsAppPageDe onNavigate={handleNavigate} />
+              </main>
+            ) : lang === 'it' && currentPath === '/guides/compress-images-for-whatsapp' ? (
+              <main className="flex-1">
+                <GuideWhatsAppPageIt onNavigate={handleNavigate} />
+              </main>
             ) : lang === 'es' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
               <main className="flex-1">
                 <GuideFormatsPageEs onNavigate={handleNavigate} />
@@ -1232,6 +1418,14 @@ export default function App() {
               <main className="flex-1">
                 <GuideFormatsPageFr onNavigate={handleNavigate} />
               </main>
+            ) : lang === 'de' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
+              <main className="flex-1">
+                <GuideFormatsPageDe onNavigate={handleNavigate} />
+              </main>
+            ) : lang === 'it' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
+              <main className="flex-1">
+                <GuideFormatsPageIt onNavigate={handleNavigate} />
+              </main>
             ) : lang === 'es' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
               <main className="flex-1">
                 <Guide100kbPageEs onNavigate={handleNavigate} />
@@ -1243,6 +1437,14 @@ export default function App() {
             ) : lang === 'fr' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
               <main className="flex-1">
                 <Guide100kbPageFr onNavigate={handleNavigate} />
+              </main>
+            ) : lang === 'de' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
+              <main className="flex-1">
+                <Guide100kbPageDe onNavigate={handleNavigate} />
+              </main>
+            ) : lang === 'it' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
+              <main className="flex-1">
+                <Guide100kbPageIt onNavigate={handleNavigate} />
               </main>
             ) : currentPath === '/guides/compress-images-for-whatsapp' ? (
               <main className="flex-1">
@@ -1294,6 +1496,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-resizer']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-resizer'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-resizer']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-resizer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-converter' ? (
@@ -1331,6 +1553,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/image-converter'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-converter']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-converter'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-converter']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-converter'],
                   }
                 : undefined
             }
@@ -1374,6 +1616,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/rotate-flip-image']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/rotate-flip-image'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/rotate-flip-image']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/rotate-flip-image'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-to-pdf' ? (
@@ -1411,6 +1673,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/image-to-pdf'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-to-pdf']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-to-pdf'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-to-pdf']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-to-pdf'],
                   }
                 : undefined
             }
@@ -1454,6 +1736,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-metadata-viewer']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-metadata-viewer'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-metadata-viewer']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-metadata-viewer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/remove-image-metadata' ? (
@@ -1491,6 +1793,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/remove-image-metadata'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/remove-image-metadata']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/remove-image-metadata'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/remove-image-metadata']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/remove-image-metadata'],
                   }
                 : undefined
             }
@@ -1534,6 +1856,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/favicon-generator']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/favicon-generator'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/favicon-generator']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/favicon-generator'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-color-picker' ? (
@@ -1571,6 +1913,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/image-color-picker'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-color-picker']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-color-picker'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-color-picker']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-color-picker'],
                   }
                 : undefined
             }
@@ -1614,6 +1976,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-dimensions-checker']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-dimensions-checker'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-dimensions-checker']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-dimensions-checker'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-cropper' ? (
@@ -1651,6 +2033,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/image-cropper'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-cropper']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-cropper'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-cropper']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-cropper'],
                   }
                 : undefined
             }
@@ -1694,6 +2096,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-watermark']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-watermark'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-watermark']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-watermark'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/blur-pixelate-image' ? (
@@ -1731,6 +2153,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/blur-pixelate-image'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/blur-pixelate-image']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/blur-pixelate-image'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/blur-pixelate-image']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/blur-pixelate-image'],
                   }
                 : undefined
             }
@@ -1774,6 +2216,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/add-text-to-image']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/add-text-to-image'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/add-text-to-image']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/add-text-to-image'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-border-generator' ? (
@@ -1811,6 +2273,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/image-border-generator'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-border-generator']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-border-generator'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-border-generator']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-border-generator'],
                   }
                 : undefined
             }
@@ -1854,6 +2336,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/round-image-corners']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/round-image-corners'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/round-image-corners']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/round-image-corners'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-brightness-editor' ? (
@@ -1891,6 +2393,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/image-brightness-editor'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-brightness-editor']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-brightness-editor'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-brightness-editor']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-brightness-editor'],
                   }
                 : undefined
             }
@@ -1934,6 +2456,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-contrast-editor']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-contrast-editor'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-contrast-editor']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-contrast-editor'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-saturation-editor' ? (
@@ -1971,6 +2513,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/image-saturation-editor'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-saturation-editor']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-saturation-editor'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-saturation-editor']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-saturation-editor'],
                   }
                 : undefined
             }
@@ -2014,6 +2576,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-filters']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-filters'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-filters']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-filters'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/add-background-to-image' ? (
@@ -2051,6 +2633,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/add-background-to-image'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/add-background-to-image']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/add-background-to-image'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/add-background-to-image']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/add-background-to-image'],
                   }
                 : undefined
             }
@@ -2094,6 +2696,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-splitter']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-splitter'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-splitter']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-splitter'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-dpi-changer' ? (
@@ -2131,6 +2753,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/image-dpi-changer'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-dpi-changer']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-dpi-changer'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-dpi-changer']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-dpi-changer'],
                   }
                 : undefined
             }
@@ -2174,6 +2816,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-to-base64']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-to-base64'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-to-base64']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-to-base64'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/base64-to-image' ? (
@@ -2211,6 +2873,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/base64-to-image'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/base64-to-image']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/base64-to-image'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/base64-to-image']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/base64-to-image'],
                   }
                 : undefined
             }
@@ -2254,6 +2936,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-color-palette-extractor']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-color-palette-extractor'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-color-palette-extractor']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-color-palette-extractor'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/gif-maker' ? (
@@ -2291,6 +2993,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/gif-maker'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/gif-maker']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/gif-maker'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/gif-maker']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/gif-maker'],
                   }
                 : undefined
             }
@@ -2334,6 +3056,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/image-collage-maker']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/image-collage-maker'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/image-collage-maker']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/image-collage-maker'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/compress-image-to-50kb' ? (
@@ -2371,6 +3113,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/compress-image-to-50kb'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/compress-image-to-50kb']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/compress-image-to-50kb'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/compress-image-to-50kb']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/compress-image-to-50kb'],
                   }
                 : undefined
             }
@@ -2414,6 +3176,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/compress-image-to-100kb']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/compress-image-to-100kb'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/compress-image-to-100kb']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/compress-image-to-100kb'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/compress-image-to-200kb' ? (
@@ -2454,6 +3236,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/compress-image-to-200kb']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/compress-image-to-200kb'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/compress-image-to-200kb']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/compress-image-to-200kb'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/compress-image-to-500kb' ? (
@@ -2491,6 +3293,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/compress-image-to-500kb'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/compress-image-to-500kb']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/compress-image-to-500kb'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/compress-image-to-500kb']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/compress-image-to-500kb'],
                   }
                 : undefined
             }
@@ -2540,6 +3362,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/bulk-image-compressor']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/bulk-image-compressor'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/bulk-image-compressor']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/bulk-image-compressor'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/target-file-size-compressor' ? (
@@ -2577,6 +3419,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/target-file-size-compressor'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/target-file-size-compressor']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/target-file-size-compressor'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/target-file-size-compressor']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/target-file-size-compressor'],
                   }
                 : undefined
             }
@@ -2620,6 +3482,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/bulk-image-resizer']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/bulk-image-resizer'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/bulk-image-resizer']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/bulk-image-resizer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/bulk-image-converter' ? (
@@ -2657,6 +3539,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/bulk-image-converter'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/bulk-image-converter']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/bulk-image-converter'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/bulk-image-converter']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/bulk-image-converter'],
                   }
                 : undefined
             }
@@ -2700,6 +3602,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/web-image-optimizer']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/web-image-optimizer'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/web-image-optimizer']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/web-image-optimizer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/gif-compressor' ? (
@@ -2737,6 +3659,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/gif-compressor'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/gif-compressor']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/gif-compressor'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/gif-compressor']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/gif-compressor'],
                   }
                 : undefined
             }
@@ -2780,6 +3722,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/heic-to-jpg']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/heic-to-jpg'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/heic-to-jpg']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/heic-to-jpg'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/jpg-to-png' ? (
@@ -2817,6 +3779,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/jpg-to-png'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/jpg-to-png']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/jpg-to-png'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/jpg-to-png']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/jpg-to-png'],
                   }
                 : undefined
             }
@@ -2860,6 +3842,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/png-to-jpg']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/png-to-jpg'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/png-to-jpg']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/png-to-jpg'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/jpg-to-webp' ? (
@@ -2897,6 +3899,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/jpg-to-webp'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/jpg-to-webp']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/jpg-to-webp'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/jpg-to-webp']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/jpg-to-webp'],
                   }
                 : undefined
             }
@@ -2940,6 +3962,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/webp-to-jpg']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/webp-to-jpg'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/webp-to-jpg']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/webp-to-jpg'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/png-to-webp' ? (
@@ -2977,6 +4019,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/png-to-webp'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/png-to-webp']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/png-to-webp'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/png-to-webp']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/png-to-webp'],
                   }
                 : undefined
             }
@@ -3020,6 +4082,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/webp-to-png']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/webp-to-png'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/webp-to-png']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/webp-to-png'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/svg-to-png' ? (
@@ -3057,6 +4139,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/svg-to-png'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/svg-to-png']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/svg-to-png'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/svg-to-png']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/svg-to-png'],
                   }
                 : undefined
             }
@@ -3100,6 +4202,26 @@ frStrings={
                   }
                 : undefined
             }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/avif-to-jpg']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/avif-to-jpg'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/avif-to-jpg']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/avif-to-jpg'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/bmp-to-jpg' ? (
@@ -3137,6 +4259,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/bmp-to-jpg'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/bmp-to-jpg']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/bmp-to-jpg'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/bmp-to-jpg']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/bmp-to-jpg'],
                   }
                 : undefined
             }
@@ -3184,6 +4326,26 @@ frStrings={
                     uploadZone: frLocale.ui.uploadZone,
                     comparisonModal: frLocale.ui.comparisonModal,
                     toolUi: frLocale.toolUi['/remove-background'],
+                  }
+                : undefined
+            }
+deStrings={
+              lang === 'de' && deLocale && deLocale.tools['/remove-background']
+                ? {
+                    layoutUi: deLocale.ui.toolPageLayout,
+                    uploadZone: deLocale.ui.uploadZone,
+                    comparisonModal: deLocale.ui.comparisonModal,
+                    toolUi: deLocale.toolUi['/remove-background'],
+                  }
+                : undefined
+            }
+itStrings={
+              lang === 'it' && itLocale && itLocale.tools['/remove-background']
+                ? {
+                    layoutUi: itLocale.ui.toolPageLayout,
+                    uploadZone: itLocale.ui.uploadZone,
+                    comparisonModal: itLocale.ui.comparisonModal,
+                    toolUi: itLocale.toolUi['/remove-background'],
                   }
                 : undefined
             }
