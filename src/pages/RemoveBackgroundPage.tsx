@@ -10,6 +10,12 @@ import {
   RefreshCw,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import { ComparisonModal } from '../components/ComparisonModal';
@@ -25,21 +31,53 @@ import { toDecodableBlob } from '../utils/compressor';
 import { formatBytes, getBaseFilename, sanitizeFilename } from '../utils/formatters';
 import { triggerDownload } from '../utils/zip';
 
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface RemoveBackgroundPageProps {
   onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
 }
 
 type BackgroundChoice = 'transparent' | 'white' | 'black' | 'custom';
 
-function describeProgressKey(key: string): string {
-  if (key.includes('wasm')) return 'Loading WebAssembly AI runtime...';
-  if (key.includes('model')) return 'Downloading AI background removal model (~35 MB, cached for future use)...';
-  if (key.includes('compute')) return 'Removing background locally in your browser...';
-  return 'Preparing in-browser AI model...';
+function describeProgressKey(
+  key: string,
+  translate?: (key: string, fallback: string) => string
+): string {
+  const pick = (k: string, fallback: string) => (translate ? translate(k, fallback) : fallback);
+  if (key.includes('wasm')) return pick('progressWasm', 'Loading WebAssembly AI runtime...');
+  if (key.includes('model'))
+    return pick(
+      'progressModel',
+      'Downloading AI background removal model (~35 MB, cached for future use)...'
+    );
+  if (key.includes('compute'))
+    return pick('progressCompute', 'Removing background locally in your browser...');
+  return pick('progressPreparing', 'Preparing in-browser AI model...');
 }
 
-export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/remove-background'];
+export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/remove-background'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi
+      ? ((esStrings.toolUi[key] as string | undefined) ?? fallback)
+      : fallback;
 
   const [sourceFile, setSourceFile] = useState<File | null>(null);
   const [originalPreviewUrl, setOriginalPreviewUrl] = useState<string | null>(null);
@@ -60,7 +98,9 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
   const [modelReady, setModelReady] = useState<boolean>(false);
   const [isModelLoading, setIsModelLoading] = useState<boolean>(true);
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
-  const [progressText, setProgressText] = useState<string>('Initializing AI background removal module...');
+  const [progressText, setProgressText] = useState<string>(
+    t('progressInitModule', 'Initializing AI background removal module...')
+  );
   const [progressPct, setProgressPct] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [showCompare, setShowCompare] = useState<boolean>(false);
@@ -88,13 +128,13 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
       if (!preloadPromiseRef.current) {
         preloadPromiseRef.current = (async () => {
           setIsModelLoading(true);
-          setProgressText('Loading AI background removal library...');
+          setProgressText(t('progressInitLibrary', 'Loading AI background removal library...'));
           const mod = await import('@imgly/background-removal');
           bgLibRef.current = mod;
           await mod.preload({
             model: 'isnet_quint8',
             progress: (key, current, total) => {
-              setProgressText(describeProgressKey(key));
+              setProgressText(describeProgressKey(key, t));
               if (total > 0) {
                 setProgressPct(Math.min(100, Math.round((current / total) * 100)));
               }
@@ -124,8 +164,14 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
       console.error('Background removal model preload failed:', err);
       setError(
         err instanceof Error
-          ? `Could not initialize the AI background model: ${err.message}`
-          : 'Could not initialize the AI background model in this browser.'
+          ? t(
+              'errorModelInit',
+              'Could not initialize the AI background model: {message}'
+            ).replace('{message}', err.message)
+          : t(
+              'errorModelInitGeneric',
+              'Could not initialize the AI background model in this browser.'
+            )
       );
     });
 
@@ -207,7 +253,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
       });
 
       const mod = await ensureModelLoaded();
-      setProgressText('Removing background locally in your browser...');
+      setProgressText(t('progressCompute', 'Removing background locally in your browser...'));
       setProgressPct(null);
 
       // Convert HEIC/HEIF or exotic container if needed into a standard browser Blob
@@ -220,7 +266,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
           quality: 1,
         },
         progress: (key, current, total) => {
-          setProgressText(describeProgressKey(key));
+          setProgressText(describeProgressKey(key, t));
           if (total > 0) {
             setProgressPct(Math.min(100, Math.round((current / total) * 100)));
           }
@@ -231,7 +277,8 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
       const loadedCutoutImg = await new Promise<HTMLImageElement>((resolve, reject) => {
         const img = new Image();
         img.onload = () => resolve(img);
-        img.onerror = () => reject(new Error('Failed to decode transparent PNG output.'));
+        img.onerror = () =>
+          reject(new Error(t('errorDecodeOutput', 'Failed to decode transparent PNG output.')));
         img.src = resultUrl;
       });
 
@@ -247,7 +294,10 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
       setError(
         err instanceof Error
           ? err.message
-          : 'Background removal failed in this browser. Try another image or reload.'
+          : t(
+              'errorRemovalFailed',
+              'Background removal failed in this browser. Try another image or reload.'
+            )
       );
     } finally {
       setIsProcessing(false);
@@ -330,7 +380,16 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
       : null;
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         {/* First-time model download status banner */}
         {isModelLoading && !isProcessing && (
@@ -339,7 +398,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
               <Loader2 className="w-5 h-5 text-blue-600 animate-spin shrink-0 mt-0.5" />
               <div>
                 <p className="text-sm font-bold text-slate-900">
-                  Loading in-browser AI model (isnet_quint8)
+                  {t('modelLoadingTitle', 'Loading in-browser AI model (isnet_quint8)')}
                 </p>
                 <p className="text-xs text-slate-600 mt-0.5">{progressText}</p>
               </div>
@@ -347,7 +406,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
             {progressPct !== null && (
               <div className="w-full sm:w-44 shrink-0">
                 <div className="flex justify-between text-[11px] font-mono text-blue-700 mb-1">
-                  <span>Model Cache</span>
+                  <span>{t('modelCache', 'Model Cache')}</span>
                   <span>{progressPct}%</span>
                 </div>
                 <div className="w-full h-2 bg-blue-100 rounded-full overflow-hidden">
@@ -371,7 +430,8 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
             allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, BMP, AVIF"
-            title="Drop a photo to remove its background with AI"
+            title={t('uploadTitle', 'Drop a photo to remove its background with AI')}
+            strings={esStrings?.uploadZone}
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -380,7 +440,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
               <div className="flex items-center justify-between gap-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                  <span>Before &amp; After Preview</span>
+                  <span>{t('beforeAfterPreview', 'Before & After Preview')}</span>
                 </span>
                 <div className="flex items-center gap-3">
                   {cutoutBlob && (
@@ -390,7 +450,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
                       className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700 cursor-pointer"
                     >
                       <SplitSquareVertical className="w-3.5 h-3.5" />
-                      <span>Split Compare</span>
+                      <span>{t('splitCompare', 'Split Compare')}</span>
                     </button>
                   )}
                   <button
@@ -400,7 +460,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
                     className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer disabled:opacity-50"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
-                    <span>New Image</span>
+                    <span>{t('newImage', 'New Image')}</span>
                   </button>
                 </div>
               </div>
@@ -409,13 +469,13 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
                 {/* Original */}
                 <div className="space-y-1.5">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block">
-                    Original
+                    {t('originalLabel', 'Original')}
                   </span>
                   <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-100 flex items-center justify-center min-h-[220px] max-h-[340px] p-2">
                     {originalPreviewUrl && (
                       <img
                         src={originalPreviewUrl}
-                        alt={`Original ${sourceFile.name}`}
+                        alt={t('altOriginal', 'Original {name}').replace('{name}', sourceFile.name)}
                         className="max-w-full max-h-[310px] object-contain rounded"
                       />
                     )}
@@ -428,7 +488,9 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
                 {/* Result Cutout */}
                 <div className="space-y-1.5">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600 block">
-                    {bgChoice === 'transparent' ? 'Transparent Cutout (PNG)' : 'Solid Background Preview'}
+                    {bgChoice === 'transparent'
+                      ? t('transparentCutout', 'Transparent Cutout (PNG)')
+                      : t('solidBackgroundPreview', 'Solid Background Preview')}
                   </span>
                   <div
                     className="rounded-xl overflow-hidden border border-slate-200 flex items-center justify-center min-h-[220px] max-h-[340px] p-2 relative"
@@ -467,11 +529,13 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
                     ) : activePreviewUrl ? (
                       <img
                         src={activePreviewUrl}
-                        alt={`Background removed ${sourceFile.name}`}
+                        alt={t('altCutout', 'Background removed {name}').replace('{name}', sourceFile.name)}
                         className="max-w-full max-h-[310px] object-contain"
                       />
                     ) : (
-                      <span className="text-xs text-slate-500">Waiting for result...</span>
+                      <span className="text-xs text-slate-500">
+                        {t('waitingForResult', 'Waiting for result...')}
+                      </span>
                     )}
                   </div>
                   <p className="text-[11px] text-slate-500 font-mono">
@@ -480,7 +544,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
                           cutoutImg?.naturalHeight || originalDims.h
                         }px · ${formatBytes(activeBlob.size)}`
                       : isProcessing
-                      ? 'Processing locally...'
+                      ? t('processingLocally', 'Processing locally...')
                       : '—'}
                   </p>
                 </div>
@@ -492,12 +556,12 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
               <div>
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                    Cutout Status
+                    {t('cutoutStatus', 'Cutout Status')}
                   </span>
                   {cutoutBlob && (
                     <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600">
                       <CheckCircle2 className="w-3.5 h-3.5" />
-                      Ready
+                      {t('ready', 'Ready')}
                     </span>
                   )}
                 </div>
@@ -507,15 +571,15 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
               {/* Solid Background Color Option */}
               <div className="pt-4 border-t border-slate-100 space-y-3">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">
-                  Background Fill Option
+                  {t('backgroundFillOption', 'Background Fill Option')}
                 </span>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-1 bg-slate-100 rounded-xl">
                   {(
                     [
-                      { id: 'transparent', label: 'Transparent' },
-                      { id: 'white', label: 'White' },
-                      { id: 'black', label: 'Black' },
-                      { id: 'custom', label: 'Custom' },
+                      { id: 'transparent', label: t('bgTransparent', 'Transparent') },
+                      { id: 'white', label: t('bgWhite', 'White') },
+                      { id: 'black', label: t('bgBlack', 'Black') },
+                      { id: 'custom', label: t('bgCustom', 'Custom') },
                     ] as { id: BackgroundChoice; label: string }[]
                   ).map((opt) => (
                     <button
@@ -543,7 +607,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
                         onChange={(e) => setCustomColor(e.target.value)}
                         className="w-8 h-8 rounded-lg border border-slate-300 cursor-pointer p-0.5"
                       />
-                      <span>Custom Background Color</span>
+                      <span>{t('customBackgroundColor', 'Custom Background Color')}</span>
                     </label>
                     <span className="text-xs font-mono text-slate-600 uppercase">{customColor}</span>
                   </div>
@@ -560,7 +624,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
                 >
                   <Download className="w-4 h-4" />
                   <span>
-                    Download Transparent PNG
+                    {t('downloadTransparentPng', 'Download Transparent PNG')}
                     {cutoutBlob ? ` (${formatBytes(cutoutBlob.size)})` : ''}
                   </span>
                 </button>
@@ -574,13 +638,14 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
                   >
                     <Download className="w-4 h-4" />
                     <span>
-                      Download with{' '}
                       {bgChoice === 'white'
-                        ? 'White'
+                        ? t('downloadWithWhite', 'Download with White Background')
                         : bgChoice === 'black'
-                        ? 'Black'
-                        : customColor.toUpperCase()}{' '}
-                      Background
+                        ? t('downloadWithBlack', 'Download with Black Background')
+                        : t('downloadWithCustom', 'Download with {color} Background').replace(
+                            '{color}',
+                            customColor.toUpperCase()
+                          )}
                       {compositeBlob ? ` (${formatBytes(compositeBlob.size)})` : ''}
                     </span>
                   </button>
@@ -593,7 +658,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
                   className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 text-slate-700 text-xs font-semibold rounded-xl cursor-pointer transition-colors"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
-                  <span>Re-run Removal</span>
+                  <span>{t('rerunRemoval', 'Re-run Removal')}</span>
                 </button>
               </div>
             </div>
@@ -612,8 +677,29 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({ onNa
         <ComparisonModal
           image={comparisonItem}
           onClose={() => setShowCompare(false)}
-          titlePrefix="Background Removal Comparison"
-          afterLabel={bgChoice === 'transparent' ? 'Cutout (Transparent PNG)' : 'Cutout (Solid BG)'}
+          titlePrefix={t('comparisonTitlePrefix', 'Background Removal Comparison')}
+          beforeLabel={esStrings?.comparisonModal.beforeLabel}
+          afterLabel={
+            bgChoice === 'transparent'
+              ? t('comparisonAfterTransparent', 'Cutout (Transparent PNG)')
+              : t('comparisonAfterSolid', 'Cutout (Solid BG)')
+          }
+          closeLabel={esStrings?.comparisonModal.closeLabel}
+          instruction={esStrings?.comparisonModal.instruction}
+          sliderLabel={esStrings?.comparisonModal.sliderLabel}
+          sideBySideLabel={esStrings?.comparisonModal.sideBySideLabel}
+          zoomInLabel={esStrings?.comparisonModal.zoomInLabel}
+          zoomOutLabel={esStrings?.comparisonModal.zoomOutLabel}
+          originalLabel={esStrings?.comparisonModal.originalLabel}
+          outputLabel={esStrings?.comparisonModal.outputLabel}
+          reductionLabel={esStrings?.comparisonModal.reductionLabel}
+          sizeChangeLabel={esStrings?.comparisonModal.sizeChangeLabel}
+          qualityLabel={esStrings?.comparisonModal.qualityLabel}
+          formatLabel={esStrings?.comparisonModal.formatLabel}
+          modalAriaLabel={esStrings?.comparisonModal.modalAriaLabel}
+          altCompressed={esStrings?.comparisonModal.altCompressed}
+          altOriginal={esStrings?.comparisonModal.altOriginal}
+          altProcessed={esStrings?.comparisonModal.altProcessed}
         />
       )}
     </ToolPageLayout>

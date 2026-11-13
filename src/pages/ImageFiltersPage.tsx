@@ -9,6 +9,13 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
+
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import { ComparisonModal } from '../components/ComparisonModal';
@@ -30,12 +37,51 @@ import {
 import { formatBytes, getBaseFilename, sanitizeFilename } from '../utils/formatters';
 import { triggerDownload } from '../utils/zip';
 
-interface ImageFiltersPageProps {
-  onNavigate: (path: string) => void;
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
 }
 
-export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/image-filters'];
+interface ImageFiltersPageProps {
+  onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
+}
+
+export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/image-filters'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+
+  const FILTER_PRESET_LABEL_KEYS: Record<string, string> = {
+    original: 'presetOriginal',
+    grayscale: 'presetGrayscale',
+    sepia: 'presetSepia',
+    vintage: 'presetVintage',
+    warm: 'presetWarm',
+    cool: 'presetCool',
+    'high-contrast': 'presetHighContrast',
+    fade: 'presetMatteFade',
+    dramatic: 'presetDramatic',
+    noir: 'presetNoir',
+    'golden-hour': 'presetGoldenHour',
+    invert: 'presetInvert',
+  };
+  const presetLabel = (preset: { id: string; label: string }) =>
+    t(FILTER_PRESET_LABEL_KEYS[preset.id] ?? 'presetOriginal', preset.label);
+
   const [sourceFile, setSourceFile] = useState<File | null>(null);
   const [imageInfo, setImageInfo] = useState<LoadedImageInfo | null>(null);
   const imageInfoRef = useRef<LoadedImageInfo | null>(null);
@@ -100,7 +146,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
       setSourceFile(file);
       setImageInfo(info);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unable to load image.');
+      setError(err instanceof Error ? err.message : t('errorUnableToLoadImage', 'Unable to load image.'));
     }
   };
 
@@ -148,7 +194,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
       const base = sanitizeFilename(getBaseFilename(sourceFile.name));
       triggerDownload(res.blob, `${base}_${selectedPreset}${res.extension}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Export failed.');
+      setError(err instanceof Error ? err.message : t('errorExportFailed', 'Export failed.'));
     } finally {
       setIsExporting(false);
     }
@@ -199,7 +245,16 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
   };
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         {!imageInfo ? (
           <UploadZone
@@ -210,7 +265,8 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
             allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
-            title="Drop an image to apply filters"
+            title={t('uploadTitle', 'Drop an image to apply filters')}
+            strings={esStrings?.uploadZone}
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -219,7 +275,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                  Filter Preview
+                  {t('filterPreview', 'Filter Preview')}
                 </span>
                 <div className="flex items-center gap-2">
                   <button
@@ -231,7 +287,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
                     onTouchEnd={() => setShowOriginal(false)}
                     className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 cursor-pointer select-none"
                   >
-                    Hold to View Original
+                    {t('holdToViewOriginal', 'Hold to View Original')}
                   </button>
                   <button
                     type="button"
@@ -240,13 +296,13 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 cursor-pointer"
                   >
                     <SplitSquareVertical className="w-3.5 h-3.5 text-blue-600" />
-                    <span>Compare</span>
+                    <span>{t('compare', 'Compare')}</span>
                   </button>
                   <button
                     type="button"
                     onClick={handleClear}
                     className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
-                    aria-label="Remove image"
+                    aria-label={t('removeImage', 'Remove image')}
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -260,7 +316,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
                 />
                 {showOriginal && (
                   <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/70 text-white text-xs font-semibold">
-                    Original
+                    {t('originalBadge', 'Original')}
                   </span>
                 )}
               </div>
@@ -276,7 +332,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
             {/* Filter Presets & Export */}
             <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
               <div className="flex items-center justify-between">
-                <h2 className="text-base font-bold text-slate-900">Filter Presets</h2>
+                <h2 className="text-base font-bold text-slate-900">{t('filterPresets', 'Filter Presets')}</h2>
                 <button
                   type="button"
                   onClick={() => {
@@ -286,7 +342,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
                   className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:underline cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
-                  <span>Reset</span>
+                  <span>{t('reset', 'Reset')}</span>
                 </button>
               </div>
 
@@ -308,7 +364,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
                         {thumbnails[preset.id] && (
                           <img
                             src={thumbnails[preset.id]}
-                            alt={preset.label}
+                            alt={presetLabel(preset)}
                             className="w-full h-full object-cover"
                           />
                         )}
@@ -318,7 +374,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
                           active ? 'text-blue-700' : 'text-slate-700'
                         }`}
                       >
-                        {preset.label}
+                        {presetLabel(preset)}
                       </span>
                     </button>
                   );
@@ -328,7 +384,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
               {selectedPreset !== 'original' && (
                 <div>
                   <div className="flex justify-between text-xs mb-1.5">
-                    <span className="font-semibold text-slate-700">Filter Intensity</span>
+                    <span className="font-semibold text-slate-700">{t('filterIntensity', 'Filter Intensity')}</span>
                     <span className="font-mono font-bold text-blue-600">{intensity}%</span>
                   </div>
                   <input
@@ -345,7 +401,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
               <div className="pt-4 border-t border-slate-100 space-y-4">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                    Output Format
+                    {t('outputFormat', 'Output Format')}
                   </span>
                   <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-xl">
                     {(['original', 'jpeg', 'png', 'webp'] as OutputFormatChoice[]).map((fmt) => (
@@ -359,7 +415,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
                             : 'text-slate-600 hover:text-slate-900'
                         }`}
                       >
-                        {fmt === 'original' ? 'Original' : fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
+                        {fmt === 'original' ? t('formatOriginal', 'Original') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
                       </button>
                     ))}
                   </div>
@@ -368,7 +424,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
                 {format !== 'png' && (
                   <div>
                     <div className="flex justify-between text-xs mb-1.5">
-                      <span className="font-semibold text-slate-700">Quality</span>
+                      <span className="font-semibold text-slate-700">{t('quality', 'Quality')}</span>
                       <span className="font-mono font-bold text-slate-700">{quality}%</span>
                     </div>
                     <input
@@ -393,7 +449,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
                   ) : (
                     <Download className="w-4 h-4" />
                   )}
-                  <span>{isExporting ? 'Rendering...' : 'Download Filtered Image'}</span>
+                  <span>{isExporting ? t('rendering', 'Rendering...') : t('downloadFilteredImage', 'Download Filtered Image')}</span>
                 </button>
               </div>
             </div>
@@ -412,8 +468,25 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }
         <ComparisonModal
           image={modalItem}
           onClose={closeModal}
-          titlePrefix="Filter Comparison"
-          afterLabel="Filtered"
+          titlePrefix={t('comparisonTitlePrefix', 'Filter Comparison')}
+          beforeLabel={esStrings?.comparisonModal.beforeLabel}
+          afterLabel={t('comparisonAfterLabel', 'Filtered')}
+          closeLabel={esStrings?.comparisonModal.closeLabel}
+          instruction={esStrings?.comparisonModal.instruction}
+          sliderLabel={esStrings?.comparisonModal.sliderLabel}
+          sideBySideLabel={esStrings?.comparisonModal.sideBySideLabel}
+          zoomInLabel={esStrings?.comparisonModal.zoomInLabel}
+          zoomOutLabel={esStrings?.comparisonModal.zoomOutLabel}
+          originalLabel={esStrings?.comparisonModal.originalLabel}
+          outputLabel={esStrings?.comparisonModal.outputLabel}
+          reductionLabel={esStrings?.comparisonModal.reductionLabel}
+          sizeChangeLabel={esStrings?.comparisonModal.sizeChangeLabel}
+          qualityLabel={esStrings?.comparisonModal.qualityLabel}
+          formatLabel={esStrings?.comparisonModal.formatLabel}
+          modalAriaLabel={esStrings?.comparisonModal.modalAriaLabel}
+          altCompressed={esStrings?.comparisonModal.altCompressed}
+          altOriginal={esStrings?.comparisonModal.altOriginal}
+          altProcessed={esStrings?.comparisonModal.altProcessed}
         />
       )}
     </ToolPageLayout>

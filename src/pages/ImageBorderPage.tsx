@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Download, Trash2, Loader2, AlertCircle, Frame } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import {
@@ -14,8 +20,20 @@ import {
 import { formatBytes, getBaseFilename, sanitizeFilename } from '../utils/formatters';
 import { triggerDownload } from '../utils/zip';
 
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface ImageBorderPageProps {
   onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
 }
 
 type BorderType = 'solid' | 'gradient' | 'polaroid';
@@ -36,8 +54,18 @@ function roundedPath(ctx: CanvasRenderingContext2D, x: number, y: number, w: num
   ctx.closePath();
 }
 
-export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/image-border-generator'];
+export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/image-border-generator'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+
   const [sourceFile, setSourceFile] = useState<File | null>(null);
   const [imageInfo, setImageInfo] = useState<LoadedImageInfo | null>(null);
   const imageInfoRef = useRef<LoadedImageInfo | null>(null);
@@ -54,6 +82,13 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
   const [outFormat, setOutFormat] = useState<'png' | 'jpeg' | 'webp'>('png');
   const [isExporting, setIsExporting] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+
+  const presetLabelById: Record<string, string> = {
+    gallery: t('presetClassicWhite', 'Classic White'),
+    polaroid: t('presetPolaroidFrame', 'Polaroid Frame'),
+    dark: t('presetDarkStudio', 'Dark Studio'),
+    sunset: t('presetGradientGlow', 'Gradient Glow'),
+  };
 
   const previewCanvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -194,7 +229,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
       setSourceFile(file);
       setImageInfo(info);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unable to load image.');
+      setError(err instanceof Error ? err.message : t('errorUnableToLoadImage', 'Unable to load image.'));
     }
   };
 
@@ -219,14 +254,23 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
       const base = sanitizeFilename(getBaseFilename(sourceFile.name));
       triggerDownload(blob, `${base}_framed${ext}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Export failed.');
+      setError(err instanceof Error ? err.message : t('errorExportFailed', 'Export failed.'));
     } finally {
       setIsExporting(false);
     }
   };
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         {!imageInfo ? (
           <UploadZone
@@ -237,7 +281,8 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
             allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
-            title="Drop an image to add a custom border or frame"
+            strings={esStrings?.uploadZone}
+            title={t('uploadTitle', 'Drop an image to add a custom border or frame')}
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -245,7 +290,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
                   <Frame className="w-3.5 h-3.5 text-blue-600" />
-                  Framed Preview
+                  {t('framedPreview', 'Framed Preview')}
                 </span>
                 <button
                   type="button"
@@ -253,7 +298,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
                   className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
-                  <span>Change Image</span>
+                  <span>{t('changeImage', 'Change Image')}</span>
                 </button>
               </div>
 
@@ -283,7 +328,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
             <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Quick Frame Presets
+                  {t('quickFramePresets', 'Quick Frame Presets')}
                 </span>
                 <div className="grid grid-cols-2 gap-2">
                   {[
@@ -298,7 +343,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
                       onClick={() => applyFramePreset(p.id as 'gallery' | 'polaroid' | 'dark' | 'sunset')}
                       className="px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-slate-700 cursor-pointer"
                     >
-                      {p.label}
+                      {presetLabelById[p.id] ?? p.label}
                     </button>
                   ))}
                 </div>
@@ -306,19 +351,23 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
 
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Border Style
+                  {t('borderStyle', 'Border Style')}
                 </span>
                 <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl">
-                  {(['solid', 'gradient', 'polaroid'] as BorderType[]).map((t) => (
+                  {(['solid', 'gradient', 'polaroid'] as BorderType[]).map((bt) => (
                     <button
-                      key={t}
+                      key={bt}
                       type="button"
-                      onClick={() => setBorderType(t)}
+                      onClick={() => setBorderType(bt)}
                       className={`py-1.5 text-xs font-semibold rounded-lg capitalize cursor-pointer ${
-                        borderType === t ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
+                        borderType === bt ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
                       }`}
                     >
-                      {t}
+                      {bt === 'solid'
+                        ? t('borderStyleSolid', 'Solid')
+                        : bt === 'gradient'
+                          ? t('borderStyleGradient', 'Gradient')
+                          : t('borderStylePolaroid', 'Polaroid')}
                     </button>
                   ))}
                 </div>
@@ -332,7 +381,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
                     onChange={(e) => setColor1(e.target.value)}
                     className="w-8 h-8 rounded-lg border border-slate-200 cursor-pointer p-0.5"
                   />
-                  <span>{borderType === 'gradient' ? 'Start Color' : 'Border Color'}</span>
+                  <span>{borderType === 'gradient' ? t('startColor', 'Start Color') : t('borderColor', 'Border Color')}</span>
                 </label>
 
                 {borderType === 'gradient' && (
@@ -343,7 +392,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
                       onChange={(e) => setColor2(e.target.value)}
                       className="w-8 h-8 rounded-lg border border-slate-200 cursor-pointer p-0.5"
                     />
-                    <span>End Color</span>
+                    <span>{t('endColor', 'End Color')}</span>
                   </label>
                 )}
               </div>
@@ -351,7 +400,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
               {borderType === 'gradient' && (
                 <div>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-semibold text-slate-700">Gradient Angle</span>
+                    <span className="font-semibold text-slate-700">{t('gradientAngle', 'Gradient Angle')}</span>
                     <span className="font-mono text-blue-600">{gradientAngle}°</span>
                   </div>
                   <input
@@ -367,7 +416,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
 
               <div>
                 <div className="flex justify-between text-xs mb-1">
-                  <span className="font-semibold text-slate-700">Border Size</span>
+                  <span className="font-semibold text-slate-700">{t('borderSize', 'Border Size')}</span>
                   <span className="font-mono text-blue-600">{borderSizePct}%</span>
                 </div>
                 <input
@@ -383,7 +432,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-semibold text-slate-700">Frame Radius</span>
+                    <span className="font-semibold text-slate-700">{t('frameRadius', 'Frame Radius')}</span>
                     <span className="font-mono text-blue-600">{outerRadiusPct}%</span>
                   </div>
                   <input
@@ -397,7 +446,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
                 </div>
                 <div>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-semibold text-slate-700">Photo Radius</span>
+                    <span className="font-semibold text-slate-700">{t('photoRadius', 'Photo Radius')}</span>
                     <span className="font-mono text-blue-600">{innerRadiusPct}%</span>
                   </div>
                   <input
@@ -413,7 +462,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
 
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Drop Shadow
+                  {t('dropShadow', 'Drop Shadow')}
                 </span>
                 <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-xl">
                   {(['none', 'soft', 'medium', 'deep'] as ShadowLevel[]).map((s) => (
@@ -425,7 +474,13 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
                         shadow === s ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600'
                       }`}
                     >
-                      {s}
+                      {s === 'none'
+                        ? t('shadowNone', 'None')
+                        : s === 'soft'
+                          ? t('shadowSoft', 'Soft')
+                          : s === 'medium'
+                            ? t('shadowMedium', 'Medium')
+                            : t('shadowDeep', 'Deep')}
                     </button>
                   ))}
                 </div>
@@ -454,7 +509,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({ onNavigate }) 
                   className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer disabled:opacity-60"
                 >
                   {isExporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
-                  <span>{isExporting ? 'Exporting...' : 'Download Framed Image'}</span>
+                  <span>{isExporting ? t('exporting', 'Exporting...') : t('downloadFramedImage', 'Download Framed Image')}</span>
                 </button>
               </div>
             </div>

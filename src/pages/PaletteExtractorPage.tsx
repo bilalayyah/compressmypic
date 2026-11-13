@@ -8,6 +8,12 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import {
@@ -22,12 +28,33 @@ import { PaletteSwatch, extractDominantPalette } from '../utils/canvasEffects';
 import { formatBytes, getBaseFilename, sanitizeFilename } from '../utils/formatters';
 import { triggerDownload } from '../utils/zip';
 
-interface PaletteExtractorPageProps {
-  onNavigate: (path: string) => void;
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
 }
 
-export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/image-color-palette-extractor'];
+interface PaletteExtractorPageProps {
+  onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
+}
+
+export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/image-color-palette-extractor'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
   const [sourceFile, setSourceFile] = useState<File | null>(null);
   const [imageInfo, setImageInfo] = useState<LoadedImageInfo | null>(null);
   const imageInfoRef = useRef<LoadedImageInfo | null>(null);
@@ -62,7 +89,7 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({ onNa
       setSourceFile(file);
       setImageInfo(info);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unable to load image.');
+      setError(err instanceof Error ? err.message : t('errorUnableToLoadImage', 'Unable to load image.'));
     }
   };
 
@@ -79,7 +106,7 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({ onNa
       setCopiedKey(key);
       setTimeout(() => setCopiedKey(null), 1600);
     } catch {
-      setError('Clipboard permission denied.');
+      setError(t('errorClipboardDenied', 'Clipboard permission denied.'));
     }
   };
 
@@ -145,7 +172,16 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({ onNa
   );
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         {!imageInfo ? (
           <UploadZone
@@ -156,7 +192,8 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({ onNa
             allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
-            title="Drop an image to extract its dominant color palette"
+            title={t('uploadTitle', 'Drop an image to extract its dominant color palette')}
+            strings={esStrings?.uploadZone}
           />
         ) : (
           <div className="space-y-6">
@@ -165,7 +202,7 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({ onNa
               <div className="lg:col-span-5 rounded-xl border border-slate-200 bg-slate-100 p-3 flex items-center justify-center max-h-[280px]">
                 <img
                   src={imageInfo.previewUrl}
-                  alt={sourceFile?.name || 'Source'}
+                  alt={sourceFile?.name || t('sourceAlt', 'Source')}
                   className="max-w-full max-h-[250px] object-contain rounded-lg"
                 />
               </div>
@@ -175,7 +212,7 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({ onNa
                   <div>
                     <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
                       <Palette className="w-4 h-4 text-blue-600" />
-                      <span>Extracted Palette ({swatches.length} Colors)</span>
+                      <span>{t('extractedPalette', 'Extracted Palette ({count} Colors)').replace('{count}', String(swatches.length))}</span>
                     </h2>
                     <p className="text-xs text-slate-500 font-mono mt-0.5">
                       {sourceFile?.name} · {imageInfo.width}×{imageInfo.height}px ·{' '}
@@ -188,14 +225,14 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({ onNa
                     className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
-                    <span>Change</span>
+                    <span>{t('changeImage', 'Change')}</span>
                   </button>
                 </div>
 
                 <div>
                   <div className="flex justify-between text-xs mb-1.5">
-                    <span className="font-semibold text-slate-700">Number of Colors</span>
-                    <span className="font-mono font-bold text-blue-600">{colorCount} colors</span>
+                    <span className="font-semibold text-slate-700">{t('numberOfColors', 'Number of Colors')}</span>
+                    <span className="font-mono font-bold text-blue-600">{t('colorsCount', '{count} colors').replace('{count}', String(colorCount))}</span>
                   </div>
                   <input
                     type="range"
@@ -227,7 +264,7 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({ onNa
                     className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-xl cursor-pointer"
                   >
                     {copiedKey === 'css' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
-                    <span>{copiedKey === 'css' ? 'Copied CSS!' : 'Copy CSS Variables'}</span>
+                    <span>{copiedKey === 'css' ? t('copiedCss', 'Copied CSS!') : t('copyCssVariables', 'Copy CSS Variables')}</span>
                   </button>
                   <button
                     type="button"
@@ -235,7 +272,7 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({ onNa
                     className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-xl cursor-pointer"
                   >
                     {copiedKey === 'json' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
-                    <span>{copiedKey === 'json' ? 'Copied JSON!' : 'Copy JSON'}</span>
+                    <span>{copiedKey === 'json' ? t('copiedJson', 'Copied JSON!') : t('copyJson', 'Copy JSON')}</span>
                   </button>
                   <button
                     type="button"
@@ -243,7 +280,7 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({ onNa
                     className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl cursor-pointer"
                   >
                     <Download className="w-3.5 h-3.5" />
-                    <span>Download Palette PNG</span>
+                    <span>{t('downloadPalettePng', 'Download Palette PNG')}</span>
                   </button>
                 </div>
               </div>

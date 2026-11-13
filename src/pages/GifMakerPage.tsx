@@ -17,6 +17,12 @@ import {
   GripVertical,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import {
@@ -34,8 +40,20 @@ import {
 import { formatBytes } from '../utils/formatters';
 import { triggerDownload } from '../utils/zip';
 
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface GifMakerPageProps {
   onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
 }
 
 interface FrameItem {
@@ -49,22 +67,30 @@ interface FrameItem {
   customDelayMs: number | null; // null = inherit global delay
 }
 
-const SIZE_PRESETS = [
-  { label: '480px', maxSide: 480 },
-  { label: '640px', maxSide: 640 },
-  { label: '800px', maxSide: 800 },
-  { label: 'Original', maxSide: 0 },
-];
+export const GifMakerPage: React.FC<GifMakerPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/gif-maker'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+  const SIZE_PRESETS = [
+    { label: t('sizePreset480', '480px'), maxSide: 480 },
+    { label: t('sizePreset640', '640px'), maxSide: 640 },
+    { label: t('sizePreset800', '800px'), maxSide: 800 },
+    { label: t('sizePresetOriginal', 'Original'), maxSide: 0 },
+  ];
 
-const FPS_PRESETS = [
-  { label: '1 FPS (1000ms)', ms: 1000 },
-  { label: '2 FPS (500ms)', ms: 500 },
-  { label: '5 FPS (200ms)', ms: 200 },
-  { label: '10 FPS (100ms)', ms: 100 },
-];
-
-export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/gif-maker'];
+  const FPS_PRESETS = [
+    { label: t('fpsPreset1', '1 FPS (1000ms)'), ms: 1000 },
+    { label: t('fpsPreset2', '2 FPS (500ms)'), ms: 500 },
+    { label: t('fpsPreset5', '5 FPS (200ms)'), ms: 200 },
+    { label: t('fpsPreset10', '10 FPS (100ms)'), ms: 100 },
+  ];
 
   const [frames, setFrames] = useState<FrameItem[]>([]);
   const framesRef = useRef<FrameItem[]>([]);
@@ -170,8 +196,10 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
       } catch (err) {
         setError(
           err instanceof Error
-            ? `Skipped "${file.name}": ${err.message}`
-            : `Skipped "${file.name}".`
+            ? t('skippedFile', 'Skipped "{name}": {error}')
+                .replace('{name}', file.name)
+                .replace('{error}', err.message)
+            : t('skippedFileNoError', 'Skipped "{name}".').replace('{name}', file.name)
         );
       }
     }
@@ -293,7 +321,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
       );
       setEncodedGif(result);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to encode animated GIF.');
+      setError(err instanceof Error ? err.message : t('errorEncodeFailed', 'Failed to encode animated GIF.'));
     } finally {
       setIsEncoding(false);
     }
@@ -307,7 +335,16 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
       : null;
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         {frames.length === 0 ? (
           <UploadZone
@@ -318,7 +355,8 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
             allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
-            title="Drop 2 or more images to create an animated GIF"
+            title={t('uploadTitle', 'Drop 2 or more images to create an animated GIF')}
+            strings={esStrings?.uploadZone}
           />
         ) : (
           <div className="space-y-6">
@@ -330,8 +368,13 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                     <Film className="w-3.5 h-3.5 text-blue-600" />
                     <span>
                       {encodedGif
-                        ? `Generated GIF (${encodedGif.width}×${encodedGif.height}px · ${formatBytes(encodedGif.size)})`
-                        : `Live Timing Preview · Frame ${(activePreviewIdx % frames.length) + 1}/${frames.length}`}
+                        ? t('generatedGif', 'Generated GIF ({width}×{height}px · {size})')
+                            .replace('{width}', String(encodedGif.width))
+                            .replace('{height}', String(encodedGif.height))
+                            .replace('{size}', formatBytes(encodedGif.size))
+                        : t('liveTimingPreview', 'Live Timing Preview · Frame {current}/{total}')
+                            .replace('{current}', String((activePreviewIdx % frames.length) + 1))
+                            .replace('{total}', String(frames.length))}
                     </span>
                   </span>
 
@@ -343,7 +386,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                         className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg cursor-pointer"
                       >
                         {isPlayingPreview ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-                        <span>{isPlayingPreview ? 'Pause' : 'Play'}</span>
+                        <span>{isPlayingPreview ? t('pause', 'Pause') : t('play', 'Play')}</span>
                       </button>
                     )}
                     {encodedGif && (
@@ -352,14 +395,14 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                         onClick={invalidateEncodedGif}
                         className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg cursor-pointer"
                       >
-                        Back to Frame Editor
+                        {t('backToFrameEditor', 'Back to Frame Editor')}
                       </button>
                     )}
                     <button
                       type="button"
                       onClick={clearAll}
                       className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
-                      aria-label="Clear all frames"
+                      aria-label={t('clearAllFrames', 'Clear all frames')}
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -370,7 +413,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                   {encodedGif ? (
                     <img
                       src={encodedGif.previewUrl}
-                      alt="Generated animated GIF"
+                      alt={t('generatedGifAlt', 'Generated animated GIF')}
                       className="max-w-full max-h-[430px] object-contain rounded shadow-xs"
                     />
                   ) : (
@@ -393,10 +436,13 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                     <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
                     <div>
                       <p className="font-bold">
-                        Large GIF Warning ({formatBytes(encodedGif.size)})
+                        {t('largeGifWarning', 'Large GIF Warning ({size})').replace(
+                          '{size}',
+                          formatBytes(encodedGif.size)
+                        )}
                       </p>
                       <p className="mt-0.5 text-xs opacity-90">
-                        GIFs above 5–15 MB may upload slowly on messaging apps or fail strict platform limits. Try reducing output width/height (e.g. 480px), lowering Quality, or removing frames.
+                        {t('largeGifWarningBody', 'GIFs above 5–15 MB may upload slowly on messaging apps or fail strict platform limits. Try reducing output width/height (e.g. 480px), lowering Quality, or removing frames.')}
                       </p>
                     </div>
                   </div>
@@ -409,21 +455,23 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                     className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-xl shadow-sm transition-colors cursor-pointer"
                   >
                     <Download className="w-4 h-4" />
-                    <span>Download Animated GIF ({formatBytes(encodedGif.size)})</span>
+                    <span>{t('downloadAnimatedGif', 'Download Animated GIF ({size})').replace('{size}', formatBytes(encodedGif.size))}</span>
                   </button>
                 )}
               </div>
 
               {/* GIF Settings */}
               <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
-                <h2 className="text-base font-bold text-slate-900">Animation Settings</h2>
+                <h2 className="text-base font-bold text-slate-900">{t('animationSettings', 'Animation Settings')}</h2>
 
                 {/* Global Frame Delay */}
                 <div>
                   <div className="flex justify-between text-xs mb-1.5">
-                    <span className="font-semibold text-slate-700">Default Frame Duration</span>
+                    <span className="font-semibold text-slate-700">{t('defaultFrameDuration', 'Default Frame Duration')}</span>
                     <span className="font-mono font-bold text-blue-600">
-                      {globalDelayMs} ms ({(1000 / Math.max(20, globalDelayMs)).toFixed(1)} FPS)
+                      {t('frameDurationValue', '{ms} ms ({fps} FPS)')
+                        .replace('{ms}', String(globalDelayMs))
+                        .replace('{fps}', (1000 / Math.max(20, globalDelayMs)).toFixed(1))}
                     </span>
                   </div>
                   <input
@@ -462,14 +510,14 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                 {/* Loop Count */}
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                    Loop Behavior
+                    {t('loopBehavior', 'Loop Behavior')}
                   </span>
                   <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl">
                     {(
                       [
-                        { id: 'forever', label: 'Forever' },
-                        { id: 'count', label: 'Set Loops' },
-                        { id: 'once', label: 'Play Once' },
+                        { id: 'forever', label: t('loopForever', 'Forever') },
+                        { id: 'count', label: t('loopSetLoops', 'Set Loops') },
+                        { id: 'once', label: t('loopPlayOnce', 'Play Once') },
                       ] as { id: GifLoopMode; label: string }[]
                     ).map((m) => (
                       <button
@@ -489,7 +537,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                   </div>
                   {loopMode === 'count' && (
                     <div className="mt-2.5 flex items-center justify-between gap-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200">
-                      <span className="text-xs font-semibold text-slate-700">Total Plays</span>
+                      <span className="text-xs font-semibold text-slate-700">{t('totalPlays', 'Total Plays')}</span>
                       <input
                         type="number"
                         min={2}
@@ -509,7 +557,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                 <div className="space-y-2.5">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                      Output Dimensions (px)
+                      {t('outputDimensions', 'Output Dimensions (px)')}
                     </span>
                     <button
                       type="button"
@@ -517,12 +565,12 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                       className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 cursor-pointer"
                     >
                       {lockAspect ? <Lock className="w-3.5 h-3.5" /> : <Unlock className="w-3.5 h-3.5" />}
-                      <span>{lockAspect ? 'Ratio Locked' : 'Unlocked'}</span>
+                      <span>{lockAspect ? t('ratioLocked', 'Ratio Locked') : t('ratioUnlocked', 'Unlocked')}</span>
                     </button>
                   </div>
                   <div className="grid grid-cols-2 gap-2.5">
                     <div>
-                      <label className="text-[11px] font-semibold text-slate-500 block mb-1">Width</label>
+                      <label className="text-[11px] font-semibold text-slate-500 block mb-1">{t('widthLabel', 'Width')}</label>
                       <input
                         type="number"
                         min={16}
@@ -533,7 +581,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                       />
                     </div>
                     <div>
-                      <label className="text-[11px] font-semibold text-slate-500 block mb-1">Height</label>
+                      <label className="text-[11px] font-semibold text-slate-500 block mb-1">{t('heightLabel', 'Height')}</label>
                       <input
                         type="number"
                         min={16}
@@ -561,7 +609,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                 {/* Fit & Quality */}
                 <div className="grid grid-cols-2 gap-3 items-center">
                   <div>
-                    <span className="text-xs font-semibold text-slate-700 block mb-1">Frame Fit</span>
+                    <span className="text-xs font-semibold text-slate-700 block mb-1">{t('frameFit', 'Frame Fit')}</span>
                     <div className="grid grid-cols-2 gap-1 p-1 bg-slate-100 rounded-xl">
                       {(['contain', 'cover'] as GifFitMode[]).map((m) => (
                         <button
@@ -575,13 +623,13 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                             fitMode === m ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600'
                           }`}
                         >
-                          {m}
+                          {m === 'contain' ? t('fitContain', 'contain') : t('fitCover', 'cover')}
                         </button>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-slate-700 block mb-1">Background Matte</label>
+                    <label className="text-xs font-semibold text-slate-700 block mb-1">{t('backgroundMatte', 'Background Matte')}</label>
                     <div className="flex items-center gap-2">
                       <input
                         type="color"
@@ -599,7 +647,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
 
                 <div>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-semibold text-slate-700">Color Palette Quality</span>
+                    <span className="font-semibold text-slate-700">{t('colorPaletteQuality', 'Color Palette Quality')}</span>
                     <span className="font-mono font-bold text-blue-600">{quality}%</span>
                   </div>
                   <input
@@ -624,12 +672,12 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                   {isEncoding ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Encoding GIF ({encodeProgress}%)...</span>
+                      <span>{t('encodingGif', 'Encoding GIF ({progress}%)...').replace('{progress}', String(encodeProgress))}</span>
                     </>
                   ) : (
                     <>
                       <Film className="w-4 h-4" />
-                      <span>{encodedGif ? 'Re-Encode Animated GIF' : 'Generate Animated GIF'}</span>
+                      <span>{encodedGif ? t('reEncodeAnimatedGif', 'Re-Encode Animated GIF') : t('generateAnimatedGif', 'Generate Animated GIF')}</span>
                     </>
                   )}
                 </button>
@@ -641,10 +689,16 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <h3 className="text-sm font-bold text-slate-900">
-                    Frames ({frames.length}) — Drag or use arrows to reorder
+                    {t('framesHeading', 'Frames ({count}) — Drag or use arrows to reorder').replace(
+                      '{count}',
+                      String(frames.length)
+                    )}
                   </h3>
                   <p className="text-xs text-slate-500">
-                    Leave per-frame delay blank to inherit the {globalDelayMs}ms global frame duration.
+                    {t(
+                      'perFrameDelayHint',
+                      'Leave per-frame delay blank to inherit the {ms}ms global frame duration.'
+                    ).replace('{ms}', String(globalDelayMs))}
                   </p>
                 </div>
                 <div>
@@ -667,7 +721,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                     className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-bold rounded-xl cursor-pointer"
                   >
                     <Plus className="w-4 h-4" />
-                    <span>Add Frames</span>
+                    <span>{t('addFrames', 'Add Frames')}</span>
                   </button>
                 </div>
               </div>
@@ -702,7 +756,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                         </span>
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <label className="text-[11px] text-slate-500">Delay (ms):</label>
+                        <label className="text-[11px] text-slate-500">{t('delayMsLabel', 'Delay (ms):')}</label>
                         <input
                           type="number"
                           min={20}
@@ -726,8 +780,8 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                           disabled={index === 0}
                           onClick={() => moveFrame(index, index - 1)}
                           className="p-1 text-slate-500 hover:text-blue-600 disabled:opacity-30 cursor-pointer"
-                          title="Move earlier"
-                          aria-label={`Move frame ${index + 1} earlier`}
+                          title={t('moveEarlier', 'Move earlier')}
+                          aria-label={t('moveFrameEarlierAria', 'Move frame {n} earlier').replace('{n}', String(index + 1))}
                         >
                           <ArrowUp className="w-3.5 h-3.5" />
                         </button>
@@ -736,8 +790,8 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                           disabled={index === frames.length - 1}
                           onClick={() => moveFrame(index, index + 1)}
                           className="p-1 text-slate-500 hover:text-blue-600 disabled:opacity-30 cursor-pointer"
-                          title="Move later"
-                          aria-label={`Move frame ${index + 1} later`}
+                          title={t('moveLater', 'Move later')}
+                          aria-label={t('moveFrameLaterAria', 'Move frame {n} later').replace('{n}', String(index + 1))}
                         >
                           <ArrowDown className="w-3.5 h-3.5" />
                         </button>
@@ -745,8 +799,8 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                           type="button"
                           onClick={() => duplicateFrame(index)}
                           className="p-1 text-slate-500 hover:text-blue-600 cursor-pointer"
-                          title="Duplicate frame"
-                          aria-label={`Duplicate frame ${index + 1}`}
+                          title={t('duplicateFrame', 'Duplicate frame')}
+                          aria-label={t('duplicateFrameAria', 'Duplicate frame {n}').replace('{n}', String(index + 1))}
                         >
                           <Copy className="w-3.5 h-3.5" />
                         </button>
@@ -754,8 +808,8 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({ onNavigate }) => {
                           type="button"
                           onClick={() => removeFrame(frame.id)}
                           className="p-1 text-slate-400 hover:text-red-600 ml-auto cursor-pointer"
-                          title="Remove frame"
-                          aria-label={`Remove frame ${index + 1}`}
+                          title={t('removeFrame', 'Remove frame')}
+                          aria-label={t('removeFrameAria', 'Remove frame {n}').replace('{n}', String(index + 1))}
                         >
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>

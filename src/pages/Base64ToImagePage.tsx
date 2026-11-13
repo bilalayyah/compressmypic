@@ -8,13 +8,32 @@ import {
   Loader2,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
+
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { canvasToBlob } from '../utils/imageProcessing';
 import { formatBytes } from '../utils/formatters';
 import { triggerDownload } from '../utils/zip';
 
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface Base64ToImagePageProps {
   onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
 }
 
 interface DecodedResult {
@@ -74,8 +93,18 @@ function extFromMime(mime: string): string {
   return '.png';
 }
 
-export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/base64-to-image'];
+export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/base64-to-image'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+
   const [input, setInput] = useState<string>('');
   const [decoded, setDecoded] = useState<DecodedResult | null>(null);
   const decodedRef = useRef<DecodedResult | null>(null);
@@ -111,13 +140,13 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({ onNavigate
         declaredMime = dataUrlMatch[1].toLowerCase();
         b64Body = dataUrlMatch[2];
       } else if (trimmed.startsWith('data:')) {
-        throw new Error('Unsupported data URI encoding. Expected base64 payload (`;base64,`).');
+        throw new Error(t('errorUnsupportedDataUri', 'Unsupported data URI encoding. Expected base64 payload (`;base64,`).'));
       }
 
       // Clean whitespace & URL-safe base64 characters if needed
       const cleanB64 = b64Body.replace(/\s+/g, '').replace(/-/g, '+').replace(/_/g, '/');
       if (!/^[A-Za-z0-9+/=]+$/.test(cleanB64)) {
-        throw new Error('Input contains invalid Base64 characters.');
+        throw new Error(t('errorInvalidBase64', 'Input contains invalid Base64 characters.'));
       }
 
       const binaryStr = atob(cleanB64);
@@ -149,14 +178,14 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({ onNavigate
         };
         img.onerror = () => {
           URL.revokeObjectURL(url);
-          reject(new Error('Decoded bytes do not form a valid browser-readable image.'));
+          reject(new Error(t('errorNotValidImage', 'Decoded bytes do not form a valid browser-readable image.')));
         };
         img.src = url;
       });
     } catch (err) {
       if (decodedRef.current?.previewUrl) URL.revokeObjectURL(decodedRef.current.previewUrl);
       setDecoded(null);
-      setError(err instanceof Error ? err.message : 'Unable to decode Base64 string.');
+      setError(err instanceof Error ? err.message : t('errorUnableToDecode', 'Unable to decode Base64 string.'));
     } finally {
       setIsDecoding(false);
     }
@@ -194,13 +223,22 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({ onNavigate
   };
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-4">
           <div className="flex items-center justify-between gap-3">
             <label className="text-sm font-bold text-slate-900 flex items-center gap-2">
               <FileCode2 className="w-4 h-4 text-blue-600" />
-              <span>Paste Base64 String or Data URL</span>
+              <span>{t('pasteLabel', 'Paste Base64 String or Data URL')}</span>
             </label>
             {input && (
               <button
@@ -212,7 +250,7 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({ onNavigate
                 className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
               >
                 <Trash2 className="w-3.5 h-3.5" />
-                <span>Clear</span>
+                <span>{t('clear', 'Clear')}</span>
               </button>
             )}
           </div>
@@ -225,19 +263,19 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({ onNavigate
               setInput(val);
               decodeString(val);
             }}
-            placeholder="Paste data:image/png;base64,iVBORw0KGgo... or raw Base64 bytes here"
+            placeholder={t('inputPlaceholder', 'Paste data:image/png;base64,iVBORw0KGgo... or raw Base64 bytes here')}
             className="w-full p-3.5 font-mono text-xs bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
 
           <div className="flex items-center justify-between text-xs text-slate-500">
-            <span>Supports PNG, JPG, WebP, GIF, SVG, BMP, and ICO Base64 payloads</span>
+            <span>{t('supportsNote', 'Supports PNG, JPG, WebP, GIF, SVG, BMP, and ICO Base64 payloads')}</span>
             <button
               type="button"
               onClick={() => decodeString(input)}
               disabled={isDecoding || !input.trim()}
               className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl cursor-pointer disabled:opacity-50"
             >
-              {isDecoding ? 'Decoding...' : 'Decode Image'}
+              {isDecoding ? t('decoding', 'Decoding...') : t('decodeImage', 'Decode Image')}
             </button>
           </div>
         </div>
@@ -252,7 +290,7 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({ onNavigate
         {isDecoding && (
           <div className="flex items-center justify-center p-8 text-sm text-slate-600 gap-2">
             <Loader2 className="w-5 h-5 text-blue-600 animate-spin" />
-            <span>Decoding Base64 bytes...</span>
+            <span>{t('decodingBytes', 'Decoding Base64 bytes...')}</span>
           </div>
         )}
 
@@ -269,7 +307,7 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({ onNavigate
             >
               <img
                 src={decoded.previewUrl}
-                alt="Decoded Base64 preview"
+                alt={t('decodedPreviewAlt', 'Decoded Base64 preview')}
                 className="max-w-full max-h-[390px] object-contain block"
               />
             </div>
@@ -277,22 +315,22 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({ onNavigate
             <div className="lg:col-span-5 space-y-4">
               <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>Valid Image Decoded</span>
+                <span>{t('validImageDecoded', 'Valid Image Decoded')}</span>
               </div>
 
               <div className="grid grid-cols-2 gap-2.5 text-xs">
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                  <span className="text-slate-500 block">Detected Format</span>
+                  <span className="text-slate-500 block">{t('detectedFormat', 'Detected Format')}</span>
                   <span className="font-mono font-bold text-slate-900 uppercase">
                     {decoded.mimeType.replace('image/', '')}
                   </span>
                 </div>
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                  <span className="text-slate-500 block">Binary Size</span>
+                  <span className="text-slate-500 block">{t('binarySize', 'Binary Size')}</span>
                   <span className="font-mono font-bold text-slate-900">{formatBytes(decoded.size)}</span>
                 </div>
                 <div className="col-span-2 p-3 bg-slate-50 rounded-xl border border-slate-200">
-                  <span className="text-slate-500 block">Dimensions</span>
+                  <span className="text-slate-500 block">{t('dimensions', 'Dimensions')}</span>
                   <span className="font-mono font-bold text-slate-900">
                     {decoded.width} × {decoded.height} px
                   </span>
@@ -301,7 +339,7 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({ onNavigate
 
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Download Format
+                  {t('downloadFormat', 'Download Format')}
                 </span>
                 <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-xl">
                   {(['original', 'png', 'jpeg', 'webp'] as const).map((fmt) => (
@@ -313,7 +351,7 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({ onNavigate
                         exportFmt === fmt ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
                       }`}
                     >
-                      {fmt === 'original' ? 'Original' : fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
+                      {fmt === 'original' ? t('formatOriginal', 'Original') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
                     </button>
                   ))}
                 </div>
@@ -325,7 +363,7 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({ onNavigate
                 className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer"
               >
                 <Download className="w-4 h-4" />
-                <span>Download Image File</span>
+                <span>{t('downloadImageFile', 'Download Image File')}</span>
               </button>
             </div>
           </div>

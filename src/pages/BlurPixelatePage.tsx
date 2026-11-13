@@ -9,6 +9,12 @@ import {
   Brush,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import { OutputFormatChoice } from '../types';
@@ -25,8 +31,20 @@ import { createBlurredCanvas, createPixelatedCanvas } from '../utils/canvasEffec
 import { formatBytes, getBaseFilename, sanitizeFilename } from '../utils/formatters';
 import { triggerDownload } from '../utils/zip';
 
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface BlurPixelatePageProps {
   onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
 }
 
 interface BrushStroke {
@@ -36,8 +54,18 @@ interface BrushStroke {
   points: { x: number; y: number }[];
 }
 
-export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/blur-pixelate-image'];
+export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/blur-pixelate-image'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+
   const [sourceFile, setSourceFile] = useState<File | null>(null);
   const [imageInfo, setImageInfo] = useState<LoadedImageInfo | null>(null);
   const imageInfoRef = useRef<LoadedImageInfo | null>(null);
@@ -200,7 +228,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
       setImageInfo(info);
       setStrokes([]);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unable to load image.');
+      setError(err instanceof Error ? err.message : t('errorUnableToLoadImage', 'Unable to load image.'));
     }
   };
 
@@ -223,14 +251,23 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
       const base = sanitizeFilename(getBaseFilename(sourceFile.name));
       triggerDownload(blob, `${base}_${effectMode}${extension}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Export failed.');
+      setError(err instanceof Error ? err.message : t('errorExportFailed', 'Export failed.'));
     } finally {
       setIsExporting(false);
     }
   };
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         {!imageInfo ? (
           <UploadZone
@@ -241,7 +278,8 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
             allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
-            title="Drop an image to blur or pixelate areas"
+            strings={esStrings?.uploadZone}
+            title={t('uploadTitle', 'Drop an image to blur or pixelate areas')}
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -251,12 +289,12 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
                   {scope === 'brush' ? (
                     <>
                       <Brush className="w-3.5 h-3.5 text-blue-600" />
-                      <span>Paint Over Areas to {effectMode === 'blur' ? 'Blur' : 'Pixelate'}</span>
+                      <span>{effectMode === 'blur' ? t('paintOverAreasBlur', 'Paint Over Areas to Blur') : t('paintOverAreasPixelate', 'Paint Over Areas to Pixelate')}</span>
                     </>
                   ) : (
                     <>
                       <Droplets className="w-3.5 h-3.5 text-blue-600" />
-                      <span>Whole-Image Preview</span>
+                      <span>{t('wholeImagePreview', 'Whole-Image Preview')}</span>
                     </>
                   )}
                 </span>
@@ -270,14 +308,14 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
                         className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 cursor-pointer"
                       >
                         <Undo2 className="w-3.5 h-3.5" />
-                        <span>Undo</span>
+                        <span>{t('undo', 'Undo')}</span>
                       </button>
                       <button
                         type="button"
                         onClick={() => setStrokes([])}
                         className="px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 cursor-pointer"
                       >
-                        Reset Brush
+                        {t('resetBrush', 'Reset Brush')}
                       </button>
                     </>
                   )}
@@ -285,7 +323,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
                     type="button"
                     onClick={handleClear}
                     className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
-                    aria-label="Remove image"
+                    aria-label={t('removeImage', 'Remove image')}
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -313,7 +351,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
             <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Target Area
+                  {t('targetArea', 'Target Area')}
                 </span>
                 <div className="grid grid-cols-2 gap-1 p-1 bg-slate-100 rounded-xl">
                   <button
@@ -323,7 +361,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
                       scope === 'brush' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
                     }`}
                   >
-                    Brush Area
+                    {t('brushArea', 'Brush Area')}
                   </button>
                   <button
                     type="button"
@@ -332,14 +370,14 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
                       scope === 'whole' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
                     }`}
                   >
-                    Whole Image
+                    {t('wholeImage', 'Whole Image')}
                   </button>
                 </div>
               </div>
 
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Effect Style
+                  {t('effectStyle', 'Effect Style')}
                 </span>
                 <div className="grid grid-cols-2 gap-1 p-1 bg-slate-100 rounded-xl">
                   <button
@@ -349,7 +387,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
                       effectMode === 'pixelate' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600'
                     }`}
                   >
-                    Pixelate Mosaic
+                    {t('pixelateMosaic', 'Pixelate Mosaic')}
                   </button>
                   <button
                     type="button"
@@ -358,7 +396,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
                       effectMode === 'blur' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600'
                     }`}
                   >
-                    Smooth Blur
+                    {t('smoothBlur', 'Smooth Blur')}
                   </button>
                 </div>
               </div>
@@ -366,7 +404,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
               {effectMode === 'blur' ? (
                 <div>
                   <div className="flex justify-between text-xs mb-1.5">
-                    <span className="font-semibold text-slate-700">Blur Radius</span>
+                    <span className="font-semibold text-slate-700">{t('blurRadius', 'Blur Radius')}</span>
                     <span className="font-mono font-bold text-blue-600">{blurRadius}px</span>
                   </div>
                   <input
@@ -381,7 +419,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
               ) : (
                 <div>
                   <div className="flex justify-between text-xs mb-1.5">
-                    <span className="font-semibold text-slate-700">Mosaic Block Size</span>
+                    <span className="font-semibold text-slate-700">{t('mosaicBlockSize', 'Mosaic Block Size')}</span>
                     <span className="font-mono font-bold text-blue-600">{pixelSize}px</span>
                   </div>
                   <input
@@ -398,7 +436,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
               {scope === 'brush' && (
                 <div>
                   <div className="flex justify-between text-xs mb-1.5">
-                    <span className="font-semibold text-slate-700">Brush Size</span>
+                    <span className="font-semibold text-slate-700">{t('brushSize', 'Brush Size')}</span>
                     <span className="font-mono font-bold text-blue-600">{brushSizePct}%</span>
                   </div>
                   <input
@@ -410,7 +448,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
                     className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                   />
                   <p className="mt-1.5 text-[11px] text-slate-500">
-                    Click and drag directly on the photo to hide faces, text, or license plates.
+                    {t('brushHint', 'Click and drag directly on the photo to hide faces, text, or license plates.')}
                   </p>
                 </div>
               )}
@@ -426,14 +464,14 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
                         format === fmt ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
                       }`}
                     >
-                      {fmt === 'original' ? 'Orig' : fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
+                      {fmt === 'original' ? t('formatOrig', 'Orig') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
                     </button>
                   ))}
                 </div>
                 {format !== 'png' && (
                   <div>
                     <div className="flex justify-between text-xs mb-1">
-                      <span className="font-semibold text-slate-700">Quality</span>
+                      <span className="font-semibold text-slate-700">{t('quality', 'Quality')}</span>
                       <span className="font-mono text-slate-700">{quality}%</span>
                     </div>
                     <input
@@ -453,7 +491,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({ onNavigate }
                   className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer disabled:opacity-60"
                 >
                   {isExporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
-                  <span>{isExporting ? 'Exporting...' : 'Download Image'}</span>
+                  <span>{isExporting ? t('exporting', 'Exporting...') : t('downloadImage', 'Download Image')}</span>
                 </button>
               </div>
             </div>

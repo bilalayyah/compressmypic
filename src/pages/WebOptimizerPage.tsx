@@ -13,6 +13,12 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import { ComparisonModal } from '../components/ComparisonModal';
@@ -27,8 +33,20 @@ import {
 import { formatBytes, formatPercent } from '../utils/formatters';
 import { createFilesZipArchive, triggerDownload } from '../utils/zip';
 
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface WebOptimizerPageProps {
   onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
 }
 
 interface WebPreset {
@@ -83,8 +101,35 @@ const WEB_PRESETS: WebPreset[] = [
   },
 ];
 
-export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/web-image-optimizer'];
+export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/web-image-optimizer'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+  // Preset labels/descriptions are localized here: WEB_PRESETS is module-level
+  // (no access to t()), so map it to localized copies with identical numbers.
+  const localizedPresets: WebPreset[] = WEB_PRESETS.map((p) => {
+    switch (p.id) {
+      case 'hero':
+        return { ...p, label: t('presetHero', 'Hero / Banner'), description: t('presetHeroDesc', 'Max 1600px · WebP 80%') };
+      case 'product':
+        return { ...p, label: t('presetProduct', 'E-Commerce Product'), description: t('presetProductDesc', 'Max 1200px · WebP 82%') };
+      case 'thumb':
+        return { ...p, label: t('presetThumb', 'Card / Thumbnail'), description: t('presetThumbDesc', 'Max 640px · WebP 75%') };
+      case 'og':
+        return { ...p, label: t('presetOg', 'Social OG / Email'), description: t('presetOgDesc', 'Max 1200px · JPG 82%') };
+      case 'retina':
+        return { ...p, label: t('presetRetina', 'Retina 2× Graphic'), description: t('presetRetinaDesc', 'Max 1920px · WebP 88%') };
+      default:
+        return p;
+    }
+  });
   const [items, setItems] = useState<ImageItem[]>([]);
   const itemsRef = useRef<ImageItem[]>([]);
   itemsRef.current = items;
@@ -181,7 +226,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
       return {
         ...item,
         status: 'error',
-        errorMessage: err instanceof Error ? err.message : 'Web optimization failed.',
+        errorMessage: err instanceof Error ? err.message : t('errorOptimizationFailed', 'Web optimization failed.'),
       };
     }
   };
@@ -239,7 +284,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
           outputFilename: file.name,
           quality,
           status: 'error',
-          errorMessage: 'Corrupted or unsupported image.',
+          errorMessage: t('errorCorruptedFile', 'Corrupted or unsupported image.'),
           spaceSaved: null,
           compressionPercentage: null,
         });
@@ -344,7 +389,16 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
   };
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         <UploadZone
           onFilesSelected={handleFilesSelected}
@@ -354,7 +408,8 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
           allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
           allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
           supportedFormatsLabel="JPG, PNG, WebP, HEIC, SVG, BMP, GIF, AVIF"
-          title="Drop website assets to optimize for Core Web Vitals"
+          title={t('uploadTitle', 'Drop website assets to optimize for Core Web Vitals')}
+          strings={esStrings?.uploadZone}
         />
 
         {/* Web Optimization Presets & Controls */}
@@ -362,10 +417,10 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5 mb-2.5">
               <Globe className="w-3.5 h-3.5 text-blue-600" />
-              <span>Web Performance Presets</span>
+              <span>{t('webPerformancePresets', 'Web Performance Presets')}</span>
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5">
-              {WEB_PRESETS.map((preset) => (
+              {localizedPresets.map((preset) => (
                 <button
                   key={preset.id}
                   type="button"
@@ -386,7 +441,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-slate-100">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                Web Format
+                {t('webFormat', 'Web Format')}
               </span>
               <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
                 {(['webp', 'jpeg', 'png'] as const).map((f) => (
@@ -409,7 +464,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
 
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                Max Dimension (Long Edge)
+                {t('maxDimension', 'Max Dimension (Long Edge)')}
               </span>
               <select
                 value={maxEdge}
@@ -419,19 +474,19 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
                 }}
                 className="w-full px-3 py-2 text-xs font-semibold border border-slate-300 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                <option value={0}>Keep Original Dimensions</option>
-                <option value={1920}>Max 1920px (Retina / Full HD)</option>
-                <option value={1600}>Max 1600px (Hero / Banner)</option>
-                <option value={1200}>Max 1200px (Blog / Product)</option>
-                <option value={800}>Max 800px (In-Content)</option>
-                <option value={640}>Max 640px (Thumbnails)</option>
+                <option value={0}>{t('keepOriginalDimensions', 'Keep Original Dimensions')}</option>
+                <option value={1920}>{t('max1920', 'Max 1920px (Retina / Full HD)')}</option>
+                <option value={1600}>{t('max1600', 'Max 1600px (Hero / Banner)')}</option>
+                <option value={1200}>{t('max1200', 'Max 1200px (Blog / Product)')}</option>
+                <option value={800}>{t('max800', 'Max 800px (In-Content)')}</option>
+                <option value={640}>{t('max640', 'Max 640px (Thumbnails)')}</option>
               </select>
             </div>
 
             <div>
               <div className="flex justify-between text-xs mb-2">
                 <span className="font-bold uppercase tracking-wider text-slate-500">
-                  Quality: <strong className="text-blue-600 font-mono">{quality}%</strong>
+                  {t('quality', 'Quality:')} <strong className="text-blue-600 font-mono">{quality}%</strong>
                 </span>
               </div>
               <input
@@ -457,7 +512,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
                 onChange={(e) => setPreventUpscale(e.target.checked)}
                 className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
               />
-              <span>Only downscale larger images (EXIF &amp; GPS metadata automatically stripped)</span>
+              <span>{t('onlyDownscale', 'Only downscale larger images (EXIF & GPS metadata automatically stripped)')}</span>
             </label>
 
             {items.length > 0 && (
@@ -471,12 +526,12 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
                   {isProcessing ? (
                     <>
                       <RotateCcw className="w-4 h-4 animate-spin" />
-                      <span>Optimizing...</span>
+                      <span>{t('optimizing', 'Optimizing...')}</span>
                     </>
                   ) : (
                     <>
                       <Play className="w-4 h-4 fill-current" />
-                      <span>Optimize for Web ({items.length})</span>
+                      <span>{t('optimizeForWeb', 'Optimize for Web ({count})').replace('{count}', String(items.length))}</span>
                     </>
                   )}
                 </button>
@@ -487,7 +542,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
                   className="inline-flex items-center gap-1.5 px-3.5 py-2.5 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-sm font-medium rounded-xl cursor-pointer"
                 >
                   <Trash2 className="w-4 h-4" />
-                  <span className="hidden sm:inline">Clear</span>
+                  <span className="hidden sm:inline">{t('clear', 'Clear')}</span>
                 </button>
               </div>
             )}
@@ -501,14 +556,18 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
               <div className="bg-slate-900 text-white rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
-                    Web Performance Summary
+                    {t('webPerformanceSummary', 'Web Performance Summary')}
                   </span>
                   <p className="text-sm font-semibold mt-0.5">
                     {formatBytes(totalOrig)} → {formatBytes(totalOut)}{' '}
                     <span className={totalSaved < 0 ? 'text-red-400' : 'text-emerald-400'}>
                       {totalSaved < 0
-                        ? `(+${Math.abs(totalPct)}% · grew by ${formatBytes(Math.abs(totalSaved))})`
-                        : `(${totalPct}% lighter · ${formatBytes(totalSaved)} page weight saved)`}
+                        ? t('pageWeightGrew', '(+{percent}% · grew by {amount})')
+                            .replace('{percent}', String(Math.abs(totalPct)))
+                            .replace('{amount}', formatBytes(Math.abs(totalSaved)))
+                        : t('pageWeightSaved', '({percent}% lighter · {saved} page weight saved)')
+                            .replace('{percent}', String(totalPct))
+                            .replace('{saved}', formatBytes(totalSaved))}
                     </span>
                   </p>
                 </div>
@@ -520,7 +579,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl cursor-pointer"
                   >
                     <FileArchive className="w-4 h-4" />
-                    <span>{isZipping ? 'Creating ZIP...' : 'Download All (ZIP)'}</span>
+                    <span>{isZipping ? t('creatingZip', 'Creating ZIP...') : t('downloadAllZip', 'Download All (ZIP)')}</span>
                   </button>
                 )}
               </div>
@@ -570,12 +629,14 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
                           (item.compressedSize || 0) > item.originalSize ? (
                             <span className="inline-flex items-center gap-1 text-xs text-red-600 font-semibold">
                               <AlertCircle className="w-3.5 h-3.5 text-red-500" />
-                              Grew by {formatBytes((item.compressedSize || 0) - item.originalSize)} ({formatPercent(item.compressionPercentage)})
+                              {t('grewBy', 'Grew by {amount} ({percent})')
+                                .replace('{amount}', formatBytes((item.compressedSize || 0) - item.originalSize))
+                                .replace('{percent}', formatPercent(item.compressionPercentage))}
                             </span>
                           ) : (
                             <span className="inline-flex items-center gap-1 text-xs text-emerald-700 font-semibold">
                               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                              Web-Ready ({formatPercent(item.compressionPercentage)})
+                              {t('webReady', 'Web-Ready ({percent})').replace('{percent}', formatPercent(item.compressionPercentage))}
                             </span>
                           )
                         )}
@@ -596,17 +657,17 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
                           type="button"
                           onClick={() => void handleCopyImgTag(item)}
                           className="px-3 py-2 text-slate-700 hover:bg-slate-100 text-xs font-semibold rounded-lg flex items-center gap-1.5 cursor-pointer border border-slate-200"
-                          title="Copy responsive HTML img tag with explicit width and height"
+                          title={t('copyImgTitle', 'Copy responsive HTML img tag with explicit width and height')}
                         >
                           {copiedId === item.id ? (
                             <>
                               <Check className="w-3.5 h-3.5 text-emerald-600" />
-                              <span className="text-emerald-700">Copied HTML</span>
+                              <span className="text-emerald-700">{t('copiedHtml', 'Copied HTML')}</span>
                             </>
                           ) : (
                             <>
                               <Code2 className="w-3.5 h-3.5 text-slate-500" />
-                              <span>Copy &lt;img&gt;</span>
+                              <span>{t('copyImg', 'Copy <img>')}</span>
                             </>
                           )}
                         </button>
@@ -616,7 +677,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
                           className="px-3 py-2 text-slate-700 hover:bg-slate-100 text-xs font-semibold rounded-lg flex items-center gap-1.5 cursor-pointer"
                         >
                           <SplitSquareVertical className="w-4 h-4 text-blue-600" />
-                          <span>Compare</span>
+                          <span>{t('compare', 'Compare')}</span>
                         </button>
                         <button
                           type="button"
@@ -627,7 +688,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
                           className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg cursor-pointer"
                         >
                           <Download className="w-4 h-4" />
-                          <span>Download</span>
+                          <span>{t('download', 'Download')}</span>
                         </button>
                       </>
                     )}
@@ -635,7 +696,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
                       type="button"
                       onClick={() => handleRemove(item.id)}
                       className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
-                      aria-label={`Remove ${item.name}`}
+                      aria-label={t('removeImage', 'Remove {name}').replace('{name}', item.name)}
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -651,8 +712,25 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
         <ComparisonModal
           image={comparisonTarget}
           onClose={() => setComparisonTarget(null)}
-          titlePrefix="Web Optimization Comparison"
-          afterLabel="Web-Ready (After)"
+          titlePrefix={t('comparisonTitlePrefix', 'Web Optimization Comparison')}
+          beforeLabel={esStrings?.comparisonModal.beforeLabel}
+          afterLabel={t('comparisonAfterLabel', 'Web-Ready (After)')}
+          closeLabel={esStrings?.comparisonModal.closeLabel}
+          instruction={esStrings?.comparisonModal.instruction}
+          sliderLabel={esStrings?.comparisonModal.sliderLabel}
+          sideBySideLabel={esStrings?.comparisonModal.sideBySideLabel}
+          zoomInLabel={esStrings?.comparisonModal.zoomInLabel}
+          zoomOutLabel={esStrings?.comparisonModal.zoomOutLabel}
+          originalLabel={esStrings?.comparisonModal.originalLabel}
+          outputLabel={esStrings?.comparisonModal.outputLabel}
+          reductionLabel={esStrings?.comparisonModal.reductionLabel}
+          sizeChangeLabel={esStrings?.comparisonModal.sizeChangeLabel}
+          qualityLabel={esStrings?.comparisonModal.qualityLabel}
+          formatLabel={esStrings?.comparisonModal.formatLabel}
+          modalAriaLabel={esStrings?.comparisonModal.modalAriaLabel}
+          altCompressed={esStrings?.comparisonModal.altCompressed}
+          altOriginal={esStrings?.comparisonModal.altOriginal}
+          altProcessed={esStrings?.comparisonModal.altProcessed}
         />
       )}
     </ToolPageLayout>

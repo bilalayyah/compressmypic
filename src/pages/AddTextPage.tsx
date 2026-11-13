@@ -10,6 +10,12 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import { OutputFormatChoice } from '../types';
@@ -25,8 +31,20 @@ import { resolveOutputFormat } from '../utils/compressor';
 import { formatBytes, getBaseFilename, sanitizeFilename } from '../utils/formatters';
 import { triggerDownload } from '../utils/zip';
 
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface AddTextPageProps {
   onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
 }
 
 interface TextLayer {
@@ -54,10 +72,10 @@ const FONT_OPTIONS = [
   { label: 'Trebuchet / Rounded Sans', value: '"Trebuchet MS", sans-serif' },
 ];
 
-function createDefaultLayer(index: number): TextLayer {
+function createDefaultLayer(index: number, firstText: string, captionTemplate: string): TextLayer {
   return {
     id: `layer-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
-    text: index === 0 ? 'Double-tap or edit text' : `Caption ${index + 1}`,
+    text: index === 0 ? firstText : captionTemplate.replace('{index}', String(index + 1)),
     x: 0.5,
     y: index === 0 ? 0.5 : 0.78,
     fontFamily: FONT_OPTIONS[0].value,
@@ -73,14 +91,33 @@ function createDefaultLayer(index: number): TextLayer {
   };
 }
 
-export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/add-text-to-image'];
+export const AddTextPage: React.FC<AddTextPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/add-text-to-image'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+
   const [sourceFile, setSourceFile] = useState<File | null>(null);
   const [imageInfo, setImageInfo] = useState<LoadedImageInfo | null>(null);
   const imageInfoRef = useRef<LoadedImageInfo | null>(null);
   imageInfoRef.current = imageInfo;
 
-  const [layers, setLayers] = useState<TextLayer[]>(() => [createDefaultLayer(0)]);
+  // Translated default layer texts (module-level createDefaultLayer takes
+  // them as params so it stays a pure function).
+  const newDefaultLayer = (index: number) =>
+    createDefaultLayer(
+      index,
+      t('defaultLayerText', 'Double-tap or edit text'),
+      t('defaultCaption', 'Caption {index}')
+    );
+
+  const [layers, setLayers] = useState<TextLayer[]>(() => [newDefaultLayer(0)]);
   const [activeLayerId, setActiveLayerId] = useState<string>('');
   const [format, setFormat] = useState<OutputFormatChoice>('original');
   const [quality, setQuality] = useState<number>(92);
@@ -101,6 +138,14 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
       if (imageInfoRef.current?.previewUrl) URL.revokeObjectURL(imageInfoRef.current.previewUrl);
     };
   }, []);
+
+  const fontLabelByValue: Record<string, string> = {
+    'Inter, system-ui, sans-serif': t('fontInter', 'Inter / Clean Sans'),
+    'Impact, "Arial Black", sans-serif': t('fontImpact', 'Impact / Meme Display'),
+    'Georgia, "Times New Roman", serif': t('fontGeorgia', 'Georgia / Classic Serif'),
+    '"Courier New", monospace': t('fontCourier', 'Courier / Monospace'),
+    '"Trebuchet MS", sans-serif': t('fontTrebuchet', 'Trebuchet / Rounded Sans'),
+  };
 
   const activeLayer = layers.find((l) => l.id === activeLayerId) || layers[0];
 
@@ -223,7 +268,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
       setSourceFile(file);
       setImageInfo(info);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unable to load image.');
+      setError(err instanceof Error ? err.message : t('errorUnableToLoadImage', 'Unable to load image.'));
     }
   };
 
@@ -234,7 +279,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
   };
 
   const handleAddLayer = () => {
-    const next = createDefaultLayer(layers.length);
+    const next = newDefaultLayer(layers.length);
     setLayers((prev) => [...prev, next]);
     setActiveLayerId(next.id);
   };
@@ -243,7 +288,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
     setLayers((prev) => {
       const filtered = prev.filter((l) => l.id !== id);
       if (filtered.length === 0) {
-        const fresh = createDefaultLayer(0);
+        const fresh = newDefaultLayer(0);
         setActiveLayerId(fresh.id);
         return [fresh];
       }
@@ -281,14 +326,23 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
       const base = sanitizeFilename(getBaseFilename(sourceFile.name));
       triggerDownload(blob, `${base}_text${extension}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Export failed.');
+      setError(err instanceof Error ? err.message : t('errorExportFailed', 'Export failed.'));
     } finally {
       setIsExporting(false);
     }
   };
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         {!imageInfo ? (
           <UploadZone
@@ -299,7 +353,8 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
             allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
-            title="Drop an image to add custom text overlays"
+            strings={esStrings?.uploadZone}
+            title={t('uploadTitle', 'Drop an image to add custom text overlays')}
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -307,7 +362,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
                   <Type className="w-3.5 h-3.5 text-blue-600" />
-                  Drag Any Text Directly on Image
+                  {t('dragAnyText', 'Drag Any Text Directly on Image')}
                 </span>
                 <button
                   type="button"
@@ -315,7 +370,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
                   className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
-                  <span>Change Image</span>
+                  <span>{t('changeImage', 'Change Image')}</span>
                 </button>
               </div>
 
@@ -350,7 +405,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
                           : 'bg-slate-50 text-slate-700 border-slate-200'
                       }`}
                     >
-                      Text {idx + 1}
+                      {t('textLayer', 'Text {index}').replace('{index}', String(idx + 1))}
                     </button>
                   ))}
                 </div>
@@ -361,14 +416,14 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
                     className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg cursor-pointer"
                   >
                     <Plus className="w-3.5 h-3.5" />
-                    <span>Add</span>
+                    <span>{t('add', 'Add')}</span>
                   </button>
                   {layers.length > 1 && activeLayer && (
                     <button
                       type="button"
                       onClick={() => handleDeleteLayer(activeLayer.id)}
                       className="p-1.5 text-slate-400 hover:text-red-600 rounded-lg cursor-pointer"
-                      aria-label="Delete active text layer"
+                      aria-label={t('deleteActiveTextLayer', 'Delete active text layer')}
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
@@ -380,7 +435,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
                 <>
                   <div>
                     <label className="text-xs font-semibold text-slate-700 block mb-1">
-                      Text Content (multi-line supported)
+                      {t('textContent', 'Text Content (multi-line supported)')}
                     </label>
                     <textarea
                       rows={2}
@@ -392,7 +447,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs font-semibold text-slate-700 block mb-1">Font</label>
+                      <label className="text-xs font-semibold text-slate-700 block mb-1">{t('font', 'Font')}</label>
                       <select
                         value={activeLayer.fontFamily}
                         onChange={(e) => updateActiveLayer({ fontFamily: e.target.value })}
@@ -400,7 +455,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
                       >
                         {FONT_OPTIONS.map((f) => (
                           <option key={f.label} value={f.value}>
-                            {f.label}
+                            {fontLabelByValue[f.value] ?? f.label}
                           </option>
                         ))}
                       </select>
@@ -414,7 +469,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
                           onChange={(e) => updateActiveLayer({ color: e.target.value })}
                           className="w-6 h-6 rounded border-0 cursor-pointer p-0"
                         />
-                        <span>Fill</span>
+                        <span>{t('fill', 'Fill')}</span>
                       </label>
                       <button
                         type="button"
@@ -424,7 +479,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
                             ? 'bg-blue-600 text-white border-blue-600'
                             : 'bg-white text-slate-700 border-slate-200'
                         }`}
-                        aria-label="Toggle Bold"
+                        aria-label={t('toggleBold', 'Toggle Bold')}
                       >
                         <Bold className="w-4 h-4" />
                       </button>
@@ -436,7 +491,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
                             ? 'bg-blue-600 text-white border-blue-600'
                             : 'bg-white text-slate-700 border-slate-200'
                         }`}
-                        aria-label="Toggle Italic"
+                        aria-label={t('toggleItalic', 'Toggle Italic')}
                       >
                         <Italic className="w-4 h-4" />
                       </button>
@@ -446,7 +501,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="font-semibold text-slate-700">Size</span>
+                        <span className="font-semibold text-slate-700">{t('size', 'Size')}</span>
                         <span className="font-mono text-blue-600">{activeLayer.fontSizePct}%</span>
                       </div>
                       <input
@@ -460,7 +515,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
                     </div>
                     <div>
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="font-semibold text-slate-700">Rotation</span>
+                        <span className="font-semibold text-slate-700">{t('rotation', 'Rotation')}</span>
                         <span className="font-mono text-blue-600">{activeLayer.rotation}°</span>
                       </div>
                       <input
@@ -483,7 +538,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
                           onChange={(e) => updateActiveLayer({ outline: e.target.checked })}
                           className="w-4 h-4 accent-blue-600 rounded"
                         />
-                        <span>Text Outline</span>
+                        <span>{t('textOutline', 'Text Outline')}</span>
                       </label>
                       {activeLayer.outline && (
                         <div className="flex items-center gap-2">
@@ -506,7 +561,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
                     </div>
 
                     <label className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
-                      <span className="text-xs font-semibold text-slate-700">Drop Shadow</span>
+                      <span className="text-xs font-semibold text-slate-700">{t('dropShadow', 'Drop Shadow')}</span>
                       <input
                         type="checkbox"
                         checked={activeLayer.shadow}
@@ -529,14 +584,14 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
                         format === fmt ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
                       }`}
                     >
-                      {fmt === 'original' ? 'Orig' : fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
+                      {fmt === 'original' ? t('formatOrig', 'Orig') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
                     </button>
                   ))}
                 </div>
                 {format !== 'png' && (
                   <div>
                     <div className="flex justify-between text-xs mb-1">
-                      <span className="font-semibold text-slate-700">Quality</span>
+                      <span className="font-semibold text-slate-700">{t('quality', 'Quality')}</span>
                       <span className="font-mono text-slate-700">{quality}%</span>
                     </div>
                     <input
@@ -556,7 +611,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({ onNavigate }) => {
                   className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer disabled:opacity-60"
                 >
                   {isExporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
-                  <span>{isExporting ? 'Exporting...' : 'Download Image with Text'}</span>
+                  <span>{isExporting ? t('exporting', 'Exporting...') : t('downloadImageWithText', 'Download Image with Text')}</span>
                 </button>
               </div>
             </div>

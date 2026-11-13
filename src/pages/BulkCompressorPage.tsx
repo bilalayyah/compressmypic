@@ -1,6 +1,14 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Layers, Zap } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import type { CompressionControlsStrings } from '../components/CompressionControls';
+import type { ResultsListStrings } from '../components/ResultsList';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import { CompressionControls } from '../components/CompressionControls';
@@ -16,12 +24,37 @@ import {
 import { getFileExtension } from '../utils/formatters';
 import { createZipArchive, triggerDownload } from '../utils/zip';
 
-interface BulkCompressorPageProps {
-  onNavigate: (path: string) => void;
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+  // Passed through to the shared workspace components (Batch 1 dict sections).
+  // App supplies these two fields from esLocale.ui on the bulk-compressor route.
+  compressionControls?: CompressionControlsStrings;
+  resultsList?: ResultsListStrings;
 }
 
-export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/bulk-image-compressor'];
+interface BulkCompressorPageProps {
+  onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
+}
+
+export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/bulk-image-compressor'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
   const [images, setImages] = useState<ImageItem[]>([]);
   const imagesRef = useRef<ImageItem[]>([]);
   imagesRef.current = images;
@@ -90,7 +123,7 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({ onNaviga
         return {
           ...item,
           status: 'error',
-          errorMessage: err instanceof Error ? err.message : 'Compression failed.',
+          errorMessage: err instanceof Error ? err.message : t('errorCompressionFailed', 'Compression failed.'),
         };
       }
     },
@@ -161,7 +194,7 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({ onNaviga
           outputFilename: file.name,
           quality: settings.quality,
           status: 'error',
-          errorMessage: 'Corrupted or unreadable image file.',
+          errorMessage: t('errorCorruptedFile', 'Corrupted or unreadable image file.'),
           spaceSaved: null,
           compressionPercentage: null,
         });
@@ -313,20 +346,30 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({ onNaviga
   );
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         <UploadZone
           onFilesSelected={handleFilesSelected}
           maxFileSizeMB={settings.maxFileSizeMB}
           disabled={isCompressing}
-          title="Drop dozens of images for bulk compression"
+          title={t('uploadTitle', 'Drop dozens of images for bulk compression')}
+          strings={esStrings?.uploadZone}
         />
 
         {/* Quick Batch Profiles */}
         <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-700">
             <Layers className="w-4 h-4 text-blue-600 shrink-0" />
-            <span>Quick Batch Profiles:</span>
+            <span>{t('quickBatchProfiles', 'Quick Batch Profiles:')}</span>
           </div>
           <div className="flex flex-wrap gap-2">
             <button
@@ -335,21 +378,21 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({ onNaviga
               className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:border-blue-300 hover:text-blue-700 cursor-pointer"
             >
               <Zap className="w-3.5 h-3.5 inline mr-1 text-blue-600" />
-              Web Fast (WebP 75%)
+              {t('profileWebFast', 'Web Fast (WebP 75%)')}
             </button>
             <button
               type="button"
               onClick={() => applyQuickBatchProfile(65, 'jpeg')}
               className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:border-blue-300 hover:text-blue-700 cursor-pointer"
             >
-              Email / Sharing (JPG 65%)
+              {t('profileEmailSharing', 'Email / Sharing (JPG 65%)')}
             </button>
             <button
               type="button"
               onClick={() => applyQuickBatchProfile(85, 'original')}
               className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:border-blue-300 hover:text-blue-700 cursor-pointer"
             >
-              High Fidelity (85%)
+              {t('profileHighFidelity', 'High Fidelity (85%)')}
             </button>
           </div>
         </div>
@@ -357,7 +400,7 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({ onNaviga
         {isCompressing && totalToProcess > 0 && (
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 space-y-2">
             <div className="flex justify-between text-xs font-semibold text-blue-800">
-              <span>Compressing batch locally...</span>
+              <span>{t('compressingBatch', 'Compressing batch locally...')}</span>
               <span className="font-mono">
                 {processedCount} / {totalToProcess}
               </span>
@@ -381,6 +424,7 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({ onNaviga
             hasTransparentImages={hasTransparentImages}
             hasPngImages={hasPngImages}
             isCompressing={isCompressing}
+            strings={esStrings?.compressionControls}
           />
         )}
 
@@ -395,6 +439,7 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({ onNaviga
             onKeepOriginal={handleKeepOriginal}
             isZipping={isZipping}
             zipProgress={zipProgress}
+            strings={esStrings?.resultsList}
           />
         )}
       </div>
@@ -403,6 +448,23 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({ onNaviga
         <ComparisonModal
           image={comparisonTarget}
           onClose={() => setComparisonTarget(null)}
+          beforeLabel={esStrings?.comparisonModal.beforeLabel}
+          closeLabel={esStrings?.comparisonModal.closeLabel}
+          instruction={esStrings?.comparisonModal.instruction}
+          sliderLabel={esStrings?.comparisonModal.sliderLabel}
+          sideBySideLabel={esStrings?.comparisonModal.sideBySideLabel}
+          zoomInLabel={esStrings?.comparisonModal.zoomInLabel}
+          zoomOutLabel={esStrings?.comparisonModal.zoomOutLabel}
+          originalLabel={esStrings?.comparisonModal.originalLabel}
+          outputLabel={esStrings?.comparisonModal.outputLabel}
+          reductionLabel={esStrings?.comparisonModal.reductionLabel}
+          sizeChangeLabel={esStrings?.comparisonModal.sizeChangeLabel}
+          qualityLabel={esStrings?.comparisonModal.qualityLabel}
+          formatLabel={esStrings?.comparisonModal.formatLabel}
+          modalAriaLabel={esStrings?.comparisonModal.modalAriaLabel}
+          altCompressed={esStrings?.comparisonModal.altCompressed}
+          altOriginal={esStrings?.comparisonModal.altOriginal}
+          altProcessed={esStrings?.comparisonModal.altProcessed}
         />
       )}
     </ToolPageLayout>

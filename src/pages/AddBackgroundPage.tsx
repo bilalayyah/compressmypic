@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Download, Trash2, Loader2, AlertCircle, Layers } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
+
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import {
@@ -15,8 +22,20 @@ import { createBlurredCanvas } from '../utils/canvasEffects';
 import { formatBytes, getBaseFilename, sanitizeFilename } from '../utils/formatters';
 import { triggerDownload } from '../utils/zip';
 
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface AddBackgroundPageProps {
   onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
 }
 
 type BackdropMode = 'solid' | 'gradient' | 'blur';
@@ -37,8 +56,18 @@ function roundedPath(ctx: CanvasRenderingContext2D, x: number, y: number, w: num
   ctx.closePath();
 }
 
-export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/add-background-to-image'];
+export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/add-background-to-image'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+
   const [sourceFile, setSourceFile] = useState<File | null>(null);
   const [imageInfo, setImageInfo] = useState<LoadedImageInfo | null>(null);
   const imageInfoRef = useRef<LoadedImageInfo | null>(null);
@@ -186,7 +215,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
       setSourceFile(file);
       setImageInfo(info);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unable to load image.');
+      setError(err instanceof Error ? err.message : t('errorUnableToLoadImage', 'Unable to load image.'));
     }
   };
 
@@ -212,7 +241,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
       const base = sanitizeFilename(getBaseFilename(sourceFile.name));
       triggerDownload(blob, `${base}_background${ext}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Export failed.');
+      setError(err instanceof Error ? err.message : t('errorExportFailed', 'Export failed.'));
     } finally {
       setIsExporting(false);
     }
@@ -221,7 +250,16 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
   const fullDims = getTargetDims(Math.max(imageInfo?.width || 1200, imageInfo?.height || 1200, 1200));
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         {!imageInfo ? (
           <UploadZone
@@ -232,7 +270,8 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
             allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
-            title="Drop an image or transparent PNG to add a backdrop"
+            title={t('uploadTitle', 'Drop an image or transparent PNG to add a backdrop')}
+            strings={esStrings?.uploadZone}
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -240,7 +279,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
                   <Layers className="w-3.5 h-3.5 text-blue-600" />
-                  Background Preview
+                  {t('backgroundPreview', 'Background Preview')}
                 </span>
                 <button
                   type="button"
@@ -248,7 +287,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
                   className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
-                  <span>Change Image</span>
+                  <span>{t('changeImage', 'Change Image')}</span>
                 </button>
               </div>
 
@@ -262,7 +301,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
               <div className="flex justify-between text-xs text-slate-500 font-mono">
                 <span className="truncate max-w-xs">{sourceFile?.name}</span>
                 <span>
-                  Output: {fullDims.w}×{fullDims.h}px · {sourceFile ? formatBytes(sourceFile.size) : ''}
+                  {t('outputDimensionsPrefix', 'Output:')} {fullDims.w}×{fullDims.h}px · {sourceFile ? formatBytes(sourceFile.size) : ''}
                 </span>
               </div>
             </div>
@@ -270,14 +309,14 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
             <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Background Type
+                  {t('backgroundType', 'Background Type')}
                 </span>
                 <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl">
                   {(
                     [
-                      { id: 'solid', label: 'Solid Color' },
-                      { id: 'gradient', label: 'Gradient' },
-                      { id: 'blur', label: 'Blurred Photo' },
+                      { id: 'solid', label: t('modeSolidColor', 'Solid Color') },
+                      { id: 'gradient', label: t('modeGradient', 'Gradient') },
+                      { id: 'blur', label: t('modeBlurredPhoto', 'Blurred Photo') },
                     ] as { id: BackdropMode; label: string }[]
                   ).map((m) => (
                     <button
@@ -311,7 +350,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
                           onClick={() => setSolidColor(c)}
                           className="w-7 h-7 rounded-lg border border-slate-300 cursor-pointer"
                           style={{ backgroundColor: c }}
-                          aria-label={`Select color ${c}`}
+                          aria-label={t('selectColor', 'Select color {color}').replace('{color}', c)}
                         />
                       ))}
                     </div>
@@ -329,7 +368,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
                         onChange={(e) => setGradColor1(e.target.value)}
                         className="w-8 h-8 rounded-lg border border-slate-200 cursor-pointer p-0.5"
                       />
-                      <span>Color 1</span>
+                      <span>{t('color1', 'Color 1')}</span>
                     </label>
                     <label className="flex items-center gap-2 text-xs font-semibold text-slate-700">
                       <input
@@ -338,12 +377,12 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
                         onChange={(e) => setGradColor2(e.target.value)}
                         className="w-8 h-8 rounded-lg border border-slate-200 cursor-pointer p-0.5"
                       />
-                      <span>Color 2</span>
+                      <span>{t('color2', 'Color 2')}</span>
                     </label>
                   </div>
                   <div>
                     <div className="flex justify-between text-xs mb-1">
-                      <span className="font-semibold text-slate-700">Angle</span>
+                      <span className="font-semibold text-slate-700">{t('angle', 'Angle')}</span>
                       <span className="font-mono text-blue-600">{gradAngle}°</span>
                     </div>
                     <input
@@ -361,7 +400,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
               {bgMode === 'blur' && (
                 <div>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-semibold text-slate-700">Backdrop Blur Radius</span>
+                    <span className="font-semibold text-slate-700">{t('backdropBlurRadius', 'Backdrop Blur Radius')}</span>
                     <span className="font-mono text-blue-600">{blurRadius}px</span>
                   </div>
                   <input
@@ -377,7 +416,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
 
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Canvas Aspect Ratio
+                  {t('canvasAspectRatio', 'Canvas Aspect Ratio')}
                 </span>
                 <div className="grid grid-cols-5 gap-1 p-1 bg-slate-100 rounded-xl">
                   {(['original', '1:1', '16:9', '9:16', '4:5'] as AspectChoice[]).map((r) => (
@@ -389,7 +428,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
                         aspect === r ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600'
                       }`}
                     >
-                      {r === 'original' ? 'Orig' : r}
+                      {r === 'original' ? t('aspectOriginal', 'Orig') : r}
                     </button>
                   ))}
                 </div>
@@ -398,7 +437,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-semibold text-slate-700">Image Scale</span>
+                    <span className="font-semibold text-slate-700">{t('imageScale', 'Image Scale')}</span>
                     <span className="font-mono text-blue-600">{fgScale}%</span>
                   </div>
                   <input
@@ -412,7 +451,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
                 </div>
                 <div>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-semibold text-slate-700">Roundness</span>
+                    <span className="font-semibold text-slate-700">{t('roundness', 'Roundness')}</span>
                     <span className="font-mono text-blue-600">{fgRadiusPct}%</span>
                   </div>
                   <input
@@ -427,7 +466,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
               </div>
 
               <label className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
-                <span className="text-xs font-semibold text-slate-700">Drop Shadow Behind Image</span>
+                <span className="text-xs font-semibold text-slate-700">{t('dropShadowBehindImage', 'Drop Shadow Behind Image')}</span>
                 <input
                   type="checkbox"
                   checked={fgShadow}
@@ -447,7 +486,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
                         outFormat === fmt ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
                       }`}
                     >
-                      {fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
+                      {fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt === 'png' ? t('formatPng', 'PNG') : t('formatWebp', 'WEBP')}
                     </button>
                   ))}
                 </div>
@@ -459,7 +498,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({ onNavigate
                   className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer disabled:opacity-60"
                 >
                   {isExporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
-                  <span>{isExporting ? 'Exporting...' : 'Download Image'}</span>
+                  <span>{isExporting ? t('exporting', 'Exporting...') : t('downloadImage', 'Download Image')}</span>
                 </button>
               </div>
             </div>

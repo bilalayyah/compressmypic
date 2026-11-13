@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Check, Copy, Pipette, Trash2, Download } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import {
@@ -23,8 +29,20 @@ interface ColorValues {
   y: number;
 }
 
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface ColorPickerPageProps {
   onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
 }
 
 function rgbToColorValues(r: number, g: number, b: number, x: number, y: number): ColorValues {
@@ -71,8 +89,18 @@ function rgbToColorValues(r: number, g: number, b: number, x: number, y: number)
   return { hex, rgb, hsl, cmyk, r, g, b, x, y };
 }
 
-export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/image-color-picker'];
+export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/image-color-picker'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const loupeCanvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -115,7 +143,7 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({ onNavigate }) 
       setPalette([]);
       URL.revokeObjectURL(info.previewUrl);
     } catch (err) {
-      setErrorMsg(err instanceof Error ? err.message : 'Unable to load image.');
+      setErrorMsg(err instanceof Error ? err.message : t('errorUnableToLoadImage', 'Unable to load image.'));
     }
   };
 
@@ -198,7 +226,16 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({ onNavigate }) 
   const activeColor = hoverColor || selectedColor;
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         {!loadedImg && (
           <UploadZone
@@ -209,7 +246,8 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({ onNavigate }) 
             allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, SVG, BMP, GIF"
-            title="Drop an image or paste screenshot (Ctrl+V)"
+            strings={esStrings?.uploadZone}
+            title={t('uploadTitle', 'Drop an image or paste screenshot (Ctrl+V)')}
           />
         )}
 
@@ -226,7 +264,7 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({ onNavigate }) 
               <div className="flex items-center justify-between gap-2">
                 <div className="text-xs text-slate-600 font-medium truncate">
                   <strong className="text-slate-900">{imageName}</strong> ({imageDims?.w}×
-                  {imageDims?.h}px) — Click anywhere to pin a color
+                  {imageDims?.h}px) — {t('clickAnywhereToPin', 'Click anywhere to pin a color')}
                 </div>
                 <button
                   type="button"
@@ -239,7 +277,7 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({ onNavigate }) 
                   className="inline-flex items-center gap-1 px-3 py-1.5 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-xs font-semibold rounded-lg cursor-pointer shrink-0"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
-                  <span>New Image</span>
+                  <span>{t('newImage', 'New Image')}</span>
                 </button>
               </div>
 
@@ -259,7 +297,7 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({ onNavigate }) 
                 <div className="flex items-center justify-between">
                   <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
                     <Pipette className="w-4 h-4 text-blue-600" />
-                    <span>Pixel Inspector</span>
+                    <span>{t('pixelInspector', 'Pixel Inspector')}</span>
                   </h2>
                   {activeColor && (
                     <span className="text-xs font-mono text-slate-500">
@@ -315,7 +353,7 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({ onNavigate }) 
                           type="button"
                           onClick={() => copyValue(row.label, row.value)}
                           className="p-1.5 text-slate-500 hover:text-blue-600 hover:bg-white rounded-lg cursor-pointer shrink-0"
-                          title={`Copy ${row.label}`}
+                          title={t('copyLabel', 'Copy {label}').replace('{label}', row.label)}
                         >
                           {copiedKey === row.label ? (
                             <Check className="w-4 h-4 text-emerald-600" />
@@ -333,7 +371,7 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({ onNavigate }) 
               <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-3">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-bold text-slate-900">
-                    Picked Swatches ({palette.length})
+                    {t('pickedSwatches', 'Picked Swatches ({count})').replace('{count}', String(palette.length))}
                   </h3>
                   {palette.length > 0 && (
                     <button
@@ -342,14 +380,14 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({ onNavigate }) 
                       className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:underline cursor-pointer"
                     >
                       <Download className="w-3.5 h-3.5" />
-                      <span>Export CSS</span>
+                      <span>{t('exportCss', 'Export CSS')}</span>
                     </button>
                   )}
                 </div>
 
                 {palette.length === 0 ? (
                   <p className="text-xs text-slate-500">
-                    Click pixels on the image to save colors to your palette.
+                    {t('clickPixelsHint', 'Click pixels on the image to save colors to your palette.')}
                   </p>
                 ) : (
                   <div className="flex flex-wrap gap-2">
@@ -362,7 +400,7 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({ onNavigate }) 
                           copyValue(`swatch-${c.hex}`, c.hex);
                         }}
                         className="group flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 rounded-lg border border-slate-200 hover:border-blue-400 bg-slate-50 text-xs font-mono cursor-pointer"
-                        title={`Click to select & copy ${c.hex}`}
+                        title={t('clickToSelectCopy', 'Click to select & copy {hex}').replace('{hex}', c.hex)}
                       >
                         <span
                           className="w-4 h-4 rounded border border-slate-300"

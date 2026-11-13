@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle2, Download, Trash2, AlertTriangle } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import {
@@ -31,12 +37,34 @@ interface DimensionRow {
   print72Dpi: string;
 }
 
-interface DimensionsCheckerPageProps {
-  onNavigate: (path: string) => void;
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
 }
 
-export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/image-dimensions-checker'];
+interface DimensionsCheckerPageProps {
+  onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
+}
+
+export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/image-dimensions-checker'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+
   const [rows, setRows] = useState<DimensionRow[]>([]);
   const rowsRef = useRef<DimensionRow[]>([]);
   rowsRef.current = rows;
@@ -118,7 +146,7 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({ on
       r.megapixels,
       r.size,
       r.format,
-      r.hasAlpha ? 'Yes' : 'No',
+      r.hasAlpha ? t('csvYes', 'Yes') : t('csvNo', 'No'),
       `"${r.print300Dpi}"`,
     ]);
     const csv = [header.join(','), ...lines.map((l) => l.join(','))].join('\n');
@@ -143,7 +171,16 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({ on
   const hasRule = minWNum > 0 || minHNum > 0;
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         <UploadZone
           onFilesSelected={handleFilesSelected}
@@ -153,7 +190,8 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({ on
           allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
           allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
           supportedFormatsLabel="JPG, PNG, WebP, HEIC, SVG, BMP, GIF, AVIF"
-          title="Drop images to inspect exact dimensions & ratios"
+          strings={esStrings?.uploadZone}
+          title={t('uploadTitle', 'Drop images to inspect exact dimensions & ratios')}
         />
 
         {rows.length > 0 && (
@@ -162,12 +200,12 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({ on
               <div className="flex flex-wrap items-end gap-3">
                 <div>
                   <label className="text-xs font-semibold text-slate-600 block mb-1">
-                    Min Width Check (px)
+                    {t('minWidthCheck', 'Min Width Check (px)')}
                   </label>
                   <input
                     type="number"
                     min={0}
-                    placeholder="e.g. 1200"
+                    placeholder={t('placeholderMinWidth', 'e.g. 1200')}
                     value={minWidth}
                     onChange={(e) => setMinWidth(e.target.value)}
                     className="w-32 px-3 py-2 text-xs font-mono border border-slate-300 rounded-xl"
@@ -175,12 +213,12 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({ on
                 </div>
                 <div>
                   <label className="text-xs font-semibold text-slate-600 block mb-1">
-                    Min Height Check (px)
+                    {t('minHeightCheck', 'Min Height Check (px)')}
                   </label>
                   <input
                     type="number"
                     min={0}
-                    placeholder="e.g. 630"
+                    placeholder={t('placeholderMinHeight', 'e.g. 630')}
                     value={minHeight}
                     onChange={(e) => setMinHeight(e.target.value)}
                     className="w-32 px-3 py-2 text-xs font-mono border border-slate-300 rounded-xl"
@@ -195,7 +233,7 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({ on
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl cursor-pointer"
                 >
                   <Download className="w-3.5 h-3.5" />
-                  <span>Export CSV</span>
+                  <span>{t('exportCsv', 'Export CSV')}</span>
                 </button>
                 <button
                   type="button"
@@ -203,7 +241,7 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({ on
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-xl cursor-pointer"
                 >
                   <Download className="w-3.5 h-3.5" />
-                  <span>Export JSON</span>
+                  <span>{t('exportJson', 'Export JSON')}</span>
                 </button>
                 <button
                   type="button"
@@ -211,7 +249,7 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({ on
                   className="inline-flex items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-xs font-semibold rounded-xl cursor-pointer"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
-                  <span>Clear</span>
+                  <span>{t('clear', 'Clear')}</span>
                 </button>
               </div>
             </div>
@@ -220,13 +258,13 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({ on
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
                   <tr className="bg-slate-50 border-b border-slate-200 text-[11px] uppercase tracking-wider text-slate-500">
-                    <th className="py-3 px-4">Image</th>
-                    <th className="py-3 px-4">Dimensions</th>
-                    <th className="py-3 px-4">Aspect Ratio</th>
-                    <th className="py-3 px-4">Orientation</th>
-                    <th className="py-3 px-4">Size / Format</th>
-                    <th className="py-3 px-4">Print @300 DPI</th>
-                    {hasRule && <th className="py-3 px-4">Spec Check</th>}
+                    <th className="py-3 px-4">{t('headerImage', 'Image')}</th>
+                    <th className="py-3 px-4">{t('headerDimensions', 'Dimensions')}</th>
+                    <th className="py-3 px-4">{t('headerAspectRatio', 'Aspect Ratio')}</th>
+                    <th className="py-3 px-4">{t('headerOrientation', 'Orientation')}</th>
+                    <th className="py-3 px-4">{t('headerSizeFormat', 'Size / Format')}</th>
+                    <th className="py-3 px-4">{t('headerPrint300Dpi', 'Print @300 DPI')}</th>
+                    {hasRule && <th className="py-3 px-4">{t('headerSpecCheck', 'Spec Check')}</th>}
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
@@ -260,13 +298,17 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({ on
                           </span>
                         </td>
                         <td className="py-3 px-4 text-slate-700 whitespace-nowrap">
-                          {r.orientation}
+                          {r.orientation === 'Landscape'
+                            ? t('orientationLandscape', 'Landscape')
+                            : r.orientation === 'Portrait'
+                              ? t('orientationPortrait', 'Portrait')
+                              : t('orientationSquare', 'Square')}
                         </td>
                         <td className="py-3 px-4 text-slate-700 whitespace-nowrap font-mono">
                           {formatBytes(r.size)}
                           <span className="block text-[11px] text-slate-500">
                             {r.format}
-                            {r.hasAlpha ? ' · Alpha' : ''}
+                            {r.hasAlpha ? t('alphaTag', ' · Alpha') : ''}
                           </span>
                         </td>
                         <td className="py-3 px-4 font-mono text-xs text-slate-600 whitespace-nowrap">
@@ -277,12 +319,12 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({ on
                             {passes ? (
                               <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">
                                 <CheckCircle2 className="w-3.5 h-3.5" />
-                                Pass
+                                {t('specPass', 'Pass')}
                               </span>
                             ) : (
                               <span className="inline-flex items-center gap-1 text-xs font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md">
                                 <AlertTriangle className="w-3.5 h-3.5" />
-                                Below Min
+                                {t('specBelowMin', 'Below Min')}
                               </span>
                             )}
                           </td>

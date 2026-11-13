@@ -9,6 +9,13 @@ import {
   Scissors,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
+
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import { OutputFormatChoice } from '../types';
@@ -24,8 +31,20 @@ import { resolveOutputFormat } from '../utils/compressor';
 import { formatBytes, getBaseFilename, sanitizeFilename } from '../utils/formatters';
 import { createFilesZipArchive, triggerDownload } from '../utils/zip';
 
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface ImageSplitterPageProps {
   onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
 }
 
 interface GeneratedTile {
@@ -41,8 +60,18 @@ interface GeneratedTile {
 
 type SplitMode = 'grid' | 'horizontal' | 'vertical';
 
-export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/image-splitter'];
+export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/image-splitter'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+
   const [sourceFile, setSourceFile] = useState<File | null>(null);
   const [imageInfo, setImageInfo] = useState<LoadedImageInfo | null>(null);
   const imageInfoRef = useRef<LoadedImageInfo | null>(null);
@@ -106,7 +135,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
             tileCanvas.width = tw;
             tileCanvas.height = th;
             const ctx = tileCanvas.getContext('2d', { alpha: true });
-            if (!ctx) throw new Error('Unable to initialize canvas context.');
+            if (!ctx) throw new Error(t('errorCanvasContext', 'Unable to initialize canvas context.'));
 
             if (mimeType === 'image/jpeg') {
               ctx.fillStyle = '#ffffff';
@@ -130,7 +159,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
         revokeTiles(tilesRef.current);
         setTiles(nextTiles);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to split image.');
+        setError(err instanceof Error ? err.message : t('errorSplitFailed', 'Failed to split image.'));
       } finally {
         setIsSplitting(false);
       }
@@ -149,7 +178,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
       setImageInfo(info);
       await generateSplitTiles(file, info, effectiveRows, effectiveCols, format, quality);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unable to load image.');
+      setError(err instanceof Error ? err.message : t('errorUnableToLoadImage', 'Unable to load image.'));
     }
   };
 
@@ -177,7 +206,16 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
   };
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         {!imageInfo ? (
           <UploadZone
@@ -188,7 +226,8 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
             allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
-            title="Drop an image to split into grid tiles or strips"
+            title={t('uploadTitle', 'Drop an image to split into grid tiles or strips')}
+            strings={esStrings?.uploadZone}
           />
         ) : (
           <>
@@ -198,7 +237,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
                     <Grid className="w-3.5 h-3.5 text-blue-600" />
-                    Cut-Line Preview ({effectiveRows} × {effectiveCols} = {effectiveRows * effectiveCols} tiles)
+                    {t('cutLinePreview', 'Cut-Line Preview ({rows} × {cols} = {tiles} tiles)').replace('{rows}', String(effectiveRows)).replace('{cols}', String(effectiveCols)).replace('{tiles}', String(effectiveRows * effectiveCols))}
                   </span>
                   <button
                     type="button"
@@ -206,7 +245,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
                     className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
-                    <span>Change Image</span>
+                    <span>{t('changeImage', 'Change Image')}</span>
                   </button>
                 </div>
 
@@ -214,7 +253,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
                   <div className="relative inline-block max-w-full">
                     <img
                       src={imageInfo.previewUrl}
-                      alt="Split guide"
+                      alt={t('splitGuideAlt', 'Split guide')}
                       className="max-h-[440px] w-auto h-auto object-contain block"
                     />
                     <div
@@ -250,14 +289,14 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
               <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                    Split Layout
+                    {t('splitLayout', 'Split Layout')}
                   </span>
                   <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl">
                     {(
                       [
-                        { id: 'grid', label: 'Grid (N×M)' },
-                        { id: 'horizontal', label: 'Horiz. Strips' },
-                        { id: 'vertical', label: 'Vert. Strips' },
+                        { id: 'grid', label: t('modeGrid', 'Grid (N×M)') },
+                        { id: 'horizontal', label: t('modeHorizontalStrips', 'Horiz. Strips') },
+                        { id: 'vertical', label: t('modeVerticalStrips', 'Vert. Strips') },
                       ] as { id: SplitMode; label: string }[]
                     ).map((m) => (
                       <button
@@ -278,7 +317,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
                   {mode !== 'vertical' && (
                     <div>
                       <label className="text-xs font-semibold text-slate-700 block mb-1">
-                        Rows (Horizontal Cuts)
+                        {t('rowsLabel', 'Rows (Horizontal Cuts)')}
                       </label>
                       <input
                         type="number"
@@ -293,7 +332,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
                   {mode !== 'horizontal' && (
                     <div>
                       <label className="text-xs font-semibold text-slate-700 block mb-1">
-                        Columns (Vertical Cuts)
+                        {t('columnsLabel', 'Columns (Vertical Cuts)')}
                       </label>
                       <input
                         type="number"
@@ -309,10 +348,10 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
 
                 <div className="flex flex-wrap gap-2">
                   {[
-                    { label: '2×2', r: 2, c: 2, m: 'grid' as SplitMode },
-                    { label: '3×3 Instagram', r: 3, c: 3, m: 'grid' as SplitMode },
-                    { label: '1×3 Carousel', r: 1, c: 3, m: 'vertical' as SplitMode },
-                    { label: '4×1 Strips', r: 4, c: 1, m: 'horizontal' as SplitMode },
+                    { label: t('preset2x2', '2×2'), r: 2, c: 2, m: 'grid' as SplitMode },
+                    { label: t('preset3x3Instagram', '3×3 Instagram'), r: 3, c: 3, m: 'grid' as SplitMode },
+                    { label: t('preset1x3Carousel', '1×3 Carousel'), r: 1, c: 3, m: 'vertical' as SplitMode },
+                    { label: t('preset4x1Strips', '4×1 Strips'), r: 4, c: 1, m: 'horizontal' as SplitMode },
                   ].map((p) => (
                     <button
                       key={p.label}
@@ -340,7 +379,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
                           format === fmt ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
                         }`}
                       >
-                        {fmt === 'original' ? 'Orig' : fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
+                        {fmt === 'original' ? t('formatOriginal', 'Orig') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
                       </button>
                     ))}
                   </div>
@@ -348,7 +387,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
                   {format !== 'png' && (
                     <div>
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="font-semibold text-slate-700">Tile Quality</span>
+                        <span className="font-semibold text-slate-700">{t('tileQuality', 'Tile Quality')}</span>
                         <span className="font-mono text-slate-700">{quality}%</span>
                       </div>
                       <input
@@ -375,8 +414,8 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
                     {isSplitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Scissors className="w-4 h-4" />}
                     <span>
                       {isSplitting
-                        ? 'Splitting Image...'
-                        : `Split into ${effectiveRows * effectiveCols} Tiles`}
+                        ? t('splittingImage', 'Splitting Image...')
+                        : t('splitIntoTiles', 'Split into {count} Tiles').replace('{count}', String(effectiveRows * effectiveCols))}
                     </span>
                   </button>
                 </div>
@@ -389,10 +428,10 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
                 <div className="bg-slate-900 text-white rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div>
                     <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
-                      Split Complete
+                      {t('splitComplete', 'Split Complete')}
                     </span>
                     <p className="text-sm font-semibold mt-0.5">
-                      {tiles.length} image tiles generated at full resolution
+                      {t('tilesGenerated', '{count} image tiles generated at full resolution').replace('{count}', String(tiles.length))}
                     </p>
                   </div>
                   <button
@@ -402,7 +441,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl cursor-pointer"
                   >
                     <FileArchive className="w-4 h-4" />
-                    <span>{isZipping ? 'Packaging ZIP...' : 'Download All Tiles (ZIP)'}</span>
+                    <span>{isZipping ? t('packagingZip', 'Packaging ZIP...') : t('downloadAllTilesZip', 'Download All Tiles (ZIP)')}</span>
                   </button>
                 </div>
 
@@ -431,7 +470,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({ onNavigate
                         className="w-full inline-flex items-center justify-center gap-1.5 py-1.5 bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-800 text-xs font-semibold rounded-lg transition-colors cursor-pointer"
                       >
                         <Download className="w-3.5 h-3.5" />
-                        <span>Download</span>
+                        <span>{t('download', 'Download')}</span>
                       </button>
                     </div>
                   ))}

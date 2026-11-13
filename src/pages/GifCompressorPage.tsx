@@ -10,6 +10,12 @@ import {
   Trash2,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import {
@@ -21,12 +27,33 @@ import {
 import { formatBytes, getBaseFilename, sanitizeFilename } from '../utils/formatters';
 import { triggerDownload } from '../utils/zip';
 
-interface GifCompressorPageProps {
-  onNavigate: (path: string) => void;
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
 }
 
-export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/gif-compressor'];
+interface GifCompressorPageProps {
+  onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
+}
+
+export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/gif-compressor'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
 
   const [sourceFile, setSourceFile] = useState<File | null>(null);
   const [sourcePreviewUrl, setSourcePreviewUrl] = useState<string | null>(null);
@@ -69,6 +96,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate
         maxColors: colors,
         scalePercent: scale,
         frameStep: step,
+        lang,
         onProgress: (p) => setEncodeProgress(p),
       });
       setResult((prev) => {
@@ -76,7 +104,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate
         return next;
       });
     } catch (err) {
-      setErrorMessage(err instanceof Error ? err.message : 'GIF compression failed.');
+      setErrorMessage(err instanceof Error ? err.message : t('errorGifFailed', 'GIF compression failed.'));
     } finally {
       setIsCompressing(false);
     }
@@ -99,14 +127,14 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate
 
     try {
       const buffer = await file.arrayBuffer();
-      const decoded = decodeAnimatedGif(buffer);
+      const decoded = decodeAnimatedGif(buffer, lang);
       setDecodedGif(decoded);
       setIsDecoding(false);
       await runCompression(file, decoded, maxColors, scalePercent, frameStep);
     } catch (err) {
       setDecodedGif(null);
       setIsDecoding(false);
-      setErrorMessage(err instanceof Error ? err.message : 'Could not decode GIF frames.');
+      setErrorMessage(err instanceof Error ? err.message : t('errorDecodeFrames', 'Could not decode GIF frames.'));
     }
   };
 
@@ -143,7 +171,16 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate
     : 0;
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         <UploadZone
           onFilesSelected={handleFilesSelected}
@@ -154,7 +191,8 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate
           allowedMimeTypes={['image/gif']}
           allowedExtensionsRegex={/\.gif$/i}
           supportedFormatsLabel="GIF (Animated or Static)"
-          title="Drop an animated GIF to compress"
+          title={t('uploadTitle', 'Drop an animated GIF to compress')}
+          strings={esStrings?.uploadZone}
         />
 
         {errorMessage && (
@@ -167,7 +205,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate
         {isDecoding && (
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-800 flex items-center gap-3">
             <RotateCcw className="w-4 h-4 animate-spin text-blue-600" />
-            <span>Decoding animated GIF frames locally in your browser...</span>
+            <span>{t('decodingGif', 'Decoding animated GIF frames locally in your browser...')}</span>
           </div>
         )}
 
@@ -182,7 +220,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate
                     <h2 className="text-sm font-bold text-slate-900">{sourceFile.name}</h2>
                     <p className="text-xs text-slate-500 font-mono">
                       {decodedGif.width}×{decodedGif.height}px · {decodedGif.frames.length}{' '}
-                      {decodedGif.frames.length === 1 ? 'frame' : 'frames'} ·{' '}
+                      {decodedGif.frames.length === 1 ? t('frameSingular', 'frame') : t('framePlural', 'frames')} ·{' '}
                       {formatBytes(sourceFile.size)}
                     </p>
                   </div>
@@ -194,21 +232,21 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate
                     onClick={() => handleApplyLevel('light')}
                     className="px-3 py-1.5 text-xs font-semibold bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 rounded-lg cursor-pointer"
                   >
-                    Light
+                    {t('presetLight', 'Light')}
                   </button>
                   <button
                     type="button"
                     onClick={() => handleApplyLevel('balanced')}
                     className="px-3 py-1.5 text-xs font-semibold bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 rounded-lg cursor-pointer"
                   >
-                    Balanced
+                    {t('presetBalanced', 'Balanced')}
                   </button>
                   <button
                     type="button"
                     onClick={() => handleApplyLevel('strong')}
                     className="px-3 py-1.5 text-xs font-semibold bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 rounded-lg cursor-pointer"
                   >
-                    Max Shrink
+                    {t('presetMaxShrink', 'Max Shrink')}
                   </button>
                 </div>
               </div>
@@ -217,8 +255,8 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate
                 {/* Palette Colors */}
                 <div>
                   <div className="flex justify-between text-xs mb-2">
-                    <span className="font-bold text-slate-700">Color Palette Limit</span>
-                    <span className="font-mono font-bold text-blue-600">{maxColors} colors</span>
+                    <span className="font-bold text-slate-700">{t('colorPaletteLimit', 'Color Palette Limit')}</span>
+                    <span className="font-mono font-bold text-blue-600">{t('colorsCount', '{count} colors').replace('{count}', String(maxColors))}</span>
                   </div>
                   <input
                     type="range"
@@ -250,9 +288,12 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate
                 {/* Resize Scale */}
                 <div>
                   <div className="flex justify-between text-xs mb-2">
-                    <span className="font-bold text-slate-700">Output Scale</span>
+                    <span className="font-bold text-slate-700">{t('outputScale', 'Output Scale')}</span>
                     <span className="font-mono font-bold text-blue-600">
-                      {scalePercent}% ({targetOutW}×{targetOutH})
+                      {t('scaleWithDims', '{percent}% ({width}×{height})')
+                        .replace('{percent}', String(scalePercent))
+                        .replace('{width}', String(targetOutW))
+                        .replace('{height}', String(targetOutH))}
                     </span>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
@@ -276,14 +317,14 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate
                 {/* Frame Drop */}
                 <div>
                   <span className="text-xs font-bold text-slate-700 block mb-2">
-                    Frame Rate Optimization
+                    {t('frameRateOptimization', 'Frame Rate Optimization')}
                   </span>
                   <div className="flex flex-col gap-1.5">
                     {(
                       [
-                        { step: 1, label: 'Keep All Frames' },
-                        { step: 2, label: 'Drop Every 2nd Frame (~50% smaller)' },
-                        { step: 3, label: 'Keep 1 of Every 3 Frames' },
+                        { step: 1, label: t('keepAllFrames', 'Keep All Frames') },
+                        { step: 2, label: t('dropEvery2nd', 'Drop Every 2nd Frame (~50% smaller)') },
+                        { step: 3, label: t('keep1of3', 'Keep 1 of Every 3 Frames') },
                       ] as const
                     ).map((opt) => (
                       <button
@@ -316,12 +357,14 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate
                   {isCompressing ? (
                     <>
                       <RotateCcw className="w-4 h-4 animate-spin" />
-                      <span>Compressing GIF ({encodeProgress}%)...</span>
+                      <span>
+                        {t('compressingGif', 'Compressing GIF ({progress}%)...').replace('{progress}', String(encodeProgress))}
+                      </span>
                     </>
                   ) : (
                     <>
                       <Play className="w-4 h-4 fill-current" />
-                      <span>Compress GIF</span>
+                      <span>{t('compressGif', 'Compress GIF')}</span>
                     </>
                   )}
                 </button>
@@ -333,7 +376,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate
                   className="inline-flex items-center gap-1.5 px-3.5 py-2.5 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-sm font-medium rounded-xl cursor-pointer"
                 >
                   <Trash2 className="w-4 h-4" />
-                  <span>Reset</span>
+                  <span>{t('reset', 'Reset')}</span>
                 </button>
               </div>
             </div>
@@ -345,27 +388,31 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate
                   <div className="flex flex-wrap gap-x-6 gap-y-2">
                     <div>
                       <span className="text-[11px] uppercase tracking-wider text-slate-400 block">
-                        Original GIF
+                        {t('originalGif', 'Original GIF')}
                       </span>
                       <span className="text-base font-bold font-mono">
-                        {formatBytes(result.originalSize)} · {result.originalFrames}f
+                        {t('sizeAndFrames', '{size} · {frames}f')
+                          .replace('{size}', formatBytes(result.originalSize))
+                          .replace('{frames}', String(result.originalFrames))}
                       </span>
                     </div>
                     <div>
                       <span className="text-[11px] uppercase tracking-wider text-slate-400 block">
-                        Compressed GIF
+                        {t('compressedGif', 'Compressed GIF')}
                       </span>
                       <span
                         className={`text-base font-bold font-mono ${
                           result.isSmaller ? 'text-emerald-400' : 'text-amber-300'
                         }`}
                       >
-                        {formatBytes(result.compressedSize)} · {result.outputFrames}f
+                        {t('sizeAndFrames', '{size} · {frames}f')
+                          .replace('{size}', formatBytes(result.compressedSize))
+                          .replace('{frames}', String(result.outputFrames))}
                       </span>
                     </div>
                     <div>
                       <span className="text-[11px] uppercase tracking-wider text-slate-400 block">
-                        Size Change
+                        {t('sizeChange', 'Size Change')}
                       </span>
                       <span
                         className={`text-base font-extrabold font-mono ${
@@ -388,41 +435,65 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl cursor-pointer shrink-0"
                   >
                     <Download className="w-4 h-4" />
-                    <span>Download Compressed GIF</span>
+                    <span>{t('downloadCompressedGif', 'Download Compressed GIF')}</span>
                   </button>
                 </div>
 
                 {!result.isSmaller && (
                   <div className="p-3.5 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900 flex items-start gap-2.5">
                     <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                    <p>
-                      This source GIF was already heavily optimized or uses a full-frame palette larger than the input. To shrink it below{' '}
-                      <strong>{formatBytes(result.originalSize)}</strong>, reduce Color Palette to{' '}
-                      <strong>32–64 colors</strong>, lower Output Scale to <strong>75% or 50%</strong>, or drop every 2nd frame.
-                    </p>
+                    {lang === 'es' && esStrings ? (
+                      <p>
+                        {t(
+                          'notSmallerNotice',
+                          'This source GIF was already heavily optimized or uses a full-frame palette larger than the input. To shrink it below {size}, reduce Color Palette to 32–64 colors, lower Output Scale to 75% or 50%, or drop every 2nd frame.'
+                        ).replace('{size}', formatBytes(result.originalSize))}
+                      </p>
+                    ) : (
+                      <p>
+                        This source GIF was already heavily optimized or uses a full-frame palette larger than the input. To shrink it below{' '}
+                        <strong>{formatBytes(result.originalSize)}</strong>, reduce Color Palette to{' '}
+                        <strong>32–64 colors</strong>, lower Output Scale to <strong>75% or 50%</strong>, or drop every 2nd frame.
+                      </p>
+                    )}
                   </div>
                 )}
 
                 {result.isSmaller && (
                   <div className="p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                    <span>
-                      Compressed by <strong>{result.compressionPercent}%</strong> ({formatBytes(result.originalSize - result.compressedSize)} saved) cleanly in your browser.
-                    </span>
+                    {lang === 'es' && esStrings ? (
+                      <span>
+                        {t(
+                          'compressedByNotice',
+                          'Compressed by {percent}% ({saved} saved) cleanly in your browser.'
+                        )
+                          .replace('{percent}', String(result.compressionPercent))
+                          .replace('{saved}', formatBytes(result.originalSize - result.compressedSize))}
+                      </span>
+                    ) : (
+                      <span>
+                        Compressed by <strong>{result.compressionPercent}%</strong> ({formatBytes(result.originalSize - result.compressedSize)} saved) cleanly in your browser.
+                      </span>
+                    )}
                   </div>
                 )}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-white border border-slate-200 rounded-2xl p-4">
                     <div className="flex justify-between text-xs font-semibold text-slate-600 mb-3">
-                      <span>Original ({result.originalWidth}×{result.originalHeight}px)</span>
+                      <span>
+                        {t('originalLabel', 'Original ({width}×{height}px)')
+                          .replace('{width}', String(result.originalWidth))
+                          .replace('{height}', String(result.originalHeight))}
+                      </span>
                       <span className="font-mono">{formatBytes(result.originalSize)}</span>
                     </div>
                     <div className="bg-slate-100 rounded-xl overflow-hidden flex items-center justify-center min-h-[200px]">
                       {sourcePreviewUrl && (
                         <img
                           src={sourcePreviewUrl}
-                          alt="Original GIF"
+                          alt={t('altOriginalGif', 'Original GIF')}
                           className="max-h-80 object-contain"
                         />
                       )}
@@ -431,13 +502,17 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({ onNavigate
 
                   <div className="bg-white border border-slate-200 rounded-2xl p-4">
                     <div className="flex justify-between text-xs font-semibold text-slate-600 mb-3">
-                      <span>Compressed ({result.outputWidth}×{result.outputHeight}px)</span>
+                      <span>
+                        {t('compressedLabel', 'Compressed ({width}×{height}px)')
+                          .replace('{width}', String(result.outputWidth))
+                          .replace('{height}', String(result.outputHeight))}
+                      </span>
                       <span className="font-mono text-blue-600">{formatBytes(result.compressedSize)}</span>
                     </div>
                     <div className="bg-slate-100 rounded-xl overflow-hidden flex items-center justify-center min-h-[200px]">
                       <img
                         src={result.previewUrl}
-                        alt="Compressed GIF"
+                        alt={t('altCompressedGif', 'Compressed GIF')}
                         className="max-h-80 object-contain"
                       />
                     </div>

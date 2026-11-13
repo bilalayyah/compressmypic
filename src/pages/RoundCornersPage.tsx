@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Download, Trash2, Loader2, AlertCircle, Circle } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import {
@@ -14,8 +20,20 @@ import {
 import { formatBytes, getBaseFilename, sanitizeFilename } from '../utils/formatters';
 import { triggerDownload } from '../utils/zip';
 
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface RoundCornersPageProps {
   onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
 }
 
 function drawRoundedRectPath(
@@ -46,8 +64,18 @@ function drawRoundedRectPath(
   ctx.closePath();
 }
 
-export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/round-image-corners'];
+export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/round-image-corners'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+
   const [sourceFile, setSourceFile] = useState<File | null>(null);
   const [imageInfo, setImageInfo] = useState<LoadedImageInfo | null>(null);
   const imageInfoRef = useRef<LoadedImageInfo | null>(null);
@@ -65,6 +93,13 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({ onNavigate }
   const [outFormat, setOutFormat] = useState<'png' | 'webp' | 'jpeg'>('png');
   const [isExporting, setIsExporting] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+
+  const cornerLabelById: Record<string, string> = {
+    tl: t('cornerTopLeft', 'Top Left'),
+    tr: t('cornerTopRight', 'Top Right'),
+    bl: t('cornerBottomLeft', 'Bottom Left'),
+    br: t('cornerBottomRight', 'Bottom Right'),
+  };
 
   const previewCanvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -130,7 +165,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({ onNavigate }
       setSourceFile(file);
       setImageInfo(info);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unable to load image.');
+      setError(err instanceof Error ? err.message : t('errorUnableToLoadImage', 'Unable to load image.'));
     }
   };
 
@@ -155,14 +190,23 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({ onNavigate }
       const base = sanitizeFilename(getBaseFilename(sourceFile.name));
       triggerDownload(blob, `${base}_rounded${ext}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to export rounded image.');
+      setError(err instanceof Error ? err.message : t('errorExportFailed', 'Failed to export rounded image.'));
     } finally {
       setIsExporting(false);
     }
   };
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         {!imageInfo ? (
           <UploadZone
@@ -173,14 +217,15 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({ onNavigate }
             allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
-            title="Drop an image to round its corners"
+            strings={esStrings?.uploadZone}
+            title={t('uploadTitle', 'Drop an image to round its corners')}
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Live Corner Preview
+                  {t('liveCornerPreview', 'Live Corner Preview')}
                 </span>
                 <button
                   type="button"
@@ -188,7 +233,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({ onNavigate }
                   className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
-                  <span>Change Image</span>
+                  <span>{t('changeImage', 'Change Image')}</span>
                 </button>
               </div>
 
@@ -217,7 +262,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({ onNavigate }
 
             <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
               <div className="flex items-center justify-between">
-                <h2 className="text-base font-bold text-slate-900">Corner Settings</h2>
+                <h2 className="text-base font-bold text-slate-900">{t('cornerSettings', 'Corner Settings')}</h2>
                 <button
                   type="button"
                   onClick={() => {
@@ -227,13 +272,13 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({ onNavigate }
                   className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:underline cursor-pointer"
                 >
                   <Circle className="w-3.5 h-3.5" />
-                  <span>Full Circle / Pill</span>
+                  <span>{t('fullCirclePill', 'Full Circle / Pill')}</span>
                 </button>
               </div>
 
               <label className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
                 <span className="text-xs font-semibold text-slate-700">
-                  Individual Per-Corner Control
+                  {t('individualPerCorner', 'Individual Per-Corner Control')}
                 </span>
                 <input
                   type="checkbox"
@@ -255,7 +300,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({ onNavigate }
               {!perCorner ? (
                 <div>
                   <div className="flex justify-between text-xs mb-1.5">
-                    <span className="font-semibold text-slate-700">All Corners Radius</span>
+                    <span className="font-semibold text-slate-700">{t('allCornersRadius', 'All Corners Radius')}</span>
                     <span className="font-mono font-bold text-blue-600">
                       {Math.round((uniformPercent / 100) * (Math.min(imageInfo.width, imageInfo.height) / 2))}px ({uniformPercent}%)
                     </span>
@@ -272,14 +317,14 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({ onNavigate }
               ) : (
                 <div className="grid grid-cols-2 gap-3">
                   {[
-                    { label: 'Top Left', val: tlPercent, set: setTlPercent },
-                    { label: 'Top Right', val: trPercent, set: setTrPercent },
-                    { label: 'Bottom Left', val: blPercent, set: setBlPercent },
-                    { label: 'Bottom Right', val: brPercent, set: setBrPercent },
+                    { id: 'tl', label: 'Top Left', val: tlPercent, set: setTlPercent },
+                    { id: 'tr', label: 'Top Right', val: trPercent, set: setTrPercent },
+                    { id: 'bl', label: 'Bottom Left', val: blPercent, set: setBlPercent },
+                    { id: 'br', label: 'Bottom Right', val: brPercent, set: setBrPercent },
                   ].map((c) => (
-                    <div key={c.label} className="p-2.5 rounded-xl border border-slate-200 bg-slate-50/70">
+                    <div key={c.id} className="p-2.5 rounded-xl border border-slate-200 bg-slate-50/70">
                       <div className="flex justify-between text-[11px] font-semibold text-slate-700 mb-1">
-                        <span>{c.label}</span>
+                        <span>{cornerLabelById[c.id] ?? c.label}</span>
                         <span className="font-mono text-blue-600">{c.val}%</span>
                       </div>
                       <input
@@ -297,7 +342,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({ onNavigate }
 
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Outer Corner Fill
+                  {t('outerCornerFill', 'Outer Corner Fill')}
                 </span>
                 <div className="grid grid-cols-2 gap-2">
                   <button
@@ -312,7 +357,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({ onNavigate }
                         : 'bg-white border-slate-200 text-slate-700'
                     }`}
                   >
-                    Transparent (PNG/WebP)
+                    {t('transparentPngWebp', 'Transparent (PNG/WebP)')}
                   </button>
                   <button
                     type="button"
@@ -323,7 +368,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({ onNavigate }
                         : 'bg-white border-slate-200 text-slate-700'
                     }`}
                   >
-                    Solid Color
+                    {t('solidColor', 'Solid Color')}
                   </button>
                 </div>
                 {bgMode === 'solid' && (
@@ -342,7 +387,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({ onNavigate }
               <div className="pt-4 border-t border-slate-100 space-y-4">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                    Output Format
+                    {t('outputFormat', 'Output Format')}
                   </span>
                   <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl">
                     {(['png', 'webp', 'jpeg'] as const).map((fmt) => (
@@ -373,7 +418,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({ onNavigate }
                   ) : (
                     <Download className="w-4 h-4" />
                   )}
-                  <span>{isExporting ? 'Exporting...' : 'Download Rounded Image'}</span>
+                  <span>{isExporting ? t('exporting', 'Exporting...') : t('downloadRoundedImage', 'Download Rounded Image')}</span>
                 </button>
               </div>
             </div>

@@ -11,6 +11,12 @@ import {
   RotateCcw,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
+import type { UploadZoneStrings } from '../components/UploadZone';
+import type { ComparisonModalStrings } from '../components/ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import {
@@ -22,8 +28,20 @@ import {
 } from '../utils/imageProcessing';
 import { triggerDownload } from '../utils/zip';
 
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface CollageMakerPageProps {
   onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
 }
 
 type CollageLayout = '2x2' | '3x3' | 'vertical' | 'horizontal';
@@ -68,8 +86,20 @@ function roundedRect(
   ctx.closePath();
 }
 
-export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }) => {
-  const tool = TOOL_BY_SLUG['/image-collage-maker'];
+export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
+  onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
+}) => {
+  const activeTool = tool ?? TOOL_BY_SLUG['/image-collage-maker'];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+  // Canvas-drawn empty-cell label template (Batch 4 spec §3): resolved once so the
+  // render callback only re-creates when the language/template changes.
+  const slotLabelTemplate = t('slotLabel', 'Slot {n}');
 
   const [slots, setSlots] = useState<(CollageCellPhoto | null)[]>([]);
   const slotsRef = useRef<(CollageCellPhoto | null)[]>([]);
@@ -240,12 +270,12 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
           ctx.font = `600 ${Math.max(12, Math.round(Math.min(box.w, box.h) * 0.14))}px sans-serif`;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          ctx.fillText(`Slot ${box.index + 1}`, box.x + box.w / 2, box.y + box.h / 2);
+          ctx.fillText(slotLabelTemplate.replace('{n}', String(box.index + 1)), box.x + box.w / 2, box.y + box.h / 2);
         }
         ctx.restore();
       }
     },
-    [outWidth, gapPx, cornerRadius, backgroundColor, computeCellBoxes, slots, fitMode]
+    [outWidth, gapPx, cornerRadius, backgroundColor, computeCellBoxes, slots, fitMode, slotLabelTemplate]
   );
 
   useEffect(() => {
@@ -274,8 +304,10 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
       } catch (err) {
         setError(
           err instanceof Error
-            ? `Could not load "${file.name}": ${err.message}`
-            : `Could not load "${file.name}".`
+            ? t('couldNotLoadFile', 'Could not load "{name}": {error}')
+                .replace('{name}', file.name)
+                .replace('{error}', err.message)
+            : t('couldNotLoadFileNoError', 'Could not load "{name}".').replace('{name}', file.name)
         );
       }
     }
@@ -369,7 +401,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
       const blob = await canvasToBlob(exportCanvas, mime, quality / 100);
       triggerDownload(blob, `collage_${layout}_${outWidth}x${outHeight}${ext}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to export collage.');
+      setError(err instanceof Error ? err.message : t('errorExportFailed', 'Failed to export collage.'));
     } finally {
       setIsExporting(false);
     }
@@ -378,7 +410,16 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
   const cellIndices = Array.from({ length: targetSlotCount }, (_, i) => i);
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         {slots.filter(Boolean).length === 0 ? (
           <UploadZone
@@ -389,7 +430,8 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
             allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
-            title="Drop 2 to 9 images to create a photo collage"
+            title={t('uploadTitle', 'Drop 2 to 9 images to create a photo collage')}
+            strings={esStrings?.uploadZone}
           />
         ) : (
           <div className="space-y-6">
@@ -415,7 +457,9 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
                       <LayoutGrid className="w-3.5 h-3.5 text-blue-600" />
                       <span>
-                        Collage Preview ({outWidth}×{outHeight}px)
+                        {t('collagePreview', 'Collage Preview ({width}×{height}px)')
+                          .replace('{width}', String(outWidth))
+                          .replace('{height}', String(outHeight))}
                       </span>
                     </span>
                     <button
@@ -424,7 +468,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                       className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
-                      <span>Clear All</span>
+                      <span>{t('clearAll', 'Clear All')}</span>
                     </button>
                   </div>
 
@@ -441,10 +485,13 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div>
                       <h3 className="text-sm font-bold text-slate-900">
-                        Rearrange Cells (Drag or Tap Two Cells to Swap)
+                        {t('rearrangeCells', 'Rearrange Cells (Drag or Tap Two Cells to Swap)')}
                       </h3>
                       <p className="text-xs text-slate-500">
-                        Drag any cell card onto another slot to reorder photos instantly.
+                        {t(
+                          'rearrangeCellsHint',
+                          'Drag any cell card onto another slot to reorder photos instantly.'
+                        )}
                       </p>
                     </div>
                     <button
@@ -456,7 +503,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-bold rounded-xl cursor-pointer"
                     >
                       <Plus className="w-3.5 h-3.5" />
-                      <span>Add Photos</span>
+                      <span>{t('addPhotos', 'Add Photos')}</span>
                     </button>
                   </div>
 
@@ -500,7 +547,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                           }`}
                         >
                           <div className="flex items-center justify-between text-[11px] font-semibold text-slate-500">
-                            <span>Cell {idx + 1}</span>
+                            <span>{t('cellLabel', 'Cell {n}').replace('{n}', String(idx + 1))}</span>
                             <div className="flex items-center gap-0.5">
                               {idx > 0 && (
                                 <button
@@ -510,7 +557,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                                     swapCells(idx, idx - 1);
                                   }}
                                   className="p-0.5 hover:text-blue-600 cursor-pointer"
-                                  aria-label={`Move cell ${idx + 1} back`}
+                                  aria-label={t('moveCellBackAria', 'Move cell {n} back').replace('{n}', String(idx + 1))}
                                 >
                                   <ArrowLeft className="w-3 h-3" />
                                 </button>
@@ -523,7 +570,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                                     swapCells(idx, idx + 1);
                                   }}
                                   className="p-0.5 hover:text-blue-600 cursor-pointer"
-                                  aria-label={`Move cell ${idx + 1} forward`}
+                                  aria-label={t('moveCellForwardAria', 'Move cell {n} forward').replace('{n}', String(idx + 1))}
                                 >
                                   <ArrowRight className="w-3 h-3" />
                                 </button>
@@ -536,7 +583,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                                     removeSlotPhoto(idx);
                                   }}
                                   className="p-0.5 text-slate-400 hover:text-red-600 cursor-pointer"
-                                  aria-label={`Clear cell ${idx + 1}`}
+                                  aria-label={t('clearCellAria', 'Clear cell {n}').replace('{n}', String(idx + 1))}
                                 >
                                   <Trash2 className="w-3 h-3" />
                                 </button>
@@ -563,7 +610,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                               className="h-20 rounded-lg border-2 border-dashed border-slate-300 hover:border-blue-400 bg-white flex flex-col items-center justify-center text-slate-500 hover:text-blue-600 text-[11px] font-semibold cursor-pointer"
                             >
                               <Plus className="w-4 h-4 mb-0.5" />
-                              <span>Add Photo</span>
+                              <span>{t('addPhoto', 'Add Photo')}</span>
                             </button>
                           )}
                         </div>
@@ -577,15 +624,15 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
               <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                    Collage Layout
+                    {t('collageLayout', 'Collage Layout')}
                   </span>
                   <div className="grid grid-cols-2 gap-2">
                     {(
                       [
-                        { id: '2x2', label: '2×2 Grid' },
-                        { id: '3x3', label: '3×3 Grid' },
-                        { id: 'vertical', label: 'Vertical Strip' },
-                        { id: 'horizontal', label: 'Horizontal Strip' },
+                        { id: '2x2', label: t('layout2x2', '2×2 Grid') },
+                        { id: '3x3', label: t('layout3x3', '3×3 Grid') },
+                        { id: 'vertical', label: t('layoutVertical', 'Vertical Strip') },
+                        { id: 'horizontal', label: t('layoutHorizontal', 'Horizontal Strip') },
                       ] as { id: CollageLayout; label: string }[]
                     ).map((l) => (
                       <button
@@ -608,7 +655,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                 <div className="space-y-3 pt-1">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                      Cell Proportions &amp; Spacing
+                      {t('cellProportionsSpacing', 'Cell Proportions & Spacing')}
                     </span>
                     <button
                       type="button"
@@ -620,7 +667,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                       className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:underline cursor-pointer"
                     >
                       <RotateCcw className="w-3 h-3" />
-                      <span>Equal Cells</span>
+                      <span>{t('equalCells', 'Equal Cells')}</span>
                     </button>
                   </div>
 
@@ -629,7 +676,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                       <div>
                         <div className="flex justify-between text-xs mb-1">
                           <span className="font-semibold text-slate-700">
-                            {layout === '2x2' ? 'Col Split' : 'Center Col'}
+                            {layout === '2x2' ? t('colSplit', 'Col Split') : t('centerCol', 'Center Col')}
                           </span>
                           <span className="font-mono text-blue-600">{colSplitPct}%</span>
                         </div>
@@ -645,7 +692,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                       <div>
                         <div className="flex justify-between text-xs mb-1">
                           <span className="font-semibold text-slate-700">
-                            {layout === '2x2' ? 'Row Split' : 'Center Row'}
+                            {layout === '2x2' ? t('rowSplit', 'Row Split') : t('centerRow', 'Center Row')}
                           </span>
                           <span className="font-mono text-blue-600">{rowSplitPct}%</span>
                         </div>
@@ -664,7 +711,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                   {(layout === 'vertical' || layout === 'horizontal') && (
                     <div>
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="font-semibold text-slate-700">Lead Cell Emphasis</span>
+                        <span className="font-semibold text-slate-700">{t('leadCellEmphasis', 'Lead Cell Emphasis')}</span>
                         <span className="font-mono text-blue-600">+{firstStripPct}%</span>
                       </div>
                       <input
@@ -681,7 +728,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="font-semibold text-slate-700">Gap Spacing</span>
+                        <span className="font-semibold text-slate-700">{t('gapSpacing', 'Gap Spacing')}</span>
                         <span className="font-mono text-blue-600">{gapPx}px</span>
                       </div>
                       <input
@@ -695,7 +742,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                     </div>
                     <div>
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="font-semibold text-slate-700">Cell Radius</span>
+                        <span className="font-semibold text-slate-700">{t('cellRadius', 'Cell Radius')}</span>
                         <span className="font-mono text-blue-600">{cornerRadius}px</span>
                       </div>
                       <input
@@ -714,7 +761,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                 <div className="grid grid-cols-2 gap-3 items-end">
                   <div>
                     <label className="text-xs font-semibold text-slate-700 block mb-1.5">
-                      Background Color
+                      {t('backgroundColor', 'Background Color')}
                     </label>
                     <div className="flex items-center gap-1.5">
                       <input
@@ -730,7 +777,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                           onClick={() => setBackgroundColor(c)}
                           className="w-6 h-6 rounded-md border border-slate-300 cursor-pointer"
                           style={{ backgroundColor: c }}
-                          aria-label={`Background ${c}`}
+                          aria-label={t('backgroundSwatchAria', 'Background {color}').replace('{color}', c)}
                         />
                       ))}
                     </div>
@@ -738,7 +785,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
 
                   <div>
                     <span className="text-xs font-semibold text-slate-700 block mb-1.5">
-                      Image Fit
+                      {t('imageFit', 'Image Fit')}
                     </span>
                     <div className="grid grid-cols-2 gap-1 p-1 bg-slate-100 rounded-xl">
                       {(['cover', 'contain'] as const).map((m) => (
@@ -750,7 +797,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                             fitMode === m ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600'
                           }`}
                         >
-                          {m}
+                          {m === 'cover' ? t('fitCover', 'cover') : t('fitContain', 'contain')}
                         </button>
                       ))}
                     </div>
@@ -760,11 +807,11 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                 {/* Output Size */}
                 <div className="space-y-2">
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">
-                    Output Size (px)
+                    {t('outputSize', 'Output Size (px)')}
                   </span>
                   <div className="grid grid-cols-2 gap-2.5">
                     <div>
-                      <label className="text-[11px] font-semibold text-slate-500 block mb-1">Width</label>
+                      <label className="text-[11px] font-semibold text-slate-500 block mb-1">{t('widthLabel', 'Width')}</label>
                       <input
                         type="number"
                         min={200}
@@ -777,7 +824,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                       />
                     </div>
                     <div>
-                      <label className="text-[11px] font-semibold text-slate-500 block mb-1">Height</label>
+                      <label className="text-[11px] font-semibold text-slate-500 block mb-1">{t('heightLabel', 'Height')}</label>
                       <input
                         type="number"
                         min={200}
@@ -823,7 +870,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                           outFormat === fmt ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
                         }`}
                       >
-                        {fmt === 'jpeg' ? 'JPG' : 'PNG (Lossless)'}
+                        {fmt === 'jpeg' ? t('formatJpg', 'JPG') : t('formatPngLossless', 'PNG (Lossless)')}
                       </button>
                     ))}
                   </div>
@@ -831,7 +878,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                   {outFormat === 'jpeg' && (
                     <div>
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="font-semibold text-slate-700">JPG Quality</span>
+                        <span className="font-semibold text-slate-700">{t('jpgQuality', 'JPG Quality')}</span>
                         <span className="font-mono font-bold text-slate-700">{quality}%</span>
                       </div>
                       <input
@@ -853,7 +900,12 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({ onNavigate }
                   >
                     {isExporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
                     <span>
-                      {isExporting ? 'Exporting Collage...' : `Download Collage (${outFormat === 'jpeg' ? 'JPG' : 'PNG'})`}
+                      {isExporting
+                        ? t('exportingCollage', 'Exporting Collage...')
+                        : t('downloadCollage', 'Download Collage ({format})').replace(
+                            '{format}',
+                            outFormat === 'jpeg' ? 'JPG' : 'PNG'
+                          )}
                     </span>
                   </button>
                 </div>
