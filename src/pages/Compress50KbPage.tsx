@@ -1,6 +1,6 @@
 import React from 'react';
 import { TargetSizeCompressorTool } from '../components/TargetSizeCompressorTool';
-import type { PageEsStrings, PagePtStrings, PageFrStrings, PageDeStrings, PageItStrings } from '../components/TargetSizeCompressorTool';
+import type { PageEsStrings, PagePtStrings, PageFrStrings, PageDeStrings, PageItStrings, PageIdStrings, PageRuStrings } from '../components/TargetSizeCompressorTool';
 import type { SupportedLang } from '../locales/config';
 import type { ToolDefinition } from '../data/tools';
 
@@ -15,9 +15,11 @@ interface Props {
   frStrings?: PageFrStrings;
   deStrings?: PageDeStrings;
   itStrings?: PageItStrings;
+  idStrings?: PageIdStrings;
+  ruStrings?: PageRuStrings;
 }
 
-export const Compress50KbPage: React.FC<Props> = ({ onNavigate, lang, tool, toolRegistry, categoryLabels, esStrings, ptStrings, frStrings, deStrings, itStrings }) => (
+export const Compress50KbPage: React.FC<Props> = ({ onNavigate, lang, tool, toolRegistry, categoryLabels, esStrings, ptStrings, frStrings, deStrings, itStrings, idStrings, ruStrings }) => (
   <TargetSizeCompressorTool
     slug="/compress-image-to-50kb"
     defaultTargetKb={50}
@@ -31,5 +33,7 @@ export const Compress50KbPage: React.FC<Props> = ({ onNavigate, lang, tool, tool
     frStrings={frStrings}
     deStrings={deStrings}
     itStrings={itStrings}
+    idStrings={idStrings}
+    ruStrings={ruStrings}
   />
 );
