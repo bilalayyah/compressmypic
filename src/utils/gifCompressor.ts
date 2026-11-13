@@ -17,7 +17,7 @@ export interface GifCompressOptions {
   scalePercent: number; // 25..100
   maxColors: number; // 16..256
   frameStep: 1 | 2 | 3; // 1 = keep all, 2 = drop every 2nd, 3 = keep 1 of 3
-  lang?: SupportedLang; // when 'es'/'pt'/'fr'/'de'/'it', thrown error messages use that language's templates
+  lang?: SupportedLang; // when 'es'/'pt'/'fr'/'de'/'it'/'id'/'ru', thrown error messages use that language's templates
   onProgress?: (percent: number) => void;
 }
 
@@ -26,8 +26,9 @@ export interface GifCompressOptions {
  * Spanish is the Batch 5 translation table (tool-ui-es-batch5.ts, /gif-compressor);
  * Portuguese and French are the Phase 2 tables (tool-ui-pt.ts / tool-ui-fr.ts,
  * /gif-compressor); German and Italian are the Phase 3 tables (tool-ui-de.ts /
- * tool-ui-it.ts, /gif-compressor). No logic changes — only which language the
- * thrown Error carries.
+ * tool-ui-it.ts, /gif-compressor); Indonesian and Russian are the Phase 4 tables
+ * (tool-ui-id.ts / tool-ui-ru.ts, /gif-compressor). No logic changes — only which
+ * language the thrown Error carries.
  */
 type GifErrorKey =
   | 'errorTooSmall'
@@ -96,6 +97,26 @@ const GIF_ERROR_IT: Record<GifErrorKey, string> = {
   errorCanvasContext: 'Impossibile inizializzare il contesto canvas 2D.',
 };
 
+// Indonesian strings copied verbatim from tool-ui-id.ts, /gif-compressor (lines 1371-1376).
+const GIF_ERROR_ID: Record<GifErrorKey, string> = {
+  errorTooSmall: 'File terlalu kecil untuk menjadi GIF yang valid.',
+  errorNotValidGif: 'File yang dipilih bukan animasi GIF87a atau GIF89a yang valid.',
+  errorInvalidDims: 'GIF memiliki dimensi canvas 0×0 yang tidak valid.',
+  errorTruncatedColorTable: 'Tabel Warna Global GIF terpotong.',
+  errorNoFrames: 'Tidak bisa mendekode frame gambar apa pun dari file GIF ini.',
+  errorCanvasContext: 'Tidak bisa menginisialisasi konteks canvas 2D.',
+};
+
+// Russian strings copied verbatim from tool-ui-ru.ts, /gif-compressor (lines 1373-1378).
+const GIF_ERROR_RU: Record<GifErrorKey, string> = {
+  errorTooSmall: 'Файл слишком мал, чтобы быть допустимым GIF.',
+  errorNotValidGif: 'Выбранный файл не является допустимой анимацией GIF87a или GIF89a.',
+  errorInvalidDims: 'У GIF недопустимые размеры холста 0×0.',
+  errorTruncatedColorTable: 'Усечённая глобальная таблица цветов GIF.',
+  errorNoFrames: 'Не удалось декодировать кадры изображения из этого файла GIF.',
+  errorCanvasContext: 'Не удалось инициализировать 2D-контекст Canvas.',
+};
+
 function gifError(key: GifErrorKey, lang?: SupportedLang): string {
   switch (lang) {
     case 'es':
@@ -108,6 +129,10 @@ function gifError(key: GifErrorKey, lang?: SupportedLang): string {
       return GIF_ERROR_DE[key];
     case 'it':
       return GIF_ERROR_IT[key];
+    case 'id':
+      return GIF_ERROR_ID[key];
+    case 'ru':
+      return GIF_ERROR_RU[key];
     default:
       return GIF_ERROR_EN[key];
   }
