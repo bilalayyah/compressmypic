@@ -55,6 +55,20 @@ export interface PageRuStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageJaStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageKoStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface BrightnessEditorPageProps {
   onNavigate: (path: string) => void;
   lang?: SupportedLang;
@@ -68,6 +82,8 @@ interface BrightnessEditorPageProps {
   itStrings?: PageItStrings;
   idStrings?: PageIdStrings;
   ruStrings?: PageRuStrings;
+  jaStrings?: PageJaStrings;
+  koStrings?: PageKoStrings;
 }
 
 export const BrightnessEditorPage: React.FC<BrightnessEditorPageProps> = ({
@@ -83,6 +99,8 @@ export const BrightnessEditorPage: React.FC<BrightnessEditorPageProps> = ({
   itStrings,
   idStrings,
   ruStrings,
+  jaStrings,
+  koStrings,
 }) => {
   return (
     <ToneEditorTool
@@ -99,6 +117,8 @@ export const BrightnessEditorPage: React.FC<BrightnessEditorPageProps> = ({
       itStrings={itStrings}
       idStrings={idStrings}
       ruStrings={ruStrings}
+      jaStrings={jaStrings}
+      koStrings={koStrings}
     />
   );
 };
