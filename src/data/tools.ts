@@ -2493,6 +2493,132 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     relatedSlugs: ['/png-to-jpg', '/image-converter', '/bulk-image-converter', '/compress-image-to-100kb'],
   },
+  {
+    slug: '/remove-background',
+    name: 'Background Remover',
+    shortDescription: 'Remove image backgrounds with AI in-browser and export transparent PNGs.',
+    category: 'ai-tools',
+    seoTitle: 'Free Background Remover Online – Transparent PNG in Browser',
+    seoDescription:
+      'Remove image backgrounds online free with AI directly in your browser. Export transparent PNGs or apply white, black, or custom backgrounds — private, no signup.',
+    h1: 'Free Online AI Background Remover',
+    subtitle:
+      'Remove backgrounds from portraits, product photos, logos, and stickers right inside your browser — download a transparent PNG or place your cutout on any solid background color.',
+    howToSteps: [
+      {
+        title: 'Upload your photo',
+        description: 'Drop a JPG, PNG, WebP, or HEIC photo from your phone or computer — nothing leaves your device.',
+      },
+      {
+        title: 'Automatic AI cutout',
+        description: 'The compact browser AI model loads on first use (~30–40 MB, cached afterward) and isolates your subject cleanly.',
+      },
+      {
+        title: 'Download PNG or add solid background',
+        description: 'Save the transparent PNG cutout or apply white, black, or any custom background color in one click.',
+      },
+    ],
+    features: [
+      {
+        title: '100% Client-Side AI Segmentation',
+        description: 'Powered by the lightweight isnet_quint8 ONNX model running locally in your browser — your photos are never uploaded to any server.',
+      },
+      {
+        title: 'Instant Transparent PNG Export',
+        description: 'Download crisp alpha-transparent PNG cutouts ready for e-commerce listings, thumbnails, slides, and design work.',
+      },
+      {
+        title: 'Built-In Solid Background Switcher',
+        description: 'Preview and export your cutout on pure white, jet black, or any custom hex background color without opening another app.',
+      },
+      {
+        title: 'Free, No Signup & No Watermark',
+        description: 'Full-resolution cutouts with zero daily limits, zero accounts, and zero watermarks.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Are my photos uploaded to a server for background removal?',
+        answer: 'No. On your first visit to this tool, your browser downloads the compact AI segmentation model (~30–40 MB) once and runs inference entirely on your device.',
+      },
+      {
+        question: 'Why does the first image take a few extra seconds?',
+        answer: 'The browser downloads and initializes the WebAssembly AI runtime and isnet_quint8 model weights the first time you open this page. Subsequent images process much faster from cache.',
+      },
+      {
+        question: 'Can I put a white or colored background behind the cutout?',
+        answer: 'Yes. After removing the background, you can download the transparent PNG directly or pick White, Black, or any custom color to download a finished solid-background image.',
+      },
+      {
+        question: 'What image types work best?',
+        answer: 'Clear subjects such as portraits, products, cars, pets, and logos in JPG, PNG, WebP, or HEIC produce the cleanest edges.',
+      },
+    ],
+    relatedSlugs: ['/add-background-to-image', '/image-upscaler', '/image-resizer', '/png-to-webp'],
+  },
+  {
+    slug: '/image-upscaler',
+    name: 'Image Upscaler',
+    shortDescription: 'Upscale and sharpen low-res photos 2x or 4x in-browser with ESRGAN AI.',
+    category: 'ai-tools',
+    seoTitle: 'Free AI Image Upscaler Online – Upscale Photos 2x & 4x',
+    seoDescription:
+      'Upscale images 2x or 4x online free directly in your browser using ESRGAN AI. Choose Slim or Medium quality models — private, no signup, no watermark.',
+    h1: 'Free Online AI Image Upscaler (2x & 4x)',
+    subtitle:
+      'Enlarge small photos, avatars, illustrations, and product shots by 2x or 4x directly in your browser using ESRGAN super-resolution — crisp results with zero server uploads.',
+    howToSteps: [
+      {
+        title: 'Choose model & upscale factor',
+        description: 'Pick 2x or 4x resolution boost and select Slim (~2 MB, fastest) or Medium (~8 MB, sharper detail).',
+      },
+      {
+        title: 'Upload a photo to enhance',
+        description: 'Drop any JPG, PNG, WebP, or HEIC image; the browser loads the chosen ESRGAN weights on demand.',
+      },
+      {
+        title: 'Compare & download HD result',
+        description: 'Inspect pixel sharpness before and after, check the new dimensions and size, and download the upscaled image.',
+      },
+    ],
+    features: [
+      {
+        title: '2x and 4x Super-Resolution',
+        description: 'Double or quadruple image width and height using neural-network detail reconstruction instead of blurry bilinear stretching.',
+      },
+      {
+        title: 'Slim (~2 MB) & Medium (~8 MB) Models',
+        description: 'Use the lightweight Slim model by default for quick enhancements, or switch to Medium when you want extra edge fidelity.',
+      },
+      {
+        title: 'Tile-Based Memory-Safe Processing',
+        description: 'Processes images in smart overlapping patches with live progress so your browser stays responsive.',
+      },
+      {
+        title: 'Zero Server Uploads & Unlimited Use',
+        description: 'Runs completely in your browser via TensorFlow.js — private, free, and free of watermarks or API quotas.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'How does the AI Image Upscaler work without a server?',
+        answer: 'When you open this tool, your browser lazy-loads TensorFlow.js and an ESRGAN neural network model (Slim ~2 MB or Medium ~8 MB) and computes the higher-resolution pixels locally.',
+      },
+      {
+        question: 'Should I choose the Slim or Medium model?',
+        answer: 'Slim (~2 MB) downloads quickly and handles most photos, screenshots, and web graphics well. Medium (~8 MB) adds extra detail on textures and illustrations at the cost of slightly longer processing time.',
+      },
+      {
+        question: 'Is there a recommended maximum input image size?',
+        answer: 'Because 4x upscaling creates 16x more pixels locally in WebGL/browser memory, photos under 1200×1200px upscale quickest. Very large photos may take longer or hit browser memory limits.',
+      },
+      {
+        question: 'Are my photos kept private?',
+        answer: 'Yes. Neither the original nor the upscaled image ever leaves your browser.',
+      },
+    ],
+    relatedSlugs: ['/remove-background', '/image-resizer', '/image-filters', '/compress-image-to-500kb'],
+  },
 ];
 
 export const TOOL_BY_SLUG: Record<string, ToolDefinition> = Object.fromEntries(

@@ -32,6 +32,8 @@ import {
   Gauge,
   Globe,
   Scaling,
+  Scissors,
+  ZoomIn,
 } from 'lucide-react';
 import { TOOLS_REGISTRY, TOOL_CATEGORIES, ToolCategoryId } from '../data/tools';
 
@@ -89,6 +91,8 @@ const TOOL_ICONS: Record<string, React.ComponentType<{ className?: string }>> = 
   '/svg-to-png': RefreshCw,
   '/avif-to-jpg': RefreshCw,
   '/bmp-to-jpg': RefreshCw,
+  '/remove-background': Scissors,
+  '/image-upscaler': ZoomIn,
 };
 
 export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, Suspense } from 'react';
 import { MessageCircle, FileImage, Zap } from 'lucide-react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
@@ -72,6 +72,13 @@ import { SvgToPngPage } from './pages/SvgToPngPage';
 import { AvifToJpgPage } from './pages/AvifToJpgPage';
 import { BmpToJpgPage } from './pages/BmpToJpgPage';
 import { TOOL_BY_SLUG } from './data/tools';
+
+const RemoveBackgroundPage = React.lazy(() =>
+  import('./pages/RemoveBackgroundPage').then((m) => ({ default: m.RemoveBackgroundPage }))
+);
+const ImageUpscalerPage = React.lazy(() =>
+  import('./pages/ImageUpscalerPage').then((m) => ({ default: m.ImageUpscalerPage }))
+);
 import { CompressionSettings, ImageFormat, ImageItem } from './types';
 import { compressSingleImage, detectTransparency, loadImageFromFile, toDecodableBlob } from './utils/compressor';
 import { getFileExtension } from './utils/formatters';
@@ -133,6 +140,8 @@ const KNOWN_ROUTES = [
   '/svg-to-png',
   '/avif-to-jpg',
   '/bmp-to-jpg',
+  '/remove-background',
+  '/image-upscaler',
 ];
 
 function getNormalizedPath(rawPathname: string): string {
@@ -798,6 +807,30 @@ export default function App() {
       ) : currentPath === '/bmp-to-jpg' ? (
         <main className="flex-1">
           <BmpToJpgPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/remove-background' ? (
+        <main className="flex-1">
+          <Suspense
+            fallback={
+              <div className="max-w-5xl mx-auto px-4 py-20 text-center text-sm text-slate-500">
+                Loading Background Remover...
+              </div>
+            }
+          >
+            <RemoveBackgroundPage onNavigate={handleNavigate} />
+          </Suspense>
+        </main>
+      ) : currentPath === '/image-upscaler' ? (
+        <main className="flex-1">
+          <Suspense
+            fallback={
+              <div className="max-w-5xl mx-auto px-4 py-20 text-center text-sm text-slate-500">
+                Loading AI Image Upscaler...
+              </div>
+            }
+          >
+            <ImageUpscalerPage onNavigate={handleNavigate} />
+          </Suspense>
         </main>
       ) : (
         /* HOME / COMPRESSOR APPLICATION */
