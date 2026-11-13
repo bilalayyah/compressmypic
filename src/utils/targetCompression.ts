@@ -10,7 +10,7 @@ export interface TargetSizeOptions {
   allowDownscale: boolean;
   autoSwitchPngToLossy: boolean;
   backgroundColor: string;
-  /** Active language. When 'es', 'pt' or 'fr', the runtime status notes use that language's templates. */
+  /** Active language. When 'es', 'pt', 'fr', 'de' or 'it', the runtime status notes use that language's templates. */
   lang?: SupportedLang;
   /** This tool's workspace strings (the active language's toolUi table) — the
    * localized templates for the status notes. English strings stay as fallback when omitted. */
@@ -321,7 +321,7 @@ export async function compressToTargetSize(
 
   // --- Runtime status-note localization (Batch 4 + Batch 5) ---
   // The component renders `statusNote` / `switchedFormatNote` verbatim, so the
-  // localized (es/pt/fr) templates live here behind the same `lang` flag. The English
+  // localized (de/it/es/pt/fr) templates live here behind the same `lang` flag. The English
   // fallbacks below are byte-identical to the previous inline English strings.
   // Batch 4 and Batch 5 tables spell some keys/placeholders differently
   // (e.g. `autoConvertedPng` vs `switchedFormatNote`, `{bytes}` vs `{size}`,
@@ -330,11 +330,11 @@ export async function compressToTargetSize(
   const uiStrings = options.strings;
   const pickTemplate = (
     keys: string[],
-    fallbacks: Partial<Record<'es' | 'pt' | 'fr', string>>,
+    fallbacks: Partial<Record<'es' | 'pt' | 'fr' | 'de' | 'it', string>>,
     enFallback: string
   ): string => {
     const activeLang = options.lang;
-    if (activeLang === 'es' || activeLang === 'pt' || activeLang === 'fr') {
+    if (activeLang === 'es' || activeLang === 'pt' || activeLang === 'fr' || activeLang === 'de' || activeLang === 'it') {
       for (const key of keys) {
         const value = uiStrings?.[key];
         if (value !== undefined) return value;
