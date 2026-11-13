@@ -10,7 +10,7 @@ export interface TargetSizeOptions {
   allowDownscale: boolean;
   autoSwitchPngToLossy: boolean;
   backgroundColor: string;
-  /** Active language. When 'es', 'pt', 'fr', 'de', 'it', 'id' or 'ru', the runtime status notes use that language's templates. */
+  /** Active language. When 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja' or 'ko', the runtime status notes use that language's templates. */
   lang?: SupportedLang;
   /** This tool's workspace strings (the active language's toolUi table) — the
    * localized templates for the status notes. English strings stay as fallback when omitted. */
@@ -321,7 +321,7 @@ export async function compressToTargetSize(
 
   // --- Runtime status-note localization (Batch 4 + Batch 5) ---
   // The component renders `statusNote` / `switchedFormatNote` verbatim, so the
-  // localized (id/ru/de/it/es/pt/fr) templates live here behind the same `lang` flag. The English
+  // localized (ja/ko/id/ru/de/it/es/pt/fr) templates live here behind the same `lang` flag. The English
   // fallbacks below are byte-identical to the previous inline English strings.
   // Batch 4 and Batch 5 tables spell some keys/placeholders differently
   // (e.g. `autoConvertedPng` vs `switchedFormatNote`, `{bytes}` vs `{size}`,
@@ -330,11 +330,11 @@ export async function compressToTargetSize(
   const uiStrings = options.strings;
   const pickTemplate = (
     keys: string[],
-    fallbacks: Partial<Record<'es' | 'pt' | 'fr' | 'de' | 'it' | 'id' | 'ru', string>>,
+    fallbacks: Partial<Record<'es' | 'pt' | 'fr' | 'de' | 'it' | 'id' | 'ru' | 'ja' | 'ko', string>>,
     enFallback: string
   ): string => {
     const activeLang = options.lang;
-    if (activeLang === 'es' || activeLang === 'pt' || activeLang === 'fr' || activeLang === 'de' || activeLang === 'it' || activeLang === 'id' || activeLang === 'ru') {
+    if (activeLang === 'es' || activeLang === 'pt' || activeLang === 'fr' || activeLang === 'de' || activeLang === 'it' || activeLang === 'id' || activeLang === 'ru' || activeLang === 'ja' || activeLang === 'ko') {
       for (const key of keys) {
         const value = uiStrings?.[key];
         if (value !== undefined) return value;
@@ -393,14 +393,14 @@ export async function compressToTargetSize(
       const switchedFormatLabel = imageItem.hasAlpha
         ? pickTemplate(
             ['formatWebpTransparency'],
-            { es: 'WebP (transparencia conservada)', id: 'WebP (transparansi dipertahankan)', ru: 'WebP (прозрачность сохранена)' },
+            { es: 'WebP (transparencia conservada)', id: 'WebP (transparansi dipertahankan)', ru: 'WebP (прозрачность сохранена)', ja: 'WebP（透明度を保持）', ko: 'WebP(투명도 유지)' },
             'WebP (transparency preserved)'
           )
         : 'JPG';
       switchedFormatNote = fillTemplate(
         pickTemplate(
           ['switchedFormatNote', 'autoConvertedPng'],
-          { es: 'Se convirtió automáticamente el PNG sin pérdida a {format} para conservar mayor resolución por debajo de {target}.', id: 'PNG lossless otomatis diubah ke {format} untuk mempertahankan resolusi yang lebih tinggi di bawah {target}.', ru: 'PNG без потерь автоматически конвертирован в {format}, чтобы сохранить более высокое разрешение менее {target}.' },
+          { es: 'Se convirtió automáticamente el PNG sin pérdida a {format} para conservar mayor resolución por debajo de {target}.', id: 'PNG lossless otomatis diubah ke {format} untuk mempertahankan resolusi yang lebih tinggi di bawah {target}.', ru: 'PNG без потерь автоматически конвертирован в {format}, чтобы сохранить более высокое разрешение менее {target}.', ja: '非可逆なしPNGは、{target}以下でより高い解像度を保つため{format}へ自動変換されました。', ko: '무손실 PNG이 {target} 이하에서 더 높은 해상도를 유지하기 위해 자동으로 {format}(으)로 변환되었습니다.' },
           'Auto-converted lossless PNG to {format} to preserve higher resolution under {target}.'
         ),
         { format: switchedFormatLabel, target: formatBytes(targetBytes, 0) }
@@ -415,9 +415,9 @@ export async function compressToTargetSize(
   // `qualityLosslessPng` / `qualityPercent`; Batch 5 inlines it as `{quality}`.
   const qualityLabel =
     chosen.mimeType === 'image/png'
-      ? pickTemplate(['qualityLosslessPng'], { es: 'PNG sin pérdida', id: 'PNG lossless', ru: 'PNG без потерь' }, 'lossless PNG')
+      ? pickTemplate(['qualityLosslessPng'], { es: 'PNG sin pérdida', id: 'PNG lossless', ru: 'PNG без потерь', ja: '非可逆なしPNG', ko: '무손실 PNG' }, 'lossless PNG')
       : fillTemplate(
-          pickTemplate(['qualityPercent'], { es: 'calidad del {quality} %', id: 'Kualitas {quality}%', ru: 'Качество {quality} %' }, '{quality}% quality'),
+          pickTemplate(['qualityPercent'], { es: 'calidad del {quality} %', id: 'Kualitas {quality}%', ru: 'Качество {quality} %', ja: '画質{quality}%', ko: '{quality}% 품질' }, '{quality}% quality'),
           { quality: chosen.quality }
         );
   const scalePercent = Math.round(chosen.scale * 100);
@@ -428,7 +428,7 @@ export async function compressToTargetSize(
       statusNote = fillTemplate(
         pickTemplate(
           ['statusAlreadyUnderGrew'],
-          { es: 'El archivo original ya estaba por debajo de {target}, y la recodificación lo hizo crecer {bytes}. Use «Conservar original» o cambie a WebP/JPG para una salida más pequeña.', id: 'File asli sudah berada di bawah {target}, dan enkode ulang membesarkannya {bytes}. Gunakan "Pertahankan original" atau beralih ke WebP/JPG untuk output yang lebih kecil.', ru: 'Оригинальный файл уже был менее {target}, а перекодирование увеличило его на {bytes}. Используйте «Оставить оригинал» или переключитесь на WebP/JPG для меньшего вывода.' },
+          { es: 'El archivo original ya estaba por debajo de {target}, y la recodificación lo hizo crecer {bytes}. Use «Conservar original» o cambie a WebP/JPG para una salida más pequeña.', id: 'File asli sudah berada di bawah {target}, dan enkode ulang membesarkannya {bytes}. Gunakan "Pertahankan original" atau beralih ke WebP/JPG untuk output yang lebih kecil.', ru: 'Оригинальный файл уже был менее {target}, а перекодирование увеличило его на {bytes}. Используйте «Оставить оригинал» или переключитесь на WebP/JPG для меньшего вывода.', ja: '元のファイルはすでに{target}未満でしたが、再エンコードで{bytes}大きくなりました。「元のファイルを保持」を使うか、より小さい出力のためにWebP/JPGに切り替えてください。', ko: '원본 파일이 이미 {target} 이하였으나 다시 인코딩하면서 {bytes} 커졌습니다. "원본 유지"를 사용하거나 더 작은 출력을 위해 WebP/JPG로 전환하세요.' },
           'Original file was already under {target}, and re-encoding grew it by {bytes}. Use "Keep original" or switch to WebP/JPG for smaller output.'
         ),
         {
@@ -440,7 +440,7 @@ export async function compressToTargetSize(
       statusNote = fillTemplate(
         pickTemplate(
           ['statusAlreadyUnder', 'statusAlreadyUnderClean'],
-          { es: 'El archivo original ya estaba por debajo de {target}; se exportó limpiamente con calidad del {quality} %.', id: 'File asli sudah berada di bawah {target}; file diekspor dengan bersih pada kualitas {quality}%.', ru: 'Оригинальный файл уже был менее {target}; он чисто экспортирован с качеством {quality} %.' },
+          { es: 'El archivo original ya estaba por debajo de {target}; se exportó limpiamente con calidad del {quality} %.', id: 'File asli sudah berada di bawah {target}; file diekspor dengan bersih pada kualitas {quality}%.', ru: 'Оригинальный файл уже был менее {target}; он чисто экспортирован с качеством {quality} %.', ja: '元のファイルはすでに{target}未満でした。画質{quality}%でクリーンにエクスポートされました。', ko: '원본 파일이 이미 {target} 이하이므로 {quality}% 품질로 깔끔하게 내보냈습니다.' },
           'Original file was already under {target}; exported cleanly at {quality}% quality.'
         ),
         { target: formatBytes(targetBytes, 0), quality: chosen.quality }
@@ -449,7 +449,7 @@ export async function compressToTargetSize(
       statusNote = fillTemplate(
         pickTemplate(
           ['statusMetFull'],
-          { es: 'Objetivo cumplido con resolución completa de {width}×{height} px ({qualityLabel}).', id: 'Target tercapai pada resolusi penuh {width}×{height} px ({qualityLabel}).', ru: 'Цель достигнута при полном разрешении {width}×{height} px ({qualityLabel}).' },
+          { es: 'Objetivo cumplido con resolución completa de {width}×{height} px ({qualityLabel}).', id: 'Target tercapai pada resolusi penuh {width}×{height} px ({qualityLabel}).', ru: 'Цель достигнута при полном разрешении {width}×{height} px ({qualityLabel}).', ja: 'フル解像度{width}×{height} pxで目標を達成しました（{qualityLabel}）。', ko: '전체 {width}×{height}px 해상도에서 목표를 달성했습니다({qualityLabel}).' },
           'Target met at full {width}×{height}px resolution ({qualityLabel}).'
         ),
         { width: chosen.width, height: chosen.height, qualityLabel, quality: qualityLabel }
@@ -458,7 +458,7 @@ export async function compressToTargetSize(
       statusNote = fillTemplate(
         pickTemplate(
           ['statusMetScaled'],
-          { es: 'Objetivo cumplido al escalar a {width}×{height} px ({percent} %) con {qualityLabel}.', id: 'Target tercapai dengan penskalaan ke {width}×{height} px ({percent}%) pada {qualityLabel}.', ru: 'Цель достигнута масштабированием до {width}×{height} px ({percent} %) с {qualityLabel}.' },
+          { es: 'Objetivo cumplido al escalar a {width}×{height} px ({percent} %) con {qualityLabel}.', id: 'Target tercapai dengan penskalaan ke {width}×{height} px ({percent}%) pada {qualityLabel}.', ru: 'Цель достигнута масштабированием до {width}×{height} px ({percent} %) с {qualityLabel}.', ja: '{width}×{height} px（{percent}%）にスケーリングして目標を達成しました（{qualityLabel}）。', ko: '{width}×{height}px({percent}%)로 스케일링하고 {qualityLabel}에서 목표를 달성했습니다.' },
           'Target met by scaling to {width}×{height}px ({percent}%) at {qualityLabel}.'
         ),
         {
@@ -476,7 +476,7 @@ export async function compressToTargetSize(
       statusNote = fillTemplate(
         pickTemplate(
           ['statusCannotPng'],
-          { es: 'No se puede llegar a {target} con PNG sin pérdida (mínimo alcanzable: {bytes} a {width}×{height} px). Cambie el formato de salida a JPG o WebP para llegar a tamaños más pequeños.', id: 'Tidak bisa mencapai {target} dengan PNG lossless (terkecil yang bisa dicapai: {bytes} pada {width}×{height} px). Ubah format output ke JPG atau WebP untuk mencapai ukuran yang lebih kecil.', ru: 'Нельзя достичь {target} с PNG без потерь (минимально достижимо: {bytes} при {width}×{height} px). Переключите формат вывода на JPG или WebP, чтобы достичь меньших размеров.' },
+          { es: 'No se puede llegar a {target} con PNG sin pérdida (mínimo alcanzable: {bytes} a {width}×{height} px). Cambie el formato de salida a JPG o WebP para llegar a tamaños más pequeños.', id: 'Tidak bisa mencapai {target} dengan PNG lossless (terkecil yang bisa dicapai: {bytes} pada {width}×{height} px). Ubah format output ke JPG atau WebP untuk mencapai ukuran yang lebih kecil.', ru: 'Нельзя достичь {target} с PNG без потерь (минимально достижимо: {bytes} при {width}×{height} px). Переключите формат вывода на JPG или WebP, чтобы достичь меньших размеров.', ja: '非可逆なしPNGでは{target}に届きません（達成可能な最小サイズ：{width}×{height} pxで{bytes}）。より小さいサイズに届くよう、出力形式をJPGまたはWebPに切り替えてください。', ko: '무손실 PNG으로는 {target}에 도달할 수 없습니다(달성 가능한 최소 크기: {width}×{height}px에서 {bytes}). 더 작은 크기에 도달하려면 출력 형식을 JPG나 WebP로 전환하세요.' },
           'Cannot reach {target} with lossless PNG (smallest achievable: {bytes} at {width}×{height}px). Switch output format to JPG or WebP to hit smaller sizes.'
         ),
         {
@@ -491,7 +491,7 @@ export async function compressToTargetSize(
       statusNote = fillTemplate(
         pickTemplate(
           ['statusCannotFull'],
-          { es: 'No se puede llegar a {target} con las dimensiones completas de {width}×{height} px (el tamaño mínimo de calidad es {bytes}). Active «Permitir escalado de dimensiones» para reducir más las dimensiones.', id: 'Tidak bisa mencapai {target} pada dimensi penuh {width}×{height} px (ukuran minimum pada kualitas: {bytes}). Aktifkan "Izinkan Penskalaan Dimensi" untuk memperkecil dimensi lebih lanjut.', ru: 'Нельзя достичь {target} при полных размерах {width}×{height} px (минимальный размер при качестве: {bytes}). Включите «Разрешить масштабирование размеров», чтобы ещё уменьшить размеры.' },
+          { es: 'No se puede llegar a {target} con las dimensiones completas de {width}×{height} px (el tamaño mínimo de calidad es {bytes}). Active «Permitir escalado de dimensiones» para reducir más las dimensiones.', id: 'Tidak bisa mencapai {target} pada dimensi penuh {width}×{height} px (ukuran minimum pada kualitas: {bytes}). Aktifkan "Izinkan Penskalaan Dimensi" untuk memperkecil dimensi lebih lanjut.', ru: 'Нельзя достичь {target} при полных размерах {width}×{height} px (минимальный размер при качестве: {bytes}). Включите «Разрешить масштабирование размеров», чтобы ещё уменьшить размеры.', ja: 'フルサイズ{width}×{height} pxでは{target}に届きません（最小の画質サイズは{bytes}です）。さらに寸法を縮小するには「サイズスケーリングを許可」を有効にしてください。', ko: '전체 {width}×{height}px 치수에서 {target}에 도달할 수 없습니다(최소 품질 크기는 {bytes}). 치수를 더 줄이려면 "크기 조정 허용"을 활성화하세요.' },
           'Cannot reach {target} at full {width}×{height}px dimensions (minimum quality size is {bytes}). Enable "Allow Dimension Scaling" to shrink dimensions further.'
         ),
         {
@@ -506,7 +506,7 @@ export async function compressToTargetSize(
       statusNote = fillTemplate(
         pickTemplate(
           ['statusCannotCleanly', 'statusCannotClean'],
-          { es: 'No se pudo alcanzar limpiamente el objetivo solicitado de {target}. La salida codificada honesta más pequeña es {bytes} ({width}×{height} px, calidad del {quality} %). Pruebe un objetivo mayor.', id: 'Target {target} yang diminta tidak bisa dicapai dengan bersih. Output enkode jujur terkecil adalah {bytes} ({width}×{height} px, kualitas {quality}%). Coba ukuran target yang lebih besar.', ru: 'Запрошенную цель {target} не удалось чисто достичь. Минимальный честный закодированный вывод — {bytes} ({width}×{height} px, качество {quality} %). Попробуйте больший целевой размер.' },
+          { es: 'No se pudo alcanzar limpiamente el objetivo solicitado de {target}. La salida codificada honesta más pequeña es {bytes} ({width}×{height} px, calidad del {quality} %). Pruebe un objetivo mayor.', id: 'Target {target} yang diminta tidak bisa dicapai dengan bersih. Output enkode jujur terkecil adalah {bytes} ({width}×{height} px, kualitas {quality}%). Coba ukuran target yang lebih besar.', ru: 'Запрошенную цель {target} не удалось чисто достичь. Минимальный честный закодированный вывод — {bytes} ({width}×{height} px, качество {quality} %). Попробуйте больший целевой размер.', ja: '要求された目標{target}をクリーンに達成できませんでした。達成可能な最小の正直なエンコード出力は{bytes}（{width}×{height} px、画質{quality}%）です。より大きな目標サイズをお試しください。', ko: '요청한 {target} 목표에 깔끔하게 도달할 수 없습니다. 정직하게 인코딩된 가장 작은 출력은 {bytes}({width}×{height}px, 품질 {quality}%)입니다. 더 큰 목표 값을 시도해 보세요.' },
           'Requested {target} could not be reached cleanly. Smallest honest encoded output is {bytes} ({width}×{height}px, {quality}% quality). Try a larger target size.'
         ),
         {

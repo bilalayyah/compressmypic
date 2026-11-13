@@ -17,7 +17,7 @@ export interface GifCompressOptions {
   scalePercent: number; // 25..100
   maxColors: number; // 16..256
   frameStep: 1 | 2 | 3; // 1 = keep all, 2 = drop every 2nd, 3 = keep 1 of 3
-  lang?: SupportedLang; // when 'es'/'pt'/'fr'/'de'/'it'/'id'/'ru', thrown error messages use that language's templates
+  lang?: SupportedLang; // when 'es'/'pt'/'fr'/'de'/'it'/'id'/'ru'/'ja'/'ko', thrown error messages use that language's templates
   onProgress?: (percent: number) => void;
 }
 
@@ -27,7 +27,8 @@ export interface GifCompressOptions {
  * Portuguese and French are the Phase 2 tables (tool-ui-pt.ts / tool-ui-fr.ts,
  * /gif-compressor); German and Italian are the Phase 3 tables (tool-ui-de.ts /
  * tool-ui-it.ts, /gif-compressor); Indonesian and Russian are the Phase 4 tables
- * (tool-ui-id.ts / tool-ui-ru.ts, /gif-compressor). No logic changes — only which
+ * (tool-ui-id.ts / tool-ui-ru.ts, /gif-compressor); Japanese and Korean are the
+ * Phase 5 tables (tool-ui-ja.ts / tool-ui-ko.ts, /gif-compressor). No logic changes — only which
  * language the thrown Error carries.
  */
 type GifErrorKey =
@@ -117,6 +118,26 @@ const GIF_ERROR_RU: Record<GifErrorKey, string> = {
   errorCanvasContext: 'Не удалось инициализировать 2D-контекст Canvas.',
 };
 
+// Japanese strings copied verbatim from tool-ui-ja.ts, /gif-compressor (lines 1373-1378).
+const GIF_ERROR_JA: Record<GifErrorKey, string> = {
+  errorTooSmall: 'ファイルが小さすぎて有効なGIFではありません。',
+  errorNotValidGif: '選択したファイルは有効なGIF87aまたはGIF89aアニメーションではありません。',
+  errorInvalidDims: 'GIFのキャンバス寸法が無効な0×0です。',
+  errorTruncatedColorTable: 'GIFのグローバルカラーテーブルが途中で切れています。',
+  errorNoFrames: 'このGIFファイルから画像フレームをデコードできませんでした。',
+  errorCanvasContext: '2D Canvasコンテキストを初期化できませんでした。',
+};
+
+// Korean strings copied verbatim from tool-ui-ko.ts, /gif-compressor (lines 1377-1382).
+const GIF_ERROR_KO: Record<GifErrorKey, string> = {
+  errorTooSmall: '파일이 유효한 GIF가 되기에는 너무 작습니다.',
+  errorNotValidGif: '선택한 파일은 유효한 GIF87a나 GIF89a 애니메이션이 아닙니다.',
+  errorInvalidDims: 'GIF의 캔버스 치수가 유효하지 않은 0×0입니다.',
+  errorTruncatedColorTable: 'GIF 전역 색상 테이블이 잘렸습니다.',
+  errorNoFrames: '이 GIF 파일에서 이미지 프레임을 디코딩할 수 없습니다.',
+  errorCanvasContext: '2D 캔버스 컨텍스트를 초기화할 수 없습니다.',
+};
+
 function gifError(key: GifErrorKey, lang?: SupportedLang): string {
   switch (lang) {
     case 'es':
@@ -133,6 +154,10 @@ function gifError(key: GifErrorKey, lang?: SupportedLang): string {
       return GIF_ERROR_ID[key];
     case 'ru':
       return GIF_ERROR_RU[key];
+    case 'ja':
+      return GIF_ERROR_JA[key];
+    case 'ko':
+      return GIF_ERROR_KO[key];
     default:
       return GIF_ERROR_EN[key];
   }
