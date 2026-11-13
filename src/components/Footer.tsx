@@ -124,18 +124,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   Background Remover
                 </a>
               </li>
-              <li>
-                <a
-                  href="/image-upscaler"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNavigate('/image-upscaler');
-                  }}
-                  className="hover:text-white transition-colors"
-                >
-                  Image Upscaler
-                </a>
-              </li>
             </ul>
           </div>
 

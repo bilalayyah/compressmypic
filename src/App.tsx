@@ -76,9 +76,6 @@ import { TOOL_BY_SLUG } from './data/tools';
 const RemoveBackgroundPage = React.lazy(() =>
   import('./pages/RemoveBackgroundPage').then((m) => ({ default: m.RemoveBackgroundPage }))
 );
-const ImageUpscalerPage = React.lazy(() =>
-  import('./pages/ImageUpscalerPage').then((m) => ({ default: m.ImageUpscalerPage }))
-);
 import { CompressionSettings, ImageFormat, ImageItem } from './types';
 import { compressSingleImage, detectTransparency, loadImageFromFile, toDecodableBlob } from './utils/compressor';
 import { getFileExtension } from './utils/formatters';
@@ -141,7 +138,6 @@ const KNOWN_ROUTES = [
   '/avif-to-jpg',
   '/bmp-to-jpg',
   '/remove-background',
-  '/image-upscaler',
 ];
 
 function getNormalizedPath(rawPathname: string): string {
@@ -818,18 +814,6 @@ export default function App() {
             }
           >
             <RemoveBackgroundPage onNavigate={handleNavigate} />
-          </Suspense>
-        </main>
-      ) : currentPath === '/image-upscaler' ? (
-        <main className="flex-1">
-          <Suspense
-            fallback={
-              <div className="max-w-5xl mx-auto px-4 py-20 text-center text-sm text-slate-500">
-                Loading AI Image Upscaler...
-              </div>
-            }
-          >
-            <ImageUpscalerPage onNavigate={handleNavigate} />
           </Suspense>
         </main>
       ) : (

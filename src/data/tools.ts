@@ -2554,70 +2554,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         answer: 'Clear subjects such as portraits, products, cars, pets, and logos in JPG, PNG, WebP, or HEIC produce the cleanest edges.',
       },
     ],
-    relatedSlugs: ['/add-background-to-image', '/image-upscaler', '/image-resizer', '/png-to-webp'],
-  },
-  {
-    slug: '/image-upscaler',
-    name: 'Image Upscaler',
-    shortDescription: 'Upscale and sharpen low-res photos 2x or 4x in-browser with ESRGAN AI.',
-    category: 'ai-tools',
-    seoTitle: 'Free AI Image Upscaler Online – Upscale Photos 2x & 4x',
-    seoDescription:
-      'Upscale images 2x or 4x online free directly in your browser using ESRGAN AI. Choose Slim or Medium quality models — private, no signup, no watermark.',
-    h1: 'Free Online AI Image Upscaler (2x & 4x)',
-    subtitle:
-      'Enlarge small photos, avatars, illustrations, and product shots by 2x or 4x directly in your browser using ESRGAN super-resolution — crisp results with zero server uploads.',
-    howToSteps: [
-      {
-        title: 'Choose model & upscale factor',
-        description: 'Pick 2x or 4x resolution boost and select Slim (~2 MB, fastest) or Medium (~8 MB, sharper detail).',
-      },
-      {
-        title: 'Upload a photo to enhance',
-        description: 'Drop any JPG, PNG, WebP, or HEIC image; the browser loads the chosen ESRGAN weights on demand.',
-      },
-      {
-        title: 'Compare & download HD result',
-        description: 'Inspect pixel sharpness before and after, check the new dimensions and size, and download the upscaled image.',
-      },
-    ],
-    features: [
-      {
-        title: '2x and 4x Super-Resolution',
-        description: 'Double or quadruple image width and height using neural-network detail reconstruction instead of blurry bilinear stretching.',
-      },
-      {
-        title: 'Slim (~2 MB) & Medium (~8 MB) Models',
-        description: 'Use the lightweight Slim model by default for quick enhancements, or switch to Medium when you want extra edge fidelity.',
-      },
-      {
-        title: 'Tile-Based Memory-Safe Processing',
-        description: 'Processes images in smart overlapping patches with live progress so your browser stays responsive.',
-      },
-      {
-        title: 'Zero Server Uploads & Unlimited Use',
-        description: 'Runs completely in your browser via TensorFlow.js — private, free, and free of watermarks or API quotas.',
-      },
-    ],
-    faqs: [
-      {
-        question: 'How does the AI Image Upscaler work without a server?',
-        answer: 'When you open this tool, your browser lazy-loads TensorFlow.js and an ESRGAN neural network model (Slim ~2 MB or Medium ~8 MB) and computes the higher-resolution pixels locally.',
-      },
-      {
-        question: 'Should I choose the Slim or Medium model?',
-        answer: 'Slim (~2 MB) downloads quickly and handles most photos, screenshots, and web graphics well. Medium (~8 MB) adds extra detail on textures and illustrations at the cost of slightly longer processing time.',
-      },
-      {
-        question: 'Is there a recommended maximum input image size?',
-        answer: 'Because 4x upscaling creates 16x more pixels locally in WebGL/browser memory, photos under 1200×1200px upscale quickest. Very large photos may take longer or hit browser memory limits.',
-      },
-      {
-        question: 'Are my photos kept private?',
-        answer: 'Yes. Neither the original nor the upscaled image ever leaves your browser.',
-      },
-    ],
-    relatedSlugs: ['/remove-background', '/image-resizer', '/image-filters', '/compress-image-to-500kb'],
+    relatedSlugs: ['/add-background-to-image', '/image-resizer', '/png-to-webp'],
   },
 ];
 
