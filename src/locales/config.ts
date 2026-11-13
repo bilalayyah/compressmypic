@@ -44,8 +44,8 @@ export const DEFAULT_LANG: SupportedLang = 'en';
 export const SUPPORTED_LANGUAGES: LanguageMeta[] = [
   { code: 'en', prefix: '', nativeName: 'English', englishName: 'English', dir: 'ltr', variant: 'Default', phase: 0, status: 'live', directoryPath: '' },
   { code: 'es', prefix: 'es', nativeName: 'Español', englishName: 'Spanish', dir: 'ltr', variant: 'Neutral Latin American', phase: 1, status: 'in-progress', directoryPath: '/es/todas-las-herramientas' },
-  { code: 'pt', prefix: 'pt', nativeName: 'Português', englishName: 'Portuguese', dir: 'ltr', variant: 'Brazilian Portuguese (pt-BR)', phase: 2, status: 'planned', directoryPath: '/pt/todas-as-ferramentas' },
-  { code: 'fr', prefix: 'fr', nativeName: 'Français', englishName: 'French', dir: 'ltr', variant: 'Natural international French', phase: 2, status: 'planned', directoryPath: '/fr/tous-les-outils' },
+  { code: 'pt', prefix: 'pt', nativeName: 'Português', englishName: 'Portuguese', dir: 'ltr', variant: 'Brazilian Portuguese (pt-BR)', phase: 2, status: 'in-progress', directoryPath: '/pt/todas-as-ferramentas' },
+  { code: 'fr', prefix: 'fr', nativeName: 'Français', englishName: 'French', dir: 'ltr', variant: 'Natural international French', phase: 2, status: 'in-progress', directoryPath: '/fr/tous-les-outils' },
   { code: 'de', prefix: 'de', nativeName: 'Deutsch', englishName: 'German', dir: 'ltr', variant: 'Standard German', phase: 3, status: 'planned', directoryPath: '/de/alle-tools' },
   { code: 'it', prefix: 'it', nativeName: 'Italiano', englishName: 'Italian', dir: 'ltr', variant: 'Standard Italian', phase: 3, status: 'planned', directoryPath: '/it/tutti-gli-strumenti' },
   { code: 'id', prefix: 'id', nativeName: 'Bahasa Indonesia', englishName: 'Indonesian', dir: 'ltr', variant: 'Standard Bahasa Indonesia', phase: 4, status: 'planned', directoryPath: '/id/semua-alat' },
