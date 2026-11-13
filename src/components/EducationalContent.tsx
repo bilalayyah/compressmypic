@@ -64,7 +64,204 @@ const useCases = [
   },
 ];
 
-export const EducationalContent: React.FC = () => {
+export interface EducationalSectionStrings {
+  heading: string;
+  body: string;
+  bullets?: string[];
+}
+
+interface EducationalContentProps {
+  sections?: EducationalSectionStrings[];
+}
+
+/** Split a "Title: description" bullet on the FIRST ': '. */
+function splitBullet(bullet: string): { title: string; description: string } {
+  const idx = bullet.indexOf(': ');
+  if (idx === -1) return { title: bullet, description: '' };
+  return { title: bullet.slice(0, idx), description: bullet.slice(idx + 2) };
+}
+
+/** Render a '\n\n'-separated body as <p> paragraphs. Empty bodies render nothing. */
+function renderBodyParagraphs(body: string, firstClassName: string, restClassName: string) {
+  return body
+    .split('\n\n')
+    .map((p) => p.trim())
+    .filter((p) => p.length > 0)
+    .map((p, i) => (
+      <p key={i} className={i === 0 ? firstClassName : restClassName}>
+        {p}
+      </p>
+    ));
+}
+
+export const EducationalContent: React.FC<EducationalContentProps> = ({ sections }) => {
+  if (sections) {
+    const s = sections;
+    const bodyClass = 'mt-3 text-base text-slate-600';
+    const introFirstClass = 'mt-4 text-base sm:text-lg text-slate-600 leading-relaxed';
+    const introRestClass = 'mt-3 text-base sm:text-lg text-slate-600 leading-relaxed';
+    const benefitIcons = [
+      { Icon: Globe, bg: 'bg-blue-50 text-blue-600' },
+      { Icon: HardDrive, bg: 'bg-emerald-50 text-emerald-600' },
+      { Icon: Share2, bg: 'bg-indigo-50 text-indigo-600' },
+      { Icon: Wifi, bg: 'bg-cyan-50 text-cyan-600' },
+    ];
+    const stepIcons = [Upload, SlidersHorizontal, Download];
+    const formatIcons = [
+      { Icon: ImageIcon, bg: 'bg-amber-50 text-amber-600' },
+      { Icon: FileImage, bg: 'bg-violet-50 text-violet-600' },
+      { Icon: Sparkles, bg: 'bg-blue-50 text-blue-600' },
+    ];
+    const tipIcons = [Check, Check, Check, Gauge, Check];
+    return (
+      <section id="how-it-works" className="py-14 sm:py-20 border-t border-slate-200 bg-slate-50/50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-16">
+          {/* Section 1: What is Image Compression */}
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              {s[0]?.heading}
+            </h2>
+            {renderBodyParagraphs(s[0]?.body ?? '', introFirstClass, introRestClass)}
+          </div>
+
+          {/* Section 2: Why Should You Compress Images */}
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              {s[1]?.heading}
+            </h2>
+            {renderBodyParagraphs(s[1]?.body ?? '', bodyClass, bodyClass)}
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {(s[1]?.bullets ?? []).map((bullet, i) => {
+                const { title, description } = splitBullet(bullet);
+                const { Icon, bg } = benefitIcons[i] ?? benefitIcons[0];
+                return (
+                  <div key={i} className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+                    <div className={`w-9 h-9 rounded-lg ${bg} flex items-center justify-center mb-3`}>
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-base font-bold text-slate-900">{title}</h3>
+                    <p className="mt-1.5 text-sm text-slate-600 leading-normal">{description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Section 3: How It Works */}
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">{s[2]?.heading}</h2>
+            {renderBodyParagraphs(s[2]?.body ?? '', bodyClass, bodyClass)}
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {(s[2]?.bullets ?? []).map((bullet, i) => {
+                const { title, description } = splitBullet(bullet);
+                const Icon = stepIcons[i] ?? Upload;
+                return (
+                  <div key={i} className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+                    <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-3">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <h3 className="mt-1 text-base font-bold text-slate-900">{title}</h3>
+                    <p className="mt-1.5 text-sm text-slate-600 leading-normal">{description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Section 4: Features */}
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              {s[3]?.heading}
+            </h2>
+            {renderBodyParagraphs(s[3]?.body ?? '', bodyClass, bodyClass)}
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {(s[3]?.bullets ?? []).map((bullet, i) => {
+                const { title, description } = splitBullet(bullet);
+                return (
+                  <div key={i} className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+                    <h3 className="text-base font-bold text-slate-900">{title}</h3>
+                    <p className="mt-1.5 text-sm text-slate-600 leading-normal">{description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Section 5: Image Format Guide */}
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              {s[4]?.heading}
+            </h2>
+            {renderBodyParagraphs(s[4]?.body ?? '', bodyClass, bodyClass)}
+            <div className="mt-8 space-y-5">
+              {(s[4]?.bullets ?? []).map((bullet, i) => {
+                const { title, description } = splitBullet(bullet);
+                const { Icon, bg } = formatIcons[i] ?? formatIcons[0];
+                return (
+                  <div key={i} className="flex gap-4 bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+                    <div className={`w-10 h-10 flex-shrink-0 rounded-lg ${bg} flex items-center justify-center`}>
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-bold text-slate-900">{title}</h3>
+                      <p className="mt-1.5 text-sm text-slate-600 leading-normal">{description}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Section 6: Use Cases */}
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              {s[5]?.heading}
+            </h2>
+            {renderBodyParagraphs(s[5]?.body ?? '', bodyClass, bodyClass)}
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {(s[5]?.bullets ?? []).map((bullet, i) => {
+                const { title, description } = splitBullet(bullet);
+                return (
+                  <div key={i} className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+                    <h3 className="text-base font-bold text-slate-900">{title}</h3>
+                    <p className="mt-1.5 text-sm text-slate-600 leading-normal">{description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Section 7: Why Image Size Matters */}
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              {s[6]?.heading}
+            </h2>
+            {renderBodyParagraphs(s[6]?.body ?? '', bodyClass, bodyClass)}
+          </div>
+
+          {/* Section 8: Optimization Tips */}
+          <div className="bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs">
+            <h2 className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+              <Zap className="w-5 h-5 text-blue-600" />
+              {s[7]?.heading}
+            </h2>
+            <ul className="mt-3 space-y-3">
+              {(s[7]?.bullets ?? []).map((bullet, i) => {
+                const { title, description } = splitBullet(bullet);
+                const Icon = tipIcons[i] ?? Check;
+                return (
+                  <li key={i} className="flex gap-3 text-sm text-slate-600 leading-relaxed">
+                    <Icon className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                    <span><strong className="text-slate-900">{title}:</strong> {description}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      </section>
+    );
+  }
   return (
     <section id="how-it-works" className="py-14 sm:py-20 border-t border-slate-200 bg-slate-50/50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-16">

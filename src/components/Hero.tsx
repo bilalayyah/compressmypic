@@ -1,34 +1,65 @@
+// Hero — multilingual replacement.
+// Target path in the repo: src/components/Hero.tsx (REPLACE the whole file).
+// Change vs the English original: new optional `strings` prop. App.tsx passes
+// ES.hero (from the active locale file) when the page is localized; when omitted,
+// the English strings below are used, so English behaviour is unchanged.
+// No Spanish text is hardcoded here — the dictionary stays in src/locales/es/ui.ts
+// (loaded lazily by App.tsx), keeping this component locale-agnostic.
+
 import React from 'react';
 import { ShieldCheck, Zap, Lock } from 'lucide-react';
 
-export const Hero: React.FC = () => {
+export interface HeroStrings {
+  pill: string;
+  h1: string;
+  sub: string;
+  badge1: string;
+  badge2: string;
+  badge3: string;
+}
+
+const EN_STRINGS: HeroStrings = {
+  pill: '100% Private Client-Side Compression · No Server Uploads',
+  h1: 'Free Image Compressor – Compress Images Online & Reduce Size Without Losing Quality',
+  sub: 'Reduce image file sizes without sacrificing noticeable quality. Compress image online free with our free image compressor and photo compressor — an online image optimizer for JPG, PNG, WebP and HEIC. Fast, secure, no signup, no watermark, and easy image compression directly in your browser.',
+  badge1: 'Your images never leave your device',
+  badge2: 'Instant browser processing',
+  badge3: 'JPG, PNG, WebP & HEIC supported',
+};
+
+interface HeroProps {
+  /** Localized hero strings for the active language. Defaults to English. */
+  strings?: HeroStrings;
+}
+
+export const Hero: React.FC<HeroProps> = ({ strings = EN_STRINGS }) => {
   return (
     <section className="pt-10 pb-6 sm:pt-14 sm:pb-8 text-center px-4 max-w-4xl mx-auto">
       {/* Primary Trust Callout */}
       <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs sm:text-sm font-medium mb-6">
         <Lock className="w-3.5 h-3.5 text-blue-600" />
-        <span>100% Private Client-Side Compression · No Server Uploads</span>
+        <span>{strings.pill}</span>
       </div>
       <h1 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold text-slate-900 tracking-tight text-balance leading-tight sm:leading-tight">
-        Free Image Compressor – Compress Images Online &amp; Reduce Size Without Losing Quality
+        {strings.h1}
       </h1>
       <p className="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed text-balance">
-        Reduce image file sizes without sacrificing noticeable quality. Compress image online free with our free image compressor and photo compressor — an online image optimizer for JPG, PNG, WebP and HEIC. Fast, secure, no signup, no watermark, and easy image compression directly in your browser.
+        {strings.sub}
       </p>
       {/* Trust Badges Bar */}
       <div className="mt-6 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs sm:text-sm text-slate-500 font-medium">
         <div className="flex items-center gap-1.5">
           <ShieldCheck className="w-4 h-4 text-emerald-600" />
-          <span>Your images never leave your device</span>
+          <span>{strings.badge1}</span>
         </div>
         <span aria-hidden="true" className="text-slate-300 hidden sm:inline">·</span>
         <div className="flex items-center gap-1.5">
           <Zap className="w-4 h-4 text-blue-600" />
-          <span>Instant browser processing</span>
+          <span>{strings.badge2}</span>
         </div>
         <span aria-hidden="true" className="text-slate-300 hidden sm:inline">·</span>
         <div className="flex items-center gap-1.5">
-          <span>JPG, PNG, WebP &amp; HEIC supported</span>
+          <span>{strings.badge3}</span>
         </div>
       </div>
     </section>

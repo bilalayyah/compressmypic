@@ -2,6 +2,28 @@ import React from 'react';
 import { Sliders, RotateCcw, Trash2, Play, Info, AlertTriangle, Layers } from 'lucide-react';
 import { CompressionPreset, CompressionSettings, OutputFormatChoice } from '../types';
 
+export interface CompressionControlsStrings {
+  modeLabel?: string;
+  presetLow?: string;
+  presetBalanced?: string;
+  presetHigh?: string;
+  presetCustom?: string;
+  formatLabel?: string;
+  formatOriginal?: string;
+  qualityLabel?: string;
+  qualityHigh?: string;
+  qualityOptimal?: string;
+  qualityMax?: string;
+  qualityAriaLabel?: string;
+  compressAll?: string;
+  compressing?: string;
+  clearAll?: string;
+  clearAllTitle?: string;
+  transparencyTitle?: string;
+  transparencyBody?: string;
+  pngTip?: string;
+}
+
 interface CompressionControlsProps {
   settings: CompressionSettings;
   onUpdateSettings: (newSettings: Partial<CompressionSettings>) => void;
@@ -11,6 +33,7 @@ interface CompressionControlsProps {
   hasTransparentImages: boolean;
   hasPngImages?: boolean;
   isCompressing: boolean;
+  strings?: CompressionControlsStrings;
 }
 
 export const CompressionControls: React.FC<CompressionControlsProps> = ({
@@ -22,6 +45,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
   hasTransparentImages,
   hasPngImages = false,
   isCompressing,
+  strings,
 }) => {
   const handlePresetSelect = (preset: CompressionPreset) => {
     let quality = settings.quality;
@@ -51,7 +75,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
         {/* Left: Compression Preset Tabs */}
         <div>
           <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">
-            Compression Mode
+            {strings?.modeLabel ?? 'Compression Mode'}
           </label>
           <div className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-100 rounded-xl">
             <button
@@ -63,7 +87,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Low Compression (85%)
+              {strings?.presetLow ?? 'Low Compression (85%)'}
             </button>
             <button
               type="button"
@@ -74,7 +98,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Balanced (70%)
+              {strings?.presetBalanced ?? 'Balanced (70%)'}
             </button>
             <button
               type="button"
@@ -85,7 +109,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              High Compression (50%)
+              {strings?.presetHigh ?? 'High Compression (50%)'}
             </button>
             <button
               type="button"
@@ -97,7 +121,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
               }`}
             >
               <Sliders className="w-3.5 h-3.5" />
-              Custom
+              {strings?.presetCustom ?? 'Custom'}
             </button>
           </div>
         </div>
@@ -105,12 +129,12 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
         {/* Right: Output Format Selection */}
         <div>
           <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">
-            Output Format
+            {strings?.formatLabel ?? 'Output Format'}
           </label>
           <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl">
             {(
               [
-                { id: 'original', label: 'Original' },
+                { id: 'original', label: strings?.formatOriginal ?? 'Original' },
                 { id: 'jpeg', label: 'JPG' },
                 { id: 'png', label: 'PNG' },
                 { id: 'webp', label: 'WebP' },
@@ -138,13 +162,17 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
         <div className="flex-1 max-w-xl">
           <div className="flex items-center justify-between text-xs mb-2">
             <span className="font-semibold text-slate-700 flex items-center gap-1.5">
-              Quality Target:
+              {strings?.qualityLabel ?? 'Quality Target:'}
               <span className="text-blue-600 font-bold font-mono text-sm tabular-nums">
                 {settings.quality}%
               </span>
             </span>
             <span className="text-slate-500">
-              {settings.quality >= 80 ? 'High Fidelity' : settings.quality >= 60 ? 'Optimal Web Balance' : 'Max Space Savings'}
+              {settings.quality >= 80
+                ? strings?.qualityHigh ?? 'High Fidelity'
+                : settings.quality >= 60
+                  ? strings?.qualityOptimal ?? 'Optimal Web Balance'
+                  : strings?.qualityMax ?? 'Max Space Savings'}
             </span>
           </div>
 
@@ -159,7 +187,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
               onChange={handleSliderChange}
               disabled={isCompressing}
               className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
-              aria-label="Quality slider from 10 to 100 percent"
+              aria-label={strings?.qualityAriaLabel ?? 'Quality slider from 10 to 100 percent'}
             />
             <span className="text-xs text-slate-400 font-mono">100%</span>
           </div>
@@ -176,12 +204,12 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
             {isCompressing ? (
               <>
                 <RotateCcw className="w-4 h-4 animate-spin" />
-                <span>Compressing...</span>
+                <span>{strings?.compressing ?? 'Compressing...'}</span>
               </>
             ) : (
               <>
                 <Play className="w-4 h-4 fill-current" />
-                <span>Re-compress All</span>
+                <span>{strings?.compressAll ?? 'Re-compress All'}</span>
               </>
             )}
           </button>
@@ -191,10 +219,10 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
             onClick={onClearAll}
             disabled={isCompressing || totalImagesCount === 0}
             className="inline-flex items-center gap-1.5 px-3.5 py-2.5 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-sm font-medium rounded-xl transition-colors cursor-pointer whitespace-nowrap shrink-0"
-            title="Clear all images"
+            title={strings?.clearAllTitle ?? 'Clear all images'}
           >
             <Trash2 className="w-4 h-4" />
-            <span className="hidden sm:inline">Clear All</span>
+            <span className="hidden sm:inline">{strings?.clearAll ?? 'Clear All'}</span>
           </button>
         </div>
       </div>
@@ -204,10 +232,14 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
         <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800 flex items-start gap-2.5">
           <AlertTriangle className="w-4 h-4 mt-0.5 text-amber-600 shrink-0" />
           <div className="space-y-1">
-            <p className="font-semibold">Transparency Notice for JPEG Conversion</p>
-            <p className="text-amber-700">
-              JPEG format does not support transparency (alpha channels). Transparent backgrounds will be replaced with a solid matte background (default white). Select <strong>PNG</strong> or <strong>WebP</strong> if you wish to retain transparent backgrounds.
-            </p>
+            <p className="font-semibold">{strings?.transparencyTitle ?? 'Transparency Notice for JPEG Conversion'}</p>
+            {strings?.transparencyBody ? (
+              <p className="text-amber-700">{strings.transparencyBody}</p>
+            ) : (
+              <p className="text-amber-700">
+                JPEG format does not support transparency (alpha channels). Transparent backgrounds will be replaced with a solid matte background (default white). Select <strong>PNG</strong> or <strong>WebP</strong> if you wish to retain transparent backgrounds.
+              </p>
+            )}
           </div>
         </div>
       )}
@@ -216,9 +248,13 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
       {showPngLosslessTip && (
         <div className="mt-4 p-3 bg-blue-50/70 border border-blue-100 rounded-xl text-xs text-blue-800 flex items-start gap-2">
           <Info className="w-4 h-4 mt-0.5 text-blue-600 shrink-0" />
-          <p>
-            PNG is a lossless format and ignores the quality slider, so re-encoding a PNG can sometimes match or exceed the original file size. For photo-like PNGs, selecting <strong>WebP</strong> or <strong>JPG</strong> usually produces 50–80% smaller files.
-          </p>
+          {strings?.pngTip ? (
+            <p>{strings.pngTip}</p>
+          ) : (
+            <p>
+              PNG is a lossless format and ignores the quality slider, so re-encoding a PNG can sometimes match or exceed the original file size. For photo-like PNGs, selecting <strong>WebP</strong> or <strong>JPG</strong> usually produces 50–80% smaller files.
+            </p>
+          )}
         </div>
       )}
     </div>

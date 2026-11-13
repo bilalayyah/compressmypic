@@ -35,12 +35,31 @@ import {
   Scissors,
   ZoomIn,
 } from 'lucide-react';
-import { TOOLS_REGISTRY, TOOL_CATEGORIES, ToolCategoryId } from '../data/tools';
+import { TOOLS_REGISTRY, TOOL_CATEGORIES, ToolCategoryId, ToolDefinition } from '../data/tools';
+
+interface ToolsDirectoryStrings {
+  eyebrow: string;
+  heading: string;
+  subheading: string;
+  allTools: string; // 'All Tools' filter label
+  openTool: string; // 'Open tool' card link label
+}
 
 interface ToolsDirectorySectionProps {
   onNavigate: (path: string) => void;
   currentPath?: string;
+  toolsRegistry?: ToolDefinition[];
+  categoryLabels?: Array<{ id: string; label: string }>;
+  strings?: ToolsDirectoryStrings;
 }
+
+const DEFAULT_STRINGS: ToolsDirectoryStrings = {
+  eyebrow: 'All Browser-Native Tools',
+  heading: 'More Free Image Processing Tools',
+  subheading: 'Every tool runs 100% locally in your browser — no server uploads, no signup, no watermarks.',
+  allTools: 'All Tools',
+  openTool: 'Open tool',
+};
 
 const TOOL_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   '/': Minimize2,
@@ -98,11 +117,14 @@ const TOOL_ICONS: Record<string, React.ComponentType<{ className?: string }>> = 
 export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
   onNavigate,
   currentPath = '/',
+  toolsRegistry = TOOLS_REGISTRY,
+  categoryLabels = TOOL_CATEGORIES,
+  strings = DEFAULT_STRINGS,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<'all' | ToolCategoryId>('all');
 
-  const otherTools = TOOLS_REGISTRY.filter((t) => t.slug !== currentPath);
-  const activeCategories = TOOL_CATEGORIES.filter((cat) =>
+  const otherTools = toolsRegistry.filter((t) => t.slug !== currentPath);
+  const activeCategories = categoryLabels.filter((cat) =>
     otherTools.some((t) => t.category === cat.id)
   );
   const visibleTools =
@@ -116,13 +138,13 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
-              All Browser-Native Tools
+              {strings.eyebrow}
             </span>
             <h2 className="mt-1 text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-              More Free Image Processing Tools
+              {strings.heading}
             </h2>
             <p className="mt-2 text-sm sm:text-base text-slate-600">
-              Every tool runs 100% locally in your browser — no server uploads, no signup, no watermarks.
+              {strings.subheading}
             </p>
           </div>
         </div>
@@ -138,7 +160,7 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
                 : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
             }`}
           >
-            All Tools ({otherTools.length})
+            {strings.allTools} ({otherTools.length})
           </button>
           {activeCategories.map((cat) => {
             const count = otherTools.filter((t) => t.category === cat.id).length;
@@ -146,7 +168,7 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
               <button
                 key={cat.id}
                 type="button"
-                onClick={() => setSelectedCategory(cat.id)}
+                onClick={() => setSelectedCategory(cat.id as ToolCategoryId)}
                 className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl border transition-colors cursor-pointer ${
                   selectedCategory === cat.id
                     ? 'bg-blue-600 text-white border-blue-600 shadow-xs'
@@ -162,7 +184,7 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {visibleTools.map((tool) => {
             const Icon = TOOL_ICONS[tool.slug] || Sparkles;
-            const cat = TOOL_CATEGORIES.find((c) => c.id === tool.category)?.label;
+            const cat = categoryLabels.find((c) => c.id === tool.category)?.label;
             return (
               <a
                 key={tool.slug}
@@ -192,7 +214,7 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
                   </p>
                 </div>
                 <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-blue-600">
-                  <span>Open tool</span>
+                  <span>{strings.openTool}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </span>
               </a>

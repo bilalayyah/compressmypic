@@ -1,11 +1,31 @@
 import React, { useState } from 'react';
 import { Share2, Link2, Check, Mail } from 'lucide-react';
 
-const SITE_URL = 'https://compressmypic.online/';
-const SHARE_TEXT = 'Compress images online for free — no signup, no watermark. Try CompressMyPic:';
+export interface ShareSectionStrings {
+  heading: string;
+  text: string;
+  shareText: string;
+  siteUrl: string;
+  shareOn: string; // contains {name}
+  copyLink: string;
+  copied: string;
+  share: string;
+  emailSubject: string;
+  nativeShareTitle: string;
+}
 
-const encodedUrl = encodeURIComponent(SITE_URL);
-const encodedText = encodeURIComponent(`${SHARE_TEXT} ${SITE_URL}`);
+const DEFAULT_STRINGS: ShareSectionStrings = {
+  heading: 'Share CompressMyPic with friends',
+  text: 'Found this tool useful? Help a friend compress their images too — it takes one tap.',
+  shareText: 'Compress images online for free — no signup, no watermark. Try CompressMyPic:',
+  siteUrl: 'https://compressmypic.online/',
+  shareOn: 'Share on {name}',
+  copyLink: 'Copy link',
+  copied: 'Copied!',
+  share: 'Share',
+  emailSubject: 'Free Image Compressor – CompressMyPic',
+  nativeShareTitle: 'CompressMyPic – Free Image Compressor',
+};
 
 const XIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
@@ -23,25 +43,28 @@ const LinkedInIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" /></svg>
 );
 
-const shareLinks = [
-  { name: 'X', url: `https://twitter.com/intent/tweet?text=${encodedText}`, bg: '#000000', icon: <XIcon /> },
-  { name: 'Facebook', url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, bg: '#1877F2', icon: <FacebookIcon /> },
-  { name: 'WhatsApp', url: `https://wa.me/?text=${encodedText}`, bg: '#25D366', icon: <WhatsAppIcon /> },
-  { name: 'Telegram', url: `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`, bg: '#229ED9', icon: <TelegramIcon /> },
-  { name: 'LinkedIn', url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`, bg: '#0A66C2', icon: <LinkedInIcon /> },
-  { name: 'Email', url: `mailto:?subject=${encodeURIComponent('Free Image Compressor – CompressMyPic')}&body=${encodedText}`, bg: '#64748b', icon: <Mail className="w-5 h-5" /> },
-];
-
-export function ShareSection() {
+export function ShareSection({ strings = DEFAULT_STRINGS }: { strings?: ShareSectionStrings }) {
   const [copied, setCopied] = useState(false);
   const canNativeShare = typeof navigator !== 'undefined' && 'share' in navigator;
 
+  const encodedUrl = encodeURIComponent(strings.siteUrl);
+  const encodedText = encodeURIComponent(`${strings.shareText} ${strings.siteUrl}`);
+
+  const shareLinks = [
+    { name: 'X', url: `https://twitter.com/intent/tweet?text=${encodedText}`, bg: '#000000', icon: <XIcon /> },
+    { name: 'Facebook', url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, bg: '#1877F2', icon: <FacebookIcon /> },
+    { name: 'WhatsApp', url: `https://wa.me/?text=${encodedText}`, bg: '#25D366', icon: <WhatsAppIcon /> },
+    { name: 'Telegram', url: `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`, bg: '#229ED9', icon: <TelegramIcon /> },
+    { name: 'LinkedIn', url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`, bg: '#0A66C2', icon: <LinkedInIcon /> },
+    { name: 'Email', url: `mailto:?subject=${encodeURIComponent(strings.emailSubject)}&body=${encodedText}`, bg: '#64748b', icon: <Mail className="w-5 h-5" /> },
+  ];
+
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(SITE_URL);
+      await navigator.clipboard.writeText(strings.siteUrl);
     } catch {
       const ta = document.createElement('textarea');
-      ta.value = SITE_URL;
+      ta.value = strings.siteUrl;
       document.body.appendChild(ta);
       ta.select();
       document.execCommand('copy');
@@ -53,7 +76,7 @@ export function ShareSection() {
 
   const handleNativeShare = async () => {
     try {
-      await navigator.share({ title: 'CompressMyPic – Free Image Compressor', text: SHARE_TEXT, url: SITE_URL });
+      await navigator.share({ title: strings.nativeShareTitle, text: strings.shareText, url: strings.siteUrl });
     } catch {
       // user cancelled the share sheet
     }
@@ -64,22 +87,22 @@ export function ShareSection() {
       <div className="bg-blue-50 border border-blue-100 rounded-2xl px-6 py-8 text-center">
         <div className="flex items-center justify-center gap-2 mb-2">
           <Share2 className="w-5 h-5 text-blue-600" />
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Share CompressMyPic with friends</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900">{strings.heading}</h2>
         </div>
-        <p className="text-slate-600 mb-6">Found this tool useful? Help a friend compress their images too — it takes one tap.</p>
+        <p className="text-slate-600 mb-6">{strings.text}</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           {shareLinks.map((s) => (
-            <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={`Share on ${s.name}`} title={`Share on ${s.name}`} className="w-12 h-12 rounded-full flex items-center justify-center text-white shadow-sm hover:opacity-85 hover:scale-105 transition" style={{ backgroundColor: s.bg }}>
+            <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={strings.shareOn.replace('{name}', s.name)} title={strings.shareOn.replace('{name}', s.name)} className="w-12 h-12 rounded-full flex items-center justify-center text-white shadow-sm hover:opacity-85 hover:scale-105 transition" style={{ backgroundColor: s.bg }}>
               {s.icon}
             </a>
           ))}
-          <button onClick={handleCopy} aria-label="Copy link" title="Copy link" className="h-12 px-4 rounded-full bg-white border border-slate-200 text-slate-700 font-medium flex items-center gap-2 shadow-sm hover:bg-slate-50 transition">
+          <button onClick={handleCopy} aria-label={strings.copyLink} title={strings.copyLink} className="h-12 px-4 rounded-full bg-white border border-slate-200 text-slate-700 font-medium flex items-center gap-2 shadow-sm hover:bg-slate-50 transition">
             {copied ? <Check className="w-5 h-5 text-green-600" /> : <Link2 className="w-5 h-5" />}
-            {copied ? 'Copied!' : 'Copy link'}
+            {copied ? strings.copied : strings.copyLink}
           </button>
           {canNativeShare && (
             <button onClick={handleNativeShare} className="h-12 px-5 rounded-full bg-blue-600 text-white font-medium flex items-center gap-2 shadow-sm hover:bg-blue-700 transition">
-              <Share2 className="w-5 h-5" /> Share
+              <Share2 className="w-5 h-5" /> {strings.share}
             </button>
           )}
         </div>

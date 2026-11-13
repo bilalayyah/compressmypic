@@ -1,3 +1,11 @@
+// FaqSection — multilingual replacement.
+// Target path in the repo: src/components/FaqSection.tsx (REPLACE the whole file).
+// Change vs the English original: new optional props `heading`, `subheading`, `faqs`.
+// App.tsx passes ES.faqSection (from the active locale file) when the page is
+// localized; when omitted, the English FAQ_DATA below is used, so English behaviour
+// is unchanged. No Spanish text is hardcoded here — the dictionary stays in
+// src/locales/es/ui.ts (loaded lazily by App.tsx).
+
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
@@ -110,7 +118,20 @@ const FAQ_DATA: FaqItem[] = [
   },
 ];
 
-export const FaqSection: React.FC = () => {
+interface FaqSectionProps {
+  /** Localized section heading. Defaults to the English heading. */
+  heading?: string;
+  /** Localized section subheading. Defaults to the English subheading. */
+  subheading?: string;
+  /** Localized FAQ items. Defaults to the English FAQ_DATA. */
+  faqs?: FaqItem[];
+}
+
+export const FaqSection: React.FC<FaqSectionProps> = ({
+  heading = 'Frequently Asked Questions',
+  subheading = 'Everything you need to know about compressing images online for free with CompressMyPic.',
+  faqs = FAQ_DATA,
+}) => {
   const [openIds, setOpenIds] = useState<Set<string>>(new Set(['faq-1', 'faq-4']));
 
   const toggleFaq = (id: string) => {
@@ -130,15 +151,15 @@ export const FaqSection: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-10">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            Frequently Asked Questions
+            {heading}
           </h2>
           <p className="mt-3 text-base text-slate-600 max-w-2xl mx-auto">
-            Everything you need to know about compressing images online for free with CompressMyPic.
+            {subheading}
           </p>
         </div>
 
         <div className="space-y-3">
-          {FAQ_DATA.map((item) => {
+          {faqs.map((item) => {
             const isOpen = openIds.has(item.id);
             return (
               <div

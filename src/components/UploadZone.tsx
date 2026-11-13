@@ -1,6 +1,21 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { UploadCloud, FileImage, AlertCircle, Sparkles } from 'lucide-react';
 
+export interface UploadZoneStrings {
+  dropText: string;
+  browseButton: string;
+  browsePrefix: string;
+  browseSuffix: string;
+  orPaste: string;
+  hint: string; // contains {max}
+  errorTooBig: string;
+  errorBadType: string;
+  errorUnreadable: string;
+  errorMore: string; // contains {count}
+  formatsLabel: string;
+  ariaLabel: string;
+}
+
 interface UploadZoneProps {
   onFilesSelected: (files: File[]) => void;
   maxFileSizeMB: number;
@@ -12,6 +27,7 @@ interface UploadZoneProps {
   supportedFormatsLabel?: string;
   title?: string;
   subtitle?: React.ReactNode;
+  strings?: UploadZoneStrings;
 }
 
 const DEFAULT_ALLOWED_TYPES = [
@@ -33,10 +49,16 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
   accept = 'image/jpeg,image/png,image/webp,image/heic,image/heif,.jpg,.jpeg,.png,.webp,.heic,.heif',
   allowedMimeTypes = DEFAULT_ALLOWED_TYPES,
   allowedExtensionsRegex = DEFAULT_EXT_REGEX,
-  supportedFormatsLabel = 'JPG, PNG, WebP, HEIC',
-  title = 'Drag & drop images here',
+  supportedFormatsLabel,
+  title,
   subtitle,
+  strings,
 }) => {
+  const formatsLabel = supportedFormatsLabel ?? strings?.formatsLabel ?? 'JPG, PNG, WebP, HEIC';
+  const resolvedTitle = title ?? strings?.dropText ?? 'Drag & drop images here';
+  const browsePrefix = strings?.browsePrefix ?? 'or';
+  const browseButtonText = strings?.browseButton ?? 'browse files';
+  const browseSuffixText = strings?.browseSuffix ?? 'from your computer or phone';
   const [isDragging, setIsDragging] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -58,17 +80,29 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
           allowedExtensionsRegex.test(file.name);
 
         if (!isTypeAllowed) {
-          errors.push(`"${file.name}" is not a supported format (${supportedFormatsLabel}).`);
+          errors.push(
+            strings
+              ? strings.errorBadType.replace('{name}', file.name).replace('{formats}', formatsLabel)
+              : `"${file.name}" is not a supported format (${formatsLabel}).`
+          );
           continue;
         }
 
         if (file.size > maxBytes) {
-          errors.push(`"${file.name}" exceeds the maximum limit of ${maxFileSizeMB} MB.`);
+          errors.push(
+            strings
+              ? strings.errorTooBig.replace('{name}', file.name).replace('{max}', String(maxFileSizeMB))
+              : `"${file.name}" exceeds the maximum limit of ${maxFileSizeMB} MB.`
+          );
           continue;
         }
 
         if (file.size === 0) {
-          errors.push(`"${file.name}" is an empty file (0 bytes).`);
+          errors.push(
+            strings
+              ? strings.errorUnreadable.replace('{name}', file.name)
+              : `"${file.name}" is an empty file (0 bytes).`
+          );
           continue;
         }
 
@@ -78,7 +112,11 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
       if (errors.length > 0) {
         setErrorMessage(
           errors.slice(0, 3).join(' ') +
-            (errors.length > 3 ? ` (+${errors.length - 3} more errors)` : '')
+            (errors.length > 3
+              ? strings
+                ? ` ${strings.errorMore.replace('{count}', String(errors.length - 3))}`
+                : ` (+${errors.length - 3} more errors)`
+              : '')
         );
       }
 
@@ -91,7 +129,8 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
       multiple,
       allowedMimeTypes,
       allowedExtensionsRegex,
-      supportedFormatsLabel,
+      formatsLabel,
+      strings,
       onFilesSelected,
     ]
   );
@@ -160,7 +199,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
             fileInputRef.current?.click();
           }
         }}
-        aria-label="Upload images area. Drag and drop or click to browse files."
+        aria-label={strings?.ariaLabel ?? 'Upload images area. Drag and drop or click to browse files.'}
       >
         <input
           ref={fileInputRef}
@@ -182,16 +221,16 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
           </div>
 
           <p className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
-            {title}
+            {resolvedTitle}
           </p>
           <p className="mt-1 text-sm text-slate-500">
             {subtitle || (
               <>
-                or{' '}
+                {browsePrefix}{' '}
                 <span className="text-blue-600 font-semibold underline underline-offset-2">
-                  browse files
+                  {browseButtonText}
                 </span>{' '}
-                from your computer or phone
+                {browseSuffixText}
               </>
             )}
           </p>
@@ -199,14 +238,16 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-xs text-slate-500">
             <span className="inline-flex items-center gap-1 font-medium bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">
               <FileImage className="w-3.5 h-3.5" />
-              {supportedFormatsLabel}
+              {formatsLabel}
             </span>
             <span className="font-medium bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">
-              Max {maxFileSizeMB} MB per image
+              {strings?.hint
+                ? strings.hint.replace('{max}', String(maxFileSizeMB))
+                : `Max ${maxFileSizeMB} MB per image`}
             </span>
             <span className="hidden sm:inline-flex items-center gap-1 font-medium bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">
               <Sparkles className="w-3.5 h-3.5 text-blue-500" />
-              Paste (Ctrl+V) supported
+              {strings?.orPaste ?? 'Paste (Ctrl+V) supported'}
             </span>
           </div>
         </div>

@@ -3,12 +3,31 @@ import { X, ZoomIn, ZoomOut, Maximize2, SplitSquareVertical, Columns } from 'luc
 import { ImageItem } from '../types';
 import { formatBytes, formatPercent } from '../utils/formatters';
 
-interface ComparisonModalProps {
-  image: ImageItem;
-  onClose: () => void;
+export interface ComparisonModalStrings {
   titlePrefix?: string;
   beforeLabel?: string;
   afterLabel?: string;
+  closeLabel?: string;
+  instruction?: string;
+  sliderLabel?: string;
+  sideBySideLabel?: string;
+  zoomInLabel?: string;
+  zoomOutLabel?: string;
+  originalLabel?: string;
+  outputLabel?: string;
+  reductionLabel?: string;
+  sizeChangeLabel?: string;
+  qualityLabel?: string;
+  formatLabel?: string;
+  modalAriaLabel?: string;
+  altCompressed?: string; // contains {name}
+  altOriginal?: string; // contains {name}
+  altProcessed?: string; // contains {name}
+}
+
+interface ComparisonModalProps extends ComparisonModalStrings {
+  image: ImageItem;
+  onClose: () => void;
 }
 
 export const ComparisonModal: React.FC<ComparisonModalProps> = ({
@@ -17,7 +36,26 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
   titlePrefix = 'Visual Quality Comparison',
   beforeLabel = 'Original (Before)',
   afterLabel = 'Compressed (After)',
+  closeLabel = 'Close comparison view',
+  instruction = 'Drag the slider handle left or right to inspect pixel quality.',
+  sliderLabel = 'Slider',
+  sideBySideLabel = 'Side by Side',
+  zoomInLabel = 'Zoom in',
+  zoomOutLabel = 'Zoom out',
+  originalLabel = 'Original:',
+  outputLabel = 'Output:',
+  reductionLabel = 'Reduction:',
+  sizeChangeLabel = 'Size Change:',
+  qualityLabel = 'Quality Setting:',
+  formatLabel = 'Format:',
+  modalAriaLabel = 'Image comparison modal',
+  altCompressed = 'Compressed version of {name}',
+  altOriginal = 'Original version of {name}',
+  altProcessed = 'Processed version of {name}',
 }) => {
+  const altCompressedText = altCompressed.replace('{name}', image.name);
+  const altOriginalText = altOriginal.replace('{name}', image.name);
+  const altProcessedText = altProcessed.replace('{name}', image.name);
   const [sliderPosition, setSliderPosition] = useState(50); // 0 to 100%
   const [isDragging, setIsDragging] = useState(false);
   const [viewMode, setViewMode] = useState<'slider' | 'sideBySide'>('slider');
@@ -66,7 +104,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
       className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-xs p-3 sm:p-6"
       role="dialog"
       aria-modal="true"
-      aria-label="Image comparison modal"
+      aria-label={modalAriaLabel}
     >
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-5xl h-[90vh] flex flex-col overflow-hidden border border-slate-200">
         {/* Modal Header */}
@@ -76,10 +114,10 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
               {titlePrefix}: {image.name}
             </h2>
             <div className="flex items-center gap-2 text-xs text-slate-500 mt-0.5">
-              <span>Original: <strong className="font-mono text-slate-700 tabular-nums">{formatBytes(image.originalSize)}</strong></span>
+              <span>{originalLabel} <strong className="font-mono text-slate-700 tabular-nums">{formatBytes(image.originalSize)}</strong></span>
               <span aria-hidden="true">·</span>
               <span>
-                Output:{' '}
+                {outputLabel}{' '}
                 <strong
                   className={`font-mono tabular-nums ${
                     image.compressedSize && image.compressedSize > image.originalSize
@@ -92,7 +130,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
               </span>
               <span aria-hidden="true">·</span>
               <span>
-                {image.compressedSize && image.compressedSize > image.originalSize ? 'Size Change:' : 'Reduction:'}{' '}
+                {image.compressedSize && image.compressedSize > image.originalSize ? sizeChangeLabel : reductionLabel}{' '}
                 <strong
                   className={`font-mono tabular-nums ${
                     image.compressedSize && image.compressedSize > image.originalSize
@@ -115,10 +153,10 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                 className={`p-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer flex items-center gap-1 ${
                   viewMode === 'slider' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
                 }`}
-                title="Split slider view"
+                title={sliderLabel}
               >
                 <SplitSquareVertical className="w-3.5 h-3.5" />
-                <span>Slider</span>
+                <span>{sliderLabel}</span>
               </button>
               <button
                 type="button"
@@ -126,10 +164,10 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                 className={`p-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer flex items-center gap-1 ${
                   viewMode === 'sideBySide' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
                 }`}
-                title="Side by side view"
+                title={sideBySideLabel}
               >
                 <Columns className="w-3.5 h-3.5" />
-                <span>Side by Side</span>
+                <span>{sideBySideLabel}</span>
               </button>
             </div>
 
@@ -139,7 +177,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                 type="button"
                 onClick={() => setZoom((z) => Math.max(0.5, z - 0.25))}
                 className="p-1.5 text-slate-700 hover:text-slate-900 hover:bg-white rounded-md transition-colors cursor-pointer"
-                title="Zoom out"
+                title={zoomOutLabel}
               >
                 <ZoomOut className="w-4 h-4" />
               </button>
@@ -150,7 +188,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                 type="button"
                 onClick={() => setZoom((z) => Math.min(2.5, z + 0.25))}
                 className="p-1.5 text-slate-700 hover:text-slate-900 hover:bg-white rounded-md transition-colors cursor-pointer"
-                title="Zoom in"
+                title={zoomInLabel}
               >
                 <ZoomIn className="w-4 h-4" />
               </button>
@@ -160,7 +198,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
               type="button"
               onClick={onClose}
               className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer"
-              aria-label="Close comparison view"
+              aria-label={closeLabel}
             >
               <X className="w-5 h-5" />
             </button>
@@ -184,7 +222,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
               {/* Background Image: Compressed (After) */}
               <img
                 src={image.compressedPreviewUrl || image.originalPreviewUrl}
-                alt={`Compressed version of ${image.name}`}
+                alt={altCompressedText}
                 className="max-h-[65vh] w-auto object-contain block pointer-events-none"
               />
 
@@ -195,7 +233,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
               >
                 <img
                   src={image.originalPreviewUrl}
-                  alt={`Original version of ${image.name}`}
+                  alt={altOriginalText}
                   className="max-h-[65vh] w-auto object-contain max-w-none block"
                   style={{
                     width: containerRef.current ? `${containerRef.current.clientWidth}px` : 'auto',
@@ -236,7 +274,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                 <span className="text-xs font-semibold text-slate-300 mb-2">{beforeLabel}</span>
                 <img
                   src={image.originalPreviewUrl}
-                  alt={`Original ${image.name}`}
+                  alt={altOriginalText}
                   className="max-h-[55vh] object-contain rounded"
                 />
               </div>
@@ -244,7 +282,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                 <span className="text-xs font-semibold text-blue-400 mb-2">{afterLabel}</span>
                 <img
                   src={image.compressedPreviewUrl || image.originalPreviewUrl}
-                  alt={`Processed ${image.name}`}
+                  alt={altProcessedText}
                   className="max-h-[55vh] object-contain rounded"
                 />
               </div>
@@ -254,11 +292,11 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
 
         {/* Modal Footer / Instructions */}
         <div className="px-5 py-3 border-t border-slate-200 bg-white flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
-          <span>Drag the slider handle left or right to inspect pixel quality.</span>
+          <span>{instruction}</span>
           <div className="flex items-center gap-3">
-            <span>Quality Setting: <strong>{image.quality}%</strong></span>
+            <span>{qualityLabel} <strong>{image.quality}%</strong></span>
             <span aria-hidden="true">·</span>
-            <span>Format: <strong>{image.outputExtension.toUpperCase().replace('.', '')}</strong></span>
+            <span>{formatLabel} <strong>{image.outputExtension.toUpperCase().replace('.', '')}</strong></span>
           </div>
         </div>
       </div>
