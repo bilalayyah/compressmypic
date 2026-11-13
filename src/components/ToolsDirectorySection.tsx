@@ -26,6 +26,8 @@ import {
   Printer,
   Code2,
   FileCode2,
+  Film,
+  LayoutGrid,
 } from 'lucide-react';
 import { TOOLS_REGISTRY, TOOL_CATEGORIES, ToolCategoryId } from '../data/tools';
 
@@ -61,6 +63,8 @@ const TOOL_ICONS: Record<string, React.ComponentType<{ className?: string }>> = 
   '/image-to-base64': Code2,
   '/base64-to-image': FileCode2,
   '/image-color-palette-extractor': Palette,
+  '/gif-maker': Film,
+  '/image-collage-maker': LayoutGrid,
 };
 
 export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({

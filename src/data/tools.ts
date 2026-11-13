@@ -1149,6 +1149,144 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     relatedSlugs: ['/image-color-picker', '/favicon-generator', '/add-background-to-image', '/'],
   },
+  {
+    slug: '/gif-maker',
+    name: 'GIF Maker',
+    shortDescription: 'Create animated GIFs from JPG, PNG & WebP with frame delay & loop control.',
+    category: 'create',
+    seoTitle: 'Free Animated GIF Maker Online – Create GIF from Images in Browser',
+    seoDescription:
+      'Turn JPG, PNG, WebP, and HEIC images into an animated GIF right in your browser. Reorder frames, set global or per-frame delay, loop count, size, and quality.',
+    h1: 'Free Online Animated GIF Maker',
+    subtitle:
+      'Combine photos and screenshots into smooth animated GIFs completely inside your browser — reorder frames, customize global or per-frame delays, loop count, and size with zero watermarks.',
+    howToSteps: [
+      {
+        title: 'Upload frames',
+        description:
+          'Drop two or more JPG, PNG, WebP, HEIC, BMP, or SVG images into the upload zone and drag frames into sequence.',
+      },
+      {
+        title: 'Set timing, loop & dimensions',
+        description:
+          'Adjust global frame duration or custom per-frame delays, choose Forever, Set Loops, or Play Once, and pick output width, height, and quality.',
+      },
+      {
+        title: 'Generate, preview & download',
+        description:
+          'Click Generate Animated GIF to encode locally in your browser, watch the live animation preview, and download your .gif file.',
+      },
+    ],
+    features: [
+      {
+        title: 'Real Client-Side GIF89a Encoding',
+        description:
+          'Uses a fast in-browser color quantizer and LZW GIF encoder (lazy-loaded on demand) — zero external API calls or server uploads.',
+      },
+      {
+        title: 'Global & Per-Frame Delays',
+        description:
+          'Set a uniform frame speed in milliseconds or FPS presets, and optionally override timing on individual key frames.',
+      },
+      {
+        title: 'Flexible Loop & Fit Controls',
+        description:
+          'Choose Forever looping, Play Once, or an exact play count, plus Contain or Cover frame fitting.',
+      },
+      {
+        title: 'Large File Size Warning',
+        description:
+          'Automatically warns you when an encoded GIF becomes heavy (over 5–15 MB) so you can optimize dimensions or quality for chat apps.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Are my photos uploaded to a server to create the GIF?',
+        answer:
+          'No. The GIF encoder runs 100% locally inside your browser tab, so your images and animations never leave your device.',
+      },
+      {
+        question: 'Can I give different frames different durations?',
+        answer:
+          'Yes. Each frame card includes an optional custom Delay (ms) field so you can pause longer on a title or final frame.',
+      },
+      {
+        question: 'Why did a large GIF warning appear?',
+        answer:
+          'GIF is an uncompressed-frame palette format that grows fast at high resolutions. Lowering width/height to 480px–640px or slightly reducing quality shrinks file size dramatically.',
+      },
+    ],
+    relatedSlugs: ['/image-collage-maker', '/image-splitter', '/image-resizer', '/'],
+  },
+  {
+    slug: '/image-collage-maker',
+    name: 'Image Collage Maker',
+    shortDescription: 'Arrange photos in 2×2, 3×3 grids or strips with drag swap & export.',
+    category: 'create',
+    seoTitle: 'Free Online Photo Collage Maker – Grid & Strip Collage Generator',
+    seoDescription:
+      'Create photo collages online free with 2x2 grid, 3x3 grid, vertical strip, and horizontal strip layouts. Drag cells to rearrange, customize gaps, and export JPG or PNG.',
+    h1: 'Free Online Image Collage Maker',
+    subtitle:
+      'Combine multiple photos into clean 2×2 grids, 3×3 grids, or vertical and horizontal strips — drag cells to rearrange, customize gap spacing, proportions, and background color, and export as JPG or PNG.',
+    howToSteps: [
+      {
+        title: 'Upload your photos',
+        description:
+          'Drop multiple JPG, PNG, WebP, HEIC, or SVG images into the collage studio.',
+      },
+      {
+        title: 'Pick layout & rearrange cells',
+        description:
+          'Switch between 2×2 Grid, 3×3 Grid, Vertical Strip, or Horizontal Strip, and drag cells (or tap to swap) into the order you want.',
+      },
+      {
+        title: 'Customize spacing & download',
+        description:
+          'Adjust gap size, cell proportions, rounded corners, background color, and output dimensions, then export JPG or PNG.',
+      },
+    ],
+    features: [
+      {
+        title: '4 Clean Collage Layouts',
+        description:
+          'Build balanced 2×2 squares, 3×3 photo grids, vertical mobile stories, or wide horizontal comparison strips.',
+      },
+      {
+        title: 'Drag-and-Drop Cell Rearrangement',
+        description:
+          'Drag any photo cell onto another slot to swap positions immediately, or tap two cells on mobile.',
+      },
+      {
+        title: 'Custom Cell Proportions & Gaps',
+        description:
+          'Fine-tune column splits, row splits, lead-cell emphasis, gap spacing, corner roundness, and background color.',
+      },
+      {
+        title: 'High-Resolution JPG & PNG Export',
+        description:
+          'Render full-resolution collages up to 4000px directly on HTML5 Canvas with zero watermarks.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Can I drag photos between collage cells after uploading?',
+        answer:
+          'Yes. Drag any cell card over another cell in the grid (or tap two cells one after another on a touchscreen) to swap their positions.',
+      },
+      {
+        question: 'Can I make the cells different sizes instead of equal squares?',
+        answer:
+          'Yes. Use the Column Split, Row Split, or Lead Cell Emphasis sliders to resize cell proportions live.',
+      },
+      {
+        question: 'Should I download my collage as JPG or PNG?',
+        answer:
+          'Choose JPG for smaller photo files ideal for social sharing, or PNG for lossless crispness on screenshots and graphic layouts.',
+      },
+    ],
+    relatedSlugs: ['/gif-maker', '/image-splitter', '/image-border-generator', '/'],
+  },
 ];
 
 export const TOOL_BY_SLUG: Record<string, ToolDefinition> = Object.fromEntries(

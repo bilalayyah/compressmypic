@@ -265,6 +265,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               { slug: '/image-to-base64', label: 'Image to Base64' },
               { slug: '/base64-to-image', label: 'Base64 to Image' },
               { slug: '/image-color-palette-extractor', label: 'Color Palette Extractor' },
+              { slug: '/gif-maker', label: 'GIF Maker' },
+              { slug: '/image-collage-maker', label: 'Image Collage Maker' },
             ].map((item) => (
               <a
                 key={item.slug}

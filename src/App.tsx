@@ -49,6 +49,8 @@ import { DpiChangerPage } from './pages/DpiChangerPage';
 import { ImageToBase64Page } from './pages/ImageToBase64Page';
 import { Base64ToImagePage } from './pages/Base64ToImagePage';
 import { PaletteExtractorPage } from './pages/PaletteExtractorPage';
+import { GifMakerPage } from './pages/GifMakerPage';
+import { CollageMakerPage } from './pages/CollageMakerPage';
 import { TOOL_BY_SLUG } from './data/tools';
 import { CompressionSettings, ImageItem } from './types';
 import { compressSingleImage, detectTransparency, loadImageFromFile, toDecodableBlob } from './utils/compressor';
@@ -88,6 +90,8 @@ const KNOWN_ROUTES = [
   '/image-to-base64',
   '/base64-to-image',
   '/image-color-palette-extractor',
+  '/gif-maker',
+  '/image-collage-maker',
 ];
 
 function getNormalizedPath(rawPathname: string): string {
@@ -634,6 +638,14 @@ export default function App() {
       ) : currentPath === '/image-color-palette-extractor' ? (
         <main className="flex-1">
           <PaletteExtractorPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/gif-maker' ? (
+        <main className="flex-1">
+          <GifMakerPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/image-collage-maker' ? (
+        <main className="flex-1">
+          <CollageMakerPage onNavigate={handleNavigate} />
         </main>
       ) : (
         /* HOME / COMPRESSOR APPLICATION */
