@@ -1,4 +1,5 @@
 import { ImageFormat, ImageItem, OutputFormatChoice } from '../types';
+import type { SupportedLang } from '../locales/config';
 import { loadImageFromFile, resolveOutputFormat } from './compressor';
 import { canvasToBlob } from './imageProcessing';
 import { formatBytes, getBaseFilename, sanitizeFilename } from './formatters';
@@ -9,6 +10,11 @@ export interface TargetSizeOptions {
   allowDownscale: boolean;
   autoSwitchPngToLossy: boolean;
   backgroundColor: string;
+  /** Active language. When 'es', the runtime status notes use Spanish templates. */
+  lang?: SupportedLang;
+  /** This tool's workspace strings (esStrings.toolUi) — the Spanish templates for
+   * the status notes. English strings stay as fallback when omitted. */
+  strings?: Record<string, string>;
 }
 
 export interface TargetSizeResult {
@@ -313,6 +319,30 @@ export async function compressToTargetSize(
   const targetBytes = Math.max(1024, Math.round(options.targetBytes));
   const resolved = resolveOutputFormat(options.format, imageItem.originalType);
 
+  // --- Runtime status-note localization (Batch 4 + Batch 5) ---
+  // The component renders `statusNote` / `switchedFormatNote` verbatim, so the
+  // Spanish templates live here behind the same `lang` flag. The English
+  // fallbacks below are byte-identical to the previous inline English strings.
+  // Batch 4 and Batch 5 tables spell some keys/placeholders differently
+  // (e.g. `autoConvertedPng` vs `switchedFormatNote`, `{bytes}` vs `{size}`,
+  // `{qualityLabel}` vs `{quality}`), so each branch tries its keys in order
+  // and fills every placeholder variant; a template only uses the ones it has.
+  const isEs = options.lang === 'es';
+  const uiStrings = options.strings;
+  const pickTemplate = (keys: string[], esFallback: string, enFallback: string): string => {
+    if (!isEs) return enFallback;
+    for (const key of keys) {
+      const value = uiStrings?.[key];
+      if (value !== undefined) return value;
+    }
+    return esFallback;
+  };
+  const fillTemplate = (template: string, values: Record<string, string | number>): string =>
+    Object.entries(values).reduce(
+      (acc, [key, value]) => acc.split(`{${key}}`).join(String(value)),
+      template
+    );
+
   let switchedFormatNote: string | null = null;
   let searchResult = await runSearchForFormat(
     img,
@@ -354,46 +384,134 @@ export async function compressToTargetSize(
       (!searchResult.bestUnder || fallbackSearch.bestUnder.scale >= searchResult.bestUnder.scale)
     ) {
       searchResult = fallbackSearch;
-      switchedFormatNote = `Auto-converted lossless PNG to ${
-        imageItem.hasAlpha ? 'WebP (transparency preserved)' : 'JPG'
-      } to preserve higher resolution under ${formatBytes(targetBytes, 0)}.`;
+      const switchedFormatLabel = imageItem.hasAlpha
+        ? pickTemplate(
+            ['formatWebpTransparency'],
+            'WebP (transparencia conservada)',
+            'WebP (transparency preserved)'
+          )
+        : 'JPG';
+      switchedFormatNote = fillTemplate(
+        pickTemplate(
+          ['switchedFormatNote', 'autoConvertedPng'],
+          'Se convirtió automáticamente el PNG sin pérdida a {format} para conservar mayor resolución por debajo de {target}.',
+          'Auto-converted lossless PNG to {format} to preserve higher resolution under {target}.'
+        ),
+        { format: switchedFormatLabel, target: formatBytes(targetBytes, 0) }
+      );
     }
   }
 
   const chosen = searchResult.bestUnder ?? searchResult.smallest;
   const achievedTarget = chosen.blob.size <= targetBytes;
 
+  // Quality label used by the status templates. Batch 4 spells it via
+  // `qualityLosslessPng` / `qualityPercent`; Batch 5 inlines it as `{quality}`.
+  const qualityLabel =
+    chosen.mimeType === 'image/png'
+      ? pickTemplate(['qualityLosslessPng'], 'PNG sin pérdida', 'lossless PNG')
+      : fillTemplate(
+          pickTemplate(['qualityPercent'], 'calidad del {quality} %', '{quality}% quality'),
+          { quality: chosen.quality }
+        );
+  const scalePercent = Math.round(chosen.scale * 100);
+
   let statusNote: string;
   if (achievedTarget) {
     if (imageItem.originalSize <= targetBytes && chosen.scale === 1 && chosen.blob.size > imageItem.originalSize) {
-      statusNote = `Original file was already under ${formatBytes(
-        targetBytes,
-        0
-      )}, and re-encoding grew it by ${formatBytes(
-        chosen.blob.size - imageItem.originalSize
-      )}. Use "Keep original" or switch to WebP/JPG for smaller output.`;
+      statusNote = fillTemplate(
+        pickTemplate(
+          ['statusAlreadyUnderGrew'],
+          'El archivo original ya estaba por debajo de {target}, y la recodificación lo hizo crecer {bytes}. Use «Conservar original» o cambie a WebP/JPG para una salida más pequeña.',
+          'Original file was already under {target}, and re-encoding grew it by {bytes}. Use "Keep original" or switch to WebP/JPG for smaller output.'
+        ),
+        {
+          target: formatBytes(targetBytes, 0),
+          bytes: formatBytes(chosen.blob.size - imageItem.originalSize),
+        }
+      );
     } else if (imageItem.originalSize <= targetBytes && chosen.scale === 1) {
-      statusNote = `Original file was already under ${formatBytes(targetBytes, 0)}; exported cleanly at ${chosen.quality}% quality.`;
+      statusNote = fillTemplate(
+        pickTemplate(
+          ['statusAlreadyUnder', 'statusAlreadyUnderClean'],
+          'El archivo original ya estaba por debajo de {target}; se exportó limpiamente con calidad del {quality} %.',
+          'Original file was already under {target}; exported cleanly at {quality}% quality.'
+        ),
+        { target: formatBytes(targetBytes, 0), quality: chosen.quality }
+      );
     } else if (chosen.scale === 1) {
-      statusNote = `Target met at full ${chosen.width}×${chosen.height}px resolution (${chosen.mimeType === 'image/png' ? 'lossless PNG' : `${chosen.quality}% quality`}).`;
+      statusNote = fillTemplate(
+        pickTemplate(
+          ['statusMetFull'],
+          'Objetivo cumplido con resolución completa de {width}×{height} px ({qualityLabel}).',
+          'Target met at full {width}×{height}px resolution ({qualityLabel}).'
+        ),
+        { width: chosen.width, height: chosen.height, qualityLabel, quality: qualityLabel }
+      );
     } else {
-      statusNote = `Target met by scaling to ${chosen.width}×${chosen.height}px (${Math.round(
-        chosen.scale * 100
-      )}%) at ${chosen.mimeType === 'image/png' ? 'lossless PNG' : `${chosen.quality}% quality`}.`;
+      statusNote = fillTemplate(
+        pickTemplate(
+          ['statusMetScaled'],
+          'Objetivo cumplido al escalar a {width}×{height} px ({percent} %) con {qualityLabel}.',
+          'Target met by scaling to {width}×{height}px ({percent}%) at {qualityLabel}.'
+        ),
+        {
+          width: chosen.width,
+          height: chosen.height,
+          percent: scalePercent,
+          scale: scalePercent,
+          qualityLabel,
+          quality: qualityLabel,
+        }
+      );
     }
   } else {
     if (chosen.mimeType === 'image/png') {
-      statusNote = `Cannot reach ${formatBytes(targetBytes, 0)} with lossless PNG (smallest achievable: ${formatBytes(
-        chosen.blob.size
-      )} at ${chosen.width}×${chosen.height}px). Switch output format to JPG or WebP to hit smaller sizes.`;
+      statusNote = fillTemplate(
+        pickTemplate(
+          ['statusCannotPng'],
+          'No se puede llegar a {target} con PNG sin pérdida (mínimo alcanzable: {bytes} a {width}×{height} px). Cambie el formato de salida a JPG o WebP para llegar a tamaños más pequeños.',
+          'Cannot reach {target} with lossless PNG (smallest achievable: {bytes} at {width}×{height}px). Switch output format to JPG or WebP to hit smaller sizes.'
+        ),
+        {
+          target: formatBytes(targetBytes, 0),
+          bytes: formatBytes(chosen.blob.size),
+          size: formatBytes(chosen.blob.size),
+          width: chosen.width,
+          height: chosen.height,
+        }
+      );
     } else if (!options.allowDownscale) {
-      statusNote = `Cannot reach ${formatBytes(targetBytes, 0)} at full ${srcW}×${srcH}px dimensions (minimum quality size is ${formatBytes(
-        chosen.blob.size
-      )}). Enable "Allow Dimension Scaling" to shrink dimensions further.`;
+      statusNote = fillTemplate(
+        pickTemplate(
+          ['statusCannotFull'],
+          'No se puede llegar a {target} con las dimensiones completas de {width}×{height} px (el tamaño mínimo de calidad es {bytes}). Active «Permitir escalado de dimensiones» para reducir más las dimensiones.',
+          'Cannot reach {target} at full {width}×{height}px dimensions (minimum quality size is {bytes}). Enable "Allow Dimension Scaling" to shrink dimensions further.'
+        ),
+        {
+          target: formatBytes(targetBytes, 0),
+          bytes: formatBytes(chosen.blob.size),
+          size: formatBytes(chosen.blob.size),
+          width: srcW,
+          height: srcH,
+        }
+      );
     } else {
-      statusNote = `Requested ${formatBytes(targetBytes, 0)} could not be reached cleanly. Smallest honest encoded output is ${formatBytes(
-        chosen.blob.size
-      )} (${chosen.width}×${chosen.height}px, ${chosen.quality}% quality). Try a larger target size.`;
+      statusNote = fillTemplate(
+        pickTemplate(
+          ['statusCannotCleanly', 'statusCannotClean'],
+          'No se pudo alcanzar limpiamente el objetivo solicitado de {target}. La salida codificada honesta más pequeña es {bytes} ({width}×{height} px, calidad del {quality} %). Pruebe un objetivo mayor.',
+          'Requested {target} could not be reached cleanly. Smallest honest encoded output is {bytes} ({width}×{height}px, {quality}% quality). Try a larger target size.'
+        ),
+        {
+          target: formatBytes(targetBytes, 0),
+          bytes: formatBytes(chosen.blob.size),
+          size: formatBytes(chosen.blob.size),
+          width: chosen.width,
+          height: chosen.height,
+          quality: chosen.quality,
+        }
+      );
     }
   }
 

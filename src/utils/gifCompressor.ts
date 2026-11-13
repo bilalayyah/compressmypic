@@ -1,3 +1,5 @@
+import type { SupportedLang } from '../locales/config';
+
 export interface DecodedGifFrame {
   imageData: ImageData;
   delayMs: number;
@@ -15,7 +17,43 @@ export interface GifCompressOptions {
   scalePercent: number; // 25..100
   maxColors: number; // 16..256
   frameStep: 1 | 2 | 3; // 1 = keep all, 2 = drop every 2nd, 3 = keep 1 of 3
+  lang?: SupportedLang; // when 'es', thrown error messages are the Spanish templates
   onProgress?: (percent: number) => void;
+}
+
+/**
+ * Decoder/encoder error strings. English is the base-file original (fallback);
+ * Spanish is the Batch 5 translation table (tool-ui-es-batch5.ts, /gif-compressor).
+ * No logic changes — only which language the thrown Error carries.
+ */
+type GifErrorKey =
+  | 'errorTooSmall'
+  | 'errorNotValidGif'
+  | 'errorInvalidDims'
+  | 'errorTruncatedColorTable'
+  | 'errorNoFrames'
+  | 'errorCanvasContext';
+
+const GIF_ERROR_EN: Record<GifErrorKey, string> = {
+  errorTooSmall: 'File is too small to be a valid GIF.',
+  errorNotValidGif: 'Selected file is not a valid GIF87a or GIF89a animation.',
+  errorInvalidDims: 'GIF has invalid 0x0 canvas dimensions.',
+  errorTruncatedColorTable: 'Truncated GIF Global Color Table.',
+  errorNoFrames: 'Could not decode any image frames from this GIF file.',
+  errorCanvasContext: 'Unable to initialize 2D canvas context.',
+};
+
+const GIF_ERROR_ES: Record<GifErrorKey, string> = {
+  errorTooSmall: 'El archivo es demasiado pequeño para ser un GIF válido.',
+  errorNotValidGif: 'El archivo seleccionado no es una animación GIF87a o GIF89a válida.',
+  errorInvalidDims: 'El GIF tiene dimensiones de lienzo 0×0 no válidas.',
+  errorTruncatedColorTable: 'Tabla de colores global del GIF truncada.',
+  errorNoFrames: 'No se pudo decodificar ningún fotograma de imagen de este archivo GIF.',
+  errorCanvasContext: 'No se pudo inicializar el contexto de lienzo 2D.',
+};
+
+function gifError(key: GifErrorKey, lang?: SupportedLang): string {
+  return lang === 'es' ? GIF_ERROR_ES[key] : GIF_ERROR_EN[key];
 }
 
 export interface GifCompressResult {
@@ -146,21 +184,21 @@ function decompressGifLzw(minCodeSize: number, encoded: Uint8Array, expectedPixe
 /**
  * Pure TypeScript GIF87a / GIF89a decoder with full frame compositing and disposal handling.
  */
-export function decodeAnimatedGif(buffer: ArrayBuffer): DecodedGif {
+export function decodeAnimatedGif(buffer: ArrayBuffer, lang?: SupportedLang): DecodedGif {
   const bytes = new Uint8Array(buffer);
   if (bytes.length < 14) {
-    throw new Error('File is too small to be a valid GIF.');
+    throw new Error(gifError('errorTooSmall', lang));
   }
 
   const header = String.fromCharCode(bytes[0], bytes[1], bytes[2], bytes[3], bytes[4], bytes[5]);
   if (header !== 'GIF87a' && header !== 'GIF89a') {
-    throw new Error('Selected file is not a valid GIF87a or GIF89a animation.');
+    throw new Error(gifError('errorNotValidGif', lang));
   }
 
   const width = readUint16LE(bytes, 6);
   const height = readUint16LE(bytes, 8);
   if (!width || !height) {
-    throw new Error('GIF has invalid 0x0 canvas dimensions.');
+    throw new Error(gifError('errorInvalidDims', lang));
   }
 
   const lsdPacked = bytes[10];
@@ -172,7 +210,7 @@ export function decodeAnimatedGif(buffer: ArrayBuffer): DecodedGif {
   if (hasGct) {
     const gctEnd = pos + gctSize * 3;
     if (gctEnd > bytes.length) {
-      throw new Error('Truncated GIF Global Color Table.');
+      throw new Error(gifError('errorTruncatedColorTable', lang));
     }
     globalColorTable = bytes.slice(pos, gctEnd);
     pos = gctEnd;
@@ -375,7 +413,7 @@ export function decodeAnimatedGif(buffer: ArrayBuffer): DecodedGif {
   }
 
   if (frames.length === 0) {
-    throw new Error('Could not decode any image frames from this GIF file.');
+    throw new Error(gifError('errorNoFrames', lang));
   }
 
   return {
@@ -428,7 +466,7 @@ export async function compressAnimatedGif(
   const dstCtx = dstCanvas.getContext('2d', { willReadFrequently: true });
 
   if (!srcCtx || !dstCtx) {
-    throw new Error('Unable to initialize 2D canvas context.');
+    throw new Error(gifError('errorCanvasContext', options.lang));
   }
 
   const gif = GIFEncoder();
