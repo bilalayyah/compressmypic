@@ -21,6 +21,8 @@ import { toPortuguesePath } from '../locales/pt/slugs';
 import { toFrenchPath } from '../locales/fr/slugs';
 import { toGermanPath } from '../locales/de/slugs';
 import { toItalianPath } from '../locales/it/slugs';
+import { toIndonesianPath } from '../locales/id/slugs';
+import { toRussianPath } from '../locales/ru/slugs';
 import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from './ToolPageLayout';
 import { UploadZone } from './UploadZone';
@@ -68,6 +70,20 @@ export interface PageItStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageIdStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageRuStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 export interface FormatConverterToolProps {
   slug: string;
   sourceLabel: string;
@@ -93,6 +109,8 @@ export interface FormatConverterToolProps {
   frStrings?: PageFrStrings;
   deStrings?: PageDeStrings;
   itStrings?: PageItStrings;
+  idStrings?: PageIdStrings;
+  ruStrings?: PageRuStrings;
   onNavigate: (path: string) => void;
 }
 
@@ -129,12 +147,14 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
   frStrings,
   deStrings,
   itStrings,
+  idStrings,
+  ruStrings,
   onNavigate,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG[slug];
-  // Active language's page-strings bundle (de/it/es/pt/fr); English uses defaults.
+  // Active language's page-strings bundle (id/ru/de/it/es/pt/fr); English uses defaults.
   const pageStrings =
-    lang === 'de' ? deStrings : lang === 'it' ? itStrings : lang === 'pt' ? ptStrings : lang === 'fr' ? frStrings : lang === 'es' ? esStrings : undefined;
+    lang === 'id' ? idStrings : lang === 'ru' ? ruStrings : lang === 'de' ? deStrings : lang === 'it' ? itStrings : lang === 'pt' ? ptStrings : lang === 'fr' ? frStrings : lang === 'es' ? esStrings : undefined;
   const activeToolUi = pageStrings?.toolUi;
   const t = (key: string, fallback: string) =>
     activeToolUi ? ((activeToolUi[key] as string | undefined) ?? fallback) : fallback;
@@ -423,8 +443,12 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
       lang={lang}
       ui={pageStrings?.layoutUi}
       canonicalPath={
-        lang === 'de'
-          ? toGermanPath(activeTool.slug)
+        lang === 'id'
+          ? toIndonesianPath(activeTool.slug)
+          : lang === 'ru'
+            ? toRussianPath(activeTool.slug)
+            : lang === 'de'
+              ? toGermanPath(activeTool.slug)
           : lang === 'it'
             ? toItalianPath(activeTool.slug)
             : lang === 'pt'
