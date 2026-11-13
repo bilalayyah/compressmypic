@@ -50,8 +50,8 @@ export const SUPPORTED_LANGUAGES: LanguageMeta[] = [
   { code: 'it', prefix: 'it', nativeName: 'Italiano', englishName: 'Italian', dir: 'ltr', variant: 'Standard Italian', phase: 3, status: 'in-progress', directoryPath: '/it/tutti-gli-strumenti' },
   { code: 'id', prefix: 'id', nativeName: 'Bahasa Indonesia', englishName: 'Indonesian', dir: 'ltr', variant: 'Standard Bahasa Indonesia', phase: 4, status: 'in-progress', directoryPath: '/id/semua-alat' },
   { code: 'ru', prefix: 'ru', nativeName: 'Русский', englishName: 'Russian', dir: 'ltr', variant: 'Standard Russian', phase: 4, status: 'in-progress', directoryPath: '/ru/vse-instrumenty' },
-  { code: 'ja', prefix: 'ja', nativeName: '日本語', englishName: 'Japanese', dir: 'ltr', variant: 'Natural modern Japanese', phase: 5, status: 'planned', directoryPath: '/ja/tools' },
-  { code: 'ko', prefix: 'ko', nativeName: '한국어', englishName: 'Korean', dir: 'ltr', variant: 'Standard South Korean', phase: 5, status: 'planned', directoryPath: '/ko/tools' },
+  { code: 'ja', prefix: 'ja', nativeName: '日本語', englishName: 'Japanese', dir: 'ltr', variant: 'Natural modern Japanese', phase: 5, status: 'in-progress', directoryPath: '/ja/tools' },
+  { code: 'ko', prefix: 'ko', nativeName: '한국어', englishName: 'Korean', dir: 'ltr', variant: 'Standard South Korean', phase: 5, status: 'in-progress', directoryPath: '/ko/tools' },
   { code: 'zh', prefix: 'zh', nativeName: '简体中文', englishName: 'Chinese (Simplified)', dir: 'ltr', variant: 'Simplified Mandarin Chinese', phase: 6, status: 'planned', directoryPath: '/zh/all-tools' },
 ];
 
