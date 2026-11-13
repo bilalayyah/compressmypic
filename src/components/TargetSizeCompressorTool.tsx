@@ -18,7 +18,10 @@ import type { SupportedLang } from '../locales/config';
 import type { ToolPageLayoutStrings } from './ToolPageLayout';
 import type { UploadZoneStrings } from './UploadZone';
 import type { ComparisonModalStrings } from './ComparisonModal';
-import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
+import { toSpanishPath } from '../locales/es/slugs';
+import { toPortuguesePath } from '../locales/pt/slugs';
+import { toFrenchPath } from '../locales/fr/slugs';
+import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from './ToolPageLayout';
 import { UploadZone } from './UploadZone';
 import { ComparisonModal } from './ComparisonModal';
@@ -48,6 +51,20 @@ export interface PageEsStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PagePtStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageFrStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface TargetSizeCompressorToolProps {
   slug: string;
   defaultTargetKb: number;
@@ -58,6 +75,8 @@ interface TargetSizeCompressorToolProps {
   toolRegistry?: Record<string, ToolDefinition>;
   categoryLabels?: Array<{ id: string; label: string }>;
   esStrings?: PageEsStrings;
+  ptStrings?: PagePtStrings;
+  frStrings?: PageFrStrings;
 }
 
 export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> = ({
@@ -70,10 +89,16 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
   toolRegistry,
   categoryLabels,
   esStrings,
+  ptStrings,
+  frStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG[slug];
+  // Active language's page-strings bundle (es/pt/fr); English uses defaults.
+  const pageStrings =
+    lang === 'pt' ? ptStrings : lang === 'fr' ? frStrings : lang === 'es' ? esStrings : undefined;
+  const activeToolUi = pageStrings?.toolUi;
   const t = (key: string, fallback: string) =>
-    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+    activeToolUi ? (activeToolUi[key] as string | undefined) ?? fallback : fallback;
   const [items, setItems] = useState<ImageItem[]>([]);
   const [metaById, setMetaById] = useState<Record<string, TargetSizeMeta>>({});
   const itemsRef = useRef<ImageItem[]>([]);
@@ -118,7 +143,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
         autoSwitchPngToLossy,
         backgroundColor,
         lang,
-        strings: esStrings?.toolUi,
+        strings: activeToolUi,
       });
 
       if (item.compressedPreviewUrl) {
@@ -330,7 +355,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
   const totalOut = doneItems.reduce((sum, i) => sum + (i.compressedSize || 0), 0);
   const totalSaved = totalOrig - totalOut;
 
-  // --- Spanish display strings derived from live state ---
+  // --- Localized display strings derived from live state ---
   // Batch 4 fixed targets use `uploadTitle`; the Batch 5 custom-target page
   // uses `uploadTitleTemplate` (live targetLabel). Both carry `{target}`.
   const uploadTitle = t(
@@ -366,8 +391,8 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
 
   const totalSavedText =
     totalSaved < 0
-      ? lang === 'es' && esStrings?.toolUi?.totalSavedGrew
-        ? fillSaved(esStrings.toolUi.totalSavedGrew)
+      ? activeToolUi?.totalSavedGrew
+        ? fillSaved(activeToolUi.totalSavedGrew)
         : `${fillSaved(t('totalSaved', 'Total Saved: {bytes}'))} ${fillSaved(
             t('totalGrew', '(grew by {grew})')
           )}`
@@ -406,12 +431,11 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
   );
   // PNG warning: Batch 5 `losslessPngTitle` / `losslessPngNote`, Batch 4
   // `losslessPngSelected` / `losslessPngWarning`. English keeps its <strong>
-  // JPG/WebP markup (see JSX below); Spanish renders as plain text.
+  // JPG/WebP markup (see JSX below); localized (non-English) strings render as plain text.
   const pngWarningTitle = t('losslessPngTitle', t('losslessPngSelected', 'Lossless PNG selected:'));
-  const pngWarningBody =
-    lang === 'es' && esStrings?.toolUi
-      ? esStrings.toolUi.losslessPngNote ?? esStrings.toolUi.losslessPngWarning ?? null
-      : null;
+  const pngWarningBody = activeToolUi
+    ? activeToolUi.losslessPngNote ?? activeToolUi.losslessPngWarning ?? null
+    : null;
 
   const handleDownloadAllZip = async () => {
     if (doneItems.length === 0) return;
@@ -432,9 +456,17 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={esStrings?.layoutUi}
-      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
-      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      ui={pageStrings?.layoutUi}
+      canonicalPath={
+        lang === 'pt'
+          ? toPortuguesePath(activeTool.slug)
+          : lang === 'fr'
+            ? toFrenchPath(activeTool.slug)
+            : lang === 'es'
+              ? toSpanishPath(activeTool.slug)
+              : undefined
+      }
+      alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
     >
@@ -448,7 +480,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
           allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
           supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
           title={uploadTitle}
-          strings={esStrings?.uploadZone}
+          strings={pageStrings?.uploadZone}
         />
 
         {/* Target Controls Panel */}
@@ -942,26 +974,26 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
             '{target}',
             targetLabel
           )}
-          beforeLabel={esStrings?.comparisonModal.beforeLabel}
+          beforeLabel={pageStrings?.comparisonModal.beforeLabel}
           afterLabel={t('comparisonAfterLabel', 'Compressed ({bytes})')
             .replace('{bytes}', formatBytes(comparisonTarget.compressedSize || 0))
             .replace('{size}', formatBytes(comparisonTarget.compressedSize || 0))}
-          closeLabel={esStrings?.comparisonModal.closeLabel}
-          instruction={esStrings?.comparisonModal.instruction}
-          sliderLabel={esStrings?.comparisonModal.sliderLabel}
-          sideBySideLabel={esStrings?.comparisonModal.sideBySideLabel}
-          zoomInLabel={esStrings?.comparisonModal.zoomInLabel}
-          zoomOutLabel={esStrings?.comparisonModal.zoomOutLabel}
-          originalLabel={esStrings?.comparisonModal.originalLabel}
-          outputLabel={esStrings?.comparisonModal.outputLabel}
-          reductionLabel={esStrings?.comparisonModal.reductionLabel}
-          sizeChangeLabel={esStrings?.comparisonModal.sizeChangeLabel}
-          qualityLabel={esStrings?.comparisonModal.qualityLabel}
-          formatLabel={esStrings?.comparisonModal.formatLabel}
-          modalAriaLabel={esStrings?.comparisonModal.modalAriaLabel}
-          altCompressed={esStrings?.comparisonModal.altCompressed}
-          altOriginal={esStrings?.comparisonModal.altOriginal}
-          altProcessed={esStrings?.comparisonModal.altProcessed}
+          closeLabel={pageStrings?.comparisonModal.closeLabel}
+          instruction={pageStrings?.comparisonModal.instruction}
+          sliderLabel={pageStrings?.comparisonModal.sliderLabel}
+          sideBySideLabel={pageStrings?.comparisonModal.sideBySideLabel}
+          zoomInLabel={pageStrings?.comparisonModal.zoomInLabel}
+          zoomOutLabel={pageStrings?.comparisonModal.zoomOutLabel}
+          originalLabel={pageStrings?.comparisonModal.originalLabel}
+          outputLabel={pageStrings?.comparisonModal.outputLabel}
+          reductionLabel={pageStrings?.comparisonModal.reductionLabel}
+          sizeChangeLabel={pageStrings?.comparisonModal.sizeChangeLabel}
+          qualityLabel={pageStrings?.comparisonModal.qualityLabel}
+          formatLabel={pageStrings?.comparisonModal.formatLabel}
+          modalAriaLabel={pageStrings?.comparisonModal.modalAriaLabel}
+          altCompressed={pageStrings?.comparisonModal.altCompressed}
+          altOriginal={pageStrings?.comparisonModal.altOriginal}
+          altProcessed={pageStrings?.comparisonModal.altProcessed}
         />
       )}
     </ToolPageLayout>

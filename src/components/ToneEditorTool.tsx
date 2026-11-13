@@ -16,7 +16,10 @@ import type { SupportedLang } from '../locales/config';
 import type { ToolPageLayoutStrings } from './ToolPageLayout';
 import type { UploadZoneStrings } from './UploadZone';
 import type { ComparisonModalStrings } from './ComparisonModal';
-import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
+import { toSpanishPath } from '../locales/es/slugs';
+import { toPortuguesePath } from '../locales/pt/slugs';
+import { toFrenchPath } from '../locales/fr/slugs';
+import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from './ToolPageLayout';
 import { UploadZone } from './UploadZone';
 import { ComparisonModal } from './ComparisonModal';
@@ -106,6 +109,20 @@ export interface PageEsStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PagePtStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageFrStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface ToneEditorToolProps {
   tool?: ToolDefinition;
   mode: ToneMode;
@@ -114,11 +131,13 @@ interface ToneEditorToolProps {
   toolRegistry?: Record<string, ToolDefinition>;
   categoryLabels?: Array<{ id: string; label: string }>;
   esStrings?: PageEsStrings;
+  ptStrings?: PagePtStrings;
+  frStrings?: PageFrStrings;
 }
 
 // English slug per mode — only used for the English tool-registry fallback
-// when no `tool` prop is passed. The Spanish strings table is NOT picked by
-// mode: App passes the per-tool `esStrings` bundle selected by slug.
+// when no `tool` prop is passed. The localized strings table is NOT picked by
+// mode: App passes the per-tool bundle (`esStrings` / `ptStrings` / `frStrings`) selected by slug.
 const MODE_SLUG: Record<ToneMode, string> = {
   brightness: '/image-brightness-editor',
   contrast: '/image-contrast-editor',
@@ -128,7 +147,7 @@ const MODE_SLUG: Record<ToneMode, string> = {
 // Preset labels are matched by preset VALUE (not label text). Batch 2
 // (brightness) and Batch 3 (contrast/saturation) tables use different key
 // names for the same slots, so each value lists its candidate keys in order;
-// the per-tool table passed via `esStrings` decides which one resolves.
+// the per-tool table passed via the active language's strings prop decides which one resolves.
 const PRESET_KEYS_BY_VALUE: Record<number, string[]> = {
   [-100]: ['presetGrayscale'],
   [-40]: ['presetMuted'],
@@ -155,25 +174,31 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
   toolRegistry,
   categoryLabels,
   esStrings,
+  ptStrings,
+  frStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG[MODE_SLUG[mode]];
   const cfg = MODE_CONFIG[mode];
   const ModeIcon = cfg.Icon;
+  // Active language's page-strings bundle (es/pt/fr); English uses defaults.
+  const pageStrings =
+    lang === 'pt' ? ptStrings : lang === 'fr' ? frStrings : lang === 'es' ? esStrings : undefined;
+  const activeToolUi = pageStrings?.toolUi;
   const t = (key: string, fallback: string) =>
-    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+    activeToolUi ? (activeToolUi[key] as string | undefined) ?? fallback : fallback;
   // Same-slot keys that differ between the Batch 2 (brightness) and Batch 3
   // (contrast/saturation) tables — try both; the passed table decides.
   const t2 = (keyA: string, keyB: string, fallback: string) =>
-    lang === 'es' && esStrings?.toolUi
-      ? (esStrings.toolUi[keyA] as string | undefined) ??
-        (esStrings.toolUi[keyB] as string | undefined) ??
+    activeToolUi
+      ? (activeToolUi[keyA] as string | undefined) ??
+        (activeToolUi[keyB] as string | undefined) ??
         fallback
       : fallback;
   const presetLabel = (preset: TonePreset) => {
     const keys = PRESET_KEYS_BY_VALUE[preset.value] ?? [];
-    if (lang === 'es' && esStrings?.toolUi) {
+    if (activeToolUi) {
       for (const key of keys) {
-        const val = esStrings.toolUi[key] as string | undefined;
+        const val = activeToolUi[key] as string | undefined;
         if (val) return val;
       }
     }
@@ -332,9 +357,17 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={esStrings?.layoutUi}
-      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
-      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      ui={pageStrings?.layoutUi}
+      canonicalPath={
+        lang === 'pt'
+          ? toPortuguesePath(activeTool.slug)
+          : lang === 'fr'
+            ? toFrenchPath(activeTool.slug)
+            : lang === 'es'
+              ? toSpanishPath(activeTool.slug)
+              : undefined
+      }
+      alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
     >
@@ -349,7 +382,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
             title={t('uploadTitle', `Drop an image to adjust ${cfg.label.toLowerCase()}`)}
-            strings={esStrings?.uploadZone}
+            strings={pageStrings?.uploadZone}
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -600,24 +633,24 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
           image={modalItem}
           onClose={closeComparisonModal}
           titlePrefix={t('comparisonTitlePrefix', `${cfg.label} Comparison`)}
-          beforeLabel={esStrings?.comparisonModal.beforeLabel}
+          beforeLabel={pageStrings?.comparisonModal.beforeLabel}
           afterLabel={t('comparisonAfterLabel', 'Edited (After)')}
-          closeLabel={esStrings?.comparisonModal.closeLabel}
-          instruction={esStrings?.comparisonModal.instruction}
-          sliderLabel={esStrings?.comparisonModal.sliderLabel}
-          sideBySideLabel={esStrings?.comparisonModal.sideBySideLabel}
-          zoomInLabel={esStrings?.comparisonModal.zoomInLabel}
-          zoomOutLabel={esStrings?.comparisonModal.zoomOutLabel}
-          originalLabel={esStrings?.comparisonModal.originalLabel}
-          outputLabel={esStrings?.comparisonModal.outputLabel}
-          reductionLabel={esStrings?.comparisonModal.reductionLabel}
-          sizeChangeLabel={esStrings?.comparisonModal.sizeChangeLabel}
-          qualityLabel={esStrings?.comparisonModal.qualityLabel}
-          formatLabel={esStrings?.comparisonModal.formatLabel}
-          modalAriaLabel={esStrings?.comparisonModal.modalAriaLabel}
-          altCompressed={esStrings?.comparisonModal.altCompressed}
-          altOriginal={esStrings?.comparisonModal.altOriginal}
-          altProcessed={esStrings?.comparisonModal.altProcessed}
+          closeLabel={pageStrings?.comparisonModal.closeLabel}
+          instruction={pageStrings?.comparisonModal.instruction}
+          sliderLabel={pageStrings?.comparisonModal.sliderLabel}
+          sideBySideLabel={pageStrings?.comparisonModal.sideBySideLabel}
+          zoomInLabel={pageStrings?.comparisonModal.zoomInLabel}
+          zoomOutLabel={pageStrings?.comparisonModal.zoomOutLabel}
+          originalLabel={pageStrings?.comparisonModal.originalLabel}
+          outputLabel={pageStrings?.comparisonModal.outputLabel}
+          reductionLabel={pageStrings?.comparisonModal.reductionLabel}
+          sizeChangeLabel={pageStrings?.comparisonModal.sizeChangeLabel}
+          qualityLabel={pageStrings?.comparisonModal.qualityLabel}
+          formatLabel={pageStrings?.comparisonModal.formatLabel}
+          modalAriaLabel={pageStrings?.comparisonModal.modalAriaLabel}
+          altCompressed={pageStrings?.comparisonModal.altCompressed}
+          altOriginal={pageStrings?.comparisonModal.altOriginal}
+          altProcessed={pageStrings?.comparisonModal.altProcessed}
         />
       )}
     </ToolPageLayout>

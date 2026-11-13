@@ -16,7 +16,10 @@ import type { SupportedLang } from '../locales/config';
 import type { ToolPageLayoutStrings } from './ToolPageLayout';
 import type { UploadZoneStrings } from './UploadZone';
 import type { ComparisonModalStrings } from './ComparisonModal';
-import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
+import { toSpanishPath } from '../locales/es/slugs';
+import { toPortuguesePath } from '../locales/pt/slugs';
+import { toFrenchPath } from '../locales/fr/slugs';
+import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from './ToolPageLayout';
 import { UploadZone } from './UploadZone';
 import { ComparisonModal } from './ComparisonModal';
@@ -29,6 +32,20 @@ import { formatBytes, formatPercent } from '../utils/formatters';
 import { createFilesZipArchive, triggerDownload } from '../utils/zip';
 
 export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PagePtStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageFrStrings {
   layoutUi: ToolPageLayoutStrings;
   uploadZone: UploadZoneStrings;
   comparisonModal: ComparisonModalStrings;
@@ -56,6 +73,8 @@ export interface FormatConverterToolProps {
   toolRegistry?: Record<string, ToolDefinition>;
   categoryLabels?: Array<{ id: string; label: string }>;
   esStrings?: PageEsStrings;
+  ptStrings?: PagePtStrings;
+  frStrings?: PageFrStrings;
   onNavigate: (path: string) => void;
 }
 
@@ -88,13 +107,17 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
   toolRegistry,
   categoryLabels,
   esStrings,
+  ptStrings,
+  frStrings,
   onNavigate,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG[slug];
+  // Active language's page-strings bundle (es/pt/fr); English uses defaults.
+  const pageStrings =
+    lang === 'pt' ? ptStrings : lang === 'fr' ? frStrings : lang === 'es' ? esStrings : undefined;
+  const activeToolUi = pageStrings?.toolUi;
   const t = (key: string, fallback: string) =>
-    lang === 'es' && esStrings?.toolUi
-      ? ((esStrings.toolUi[key] as string | undefined) ?? fallback)
-      : fallback;
+    activeToolUi ? ((activeToolUi[key] as string | undefined) ?? fallback) : fallback;
   const [items, setItems] = useState<ImageItem[]>([]);
   const itemsRef = useRef<ImageItem[]>([]);
   itemsRef.current = items;
@@ -342,8 +365,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
   // Batch 5 tables carry the whole line as a template (filesConverted);
   // Batch 6 tables compose it from fileSingular/filePlural/filesConvertedSuffix.
   const batchConvertedText = (() => {
-    const filesConvertedTemplate =
-      lang === 'es' ? esStrings?.toolUi['filesConverted'] : undefined;
+    const filesConvertedTemplate = activeToolUi?.['filesConverted'];
     if (filesConvertedTemplate) {
       return filesConvertedTemplate
         .replace('{count}', String(doneItems.length))
@@ -379,9 +401,17 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={esStrings?.layoutUi}
-      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
-      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      ui={pageStrings?.layoutUi}
+      canonicalPath={
+        lang === 'pt'
+          ? toPortuguesePath(activeTool.slug)
+          : lang === 'fr'
+            ? toFrenchPath(activeTool.slug)
+            : lang === 'es'
+              ? toSpanishPath(activeTool.slug)
+              : undefined
+      }
+      alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
     >
@@ -395,7 +425,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
           allowedExtensionsRegex={allowedExtensionsRegex}
           supportedFormatsLabel={supportedFormatsLabel}
           title={uploadTitle || `Drop ${sourceLabel} files to convert to ${targetLabel}`}
-          strings={esStrings?.uploadZone}
+          strings={pageStrings?.uploadZone}
         />
 
         {notice && (
@@ -749,27 +779,27 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
           image={comparisonTarget}
           onClose={() => setComparisonTarget(null)}
           titlePrefix={t('comparisonTitlePrefix', `${sourceLabel} → ${targetLabel}`)}
-          beforeLabel={esStrings?.comparisonModal.beforeLabel}
+          beforeLabel={pageStrings?.comparisonModal.beforeLabel}
           afterLabel={t('comparisonAfterLabel', `${targetLabel} ({size})`).replace(
             '{size}',
             formatBytes(comparisonTarget.compressedSize || 0)
           )}
-          closeLabel={esStrings?.comparisonModal.closeLabel}
-          instruction={esStrings?.comparisonModal.instruction}
-          sliderLabel={esStrings?.comparisonModal.sliderLabel}
-          sideBySideLabel={esStrings?.comparisonModal.sideBySideLabel}
-          zoomInLabel={esStrings?.comparisonModal.zoomInLabel}
-          zoomOutLabel={esStrings?.comparisonModal.zoomOutLabel}
-          originalLabel={esStrings?.comparisonModal.originalLabel}
-          outputLabel={esStrings?.comparisonModal.outputLabel}
-          reductionLabel={esStrings?.comparisonModal.reductionLabel}
-          sizeChangeLabel={esStrings?.comparisonModal.sizeChangeLabel}
-          qualityLabel={esStrings?.comparisonModal.qualityLabel}
-          formatLabel={esStrings?.comparisonModal.formatLabel}
-          modalAriaLabel={esStrings?.comparisonModal.modalAriaLabel}
-          altCompressed={esStrings?.comparisonModal.altCompressed}
-          altOriginal={esStrings?.comparisonModal.altOriginal}
-          altProcessed={esStrings?.comparisonModal.altProcessed}
+          closeLabel={pageStrings?.comparisonModal.closeLabel}
+          instruction={pageStrings?.comparisonModal.instruction}
+          sliderLabel={pageStrings?.comparisonModal.sliderLabel}
+          sideBySideLabel={pageStrings?.comparisonModal.sideBySideLabel}
+          zoomInLabel={pageStrings?.comparisonModal.zoomInLabel}
+          zoomOutLabel={pageStrings?.comparisonModal.zoomOutLabel}
+          originalLabel={pageStrings?.comparisonModal.originalLabel}
+          outputLabel={pageStrings?.comparisonModal.outputLabel}
+          reductionLabel={pageStrings?.comparisonModal.reductionLabel}
+          sizeChangeLabel={pageStrings?.comparisonModal.sizeChangeLabel}
+          qualityLabel={pageStrings?.comparisonModal.qualityLabel}
+          formatLabel={pageStrings?.comparisonModal.formatLabel}
+          modalAriaLabel={pageStrings?.comparisonModal.modalAriaLabel}
+          altCompressed={pageStrings?.comparisonModal.altCompressed}
+          altOriginal={pageStrings?.comparisonModal.altOriginal}
+          altProcessed={pageStrings?.comparisonModal.altProcessed}
         />
       )}
     </ToolPageLayout>
