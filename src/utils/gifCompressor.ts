@@ -28,7 +28,8 @@ export interface GifCompressOptions {
  * /gif-compressor); German and Italian are the Phase 3 tables (tool-ui-de.ts /
  * tool-ui-it.ts, /gif-compressor); Indonesian and Russian are the Phase 4 tables
  * (tool-ui-id.ts / tool-ui-ru.ts, /gif-compressor); Japanese and Korean are the
- * Phase 5 tables (tool-ui-ja.ts / tool-ui-ko.ts, /gif-compressor). No logic changes — only which
+ * Phase 5 tables (tool-ui-ja.ts / tool-ui-ko.ts, /gif-compressor); Chinese is the
+ * Phase 6 table (tool-ui-zh.ts, /gif-compressor). No logic changes — only which
  * language the thrown Error carries.
  */
 type GifErrorKey =
@@ -138,6 +139,16 @@ const GIF_ERROR_KO: Record<GifErrorKey, string> = {
   errorCanvasContext: '2D 캔버스 컨텍스트를 초기화할 수 없습니다.',
 };
 
+// Chinese strings copied verbatim from tool-ui-zh.ts, /gif-compressor (lines 1373-1378).
+const GIF_ERROR_ZH: Record<GifErrorKey, string> = {
+  errorTooSmall: '文件太小，不是有效的 GIF。',
+  errorNotValidGif: '所选文件不是有效的 GIF87a 或 GIF89a 动画。',
+  errorInvalidDims: 'GIF 画布尺寸为无效的 0×0。',
+  errorTruncatedColorTable: 'GIF 全局调色板被截断。',
+  errorNoFrames: '无法从该 GIF 文件解码任何图像帧。',
+  errorCanvasContext: '无法初始化 2D 画布上下文。',
+};
+
 function gifError(key: GifErrorKey, lang?: SupportedLang): string {
   switch (lang) {
     case 'es':
@@ -158,6 +169,8 @@ function gifError(key: GifErrorKey, lang?: SupportedLang): string {
       return GIF_ERROR_JA[key];
     case 'ko':
       return GIF_ERROR_KO[key];
+    case 'zh':
+      return GIF_ERROR_ZH[key];
     default:
       return GIF_ERROR_EN[key];
   }
