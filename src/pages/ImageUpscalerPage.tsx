@@ -110,7 +110,7 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
   const [isModelLoading, setIsModelLoading] = useState<boolean>(true);
   const [modelStageText, setModelStageText] = useState<string>('Loading UpscalerJS + ESRGAN Slim (2x) model...');
   const [isUpscaling, setIsUpscaling] = useState<boolean>(false);
-  const [upscaleProgress, setUpscaleProgress] = useState<number>(0);
+  const [upscaleProgress, setUpscaleProgress] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [showCompare, setShowCompare] = useState<boolean>(false);
 
@@ -230,28 +230,36 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
   ) => {
     setError(null);
     setIsUpscaling(true);
-    setUpscaleProgress(0);
+    const useDirectWholeImage = Math.max(info.width, info.height) <= 1600;
+    setUpscaleProgress(useDirectWholeImage ? null : 0);
 
     try {
       const upscaler = await ensureUpscalerReady(tier, factor);
 
-      // Draw to a normalized canvas so EXIF orientation / SVG / HEIC are passed cleanly
+      // Draw onto an opaque white-backed canvas so PNG alpha channels are flattened to proper 3-channel RGB
       const inputCanvas = document.createElement('canvas');
       inputCanvas.width = info.width;
       inputCanvas.height = info.height;
-      const ctx = inputCanvas.getContext('2d');
+      const ctx = inputCanvas.getContext('2d', { alpha: false });
       if (!ctx) throw new Error('Browser Canvas 2D context is unavailable.');
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, info.width, info.height);
       ctx.drawImage(info.img, 0, 0, info.width, info.height);
 
-      const base64Result = await upscaler.execute(inputCanvas, {
-        output: 'base64',
-        patchSize: 64,
-        padding: 4,
-        awaitNextFrame: true,
-        progress: (amount: number) => {
-          setUpscaleProgress(Math.min(100, Math.max(0, Math.round(amount * 100))));
-        },
-      });
+      const base64Result = useDirectWholeImage
+        ? await upscaler.upscale(inputCanvas, {
+            output: 'base64',
+            awaitNextFrame: true,
+          })
+        : await upscaler.upscale(inputCanvas, {
+            output: 'base64',
+            patchSize: 256,
+            padding: 8,
+            awaitNextFrame: true,
+            progress: (amount: number) => {
+              setUpscaleProgress(Math.min(100, Math.max(0, Math.round(amount * 100))));
+            },
+          });
 
       const encoded = await dataUrlToImageAndBlob(base64Result, fmt);
       setUpscaledBlob(encoded.blob);
@@ -315,7 +323,7 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
     setUpscaledBlob(null);
     setUpscaledPreviewUrl(null);
     setUpscaledDims(null);
-    setUpscaleProgress(0);
+    setUpscaleProgress(null);
     setError(null);
   };
 
@@ -556,14 +564,18 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
                           <p className="text-xs font-bold text-slate-800">
                             {isModelLoading
                               ? modelStageText
-                              : `Upscaling ${scaleFactor}x locally... ${upscaleProgress}%`}
+                              : upscaleProgress !== null
+                              ? `Upscaling ${scaleFactor}x locally... ${upscaleProgress}%`
+                              : `Upscaling ${scaleFactor}x locally...`}
                           </p>
-                          <div className="w-44 h-2 bg-slate-200 rounded-full overflow-hidden mt-2.5">
-                            <div
-                              className="h-full bg-blue-600 transition-all duration-150"
-                              style={{ width: `${upscaleProgress}%` }}
-                            />
-                          </div>
+                          {upscaleProgress !== null && (
+                            <div className="w-44 h-2 bg-slate-200 rounded-full overflow-hidden mt-2.5">
+                              <div
+                                className="h-full bg-blue-600 transition-all duration-150"
+                                style={{ width: `${upscaleProgress}%` }}
+                              />
+                            </div>
+                          )}
                         </div>
                       ) : upscaledPreviewUrl ? (
                         <img
@@ -632,7 +644,11 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
                       className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-red-600 hover:bg-red-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer transition-colors"
                     >
                       <XCircle className="w-4 h-4" />
-                      <span>Cancel Upscaling ({upscaleProgress}%)</span>
+                      <span>
+                        {upscaleProgress !== null
+                          ? `Cancel Upscaling (${upscaleProgress}%)`
+                          : 'Cancel Upscaling'}
+                      </span>
                     </button>
                   ) : (
                     <>
