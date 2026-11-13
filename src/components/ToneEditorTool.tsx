@@ -10,7 +10,13 @@ import {
   Loader2,
   AlertCircle,
 } from 'lucide-react';
-import { ToolDefinition } from '../data/tools';
+import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from './ToolPageLayout';
+import type { UploadZoneStrings } from './UploadZone';
+import type { ComparisonModalStrings } from './ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from './ToolPageLayout';
 import { UploadZone } from './UploadZone';
 import { ComparisonModal } from './ComparisonModal';
@@ -93,19 +99,86 @@ const MODE_CONFIG: Record<
   },
 };
 
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface ToneEditorToolProps {
-  tool: ToolDefinition;
+  tool?: ToolDefinition;
   mode: ToneMode;
   onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
 }
+
+// English slug per mode — only used for the English tool-registry fallback
+// when no `tool` prop is passed. The Spanish strings table is NOT picked by
+// mode: App passes the per-tool `esStrings` bundle selected by slug.
+const MODE_SLUG: Record<ToneMode, string> = {
+  brightness: '/image-brightness-editor',
+  contrast: '/image-contrast-editor',
+  saturation: '/image-saturation-editor',
+};
+
+// Preset labels are matched by preset VALUE (not label text). Batch 2
+// (brightness) and Batch 3 (contrast/saturation) tables use different key
+// names for the same slots, so each value lists its candidate keys in order;
+// the per-tool table passed via `esStrings` decides which one resolves.
+const PRESET_KEYS_BY_VALUE: Record<number, string[]> = {
+  [-100]: ['presetGrayscale'],
+  [-40]: ['presetMuted'],
+  [-30]: ['presetDark'],
+  [-25]: ['presetSoft'],
+  [-15]: ['presetDim'],
+  [-10]: ['presetMuted'],
+  [0]: ['presetOriginal'],
+  [15]: ['presetBright'],
+  [20]: ['presetCrisp'],
+  [30]: ['presetVibrant', 'presetRich'],
+  [40]: ['presetPunchy'],
+  [50]: ['presetHighKey'],
+  [60]: ['presetVivid'],
+  [70]: ['presetDramatic'],
+  [90]: ['presetHyper'],
+};
 
 export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
   tool,
   mode,
   onNavigate,
+  lang,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
 }) => {
+  const activeTool = tool ?? TOOL_BY_SLUG[MODE_SLUG[mode]];
   const cfg = MODE_CONFIG[mode];
   const ModeIcon = cfg.Icon;
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
+  // Same-slot keys that differ between the Batch 2 (brightness) and Batch 3
+  // (contrast/saturation) tables — try both; the passed table decides.
+  const t2 = (keyA: string, keyB: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi
+      ? (esStrings.toolUi[keyA] as string | undefined) ??
+        (esStrings.toolUi[keyB] as string | undefined) ??
+        fallback
+      : fallback;
+  const presetLabel = (preset: TonePreset) => {
+    const keys = PRESET_KEYS_BY_VALUE[preset.value] ?? [];
+    if (lang === 'es' && esStrings?.toolUi) {
+      for (const key of keys) {
+        const val = esStrings.toolUi[key] as string | undefined;
+        if (val) return val;
+      }
+    }
+    return preset.label;
+  };
 
   const [sourceFile, setSourceFile] = useState<File | null>(null);
   const [imageInfo, setImageInfo] = useState<LoadedImageInfo | null>(null);
@@ -153,7 +226,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
       setSourceFile(file);
       setImageInfo(info);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unable to load image.');
+      setError(err instanceof Error ? err.message : t('errorUnableToLoadImage', 'Unable to load image.'));
     }
   };
 
@@ -204,7 +277,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
       const base = sanitizeFilename(getBaseFilename(sourceFile.name));
       triggerDownload(result.blob, `${base}_${cfg.suffix}${result.extension}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to export adjusted image.');
+      setError(err instanceof Error ? err.message : t('errorExportFailed', 'Failed to export adjusted image.'));
     } finally {
       setIsExporting(false);
     }
@@ -255,7 +328,16 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
   };
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         {!imageInfo ? (
           <UploadZone
@@ -266,7 +348,8 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
             allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
-            title={`Drop an image to adjust ${cfg.label.toLowerCase()}`}
+            title={t('uploadTitle', `Drop an image to adjust ${cfg.label.toLowerCase()}`)}
+            strings={esStrings?.uploadZone}
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -285,7 +368,11 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                           : 'text-slate-600 hover:text-slate-900'
                       }`}
                     >
-                      {tab === 'split' ? 'Split Compare' : tab}
+                      {tab === 'split'
+                        ? t2('viewSplitCompare', 'tabSplitCompare', 'Split Compare')
+                        : tab === 'after'
+                          ? t2('viewAfter', 'tabAfter', 'after')
+                          : t2('viewBefore', 'tabBefore', 'before')}
                     </button>
                   ))}
                 </div>
@@ -298,14 +385,14 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg cursor-pointer"
                   >
                     <SplitSquareVertical className="w-3.5 h-3.5 text-blue-600" />
-                    <span>Fullscreen Compare</span>
+                    <span>{t('fullscreenCompare', 'Fullscreen Compare')}</span>
                   </button>
                   <button
                     type="button"
                     onClick={handleClear}
                     className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
-                    title="Remove image"
-                    aria-label="Remove image"
+                    title={t('removeImage', 'Remove image')}
+                    aria-label={t('removeImage', 'Remove image')}
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -331,7 +418,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                 {viewCompare === 'before' && (
                   <img
                     src={imageInfo.previewUrl}
-                    alt="Original preview"
+                    alt={t('originalPreviewAlt', 'Original preview')}
                     className="max-w-full max-h-[500px] w-auto h-auto object-contain block"
                   />
                 )}
@@ -342,7 +429,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                   >
                     <img
                       src={imageInfo.previewUrl}
-                      alt="Original comparison"
+                      alt={t('originalComparisonAlt', 'Original comparison')}
                       className="max-w-full max-h-[500px] w-auto h-auto object-contain block"
                     />
                   </div>
@@ -357,7 +444,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
 
               {viewCompare === 'split' && (
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-medium text-slate-500">Before</span>
+                  <span className="text-xs font-medium text-slate-500">{t2('beforeLabel', 'splitBeforeLabel', 'Before')}</span>
                   <input
                     type="range"
                     min={0}
@@ -366,7 +453,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                     onChange={(e) => setSplitPercent(parseInt(e.target.value, 10))}
                     className="flex-1 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                   />
-                  <span className="text-xs font-medium text-blue-600">After</span>
+                  <span className="text-xs font-medium text-blue-600">{t2('afterLabel', 'splitAfterLabel', 'After')}</span>
                 </div>
               )}
 
@@ -383,7 +470,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
               <div className="flex items-center justify-between">
                 <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <ModeIcon className="w-4 h-4 text-blue-600" />
-                  <span>{cfg.label} Controls</span>
+                  <span>{t2('brightnessControls', 'controlsHeading', `${cfg.label} Controls`)}</span>
                 </h2>
                 <button
                   type="button"
@@ -391,14 +478,14 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                   className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:underline cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
-                  <span>Reset</span>
+                  <span>{t('reset', 'Reset')}</span>
                 </button>
               </div>
 
               {/* Slider */}
               <div>
                 <div className="flex items-center justify-between text-xs mb-2">
-                  <span className="font-semibold text-slate-700">{cfg.label} Level</span>
+                  <span className="font-semibold text-slate-700">{t2('brightnessLevel', 'levelLabel', `${cfg.label} Level`)}</span>
                   <span className="font-mono font-bold text-blue-600 tabular-nums">
                     {value > 0 ? `+${value}%` : `${value}%`}
                   </span>
@@ -412,16 +499,16 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                   className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                 />
                 <div className="flex justify-between text-[11px] text-slate-400 mt-1">
-                  <span>{cfg.minLabel}</span>
+                  <span>{t('minLabel', cfg.minLabel)}</span>
                   <span>0%</span>
-                  <span>{cfg.maxLabel}</span>
+                  <span>{t('maxLabel', cfg.maxLabel)}</span>
                 </div>
               </div>
 
               {/* Presets */}
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Quick Presets
+                  {t('quickPresets', 'Quick Presets')}
                 </span>
                 <div className="grid grid-cols-2 gap-2">
                   {cfg.presets.map((preset) => (
@@ -435,7 +522,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                           : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
                       }`}
                     >
-                      {preset.label}
+                      {presetLabel(preset)}
                     </button>
                   ))}
                 </div>
@@ -445,7 +532,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
               <div className="pt-4 border-t border-slate-100 space-y-4">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                    Output Format
+                    {t('outputFormat', 'Output Format')}
                   </span>
                   <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-xl">
                     {(['original', 'jpeg', 'png', 'webp'] as OutputFormatChoice[]).map((fmt) => (
@@ -459,7 +546,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                             : 'text-slate-600 hover:text-slate-900'
                         }`}
                       >
-                        {fmt === 'original' ? 'Original' : fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
+                        {fmt === 'original' ? t('formatOriginal', 'Original') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
                       </button>
                     ))}
                   </div>
@@ -468,7 +555,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                 {format !== 'png' && (
                   <div>
                     <div className="flex justify-between text-xs mb-1.5">
-                      <span className="font-semibold text-slate-700">Quality</span>
+                      <span className="font-semibold text-slate-700">{t('quality', 'Quality')}</span>
                       <span className="font-mono font-bold text-slate-700">{quality}%</span>
                     </div>
                     <input
@@ -493,7 +580,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                   ) : (
                     <Download className="w-4 h-4" />
                   )}
-                  <span>{isExporting ? 'Exporting...' : 'Download Edited Image'}</span>
+                  <span>{isExporting ? t('exporting', 'Exporting...') : t('downloadEditedImage', 'Download Edited Image')}</span>
                 </button>
               </div>
             </div>
@@ -512,8 +599,25 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
         <ComparisonModal
           image={modalItem}
           onClose={closeComparisonModal}
-          titlePrefix={`${cfg.label} Comparison`}
-          afterLabel="Edited (After)"
+          titlePrefix={t('comparisonTitlePrefix', `${cfg.label} Comparison`)}
+          beforeLabel={esStrings?.comparisonModal.beforeLabel}
+          afterLabel={t('comparisonAfterLabel', 'Edited (After)')}
+          closeLabel={esStrings?.comparisonModal.closeLabel}
+          instruction={esStrings?.comparisonModal.instruction}
+          sliderLabel={esStrings?.comparisonModal.sliderLabel}
+          sideBySideLabel={esStrings?.comparisonModal.sideBySideLabel}
+          zoomInLabel={esStrings?.comparisonModal.zoomInLabel}
+          zoomOutLabel={esStrings?.comparisonModal.zoomOutLabel}
+          originalLabel={esStrings?.comparisonModal.originalLabel}
+          outputLabel={esStrings?.comparisonModal.outputLabel}
+          reductionLabel={esStrings?.comparisonModal.reductionLabel}
+          sizeChangeLabel={esStrings?.comparisonModal.sizeChangeLabel}
+          qualityLabel={esStrings?.comparisonModal.qualityLabel}
+          formatLabel={esStrings?.comparisonModal.formatLabel}
+          modalAriaLabel={esStrings?.comparisonModal.modalAriaLabel}
+          altCompressed={esStrings?.comparisonModal.altCompressed}
+          altOriginal={esStrings?.comparisonModal.altOriginal}
+          altProcessed={esStrings?.comparisonModal.altProcessed}
         />
       )}
     </ToolPageLayout>

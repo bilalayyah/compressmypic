@@ -11,6 +11,12 @@ import {
   Trash2,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from './ToolPageLayout';
+import type { UploadZoneStrings } from './UploadZone';
+import type { ComparisonModalStrings } from './ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from './ToolPageLayout';
 import { UploadZone } from './UploadZone';
 import { ComparisonModal } from './ComparisonModal';
@@ -21,6 +27,13 @@ import {
 } from '../utils/imageProcessing';
 import { formatBytes, formatPercent } from '../utils/formatters';
 import { createFilesZipArchive, triggerDownload } from '../utils/zip';
+
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
 
 export interface FormatConverterToolProps {
   slug: string;
@@ -38,6 +51,11 @@ export interface FormatConverterToolProps {
   noticeTone?: 'info' | 'warning';
   decodeErrorHint?: string;
   maxFileSizeMB?: number;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
   onNavigate: (path: string) => void;
 }
 
@@ -65,9 +83,18 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
   noticeTone = 'info',
   decodeErrorHint,
   maxFileSizeMB = 25,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
   onNavigate,
 }) => {
-  const tool = TOOL_BY_SLUG[slug];
+  const activeTool = tool ?? TOOL_BY_SLUG[slug];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi
+      ? ((esStrings.toolUi[key] as string | undefined) ?? fallback)
+      : fallback;
   const [items, setItems] = useState<ImageItem[]>([]);
   const itemsRef = useRef<ImageItem[]>([]);
   itemsRef.current = items;
@@ -152,7 +179,11 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
         errorMessage:
           err instanceof Error
             ? err.message
-            : decodeErrorHint || `Failed to convert ${item.name} to ${targetLabel}.`,
+            : decodeErrorHint ||
+              t('errorConvertFailed', `Failed to convert {name} to ${targetLabel}.`).replace(
+                '{name}',
+                item.name
+              ),
       };
     }
   };
@@ -224,7 +255,15 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
           status: 'error',
           errorMessage:
             decodeErrorHint ||
-            `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`,
+            t(
+              'errorCouldNotDecode',
+              t(
+                'errorDecodeFile',
+                `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`
+              )
+            )
+              .replace('{name}', file.name)
+              .replace('{filename}', file.name),
           spaceSaved: null,
           compressionPercentage: null,
         });
@@ -296,6 +335,28 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
   const totalOrig = doneItems.reduce((sum, i) => sum + i.originalSize, 0);
   const totalOut = doneItems.reduce((sum, i) => sum + (i.compressedSize || 0), 0);
 
+  const batchCountWord = t(
+    doneItems.length === 1 ? 'fileSingular' : 'filePlural',
+    doneItems.length === 1 ? 'file' : 'files'
+  );
+  // Batch 5 tables carry the whole line as a template (filesConverted);
+  // Batch 6 tables compose it from fileSingular/filePlural/filesConvertedSuffix.
+  const batchConvertedText = (() => {
+    const filesConvertedTemplate =
+      lang === 'es' ? esStrings?.toolUi['filesConverted'] : undefined;
+    if (filesConvertedTemplate) {
+      return filesConvertedTemplate
+        .replace('{count}', String(doneItems.length))
+        .replace('{files}', batchCountWord)
+        .replace('{original}', formatBytes(totalOrig))
+        .replace('{converted}', formatBytes(totalOut));
+    }
+    return `${doneItems.length} ${batchCountWord} ${t(
+      'filesConvertedSuffix',
+      'converted'
+    )} · ${formatBytes(totalOrig)} → ${formatBytes(totalOut)}`;
+  })();
+
   const handleDownloadAllZip = async () => {
     if (doneItems.length === 0) return;
     setIsZipping(true);
@@ -314,7 +375,16 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
   };
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         <UploadZone
           onFilesSelected={handleFilesSelected}
@@ -325,6 +395,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
           allowedExtensionsRegex={allowedExtensionsRegex}
           supportedFormatsLabel={supportedFormatsLabel}
           title={uploadTitle || `Drop ${sourceLabel} files to convert to ${targetLabel}`}
+          strings={esStrings?.uploadZone}
         />
 
         {notice && (
@@ -349,7 +420,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
             <div className="flex items-center gap-2.5 flex-wrap">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                Conversion Pipeline:
+                {t('conversionPipeline', 'Conversion Pipeline:')}
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-bold">
                 <span>{sourceLabel}</span>
@@ -358,7 +429,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
               </span>
               {targetFormat === 'png' && (
                 <span className="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-md">
-                  Lossless PNG Output
+                  {t('losslessPngOutput', 'Lossless PNG Output')}
                 </span>
               )}
             </div>
@@ -374,12 +445,12 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                   {isProcessing ? (
                     <>
                       <RotateCcw className="w-4 h-4 animate-spin" />
-                      <span>Converting...</span>
+                      <span>{t('converting', 'Converting...')}</span>
                     </>
                   ) : (
                     <>
                       <Play className="w-4 h-4 fill-current" />
-                      <span>Re-convert All</span>
+                      <span>{t('reconvertAll', 'Re-convert All')}</span>
                     </>
                   )}
                 </button>
@@ -390,7 +461,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-xs sm:text-sm font-medium rounded-xl cursor-pointer"
                 >
                   <Trash2 className="w-4 h-4" />
-                  <span className="hidden sm:inline">Clear</span>
+                  <span className="hidden sm:inline">{t('clear', 'Clear')}</span>
                 </button>
               </div>
             )}
@@ -401,7 +472,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
               <div>
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                    {targetLabel} Output Quality
+                    {t('outputQualityLabel', t('outputQuality', `${targetLabel} Output Quality`))}
                   </span>
                   <span className="text-sm font-bold font-mono text-blue-600">{quality}%</span>
                 </div>
@@ -412,25 +483,33 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                   value={quality}
                   onChange={(e) => setQuality(Number(e.target.value))}
                   className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
-                  aria-label={`${targetLabel} output quality`}
+                  aria-label={t('qualityAriaLabel', `${targetLabel} output quality`)}
                 />
                 <div className="flex justify-between text-[11px] text-slate-400 mt-1">
-                  <span>Smaller file (20%)</span>
-                  <span>Balanced (85%)</span>
-                  <span>Max detail (100%)</span>
+                  <span>{t('smallerFile', 'Smaller file (20%)')}</span>
+                  <span>{t('balanced', 'Balanced (85%)')}</span>
+                  <span>{t('maxDetail', 'Max detail (100%)')}</span>
                 </div>
               </div>
             ) : (
               <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-xs text-slate-600">
-                <strong className="text-slate-800 block mb-0.5">Lossless PNG Encoding</strong>
-                PNG preserves sharp edges, text, and alpha transparency with zero lossy compression artifacts.
+                <strong className="text-slate-800 block mb-0.5">
+                  {t('losslessPngEncodingTitle', t('losslessPngEncoding', 'Lossless PNG Encoding'))}
+                </strong>
+                {t(
+                  'losslessPngEncodingDesc',
+                  t(
+                    'losslessPngNote',
+                    'PNG preserves sharp edges, text, and alpha transparency with zero lossy compression artifacts.'
+                  )
+                )}
               </div>
             )}
 
             {allowSvgScale && (
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Raster Export Scale
+                  {t('rasterExportScale', 'Raster Export Scale')}
                 </span>
                 <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
                   {SVG_SCALE_OPTIONS.map((factor) => (
@@ -449,7 +528,10 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                   ))}
                 </div>
                 <p className="text-[11px] text-slate-500 mt-1.5">
-                  Multiplier applied to the SVG&apos;s intrinsic dimensions (capped at 8000px). Click Re-convert All after changing scale.
+                  {t(
+                    'rasterExportScaleHint',
+                    "Multiplier applied to the SVG's intrinsic dimensions (capped at 8000px). Click Re-convert All after changing scale."
+                  )}
                 </p>
               </div>
             )}
@@ -457,7 +539,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
             {showBackgroundColor && (
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                  Transparent Background Matte Color
+                  {t('matteColorLabel', t('transparentMatteColor', 'Transparent Background Matte Color'))}
                 </span>
                 <div className="flex items-center gap-2.5 flex-wrap">
                   <input
@@ -465,7 +547,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                     value={backgroundColor}
                     onChange={(e) => setBackgroundColor(e.target.value)}
                     className="w-9 h-9 rounded-lg border border-slate-300 cursor-pointer p-0.5 bg-white"
-                    aria-label="Matte background color"
+                    aria-label={t('matteAriaLabel', 'Matte background color')}
                   />
                   {['#ffffff', '#000000', '#f8fafc'].map((preset) => (
                     <button
@@ -478,13 +560,23 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                           : 'border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100'
                       }`}
                     >
-                      {preset === '#ffffff' ? 'White' : preset === '#000000' ? 'Black' : 'Light Gray'}
+                      {preset === '#ffffff'
+                        ? t('matteWhite', 'White')
+                        : preset === '#000000'
+                        ? t('matteBlack', 'Black')
+                        : t('matteLightGray', 'Light Gray')}
                     </button>
                   ))}
                   <span className="text-xs font-mono text-slate-500">{backgroundColor}</span>
                 </div>
                 <p className="text-[11px] text-slate-500 mt-1.5">
-                  JPG does not support transparency; transparent areas fill cleanly with this color.
+                  {t(
+                    'matteHint',
+                    t(
+                      'matteNote',
+                      'JPG does not support transparency; transparent areas fill cleanly with this color.'
+                    )
+                  )}
                 </p>
               </div>
             )}
@@ -498,12 +590,11 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
               <div className="bg-slate-900 text-white rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
-                    {sourceLabel} → {targetLabel} Batch Summary
+                    {t('batchSummary', `${sourceLabel} → ${targetLabel} Batch Summary`)
+                      .replace('{source}', sourceLabel)
+                      .replace('{target}', targetLabel)}
                   </span>
-                  <p className="text-sm font-semibold mt-1">
-                    {doneItems.length} {doneItems.length === 1 ? 'file' : 'files'} converted ·{' '}
-                    {formatBytes(totalOrig)} → {formatBytes(totalOut)}
-                  </p>
+                  <p className="text-sm font-semibold mt-1">{batchConvertedText}</p>
                 </div>
                 {doneItems.length > 1 && (
                   <button
@@ -513,7 +604,11 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl cursor-pointer shrink-0"
                   >
                     <FileArchive className="w-4 h-4" />
-                    <span>{isZipping ? 'Creating ZIP...' : 'Download All (ZIP)'}</span>
+                    <span>
+                      {isZipping
+                        ? t('creatingZip', 'Creating ZIP...')
+                        : t('downloadAllZip', 'Download All (ZIP)')}
+                    </span>
                   </button>
                 )}
               </div>
@@ -593,7 +688,9 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                         </span>
                       </div>
                       <div>
-                        <span className="text-[11px] text-slate-400 block font-medium">Change</span>
+                        <span className="text-[11px] text-slate-400 block font-medium">
+                          {t('changeLabel', t('columnChange', 'Change'))}
+                        </span>
                         <span
                           className={`text-xs sm:text-sm font-bold font-mono tabular-nums ${
                             sizeShrank ? 'text-emerald-600' : 'text-slate-600'
@@ -616,7 +713,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                           className="px-3 py-2 text-slate-700 hover:bg-slate-100 text-xs font-semibold rounded-lg flex items-center gap-1.5 cursor-pointer"
                         >
                           <SplitSquareVertical className="w-4 h-4 text-blue-600" />
-                          <span>Compare</span>
+                          <span>{t('compare', 'Compare')}</span>
                         </button>
                         <button
                           type="button"
@@ -627,7 +724,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                           className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg cursor-pointer"
                         >
                           <Download className="w-4 h-4" />
-                          <span>Download {targetLabel}</span>
+                          <span>{t('downloadTarget', `Download ${targetLabel}`)}</span>
                         </button>
                       </>
                     )}
@@ -635,7 +732,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                       type="button"
                       onClick={() => handleRemove(item.id)}
                       className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
-                      aria-label={`Remove ${item.name}`}
+                      aria-label={t('removeImage', 'Remove {name}').replace('{name}', item.name)}
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -651,8 +748,28 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
         <ComparisonModal
           image={comparisonTarget}
           onClose={() => setComparisonTarget(null)}
-          titlePrefix={`${sourceLabel} → ${targetLabel}`}
-          afterLabel={`${targetLabel} (${formatBytes(comparisonTarget.compressedSize || 0)})`}
+          titlePrefix={t('comparisonTitlePrefix', `${sourceLabel} → ${targetLabel}`)}
+          beforeLabel={esStrings?.comparisonModal.beforeLabel}
+          afterLabel={t('comparisonAfterLabel', `${targetLabel} ({size})`).replace(
+            '{size}',
+            formatBytes(comparisonTarget.compressedSize || 0)
+          )}
+          closeLabel={esStrings?.comparisonModal.closeLabel}
+          instruction={esStrings?.comparisonModal.instruction}
+          sliderLabel={esStrings?.comparisonModal.sliderLabel}
+          sideBySideLabel={esStrings?.comparisonModal.sideBySideLabel}
+          zoomInLabel={esStrings?.comparisonModal.zoomInLabel}
+          zoomOutLabel={esStrings?.comparisonModal.zoomOutLabel}
+          originalLabel={esStrings?.comparisonModal.originalLabel}
+          outputLabel={esStrings?.comparisonModal.outputLabel}
+          reductionLabel={esStrings?.comparisonModal.reductionLabel}
+          sizeChangeLabel={esStrings?.comparisonModal.sizeChangeLabel}
+          qualityLabel={esStrings?.comparisonModal.qualityLabel}
+          formatLabel={esStrings?.comparisonModal.formatLabel}
+          modalAriaLabel={esStrings?.comparisonModal.modalAriaLabel}
+          altCompressed={esStrings?.comparisonModal.altCompressed}
+          altOriginal={esStrings?.comparisonModal.altOriginal}
+          altProcessed={esStrings?.comparisonModal.altProcessed}
         />
       )}
     </ToolPageLayout>

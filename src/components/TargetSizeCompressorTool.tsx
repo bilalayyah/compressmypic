@@ -13,6 +13,12 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { TOOL_BY_SLUG } from '../data/tools';
+import type { ToolDefinition } from '../data/tools';
+import type { SupportedLang } from '../locales/config';
+import type { ToolPageLayoutStrings } from './ToolPageLayout';
+import type { UploadZoneStrings } from './UploadZone';
+import type { ComparisonModalStrings } from './ComparisonModal';
+import { toSpanishPath, getEsAlternates } from '../locales/es/slugs';
 import { ToolPageLayout } from './ToolPageLayout';
 import { UploadZone } from './UploadZone';
 import { ComparisonModal } from './ComparisonModal';
@@ -35,11 +41,23 @@ interface TargetSizeMeta {
   switchedFormatNote: string | null;
 }
 
+export interface PageEsStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface TargetSizeCompressorToolProps {
   slug: string;
   defaultTargetKb: number;
   allowCustomTarget?: boolean;
   onNavigate: (path: string) => void;
+  lang?: SupportedLang;
+  tool?: ToolDefinition;
+  toolRegistry?: Record<string, ToolDefinition>;
+  categoryLabels?: Array<{ id: string; label: string }>;
+  esStrings?: PageEsStrings;
 }
 
 export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> = ({
@@ -47,8 +65,15 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
   defaultTargetKb,
   allowCustomTarget = false,
   onNavigate,
+  lang,
+  tool,
+  toolRegistry,
+  categoryLabels,
+  esStrings,
 }) => {
-  const tool = TOOL_BY_SLUG[slug];
+  const activeTool = tool ?? TOOL_BY_SLUG[slug];
+  const t = (key: string, fallback: string) =>
+    lang === 'es' && esStrings?.toolUi ? (esStrings.toolUi[key] as string | undefined) ?? fallback : fallback;
   const [items, setItems] = useState<ImageItem[]>([]);
   const [metaById, setMetaById] = useState<Record<string, TargetSizeMeta>>({});
   const itemsRef = useRef<ImageItem[]>([]);
@@ -92,6 +117,8 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
         allowDownscale,
         autoSwitchPngToLossy,
         backgroundColor,
+        lang,
+        strings: esStrings?.toolUi,
       });
 
       if (item.compressedPreviewUrl) {
@@ -130,7 +157,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
       return {
         ...item,
         status: 'error',
-        errorMessage: err instanceof Error ? err.message : 'Target compression failed.',
+        errorMessage: err instanceof Error ? err.message : t('errorTargetFailed', 'Target compression failed.'),
       };
     }
   };
@@ -188,7 +215,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
           outputFilename: file.name,
           quality: 80,
           status: 'error',
-          errorMessage: 'Corrupted or unreadable image file.',
+          errorMessage: t('errorCorruptedFile', 'Corrupted or unreadable image file.'),
           spaceSaved: null,
           compressionPercentage: null,
         });
@@ -290,7 +317,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
           achievedTarget: itemsRef.current.find((i) => i.id === id)?.originalSize
             ? (itemsRef.current.find((i) => i.id === id)!.originalSize <= effectiveTargetBytes)
             : existing.achievedTarget,
-          statusNote: 'Kept original file because re-encoding made it larger.',
+          statusNote: t('keptOriginalNote', 'Kept original file because re-encoding made it larger.'),
         },
       };
     });
@@ -302,6 +329,89 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
   const totalOrig = doneItems.reduce((sum, i) => sum + i.originalSize, 0);
   const totalOut = doneItems.reduce((sum, i) => sum + (i.compressedSize || 0), 0);
   const totalSaved = totalOrig - totalOut;
+
+  // --- Spanish display strings derived from live state ---
+  // Batch 4 fixed targets use `uploadTitle`; the Batch 5 custom-target page
+  // uses `uploadTitleTemplate` (live targetLabel). Both carry `{target}`.
+  const uploadTitle = t(
+    'uploadTitleTemplate',
+    t('uploadTitle', 'Drop images to compress under {target}')
+  ).replace('{target}', targetLabel);
+
+  const summaryMetText = t('summaryMet', '{achieved} of {total} {images} met the {target} target')
+    .replace('{achieved}', String(achievedCount))
+    .replace('{total}', String(doneItems.length))
+    .replace(
+      '{images}',
+      doneItems.length === 1 ? t('imageSingular', 'image') : t('imagePlural', 'images')
+    )
+    .replace('{target}', targetLabel);
+
+  // `summaryMissed` may carry its own leading '·' (Batch 4 ' · …', Batch 5 '· …');
+  // strip it and let the JSX supply the single separator.
+  const missedSegment =
+    missedCount > 0
+      ? ` · ${t('summaryMissed', '{missed} could not honestly fit (details below)')
+          .replace('{missed}', String(missedCount))
+          .replace(/^\s*·\s*/, '')}`
+      : '';
+
+  // Batch 4 `totalSavedGrew` is one string; Batch 5 splits it into
+  // `totalSaved` ({saved}) + `totalGrew` ({grew}).
+  const fillSaved = (text: string) =>
+    text
+      .replace('{bytes}', formatBytes(totalSaved))
+      .replace('{saved}', formatBytes(totalSaved))
+      .replace('{grew}', formatBytes(Math.abs(totalSaved)));
+
+  const totalSavedText =
+    totalSaved < 0
+      ? lang === 'es' && esStrings?.toolUi?.totalSavedGrew
+        ? fillSaved(esStrings.toolUi.totalSavedGrew)
+        : `${fillSaved(t('totalSaved', 'Total Saved: {bytes}'))} ${fillSaved(
+            t('totalGrew', '(grew by {grew})')
+          )}`
+      : fillSaved(t('totalSaved', 'Total Saved: {bytes}'));
+
+  // Checkbox labels carry the live target at the end; the base already bolds
+  // it in `allowDownscale`, so keep it bold in both languages.
+  const withTarget = (text: string): React.ReactNode => {
+    const [before, after] = text.split('{target}');
+    return (
+      <>
+        {before}
+        <strong>{targetLabel}</strong>
+        {after ?? ''}
+      </>
+    );
+  };
+  const allowDownscaleLabel = withTarget(
+    t(
+      'allowDownscale',
+      'Allow intelligent dimension scaling if quality reduction alone cannot fit under {target}'
+    )
+  );
+  // `autoSwitchPng` (Batch 5) / `autoConvertPng` (Batch 4); plain text in the
+  // base (target not bold), so a plain substitution keeps English identical.
+  const autoConvertLabel = t(
+    'autoSwitchPng',
+    t(
+      'autoConvertPng',
+      'Auto-convert large PNGs to WebP/JPG when lossless PNG cannot reach {target} cleanly'
+    )
+  ).replace('{target}', targetLabel);
+  const transparentMatteLabel = t(
+    'transparentPngMatteColor',
+    t('transparentPngMatte', 'Transparent PNG matte color:')
+  );
+  // PNG warning: Batch 5 `losslessPngTitle` / `losslessPngNote`, Batch 4
+  // `losslessPngSelected` / `losslessPngWarning`. English keeps its <strong>
+  // JPG/WebP markup (see JSX below); Spanish renders as plain text.
+  const pngWarningTitle = t('losslessPngTitle', t('losslessPngSelected', 'Lossless PNG selected:'));
+  const pngWarningBody =
+    lang === 'es' && esStrings?.toolUi
+      ? esStrings.toolUi.losslessPngNote ?? esStrings.toolUi.losslessPngWarning ?? null
+      : null;
 
   const handleDownloadAllZip = async () => {
     if (doneItems.length === 0) return;
@@ -318,7 +428,16 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
   };
 
   return (
-    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+    <ToolPageLayout
+      tool={activeTool}
+      onNavigate={onNavigate}
+      lang={lang}
+      ui={esStrings?.layoutUi}
+      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : undefined}
+      alternates={lang === 'es' ? getEsAlternates(activeTool.slug) : undefined}
+      toolRegistry={toolRegistry}
+      categoryLabels={categoryLabels}
+    >
       <div className="space-y-6">
         <UploadZone
           onFilesSelected={handleFilesSelected}
@@ -328,7 +447,8 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
           allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
           allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
           supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
-          title={`Drop images to compress under ${targetLabel}`}
+          title={uploadTitle}
+          strings={esStrings?.uploadZone}
         />
 
         {/* Target Controls Panel */}
@@ -336,7 +456,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 pb-5 border-b border-slate-100">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                Target Maximum File Size
+                {t('targetMaxFileSize', 'Target Maximum File Size')}
               </span>
               {allowCustomTarget ? (
                 <div className="space-y-3">
@@ -352,7 +472,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                         setTargetValue(v);
                       }}
                       className="w-28 px-3.5 py-2 text-sm font-bold font-mono border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      aria-label="Target file size number"
+                      aria-label={t('targetNumberAria', 'Target file size number')}
                     />
                     <div className="inline-flex p-1 bg-slate-100 rounded-xl">
                       {(['KB', 'MB'] as const).map((u) => (
@@ -378,17 +498,17 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                       ))}
                     </div>
                     <span className="text-xs text-slate-500 font-mono hidden sm:inline">
-                      ({formatBytes(effectiveTargetBytes)})
+                      {t('maxSuffix', '({size})').replace('{size}', formatBytes(effectiveTargetBytes))}
                     </span>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {[
-                      { label: '20 KB', v: 20, u: 'KB' as const },
-                      { label: '50 KB', v: 50, u: 'KB' as const },
-                      { label: '100 KB', v: 100, u: 'KB' as const },
-                      { label: '200 KB', v: 200, u: 'KB' as const },
-                      { label: '500 KB', v: 500, u: 'KB' as const },
-                      { label: '1 MB', v: 1, u: 'MB' as const },
+                      { label: t('preset20kb', '20 KB'), v: 20, u: 'KB' as const },
+                      { label: t('preset50kb', '50 KB'), v: 50, u: 'KB' as const },
+                      { label: t('preset100kb', '100 KB'), v: 100, u: 'KB' as const },
+                      { label: t('preset200kb', '200 KB'), v: 200, u: 'KB' as const },
+                      { label: t('preset500kb', '500 KB'), v: 500, u: 'KB' as const },
+                      { label: t('preset1mb', '1 MB'), v: 1, u: 'MB' as const },
                     ].map((preset) => (
                       <button
                         key={preset.label}
@@ -414,7 +534,10 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                     <Target className="w-4 h-4 text-blue-600" />
                     <span className="text-sm font-extrabold font-mono">{targetLabel}</span>
                     <span className="text-xs text-blue-600 font-medium">
-                      ({formatBytes(effectiveTargetBytes)} max)
+                      {t('targetMaxSuffix', '({bytes} max)').replace(
+                        '{bytes}',
+                        formatBytes(effectiveTargetBytes)
+                      )}
                     </span>
                   </div>
                   <button
@@ -422,7 +545,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                     onClick={() => onNavigate('/target-file-size-compressor')}
                     className="text-xs font-semibold text-slate-600 hover:text-blue-600 underline underline-offset-2 cursor-pointer"
                   >
-                    Need a different target KB?
+                    {t('needDifferentTarget', 'Need a different target KB?')}
                   </button>
                 </div>
               )}
@@ -430,7 +553,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
 
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
-                Output Format
+                {t('outputFormat', 'Output Format')}
               </span>
               <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
                 {(['original', 'jpeg', 'webp', 'png'] as OutputFormatChoice[]).map((fmt) => (
@@ -444,7 +567,13 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                         : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
-                    {fmt === 'original' ? 'Original' : fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
+                    {fmt === 'original'
+                      ? t('formatOriginal', 'Original')
+                      : fmt === 'jpeg'
+                      ? t('formatJpg', 'JPG')
+                      : fmt === 'webp'
+                      ? t('formatWebp', 'WEBP')
+                      : t('formatPng', 'PNG')}
                   </button>
                 ))}
               </div>
@@ -460,10 +589,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                   onChange={(e) => setAllowDownscale(e.target.checked)}
                   className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
                 />
-                <span>
-                  Allow intelligent dimension scaling if quality reduction alone cannot fit under{' '}
-                  <strong>{targetLabel}</strong>
-                </span>
+                <span>{allowDownscaleLabel}</span>
               </label>
 
               {format === 'original' && (
@@ -474,15 +600,13 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                     onChange={(e) => setAutoSwitchPngToLossy(e.target.checked)}
                     className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
                   />
-                  <span>
-                    Auto-convert large PNGs to WebP/JPG when lossless PNG cannot reach {targetLabel} cleanly
-                  </span>
+                  <span>{autoConvertLabel}</span>
                 </label>
               )}
 
               {format === 'jpeg' && (
                 <div className="flex items-center gap-2 text-xs text-slate-600 pt-1">
-                  <span>Transparent PNG matte color:</span>
+                  <span>{transparentMatteLabel}</span>
                   <input
                     type="color"
                     value={backgroundColor}
@@ -505,12 +629,12 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                   {isProcessing ? (
                     <>
                       <RotateCcw className="w-4 h-4 animate-spin" />
-                      <span>Optimizing...</span>
+                      <span>{t('optimizing', 'Optimizing...')}</span>
                     </>
                   ) : (
                     <>
                       <Play className="w-4 h-4 fill-current" />
-                      <span>Compress to {targetLabel}</span>
+                      <span>{t('compressToTarget', 'Compress to {target}').replace('{target}', targetLabel)}</span>
                     </>
                   )}
                 </button>
@@ -521,7 +645,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                   className="inline-flex items-center gap-1.5 px-3.5 py-2.5 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-sm font-medium rounded-xl cursor-pointer"
                 >
                   <Trash2 className="w-4 h-4" />
-                  <span className="hidden sm:inline">Clear</span>
+                  <span className="hidden sm:inline">{t('clear', 'Clear')}</span>
                 </button>
               </div>
             )}
@@ -531,7 +655,14 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
             <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800 flex items-start gap-2.5">
               <AlertTriangle className="w-4 h-4 mt-0.5 text-amber-600 shrink-0" />
               <p>
-                <strong>Lossless PNG selected:</strong> PNG ignores quality sliders, so reducing size relies strictly on shrinking pixel dimensions. For large photos, choose <strong>JPG</strong> or <strong>WebP</strong> to hit strict KB limits while staying sharp.
+                <strong>{pngWarningTitle}</strong>{' '}
+                {pngWarningBody ?? (
+                  <>
+                    PNG ignores quality sliders, so reducing size relies strictly on shrinking pixel
+                    dimensions. For large photos, choose <strong>JPG</strong> or <strong>WebP</strong>{' '}
+                    to hit strict KB limits while staying sharp.
+                  </>
+                )}
               </p>
             </div>
           )}
@@ -544,19 +675,17 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
               <div className="bg-slate-900 text-white rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
-                    Target Compression Summary · Goal ≤ {targetLabel}
+                    {t('targetSummary', 'Target Compression Summary · Goal ≤ {target}').replace(
+                      '{target}',
+                      targetLabel
+                    )}
                   </span>
                   <p className="text-sm font-semibold mt-1">
-                    {achievedCount} of {doneItems.length}{' '}
-                    {doneItems.length === 1 ? 'image' : 'images'} met the {targetLabel} target
-                    {missedCount > 0
-                      ? ` · ${missedCount} could not honestly fit (details below)`
-                      : ''}
+                    {summaryMetText}
+                    {missedSegment}
                     {' · '}
                     <span className={totalSaved < 0 ? 'text-red-400' : 'text-emerald-400'}>
-                      {totalSaved < 0
-                        ? `Total Saved: ${formatBytes(totalSaved)} (grew by ${formatBytes(Math.abs(totalSaved))})`
-                        : `Total Saved: ${formatBytes(totalSaved)}`}
+                      {totalSavedText}
                     </span>
                   </p>
                 </div>
@@ -628,14 +757,19 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                                 <>
                                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                                   <span>
-                                    Under {targetLabel} ({formatBytes(item.compressedSize || 0)})
+                                    {t('underTarget', 'Under {target} ({bytes})')
+                                      .replace('{target}', targetLabel)
+                                      .replace('{bytes}', formatBytes(item.compressedSize || 0))
+                                      .replace('{size}', formatBytes(item.compressedSize || 0))}
                                   </span>
                                 </>
                               ) : (
                                 <>
                                   <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
                                   <span>
-                                    Target missed — {formatBytes(item.compressedSize || 0)}
+                                    {t('targetMissed', 'Target missed — {bytes}')
+                                      .replace('{bytes}', formatBytes(item.compressedSize || 0))
+                                      .replace('{size}', formatBytes(item.compressedSize || 0))}
                                   </span>
                                 </>
                               )}
@@ -654,13 +788,13 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                     {isDone && item.compressedSize !== null && (
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2 px-3 sm:px-4 bg-slate-50 rounded-xl w-full md:w-auto text-center md:text-left">
                         <div>
-                          <span className="text-[11px] text-slate-400 block font-medium">Original</span>
+                          <span className="text-[11px] text-slate-400 block font-medium">{t('columnOriginal', t('metricOriginal', 'Original'))}</span>
                           <span className="text-xs sm:text-sm font-semibold font-mono text-slate-700 tabular-nums">
                             {formatBytes(item.originalSize)}
                           </span>
                         </div>
                         <div>
-                          <span className="text-[11px] text-slate-400 block font-medium">Output</span>
+                          <span className="text-[11px] text-slate-400 block font-medium">{t('columnOutput', t('metricOutput', 'Output'))}</span>
                           <span
                             className={`text-xs sm:text-sm font-bold font-mono tabular-nums ${
                               item.compressedSize > item.originalSize && !item.keptOriginal
@@ -674,7 +808,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                           </span>
                         </div>
                         <div>
-                          <span className="text-[11px] text-slate-400 block font-medium">Space Saved</span>
+                          <span className="text-[11px] text-slate-400 block font-medium">{t('columnSpaceSaved', t('metricSpaceSaved', 'Space Saved'))}</span>
                           <span
                             className={`text-xs sm:text-sm font-semibold font-mono tabular-nums ${
                               (item.spaceSaved ?? 0) < 0 ? 'text-red-600' : 'text-emerald-600'
@@ -685,7 +819,9 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                         </div>
                         <div>
                           <span className="text-[11px] text-slate-400 block font-medium">
-                            {(item.compressionPercentage ?? 0) < 0 ? 'Size Change' : 'Reduction'}
+                            {(item.compressionPercentage ?? 0) < 0
+                              ? t('columnSizeChange', t('metricSizeChange', 'Size Change'))
+                              : t('columnReduction', t('metricReduction', 'Reduction'))}
                           </span>
                           <span
                             className={`text-xs sm:text-sm font-bold font-mono tabular-nums ${
@@ -707,7 +843,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                             className="px-3 py-2 text-slate-700 hover:bg-slate-100 text-xs font-semibold rounded-lg flex items-center gap-1.5 cursor-pointer"
                           >
                             <SplitSquareVertical className="w-4 h-4 text-blue-600" />
-                            <span>Compare</span>
+                            <span>{t('compare', 'Compare')}</span>
                           </button>
                           <button
                             type="button"
@@ -718,7 +854,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                             className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg cursor-pointer"
                           >
                             <Download className="w-4 h-4" />
-                            <span>Download</span>
+                            <span>{t('download', 'Download')}</span>
                           </button>
                         </>
                       )}
@@ -726,7 +862,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                         type="button"
                         onClick={() => handleRemove(item.id)}
                         className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
-                        aria-label={`Remove ${item.name}`}
+                        aria-label={t('removeImage', 'Remove {name}').replace('{name}', item.name)}
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -760,11 +896,14 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                             {item.compressedSize !== null &&
                             item.compressedSize > item.originalSize &&
                             !item.keptOriginal
-                              ? `Grew by ${formatBytes(
-                                  item.compressedSize - item.originalSize
-                                )} — re-encode is larger than the original. ${
+                              ? `${t('grewBy', 'Grew by {bytes} — re-encode is larger than the original.')
+                                  .replace('{bytes}', formatBytes(item.compressedSize - item.originalSize))
+                                  .replace('{amount}', formatBytes(item.compressedSize - item.originalSize))}${
                                   item.outputType === 'image/png'
-                                    ? 'WebP or JPG is usually smaller for photo-like PNGs.'
+                                    ? ` ${t(
+                                        'grewPngHint',
+                                        t('grewPngNote', 'WebP or JPG is usually smaller for photo-like PNGs.')
+                                      )}`
                                     : ''
                                 }`
                               : meta.statusNote}
@@ -783,7 +922,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                             className="shrink-0 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-red-300 dark:border-red-500/50 text-red-900 dark:text-red-200 hover:bg-red-100 dark:hover:bg-red-500/20 font-bold text-xs cursor-pointer"
                           >
                             <ShieldCheck className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                            <span>Keep original</span>
+                            <span>{t('keepOriginal', 'Keep original')}</span>
                           </button>
                         )}
                     </div>
@@ -799,8 +938,30 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
         <ComparisonModal
           image={comparisonTarget}
           onClose={() => setComparisonTarget(null)}
-          titlePrefix={`Target Compression (${targetLabel})`}
-          afterLabel={`Compressed (${formatBytes(comparisonTarget.compressedSize || 0)})`}
+          titlePrefix={t('comparisonTitlePrefix', 'Target Compression ({target})').replace(
+            '{target}',
+            targetLabel
+          )}
+          beforeLabel={esStrings?.comparisonModal.beforeLabel}
+          afterLabel={t('comparisonAfterLabel', 'Compressed ({bytes})')
+            .replace('{bytes}', formatBytes(comparisonTarget.compressedSize || 0))
+            .replace('{size}', formatBytes(comparisonTarget.compressedSize || 0))}
+          closeLabel={esStrings?.comparisonModal.closeLabel}
+          instruction={esStrings?.comparisonModal.instruction}
+          sliderLabel={esStrings?.comparisonModal.sliderLabel}
+          sideBySideLabel={esStrings?.comparisonModal.sideBySideLabel}
+          zoomInLabel={esStrings?.comparisonModal.zoomInLabel}
+          zoomOutLabel={esStrings?.comparisonModal.zoomOutLabel}
+          originalLabel={esStrings?.comparisonModal.originalLabel}
+          outputLabel={esStrings?.comparisonModal.outputLabel}
+          reductionLabel={esStrings?.comparisonModal.reductionLabel}
+          sizeChangeLabel={esStrings?.comparisonModal.sizeChangeLabel}
+          qualityLabel={esStrings?.comparisonModal.qualityLabel}
+          formatLabel={esStrings?.comparisonModal.formatLabel}
+          modalAriaLabel={esStrings?.comparisonModal.modalAriaLabel}
+          altCompressed={esStrings?.comparisonModal.altCompressed}
+          altOriginal={esStrings?.comparisonModal.altOriginal}
+          altProcessed={esStrings?.comparisonModal.altProcessed}
         />
       )}
     </ToolPageLayout>
