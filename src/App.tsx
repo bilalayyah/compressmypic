@@ -74,6 +74,9 @@ import { BmpToJpgPage } from './pages/BmpToJpgPage';
 import { TOOL_BY_SLUG, TOOLS_REGISTRY, TOOL_CATEGORIES } from './data/tools';
 import { SUPPORTED_LANGS, LANG_STORAGE_KEY, type SupportedLang } from './locales/config';
 import { ES_PATH_BY_EN, EN_PATH_BY_ES, ES_HOME_ALIAS, ES_ALL_TOOLS_PATH } from './locales/es/slugs';
+import { PT_PATH_BY_EN, EN_PATH_BY_PT, PT_HOME_ALIAS, PT_ALL_TOOLS_PATH } from './locales/pt/slugs';
+import { FR_PATH_BY_EN, EN_PATH_BY_FR, FR_HOME_ALIAS, FR_ALL_TOOLS_PATH } from './locales/fr/slugs';
+import { getAlternates } from './locales/alternates';
 import { AboutPageEs } from './pages/es/AboutPageEs';
 import { ContactPageEs } from './pages/es/ContactPageEs';
 import { PrivacyPageEs } from './pages/es/PrivacyPageEs';
@@ -82,6 +85,22 @@ import { AllToolsPageEs } from './pages/es/AllToolsPageEs';
 import { GuideWhatsAppPageEs } from './pages/es/GuideWhatsAppPageEs';
 import { GuideFormatsPageEs } from './pages/es/GuideFormatsPageEs';
 import { Guide100kbPageEs } from './pages/es/Guide100kbPageEs';
+import { AboutPagePt } from './pages/pt/AboutPagePt';
+import { ContactPagePt } from './pages/pt/ContactPagePt';
+import { PrivacyPagePt } from './pages/pt/PrivacyPagePt';
+import { TermsPagePt } from './pages/pt/TermsPagePt';
+import { AllToolsPagePt } from './pages/pt/AllToolsPagePt';
+import { GuideWhatsAppPagePt } from './pages/pt/GuideWhatsAppPagePt';
+import { GuideFormatsPagePt } from './pages/pt/GuideFormatsPagePt';
+import { Guide100kbPagePt } from './pages/pt/Guide100kbPagePt';
+import { AboutPageFr } from './pages/fr/AboutPageFr';
+import { ContactPageFr } from './pages/fr/ContactPageFr';
+import { PrivacyPageFr } from './pages/fr/PrivacyPageFr';
+import { TermsPageFr } from './pages/fr/TermsPageFr';
+import { AllToolsPageFr } from './pages/fr/AllToolsPageFr';
+import { GuideWhatsAppPageFr } from './pages/fr/GuideWhatsAppPageFr';
+import { GuideFormatsPageFr } from './pages/fr/GuideFormatsPageFr';
+import { Guide100kbPageFr } from './pages/fr/Guide100kbPageFr';
 
 const RemoveBackgroundPage = React.lazy(() =>
   import('./pages/RemoveBackgroundPage').then((m) => ({ default: m.RemoveBackgroundPage }))
@@ -170,15 +189,51 @@ function parsePath(rawPathname: string): ParsedPath {
     if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'es' };
     return { path: '/', lang: 'es' }; // unknown Spanish path → Spanish home
   }
+  // Portuguese prefix: /pt/<portuguese-slug>
+  if (p === '/pt' || p.startsWith('/pt/')) {
+    const rest = p === '/pt' ? '/' : p.slice(3); // keep leading '/'
+    if (rest === '/') return { path: '/', lang: 'pt' };
+    if (rest === PT_HOME_ALIAS.slice(3)) return { path: '/', lang: 'pt' }; // /pt/comprimir-imagens → /pt/
+    if (rest === PT_ALL_TOOLS_PATH.slice(3)) return { path: PT_ALL_TOOLS_PATH, lang: 'pt' };
+    const enPath = EN_PATH_BY_PT[p]; // keys carry the '/pt' prefix (see slug map)
+    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'pt' };
+    return { path: '/', lang: 'pt' }; // unknown Portuguese path → Portuguese home
+  }
+  // French prefix: /fr/<french-slug>
+  if (p === '/fr' || p.startsWith('/fr/')) {
+    const rest = p === '/fr' ? '/' : p.slice(3); // keep leading '/'
+    if (rest === '/') return { path: '/', lang: 'fr' };
+    if (rest === FR_HOME_ALIAS.slice(3)) return { path: '/', lang: 'fr' }; // /fr/compresser-images → /fr/
+    if (rest === FR_ALL_TOOLS_PATH.slice(3)) return { path: FR_ALL_TOOLS_PATH, lang: 'fr' };
+    const enPath = EN_PATH_BY_FR[p]; // keys carry the '/fr' prefix (see slug map)
+    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'fr' };
+    return { path: '/', lang: 'fr' }; // unknown French path → French home
+  }
   return KNOWN_ROUTES.includes(p) ? { path: p, lang: 'en' } : { path: '/', lang: 'en' };
 }
 
-/** English path → the equivalent path in `lang` (identity for 'en'). */
+/** English path → the equivalent path in `lang` (identity for 'en').
+ * `enPath` may also be an already-localized tool-directory path (the router
+ * stores the directory route under its localized key); directory paths map
+ * across languages instead of falling through to the slug maps. */
 function toLocalizedPath(enPath: string, lang: SupportedLang): string {
   if (lang === 'en') return enPath;
-  if (enPath === '/') return '/es/';
-  if (enPath === ES_ALL_TOOLS_PATH) return ES_ALL_TOOLS_PATH; // already localized key
-  return ES_PATH_BY_EN[enPath] ?? enPath;
+  if (enPath === '/') return `/${lang}/`;
+  if (
+    enPath === ES_ALL_TOOLS_PATH ||
+    enPath === PT_ALL_TOOLS_PATH ||
+    enPath === FR_ALL_TOOLS_PATH
+  ) {
+    return lang === 'es'
+      ? ES_ALL_TOOLS_PATH
+      : lang === 'pt'
+        ? PT_ALL_TOOLS_PATH
+        : FR_ALL_TOOLS_PATH;
+  }
+  if (lang === 'es') return ES_PATH_BY_EN[enPath] ?? enPath;
+  if (lang === 'pt') return PT_PATH_BY_EN[enPath] ?? enPath;
+  if (lang === 'fr') return FR_PATH_BY_EN[enPath] ?? enPath;
+  return enPath;
 }
 
 function withBasePath(routePath: string): string {
@@ -194,6 +249,22 @@ interface EsLocale {
   toolUi: typeof import('./locales/es/ui').TOOL_UI_ES;
 }
 
+interface PtLocale {
+  ui: typeof import('./locales/pt/ui').PT;
+  tools: typeof import('./locales/pt/tools').TOOL_BY_SLUG_PT;
+  categories: typeof import('./locales/pt/tools').TOOL_CATEGORIES_PT;
+  toolUi: typeof import('./locales/pt/ui').TOOL_UI_PT;
+}
+
+interface FrLocale {
+  ui: typeof import('./locales/fr/ui').FR;
+  tools: typeof import('./locales/fr/tools').TOOL_BY_SLUG_FR;
+  categories: typeof import('./locales/fr/tools').TOOL_CATEGORIES_FR;
+  toolUi: typeof import('./locales/fr/ui').TOOL_UI_FR;
+}
+
+type AnyLocale = EsLocale | PtLocale | FrLocale;
+
 export default function App() {
   const [route, setRoute] = useState<ParsedPath>(() => {
     if (typeof window !== 'undefined') {
@@ -205,7 +276,15 @@ export default function App() {
 
   const [lang, setLang] = useState<SupportedLang>(route.lang);
   const [esLocale, setEsLocale] = useState<EsLocale | null>(null);
+  const [ptLocale, setPtLocale] = useState<PtLocale | null>(null);
+  const [frLocale, setFrLocale] = useState<FrLocale | null>(null);
   const [localeLoading, setLocaleLoading] = useState(false);
+
+  // The active non-English locale (null for English). Defined early so the
+  // SEO effect below can read tool titles/descriptions from it.
+  const activeLocale: AnyLocale | null =
+    lang === 'es' ? esLocale : lang === 'pt' ? ptLocale : lang === 'fr' ? frLocale : null;
+  const activeUi = activeLocale?.ui ?? null;
 
   // Generic loader — later languages add one branch each; only the selected
   // language's files are ever downloaded (Vite code-splits each dynamic import).
@@ -220,7 +299,25 @@ export default function App() {
       setEsLocale({ ui: uiMod.ES, tools: toolsMod.TOOL_BY_SLUG_ES, categories: toolsMod.TOOL_CATEGORIES_ES, toolUi: uiMod.TOOL_UI_ES });
       setLocaleLoading(false);
     }
-  }, [esLocale]);
+    if (target === 'pt' && !ptLocale) {
+      setLocaleLoading(true);
+      const [uiMod, toolsMod] = await Promise.all([
+        import('./locales/pt/ui'),
+        import('./locales/pt/tools'),
+      ]);
+      setPtLocale({ ui: uiMod.PT, tools: toolsMod.TOOL_BY_SLUG_PT, categories: toolsMod.TOOL_CATEGORIES_PT, toolUi: uiMod.TOOL_UI_PT });
+      setLocaleLoading(false);
+    }
+    if (target === 'fr' && !frLocale) {
+      setLocaleLoading(true);
+      const [uiMod, toolsMod] = await Promise.all([
+        import('./locales/fr/ui'),
+        import('./locales/fr/tools'),
+      ]);
+      setFrLocale({ ui: uiMod.FR, tools: toolsMod.TOOL_BY_SLUG_FR, categories: toolsMod.TOOL_CATEGORIES_FR, toolUi: uiMod.TOOL_UI_FR });
+      setLocaleLoading(false);
+    }
+  }, [esLocale, ptLocale, frLocale]);
 
   const [images, setImages] = useState<ImageItem[]>([]);
   const [isCompressing, setIsCompressing] = useState<boolean>(false);
@@ -257,10 +354,10 @@ export default function App() {
     setLang(route.lang);
   }, [route.lang]);
 
-  // Load the locale files when the language changes to Spanish.
+  // Load the locale files when the language changes to a non-English one.
   useEffect(() => {
-    if (lang === 'es') {
-      loadLocale('es');
+    if (lang !== 'en') {
+      loadLocale(lang);
     }
   }, [lang, loadLocale]);
 
@@ -280,10 +377,17 @@ export default function App() {
       base && base !== '/' && raw.toLowerCase().startsWith(base.toLowerCase())
         ? raw.slice(base.length) || '/'
         : raw;
-    if (noBase === '/' && localStorage.getItem(LANG_STORAGE_KEY) === 'es') {
-      window.history.replaceState(null, '', withBasePath('/es/'));
-      setLang('es');
-      setRoute({ path: '/', lang: 'es' });
+    // Only languages with shipped locale files redirect (es/pt/fr for now);
+    // a stored code for a not-yet-built language must not send the user to a
+    // URL prefix the router cannot resolve.
+    const storedLang = localStorage.getItem(LANG_STORAGE_KEY);
+    if (
+      noBase === '/' &&
+      (storedLang === 'es' || storedLang === 'pt' || storedLang === 'fr')
+    ) {
+      window.history.replaceState(null, '', withBasePath(`/${storedLang}/`));
+      setLang(storedLang);
+      setRoute({ path: '/', lang: storedLang });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -293,7 +397,7 @@ export default function App() {
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     const baseDomain = 'https://compressmypic.online';
     const toolMeta =
-      (lang === 'es' && esLocale ? esLocale.tools[currentPath] : undefined) ??
+      (activeLocale ? activeLocale.tools[currentPath] : undefined) ??
       TOOL_BY_SLUG[currentPath];
 
     const staticTitles: Record<string, string> = {
@@ -329,6 +433,30 @@ export default function App() {
       '/guides/reduce-image-size-to-100kb': 'Cómo reducir una imagen a 100 KB para web y correo',
     };
 
+    const staticTitlesPt: Record<string, string> = {
+      '/': ptLocale?.ui.homeMeta.seoTitle ?? '',
+      '/about': 'Sobre o CompressMyPic – Compressor de imagens online grátis',
+      '/contact': 'Fale conosco - CompressMyPic',
+      '/privacy': 'Política de Privacidade - CompressMyPic',
+      '/terms': 'Termos de Serviço - CompressMyPic',
+      [PT_ALL_TOOLS_PATH]: 'Todas as ferramentas – CompressMyPic',
+      '/guides/compress-images-for-whatsapp': 'Comprimir imagens para WhatsApp sem perder qualidade',
+      '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: qual formato devo usar?',
+      '/guides/reduce-image-size-to-100kb': 'Como reduzir uma imagem para 100 KB para web e e-mail',
+    };
+
+    const staticTitlesFr: Record<string, string> = {
+      '/': frLocale?.ui.homeMeta.seoTitle ?? '',
+      '/about': 'À propos de CompressMyPic – Compresseur d’images online gratuit',
+      '/contact': 'Contactez-nous - CompressMyPic',
+      '/privacy': 'Politique de confidentialité - CompressMyPic',
+      '/terms': 'Conditions d’utilisation - CompressMyPic',
+      [FR_ALL_TOOLS_PATH]: 'Tous les outils – CompressMyPic',
+      '/guides/compress-images-for-whatsapp': 'Compresser des images pour WhatsApp sans perdre en qualité',
+      '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP : quel format utiliser ?',
+      '/guides/reduce-image-size-to-100kb': 'Comment réduire une image à 100 Ko pour le web et l’e-mail',
+    };
+
     const staticDescriptionsEs: Record<string, string> = {
       '/': esLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'Acerca de CompressMyPic: un compresor de imágenes online gratis para JPG, PNG y WebP, sin registro, sin marca de agua y sin subir nada a ningún servidor.',
@@ -341,17 +469,45 @@ export default function App() {
       '/guides/reduce-image-size-to-100kb': 'Reduzca el tamaño de una imagen a 100 KB para sitios web y correo electrónico con un compresor online gratis. Guía paso a paso, sin registro ni marca de agua.',
     };
 
+    const staticDescriptionsPt: Record<string, string> = {
+      '/': ptLocale?.ui.homeMeta.seoDescription ?? '',
+      '/about': 'Sobre o CompressMyPic: um compressor de imagens online grátis para JPG, PNG e WebP, sem cadastro, sem marca d’água e sem enviar nada para nenhum servidor.',
+      '/contact': 'Tem perguntas, comentários ou precisa de ajuda? Escreva para nossa equipe com o formulário abaixo ou fale conosco diretamente por e-mail.',
+      '/privacy': 'O CompressMyPic processa suas imagens localmente no seu navegador: elas nunca são enviadas para os nossos servidores e não coletamos, armazenamos nem compartilhamos suas imagens.',
+      '/terms': 'Ao usar o CompressMyPic, você concorda em cumprir estes Termos de Serviço. Leia as condições de uso permitido, responsabilidades e limitações do serviço gratuito.',
+      [PT_ALL_TOOLS_PATH]: 'As 48 ferramentas grátis do CompressMyPic para comprimir, converter e editar imagens, diretamente no seu navegador, sem cadastro.',
+      '/guides/compress-images-for-whatsapp': 'Aprenda a comprimir imagens para WhatsApp sem perder qualidade. Grátis e privado, sem cadastro: reduza suas fotos antes de enviar para que cheguem nítidas.',
+      '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP explicado de forma simples: compare tamanho, qualidade e transparência para escolher o formato certo para suas fotos, logotipos e sites.',
+      '/guides/reduce-image-size-to-100kb': 'Reduza o tamanho de uma imagem para 100 KB para sites e e-mail com um compressor online grátis. Guia passo a passo, sem cadastro nem marca d’água.',
+    };
+
+    const staticDescriptionsFr: Record<string, string> = {
+      '/': frLocale?.ui.homeMeta.seoDescription ?? '',
+      '/about': 'À propos de CompressMyPic : un compresseur d’images online gratuit pour JPG, PNG et WebP, sans inscription, sans filigrane et sans rien envoyer vers un serveur.',
+      '/contact': 'Vous avez des questions, des commentaires ou besoin d’aide ? Écrivez à notre équipe avec le formulaire ci-dessous ou contactez-nous directement par e-mail.',
+      '/privacy': 'CompressMyPic traite vos images localement dans votre navigateur : elles ne sont jamais envoyées vers nos serveurs et nous ne collectons, ne stockons ni ne partageons vos images.',
+      '/terms': 'En utilisant CompressMyPic, vous acceptez de respecter ces Conditions d’utilisation. Lisez les conditions d’usage autorisé, les responsabilités et les limites du service gratuit.',
+      [FR_ALL_TOOLS_PATH]: 'Les 48 outils gratuits de CompressMyPic pour compresser, convertir et éditer des images, directement dans votre navigateur, sans inscription.',
+      '/guides/compress-images-for-whatsapp': 'Apprenez à compresser des images pour WhatsApp sans perdre en qualité. Gratuit et privé, sans inscription : réduisez vos photos avant de les envoyer pour qu’elles arrivent nettes.',
+      '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP expliqué simplement : comparez taille, qualité et transparence pour choisir le bon format pour vos photos, logos et sites web.',
+      '/guides/reduce-image-size-to-100kb': 'Réduisez la taille d’une image à 100 Ko pour les sites web et l’e-mail avec un compresseur online gratuit. Guide pas à pas, sans inscription ni filigrane.',
+    };
+
+    const langTitles =
+      lang === 'es' ? staticTitlesEs : lang === 'pt' ? staticTitlesPt : lang === 'fr' ? staticTitlesFr : undefined;
+    const langDescriptions =
+      lang === 'es' ? staticDescriptionsEs : lang === 'pt' ? staticDescriptionsPt : lang === 'fr' ? staticDescriptionsFr : undefined;
     const nextTitle =
       toolMeta?.seoTitle ||
-      (lang === 'es' ? staticTitlesEs[currentPath] : undefined) ||
+      langTitles?.[currentPath] ||
       staticTitles[currentPath] ||
       'Free Image Compressor Online – Reduce Image Size to 100KB';
     const nextDesc =
       toolMeta?.seoDescription ||
-      (lang === 'es' ? staticDescriptionsEs[currentPath] : undefined) ||
+      langDescriptions?.[currentPath] ||
       staticDescriptions[currentPath] ||
       staticDescriptions['/'];
-    const nextCanonical = `${baseDomain}${lang === 'es' ? toLocalizedPath(currentPath, 'es') : currentPath}`;
+    const nextCanonical = `${baseDomain}${toLocalizedPath(currentPath, lang)}`;
 
     document.title = nextTitle;
     if (canonicalLink) canonicalLink.href = nextCanonical;
@@ -400,38 +556,44 @@ export default function App() {
     // '/' is the home entry in the registry, not a tool page — it must get
     // App-owned hreflang like any other non-tool page.
     const isToolPage = currentPath !== '/' && Boolean(TOOL_BY_SLUG[currentPath]);
-    const hasEsEquivalent =
-      currentPath === '/' ||
+    const isDirectoryPath =
       currentPath === ES_ALL_TOOLS_PATH ||
-      Boolean(ES_PATH_BY_EN[currentPath]);
+      currentPath === PT_ALL_TOOLS_PATH ||
+      currentPath === FR_ALL_TOOLS_PATH;
+    const hasLocalizedEquivalent =
+      currentPath === '/' ||
+      isDirectoryPath ||
+      Boolean(
+        ES_PATH_BY_EN[currentPath] ??
+          PT_PATH_BY_EN[currentPath] ??
+          FR_PATH_BY_EN[currentPath]
+      );
     const toolPageOwnedByLayout =
-      isToolPage && lang === 'es' && Boolean(esLocale?.tools[currentPath]);
+      isToolPage && lang !== 'en' && Boolean(activeLocale?.tools[currentPath]);
     if (toolPageOwnedByLayout) {
       // Translated tool page: ToolPageLayout writes the alternates.
-    } else if (!isToolPage && hasEsEquivalent) {
-      // The ES directory has no standalone English page — its English
+    } else if (!isToolPage && hasLocalizedEquivalent) {
+      // A localized directory has no standalone English page — its English
       // equivalent is the home page (which hosts the tools directory section).
-      const enEquivalent = currentPath === ES_ALL_TOOLS_PATH ? '/' : currentPath;
+      const enEquivalent = isDirectoryPath ? '/' : currentPath;
       setHreflangLinks([
         { lang: 'en', href: `${baseDomain}${enEquivalent}` },
         { lang: 'es', href: `${baseDomain}${toLocalizedPath(currentPath, 'es')}` },
+        { lang: 'pt', href: `${baseDomain}${toLocalizedPath(currentPath, 'pt')}` },
+        { lang: 'fr', href: `${baseDomain}${toLocalizedPath(currentPath, 'fr')}` },
         { lang: 'x-default', href: `${baseDomain}${enEquivalent}` },
       ]);
-    } else if (isToolPage && hasEsEquivalent && lang === 'en') {
-      // English tool page with a Spanish equivalent: ToolPageLayout only
-      // writes alternates on the Spanish side (pages pass `alternates` only
-      // when lang === 'es'), so App writes the reciprocal set here —
+    } else if (isToolPage && hasLocalizedEquivalent && lang === 'en') {
+      // English tool page with translated equivalents: ToolPageLayout only
+      // writes alternates on the translated side (pages pass `alternates`
+      // only when lang !== 'en'), so App writes the reciprocal set here —
       // otherwise the English page carries no hreflang at all and Google
-      // treats the Spanish page's annotations as non-reciprocal.
-      setHreflangLinks([
-        { lang: 'en', href: `${baseDomain}${currentPath}` },
-        { lang: 'es', href: `${baseDomain}${toLocalizedPath(currentPath, 'es')}` },
-        { lang: 'x-default', href: `${baseDomain}${currentPath}` },
-      ]);
+      // treats the translated pages' annotations as non-reciprocal.
+      setHreflangLinks(getAlternates(currentPath));
     } else {
       removeHreflangLinks();
     }
-  }, [currentPath, lang, esLocale]);
+  }, [currentPath, lang, esLocale, ptLocale, frLocale]);
 
   const handleNavigate = (path: string) => {
     if (path.includes('#')) {
@@ -475,20 +637,26 @@ export default function App() {
 
   const handleLanguageChange = (next: SupportedLang) => {
     localStorage.setItem(LANG_STORAGE_KEY, next);
-    // The ES directory has no English route — switching to English lands on home.
+    // A localized directory has no English route — switching to English lands on home.
+    const isDirectoryPath =
+      route.path === ES_ALL_TOOLS_PATH ||
+      route.path === PT_ALL_TOOLS_PATH ||
+      route.path === FR_ALL_TOOLS_PATH;
     const target =
       next === 'en'
-        ? route.path === ES_ALL_TOOLS_PATH
+        ? isDirectoryPath
           ? '/'
           : route.path
         : toLocalizedPath(route.path, next);
-    // If the current page has no Spanish equivalent (e.g. a guide — Batch 7),
-    // fall back to that language's home instead of a broken page.
-    const existsInEs =
+    // If the current page has no equivalent in the target language, fall back
+    // to that language's home instead of a broken page.
+    const mapForNext =
+      next === 'es' ? ES_PATH_BY_EN : next === 'pt' ? PT_PATH_BY_EN : next === 'fr' ? FR_PATH_BY_EN : undefined;
+    const existsInNext =
       route.path === '/' ||
-      route.path === ES_ALL_TOOLS_PATH ||
-      Boolean(ES_PATH_BY_EN[route.path]);
-    const finalTarget = next === 'es' && !existsInEs ? '/es/' : target;
+      isDirectoryPath ||
+      (mapForNext !== undefined && Boolean(mapForNext[route.path]));
+    const finalTarget = next !== 'en' && !existsInNext ? `/${next}/` : target;
     window.history.pushState(null, '', withBasePath(finalTarget));
     setLang(next);
     setRoute(parsePath(finalTarget));
@@ -624,7 +792,7 @@ export default function App() {
           outputFilename: file.name,
           quality: settings.quality,
           status: 'error',
-          errorMessage: lang === 'es' && esLocale ? esLocale.ui.uploadZone.errorLoadFailed : 'Corrupted or unreadable image file.',
+          errorMessage: activeUi ? activeUi.uploadZone.errorLoadFailed : 'Corrupted or unreadable image file.',
           spaceSaved: null,
           compressionPercentage: null,
         });
@@ -784,34 +952,39 @@ export default function App() {
   );
 
   // Active-language registries for the header dropdown, the tools directory
-  // and the homepage: English order, with the Spanish entry substituted when
-  // it exists (tools not yet translated keep their English entry).
-  const toolsRegistry =
-    lang === 'es' && esLocale
-      ? TOOLS_REGISTRY.map((t) => esLocale.tools[t.slug] ?? t)
-      : TOOLS_REGISTRY;
-  const categoryLabels =
-    lang === 'es' && esLocale ? esLocale.categories : TOOL_CATEGORIES;
-  const esUi = lang === 'es' ? esLocale?.ui ?? null : null;
-  const showEsLoading = lang === 'es' && localeLoading && !esLocale;
+  // and the homepage: English order, with the translated entry substituted
+  // when it exists (tools not yet translated keep their English entry).
+  const toolsRegistry = activeLocale
+    ? TOOLS_REGISTRY.map((t) => activeLocale.tools[t.slug] ?? t)
+    : TOOLS_REGISTRY;
+  const categoryLabels = activeLocale ? activeLocale.categories : TOOL_CATEGORIES;
+  const showLocaleLoading = lang !== 'en' && localeLoading && !activeLocale;
+  const localeLoadingText =
+    lang === 'pt' ? 'Carregando…' : lang === 'fr' ? 'Chargement…' : 'Cargando…';
 
   // Languages that have a translation of the CURRENT page (the switcher guard).
-  const pageHasEs =
-    route.path === '/' ||
-    route.path === ES_ALL_TOOLS_PATH ||
-    ES_PATH_BY_EN[route.path] !== undefined ||
-    route.path === '/about' ||
-    route.path === '/contact' ||
-    route.path === '/privacy' ||
-    route.path === '/terms';
-  const availableLanguages: SupportedLang[] = SUPPORTED_LANGS.filter(
-    (l) => l === 'en' || (l === 'es' && pageHasEs)
-  );
+  // route.path is the English path for tools/legal/guides (parsePath maps the
+  // localized URL back), or the localized directory key for directory pages.
+  const pageHasLang = (l: SupportedLang): boolean => {
+    if (l === 'en') return true;
+    if (route.path === '/') return true;
+    if (
+      route.path === ES_ALL_TOOLS_PATH ||
+      route.path === PT_ALL_TOOLS_PATH ||
+      route.path === FR_ALL_TOOLS_PATH
+    ) {
+      return true;
+    }
+    const map =
+      l === 'es' ? ES_PATH_BY_EN : l === 'pt' ? PT_PATH_BY_EN : l === 'fr' ? FR_PATH_BY_EN : undefined;
+    return map !== undefined && map[route.path] !== undefined;
+  };
+  const availableLanguages: SupportedLang[] = SUPPORTED_LANGS.filter((l) => pageHasLang(l));
 
   // Homepage (compressor app). Extracted so the English and Spanish home
   // branches render the same DOM; `strings` is the Spanish bundle, or null
   // for English (components fall back to their English defaults).
-  const renderHome = (strings: EsLocale['ui'] | null) => (
+  const renderHome = (strings: EsLocale['ui'] | PtLocale['ui'] | FrLocale['ui'] | null) => (
     <>
           <Hero strings={strings?.hero} />
 
@@ -935,7 +1108,7 @@ export default function App() {
         onScrollToTool={scrollToTool}
         lang={lang}
         onLanguageChange={handleLanguageChange}
-        strings={esUi ? esUi.header : undefined}
+        strings={activeUi ? activeUi.header : undefined}
         toolsRegistry={toolsRegistry}
         categoryLabels={categoryLabels}
         availableLanguages={availableLanguages}
@@ -947,37 +1120,77 @@ export default function App() {
       </div>
 
       {/* 2. Page Router */}
-      {showEsLoading ? (
+      {showLocaleLoading ? (
         <main className="flex-1">
           <div className="max-w-5xl mx-auto px-4 py-20 text-center">
             <div
               className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-slate-300 border-t-blue-600"
               aria-hidden="true"
             />
-            <p className="mt-4 text-sm text-slate-500">Cargando…</p>
+            <p className="mt-4 text-sm text-slate-500">{localeLoadingText}</p>
           </div>
         </main>
-      ) : lang === 'es' && currentPath === '/' ? (
-        renderHome(esUi)
+      ) : lang !== 'en' && currentPath === '/' ? (
+        renderHome(activeUi)
       ) : currentPath === ES_ALL_TOOLS_PATH ? (
         <main className="flex-1">
           <AllToolsPageEs onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
+        </main>
+      ) : currentPath === PT_ALL_TOOLS_PATH ? (
+        <main className="flex-1">
+          <AllToolsPagePt onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
+        </main>
+      ) : currentPath === FR_ALL_TOOLS_PATH ? (
+        <main className="flex-1">
+          <AllToolsPageFr onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
         </main>
       ) : lang === 'es' && currentPath === '/about' ? (
         <main className="flex-1">
           <AboutPageEs onNavigate={handleNavigate} />
         </main>
+      ) : lang === 'pt' && currentPath === '/about' ? (
+        <main className="flex-1">
+          <AboutPagePt onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'fr' && currentPath === '/about' ? (
+        <main className="flex-1">
+          <AboutPageFr onNavigate={handleNavigate} />
+        </main>
       ) : lang === 'es' && currentPath === '/contact' ? (
         <main className="flex-1">
           <ContactPageEs onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'pt' && currentPath === '/contact' ? (
+        <main className="flex-1">
+          <ContactPagePt onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'fr' && currentPath === '/contact' ? (
+        <main className="flex-1">
+          <ContactPageFr onNavigate={handleNavigate} />
         </main>
       ) : lang === 'es' && currentPath === '/privacy' ? (
         <main className="flex-1">
           <PrivacyPageEs onNavigate={handleNavigate} />
         </main>
+      ) : lang === 'pt' && currentPath === '/privacy' ? (
+        <main className="flex-1">
+          <PrivacyPagePt onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'fr' && currentPath === '/privacy' ? (
+        <main className="flex-1">
+          <PrivacyPageFr onNavigate={handleNavigate} />
+        </main>
       ) : lang === 'es' && currentPath === '/terms' ? (
         <main className="flex-1">
           <TermsPageEs onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'pt' && currentPath === '/terms' ? (
+        <main className="flex-1">
+          <TermsPagePt onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'fr' && currentPath === '/terms' ? (
+        <main className="flex-1">
+          <TermsPageFr onNavigate={handleNavigate} />
         </main>
       ) : currentPath === '/about' ? (
         <main className="flex-1">
@@ -999,13 +1212,37 @@ export default function App() {
               <main className="flex-1">
                 <GuideWhatsAppPageEs onNavigate={handleNavigate} />
               </main>
+            ) : lang === 'pt' && currentPath === '/guides/compress-images-for-whatsapp' ? (
+              <main className="flex-1">
+                <GuideWhatsAppPagePt onNavigate={handleNavigate} />
+              </main>
+            ) : lang === 'fr' && currentPath === '/guides/compress-images-for-whatsapp' ? (
+              <main className="flex-1">
+                <GuideWhatsAppPageFr onNavigate={handleNavigate} />
+              </main>
             ) : lang === 'es' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
               <main className="flex-1">
                 <GuideFormatsPageEs onNavigate={handleNavigate} />
               </main>
+            ) : lang === 'pt' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
+              <main className="flex-1">
+                <GuideFormatsPagePt onNavigate={handleNavigate} />
+              </main>
+            ) : lang === 'fr' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
+              <main className="flex-1">
+                <GuideFormatsPageFr onNavigate={handleNavigate} />
+              </main>
             ) : lang === 'es' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
               <main className="flex-1">
                 <Guide100kbPageEs onNavigate={handleNavigate} />
+              </main>
+            ) : lang === 'pt' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
+              <main className="flex-1">
+                <Guide100kbPagePt onNavigate={handleNavigate} />
+              </main>
+            ) : lang === 'fr' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
+              <main className="flex-1">
+                <Guide100kbPageFr onNavigate={handleNavigate} />
               </main>
             ) : currentPath === '/guides/compress-images-for-whatsapp' ? (
               <main className="flex-1">
@@ -1024,9 +1261,9 @@ export default function App() {
           <ImageResizerPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-resizer'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-resizer'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-resizer']
                 ? {
@@ -1037,6 +1274,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-resizer']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-resizer'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-resizer']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-resizer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-converter' ? (
@@ -1044,9 +1301,9 @@ export default function App() {
           <ImageConverterPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-converter'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-converter'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-converter']
                 ? {
@@ -1057,6 +1314,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-converter']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-converter'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-converter']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-converter'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/rotate-flip-image' ? (
@@ -1064,9 +1341,9 @@ export default function App() {
           <RotateFlipPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/rotate-flip-image'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/rotate-flip-image'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/rotate-flip-image']
                 ? {
@@ -1077,6 +1354,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/rotate-flip-image']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/rotate-flip-image'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/rotate-flip-image']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/rotate-flip-image'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-to-pdf' ? (
@@ -1084,9 +1381,9 @@ export default function App() {
           <ImageToPdfPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-to-pdf'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-to-pdf'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-to-pdf']
                 ? {
@@ -1097,6 +1394,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-to-pdf']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-to-pdf'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-to-pdf']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-to-pdf'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-metadata-viewer' ? (
@@ -1104,9 +1421,9 @@ export default function App() {
           <MetadataViewerPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-metadata-viewer'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-metadata-viewer'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-metadata-viewer']
                 ? {
@@ -1117,6 +1434,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-metadata-viewer']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-metadata-viewer'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-metadata-viewer']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-metadata-viewer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/remove-image-metadata' ? (
@@ -1124,9 +1461,9 @@ export default function App() {
           <RemoveMetadataPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/remove-image-metadata'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/remove-image-metadata'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/remove-image-metadata']
                 ? {
@@ -1137,6 +1474,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/remove-image-metadata']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/remove-image-metadata'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/remove-image-metadata']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/remove-image-metadata'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/favicon-generator' ? (
@@ -1144,9 +1501,9 @@ export default function App() {
           <FaviconGeneratorPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/favicon-generator'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/favicon-generator'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/favicon-generator']
                 ? {
@@ -1157,6 +1514,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/favicon-generator']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/favicon-generator'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/favicon-generator']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/favicon-generator'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-color-picker' ? (
@@ -1164,9 +1541,9 @@ export default function App() {
           <ColorPickerPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-color-picker'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-color-picker'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-color-picker']
                 ? {
@@ -1177,6 +1554,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-color-picker']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-color-picker'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-color-picker']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-color-picker'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-dimensions-checker' ? (
@@ -1184,9 +1581,9 @@ export default function App() {
           <DimensionsCheckerPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-dimensions-checker'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-dimensions-checker'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-dimensions-checker']
                 ? {
@@ -1197,6 +1594,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-dimensions-checker']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-dimensions-checker'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-dimensions-checker']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-dimensions-checker'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-cropper' ? (
@@ -1204,9 +1621,9 @@ export default function App() {
           <ImageCropperPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-cropper'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-cropper'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-cropper']
                 ? {
@@ -1217,6 +1634,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-cropper']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-cropper'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-cropper']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-cropper'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-watermark' ? (
@@ -1224,9 +1661,9 @@ export default function App() {
           <ImageWatermarkPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-watermark'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-watermark'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-watermark']
                 ? {
@@ -1237,6 +1674,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-watermark']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-watermark'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-watermark']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-watermark'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/blur-pixelate-image' ? (
@@ -1244,9 +1701,9 @@ export default function App() {
           <BlurPixelatePage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/blur-pixelate-image'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/blur-pixelate-image'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/blur-pixelate-image']
                 ? {
@@ -1257,6 +1714,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/blur-pixelate-image']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/blur-pixelate-image'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/blur-pixelate-image']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/blur-pixelate-image'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/add-text-to-image' ? (
@@ -1264,9 +1741,9 @@ export default function App() {
           <AddTextPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/add-text-to-image'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/add-text-to-image'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/add-text-to-image']
                 ? {
@@ -1277,6 +1754,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/add-text-to-image']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/add-text-to-image'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/add-text-to-image']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/add-text-to-image'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-border-generator' ? (
@@ -1284,9 +1781,9 @@ export default function App() {
           <ImageBorderPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-border-generator'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-border-generator'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-border-generator']
                 ? {
@@ -1297,6 +1794,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-border-generator']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-border-generator'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-border-generator']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-border-generator'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/round-image-corners' ? (
@@ -1304,9 +1821,9 @@ export default function App() {
           <RoundCornersPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/round-image-corners'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/round-image-corners'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/round-image-corners']
                 ? {
@@ -1317,6 +1834,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/round-image-corners']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/round-image-corners'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/round-image-corners']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/round-image-corners'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-brightness-editor' ? (
@@ -1324,9 +1861,9 @@ export default function App() {
           <BrightnessEditorPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-brightness-editor'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-brightness-editor'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-brightness-editor']
                 ? {
@@ -1337,6 +1874,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-brightness-editor']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-brightness-editor'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-brightness-editor']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-brightness-editor'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-contrast-editor' ? (
@@ -1344,9 +1901,9 @@ export default function App() {
           <ContrastEditorPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-contrast-editor'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-contrast-editor'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-contrast-editor']
                 ? {
@@ -1357,6 +1914,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-contrast-editor']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-contrast-editor'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-contrast-editor']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-contrast-editor'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-saturation-editor' ? (
@@ -1364,9 +1941,9 @@ export default function App() {
           <SaturationEditorPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-saturation-editor'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-saturation-editor'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-saturation-editor']
                 ? {
@@ -1377,6 +1954,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-saturation-editor']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-saturation-editor'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-saturation-editor']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-saturation-editor'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-filters' ? (
@@ -1384,9 +1981,9 @@ export default function App() {
           <ImageFiltersPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-filters'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-filters'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-filters']
                 ? {
@@ -1397,6 +1994,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-filters']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-filters'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-filters']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-filters'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/add-background-to-image' ? (
@@ -1404,9 +2021,9 @@ export default function App() {
           <AddBackgroundPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/add-background-to-image'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/add-background-to-image'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/add-background-to-image']
                 ? {
@@ -1417,6 +2034,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/add-background-to-image']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/add-background-to-image'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/add-background-to-image']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/add-background-to-image'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-splitter' ? (
@@ -1424,9 +2061,9 @@ export default function App() {
           <ImageSplitterPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-splitter'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-splitter'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-splitter']
                 ? {
@@ -1437,6 +2074,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-splitter']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-splitter'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-splitter']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-splitter'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-dpi-changer' ? (
@@ -1444,9 +2101,9 @@ export default function App() {
           <DpiChangerPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-dpi-changer'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-dpi-changer'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-dpi-changer']
                 ? {
@@ -1457,6 +2114,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-dpi-changer']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-dpi-changer'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-dpi-changer']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-dpi-changer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-to-base64' ? (
@@ -1464,9 +2141,9 @@ export default function App() {
           <ImageToBase64Page
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-to-base64'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-to-base64'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-to-base64']
                 ? {
@@ -1477,6 +2154,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-to-base64']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-to-base64'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-to-base64']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-to-base64'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/base64-to-image' ? (
@@ -1484,9 +2181,9 @@ export default function App() {
           <Base64ToImagePage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/base64-to-image'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/base64-to-image'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/base64-to-image']
                 ? {
@@ -1497,6 +2194,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/base64-to-image']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/base64-to-image'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/base64-to-image']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/base64-to-image'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-color-palette-extractor' ? (
@@ -1504,9 +2221,9 @@ export default function App() {
           <PaletteExtractorPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-color-palette-extractor'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-color-palette-extractor'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-color-palette-extractor']
                 ? {
@@ -1517,6 +2234,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-color-palette-extractor']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-color-palette-extractor'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-color-palette-extractor']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-color-palette-extractor'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/gif-maker' ? (
@@ -1524,9 +2261,9 @@ export default function App() {
           <GifMakerPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/gif-maker'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/gif-maker'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/gif-maker']
                 ? {
@@ -1537,6 +2274,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/gif-maker']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/gif-maker'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/gif-maker']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/gif-maker'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-collage-maker' ? (
@@ -1544,9 +2301,9 @@ export default function App() {
           <CollageMakerPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/image-collage-maker'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/image-collage-maker'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/image-collage-maker']
                 ? {
@@ -1557,6 +2314,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/image-collage-maker']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/image-collage-maker'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/image-collage-maker']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/image-collage-maker'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/compress-image-to-50kb' ? (
@@ -1564,9 +2341,9 @@ export default function App() {
           <Compress50KbPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/compress-image-to-50kb'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/compress-image-to-50kb'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/compress-image-to-50kb']
                 ? {
@@ -1577,6 +2354,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/compress-image-to-50kb']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/compress-image-to-50kb'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/compress-image-to-50kb']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/compress-image-to-50kb'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/compress-image-to-100kb' ? (
@@ -1584,9 +2381,9 @@ export default function App() {
           <Compress100KbPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/compress-image-to-100kb'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/compress-image-to-100kb'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/compress-image-to-100kb']
                 ? {
@@ -1597,6 +2394,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/compress-image-to-100kb']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/compress-image-to-100kb'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/compress-image-to-100kb']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/compress-image-to-100kb'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/compress-image-to-200kb' ? (
@@ -1604,9 +2421,9 @@ export default function App() {
           <Compress200KbPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/compress-image-to-200kb'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/compress-image-to-200kb'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/compress-image-to-200kb']
                 ? {
@@ -1617,6 +2434,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/compress-image-to-200kb']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/compress-image-to-200kb'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/compress-image-to-200kb']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/compress-image-to-200kb'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/compress-image-to-500kb' ? (
@@ -1624,9 +2461,9 @@ export default function App() {
           <Compress500KbPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/compress-image-to-500kb'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/compress-image-to-500kb'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/compress-image-to-500kb']
                 ? {
@@ -1637,6 +2474,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/compress-image-to-500kb']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/compress-image-to-500kb'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/compress-image-to-500kb']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/compress-image-to-500kb'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/bulk-image-compressor' ? (
@@ -1644,9 +2501,9 @@ export default function App() {
           <BulkCompressorPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/bulk-image-compressor'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/bulk-image-compressor'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/bulk-image-compressor']
                 ? {
@@ -1659,6 +2516,30 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/bulk-image-compressor']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/bulk-image-compressor'],
+                    compressionControls: ptLocale.ui.compressionControls,
+                    resultsList: ptLocale.ui.resultsList,
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/bulk-image-compressor']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/bulk-image-compressor'],
+                    compressionControls: frLocale.ui.compressionControls,
+                    resultsList: frLocale.ui.resultsList,
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/target-file-size-compressor' ? (
@@ -1666,9 +2547,9 @@ export default function App() {
           <TargetFileSizePage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/target-file-size-compressor'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/target-file-size-compressor'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/target-file-size-compressor']
                 ? {
@@ -1679,6 +2560,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/target-file-size-compressor']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/target-file-size-compressor'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/target-file-size-compressor']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/target-file-size-compressor'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/bulk-image-resizer' ? (
@@ -1686,9 +2587,9 @@ export default function App() {
           <BulkResizerPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/bulk-image-resizer'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/bulk-image-resizer'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/bulk-image-resizer']
                 ? {
@@ -1699,6 +2600,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/bulk-image-resizer']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/bulk-image-resizer'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/bulk-image-resizer']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/bulk-image-resizer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/bulk-image-converter' ? (
@@ -1706,9 +2627,9 @@ export default function App() {
           <BulkConverterPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/bulk-image-converter'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/bulk-image-converter'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/bulk-image-converter']
                 ? {
@@ -1719,6 +2640,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/bulk-image-converter']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/bulk-image-converter'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/bulk-image-converter']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/bulk-image-converter'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/web-image-optimizer' ? (
@@ -1726,9 +2667,9 @@ export default function App() {
           <WebOptimizerPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/web-image-optimizer'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/web-image-optimizer'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/web-image-optimizer']
                 ? {
@@ -1739,6 +2680,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/web-image-optimizer']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/web-image-optimizer'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/web-image-optimizer']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/web-image-optimizer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/gif-compressor' ? (
@@ -1746,9 +2707,9 @@ export default function App() {
           <GifCompressorPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/gif-compressor'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/gif-compressor'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/gif-compressor']
                 ? {
@@ -1759,6 +2720,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/gif-compressor']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/gif-compressor'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/gif-compressor']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/gif-compressor'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/heic-to-jpg' ? (
@@ -1766,9 +2747,9 @@ export default function App() {
           <HeicToJpgPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/heic-to-jpg'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/heic-to-jpg'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/heic-to-jpg']
                 ? {
@@ -1779,6 +2760,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/heic-to-jpg']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/heic-to-jpg'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/heic-to-jpg']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/heic-to-jpg'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/jpg-to-png' ? (
@@ -1786,9 +2787,9 @@ export default function App() {
           <JpgToPngPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/jpg-to-png'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/jpg-to-png'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/jpg-to-png']
                 ? {
@@ -1799,6 +2800,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/jpg-to-png']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/jpg-to-png'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/jpg-to-png']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/jpg-to-png'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/png-to-jpg' ? (
@@ -1806,9 +2827,9 @@ export default function App() {
           <PngToJpgPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/png-to-jpg'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/png-to-jpg'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/png-to-jpg']
                 ? {
@@ -1819,6 +2840,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/png-to-jpg']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/png-to-jpg'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/png-to-jpg']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/png-to-jpg'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/jpg-to-webp' ? (
@@ -1826,9 +2867,9 @@ export default function App() {
           <JpgToWebpPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/jpg-to-webp'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/jpg-to-webp'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/jpg-to-webp']
                 ? {
@@ -1839,6 +2880,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/jpg-to-webp']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/jpg-to-webp'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/jpg-to-webp']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/jpg-to-webp'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/webp-to-jpg' ? (
@@ -1846,9 +2907,9 @@ export default function App() {
           <WebpToJpgPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/webp-to-jpg'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/webp-to-jpg'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/webp-to-jpg']
                 ? {
@@ -1859,6 +2920,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/webp-to-jpg']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/webp-to-jpg'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/webp-to-jpg']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/webp-to-jpg'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/png-to-webp' ? (
@@ -1866,9 +2947,9 @@ export default function App() {
           <PngToWebpPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/png-to-webp'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/png-to-webp'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/png-to-webp']
                 ? {
@@ -1879,6 +2960,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/png-to-webp']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/png-to-webp'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/png-to-webp']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/png-to-webp'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/webp-to-png' ? (
@@ -1886,9 +2987,9 @@ export default function App() {
           <WebpToPngPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/webp-to-png'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/webp-to-png'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/webp-to-png']
                 ? {
@@ -1899,6 +3000,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/webp-to-png']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/webp-to-png'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/webp-to-png']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/webp-to-png'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/svg-to-png' ? (
@@ -1906,9 +3027,9 @@ export default function App() {
           <SvgToPngPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/svg-to-png'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/svg-to-png'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/svg-to-png']
                 ? {
@@ -1919,6 +3040,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/svg-to-png']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/svg-to-png'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/svg-to-png']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/svg-to-png'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/avif-to-jpg' ? (
@@ -1926,9 +3067,9 @@ export default function App() {
           <AvifToJpgPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/avif-to-jpg'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/avif-to-jpg'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/avif-to-jpg']
                 ? {
@@ -1939,6 +3080,26 @@ export default function App() {
                   }
                 : undefined
             }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/avif-to-jpg']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/avif-to-jpg'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/avif-to-jpg']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/avif-to-jpg'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/bmp-to-jpg' ? (
@@ -1946,9 +3107,9 @@ export default function App() {
           <BmpToJpgPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/bmp-to-jpg'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/bmp-to-jpg'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/bmp-to-jpg']
                 ? {
@@ -1956,6 +3117,26 @@ export default function App() {
                     uploadZone: esLocale.ui.uploadZone,
                     comparisonModal: esLocale.ui.comparisonModal,
                     toolUi: esLocale.toolUi['/bmp-to-jpg'],
+                  }
+                : undefined
+            }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/bmp-to-jpg']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/bmp-to-jpg'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/bmp-to-jpg']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/bmp-to-jpg'],
                   }
                 : undefined
             }
@@ -1973,9 +3154,9 @@ export default function App() {
             <RemoveBackgroundPage
             onNavigate={handleNavigate}
             lang={lang}
-            tool={lang === 'es' && esLocale ? esLocale.tools['/remove-background'] : undefined}
-            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
-            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            tool={activeLocale ? activeLocale.tools['/remove-background'] : undefined}
+            toolRegistry={activeLocale?.tools}
+            categoryLabels={activeLocale?.categories}
             esStrings={
               lang === 'es' && esLocale && esLocale.tools['/remove-background']
                 ? {
@@ -1983,6 +3164,26 @@ export default function App() {
                     uploadZone: esLocale.ui.uploadZone,
                     comparisonModal: esLocale.ui.comparisonModal,
                     toolUi: esLocale.toolUi['/remove-background'],
+                  }
+                : undefined
+            }
+ptStrings={
+              lang === 'pt' && ptLocale && ptLocale.tools['/remove-background']
+                ? {
+                    layoutUi: ptLocale.ui.toolPageLayout,
+                    uploadZone: ptLocale.ui.uploadZone,
+                    comparisonModal: ptLocale.ui.comparisonModal,
+                    toolUi: ptLocale.toolUi['/remove-background'],
+                  }
+                : undefined
+            }
+frStrings={
+              lang === 'fr' && frLocale && frLocale.tools['/remove-background']
+                ? {
+                    layoutUi: frLocale.ui.toolPageLayout,
+                    uploadZone: frLocale.ui.uploadZone,
+                    comparisonModal: frLocale.ui.comparisonModal,
+                    toolUi: frLocale.toolUi['/remove-background'],
                   }
                 : undefined
             }
@@ -1997,18 +3198,18 @@ export default function App() {
       <Footer
         onNavigate={handleNavigate}
         strings={
-          esUi
+          activeUi
             ? {
-                ...esUi.footer,
-                toolsLinks: [...esUi.footer.toolsLinks],
-                legalLinks: [...esUi.footer.legalLinks],
-                guidesLinks: [...esUi.footer.guidesLinks],
-                moreLinks: [...esUi.footer.moreLinks],
-                directoryLinks: [...esUi.footer.directoryLinks],
+                ...activeUi.footer,
+                toolsLinks: [...activeUi.footer.toolsLinks],
+                legalLinks: [...activeUi.footer.legalLinks],
+                guidesLinks: [...activeUi.footer.guidesLinks],
+                moreLinks: [...activeUi.footer.moreLinks],
+                directoryLinks: [...activeUi.footer.directoryLinks],
               }
             : undefined
         }
-        localizePath={esUi ? (slug) => toLocalizedPath(slug, lang) : undefined}
+        localizePath={activeUi ? (slug) => toLocalizedPath(slug, lang) : undefined}
       />
 
       {/* Comparison Modal */}
@@ -2016,25 +3217,25 @@ export default function App() {
         <ComparisonModal
           image={comparisonTarget}
           onClose={() => setComparisonTarget(null)}
-          titlePrefix={esUi?.comparisonModal.titlePrefix}
-          beforeLabel={esUi?.comparisonModal.beforeLabel}
-          afterLabel={esUi?.comparisonModal.afterLabel}
-          closeLabel={esUi?.comparisonModal.closeLabel}
-          instruction={esUi?.comparisonModal.instruction}
-          sliderLabel={esUi?.comparisonModal.sliderLabel}
-          sideBySideLabel={esUi?.comparisonModal.sideBySideLabel}
-          zoomInLabel={esUi?.comparisonModal.zoomInLabel}
-          zoomOutLabel={esUi?.comparisonModal.zoomOutLabel}
-          originalLabel={esUi?.comparisonModal.originalLabel}
-          outputLabel={esUi?.comparisonModal.outputLabel}
-          reductionLabel={esUi?.comparisonModal.reductionLabel}
-          sizeChangeLabel={esUi?.comparisonModal.sizeChangeLabel}
-          qualityLabel={esUi?.comparisonModal.qualityLabel}
-          formatLabel={esUi?.comparisonModal.formatLabel}
-          modalAriaLabel={esUi?.comparisonModal.modalAriaLabel}
-          altCompressed={esUi?.comparisonModal.altCompressed}
-          altOriginal={esUi?.comparisonModal.altOriginal}
-          altProcessed={esUi?.comparisonModal.altProcessed}
+          titlePrefix={activeUi?.comparisonModal.titlePrefix}
+          beforeLabel={activeUi?.comparisonModal.beforeLabel}
+          afterLabel={activeUi?.comparisonModal.afterLabel}
+          closeLabel={activeUi?.comparisonModal.closeLabel}
+          instruction={activeUi?.comparisonModal.instruction}
+          sliderLabel={activeUi?.comparisonModal.sliderLabel}
+          sideBySideLabel={activeUi?.comparisonModal.sideBySideLabel}
+          zoomInLabel={activeUi?.comparisonModal.zoomInLabel}
+          zoomOutLabel={activeUi?.comparisonModal.zoomOutLabel}
+          originalLabel={activeUi?.comparisonModal.originalLabel}
+          outputLabel={activeUi?.comparisonModal.outputLabel}
+          reductionLabel={activeUi?.comparisonModal.reductionLabel}
+          sizeChangeLabel={activeUi?.comparisonModal.sizeChangeLabel}
+          qualityLabel={activeUi?.comparisonModal.qualityLabel}
+          formatLabel={activeUi?.comparisonModal.formatLabel}
+          modalAriaLabel={activeUi?.comparisonModal.modalAriaLabel}
+          altCompressed={activeUi?.comparisonModal.altCompressed}
+          altOriginal={activeUi?.comparisonModal.altOriginal}
+          altProcessed={activeUi?.comparisonModal.altProcessed}
         />
       )}
     </div>
