@@ -59,19 +59,28 @@
   </url>
   <url>
     <loc>https://compressmypic.online/guides/compress-images-for-whatsapp</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/guides/compress-images-for-whatsapp" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/guias/comprimir-imagenes-para-whatsapp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/guides/compress-images-for-whatsapp" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/guides/jpg-vs-png-vs-webp</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/guides/jpg-vs-png-vs-webp" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/guias/jpg-vs-png-vs-webp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/guides/jpg-vs-png-vs-webp" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/guides/reduce-image-size-to-100kb</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/guides/reduce-image-size-to-100kb" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/guias/reducir-imagen-a-100kb" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/guides/reduce-image-size-to-100kb" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -131,19 +140,28 @@
   </url>
   <url>
     <loc>https://compressmypic.online/favicon-generator</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/favicon-generator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/generador-de-favicon" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/favicon-generator" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/image-color-picker</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-color-picker" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/selector-de-color" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-color-picker" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/image-dimensions-checker</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-dimensions-checker" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/ver-dimensiones-de-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-dimensions-checker" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -167,222 +185,333 @@
   </url>
   <url>
     <loc>https://compressmypic.online/blur-pixelate-image</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blur-pixelate-image" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/desenfocar-y-pixelar-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blur-pixelate-image" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/add-text-to-image</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/add-text-to-image" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/agregar-texto-a-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/add-text-to-image" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/image-border-generator</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-border-generator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/agregar-borde-a-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-border-generator" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/round-image-corners</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/round-image-corners" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/redondear-esquinas-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/round-image-corners" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/image-brightness-editor</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-brightness-editor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/ajustar-brillo-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-brightness-editor" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/image-contrast-editor</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-contrast-editor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/ajustar-contraste-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-contrast-editor" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/image-saturation-editor</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-saturation-editor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/ajustar-saturacion-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-saturation-editor" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/image-filters</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-filters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/filtros-de-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-filters" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/add-background-to-image</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/add-background-to-image" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/agregar-fondo-a-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/add-background-to-image" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/image-splitter</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-splitter" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/dividir-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-splitter" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/image-dpi-changer</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-dpi-changer" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/cambiar-dpi-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-dpi-changer" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/image-to-base64</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-to-base64" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-imagen-a-base64" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-to-base64" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/base64-to-image</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/base64-to-image" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-base64-a-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/base64-to-image" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/image-color-palette-extractor</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-color-palette-extractor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/extraer-paleta-de-colores" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-color-palette-extractor" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/gif-maker</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/gif-maker" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/crear-gif" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/gif-maker" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/image-collage-maker</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-collage-maker" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/crear-collage-de-imagenes" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-collage-maker" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/compress-image-to-50kb</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/compress-image-to-50kb" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/comprimir-imagen-a-50kb" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/compress-image-to-50kb" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/compress-image-to-100kb</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/compress-image-to-100kb" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/comprimir-imagen-a-100kb" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/compress-image-to-100kb" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/compress-image-to-200kb</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/compress-image-to-200kb" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/comprimir-imagen-a-200kb" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/compress-image-to-200kb" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/compress-image-to-500kb</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/compress-image-to-500kb" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/comprimir-imagen-a-500kb" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/compress-image-to-500kb" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/bulk-image-compressor</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/bulk-image-compressor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/comprimir-imagenes-en-lote" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/bulk-image-compressor" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/target-file-size-compressor</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/target-file-size-compressor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/comprimir-imagen-a-tamano-deseado" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/target-file-size-compressor" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/bulk-image-resizer</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/bulk-image-resizer" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/redimensionar-imagenes-en-lote" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/bulk-image-resizer" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/bulk-image-converter</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/bulk-image-converter" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-imagenes-en-lote" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/bulk-image-converter" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/web-image-optimizer</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/web-image-optimizer" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/optimizar-imagenes-para-web" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/web-image-optimizer" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/gif-compressor</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/gif-compressor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/comprimir-gif" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/gif-compressor" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/heic-to-jpg</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/heic-to-jpg" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-heic-a-jpg" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/heic-to-jpg" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/jpg-to-png</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/jpg-to-png" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-jpg-a-png" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/jpg-to-png" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/png-to-jpg</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/png-to-jpg" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-png-a-jpg" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/png-to-jpg" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/jpg-to-webp</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/jpg-to-webp" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-jpg-a-webp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/jpg-to-webp" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/webp-to-jpg</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/webp-to-jpg" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-webp-a-jpg" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/webp-to-jpg" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/png-to-webp</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/png-to-webp" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-png-a-webp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/png-to-webp" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/webp-to-png</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/webp-to-png" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-webp-a-png" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/webp-to-png" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/svg-to-png</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/svg-to-png" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-svg-a-png" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/svg-to-png" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/avif-to-jpg</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/avif-to-jpg" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-avif-a-jpg" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/avif-to-jpg" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/bmp-to-jpg</loc>
-    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/bmp-to-jpg" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-bmp-a-jpg" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/bmp-to-jpg" />
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/remove-background</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/remove-background" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/eliminar-fondo-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/remove-background" />
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -467,6 +596,393 @@
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/generador-de-favicon</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/favicon-generator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/generador-de-favicon" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/favicon-generator" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/selector-de-color</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-color-picker" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/selector-de-color" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-color-picker" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/ver-dimensiones-de-imagen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-dimensions-checker" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/ver-dimensiones-de-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-dimensions-checker" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/desenfocar-y-pixelar-imagen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blur-pixelate-image" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/desenfocar-y-pixelar-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blur-pixelate-image" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/agregar-texto-a-imagen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/add-text-to-image" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/agregar-texto-a-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/add-text-to-image" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/agregar-borde-a-imagen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-border-generator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/agregar-borde-a-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-border-generator" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/redondear-esquinas-imagen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/round-image-corners" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/redondear-esquinas-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/round-image-corners" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/ajustar-brillo-imagen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-brightness-editor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/ajustar-brillo-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-brightness-editor" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/ajustar-contraste-imagen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-contrast-editor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/ajustar-contraste-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-contrast-editor" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/ajustar-saturacion-imagen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-saturation-editor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/ajustar-saturacion-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-saturation-editor" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/filtros-de-imagen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-filters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/filtros-de-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-filters" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/agregar-fondo-a-imagen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/add-background-to-image" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/agregar-fondo-a-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/add-background-to-image" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/dividir-imagen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-splitter" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/dividir-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-splitter" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/cambiar-dpi-imagen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-dpi-changer" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/cambiar-dpi-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-dpi-changer" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/convertir-imagen-a-base64</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-to-base64" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-imagen-a-base64" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-to-base64" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/convertir-base64-a-imagen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/base64-to-image" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-base64-a-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/base64-to-image" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/extraer-paleta-de-colores</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-color-palette-extractor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/extraer-paleta-de-colores" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-color-palette-extractor" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/crear-gif</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/gif-maker" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/crear-gif" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/gif-maker" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/crear-collage-de-imagenes</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/image-collage-maker" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/crear-collage-de-imagenes" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/image-collage-maker" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/comprimir-imagen-a-50kb</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/compress-image-to-50kb" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/comprimir-imagen-a-50kb" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/compress-image-to-50kb" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/comprimir-imagen-a-100kb</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/compress-image-to-100kb" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/comprimir-imagen-a-100kb" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/compress-image-to-100kb" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/comprimir-imagen-a-200kb</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/compress-image-to-200kb" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/comprimir-imagen-a-200kb" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/compress-image-to-200kb" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/comprimir-imagen-a-500kb</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/compress-image-to-500kb" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/comprimir-imagen-a-500kb" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/compress-image-to-500kb" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/comprimir-imagenes-en-lote</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/bulk-image-compressor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/comprimir-imagenes-en-lote" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/bulk-image-compressor" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/comprimir-imagen-a-tamano-deseado</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/target-file-size-compressor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/comprimir-imagen-a-tamano-deseado" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/target-file-size-compressor" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/redimensionar-imagenes-en-lote</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/bulk-image-resizer" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/redimensionar-imagenes-en-lote" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/bulk-image-resizer" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/convertir-imagenes-en-lote</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/bulk-image-converter" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-imagenes-en-lote" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/bulk-image-converter" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/optimizar-imagenes-para-web</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/web-image-optimizer" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/optimizar-imagenes-para-web" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/web-image-optimizer" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/comprimir-gif</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/gif-compressor" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/comprimir-gif" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/gif-compressor" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/convertir-heic-a-jpg</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/heic-to-jpg" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-heic-a-jpg" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/heic-to-jpg" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/convertir-jpg-a-png</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/jpg-to-png" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-jpg-a-png" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/jpg-to-png" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/convertir-png-a-jpg</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/png-to-jpg" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-png-a-jpg" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/png-to-jpg" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/convertir-jpg-a-webp</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/jpg-to-webp" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-jpg-a-webp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/jpg-to-webp" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/convertir-webp-a-jpg</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/webp-to-jpg" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-webp-a-jpg" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/webp-to-jpg" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/convertir-png-a-webp</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/png-to-webp" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-png-a-webp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/png-to-webp" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/convertir-webp-a-png</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/webp-to-png" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-webp-a-png" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/webp-to-png" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/convertir-svg-a-png</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/svg-to-png" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-svg-a-png" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/svg-to-png" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/convertir-avif-a-jpg</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/avif-to-jpg" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-avif-a-jpg" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/avif-to-jpg" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/convertir-bmp-a-jpg</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/bmp-to-jpg" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/convertir-bmp-a-jpg" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/bmp-to-jpg" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/eliminar-fondo-imagen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/remove-background" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/eliminar-fondo-imagen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/remove-background" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/guias/comprimir-imagenes-para-whatsapp</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/guides/compress-images-for-whatsapp" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/guias/comprimir-imagenes-para-whatsapp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/guides/compress-images-for-whatsapp" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/guias/jpg-vs-png-vs-webp</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/guides/jpg-vs-png-vs-webp" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/guias/jpg-vs-png-vs-webp" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/guides/jpg-vs-png-vs-webp" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/es/guias/reducir-imagen-a-100kb</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/guides/reduce-image-size-to-100kb" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/guias/reducir-imagen-a-100kb" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/guides/reduce-image-size-to-100kb" />
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://compressmypic.online/es/acerca-de</loc>
