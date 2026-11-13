@@ -242,8 +242,47 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
         </div>
 
+        {/* Compact Editing & Developer Tools Directory */}
+        <div className="pt-8 pb-6 border-t border-slate-800">
+          <h4 className="text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-3">
+            Editing, Canvas &amp; Developer Tools
+          </h4>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-slate-400">
+            {[
+              { slug: '/image-cropper', label: 'Image Cropper' },
+              { slug: '/image-watermark', label: 'Image Watermark' },
+              { slug: '/blur-pixelate-image', label: 'Blur & Pixelate' },
+              { slug: '/add-text-to-image', label: 'Add Text to Image' },
+              { slug: '/image-border-generator', label: 'Border Generator' },
+              { slug: '/round-image-corners', label: 'Round Corners' },
+              { slug: '/image-brightness-editor', label: 'Brightness Editor' },
+              { slug: '/image-contrast-editor', label: 'Contrast Editor' },
+              { slug: '/image-saturation-editor', label: 'Saturation Editor' },
+              { slug: '/image-filters', label: 'Image Filters' },
+              { slug: '/add-background-to-image', label: 'Add Background' },
+              { slug: '/image-splitter', label: 'Image Splitter' },
+              { slug: '/image-dpi-changer', label: 'DPI Changer' },
+              { slug: '/image-to-base64', label: 'Image to Base64' },
+              { slug: '/base64-to-image', label: 'Base64 to Image' },
+              { slug: '/image-color-palette-extractor', label: 'Color Palette Extractor' },
+            ].map((item) => (
+              <a
+                key={item.slug}
+                href={item.slug}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate(item.slug);
+                }}
+                className="hover:text-white transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>© {new Date().getFullYear()} CompressMyPic. All rights reserved. Free client-side image compression utility.</p>
           <div className="flex items-center gap-4">
             <span>Contact: bilalayyah@gmail.com</span>

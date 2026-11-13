@@ -1,0 +1,521 @@
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import {
+  Download,
+  RotateCcw,
+  SplitSquareVertical,
+  Trash2,
+  Sun,
+  Contrast,
+  Palette,
+  Loader2,
+  AlertCircle,
+} from 'lucide-react';
+import { ToolDefinition } from '../data/tools';
+import { ToolPageLayout } from './ToolPageLayout';
+import { UploadZone } from './UploadZone';
+import { ComparisonModal } from './ComparisonModal';
+import { OutputFormatChoice, ImageItem } from '../types';
+import {
+  EXTENDED_ALLOWED_EXT_REGEX,
+  EXTENDED_ALLOWED_MIME_TYPES,
+  EXTENDED_IMAGE_ACCEPT,
+  LoadedImageInfo,
+  canvasToBlob,
+  loadExtendedImageInfo,
+} from '../utils/imageProcessing';
+import { resolveOutputFormat } from '../utils/compressor';
+import { applyToneAdjustmentsToCanvas } from '../utils/canvasEffects';
+import { formatBytes, getBaseFilename, sanitizeFilename } from '../utils/formatters';
+import { triggerDownload } from '../utils/zip';
+
+export type ToneMode = 'brightness' | 'contrast' | 'saturation';
+
+interface TonePreset {
+  label: string;
+  value: number;
+}
+
+const MODE_CONFIG: Record<
+  ToneMode,
+  {
+    label: string;
+    Icon: React.ComponentType<{ className?: string }>;
+    presets: TonePreset[];
+    minLabel: string;
+    maxLabel: string;
+    suffix: string;
+  }
+> = {
+  brightness: {
+    label: 'Brightness',
+    Icon: Sun,
+    presets: [
+      { label: 'Dark (-30%)', value: -30 },
+      { label: 'Dim (-15%)', value: -15 },
+      { label: 'Original (0%)', value: 0 },
+      { label: 'Bright (+15%)', value: 15 },
+      { label: 'Vibrant (+30%)', value: 30 },
+      { label: 'High Key (+50%)', value: 50 },
+    ],
+    minLabel: '-100% Darker',
+    maxLabel: '+100% Brighter',
+    suffix: 'brightness',
+  },
+  contrast: {
+    label: 'Contrast',
+    Icon: Contrast,
+    presets: [
+      { label: 'Soft (-25%)', value: -25 },
+      { label: 'Muted (-10%)', value: -10 },
+      { label: 'Original (0%)', value: 0 },
+      { label: 'Crisp (+20%)', value: 20 },
+      { label: 'Punchy (+40%)', value: 40 },
+      { label: 'Dramatic (+70%)', value: 70 },
+    ],
+    minLabel: '-100% Flat',
+    maxLabel: '+100% High Contrast',
+    suffix: 'contrast',
+  },
+  saturation: {
+    label: 'Saturation',
+    Icon: Palette,
+    presets: [
+      { label: 'Grayscale (-100%)', value: -100 },
+      { label: 'Muted (-40%)', value: -40 },
+      { label: 'Original (0%)', value: 0 },
+      { label: 'Rich (+30%)', value: 30 },
+      { label: 'Vivid (+60%)', value: 60 },
+      { label: 'Hyper (+90%)', value: 90 },
+    ],
+    minLabel: '-100% Grayscale',
+    maxLabel: '+100% Vivid',
+    suffix: 'saturation',
+  },
+};
+
+interface ToneEditorToolProps {
+  tool: ToolDefinition;
+  mode: ToneMode;
+  onNavigate: (path: string) => void;
+}
+
+export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
+  tool,
+  mode,
+  onNavigate,
+}) => {
+  const cfg = MODE_CONFIG[mode];
+  const ModeIcon = cfg.Icon;
+
+  const [sourceFile, setSourceFile] = useState<File | null>(null);
+  const [imageInfo, setImageInfo] = useState<LoadedImageInfo | null>(null);
+  const imageInfoRef = useRef<LoadedImageInfo | null>(null);
+  imageInfoRef.current = imageInfo;
+
+  const [value, setValue] = useState<number>(mode === 'brightness' ? 15 : mode === 'contrast' ? 20 : 25);
+  const [format, setFormat] = useState<OutputFormatChoice>('original');
+  const [quality, setQuality] = useState<number>(90);
+  const [viewCompare, setViewCompare] = useState<'after' | 'before' | 'split'>('after');
+  const [splitPercent, setSplitPercent] = useState<number>(50);
+  const [isExporting, setIsExporting] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [modalItem, setModalItem] = useState<ImageItem | null>(null);
+
+  const previewCanvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    return () => {
+      if (imageInfoRef.current?.previewUrl) {
+        URL.revokeObjectURL(imageInfoRef.current.previewUrl);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!imageInfo || !previewCanvasRef.current) return;
+    applyToneAdjustmentsToCanvas(imageInfo.img, previewCanvasRef.current, {
+      brightness: mode === 'brightness' ? value : 0,
+      contrast: mode === 'contrast' ? value : 0,
+      saturation: mode === 'saturation' ? value : 0,
+      maxPreviewDimension: 1000,
+    });
+  }, [imageInfo, mode, value]);
+
+  const handleFilesSelected = async (files: File[]) => {
+    const file = files[0];
+    if (!file) return;
+    setError(null);
+    try {
+      const info = await loadExtendedImageInfo(file);
+      if (imageInfoRef.current?.previewUrl) {
+        URL.revokeObjectURL(imageInfoRef.current.previewUrl);
+      }
+      setSourceFile(file);
+      setImageInfo(info);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unable to load image.');
+    }
+  };
+
+  const handleClear = () => {
+    if (imageInfoRef.current?.previewUrl) {
+      URL.revokeObjectURL(imageInfoRef.current.previewUrl);
+    }
+    setSourceFile(null);
+    setImageInfo(null);
+    setError(null);
+  };
+
+  const buildFullResBlob = useCallback(async () => {
+    if (!sourceFile || !imageInfo) return null;
+    const { mimeType, extension } = resolveOutputFormat(format, imageInfo.detectedType);
+    const outCanvas = document.createElement('canvas');
+    applyToneAdjustmentsToCanvas(imageInfo.img, outCanvas, {
+      brightness: mode === 'brightness' ? value : 0,
+      contrast: mode === 'contrast' ? value : 0,
+      saturation: mode === 'saturation' ? value : 0,
+    });
+
+    if (mimeType === 'image/jpeg') {
+      const jpgCanvas = document.createElement('canvas');
+      jpgCanvas.width = outCanvas.width;
+      jpgCanvas.height = outCanvas.height;
+      const ctx = jpgCanvas.getContext('2d');
+      if (ctx) {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, jpgCanvas.width, jpgCanvas.height);
+        ctx.drawImage(outCanvas, 0, 0);
+        const blob = await canvasToBlob(jpgCanvas, mimeType, quality / 100);
+        return { blob, mimeType, extension };
+      }
+    }
+
+    const blob = await canvasToBlob(outCanvas, mimeType, quality / 100);
+    return { blob, mimeType, extension };
+  }, [sourceFile, imageInfo, format, mode, value, quality]);
+
+  const handleDownload = async () => {
+    if (!sourceFile || !imageInfo) return;
+    setIsExporting(true);
+    setError(null);
+    try {
+      const result = await buildFullResBlob();
+      if (!result) return;
+      const base = sanitizeFilename(getBaseFilename(sourceFile.name));
+      triggerDownload(result.blob, `${base}_${cfg.suffix}${result.extension}`);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to export adjusted image.');
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  const handleOpenComparison = async () => {
+    if (!sourceFile || !imageInfo) return;
+    setIsExporting(true);
+    try {
+      const result = await buildFullResBlob();
+      if (!result) return;
+      const afterUrl = URL.createObjectURL(result.blob);
+      const base = sanitizeFilename(getBaseFilename(sourceFile.name));
+      setModalItem({
+        id: 'tone-compare',
+        file: sourceFile,
+        name: sourceFile.name,
+        originalSize: sourceFile.size,
+        originalWidth: imageInfo.width,
+        originalHeight: imageInfo.height,
+        originalType: imageInfo.detectedType,
+        originalPreviewUrl: imageInfo.previewUrl,
+        hasAlpha: imageInfo.hasAlpha,
+        compressedBlob: result.blob,
+        compressedPreviewUrl: afterUrl,
+        compressedSize: result.blob.size,
+        compressedWidth: imageInfo.width,
+        compressedHeight: imageInfo.height,
+        outputType: result.mimeType,
+        outputExtension: result.extension,
+        outputFilename: `${base}_${cfg.suffix}${result.extension}`,
+        quality,
+        status: 'done',
+        errorMessage: null,
+        spaceSaved: Math.max(0, sourceFile.size - result.blob.size),
+        compressionPercentage: 0,
+      });
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  const closeComparisonModal = () => {
+    if (modalItem?.compressedPreviewUrl) {
+      URL.revokeObjectURL(modalItem.compressedPreviewUrl);
+    }
+    setModalItem(null);
+  };
+
+  return (
+    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+      <div className="space-y-6">
+        {!imageInfo ? (
+          <UploadZone
+            onFilesSelected={handleFilesSelected}
+            maxFileSizeMB={20}
+            multiple={false}
+            accept={EXTENDED_IMAGE_ACCEPT}
+            allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
+            allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
+            supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
+            title={`Drop an image to adjust ${cfg.label.toLowerCase()}`}
+          />
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            {/* Preview Panel */}
+            <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
+                  {(['after', 'before', 'split'] as const).map((tab) => (
+                    <button
+                      key={tab}
+                      type="button"
+                      onClick={() => setViewCompare(tab)}
+                      className={`px-3 py-1.5 text-xs font-semibold rounded-lg capitalize cursor-pointer ${
+                        viewCompare === tab
+                          ? 'bg-white text-slate-900 shadow-xs'
+                          : 'text-slate-600 hover:text-slate-900'
+                      }`}
+                    >
+                      {tab === 'split' ? 'Split Compare' : tab}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleOpenComparison}
+                    disabled={isExporting}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg cursor-pointer"
+                  >
+                    <SplitSquareVertical className="w-3.5 h-3.5 text-blue-600" />
+                    <span>Fullscreen Compare</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleClear}
+                    className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
+                    title="Remove image"
+                    aria-label="Remove image"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Image Viewport */}
+              <div
+                className="relative rounded-xl overflow-hidden border border-slate-200 bg-slate-100 flex items-center justify-center min-h-[280px] max-h-[520px]"
+                style={{
+                  backgroundImage:
+                    'linear-gradient(45deg, #e2e8f0 25%, transparent 25%), linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #e2e8f0 75%), linear-gradient(-45deg, transparent 75%, #e2e8f0 75%)',
+                  backgroundSize: '20px 20px',
+                  backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px',
+                }}
+              >
+                <canvas
+                  ref={previewCanvasRef}
+                  className={`max-w-full max-h-[500px] w-auto h-auto object-contain block ${
+                    viewCompare === 'before' ? 'hidden' : ''
+                  }`}
+                />
+                {viewCompare === 'before' && (
+                  <img
+                    src={imageInfo.previewUrl}
+                    alt="Original preview"
+                    className="max-w-full max-h-[500px] w-auto h-auto object-contain block"
+                  />
+                )}
+                {viewCompare === 'split' && (
+                  <div
+                    className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                    style={{ clipPath: `inset(0 ${100 - splitPercent}% 0 0)` }}
+                  >
+                    <img
+                      src={imageInfo.previewUrl}
+                      alt="Original comparison"
+                      className="max-w-full max-h-[500px] w-auto h-auto object-contain block"
+                    />
+                  </div>
+                )}
+                {viewCompare === 'split' && (
+                  <div
+                    className="absolute top-0 bottom-0 w-0.5 bg-white shadow-md pointer-events-none"
+                    style={{ left: `${splitPercent}%` }}
+                  />
+                )}
+              </div>
+
+              {viewCompare === 'split' && (
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-medium text-slate-500">Before</span>
+                  <input
+                    type="range"
+                    min={0}
+                    max={100}
+                    value={splitPercent}
+                    onChange={(e) => setSplitPercent(parseInt(e.target.value, 10))}
+                    className="flex-1 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                  />
+                  <span className="text-xs font-medium text-blue-600">After</span>
+                </div>
+              )}
+
+              <div className="flex flex-wrap items-center justify-between text-xs text-slate-500 font-mono">
+                <span className="truncate max-w-xs">{sourceFile?.name}</span>
+                <span>
+                  {imageInfo.width}×{imageInfo.height}px · {sourceFile ? formatBytes(sourceFile.size) : ''}
+                </span>
+              </div>
+            </div>
+
+            {/* Controls Panel */}
+            <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+              <div className="flex items-center justify-between">
+                <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                  <ModeIcon className="w-4 h-4 text-blue-600" />
+                  <span>{cfg.label} Controls</span>
+                </h2>
+                <button
+                  type="button"
+                  onClick={() => setValue(0)}
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:underline cursor-pointer"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Reset</span>
+                </button>
+              </div>
+
+              {/* Slider */}
+              <div>
+                <div className="flex items-center justify-between text-xs mb-2">
+                  <span className="font-semibold text-slate-700">{cfg.label} Level</span>
+                  <span className="font-mono font-bold text-blue-600 tabular-nums">
+                    {value > 0 ? `+${value}%` : `${value}%`}
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min={-100}
+                  max={100}
+                  value={value}
+                  onChange={(e) => setValue(parseInt(e.target.value, 10))}
+                  className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                />
+                <div className="flex justify-between text-[11px] text-slate-400 mt-1">
+                  <span>{cfg.minLabel}</span>
+                  <span>0%</span>
+                  <span>{cfg.maxLabel}</span>
+                </div>
+              </div>
+
+              {/* Presets */}
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                  Quick Presets
+                </span>
+                <div className="grid grid-cols-2 gap-2">
+                  {cfg.presets.map((preset) => (
+                    <button
+                      key={preset.label}
+                      type="button"
+                      onClick={() => setValue(preset.value)}
+                      className={`px-3 py-2 text-xs font-semibold rounded-xl border text-left transition-colors cursor-pointer ${
+                        value === preset.value
+                          ? 'bg-blue-50 border-blue-500 text-blue-700'
+                          : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+                      }`}
+                    >
+                      {preset.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Output Format & Quality */}
+              <div className="pt-4 border-t border-slate-100 space-y-4">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                    Output Format
+                  </span>
+                  <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-xl">
+                    {(['original', 'jpeg', 'png', 'webp'] as OutputFormatChoice[]).map((fmt) => (
+                      <button
+                        key={fmt}
+                        type="button"
+                        onClick={() => setFormat(fmt)}
+                        className={`py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
+                          format === fmt
+                            ? 'bg-blue-600 text-white shadow-xs'
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        {fmt === 'original' ? 'Original' : fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {format !== 'png' && (
+                  <div>
+                    <div className="flex justify-between text-xs mb-1.5">
+                      <span className="font-semibold text-slate-700">Quality</span>
+                      <span className="font-mono font-bold text-slate-700">{quality}%</span>
+                    </div>
+                    <input
+                      type="range"
+                      min={10}
+                      max={100}
+                      value={quality}
+                      onChange={(e) => setQuality(parseInt(e.target.value, 10))}
+                      className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    />
+                  </div>
+                )}
+
+                <button
+                  type="button"
+                  onClick={handleDownload}
+                  disabled={isExporting}
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm transition-colors cursor-pointer disabled:opacity-60"
+                >
+                  {isExporting ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <Download className="w-4 h-4" />
+                  )}
+                  <span>{isExporting ? 'Exporting...' : 'Download Edited Image'}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {error && (
+          <div className="flex items-start gap-2 p-3.5 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl">
+            <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
+            <span>{error}</span>
+          </div>
+        )}
+      </div>
+
+      {modalItem && (
+        <ComparisonModal
+          image={modalItem}
+          onClose={closeComparisonModal}
+          titlePrefix={`${cfg.label} Comparison`}
+          afterLabel="Edited (After)"
+        />
+      )}
+    </ToolPageLayout>
+  );
+};

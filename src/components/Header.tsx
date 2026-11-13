@@ -90,7 +90,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToTool }) =>
               />
             </button>
             {toolsOpen && (
-              <div className="absolute left-0 top-full mt-2 w-[560px] max-w-[90vw] rounded-2xl border border-slate-200 bg-white p-5 shadow-xl grid grid-cols-2 gap-4">
+              <div className="absolute left-0 top-full mt-2 w-[720px] max-w-[92vw] max-h-[75vh] overflow-y-auto rounded-2xl border border-slate-200 bg-white p-5 shadow-xl grid grid-cols-3 gap-5">
                 {activeCategories.map((cat) => {
                   const catTools = TOOLS_REGISTRY.filter((t) => t.category === cat.id);
                   return (
@@ -107,7 +107,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToTool }) =>
                               e.preventDefault();
                               handleNav(tool.slug);
                             }}
-                            className="block px-2 py-1.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                            className="block px-2 py-1 rounded-lg text-xs font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
                           >
                             {tool.name}
                           </a>
@@ -252,25 +252,33 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToTool }) =>
             Home (Image Compressor)
           </a>
 
-          <div className="pt-2 border-t border-slate-100">
-            <p className="px-3 text-xs font-semibold uppercase tracking-wide text-slate-400">
-              Image Tools
-            </p>
-            <div className="mt-2 grid grid-cols-1 gap-1">
-              {TOOLS_REGISTRY.filter((t) => t.slug !== '/').map((tool) => (
-                <a
-                  key={tool.slug}
-                  href={tool.slug}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNav(tool.slug);
-                  }}
-                  className="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
-                >
-                  {tool.name}
-                </a>
-              ))}
-            </div>
+          <div className="pt-2 border-t border-slate-100 space-y-3">
+            {activeCategories.map((cat) => {
+              const catTools = TOOLS_REGISTRY.filter((t) => t.category === cat.id && t.slug !== '/');
+              if (catTools.length === 0) return null;
+              return (
+                <div key={cat.id}>
+                  <p className="px-3 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                    {cat.label}
+                  </p>
+                  <div className="mt-1 grid grid-cols-2 gap-1">
+                    {catTools.map((tool) => (
+                      <a
+                        key={tool.slug}
+                        href={tool.slug}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleNav(tool.slug);
+                        }}
+                        className="block px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600 rounded-md truncate"
+                      >
+                        {tool.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           <div className="pt-2 border-t border-slate-100 space-y-1">

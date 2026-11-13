@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Maximize2,
   RefreshCw,
@@ -11,8 +11,23 @@ import {
   Ruler,
   Minimize2,
   ArrowRight,
+  Crop,
+  Stamp,
+  Droplets,
+  Type,
+  Frame,
+  Circle,
+  Sun,
+  Contrast,
+  Palette,
+  SlidersHorizontal,
+  Layers,
+  Grid,
+  Printer,
+  Code2,
+  FileCode2,
 } from 'lucide-react';
-import { TOOLS_REGISTRY, TOOL_CATEGORIES } from '../data/tools';
+import { TOOLS_REGISTRY, TOOL_CATEGORIES, ToolCategoryId } from '../data/tools';
 
 interface ToolsDirectorySectionProps {
   onNavigate: (path: string) => void;
@@ -30,18 +45,43 @@ const TOOL_ICONS: Record<string, React.ComponentType<{ className?: string }>> = 
   '/favicon-generator': Sparkles,
   '/image-color-picker': Pipette,
   '/image-dimensions-checker': Ruler,
+  '/image-cropper': Crop,
+  '/image-watermark': Stamp,
+  '/blur-pixelate-image': Droplets,
+  '/add-text-to-image': Type,
+  '/image-border-generator': Frame,
+  '/round-image-corners': Circle,
+  '/image-brightness-editor': Sun,
+  '/image-contrast-editor': Contrast,
+  '/image-saturation-editor': Palette,
+  '/image-filters': SlidersHorizontal,
+  '/add-background-to-image': Layers,
+  '/image-splitter': Grid,
+  '/image-dpi-changer': Printer,
+  '/image-to-base64': Code2,
+  '/base64-to-image': FileCode2,
+  '/image-color-palette-extractor': Palette,
 };
 
 export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
   onNavigate,
   currentPath = '/',
 }) => {
+  const [selectedCategory, setSelectedCategory] = useState<'all' | ToolCategoryId>('all');
+
   const otherTools = TOOLS_REGISTRY.filter((t) => t.slug !== currentPath);
+  const activeCategories = TOOL_CATEGORIES.filter((cat) =>
+    otherTools.some((t) => t.category === cat.id)
+  );
+  const visibleTools =
+    selectedCategory === 'all'
+      ? otherTools
+      : otherTools.filter((t) => t.category === selectedCategory);
 
   return (
     <section className="py-14 sm:py-18 bg-white border-t border-slate-200">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
               All Browser-Native Tools
@@ -55,8 +95,40 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
           </div>
         </div>
 
+        {/* Category Filter Tabs */}
+        <div className="flex flex-wrap gap-2 mb-7">
+          <button
+            type="button"
+            onClick={() => setSelectedCategory('all')}
+            className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl border transition-colors cursor-pointer ${
+              selectedCategory === 'all'
+                ? 'bg-blue-600 text-white border-blue-600 shadow-xs'
+                : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
+            }`}
+          >
+            All Tools ({otherTools.length})
+          </button>
+          {activeCategories.map((cat) => {
+            const count = otherTools.filter((t) => t.category === cat.id).length;
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl border transition-colors cursor-pointer ${
+                  selectedCategory === cat.id
+                    ? 'bg-blue-600 text-white border-blue-600 shadow-xs'
+                    : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
+                }`}
+              >
+                {cat.label} ({count})
+              </button>
+            );
+          })}
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {otherTools.map((tool) => {
+          {visibleTools.map((tool) => {
             const Icon = TOOL_ICONS[tool.slug] || Sparkles;
             const cat = TOOL_CATEGORIES.find((c) => c.id === tool.category)?.label;
             return (

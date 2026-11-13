@@ -33,6 +33,22 @@ import { RemoveMetadataPage } from './pages/RemoveMetadataPage';
 import { FaviconGeneratorPage } from './pages/FaviconGeneratorPage';
 import { ColorPickerPage } from './pages/ColorPickerPage';
 import { DimensionsCheckerPage } from './pages/DimensionsCheckerPage';
+import { ImageCropperPage } from './pages/ImageCropperPage';
+import { ImageWatermarkPage } from './pages/ImageWatermarkPage';
+import { BlurPixelatePage } from './pages/BlurPixelatePage';
+import { AddTextPage } from './pages/AddTextPage';
+import { ImageBorderPage } from './pages/ImageBorderPage';
+import { RoundCornersPage } from './pages/RoundCornersPage';
+import { BrightnessEditorPage } from './pages/BrightnessEditorPage';
+import { ContrastEditorPage } from './pages/ContrastEditorPage';
+import { SaturationEditorPage } from './pages/SaturationEditorPage';
+import { ImageFiltersPage } from './pages/ImageFiltersPage';
+import { AddBackgroundPage } from './pages/AddBackgroundPage';
+import { ImageSplitterPage } from './pages/ImageSplitterPage';
+import { DpiChangerPage } from './pages/DpiChangerPage';
+import { ImageToBase64Page } from './pages/ImageToBase64Page';
+import { Base64ToImagePage } from './pages/Base64ToImagePage';
+import { PaletteExtractorPage } from './pages/PaletteExtractorPage';
 import { TOOL_BY_SLUG } from './data/tools';
 import { CompressionSettings, ImageItem } from './types';
 import { compressSingleImage, detectTransparency, loadImageFromFile, toDecodableBlob } from './utils/compressor';
@@ -56,6 +72,22 @@ const KNOWN_ROUTES = [
   '/favicon-generator',
   '/image-color-picker',
   '/image-dimensions-checker',
+  '/image-cropper',
+  '/image-watermark',
+  '/blur-pixelate-image',
+  '/add-text-to-image',
+  '/image-border-generator',
+  '/round-image-corners',
+  '/image-brightness-editor',
+  '/image-contrast-editor',
+  '/image-saturation-editor',
+  '/image-filters',
+  '/add-background-to-image',
+  '/image-splitter',
+  '/image-dpi-changer',
+  '/image-to-base64',
+  '/base64-to-image',
+  '/image-color-palette-extractor',
 ];
 
 function getNormalizedPath(rawPathname: string): string {
@@ -538,6 +570,70 @@ export default function App() {
       ) : currentPath === '/image-dimensions-checker' ? (
         <main className="flex-1">
           <DimensionsCheckerPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/image-cropper' ? (
+        <main className="flex-1">
+          <ImageCropperPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/image-watermark' ? (
+        <main className="flex-1">
+          <ImageWatermarkPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/blur-pixelate-image' ? (
+        <main className="flex-1">
+          <BlurPixelatePage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/add-text-to-image' ? (
+        <main className="flex-1">
+          <AddTextPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/image-border-generator' ? (
+        <main className="flex-1">
+          <ImageBorderPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/round-image-corners' ? (
+        <main className="flex-1">
+          <RoundCornersPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/image-brightness-editor' ? (
+        <main className="flex-1">
+          <BrightnessEditorPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/image-contrast-editor' ? (
+        <main className="flex-1">
+          <ContrastEditorPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/image-saturation-editor' ? (
+        <main className="flex-1">
+          <SaturationEditorPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/image-filters' ? (
+        <main className="flex-1">
+          <ImageFiltersPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/add-background-to-image' ? (
+        <main className="flex-1">
+          <AddBackgroundPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/image-splitter' ? (
+        <main className="flex-1">
+          <ImageSplitterPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/image-dpi-changer' ? (
+        <main className="flex-1">
+          <DpiChangerPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/image-to-base64' ? (
+        <main className="flex-1">
+          <ImageToBase64Page onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/base64-to-image' ? (
+        <main className="flex-1">
+          <Base64ToImagePage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/image-color-palette-extractor' ? (
+        <main className="flex-1">
+          <PaletteExtractorPage onNavigate={handleNavigate} />
         </main>
       ) : (
         /* HOME / COMPRESSOR APPLICATION */

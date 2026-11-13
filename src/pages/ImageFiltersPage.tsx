@@ -1,0 +1,421 @@
+import React, { useState, useEffect, useRef } from 'react';
+import {
+  Download,
+  Sparkles,
+  Trash2,
+  RotateCcw,
+  SplitSquareVertical,
+  Loader2,
+  AlertCircle,
+} from 'lucide-react';
+import { TOOL_BY_SLUG } from '../data/tools';
+import { ToolPageLayout } from '../components/ToolPageLayout';
+import { UploadZone } from '../components/UploadZone';
+import { ComparisonModal } from '../components/ComparisonModal';
+import { ImageItem, OutputFormatChoice } from '../types';
+import {
+  EXTENDED_ALLOWED_EXT_REGEX,
+  EXTENDED_ALLOWED_MIME_TYPES,
+  EXTENDED_IMAGE_ACCEPT,
+  LoadedImageInfo,
+  canvasToBlob,
+  loadExtendedImageInfo,
+} from '../utils/imageProcessing';
+import { resolveOutputFormat } from '../utils/compressor';
+import {
+  FILTER_PRESETS,
+  FilterPresetId,
+  applyFilterPresetToCanvas,
+} from '../utils/canvasEffects';
+import { formatBytes, getBaseFilename, sanitizeFilename } from '../utils/formatters';
+import { triggerDownload } from '../utils/zip';
+
+interface ImageFiltersPageProps {
+  onNavigate: (path: string) => void;
+}
+
+export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({ onNavigate }) => {
+  const tool = TOOL_BY_SLUG['/image-filters'];
+  const [sourceFile, setSourceFile] = useState<File | null>(null);
+  const [imageInfo, setImageInfo] = useState<LoadedImageInfo | null>(null);
+  const imageInfoRef = useRef<LoadedImageInfo | null>(null);
+  imageInfoRef.current = imageInfo;
+
+  const [selectedPreset, setSelectedPreset] = useState<FilterPresetId>('vintage');
+  const [intensity, setIntensity] = useState<number>(100);
+  const [format, setFormat] = useState<OutputFormatChoice>('original');
+  const [quality, setQuality] = useState<number>(90);
+  const [thumbnails, setThumbnails] = useState<Record<string, string>>({});
+  const [showOriginal, setShowOriginal] = useState<boolean>(false);
+  const [isExporting, setIsExporting] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [modalItem, setModalItem] = useState<ImageItem | null>(null);
+
+  const previewCanvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    return () => {
+      if (imageInfoRef.current?.previewUrl) {
+        URL.revokeObjectURL(imageInfoRef.current.previewUrl);
+      }
+    };
+  }, []);
+
+  // Generate thumbnail strip for presets
+  useEffect(() => {
+    if (!imageInfo) {
+      setThumbnails({});
+      return;
+    }
+    const nextThumbs: Record<string, string> = {};
+    const thumbCanvas = document.createElement('canvas');
+    for (const preset of FILTER_PRESETS) {
+      applyFilterPresetToCanvas(imageInfo.img, thumbCanvas, preset.id, 100, 120);
+      nextThumbs[preset.id] = thumbCanvas.toDataURL('image/jpeg', 0.8);
+    }
+    setThumbnails(nextThumbs);
+  }, [imageInfo]);
+
+  // Render live main preview canvas
+  useEffect(() => {
+    if (!imageInfo || !previewCanvasRef.current) return;
+    applyFilterPresetToCanvas(
+      imageInfo.img,
+      previewCanvasRef.current,
+      showOriginal ? 'original' : selectedPreset,
+      intensity,
+      1000
+    );
+  }, [imageInfo, selectedPreset, intensity, showOriginal]);
+
+  const handleFilesSelected = async (files: File[]) => {
+    const file = files[0];
+    if (!file) return;
+    setError(null);
+    try {
+      const info = await loadExtendedImageInfo(file);
+      if (imageInfoRef.current?.previewUrl) {
+        URL.revokeObjectURL(imageInfoRef.current.previewUrl);
+      }
+      setSourceFile(file);
+      setImageInfo(info);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unable to load image.');
+    }
+  };
+
+  const handleClear = () => {
+    if (imageInfoRef.current?.previewUrl) {
+      URL.revokeObjectURL(imageInfoRef.current.previewUrl);
+    }
+    setSourceFile(null);
+    setImageInfo(null);
+    setThumbnails({});
+    setError(null);
+  };
+
+  const buildFullRes = async () => {
+    if (!sourceFile || !imageInfo) return null;
+    const { mimeType, extension } = resolveOutputFormat(format, imageInfo.detectedType);
+    const outCanvas = document.createElement('canvas');
+    applyFilterPresetToCanvas(imageInfo.img, outCanvas, selectedPreset, intensity);
+
+    if (mimeType === 'image/jpeg') {
+      const jpgCanvas = document.createElement('canvas');
+      jpgCanvas.width = outCanvas.width;
+      jpgCanvas.height = outCanvas.height;
+      const ctx = jpgCanvas.getContext('2d');
+      if (ctx) {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, jpgCanvas.width, jpgCanvas.height);
+        ctx.drawImage(outCanvas, 0, 0);
+        const blob = await canvasToBlob(jpgCanvas, mimeType, quality / 100);
+        return { blob, mimeType, extension };
+      }
+    }
+
+    const blob = await canvasToBlob(outCanvas, mimeType, quality / 100);
+    return { blob, mimeType, extension };
+  };
+
+  const handleDownload = async () => {
+    if (!sourceFile || !imageInfo) return;
+    setIsExporting(true);
+    setError(null);
+    try {
+      const res = await buildFullRes();
+      if (!res) return;
+      const base = sanitizeFilename(getBaseFilename(sourceFile.name));
+      triggerDownload(res.blob, `${base}_${selectedPreset}${res.extension}`);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Export failed.');
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  const handleOpenCompare = async () => {
+    if (!sourceFile || !imageInfo) return;
+    setIsExporting(true);
+    try {
+      const res = await buildFullRes();
+      if (!res) return;
+      const afterUrl = URL.createObjectURL(res.blob);
+      const base = sanitizeFilename(getBaseFilename(sourceFile.name));
+      setModalItem({
+        id: 'filter-compare',
+        file: sourceFile,
+        name: sourceFile.name,
+        originalSize: sourceFile.size,
+        originalWidth: imageInfo.width,
+        originalHeight: imageInfo.height,
+        originalType: imageInfo.detectedType,
+        originalPreviewUrl: imageInfo.previewUrl,
+        hasAlpha: imageInfo.hasAlpha,
+        compressedBlob: res.blob,
+        compressedPreviewUrl: afterUrl,
+        compressedSize: res.blob.size,
+        compressedWidth: imageInfo.width,
+        compressedHeight: imageInfo.height,
+        outputType: res.mimeType,
+        outputExtension: res.extension,
+        outputFilename: `${base}_${selectedPreset}${res.extension}`,
+        quality,
+        status: 'done',
+        errorMessage: null,
+        spaceSaved: Math.max(0, sourceFile.size - res.blob.size),
+        compressionPercentage: 0,
+      });
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  const closeModal = () => {
+    if (modalItem?.compressedPreviewUrl) {
+      URL.revokeObjectURL(modalItem.compressedPreviewUrl);
+    }
+    setModalItem(null);
+  };
+
+  return (
+    <ToolPageLayout tool={tool} onNavigate={onNavigate}>
+      <div className="space-y-6">
+        {!imageInfo ? (
+          <UploadZone
+            onFilesSelected={handleFilesSelected}
+            maxFileSizeMB={20}
+            multiple={false}
+            accept={EXTENDED_IMAGE_ACCEPT}
+            allowedMimeTypes={EXTENDED_ALLOWED_MIME_TYPES}
+            allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
+            supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
+            title="Drop an image to apply filters"
+          />
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            {/* Preview */}
+            <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                  Filter Preview
+                </span>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onMouseDown={() => setShowOriginal(true)}
+                    onMouseUp={() => setShowOriginal(false)}
+                    onMouseLeave={() => setShowOriginal(false)}
+                    onTouchStart={() => setShowOriginal(true)}
+                    onTouchEnd={() => setShowOriginal(false)}
+                    className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 cursor-pointer select-none"
+                  >
+                    Hold to View Original
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleOpenCompare}
+                    disabled={isExporting}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 cursor-pointer"
+                  >
+                    <SplitSquareVertical className="w-3.5 h-3.5 text-blue-600" />
+                    <span>Compare</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleClear}
+                    className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
+                    aria-label="Remove image"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="relative rounded-xl overflow-hidden border border-slate-200 bg-slate-100 flex items-center justify-center min-h-[280px] max-h-[520px]">
+                <canvas
+                  ref={previewCanvasRef}
+                  className="max-w-full max-h-[500px] w-auto h-auto object-contain block"
+                />
+                {showOriginal && (
+                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/70 text-white text-xs font-semibold">
+                    Original
+                  </span>
+                )}
+              </div>
+
+              <div className="flex justify-between text-xs text-slate-500 font-mono">
+                <span className="truncate max-w-xs">{sourceFile?.name}</span>
+                <span>
+                  {imageInfo.width}×{imageInfo.height}px · {sourceFile ? formatBytes(sourceFile.size) : ''}
+                </span>
+              </div>
+            </div>
+
+            {/* Filter Presets & Export */}
+            <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+              <div className="flex items-center justify-between">
+                <h2 className="text-base font-bold text-slate-900">Filter Presets</h2>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedPreset('original');
+                    setIntensity(100);
+                  }}
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:underline cursor-pointer"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Reset</span>
+                </button>
+              </div>
+
+              <div className="grid grid-cols-3 gap-2.5 max-h-[290px] overflow-y-auto pr-1">
+                {FILTER_PRESETS.map((preset) => {
+                  const active = selectedPreset === preset.id;
+                  return (
+                    <button
+                      key={preset.id}
+                      type="button"
+                      onClick={() => setSelectedPreset(preset.id)}
+                      className={`group rounded-xl border p-1.5 text-center transition-all cursor-pointer ${
+                        active
+                          ? 'border-blue-600 bg-blue-50 ring-1 ring-blue-600'
+                          : 'border-slate-200 hover:border-blue-300 bg-white'
+                      }`}
+                    >
+                      <div className="w-full aspect-square rounded-lg overflow-hidden bg-slate-100 mb-1.5">
+                        {thumbnails[preset.id] && (
+                          <img
+                            src={thumbnails[preset.id]}
+                            alt={preset.label}
+                            className="w-full h-full object-cover"
+                          />
+                        )}
+                      </div>
+                      <span
+                        className={`block text-[11px] font-semibold truncate ${
+                          active ? 'text-blue-700' : 'text-slate-700'
+                        }`}
+                      >
+                        {preset.label}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {selectedPreset !== 'original' && (
+                <div>
+                  <div className="flex justify-between text-xs mb-1.5">
+                    <span className="font-semibold text-slate-700">Filter Intensity</span>
+                    <span className="font-mono font-bold text-blue-600">{intensity}%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={0}
+                    max={100}
+                    value={intensity}
+                    onChange={(e) => setIntensity(parseInt(e.target.value, 10))}
+                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                  />
+                </div>
+              )}
+
+              <div className="pt-4 border-t border-slate-100 space-y-4">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                    Output Format
+                  </span>
+                  <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-xl">
+                    {(['original', 'jpeg', 'png', 'webp'] as OutputFormatChoice[]).map((fmt) => (
+                      <button
+                        key={fmt}
+                        type="button"
+                        onClick={() => setFormat(fmt)}
+                        className={`py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
+                          format === fmt
+                            ? 'bg-blue-600 text-white shadow-xs'
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        {fmt === 'original' ? 'Original' : fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {format !== 'png' && (
+                  <div>
+                    <div className="flex justify-between text-xs mb-1.5">
+                      <span className="font-semibold text-slate-700">Quality</span>
+                      <span className="font-mono font-bold text-slate-700">{quality}%</span>
+                    </div>
+                    <input
+                      type="range"
+                      min={10}
+                      max={100}
+                      value={quality}
+                      onChange={(e) => setQuality(parseInt(e.target.value, 10))}
+                      className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    />
+                  </div>
+                )}
+
+                <button
+                  type="button"
+                  onClick={handleDownload}
+                  disabled={isExporting}
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer disabled:opacity-60"
+                >
+                  {isExporting ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <Download className="w-4 h-4" />
+                  )}
+                  <span>{isExporting ? 'Rendering...' : 'Download Filtered Image'}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {error && (
+          <div className="flex items-start gap-2 p-3.5 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl">
+            <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
+            <span>{error}</span>
+          </div>
+        )}
+      </div>
+
+      {modalItem && (
+        <ComparisonModal
+          image={modalItem}
+          onClose={closeModal}
+          titlePrefix="Filter Comparison"
+          afterLabel="Filtered"
+        />
+      )}
+    </ToolPageLayout>
+  );
+};
