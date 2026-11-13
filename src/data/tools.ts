@@ -2638,16 +2638,38 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Contrast Editor',
     shortDescription: 'Boost or soften image contrast with live before/after comparison.',
     category: 'crop-edit',
-    seoTitle: 'Image Contrast Editor Online Free – Adjust Photo Contrast',
+    seoTitle: 'Image Contrast Editor Free – Adjust Photo Contrast',
     seoDescription:
-      'Increase or soften photo contrast online free with presets, live before/after comparison, and private browser-side export.',
-    h1: 'Online Image Contrast Editor',
+      'Tune shadow and highlight punch with our free image contrast editor. Slide from -100% to +100%, test 6 presets, compare split views, and export privately.',
+    h1: 'Free Online Image Contrast Editor',
     subtitle:
-      'Make flat photos pop with crisp contrast or create a soft, low-contrast matte look with instant presets and before/after comparison.',
+      'Designed for photographers, online sellers, and designers fixing hazy or flat shots, this browser image contrast editor lets you deepen shadows and sharpen tonal separation in seconds. Pick one-click presets, inspect split-screen previews, and export locally without server uploads.',
     howToSteps: [
-      { title: 'Upload your photo', description: 'Drop any JPG, PNG, WebP, or HEIC file.' },
-      { title: 'Fine-tune contrast', description: 'Slide from -100% (flat/soft) to +100% (high contrast) or pick a quick preset.' },
-      { title: 'Compare & download', description: 'Verify the before/after difference and save your enhanced photo.' },
+      {
+        title: 'Drop or select an image',
+        description:
+          'Upload a JPG, PNG, WebP, HEIC, GIF, BMP, or SVG photo up to 20 MB into the editor dropzone, browse from disk, or paste directly with Ctrl+V.',
+      },
+      {
+        title: 'Review the live canvas preview',
+        description:
+          'Your photo loads onto a responsive Canvas preview starting at +20% contrast so you can immediately see how subtle punch affects tonal separation.',
+      },
+      {
+        title: 'Adjust the Contrast Level slider or presets',
+        description:
+          'Drag the Contrast Level slider anywhere from -100% Flat to +100% High Contrast, or click Soft (-25%), Muted (-10%), Original (0%), Crisp (+20%), Punchy (+40%), or Dramatic (+70%).',
+      },
+      {
+        title: 'Verify details with comparison tools',
+        description:
+          'Switch between After, Before, and Split Compare (using the vertical divider slider), or click Fullscreen Compare to inspect shadows and highlights up close.',
+      },
+      {
+        title: 'Choose format, quality, and download',
+        description:
+          'Select Original, JPG, PNG, or WebP under Output Format, tune Quality (10%–100%) for lossy formats, and click Download Edited Image.',
+      },
     ],
     features: [
       { title: 'Precision Contrast Curve', description: 'Smoothly expands or compresses tonal range without harsh color shifts.' },
@@ -2656,8 +2678,106 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       { title: '100% Client-Side', description: 'Fast browser processing with zero uploads or watermarks.' },
     ],
     faqs: [
-      { question: 'What happens when I increase contrast?', answer: 'Dark tones become deeper and bright tones become brighter, making subjects stand out more clearly.' },
-      { question: 'Can I soften harsh shadows with this tool?', answer: 'Yes. Move the slider below 0% (such as -15% or -25%) to flatten and soften harsh contrast.' },
+      {
+        question: 'What visual effect does moving the Contrast Level slider positive or negative produce?',
+        answer:
+          'Moving the slider above 0% pulls dark tones darker and bright tones brighter around the midpoint so subjects stand out from hazy backgrounds. Moving it below 0% compresses highlights and shadows toward neutral mid-gray for a softer matte aesthetic.',
+      },
+      {
+        question: 'Which Quick Presets are included in the Contrast Controls panel?',
+        answer:
+          'Six one-click presets are built in: Soft (-25%), Muted (-10%), Original (0%), Crisp (+20%), Punchy (+40%), and Dramatic (+70%). Clicking any preset sets the Contrast Level slider immediately and updates the live canvas preview.',
+      },
+      {
+        question: 'Why does the contrast tool start at +20% right after uploading a photo?',
+        answer:
+          'The editor initializes at Crisp (+20%) so you see an active tonal enhancement right away instead of an unchanged picture. Click Original (0%) or Reset at the top of Contrast Controls anytime to return to zero adjustment.',
+      },
+      {
+        question: 'How does the image contrast editor calculate pixel changes?',
+        answer:
+          'It applies a standard linear contrast curve pixel-by-pixel across RGB channels on HTML5 Canvas while leaving the alpha channel untouched. Running calculations directly in ImageData avoids browser CSS filter discrepancies on iOS Safari and mobile browsers.',
+      },
+      {
+        question: 'How do I check before and after shadows without guessing?',
+        answer:
+          'Use the After, Before, and Split Compare tabs right above the preview viewport to drag a live divider line from 0% to 100% across your image. For closer pixel inspection, click Fullscreen Compare to launch the side-by-side comparison modal.',
+      },
+      {
+        question: 'Will boosting contrast clip bright clouds or crush black shadows?',
+        answer:
+          'Pushing contrast aggressively toward +70% to +100% pushes near-white highlights toward pure 255 and deep shadows toward 0. Use Split Compare to watch subtle texture in bright shirts or dark hair and dial back to +15%–+40% if clipping appears.',
+      },
+      {
+        question: 'Which image file types can I open in the contrast editor?',
+        answer:
+          'You can upload JPG, PNG, WebP, iPhone HEIC/HEIF, GIF, BMP, and SVG files up to 20 MB per file. HEIC photos are decoded in your browser automatically before rendering on the editing canvas.',
+      },
+      {
+        question: 'Can I save contrast-edited PNG logos with transparent backgrounds intact?',
+        answer:
+          'Yes, keeping Original format on a transparent PNG or selecting PNG or WebP output preserves alpha transparency completely. Only switching Output Format to JPG fills transparent regions onto a solid white backdrop.',
+      },
+      {
+        question: 'Does the preview downscale affect my final downloaded resolution?',
+        answer:
+          'No, the on-screen preview caps display scaling at 1,000 px on the longest side so slider dragging remains instantaneous. When you click Download Edited Image, the exact same contrast formula renders across 100% of your original pixel dimensions.',
+      },
+      {
+        question: 'Can I paste a screenshot from my clipboard to fix dull screen grabs?',
+        answer:
+          'Yes, press Ctrl+V (or Cmd+V on Mac) anywhere on the upload screen to load a clipboard image right into the editor. Adjusting contrast by +20% to +35% is great for making faint chart lines or gray UI text crisper.',
+      },
+      {
+        question: 'Does adjusting contrast convert color photos into black and white?',
+        answer:
+          'No, contrast shifts luminance distance on red, green, and blue channels proportionally without removing hue information. Note that strong positive contrast naturally boosts perceived color vibrancy slightly, while negative contrast tones colors down.',
+      },
+      {
+        question: 'What quality setting should I pick when exporting as JPG or WebP?',
+        answer:
+          'The Quality slider defaults to 90%, keeping smooth tonal gradients free from banding while keeping file weights modest. Lower it toward 75%–80% for smaller web uploads, or switch to PNG for completely lossless output.',
+      },
+      {
+        question: 'How is the downloaded file named after editing contrast?',
+        answer:
+          'Your saved file appends _contrast to your sanitized original base filename followed by the chosen format extension, such as portrait_contrast.jpg. Your original file on disk is never modified or overwritten.',
+      },
+      {
+        question: 'Can this tool sharpen blurry out-of-focus photos?',
+        answer:
+          'Boosting contrast increases edge separation between light and dark areas, which can make hazy or foggy photos look noticeably clearer. However, it adjusts tonal curves rather than applying edge convolution sharpening, so severe motion blur cannot be refocused.',
+      },
+      {
+        question: 'Are any photos uploaded to external servers for contrast processing?',
+        answer:
+          'No, every pixel calculation happens inside your local browser tab using HTML5 Canvas and JavaScript. Personal portraits, scanned IDs, and unreleased product shots never leave your computer or phone.',
+      },
+      {
+        question: 'What happens when I upload an animated GIF to adjust contrast?',
+        answer:
+          'HTML5 Canvas renders and adjusts the first frame of the GIF, exporting a single static image in your selected format. Multi-frame animated GIF contrast adjustments are not supported here.',
+      },
+      {
+        question: 'How does contrast adjustment differ from brightness adjustment?',
+        answer:
+          'Brightness shifts all pixels uniformly lighter or darker together, whereas contrast widens or narrows the gap between dark shadows and bright highlights around the middle gray point. If a dark photo looks washed out after brightening, follow up with our contrast tool.',
+      },
+      {
+        question: 'Can I use negative contrast to soften harsh midday shadows on portraits?',
+        answer:
+          'Yes, choosing Soft (-25%) or Muted (-10%) reduces harsh transitions between sunlit skin and dark shadows. For extreme glare or flat editorial moods, drag the slider between -30% and -50%.',
+      },
+      {
+        question: 'How do I load a new photo without refreshing the browser tab?',
+        answer:
+          'Click the trash icon in the top-right corner of the Preview panel to clear the current image and return to the upload zone. That revokes temporary browser memory and readies the canvas for your next file.',
+      },
+      {
+        question: 'Does the contrast editor work reliably on iOS Safari and Android Chrome?',
+        answer:
+          'Yes, tonal math runs explicitly inside JavaScript ImageData pixel arrays rather than relying on CSS canvas filters that behave inconsistently on mobile browsers. That keeps contrast previews and final downloads uniform across iPhone, Android, macOS, and Windows devices.',
+      },
     ],
     relatedSlugs: ['/image-brightness-editor', '/image-saturation-editor', '/image-filters', '/'],
   },
@@ -2666,16 +2786,38 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Saturation Editor',
     shortDescription: 'Boost color vibrancy or desaturate photos cleanly in browser.',
     category: 'crop-edit',
-    seoTitle: 'Image Saturation Editor Online Free – Adjust Color Vibrancy',
+    seoTitle: 'Image Saturation Editor Free – Adjust Color Vibrancy',
     seoDescription:
-      'Adjust image color saturation online free from -100% grayscale to +100% vivid colors with presets and live before/after comparison.',
-    h1: 'Online Image Saturation Editor',
+      'Boost muted colors or convert to black and white with our free image saturation editor. Preview split comparisons live and export cleanly in your browser.',
+    h1: 'Free Online Image Saturation Editor',
     subtitle:
-      'Make dull colors vibrant, mute loud backgrounds, or convert photos to clean grayscale using luminance-accurate saturation controls.',
+      'Built for photographers, social creators, and ecommerce editors balancing color intensity, this browser image saturation editor adjusts color vibrancy relative to perceived luminance. Shift smoothly from crisp -100% grayscale to vivid +100% tones with split comparison and local export.',
     howToSteps: [
-      { title: 'Upload an image', description: 'Drop or select any JPG, PNG, WebP, or HEIC photo.' },
-      { title: 'Adjust color saturation', description: 'Drag the saturation slider (-100% to +100%) or select a preset like Muted, Vivid, or Pop.' },
-      { title: 'Download your photo', description: 'Compare before and after and save directly to your device.' },
+      {
+        title: 'Load a photo into the editor',
+        description:
+          'Drag and drop any JPG, PNG, WebP, HEIC, GIF, BMP, or SVG image up to 20 MB, choose a file from your device, or paste via Ctrl+V.',
+      },
+      {
+        title: 'Preview the initial color boost',
+        description:
+          'The editor loads with Saturation Level set at +25% so you immediately see how richer chroma lifts dull colors on the live preview canvas.',
+      },
+      {
+        title: 'Fine-tune Saturation Level or click a preset',
+        description:
+          'Drag the slider from -100% Grayscale to +100% Vivid, or pick Grayscale (-100%), Muted (-40%), Original (0%), Rich (+30%), Vivid (+60%), or Hyper (+90%).',
+      },
+      {
+        title: 'Inspect skin tones with Split Compare',
+        description:
+          'Toggle After, Before, or Split Compare with the wipe slider—or click Fullscreen Compare—to ensure reds and skin tones look balanced rather than oversaturated.',
+      },
+      {
+        title: 'Pick output format and save locally',
+        description:
+          'Choose Original, JPG, PNG, or WebP, adjust Quality (10%–100%) if not PNG, and click Download Edited Image.',
+      },
     ],
     features: [
       { title: 'Luminance-Preserving Saturation', description: 'Adjusts color intensity relative to perceived brightness so tones stay natural.' },
@@ -2684,8 +2826,106 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       { title: 'Private & Free', description: 'No uploads, no accounts, and no watermarks.' },
     ],
     faqs: [
-      { question: 'How do I make an image black and white?', answer: 'Set the Saturation slider to -100% (or click the Grayscale preset) and download.' },
-      { question: 'Does saturation editing work on transparent PNGs?', answer: 'Yes. Alpha transparency is preserved when exporting as PNG or WebP.' },
+      {
+        question: 'How does this image saturation editor preserve perceived brightness?',
+        answer:
+          'Each pixel calculates perceived luminance using ITU-R BT.709 weights (0.2126 R + 0.7152 G + 0.0722 B) and interpolates RGB channels toward or away from that neutral gray point. As a result, colorful reds and greens do not turn unnaturally bright or muddy when desaturated.',
+      },
+      {
+        question: 'Which one-click presets come built into Saturation Controls?',
+        answer:
+          'You get six presets: Grayscale (-100%), Muted (-40%), Original (0%), Rich (+30%), Vivid (+60%), and Hyper (+90%). Clicking any button updates the preview immediately and can be fine-tuned afterward with the slider.',
+      },
+      {
+        question: 'Can I turn a color portrait into clean grayscale with one click?',
+        answer:
+          'Yes, click the Grayscale (-100%) preset or slide Saturation Level all the way left to -100%. Because it uses standard luminance weighting, skin tones and greenery convert into natural-looking monochrome values rather than flat averages.',
+      },
+      {
+        question: 'Why does Saturation Level default to +25% when a file first loads?',
+        answer:
+          'Starting at +25% showcases an immediate gentle vibrancy boost as soon as your photo appears. Click Original (0%) or the Reset link anytime if you prefer to adjust upward or downward from neutral.',
+      },
+      {
+        question: 'How can I prevent portraits from looking orange or neon when boosting color?',
+        answer:
+          'Stay in the +15% to +35% range for people and switch to the Split Compare tab to wipe between your original skin tones and the boosted canvas. Fullscreen Compare also lets you inspect cheeks, lips, and product labels closely before exporting.',
+      },
+      {
+        question: 'What happens if I boost saturation on an already monochrome or gray photo?',
+        answer:
+          'Pixels where red, green, and blue values are equal sit right on the luminance axis, so raising saturation cannot invent color that is not present. On tinted sepia or warm black-and-white images, however, positive saturation accentuates the underlying color cast.',
+      },
+      {
+        question: 'Does the saturation editor support transparent PNG icons and WebP stickers?',
+        answer:
+          'Yes, pixel adjustments alter RGB color intensity while leaving the alpha transparency channel untouched. Keep Original format or select PNG or WebP under Output Format to retain transparent backgrounds cleanly.',
+      },
+      {
+        question: 'What happens to transparency if I export a desaturated sticker as JPG?',
+        answer:
+          'Because JPG does not support alpha transparency, transparent pixels are flattened onto a solid white (#FFFFFF) canvas automatically before JPEG encoding. Choose PNG or WebP whenever you need transparency preserved.',
+      },
+      {
+        question: 'Which upload formats and maximum file sizes are accepted?',
+        answer:
+          'You can drop JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, and SVG images up to 20 MB each. Animated GIFs load their initial frame onto Canvas for editing and export as a static image.',
+      },
+      {
+        question: 'Is there any difference between preview clarity and downloaded file resolution?',
+        answer:
+          'The interactive canvas previews at up to 1,000 px on the longest dimension so slider adjustments feel smooth and lag-free. Exporting clicks trigger a full-resolution Canvas pass at your file’s original width and height.',
+      },
+      {
+        question: 'When should I use Muted (-40%) instead of Grayscale (-100%)?',
+        answer:
+          'Muted (-40%) calms overly bright neon signs, busy room backgrounds, or harsh product lighting while retaining subtle color cues. It works well for calm blog hero photos or text-behind backgrounds.',
+      },
+      {
+        question: 'Can I paste images straight from my clipboard into the saturation tool?',
+        answer:
+          'Yes, copy any image or screenshot to your clipboard and press Ctrl+V (or Cmd+V) on the upload prompt. It opens immediately in the editor ready for color tuning.',
+      },
+      {
+        question: 'How does the exported filename distinguish edited photos from originals?',
+        answer:
+          'Exports automatically append _saturation to your sanitized original filename (for example, sunset_saturation.jpg). Your source image stays untouched on your device.',
+      },
+      {
+        question: 'What Quality setting applies when saving as Original, JPG, or WebP?',
+        answer:
+          'JPG and WebP exports default to 90% Quality, which you can adjust anywhere from 10% to 100% before downloading. When PNG is selected, the Quality slider hides because PNG always exports losslessly.',
+      },
+      {
+        question: 'Are uploaded photos transmitted to cloud GPUs or third-party servers?',
+        answer:
+          'Never — every pixel calculation executes inside your local browser tab on your own device hardware. No image data, presets, or filenames are sent over the network.',
+      },
+      {
+        question: 'Does editing saturation here remove EXIF GPS or camera metadata?',
+        answer:
+          'Yes, drawing onto HTML5 Canvas and writing a fresh image blob omits original EXIF headers such as camera serial numbers and GPS location tags. That helps keep shared social photos privacy-clean.',
+      },
+      {
+        question: 'How do I reset only the saturation slider without reloading my photo?',
+        answer:
+          'Click the Reset button in the top-right corner of Saturation Controls to snap the slider immediately back to 0%. You can also click the Original (0%) quick preset button right below the slider without re-uploading your file.',
+      },
+      {
+        question: 'Can I boost landscape foliage and skies with Hyper (+90%) cleanly?',
+        answer:
+          'Hyper (+90%) doubles chroma differences smoothly up to RGB channel bounds (0–255), producing dramatic travel posters and product pops. Watch bright reds and blues in Split Compare to be sure fine petal or fabric textures do not clip.',
+      },
+      {
+        question: 'Can I convert a colorful PNG chart to a lighter WebP while muting colors?',
+        answer:
+          'Yes, set your desired saturation level, select WEBP under Output Format, and adjust Quality to 80%–90%. Clicking Download Edited Image produces a compact color-balanced WebP in one step.',
+      },
+      {
+        question: 'Does the tool work offline once loaded and on mobile touchscreens?',
+        answer:
+          'Yes, sliders, preset buttons, and the split-view comparison slider respond smoothly to touch gestures on iOS Safari and Android Chrome. Since processing requires zero server calls, edits run even on slow mobile connections.',
+      },
     ],
     relatedSlugs: ['/image-filters', '/image-brightness-editor', '/image-contrast-editor', '/'],
   },
@@ -2694,16 +2934,43 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Filters',
     shortDescription: 'Apply grayscale, sepia, vintage, warm, cool & noir presets with intensity.',
     category: 'crop-edit',
-    seoTitle: 'Free Online Image Filters – Vintage, Sepia, Noir & Warm Effects',
+    seoTitle: 'Online Image Filters Free – Vintage, Sepia & B&W Noir',
     seoDescription:
-      'Apply photo filters online free: Grayscale, Sepia, Vintage, Warm, Cool, High Contrast, Matte Fade, and B&W Noir with adjustable intensity in your browser.',
+      'Style photos fast with free online image filters including Vintage, Sepia, B&W Noir, Warm, Cool, and Matte Fade. Adjust filter intensity right in browser.',
     h1: 'Free Online Image Filters',
     subtitle:
-      'Transform photos instantly with 11 curated color filters — from Vintage and Golden Hour to B&W Noir — with an Intensity slider to dial in the exact look.',
+      'Ideal for creators, bloggers, and anyone giving everyday snapshots a cohesive aesthetic, these free online image filters provide 11 curated color grades rendered via live thumbnails. Blend any filter smoothly with the Filter Intensity slider and save full-resolution copies right in your browser.',
     howToSteps: [
-      { title: 'Upload a photo', description: 'Drop any JPG, PNG, WebP, or HEIC file.' },
-      { title: 'Pick a filter & intensity', description: 'Click any live filter thumbnail and blend from 0% to 100% intensity.' },
-      { title: 'Download filtered photo', description: 'Compare before and after, choose output format, and save.' },
+      {
+        title: 'Drop or choose an image',
+        description:
+          'Upload any JPG, PNG, WebP, HEIC, GIF, BMP, or SVG photo up to 20 MB, pick a file from disk, or paste directly with Ctrl+V.',
+      },
+      {
+        title: 'Browse live filter thumbnails',
+        description:
+          'Inspect the 12-card Filter Presets grid showing real miniature previews of Original plus 11 stylized grades generated from your uploaded image.',
+      },
+      {
+        title: 'Select a preset style',
+        description:
+          'Click Grayscale, Sepia, Vintage, Warm, Cool, High Contrast, Matte Fade, Dramatic, B&W Noir, Golden Hour, or Invert to apply it to the main canvas.',
+      },
+      {
+        title: 'Blend strength with Filter Intensity',
+        description:
+          'Drag the Filter Intensity slider between 0% and 100% to soften strong grades into subtle color washes (or click Reset to return to Original).',
+      },
+      {
+        title: 'Hold original or open Compare modal',
+        description:
+          'Press and hold Hold to View Original for instant flashing A/B checks, or click Compare to open the interactive split-slider inspection modal.',
+      },
+      {
+        title: 'Pick Output Format and download',
+        description:
+          'Choose Original, JPG, PNG, or WebP, adjust Quality (10%–100%) if needed, and click Download Filtered Image.',
+      },
     ],
     features: [
       { title: '11+ Curated Filter Presets', description: 'Includes Grayscale, Sepia, Vintage, Warm, Cool, High Contrast, Matte Fade, Dramatic, B&W Noir, Golden Hour, and Invert.' },
@@ -2712,8 +2979,106 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       { title: '100% Client-Side Canvas', description: 'Works offline-ready in your browser with zero server uploads.' },
     ],
     faqs: [
-      { question: 'Can I control how strong a filter looks?', answer: 'Yes. Use the Filter Intensity slider (0%–100%) to dial back strong effects like Vintage or Noir.' },
-      { question: 'Are filter effects applied at full image resolution?', answer: 'Yes. While preview thumbnails render fast, your final download is processed at full original pixel dimensions.' },
+      {
+        question: 'Which 11 filter styles can I preview in the online image filters grid?',
+        answer:
+          'Alongside Original, the grid generates live thumbnails for Grayscale, Sepia, Vintage, Warm, Cool, High Contrast, Matte Fade, Dramatic, B&W Noir, Golden Hour, and Invert. Each thumbnail renders directly from your uploaded photo rather than stock sample icons.',
+      },
+      {
+        question: 'How does the Filter Intensity slider work when set between 0% and 100%?',
+        answer:
+          'Setting Filter Intensity below 100% linearly blends the filtered RGB pixel values back toward your original pixels. For example, setting Vintage or Golden Hour to 45% applies a gentle film wash without overpowering natural skin tones.',
+      },
+      {
+        question: 'Why does the tool select Vintage at 100% right when I drop a photo?',
+        answer:
+          'It defaults to Vintage at full intensity so you see a finished effect on the main canvas immediately upon upload. Simply click any other tile in Filter Presets or click Reset to snap back to Original.',
+      },
+      {
+        question: 'What is the difference between Grayscale and B&W Noir filters?',
+        answer:
+          'Grayscale converts colors into balanced black-and-white tones using natural luminance weights without altering contrast. B&W Noir adds a steep 1.65× contrast boost on top of grayscale conversion for punchy dark shadows and bright cinematic highlights.',
+      },
+      {
+        question: 'How do Sepia, Vintage, Matte Fade, and Golden Hour differ visually?',
+        answer:
+          'Sepia shifts the entire image into classic monochrome brown tones, while Vintage blends warm sepia into original colors with subtle faded warmth. Matte Fade lifts dark blacks into soft slate grays, and Golden Hour boosts warm reds and yellows while cooling shadow blues.',
+      },
+      {
+        question: 'How does the Hold to View Original button speed up editing?',
+        answer:
+          'Pressing and holding Hold to View Original with your mouse or finger temporarily flips the canvas back to your unedited photo and displays an Original badge. Releasing instantly restores your filtered preview so you can A/B compare in milliseconds.',
+      },
+      {
+        question: 'Can I also inspect side-by-side splits before saving?',
+        answer:
+          'Yes, click the Compare button next to Hold to View Original to launch the full Filter Comparison modal. It shows original vs filtered byte sizes and an interactive split wipe slider.',
+      },
+      {
+        question: 'Are downloaded images processed at the same low size as the preset thumbnails?',
+        answer:
+          'No, the preset grid uses tiny 120 px thumbnails for instant previews and the main workspace caps at 1,000 px for responsiveness. Clicking Download Filtered Image processes your full original pixel resolution on HTML5 Canvas.',
+      },
+      {
+        question: 'Which file formats and maximum size work with these photo filters?',
+        answer:
+          'You can drop JPG, PNG, WebP, iPhone HEIC/HEIF, GIF, BMP, and SVG files up to 20 MB per upload. Supported outputs are Original, JPG, PNG, and WebP.',
+      },
+      {
+        question: 'What happens to transparent areas on PNG logos when applying Warm, Cool, or Invert?',
+        answer:
+          'All pixel filter math alters only red, green, and blue channels while leaving alpha transparency untouched. Keep Original, PNG, or WebP output to preserve transparent backgrounds; selecting JPG fills transparent zones with solid white.',
+      },
+      {
+        question: 'What is the Invert filter most useful for?',
+        answer:
+          'Invert subtracts each RGB channel from 255 to produce an exact color negative of your image. Developers use it to reverse dark-mode diagrams for white documents, and photographers use it to preview scanned film negatives.',
+      },
+      {
+        question: 'Are filter effects consistent across Chrome, Firefox, and iPhone Safari?',
+        answer:
+          'Yes, all 11 presets compute directly in JavaScript ImageData pixel loops instead of relying on CSS ctx.filter strings. That guarantees identical colors across iOS Safari, Android Chrome, and desktop browsers.',
+      },
+      {
+        question: 'Can I stack two filters like Cool plus Matte Fade on the same image?',
+        answer:
+          'Each preset computes directly from your clean original image in a single pass, so clicking a new tile switches presets cleanly without degrading quality. To combine two grades, download your first filtered PNG and drop it right back in for a second pass.',
+      },
+      {
+        question: 'How are output filenames tagged so I remember which filter I exported?',
+        answer:
+          'The exporter appends the preset ID to your sanitized base filename, such as photo_golden-hour.jpg or photo_noir.webp. That makes exporting two or three test looks into one folder easy to tell apart.',
+      },
+      {
+        question: 'Does uploading a photo to apply filters send it to an external server?',
+        answer:
+          'No, thumbnails, live canvas previews, and final exports all run completely inside your browser tab memory. Zero photos are transferred to remote servers or stored in cloud logs.',
+      },
+      {
+        question: 'Can I use Cool or High Contrast filters on screenshots pasted from my clipboard?',
+        answer:
+          'Yes, press Ctrl+V (or Cmd+V) on the upload zone to load any copied screenshot immediately. High Contrast and B&W Noir are especially effective for brightening faint text on document scans.',
+      },
+      {
+        question: 'What happens if I upload an animated GIF to the image filters tool?',
+        answer:
+          'HTML5 Canvas extracts the first frame of the GIF for preview thumbnails and exports a static filtered image. Multi-frame animated GIF filtering is not performed by this tool.',
+      },
+      {
+        question: 'How should I set Quality when exporting filtered WebP or JPG files?',
+        answer:
+          'The default 90% setting preserves subtle film grain and matte shadows cleanly without large file sizes. If you need lossless preservation for further editing, pick PNG under Output Format.',
+      },
+      {
+        question: 'Does applying a filter strip sensitive camera EXIF and GPS tags?',
+        answer:
+          'Yes, drawing filtered pixels onto a fresh HTML5 Canvas creates a clean new image file with zero EXIF headers. Camera model tags, timestamps, and embedded GPS coordinates are excluded automatically when you download.',
+      },
+      {
+        question: 'How do I swap in another photo quickly after downloading a filtered shot?',
+        answer:
+          'Click the trash icon in the top-right corner of the Filter Preview panel to clear your current image and return to the dropzone. All preview memory is released immediately for your next photo.',
+      },
     ],
     relatedSlugs: ['/image-saturation-editor', '/image-brightness-editor', '/image-border-generator', '/'],
   },
@@ -2722,16 +3087,38 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Add Background to Image',
     shortDescription: 'Place transparent or framed images on solid, gradient, or blur backdrops.',
     category: 'create',
-    seoTitle: 'Add Background to Image Free – Solid, Gradient & Blur Backdrops',
+    seoTitle: 'Add Background to Image Free – Solid, Gradient & Blur',
     seoDescription:
-      'Add a solid color, gradient, or blurred backdrop behind transparent PNGs or photos free in your browser. Set 1:1, 16:9, or 4:5 aspect ratios and download.',
+      'Easily add background to image files or transparent PNGs online with solid colors, two-tone gradients, or blurred backdrops. Export 1:1, 16:9, or 4:5 frames.',
     h1: 'Add Background to Image Online',
     subtitle:
-      'Place transparent PNG logos or photos onto a solid color, custom gradient, or stylish blurred backdrop — ideal for 1:1 product listings, 16:9 banners, and 9:16 stories.',
+      'Made for ecommerce sellers, logo designers, and social media publishers, this tool makes it effortless to add background to image uploads or transparent PNG cutouts. Choose solid swatches, angled two-color gradients, or blurred photo backdrops sized for square, story, or widescreen posts.',
     howToSteps: [
-      { title: 'Upload your image or PNG', description: 'Drop a transparent PNG, logo, or photo.' },
-      { title: 'Choose background & framing', description: 'Select Solid Color, Linear Gradient, or Blurred Image Backdrop, then pick aspect ratio, scale, corner radius, and shadow.' },
-      { title: 'Download finished graphic', description: 'Export crisp PNG, JPG, or WebP ready for web or social media.' },
+      {
+        title: 'Upload a photo or transparent PNG',
+        description:
+          'Drop any JPG, PNG, WebP, HEIC, GIF, BMP, or SVG image up to 20 MB onto the upload zone, select from disk, or paste with Ctrl+V.',
+      },
+      {
+        title: 'Choose Solid Color, Gradient, or Blurred Photo',
+        description:
+          'Pick Solid Color with the color picker and 6 quick swatches, Gradient with two colors and a 0°–360° angle slider, or Blurred Photo with a 4–50 px blur radius.',
+      },
+      {
+        title: 'Select a Canvas Aspect Ratio',
+        description:
+          'Click Orig, 1:1 square, 16:9 widescreen, 9:16 vertical story, or 4:5 social portrait under Canvas Aspect Ratio.',
+      },
+      {
+        title: 'Adjust Image Scale, Roundness, and Drop Shadow',
+        description:
+          'Slide Image Scale (40%–100%) to control padding around your subject, Roundness (0%–30%) for soft corners, and toggle Drop Shadow Behind Image.',
+      },
+      {
+        title: 'Pick output format and download',
+        description:
+          'Check the exact Output pixel dimensions below the preview, choose PNG, JPG, or WEBP, and click Download Image.',
+      },
     ],
     features: [
       { title: '3 Background Modes', description: 'Choose Solid Color, Two-Color Gradient, or Blurred Photo Backdrop for pillarboxed vertical/horizontal shots.' },
@@ -2740,8 +3127,106 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       { title: 'Zero Uploads', description: 'Renders locally via HTML5 Canvas with instant download.' },
     ],
     faqs: [
-      { question: 'How does Blurred Background mode work?', answer: 'It places a scaled, softly blurred version of your own photo behind the sharp foreground image — ideal for turning vertical phone photos into 16:9 or 1:1 posts without cropping.' },
-      { question: 'Can I use this to put a white background behind a transparent PNG?', answer: 'Yes. Select Solid Color, pick #FFFFFF, and export as JPG or PNG.' },
+      {
+        question: 'When should I use Add Background to Image with Blurred Photo mode?',
+        answer:
+          'Blurred Photo mode fills empty canvas margins around a portrait phone shot with a zoomed, softly blurred copy of your own picture plus a light 12% slate tint. It lets you place vertical 9:16 photos inside 16:9 YouTube banners or 1:1 squares without ugly black bars or cropping.',
+      },
+      {
+        question: 'How do I add a clean white studio backdrop behind a transparent PNG cutout?',
+        answer:
+          'Select Solid Color under Background Type, click the #ffffff white swatch (or enter any hex color), and adjust Image Scale if you want breathing room around the product. Export as JPG for lightweight marketplace uploads or PNG for crisp edges.',
+      },
+      {
+        question: 'Can I customize multi-angle linear gradients behind logos or app screenshots?',
+        answer:
+          'Yes, switch Background Type to Gradient to pick Color 1 and Color 2 via color inputs, then drag the Angle slider anywhere from 0° to 360°. It is ideal for turning plain software screenshots into polished hero cards for landing pages.',
+      },
+      {
+        question: 'What Canvas Aspect Ratio presets are available for social posts?',
+        answer:
+          'You can switch instantly between Orig (matches your photo dimensions), 1:1 (square posts and product cards), and 16:9 (YouTube thumbnails and banners). Vertical presets for 9:16 (Stories and Reels) and 4:5 (Instagram feed portraits) are also built right in.',
+      },
+      {
+        question: 'How are final output pixel dimensions determined when changing aspect ratios?',
+        answer:
+          'The exporter sets the longest side of the output canvas to your photo’s longest original dimension or at least 1,200 px, then computes the shorter side cleanly from your selected ratio. For instance, choosing 1:1 on an 800×600 icon outputs a sharp 1200×1200 graphic.',
+      },
+      {
+        question: 'How does Image Scale affect margins around my foreground picture?',
+        answer:
+          'Image Scale (40% to 100%, defaulting to 85%) defines the maximum box percentage inside the backdrop canvas that your foreground photo can occupy while staying proportional. Setting 100% fills edge-to-edge on matching ratios, while 60%–80% showcases generous backdrop framing.',
+      },
+      {
+        question: 'Does Roundness apply smooth corners to transparent PNGs or only rectangular photos?',
+        answer:
+          'Roundness (0%–30%) clips the rectangular foreground placement area using quadratic corner curves, which rounds rectangular screenshots and photos cleanly. On transparent cutouts whose subject sits well inside image edges, raising Roundness leaves the interior cutout unaffected while rounding its drop shadow box.',
+      },
+      {
+        question: 'How does Drop Shadow Behind Image behave with transparent logos vs solid photos?',
+        answer:
+          'For solid photos or screenshots, it casts a subtle soft elevation shadow proportional to canvas size behind the rounded foreground card. On transparent alpha images, it uses a faint 1% backing fill inside the clipped box so the foreground stands cleanly off bright or gradient backdrops.',
+      },
+      {
+        question: 'Which image file types can I import to add a backdrop?',
+        answer:
+          'You can upload JPG, PNG, WebP, iPhone HEIC/HEIF, GIF, BMP, and SVG graphics up to 20 MB. Animated GIFs draw their initial frame as the foreground layer.',
+      },
+      {
+        question: 'Does this tool automatically remove an existing photo background first?',
+        answer:
+          'No, this editor places your uploaded image (transparent cutout, logo, or full photo) onto a new backdrop canvas rather than running AI cutout segmentation. If you have a photo with a busy scene to erase first, run it through our Background Remover tool and then drop the transparent PNG here.',
+      },
+      {
+        question: 'Which output formats are supported and at what compression quality?',
+        answer:
+          'You can export finished compositions as PNG, JPG, or WEBP at 92% Canvas export quality (lossless encoding for PNG). The exact output pixel dimensions appear right beneath the preview canvas before you download.',
+      },
+      {
+        question: 'What quick color swatches are built into Solid Color mode?',
+        answer:
+          'Alongside the full native color picker, six clickable swatches sit ready to test in one click: pure white (#ffffff), deep slate (#0f172a), brand blue (#2563eb), emerald (#10b981), warm cream (#fef3c7), and soft gray (#f1f5f9). You can tap any swatch to preview instantly and fine-tune it afterward with the color input.',
+      },
+      {
+        question: 'How smooth is the Backdrop Blur Radius control in Blurred Photo mode?',
+        answer:
+          'You can adjust Backdrop Blur Radius from 4 px (lightly softened background texture) up to 50 px (creamy out-of-focus ambient color). Blur radius scales dynamically to match your full-resolution export dimensions.',
+      },
+      {
+        question: 'Can I paste screenshots directly from my clipboard to frame them on a gradient?',
+        answer:
+          'Yes, copy a screenshot or graphic and press Ctrl+V (or Cmd+V) on the upload zone to load it straight into the backdrop canvas. Pairing a gradient backdrop with 85% scale, slight roundness, and a drop shadow makes documentation screenshots pop.',
+      },
+      {
+        question: 'Are uploaded logos, unreleased UI mockups, or personal portraits sent to a server?',
+        answer:
+          'No, backdrop generation, blur filtering, shadows, and file encoding all execute locally inside your browser using HTML5 Canvas. Nothing is transmitted across the internet or retained remotely.',
+      },
+      {
+        question: 'How are downloaded backdrop files named?',
+        answer:
+          'Exported files keep your sanitized base filename and append _background along with your chosen format extension, such as product-cutout_background.png or banner_background.webp. Your original source image on disk remains untouched.',
+      },
+      {
+        question: 'Does exporting with a backdrop strip EXIF location metadata from camera shots?',
+        answer:
+          'Yes, compositing layers onto a fresh HTML5 Canvas and encoding a new image excludes original EXIF headers automatically. GPS coordinates, camera serial numbers, and shooting timestamps are never carried into the downloaded file.',
+      },
+      {
+        question: 'Can I preview Blurred Photo mode on small icons or SVG graphics?',
+        answer:
+          'Yes, self-contained inline SVG logos or small PNG graphics scale onto the cover backdrop and receive smooth Gaussian or multi-pass blur behind the crisp vector foreground. Choose 25–45 px blur radius when smoothing sharp vector edges into a soft ambient halo.',
+      },
+      {
+        question: 'Why does Blurred Photo mode add a subtle tint over the blurred background?',
+        answer:
+          'A gentle dark slate overlay at 12% opacity is painted directly over the blurred background layer before drawing the foreground subject. That subtle contrast veil helps light edges, white labels, and transparent cutouts stay readable against bright skies or busy patterns.',
+      },
+      {
+        question: 'How do I replace the foreground photo without losing my preferred workflow?',
+        answer:
+          'Click Change Image in the top-right corner of the Background Preview panel to clear the current canvas and upload another asset. Because the tool runs natively on desktop and mobile browsers, switching images takes only a moment.',
+      },
     ],
     relatedSlugs: ['/round-image-corners', '/image-border-generator', '/image-resizer', '/'],
   },
@@ -2750,16 +3235,43 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Splitter',
     shortDescription: 'Split images into N×M grid tiles or strips and download as ZIP.',
     category: 'create',
-    seoTitle: 'Online Image Splitter – Split Photo into Grid Tiles & Download ZIP',
+    seoTitle: 'Image Splitter Online Free – Grid Tiles & ZIP Download',
     seoDescription:
-      'Split an image into N x M grid tiles, horizontal strips, or vertical strips free in your browser. Preview every slice and download all tiles in a ZIP.',
-    h1: 'Online Image Splitter (Grid & Strip Slicer)',
+      'Slice photos into N×M grid tiles, horizontal rows, or vertical carousel strips with our free image splitter. Inspect live cut lines and download a ZIP file.',
+    h1: 'Online Image Splitter',
     subtitle:
-      'Slice any image into exact grid tiles (e.g. 3×3 for Instagram grids), horizontal strips, or vertical columns — preview every cut line and download all tiles as a ZIP.',
+      'Built for Instagram grid planners, UI designers, and print makers, this browser image splitter divides wide panoramas or square photos into up to 10×10 exact tiles or strips. Inspect numbered cut lines live and save every full-resolution slice individually or in one ZIP download.',
     howToSteps: [
-      { title: 'Upload an image to split', description: 'Drop any JPG, PNG, WebP, HEIC, or SVG image.' },
-      { title: 'Choose Grid or Strip layout', description: 'Set Rows × Columns (up to 10×10), or switch to Horizontal Strips or Vertical Strips.' },
-      { title: 'Preview tiles & download ZIP', description: 'Download individual tiles or click Download All Tiles (ZIP).' },
+      {
+        title: 'Drop an image to slice',
+        description:
+          'Upload any JPG, PNG, WebP, HEIC, GIF, BMP, or SVG photo up to 20 MB (or paste via Ctrl+V). Initial 3×3 split tiles generate automatically on upload.',
+      },
+      {
+        title: 'Inspect the numbered Cut-Line Preview',
+        description:
+          'Check the dashed overlay grid over your photo on the left showing exact numbered tile boundaries (1 through N) before slicing final exports.',
+      },
+      {
+        title: 'Pick Split Layout or quick presets',
+        description:
+          'Select Grid (N×M), Horiz. Strips, or Vert. Strips, enter Rows and Columns from 1 to 10, or click 2×2, 3×3 Instagram, 1×3 Carousel, or 4×1 Strips.',
+      },
+      {
+        title: 'Choose output format and Tile Quality',
+        description:
+          'Select Orig, JPG, PNG, or WEBP and adjust Tile Quality (10%–100%, default 92%) for non-PNG outputs.',
+      },
+      {
+        title: 'Generate full-resolution slices',
+        description:
+          'Click Split into N Tiles whenever you update Rows, Columns, or format settings to re-slice all tiles at exact full-resolution pixel boundaries.',
+      },
+      {
+        title: 'Save individual pieces or ZIP archive',
+        description:
+          'Use Download on any numbered R·C tile card below, or click Download All Tiles (ZIP) to download the entire numbered grid together.',
+      },
     ],
     features: [
       { title: 'Flexible Grid & Strip Modes', description: 'Split into custom Rows × Columns grids, horizontal rows, or vertical slices.' },
@@ -2768,8 +3280,106 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       { title: 'Full-Resolution Slicing', description: 'Each tile is sliced cleanly from the full-resolution original canvas.' },
     ],
     faqs: [
-      { question: 'How do I make a 3×3 Instagram grid from one photo?', answer: 'Choose Grid mode, set 3 Rows and 3 Columns, click Split Image, and download the ZIP of 9 numbered tiles.' },
-      { question: 'Are tiles numbered in order?', answer: 'Yes. Tiles are named sequentially (`_r1_c1`, `_r1_c2`, etc.) from top-left to bottom-right.' },
+      {
+        question: 'How does the image splitter build a 3×3 Instagram profile grid cleanly?',
+        answer:
+          'Click the 3×3 Instagram preset button (or set Grid mode with 3 Rows and 3 Columns) and click Split into 9 Tiles. Every piece exports numbered sequentially from row 1 column 1 at top-left down to row 3 column 3 at bottom-right so uploading in reverse order builds a seamless profile mosaic.',
+      },
+      {
+        question: 'What is the maximum grid size I can slice in one run?',
+        answer:
+          'Both Rows (Horizontal Cuts) and Columns (Vertical Cuts) accept values from 1 to 10, allowing anywhere from 2 slices up to a 10×10 grid totaling 100 individual tiles. Because each slice uses rounded pixel boundaries across your original image, neighboring tiles align edge-to-edge with zero missing pixels.',
+      },
+      {
+        question: 'How do Horiz. Strips and Vert. Strips differ from Grid (N×M) mode?',
+        answer:
+          'Horiz. Strips locks Columns to 1 and slices full-width horizontal banners stacked top to bottom, which is handy for long webpage screenshots or tall infographic sections. Vert. Strips locks Rows to 1 and divides wide panoramas side-by-side into seamless Instagram or LinkedIn swipeable carousel slides.',
+      },
+      {
+        question: 'Which one-click Split Presets are included?',
+        answer:
+          'Four preset buttons sit directly below the numeric inputs: 2×2 (4 quadrants), 3×3 Instagram (9 grid squares), 1×3 Carousel (3 vertical swipe strips), and 4×1 Strips (4 horizontal bands). Clicking any preset updates the live Cut-Line Preview immediately.',
+      },
+      {
+        question: 'Are generated tiles scaled down or cropped at full original pixel dimensions?',
+        answer:
+          'Every tile is sliced straight from your source image’s full pixel width and height on HTML5 Canvas without resizing. For example, splitting a 3000×1000 panorama into 1×3 Carousel strips produces three crisp 1000×1000 tiles.',
+      },
+      {
+        question: 'What happens if my image width or height is not evenly divisible by Rows or Columns?',
+        answer:
+          'Cut coordinates are calculated proportionally with Math.round across the full width and height so neighboring slices share exact integer pixel borders without gaps or overlaps. Some tiles may differ by 1 pixel when dividing odd numbers (such as 1000 px across 3 columns: 333, 334, 333).',
+      },
+      {
+        question: 'Do I need to remember which tile goes where after downloading the ZIP?',
+        answer:
+          'No, every slice displays its row and column badge (such as R1·C2) and exact pixel dimensions underneath its preview card. Inside the ZIP archive, filenames follow <base>_r<row>_c<col>.<ext> (e.g. panorama_r1_c1.jpg, panorama_r1_c2.jpg) in reading order.',
+      },
+      {
+        question: 'Do changes to Rows, Columns, or Format update the generated tiles automatically?',
+        answer:
+          'When you first upload a file, tiles generate automatically at your active layout settings. After editing Rows, Columns, or Output Format, the Cut-Line Preview updates immediately and clicking Split into N Tiles regenerates the downloadable tile cards and ZIP.',
+      },
+      {
+        question: 'Which input formats work in the image splitter?',
+        answer:
+          'Upload JPG, PNG, WebP, iPhone HEIC/HEIF, GIF, BMP, and SVG images up to 20 MB each. Selecting Orig under Output Format keeps your source format (or converts HEIC/SVG/BMP cleanly to standard PNG/JPG).',
+      },
+      {
+        question: 'Does splitting a transparent PNG sprite sheet preserve transparent backgrounds?',
+        answer:
+          'Yes, slicing transparent PNG or WebP assets keeps full alpha transparency intact when Output Format is Orig, PNG, or WEBP. If you explicitly switch Output Format to JPG, tile canvases fill transparency onto solid white (#FFFFFF).',
+      },
+      {
+        question: 'Can I paste a long screenshot from my clipboard and slice it into printable sections?',
+        answer:
+          'Yes, press Ctrl+V (or Cmd+V) on the upload zone to drop a clipboard screenshot directly into the splitter. Choose Horiz. Strips and set 3–6 rows to break tall chat logs or web captures into manageable pages.',
+      },
+      {
+        question: 'Does the Tile Quality slider appear for PNG tiles?',
+        answer:
+          'No, PNG tiles always encode losslessly so Tile Quality (10%–100%, defaulting to 92%) automatically displays only when your resolved format is JPG or WebP. That ensures crisp edges on sprites, UI mockups, and text splits.',
+      },
+      {
+        question: 'How is the bulk ZIP download named?',
+        answer:
+          'Clicking Download All Tiles (ZIP) packages every generated tile inside a single archive named <base>_<rows>x<cols>_tiles.zip, such as hero_3x3_tiles.zip. You can also download single tiles individually via the Download button on each card.',
+      },
+      {
+        question: 'Are photos uploaded to external servers during grid slicing?',
+        answer:
+          'No, cut calculations, Canvas slicing, tile previews, and ZIP compression all happen inside local browser memory. Your private artwork, diagrams, and personal photos never leave your device.',
+      },
+      {
+        question: 'Does splitting remove EXIF camera tags and GPS location metadata?',
+        answer:
+          'Yes, slicing rectangular sub-regions onto fresh HTML5 Canvas tiles generates clean image blobs without EXIF headers. As a result, camera details and GPS coordinates from the original photo are never copied into individual slices.',
+      },
+      {
+        question: 'What happens if I upload an animated GIF to split into grid tiles?',
+        answer:
+          'HTML5 Canvas extracts and slices the first frame of the GIF into static tiles in your chosen output format. Splitting multi-frame animated GIFs while keeping animation is not supported here.',
+      },
+      {
+        question: 'Why might my 3×3 tiles differ slightly in aspect ratio if my source photo isn’t square?',
+        answer:
+          'The splitter divides your source image proportionally along its existing width and height without distorting or cropping edges. If you want square 1:1 tiles for an Instagram grid, crop your image to 1:1 first in our Image Cropper tool before slicing 3×3.',
+      },
+      {
+        question: 'How do I replace the image after downloading a split grid?',
+        answer:
+          'Click Change Image in the top-right corner of the Cut-Line Preview card to release existing tile URLs from memory and load a new image. No page reload is required.',
+      },
+      {
+        question: 'Can game developers use this tool to slice icon sheets or tilesets?',
+        answer:
+          'Yes, spritesheets laid out on uniform rows and columns slice accurately when you set matching Rows × Columns counts and keep PNG output. Each icon saves neatly by row and column coordinate inside the ZIP.',
+      },
+      {
+        question: 'Does the Image Splitter run reliably on iPhones, iPads, and Android phones?',
+        answer:
+          'Yes, responsive grids, numeric row/column inputs, and client-side ZIP packaging work directly in iOS Safari and Android Chrome. Larger 10×10 splits on very high-megapixel photos run fastest on desktop or modern mobile browsers.',
+      },
     ],
     relatedSlugs: ['/image-cropper', '/image-resizer', '/image-dimensions-checker', '/'],
   },
@@ -2778,16 +3388,38 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image DPI Changer',
     shortDescription: 'Change JPEG/PNG DPI metadata (72/150/300/custom) losslessly.',
     category: 'developer',
-    seoTitle: 'Image DPI Changer Online Free – Convert to 300 DPI Losslessly',
+    seoTitle: 'Image DPI Changer Free – Convert to 300 DPI Losslessly',
     seoDescription:
-      'Change image DPI metadata (72, 150, 300, 600, or custom DPI) in JPEG and PNG files without recompressing pixels. Runs locally in your browser.',
-    h1: 'Image DPI Changer (Lossless Metadata Update)',
+      'Update JPEG JFIF/EXIF and PNG pHYs print density tags with our free image DPI changer. Set 72, 150, 300, 600, or custom DPI losslessly right in your browser.',
+    h1: 'Free Image DPI Changer',
     subtitle:
-      'Update the DPI (dots per inch) value stored in JPEG JFIF/EXIF and PNG pHYs headers — such as 72 DPI for web or 300 DPI for print — without recompressing a single pixel.',
+      'Created for designers, print shops, authors, and students preparing files for print portals, this lossless image DPI changer updates JPEG and PNG resolution headers without touching pixel data. Switch to 72, 96, 150, 300, 600, or custom DPI across batches with verified readback.',
     howToSteps: [
-      { title: 'Upload JPG or PNG images', description: 'Drop one or multiple images to inspect their current DPI metadata.' },
-      { title: 'Select target DPI', description: 'Choose 72, 96, 150, 300, 600 DPI or enter any custom value.' },
-      { title: 'Update & verify DPI', description: 'Download the updated file with verified before/after DPI values — lossless for JPG and PNG.' },
+      {
+        title: 'Choose or adjust your Target DPI first (or anytime)',
+        description:
+          'Click a preset—72 DPI (Screen), 96 DPI (Windows), 150 DPI (Draft Print), 300 DPI (High Print), or 600 DPI (Archival)—or enter any Custom DPI from 1 to 2,400.',
+      },
+      {
+        title: 'Upload one or multiple images',
+        description:
+          'Drop JPG, PNG, WebP, HEIC, GIF, BMP, or SVG files up to 20 MB each into the upload area (or paste with Ctrl+V). Files process immediately at your chosen DPI.',
+      },
+      {
+        title: 'Review Before, Verified DPI, and processing method',
+        description:
+          'Each card displays original vs verified output DPI along with a badge confirming Lossless JPEG Header Update, Lossless PNG pHYs Update, or Converted to PNG with pHYs DPI.',
+      },
+      {
+        title: 'Change DPI dynamically on queued files if needed',
+        description:
+          'Click another DPI preset or type a new Custom DPI and hit Apply [X] DPI to re-process every file in your queue automatically.',
+      },
+      {
+        title: 'Download single files or a batch ZIP',
+        description:
+          'Click Download on individual result cards (named <base>_<dpi>dpi.<ext>), or click Download All (ZIP) whenever two or more files are ready.',
+      },
     ],
     features: [
       { title: 'True Lossless JPEG & PNG Header Edit', description: 'Updates JFIF APP0/EXIF density in JPEGs and pHYs chunks (with valid CRC32) in PNGs without touching image pixels.' },
@@ -2796,8 +3428,106 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       { title: 'WebP/HEIC Fallback', description: 'Non-DPI formats can be cleanly converted to lossless PNG with the exact pHYs DPI chunk embedded.' },
     ],
     faqs: [
-      { question: 'Does changing DPI change pixel dimensions or image quality?', answer: 'No! Changing DPI only updates the physical print-density tag in JPEG or PNG metadata. Pixel width, height, and pixel quality stay 100% untouched.' },
-      { question: 'Why did my file say "Not specified" before changing DPI?', answer: 'Many cameras, screenshots, and web exports omit the JFIF/pHYs DPI tag. This tool writes a clean standard DPI header.' },
+      {
+        question: 'How does this image DPI changer edit JPEG and PNG files without losing quality?',
+        answer:
+          'Instead of decoding and recompressing pixels on Canvas, it directly patches binary metadata segments—updating or inserting JFIF APP0 and EXIF IFD0 resolution tags in JPEGs, and writing a valid CRC32-checksummed pHYs chunk in PNGs. Every visual pixel and compression block stays 100% untouched.',
+      },
+      {
+        question: 'Does changing DPI alter pixel width and height or physical print size?',
+        answer:
+          'Changing DPI keeps pixel dimensions completely identical—for example, a 3000×2400 photo stays 3000×2400 px. What changes is the print-density header telling publishing apps like Photoshop, InDesign, or print portals to interpret it at 10×8 inches at 300 DPI rather than 41.6×33.3 inches at 72 DPI.',
+      },
+      {
+        question: 'Why do uploaded camera photos or screenshots often show Before: Not set?',
+        answer:
+          'Many smartphone exports, screenshots, and web optimizers strip JFIF/EXIF resolution fields or omit the optional PNG pHYs chunk, leaving viewers to assume a 72 or 96 DPI fallback. Our tool injects a standard header so print validators detect 300 DPI reliably.',
+      },
+      {
+        question: 'How does the Verified DPI badge confirm the update actually worked?',
+        answer:
+          'After constructing the updated binary Blob, the tool runs its binary header parser back over the output file from scratch to read the newly embedded X/Y density. That guarantees the downloaded file passes automated print-portal and desktop inspector checks.',
+      },
+      {
+        question: 'What happens when I upload WebP, HEIC, BMP, GIF, or SVG files?',
+        answer:
+          'Formats that lack standard cross-software DPI headers (such as WebP or BMP) are decoded locally and converted cleanly to lossless PNG with the exact pHYs DPI chunk embedded. You will see a Converted to PNG with pHYs DPI badge on those cards.',
+      },
+      {
+        question: 'Which DPI presets are available and what range does Custom DPI accept?',
+        answer:
+          'Five quick presets cover common standards: 72 DPI (Screen), 96 DPI (Windows), 150 DPI (Draft Print), 300 DPI (High Print), and 600 DPI (Archival). Custom DPI lets you type any integer between 1 and 2,400 DPI.',
+      },
+      {
+        question: 'Does updating JPEG DPI preserve my camera’s existing EXIF tags or ICC profile?',
+        answer:
+          'Yes, our lossless JPEG segment copier leaves your color profile, camera tags, and image scan data intact while updating JFIF APP0 density and EXIF XResolution/YResolution/ResolutionUnit if an APP1 EXIF segment exists. If no JFIF header was present, it inserts a clean 18-byte APP0 JFIF segment right after SOI.',
+      },
+      {
+        question: 'Why does PNG DPI sometimes read back as 299 or 300 DPI after conversion?',
+        answer:
+          'The official PNG pHYs specification stores resolution in pixels per meter rather than dots per inch, converting 300 DPI to 11,811 pixels per meter. Rounding pixels per meter back to inches yields exact 300 DPI cleanly across nearly every preset value.',
+      },
+      {
+        question: 'Will changing a low-resolution 400×400 web thumbnail to 300 DPI make it crisp for printing?',
+        answer:
+          'No, updating DPI only alters metadata instructions, not pixel count—a 400×400 pixel file at 300 DPI prints crisply only at 1.33×1.33 inches. To cover larger paper sizes cleanly at 300 DPI, you need larger pixel dimensions in the source artwork.',
+      },
+      {
+        question: 'Can I batch update multiple print assets to 300 DPI and export one ZIP?',
+        answer:
+          'Yes, drop any number of JPG or PNG files up to 20 MB each and they all process to your chosen DPI in sequence. Whenever two or more files complete, a Batch Ready bar appears with a Download All (ZIP) button producing images_<dpi>dpi_compressmypic.zip.',
+      },
+      {
+        question: 'Can I change my mind and re-apply 600 DPI after files have already processed at 300 DPI?',
+        answer:
+          'Yes, clicking another Target DPI Preset button immediately updates and re-processes every file in your queue from the original uploaded files without stacking edits. If you type a number into Custom DPI, click Apply DPI to refresh all items at that custom density.',
+      },
+      {
+        question: 'Does setting 300 DPI make JPEG or PNG file sizes significantly larger?',
+        answer:
+          'No, adding or patching a JFIF APP0 header (18 bytes) or PNG pHYs chunk (21 bytes) changes total file weight by roughly a few dozen bytes at most for native JPEGs and PNGs. Only non-DPI formats converted into lossless PNG change size.',
+      },
+      {
+        question: 'Are confidential proofs, book covers, or ID scans sent to any external server?',
+        answer:
+          'No, binary byte parsing, CRC32 checksum calculation, and header patching all execute locally in browser ArrayBuffers. Your files never leave your computer or phone.',
+      },
+      {
+        question: 'Why do publishing platforms like Amazon KDP or academic journals reject 72 DPI files?',
+        answer:
+          'Many automated print preflight portals inspect the image’s JFIF or PNG pHYs resolution tag and reject submissions below 300 DPI even when pixel dimensions are ample. Updating the header tag to 300 DPI satisfies those preflight checks without recompressing artwork.',
+      },
+      {
+        question: 'How are output files named when saved individually or in ZIP?',
+        answer:
+          'Every updated file keeps its sanitized base name and appends _<target>dpi plus its extension, such as poster_300dpi.jpg or diagram_600dpi.png. That avoids overwriting your original files on disk.',
+      },
+      {
+        question: 'Does the DPI changer work on JPEGs that originally used dots-per-cm instead of dots-per-inch?',
+        answer:
+          'Yes, the reader recognizes both unit=1 (dots per inch) and unit=2 (dots per cm, multiplied by 2.54) in JFIF and EXIF tags when showing Before DPI. When writing output headers, it standardizes density cleanly to inches (DPI) for universal compatibility.',
+      },
+      {
+        question: 'Can I remove or strip DPI tags instead of changing them?',
+        answer:
+          'This tool always embeds or updates your chosen target DPI header to match print or display standards. If you want to erase all JFIF, EXIF, and PNG chunk metadata for privacy instead, run your files through our Remove Image Metadata tool.',
+      },
+      {
+        question: 'What happens if I upload a corrupted JPEG or an unsupported format?',
+        answer:
+          'Each queued file runs independently inside its own error handler so a single unreadable image never halts the rest of your batch. Failed items display a clear inline red alert while valid files finish and package into your ZIP download normally.',
+      },
+      {
+        question: 'Can I paste a clipboard screenshot and immediately stamp it at 300 DPI?',
+        answer:
+          'Yes, press Ctrl+V (or Cmd+V) on the upload zone to pass a clipboard PNG straight into the processor. It writes a valid 300 DPI pHYs chunk losslessly in moments.',
+      },
+      {
+        question: 'Does this lossless DPI editor work on Windows, Mac, Linux, and mobile browsers?',
+        answer:
+          'Yes, standard browser ArrayBuffer and DataView APIs run cleanly across desktop Chrome, Firefox, Edge, and Safari as well as mobile browsers. No desktop software, plugins, or server uploads are ever required.',
+      },
     ],
     relatedSlugs: ['/image-metadata-viewer', '/image-dimensions-checker', '/remove-image-metadata', '/'],
   },
@@ -2806,16 +3536,38 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image to Base64',
     shortDescription: 'Encode any image into a Base64 Data URL, HTML img, or CSS snippet.',
     category: 'developer',
-    seoTitle: 'Image to Base64 Converter Online Free – Data URL & CSS Generator',
+    seoTitle: 'Image to Base64 Converter – Data URL, HTML & CSS Free',
     seoDescription:
-      'Convert JPG, PNG, WebP, SVG, GIF, or ICO images to Base64 Data URLs, raw Base64, HTML img tags, and CSS background snippets locally in your browser.',
+      'Encode images with our free image to Base64 converter right in your browser. Generate Data URLs, raw Base64 strings, HTML img tags, and CSS url() snippets.',
     h1: 'Image to Base64 Converter',
     subtitle:
-      'Encode any image into a ready-to-use Base64 Data URL, raw Base64 string, HTML <img> tag, or CSS background-image snippet — instantaneously on your device.',
+      'Built for frontend developers, email template coders, and technical writers, this local image to Base64 converter turns binary image assets into copy-ready text strings in one step. Switch instantly between Data URL, Raw Base64, HTML img, and CSS url() tabs without uploading proprietary icons.',
     howToSteps: [
-      { title: 'Upload or paste an image', description: 'Drop any JPG, PNG, WebP, SVG, GIF, BMP, or ICO image.' },
-      { title: 'Pick output format', description: 'Switch between Data URL, Raw Base64, HTML <img> tag, or CSS url(...) snippet.' },
-      { title: 'Copy or download', description: 'Copy the Base64 string in one click or download it as a .txt file.' },
+      {
+        title: 'Drop, select, or paste an image',
+        description:
+          'Upload any JPG, PNG, WebP, SVG, GIF, BMP, ICO, or AVIF file up to 15 MB into the dropzone, or paste a clipboard image via Ctrl+V.',
+      },
+      {
+        title: 'Review file size and character overhead',
+        description:
+          'Inspect the top summary card showing your image thumbnail, original byte size, natural dimensions (when applicable), exact output character count, and Base64 overhead percentage.',
+      },
+      {
+        title: 'Switch between the 4 developer output tabs',
+        description:
+          'Click Data URL, Raw Base64, HTML <img>, or CSS url() to format the encoded string for JSON payloads, HTML inline images, or stylesheets.',
+      },
+      {
+        title: 'Copy to clipboard or save as a .txt file',
+        description:
+          'Click Copy Output (or click inside the code box to select all) to copy the string, or click Save .TXT to download <filename>_<tab>.txt.',
+      },
+      {
+        title: 'Click Encode Another to swap files',
+        description:
+          'When ready to encode the next icon or sprite, click Encode Another to clear the output and release local object memory.',
+      },
     ],
     features: [
       { title: '4 Developer Output Formats', description: 'Generate Data URL, Raw Base64, HTML <img>, and CSS background-image snippets automatically.' },
@@ -2824,8 +3576,106 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       { title: '100% Local FileReader Encoding', description: 'No uploads — encoding happens natively inside your browser tab.' },
     ],
     faqs: [
-      { question: 'Why is the Base64 string ~33% larger than the original image file?', answer: 'Base64 encodes every 3 binary bytes into 4 ASCII characters, which adds roughly 33% size overhead.' },
-      { question: 'Does it preserve SVG and animated GIF bytes?', answer: 'Yes. It encodes the exact raw file bytes using FileReader.readAsDataURL without altering the image.' },
+      {
+        question: 'Why does the image to Base64 converter add roughly 33% to output size?',
+        answer:
+          'Base64 represents every 3 binary bytes (24 bits) using 4 printable ASCII characters (6 bits each), plus up to two padding equals signs at the end. As a result, a 30 KB image always encodes to roughly 40 KB of Base64 text, which the summary bar tracks automatically.',
+      },
+      {
+        question: 'Which four output formats can I generate after encoding an image?',
+        answer:
+          'Four tabs sit right above the code box: Data URL (complete data:image/...;base64,... URI), Raw Base64 (stripped payload without prefix), HTML <img> (ready tag with sanitized alt and width/height attributes), and CSS url() (background-image: url("..."); rule).',
+      },
+      {
+        question: 'Does encoding alter image quality, strip SVG code, or flatten animated GIFs?',
+        answer:
+          'No, the encoder reads the raw binary file directly through browser FileReader.readAsDataURL without drawing onto Canvas. Every original byte, vector SVG XML element, ICO frame, and GIF animation frame remains 100% bit-for-bit identical.',
+      },
+      {
+        question: 'Which image file formats and maximum upload size are supported?',
+        answer:
+          'You can encode JPG, PNG, WebP, SVG, GIF, BMP, ICO favicons, and AVIF images up to 15 MB per file. Keeping Base64 inputs capped at 15 MB prevents multi-megabyte text strings from freezing clipboard or textarea rendering.',
+      },
+      {
+        question: 'When should developers inline Base64 Data URLs vs referencing regular image files?',
+        answer:
+          'Inlining tiny UI icons, spinners, favicons, or email signature badges under a few kilobytes eliminates extra HTTP round-trips and works cleanly in standalone HTML documents. For large hero photos, regular WebP or JPG image URLs stay smaller and benefit from browser HTTP caching.',
+      },
+      {
+        question: 'Why does the HTML <img> tab include width and height attributes automatically?',
+        answer:
+          'Once your browser loads the temporary object preview and reads naturalWidth and naturalHeight, those pixel dimensions populate the HTML snippet alongside an alt tag derived from your base filename. Including dimensions helps prevent Cumulative Layout Shift (CLS) on web pages.',
+      },
+      {
+        question: 'Can I download long Base64 output when copying large strings is inconvenient?',
+        answer:
+          'Yes, click Save .TXT next to Copy Output to download the exact text shown in your active tab (Data URL, Raw Base64, HTML, or CSS) as <base>_<tab>.txt. That makes opening very long payloads cleanly in VS Code or terminal scripts effortless.',
+      },
+      {
+        question: 'What happens if my browser blocks clipboard permissions when clicking Copy Output?',
+        answer:
+          'If navigator.clipboard.writeText is blocked by browser privacy settings, an inline note prompts you to copy directly from the code box. Clicking or tabbing into the dark monospace textarea automatically highlights the entire string so Ctrl+C / Cmd+C copies everything cleanly.',
+      },
+      {
+        question: 'How does Raw Base64 differ from Data URL when sending API JSON payloads?',
+        answer:
+          'Data URL prepends data:<mime>;base64, so browsers can render it directly inside src attributes or CSS url() rules. APIs, mobile databases, and server encoders often expect Raw Base64 only—switching to the Raw Base64 tab strips the header automatically.',
+      },
+      {
+        question: 'Are proprietary UI icons, confidential diagrams, or client assets uploaded anywhere?',
+        answer:
+          'Never — FileReader reads bytes strictly inside local client-side browser memory. No image file or Base64 string is ever transmitted to remote servers.',
+      },
+      {
+        question: 'Can I encode an SVG logo or favicon.ico file cleanly?',
+        answer:
+          'Yes, both .svg and .ico extensions are explicitly supported in the upload filter and encode with their appropriate data:image/svg+xml or image/x-icon MIME prefix. You can also drop files into the converter then verify them round-trip with our Base64 to Image decoder.',
+      },
+      {
+        question: 'Why is the overhead percentage slightly higher on HTML <img> and CSS url() tabs?',
+        answer:
+          'In addition to the 33% Base64 encoding expansion and Data URL MIME header, the HTML and CSS tabs wrap extra markup characters such as <img src="..." alt="..." />. The summary counter recalculates live characters whenever you switch tabs.',
+      },
+      {
+        question: 'Can I paste a screenshot straight from my clipboard to grab a quick Data URL?',
+        answer:
+          'Yes, press Ctrl+V (or Cmd+V on Mac) anywhere on the upload screen to capture a copied image from your clipboard directly. The tool encodes it instantly into Data URL, Raw Base64, HTML, and CSS formats ready for one-click copying.',
+      },
+      {
+        question: 'Does Raw Base64 preserve standard + and / characters with = padding?',
+        answer:
+          'Yes, browser FileReader outputs standard RFC 4648 Base64 strings using +, /, and trailing = padding characters rather than URL-safe base64url substitutions. That ensures direct compatibility with HTML data URIs, MIME email payloads, and standard backend decoders.',
+      },
+      {
+        question: 'Why do email clients sometimes block inline Base64 images?',
+        answer:
+          'Some webmail providers and corporate spam filters strip data:image URIs in HTML newsletters for security reasons even though browsers display them fine. Base64 works best in web apps, single-file HTML docs, React/CSS bundles, and JSON/SVG templates.',
+      },
+      {
+        question: 'How do I preserve original camera metadata or strip it before Base64 encoding?',
+        answer:
+          'Because this tool encodes exact raw bytes, any existing EXIF metadata inside a JPEG remains encoded inside the Base64 string. If you want smaller, metadata-free Base64 strings, run your photo through our Remove Image Metadata tool before encoding.',
+      },
+      {
+        question: 'Should I shrink large PNGs or JPGs before converting to Base64?',
+        answer:
+          'Yes—because Base64 inflates size by ~33%, compressing a 300 KB PNG down to 40 KB WebP first saves roughly 350 KB of Base64 text bloat in your stylesheet or bundle. Use our Image Compressor or Web Image Optimizer beforehand for big savings.',
+      },
+      {
+        question: 'Why might dimensions omit on certain uncommon ICO or malformed files?',
+        answer:
+          'If a browser cannot decode an unusual multi-frame ICO or exotic header into an HTMLImageElement preview, dimensions are omitted cleanly from the summary while raw Base64 encoding still succeeds. Standard PNG, JPG, WebP, GIF, SVG, BMP, and AVIF show exact W×H pixel counts.',
+      },
+      {
+        question: 'How do I encode another image after copying the first snippet?',
+        answer:
+          'Click Encode Another in the top-right corner of the summary card to reset the output tabs and clear the textarea. It immediately releases temporary preview memory and restores the dropzone for your next asset.',
+      },
+      {
+        question: 'Does the Base64 encoder work on mobile Safari and Chrome browsers?',
+        answer:
+          'Yes, built-in HTML5 FileReader and Clipboard APIs run reliably across iOS Safari, Android Chrome, Windows, macOS, and Linux. Because encoding executes locally in browser memory, there are zero server delays even on cellular data.',
+      },
     ],
     relatedSlugs: ['/base64-to-image', '/favicon-generator', '/image-dimensions-checker', '/'],
   },
@@ -2834,16 +3684,38 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Base64 to Image',
     shortDescription: 'Decode a Base64 Data URL or raw Base64 string back into an image.',
     category: 'developer',
-    seoTitle: 'Base64 to Image Decoder Online Free – Preview & Download',
+    seoTitle: 'Base64 to Image Decoder Free – Preview & Download Files',
     seoDescription:
-      'Decode Base64 strings or Data URLs back into PNG, JPG, WebP, GIF, or SVG images free in your browser. Instant preview, dimensions check, and download.',
+      'Convert encoded strings back into viewable graphics with our free Base64 to image decoder. Auto-detect PNG, JPG, WebP, GIF, or SVG bytes and save locally.',
     h1: 'Base64 to Image Decoder',
     subtitle:
-      'Paste any Base64 Data URL (`data:image/...;base64,...`) or raw Base64 image string to decode, inspect dimensions, preview, and download as a real image file.',
+      'Designed for web engineers debugging API payloads, email marketers checking inline icons, and QA testers, this browser Base64 to image decoder reconstructs Data URLs and raw Base64 strings into downloadable files. Inspect detected MIME format, pixel dimensions, and byte size privately on your device.',
     howToSteps: [
-      { title: 'Paste your Base64 string', description: 'Paste either a full Data URL or raw Base64 bytes (MIME type is auto-detected from magic bytes).' },
-      { title: 'Preview decoded image', description: 'See the live decoded image, detected format, pixel dimensions, and binary file size.' },
-      { title: 'Download decoded file', description: 'Save directly in the decoded format or convert to PNG, JPG, or WebP.' },
+      {
+        title: 'Paste your Base64 string or Data URL',
+        description:
+          'Paste either a complete data:image/...;base64,... string or raw Base64 characters into the Paste Base64 String or Data URL box.',
+      },
+      {
+        title: 'Wait for automatic decoding (or click Decode Image)',
+        description:
+          'The decoder parses whitespace, URL-safe characters, and magic header bytes immediately on paste (or when clicking Decode Image) to validate the image.',
+      },
+      {
+        title: 'Inspect preview, format, size, and dimensions',
+        description:
+          'View the decoded graphic over a transparency checkerboard alongside the Valid Image Decoded badge, Detected Format, Binary Size, and pixel Width × Height.',
+      },
+      {
+        title: 'Select your Download Format',
+        description:
+          'Choose Original to save the exact decoded binary file untouched, or pick PNG, JPG, or WEBP to convert the image on export.',
+      },
+      {
+        title: 'Download your decoded image file',
+        description:
+          'Click Download Image File to save decoded_image.<ext> directly to your device, or click Clear above the input box to test another payload.',
+      },
     ],
     features: [
       { title: 'Auto-Detects Missing Data URL Prefix', description: 'Automatically identifies PNG, JPEG, GIF, WebP, BMP, and SVG magic headers even from raw Base64.' },
@@ -2852,8 +3724,106 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       { title: 'Private In-Browser Decoding', description: 'Safe for internal tokens, email assets, and proprietary UI icons.' },
     ],
     faqs: [
-      { question: 'Do I need to include "data:image/png;base64," at the start?', answer: 'No! You can paste a full Data URL or just the raw Base64 string — the decoder inspects the first bytes to detect PNG, JPG, GIF, WebP, or SVG.' },
-      { question: 'Can I convert a decoded WebP or GIF Base64 into a PNG?', answer: 'Yes. Choose PNG, JPG, or WebP in the download format selector.' },
+      {
+        question: 'Can this Base64 to image decoder read strings that omit the data:image/ prefix?',
+        answer:
+          'Yes, if you paste raw Base64 without a Data URL header, the decoder inspects the decoded magic signature bytes at the front of the binary stream. It automatically detects PNG, JPEG, GIF, WebP, BMP, ICO, and inline XML/SVG markup.',
+      },
+      {
+        question: 'Does it handle URL-safe Base64 variants and accidental line breaks?',
+        answer:
+          'Yes, before calling atob(), the decoder automatically strips whitespace, spaces, and line wraps and converts URL-safe - and _ characters back into standard + and /. That makes pasting wrapped strings from JSON logs, terminal outputs, or JWT payloads work cleanly.',
+      },
+      {
+        question: 'What happens if I paste a corrupted or non-image Base64 payload?',
+        answer:
+          'Invalid Base64 characters trigger an immediate validation message, while valid Base64 bytes that do not form a browser-readable image show an explicit error explaining the bytes could not render. Nothing breaks or stalls the page.',
+      },
+      {
+        question: 'Which Download Format options are offered once a string decodes?',
+        answer:
+          'You can select Original, PNG, JPG, or WEBP before saving. Choosing Original saves the exact raw binary bytes untouched as decoded_image.<ext>, whereas PNG, JPG, or WEBP re-renders the decoded graphic onto HTML5 Canvas.',
+      },
+      {
+        question: 'What happens to transparent areas if I re-export a decoded PNG or SVG as JPG?',
+        answer:
+          'Selecting JPG in Download Format automatically fills the Canvas with a clean solid white (#FFFFFF) background before encoding at 92% quality. Keeping Original, PNG, or WEBP preserves full transparency over the checkerboard preview.',
+      },
+      {
+        question: 'Does the decoder preserve animated GIFs and vector SVGs when set to Original?',
+        answer:
+          'Yes, choosing Original downloads the exact Blob constructed directly from your decoded byte array, keeping SVG vector paths and multi-frame GIF animations untouched. Note that switching Download Format to PNG, JPG, or WEBP rasterizes SVGs or first-frame GIFs via Canvas.',
+      },
+      {
+        question: 'What metrics appear alongside the decoded image preview?',
+        answer:
+          'Once validated, the right-hand summary panel displays a green Valid Image Decoded status badge alongside the Detected Format (such as PNG, JPEG, or SVG+XML). Directly below, you can inspect exact decoded Binary Size in KB/MB and natural Dimensions in pixels.',
+      },
+      {
+        question: 'Why does a data:image/svg+xml string without ;base64, show an encoding error?',
+        answer:
+          'Non-base64 data URIs (such as percent-encoded SVG strings like data:image/svg+xml,%3Csvg...) are plain text rather than Base64 payloads. This tool explicitly validates for standard Base64 payloads or ;base64, data URLs so invalid inputs fail clearly.',
+      },
+      {
+        question: 'Is there any risk decoding internal API responses, QR tokens, or private icons here?',
+        answer:
+          'No, all string sanitization, atob() byte decoding, MIME signature sniffing, and image rendering run strictly inside your browser tab memory. Encoded strings never travel across a network or touch remote logs.',
+      },
+      {
+        question: 'How does the checkerboard preview help inspect decoded icons?',
+        answer:
+          'A subtle light gray checkerboard pattern renders behind the preview frame so transparent cutouts, white UI icons, and soft shadows stand out immediately. Without a checkerboard, white transparent logos would blend invisibly into a blank white panel.',
+      },
+      {
+        question: 'Why is the decoded binary file size smaller than the Base64 text I pasted?',
+        answer:
+          'Base64 text expands binary data by approximately 33% using 6 bits per ASCII character. Converting back into raw image bytes restores the original compact binary file size.',
+      },
+      {
+        question: 'Can I wrap HTML quotes or CSS url("...") around my string before pasting?',
+        answer:
+          'For clean validation, paste just the Data URL (data:image/...;base64,...) or the Base64 characters themselves without surrounding HTML tags or CSS quotes. Stripping surrounding quotes ensures the validator reads pure Base64.',
+      },
+      {
+        question: 'How do I convert an old decoded BMP or ICO favicon Base64 string into modern WebP?',
+        answer:
+          'Paste the raw Base64 or Data URL, confirm the preview renders cleanly, click WEBP in the Download Format selector, and hit Download Image File. The Canvas exporter outputs a compressed WebP image right away.',
+      },
+      {
+        question: 'How fast does decoding work for multi-megabyte Base64 strings?',
+        answer:
+          'Decoding happens in milliseconds locally in JavaScript for small icons and typical web photos under several megabytes. Very large pasted strings (tens of megabytes of text) depend primarily on your browser’s textarea paste speed.',
+      },
+      {
+        question: 'Can I decode SVG+XML Base64 strings into crisp raster PNG files?',
+        answer:
+          'Yes, paste a Base64-encoded SVG Data URL or raw SVG Base64 markup, which the decoder identifies via <svg or <?xml headers automatically. Then switch Download Format from Original to PNG to rasterize the vector graphic onto Canvas at its natural size.',
+      },
+      {
+        question: 'Why does the output file always download as decoded_image.<ext>?',
+        answer:
+          'Standard Base64 strings and Data URLs encode raw image bytes and MIME types without carrying an original filename. To keep downloads predictable across all inputs, the exporter names the saved file decoded_image followed by the detected or selected format extension.',
+      },
+      {
+        question: 'What is the quickest way to clear a huge Base64 string and inspect the next one?',
+        answer:
+          'Click Clear in the top-right corner of the Paste Base64 String card to wipe the textarea in one tap. Doing so immediately removes the preview panel and revokes temporary object URLs from browser memory.',
+      },
+      {
+        question: 'Does pasting a Base64 string automatically decode without needing to click Decode Image?',
+        answer:
+          'Yes, decoding fires automatically as soon as text enters or changes inside the input box so valid payloads preview within milliseconds. The Decode Image button remains ready whenever you want to re-run validation manually.',
+      },
+      {
+        question: 'How can I encode a downloaded image back into HTML or CSS Data URLs later?',
+        answer:
+          'Scroll to the Related Tools section below and open Image to Base64 to switch directions cleanly. It turns any JPG, PNG, WebP, SVG, GIF, BMP, or ICO image back into Data URL, Raw Base64, HTML <img>, or CSS url() snippets.',
+      },
+      {
+        question: 'Does the Base64 to Image decoder work offline or on smartphones?',
+        answer:
+          'Yes, every string check, byte decode, and Canvas format conversion runs inside built-in browser APIs with zero network calls. It works smoothly across iOS Safari, Android Chrome, Windows, macOS, and Linux once the page loads.',
+      },
     ],
     relatedSlugs: ['/image-to-base64', '/image-converter', '/image-dimensions-checker', '/'],
   },
