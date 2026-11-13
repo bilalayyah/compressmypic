@@ -19,6 +19,8 @@ import type { ComparisonModalStrings } from '../components/ComparisonModal';
 import { toSpanishPath } from '../locales/es/slugs';
 import { toPortuguesePath } from '../locales/pt/slugs';
 import { toFrenchPath } from '../locales/fr/slugs';
+import { toGermanPath } from '../locales/de/slugs';
+import { toItalianPath } from '../locales/it/slugs';
 import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
@@ -52,6 +54,20 @@ export interface PageFrStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageDeStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageItStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface CollageMakerPageProps {
   onNavigate: (path: string) => void;
   lang?: SupportedLang;
@@ -61,6 +77,8 @@ interface CollageMakerPageProps {
   esStrings?: PageEsStrings;
   ptStrings?: PagePtStrings;
   frStrings?: PageFrStrings;
+  deStrings?: PageDeStrings;
+  itStrings?: PageItStrings;
 }
 
 type CollageLayout = '2x2' | '3x3' | 'vertical' | 'horizontal';
@@ -114,11 +132,13 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
   esStrings,
   ptStrings,
   frStrings,
+  deStrings,
+  itStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG['/image-collage-maker'];
   const t = (key: string, fallback: string) => {
     const table =
-      lang === 'pt' ? ptStrings?.toolUi : lang === 'fr' ? frStrings?.toolUi : lang === 'es' ? esStrings?.toolUi : undefined;
+      lang === 'de' ? deStrings?.toolUi : lang === 'it' ? itStrings?.toolUi : lang === 'pt' ? ptStrings?.toolUi : lang === 'fr' ? frStrings?.toolUi : lang === 'es' ? esStrings?.toolUi : undefined;
     return table ? (table[key] as string | undefined) ?? fallback : fallback;
   };
   // Canvas-drawn empty-cell label template (Batch 4 spec §3): resolved once so the
@@ -438,8 +458,8 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
-      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
+      ui={lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
+      canonicalPath={lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
       alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
@@ -455,7 +475,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
             title={t('uploadTitle', 'Drop 2 to 9 images to create a photo collage')}
-            strings={lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
+            strings={lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
           />
         ) : (
           <div className="space-y-6">

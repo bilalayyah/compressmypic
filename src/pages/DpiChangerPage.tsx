@@ -18,6 +18,8 @@ import type { ComparisonModalStrings } from '../components/ComparisonModal';
 import { toSpanishPath } from '../locales/es/slugs';
 import { toPortuguesePath } from '../locales/pt/slugs';
 import { toFrenchPath } from '../locales/fr/slugs';
+import { toGermanPath } from '../locales/de/slugs';
+import { toItalianPath } from '../locales/it/slugs';
 import { getAlternates } from '../locales/alternates';
 
 import { ToolPageLayout } from '../components/ToolPageLayout';
@@ -52,6 +54,20 @@ export interface PageFrStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageDeStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageItStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface DpiChangerPageProps {
   onNavigate: (path: string) => void;
   lang?: SupportedLang;
@@ -61,6 +77,8 @@ interface DpiChangerPageProps {
   esStrings?: PageEsStrings;
   ptStrings?: PagePtStrings;
   frStrings?: PageFrStrings;
+  deStrings?: PageDeStrings;
+  itStrings?: PageItStrings;
 }
 
 interface DpiItem {
@@ -88,11 +106,13 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
   esStrings,
   ptStrings,
   frStrings,
+  deStrings,
+  itStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG['/image-dpi-changer'];
   const t = (key: string, fallback: string) => {
     const table =
-      lang === 'pt' ? ptStrings?.toolUi : lang === 'fr' ? frStrings?.toolUi : lang === 'es' ? esStrings?.toolUi : undefined;
+      lang === 'de' ? deStrings?.toolUi : lang === 'it' ? itStrings?.toolUi : lang === 'pt' ? ptStrings?.toolUi : lang === 'fr' ? frStrings?.toolUi : lang === 'es' ? esStrings?.toolUi : undefined;
     return table ? (table[key] as string | undefined) ?? fallback : fallback;
   };
 
@@ -206,8 +226,8 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
-      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
+      ui={lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
+      canonicalPath={lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
       alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
@@ -222,7 +242,7 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
           allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
           supportedFormatsLabel="JPG, PNG (lossless) + WebP, HEIC, BMP"
           title={t('uploadTitle', 'Drop JPG or PNG images to update DPI metadata')}
-          strings={lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
+          strings={lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
         />
 
         {/* Controls */}

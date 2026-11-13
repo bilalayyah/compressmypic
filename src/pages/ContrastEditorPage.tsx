@@ -28,6 +28,20 @@ export interface PageFrStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageDeStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageItStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface ContrastEditorPageProps {
   onNavigate: (path: string) => void;
   lang?: SupportedLang;
@@ -37,9 +51,11 @@ interface ContrastEditorPageProps {
   esStrings?: PageEsStrings;
   ptStrings?: PagePtStrings;
   frStrings?: PageFrStrings;
+  deStrings?: PageDeStrings;
+  itStrings?: PageItStrings;
 }
 
-export const ContrastEditorPage: React.FC<ContrastEditorPageProps> = ({ onNavigate, lang, tool, toolRegistry, categoryLabels, esStrings, ptStrings, frStrings }) => {
+export const ContrastEditorPage: React.FC<ContrastEditorPageProps> = ({ onNavigate, lang, tool, toolRegistry, categoryLabels, esStrings, ptStrings, frStrings, deStrings, itStrings }) => {
   return (
     <ToneEditorTool
       tool={tool ?? TOOL_BY_SLUG['/image-contrast-editor']}
@@ -48,6 +64,8 @@ export const ContrastEditorPage: React.FC<ContrastEditorPageProps> = ({ onNaviga
       esStrings={esStrings}
       ptStrings={ptStrings}
       frStrings={frStrings}
+      deStrings={deStrings}
+      itStrings={itStrings}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
       onNavigate={onNavigate}

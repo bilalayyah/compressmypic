@@ -26,6 +26,20 @@ export interface PageFrStrings {
   comparisonModal: ComparisonModalStrings;
   toolUi: Record<string, string>;
 }
+export interface PageDeStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageItStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 
 interface PngToWebpPageProps {
   onNavigate: (path: string) => void;
@@ -36,6 +50,8 @@ interface PngToWebpPageProps {
   esStrings?: PageEsStrings;
   ptStrings?: PagePtStrings;
   frStrings?: PageFrStrings;
+  deStrings?: PageDeStrings;
+  itStrings?: PageItStrings;
 }
 
 export const PngToWebpPage: React.FC<PngToWebpPageProps> = ({
@@ -47,9 +63,15 @@ export const PngToWebpPage: React.FC<PngToWebpPageProps> = ({
   esStrings,
   ptStrings,
   frStrings,
+  deStrings,
+  itStrings,
 }) => {
   const t = (key: string, fallback: string) =>
-    lang === 'pt' && ptStrings?.toolUi
+    lang === 'de' && deStrings?.toolUi
+      ? ((deStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'it' && itStrings?.toolUi
+      ? ((itStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'pt' && ptStrings?.toolUi
       ? ((ptStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'fr' && frStrings?.toolUi
       ? ((frStrings.toolUi[key] as string | undefined) ?? fallback)
@@ -74,6 +96,8 @@ export const PngToWebpPage: React.FC<PngToWebpPageProps> = ({
     esStrings={esStrings}
     ptStrings={ptStrings}
     frStrings={frStrings}
+    deStrings={deStrings}
+    itStrings={itStrings}
     onNavigate={onNavigate}
     />
   );

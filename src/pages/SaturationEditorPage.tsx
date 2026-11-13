@@ -28,6 +28,20 @@ export interface PageFrStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageDeStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageItStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface SaturationEditorPageProps {
   onNavigate: (path: string) => void;
   lang?: SupportedLang;
@@ -37,9 +51,11 @@ interface SaturationEditorPageProps {
   esStrings?: PageEsStrings;
   ptStrings?: PagePtStrings;
   frStrings?: PageFrStrings;
+  deStrings?: PageDeStrings;
+  itStrings?: PageItStrings;
 }
 
-export const SaturationEditorPage: React.FC<SaturationEditorPageProps> = ({ onNavigate, lang, tool, toolRegistry, categoryLabels, esStrings, ptStrings, frStrings }) => {
+export const SaturationEditorPage: React.FC<SaturationEditorPageProps> = ({ onNavigate, lang, tool, toolRegistry, categoryLabels, esStrings, ptStrings, frStrings, deStrings, itStrings }) => {
   return (
     <ToneEditorTool
       tool={tool ?? TOOL_BY_SLUG['/image-saturation-editor']}
@@ -48,6 +64,8 @@ export const SaturationEditorPage: React.FC<SaturationEditorPageProps> = ({ onNa
       esStrings={esStrings}
       ptStrings={ptStrings}
       frStrings={frStrings}
+      deStrings={deStrings}
+      itStrings={itStrings}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
       onNavigate={onNavigate}

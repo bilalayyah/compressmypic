@@ -9,6 +9,8 @@ import type { ComparisonModalStrings } from '../components/ComparisonModal';
 import { toSpanishPath } from '../locales/es/slugs';
 import { toPortuguesePath } from '../locales/pt/slugs';
 import { toFrenchPath } from '../locales/fr/slugs';
+import { toGermanPath } from '../locales/de/slugs';
+import { toItalianPath } from '../locales/it/slugs';
 import { getAlternates } from '../locales/alternates';
 
 import { ToolPageLayout } from '../components/ToolPageLayout';
@@ -37,6 +39,20 @@ export interface PageFrStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageDeStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageItStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface ImageToBase64PageProps {
   onNavigate: (path: string) => void;
   lang?: SupportedLang;
@@ -46,6 +62,8 @@ interface ImageToBase64PageProps {
   esStrings?: PageEsStrings;
   ptStrings?: PagePtStrings;
   frStrings?: PageFrStrings;
+  deStrings?: PageDeStrings;
+  itStrings?: PageItStrings;
 }
 
 type OutputFormatTab = 'dataUrl' | 'raw' | 'html' | 'css';
@@ -76,11 +94,13 @@ export const ImageToBase64Page: React.FC<ImageToBase64PageProps> = ({
   esStrings,
   ptStrings,
   frStrings,
+  deStrings,
+  itStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG['/image-to-base64'];
   const t = (key: string, fallback: string) => {
     const table =
-      lang === 'pt' ? ptStrings?.toolUi : lang === 'fr' ? frStrings?.toolUi : lang === 'es' ? esStrings?.toolUi : undefined;
+      lang === 'de' ? deStrings?.toolUi : lang === 'it' ? itStrings?.toolUi : lang === 'pt' ? ptStrings?.toolUi : lang === 'fr' ? frStrings?.toolUi : lang === 'es' ? esStrings?.toolUi : undefined;
     return table ? (table[key] as string | undefined) ?? fallback : fallback;
   };
 
@@ -181,8 +201,8 @@ export const ImageToBase64Page: React.FC<ImageToBase64PageProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
-      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
+      ui={lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
+      canonicalPath={lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
       alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
@@ -198,7 +218,7 @@ export const ImageToBase64Page: React.FC<ImageToBase64PageProps> = ({
             allowedExtensionsRegex={BASE64_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, SVG, GIF, BMP, ICO"
             title={t('uploadTitle', 'Drop an image to encode as Base64')}
-            strings={lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
+            strings={lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
           />
         ) : (
           <div className="space-y-5">

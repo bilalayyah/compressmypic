@@ -20,6 +20,8 @@ import type { ComparisonModalStrings } from '../components/ComparisonModal';
 import { toSpanishPath } from '../locales/es/slugs';
 import { toPortuguesePath } from '../locales/pt/slugs';
 import { toFrenchPath } from '../locales/fr/slugs';
+import { toGermanPath } from '../locales/de/slugs';
+import { toItalianPath } from '../locales/it/slugs';
 import { getAlternates } from '../locales/alternates';
 import {
   EXTENDED_ALLOWED_EXT_REGEX,
@@ -50,6 +52,19 @@ export interface PageFrStrings {
   comparisonModal: ComparisonModalStrings;
   toolUi: Record<string, string>;
 }
+export interface PageDeStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageItStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
 
 interface MetadataViewerPageProps {
   onNavigate: (path: string) => void;
@@ -60,6 +75,8 @@ interface MetadataViewerPageProps {
   esStrings?: PageEsStrings;
   ptStrings?: PagePtStrings;
   frStrings?: PageFrStrings;
+  deStrings?: PageDeStrings;
+  itStrings?: PageItStrings;
 }
 
 export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
@@ -71,8 +88,12 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
   esStrings,
   ptStrings,
   frStrings,
+  deStrings,
+  itStrings,
 }) => {
   const t = (key: string, fallback: string) => {
+    if (lang === 'de' && deStrings?.toolUi) return (deStrings.toolUi[key] as string | undefined) ?? fallback;
+    if (lang === 'it' && itStrings?.toolUi) return (itStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'pt' && ptStrings?.toolUi) return (ptStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'fr' && frStrings?.toolUi) return (frStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'es' && esStrings?.toolUi) return (esStrings.toolUi[key] as string | undefined) ?? fallback;
@@ -83,7 +104,7 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
   // ES has no gpsWarningLink key; 'Eliminar metadatos' is the exact substring
   // embedded in the ES gpsWarning table string (src/locales/es/ui.ts).
   const gpsWarningLinkText =
-    lang === 'pt' || lang === 'fr'
+    lang === 'pt' || lang === 'fr' || lang === 'de' || lang === 'it'
       ? t('gpsWarningLink', 'Remove Image Metadata')
       : lang === 'es'
         ? 'Eliminar metadatos'
@@ -155,8 +176,8 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
-      canonicalPath={lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
+      ui={lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
+      canonicalPath={lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
       alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
@@ -172,7 +193,7 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
           allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
           supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
           title={t('uploadTitle', 'Drop an image to inspect EXIF & metadata')}
-          strings={lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
+          strings={lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
         />
 
         {errorMsg && (
