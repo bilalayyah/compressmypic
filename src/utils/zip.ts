@@ -56,6 +56,52 @@ export async function createZipArchive(
 }
 
 /**
+ * Packs arbitrary named blobs into a single ZIP archive
+ */
+export async function createFilesZipArchive(
+  files: { filename: string; blob: Blob }[],
+  folderName: string = 'compressmypic_files',
+  onProgress?: (percent: number) => void
+): Promise<Blob> {
+  const zip = new JSZip();
+  const folder = folderName ? zip.folder(folderName) || zip : zip;
+
+  if (files.length === 0) {
+    throw new Error('No files available to package into ZIP.');
+  }
+
+  const usedNames = new Set<string>();
+  for (const item of files) {
+    let filename = item.filename;
+    if (usedNames.has(filename)) {
+      const dotIndex = filename.lastIndexOf('.');
+      const name = dotIndex > -1 ? filename.slice(0, dotIndex) : filename;
+      const ext = dotIndex > -1 ? filename.slice(dotIndex) : '';
+      let counter = 1;
+      while (usedNames.has(`${name}_${counter}${ext}`)) {
+        counter++;
+      }
+      filename = `${name}_${counter}${ext}`;
+    }
+    usedNames.add(filename);
+    folder.file(filename, item.blob);
+  }
+
+  return zip.generateAsync(
+    {
+      type: 'blob',
+      compression: 'DEFLATE',
+      compressionOptions: { level: 6 },
+    },
+    (metadata) => {
+      if (onProgress) {
+        onProgress(Math.round(metadata.percent));
+      }
+    }
+  );
+}
+
+/**
  * Triggers a browser download for a Blob
  */
 export function triggerDownload(blob: Blob, filename: string): void {

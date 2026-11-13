@@ -34,10 +34,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          {/* Col 2: Navigation */}
+          {/* Col 2: Image Tools */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">
-              Navigation
+              Image Tools
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
@@ -54,26 +54,62 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <a
-                  href="/#how-it-works"
+                  href="/image-resizer"
                   onClick={(e) => {
                     e.preventDefault();
-                    onNavigate('/#how-it-works');
+                    onNavigate('/image-resizer');
                   }}
                   className="hover:text-white transition-colors"
                 >
-                  How It Works
+                  Image Resizer
                 </a>
               </li>
               <li>
                 <a
-                  href="/#faq"
+                  href="/image-converter"
                   onClick={(e) => {
                     e.preventDefault();
-                    onNavigate('/#faq');
+                    onNavigate('/image-converter');
                   }}
                   className="hover:text-white transition-colors"
                 >
-                  Frequently Asked Questions
+                  Image Converter
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/rotate-flip-image"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/rotate-flip-image');
+                  }}
+                  className="hover:text-white transition-colors"
+                >
+                  Rotate &amp; Flip Image
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/image-to-pdf"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/image-to-pdf');
+                  }}
+                  className="hover:text-white transition-colors"
+                >
+                  Image to PDF
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/remove-image-metadata"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/remove-image-metadata');
+                  }}
+                  className="hover:text-white transition-colors"
+                >
+                  Remove Metadata
                 </a>
               </li>
             </ul>
@@ -145,15 +181,60 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li><a href="/guides/reduce-image-size-to-100kb" onClick={(e) => { e.preventDefault(); onNavigate('/guides/reduce-image-size-to-100kb'); }} className="hover:text-white transition-colors block text-left">How to Reduce Image Size to 100KB for Web &amp; Email</a></li>
             </ul>
           </div>
-          {/* Col 4: Tool Formats */}
+          {/* Col 4: More Tools */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">
-              Format Support
+              More Utilities
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
-              <li>JPEG / JPG (Quality 10%–100%)</li>
-              <li>PNG (Transparency preserved)</li>
-              <li>WebP (Modern high-efficiency)</li>
+              <li>
+                <a
+                  href="/image-metadata-viewer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/image-metadata-viewer');
+                  }}
+                  className="hover:text-white transition-colors"
+                >
+                  Metadata &amp; EXIF Viewer
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/favicon-generator"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/favicon-generator');
+                  }}
+                  className="hover:text-white transition-colors"
+                >
+                  Favicon Generator
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/image-color-picker"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/image-color-picker');
+                  }}
+                  className="hover:text-white transition-colors"
+                >
+                  Image Color Picker
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/image-dimensions-checker"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/image-dimensions-checker');
+                  }}
+                  className="hover:text-white transition-colors"
+                >
+                  Dimensions Checker
+                </a>
+              </li>
               <li className="pt-2 text-slate-500">
                 Processed locally via HTML5 Canvas
               </li>

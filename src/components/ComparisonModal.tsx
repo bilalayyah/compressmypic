@@ -6,9 +6,18 @@ import { formatBytes, formatPercent } from '../utils/formatters';
 interface ComparisonModalProps {
   image: ImageItem;
   onClose: () => void;
+  titlePrefix?: string;
+  beforeLabel?: string;
+  afterLabel?: string;
 }
 
-export const ComparisonModal: React.FC<ComparisonModalProps> = ({ image, onClose }) => {
+export const ComparisonModal: React.FC<ComparisonModalProps> = ({
+  image,
+  onClose,
+  titlePrefix = 'Visual Quality Comparison',
+  beforeLabel = 'Original (Before)',
+  afterLabel = 'Compressed (After)',
+}) => {
   const [sliderPosition, setSliderPosition] = useState(50); // 0 to 100%
   const [isDragging, setIsDragging] = useState(false);
   const [viewMode, setViewMode] = useState<'slider' | 'sideBySide'>('slider');
@@ -64,12 +73,12 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({ image, onClose
         <div className="px-5 py-4 border-b border-slate-200 flex items-center justify-between gap-4 bg-slate-50">
           <div className="min-w-0">
             <h2 className="text-base font-bold text-slate-900 truncate">
-              Visual Quality Comparison: {image.name}
+              {titlePrefix}: {image.name}
             </h2>
             <div className="flex items-center gap-2 text-xs text-slate-500 mt-0.5">
               <span>Original: <strong className="font-mono text-slate-700 tabular-nums">{formatBytes(image.originalSize)}</strong></span>
               <span aria-hidden="true">·</span>
-              <span>Compressed: <strong className="font-mono text-emerald-600 tabular-nums">{image.compressedSize ? formatBytes(image.compressedSize) : 'N/A'}</strong></span>
+              <span>Output: <strong className="font-mono text-emerald-600 tabular-nums">{image.compressedSize ? formatBytes(image.compressedSize) : 'N/A'}</strong></span>
               <span aria-hidden="true">·</span>
               <span>Reduction: <strong className="font-mono text-blue-600 tabular-nums">{formatPercent(image.compressionPercentage)}</strong></span>
             </div>
@@ -186,10 +195,10 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({ image, onClose
 
               {/* Badges */}
               <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-xs text-white text-[11px] font-medium px-2 py-0.5 rounded-md pointer-events-none">
-                Original (Before)
+                {beforeLabel}
               </div>
               <div className="absolute top-3 right-3 bg-blue-600/90 backdrop-blur-xs text-white text-[11px] font-medium px-2 py-0.5 rounded-md pointer-events-none">
-                Compressed (After)
+                {afterLabel}
               </div>
             </div>
           ) : (
@@ -202,7 +211,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({ image, onClose
               }}
             >
               <div className="flex flex-col items-center bg-slate-900 rounded-lg p-2 border border-slate-800">
-                <span className="text-xs font-semibold text-slate-300 mb-2">Original</span>
+                <span className="text-xs font-semibold text-slate-300 mb-2">{beforeLabel}</span>
                 <img
                   src={image.originalPreviewUrl}
                   alt={`Original ${image.name}`}
@@ -210,10 +219,10 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({ image, onClose
                 />
               </div>
               <div className="flex flex-col items-center bg-slate-900 rounded-lg p-2 border border-slate-800">
-                <span className="text-xs font-semibold text-blue-400 mb-2">Compressed</span>
+                <span className="text-xs font-semibold text-blue-400 mb-2">{afterLabel}</span>
                 <img
                   src={image.compressedPreviewUrl || image.originalPreviewUrl}
-                  alt={`Compressed ${image.name}`}
+                  alt={`Processed ${image.name}`}
                   className="max-h-[55vh] object-contain rounded"
                 />
               </div>

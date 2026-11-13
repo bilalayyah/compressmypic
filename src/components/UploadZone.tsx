@@ -5,61 +5,96 @@ interface UploadZoneProps {
   onFilesSelected: (files: File[]) => void;
   maxFileSizeMB: number;
   disabled?: boolean;
+  multiple?: boolean;
+  accept?: string;
+  allowedMimeTypes?: string[];
+  allowedExtensionsRegex?: RegExp;
+  supportedFormatsLabel?: string;
+  title?: string;
+  subtitle?: React.ReactNode;
 }
+
+const DEFAULT_ALLOWED_TYPES = [
+  'image/jpeg',
+  'image/jpg',
+  'image/png',
+  'image/webp',
+  'image/heic',
+  'image/heif',
+];
+
+const DEFAULT_EXT_REGEX = /\.(jpe?g|png|webp|heic|heif)$/i;
 
 export const UploadZone: React.FC<UploadZoneProps> = ({
   onFilesSelected,
   maxFileSizeMB,
   disabled = false,
+  multiple = true,
+  accept = 'image/jpeg,image/png,image/webp,image/heic,image/heif,.jpg,.jpeg,.png,.webp,.heic,.heif',
+  allowedMimeTypes = DEFAULT_ALLOWED_TYPES,
+  allowedExtensionsRegex = DEFAULT_EXT_REGEX,
+  supportedFormatsLabel = 'JPG, PNG, WebP, HEIC',
+  title = 'Drag & drop images here',
+  subtitle,
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/heic', 'image/heif'];
+  const validateAndForwardFiles = useCallback(
+    (rawFiles: FileList | File[]) => {
+      setErrorMessage(null);
+      const filesArray = Array.from(rawFiles);
+      if (filesArray.length === 0) return;
 
-  const validateAndForwardFiles = useCallback((rawFiles: FileList | File[]) => {
-    setErrorMessage(null);
-    const filesArray = Array.from(rawFiles);
-    if (filesArray.length === 0) return;
+      const targetFiles = multiple ? filesArray : [filesArray[0]];
+      const validFiles: File[] = [];
+      const errors: string[] = [];
+      const maxBytes = maxFileSizeMB * 1024 * 1024;
 
-    const validFiles: File[] = [];
-    const errors: string[] = [];
+      for (const file of targetFiles) {
+        const isTypeAllowed =
+          allowedMimeTypes.includes(file.type.toLowerCase()) ||
+          allowedExtensionsRegex.test(file.name);
 
-    const maxBytes = maxFileSizeMB * 1024 * 1024;
+        if (!isTypeAllowed) {
+          errors.push(`"${file.name}" is not a supported format (${supportedFormatsLabel}).`);
+          continue;
+        }
 
-    for (const file of filesArray) {
-      // Validate mime type
-      const isTypeAllowed = allowedTypes.includes(file.type.toLowerCase()) || 
-        /\.(jpe?g|png|webp|heic|heif)$/i.test(file.name);
+        if (file.size > maxBytes) {
+          errors.push(`"${file.name}" exceeds the maximum limit of ${maxFileSizeMB} MB.`);
+          continue;
+        }
 
-      if (!isTypeAllowed) {
-        errors.push(`"${file.name}" is not a supported format (JPG, PNG, WebP, HEIC).`);
-        continue;
+        if (file.size === 0) {
+          errors.push(`"${file.name}" is an empty file (0 bytes).`);
+          continue;
+        }
+
+        validFiles.push(file);
       }
 
-      // Validate size
-      if (file.size > maxBytes) {
-        errors.push(`"${file.name}" exceeds the maximum limit of ${maxFileSizeMB} MB.`);
-        continue;
+      if (errors.length > 0) {
+        setErrorMessage(
+          errors.slice(0, 3).join(' ') +
+            (errors.length > 3 ? ` (+${errors.length - 3} more errors)` : '')
+        );
       }
 
-      if (file.size === 0) {
-        errors.push(`"${file.name}" is an empty file (0 bytes).`);
-        continue;
+      if (validFiles.length > 0) {
+        onFilesSelected(validFiles);
       }
-
-      validFiles.push(file);
-    }
-
-    if (errors.length > 0) {
-      setErrorMessage(errors.slice(0, 3).join(' ') + (errors.length > 3 ? ` (+${errors.length - 3} more errors)` : ''));
-    }
-
-    if (validFiles.length > 0) {
-      onFilesSelected(validFiles);
-    }
-  }, [maxFileSizeMB, allowedTypes, onFilesSelected]);
+    },
+    [
+      maxFileSizeMB,
+      multiple,
+      allowedMimeTypes,
+      allowedExtensionsRegex,
+      supportedFormatsLabel,
+      onFilesSelected,
+    ]
+  );
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
@@ -89,12 +124,10 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
   const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       validateAndForwardFiles(e.target.files);
-      // Reset input value so re-uploading the same file works
       e.target.value = '';
     }
   };
 
-  // Listen for clipboard paste (Ctrl+V / Cmd+V)
   useEffect(() => {
     const handlePaste = (e: ClipboardEvent) => {
       if (disabled) return;
@@ -132,31 +165,41 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
         <input
           ref={fileInputRef}
           type="file"
-          multiple
-          accept="image/jpeg,image/png,image/webp,image/heic,image/heif,.jpg,.jpeg,.png,.webp,.heic,.heif"
+          multiple={multiple}
+          accept={accept}
           onChange={handleFileInputChange}
           className="hidden"
           disabled={disabled}
         />
 
         <div className="flex flex-col items-center justify-center max-w-md mx-auto">
-          <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-colors ${
-            isDragging ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-600'
-          }`}>
+          <div
+            className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-colors ${
+              isDragging ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-600'
+            }`}
+          >
             <UploadCloud className="w-8 h-8" />
           </div>
 
           <p className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
-            Drag &amp; drop images here
+            {title}
           </p>
           <p className="mt-1 text-sm text-slate-500">
-            or <span className="text-blue-600 font-semibold underline underline-offset-2">browse files</span> from your computer or phone
+            {subtitle || (
+              <>
+                or{' '}
+                <span className="text-blue-600 font-semibold underline underline-offset-2">
+                  browse files
+                </span>{' '}
+                from your computer or phone
+              </>
+            )}
           </p>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-xs text-slate-500">
             <span className="inline-flex items-center gap-1 font-medium bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">
               <FileImage className="w-3.5 h-3.5" />
-              JPG, PNG, WebP, HEIC
+              {supportedFormatsLabel}
             </span>
             <span className="font-medium bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">
               Max {maxFileSizeMB} MB per image
