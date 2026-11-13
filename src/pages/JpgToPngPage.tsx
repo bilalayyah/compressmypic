@@ -54,6 +54,20 @@ export interface PageRuStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageJaStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
+export interface PageKoStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 
 interface Props {
   onNavigate: (path: string) => void;
@@ -68,6 +82,8 @@ interface Props {
   itStrings?: PageItStrings;
   idStrings?: PageIdStrings;
   ruStrings?: PageRuStrings;
+  jaStrings?: PageJaStrings;
+  koStrings?: PageKoStrings;
 }
 
 export const JpgToPngPage: React.FC<Props> = ({
@@ -83,9 +99,15 @@ export const JpgToPngPage: React.FC<Props> = ({
   itStrings,
   idStrings,
   ruStrings,
+  jaStrings,
+  koStrings,
 }) => {
   const t = (key: string, fallback: string) =>
-    lang === 'id' && idStrings?.toolUi
+    lang === 'ja' && jaStrings?.toolUi
+      ? ((jaStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'ko' && koStrings?.toolUi
+      ? ((koStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'id' && idStrings?.toolUi
       ? ((idStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'ru' && ruStrings?.toolUi
       ? ((ruStrings.toolUi[key] as string | undefined) ?? fallback)
@@ -117,6 +139,8 @@ export const JpgToPngPage: React.FC<Props> = ({
       tool={tool}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
+      jaStrings={jaStrings}
+      koStrings={koStrings}
       esStrings={esStrings}
       ptStrings={ptStrings}
       frStrings={frStrings}
