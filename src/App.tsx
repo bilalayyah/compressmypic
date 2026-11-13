@@ -79,6 +79,9 @@ import { ContactPageEs } from './pages/es/ContactPageEs';
 import { PrivacyPageEs } from './pages/es/PrivacyPageEs';
 import { TermsPageEs } from './pages/es/TermsPageEs';
 import { AllToolsPageEs } from './pages/es/AllToolsPageEs';
+import { GuideWhatsAppPageEs } from './pages/es/GuideWhatsAppPageEs';
+import { GuideFormatsPageEs } from './pages/es/GuideFormatsPageEs';
+import { Guide100kbPageEs } from './pages/es/Guide100kbPageEs';
 
 const RemoveBackgroundPage = React.lazy(() =>
   import('./pages/RemoveBackgroundPage').then((m) => ({ default: m.RemoveBackgroundPage }))
@@ -321,6 +324,9 @@ export default function App() {
       '/privacy': 'Política de privacidad – CompressMyPic',
       '/terms': 'Términos de servicio – CompressMyPic',
       [ES_ALL_TOOLS_PATH]: 'Todas las herramientas – CompressMyPic',
+      '/guides/compress-images-for-whatsapp': 'Comprimir imágenes para WhatsApp sin perder calidad',
+      '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: ¿qué formato debería usar?',
+      '/guides/reduce-image-size-to-100kb': 'Cómo reducir una imagen a 100 KB para web y correo',
     };
 
     const staticDescriptionsEs: Record<string, string> = {
@@ -330,6 +336,9 @@ export default function App() {
       '/privacy': 'CompressMyPic procesa sus imágenes localmente en su navegador: nunca se suben a nuestros servidores y no recopilamos, almacenamos ni compartimos sus imágenes.',
       '/terms': 'Al usar CompressMyPic, acepta cumplir estos Términos del Servicio. Lea las condiciones de uso permitido, responsabilidades y limitaciones del servicio gratuito.',
       [ES_ALL_TOOLS_PATH]: 'Explore las 48 herramientas gratuitas de CompressMyPic para comprimir, convertir y editar imágenes online, directamente en su navegador y sin registro.',
+      '/guides/compress-images-for-whatsapp': 'Aprenda a comprimir imágenes para WhatsApp sin perder calidad. Gratis y privado, sin registro: reduzca sus fotos antes de enviarlas para que lleguen nítidas.',
+      '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP explicado de forma sencilla: compare tamaño, calidad y transparencia para elegir el formato adecuado para sus fotos, logotipos y sitios web.',
+      '/guides/reduce-image-size-to-100kb': 'Reduzca el tamaño de una imagen a 100 KB para sitios web y correo electrónico con un compresor online gratis. Guía paso a paso, sin registro ni marca de agua.',
     };
 
     const nextTitle =
@@ -407,6 +416,17 @@ export default function App() {
         { lang: 'en', href: `${baseDomain}${enEquivalent}` },
         { lang: 'es', href: `${baseDomain}${toLocalizedPath(currentPath, 'es')}` },
         { lang: 'x-default', href: `${baseDomain}${enEquivalent}` },
+      ]);
+    } else if (isToolPage && hasEsEquivalent && lang === 'en') {
+      // English tool page with a Spanish equivalent: ToolPageLayout only
+      // writes alternates on the Spanish side (pages pass `alternates` only
+      // when lang === 'es'), so App writes the reciprocal set here —
+      // otherwise the English page carries no hreflang at all and Google
+      // treats the Spanish page's annotations as non-reciprocal.
+      setHreflangLinks([
+        { lang: 'en', href: `${baseDomain}${currentPath}` },
+        { lang: 'es', href: `${baseDomain}${toLocalizedPath(currentPath, 'es')}` },
+        { lang: 'x-default', href: `${baseDomain}${currentPath}` },
       ]);
     } else {
       removeHreflangLinks();
@@ -873,19 +893,19 @@ export default function App() {
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">{strings?.guidesSection.heading ?? 'Guides'}</h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">{strings?.guidesSection.subheading ?? 'Step-by-step guides to get smaller files without losing visible quality.'}</p>
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <a href="/guides/compress-images-for-whatsapp" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/compress-images-for-whatsapp'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
+            <a href={toLocalizedPath('/guides/compress-images-for-whatsapp', lang)} onClick={(e) => { e.preventDefault(); handleNavigate('/guides/compress-images-for-whatsapp'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
               <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3"><MessageCircle className="w-5 h-5" /></div>
               <h3 className="text-base font-bold text-slate-900 dark:text-slate-50">{strings?.guidesSection.cards[0].title ?? 'How to compress images for WhatsApp without losing quality'}</h3>
               <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-normal">{strings?.guidesSection.cards[0].desc ?? 'Shrink photos before sending so they stay sharp and send fast.'}</p>
               <span className="mt-3 inline-block text-sm font-semibold text-blue-600 dark:text-blue-400">{strings?.guidesSection.cards[0].cta ?? 'Read guide →'}</span>
             </a>
-            <a href="/guides/jpg-vs-png-vs-webp" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/jpg-vs-png-vs-webp'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
+            <a href={toLocalizedPath('/guides/jpg-vs-png-vs-webp', lang)} onClick={(e) => { e.preventDefault(); handleNavigate('/guides/jpg-vs-png-vs-webp'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
               <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3"><FileImage className="w-5 h-5" /></div>
               <h3 className="text-base font-bold text-slate-900 dark:text-slate-50">{strings?.guidesSection.cards[1].title ?? 'JPG vs PNG vs WebP: Which Format Should You Use?'}</h3>
               <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-normal">{strings?.guidesSection.cards[1].desc ?? 'File size, quality and transparency compared, so you can pick the right format.'}</p>
               <span className="mt-3 inline-block text-sm font-semibold text-blue-600 dark:text-blue-400">{strings?.guidesSection.cards[1].cta ?? 'Read guide →'}</span>
             </a>
-            <a href="/guides/reduce-image-size-to-100kb" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/reduce-image-size-to-100kb'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
+            <a href={toLocalizedPath('/guides/reduce-image-size-to-100kb', lang)} onClick={(e) => { e.preventDefault(); handleNavigate('/guides/reduce-image-size-to-100kb'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
               <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3"><Zap className="w-5 h-5" /></div>
               <h3 className="text-base font-bold text-slate-900 dark:text-slate-50">{strings?.guidesSection.cards[2].title ?? 'How to Reduce Image Size to 100KB for Web &amp; Email'}</h3>
               <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-normal">{strings?.guidesSection.cards[2].desc ?? 'Step-by-step: hit 100KB without losing visible quality.'}</p>
@@ -975,6 +995,18 @@ export default function App() {
         <main className="flex-1">
           <TermsPage onNavigate={handleNavigate} />
         </main>
+            ) : lang === 'es' && currentPath === '/guides/compress-images-for-whatsapp' ? (
+              <main className="flex-1">
+                <GuideWhatsAppPageEs onNavigate={handleNavigate} />
+              </main>
+            ) : lang === 'es' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
+              <main className="flex-1">
+                <GuideFormatsPageEs onNavigate={handleNavigate} />
+              </main>
+            ) : lang === 'es' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
+              <main className="flex-1">
+                <Guide100kbPageEs onNavigate={handleNavigate} />
+              </main>
             ) : currentPath === '/guides/compress-images-for-whatsapp' ? (
               <main className="flex-1">
                         <GuideWhatsAppPage onNavigate={handleNavigate} />
@@ -1109,15 +1141,63 @@ export default function App() {
         </main>
       ) : currentPath === '/favicon-generator' ? (
         <main className="flex-1">
-          <FaviconGeneratorPage onNavigate={handleNavigate} />
+          <FaviconGeneratorPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/favicon-generator'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/favicon-generator']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/favicon-generator'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-color-picker' ? (
         <main className="flex-1">
-          <ColorPickerPage onNavigate={handleNavigate} />
+          <ColorPickerPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-color-picker'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-color-picker']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-color-picker'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-dimensions-checker' ? (
         <main className="flex-1">
-          <DimensionsCheckerPage onNavigate={handleNavigate} />
+          <DimensionsCheckerPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-dimensions-checker'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-dimensions-checker']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-dimensions-checker'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-cropper' ? (
         <main className="flex-1">
@@ -1161,147 +1241,725 @@ export default function App() {
         </main>
       ) : currentPath === '/blur-pixelate-image' ? (
         <main className="flex-1">
-          <BlurPixelatePage onNavigate={handleNavigate} />
+          <BlurPixelatePage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/blur-pixelate-image'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/blur-pixelate-image']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/blur-pixelate-image'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/add-text-to-image' ? (
         <main className="flex-1">
-          <AddTextPage onNavigate={handleNavigate} />
+          <AddTextPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/add-text-to-image'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/add-text-to-image']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/add-text-to-image'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-border-generator' ? (
         <main className="flex-1">
-          <ImageBorderPage onNavigate={handleNavigate} />
+          <ImageBorderPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-border-generator'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-border-generator']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-border-generator'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/round-image-corners' ? (
         <main className="flex-1">
-          <RoundCornersPage onNavigate={handleNavigate} />
+          <RoundCornersPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/round-image-corners'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/round-image-corners']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/round-image-corners'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-brightness-editor' ? (
         <main className="flex-1">
-          <BrightnessEditorPage onNavigate={handleNavigate} />
+          <BrightnessEditorPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-brightness-editor'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-brightness-editor']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-brightness-editor'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-contrast-editor' ? (
         <main className="flex-1">
-          <ContrastEditorPage onNavigate={handleNavigate} />
+          <ContrastEditorPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-contrast-editor'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-contrast-editor']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-contrast-editor'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-saturation-editor' ? (
         <main className="flex-1">
-          <SaturationEditorPage onNavigate={handleNavigate} />
+          <SaturationEditorPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-saturation-editor'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-saturation-editor']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-saturation-editor'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-filters' ? (
         <main className="flex-1">
-          <ImageFiltersPage onNavigate={handleNavigate} />
+          <ImageFiltersPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-filters'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-filters']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-filters'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/add-background-to-image' ? (
         <main className="flex-1">
-          <AddBackgroundPage onNavigate={handleNavigate} />
+          <AddBackgroundPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/add-background-to-image'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/add-background-to-image']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/add-background-to-image'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-splitter' ? (
         <main className="flex-1">
-          <ImageSplitterPage onNavigate={handleNavigate} />
+          <ImageSplitterPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-splitter'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-splitter']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-splitter'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-dpi-changer' ? (
         <main className="flex-1">
-          <DpiChangerPage onNavigate={handleNavigate} />
+          <DpiChangerPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-dpi-changer'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-dpi-changer']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-dpi-changer'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-to-base64' ? (
         <main className="flex-1">
-          <ImageToBase64Page onNavigate={handleNavigate} />
+          <ImageToBase64Page
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-to-base64'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-to-base64']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-to-base64'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/base64-to-image' ? (
         <main className="flex-1">
-          <Base64ToImagePage onNavigate={handleNavigate} />
+          <Base64ToImagePage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/base64-to-image'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/base64-to-image']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/base64-to-image'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-color-palette-extractor' ? (
         <main className="flex-1">
-          <PaletteExtractorPage onNavigate={handleNavigate} />
+          <PaletteExtractorPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-color-palette-extractor'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-color-palette-extractor']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-color-palette-extractor'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/gif-maker' ? (
         <main className="flex-1">
-          <GifMakerPage onNavigate={handleNavigate} />
+          <GifMakerPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/gif-maker'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/gif-maker']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/gif-maker'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-collage-maker' ? (
         <main className="flex-1">
-          <CollageMakerPage onNavigate={handleNavigate} />
+          <CollageMakerPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-collage-maker'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-collage-maker']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-collage-maker'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/compress-image-to-50kb' ? (
         <main className="flex-1">
-          <Compress50KbPage onNavigate={handleNavigate} />
+          <Compress50KbPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/compress-image-to-50kb'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/compress-image-to-50kb']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/compress-image-to-50kb'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/compress-image-to-100kb' ? (
         <main className="flex-1">
-          <Compress100KbPage onNavigate={handleNavigate} />
+          <Compress100KbPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/compress-image-to-100kb'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/compress-image-to-100kb']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/compress-image-to-100kb'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/compress-image-to-200kb' ? (
         <main className="flex-1">
-          <Compress200KbPage onNavigate={handleNavigate} />
+          <Compress200KbPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/compress-image-to-200kb'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/compress-image-to-200kb']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/compress-image-to-200kb'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/compress-image-to-500kb' ? (
         <main className="flex-1">
-          <Compress500KbPage onNavigate={handleNavigate} />
+          <Compress500KbPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/compress-image-to-500kb'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/compress-image-to-500kb']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/compress-image-to-500kb'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/bulk-image-compressor' ? (
         <main className="flex-1">
-          <BulkCompressorPage onNavigate={handleNavigate} />
+          <BulkCompressorPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/bulk-image-compressor'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/bulk-image-compressor']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/bulk-image-compressor'],
+                    compressionControls: esLocale.ui.compressionControls,
+                    resultsList: esLocale.ui.resultsList,
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/target-file-size-compressor' ? (
         <main className="flex-1">
-          <TargetFileSizePage onNavigate={handleNavigate} />
+          <TargetFileSizePage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/target-file-size-compressor'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/target-file-size-compressor']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/target-file-size-compressor'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/bulk-image-resizer' ? (
         <main className="flex-1">
-          <BulkResizerPage onNavigate={handleNavigate} />
+          <BulkResizerPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/bulk-image-resizer'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/bulk-image-resizer']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/bulk-image-resizer'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/bulk-image-converter' ? (
         <main className="flex-1">
-          <BulkConverterPage onNavigate={handleNavigate} />
+          <BulkConverterPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/bulk-image-converter'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/bulk-image-converter']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/bulk-image-converter'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/web-image-optimizer' ? (
         <main className="flex-1">
-          <WebOptimizerPage onNavigate={handleNavigate} />
+          <WebOptimizerPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/web-image-optimizer'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/web-image-optimizer']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/web-image-optimizer'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/gif-compressor' ? (
         <main className="flex-1">
-          <GifCompressorPage onNavigate={handleNavigate} />
+          <GifCompressorPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/gif-compressor'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/gif-compressor']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/gif-compressor'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/heic-to-jpg' ? (
         <main className="flex-1">
-          <HeicToJpgPage onNavigate={handleNavigate} />
+          <HeicToJpgPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/heic-to-jpg'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/heic-to-jpg']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/heic-to-jpg'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/jpg-to-png' ? (
         <main className="flex-1">
-          <JpgToPngPage onNavigate={handleNavigate} />
+          <JpgToPngPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/jpg-to-png'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/jpg-to-png']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/jpg-to-png'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/png-to-jpg' ? (
         <main className="flex-1">
-          <PngToJpgPage onNavigate={handleNavigate} />
+          <PngToJpgPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/png-to-jpg'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/png-to-jpg']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/png-to-jpg'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/jpg-to-webp' ? (
         <main className="flex-1">
-          <JpgToWebpPage onNavigate={handleNavigate} />
+          <JpgToWebpPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/jpg-to-webp'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/jpg-to-webp']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/jpg-to-webp'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/webp-to-jpg' ? (
         <main className="flex-1">
-          <WebpToJpgPage onNavigate={handleNavigate} />
+          <WebpToJpgPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/webp-to-jpg'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/webp-to-jpg']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/webp-to-jpg'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/png-to-webp' ? (
         <main className="flex-1">
-          <PngToWebpPage onNavigate={handleNavigate} />
+          <PngToWebpPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/png-to-webp'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/png-to-webp']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/png-to-webp'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/webp-to-png' ? (
         <main className="flex-1">
-          <WebpToPngPage onNavigate={handleNavigate} />
+          <WebpToPngPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/webp-to-png'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/webp-to-png']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/webp-to-png'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/svg-to-png' ? (
         <main className="flex-1">
-          <SvgToPngPage onNavigate={handleNavigate} />
+          <SvgToPngPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/svg-to-png'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/svg-to-png']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/svg-to-png'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/avif-to-jpg' ? (
         <main className="flex-1">
-          <AvifToJpgPage onNavigate={handleNavigate} />
+          <AvifToJpgPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/avif-to-jpg'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/avif-to-jpg']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/avif-to-jpg'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/bmp-to-jpg' ? (
         <main className="flex-1">
-          <BmpToJpgPage onNavigate={handleNavigate} />
+          <BmpToJpgPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/bmp-to-jpg'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/bmp-to-jpg']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/bmp-to-jpg'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/remove-background' ? (
         <main className="flex-1">
@@ -1312,7 +1970,23 @@ export default function App() {
               </div>
             }
           >
-            <RemoveBackgroundPage onNavigate={handleNavigate} />
+            <RemoveBackgroundPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/remove-background'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/remove-background']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/remove-background'],
+                  }
+                : undefined
+            }
+          />
           </Suspense>
         </main>
       ) : (
