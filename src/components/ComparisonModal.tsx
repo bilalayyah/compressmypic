@@ -78,9 +78,31 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
             <div className="flex items-center gap-2 text-xs text-slate-500 mt-0.5">
               <span>Original: <strong className="font-mono text-slate-700 tabular-nums">{formatBytes(image.originalSize)}</strong></span>
               <span aria-hidden="true">·</span>
-              <span>Output: <strong className="font-mono text-emerald-600 tabular-nums">{image.compressedSize ? formatBytes(image.compressedSize) : 'N/A'}</strong></span>
+              <span>
+                Output:{' '}
+                <strong
+                  className={`font-mono tabular-nums ${
+                    image.compressedSize && image.compressedSize > image.originalSize
+                      ? 'text-red-600'
+                      : 'text-emerald-600'
+                  }`}
+                >
+                  {image.compressedSize ? formatBytes(image.compressedSize) : 'N/A'}
+                </strong>
+              </span>
               <span aria-hidden="true">·</span>
-              <span>Reduction: <strong className="font-mono text-blue-600 tabular-nums">{formatPercent(image.compressionPercentage)}</strong></span>
+              <span>
+                {image.compressedSize && image.compressedSize > image.originalSize ? 'Size Change:' : 'Reduction:'}{' '}
+                <strong
+                  className={`font-mono tabular-nums ${
+                    image.compressedSize && image.compressedSize > image.originalSize
+                      ? 'text-red-600'
+                      : 'text-blue-600'
+                  }`}
+                >
+                  {formatPercent(image.compressionPercentage)}
+                </strong>
+              </span>
             </div>
           </div>
 

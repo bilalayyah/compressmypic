@@ -60,10 +60,10 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({ onNaviga
       const res = await convertImageFile(item.file, fmt, q, bg);
       if (item.compressedPreviewUrl) URL.revokeObjectURL(item.compressedPreviewUrl);
 
-      const saved = Math.max(0, item.originalSize - res.size);
+      const saved = item.originalSize - res.size;
       const pct =
         item.originalSize > 0
-          ? Math.max(0, Math.round(((item.originalSize - res.size) / item.originalSize) * 100))
+          ? Math.round(((item.originalSize - res.size) / item.originalSize) * 100)
           : 0;
 
       return {

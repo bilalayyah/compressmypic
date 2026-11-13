@@ -1943,6 +1943,556 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     relatedSlugs: ['/gif-maker', '/bulk-image-compressor', '/image-resizer', '/'],
   },
+  {
+    slug: '/heic-to-jpg',
+    name: 'HEIC to JPG',
+    shortDescription: 'Convert Apple iPhone HEIC/HEIF photos to universal JPG in browser.',
+    category: 'convert',
+    seoTitle: 'HEIC to JPG Converter Free Online – Convert iPhone Photos Locally',
+    seoDescription:
+      'Convert HEIC and HEIF images to universal JPG online free. 100% browser-based via client-side WebAssembly decoding — private, batch ZIP, no server upload.',
+    h1: 'Free Online HEIC to JPG Converter',
+    subtitle:
+      'Turn Apple iPhone HEIC and HEIF photos into universally compatible JPG files right inside your browser — private, fast, and supporting batch ZIP download.',
+    howToSteps: [
+      {
+        title: 'Drop HEIC or HEIF photos',
+        description: 'Select one or dozens of .heic / .heif images directly from your iPhone, Mac, or PC.',
+      },
+      {
+        title: 'Adjust JPG quality',
+        description: 'Keep the balanced 90% default for near-lossless photos or lower quality for smaller email attachments.',
+      },
+      {
+        title: 'Download JPG or ZIP',
+        description: 'Compare before and after visually and download individual JPGs or all files in a single ZIP archive.',
+      },
+    ],
+    features: [
+      {
+        title: 'Client-Side WebAssembly HEIC Decoding',
+        description: 'Uses heic2any inside your browser tab so private camera roll photos never get uploaded to external servers.',
+      },
+      {
+        title: 'Batch Conversion + ZIP Export',
+        description: 'Convert entire folders of iPhone HEIC shots to JPG in one queue and grab everything in one ZIP.',
+      },
+      {
+        title: 'Custom JPG Quality Slider',
+        description: 'Fine-tune output compression from 20% to 100% depending on whether you prioritize detail or tiny file size.',
+      },
+      {
+        title: 'EXIF Privacy Stripped by Canvas',
+        description: 'Canvas re-encoding naturally strips hidden GPS coordinates and camera serial metadata.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Are my iPhone HEIC photos uploaded to a server?',
+        answer: 'No. HEIC decoding and JPG encoding run 100% locally in your browser memory via WebAssembly and HTML5 Canvas.',
+      },
+      {
+        question: 'Does it support both .heic and .heif extensions?',
+        answer: 'Yes. Both .heic and .heif containers are decoded automatically and exported as standard .jpg files.',
+      },
+    ],
+    relatedSlugs: ['/image-converter', '/bulk-image-converter', '/jpg-to-webp', '/remove-image-metadata'],
+  },
+  {
+    slug: '/jpg-to-png',
+    name: 'JPG to PNG',
+    shortDescription: 'Convert JPG/JPEG photos to lossless PNG images in your browser.',
+    category: 'convert',
+    seoTitle: 'JPG to PNG Converter Free Online – Lossless Browser Conversion',
+    seoDescription:
+      'Convert JPG and JPEG images to lossless PNG online free in your browser. Zero upload, batch ZIP download, sharp pixel fidelity, and instant visual comparison.',
+    h1: 'Free Online JPG to PNG Converter',
+    subtitle:
+      'Convert JPG and JPEG images into lossless PNG files locally in your browser — ideal when workflows, print portals, or editors strictly require .png uploads.',
+    howToSteps: [
+      {
+        title: 'Upload JPG files',
+        description: 'Drag and drop one or multiple .jpg or .jpeg images from any device.',
+      },
+      {
+        title: 'Automatic lossless conversion',
+        description: 'Your browser decodes each JPEG and encodes a crisp, lossless PNG immediately.',
+      },
+      {
+        title: 'Compare & download',
+        description: 'Inspect the result in the before/after viewer and download individual PNGs or a batch ZIP.',
+      },
+    ],
+    features: [
+      {
+        title: 'True Lossless PNG Output',
+        description: 'Prevents additional lossy generation damage when preparing images for further editing or archiving.',
+      },
+      {
+        title: 'Batch Queue & ZIP Packaging',
+        description: 'Convert multiple JPEGs to PNG simultaneously and export them in one organized ZIP.',
+      },
+      {
+        title: 'Zero Watermarks or Signups',
+        description: 'Unlimited conversions directly in Chrome, Firefox, Safari, or Edge without creating an account.',
+      },
+      {
+        title: '100% Local Processing',
+        description: 'Images stay inside your browser tab — nothing touches a remote server.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Why is the converted PNG larger than my original JPG?',
+        answer: 'JPG uses lossy compression while PNG is lossless. Converting a photo to PNG preserves every pixel without adding JPEG artifacts, which naturally produces a larger file.',
+      },
+      {
+        question: 'Will converting JPG to PNG automatically make the background transparent?',
+        answer: 'No. Standard JPG files have no transparency channel. If you want a transparent background, pair conversion with an editor or add a custom backdrop.',
+      },
+    ],
+    relatedSlugs: ['/png-to-jpg', '/jpg-to-webp', '/image-converter', '/add-background-to-image'],
+  },
+  {
+    slug: '/png-to-jpg',
+    name: 'PNG to JPG',
+    shortDescription: 'Convert heavy PNGs to lightweight JPG with custom background matte.',
+    category: 'convert',
+    seoTitle: 'PNG to JPG Converter Free Online – Shrink PNGs & Pick Background Color',
+    seoDescription:
+      'Convert PNG to smaller JPG online free in your browser. Choose a custom matte background color for transparent PNGs, adjust quality, and download batch ZIPs.',
+    h1: 'Free Online PNG to JPG Converter',
+    subtitle:
+      'Shrink oversized PNG screenshots and graphics into fast, lightweight JPG files — with a custom matte color picker for transparent backgrounds.',
+    howToSteps: [
+      {
+        title: 'Drop PNG images',
+        description: 'Upload one or multiple .png screenshots, product photos, or graphics.',
+      },
+      {
+        title: 'Set quality & matte color',
+        description: 'Pick your JPG quality percentage and choose white, black, or any hex color for transparent pixels.',
+      },
+      {
+        title: 'Download smaller JPGs',
+        description: 'Check the byte savings and download each JPG or the full batch as a ZIP.',
+      },
+    ],
+    features: [
+      {
+        title: 'Custom Transparency Matte Fill',
+        description: 'Transparent PNG areas cleanly blend onto white, black, or any custom background color instead of turning solid black.',
+      },
+      {
+        title: 'Massive File Size Reduction',
+        description: 'Converting photographic PNGs to 85% JPG often shrinks file weight by 60–85% instantly.',
+      },
+      {
+        title: 'Before/After Visual Inspector',
+        description: 'Verify crispness side-by-side before downloading so text and edges stay sharp.',
+      },
+      {
+        title: 'Private Browser Execution',
+        description: 'Confidential screenshots and documents stay safely on your own computer.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'What happens to transparent areas when converting PNG to JPG?',
+        answer: 'Because JPG does not support alpha transparency, transparent areas are filled cleanly using the Matte Background Color selector (white by default).',
+      },
+      {
+        question: 'What quality setting is best for PNG to JPG?',
+        answer: '85%–90% delivers virtually indistinguishable visual quality while dramatically reducing file size compared to PNG.',
+      },
+    ],
+    relatedSlugs: ['/jpg-to-png', '/png-to-webp', '/compress-image-to-100kb', '/image-converter'],
+  },
+  {
+    slug: '/jpg-to-webp',
+    name: 'JPG to WebP',
+    shortDescription: 'Convert JPG photos to next-gen WebP for faster websites & SEO.',
+    category: 'convert',
+    seoTitle: 'JPG to WebP Converter Free Online – Smaller Faster Web Images',
+    seoDescription:
+      'Convert JPG to WebP online free in your browser. Cut image weight by 25–35% for faster websites and Core Web Vitals with adjustable quality and batch ZIP download.',
+    h1: 'Free Online JPG to WebP Converter',
+    subtitle:
+      'Convert standard JPG photos into modern WebP images to shrink page weight by 25–35% and speed up Core Web Vitals (LCP) without uploading files.',
+    howToSteps: [
+      {
+        title: 'Upload JPG photos',
+        description: 'Drop single photos or batches of .jpg / .jpeg assets from your site or store.',
+      },
+      {
+        title: 'Tune WebP quality',
+        description: '80%–85% WebP typically looks as sharp as 90% JPG while saving significant bandwidth.',
+      },
+      {
+        title: 'Download WebP files',
+        description: 'Compare original JPG vs converted WebP byte sizes and download individually or as a ZIP.',
+      },
+    ],
+    features: [
+      {
+        title: 'Faster PageSpeed & LCP Scores',
+        description: 'WebP is the recommended next-gen web format by Lighthouse and modern browsers.',
+      },
+      {
+        title: 'Adjustable Quality Control',
+        description: 'Dial compression anywhere from 20% to 100% and preview results immediately.',
+      },
+      {
+        title: 'Batch Export to ZIP',
+        description: 'Optimize entire blog or e-commerce image folders locally in seconds.',
+      },
+      {
+        title: 'Zero Server Round-Trips',
+        description: 'Uses your browser’s built-in WebP encoder — fast, offline-friendly, and private.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Do all modern browsers support WebP?',
+        answer: 'Yes. Chrome, Safari, Firefox, Edge, iOS, and Android all natively support WebP.',
+      },
+      {
+        question: 'What quality value works best for JPG to WebP?',
+        answer: '80%–85% gives the strongest balance between crisp visual detail and 25–35% smaller file sizes.',
+      },
+    ],
+    relatedSlugs: ['/webp-to-jpg', '/png-to-webp', '/web-image-optimizer', '/bulk-image-converter'],
+  },
+  {
+    slug: '/webp-to-jpg',
+    name: 'WebP to JPG',
+    shortDescription: 'Convert WebP downloads back into universally accepted JPG files.',
+    category: 'convert',
+    seoTitle: 'WebP to JPG Converter Free Online – Universal Compatibility',
+    seoDescription:
+      'Convert WebP images to standard JPG online free in your browser. Pick background matte color for transparent WebPs, control quality, and download batch ZIPs.',
+    h1: 'Free Online WebP to JPG Converter',
+    subtitle:
+      'Turn downloaded .webp images into classic .jpg files compatible with legacy CMS tools, Microsoft Office, Photoshop CS6, and email clients.',
+    howToSteps: [
+      {
+        title: 'Drop WebP images',
+        description: 'Select one or multiple .webp files saved from the web.',
+      },
+      {
+        title: 'Customize quality & matte color',
+        description: 'Set JPG quality (default 88%) and pick a background color if your WebP has transparent edges.',
+      },
+      {
+        title: 'Download standard JPGs',
+        description: 'Save individual .jpg files or package the whole batch in a ZIP.',
+      },
+    ],
+    features: [
+      {
+        title: 'Fixes Legacy Software Rejections',
+        description: 'Easily convert WebP images for portals, printers, or older apps that only accept JPG.',
+      },
+      {
+        title: 'Transparency-Safe Matte Fill',
+        description: 'Transparent WebPs flatten smoothly onto white, black, or any hex background color.',
+      },
+      {
+        title: 'High-Quality Re-Encoding',
+        description: 'Default 88% quality keeps details sharp with minimal file size bloat.',
+      },
+      {
+        title: '100% Browser-Native Privacy',
+        description: 'No cloud queues or server uploads — runs instantly on your device.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Why can’t some apps open .webp files?',
+        answer: 'Many older desktop programs, print kiosks, and government upload forms only recognize .jpg and .png. Converting WebP to JPG solves that immediately.',
+      },
+      {
+        question: 'Can I convert transparent WebP stickers to JPG cleanly?',
+        answer: 'Yes — use the Matte Background Color picker to set white or any preferred color behind transparent areas.',
+      },
+    ],
+    relatedSlugs: ['/webp-to-png', '/jpg-to-webp', '/png-to-jpg', '/image-converter'],
+  },
+  {
+    slug: '/png-to-webp',
+    name: 'PNG to WebP',
+    shortDescription: 'Convert transparent PNG graphics to compact transparent WebP.',
+    category: 'convert',
+    seoTitle: 'PNG to WebP Converter Free Online – Keep Transparency, Cut Size',
+    seoDescription:
+      'Convert PNG to WebP online free while keeping full alpha transparency. Shrink transparent logos, UI screenshots, and icons in your browser with batch ZIP export.',
+    h1: 'Free Online PNG to WebP Converter',
+    subtitle:
+      'Dramatically reduce the weight of transparent PNG logos, UI graphics, and product cutouts by converting them to transparent WebP right in your browser.',
+    howToSteps: [
+      {
+        title: 'Upload PNG graphics',
+        description: 'Drop transparent icons, logos, screenshots, or illustrations (.png).',
+      },
+      {
+        title: 'Select WebP quality',
+        description: 'Adjust the quality slider (default 85%) — alpha transparency stays preserved at every setting.',
+      },
+      {
+        title: 'Download lightweight WebPs',
+        description: 'Compare file size savings and download individual WebP files or a batch ZIP.',
+      },
+    ],
+    features: [
+      {
+        title: 'Full Alpha Transparency Preserved',
+        description: 'Unlike JPG, WebP retains clean semi-transparent edges and drop shadows from your PNGs.',
+      },
+      {
+        title: 'Up to 70% Smaller Assets',
+        description: 'Replace multi-megabyte PNG heroes and cutouts with sleek WebP files for faster websites.',
+      },
+      {
+        title: 'Before/After Split View',
+        description: 'Inspect anti-aliased edges and gradients side-by-side before downloading.',
+      },
+      {
+        title: 'Batch Processing + ZIP',
+        description: 'Convert entire icon and product sets locally with zero upload limits.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Does PNG to WebP preserve transparent backgrounds?',
+        answer: 'Yes. HTML5 Canvas WebP encoding preserves the full 8-bit alpha channel so logos and transparent cutouts stay transparent.',
+      },
+      {
+        question: 'How much smaller is WebP compared to PNG?',
+        answer: 'Depending on visual complexity, converting PNG to 85% WebP commonly cuts file size by 50% to 80%.',
+      },
+    ],
+    relatedSlugs: ['/webp-to-png', '/jpg-to-webp', '/web-image-optimizer', '/image-converter'],
+  },
+  {
+    slug: '/webp-to-png',
+    name: 'WebP to PNG',
+    shortDescription: 'Convert WebP images to lossless PNG with transparency intact.',
+    category: 'convert',
+    seoTitle: 'WebP to PNG Converter Free Online – Lossless & Transparent',
+    seoDescription:
+      'Convert WebP to lossless PNG online free in your browser. Preserves full alpha transparency cleanly with batch ZIP export and zero server uploads.',
+    h1: 'Free Online WebP to PNG Converter',
+    subtitle:
+      'Convert transparent or opaque WebP images into universal, lossless PNG files locally — preserving every transparent pixel and sharp edge.',
+    howToSteps: [
+      {
+        title: 'Drop WebP files',
+        description: 'Upload one or multiple .webp images from any folder.',
+      },
+      {
+        title: 'Lossless PNG conversion',
+        description: 'Each WebP renders onto a transparent HTML5 Canvas and exports as lossless PNG.',
+      },
+      {
+        title: 'Download PNGs or ZIP',
+        description: 'Inspect the converted PNGs and download individually or all together as a ZIP.',
+      },
+    ],
+    features: [
+      {
+        title: 'Keeps Alpha Transparency Intact',
+        description: 'Transparent WebP logos and stickers remain cleanly transparent in the resulting PNG.',
+      },
+      {
+        title: 'Universal Editor Support',
+        description: 'Open converted PNGs in any design tool, presentation deck, or upload portal without WebP compatibility issues.',
+      },
+      {
+        title: 'Batch Queue Support',
+        description: 'Convert multiple WebP downloads to PNG in one click and export a single ZIP.',
+      },
+      {
+        title: 'Private On-Device Processing',
+        description: 'Files never leave your device — conversion happens in local browser memory.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Does WebP to PNG keep transparent backgrounds?',
+        answer: 'Yes. Transparent pixels in your WebP image remain transparent in the exported PNG.',
+      },
+      {
+        question: 'Why is the output PNG file larger than the WebP?',
+        answer: 'PNG uses lossless DEFLATE compression, whereas WebP often uses more aggressive compression. Exporting as PNG guarantees zero further quality loss.',
+      },
+    ],
+    relatedSlugs: ['/webp-to-jpg', '/png-to-webp', '/jpg-to-png', '/image-converter'],
+  },
+  {
+    slug: '/svg-to-png',
+    name: 'SVG to PNG',
+    shortDescription: 'Rasterize SVG vector graphics into crisp 1×–4× transparent PNGs.',
+    category: 'convert',
+    seoTitle: 'SVG to PNG Converter Free Online – Export 1x, 2x, 3x & 4x PNGs',
+    seoDescription:
+      'Convert SVG vectors to transparent PNG online free in your browser. Export crisp 1x, 2x, 3x, or 4x high-DPI PNGs locally with honest standalone Canvas rendering.',
+    h1: 'Free Online SVG to PNG Converter',
+    subtitle:
+      'Rasterize vector SVG logos, icons, and illustrations into crisp transparent PNGs at 1×, 2×, 3×, or 4× resolution — 100% locally in your browser.',
+    howToSteps: [
+      {
+        title: 'Drop SVG vector files',
+        description: 'Upload one or multiple .svg files containing shapes, paths, gradients, or inline styles.',
+      },
+      {
+        title: 'Choose export scale (1× to 4×)',
+        description: 'Select 1× for exact viewBox size, or 2×–4× for sharp Retina / high-DPI PNG exports, then click Re-convert All.',
+      },
+      {
+        title: 'Download transparent PNGs',
+        description: 'Verify crispness in the comparison modal and save your PNG or batch ZIP.',
+      },
+    ],
+    features: [
+      {
+        title: '1×, 2×, 3× & 4× High-DPI Export',
+        description: 'Scale small 24px icons or 100px logos cleanly up to 4× resolution before rasterization.',
+      },
+      {
+        title: 'Transparent Background Preserved',
+        description: 'Exports crisp alpha-channel PNGs ready for slides, web headers, and design decks.',
+      },
+      {
+        title: 'Honest Standalone Canvas Scope',
+        description: 'Clearly documents that inline SVG vector shapes/styles render cleanly, while external image URLs or external webfonts inside SVGs may be blocked by browser Canvas sandboxing.',
+      },
+      {
+        title: 'Batch SVG Rasterization',
+        description: 'Convert entire icon packs to PNG in one pass and download a ZIP.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Why didn’t an external font or linked image inside my SVG appear in the PNG?',
+        answer: 'For security, browsers sandbox SVG files rendered onto HTML5 Canvas and block fetching external <image> URLs, external CSS files, or remote webfonts. Self-contained SVGs with inline paths, gradients, and system fonts rasterize reliably.',
+      },
+      {
+        question: 'How do I export a larger PNG from a small SVG icon?',
+        answer: 'Pick 2×, 3×, or 4× under Raster Export Scale and click Re-convert All — or use Image Resizer afterward for exact custom pixel dimensions.',
+      },
+    ],
+    relatedSlugs: ['/favicon-generator', '/png-to-webp', '/image-resizer', '/image-converter'],
+  },
+  {
+    slug: '/avif-to-jpg',
+    name: 'AVIF to JPG',
+    shortDescription: 'Convert AVIF images to universal JPG via your browser decoder.',
+    category: 'convert',
+    seoTitle: 'AVIF to JPG Converter Free Online – Browser-Native Conversion',
+    seoDescription:
+      'Convert AVIF images to universal JPG online free in your browser. Uses native browser AVIF decoding with quality slider, matte color picker, and batch ZIP export.',
+    h1: 'Free Online AVIF to JPG Converter',
+    subtitle:
+      'Convert modern .avif images into universally supported .jpg files using your browser’s built-in AVIF decoder — fast, private, and 100% client-side.',
+    howToSteps: [
+      {
+        title: 'Drop AVIF images',
+        description: 'Upload .avif files using a modern browser with native AVIF decode support (Chrome, Edge, Firefox, or Safari).',
+      },
+      {
+        title: 'Set JPG quality & matte background',
+        description: 'Pick output JPG quality and a background color if the AVIF includes transparency.',
+      },
+      {
+        title: 'Download universal JPGs',
+        description: 'Compare visually and save individual JPGs or a batch ZIP.',
+      },
+    ],
+    features: [
+      {
+        title: 'Native Browser AVIF Decoding',
+        description: 'Leverages your modern browser’s hardware/software AVIF decoder locally with zero server round-trips.',
+      },
+      {
+        title: 'Honest Format Compatibility',
+        description: 'Built strictly for decoding AVIF into universal JPG (or use JPG/PNG/WebP tools for other formats — AVIF encoding/output is not offered).',
+      },
+      {
+        title: 'Transparency Matte Color Picker',
+        description: 'Transparent AVIF areas blend cleanly onto white or your custom hex background.',
+      },
+      {
+        title: 'Batch ZIP Export',
+        description: 'Convert multiple AVIF downloads to JPG in one browser session.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'What browsers support AVIF to JPG conversion here?',
+        answer: 'Modern Chrome, Edge, Firefox, and Safari decode AVIF natively in-browser. If a very old browser cannot decode AVIF, an explicit error message is shown per file.',
+      },
+      {
+        question: 'Can I also convert JPG back to AVIF on this site?',
+        answer: 'No — HTML5 Canvas does not universally support encoding AVIF across browsers, so we only offer reliable JPG, PNG, and WebP outputs.',
+      },
+    ],
+    relatedSlugs: ['/webp-to-jpg', '/heic-to-jpg', '/jpg-to-webp', '/image-converter'],
+  },
+  {
+    slug: '/bmp-to-jpg',
+    name: 'BMP to JPG',
+    shortDescription: 'Convert huge uncompressed BMP bitmaps to compact JPG files.',
+    category: 'convert',
+    seoTitle: 'BMP to JPG Converter Free Online – Shrink Heavy Bitmaps',
+    seoDescription:
+      'Convert uncompressed BMP bitmap images to compact JPG online free in your browser. Cut file sizes by 85–95% privately with batch ZIP download.',
+    h1: 'Free Online BMP to JPG Converter',
+    subtitle:
+      'Turn massive uncompressed Windows BMP bitmap images into lightweight, shareable JPG files — often shrinking file size by 90% right inside your browser.',
+    howToSteps: [
+      {
+        title: 'Upload BMP images',
+        description: 'Drag and drop one or multiple .bmp bitmap files.',
+      },
+      {
+        title: 'Adjust JPG quality',
+        description: '88% default keeps crisp detail while eliminating megabytes of uncompressed bitmap bloat.',
+      },
+      {
+        title: 'Download compact JPGs',
+        description: 'Review before/after size savings and download individual JPGs or one batch ZIP.',
+      },
+    ],
+    features: [
+      {
+        title: '90%+ Typical Size Reduction',
+        description: 'Uncompressed BMP bitmaps store raw pixels; JPG compression shrinks them dramatically for email and web.',
+      },
+      {
+        title: 'Preserves Pixel Dimensions',
+        description: 'Maintains exact original width and height while modernizing the container format.',
+      },
+      {
+        title: 'Batch Queue + ZIP Download',
+        description: 'Clean up folders of legacy .bmp screenshots or scans in one fast pass.',
+      },
+      {
+        title: '100% Client-Side Privacy',
+        description: 'Zero uploads — conversion happens locally on your computer.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'How much smaller is JPG compared to BMP?',
+        answer: 'Because BMP files are typically uncompressed, converting BMP to 88% JPG routinely cuts file size by 85% to 95%.',
+      },
+      {
+        question: 'Does BMP to JPG work offline after loading?',
+        answer: 'Yes. Everything runs in browser JavaScript and HTML5 Canvas without sending files to a server.',
+      },
+    ],
+    relatedSlugs: ['/png-to-jpg', '/image-converter', '/bulk-image-converter', '/compress-image-to-100kb'],
+  },
 ];
 
 export const TOOL_BY_SLUG: Record<string, ToolDefinition> = Object.fromEntries(

@@ -9,6 +9,7 @@ interface CompressionControlsProps {
   onClearAll: () => void;
   totalImagesCount: number;
   hasTransparentImages: boolean;
+  hasPngImages?: boolean;
   isCompressing: boolean;
 }
 
@@ -19,6 +20,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
   onClearAll,
   totalImagesCount,
   hasTransparentImages,
+  hasPngImages = false,
   isCompressing,
 }) => {
   const handlePresetSelect = (preset: CompressionPreset) => {
@@ -38,8 +40,10 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
   };
 
   const isConvertingTransparentToJpeg =
-    hasTransparentImages &&
-    (settings.format === 'jpeg' || (settings.format === 'original' && false));
+    hasTransparentImages && settings.format === 'jpeg';
+
+  const showPngLosslessTip =
+    settings.format === 'png' || (settings.format === 'original' && hasPngImages);
 
   return (
     <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs">
@@ -209,11 +213,11 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
       )}
 
       {/* Format Info Note */}
-      {settings.format === 'png' && (
+      {showPngLosslessTip && (
         <div className="mt-4 p-3 bg-blue-50/70 border border-blue-100 rounded-xl text-xs text-blue-800 flex items-start gap-2">
           <Info className="w-4 h-4 mt-0.5 text-blue-600 shrink-0" />
           <p>
-            PNG is a lossless format. While metadata is stripped to minimize file size, for 50-80% smaller file sizes with preserved alpha transparency, consider selecting <strong>WebP</strong> format.
+            PNG is a lossless format and ignores the quality slider, so re-encoding a PNG can sometimes match or exceed the original file size. For photo-like PNGs, selecting <strong>WebP</strong> or <strong>JPG</strong> usually produces 50–80% smaller files.
           </p>
         </div>
       )}

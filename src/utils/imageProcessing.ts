@@ -317,27 +317,33 @@ export async function convertImageFile(
   file: File,
   targetFormat: 'jpeg' | 'png' | 'webp',
   quality: number,
-  backgroundColor: string = '#ffffff'
+  backgroundColor: string = '#ffffff',
+  scale: number = 1
 ): Promise<ProcessedImageResult> {
   const info = await loadExtendedImageInfo(file);
   try {
     const { img, width, height } = info;
     const { mimeType, extension } = resolveOutputFormat(targetFormat, file.type);
 
+    const safeMaxSide = Math.max(width, height, 1);
+    const cappedScale = Math.max(0.1, Math.min(scale, 8000 / safeMaxSide));
+    const outW = Math.max(1, Math.round(width * cappedScale));
+    const outH = Math.max(1, Math.round(height * cappedScale));
+
     const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
+    canvas.width = outW;
+    canvas.height = outH;
     const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) throw new Error('Unable to initialize 2D canvas context.');
 
     if (mimeType === 'image/jpeg') {
       ctx.fillStyle = backgroundColor || '#ffffff';
-      ctx.fillRect(0, 0, width, height);
+      ctx.fillRect(0, 0, outW, outH);
     }
 
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
-    ctx.drawImage(img, 0, 0, width, height);
+    ctx.drawImage(img, 0, 0, outW, outH);
 
     const qualityFactor = Math.max(0.1, Math.min(1.0, quality / 100));
     const blob = await canvasToBlob(canvas, mimeType, qualityFactor);
@@ -347,8 +353,8 @@ export async function convertImageFile(
       blob,
       previewUrl: URL.createObjectURL(blob),
       size: blob.size,
-      width,
-      height,
+      width: outW,
+      height: outH,
       outputType: mimeType,
       outputExtension: extension,
       outputFilename: `${baseName}${extension}`,

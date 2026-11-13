@@ -277,6 +277,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               { slug: '/image-color-palette-extractor', label: 'Color Palette Extractor' },
               { slug: '/gif-maker', label: 'GIF Maker' },
               { slug: '/image-collage-maker', label: 'Image Collage Maker' },
+              { slug: '/heic-to-jpg', label: 'HEIC to JPG' },
+              { slug: '/jpg-to-png', label: 'JPG to PNG' },
+              { slug: '/png-to-jpg', label: 'PNG to JPG' },
+              { slug: '/jpg-to-webp', label: 'JPG to WebP' },
+              { slug: '/webp-to-jpg', label: 'WebP to JPG' },
+              { slug: '/png-to-webp', label: 'PNG to WebP' },
+              { slug: '/webp-to-png', label: 'WebP to PNG' },
+              { slug: '/svg-to-png', label: 'SVG to PNG' },
+              { slug: '/avif-to-jpg', label: 'AVIF to JPG' },
+              { slug: '/bmp-to-jpg', label: 'BMP to JPG' },
             ].map((item) => (
               <a
                 key={item.slug}

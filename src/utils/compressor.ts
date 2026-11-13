@@ -85,7 +85,13 @@ const heicConversionCache = new WeakMap<Blob, Promise<Blob>>();
  * or a converted JPEG for HEIC/HEIF files.
  */
 export async function toDecodableBlob(file: File | Blob): Promise<Blob> {
-  if (!(await isHeicFile(file))) return file;
+  if (!(await isHeicFile(file))) {
+    const name = (file as File).name || '';
+    if (/\.svg$/i.test(name) && file.type !== 'image/svg+xml') {
+      return new Blob([file], { type: 'image/svg+xml' });
+    }
+    return file;
+  }
   let cached = heicConversionCache.get(file);
   if (!cached) {
     cached = convertHeicToJpeg(file);
@@ -226,14 +232,11 @@ export async function compressSingleImage(
 
   const compressedSize = compressedBlob.size;
   const originalSize = imageItem.originalSize;
-  const spaceSaved = Math.max(0, originalSize - compressedSize);
-  
-  // Calculate reduction percentage
-  let compressionPercentage = Math.round(((originalSize - compressedSize) / originalSize) * 100);
-  if (compressionPercentage < 0) {
-    // If output is slightly larger (e.g., highly compressed source with high quality setting), clamp to 0
-    compressionPercentage = 0;
-  }
+  const spaceSaved = originalSize - compressedSize;
+  const compressionPercentage =
+    originalSize > 0
+      ? Math.round(((originalSize - compressedSize) / originalSize) * 100)
+      : 0;
 
   const baseName = sanitizeFilename(getBaseFilename(imageItem.name));
   const outputFilename = `${baseName}_compressed${extension}`;

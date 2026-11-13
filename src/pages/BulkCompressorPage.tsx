@@ -6,13 +6,14 @@ import { UploadZone } from '../components/UploadZone';
 import { CompressionControls } from '../components/CompressionControls';
 import { ResultsList } from '../components/ResultsList';
 import { ComparisonModal } from '../components/ComparisonModal';
-import { CompressionSettings, ImageItem } from '../types';
+import { CompressionSettings, ImageFormat, ImageItem } from '../types';
 import {
   compressSingleImage,
   detectTransparency,
   loadImageFromFile,
   toDecodableBlob,
 } from '../utils/compressor';
+import { getFileExtension } from '../utils/formatters';
 import { createZipArchive, triggerDownload } from '../utils/zip';
 
 interface BulkCompressorPageProps {
@@ -81,6 +82,7 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({ onNaviga
           spaceSaved: result.spaceSaved,
           compressionPercentage: result.compressionPercentage,
           quality: currentSettings.quality,
+          keptOriginal: false,
           status: 'done',
           errorMessage: null,
         };
@@ -226,6 +228,33 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({ onNaviga
     setImages((prev) => prev.map((img) => (img.id === id ? updated : img)));
   };
 
+  const handleKeepOriginal = (id: string) => {
+    setImages((prev) =>
+      prev.map((img) => {
+        if (img.id !== id) return img;
+        if (img.compressedPreviewUrl && img.compressedPreviewUrl !== img.originalPreviewUrl) {
+          URL.revokeObjectURL(img.compressedPreviewUrl);
+        }
+        return {
+          ...img,
+          compressedBlob: img.file,
+          compressedPreviewUrl: URL.createObjectURL(img.file),
+          compressedSize: img.originalSize,
+          compressedWidth: img.originalWidth,
+          compressedHeight: img.originalHeight,
+          outputType: (img.originalType as ImageFormat) || 'image/png',
+          outputExtension: getFileExtension(img.name) || '.png',
+          outputFilename: img.name,
+          spaceSaved: 0,
+          compressionPercentage: 0,
+          keptOriginal: true,
+          status: 'done',
+          errorMessage: null,
+        };
+      })
+    );
+  };
+
   const handleRemoveImage = (id: string) => {
     setImages((prev) => {
       const target = prev.find((img) => img.id === id);
@@ -279,6 +308,9 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({ onNaviga
   };
 
   const hasTransparentImages = images.some((img) => img.hasAlpha);
+  const hasPngImages = images.some(
+    (img) => img.originalType === 'image/png' || /\.png$/i.test(img.name)
+  );
 
   return (
     <ToolPageLayout tool={tool} onNavigate={onNavigate}>
@@ -347,6 +379,7 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({ onNaviga
             onClearAll={handleClearAll}
             totalImagesCount={images.length}
             hasTransparentImages={hasTransparentImages}
+            hasPngImages={hasPngImages}
             isCompressing={isCompressing}
           />
         )}
@@ -359,6 +392,7 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({ onNaviga
             onRemoveImage={handleRemoveImage}
             onOpenComparison={(img) => setComparisonTarget(img)}
             onRecompressSingle={handleRecompressSingle}
+            onKeepOriginal={handleKeepOriginal}
             isZipping={isZipping}
             zipProgress={zipProgress}
           />

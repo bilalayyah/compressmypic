@@ -33,8 +33,9 @@ export interface ImageItem {
   quality: number; // 0.1 to 1.0 (or 10 to 100)
   status: 'idle' | 'compressing' | 'done' | 'error';
   errorMessage: string | null;
-  spaceSaved: number | null; // bytes
-  compressionPercentage: number | null; // e.g. 74
+  spaceSaved: number | null; // bytes (negative if output grew larger)
+  compressionPercentage: number | null; // e.g. 74 (negative if output grew larger)
+  keptOriginal?: boolean;
 }
 
 export interface CompressionSettings {

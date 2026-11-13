@@ -79,6 +79,16 @@ const TOOL_ICONS: Record<string, React.ComponentType<{ className?: string }>> = 
   '/image-color-palette-extractor': Palette,
   '/gif-maker': Film,
   '/image-collage-maker': LayoutGrid,
+  '/heic-to-jpg': RefreshCw,
+  '/jpg-to-png': RefreshCw,
+  '/png-to-jpg': RefreshCw,
+  '/jpg-to-webp': RefreshCw,
+  '/webp-to-jpg': RefreshCw,
+  '/png-to-webp': RefreshCw,
+  '/webp-to-png': RefreshCw,
+  '/svg-to-png': RefreshCw,
+  '/avif-to-jpg': RefreshCw,
+  '/bmp-to-jpg': RefreshCw,
 };
 
 export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({

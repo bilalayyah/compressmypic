@@ -64,10 +64,10 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({ onNavigate
           ? `${res.outputFilename.slice(0, dotIdx)}${filenameSuffix.trim()}${res.outputFilename.slice(dotIdx)}`
           : res.outputFilename;
 
-      const saved = Math.max(0, item.originalSize - res.size);
+      const saved = item.originalSize - res.size;
       const pct =
         item.originalSize > 0
-          ? Math.max(0, Math.round(((item.originalSize - res.size) / item.originalSize) * 100))
+          ? Math.round(((item.originalSize - res.size) / item.originalSize) * 100)
           : 0;
 
       return {

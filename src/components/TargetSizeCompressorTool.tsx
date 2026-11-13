@@ -6,6 +6,7 @@ import {
   FileArchive,
   Play,
   RotateCcw,
+  ShieldCheck,
   SplitSquareVertical,
   Target,
   Trash2,
@@ -15,7 +16,7 @@ import { TOOL_BY_SLUG } from '../data/tools';
 import { ToolPageLayout } from './ToolPageLayout';
 import { UploadZone } from './UploadZone';
 import { ComparisonModal } from './ComparisonModal';
-import { ImageItem, OutputFormatChoice } from '../types';
+import { ImageFormat, ImageItem, OutputFormatChoice } from '../types';
 import {
   EXTENDED_ALLOWED_EXT_REGEX,
   EXTENDED_ALLOWED_MIME_TYPES,
@@ -23,7 +24,7 @@ import {
   loadExtendedImageInfo,
 } from '../utils/imageProcessing';
 import { compressToTargetSize } from '../utils/targetCompression';
-import { formatBytes, formatPercent } from '../utils/formatters';
+import { formatBytes, formatPercent, getFileExtension } from '../utils/formatters';
 import { createFilesZipArchive, triggerDownload } from '../utils/zip';
 
 interface TargetSizeMeta {
@@ -121,6 +122,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
         spaceSaved: result.spaceSaved,
         compressionPercentage: result.compressionPercentage,
         quality: result.finalQuality,
+        keptOriginal: false,
         status: 'done',
         errorMessage: null,
       };
@@ -252,9 +254,54 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
     setMetaById({});
   };
 
+  const handleKeepOriginal = (id: string) => {
+    setItems((prev) =>
+      prev.map((img) => {
+        if (img.id !== id) return img;
+        if (img.compressedPreviewUrl && img.compressedPreviewUrl !== img.originalPreviewUrl) {
+          URL.revokeObjectURL(img.compressedPreviewUrl);
+        }
+        const origExt = getFileExtension(img.name) || '.png';
+        return {
+          ...img,
+          compressedBlob: img.file,
+          compressedPreviewUrl: URL.createObjectURL(img.file),
+          compressedSize: img.originalSize,
+          compressedWidth: img.originalWidth,
+          compressedHeight: img.originalHeight,
+          outputType: (img.originalType as ImageFormat) || 'image/png',
+          outputExtension: origExt,
+          outputFilename: img.name,
+          spaceSaved: 0,
+          compressionPercentage: 0,
+          keptOriginal: true,
+          status: 'done',
+          errorMessage: null,
+        };
+      })
+    );
+    setMetaById((prev) => {
+      const existing = prev[id];
+      if (!existing) return prev;
+      return {
+        ...prev,
+        [id]: {
+          ...existing,
+          achievedTarget: itemsRef.current.find((i) => i.id === id)?.originalSize
+            ? (itemsRef.current.find((i) => i.id === id)!.originalSize <= effectiveTargetBytes)
+            : existing.achievedTarget,
+          statusNote: 'Kept original file because re-encoding made it larger.',
+        },
+      };
+    });
+  };
+
   const doneItems = items.filter((i) => i.status === 'done' && i.compressedBlob);
   const achievedCount = doneItems.filter((i) => metaById[i.id]?.achievedTarget).length;
   const missedCount = doneItems.length - achievedCount;
+  const totalOrig = doneItems.reduce((sum, i) => sum + i.originalSize, 0);
+  const totalOut = doneItems.reduce((sum, i) => sum + (i.compressedSize || 0), 0);
+  const totalSaved = totalOrig - totalOut;
 
   const handleDownloadAllZip = async () => {
     if (doneItems.length === 0) return;
@@ -505,6 +552,12 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                     {missedCount > 0
                       ? ` · ${missedCount} could not honestly fit (details below)`
                       : ''}
+                    {' · '}
+                    <span className={totalSaved < 0 ? 'text-red-400' : 'text-emerald-400'}>
+                      {totalSaved < 0
+                        ? `Total Saved: ${formatBytes(totalSaved)} (grew by ${formatBytes(Math.abs(totalSaved))})`
+                        : `Total Saved: ${formatBytes(totalSaved)}`}
+                    </span>
                   </p>
                 </div>
                 {doneItems.length > 1 && (
@@ -610,21 +663,35 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                           <span className="text-[11px] text-slate-400 block font-medium">Output</span>
                           <span
                             className={`text-xs sm:text-sm font-bold font-mono tabular-nums ${
-                              meta?.achievedTarget ? 'text-emerald-700' : 'text-amber-700'
+                              item.compressedSize > item.originalSize && !item.keptOriginal
+                                ? 'text-red-600'
+                                : meta?.achievedTarget
+                                ? 'text-emerald-700'
+                                : 'text-amber-700'
                             }`}
                           >
                             {formatBytes(item.compressedSize)}
                           </span>
                         </div>
                         <div>
-                          <span className="text-[11px] text-slate-400 block font-medium">Quality</span>
-                          <span className="text-xs sm:text-sm font-semibold font-mono text-slate-700 tabular-nums">
-                            {item.quality}%
+                          <span className="text-[11px] text-slate-400 block font-medium">Space Saved</span>
+                          <span
+                            className={`text-xs sm:text-sm font-semibold font-mono tabular-nums ${
+                              (item.spaceSaved ?? 0) < 0 ? 'text-red-600' : 'text-emerald-600'
+                            }`}
+                          >
+                            {formatBytes(item.spaceSaved ?? (item.originalSize - item.compressedSize))}
                           </span>
                         </div>
                         <div>
-                          <span className="text-[11px] text-slate-400 block font-medium">Reduction</span>
-                          <span className="text-xs sm:text-sm font-bold font-mono text-blue-600 tabular-nums">
+                          <span className="text-[11px] text-slate-400 block font-medium">
+                            {(item.compressionPercentage ?? 0) < 0 ? 'Size Change' : 'Reduction'}
+                          </span>
+                          <span
+                            className={`text-xs sm:text-sm font-bold font-mono tabular-nums ${
+                              (item.compressionPercentage ?? 0) < 0 ? 'text-red-600' : 'text-blue-600'
+                            }`}
+                          >
                             {formatPercent(item.compressionPercentage)}
                           </span>
                         </div>
@@ -668,23 +735,57 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
 
                   {isDone && meta && (
                     <div
-                      className={`text-xs rounded-xl px-3.5 py-2.5 flex items-start gap-2 ${
-                        meta.achievedTarget
+                      className={`text-xs rounded-xl px-3.5 py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 ${
+                        item.compressedSize !== null &&
+                        item.compressedSize > item.originalSize &&
+                        !item.keptOriginal
+                          ? 'bg-red-50 text-red-900 dark:text-red-200 border border-red-200'
+                          : meta.achievedTarget
                           ? 'bg-slate-50 text-slate-600 border border-slate-200'
                           : 'bg-amber-50 text-amber-900 border border-amber-200'
                       }`}
                     >
-                      {meta.achievedTarget ? (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                      ) : (
-                        <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                      )}
-                      <div className="space-y-0.5">
-                        <p>{meta.statusNote}</p>
-                        {meta.switchedFormatNote && (
-                          <p className="text-blue-700 font-medium">{meta.switchedFormatNote}</p>
+                      <div className="flex items-start gap-2">
+                        {item.compressedSize !== null &&
+                        item.compressedSize > item.originalSize &&
+                        !item.keptOriginal ? (
+                          <AlertTriangle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                        ) : meta.achievedTarget ? (
+                          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                        ) : (
+                          <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
                         )}
+                        <div className="space-y-0.5">
+                          <p>
+                            {item.compressedSize !== null &&
+                            item.compressedSize > item.originalSize &&
+                            !item.keptOriginal
+                              ? `Grew by ${formatBytes(
+                                  item.compressedSize - item.originalSize
+                                )} — re-encode is larger than the original. ${
+                                  item.outputType === 'image/png'
+                                    ? 'WebP or JPG is usually smaller for photo-like PNGs.'
+                                    : ''
+                                }`
+                              : meta.statusNote}
+                          </p>
+                          {meta.switchedFormatNote && (
+                            <p className="text-blue-700 font-medium">{meta.switchedFormatNote}</p>
+                          )}
+                        </div>
                       </div>
+                      {item.compressedSize !== null &&
+                        item.compressedSize > item.originalSize &&
+                        !item.keptOriginal && (
+                          <button
+                            type="button"
+                            onClick={() => handleKeepOriginal(item.id)}
+                            className="shrink-0 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-red-300 dark:border-red-500/50 text-red-900 dark:text-red-200 hover:bg-red-100 dark:hover:bg-red-500/20 font-bold text-xs cursor-pointer"
+                          >
+                            <ShieldCheck className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                            <span>Keep original</span>
+                          </button>
+                        )}
                     </div>
                   )}
                 </div>

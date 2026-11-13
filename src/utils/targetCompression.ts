@@ -365,7 +365,14 @@ export async function compressToTargetSize(
 
   let statusNote: string;
   if (achievedTarget) {
-    if (imageItem.originalSize <= targetBytes && chosen.scale === 1) {
+    if (imageItem.originalSize <= targetBytes && chosen.scale === 1 && chosen.blob.size > imageItem.originalSize) {
+      statusNote = `Original file was already under ${formatBytes(
+        targetBytes,
+        0
+      )}, and re-encoding grew it by ${formatBytes(
+        chosen.blob.size - imageItem.originalSize
+      )}. Use "Keep original" or switch to WebP/JPG for smaller output.`;
+    } else if (imageItem.originalSize <= targetBytes && chosen.scale === 1) {
       statusNote = `Original file was already under ${formatBytes(targetBytes, 0)}; exported cleanly at ${chosen.quality}% quality.`;
     } else if (chosen.scale === 1) {
       statusNote = `Target met at full ${chosen.width}×${chosen.height}px resolution (${chosen.mimeType === 'image/png' ? 'lossless PNG' : `${chosen.quality}% quality`}).`;
@@ -391,9 +398,9 @@ export async function compressToTargetSize(
   }
 
   const originalSize = imageItem.originalSize;
-  const spaceSaved = Math.max(0, originalSize - chosen.blob.size);
+  const spaceSaved = originalSize - chosen.blob.size;
   const compressionPercentage =
-    originalSize > 0 ? Math.max(0, Math.round(((originalSize - chosen.blob.size) / originalSize) * 100)) : 0;
+    originalSize > 0 ? Math.round(((originalSize - chosen.blob.size) / originalSize) * 100) : 0;
 
   const baseName = sanitizeFilename(getBaseFilename(imageItem.name));
   const targetTag = `${Math.round(targetBytes / 1024)}kb`;

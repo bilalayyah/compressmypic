@@ -3,23 +3,23 @@
  */
 
 export function formatBytes(bytes: number, decimals: number = 2): string {
-  if (bytes === 0) return '0 Bytes';
-  if (bytes < 0) return '0 Bytes';
+  if (!Number.isFinite(bytes) || bytes === 0) return '0 Bytes';
 
+  const sign = bytes < 0 ? '-' : '';
+  const absBytes = Math.abs(bytes);
   const k = 1024;
   const dm = decimals < 0 ? 0 : decimals;
   const sizes = ['Bytes', 'KB', 'MB', 'GB'];
 
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
-  const safeI = Math.min(i, sizes.length - 1);
+  const i = Math.max(0, Math.min(Math.floor(Math.log(absBytes) / Math.log(k)), sizes.length - 1));
 
-  return `${parseFloat((bytes / Math.pow(k, safeI)).toFixed(dm))} ${sizes[safeI]}`;
+  return `${sign}${parseFloat((absBytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
 }
 
 export function formatPercent(reduction: number | null): string {
-  if (reduction === null) return '0%';
-  if (reduction <= 0) return '0%';
-  return `-${reduction}%`;
+  if (reduction === null || !Number.isFinite(reduction) || reduction === 0) return '0%';
+  if (reduction > 0) return `-${reduction}%`;
+  return `+${Math.abs(reduction)}%`;
 }
 
 export function sanitizeFilename(filename: string): string {

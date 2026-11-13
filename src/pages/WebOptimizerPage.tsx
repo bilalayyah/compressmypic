@@ -152,10 +152,10 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
 
       if (item.compressedPreviewUrl) URL.revokeObjectURL(item.compressedPreviewUrl);
 
-      const saved = Math.max(0, item.originalSize - res.size);
+      const saved = item.originalSize - res.size;
       const pct =
         item.originalSize > 0
-          ? Math.max(0, Math.round(((item.originalSize - res.size) / item.originalSize) * 100))
+          ? Math.round(((item.originalSize - res.size) / item.originalSize) * 100)
           : 0;
 
       const cleanBase = res.outputFilename.replace(/_\d+x\d+(\.[^.]+)$/, '');
@@ -326,8 +326,8 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
   const doneItems = items.filter((i) => i.status === 'done' && i.compressedBlob);
   const totalOrig = doneItems.reduce((acc, i) => acc + i.originalSize, 0);
   const totalOut = doneItems.reduce((acc, i) => acc + (i.compressedSize || 0), 0);
-  const totalSaved = Math.max(0, totalOrig - totalOut);
-  const totalPct = totalOrig > 0 ? Math.max(0, Math.round((totalSaved / totalOrig) * 100)) : 0;
+  const totalSaved = totalOrig - totalOut;
+  const totalPct = totalOrig > 0 ? Math.round((totalSaved / totalOrig) * 100) : 0;
 
   const handleDownloadZip = async () => {
     if (doneItems.length === 0) return;
@@ -504,8 +504,12 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
                     Web Performance Summary
                   </span>
                   <p className="text-sm font-semibold mt-0.5">
-                    {formatBytes(totalOrig)} → {formatBytes(totalOut)} ({totalPct}% lighter ·{' '}
-                    {formatBytes(totalSaved)} page weight saved)
+                    {formatBytes(totalOrig)} → {formatBytes(totalOut)}{' '}
+                    <span className={totalSaved < 0 ? 'text-red-400' : 'text-emerald-400'}>
+                      {totalSaved < 0
+                        ? `(+${Math.abs(totalPct)}% · grew by ${formatBytes(Math.abs(totalSaved))})`
+                        : `(${totalPct}% lighter · ${formatBytes(totalSaved)} page weight saved)`}
+                    </span>
                   </p>
                 </div>
                 {doneItems.length > 1 && (
@@ -563,10 +567,17 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({ onNavigate }
                       </p>
                       <div className="mt-1.5 flex flex-wrap items-center gap-2">
                         {isDone && (
-                          <span className="inline-flex items-center gap-1 text-xs text-emerald-700 font-semibold">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                            Web-Ready ({formatPercent(item.compressionPercentage)})
-                          </span>
+                          (item.compressedSize || 0) > item.originalSize ? (
+                            <span className="inline-flex items-center gap-1 text-xs text-red-600 font-semibold">
+                              <AlertCircle className="w-3.5 h-3.5 text-red-500" />
+                              Grew by {formatBytes((item.compressedSize || 0) - item.originalSize)} ({formatPercent(item.compressionPercentage)})
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1 text-xs text-emerald-700 font-semibold">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                              Web-Ready ({formatPercent(item.compressionPercentage)})
+                            </span>
+                          )
                         )}
                         {isErr && (
                           <span className="inline-flex items-center gap-1 text-xs text-red-600 font-medium">

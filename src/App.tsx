@@ -61,9 +61,20 @@ import { BulkResizerPage } from './pages/BulkResizerPage';
 import { BulkConverterPage } from './pages/BulkConverterPage';
 import { WebOptimizerPage } from './pages/WebOptimizerPage';
 import { GifCompressorPage } from './pages/GifCompressorPage';
+import { HeicToJpgPage } from './pages/HeicToJpgPage';
+import { JpgToPngPage } from './pages/JpgToPngPage';
+import { PngToJpgPage } from './pages/PngToJpgPage';
+import { JpgToWebpPage } from './pages/JpgToWebpPage';
+import { WebpToJpgPage } from './pages/WebpToJpgPage';
+import { PngToWebpPage } from './pages/PngToWebpPage';
+import { WebpToPngPage } from './pages/WebpToPngPage';
+import { SvgToPngPage } from './pages/SvgToPngPage';
+import { AvifToJpgPage } from './pages/AvifToJpgPage';
+import { BmpToJpgPage } from './pages/BmpToJpgPage';
 import { TOOL_BY_SLUG } from './data/tools';
-import { CompressionSettings, ImageItem } from './types';
+import { CompressionSettings, ImageFormat, ImageItem } from './types';
 import { compressSingleImage, detectTransparency, loadImageFromFile, toDecodableBlob } from './utils/compressor';
+import { getFileExtension } from './utils/formatters';
 import { createZipArchive, triggerDownload } from './utils/zip';
 
 const KNOWN_ROUTES = [
@@ -112,6 +123,16 @@ const KNOWN_ROUTES = [
   '/bulk-image-converter',
   '/web-image-optimizer',
   '/gif-compressor',
+  '/heic-to-jpg',
+  '/jpg-to-png',
+  '/png-to-jpg',
+  '/jpg-to-webp',
+  '/webp-to-jpg',
+  '/png-to-webp',
+  '/webp-to-png',
+  '/svg-to-png',
+  '/avif-to-jpg',
+  '/bmp-to-jpg',
 ];
 
 function getNormalizedPath(rawPathname: string): string {
@@ -304,6 +325,7 @@ export default function App() {
           spaceSaved: result.spaceSaved,
           compressionPercentage: result.compressionPercentage,
           quality: currentSettings.quality,
+          keptOriginal: false,
           status: 'done',
           errorMessage: null,
         };
@@ -461,6 +483,33 @@ export default function App() {
     setImages((prev) => prev.map((img) => (img.id === id ? updated : img)));
   };
 
+  const handleKeepOriginal = (id: string) => {
+    setImages((prev) =>
+      prev.map((img) => {
+        if (img.id !== id) return img;
+        if (img.compressedPreviewUrl && img.compressedPreviewUrl !== img.originalPreviewUrl) {
+          URL.revokeObjectURL(img.compressedPreviewUrl);
+        }
+        return {
+          ...img,
+          compressedBlob: img.file,
+          compressedPreviewUrl: URL.createObjectURL(img.file),
+          compressedSize: img.originalSize,
+          compressedWidth: img.originalWidth,
+          compressedHeight: img.originalHeight,
+          outputType: (img.originalType as ImageFormat) || 'image/png',
+          outputExtension: getFileExtension(img.name) || '.png',
+          outputFilename: img.name,
+          spaceSaved: 0,
+          compressionPercentage: 0,
+          keptOriginal: true,
+          status: 'done',
+          errorMessage: null,
+        };
+      })
+    );
+  };
+
   /**
    * Remove an individual image
    */
@@ -516,6 +565,9 @@ export default function App() {
   };
 
   const hasTransparentImages = images.some((img) => img.hasAlpha);
+  const hasPngImages = images.some(
+    (img) => img.originalType === 'image/png' || /\.png$/i.test(img.name)
+  );
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100">
@@ -707,6 +759,46 @@ export default function App() {
         <main className="flex-1">
           <GifCompressorPage onNavigate={handleNavigate} />
         </main>
+      ) : currentPath === '/heic-to-jpg' ? (
+        <main className="flex-1">
+          <HeicToJpgPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/jpg-to-png' ? (
+        <main className="flex-1">
+          <JpgToPngPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/png-to-jpg' ? (
+        <main className="flex-1">
+          <PngToJpgPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/jpg-to-webp' ? (
+        <main className="flex-1">
+          <JpgToWebpPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/webp-to-jpg' ? (
+        <main className="flex-1">
+          <WebpToJpgPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/png-to-webp' ? (
+        <main className="flex-1">
+          <PngToWebpPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/webp-to-png' ? (
+        <main className="flex-1">
+          <WebpToPngPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/svg-to-png' ? (
+        <main className="flex-1">
+          <SvgToPngPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/avif-to-jpg' ? (
+        <main className="flex-1">
+          <AvifToJpgPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/bmp-to-jpg' ? (
+        <main className="flex-1">
+          <BmpToJpgPage onNavigate={handleNavigate} />
+        </main>
       ) : (
         /* HOME / COMPRESSOR APPLICATION */
         <>
@@ -730,6 +822,7 @@ export default function App() {
                   onClearAll={handleClearAll}
                   totalImagesCount={images.length}
                   hasTransparentImages={hasTransparentImages}
+                  hasPngImages={hasPngImages}
                   isCompressing={isCompressing}
                 />
               )}
@@ -743,6 +836,7 @@ export default function App() {
                   onRemoveImage={handleRemoveImage}
                   onOpenComparison={(img) => setComparisonTarget(img)}
                   onRecompressSingle={handleRecompressSingle}
+                  onKeepOriginal={handleKeepOriginal}
                   isZipping={isZipping}
                   zipProgress={zipProgress}
                 />

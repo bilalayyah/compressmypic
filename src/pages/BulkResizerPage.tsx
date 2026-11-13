@@ -117,10 +117,10 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({ onNavigate }) 
       );
 
       if (item.compressedPreviewUrl) URL.revokeObjectURL(item.compressedPreviewUrl);
-      const saved = Math.max(0, item.originalSize - res.size);
+      const saved = item.originalSize - res.size;
       const pctSaved =
         item.originalSize > 0
-          ? Math.max(0, Math.round(((item.originalSize - res.size) / item.originalSize) * 100))
+          ? Math.round(((item.originalSize - res.size) / item.originalSize) * 100)
           : 0;
 
       return {
