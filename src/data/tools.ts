@@ -1287,6 +1287,662 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     relatedSlugs: ['/gif-maker', '/image-splitter', '/image-border-generator', '/'],
   },
+  {
+    slug: '/compress-image-to-50kb',
+    name: 'Compress Image to 50KB',
+    shortDescription: 'Shrink JPG, PNG & WebP photos strictly under 50KB for forms.',
+    category: 'compress',
+    seoTitle: 'Compress Image to 50KB Online Free – Exact Size Reducer',
+    seoDescription:
+      'Compress JPG, PNG, WebP, or HEIC images to 50KB or less right in your browser. Automatic quality binary search and dimension scaling with honest output size.',
+    h1: 'Compress Image to 50KB Online',
+    subtitle:
+      'Shrink photos, ID scans, and signatures under 50KB for government portals, passport applications, and strict upload forms — 100% locally in your browser.',
+    howToSteps: [
+      {
+        title: 'Upload your image',
+        description: 'Drop JPG, PNG, WebP, or HEIC images up to 25 MB (or paste with Ctrl+V).',
+      },
+      {
+        title: 'Auto-optimize toward 50KB',
+        description:
+          'Binary quality search and optional dimension scaling automatically find the sharpest output under 50KB.',
+      },
+      {
+        title: 'Verify & download',
+        description:
+          'Check the verified output size badge and before/after comparison, then download individually or as a ZIP.',
+      },
+    ],
+    features: [
+      {
+        title: 'Binary Quality Search + Dimension Scaling',
+        description:
+          'Finds the highest visual quality under 50KB first at original pixels, then scales resolution smoothly if needed.',
+      },
+      {
+        title: 'Honest Result Reporting',
+        description:
+          'Never fakes output size — if a lossless PNG or locked resolution cannot fit under 50KB, it explains why clearly.',
+      },
+      {
+        title: 'Smart PNG to WebP/JPG Fallback',
+        description:
+          'Optionally converts heavy lossless PNGs to WebP or JPG so photos stay sharp while hitting 50KB.',
+      },
+      {
+        title: 'Private Browser Processing',
+        description: 'Passports, ID photos, and personal forms never leave your device.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'How does Compress Image to 50KB reach such a small file size?',
+        answer:
+          'It runs a fast binary search across JPEG/WebP quality levels and progressively scales pixel dimensions only when quality reduction alone is not enough.',
+      },
+      {
+        question: 'Why did my PNG not reach 50KB when PNG format was locked?',
+        answer:
+          'PNG is lossless and ignores quality sliders. Switch format to JPG or WebP (or leave Format on Original with Auto-convert enabled) to easily hit 50KB.',
+      },
+      {
+        question: 'Can I compress multiple photos under 50KB at once?',
+        answer: 'Yes. Drop a batch of images and download them all together in one ZIP file.',
+      },
+    ],
+    relatedSlugs: [
+      '/compress-image-to-100kb',
+      '/compress-image-to-200kb',
+      '/target-file-size-compressor',
+      '/image-resizer',
+    ],
+  },
+  {
+    slug: '/compress-image-to-100kb',
+    name: 'Compress Image to 100KB',
+    shortDescription: 'Reduce image size under 100KB cleanly without visible blur.',
+    category: 'compress',
+    seoTitle: 'Compress Image to 100KB Online Free – Reduce Photo Size',
+    seoDescription:
+      'Reduce JPG, PNG, WebP, or HEIC images under 100KB free in your browser. Smart quality search and optional dimension scaling keep photos sharp for web & email.',
+    h1: 'Compress Image to 100KB Online',
+    subtitle:
+      'Hit the sweet spot for websites, job applications, and email attachments — automatically compress images below 100KB while maximizing visual sharpness.',
+    howToSteps: [
+      {
+        title: 'Upload photos',
+        description: 'Drag and drop one or many JPG, PNG, WebP, or HEIC images.',
+      },
+      {
+        title: 'Smart 100KB optimization',
+        description:
+          'The compressor searches for the highest quality setting and resolution that stays under 100KB.',
+      },
+      {
+        title: 'Compare & download',
+        description:
+          'Inspect side-by-side quality and exact byte count before downloading.',
+      },
+    ],
+    features: [
+      {
+        title: 'Max Quality Under 100KB',
+        description:
+          'Instead of using an arbitrary low quality slider, binary search locks onto the highest quality below 100KB.',
+      },
+      {
+        title: 'Preserves Resolution When Possible',
+        description:
+          'Keeps 100% original pixel width and height whenever quality adjustment alone meets the 100KB cap.',
+      },
+      {
+        title: 'Transparent Limitation Alerts',
+        description:
+          'Clearly notifies you if locked PNG or unscaled 4K settings prevent reaching 100KB.',
+      },
+      {
+        title: '100% Local Privacy',
+        description: 'No uploads, no watermarks, and no registration required.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Will a 100KB image still look sharp on a website?',
+        answer:
+          'Yes! At standard web widths (800px–1400px), modern WebP and JPG photos under 100KB retain crisp detail with virtually no visible artifacts.',
+      },
+      {
+        question: 'Does this also strip heavy camera EXIF metadata?',
+        answer:
+          'Yes. Re-encoding via HTML5 Canvas automatically strips embedded thumbnails and EXIF blocks, leaving more bytes for actual image pixels.',
+      },
+    ],
+    relatedSlugs: [
+      '/compress-image-to-50kb',
+      '/compress-image-to-200kb',
+      '/web-image-optimizer',
+      '/target-file-size-compressor',
+    ],
+  },
+  {
+    slug: '/compress-image-to-200kb',
+    name: 'Compress Image to 200KB',
+    shortDescription: 'Optimize photos under 200KB for blogs, CMS uploads & portals.',
+    category: 'compress',
+    seoTitle: 'Compress Image to 200KB Online Free – Web & CMS Optimizer',
+    seoDescription:
+      'Compress large photos to 200KB or less free in your browser. Ideal for WordPress, Shopify, and online portals with full resolution retention whenever possible.',
+    h1: 'Compress Image to 200KB Online',
+    subtitle:
+      'Keep high-resolution product shots and blog banners crisp while strictly staying below 200KB for WordPress, Shopify, and CMS upload caps.',
+    howToSteps: [
+      {
+        title: 'Add your images',
+        description: 'Upload one or multiple high-res JPG, PNG, WebP, or HEIC files.',
+      },
+      {
+        title: 'Optimize to 200KB',
+        description:
+          'Automatic binary search finds the ideal quality/scale balance just beneath 200KB.',
+      },
+      {
+        title: 'Inspect & save',
+        description: 'Compare before and after pixels and download individually or as ZIP.',
+      },
+    ],
+    features: [
+      {
+        title: 'CMS & Marketplace Ready',
+        description: 'Great for Shopify, WooCommerce, WordPress, and Google Business uploads.',
+      },
+      {
+        title: 'Smart Fallback Scaling',
+        description:
+          'If a 24MP camera photo cannot fit under 200KB at full size, dimension scaling kicks in cleanly.',
+      },
+      {
+        title: 'Exact KB Verification',
+        description: 'Displays verified output bytes alongside original bytes and % reduction.',
+      },
+      {
+        title: 'Zero Server Uploads',
+        description: 'Fast HTML5 Canvas processing directly on your computer or phone.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Can a 4K smartphone photo be compressed to 200KB?',
+        answer:
+          'Yes. With intelligent dimension scaling enabled, 12MP–24MP photos compress smoothly under 200KB while looking crisp on desktop and mobile screens.',
+      },
+      {
+        question: 'What if I want to prevent resizing?',
+        answer:
+          'Uncheck "Allow intelligent dimension scaling". If minimum quality still exceeds 200KB, the tool will honestly display the smallest size achievable at original dimensions.',
+      },
+    ],
+    relatedSlugs: [
+      '/compress-image-to-100kb',
+      '/compress-image-to-500kb',
+      '/web-image-optimizer',
+      '/bulk-image-compressor',
+    ],
+  },
+  {
+    slug: '/compress-image-to-500kb',
+    name: 'Compress Image to 500KB',
+    shortDescription: 'Shrink multi-megabyte photos under 500KB with ultra-high quality.',
+    category: 'compress',
+    seoTitle: 'Compress Image to 500KB Online Free – High-Resolution Shrinker',
+    seoDescription:
+      'Compress multi-megabyte camera photos and graphics under 500KB free in your browser without sacrificing clarity or full dimensions.',
+    h1: 'Compress Image to 500KB Online',
+    subtitle:
+      'Turn 5MB–15MB DSLR or smartphone photos into crisp, sub-500KB files ready for portfolios, print proofs, and fast uploads — processed locally.',
+    howToSteps: [
+      {
+        title: 'Drop large photos',
+        description: 'Upload heavy JPG, PNG, WebP, or iPhone HEIC files up to 25 MB each.',
+      },
+      {
+        title: 'Precision quality search',
+        description:
+          'Finds the highest JPEG/WebP quality factor below 500KB while preserving original dimensions.',
+      },
+      {
+        title: 'Download optimized files',
+        description: 'Save single files or package multiple results into a ZIP.',
+      },
+    ],
+    features: [
+      {
+        title: 'Near-Lossless 500KB Compression',
+        description:
+          '500KB gives plenty of headroom to keep large 1920px–4000px images visually indistinguishable from the original.',
+      },
+      {
+        title: 'Automatic HEIC Decoding',
+        description: 'Supports iPhone HEIC/HEIF photos locally via client-side WebAssembly.',
+      },
+      {
+        title: 'No Quality Guesswork',
+        description: 'Stops sliding percentages manually — let binary search maximize quality under 500KB.',
+      },
+      {
+        title: '100% Browser Private',
+        description: 'Nothing is uploaded to remote servers.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'If my photo is already 300KB, what will happen?',
+        answer:
+          'The compressor detects that it is already below 500KB and exports a clean, high-quality copy at full resolution.',
+      },
+      {
+        question: 'Which format preserves the most detail under 500KB?',
+        answer:
+          'WebP typically retains more fine texture per kilobyte than JPG, though both deliver sharp results at 500KB.',
+      },
+    ],
+    relatedSlugs: [
+      '/compress-image-to-200kb',
+      '/target-file-size-compressor',
+      '/bulk-image-compressor',
+      '/',
+    ],
+  },
+  {
+    slug: '/bulk-image-compressor',
+    name: 'Bulk Image Compressor',
+    shortDescription: 'Batch compress dozens of images at once and export a single ZIP.',
+    category: 'compress',
+    seoTitle: 'Bulk Image Compressor Online Free – Batch Shrink & ZIP Download',
+    seoDescription:
+      'Bulk compress multiple JPG, PNG, WebP, and HEIC images free in your browser. Track batch progress, compare quality, and download all images in one ZIP file.',
+    h1: 'Free Bulk Image Compressor',
+    subtitle:
+      'Compress entire folders of photos and web graphics simultaneously in your browser — review per-file savings, inspect before/after sliders, and export one clean ZIP.',
+    howToSteps: [
+      {
+        title: 'Drop a batch of images',
+        description: 'Select or drag dozens of JPG, PNG, WebP, or HEIC images into the dropzone.',
+      },
+      {
+        title: 'Choose profile or custom quality',
+        description:
+          'Pick Web Fast (WebP 75%), Email Friendly (JPG 65%), High Fidelity (85%), or adjust the custom slider and output format.',
+      },
+      {
+        title: 'Download All (ZIP)',
+        description:
+          'Review total MB saved across the batch and click Download All (ZIP) to save every optimized file together.',
+      },
+    ],
+    features: [
+      {
+        title: 'Batch Progress & Savings Totals',
+        description:
+          'Shows live file-by-file progress plus aggregate total MB and percentage saved across your whole batch.',
+      },
+      {
+        title: 'One-Click Quick Batch Profiles',
+        description: 'Apply WebP, Email/JPG, or High-Fidelity presets across every file instantly.',
+      },
+      {
+        title: 'Per-File Comparison Modal',
+        description: 'Inspect any individual compressed photo against its original before downloading.',
+      },
+      {
+        title: 'Zero Batch Limits',
+        description: 'Compress as many images as your device memory allows with no paid tier or server queues.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'How many images can I bulk compress at once?',
+        answer:
+          'There is no artificial count cap — you can process 20, 50, or more photos in one session right inside your browser memory.',
+      },
+      {
+        question: 'Can I convert the whole batch to WebP while compressing?',
+        answer:
+          'Yes. Select WebP in Output Format (or click the Web Fast quick profile) and click Re-compress All.',
+      },
+    ],
+    relatedSlugs: [
+      '/bulk-image-resizer',
+      '/bulk-image-converter',
+      '/web-image-optimizer',
+      '/',
+    ],
+  },
+  {
+    slug: '/target-file-size-compressor',
+    name: 'Target File Size Compressor',
+    shortDescription: 'Compress any image to your exact custom KB or MB limit.',
+    category: 'compress',
+    seoTitle: 'Target File Size Image Compressor – Compress to Exact KB or MB',
+    seoDescription:
+      'Compress any image to your exact target file size in KB or MB online free. Intelligent quality binary search and dimension scaling with honest results in your browser.',
+    h1: 'Target File Size Image Compressor',
+    subtitle:
+      'Enter any custom KB or MB limit (like 30KB, 150KB, or 2MB) and let our binary quality + scaling optimizer hit your exact size target locally in your browser.',
+    howToSteps: [
+      {
+        title: 'Set your exact KB or MB goal',
+        description: 'Type any target file size or click quick presets like 20KB, 100KB, or 1MB.',
+      },
+      {
+        title: 'Upload images',
+        description: 'Drop one or many JPG, PNG, WebP, HEIC, BMP, or SVG files.',
+      },
+      {
+        title: 'Inspect & download',
+        description:
+          'Verify whether each file hit the exact target, read honest notes if scaling/format limits apply, and download.',
+      },
+    ],
+    features: [
+      {
+        title: 'Custom KB & MB Targets',
+        description: 'Dial in any target size from tiny 10KB avatars to multi-megabyte print uploads.',
+      },
+      {
+        title: 'Two-Stage Quality + Scale Engine',
+        description:
+          'Tests quality levels at full resolution first, then steps dimensions down intelligently only when required.',
+      },
+      {
+        title: 'Honest Miss Diagnostics',
+        description:
+          'Explains clearly when a lossless PNG or disabled scaling prevents reaching a strict size limit.',
+      },
+      {
+        title: 'Batch ZIP Support',
+        description: 'Compress multiple files to the same KB target and download all in one ZIP.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Why couldn’t my image reach a tiny target like 5KB?',
+        answer:
+          'Every image file has minimum format headers and encoded block overhead. If 5KB is impossible without destroying readability, the tool reports the smallest honest size achieved.',
+      },
+      {
+        question: 'Should I keep Allow Dimension Scaling enabled?',
+        answer:
+          'Yes, especially when compressing multi-megabyte photos below 200KB. Quality reduction alone on a 4000×3000px image often hits a floor around 250–400KB.',
+      },
+    ],
+    relatedSlugs: [
+      '/compress-image-to-50kb',
+      '/compress-image-to-100kb',
+      '/compress-image-to-200kb',
+      '/compress-image-to-500kb',
+    ],
+  },
+  {
+    slug: '/bulk-image-resizer',
+    name: 'Bulk Image Resizer',
+    shortDescription: 'Resize dozens of images by max dimensions, width, or % + ZIP.',
+    category: 'resize',
+    seoTitle: 'Bulk Image Resizer Online Free – Batch Resize & ZIP Download',
+    seoDescription:
+      'Bulk resize multiple JPG, PNG, WebP, and HEIC images online free. Fit within max WxH, set uniform width, or scale by percentage with single ZIP download in browser.',
+    h1: 'Free Online Bulk Image Resizer',
+    subtitle:
+      'Resize dozens of mixed-orientation photos in one pass — fit within a max bounding box, standardize column widths, or scale by percentage without enlarging smaller shots.',
+    howToSteps: [
+      {
+        title: 'Upload multiple images',
+        description: 'Drag and drop product photos, screenshots, or camera folders.',
+      },
+      {
+        title: 'Pick batch resize strategy',
+        description:
+          'Choose Fit Max W×H (ideal for mixed landscape/portrait), Uniform Width, Exact W×H, or Percentage Scale.',
+      },
+      {
+        title: 'Resize & export ZIP',
+        description: 'Inspect before/after dimensions per file and download the full batch as a ZIP.',
+      },
+    ],
+    features: [
+      {
+        title: 'Fit Max Bounding Box Mode',
+        description:
+          'Safely shrinks both wide landscapes and tall portraits inside e.g. 1200×1200px without cropping or distortion.',
+      },
+      {
+        title: 'No-Upscale Protection',
+        description:
+          'Keep "Do not enlarge smaller images" checked so small assets stay crisp instead of getting stretched.',
+      },
+      {
+        title: 'Format & Quality Controls',
+        description: 'Optionally convert resized outputs to WebP or JPG at the same time.',
+      },
+      {
+        title: 'One-Click ZIP Packaging',
+        description: 'Download dozens of resized images cleanly named inside one ZIP file.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is the difference between Fit Max W×H and Exact W×H?',
+        answer:
+          'Fit Max W×H preserves each photo’s natural aspect ratio so its longest side stays within your limit. Exact W×H forces every output to identical pixel dimensions using Contain, Cover, or Stretch.',
+      },
+      {
+        question: 'Can I avoid enlarging icons or small thumbnails in a mixed batch?',
+        answer: 'Yes. Leave "Do not enlarge smaller images" checked.',
+      },
+    ],
+    relatedSlugs: [
+      '/image-resizer',
+      '/bulk-image-compressor',
+      '/bulk-image-converter',
+      '/web-image-optimizer',
+    ],
+  },
+  {
+    slug: '/bulk-image-converter',
+    name: 'Bulk Image Converter',
+    shortDescription: 'Convert multiple JPG, PNG, HEIC, SVG & BMP files at once + ZIP.',
+    category: 'convert',
+    seoTitle: 'Bulk Image Converter Online Free – Batch Format Conversion + ZIP',
+    seoDescription:
+      'Bulk convert JPG, PNG, WebP, HEIC, SVG, BMP, and GIF images to WebP, JPG, or PNG in your browser. Batch progress, quality slider, and single ZIP download.',
+    h1: 'Free Bulk Image Converter',
+    subtitle:
+      'Convert folders of mixed formats — including iPhone HEIC, transparent PNGs, SVGs, and legacy BMPs — cleanly into WebP, JPG, or PNG in one browser batch.',
+    howToSteps: [
+      {
+        title: 'Drop mixed-format files',
+        description: 'Upload JPG, PNG, WebP, HEIC, SVG, BMP, GIF, or AVIF files together.',
+      },
+      {
+        title: 'Choose WebP, JPG, or PNG',
+        description:
+          'Set your output format, quality slider, optional filename suffix (like _web), and JPEG matte color.',
+      },
+      {
+        title: 'Download all in ZIP',
+        description:
+          'Review each file’s output size and download individually or together as one ZIP archive.',
+      },
+    ],
+    features: [
+      {
+        title: 'Mixed-Input Batch Pipeline',
+        description: 'Drop HEICs, PNGs, SVGs, and JPEGs together in one batch and unify them into one format.',
+      },
+      {
+        title: 'Transparency Matte & Suffix Options',
+        description: 'Customize white or colored JPG matte backgrounds and add optional filename suffixes cleanly.',
+      },
+      {
+        title: 'Batch Size Summary',
+        description: 'See aggregate original size vs converted size across the entire batch.',
+      },
+      {
+        title: '100% Local WebAssembly & Canvas',
+        description: 'No files are ever uploaded — even iPhone HEIC conversion runs on your device.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Can I batch convert dozens of iPhone HEIC photos to JPG?',
+        answer:
+          'Yes! Select all your .heic files, pick JPG, and click Download All (ZIP) — everything decodes privately on your device.',
+      },
+      {
+        question: 'Does bulk converting to PNG or WebP keep transparency?',
+        answer: 'Yes. Both PNG and WebP preserve full alpha transparency.',
+      },
+    ],
+    relatedSlugs: [
+      '/image-converter',
+      '/bulk-image-compressor',
+      '/bulk-image-resizer',
+      '/web-image-optimizer',
+    ],
+  },
+  {
+    slug: '/web-image-optimizer',
+    name: 'Web Image Optimizer',
+    shortDescription: 'Optimize hero, product & card images for Core Web Vitals speed.',
+    category: 'compress',
+    seoTitle: 'Web Image Optimizer Free – Speed Up Websites & Core Web Vitals',
+    seoDescription:
+      'Optimize website images for fast loading and Core Web Vitals (LCP). One-click WebP presets for Hero banners, E-commerce products, thumbnails, and OG cards.',
+    h1: 'Web Image Optimizer (Core Web Vitals Ready)',
+    subtitle:
+      'Turn heavy raw graphics into fast-loading WebP or JPG website assets using battle-tested dimension caps, EXIF stripping, and copyable responsive HTML tags.',
+    howToSteps: [
+      {
+        title: 'Pick a web use-case preset',
+        description:
+          'Choose Hero Banner (1600px WebP), Product Photo (1200px WebP), Thumbnail (640px WebP), or customize settings.',
+      },
+      {
+        title: 'Upload website images',
+        description: 'Drop raw JPG, PNG, SVG, or HEIC assets — metadata is stripped automatically.',
+      },
+      {
+        title: 'Download assets & copy HTML',
+        description:
+          'Compare before/after page weight, copy `<img width height loading="lazy" />` snippets, and download individual files or ZIP.',
+      },
+    ],
+    features: [
+      {
+        title: 'Web-Ready Presets',
+        description:
+          'Pre-configured dimension caps and WebP/JPG quality sweet spots tailored for LCP and PageSpeed Insights.',
+      },
+      {
+        title: 'Copyable <img> HTML Snippet',
+        description:
+          'Generates responsive `width`, `height`, `loading="lazy"`, and `decoding="async"` attributes to prevent layout shift (CLS).',
+      },
+      {
+        title: 'Automatic EXIF Stripping & Upscale Guard',
+        description: 'Strips bloated camera metadata and avoids needlessly upscaling smaller icons.',
+      },
+      {
+        title: 'Interactive Before/After Inspector',
+        description: 'Verify visual clarity side-by-side before deploying assets to production.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Why does Web Image Optimizer default to WebP?',
+        answer:
+          'WebP typically cuts file weight by 25–35% compared to JPG and 70%+ compared to PNG while supporting transparency and universal modern browser compatibility.',
+      },
+      {
+        question: 'Why include width and height attributes in the copied <img> tag?',
+        answer:
+          'Explicit width and height let browsers reserve exact aspect-ratio space before images finish loading, eliminating Cumulative Layout Shift (CLS).',
+      },
+    ],
+    relatedSlugs: [
+      '/bulk-image-compressor',
+      '/compress-image-to-100kb',
+      '/image-resizer',
+      '/image-converter',
+    ],
+  },
+  {
+    slug: '/gif-compressor',
+    name: 'GIF Compressor',
+    shortDescription: 'Compress animated GIFs by reducing palette colors, scale & frames.',
+    category: 'compress',
+    seoTitle: 'Free Online GIF Compressor – Shrink Animated GIF Size in Browser',
+    seoDescription:
+      'Compress animated GIF files online free in your browser. Reduce palette colors, scale dimensions, or drop redundant frames while keeping smooth animation timing.',
+    h1: 'Free Online Animated GIF Compressor',
+    subtitle:
+      'Shrink heavy animated GIFs right inside your browser by optimizing color palettes, scaling resolution, or reducing frame rate — with live before/after playback.',
+    howToSteps: [
+      {
+        title: 'Upload your animated GIF',
+        description: 'Drop any GIF87a or GIF89a animation up to 30 MB.',
+      },
+      {
+        title: 'Tune colors, scale & frame rate',
+        description:
+          'Pick Light, Balanced, or Max Shrink presets, or dial in palette colors (16–256), scale percentage, and frame skipping.',
+      },
+      {
+        title: 'Preview & download compressed GIF',
+        description:
+          'Watch both Original and Compressed animations side-by-side and download your lighter .gif.',
+      },
+    ],
+    features: [
+      {
+        title: 'True Client-Side GIF Re-Encoding',
+        description:
+          'Decodes GIF frames, disposal methods, and loop counts locally, then re-encodes using lazy-loaded color quantization — zero server uploads.',
+      },
+      {
+        title: '3 Compression Levers',
+        description:
+          'Shrink size via palette color reduction (256 → 32 colors), dimension scaling (100% → 25%), and smart frame skipping.',
+      },
+      {
+        title: 'Timing-Preserving Frame Skipping',
+        description:
+          'When dropping every 2nd or 3rd frame, kept frame delays automatically combine so playback speed stays natural.',
+      },
+      {
+        title: 'Honest Byte Comparison',
+        description:
+          'Displays exact before/after file size and frame counts — and tells you clearly when stronger palette or scale reduction is needed.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Does GIF Compressor keep my GIF animated?',
+        answer:
+          'Yes! Every frame, timing delay, transparency mask, and loop setting is decoded and re-encoded into a genuine animated GIF.',
+      },
+      {
+        question: 'Why did re-encoding at 100% scale and 128 colors not shrink my already-tiny GIF?',
+        answer:
+          'Some GIFs are already heavily palette-optimized with small delta rectangles. Lowering Colors (64 or 32), Scale (75% or 50%), or enabling Frame Dropping usually yields big reductions.',
+      },
+      {
+        question: 'Are my GIFs uploaded anywhere?',
+        answer: 'No. Decoding and re-encoding run 100% locally in your browser memory.',
+      },
+    ],
+    relatedSlugs: ['/gif-maker', '/bulk-image-compressor', '/image-resizer', '/'],
+  },
 ];
 
 export const TOOL_BY_SLUG: Record<string, ToolDefinition> = Object.fromEntries(

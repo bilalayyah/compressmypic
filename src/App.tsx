@@ -51,6 +51,16 @@ import { Base64ToImagePage } from './pages/Base64ToImagePage';
 import { PaletteExtractorPage } from './pages/PaletteExtractorPage';
 import { GifMakerPage } from './pages/GifMakerPage';
 import { CollageMakerPage } from './pages/CollageMakerPage';
+import { Compress50KbPage } from './pages/Compress50KbPage';
+import { Compress100KbPage } from './pages/Compress100KbPage';
+import { Compress200KbPage } from './pages/Compress200KbPage';
+import { Compress500KbPage } from './pages/Compress500KbPage';
+import { BulkCompressorPage } from './pages/BulkCompressorPage';
+import { TargetFileSizePage } from './pages/TargetFileSizePage';
+import { BulkResizerPage } from './pages/BulkResizerPage';
+import { BulkConverterPage } from './pages/BulkConverterPage';
+import { WebOptimizerPage } from './pages/WebOptimizerPage';
+import { GifCompressorPage } from './pages/GifCompressorPage';
 import { TOOL_BY_SLUG } from './data/tools';
 import { CompressionSettings, ImageItem } from './types';
 import { compressSingleImage, detectTransparency, loadImageFromFile, toDecodableBlob } from './utils/compressor';
@@ -92,6 +102,16 @@ const KNOWN_ROUTES = [
   '/image-color-palette-extractor',
   '/gif-maker',
   '/image-collage-maker',
+  '/compress-image-to-50kb',
+  '/compress-image-to-100kb',
+  '/compress-image-to-200kb',
+  '/compress-image-to-500kb',
+  '/bulk-image-compressor',
+  '/target-file-size-compressor',
+  '/bulk-image-resizer',
+  '/bulk-image-converter',
+  '/web-image-optimizer',
+  '/gif-compressor',
 ];
 
 function getNormalizedPath(rawPathname: string): string {
@@ -498,7 +518,7 @@ export default function App() {
   const hasTransparentImages = images.some((img) => img.hasAlpha);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-800">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100">
       {/* 1. Header */}
       <Header
         onNavigate={handleNavigate}
@@ -647,6 +667,46 @@ export default function App() {
         <main className="flex-1">
           <CollageMakerPage onNavigate={handleNavigate} />
         </main>
+      ) : currentPath === '/compress-image-to-50kb' ? (
+        <main className="flex-1">
+          <Compress50KbPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/compress-image-to-100kb' ? (
+        <main className="flex-1">
+          <Compress100KbPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/compress-image-to-200kb' ? (
+        <main className="flex-1">
+          <Compress200KbPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/compress-image-to-500kb' ? (
+        <main className="flex-1">
+          <Compress500KbPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/bulk-image-compressor' ? (
+        <main className="flex-1">
+          <BulkCompressorPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/target-file-size-compressor' ? (
+        <main className="flex-1">
+          <TargetFileSizePage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/bulk-image-resizer' ? (
+        <main className="flex-1">
+          <BulkResizerPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/bulk-image-converter' ? (
+        <main className="flex-1">
+          <BulkConverterPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/web-image-optimizer' ? (
+        <main className="flex-1">
+          <WebOptimizerPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/gif-compressor' ? (
+        <main className="flex-1">
+          <GifCompressorPage onNavigate={handleNavigate} />
+        </main>
       ) : (
         /* HOME / COMPRESSOR APPLICATION */
         <>
@@ -705,28 +765,28 @@ export default function App() {
 
           {/* FAQ Section */}
           {/* Guides Section */}
-      <section className="py-16 sm:py-20 bg-slate-50 border-t border-slate-200">
+      <section className="py-16 sm:py-20 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Guides</h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">Step-by-step guides to get smaller files without losing visible quality.</p>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">Guides</h2>
+          <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">Step-by-step guides to get smaller files without losing visible quality.</p>
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <a href="/guides/compress-images-for-whatsapp" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/compress-images-for-whatsapp'); }} className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 transition-shadow">
-              <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-3"><MessageCircle className="w-5 h-5" /></div>
-              <h3 className="text-base font-bold text-slate-900">How to compress images for WhatsApp without losing quality</h3>
-              <p className="mt-1.5 text-sm text-slate-600 leading-normal">Shrink photos before sending so they stay sharp and send fast.</p>
-              <span className="mt-3 inline-block text-sm font-semibold text-blue-600">Read guide →</span>
+            <a href="/guides/compress-images-for-whatsapp" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/compress-images-for-whatsapp'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
+              <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3"><MessageCircle className="w-5 h-5" /></div>
+              <h3 className="text-base font-bold text-slate-900 dark:text-slate-50">How to compress images for WhatsApp without losing quality</h3>
+              <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-normal">Shrink photos before sending so they stay sharp and send fast.</p>
+              <span className="mt-3 inline-block text-sm font-semibold text-blue-600 dark:text-blue-400">Read guide →</span>
             </a>
-            <a href="/guides/jpg-vs-png-vs-webp" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/jpg-vs-png-vs-webp'); }} className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 transition-shadow">
-              <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-3"><FileImage className="w-5 h-5" /></div>
-              <h3 className="text-base font-bold text-slate-900">JPG vs PNG vs WebP: Which Format Should You Use?</h3>
-              <p className="mt-1.5 text-sm text-slate-600 leading-normal">File size, quality and transparency compared, so you can pick the right format.</p>
-              <span className="mt-3 inline-block text-sm font-semibold text-blue-600">Read guide →</span>
+            <a href="/guides/jpg-vs-png-vs-webp" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/jpg-vs-png-vs-webp'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
+              <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3"><FileImage className="w-5 h-5" /></div>
+              <h3 className="text-base font-bold text-slate-900 dark:text-slate-50">JPG vs PNG vs WebP: Which Format Should You Use?</h3>
+              <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-normal">File size, quality and transparency compared, so you can pick the right format.</p>
+              <span className="mt-3 inline-block text-sm font-semibold text-blue-600 dark:text-blue-400">Read guide →</span>
             </a>
-            <a href="/guides/reduce-image-size-to-100kb" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/reduce-image-size-to-100kb'); }} className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 transition-shadow">
-              <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-3"><Zap className="w-5 h-5" /></div>
-              <h3 className="text-base font-bold text-slate-900">How to Reduce Image Size to 100KB for Web &amp; Email</h3>
-              <p className="mt-1.5 text-sm text-slate-600 leading-normal">Step-by-step: hit 100KB without losing visible quality.</p>
-              <span className="mt-3 inline-block text-sm font-semibold text-blue-600">Read guide →</span>
+            <a href="/guides/reduce-image-size-to-100kb" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/reduce-image-size-to-100kb'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
+              <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3"><Zap className="w-5 h-5" /></div>
+              <h3 className="text-base font-bold text-slate-900 dark:text-slate-50">How to Reduce Image Size to 100KB for Web &amp; Email</h3>
+              <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-normal">Step-by-step: hit 100KB without losing visible quality.</p>
+              <span className="mt-3 inline-block text-sm font-semibold text-blue-600 dark:text-blue-400">Read guide →</span>
             </a>
           </div>
         </div>

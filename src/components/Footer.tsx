@@ -7,7 +7,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
-    <footer className="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm">
+    <footer className="bg-slate-900 dark:bg-slate-950 text-slate-400 border-t border-slate-800 text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Col 1: Brand Info */}
@@ -242,13 +242,23 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Compact Editing & Developer Tools Directory */}
+        {/* Compact Advanced Compression, Editing & Developer Tools Directory */}
         <div className="pt-8 pb-6 border-t border-slate-800">
           <h4 className="text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-3">
-            Editing, Canvas &amp; Developer Tools
+            Advanced Compression, Editing &amp; Developer Tools
           </h4>
           <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-slate-400">
             {[
+              { slug: '/compress-image-to-50kb', label: 'Compress to 50KB' },
+              { slug: '/compress-image-to-100kb', label: 'Compress to 100KB' },
+              { slug: '/compress-image-to-200kb', label: 'Compress to 200KB' },
+              { slug: '/compress-image-to-500kb', label: 'Compress to 500KB' },
+              { slug: '/target-file-size-compressor', label: 'Target File Size Compressor' },
+              { slug: '/bulk-image-compressor', label: 'Bulk Image Compressor' },
+              { slug: '/bulk-image-resizer', label: 'Bulk Image Resizer' },
+              { slug: '/bulk-image-converter', label: 'Bulk Image Converter' },
+              { slug: '/web-image-optimizer', label: 'Web Image Optimizer' },
+              { slug: '/gif-compressor', label: 'GIF Compressor' },
               { slug: '/image-cropper', label: 'Image Cropper' },
               { slug: '/image-watermark', label: 'Image Watermark' },
               { slug: '/blur-pixelate-image', label: 'Blur & Pixelate' },

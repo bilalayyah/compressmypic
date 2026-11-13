@@ -28,6 +28,10 @@ import {
   FileCode2,
   Film,
   LayoutGrid,
+  Target,
+  Gauge,
+  Globe,
+  Scaling,
 } from 'lucide-react';
 import { TOOLS_REGISTRY, TOOL_CATEGORIES, ToolCategoryId } from '../data/tools';
 
@@ -38,6 +42,16 @@ interface ToolsDirectorySectionProps {
 
 const TOOL_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   '/': Minimize2,
+  '/compress-image-to-50kb': Gauge,
+  '/compress-image-to-100kb': Gauge,
+  '/compress-image-to-200kb': Gauge,
+  '/compress-image-to-500kb': Gauge,
+  '/bulk-image-compressor': Layers,
+  '/target-file-size-compressor': Target,
+  '/bulk-image-resizer': Scaling,
+  '/bulk-image-converter': RefreshCw,
+  '/web-image-optimizer': Globe,
+  '/gif-compressor': Film,
   '/image-resizer': Maximize2,
   '/image-converter': RefreshCw,
   '/rotate-flip-image': RotateCw,
@@ -83,7 +97,7 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
       : otherTools.filter((t) => t.category === selectedCategory);
 
   return (
-    <section className="py-14 sm:py-18 bg-white border-t border-slate-200">
+    <section className="py-14 sm:py-18 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
           <div>

@@ -126,7 +126,7 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-14 sm:py-20 border-t border-slate-200 bg-white">
+    <section id="faq" className="py-14 sm:py-20 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-10">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">

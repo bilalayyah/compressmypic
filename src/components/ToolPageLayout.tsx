@@ -31,7 +31,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
     .filter((t): t is ToolDefinition => Boolean(t));
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-slate-950">
       {/* Hero / Page Header */}
       <section className="pt-8 pb-6 sm:pt-12 sm:pb-8 px-4 max-w-5xl mx-auto text-center">
         {/* Breadcrumb */}
@@ -95,7 +95,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
 
       {/* How to Use Section */}
       {tool.howToSteps.length > 0 && (
-        <section className="py-12 sm:py-16 border-t border-slate-200 bg-slate-50/70">
+        <section className="py-12 sm:py-16 border-t border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               How to Use {tool.name}
@@ -125,7 +125,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
 
       {/* Key Capabilities & Privacy */}
       {tool.features.length > 0 && (
-        <section className="py-12 sm:py-16 border-t border-slate-200 bg-white">
+        <section className="py-12 sm:py-16 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               Why Use CompressMyPic {tool.name}?
@@ -134,7 +134,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
               {tool.features.map((feat) => (
                 <div
                   key={feat.title}
-                  className="bg-slate-50/70 border border-slate-200 rounded-xl p-5"
+                  className="bg-slate-50/70 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl p-5"
                 >
                   <div className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
@@ -154,7 +154,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
 
       {/* Tool-Specific FAQ Section */}
       {tool.faqs.length > 0 && (
-        <section className="py-12 sm:py-16 border-t border-slate-200 bg-slate-50/50">
+        <section className="py-12 sm:py-16 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               {tool.name} — Frequently Asked Questions
@@ -197,7 +197,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
 
       {/* Related Tools Internal Linking */}
       {relatedTools.length > 0 && (
-        <section className="py-12 sm:py-16 border-t border-slate-200 bg-white">
+        <section className="py-12 sm:py-16 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
               Related Free Image Tools
