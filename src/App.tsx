@@ -78,6 +78,8 @@ import { PT_PATH_BY_EN, EN_PATH_BY_PT, PT_HOME_ALIAS, PT_ALL_TOOLS_PATH } from '
 import { FR_PATH_BY_EN, EN_PATH_BY_FR, FR_HOME_ALIAS, FR_ALL_TOOLS_PATH } from './locales/fr/slugs';
 import { DE_PATH_BY_EN, EN_PATH_BY_DE, DE_HOME_ALIAS, DE_ALL_TOOLS_PATH } from './locales/de/slugs';
 import { IT_PATH_BY_EN, EN_PATH_BY_IT, IT_HOME_ALIAS, IT_ALL_TOOLS_PATH } from './locales/it/slugs';
+import { ID_PATH_BY_EN, EN_PATH_BY_ID, ID_HOME_ALIAS, ID_ALL_TOOLS_PATH } from './locales/id/slugs';
+import { RU_PATH_BY_EN, EN_PATH_BY_RU, RU_HOME_ALIAS, RU_ALL_TOOLS_PATH } from './locales/ru/slugs';
 import { getAlternates } from './locales/alternates';
 import { AboutPageEs } from './pages/es/AboutPageEs';
 import { ContactPageEs } from './pages/es/ContactPageEs';
@@ -119,6 +121,22 @@ import { AllToolsPageIt } from './pages/it/AllToolsPageIt';
 import { GuideWhatsAppPageIt } from './pages/it/GuideWhatsAppPageIt';
 import { GuideFormatsPageIt } from './pages/it/GuideFormatsPageIt';
 import { Guide100kbPageIt } from './pages/it/Guide100kbPageIt';
+import { AboutPageId } from './pages/id/AboutPageId';
+import { ContactPageId } from './pages/id/ContactPageId';
+import { PrivacyPageId } from './pages/id/PrivacyPageId';
+import { TermsPageId } from './pages/id/TermsPageId';
+import { AllToolsPageId } from './pages/id/AllToolsPageId';
+import { GuideWhatsAppPageId } from './pages/id/GuideWhatsAppPageId';
+import { GuideFormatsPageId } from './pages/id/GuideFormatsPageId';
+import { Guide100kbPageId } from './pages/id/Guide100kbPageId';
+import { AboutPageRu } from './pages/ru/AboutPageRu';
+import { ContactPageRu } from './pages/ru/ContactPageRu';
+import { PrivacyPageRu } from './pages/ru/PrivacyPageRu';
+import { TermsPageRu } from './pages/ru/TermsPageRu';
+import { AllToolsPageRu } from './pages/ru/AllToolsPageRu';
+import { GuideWhatsAppPageRu } from './pages/ru/GuideWhatsAppPageRu';
+import { GuideFormatsPageRu } from './pages/ru/GuideFormatsPageRu';
+import { Guide100kbPageRu } from './pages/ru/Guide100kbPageRu';
 
 const RemoveBackgroundPage = React.lazy(() =>
   import('./pages/RemoveBackgroundPage').then((m) => ({ default: m.RemoveBackgroundPage }))
@@ -247,6 +265,26 @@ function parsePath(rawPathname: string): ParsedPath {
     if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'it' };
     return { path: '/', lang: 'it' }; // unknown Italian path → Italian home
   }
+  // Indonesian prefix: /id/<indonesian-slug>
+  if (p === '/id' || p.startsWith('/id/')) {
+    const rest = p === '/id' ? '/' : p.slice(3); // keep leading '/'
+    if (rest === '/') return { path: '/', lang: 'id' };
+    if (rest === ID_HOME_ALIAS.slice(3)) return { path: '/', lang: 'id' }; // /id/kompres-gambar → /id/
+    if (rest === ID_ALL_TOOLS_PATH.slice(3)) return { path: ID_ALL_TOOLS_PATH, lang: 'id' };
+    const enPath = EN_PATH_BY_ID[p]; // keys carry the '/id' prefix (see slug map)
+    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'id' };
+    return { path: '/', lang: 'id' }; // unknown Indonesian path → Indonesian home
+  }
+  // Russian prefix: /ru/<russian-slug>
+  if (p === '/ru' || p.startsWith('/ru/')) {
+    const rest = p === '/ru' ? '/' : p.slice(3); // keep leading '/'
+    if (rest === '/') return { path: '/', lang: 'ru' };
+    if (rest === RU_HOME_ALIAS.slice(3)) return { path: '/', lang: 'ru' }; // /ru/szhat-izobrazhenie → /ru/
+    if (rest === RU_ALL_TOOLS_PATH.slice(3)) return { path: RU_ALL_TOOLS_PATH, lang: 'ru' };
+    const enPath = EN_PATH_BY_RU[p]; // keys carry the '/ru' prefix (see slug map)
+    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'ru' };
+    return { path: '/', lang: 'ru' }; // unknown Russian path → Russian home
+  }
   return KNOWN_ROUTES.includes(p) ? { path: p, lang: 'en' } : { path: '/', lang: 'en' };
 }
 
@@ -262,7 +300,9 @@ function toLocalizedPath(enPath: string, lang: SupportedLang): string {
     enPath === PT_ALL_TOOLS_PATH ||
     enPath === FR_ALL_TOOLS_PATH ||
     enPath === DE_ALL_TOOLS_PATH ||
-    enPath === IT_ALL_TOOLS_PATH
+    enPath === IT_ALL_TOOLS_PATH ||
+    enPath === ID_ALL_TOOLS_PATH ||
+    enPath === RU_ALL_TOOLS_PATH
   ) {
     return lang === 'es'
       ? ES_ALL_TOOLS_PATH
@@ -272,13 +312,19 @@ function toLocalizedPath(enPath: string, lang: SupportedLang): string {
           ? FR_ALL_TOOLS_PATH
           : lang === 'de'
             ? DE_ALL_TOOLS_PATH
-            : IT_ALL_TOOLS_PATH;
+            : lang === 'it'
+              ? IT_ALL_TOOLS_PATH
+              : lang === 'id'
+                ? ID_ALL_TOOLS_PATH
+                : RU_ALL_TOOLS_PATH;
   }
   if (lang === 'es') return ES_PATH_BY_EN[enPath] ?? enPath;
   if (lang === 'pt') return PT_PATH_BY_EN[enPath] ?? enPath;
   if (lang === 'fr') return FR_PATH_BY_EN[enPath] ?? enPath;
   if (lang === 'de') return DE_PATH_BY_EN[enPath] ?? enPath;
   if (lang === 'it') return IT_PATH_BY_EN[enPath] ?? enPath;
+  if (lang === 'id') return ID_PATH_BY_EN[enPath] ?? enPath;
+  if (lang === 'ru') return RU_PATH_BY_EN[enPath] ?? enPath;
   return enPath;
 }
 
@@ -323,7 +369,21 @@ interface ItLocale {
   toolUi: typeof import('./locales/it/ui').TOOL_UI_IT;
 }
 
-type AnyLocale = EsLocale | PtLocale | FrLocale | DeLocale | ItLocale;
+interface IdLocale {
+  ui: typeof import('./locales/id/ui').ID;
+  tools: typeof import('./locales/id/tools').TOOL_BY_SLUG_ID;
+  categories: typeof import('./locales/id/tools').TOOL_CATEGORIES_ID;
+  toolUi: typeof import('./locales/id/ui').TOOL_UI_ID;
+}
+
+interface RuLocale {
+  ui: typeof import('./locales/ru/ui').RU;
+  tools: typeof import('./locales/ru/tools').TOOL_BY_SLUG_RU;
+  categories: typeof import('./locales/ru/tools').TOOL_CATEGORIES_RU;
+  toolUi: typeof import('./locales/ru/ui').TOOL_UI_RU;
+}
+
+type AnyLocale = EsLocale | PtLocale | FrLocale | DeLocale | ItLocale | IdLocale | RuLocale;
 
 export default function App() {
   const [route, setRoute] = useState<ParsedPath>(() => {
@@ -340,12 +400,14 @@ export default function App() {
   const [frLocale, setFrLocale] = useState<FrLocale | null>(null);
   const [deLocale, setDeLocale] = useState<DeLocale | null>(null);
   const [itLocale, setItLocale] = useState<ItLocale | null>(null);
+  const [idLocale, setIdLocale] = useState<IdLocale | null>(null);
+  const [ruLocale, setRuLocale] = useState<RuLocale | null>(null);
   const [localeLoading, setLocaleLoading] = useState(false);
 
   // The active non-English locale (null for English). Defined early so the
   // SEO effect below can read tool titles/descriptions from it.
   const activeLocale: AnyLocale | null =
-    lang === 'es' ? esLocale : lang === 'pt' ? ptLocale : lang === 'fr' ? frLocale : lang === 'de' ? deLocale : lang === 'it' ? itLocale : null;
+    lang === 'es' ? esLocale : lang === 'pt' ? ptLocale : lang === 'fr' ? frLocale : lang === 'de' ? deLocale : lang === 'it' ? itLocale : lang === 'id' ? idLocale : lang === 'ru' ? ruLocale : null;
   const activeUi = activeLocale?.ui ?? null;
 
   // Generic loader — later languages add one branch each; only the selected
@@ -397,7 +459,25 @@ export default function App() {
       setItLocale({ ui: uiMod.IT, tools: toolsMod.TOOL_BY_SLUG_IT, categories: toolsMod.TOOL_CATEGORIES_IT, toolUi: uiMod.TOOL_UI_IT });
       setLocaleLoading(false);
     }
-  }, [esLocale, ptLocale, frLocale, deLocale, itLocale]);
+    if (target === 'id' && !idLocale) {
+      setLocaleLoading(true);
+      const [uiMod, toolsMod] = await Promise.all([
+        import('./locales/id/ui'),
+        import('./locales/id/tools'),
+      ]);
+      setIdLocale({ ui: uiMod.ID, tools: toolsMod.TOOL_BY_SLUG_ID, categories: toolsMod.TOOL_CATEGORIES_ID, toolUi: uiMod.TOOL_UI_ID });
+      setLocaleLoading(false);
+    }
+    if (target === 'ru' && !ruLocale) {
+      setLocaleLoading(true);
+      const [uiMod, toolsMod] = await Promise.all([
+        import('./locales/ru/ui'),
+        import('./locales/ru/tools'),
+      ]);
+      setRuLocale({ ui: uiMod.RU, tools: toolsMod.TOOL_BY_SLUG_RU, categories: toolsMod.TOOL_CATEGORIES_RU, toolUi: uiMod.TOOL_UI_RU });
+      setLocaleLoading(false);
+    }
+  }, [esLocale, ptLocale, frLocale, deLocale, itLocale, idLocale, ruLocale]);
 
   const [images, setImages] = useState<ImageItem[]>([]);
   const [isCompressing, setIsCompressing] = useState<boolean>(false);
@@ -457,13 +537,13 @@ export default function App() {
       base && base !== '/' && raw.toLowerCase().startsWith(base.toLowerCase())
         ? raw.slice(base.length) || '/'
         : raw;
-    // Only languages with shipped locale files redirect (es/pt/fr/de/it for now);
+    // Only languages with shipped locale files redirect (es/pt/fr/de/it/id/ru for now);
     // a stored code for a not-yet-built language must not send the user to a
     // URL prefix the router cannot resolve.
     const storedLang = localStorage.getItem(LANG_STORAGE_KEY);
     if (
       noBase === '/' &&
-      (storedLang === 'es' || storedLang === 'pt' || storedLang === 'fr' || storedLang === 'de' || storedLang === 'it')
+      (storedLang === 'es' || storedLang === 'pt' || storedLang === 'fr' || storedLang === 'de' || storedLang === 'it' || storedLang === 'id' || storedLang === 'ru')
     ) {
       window.history.replaceState(null, '', withBasePath(`/${storedLang}/`));
       setLang(storedLang);
@@ -560,6 +640,28 @@ export default function App() {
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: quale formato dovresti usare?',
       '/guides/reduce-image-size-to-100kb': 'Come ridurre le dimensioni di un’immagine a 100 KB per siti web ed email',
     };
+    const staticTitlesId: Record<string, string> = {
+      '/': idLocale?.ui.homeMeta.seoTitle ?? '',
+      '/about': 'Tentang CompressMyPic – Kompresor Gambar Online Gratis',
+      '/contact': 'Hubungi Kami - CompressMyPic',
+      '/privacy': 'Kebijakan Privasi - CompressMyPic',
+      '/terms': 'Syarat Layanan - CompressMyPic',
+      [ID_ALL_TOOLS_PATH]: 'Semua Alat – CompressMyPic',
+      '/guides/compress-images-for-whatsapp': 'Mengompres Gambar untuk WhatsApp Tanpa Kehilangan Kualitas',
+      '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: Format Mana yang Harus Anda Gunakan?',
+      '/guides/reduce-image-size-to-100kb': 'Cara Mengurangi Ukuran Gambar menjadi 100KB untuk Web & Email',
+    };
+    const staticTitlesRu: Record<string, string> = {
+      '/': ruLocale?.ui.homeMeta.seoTitle ?? '',
+      '/about': 'О CompressMyPic – бесплатный online-компрессор изображений',
+      '/contact': 'Связаться с нами — CompressMyPic',
+      '/privacy': 'Политика конфиденциальности — CompressMyPic',
+      '/terms': 'Условия использования — CompressMyPic',
+      [RU_ALL_TOOLS_PATH]: 'Все инструменты – CompressMyPic',
+      '/guides/compress-images-for-whatsapp': 'Как сжать изображения для WhatsApp без потери качества',
+      '/guides/jpg-vs-png-vs-webp': 'JPG против PNG против WebP: какой формат выбрать?',
+      '/guides/reduce-image-size-to-100kb': 'Как уменьшить размер изображения до 100 КБ для веба и электронной почты',
+    };
 
     const staticDescriptionsEs: Record<string, string> = {
       '/': esLocale?.ui.homeMeta.seoDescription ?? '',
@@ -620,11 +722,33 @@ export default function App() {
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP spiegato in modo semplice: confronta dimensioni, qualità e trasparenza per scegliere il formato giusto per le tue foto, i tuoi loghi e i tuoi siti.',
       '/guides/reduce-image-size-to-100kb': 'Riduci le dimensioni di un’immagine a 100 KB per siti web ed email con un compressore online gratuito. Guida passo passo, senza registrazione né filigrana.',
     };
+    const staticDescriptionsId: Record<string, string> = {
+      '/': idLocale?.ui.homeMeta.seoDescription ?? '',
+      '/about': 'CompressMyPic adalah kompresor gambar gratis dan privat. Kompres gambar JPG, PNG, dan WebP langsung di browser Anda — cepat, aman, dan tanpa mengunggah file Anda ke mana pun.',
+      '/contact': 'Punya pertanyaan, masukan, atau butuh bantuan? Hubungi tim kami melalui formulir di bawah ini, atau hubungi kami langsung lewat email.',
+      '/privacy': 'CompressMyPic adalah kompresor gambar online gratis. Gambar diproses secara lokal di browser Anda menggunakan HTML5 Canvas — gambar tidak pernah diunggah ke server kami, dan kami tidak mengumpulkan, menyimpan, atau membagikan gambar Anda.',
+      '/terms': 'Dengan mengakses dan menggunakan CompressMyPic, Anda setuju untuk mematuhi dan terikat oleh Syarat Layanan ini.',
+      [ID_ALL_TOOLS_PATH]: '48 alat gratis CompressMyPic untuk mengompres, mengonversi, dan mengedit gambar — langsung di browser Anda.',
+      '/guides/compress-images-for-whatsapp': 'WhatsApp memperkecil setiap foto yang Anda kirim — sering kali jauh lebih kecil dari yang seharusnya. Kompres foto Anda sendiri terlebih dahulu, lalu kirim dengan cara yang tepat, dan foto akan tiba dalam keadaan tajam, cepat terkirim, dan hemat kuota.',
+      '/guides/jpg-vs-png-vs-webp': 'Memilih format yang salah dapat membuat gambar Anda sepuluh kali lebih besar dari yang seharusnya — atau merusak logo transparan. Berikut perbandingan yang sederhana dan jujur, serta cara beralih antar format dalam hitungan detik.',
+      '/guides/reduce-image-size-to-100kb': 'Foto sebesar 4 MB memperlambat situs web Anda dan menyumbat email. Mengecilkannya menjadi sekitar 100KB membuat halaman dimuat dengan cepat dan email terkirim seketika.',
+    };
+    const staticDescriptionsRu: Record<string, string> = {
+      '/': ruLocale?.ui.homeMeta.seoDescription ?? '',
+      '/about': 'CompressMyPic — это бесплатный и приватный компрессор изображений. Сжимайте изображения JPG, PNG и WebP прямо в браузере — быстро, безопасно и без загрузки файлов куда-либо.',
+      '/contact': 'Есть вопросы, отзывы или нужна помощь? Обратитесь к нашей команде через форму ниже или свяжитесь с нами напрямую по электронной почте.',
+      '/privacy': 'CompressMyPic — это бесплатный online-компрессор изображений. Изображения обрабатываются локально в вашем браузере с помощью HTML5 Canvas — они никогда не загружаются на наши серверы, и мы не собираем, не храним и не передаём ваши изображения.',
+      '/terms': 'Получая доступ к CompressMyPic и используя его, вы соглашаетесь соблюдать настоящие Условия использования и обязуетесь их выполнять.',
+      [RU_ALL_TOOLS_PATH]: 'Все 48 бесплатных инструментов CompressMyPic для сжатия, конвертации и редактирования изображений — прямо в вашем браузере.',
+      '/guides/compress-images-for-whatsapp': 'WhatsApp уменьшает каждую фотографию, которую вы отправляете, — зачастую гораздо сильнее, чем нужно. Сожмите фотографии сами заранее, а затем отправьте их правильным способом, и они дойдут чёткими, отправятся быстро и израсходуют меньше мобильного трафика.',
+      '/guides/jpg-vs-png-vs-webp': 'Неправильный формат может сделать ваше изображение в десять раз больше, чем нужно, или испортить прозрачный логотип. Вот простое и честное сравнение, а также то, как конвертировать между форматами за секунды.',
+      '/guides/reduce-image-size-to-100kb': 'Фотография на 4 МБ замедляет ваш сайт и забивает электронную почту. Уменьшение её примерно до 100 КБ делает страницы быстрыми, а письма отправляются мгновенно.',
+    };
 
     const langTitles =
-      lang === 'es' ? staticTitlesEs : lang === 'pt' ? staticTitlesPt : lang === 'fr' ? staticTitlesFr : lang === 'de' ? staticTitlesDe : lang === 'it' ? staticTitlesIt : undefined;
+      lang === 'es' ? staticTitlesEs : lang === 'pt' ? staticTitlesPt : lang === 'fr' ? staticTitlesFr : lang === 'de' ? staticTitlesDe : lang === 'it' ? staticTitlesIt : lang === 'id' ? staticTitlesId : lang === 'ru' ? staticTitlesRu : undefined;
     const langDescriptions =
-      lang === 'es' ? staticDescriptionsEs : lang === 'pt' ? staticDescriptionsPt : lang === 'fr' ? staticDescriptionsFr : lang === 'de' ? staticDescriptionsDe : lang === 'it' ? staticDescriptionsIt : undefined;
+      lang === 'es' ? staticDescriptionsEs : lang === 'pt' ? staticDescriptionsPt : lang === 'fr' ? staticDescriptionsFr : lang === 'de' ? staticDescriptionsDe : lang === 'it' ? staticDescriptionsIt : lang === 'id' ? staticDescriptionsId : lang === 'ru' ? staticDescriptionsRu : undefined;
     const nextTitle =
       toolMeta?.seoTitle ||
       langTitles?.[currentPath] ||
@@ -689,7 +813,9 @@ export default function App() {
       currentPath === PT_ALL_TOOLS_PATH ||
       currentPath === FR_ALL_TOOLS_PATH ||
       currentPath === DE_ALL_TOOLS_PATH ||
-      currentPath === IT_ALL_TOOLS_PATH;
+      currentPath === IT_ALL_TOOLS_PATH ||
+      currentPath === ID_ALL_TOOLS_PATH ||
+      currentPath === RU_ALL_TOOLS_PATH;
     const hasLocalizedEquivalent =
       currentPath === '/' ||
       isDirectoryPath ||
@@ -698,7 +824,9 @@ export default function App() {
           PT_PATH_BY_EN[currentPath] ??
           FR_PATH_BY_EN[currentPath] ??
           DE_PATH_BY_EN[currentPath] ??
-          IT_PATH_BY_EN[currentPath]
+          IT_PATH_BY_EN[currentPath] ??
+          ID_PATH_BY_EN[currentPath] ??
+          RU_PATH_BY_EN[currentPath]
       );
     const toolPageOwnedByLayout =
       isToolPage && lang !== 'en' && Boolean(activeLocale?.tools[currentPath]);
@@ -715,6 +843,8 @@ export default function App() {
         { lang: 'fr', href: `${baseDomain}${toLocalizedPath(currentPath, 'fr')}` },
         { lang: 'de', href: `${baseDomain}${toLocalizedPath(currentPath, 'de')}` },
         { lang: 'it', href: `${baseDomain}${toLocalizedPath(currentPath, 'it')}` },
+        { lang: 'id', href: `${baseDomain}${toLocalizedPath(currentPath, 'id')}` },
+        { lang: 'ru', href: `${baseDomain}${toLocalizedPath(currentPath, 'ru')}` },
         { lang: 'x-default', href: `${baseDomain}${enEquivalent}` },
       ]);
     } else if (isToolPage && hasLocalizedEquivalent && lang === 'en') {
@@ -727,7 +857,7 @@ export default function App() {
     } else {
       removeHreflangLinks();
     }
-  }, [currentPath, lang, esLocale, ptLocale, frLocale, deLocale, itLocale]);
+  }, [currentPath, lang, esLocale, ptLocale, frLocale, deLocale, itLocale, idLocale, ruLocale]);
 
   const handleNavigate = (path: string) => {
     if (path.includes('#')) {
@@ -777,7 +907,9 @@ export default function App() {
       route.path === PT_ALL_TOOLS_PATH ||
       route.path === FR_ALL_TOOLS_PATH ||
       route.path === DE_ALL_TOOLS_PATH ||
-      route.path === IT_ALL_TOOLS_PATH;
+      route.path === IT_ALL_TOOLS_PATH ||
+      route.path === ID_ALL_TOOLS_PATH ||
+      route.path === RU_ALL_TOOLS_PATH;
     const target =
       next === 'en'
         ? isDirectoryPath
@@ -787,7 +919,7 @@ export default function App() {
     // If the current page has no equivalent in the target language, fall back
     // to that language's home instead of a broken page.
     const mapForNext =
-      next === 'es' ? ES_PATH_BY_EN : next === 'pt' ? PT_PATH_BY_EN : next === 'fr' ? FR_PATH_BY_EN : undefined;
+      next === 'es' ? ES_PATH_BY_EN : next === 'pt' ? PT_PATH_BY_EN : next === 'fr' ? FR_PATH_BY_EN : next === 'de' ? DE_PATH_BY_EN : next === 'it' ? IT_PATH_BY_EN : next === 'id' ? ID_PATH_BY_EN : next === 'ru' ? RU_PATH_BY_EN : undefined;
     const existsInNext =
       route.path === '/' ||
       isDirectoryPath ||
@@ -1096,7 +1228,7 @@ export default function App() {
   const categoryLabels = activeLocale ? activeLocale.categories : TOOL_CATEGORIES;
   const showLocaleLoading = lang !== 'en' && localeLoading && !activeLocale;
   const localeLoadingText =
-    lang === 'de' ? 'Wird geladen…' : lang === 'it' ? 'Caricamento…' : lang === 'pt' ? 'Carregando…' : lang === 'fr' ? 'Chargement…' : 'Cargando…';
+    lang === 'id' ? 'Memuat…' : lang === 'ru' ? 'Загрузка…' : lang === 'de' ? 'Wird geladen…' : lang === 'it' ? 'Caricamento…' : lang === 'pt' ? 'Carregando…' : lang === 'fr' ? 'Chargement…' : 'Cargando…';
 
   // Languages that have a translation of the CURRENT page (the switcher guard).
   // route.path is the English path for tools/legal/guides (parsePath maps the
@@ -1109,12 +1241,14 @@ export default function App() {
       route.path === PT_ALL_TOOLS_PATH ||
       route.path === FR_ALL_TOOLS_PATH ||
       route.path === DE_ALL_TOOLS_PATH ||
-      route.path === IT_ALL_TOOLS_PATH
+      route.path === IT_ALL_TOOLS_PATH ||
+      route.path === ID_ALL_TOOLS_PATH ||
+      route.path === RU_ALL_TOOLS_PATH
     ) {
       return true;
     }
     const map =
-      l === 'es' ? ES_PATH_BY_EN : l === 'pt' ? PT_PATH_BY_EN : l === 'fr' ? FR_PATH_BY_EN : l === 'de' ? DE_PATH_BY_EN : l === 'it' ? IT_PATH_BY_EN : undefined;
+      l === 'es' ? ES_PATH_BY_EN : l === 'pt' ? PT_PATH_BY_EN : l === 'fr' ? FR_PATH_BY_EN : l === 'de' ? DE_PATH_BY_EN : l === 'it' ? IT_PATH_BY_EN : l === 'id' ? ID_PATH_BY_EN : l === 'ru' ? RU_PATH_BY_EN : undefined;
     return map !== undefined && map[route.path] !== undefined;
   };
   const availableLanguages: SupportedLang[] = SUPPORTED_LANGS.filter((l) => pageHasLang(l));
@@ -1122,7 +1256,7 @@ export default function App() {
   // Homepage (compressor app). Extracted so the English and Spanish home
   // branches render the same DOM; `strings` is the Spanish bundle, or null
   // for English (components fall back to their English defaults).
-  const renderHome = (strings: EsLocale['ui'] | PtLocale['ui'] | FrLocale['ui'] | DeLocale['ui'] | ItLocale['ui'] | null) => (
+  const renderHome = (strings: EsLocale['ui'] | PtLocale['ui'] | FrLocale['ui'] | DeLocale['ui'] | ItLocale['ui'] | IdLocale['ui'] | RuLocale['ui'] | null) => (
     <>
           <Hero strings={strings?.hero} />
 
@@ -1290,6 +1424,14 @@ export default function App() {
         <main className="flex-1">
           <AllToolsPageIt onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
         </main>
+      ) : currentPath === ID_ALL_TOOLS_PATH ? (
+        <main className="flex-1">
+          <AllToolsPageId onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
+        </main>
+      ) : currentPath === RU_ALL_TOOLS_PATH ? (
+        <main className="flex-1">
+          <AllToolsPageRu onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
+        </main>
       ) : lang === 'es' && currentPath === '/about' ? (
         <main className="flex-1">
           <AboutPageEs onNavigate={handleNavigate} />
@@ -1309,6 +1451,14 @@ export default function App() {
       ) : lang === 'it' && currentPath === '/about' ? (
         <main className="flex-1">
           <AboutPageIt onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'id' && currentPath === '/about' ? (
+        <main className="flex-1">
+          <AboutPageId onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'ru' && currentPath === '/about' ? (
+        <main className="flex-1">
+          <AboutPageRu onNavigate={handleNavigate} />
         </main>
       ) : lang === 'es' && currentPath === '/contact' ? (
         <main className="flex-1">
@@ -1330,6 +1480,14 @@ export default function App() {
         <main className="flex-1">
           <ContactPageIt onNavigate={handleNavigate} />
         </main>
+      ) : lang === 'id' && currentPath === '/contact' ? (
+        <main className="flex-1">
+          <ContactPageId onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'ru' && currentPath === '/contact' ? (
+        <main className="flex-1">
+          <ContactPageRu onNavigate={handleNavigate} />
+        </main>
       ) : lang === 'es' && currentPath === '/privacy' ? (
         <main className="flex-1">
           <PrivacyPageEs onNavigate={handleNavigate} />
@@ -1350,6 +1508,14 @@ export default function App() {
         <main className="flex-1">
           <PrivacyPageIt onNavigate={handleNavigate} />
         </main>
+      ) : lang === 'id' && currentPath === '/privacy' ? (
+        <main className="flex-1">
+          <PrivacyPageId onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'ru' && currentPath === '/privacy' ? (
+        <main className="flex-1">
+          <PrivacyPageRu onNavigate={handleNavigate} />
+        </main>
       ) : lang === 'es' && currentPath === '/terms' ? (
         <main className="flex-1">
           <TermsPageEs onNavigate={handleNavigate} />
@@ -1369,6 +1535,14 @@ export default function App() {
       ) : lang === 'it' && currentPath === '/terms' ? (
         <main className="flex-1">
           <TermsPageIt onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'id' && currentPath === '/terms' ? (
+        <main className="flex-1">
+          <TermsPageId onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'ru' && currentPath === '/terms' ? (
+        <main className="flex-1">
+          <TermsPageRu onNavigate={handleNavigate} />
         </main>
       ) : currentPath === '/about' ? (
         <main className="flex-1">
@@ -1406,6 +1580,14 @@ export default function App() {
               <main className="flex-1">
                 <GuideWhatsAppPageIt onNavigate={handleNavigate} />
               </main>
+            ) : lang === 'id' && currentPath === '/guides/compress-images-for-whatsapp' ? (
+              <main className="flex-1">
+                <GuideWhatsAppPageId onNavigate={handleNavigate} />
+              </main>
+            ) : lang === 'ru' && currentPath === '/guides/compress-images-for-whatsapp' ? (
+              <main className="flex-1">
+                <GuideWhatsAppPageRu onNavigate={handleNavigate} />
+              </main>
             ) : lang === 'es' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
               <main className="flex-1">
                 <GuideFormatsPageEs onNavigate={handleNavigate} />
@@ -1426,6 +1608,14 @@ export default function App() {
               <main className="flex-1">
                 <GuideFormatsPageIt onNavigate={handleNavigate} />
               </main>
+            ) : lang === 'id' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
+              <main className="flex-1">
+                <GuideFormatsPageId onNavigate={handleNavigate} />
+              </main>
+            ) : lang === 'ru' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
+              <main className="flex-1">
+                <GuideFormatsPageRu onNavigate={handleNavigate} />
+              </main>
             ) : lang === 'es' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
               <main className="flex-1">
                 <Guide100kbPageEs onNavigate={handleNavigate} />
@@ -1445,6 +1635,14 @@ export default function App() {
             ) : lang === 'it' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
               <main className="flex-1">
                 <Guide100kbPageIt onNavigate={handleNavigate} />
+              </main>
+            ) : lang === 'id' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
+              <main className="flex-1">
+                <Guide100kbPageId onNavigate={handleNavigate} />
+              </main>
+            ) : lang === 'ru' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
+              <main className="flex-1">
+                <Guide100kbPageRu onNavigate={handleNavigate} />
               </main>
             ) : currentPath === '/guides/compress-images-for-whatsapp' ? (
               <main className="flex-1">
@@ -1516,6 +1714,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-resizer']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-resizer'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-resizer']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-resizer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-converter' ? (
@@ -1573,6 +1791,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/image-converter'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-converter']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-converter'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-converter']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-converter'],
                   }
                 : undefined
             }
@@ -1636,6 +1874,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/rotate-flip-image']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/rotate-flip-image'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/rotate-flip-image']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/rotate-flip-image'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-to-pdf' ? (
@@ -1693,6 +1951,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/image-to-pdf'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-to-pdf']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-to-pdf'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-to-pdf']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-to-pdf'],
                   }
                 : undefined
             }
@@ -1756,6 +2034,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-metadata-viewer']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-metadata-viewer'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-metadata-viewer']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-metadata-viewer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/remove-image-metadata' ? (
@@ -1813,6 +2111,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/remove-image-metadata'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/remove-image-metadata']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/remove-image-metadata'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/remove-image-metadata']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/remove-image-metadata'],
                   }
                 : undefined
             }
@@ -1876,6 +2194,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/favicon-generator']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/favicon-generator'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/favicon-generator']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/favicon-generator'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-color-picker' ? (
@@ -1933,6 +2271,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/image-color-picker'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-color-picker']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-color-picker'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-color-picker']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-color-picker'],
                   }
                 : undefined
             }
@@ -1996,6 +2354,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-dimensions-checker']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-dimensions-checker'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-dimensions-checker']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-dimensions-checker'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-cropper' ? (
@@ -2053,6 +2431,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/image-cropper'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-cropper']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-cropper'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-cropper']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-cropper'],
                   }
                 : undefined
             }
@@ -2116,6 +2514,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-watermark']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-watermark'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-watermark']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-watermark'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/blur-pixelate-image' ? (
@@ -2173,6 +2591,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/blur-pixelate-image'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/blur-pixelate-image']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/blur-pixelate-image'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/blur-pixelate-image']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/blur-pixelate-image'],
                   }
                 : undefined
             }
@@ -2236,6 +2674,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/add-text-to-image']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/add-text-to-image'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/add-text-to-image']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/add-text-to-image'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-border-generator' ? (
@@ -2293,6 +2751,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/image-border-generator'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-border-generator']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-border-generator'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-border-generator']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-border-generator'],
                   }
                 : undefined
             }
@@ -2356,6 +2834,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/round-image-corners']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/round-image-corners'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/round-image-corners']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/round-image-corners'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-brightness-editor' ? (
@@ -2413,6 +2911,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/image-brightness-editor'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-brightness-editor']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-brightness-editor'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-brightness-editor']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-brightness-editor'],
                   }
                 : undefined
             }
@@ -2476,6 +2994,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-contrast-editor']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-contrast-editor'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-contrast-editor']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-contrast-editor'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-saturation-editor' ? (
@@ -2533,6 +3071,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/image-saturation-editor'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-saturation-editor']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-saturation-editor'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-saturation-editor']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-saturation-editor'],
                   }
                 : undefined
             }
@@ -2596,6 +3154,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-filters']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-filters'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-filters']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-filters'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/add-background-to-image' ? (
@@ -2653,6 +3231,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/add-background-to-image'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/add-background-to-image']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/add-background-to-image'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/add-background-to-image']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/add-background-to-image'],
                   }
                 : undefined
             }
@@ -2716,6 +3314,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-splitter']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-splitter'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-splitter']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-splitter'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-dpi-changer' ? (
@@ -2773,6 +3391,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/image-dpi-changer'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-dpi-changer']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-dpi-changer'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-dpi-changer']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-dpi-changer'],
                   }
                 : undefined
             }
@@ -2836,6 +3474,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-to-base64']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-to-base64'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-to-base64']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-to-base64'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/base64-to-image' ? (
@@ -2893,6 +3551,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/base64-to-image'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/base64-to-image']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/base64-to-image'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/base64-to-image']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/base64-to-image'],
                   }
                 : undefined
             }
@@ -2956,6 +3634,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-color-palette-extractor']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-color-palette-extractor'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-color-palette-extractor']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-color-palette-extractor'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/gif-maker' ? (
@@ -3013,6 +3711,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/gif-maker'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/gif-maker']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/gif-maker'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/gif-maker']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/gif-maker'],
                   }
                 : undefined
             }
@@ -3076,6 +3794,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/image-collage-maker']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/image-collage-maker'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/image-collage-maker']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/image-collage-maker'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/compress-image-to-50kb' ? (
@@ -3133,6 +3871,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/compress-image-to-50kb'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/compress-image-to-50kb']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/compress-image-to-50kb'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/compress-image-to-50kb']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/compress-image-to-50kb'],
                   }
                 : undefined
             }
@@ -3196,6 +3954,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/compress-image-to-100kb']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/compress-image-to-100kb'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/compress-image-to-100kb']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/compress-image-to-100kb'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/compress-image-to-200kb' ? (
@@ -3256,6 +4034,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/compress-image-to-200kb']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/compress-image-to-200kb'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/compress-image-to-200kb']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/compress-image-to-200kb'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/compress-image-to-500kb' ? (
@@ -3313,6 +4111,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/compress-image-to-500kb'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/compress-image-to-500kb']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/compress-image-to-500kb'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/compress-image-to-500kb']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/compress-image-to-500kb'],
                   }
                 : undefined
             }
@@ -3382,6 +4200,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/bulk-image-compressor']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/bulk-image-compressor'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/bulk-image-compressor']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/bulk-image-compressor'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/target-file-size-compressor' ? (
@@ -3439,6 +4277,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/target-file-size-compressor'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/target-file-size-compressor']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/target-file-size-compressor'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/target-file-size-compressor']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/target-file-size-compressor'],
                   }
                 : undefined
             }
@@ -3502,6 +4360,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/bulk-image-resizer']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/bulk-image-resizer'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/bulk-image-resizer']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/bulk-image-resizer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/bulk-image-converter' ? (
@@ -3559,6 +4437,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/bulk-image-converter'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/bulk-image-converter']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/bulk-image-converter'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/bulk-image-converter']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/bulk-image-converter'],
                   }
                 : undefined
             }
@@ -3622,6 +4520,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/web-image-optimizer']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/web-image-optimizer'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/web-image-optimizer']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/web-image-optimizer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/gif-compressor' ? (
@@ -3679,6 +4597,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/gif-compressor'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/gif-compressor']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/gif-compressor'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/gif-compressor']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/gif-compressor'],
                   }
                 : undefined
             }
@@ -3742,6 +4680,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/heic-to-jpg']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/heic-to-jpg'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/heic-to-jpg']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/heic-to-jpg'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/jpg-to-png' ? (
@@ -3799,6 +4757,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/jpg-to-png'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/jpg-to-png']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/jpg-to-png'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/jpg-to-png']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/jpg-to-png'],
                   }
                 : undefined
             }
@@ -3862,6 +4840,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/png-to-jpg']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/png-to-jpg'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/png-to-jpg']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/png-to-jpg'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/jpg-to-webp' ? (
@@ -3919,6 +4917,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/jpg-to-webp'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/jpg-to-webp']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/jpg-to-webp'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/jpg-to-webp']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/jpg-to-webp'],
                   }
                 : undefined
             }
@@ -3982,6 +5000,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/webp-to-jpg']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/webp-to-jpg'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/webp-to-jpg']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/webp-to-jpg'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/png-to-webp' ? (
@@ -4039,6 +5077,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/png-to-webp'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/png-to-webp']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/png-to-webp'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/png-to-webp']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/png-to-webp'],
                   }
                 : undefined
             }
@@ -4102,6 +5160,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/webp-to-png']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/webp-to-png'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/webp-to-png']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/webp-to-png'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/svg-to-png' ? (
@@ -4159,6 +5237,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/svg-to-png'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/svg-to-png']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/svg-to-png'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/svg-to-png']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/svg-to-png'],
                   }
                 : undefined
             }
@@ -4222,6 +5320,26 @@ itStrings={
                   }
                 : undefined
             }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/avif-to-jpg']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/avif-to-jpg'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/avif-to-jpg']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/avif-to-jpg'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/bmp-to-jpg' ? (
@@ -4279,6 +5397,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/bmp-to-jpg'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/bmp-to-jpg']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/bmp-to-jpg'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/bmp-to-jpg']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/bmp-to-jpg'],
                   }
                 : undefined
             }
@@ -4346,6 +5484,26 @@ itStrings={
                     uploadZone: itLocale.ui.uploadZone,
                     comparisonModal: itLocale.ui.comparisonModal,
                     toolUi: itLocale.toolUi['/remove-background'],
+                  }
+                : undefined
+            }
+idStrings={
+              lang === 'id' && idLocale && idLocale.tools['/remove-background']
+                ? {
+                    layoutUi: idLocale.ui.toolPageLayout,
+                    uploadZone: idLocale.ui.uploadZone,
+                    comparisonModal: idLocale.ui.comparisonModal,
+                    toolUi: idLocale.toolUi['/remove-background'],
+                  }
+                : undefined
+            }
+ruStrings={
+              lang === 'ru' && ruLocale && ruLocale.tools['/remove-background']
+                ? {
+                    layoutUi: ruLocale.ui.toolPageLayout,
+                    uploadZone: ruLocale.ui.uploadZone,
+                    comparisonModal: ruLocale.ui.comparisonModal,
+                    toolUi: ruLocale.toolUi['/remove-background'],
                   }
                 : undefined
             }
