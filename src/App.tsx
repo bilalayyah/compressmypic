@@ -71,7 +71,14 @@ import { WebpToPngPage } from './pages/WebpToPngPage';
 import { SvgToPngPage } from './pages/SvgToPngPage';
 import { AvifToJpgPage } from './pages/AvifToJpgPage';
 import { BmpToJpgPage } from './pages/BmpToJpgPage';
-import { TOOL_BY_SLUG } from './data/tools';
+import { TOOL_BY_SLUG, TOOLS_REGISTRY, TOOL_CATEGORIES } from './data/tools';
+import { SUPPORTED_LANGS, LANG_STORAGE_KEY, type SupportedLang } from './locales/config';
+import { ES_PATH_BY_EN, EN_PATH_BY_ES, ES_HOME_ALIAS, ES_ALL_TOOLS_PATH } from './locales/es/slugs';
+import { AboutPageEs } from './pages/es/AboutPageEs';
+import { ContactPageEs } from './pages/es/ContactPageEs';
+import { PrivacyPageEs } from './pages/es/PrivacyPageEs';
+import { TermsPageEs } from './pages/es/TermsPageEs';
+import { AllToolsPageEs } from './pages/es/AllToolsPageEs';
 
 const RemoveBackgroundPage = React.lazy(() =>
   import('./pages/RemoveBackgroundPage').then((m) => ({ default: m.RemoveBackgroundPage }))
@@ -140,14 +147,35 @@ const KNOWN_ROUTES = [
   '/remove-background',
 ];
 
-function getNormalizedPath(rawPathname: string): string {
+interface ParsedPath { path: string; lang: SupportedLang; }
+
+function parsePath(rawPathname: string): ParsedPath {
   const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
   let p = rawPathname.toLowerCase();
   if (base && base !== '/' && p.startsWith(base.toLowerCase())) {
     p = p.slice(base.length) || '/';
   }
   p = p.replace(/\/$/, '') || '/';
-  return KNOWN_ROUTES.includes(p) ? p : '/';
+
+  // Spanish prefix: /es/<spanish-slug>
+  if (p === '/es' || p.startsWith('/es/')) {
+    const rest = p === '/es' ? '/' : p.slice(3); // keep leading '/'
+    if (rest === '/') return { path: '/', lang: 'es' };
+    if (rest === ES_HOME_ALIAS.slice(3)) return { path: '/', lang: 'es' }; // /es/comprimir-imagenes → /es/
+    if (rest === ES_ALL_TOOLS_PATH.slice(3)) return { path: ES_ALL_TOOLS_PATH, lang: 'es' };
+    const enPath = EN_PATH_BY_ES[p]; // keys carry the '/es' prefix (see slug map)
+    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'es' };
+    return { path: '/', lang: 'es' }; // unknown Spanish path → Spanish home
+  }
+  return KNOWN_ROUTES.includes(p) ? { path: p, lang: 'en' } : { path: '/', lang: 'en' };
+}
+
+/** English path → the equivalent path in `lang` (identity for 'en'). */
+function toLocalizedPath(enPath: string, lang: SupportedLang): string {
+  if (lang === 'en') return enPath;
+  if (enPath === '/') return '/es/';
+  if (enPath === ES_ALL_TOOLS_PATH) return ES_ALL_TOOLS_PATH; // already localized key
+  return ES_PATH_BY_EN[enPath] ?? enPath;
 }
 
 function withBasePath(routePath: string): string {
@@ -156,13 +184,40 @@ function withBasePath(routePath: string): string {
   return `${base}${routePath === '/' ? '/' : routePath}`;
 }
 
+interface EsLocale {
+  ui: typeof import('./locales/es/ui').ES;
+  tools: typeof import('./locales/es/tools').TOOL_BY_SLUG_ES;
+  categories: typeof import('./locales/es/tools').TOOL_CATEGORIES_ES;
+  toolUi: typeof import('./locales/es/ui').TOOL_UI_ES;
+}
+
 export default function App() {
-  const [currentPath, setCurrentPath] = useState<string>(() => {
+  const [route, setRoute] = useState<ParsedPath>(() => {
     if (typeof window !== 'undefined') {
-      return getNormalizedPath(window.location.pathname);
+      return parsePath(window.location.pathname);
     }
-    return '/';
+    return { path: '/', lang: 'en' };
   });
+  const currentPath = route.path;
+
+  const [lang, setLang] = useState<SupportedLang>(route.lang);
+  const [esLocale, setEsLocale] = useState<EsLocale | null>(null);
+  const [localeLoading, setLocaleLoading] = useState(false);
+
+  // Generic loader — later languages add one branch each; only the selected
+  // language's files are ever downloaded (Vite code-splits each dynamic import).
+  const loadLocale = useCallback(async (target: SupportedLang) => {
+    if (target === 'en') return;
+    if (target === 'es' && !esLocale) {
+      setLocaleLoading(true);
+      const [uiMod, toolsMod] = await Promise.all([
+        import('./locales/es/ui'),
+        import('./locales/es/tools'),
+      ]);
+      setEsLocale({ ui: uiMod.ES, tools: toolsMod.TOOL_BY_SLUG_ES, categories: toolsMod.TOOL_CATEGORIES_ES, toolUi: uiMod.TOOL_UI_ES });
+      setLocaleLoading(false);
+    }
+  }, [esLocale]);
 
   const [images, setImages] = useState<ImageItem[]>([]);
   const [isCompressing, setIsCompressing] = useState<boolean>(false);
@@ -186,18 +241,57 @@ export default function App() {
   // Handle client-side routing and browser back/forward buttons
   useEffect(() => {
     const handlePopState = () => {
-      setCurrentPath(getNormalizedPath(window.location.pathname));
+      setRoute(parsePath(window.location.pathname));
     };
 
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  // Keep the language state in sync when the route changes (e.g. browser
+  // back/forward): the route is the source of truth for the URL's language.
+  useEffect(() => {
+    setLang(route.lang);
+  }, [route.lang]);
+
+  // Load the locale files when the language changes to Spanish.
+  useEffect(() => {
+    if (lang === 'es') {
+      loadLocale('es');
+    }
+  }, [lang, loadLocale]);
+
+  // Keep <html lang> in sync with the active language.
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
+  // Stored language preference (mount only): if the user landed on '/' with no
+  // language prefix and previously chose Spanish, go to '/es/'. Never redirect
+  // from a deep link, never use IP/location.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+    const raw = window.location.pathname;
+    const noBase =
+      base && base !== '/' && raw.toLowerCase().startsWith(base.toLowerCase())
+        ? raw.slice(base.length) || '/'
+        : raw;
+    if (noBase === '/' && localStorage.getItem(LANG_STORAGE_KEY) === 'es') {
+      window.history.replaceState(null, '', withBasePath('/es/'));
+      setLang('es');
+      setRoute({ path: '/', lang: 'es' });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // Update document title, meta description, OpenGraph, and canonical tag based on active route
   useEffect(() => {
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     const baseDomain = 'https://compressmypic.online';
-    const toolMeta = TOOL_BY_SLUG[currentPath];
+    const toolMeta =
+      (lang === 'es' && esLocale ? esLocale.tools[currentPath] : undefined) ??
+      TOOL_BY_SLUG[currentPath];
 
     const staticTitles: Record<string, string> = {
       '/about': 'About CompressMyPic – Free Online Image Compressor',
@@ -220,15 +314,35 @@ export default function App() {
       '/guides/reduce-image-size-to-100kb': 'Reduce image size to 100KB for websites and email with a free online compressor. Step-by-step guide — no signup, no watermark, images stay on your device.',
     };
 
+    const staticTitlesEs: Record<string, string> = {
+      '/': esLocale?.ui.homeMeta.seoTitle ?? '',
+      '/about': 'Nosotros – CompressMyPic, compresor de imágenes gratis online',
+      '/contact': 'Contacto – CompressMyPic, compresor de imágenes gratis online',
+      '/privacy': 'Política de privacidad – CompressMyPic',
+      '/terms': 'Términos de servicio – CompressMyPic',
+      [ES_ALL_TOOLS_PATH]: 'Todas las herramientas – CompressMyPic',
+    };
+
+    const staticDescriptionsEs: Record<string, string> = {
+      '/': esLocale?.ui.homeMeta.seoDescription ?? '',
+      '/about': 'Acerca de CompressMyPic: un compresor de imágenes online gratis para JPG, PNG y WebP, sin registro, sin marca de agua y sin subir nada a ningún servidor.',
+      '/contact': '¿Tiene preguntas, comentarios o necesita ayuda? Escríbale a nuestro equipo con el formulario de abajo o contáctenos directamente por correo electrónico.',
+      '/privacy': 'CompressMyPic procesa sus imágenes localmente en su navegador: nunca se suben a nuestros servidores y no recopilamos, almacenamos ni compartimos sus imágenes.',
+      '/terms': 'Al usar CompressMyPic, acepta cumplir estos Términos del Servicio. Lea las condiciones de uso permitido, responsabilidades y limitaciones del servicio gratuito.',
+      [ES_ALL_TOOLS_PATH]: 'Explore las 48 herramientas gratuitas de CompressMyPic para comprimir, convertir y editar imágenes online, directamente en su navegador y sin registro.',
+    };
+
     const nextTitle =
       toolMeta?.seoTitle ||
+      (lang === 'es' ? staticTitlesEs[currentPath] : undefined) ||
       staticTitles[currentPath] ||
       'Free Image Compressor Online – Reduce Image Size to 100KB';
     const nextDesc =
       toolMeta?.seoDescription ||
+      (lang === 'es' ? staticDescriptionsEs[currentPath] : undefined) ||
       staticDescriptions[currentPath] ||
       staticDescriptions['/'];
-    const nextCanonical = `${baseDomain}${currentPath === '/' ? '/' : currentPath}`;
+    const nextCanonical = `${baseDomain}${lang === 'es' ? toLocalizedPath(currentPath, 'es') : currentPath}`;
 
     document.title = nextTitle;
     if (canonicalLink) canonicalLink.href = nextCanonical;
@@ -250,15 +364,66 @@ export default function App() {
 
     const twDesc = document.querySelector('meta[name="twitter:description"]');
     if (twDesc) twDesc.setAttribute('content', nextDesc);
-  }, [currentPath]);
+
+    // hreflang: App owns home/legal/directory/guide pages; ToolPageLayout owns
+    // tool pages, so App never writes (or removes) alternates for a translated
+    // tool page — its layout writes them. For every other page without a
+    // Spanish equivalent, stale alternates are removed.
+    const setHreflangLinks = (items: Array<{ lang: string; href: string }>) => {
+      for (const item of items) {
+        let el = document.head.querySelector<HTMLLinkElement>(
+          `link[rel="alternate"][hreflang="${item.lang}"]`
+        );
+        if (!el) {
+          el = document.createElement('link');
+          el.setAttribute('rel', 'alternate');
+          el.setAttribute('hreflang', item.lang);
+          el.setAttribute('href', item.href);
+          document.head.appendChild(el);
+        } else {
+          el.setAttribute('href', item.href);
+        }
+      }
+    };
+    const removeHreflangLinks = () => {
+      document.querySelectorAll('link[rel="alternate"]').forEach((el) => el.remove());
+    };
+    // '/' is the home entry in the registry, not a tool page — it must get
+    // App-owned hreflang like any other non-tool page.
+    const isToolPage = currentPath !== '/' && Boolean(TOOL_BY_SLUG[currentPath]);
+    const hasEsEquivalent =
+      currentPath === '/' ||
+      currentPath === ES_ALL_TOOLS_PATH ||
+      Boolean(ES_PATH_BY_EN[currentPath]);
+    const toolPageOwnedByLayout =
+      isToolPage && lang === 'es' && Boolean(esLocale?.tools[currentPath]);
+    if (toolPageOwnedByLayout) {
+      // Translated tool page: ToolPageLayout writes the alternates.
+    } else if (!isToolPage && hasEsEquivalent) {
+      // The ES directory has no standalone English page — its English
+      // equivalent is the home page (which hosts the tools directory section).
+      const enEquivalent = currentPath === ES_ALL_TOOLS_PATH ? '/' : currentPath;
+      setHreflangLinks([
+        { lang: 'en', href: `${baseDomain}${enEquivalent}` },
+        { lang: 'es', href: `${baseDomain}${toLocalizedPath(currentPath, 'es')}` },
+        { lang: 'x-default', href: `${baseDomain}${enEquivalent}` },
+      ]);
+    } else {
+      removeHreflangLinks();
+    }
+  }, [currentPath, lang, esLocale]);
 
   const handleNavigate = (path: string) => {
     if (path.includes('#')) {
-      const [route, hash] = path.split('#');
-      const targetRoute = route || '/';
-      if (currentPath !== targetRoute) {
-        window.history.pushState(null, '', withBasePath(path));
-        setCurrentPath(targetRoute);
+      const [routePart, hash] = path.split('#');
+      const localizedRoute = routePart ? toLocalizedPath(routePart, lang) : routePart;
+      const finalPath = hash ? `${localizedRoute}#${hash}` : localizedRoute;
+      if (routePart) {
+        const targetPath = parsePath(localizedRoute).path;
+        if (currentPath !== targetPath) {
+          window.history.pushState(null, '', withBasePath(finalPath));
+          setRoute(parsePath(localizedRoute));
+        }
       }
       setTimeout(() => {
         const el = document.getElementById(hash);
@@ -269,21 +434,45 @@ export default function App() {
       return;
     }
 
-    window.history.pushState(null, '', withBasePath(path));
-    setCurrentPath(path);
+    const localizedPath = toLocalizedPath(path, lang);
+    window.history.pushState(null, '', withBasePath(localizedPath));
+    setRoute(parsePath(localizedPath));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const scrollToTool = () => {
     if (currentPath !== '/') {
-      window.history.pushState(null, '', withBasePath('/'));
-      setCurrentPath('/');
+      const homePath = toLocalizedPath('/', lang);
+      window.history.pushState(null, '', withBasePath(homePath));
+      setRoute(parsePath(homePath));
       setTimeout(() => {
         toolRef.current?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     } else {
       toolRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleLanguageChange = (next: SupportedLang) => {
+    localStorage.setItem(LANG_STORAGE_KEY, next);
+    // The ES directory has no English route — switching to English lands on home.
+    const target =
+      next === 'en'
+        ? route.path === ES_ALL_TOOLS_PATH
+          ? '/'
+          : route.path
+        : toLocalizedPath(route.path, next);
+    // If the current page has no Spanish equivalent (e.g. a guide — Batch 7),
+    // fall back to that language's home instead of a broken page.
+    const existsInEs =
+      route.path === '/' ||
+      route.path === ES_ALL_TOOLS_PATH ||
+      Boolean(ES_PATH_BY_EN[route.path]);
+    const finalTarget = next === 'es' && !existsInEs ? '/es/' : target;
+    window.history.pushState(null, '', withBasePath(finalTarget));
+    setLang(next);
+    setRoute(parsePath(finalTarget));
+    window.scrollTo({ top: 0 });
   };
 
   // Revoke object URLs on unmount or removal
@@ -415,7 +604,7 @@ export default function App() {
           outputFilename: file.name,
           quality: settings.quality,
           status: 'error',
-          errorMessage: 'Corrupted or unreadable image file.',
+          errorMessage: lang === 'es' && esLocale ? esLocale.ui.uploadZone.errorLoadFailed : 'Corrupted or unreadable image file.',
           spaceSaved: null,
           compressionPercentage: null,
         });
@@ -574,12 +763,162 @@ export default function App() {
     (img) => img.originalType === 'image/png' || /\.png$/i.test(img.name)
   );
 
+  // Active-language registries for the header dropdown, the tools directory
+  // and the homepage: English order, with the Spanish entry substituted when
+  // it exists (tools not yet translated keep their English entry).
+  const toolsRegistry =
+    lang === 'es' && esLocale
+      ? TOOLS_REGISTRY.map((t) => esLocale.tools[t.slug] ?? t)
+      : TOOLS_REGISTRY;
+  const categoryLabels =
+    lang === 'es' && esLocale ? esLocale.categories : TOOL_CATEGORIES;
+  const esUi = lang === 'es' ? esLocale?.ui ?? null : null;
+  const showEsLoading = lang === 'es' && localeLoading && !esLocale;
+
+  // Languages that have a translation of the CURRENT page (the switcher guard).
+  const pageHasEs =
+    route.path === '/' ||
+    route.path === ES_ALL_TOOLS_PATH ||
+    ES_PATH_BY_EN[route.path] !== undefined ||
+    route.path === '/about' ||
+    route.path === '/contact' ||
+    route.path === '/privacy' ||
+    route.path === '/terms';
+  const availableLanguages: SupportedLang[] = SUPPORTED_LANGS.filter(
+    (l) => l === 'en' || (l === 'es' && pageHasEs)
+  );
+
+  // Homepage (compressor app). Extracted so the English and Spanish home
+  // branches render the same DOM; `strings` is the Spanish bundle, or null
+  // for English (components fall back to their English defaults).
+  const renderHome = (strings: EsLocale['ui'] | null) => (
+    <>
+          <Hero strings={strings?.hero} />
+
+          <main ref={toolRef} className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 pb-16">
+            <div className="space-y-6">
+              {/* Upload Dropzone */}
+              <UploadZone
+                onFilesSelected={handleFilesSelected}
+                maxFileSizeMB={settings.maxFileSizeMB}
+                disabled={isCompressing}
+                strings={strings?.uploadZone}
+              />
+
+              {/* Compression Settings & Controls */}
+              {images.length > 0 && (
+                <CompressionControls
+                  settings={settings}
+                  onUpdateSettings={handleUpdateSettings}
+                  onCompressAll={handleCompressAll}
+                  onClearAll={handleClearAll}
+                  totalImagesCount={images.length}
+                  hasTransparentImages={hasTransparentImages}
+                  hasPngImages={hasPngImages}
+                  isCompressing={isCompressing}
+                  strings={strings?.compressionControls}
+                />
+              )}
+
+              {/* Results List and Download Panel */}
+              {images.length > 0 && (
+                <ResultsList
+                  images={images}
+                  onDownloadSingle={handleDownloadSingle}
+                  onDownloadAllZip={handleDownloadAllZip}
+                  onRemoveImage={handleRemoveImage}
+                  onOpenComparison={(img) => setComparisonTarget(img)}
+                  onRecompressSingle={handleRecompressSingle}
+                  onKeepOriginal={handleKeepOriginal}
+                  isZipping={isZipping}
+                  zipProgress={zipProgress}
+                  strings={strings?.resultsList}
+                />
+              )}
+            </div>
+          </main>
+
+          {/* Tools Directory Grid */}
+          <ToolsDirectorySection
+            onNavigate={handleNavigate}
+            currentPath="/"
+            toolsRegistry={toolsRegistry}
+            categoryLabels={categoryLabels}
+            strings={strings?.toolsDirectory}
+          />
+
+          {/* Share Section */}
+                    <ShareSection strings={strings?.shareSection} />
+          {/* Reserved AdSlot 2: Between Tool and Educational Content */}
+          <div className="px-4">
+            <AdSlot slotId="mid-content-banner" format="horizontal" />
+          </div>
+
+          {/* Educational Content Section */}
+          <EducationalContent
+            sections={
+              strings
+                ? strings.educational.sections.map((section) => ({
+                    ...section,
+                    bullets: 'bullets' in section && section.bullets ? [...section.bullets] : undefined,
+                  }))
+                : undefined
+            }
+          />
+
+          {/* FAQ Section */}
+          {/* Guides Section */}
+      <section className="py-16 sm:py-20 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">{strings?.guidesSection.heading ?? 'Guides'}</h2>
+          <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">{strings?.guidesSection.subheading ?? 'Step-by-step guides to get smaller files without losing visible quality.'}</p>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <a href="/guides/compress-images-for-whatsapp" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/compress-images-for-whatsapp'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
+              <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3"><MessageCircle className="w-5 h-5" /></div>
+              <h3 className="text-base font-bold text-slate-900 dark:text-slate-50">{strings?.guidesSection.cards[0].title ?? 'How to compress images for WhatsApp without losing quality'}</h3>
+              <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-normal">{strings?.guidesSection.cards[0].desc ?? 'Shrink photos before sending so they stay sharp and send fast.'}</p>
+              <span className="mt-3 inline-block text-sm font-semibold text-blue-600 dark:text-blue-400">{strings?.guidesSection.cards[0].cta ?? 'Read guide →'}</span>
+            </a>
+            <a href="/guides/jpg-vs-png-vs-webp" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/jpg-vs-png-vs-webp'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
+              <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3"><FileImage className="w-5 h-5" /></div>
+              <h3 className="text-base font-bold text-slate-900 dark:text-slate-50">{strings?.guidesSection.cards[1].title ?? 'JPG vs PNG vs WebP: Which Format Should You Use?'}</h3>
+              <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-normal">{strings?.guidesSection.cards[1].desc ?? 'File size, quality and transparency compared, so you can pick the right format.'}</p>
+              <span className="mt-3 inline-block text-sm font-semibold text-blue-600 dark:text-blue-400">{strings?.guidesSection.cards[1].cta ?? 'Read guide →'}</span>
+            </a>
+            <a href="/guides/reduce-image-size-to-100kb" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/reduce-image-size-to-100kb'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
+              <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3"><Zap className="w-5 h-5" /></div>
+              <h3 className="text-base font-bold text-slate-900 dark:text-slate-50">{strings?.guidesSection.cards[2].title ?? 'How to Reduce Image Size to 100KB for Web &amp; Email'}</h3>
+              <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-normal">{strings?.guidesSection.cards[2].desc ?? 'Step-by-step: hit 100KB without losing visible quality.'}</p>
+              <span className="mt-3 inline-block text-sm font-semibold text-blue-600 dark:text-blue-400">{strings?.guidesSection.cards[2].cta ?? 'Read guide →'}</span>
+            </a>
+          </div>
+        </div>
+      </section>
+      <FaqSection
+        heading={strings?.faqSection.heading}
+        subheading={strings?.faqSection.subheading}
+        faqs={strings ? [...strings.faqSection.faqs] : undefined}
+      />
+
+          {/* Reserved AdSlot 3: Near Bottom of Page */}
+          <div className="px-4 pb-6">
+            <AdSlot slotId="footer-bottom-banner" format="horizontal" />
+          </div>
+    </>
+  );
+
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100">
       {/* 1. Header */}
       <Header
         onNavigate={handleNavigate}
         onScrollToTool={scrollToTool}
+        lang={lang}
+        onLanguageChange={handleLanguageChange}
+        strings={esUi ? esUi.header : undefined}
+        toolsRegistry={toolsRegistry}
+        categoryLabels={categoryLabels}
+        availableLanguages={availableLanguages}
       />
 
       {/* Reserved AdSlot 1: Below Header (stays invisible until real AdSense IDs supplied) */}
@@ -588,7 +927,39 @@ export default function App() {
       </div>
 
       {/* 2. Page Router */}
-      {currentPath === '/about' ? (
+      {showEsLoading ? (
+        <main className="flex-1">
+          <div className="max-w-5xl mx-auto px-4 py-20 text-center">
+            <div
+              className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-slate-300 border-t-blue-600"
+              aria-hidden="true"
+            />
+            <p className="mt-4 text-sm text-slate-500">Cargando…</p>
+          </div>
+        </main>
+      ) : lang === 'es' && currentPath === '/' ? (
+        renderHome(esUi)
+      ) : currentPath === ES_ALL_TOOLS_PATH ? (
+        <main className="flex-1">
+          <AllToolsPageEs onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
+        </main>
+      ) : lang === 'es' && currentPath === '/about' ? (
+        <main className="flex-1">
+          <AboutPageEs onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'es' && currentPath === '/contact' ? (
+        <main className="flex-1">
+          <ContactPageEs onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'es' && currentPath === '/privacy' ? (
+        <main className="flex-1">
+          <PrivacyPageEs onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'es' && currentPath === '/terms' ? (
+        <main className="flex-1">
+          <TermsPageEs onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/about' ? (
         <main className="flex-1">
           <AboutPage onNavigate={handleNavigate} />
         </main>
@@ -618,27 +989,123 @@ export default function App() {
               </main>
       ) : currentPath === '/image-resizer' ? (
         <main className="flex-1">
-          <ImageResizerPage onNavigate={handleNavigate} />
+          <ImageResizerPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-resizer'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-resizer']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-resizer'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-converter' ? (
         <main className="flex-1">
-          <ImageConverterPage onNavigate={handleNavigate} />
+          <ImageConverterPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-converter'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-converter']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-converter'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/rotate-flip-image' ? (
         <main className="flex-1">
-          <RotateFlipPage onNavigate={handleNavigate} />
+          <RotateFlipPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/rotate-flip-image'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/rotate-flip-image']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/rotate-flip-image'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-to-pdf' ? (
         <main className="flex-1">
-          <ImageToPdfPage onNavigate={handleNavigate} />
+          <ImageToPdfPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-to-pdf'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-to-pdf']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-to-pdf'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-metadata-viewer' ? (
         <main className="flex-1">
-          <MetadataViewerPage onNavigate={handleNavigate} />
+          <MetadataViewerPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-metadata-viewer'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-metadata-viewer']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-metadata-viewer'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/remove-image-metadata' ? (
         <main className="flex-1">
-          <RemoveMetadataPage onNavigate={handleNavigate} />
+          <RemoveMetadataPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/remove-image-metadata'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/remove-image-metadata']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/remove-image-metadata'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/favicon-generator' ? (
         <main className="flex-1">
@@ -654,11 +1121,43 @@ export default function App() {
         </main>
       ) : currentPath === '/image-cropper' ? (
         <main className="flex-1">
-          <ImageCropperPage onNavigate={handleNavigate} />
+          <ImageCropperPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-cropper'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-cropper']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-cropper'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/image-watermark' ? (
         <main className="flex-1">
-          <ImageWatermarkPage onNavigate={handleNavigate} />
+          <ImageWatermarkPage
+            onNavigate={handleNavigate}
+            lang={lang}
+            tool={lang === 'es' && esLocale ? esLocale.tools['/image-watermark'] : undefined}
+            toolRegistry={lang === 'es' && esLocale ? esLocale.tools : undefined}
+            categoryLabels={lang === 'es' && esLocale ? esLocale.categories : undefined}
+            esStrings={
+              lang === 'es' && esLocale && esLocale.tools['/image-watermark']
+                ? {
+                    layoutUi: esLocale.ui.toolPageLayout,
+                    uploadZone: esLocale.ui.uploadZone,
+                    comparisonModal: esLocale.ui.comparisonModal,
+                    toolUi: esLocale.toolUi['/image-watermark'],
+                  }
+                : undefined
+            }
+          />
         </main>
       ) : currentPath === '/blur-pixelate-image' ? (
         <main className="flex-1">
@@ -817,108 +1316,51 @@ export default function App() {
           </Suspense>
         </main>
       ) : (
-        /* HOME / COMPRESSOR APPLICATION */
-        <>
-          <Hero />
-
-          <main ref={toolRef} className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 pb-16">
-            <div className="space-y-6">
-              {/* Upload Dropzone */}
-              <UploadZone
-                onFilesSelected={handleFilesSelected}
-                maxFileSizeMB={settings.maxFileSizeMB}
-                disabled={isCompressing}
-              />
-
-              {/* Compression Settings & Controls */}
-              {images.length > 0 && (
-                <CompressionControls
-                  settings={settings}
-                  onUpdateSettings={handleUpdateSettings}
-                  onCompressAll={handleCompressAll}
-                  onClearAll={handleClearAll}
-                  totalImagesCount={images.length}
-                  hasTransparentImages={hasTransparentImages}
-                  hasPngImages={hasPngImages}
-                  isCompressing={isCompressing}
-                />
-              )}
-
-              {/* Results List and Download Panel */}
-              {images.length > 0 && (
-                <ResultsList
-                  images={images}
-                  onDownloadSingle={handleDownloadSingle}
-                  onDownloadAllZip={handleDownloadAllZip}
-                  onRemoveImage={handleRemoveImage}
-                  onOpenComparison={(img) => setComparisonTarget(img)}
-                  onRecompressSingle={handleRecompressSingle}
-                  onKeepOriginal={handleKeepOriginal}
-                  isZipping={isZipping}
-                  zipProgress={zipProgress}
-                />
-              )}
-            </div>
-          </main>
-
-          {/* Tools Directory Grid */}
-          <ToolsDirectorySection onNavigate={handleNavigate} currentPath="/" />
-
-          {/* Share Section */}
-                    <ShareSection />
-          {/* Reserved AdSlot 2: Between Tool and Educational Content */}
-          <div className="px-4">
-            <AdSlot slotId="mid-content-banner" format="horizontal" />
-          </div>
-
-          {/* Educational Content Section */}
-          <EducationalContent />
-
-          {/* FAQ Section */}
-          {/* Guides Section */}
-      <section className="py-16 sm:py-20 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">Guides</h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">Step-by-step guides to get smaller files without losing visible quality.</p>
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <a href="/guides/compress-images-for-whatsapp" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/compress-images-for-whatsapp'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
-              <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3"><MessageCircle className="w-5 h-5" /></div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-slate-50">How to compress images for WhatsApp without losing quality</h3>
-              <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-normal">Shrink photos before sending so they stay sharp and send fast.</p>
-              <span className="mt-3 inline-block text-sm font-semibold text-blue-600 dark:text-blue-400">Read guide →</span>
-            </a>
-            <a href="/guides/jpg-vs-png-vs-webp" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/jpg-vs-png-vs-webp'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
-              <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3"><FileImage className="w-5 h-5" /></div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-slate-50">JPG vs PNG vs WebP: Which Format Should You Use?</h3>
-              <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-normal">File size, quality and transparency compared, so you can pick the right format.</p>
-              <span className="mt-3 inline-block text-sm font-semibold text-blue-600 dark:text-blue-400">Read guide →</span>
-            </a>
-            <a href="/guides/reduce-image-size-to-100kb" onClick={(e) => { e.preventDefault(); handleNavigate('/guides/reduce-image-size-to-100kb'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
-              <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3"><Zap className="w-5 h-5" /></div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-slate-50">How to Reduce Image Size to 100KB for Web &amp; Email</h3>
-              <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-normal">Step-by-step: hit 100KB without losing visible quality.</p>
-              <span className="mt-3 inline-block text-sm font-semibold text-blue-600 dark:text-blue-400">Read guide →</span>
-            </a>
-          </div>
-        </div>
-      </section>
-      <FaqSection />
-
-          {/* Reserved AdSlot 3: Near Bottom of Page */}
-          <div className="px-4 pb-6">
-            <AdSlot slotId="footer-bottom-banner" format="horizontal" />
-          </div>
-        </>
+        renderHome(null)
       )}
 
       {/* 3. Footer */}
-      <Footer onNavigate={handleNavigate} />
+      <Footer
+        onNavigate={handleNavigate}
+        strings={
+          esUi
+            ? {
+                ...esUi.footer,
+                toolsLinks: [...esUi.footer.toolsLinks],
+                legalLinks: [...esUi.footer.legalLinks],
+                guidesLinks: [...esUi.footer.guidesLinks],
+                moreLinks: [...esUi.footer.moreLinks],
+                directoryLinks: [...esUi.footer.directoryLinks],
+              }
+            : undefined
+        }
+        localizePath={esUi ? (slug) => toLocalizedPath(slug, lang) : undefined}
+      />
 
       {/* Comparison Modal */}
       {comparisonTarget && (
         <ComparisonModal
           image={comparisonTarget}
           onClose={() => setComparisonTarget(null)}
+          titlePrefix={esUi?.comparisonModal.titlePrefix}
+          beforeLabel={esUi?.comparisonModal.beforeLabel}
+          afterLabel={esUi?.comparisonModal.afterLabel}
+          closeLabel={esUi?.comparisonModal.closeLabel}
+          instruction={esUi?.comparisonModal.instruction}
+          sliderLabel={esUi?.comparisonModal.sliderLabel}
+          sideBySideLabel={esUi?.comparisonModal.sideBySideLabel}
+          zoomInLabel={esUi?.comparisonModal.zoomInLabel}
+          zoomOutLabel={esUi?.comparisonModal.zoomOutLabel}
+          originalLabel={esUi?.comparisonModal.originalLabel}
+          outputLabel={esUi?.comparisonModal.outputLabel}
+          reductionLabel={esUi?.comparisonModal.reductionLabel}
+          sizeChangeLabel={esUi?.comparisonModal.sizeChangeLabel}
+          qualityLabel={esUi?.comparisonModal.qualityLabel}
+          formatLabel={esUi?.comparisonModal.formatLabel}
+          modalAriaLabel={esUi?.comparisonModal.modalAriaLabel}
+          altCompressed={esUi?.comparisonModal.altCompressed}
+          altOriginal={esUi?.comparisonModal.altOriginal}
+          altProcessed={esUi?.comparisonModal.altProcessed}
         />
       )}
     </div>
