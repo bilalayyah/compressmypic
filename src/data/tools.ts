@@ -3832,16 +3832,43 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Color Palette Extractor',
     shortDescription: 'Extract dominant colors from any photo with HEX, RGB, HSL & export.',
     category: 'developer',
-    seoTitle: 'Image Color Palette Extractor – Get Dominant Colors from Photos',
+    seoTitle: 'Image Color Palette Extractor – Get Dominant Colors',
     seoDescription:
-      'Extract dominant color palettes from any image free in your browser. View 3–12 color swatches with HEX, RGB, HSL, percentage share, and CSS/JSON export.',
+      'Extract dominant colors with our free image color palette extractor. View 3 to 12 swatches with HEX, RGB, HSL codes, CSS variables, JSON, and PNG cards.',
     h1: 'Image Color Palette Extractor',
     subtitle:
-      'Automatically extract the dominant color palette from any photo, illustration, or UI screenshot using client-side Median-Cut quantization — with instant CSS, Tailwind, and JSON export.',
+      'Discover the core color scheme inside any photograph, illustration, or UI screenshot with our browser-native image color palette extractor powered by Median-Cut quantization. Designed for UI designers, brand strategists, and front-end developers, it generates 3 to 12 balanced swatches with percentage shares, one-click HEX, RGB, and HSL copying, CSS custom properties, JSON data, and shareable PNG palette cards locally on your device.',
     howToSteps: [
-      { title: 'Upload an image', description: 'Drop any JPG, PNG, WebP, HEIC, or SVG image.' },
-      { title: 'Choose palette size (3–12 colors)', description: 'Adjust the color count slider to extract minimalist or rich palettes instantly.' },
-      { title: 'Copy swatches or export palette', description: 'Copy any HEX, RGB, or HSL code or download CSS variables, JSON, or a PNG palette card.' },
+      {
+        title: 'Upload your source image',
+        description:
+          'Drop or select any JPG, PNG, WebP, HEIC, GIF, BMP, or SVG file up to 20 MB in the upload zone (or paste from your clipboard).',
+      },
+      {
+        title: 'Set Number of Colors (3–12)',
+        description:
+          'Drag the Number of Colors slider between 3 minimalist accent tones and 12 detailed swatches to recalculate the palette immediately.',
+      },
+      {
+        title: 'Review the Proportional Color Strip',
+        description:
+          'Inspect the horizontal Proportional Color Strip above the swatch cards to see how visually dominant each hue is across the image.',
+      },
+      {
+        title: 'Copy HEX, RGB, or HSL swatch codes',
+        description:
+          'Click any HEX, RGB, or HSL pill inside a swatch card to copy that exact color value straight to your clipboard.',
+      },
+      {
+        title: 'Export CSS Variables or JSON',
+        description:
+          'Use Copy CSS Variables for a ready-to-paste :root block or Copy JSON to grab structured swatch codes, percentages, and source dimensions.',
+      },
+      {
+        title: 'Download a Palette PNG card',
+        description:
+          'Click Download Palette PNG to save a clean white presentation card pairing your preview photo with the extracted color blocks.',
+      },
     ],
     features: [
       { title: 'Median-Cut Color Quantization', description: 'Groups millions of image pixels into balanced, representative dominant swatches in milliseconds.' },
@@ -3850,8 +3877,106 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       { title: '100% Browser-Native', description: 'Analyzes pixels locally on HTML5 Canvas without uploading images.' },
     ],
     faqs: [
-      { question: 'How many colors can I extract from an image?', answer: 'Use the Palette Size slider to extract anywhere from 3 to 12 dominant colors.' },
-      { question: 'What is the difference between Color Picker and Palette Extractor?', answer: 'Color Picker lets you sample an exact single pixel with a magnifier, while Palette Extractor analyzes the entire image to find its dominant color scheme.' },
+      {
+        question: 'How does Median-Cut quantization build a palette from my photo?',
+        answer:
+          'Median-Cut groups sampled pixels into 3D RGB color buckets and repeatedly splits the widest color channel at its median until the requested number of buckets remains. Each bucket averages into one representative swatch weighted by how many pixels fell inside it, producing harmonious dominant colors instead of noisy outlier pixels.',
+      },
+      {
+        question: 'How many color swatches can I generate with this image color palette extractor?',
+        answer:
+          'You can extract anywhere from 3 to 12 dominant colors using the Number of Colors slider. Choosing 3 to 5 works well for minimalist brand themes, while 8 to 12 reveals subtle shadow tones and secondary accent hues.',
+      },
+      {
+        question: 'What does the percentage badge on each color card represent?',
+        answer:
+          'Each percentage shows the share of sampled non-transparent pixels assigned to that swatch during quantization. The Proportional Color Strip directly scales each color segment to match those exact percentages.',
+      },
+      {
+        question: 'Can I copy all extracted swatches as CSS custom properties at once?',
+        answer:
+          'Yes. Clicking Copy CSS Variables copies a complete :root block listing --palette-1 through --palette-N with every hex color ready for your stylesheet. You can rename the variables later to match your design tokens.',
+      },
+      {
+        question: 'What data is included when I click Copy JSON?',
+        answer:
+          'Copy JSON writes an array of objects containing each swatch index, hex, rgb, hsl, and percentage dominance share. Developers can drop this payload straight into theme config files, design documentation, or automated style scripts.',
+      },
+      {
+        question: 'What does Download Palette PNG generate?',
+        answer:
+          'Download Palette PNG renders a clean 1000-pixel-wide white presentation card displaying your source graphic centered at the top above rounded color blocks labeled with their hex codes and share percentages. It downloads locally as <filename>_palette.png with no watermark.',
+      },
+      {
+        question: 'Why does Palette Extractor give different results than an eyedropper?',
+        answer:
+          'An eyedropper samples a single pixel beneath your cursor, whereas palette extraction clusters the entire image into overall dominant color families. That makes it faster for building cohesive color schemes rather than matching one tiny dot.',
+      },
+      {
+        question: 'How are transparent backgrounds handled when extracting colors from PNGs?',
+        answer:
+          'Pixels with alpha transparency below 50% are skipped before quantization runs. This prevents empty transparent canvas space around logos or product cutouts from distorting the palette toward white or black.',
+      },
+      {
+        question: 'Does the extractor inspect every single pixel of a giant 20 MB photo?',
+        answer:
+          'To keep extraction snappy inside your browser, the image is temporarily scaled onto an offscreen canvas up to 140 pixels on its longest edge before Median-Cut runs. Because dominant color ratios remain virtually identical at that scale, palettes compute almost instantaneously without freezing your tab.',
+      },
+      {
+        question: 'Which image file formats and sizes are accepted?',
+        answer:
+          'You can upload JPG, PNG, WebP, iPhone HEIC/HEIF, GIF, BMP, and SVG files up to 20 MB per image. Multi-frame animated GIFs extract colors from their opening frame cleanly.',
+      },
+      {
+        question: 'Why did two similar shades appear in my 12-color palette?',
+        answer:
+          'Photos with large gradients—such as sunsets, skin tones, or studio backdrops—contain millions of pixels clustered in one region of color space. At higher swatch counts like 10 or 12, Median-Cut naturally subdivides that dense region into closely related highlights and midtones.',
+      },
+      {
+        question: 'Are brand concepts, client moodboards, or screenshots sent to a server?',
+        answer:
+          'No. Pixel sampling, color clustering, code formatting, and PNG card rendering happen exclusively inside your local HTML5 Canvas memory. Your creative assets stay strictly on your own device.',
+      },
+      {
+        question: 'Can I switch the swatch count after copying CSS without re-uploading?',
+        answer:
+          'Yes. Moving the Number of Colors slider re-clusters the cached image data instantaneously in memory so you can preview 4, 6, or 10 colors side by side before exporting.',
+      },
+      {
+        question: 'Why might a tiny neon accent not appear in a 4-color palette?',
+        answer:
+          'Because Median-Cut prioritizes color regions containing the largest pixel areas, a tiny 1% accent button inside a huge dark screenshot may merge into a broader bucket at low swatch counts. Raising Number of Colors toward 10 or 12 usually brings smaller accent colors into view.',
+      },
+      {
+        question: 'Are swatch text labels readable on very dark or very bright colors?',
+        answer:
+          'Yes. On both the live page cards and the exported Palette PNG card, white or dark ink contrast is calculated automatically from each color’s perceived luminance so hex codes remain legible.',
+      },
+      {
+        question: 'Can I paste a screenshot directly from my clipboard into the extractor?',
+        answer:
+          'Yes. Press Ctrl+V on Windows/Linux or Cmd+V on macOS anywhere on the page to load a copied screenshot or design mockup directly into the color analyzer.',
+      },
+      {
+        question: 'How accurately do the HSL and RGB strings match CSS standards?',
+        answer:
+          'Every swatch outputs standard CSS-valid rgb(r, g, b) and hsl(h, s%, l%) notation alongside uppercase six-digit #RRGGBB hex codes. You can paste any copied string straight into CSS, Figma, or browser DevTools.',
+      },
+      {
+        question: 'Can I extract a palette from an SVG vector logo?',
+        answer:
+          'Yes. When you drop an SVG file up to 20 MB, your browser rasterizes it cleanly onto Canvas before counting colors, giving you instant swatches and percentages from vector artwork.',
+      },
+      {
+        question: 'Does uploading a brand-new image clear the old swatches automatically?',
+        answer:
+          'Yes, dropping a replacement image or clicking New Image clears the previous palette state cleanly and runs fresh quantization on the new graphic. You never need to refresh the page between photos.',
+      },
+      {
+        question: 'Can I use this palette extractor on iOS, Android, and desktop browsers?',
+        answer:
+          'Yes. The responsive swatch grid, slider, and copy buttons run smoothly in mobile Safari, Android Chrome, and modern desktop browsers with zero signups or installs.',
+      },
     ],
     relatedSlugs: ['/image-color-picker', '/favicon-generator', '/add-background-to-image', '/'],
   },
@@ -3860,27 +3985,42 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'GIF Maker',
     shortDescription: 'Create animated GIFs from JPG, PNG & WebP with frame delay & loop control.',
     category: 'create',
-    seoTitle: 'Free Animated GIF Maker Online – Create GIF from Images in Browser',
+    seoTitle: 'Free Animated GIF Maker – Create GIFs from Images',
     seoDescription:
-      'Turn JPG, PNG, WebP, and HEIC images into an animated GIF right in your browser. Reorder frames, set global or per-frame delay, loop count, size, and quality.',
-    h1: 'Free Online Animated GIF Maker',
+      'Create smooth animations with our free animated GIF maker in your browser. Combine JPG, PNG, WebP, and HEIC frames, set frame delays, and pick loop counts.',
+    h1: 'Free Animated GIF Maker',
     subtitle:
-      'Combine photos and screenshots into smooth animated GIFs completely inside your browser — reorder frames, customize global or per-frame delays, loop count, and size with zero watermarks.',
+      'Turn photos, product angles, and UI walkthrough frames into looping animations with our free animated GIF maker running cleanly in your browser. Ideal for social creators, tutorial writers, and marketers, it lets you reorder, duplicate, and time frames individually, pick loop counts, customize frame fit and dimensions, and encode watermark-free GIF89a files privately.',
     howToSteps: [
       {
-        title: 'Upload frames',
+        title: 'Upload two or more frame images',
         description:
-          'Drop two or more JPG, PNG, WebP, HEIC, BMP, or SVG images into the upload zone and drag frames into sequence.',
+          'Drop JPG, PNG, WebP, HEIC, GIF, BMP, or SVG files up to 20 MB each into the frame dropzone (or use Add Frames later to append more).',
       },
       {
-        title: 'Set timing, loop & dimensions',
+        title: 'Reorder, duplicate, or delete frames',
         description:
-          'Adjust global frame duration or custom per-frame delays, choose Forever, Set Loops, or Play Once, and pick output width, height, and quality.',
+          'Drag frame cards by their grip handles or use the arrow buttons to set sequence order, duplicate key frames, or remove unwanted shots.',
       },
       {
-        title: 'Generate, preview & download',
+        title: 'Set global speed and per-frame delays',
         description:
-          'Click Generate Animated GIF to encode locally in your browser, watch the live animation preview, and download your .gif file.',
+          'Choose a Default Frame Duration slider (50–3000 ms) or 1–10 FPS preset, and enter custom Delay (ms) overrides on individual frames if needed.',
+      },
+      {
+        title: 'Configure Loop Behavior and Frame Fit',
+        description:
+          'Select Forever, Set Loops (2–50 plays), or Play Once, then pick Contain or Cover fitting along with a Background Matte color.',
+      },
+      {
+        title: 'Adjust Output Dimensions and Palette Quality',
+        description:
+          'Pick a 480px, 640px, 800px, or Original preset (or type width/height from 16 to 2000 px) and set Color Palette Quality from 10% to 100%.',
+      },
+      {
+        title: 'Generate and download your animated GIF',
+        description:
+          'Click Generate Animated GIF to preview the live Live Timing Playback or encode locally and save animated_compressmypic.gif.',
       },
     ],
     features: [
@@ -3907,19 +4047,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Are my photos uploaded to a server to create the GIF?',
+        question: 'How does the browser encode my photos into an animated GIF without uploading?',
         answer:
-          'No. The GIF encoder runs 100% locally inside your browser tab, so your images and animations never leave your device.',
+          'When you click Generate Animated GIF, the page lazy-loads a local JavaScript GIF89a encoder and color quantizer directly inside your browser tab. Each frame is rendered onto an offscreen canvas at your chosen dimensions and compressed with LZW locally.',
       },
       {
-        question: 'Can I give different frames different durations?',
+        question: 'What is the difference between Live Timing Preview and the generated GIF?',
         answer:
-          'Yes. Each frame card includes an optional custom Delay (ms) field so you can pause longer on a title or final frame.',
+          'Before encoding, the left preview canvas plays through your uploaded images in real time using your current millisecond delays and fit settings so you can verify pacing immediately. Generating the GIF freezes those choices into a real quantized 256-color .gif file.',
       },
       {
-        question: 'Why did a large GIF warning appear?',
+        question: 'Can I pause longer on a title slide or final call-to-action frame?',
         answer:
-          'GIF is an uncompressed-frame palette format that grows fast at high resolutions. Lowering width/height to 480px–640px or slightly reducing quality shrinks file size dramatically.',
+          'Yes. While Default Frame Duration sets the base speed (50 ms to 3000 ms) for the whole sequence, each frame card has an optional Delay (ms) input accepting 20 ms to 10,000 ms to hold specific slides longer.',
+      },
+      {
+        question: 'What do the 1 FPS, 2 FPS, 5 FPS, and 10 FPS quick presets correspond to?',
+        answer:
+          'Those buttons map frames per second to exact millisecond intervals: 1000 ms for 1 FPS, 500 ms for 2 FPS, 200 ms for 5 FPS, and 100 ms for 10 FPS. You can still nudge the slider in 25 ms increments afterward.',
+      },
+      {
+        question: 'What loop options are available for the finished GIF?',
+        answer:
+          'Under Loop Behavior you can pick Forever for endless playback, Set Loops to specify an exact number between 2 and 50 plays, or Play Once so the animation stops cleanly on the final frame. Netscape extension bytes are written automatically according to your choice.',
+      },
+      {
+        question: 'How should I choose between Contain and Cover under Frame Fit?',
+        answer:
+          'Contain scales every image to fit completely inside the GIF frame, filling any extra letterbox bars with your Background Matte color. Cover zooms each photo slightly to fill the entire canvas edge-to-edge without bars, cropping any overhanging edges.',
+      },
+      {
+        question: 'How do I handle images with different aspect ratios in one animation?',
+        answer:
+          'Pick Contain if you never want logos or portrait shots cropped, and match the Background Matte swatch to your website or dark-mode backdrop. Pick Cover when combining casual photos of varied shapes into a uniform full-bleed slideshow.',
+      },
+      {
+        question: 'What are the minimum and maximum pixel dimensions for a generated GIF?',
+        answer:
+          'Output Width and Height accept values from 16 px up to 2000 px, with quick buttons for 480px, 640px, 800px, and Original. Keep Ratio Locked enabled when scaling one dimension proportionally.',
+      },
+      {
+        question: 'Why does the tool show a Large GIF Warning above 5 MB or 15 MB?',
+        answer:
+          'Because GIF stores full rasterized frames with a 256-color limit rather than modern video inter-frame compression, wide high-resolution animations grow quickly. Switching width to 480px or 640px or lowering Color Palette Quality reduces file weight substantially for chat and email apps.',
+      },
+      {
+        question: 'What does the Color Palette Quality slider control?',
+        answer:
+          'Color Palette Quality (10% to 100%, defaulting to 80%) adjusts how finely the quantizer samples frame pixels when building each 256-color palette. Higher settings preserve smoother color gradients, while lower settings speed up encoding and often shrink byte size.',
+      },
+      {
+        question: 'How many source frames should I combine into one browser-made GIF?',
+        answer:
+          'The frame queue has no hard file count cap, though combining 2 to 40 frames at 480px–800px wide generally runs smoothly inside typical desktop and mobile browser memory. Larger stacks of 4K images can be added in batches up to 20 MB per input file.',
+      },
+      {
+        question: 'Can I repeat a frame without uploading the same file twice?',
+        answer:
+          'Yes. Click the duplicate icon on any frame card to clone that slide along with its custom delay right next to the original, then drag or arrow-move it anywhere in the timeline.',
+      },
+      {
+        question: 'Do I have to upload everything at once, or can I add extra frames later?',
+        answer:
+          'You can add more images anytime using the Add Frames button in the Frames header. Your current frame order, custom delays, and output dimensions remain intact when new frames append.',
+      },
+      {
+        question: 'Will iPhone HEIC Live-photo exports or bursts work in this GIF maker?',
+        answer:
+          'Yes. If you select multiple .heic or .heif images up to 20 MB each, the page decodes them locally in your browser via WebAssembly before assembling your animation.',
+      },
+      {
+        question: 'What happens if I change settings after already generating a GIF?',
+        answer:
+          'Click Back to Frame Editor beneath the finished GIF preview to unlock your timeline and controls. Adjust delays, loops, dimensions, or frame order freely and generate a fresh file right away.',
+      },
+      {
+        question: 'Does the generated GIF preserve transparent backgrounds cleanly?',
+        answer:
+          'Before LZW quantization runs, each frame composites cleanly onto your selected Background Matte color (white by default). That prevents harsh black jagged fringes around anti-aliased PNG or SVG edges.',
+      },
+      {
+        question: 'Can I extract a single frame from an existing GIF if I upload a .gif file?',
+        answer:
+          'When you drop a .gif image as a source frame, the HTML5 Canvas loads its initial frame into the sequence like any still photo. Use the Image Splitter or GIF Compressor tools if you need to re-encode existing animated GIFs.',
+      },
+      {
+        question: 'Are watermarks or promotional end-cards added to my downloaded GIF?',
+        answer:
+          'Never. Every encoded animated GIF contains only your chosen frames and settings with zero branding, watermarks, or usage limits.',
+      },
+      {
+        question: 'Why did my aspect ratio stay fixed when editing Output Width?',
+        answer:
+          'Ratio Locked is enabled by default to prevent stretched or squashed frames based on your first slide’s dimensions. Click the lock toggle to enter an independent custom width and height if needed.',
+      },
+      {
+        question: 'Will the exported animated_compressmypic.gif work on Slack, Discord, and websites?',
+        answer:
+          'Yes. The encoder outputs standard GIF89a binary files with Netscape looping extensions, ensuring broad playback compatibility across browsers, chat apps, blogs, and presentation tools.',
       },
     ],
     relatedSlugs: ['/image-collage-maker', '/image-splitter', '/image-resizer', '/'],
@@ -3929,27 +4154,42 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Collage Maker',
     shortDescription: 'Arrange photos in 2×2, 3×3 grids or strips with drag swap & export.',
     category: 'create',
-    seoTitle: 'Free Online Photo Collage Maker – Grid & Strip Collage Generator',
+    seoTitle: 'Image Collage Maker Online Free – Grid & Strip Tool',
     seoDescription:
-      'Create photo collages online free with 2x2 grid, 3x3 grid, vertical strip, and horizontal strip layouts. Drag cells to rearrange, customize gaps, and export JPG or PNG.',
+      'Build photo grids with our free image collage maker in your browser. Use 2x2, 3x3, or strip layouts, drag cells to swap positions, and save JPG or PNG.',
     h1: 'Free Online Image Collage Maker',
     subtitle:
-      'Combine multiple photos into clean 2×2 grids, 3×3 grids, or vertical and horizontal strips — drag cells to rearrange, customize gap spacing, proportions, and background color, and export as JPG or PNG.',
+      'Assemble clean photo grids, before-and-after strips, and social story layouts using our free image collage maker right inside your browser. Built for content creators, online sellers, and families, it supports 2×2 and 3×3 grids alongside vertical and horizontal strips with drag-and-drop cell swapping, adjustable splits, rounded corners, custom gaps, and watermark-free JPG or PNG export up to 4000 px.',
     howToSteps: [
       {
-        title: 'Upload your photos',
+        title: 'Upload photos into the collage studio',
         description:
-          'Drop multiple JPG, PNG, WebP, HEIC, or SVG images into the collage studio.',
+          'Drop JPG, PNG, WebP, HEIC, GIF, BMP, or SVG images up to 20 MB each; dropping 5 or more auto-picks 3×3 Grid while 4 or fewer selects 2×2 Grid.',
       },
       {
-        title: 'Pick layout & rearrange cells',
+        title: 'Choose a grid or strip layout',
         description:
-          'Switch between 2×2 Grid, 3×3 Grid, Vertical Strip, or Horizontal Strip, and drag cells (or tap to swap) into the order you want.',
+          'Switch freely among 2×2 Grid (4 cells), 3×3 Grid (9 cells), Vertical Strip, or Horizontal Strip in the Collage Layout panel.',
       },
       {
-        title: 'Customize spacing & download',
+        title: 'Rearrange or fill collage slots',
         description:
-          'Adjust gap size, cell proportions, rounded corners, background color, and output dimensions, then export JPG or PNG.',
+          'Drag any cell onto another to swap positions, tap two slots in sequence on touchscreens, use Left/Right arrows, or click Add Photos to fill open slots.',
+      },
+      {
+        title: 'Tune cell proportions, gaps, and corners',
+        description:
+          'Adjust Col Split, Row Split, or Lead Cell Emphasis (or click Equal Cells), then set Gap Spacing (0–80 px) and Cell Radius (0–60 px).',
+      },
+      {
+        title: 'Pick background color, Image Fit, and Output Size',
+        description:
+          'Choose Cover or Contain framing, select a Background Color swatch or hex code, and enter dimensions from 200 to 4000 px (or click 1200×1200, 1920×1080, or 1080×1920 presets).',
+      },
+      {
+        title: 'Export your finished collage',
+        description:
+          'Pick JPG (with 10–100% quality slider) or PNG (Lossless) and click Download Collage to save your full-resolution layout locally.',
       },
     ],
     features: [
@@ -3976,19 +4216,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Can I drag photos between collage cells after uploading?',
+        question: 'Which layouts are included in this image collage maker?',
         answer:
-          'Yes. Drag any cell card over another cell in the grid (or tap two cells one after another on a touchscreen) to swap their positions.',
+          'You can switch instantly between 2×2 Grid (4 cells), 3×3 Grid (9 cells), Vertical Strip (top-to-bottom column), and Horizontal Strip (side-by-side row). Selecting Vertical or Horizontal Strip automatically sets handy default dimensions (1080×1920 or 1920×720), which you can freely adjust afterward.',
       },
       {
-        question: 'Can I make the cells different sizes instead of equal squares?',
+        question: 'How does tap-to-swap work if I am making a collage on a phone or tablet?',
         answer:
-          'Yes. Use the Column Split, Row Split, or Lead Cell Emphasis sliders to resize cell proportions live.',
+          'On touchscreens where dragging is awkward, simply tap the first cell tile under Rearrange Cells to highlight it, then tap a second slot to swap their photos immediately. Left and Right arrow buttons are also available beneath each slot.',
       },
       {
-        question: 'Should I download my collage as JPG or PNG?',
+        question: 'What happens if I upload fewer photos than the number of cells in a 3×3 grid?',
         answer:
-          'Choose JPG for smaller photo files ideal for social sharing, or PNG for lossless crispness on screenshots and graphic layouts.',
+          'Any unfilled cells appear as clean dashed Slot N placeholders inside the live preview so you can inspect the layout while adding remaining images. You can click the + button right on an empty tile or switch to a 2×2 or strip layout to match your exact image count.',
+      },
+      {
+        question: 'Can I make one feature photo larger than the rest in a grid or strip?',
+        answer:
+          'Yes. In 2×2 Grid you can drag Col Split and Row Split from 20% to 80%, in 3×3 Grid you can resize Center Col and Center Row, and in Vertical or Horizontal Strips you can boost Lead Cell Emphasis up to +100%.',
+      },
+      {
+        question: 'How do I return uneven cell sliders back to a uniform grid?',
+        answer:
+          'Click the Equal Cells button in the Cell Proportions & Spacing section. It resets column split, row split, and lead emphasis to balanced equal divisions in one click.',
+      },
+      {
+        question: 'Can I make a seamless borderless collage with zero gap between photos?',
+        answer:
+          'Yes. Drag both Gap Spacing and Cell Radius down to 0 px so adjacent photos meet edge-to-edge cleanly without visible grout lines or rounded corners.',
+      },
+      {
+        question: 'When should I switch Image Fit from Cover to Contain?',
+        answer:
+          'Cover fills every rectangular cell edge-to-edge by cropping subtle edges that fall outside the cell’s aspect ratio—ideal for uniform lifestyle grids. Contain shrinks each image until the entire subject fits inside its cell untouched, showing your Background Color behind any open margin.',
+      },
+      {
+        question: 'Can I adjust cell spacing and rounded corner radius independently?',
+        answer:
+          'Yes. Gap Spacing adjusts outer margins and gutter widths from 0 px up to 80 px, while Cell Radius rounds every photo box corner smoothly from 0 px up to 60 px.',
+      },
+      {
+        question: 'What quick canvas dimensions and preset ratios are supported?',
+        answer:
+          'You can type any custom Output Size between 200 px and 4000 px on each side for custom print or social cards. Quick buttons are also built in for 1200×1200 Square, 1920×1080 Landscape, and 1080×1920 Story dimensions.',
+      },
+      {
+        question: 'Which Background Color presets appear by default?',
+        answer:
+          'You get one-click swatches for pure white (#ffffff), deep slate (#0f172a), and soft neutral gray (#f1f5f9). A full native color picker sits beside them whenever you need an exact brand hex value.',
+      },
+      {
+        question: 'Does uploading a mix of iPhone HEIC, PNG, and JPG photos work in one collage?',
+        answer:
+          'Yes. Each uploaded file—including JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, and SVG up to 20 MB—is decoded privately in your browser and drawn onto one unified HTML5 Canvas.',
+      },
+      {
+        question: 'If I place transparent PNG stickers inside cells, what shows behind them?',
+        answer:
+          'Each cell renders over your selected Background Color before compositing the foreground image. That keeps transparent PNG logos and cutouts clean against white, dark slate, or custom hues.',
+      },
+      {
+        question: 'Should I save my finished collage as JPG or PNG (Lossless)?',
+        answer:
+          'Choose JPG with 85%–95% quality for lightweight photography grids meant for Instagram, WhatsApp, or email. Pick PNG (Lossless) when combining crisp UI screenshots, diagrams, or text graphics where JPEG compression halos would be distracting.',
+      },
+      {
+        question: 'How does the exported filename indicate which collage settings I used?',
+        answer:
+          'Every downloaded export automatically embeds layout and pixel dimensions, producing names like collage_2x2_1200x1200.jpg. That naming pattern helps you sort multiple aspect-ratio variations without renaming files manually.',
+      },
+      {
+        question: 'Are private family photos or customer before/after shots uploaded anywhere?',
+        answer:
+          'No. Image decoding, grid layout compositing, and high-resolution Canvas export happen strictly inside your browser tab, so no photo ever leaves your phone or computer.',
+      },
+      {
+        question: 'Does the collage preview match the exact pixel export at 4000 px?',
+        answer:
+          'Yes. Both the live stage and final export share the exact same proportion and corner math, scaling Gap Spacing and Cell Radius smoothly relative to the chosen Output Size so exported gutters match what you see.',
+      },
+      {
+        question: 'How many photos can a Vertical or Horizontal Strip hold at once?',
+        answer:
+          'Vertical and Horizontal Strips support between 2 and 6 dynamic slots depending on how many images you load. That makes it simple to build two-panel comparisons or multi-frame story strips cleanly.',
+      },
+      {
+        question: 'Can I remove a single photo from a collage without starting over?',
+        answer:
+          'Yes. Click the trash button on any slot card under Rearrange Cells to remove that photo while keeping all your other uploaded images, layout settings, and custom splits intact.',
+      },
+      {
+        question: 'What is the maximum resolution I can export for printing a photo collage?',
+        answer:
+          'Both Output Width and Output Height scale all the way up to 4000×4000 pixels, delivering 16 megapixels of crisp detail. That resolution handles tabletop photo prints, lookbooks, and high-DPI slides cleanly.',
+      },
+      {
+        question: 'Is there any limit on how many collages I can create or export?',
+        answer:
+          'No. You can swap layouts, tweak colors, and export unlimited collages for free with no accounts, watermarks, or daily export caps.',
       },
     ],
     relatedSlugs: ['/gif-maker', '/image-splitter', '/image-border-generator', '/'],
@@ -3998,26 +4323,37 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Compress Image to 50KB',
     shortDescription: 'Shrink JPG, PNG & WebP photos strictly under 50KB for forms.',
     category: 'compress',
-    seoTitle: 'Compress Image to 50KB Online Free – Exact Size Reducer',
+    seoTitle: 'Compress Image to 50KB Online Free – Passport & Forms',
     seoDescription:
-      'Compress JPG, PNG, WebP, or HEIC images to 50KB or less right in your browser. Automatic quality binary search and dimension scaling with honest output size.',
+      'Compress image to 50KB online free for passport portals, visa forms, and avatars. Browser-based binary quality search and smart dimension scaling locally.',
     h1: 'Compress Image to 50KB Online',
     subtitle:
-      'Shrink photos, ID scans, and signatures under 50KB for government portals, passport applications, and strict upload forms — 100% locally in your browser.',
+      'Prepare passport photos, visa scans, handwritten signatures, and compact profile avatars for strict portal limits when you need to compress image to 50KB reliably. Running 100% locally in your browser on files up to 25 MB, it pairs binary quality search with optional pixel scaling so sensitive documents never touch external servers.',
     howToSteps: [
       {
-        title: 'Upload your image',
-        description: 'Drop JPG, PNG, WebP, or HEIC images up to 25 MB (or paste with Ctrl+V).',
+        title: 'Drop your image or document scan',
+        description:
+          'Upload one or more JPG, PNG, WebP, or HEIC files up to 25 MB (or paste copied photos via Ctrl+V).',
       },
       {
-        title: 'Auto-optimize toward 50KB',
+        title: 'Select Output Format (Original, JPG, WebP, or PNG)',
         description:
-          'Binary quality search and optional dimension scaling automatically find the sharpest output under 50KB.',
+          'Pick JPG or WebP for strict 50 KB photo limits, or keep Original with Auto-convert PNG enabled for heavy screenshots.',
       },
       {
-        title: 'Verify & download',
+        title: 'Review scaling and auto-conversion toggles',
         description:
-          'Check the verified output size badge and before/after comparison, then download individually or as a ZIP.',
+          'Keep intelligent dimension scaling checked for high-megapixel photos, or uncheck it to preserve exact pixel dimensions when required by a portal.',
+      },
+      {
+        title: 'Inspect verified byte badges and comparison view',
+        description:
+          'Check each card for an emerald Under 50 KB badge and open the Compare slider to verify facial features or signature lines remain legible.',
+      },
+      {
+        title: 'Download single files or Download All (ZIP)',
+        description:
+          'Save each <name>_50kb file individually, use Keep original if the file was already smaller, or package batches into compressmypic_50kb.zip.',
       },
     ],
     features: [
@@ -4043,18 +4379,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'How does Compress Image to 50KB reach such a small file size?',
+        question: 'Which everyday portals require uploading an image strictly under 50 KB?',
         answer:
-          'It runs a fast binary search across JPEG/WebP quality levels and progressively scales pixel dimensions only when quality reduction alone is not enough.',
+          'Government visa applications, passport renewals, civil service exam registrations, university admission forms, and signature scan fields frequently enforce hard 20 KB–50 KB upload caps. Keeping your file comfortably beneath 50 KB prevents form submission timeouts and upload rejection errors.',
       },
       {
-        question: 'Why did my PNG not reach 50KB when PNG format was locked?',
+        question: 'Why are passport photos and ID scans safe to shrink here?',
         answer:
-          'PNG is lossless and ignores quality sliders. Switch format to JPG or WebP (or leave Format on Original with Auto-convert enabled) to easily hit 50KB.',
+          'Every pixel operation—from HEIC decoding to binary compression search and ZIP bundling—executes locally inside your own browser tab. Sensitive identity photos, signatures, and personal records are never uploaded across the internet.',
       },
       {
-        question: 'Can I compress multiple photos under 50KB at once?',
-        answer: 'Yes. Drop a batch of images and download them all together in one ZIP file.',
+        question: 'Why does hitting 50 KB on a 12-megapixel smartphone photo usually require dimension scaling?',
+        answer:
+          'A full 4000×3000 pixel photo contains 12 million pixels whose baseline JPEG Huffman data typically exceeds 200 KB even at heavy compression. With intelligent dimension scaling checked, the optimizer steps dimensions down smoothly until sharp facial detail fits cleanly beneath 50 KB.',
+      },
+      {
+        question: 'Should I choose JPG or WebP when submitting an image under 50 KB to an exam or government portal?',
+        answer:
+          'Always choose JPG for legacy government, passport, scholarship, or banking forms because many validation scripts reject .webp uploads even when smaller. Pick WebP for modern web avatars or personal sites where maximum crispness at 50 KB matters.',
+      },
+      {
+        question: 'How does the tool optimize handwritten signatures or scanned documents below 50 KB?',
+        answer:
+          'Scans of black ink on bright white paper compress aggressively in JPG or WebP once excess resolution is trimmed cleanly. Checking the Compare modal ensures ink strokes stay clean without smudgy compression blocks around text edges.',
+      },
+      {
+        question: 'Why did a red Grew notice appear when my input was already 32 KB?',
+        answer:
+          'If an already lightweight JPG or PNG is re-encoded at high quality on Canvas, the new byte stream can sometimes land at 40 KB instead of shrinking further. Simply click Keep original on that card to retain your exact 32 KB source file.',
+      },
+      {
+        question: 'Can I keep exact 600×600 pixel dimensions if my visa portal requires both fixed pixels and 50 KB max?',
+        answer:
+          'Yes. Uncheck Allow intelligent dimension scaling so pixel dimensions remain locked at 100%, letting the binary search test JPEG or WebP quality down to 5% at your exact dimensions. If a 600×600 portrait is reasonably clean, it easily fits under 50 KB without resizing.',
+      },
+      {
+        question: 'Why does locking Output Format to PNG often trigger a Target missed warning at 50 KB?',
+        answer:
+          'Because PNG uses lossless DEFLATE compression that ignores quality sliders, only flat icons or tiny thumbnails compress under 50 KB as PNG. Leave Format on Original with Auto-convert checked—or switch directly to JPG—so photographic images hit 50 KB cleanly.',
+      },
+      {
+        question: 'What happens if I upload a transparent signature PNG and convert it to JPG to fit 50 KB?',
+        answer:
+          'Selecting JPG reveals the Transparent PNG matte color swatch (pure white #ffffff by default). All transparent background regions fill cleanly onto solid white before JPEG encoding so black ink stays sharp instead of turning solid black.',
+      },
+      {
+        question: 'Can I drop a 15 MB iPhone HEIC selfie directly to shrink it under 50 KB?',
+        answer:
+          'Yes. Files up to 25 MB—including Apple HEIC/HEIF photos—are decoded automatically in-browser via WebAssembly and compressed downward toward 50 KB in one seamless pass.',
+      },
+      {
+        question: 'What scale steps does the optimizer test when 100% dimensions exceed 50 KB?',
+        answer:
+          'When full dimensions cannot clear 50 KB at acceptable quality, the engine tests progressive downscale factors starting at 82% and stepping down toward 10% (clamped at 16 px minimum). At each step it runs a fresh quality binary search and stops at the largest legible dimensions beneath 50 KB.',
+      },
+      {
+        question: 'Will compressing a dark-background portrait under 50 KB cause visible color banding?',
+        answer:
+          'Smooth dark shadows at aggressive 50 KB targets can show slight blocking if dimensions stay huge. Allowing dimension scaling lets the tool encode slightly smaller dimensions at a higher 70%–85% quality factor, producing smoother gradients than massive dimensions at 10% quality.',
+      },
+      {
+        question: 'Does the 50 KB compressor strip hidden GPS location tags from my ID photo?',
+        answer:
+          'Yes. Rendering your image onto HTML5 Canvas strips EXIF metadata such as camera serials, thumbnails, and GPS coordinates, both protecting privacy and freeing extra kilobytes for visible image detail.',
+      },
+      {
+        question: 'How does the tool determine whether to report an Under 50 KB badge?',
+        answer:
+          'After encoding the final Blob, it verifies the exact byte size against 51,200 bytes (50 × 1024). Only files strictly at or below that exact byte ceiling receive the emerald Under 50 KB confirmation badge.',
+      },
+      {
+        question: 'Can I process both a portrait photo and a signature scan under 50 KB together?',
+        answer:
+          'Yes. Drop multiple images up to 25 MB each into the queue, adjust your format preference, and download each file individually or bundle them into compressmypic_50kb.zip.',
+      },
+      {
+        question: 'What if a portal actually requires 20 KB or 30 KB instead of 50 KB?',
+        answer:
+          'Click the Need a different target KB? link right inside the target header to jump straight to the custom Target File Size Compressor, where you can type any custom limit like 20 KB or 30 KB.',
+      },
+      {
+        question: 'What is the maximum file size I can drop into the 50 KB compressor?',
+        answer:
+          'Individual input files up to 25 MB are supported in JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, and SVG formats. Animated GIF inputs export a static optimized frame under 50 KB.',
+      },
+      {
+        question: 'Why does the tool aim just slightly below 50 KB (around 48–49.9 KB) instead of stopping at 25 KB?',
+        answer:
+          'Its binary search optimizes up to 7 iterations to land within 96%–100% of the 50 KB ceiling whenever possible. That maximizes visual sharpness by using nearly every available kilobyte under the cap.',
+      },
+      {
+        question: 'Are downloaded filenames clearly marked so I do not mix them up with my original high-res files?',
+        answer:
+          'Yes. Every output file automatically appends _50kb before the extension—such as portrait_50kb.jpg—leaving your original file safely untouched on your device.',
+      },
+      {
+        question: 'Can I preview sharpness on a smartphone before uploading to a form portal?',
+        answer:
+          'Yes. The full interface, including the interactive Compare viewer, works smoothly on mobile Safari and Chrome on Android, making on-the-go form submissions quick and reliable.',
       },
     ],
     relatedSlugs: [
@@ -4069,26 +4491,37 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Compress Image to 100KB',
     shortDescription: 'Reduce image size under 100KB cleanly without visible blur.',
     category: 'compress',
-    seoTitle: 'Compress Image to 100KB Online Free – Reduce Photo Size',
+    seoTitle: 'Compress Image to 100KB Online – Shrink Photos Cleanly',
     seoDescription:
-      'Reduce JPG, PNG, WebP, or HEIC images under 100KB free in your browser. Smart quality search and optional dimension scaling keep photos sharp for web & email.',
+      'Compress image to 100KB online free in your browser for job portals, resumes, and web pages. Keep crisp detail with smart quality search and batch ZIP export.',
     h1: 'Compress Image to 100KB Online',
     subtitle:
-      'Hit the sweet spot for websites, job applications, and email attachments — automatically compress images below 100KB while maximizing visual sharpness.',
+      'Hit the proven web and portal sweet spot when you compress image to 100KB without sacrificing crispness. Built for job applicants attaching portfolio headshots, bloggers preparing fast article thumbnails, and HR portals with tight attachment caps, this local tool tests quality settings and optional scaling inside your browser on inputs up to 25 MB.',
     howToSteps: [
       {
-        title: 'Upload photos',
-        description: 'Drag and drop one or many JPG, PNG, WebP, or HEIC images.',
+        title: 'Add your photo or article graphic',
+        description:
+          'Drag and drop one or multiple JPG, PNG, WebP, or HEIC images up to 25 MB each into the workspace.',
       },
       {
-        title: 'Smart 100KB optimization',
+        title: 'Confirm Output Format and fallback behavior',
         description:
-          'The compressor searches for the highest quality setting and resolution that stays under 100KB.',
+          'Keep Original (with automatic WebP/JPG fallback for oversized PNGs) or explicitly target JPG or WebP for consistent output.',
       },
       {
-        title: 'Compare & download',
+        title: 'Choose whether pixel downscaling is allowed',
         description:
-          'Inspect side-by-side quality and exact byte count before downloading.',
+          'Leave intelligent dimension scaling checked for crisp 800px–1400px results, or uncheck it to preserve 100% original pixel width and height.',
+      },
+      {
+        title: 'Compare visual sharpness against the original',
+        description:
+          'Review the percentage saved and exact output KB badge, then open Compare on any card to check edge crispness side-by-side.',
+      },
+      {
+        title: 'Download individual files or a batch ZIP',
+        description:
+          'Save single <name>_100kb files right away or click Download All (ZIP) to download compressmypic_100kb.zip in one click.',
       },
     ],
     features: [
@@ -4114,14 +4547,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Will a 100KB image still look sharp on a website?',
+        question: 'Why is 100 KB considered the sweet spot for resumes, job portals, and websites?',
         answer:
-          'Yes! At standard web widths (800px–1400px), modern WebP and JPG photos under 100KB retain crisp detail with virtually no visible artifacts.',
+          'At roughly 100 KB, a typical 1000 px to 1400 px photo loads rapidly even over 3G mobile networks while keeping fine facial details, crisp typography, and natural color depth intact. Most recruiting systems and PDF resume builders comfortably accept assets under 100 KB without cropping or blocking.',
       },
       {
-        question: 'Does this also strip heavy camera EXIF metadata?',
+        question: 'Can a 1920×1080 Full HD web banner stay at full dimensions when shrunk to 100 KB?',
         answer:
-          'Yes. Re-encoding via HTML5 Canvas automatically strips embedded thumbnails and EXIF blocks, leaving more bytes for actual image pixels.',
+          'Yes, in many cases—especially clean product shots, UI illustrations, or softly blurred backgrounds compressed in WebP or JPG. If a busy landscape scene still exceeds 100 KB at 35% quality, optional scaling nudges width down smoothly (such as 82% or 68%) to protect crispness.',
+      },
+      {
+        question: 'How does the automatic quality binary search keep my 100 KB file as sharp as possible?',
+        answer:
+          'Instead of guessing a low static compression level like 40%, the engine tests upper and lower quality bounds across up to 7 binary steps. It stops right inside the 96%–100% range beneath 102,400 bytes, maximizing pixel fidelity for the exact file-size budget.',
+      },
+      {
+        question: 'When should I uncheck Auto-convert large PNGs when aiming for 100 KB?',
+        answer:
+          'If a flat infographic, UI icon, or two-color diagram must stay strictly lossless PNG and already fits under 100 KB cleanly, leaving Original or picking PNG works great. However, for photographic PNGs, keeping Auto-convert enabled switches opaque shots to JPG or transparent ones to WebP so you keep sharp pixels under 100 KB.',
+      },
+      {
+        question: 'Will transparent PNG logos lose transparency if auto-converted under 100 KB?',
+        answer:
+          'No. Before falling back from an oversized PNG on Original mode, the compressor detects alpha transparency on your file and automatically picks WebP (preserving full transparency) instead of JPG whenever alpha pixels exist.',
+      },
+      {
+        question: 'How does compressing to 100 KB affect Core Web Vitals and page weight?',
+        answer:
+          'Trimming 2 MB hero thumbnails or 800 KB article headers down to 95 KB slashes page payload dramatically without visually degrading layout cards. Lighter images directly improve Largest Contentful Paint (LCP) on both mobile and desktop visitors.',
+      },
+      {
+        question: 'Can I shrink email newsletter graphics under 100 KB for faster inbox rendering?',
+        answer:
+          'Yes. Choosing JPG output keeps broad email-client support across Outlook, Apple Mail, and Gmail while ensuring multi-image newsletters stay fast and lightweight below spam-filter weight thresholds.',
+      },
+      {
+        question: 'What happens when a file I upload is already 65 KB?',
+        answer:
+          'The compressor notes that your file is already beneath 100 KB and produces a clean full-resolution export. If HTML5 Canvas re-encoding happens to create a slightly larger file than 65 KB, a red notice lets you click Keep original instantly.',
+      },
+      {
+        question: 'Why does the Compare modal help when tightening images to 100 KB?',
+        answer:
+          'Viewing a split before-and-after curtain lets you verify whether fine hair, textile weave, or tiny screenshot text stayed clean after compression. If artifacts appear at locked resolution, switching from JPG to WebP often clears them up within the same 100 KB budget.',
+      },
+      {
+        question: 'Does this 100 KB reducer delete camera EXIF tags automatically?',
+        answer:
+          'Yes. Drawing onto HTML5 Canvas strips embedded camera thumbnails, Lightroom XMP blocks, and GPS coordinates, which often saves 20 KB–60 KB alone before visual compression even starts.',
+      },
+      {
+        question: 'Can I drag an entire folder of blog thumbnails to compress them all to 100 KB?',
+        answer:
+          'Yes. Upload multiple files up to 25 MB each in one queue, wait a few seconds as each image runs sequentially in your browser, and save everything inside compressmypic_100kb.zip.',
+      },
+      {
+        question: 'What if a resume portal allows JPG up to 100 KB but rejects WebP files?',
+        answer:
+          'Select JPG under Output Format rather than leaving it on Original before or after uploading. The compressor will re-run every image strictly as standard .jpg beneath 100 KB and apply your selected matte color to any transparent areas.',
+      },
+      {
+        question: 'Why did my 3000×2000 PNG screenshot shrink cleanly once scaled to 68% at 100 KB?',
+        answer:
+          'Lossless PNG file size correlates closely with total pixel count and entropy. Scaling a huge screenshot modestly and pairing it with WebP or JPG drops byte weight from several megabytes down under 100 KB while text stays comfortably readable.',
+      },
+      {
+        question: 'Do confidential CVs, architectural previews, or NDA mockups get uploaded anywhere?',
+        answer:
+          'Never. All compression steps, binary iterations, and ZIP archive generation run strictly in local JavaScript and Canvas inside your browser tab.',
+      },
+      {
+        question: 'What file types can I feed into the 100 KB compressor?',
+        answer:
+          'You can drop JPG, PNG, WebP, iPhone HEIC/HEIF, GIF, BMP, and SVG files up to 25 MB per file. Note that animated GIF inputs compress their opening frame as a static output.',
+      },
+      {
+        question: 'Can I pick a custom target like 80 KB or 120 KB from this page?',
+        answer:
+          'Yes—tap the Need a different target KB? link in the target size panel to jump straight to our flexible Target File Size Compressor with any custom KB or MB input.',
+      },
+      {
+        question: 'Why might a locked-PNG target still fail at 100 KB even when scaled down?',
+        answer:
+          'When PNG is explicitly forced and downscaling is disabled, a noisy photograph retains millions of unique colors that cannot pack into 100 KB losslessly. Re-enabling dimension scaling or switching to WebP resolves this immediately.',
+      },
+      {
+        question: 'Does changing settings after my batch finishes automatically re-compress my files?',
+        answer:
+          'Yes. Toggling Output Format, Dimension Scaling, PNG auto-conversion, or JPG matte color automatically re-processes your queued items toward 100 KB so you can compare results effortlessly.',
+      },
+      {
+        question: 'Will Windows, macOS, and iOS open the downloaded _100kb.jpg and _100kb.webp files natively?',
+        answer:
+          'Yes. Standard JPEG opens universally everywhere, and modern WebP opens natively in all current desktop browsers, macOS Preview, Windows Photos, Android, and iOS.',
+      },
+      {
+        question: 'Is there any daily quota or file-count restriction on the 100 KB tool?',
+        answer:
+          'No. Compress as many images under 100 KB as your browser memory handles with zero watermarks, account prompts, or paywalls.',
       },
     ],
     relatedSlugs: [
@@ -4136,25 +4659,37 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Compress Image to 200KB',
     shortDescription: 'Optimize photos under 200KB for blogs, CMS uploads & portals.',
     category: 'compress',
-    seoTitle: 'Compress Image to 200KB Online Free – Web & CMS Optimizer',
+    seoTitle: 'Compress Image to 200KB Online – WordPress & Shop Ready',
     seoDescription:
-      'Compress large photos to 200KB or less free in your browser. Ideal for WordPress, Shopify, and online portals with full resolution retention whenever possible.',
+      'Compress image to 200KB online free for WordPress, Shopify, and blog banners. Preserves crisp detail locally using binary quality search and ZIP export.',
     h1: 'Compress Image to 200KB Online',
     subtitle:
-      'Keep high-resolution product shots and blog banners crisp while strictly staying below 200KB for WordPress, Shopify, and CMS upload caps.',
+      'Prepare crisp storefront product photography, blog feature headers, and business listings when you compress image to 200KB without bloat. Tailored for WordPress editors, Shopify merchants, and digital marketers, it prioritizes 100% original dimensions first and runs completely locally on files up to 25 MB with zero server transfers.',
     howToSteps: [
       {
-        title: 'Add your images',
-        description: 'Upload one or multiple high-res JPG, PNG, WebP, or HEIC files.',
-      },
-      {
-        title: 'Optimize to 200KB',
+        title: 'Upload store or blog images',
         description:
-          'Automatic binary search finds the ideal quality/scale balance just beneath 200KB.',
+          'Drop single files or entire batches of JPG, PNG, WebP, or HEIC images up to 25 MB each into the workspace.',
       },
       {
-        title: 'Inspect & save',
-        description: 'Compare before and after pixels and download individually or as ZIP.',
+        title: 'Choose WebP, JPG, Original, or PNG output',
+        description:
+          'Pick WebP for modern CMS speed, JPG for universal marketplace compatibility, or Original to convert only heavy PNGs automatically.',
+      },
+      {
+        title: 'Toggle full-dimension vs. fallback scaling',
+        description:
+          'Keep intelligent scaling active for 24 MP camera shots, or uncheck it when product templates strictly demand original pixel dimensions.',
+      },
+      {
+        title: 'Check savings and side-by-side detail',
+        description:
+          'Verify the emerald Under 200 KB indicator and drag the Compare slider over labels, fabric grain, or fine UI edges.',
+      },
+      {
+        title: 'Save single assets or Download All (ZIP)',
+        description:
+          'Download individual <name>_200kb images directly or package your storefront catalog into compressmypic_200kb.zip.',
       },
     ],
     features: [
@@ -4178,14 +4713,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'Can a 4K smartphone photo be compressed to 200KB?',
+        question: 'Why do WordPress agencies and Shopify stores standardize product photos around 200 KB?',
         answer:
-          'Yes. With intelligent dimension scaling enabled, 12MP–24MP photos compress smoothly under 200KB while looking crisp on desktop and mobile screens.',
+          'A 200 KB cap leaves enough bitrate for sharp stitching, metallic shine, and readable product labels while keeping collection grids fast on mobile shoppers. Staying under 200 KB also satisfies strict CMS and directory limits like Google Business Profile or WooCommerce media rules.',
       },
       {
-        question: 'What if I want to prevent resizing?',
+        question: 'Can a 12-megapixel or 24-megapixel camera photo reach 200 KB cleanly?',
         answer:
-          'Uncheck "Allow intelligent dimension scaling". If minimum quality still exceeds 200KB, the tool will honestly display the smallest size achievable at original dimensions.',
+          'Yes. If full 4000×3000 px dimensions exceed 200 KB even at 35% quality, intelligent dimension scaling steps down proportionally—often settling around 2200 px or 1800 px wide at crisp 75%–85% quality.',
+      },
+      {
+        question: 'When should I lock dimensions by unchecking Allow intelligent dimension scaling at 200 KB?',
+        answer:
+          'Uncheck scaling whenever a marketplace or print portal enforces exact pixel widths (such as 1600×1600 px square product slots). The optimizer will drop lossy quality down as low as 5% at full dimensions and report honestly if 200 KB is unattainable without resizing.',
+      },
+      {
+        question: 'How does WebP compare to JPG at a 200 KB target for e-commerce photos?',
+        answer:
+          'Within the same 200 KB budget, WebP generally delivers noticeably cleaner studio shadows and sharper small packaging text than JPG—typically equivalent to a 10%–15% higher quality factor. Choose JPG only if an older marketplace backend still rejects .webp uploads.',
+      },
+      {
+        question: 'What happens if I upload a studio PNG product cutout with a transparent background?',
+        answer:
+          'With Format left on Original and Auto-convert enabled, any oversized transparent PNG switches cleanly to transparent WebP when PNG alone cannot hit 200 KB neatly. If you explicitly pick JPG, transparent regions blend onto your chosen Transparent PNG matte color.',
+      },
+      {
+        question: 'Why does the optimizer prefer holding 100% resolution before reducing pixel dimensions?',
+        answer:
+          'Shrinking dimensions permanently discards pixel grid detail, whereas moderate lossy quality tuning preserves sharp edges at full width. Testing 35%–94% quality at full dimensions first ensures desktop hero graphics stay full-size whenever possible.',
+      },
+      {
+        question: 'Can I batch optimize an entire seasonal catalog under 200 KB at once?',
+        answer:
+          'Yes. Drop dozens of product photos up to 25 MB each into the queue, let the tool inspect each image locally, and grab every optimized asset in compressmypic_200kb.zip.',
+      },
+      {
+        question: 'Does converting transparent backgrounds to white JPG matte help meet 200 KB for Amazon or Etsy?',
+        answer:
+          'Yes. Pure white (#ffffff) backgrounds compress extremely efficiently in JPEG while meeting marketplace white-backdrop guidelines, freeing extra bytes within 200 KB for the actual product in the center.',
+      },
+      {
+        question: 'Why did my 140 KB WebP upload show a Grew alert after re-processing?',
+        answer:
+          'If an already well-optimized file under 200 KB is re-encoded at Canvas default high quality, it may land near 165 KB instead of shrinking. Clicking Keep original restores the untouched 140 KB source file immediately.',
+      },
+      {
+        question: 'Are unreleased product prototypes or client campaign banners stored on external servers?',
+        answer:
+          'No. Every pixel decode, scaling pass, and ZIP creation occurs privately inside your local browser session, making it safe for embargoed launches and NDA client work.',
+      },
+      {
+        question: 'Does the 200 KB compressor support Apple HEIC/HEIF photos shot on newer iPhones?',
+        answer:
+          'Yes. Client-side WebAssembly decodes iPhone HEIC files directly in your browser tab so you do not need to convert them beforehand.',
+      },
+      {
+        question: 'Why is 200 KB often better than 50 KB for detailed infographics or menu boards?',
+        answer:
+          'Small typography inside restaurant menus, real-estate floor plans, or software UI captures blurs quickly if crammed under 50 KB. A 200 KB target gives WebP and JPG four times the byte headroom so fine labels remain crisp.',
+      },
+      {
+        question: 'How close to 200 KB does the binary quality search typically land?',
+        answer:
+          'Once a viable quality range is found at a given scale, up to 7 binary search iterations target 96% to 100% of 204,800 bytes. Files commonly settle between 192 KB and 199 KB so you get maximum sharpness within the limit.',
+      },
+      {
+        question: 'Are embedded DSLR color profiles and camera GPS tags removed during 200 KB compression?',
+        answer:
+          'Yes. Writing images through HTML5 Canvas strips EXIF metadata blocks and embedded preview thumbnails, improving privacy and eliminating wasted kilobytes on WordPress and CDN servers.',
+      },
+      {
+        question: 'What if an oversized lossless PNG only scales down to 35% to stay PNG under 200 KB?',
+        answer:
+          'With Format set to Original and Auto-convert PNG enabled, any lossless PNG forced below 65% scale automatically switches to WebP or JPG. That lets you keep much sharper pixel dimensions while comfortably clearing the 200 KB limit.',
+      },
+      {
+        question: 'Can I preview fine fabric or jewelry details before downloading the 200 KB file?',
+        answer:
+          'Yes. Clicking Compare on any finished result card opens an interactive split-screen slider comparing your uncompressed original pixels directly against the compressed output.',
+      },
+      {
+        question: 'What happens if I drop an SVG vector banner into the 200 KB compressor?',
+        answer:
+          'Your browser rasterizes the SVG onto Canvas and optimizes it into a sub-200 KB PNG, WebP, or JPG according to your format choice. This is handy whenever marketplaces or CMS portals reject raw .svg uploads.',
+      },
+      {
+        question: 'What is the maximum source file size accepted per image here?',
+        answer:
+          'Each uploaded JPG, PNG, WebP, HEIC, GIF, BMP, or SVG can be up to 25 MB. That headroom handles heavy camera exports straight from Lightroom or modern phones without pre-shrinking.',
+      },
+      {
+        question: 'How are output files named so they stay separated from my master product folder?',
+        answer:
+          'Every saved copy keeps your sanitized base filename and appends _200kb before the extension, producing clear names like sneaker_side_200kb.webp. Your original high-resolution master stays completely untouched on disk.',
+      },
+      {
+        question: 'Can I jump to another exact threshold like 150 KB or 300 KB if a portal changes rules?',
+        answer:
+          'Yes. Use the Need a different target KB? link at the top of the controls to open the custom Target File Size Compressor and enter any exact KB or MB figure.',
       },
     ],
     relatedSlugs: [
@@ -4200,25 +4825,37 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Compress Image to 500KB',
     shortDescription: 'Shrink multi-megabyte photos under 500KB with ultra-high quality.',
     category: 'compress',
-    seoTitle: 'Compress Image to 500KB Online Free – High-Resolution Shrinker',
+    seoTitle: 'Compress Image to 500KB Online – High-Res Photo Reducer',
     seoDescription:
-      'Compress multi-megabyte camera photos and graphics under 500KB free in your browser without sacrificing clarity or full dimensions.',
+      'Compress image to 500KB online free without losing high-resolution clarity. Turn large JPG, PNG, WebP, and HEIC files into fast portfolio assets locally.',
     h1: 'Compress Image to 500KB Online',
     subtitle:
-      'Turn 5MB–15MB DSLR or smartphone photos into crisp, sub-500KB files ready for portfolios, print proofs, and fast uploads — processed locally.',
+      'Turn bulky 5 MB to 18 MB DSLR frames, smartphone RAW exports, and high-res screenshots into crisp assets when you compress image to 500KB locally in your browser. Ideal for photographers delivering client proofs, founders building lightweight pitch decks, and agencies submitting portfolio galleries, it retains full high-resolution pixel dimensions wherever possible up to 25 MB per file.',
     howToSteps: [
       {
-        title: 'Drop large photos',
-        description: 'Upload heavy JPG, PNG, WebP, or iPhone HEIC files up to 25 MB each.',
-      },
-      {
-        title: 'Precision quality search',
+        title: 'Drop full-resolution camera or design files',
         description:
-          'Finds the highest JPEG/WebP quality factor below 500KB while preserving original dimensions.',
+          'Upload one or multiple JPG, PNG, WebP, or HEIC images up to 25 MB each without resizing them beforehand.',
       },
       {
-        title: 'Download optimized files',
-        description: 'Save single files or package multiple results into a ZIP.',
+        title: 'Choose Output Format for high-res delivery',
+        description:
+          'Keep Original for seamless handling, pick JPG for client decks and print proofs, or select WebP for ultra-sharp portfolio galleries.',
+      },
+      {
+        title: 'Verify scaling and PNG fallback preferences',
+        description:
+          'Leave intelligent dimension scaling checked for 40 MP+ photos, or uncheck it to preserve strict 4K+ dimensions at optimized quality.',
+      },
+      {
+        title: 'Inspect side-by-side detail in Compare mode',
+        description:
+          'Check each Under 500 KB confirmation badge and inspect foliage, skin texture, or typography in the split before/after viewer.',
+      },
+      {
+        title: 'Download individual files or bundle a ZIP',
+        description:
+          'Save each <name>_500kb output immediately or export large photo sets cleanly in compressmypic_500kb.zip.',
       },
     ],
     features: [
@@ -4242,14 +4879,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'If my photo is already 300KB, what will happen?',
+        question: 'Why does 500 KB preserve near-original visual quality on 4K and 12 MP photos?',
         answer:
-          'The compressor detects that it is already below 500KB and exports a clean, high-quality copy at full resolution.',
+          'Half a megabyte (512,000 bytes) provides ample room for fine micro-contrast, subtle film grain, and smooth sky gradients across full 1920 px to 4000 px photographs. Most images hit 500 KB cleanly at high 75%–92% quality without scaling down dimensions at all.',
       },
       {
-        question: 'Which format preserves the most detail under 500KB?',
+        question: 'How well does this work for Pitch Decks, Keynote, and PowerPoint slide attachments?',
         answer:
-          'WebP typically retains more fine texture per kilobyte than JPG, though both deliver sharp results at 500KB.',
+          'Shrinking screenshots and studio mockups from 6 MB PNGs down to sub-500 KB JPGs or WebPs cuts overall presentation bloat dramatically. A 30-slide deck stays fast to email and cloud-sync while looking razor-sharp on conference projectors.',
+      },
+      {
+        question: 'Can I keep 100% original resolution on a 24 MP DSLR photo when compressing to 500 KB?',
+        answer:
+          'Uncheck Allow intelligent dimension scaling to force 100% original pixel dimensions, allowing quality binary search down to 5% if needed. For most 6000×4000 px camera JPEGs, JPG quality around 40%–65% already clears 500 KB without shrinking a single pixel.',
+      },
+      {
+        question: 'Why might a 15 MB iPhone HEIC portrait stay full resolution under 500 KB when exported as JPG or WebP?',
+        answer:
+          'HEIC photos from modern phones carry deep color data and high megapixel counts, yet re-encode efficiently into 80%+ quality JPG or WebP around 450–495 KB. Portrait bokeh and subtle skin gradients remain smooth right across the full image canvas.',
+      },
+      {
+        question: 'What happens if I upload a 10 MB lossless PNG software dashboard mockup?',
+        answer:
+          'A full-screen retina PNG rarely fits inside 500 KB losslessly without heavy pixel shrinking. Leaving Format on Original with Auto-convert PNG enabled switches it automatically to near-lossless high-quality WebP or crisp JPG so UI text stays legible at full screen size.',
+      },
+      {
+        question: 'Why is 500 KB popular for Behance, Dribbble, and agency portfolio submissions?',
+        answer:
+          'Portfolio platforms and RFP vendor portals frequently cap case-study media at 500 KB per image to keep multi-project pages snappy. Compressing just below 500 KB satisfies upload validators without triggering harsh server-side re-compression.',
+      },
+      {
+        question: 'How does the tool behave if one file in my batch is already 320 KB?',
+        answer:
+          'The compressor detects that 320 KB already meets the 500 KB requirement and processes a clean full-resolution copy. If re-encoding produces a slightly heavier file, the Grew warning surfaces so you can click Keep original and retain the 320 KB original.',
+      },
+      {
+        question: 'Do photographers lose intellectual property control or leak client shoots here?',
+        answer:
+          'Never. Whether preparing wedding previews, commercial architecture shoots, or unreleased prototypes, every image decodes and compresses inside your local browser tab with zero server transmission.',
+      },
+      {
+        question: 'Which format retains sharper typography and thin vector lines at 500 KB?',
+        answer:
+          'WebP outperforms JPG on sharp dark-on-white typography, charts, and schematics inside a 500 KB ceiling. Its predictive block encoding minimizes noisy halos around high-contrast interfaces and diagrams.',
+      },
+      {
+        question: 'Can I flatten a transparent product PNG onto dark charcoal instead of white when targeting 500 KB JPG?',
+        answer:
+          'Yes. Selecting JPG exposes the Transparent PNG matte color picker, letting you enter white, dark slate, or any custom brand hex color for seamless transparent edge blending.',
+      },
+      {
+        question: 'Does Canvas compression preserve camera lens model, shutter speed, and GPS coordinates?',
+        answer:
+          'No—HTML5 Canvas strips EXIF metadata automatically, which eliminates embedded camera thumbnails and location data. That keeps client proofs private and allocates every kilobyte toward visible pixels.',
+      },
+      {
+        question: 'What exact byte ceiling triggers the Under 500 KB confirmation badge?',
+        answer:
+          'The tool checks the final encoded file against 512,000 bytes (500 × 1024). Files strictly at or below 512,000 bytes display the emerald Under 500 KB status badge and exact space saved.',
+      },
+      {
+        question: 'Can I batch reduce twenty 10 MB photos down to 500 KB in one pass?',
+        answer:
+          'Yes. Drop all twenty images (up to 25 MB per file) into the queue, let the browser iterate through each photo sequentially, and export everything together inside compressmypic_500kb.zip.',
+      },
+      {
+        question: 'Why did a forced lossless PNG with scaling disabled show Target missed at 500 KB?',
+        answer:
+          'Lossless PNG compression ignores quality sliders, meaning a complex high-res scene with both PNG format and full dimensions locked cannot break below its raw DEFLATE floor. Enable dimension scaling or pick WebP/JPG to clear 500 KB cleanly.',
+      },
+      {
+        question: 'Can I zoom and pan, or compare original vs. 500 KB side-by-side before saving?',
+        answer:
+          'Yes. Clicking Compare on any completed card opens the full-width before/after split curtain so you can inspect eyes, hair strands, or small labels directly against the original file.',
+      },
+      {
+        question: 'If an image requires minor dimension scaling to hit 500 KB, how drastic is the resize?',
+        answer:
+          'The scaler begins at 82% of original dimensions before trying steeper steps. Because 500 KB is generous, giant 50 MP studio exports typically clear the target cleanly right at the 82% or 68% step while retaining high-definition print sharpness.',
+      },
+      {
+        question: 'Does the tool support legacy BMP bitmaps or SVG diagrams up to 25 MB?',
+        answer:
+          'Yes. Uncompressed BMP archives and vector SVG illustrations up to 25 MB load straight onto Canvas and export cleanly beneath 500 KB in your selected raster format.',
+      },
+      {
+        question: 'How does the filename change when downloading compressed 500 KB copies?',
+        answer:
+          'Each processed image automatically appends _500kb before its extension, producing clear names such as architectural_proof_500kb.jpg. Keeping the tag in the exported filename ensures your compressed deliverables never overwrite master originals.',
+      },
+      {
+        question: 'What should I do if a marketplace portal sets a 1 MB or 250 KB limit instead?',
+        answer:
+          'Click the Need a different target KB? shortcut above the format buttons to open the custom Target File Size Compressor and enter any custom KB or MB threshold.',
+      },
+      {
+        question: 'Can I compress 500 KB assets directly from an iPad or Android tablet?',
+        answer:
+          'Yes. Touch-friendly format controls, the comparison slider, and ZIP exporting work cleanly inside modern tablet and mobile browsers with no desktop software required.',
       },
     ],
     relatedSlugs: [
@@ -4264,26 +4991,42 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Bulk Image Compressor',
     shortDescription: 'Batch compress dozens of images at once and export a single ZIP.',
     category: 'compress',
-    seoTitle: 'Bulk Image Compressor Online Free – Batch Shrink & ZIP Download',
+    seoTitle: 'Bulk Image Compressor Online Free – Batch Shrink & ZIP',
     seoDescription:
-      'Bulk compress multiple JPG, PNG, WebP, and HEIC images free in your browser. Track batch progress, compare quality, and download all images in one ZIP file.',
+      'Shrink dozens of files with our bulk image compressor in your browser. Apply Web Fast, Email, or High Fidelity profiles, track MB saved, and download one ZIP.',
     h1: 'Free Bulk Image Compressor',
     subtitle:
-      'Compress entire folders of photos and web graphics simultaneously in your browser — review per-file savings, inspect before/after sliders, and export one clean ZIP.',
+      'Shrink entire folders of product shots, camera roll backups, and website assets simultaneously using our free bulk image compressor right inside your browser. Built for e-commerce teams, photographers, and developers handling large batches, it pairs one-click Quick Batch Profiles and custom quality sliders with live progress tracking, per-file visual comparisons, and instant single-ZIP downloads.',
     howToSteps: [
       {
-        title: 'Drop a batch of images',
-        description: 'Select or drag dozens of JPG, PNG, WebP, or HEIC images into the dropzone.',
+        title: 'Drop your entire image batch',
+        description:
+          'Select or drag multiple JPG, PNG, WebP, or HEIC images up to 25 MB each into the batch dropzone (more can be added anytime).',
       },
       {
-        title: 'Choose profile or custom quality',
+        title: 'Click a Quick Batch Profile or customize settings',
         description:
-          'Pick Web Fast (WebP 75%), Email Friendly (JPG 65%), High Fidelity (85%), or adjust the custom slider and output format.',
+          'Pick Web Fast (WebP 75%), Email / Sharing (JPG 65%), or High Fidelity (85%), or adjust the quality slider, output format, and matte color.',
       },
       {
-        title: 'Download All (ZIP)',
+        title: 'Monitor live batch compression progress',
         description:
-          'Review total MB saved across the batch and click Download All (ZIP) to save every optimized file together.',
+          'Watch the live file-by-file progress bar finish and review the summary banner showing total files, MB saved, and overall reduction percentage.',
+      },
+      {
+        title: 'Inspect individual cards and before/after quality',
+        description:
+          'Open the Compare modal on sample files, click Keep original if any already-tiny asset grew, or re-run single files with adjusted settings.',
+      },
+      {
+        title: 'Tweak and Re-compress All if needed',
+        description:
+          'Change your profile, quality percentage, or target format anytime and re-process the whole queue in one click without re-uploading.',
+      },
+      {
+        title: 'Download individual files or Download All (ZIP)',
+        description:
+          'Save single optimized images straight from their cards or click Download All (ZIP) to download bulk_compressed_compressmypic.zip.',
       },
     ],
     features: [
@@ -4307,14 +5050,104 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'How many images can I bulk compress at once?',
+        question: 'What do the three Quick Batch Profiles change across my queued images?',
         answer:
-          'There is no artificial count cap — you can process 20, 50, or more photos in one session right inside your browser memory.',
+          'Web Fast switches Output Format to WebP at 75% quality for lightweight websites, Email / Sharing converts the batch to 65% JPG for smaller attachments, and High Fidelity keeps original formats at 85% quality. Clicking any profile automatically updates settings and re-compresses already loaded files.',
       },
       {
-        question: 'Can I convert the whole batch to WebP while compressing?',
+        question: 'Can I batch compress images on a laptop or phone without an active upload connection?',
         answer:
-          'Yes. Select WebP in Output Format (or click the Web Fast quick profile) and click Re-compress All.',
+          'Once the tool page finishes loading, all batch compression, decoding, and ZIP creation happen locally in your browser using HTML5 Canvas and WebAssembly. Your photos never enter a remote processing queue or leave your device.',
+      },
+      {
+        question: 'How does the aggregate batch summary report total savings?',
+        answer:
+          'As files finish processing, the summary bar totals the original byte size across every item against the compressed result, showing aggregate megabytes saved and overall percentage reduction. If any single file ended up larger, you can click Keep original on that card before exporting the ZIP.',
+      },
+      {
+        question: 'What happens when I mix PNG screenshots, iPhone HEICs, and JPG photos in one batch?',
+        answer:
+          'With Output Format set to Original, each image encodes into its matching web format (decoding HEIC into JPG/PNG cleanly via WebAssembly). Alternatively, choosing WebP or JPG unifies the entire mixed folder into one uniform output extension.',
+      },
+      {
+        question: 'What is the maximum size allowed per file in Bulk Image Compressor?',
+        answer:
+          'Individual files up to 25 MB are supported across JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, and SVG inputs. There is no fixed count limit—only your device’s available browser memory.',
+      },
+      {
+        question: 'Why does the tool process batches with a live progress bar instead of freezing my tab?',
+        answer:
+          'Files run in controlled browser passes with progress updates (`X / Y`) displayed in real time. That keeps the page responsive so you can monitor completion clearly even on batches of 30 or 50 high-res photos.',
+      },
+      {
+        question: 'What is the exported ZIP file named when I click Download All (ZIP)?',
+        answer:
+          'Clicking Download All (ZIP) packages every finished output cleanly inside bulk_compressed_compressmypic.zip. The entire ZIP archive is built directly in your browser memory without round-tripping through a cloud storage server.',
+      },
+      {
+        question: 'Can I add extra photos to the queue after my first batch already finished compressing?',
+        answer:
+          'Yes. Dropping more images adds them cleanly to your existing batch list so you can bundle old and newly dropped files together into one final ZIP.',
+      },
+      {
+        question: 'What is the difference between Balanced, Smaller File, and High Quality presets inside Compression Controls?',
+        answer:
+          'Quick Batch Profiles configure format plus quality shortcuts for common goals like web speed or email attachments. Meanwhile, the Balanced, Smaller File, High Quality pills and 10%–100% quality slider inside Compression Controls let you fine-tune exact lossy strength before clicking Re-compress All.',
+      },
+      {
+        question: 'If I convert transparent PNG icons to JPG in bulk, how are their backgrounds colored?',
+        answer:
+          'Whenever Output Format is JPG (including via the Email / Sharing profile), the Matte Background Color selector appears automatically. It fills transparent alpha channels cleanly onto pure white (#ffffff) or any custom hex hue you choose so icons never turn black.',
+      },
+      {
+        question: 'Does Bulk Image Compressor resize image pixel dimensions or keep original width and height?',
+        answer:
+          'Bulk Image Compressor keeps every file at 100% of its original pixel width and height while reducing byte size via quality encoding. If you also need to shrink dimensions across dozens of photos, pair it with Bulk Image Resizer.',
+      },
+      {
+        question: 'Why did one already-compressed PNG inside my batch show a Re-encode grew warning?',
+        answer:
+          'PNG files exported by tools using aggressive palette quantization can expand slightly when re-saved as full 24-bit lossless PNG on HTML5 Canvas. Clicking Keep original on that card preserves the smaller original inside your batch ZIP, or switching format to WebP/JPG shrinks it further.',
+      },
+      {
+        question: 'Can I re-compress just a single stubborn image instead of re-running the whole folder?',
+        answer:
+          'Yes. Each finished result card includes its own Recompress and Remove buttons alongside Compare and Download so you can adjust or discard outliers cleanly.',
+      },
+      {
+        question: 'Does bulk compression automatically strip camera GPS coordinates and EXIF tags from travel albums?',
+        answer:
+          'Yes. Because each image renders onto HTML5 Canvas during compression, embedded EXIF tags, camera serials, and GPS locations are stripped cleanly from every file in the ZIP.',
+      },
+      {
+        question: 'When should I pick Bulk Image Compressor vs. Target File Size or Web Image Optimizer?',
+        answer:
+          'Use Bulk Image Compressor when you want fast, uniform quality-based savings at full pixel dimensions across dozens of photos. Pick Target File Size when you need every file under a strict KB cap, or Web Image Optimizer for preset web pixel caps plus responsive HTML tags.',
+      },
+      {
+        question: 'Can I inspect visual quality on individual batch items before downloading the full ZIP?',
+        answer:
+          'Yes. Clicking Compare on any card opens the side-by-side split slider comparing the original and compressed versions at full detail.',
+      },
+      {
+        question: 'How does the default 70% quality starting point perform on general photo libraries?',
+        answer:
+          '70% lossy quality typically delivers substantial 50%–75% byte reductions on high-res JPEGs while remaining visually clean across typical web screens and email sharing. Raise it toward 85% under High Fidelity for critical portfolio work.',
+      },
+      {
+        question: 'What happens if I upload a huge 100-photo folder on a phone with limited RAM?',
+        answer:
+          'Because decoding and Canvas buffers reside in device memory, mobile tabs can slow down on extreme single queues. Processing 15 to 30 high-megapixel photos per batch—and clearing finished lists between sets—keeps smartphone browsers smooth.',
+      },
+      {
+        question: 'Are watermarks, daily file caps, or paid upgrade prompts ever enforced on bulk ZIP exports?',
+        answer:
+          'Never. Both single-file downloads and Download All (ZIP) bundles export cleanly with zero watermarks, account signups, or file-count paywalls.',
+      },
+      {
+        question: 'Can I drop animated GIFs into a bulk compression batch?',
+        answer:
+          'Animated GIF inputs extract and compress only their opening frame as a static file here. If you need to shrink animated multi-frame GIFs while keeping motion intact, use our dedicated GIF Compressor tool.',
       },
     ],
     relatedSlugs: [
