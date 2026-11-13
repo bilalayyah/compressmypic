@@ -730,4 +730,1359 @@ export const TOOL_UI_ES = {
     downloadClean: 'Descargar limpia', // 'Download Clean'
     removeItem: 'Eliminar {name}', // 'Remove {name}' (aria-label)
   },
+  '/favicon-generator': {
+    uploadTitle: 'Suelte su logotipo o icono aquí', // 'Drop your logo or icon here'
+    uploadSubtitlePrefix: 'Se recomienda PNG o SVG cuadrado · ', // 'Square PNG or SVG recommended · '
+    uploadBrowseFile: 'explorar archivo', // 'browse file'
+    errorGenerateFailed: 'No se pudo generar el paquete de favicon.', // 'Failed to generate favicon package.'
+    backgroundFill: 'Relleno de fondo', // 'Background Fill'
+    transparent: 'Transparente', // 'Transparent'
+    padding: 'Relleno', // 'Padding'
+    cornerRadius: 'Radio de esquina', // 'Corner Radius'
+    tabPreviewAlt: 'Vista previa de pestaña', // alt 'Tab preview'
+    myWebsite: 'Mi sitio web', // 'My Website'
+    darkTabPreviewAlt: 'Vista previa de pestaña oscura', // alt 'Dark tab preview'
+    darkModeTab: 'Pestaña en modo oscuro', // 'Dark Mode Tab'
+    packingZip: 'Empaquetando ZIP…', // 'Packing ZIP...'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    clear: 'Limpiar', // title 'Clear'
+    downloadFaviconIco: 'Descargar favicon.ico', // title 'Download favicon.ico'
+    downloadFile: 'Descargar {filename}', // title `Download ${asset.filename}`
+    htmlHeadSnippet: 'Fragmento HTML <head>', // 'HTML <head> Snippet'
+    copied: '¡Copiado!', // 'Copied!'
+    copyHtml: 'Copiar HTML', // 'Copy HTML'
+  },
+  '/image-color-picker': {
+    uploadTitle: 'Suelte una imagen o pegue una captura (Ctrl+V)', // 'Drop an image or paste screenshot (Ctrl+V)'
+    errorUnableToLoadImage: 'No se pudo cargar la imagen.', // 'Unable to load image.'
+    clickAnywhereToPin: 'Haga clic en cualquier lugar para fijar un color', // 'Click anywhere to pin a color'
+    newImage: 'Nueva imagen', // 'New Image'
+    pixelInspector: 'Inspector de píxeles', // 'Pixel Inspector'
+    copyLabel: 'Copiar {label}', // title `Copy ${row.label}`
+    pickedSwatches: 'Muestras guardadas ({count})', // 'Picked Swatches ({palette.length})'
+    exportCss: 'Exportar CSS', // 'Export CSS'
+    clickPixelsHint: 'Haga clic en píxeles de la imagen para guardar colores en su paleta.', // 'Click pixels on the image to save colors to your palette.'
+    clickToSelectCopy: 'Pulse para seleccionar y copiar {hex}', // title `Click to select & copy ${c.hex}`
+  },
+  '/image-dimensions-checker': {
+    uploadTitle: 'Suelte imágenes para inspeccionar dimensiones y proporciones exactas', // 'Drop images to inspect exact dimensions & ratios'
+    minWidthCheck: 'Ancho mínimo (px)', // 'Min Width Check (px)'
+    minHeightCheck: 'Alto mínimo (px)', // 'Min Height Check (px)'
+    placeholderMinWidth: 'p. ej., 1200', // placeholder 'e.g. 1200'
+    placeholderMinHeight: 'p. ej., 630', // placeholder 'e.g. 630'
+    exportCsv: 'Exportar CSV', // 'Export CSV'
+    exportJson: 'Exportar JSON', // 'Export JSON'
+    clear: 'Limpiar', // 'Clear'
+    headerImage: 'Imagen', // table header 'Image'
+    headerDimensions: 'Dimensiones', // table header 'Dimensions'
+    headerAspectRatio: 'Proporción', // table header 'Aspect Ratio'
+    headerOrientation: 'Orientación', // table header 'Orientation'
+    headerSizeFormat: 'Tamaño / Formato', // table header 'Size / Format'
+    headerPrint300Dpi: 'Impresión a 300 DPI', // table header 'Print @300 DPI'
+    headerSpecCheck: 'Comprobación de especificación', // table header 'Spec Check'
+    orientationLandscape: 'Horizontal', // 'Landscape'
+    orientationPortrait: 'Vertical', // 'Portrait'
+    orientationSquare: 'Cuadrada', // 'Square'
+    alphaTag: ' · Alfa', // ' · Alpha'
+    specPass: 'Aprobado', // 'Pass'
+    specBelowMin: 'Por debajo del mínimo', // 'Below Min'
+    csvYes: 'Sí', // CSV value 'Yes'
+    csvNo: 'No', // CSV value 'No'
+  },
+  '/blur-pixelate-image': {
+    uploadTitle: 'Suelte una imagen para desenfocar o pixelar zonas', // 'Drop an image to blur or pixelate areas'
+    errorUnableToLoadImage: 'No se pudo cargar la imagen.', // 'Unable to load image.'
+    errorExportFailed: 'Error al exportar.', // 'Export failed.'
+    paintOverAreasBlur: 'Pinte zonas para desenfocar', // 'Paint Over Areas to Blur'
+    paintOverAreasPixelate: 'Pinte zonas para pixelar', // 'Paint Over Areas to Pixelate'
+    wholeImagePreview: 'Vista previa de imagen completa', // 'Whole-Image Preview'
+    undo: 'Deshacer', // 'Undo'
+    resetBrush: 'Restablecer pincel', // 'Reset Brush'
+    removeImage: 'Eliminar imagen', // aria-label 'Remove image'
+    targetArea: 'Área objetivo', // 'Target Area'
+    brushArea: 'Área de pincel', // 'Brush Area'
+    wholeImage: 'Imagen completa', // 'Whole Image'
+    effectStyle: 'Estilo de efecto', // 'Effect Style'
+    pixelateMosaic: 'Mosaico pixelado', // 'Pixelate Mosaic'
+    smoothBlur: 'Desenfoque suave', // 'Smooth Blur'
+    blurRadius: 'Radio de desenfoque', // 'Blur Radius'
+    mosaicBlockSize: 'Tamaño de bloque de mosaico', // 'Mosaic Block Size'
+    brushSize: 'Tamaño de pincel', // 'Brush Size'
+    brushHint: 'Haga clic y arrastre directamente sobre la foto para ocultar rostros, texto o placas.', // 'Click and drag directly on the photo to hide faces, text, or license plates.'
+    formatOrig: 'Orig', // 'Orig' — same abbreviation in Spanish
+    formatJpg: 'JPG', // 'JPG' — unchanged
+    quality: 'Calidad', // 'Quality'
+    exporting: 'Exportando…', // 'Exporting...'
+    downloadImage: 'Descargar imagen', // 'Download Image'
+  },
+  '/add-text-to-image': {
+    uploadTitle: 'Suelte una imagen para agregar textos superpuestos personalizados', // 'Drop an image to add custom text overlays'
+    errorUnableToLoadImage: 'No se pudo cargar la imagen.', // 'Unable to load image.'
+    errorExportFailed: 'Error al exportar.', // 'Export failed.'
+    dragAnyText: 'Arrastre cualquier texto directamente sobre la imagen', // 'Drag Any Text Directly on Image'
+    changeImage: 'Cambiar imagen', // 'Change Image'
+    textLayer: 'Texto {index}', // tab `Text ${idx + 1}`
+    add: 'Agregar', // 'Add'
+    deleteActiveTextLayer: 'Eliminar capa de texto activa', // aria-label 'Delete active text layer'
+    textContent: 'Contenido de texto (varias líneas admitidas)', // 'Text Content (multi-line supported)'
+    font: 'Fuente', // 'Font'
+    fontInter: 'Inter / Sans limpia', // font option 'Inter / Clean Sans'
+    fontImpact: 'Impact / Pantalla de meme', // font option 'Impact / Meme Display'
+    fontGeorgia: 'Georgia / Serif clásica', // font option 'Georgia / Classic Serif'
+    fontCourier: 'Courier / Monoespaciada', // font option 'Courier / Monospace'
+    fontTrebuchet: 'Trebuchet / Sans redondeada', // font option 'Trebuchet / Rounded Sans'
+    fill: 'Relleno', // 'Fill'
+    toggleBold: 'Activar/desactivar negrita', // aria-label 'Toggle Bold'
+    toggleItalic: 'Activar/desactivar cursiva', // aria-label 'Toggle Italic'
+    size: 'Tamaño', // 'Size'
+    rotation: 'Rotación', // 'Rotation'
+    textOutline: 'Contorno de texto', // 'Text Outline'
+    dropShadow: 'Sombra paralela', // 'Drop Shadow'
+    defaultLayerText: 'Toque dos veces o edite el texto', // default layer text 'Double-tap or edit text'
+    defaultCaption: 'Subtítulo {index}', // default layer text `Caption ${index + 1}`
+    formatOrig: 'Orig', // 'Orig' — same abbreviation in Spanish
+    formatJpg: 'JPG', // 'JPG' — unchanged
+    quality: 'Calidad', // 'Quality'
+    exporting: 'Exportando…', // 'Exporting...'
+    downloadImageWithText: 'Descargar imagen con texto', // 'Download Image with Text'
+  },
+  '/image-border-generator': {
+    uploadTitle: 'Suelte una imagen para agregar un borde o marco personalizado', // 'Drop an image to add a custom border or frame'
+    errorUnableToLoadImage: 'No se pudo cargar la imagen.', // 'Unable to load image.'
+    errorExportFailed: 'Error al exportar.', // 'Export failed.'
+    framedPreview: 'Vista previa enmarcada', // 'Framed Preview'
+    changeImage: 'Cambiar imagen', // 'Change Image'
+    quickFramePresets: 'Plantillas rápidas de marco', // 'Quick Frame Presets'
+    presetClassicWhite: 'Blanco clásico', // preset 'Classic White'
+    presetPolaroidFrame: 'Marco Polaroid', // preset 'Polaroid Frame'
+    presetDarkStudio: 'Estudio oscuro', // preset 'Dark Studio'
+    presetGradientGlow: 'Brillo de degradado', // preset 'Gradient Glow'
+    borderStyle: 'Estilo de borde', // 'Border Style'
+    borderStyleSolid: 'Sólido', // border type 'solid' (rendered capitalized)
+    borderStyleGradient: 'Degradado', // border type 'gradient' (rendered capitalized)
+    borderStylePolaroid: 'Polaroid', // border type 'polaroid' (rendered capitalized)
+    borderColor: 'Color de borde', // 'Border Color'
+    startColor: 'Color inicial', // 'Start Color'
+    endColor: 'Color final', // 'End Color'
+    gradientAngle: 'Ángulo de degradado', // 'Gradient Angle'
+    borderSize: 'Tamaño de borde', // 'Border Size'
+    frameRadius: 'Radio del marco', // 'Frame Radius'
+    photoRadius: 'Radio de foto', // 'Photo Radius'
+    dropShadow: 'Sombra paralela', // 'Drop Shadow'
+    shadowNone: 'ninguna', // shadow level 'none' (rendered capitalized)
+    shadowSoft: 'suave', // shadow level 'soft' (rendered capitalized)
+    shadowMedium: 'media', // shadow level 'medium' (rendered capitalized)
+    shadowDeep: 'profunda', // shadow level 'deep' (rendered capitalized)
+    exporting: 'Exportando…', // 'Exporting...'
+    downloadFramedImage: 'Descargar imagen enmarcada', // 'Download Framed Image'
+  },
+  '/round-image-corners': {
+    uploadTitle: 'Suelte una imagen para redondear sus esquinas', // 'Drop an image to round its corners'
+    errorUnableToLoadImage: 'No se pudo cargar la imagen.', // 'Unable to load image.'
+    errorExportFailed: 'No se pudo exportar la imagen redondeada.', // 'Failed to export rounded image.'
+    liveCornerPreview: 'Vista previa de esquinas en vivo', // 'Live Corner Preview'
+    changeImage: 'Cambiar imagen', // 'Change Image'
+    cornerSettings: 'Ajustes de esquina', // 'Corner Settings'
+    fullCirclePill: 'Círculo completo / Píldora', // 'Full Circle / Pill'
+    individualPerCorner: 'Control individual por esquina', // 'Individual Per-Corner Control'
+    allCornersRadius: 'Radio de todas las esquinas', // 'All Corners Radius'
+    cornerTopLeft: 'Superior izquierda', // per-corner label 'Top Left'
+    cornerTopRight: 'Superior derecha', // per-corner label 'Top Right'
+    cornerBottomLeft: 'Inferior izquierda', // per-corner label 'Bottom Left'
+    cornerBottomRight: 'Inferior derecha', // per-corner label 'Bottom Right'
+    outerCornerFill: 'Relleno de esquina exterior', // 'Outer Corner Fill'
+    transparentPngWebp: 'Transparente (PNG/WebP)', // 'Transparent (PNG/WebP)'
+    solidColor: 'Color sólido', // 'Solid Color'
+    outputFormat: 'Formato de salida', // 'Output Format'
+    exporting: 'Exportando…', // 'Exporting...'
+    downloadRoundedImage: 'Descargar imagen redondeada', // 'Download Rounded Image'
+  },
+  '/image-brightness-editor': {
+    uploadTitle: 'Suelte una imagen para ajustar el brillo', // ToneEditorTool title `Drop an image to adjust ${cfg.label.toLowerCase()}` (mode 'brightness')
+    errorUnableToLoadImage: 'No se pudo cargar la imagen.', // 'Unable to load image.'
+    errorExportFailed: 'No se pudo exportar la imagen ajustada.', // 'Failed to export adjusted image.'
+    viewAfter: 'Después', // view tab 'after' (rendered capitalized)
+    viewBefore: 'Antes', // view tab 'before' (rendered capitalized)
+    viewSplitCompare: 'Comparación dividida', // view tab 'Split Compare'
+    fullscreenCompare: 'Comparación en pantalla completa', // 'Fullscreen Compare'
+    removeImage: 'Eliminar imagen', // title/aria-label 'Remove image'
+    beforeLabel: 'Antes', // split slider label 'Before'
+    afterLabel: 'Después', // split slider label 'After'
+    originalPreviewAlt: 'Vista previa original', // alt 'Original preview'
+    originalComparisonAlt: 'Comparación original', // alt 'Original comparison'
+    brightnessControls: 'Controles de brillo', // 'Brightness Controls'
+    reset: 'Restablecer', // 'Reset'
+    brightnessLevel: 'Nivel de brillo', // 'Brightness Level'
+    minLabel: '-100 % Más oscuro', // min label '-100% Darker'
+    maxLabel: '+100 % Más claro', // max label '+100% Brighter'
+    quickPresets: 'Plantillas rápidas', // 'Quick Presets'
+    presetDark: 'Oscuro (-30 %)', // preset 'Dark (-30%)'
+    presetDim: 'Tenue (-15 %)', // preset 'Dim (-15%)'
+    presetOriginal: 'Original (0 %)', // preset 'Original (0%)'
+    presetBright: 'Brillante (+15 %)', // preset 'Bright (+15%)'
+    presetVibrant: 'Vibrante (+30 %)', // preset 'Vibrant (+30%)'
+    presetHighKey: 'Clave alta (+50 %)', // preset 'High Key (+50%)'
+    outputFormat: 'Formato de salida', // 'Output Format'
+    formatOriginal: 'Original', // 'Original' — same in Spanish
+    formatJpg: 'JPG', // 'JPG' — unchanged
+    quality: 'Calidad', // 'Quality'
+    exporting: 'Exportando…', // 'Exporting...'
+    downloadEditedImage: 'Descargar imagen editada', // 'Download Edited Image'
+    comparisonTitlePrefix: 'Comparación de brillo', // ComparisonModal titlePrefix `Brightness Comparison`
+    comparisonAfterLabel: 'Editada (después)', // ComparisonModal afterLabel 'Edited (After)'
+  },
+  '/image-contrast-editor': {
+    uploadTitle: 'Suelte una imagen para ajustar el contraste', // 'Drop an image to adjust contrast'
+    comparisonTitlePrefix: 'Comparación de contraste', // 'Contrast Comparison'
+    comparisonAfterLabel: 'Editada (después)', // 'Edited (After)'
+    errorUnableToLoadImage: 'No se pudo cargar la imagen.', // 'Unable to load image.'
+    errorExportFailed: 'No se pudo exportar la imagen ajustada.', // 'Failed to export adjusted image.'
+    tabAfter: 'Después', // tab 'after' (CSS-capitalized in code)
+    tabBefore: 'Antes', // tab 'before' (CSS-capitalized in code)
+    tabSplitCompare: 'Comparación dividida', // tab 'split' renders 'Split Compare'
+    fullscreenCompare: 'Comparar a pantalla completa', // 'Fullscreen Compare'
+    removeImage: 'Eliminar imagen', // title + aria-label 'Remove image'
+    originalPreviewAlt: 'Vista previa original', // alt 'Original preview'
+    originalComparisonAlt: 'Comparación original', // alt 'Original comparison'
+    splitBeforeLabel: 'Antes', // split slider left label 'Before'
+    splitAfterLabel: 'Después', // split slider right label 'After'
+    controlsHeading: 'Controles de contraste', // '{label} Controls' (contrast mode)
+    reset: 'Restablecer', // 'Reset'
+    levelLabel: 'Nivel de contraste', // '{label} Level' (contrast mode)
+    minLabel: '-100 % Plano', // minLabel '-100% Flat'
+    maxLabel: '+100 % Alto contraste', // maxLabel '+100% High Contrast'
+    quickPresets: 'Ajustes predefinidos rápidos', // 'Quick Presets'
+    presetSoft: 'Suave (-25 %)', // 'Soft (-25%)'
+    presetMuted: 'Atenuado (-10 %)', // 'Muted (-10%)'
+    presetOriginal: 'Original (0 %)', // 'Original (0%)'
+    presetCrisp: 'Nítido (+20 %)', // 'Crisp (+20%)'
+    presetPunchy: 'Intenso (+40 %)', // 'Punchy (+40%)'
+    presetDramatic: 'Dramático (+70 %)', // 'Dramatic (+70%)'
+    outputFormat: 'Formato de salida', // 'Output Format'
+    formatOriginal: 'Original', // 'Original' — same in Spanish
+    formatJpg: 'JPG', // 'JPG' — unchanged
+    quality: 'Calidad', // 'Quality'
+    exporting: 'Exportando…', // 'Exporting...'
+    downloadEditedImage: 'Descargar imagen editada', // 'Download Edited Image'
+  },
+  '/image-saturation-editor': {
+    uploadTitle: 'Suelte una imagen para ajustar la saturación', // 'Drop an image to adjust saturation'
+    comparisonTitlePrefix: 'Comparación de saturación', // 'Saturation Comparison'
+    comparisonAfterLabel: 'Editada (después)', // 'Edited (After)'
+    errorUnableToLoadImage: 'No se pudo cargar la imagen.', // 'Unable to load image.'
+    errorExportFailed: 'No se pudo exportar la imagen ajustada.', // 'Failed to export adjusted image.'
+    tabAfter: 'Después', // tab 'after' (CSS-capitalized in code)
+    tabBefore: 'Antes', // tab 'before' (CSS-capitalized in code)
+    tabSplitCompare: 'Comparación dividida', // tab 'split' renders 'Split Compare'
+    fullscreenCompare: 'Comparar a pantalla completa', // 'Fullscreen Compare'
+    removeImage: 'Eliminar imagen', // title + aria-label 'Remove image'
+    originalPreviewAlt: 'Vista previa original', // alt 'Original preview'
+    originalComparisonAlt: 'Comparación original', // alt 'Original comparison'
+    splitBeforeLabel: 'Antes', // split slider left label 'Before'
+    splitAfterLabel: 'Después', // split slider right label 'After'
+    controlsHeading: 'Controles de saturación', // '{label} Controls' (saturation mode)
+    reset: 'Restablecer', // 'Reset'
+    levelLabel: 'Nivel de saturación', // '{label} Level' (saturation mode)
+    minLabel: '-100 % Escala de grises', // minLabel '-100% Grayscale'
+    maxLabel: '+100 % Vívido', // maxLabel '+100% Vivid'
+    quickPresets: 'Ajustes predefinidos rápidos', // 'Quick Presets'
+    presetGrayscale: 'Escala de grises (-100 %)', // 'Grayscale (-100%)'
+    presetMuted: 'Atenuado (-40 %)', // 'Muted (-40%)'
+    presetOriginal: 'Original (0 %)', // 'Original (0%)'
+    presetRich: 'Intenso (+30 %)', // 'Rich (+30%)'
+    presetVivid: 'Vívido (+60 %)', // 'Vivid (+60%)'
+    presetHyper: 'Hiper (+90 %)', // 'Hyper (+90%)'
+    outputFormat: 'Formato de salida', // 'Output Format'
+    formatOriginal: 'Original', // 'Original' — same in Spanish
+    formatJpg: 'JPG', // 'JPG' — unchanged
+    quality: 'Calidad', // 'Quality'
+    exporting: 'Exportando…', // 'Exporting...'
+    downloadEditedImage: 'Descargar imagen editada', // 'Download Edited Image'
+  },
+  '/image-filters': {
+    uploadTitle: 'Suelte una imagen para aplicar filtros', // 'Drop an image to apply filters'
+    comparisonTitlePrefix: 'Comparación de filtros', // 'Filter Comparison'
+    comparisonAfterLabel: 'Filtrada', // 'Filtered'
+    errorUnableToLoadImage: 'No se pudo cargar la imagen.', // 'Unable to load image.'
+    errorExportFailed: 'No se pudo exportar.', // 'Export failed.'
+    filterPreview: 'Vista previa de filtro', // 'Filter Preview'
+    holdToViewOriginal: 'Mantener para ver el original', // 'Hold to View Original'
+    compare: 'Comparar', // 'Compare'
+    removeImage: 'Eliminar imagen', // aria-label 'Remove image'
+    originalBadge: 'Original', // 'Original' badge — same in Spanish
+    filterPresets: 'Ajustes predefinidos de filtro', // 'Filter Presets'
+    reset: 'Restablecer', // 'Reset'
+    presetOriginal: 'Original', // preset 'Original' — same in Spanish
+    presetGrayscale: 'Escala de grises', // preset 'Grayscale'
+    presetSepia: 'Sepia', // preset 'Sepia' — same in Spanish
+    presetVintage: 'Vintage', // preset 'Vintage' — same in Spanish
+    presetWarm: 'Cálido', // preset 'Warm'
+    presetCool: 'Frío', // preset 'Cool'
+    presetHighContrast: 'Alto contraste', // preset 'High Contrast'
+    presetMatteFade: 'Atenuado mate', // preset 'Matte Fade'
+    presetDramatic: 'Dramático', // preset 'Dramatic'
+    presetNoir: 'B/N Noir', // preset 'B&W Noir'
+    presetGoldenHour: 'Hora dorada', // preset 'Golden Hour'
+    presetInvert: 'Invertir', // preset 'Invert'
+    filterIntensity: 'Intensidad del filtro', // 'Filter Intensity'
+    outputFormat: 'Formato de salida', // 'Output Format'
+    formatOriginal: 'Original', // 'Original' — same in Spanish
+    formatJpg: 'JPG', // 'JPG' — unchanged
+    quality: 'Calidad', // 'Quality'
+    rendering: 'Procesando…', // 'Rendering...'
+    downloadFilteredImage: 'Descargar imagen filtrada', // 'Download Filtered Image'
+  },
+  '/add-background-to-image': {
+    uploadTitle: 'Suelte una imagen o un PNG transparente para agregar un fondo', // 'Drop an image or transparent PNG to add a backdrop'
+    errorUnableToLoadImage: 'No se pudo cargar la imagen.', // 'Unable to load image.'
+    errorExportFailed: 'No se pudo exportar.', // 'Export failed.'
+    backgroundPreview: 'Vista previa de fondo', // 'Background Preview'
+    changeImage: 'Cambiar imagen', // 'Change Image'
+    outputDimensionsPrefix: 'Salida:', // 'Output:' (before '{w}×{h}px')
+    backgroundType: 'Tipo de fondo', // 'Background Type'
+    modeSolidColor: 'Color sólido', // 'Solid Color'
+    modeGradient: 'Degradado', // 'Gradient'
+    modeBlurredPhoto: 'Foto difuminada', // 'Blurred Photo'
+    selectColor: 'Seleccionar color {color}', // aria-label `Select color ${c}`
+    color1: 'Color 1', // 'Color 1' — same in Spanish
+    color2: 'Color 2', // 'Color 2' — same in Spanish
+    angle: 'Ángulo', // 'Angle'
+    backdropBlurRadius: 'Radio de desenfoque del fondo', // 'Backdrop Blur Radius'
+    canvasAspectRatio: 'Proporción de lienzo', // 'Canvas Aspect Ratio'
+    aspectOriginal: 'Orig', // 'Orig' — same abbreviation in Spanish
+    imageScale: 'Escala de imagen', // 'Image Scale'
+    roundness: 'Redondez', // 'Roundness'
+    dropShadowBehindImage: 'Sombra paralela detrás de la imagen', // 'Drop Shadow Behind Image'
+    formatPng: 'PNG', // 'PNG' — unchanged
+    formatJpg: 'JPG', // 'JPG' — unchanged
+    formatWebp: 'WEBP', // 'WEBP' — unchanged
+    exporting: 'Exportando…', // 'Exporting...'
+    downloadImage: 'Descargar imagen', // 'Download Image'
+  },
+  '/image-splitter': {
+    uploadTitle: 'Suelte una imagen para dividirla en mosaicos de rejilla o tiras', // 'Drop an image to split into grid tiles or strips'
+    errorUnableToLoadImage: 'No se pudo cargar la imagen.', // 'Unable to load image.'
+    errorSplitFailed: 'No se pudo dividir la imagen.', // 'Failed to split image.'
+    errorCanvasContext: 'No se pudo inicializar el contexto del lienzo.', // 'Unable to initialize canvas context.'
+    cutLinePreview: 'Vista previa de líneas de corte ({rows} × {cols} = {tiles} piezas)', // 'Cut-Line Preview ({rows} × {cols} = {n} tiles)'
+    changeImage: 'Cambiar imagen', // 'Change Image'
+    splitGuideAlt: 'Guía de división', // alt 'Split guide'
+    splitLayout: 'Diseño de división', // 'Split Layout'
+    modeGrid: 'Rejilla (N×M)', // 'Grid (N×M)'
+    modeHorizontalStrips: 'Tiras horizontales', // 'Horiz. Strips'
+    modeVerticalStrips: 'Tiras verticales', // 'Vert. Strips'
+    rowsLabel: 'Filas (cortes horizontales)', // 'Rows (Horizontal Cuts)'
+    columnsLabel: 'Columnas (cortes verticales)', // 'Columns (Vertical Cuts)'
+    preset2x2: '2×2', // preset '2×2' — unchanged
+    preset3x3Instagram: '3×3 Instagram', // preset '3×3 Instagram' — unchanged
+    preset1x3Carousel: '1×3 Carrusel', // preset '1×3 Carousel'
+    preset4x1Strips: '4×1 Tiras', // preset '4×1 Strips'
+    formatOriginal: 'Orig', // 'Orig' — same abbreviation in Spanish
+    formatJpg: 'JPG', // 'JPG' — unchanged
+    tileQuality: 'Calidad de pieza', // 'Tile Quality'
+    splittingImage: 'Dividiendo imagen…', // 'Splitting Image...'
+    splitIntoTiles: 'Dividir en {count} piezas', // `Split into ${n} Tiles`
+    splitComplete: 'División completa', // 'Split Complete'
+    tilesGenerated: '{count} piezas de imagen generadas a resolución completa', // '{n} image tiles generated at full resolution'
+    packagingZip: 'Empaquetando ZIP…', // 'Packaging ZIP...'
+    downloadAllTilesZip: 'Descargar todas las piezas (ZIP)', // 'Download All Tiles (ZIP)'
+    download: 'Descargar', // 'Download'
+  },
+  '/image-dpi-changer': {
+    uploadTitle: 'Suelte imágenes JPG o PNG para actualizar los metadatos DPI', // 'Drop JPG or PNG images to update DPI metadata'
+    errorUpdateDpiFailed: 'No se pudo actualizar el DPI.', // 'Failed to update DPI.'
+    targetDpiPresets: 'Ajustes predefinidos de DPI objetivo', // 'Target DPI Presets'
+    preset72Screen: '72 DPI (Pantalla)', // '72 DPI (Screen)'
+    preset96Windows: '96 DPI (Windows)', // '96 DPI (Windows)' — unchanged
+    preset150DraftPrint: '150 DPI (Impresión de borrador)', // '150 DPI (Draft Print)'
+    preset300HighPrint: '300 DPI (Impresión de alta calidad)', // '300 DPI (High Print)'
+    preset600Archival: '600 DPI (Archivo)', // '600 DPI (Archival)'
+    customDpi: 'DPI personalizado', // 'Custom DPI'
+    applyDpi: 'Aplicar {dpi} DPI', // 'Apply {dpi} DPI'
+    clear: 'Limpiar', // 'Clear'
+    batchReady: 'Lote listo', // 'Batch Ready'
+    filesUpdatedToDpi: '{count} archivos actualizados a {dpi} DPI', // '{n} files updated to {dpi} DPI'
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    beforeDpi: 'Antes: {dpi} DPI', // 'Before: {dpi} DPI'
+    beforeNotSet: 'Antes: Sin establecer', // 'Before: Not set'
+    verifiedDpi: 'Verificado: {dpi} DPI', // 'Verified: {dpi} DPI'
+    methodLosslessJpeg: 'Actualización sin pérdidas de encabezado JPEG', // 'Lossless JPEG Header Update'
+    methodLosslessPng: 'Actualización sin pérdidas de pHYs PNG', // 'Lossless PNG pHYs Update'
+    methodConvertedPng: 'Convertido a PNG con DPI pHYs', // 'Converted to PNG with pHYs DPI'
+    download: 'Descargar', // 'Download'
+    removeImage: 'Eliminar {name}', // aria-label `Remove ${item.file.name}`
+  },
+  '/image-to-base64': {
+    uploadTitle: 'Suelte una imagen para codificarla como Base64', // 'Drop an image to encode as Base64'
+    errorCouldNotEncode: 'No se pudo codificar el archivo.', // 'Could not encode file.'
+    errorFailedToRead: 'No se pudo leer el archivo de imagen.', // 'Failed to read image file.'
+    errorClipboardWriteFailed: 'No se pudo escribir en el portapapeles: seleccione y copie desde el cuadro de texto.', // 'Clipboard write failed — please select and copy from the text box.'
+    fileLabel: 'Archivo:', // 'File:' (summary card)
+    outputLabel: 'Salida:', // 'Output:' (summary card)
+    charsLabel: 'caracteres', // 'chars' (summary card)
+    encodeAnother: 'Codificar otra', // 'Encode Another'
+    tabDataUrl: 'URL de datos', // tab 'Data URL'
+    tabRawBase64: 'Base64 puro', // tab 'Raw Base64'
+    tabHtmlImg: 'HTML <img>', // tab 'HTML <img>' — unchanged
+    tabCssUrl: 'CSS url()', // tab 'CSS url()' — unchanged
+    copied: '¡Copiado!', // 'Copied!'
+    copyOutput: 'Copiar salida', // 'Copy Output'
+    saveTxt: 'Guardar .TXT', // 'Save .TXT' — unchanged
+  },
+  '/base64-to-image': {
+    pasteLabel: 'Pegar cadena Base64 o URL de datos', // 'Paste Base64 String or Data URL'
+    clear: 'Borrar', // 'Clear'
+    inputPlaceholder: 'Pegue data:image/png;base64,iVBORw0KGgo... o bytes Base64 puros aquí', // placeholder 'Paste data:image/png;base64,iVBORw0KGgo... or raw Base64 bytes here'
+    supportsNote: 'Admite cargas Base64 de PNG, JPG, WebP, GIF, SVG, BMP e ICO', // 'Supports PNG, JPG, WebP, GIF, SVG, BMP, and ICO Base64 payloads'
+    decoding: 'Decodificando…', // 'Decoding...'
+    decodeImage: 'Decodificar imagen', // 'Decode Image'
+    decodingBytes: 'Decodificando bytes Base64…', // 'Decoding Base64 bytes...'
+    errorUnsupportedDataUri: 'Codificación de URI de datos no compatible. Se esperaba una carga Base64 (`;base64,`).', // 'Unsupported data URI encoding. Expected base64 payload (`;base64,`).'
+    errorInvalidBase64: 'La entrada contiene caracteres Base64 no válidos.', // 'Input contains invalid Base64 characters.'
+    errorNotValidImage: 'Los bytes decodificados no forman una imagen válida legible por el navegador.', // 'Decoded bytes do not form a valid browser-readable image.'
+    errorUnableToDecode: 'No se pudo decodificar la cadena Base64.', // 'Unable to decode Base64 string.'
+    decodedPreviewAlt: 'Vista previa de Base64 decodificado', // alt 'Decoded Base64 preview'
+    validImageDecoded: 'Imagen válida decodificada', // 'Valid Image Decoded'
+    detectedFormat: 'Formato detectado', // 'Detected Format'
+    binarySize: 'Tamaño binario', // 'Binary Size'
+    dimensions: 'Dimensiones', // 'Dimensions'
+    downloadFormat: 'Formato de descarga', // 'Download Format'
+    formatOriginal: 'Original', // 'Original' — same in Spanish
+    formatJpg: 'JPG', // 'JPG' — unchanged
+    downloadImageFile: 'Descargar archivo de imagen', // 'Download Image File'
+  },
+  '/image-color-palette-extractor': {
+    uploadTitle: 'Suelte una imagen para extraer su paleta de colores dominantes', // 'Drop an image to extract its dominant color palette'
+    errorUnableToLoadImage: 'No se pudo cargar la imagen.', // 'Unable to load image.'
+    errorClipboardDenied: 'Permiso del portapapeles denegado.', // 'Clipboard permission denied.'
+    extractedPalette: 'Paleta extraída ({count} colores)', // 'Extracted Palette ({count} Colors)'
+    sourceAlt: 'Origen', // alt 'Source'
+    changeImage: 'Cambiar', // 'Change'
+    numberOfColors: 'Cantidad de colores', // 'Number of Colors'
+    colorsCount: '{count} colores', // '{count} colors'
+    copyCssVariables: 'Copiar variables CSS', // 'Copy CSS Variables'
+    copiedCss: '¡CSS copiado!', // 'Copied CSS!'
+    copyJson: 'Copiar JSON', // 'Copy JSON'
+    copiedJson: '¡JSON copiado!', // 'Copied JSON!'
+    downloadPalettePng: 'Descargar paleta PNG', // 'Download Palette PNG'
+  },
+  '/gif-maker': {
+    uploadTitle: 'Suelte 2 o más imágenes para crear un GIF animado', // 'Drop 2 or more images to create an animated GIF'
+    errorEncodeFailed: 'No se pudo codificar el GIF animado.', // 'Failed to encode animated GIF.'
+    skippedFile: 'Se omitió "{name}": {error}', // 'Skipped "{file.name}": {err.message}'
+    skippedFileNoError: 'Se omitió "{name}".', // 'Skipped "{file.name}".'
+    generatedGif: 'GIF generado ({width}×{height} px · {size})', // 'Generated GIF ({width}×{height}px · {size})'
+    liveTimingPreview: 'Vista previa en vivo · Fotograma {current}/{total}', // 'Live Timing Preview · Frame {n}/{total}'
+    generatedGifAlt: 'GIF animado generado', // alt 'Generated animated GIF'
+    pause: 'Pausar', // 'Pause'
+    play: 'Reproducir', // 'Play'
+    backToFrameEditor: 'Volver al editor de fotogramas', // 'Back to Frame Editor'
+    clearAllFrames: 'Borrar todos los fotogramas', // aria-label 'Clear all frames'
+    largeGifWarning: 'Advertencia de GIF grande ({size})', // 'Large GIF Warning ({size})'
+    largeGifWarningBody:
+      'Los GIF de más de 5–15 MB pueden subirse lentamente en aplicaciones de mensajería o no cumplir límites estrictos de plataforma. Pruebe reducir el ancho/alto de salida (p. ej., 480 px), bajar la calidad o quitar fotogramas.', // 'GIFs above 5–15 MB may upload slowly on messaging apps or fail strict platform limits. Try reducing output width/height (e.g. 480px), lowering Quality, or removing frames.'
+    downloadAnimatedGif: 'Descargar GIF animado ({size})', // 'Download Animated GIF ({size})'
+    animationSettings: 'Ajustes de animación', // 'Animation Settings'
+    defaultFrameDuration: 'Duración predeterminada de fotograma', // 'Default Frame Duration'
+    frameDurationValue: '{ms} ms ({fps} FPS)', // '{ms} ms ({fps} FPS)'
+    fpsPreset1: '1 FPS (1000 ms)', // '1 FPS (1000ms)'
+    fpsPreset2: '2 FPS (500 ms)', // '2 FPS (500ms)'
+    fpsPreset5: '5 FPS (200 ms)', // '5 FPS (200ms)'
+    fpsPreset10: '10 FPS (100 ms)', // '10 FPS (100ms)'
+    loopBehavior: 'Comportamiento de repetición', // 'Loop Behavior'
+    loopForever: 'Siempre', // 'Forever'
+    loopSetLoops: 'Definir repeticiones', // 'Set Loops'
+    loopPlayOnce: 'Reproducir una vez', // 'Play Once'
+    totalPlays: 'Reproducciones totales', // 'Total Plays'
+    outputDimensions: 'Dimensiones de salida (px)', // 'Output Dimensions (px)'
+    ratioLocked: 'Proporción bloqueada', // 'Ratio Locked'
+    ratioUnlocked: 'Desbloqueada', // 'Unlocked'
+    widthLabel: 'Ancho', // 'Width'
+    heightLabel: 'Alto', // 'Height'
+    sizePreset480: '480 px', // '480px'
+    sizePreset640: '640 px', // '640px'
+    sizePreset800: '800 px', // '800px'
+    sizePresetOriginal: 'Original', // 'Original' — same in Spanish
+    frameFit: 'Ajuste de fotogramas', // 'Frame Fit'
+    fitContain: 'Contener', // 'contain'
+    fitCover: 'Cubrir', // 'cover'
+    backgroundMatte: 'Fondo mate', // 'Background Matte'
+    colorPaletteQuality: 'Calidad de la paleta de colores', // 'Color Palette Quality'
+    encodingGif: 'Codificando GIF ({progress} %)…', // 'Encoding GIF ({progress}%)...'
+    generateAnimatedGif: 'Generar GIF animado', // 'Generate Animated GIF'
+    reEncodeAnimatedGif: 'Volver a codificar GIF animado', // 'Re-Encode Animated GIF'
+    framesHeading: 'Fotogramas ({count}) — Arrastre o use las flechas para reordenar', // 'Frames ({count}) — Drag or use arrows to reorder'
+    perFrameDelayHint:
+      'Deje la duración por fotograma en blanco para heredar la duración global de fotograma de {ms} ms.', // 'Leave per-frame delay blank to inherit the {ms}ms global frame duration.'
+    addFrames: 'Agregar fotogramas', // 'Add Frames'
+    delayMsLabel: 'Duración (ms):', // 'Delay (ms):'
+    moveEarlier: 'Mover antes', // title 'Move earlier'
+    moveLater: 'Mover después', // title 'Move later'
+    duplicateFrame: 'Duplicar fotograma', // title 'Duplicate frame'
+    removeFrame: 'Quitar fotograma', // title 'Remove frame'
+    moveFrameEarlierAria: 'Mover el fotograma {n} antes', // aria-label `Move frame ${n} earlier`
+    moveFrameLaterAria: 'Mover el fotograma {n} después', // aria-label `Move frame ${n} later`
+    duplicateFrameAria: 'Duplicar el fotograma {n}', // aria-label `Duplicate frame ${n}`
+    removeFrameAria: 'Quitar el fotograma {n}', // aria-label `Remove frame ${n}`
+  },
+  '/image-collage-maker': {
+    uploadTitle: 'Suelte de 2 a 9 imágenes para crear un collage de fotos', // 'Drop 2 to 9 images to create a photo collage'
+    errorExportFailed: 'No se pudo exportar el collage.', // 'Failed to export collage.'
+    couldNotLoadFile: 'No se pudo cargar "{name}": {error}', // 'Could not load "{file.name}": {err.message}'
+    couldNotLoadFileNoError: 'No se pudo cargar "{name}".', // 'Could not load "{file.name}".'
+    collagePreview: 'Vista previa del collage ({width}×{height} px)', // 'Collage Preview ({width}×{height}px)'
+    clearAll: 'Borrar todo', // 'Clear All'
+    rearrangeCells: 'Reordenar celdas (arrastre o toque dos celdas para intercambiar)', // 'Rearrange Cells (Drag or Tap Two Cells to Swap)'
+    rearrangeCellsHint:
+      'Arrastre cualquier tarjeta de celda sobre otra ranura para reordenar las fotos al instante.', // 'Drag any cell card onto another slot to reorder photos instantly.'
+    addPhotos: 'Agregar fotos', // 'Add Photos'
+    cellLabel: 'Celda {n}', // 'Cell {n}'
+    slotLabel: 'Ranura {n}', // canvas-drawn 'Slot {n}'
+    moveCellBackAria: 'Mover la celda {n} atrás', // aria-label `Move cell ${n} back`
+    moveCellForwardAria: 'Mover la celda {n} adelante', // aria-label `Move cell ${n} forward`
+    clearCellAria: 'Borrar la celda {n}', // aria-label `Clear cell ${n}`
+    addPhoto: 'Agregar foto', // 'Add Photo'
+    collageLayout: 'Diseño de collage', // 'Collage Layout'
+    layout2x2: 'Cuadrícula de 2×2', // '2×2 Grid'
+    layout3x3: 'Cuadrícula de 3×3', // '3×3 Grid'
+    layoutVertical: 'Tira vertical', // 'Vertical Strip'
+    layoutHorizontal: 'Tira horizontal', // 'Horizontal Strip'
+    cellProportionsSpacing: 'Proporciones y espaciado de celdas', // 'Cell Proportions & Spacing'
+    equalCells: 'Celdas iguales', // 'Equal Cells'
+    colSplit: 'División de columnas', // 'Col Split'
+    centerCol: 'Columna central', // 'Center Col'
+    rowSplit: 'División de filas', // 'Row Split'
+    centerRow: 'Fila central', // 'Center Row'
+    leadCellEmphasis: 'Énfasis de la celda principal', // 'Lead Cell Emphasis'
+    gapSpacing: 'Espaciado', // 'Gap Spacing'
+    cellRadius: 'Radio de celda', // 'Cell Radius'
+    backgroundColor: 'Color de fondo', // 'Background Color'
+    backgroundSwatchAria: 'Fondo {color}', // aria-label `Background ${c}`
+    imageFit: 'Ajuste de imagen', // 'Image Fit'
+    fitCover: 'Cubrir', // 'cover'
+    fitContain: 'Contener', // 'contain'
+    outputSize: 'Tamaño de salida (px)', // 'Output Size (px)'
+    widthLabel: 'Ancho', // 'Width'
+    heightLabel: 'Alto', // 'Height'
+    formatJpg: 'JPG', // 'JPG' — unchanged
+    formatPngLossless: 'PNG (sin pérdida)', // 'PNG (Lossless)'
+    jpgQuality: 'Calidad JPG', // 'JPG Quality'
+    exportingCollage: 'Exportando collage…', // 'Exporting Collage...'
+    downloadCollage: 'Descargar collage ({format})', // 'Download Collage ({format})'
+  },
+  '/compress-image-to-50kb': {
+    uploadTitle: 'Suelte imágenes para comprimir a menos de {target}', // 'Drop images to compress under {target}'
+    errorTargetFailed: 'Error al comprimir al tamaño objetivo.', // 'Target compression failed.'
+    errorCorruptedFile: 'Archivo de imagen dañado o ilegible.', // 'Corrupted or unreadable image file.'
+    targetMaxFileSize: 'Tamaño máximo de archivo objetivo', // 'Target Maximum File Size'
+    targetMaxSuffix: '({bytes} máx.)', // '({bytes} max)'
+    needDifferentTarget: '¿Necesita un objetivo diferente en KB?', // 'Need a different target KB?'
+    outputFormat: 'Formato de salida', // 'Output Format'
+    formatOriginal: 'Original', // 'Original' — same in Spanish
+    formatJpg: 'JPG', // 'JPG' — unchanged
+    formatWebp: 'WebP', // 'WebP' — unchanged
+    formatPng: 'PNG', // 'PNG' — unchanged
+    allowDownscale:
+      'Permitir escalado inteligente de dimensiones si la reducción de calidad por sí sola no cabe en {target}', // 'Allow intelligent dimension scaling if quality reduction alone cannot fit under {target}'
+    autoConvertPng:
+      'Convertir automáticamente PNG grandes a WebP/JPG cuando el PNG sin pérdida no puede llegar a {target} limpiamente', // 'Auto-convert large PNGs to WebP/JPG when lossless PNG cannot reach {target} cleanly'
+    transparentPngMatte: 'Color mate para PNG transparente:', // 'Transparent PNG matte color:'
+    compressToTarget: 'Comprimir a {target}', // 'Compress to {target}'
+    optimizing: 'Optimizando…', // 'Optimizing...'
+    clear: 'Borrar', // 'Clear'
+    losslessPngSelected: 'PNG sin pérdida seleccionado:', // 'Lossless PNG selected:'
+    losslessPngWarning:
+      'El PNG ignora los deslizadores de calidad, así que reducir el tamaño depende estrictamente de achicar las dimensiones en píxeles. Para fotos grandes, elija JPG o WebP para llegar a límites estrictos en KB manteniendo nitidez.', // 'PNG ignores quality sliders, so reducing size relies strictly on shrinking pixel dimensions. For large photos, choose JPG or WebP to hit strict KB limits while staying sharp.'
+    targetSummary: 'Resumen de compresión objetivo · Meta ≤ {target}', // 'Target Compression Summary · Goal ≤ {target}'
+    summaryMet: '{achieved} de {total} {images} cumplieron el objetivo de {target}', // '{achieved} of {total} {images} met the {target} target'
+    imageSingular: 'imagen', // 'image'
+    imagePlural: 'imágenes', // 'images'
+    summaryMissed: ' · {missed} no pudieron caber honestamente (detalles abajo)', // ' · {missed} could not honestly fit (details below)'
+    totalSaved: 'Total ahorrado: {bytes}', // 'Total Saved: {bytes}'
+    totalSavedGrew: 'Total ahorrado: {bytes} (creció {grew})', // 'Total Saved: {bytes} (grew by {bytes})'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    metricOriginal: 'Original', // 'Original' (metric label)
+    metricOutput: 'Salida', // 'Output' (metric label)
+    metricSpaceSaved: 'Espacio ahorrado', // 'Space Saved' (metric label)
+    metricReduction: 'Reducción', // 'Reduction' (metric label)
+    metricSizeChange: 'Cambio de tamaño', // 'Size Change' (metric label)
+    underTarget: 'Menos de {target} ({bytes})', // 'Under {target} ({bytes})'
+    targetMissed: 'Objetivo no alcanzado — {bytes}', // 'Target missed — {bytes}'
+    compare: 'Comparar', // 'Compare'
+    download: 'Descargar', // 'Download'
+    removeImage: 'Quitar {name}', // aria-label `Remove ${item.name}`
+    grewBy: 'Creció {bytes}: la recodificación es más grande que el original', // 'Grew by {bytes} — re-encode is larger than the original.'
+    grewPngNote: 'WebP o JPG suele ser más pequeño para PNG con aspecto de foto.', // 'WebP or JPG is usually smaller for photo-like PNGs.'
+    keepOriginal: 'Conservar original', // 'Keep original'
+    keptOriginalNote: 'Se conservó el archivo original porque la recodificación lo hizo más grande.', // 'Kept original file because re-encoding made it larger.'
+    autoConvertedPng:
+      'Se convirtió automáticamente el PNG sin pérdida a {format} para conservar mayor resolución por debajo de {target}.', // 'Auto-converted lossless PNG to {format} to preserve higher resolution under {target}.'
+    formatWebpTransparency: 'WebP (transparencia conservada)', // 'WebP (transparency preserved)'
+    statusAlreadyUnderGrew:
+      'El archivo original ya estaba por debajo de {target}, y la recodificación lo hizo crecer {bytes}. Use «Conservar original» o cambie a WebP/JPG para una salida más pequeña.', // 'Original file was already under {target}, and re-encoding grew it by {bytes}. Use "Keep original" or switch to WebP/JPG for smaller output.'
+    statusAlreadyUnderClean:
+      'El archivo original ya estaba por debajo de {target}; se exportó limpiamente con calidad del {quality} %.', // 'Original file was already under {target}; exported cleanly at {quality}% quality.'
+    statusMetFull:
+      'Objetivo cumplido con resolución completa de {width}×{height} px ({qualityLabel}).', // 'Target met at full {width}×{height}px resolution ({qualityLabel}).'
+    statusMetScaled:
+      'Objetivo cumplido al escalar a {width}×{height} px ({percent} %) con {qualityLabel}.', // 'Target met by scaling to {width}×{height}px ({percent}%) at {qualityLabel}.'
+    qualityLosslessPng: 'PNG sin pérdida', // 'lossless PNG'
+    qualityPercent: 'calidad del {quality} %', // '{quality}% quality'
+    statusCannotPng:
+      'No se puede llegar a {target} con PNG sin pérdida (mínimo alcanzable: {bytes} a {width}×{height} px). Cambie el formato de salida a JPG o WebP para llegar a tamaños más pequeños.', // 'Cannot reach {target} with lossless PNG (smallest achievable: {bytes} at {width}×{height}px). Switch output format to JPG or WebP to hit smaller sizes.'
+    statusCannotFull:
+      'No se puede llegar a {target} con las dimensiones completas de {width}×{height} px (el tamaño mínimo de calidad es {bytes}). Active «Permitir escalado de dimensiones» para reducir más las dimensiones.', // 'Cannot reach {target} at full {width}×{height}px dimensions (minimum quality size is {bytes}). Enable "Allow Dimension Scaling" to shrink dimensions further.'
+    statusCannotClean:
+      'No se pudo alcanzar limpiamente el objetivo solicitado de {target}. La salida codificada honesta más pequeña es {bytes} ({width}×{height} px, calidad del {quality} %). Pruebe un objetivo mayor.', // 'Requested {target} could not be reached cleanly. Smallest honest encoded output is {bytes} ({width}×{height}px, {quality}% quality). Try a larger target size.'
+    comparisonTitlePrefix: 'Compresión objetivo ({target})', // titlePrefix `Target Compression ({target})`
+    comparisonAfterLabel: 'Comprimida ({bytes})', // afterLabel `Compressed ({bytes})`
+  },
+  '/compress-image-to-100kb': {
+    uploadTitle: 'Suelte imágenes para comprimir a menos de {target}', // 'Drop images to compress under {target}'
+    errorTargetFailed: 'Error al comprimir al tamaño objetivo.', // 'Target compression failed.'
+    errorCorruptedFile: 'Archivo de imagen dañado o ilegible.', // 'Corrupted or unreadable image file.'
+    targetMaxFileSize: 'Tamaño máximo de archivo objetivo', // 'Target Maximum File Size'
+    targetMaxSuffix: '({bytes} máx.)', // '({bytes} max)'
+    needDifferentTarget: '¿Necesita un objetivo diferente en KB?', // 'Need a different target KB?'
+    outputFormat: 'Formato de salida', // 'Output Format'
+    formatOriginal: 'Original', // 'Original' — same in Spanish
+    formatJpg: 'JPG', // 'JPG' — unchanged
+    formatWebp: 'WebP', // 'WebP' — unchanged
+    formatPng: 'PNG', // 'PNG' — unchanged
+    allowDownscale:
+      'Permitir escalado inteligente de dimensiones si la reducción de calidad por sí sola no cabe en {target}', // 'Allow intelligent dimension scaling if quality reduction alone cannot fit under {target}'
+    autoConvertPng:
+      'Convertir automáticamente PNG grandes a WebP/JPG cuando el PNG sin pérdida no puede llegar a {target} limpiamente', // 'Auto-convert large PNGs to WebP/JPG when lossless PNG cannot reach {target} cleanly'
+    transparentPngMatte: 'Color mate para PNG transparente:', // 'Transparent PNG matte color:'
+    compressToTarget: 'Comprimir a {target}', // 'Compress to {target}'
+    optimizing: 'Optimizando…', // 'Optimizing...'
+    clear: 'Borrar', // 'Clear'
+    losslessPngSelected: 'PNG sin pérdida seleccionado:', // 'Lossless PNG selected:'
+    losslessPngWarning:
+      'El PNG ignora los deslizadores de calidad, así que reducir el tamaño depende estrictamente de achicar las dimensiones en píxeles. Para fotos grandes, elija JPG o WebP para llegar a límites estrictos en KB manteniendo nitidez.', // 'PNG ignores quality sliders, so reducing size relies strictly on shrinking pixel dimensions. For large photos, choose JPG or WebP to hit strict KB limits while staying sharp.'
+    targetSummary: 'Resumen de compresión objetivo · Meta ≤ {target}', // 'Target Compression Summary · Goal ≤ {target}'
+    summaryMet: '{achieved} de {total} {images} cumplieron el objetivo de {target}', // '{achieved} of {total} {images} met the {target} target'
+    imageSingular: 'imagen', // 'image'
+    imagePlural: 'imágenes', // 'images'
+    summaryMissed: ' · {missed} no pudieron caber honestamente (detalles abajo)', // ' · {missed} could not honestly fit (details below)'
+    totalSaved: 'Total ahorrado: {bytes}', // 'Total Saved: {bytes}'
+    totalSavedGrew: 'Total ahorrado: {bytes} (creció {grew})', // 'Total Saved: {bytes} (grew by {bytes})'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    metricOriginal: 'Original', // 'Original' (metric label)
+    metricOutput: 'Salida', // 'Output' (metric label)
+    metricSpaceSaved: 'Espacio ahorrado', // 'Space Saved' (metric label)
+    metricReduction: 'Reducción', // 'Reduction' (metric label)
+    metricSizeChange: 'Cambio de tamaño', // 'Size Change' (metric label)
+    underTarget: 'Menos de {target} ({bytes})', // 'Under {target} ({bytes})'
+    targetMissed: 'Objetivo no alcanzado — {bytes}', // 'Target missed — {bytes}'
+    compare: 'Comparar', // 'Compare'
+    download: 'Descargar', // 'Download'
+    removeImage: 'Quitar {name}', // aria-label `Remove ${item.name}`
+    grewBy: 'Creció {bytes}: la recodificación es más grande que el original', // 'Grew by {bytes} — re-encode is larger than the original.'
+    grewPngNote: 'WebP o JPG suele ser más pequeño para PNG con aspecto de foto.', // 'WebP or JPG is usually smaller for photo-like PNGs.'
+    keepOriginal: 'Conservar original', // 'Keep original'
+    keptOriginalNote: 'Se conservó el archivo original porque la recodificación lo hizo más grande.', // 'Kept original file because re-encoding made it larger.'
+    autoConvertedPng:
+      'Se convirtió automáticamente el PNG sin pérdida a {format} para conservar mayor resolución por debajo de {target}.', // 'Auto-converted lossless PNG to {format} to preserve higher resolution under {target}.'
+    formatWebpTransparency: 'WebP (transparencia conservada)', // 'WebP (transparency preserved)'
+    statusAlreadyUnderGrew:
+      'El archivo original ya estaba por debajo de {target}, y la recodificación lo hizo crecer {bytes}. Use «Conservar original» o cambie a WebP/JPG para una salida más pequeña.', // 'Original file was already under {target}, and re-encoding grew it by {bytes}. Use "Keep original" or switch to WebP/JPG for smaller output.'
+    statusAlreadyUnderClean:
+      'El archivo original ya estaba por debajo de {target}; se exportó limpiamente con calidad del {quality} %.', // 'Original file was already under {target}; exported cleanly at {quality}% quality.'
+    statusMetFull:
+      'Objetivo cumplido con resolución completa de {width}×{height} px ({qualityLabel}).', // 'Target met at full {width}×{height}px resolution ({qualityLabel}).'
+    statusMetScaled:
+      'Objetivo cumplido al escalar a {width}×{height} px ({percent} %) con {qualityLabel}.', // 'Target met by scaling to {width}×{height}px ({percent}%) at {qualityLabel}.'
+    qualityLosslessPng: 'PNG sin pérdida', // 'lossless PNG'
+    qualityPercent: 'calidad del {quality} %', // '{quality}% quality'
+    statusCannotPng:
+      'No se puede llegar a {target} con PNG sin pérdida (mínimo alcanzable: {bytes} a {width}×{height} px). Cambie el formato de salida a JPG o WebP para llegar a tamaños más pequeños.', // 'Cannot reach {target} with lossless PNG (smallest achievable: {bytes} at {width}×{height}px). Switch output format to JPG or WebP to hit smaller sizes.'
+    statusCannotFull:
+      'No se puede llegar a {target} con las dimensiones completas de {width}×{height} px (el tamaño mínimo de calidad es {bytes}). Active «Permitir escalado de dimensiones» para reducir más las dimensiones.', // 'Cannot reach {target} at full {width}×{height}px dimensions (minimum quality size is {bytes}). Enable "Allow Dimension Scaling" to shrink dimensions further.'
+    statusCannotClean:
+      'No se pudo alcanzar limpiamente el objetivo solicitado de {target}. La salida codificada honesta más pequeña es {bytes} ({width}×{height} px, calidad del {quality} %). Pruebe un objetivo mayor.', // 'Requested {target} could not be reached cleanly. Smallest honest encoded output is {bytes} ({width}×{height}px, {quality}% quality). Try a larger target size.'
+    comparisonTitlePrefix: 'Compresión objetivo ({target})', // titlePrefix `Target Compression ({target})`
+    comparisonAfterLabel: 'Comprimida ({bytes})', // afterLabel `Compressed ({bytes})`
+  },
+  '/compress-image-to-200kb': {
+    uploadTitle: 'Suelte imágenes para comprimir a menos de {target}', // 'Drop images to compress under {target}'
+    errorTargetFailed: 'Error al comprimir al tamaño objetivo.', // 'Target compression failed.'
+    errorCorruptedFile: 'Archivo de imagen dañado o ilegible.', // 'Corrupted or unreadable image file.'
+    targetMaxFileSize: 'Tamaño máximo de archivo objetivo', // 'Target Maximum File Size'
+    targetMaxSuffix: '({bytes} máx.)', // '({bytes} max)'
+    needDifferentTarget: '¿Necesita un objetivo diferente en KB?', // 'Need a different target KB?'
+    outputFormat: 'Formato de salida', // 'Output Format'
+    formatOriginal: 'Original', // 'Original' — same in Spanish
+    formatJpg: 'JPG', // 'JPG' — unchanged
+    formatWebp: 'WebP', // 'WebP' — unchanged
+    formatPng: 'PNG', // 'PNG' — unchanged
+    allowDownscale:
+      'Permitir escalado inteligente de dimensiones si la reducción de calidad por sí sola no cabe en {target}', // 'Allow intelligent dimension scaling if quality reduction alone cannot fit under {target}'
+    autoConvertPng:
+      'Convertir automáticamente PNG grandes a WebP/JPG cuando el PNG sin pérdida no puede llegar a {target} limpiamente', // 'Auto-convert large PNGs to WebP/JPG when lossless PNG cannot reach {target} cleanly'
+    transparentPngMatte: 'Color mate para PNG transparente:', // 'Transparent PNG matte color:'
+    compressToTarget: 'Comprimir a {target}', // 'Compress to {target}'
+    optimizing: 'Optimizando…', // 'Optimizing...'
+    clear: 'Borrar', // 'Clear'
+    losslessPngSelected: 'PNG sin pérdida seleccionado:', // 'Lossless PNG selected:'
+    losslessPngWarning:
+      'El PNG ignora los deslizadores de calidad, así que reducir el tamaño depende estrictamente de achicar las dimensiones en píxeles. Para fotos grandes, elija JPG o WebP para llegar a límites estrictos en KB manteniendo nitidez.', // 'PNG ignores quality sliders, so reducing size relies strictly on shrinking pixel dimensions. For large photos, choose JPG or WebP to hit strict KB limits while staying sharp.'
+    targetSummary: 'Resumen de compresión objetivo · Meta ≤ {target}', // 'Target Compression Summary · Goal ≤ {target}'
+    summaryMet: '{achieved} de {total} {images} cumplieron el objetivo de {target}', // '{achieved} of {total} {images} met the {target} target'
+    imageSingular: 'imagen', // 'image'
+    imagePlural: 'imágenes', // 'images'
+    summaryMissed: ' · {missed} no pudieron caber honestamente (detalles abajo)', // ' · {missed} could not honestly fit (details below)'
+    totalSaved: 'Total ahorrado: {bytes}', // 'Total Saved: {bytes}'
+    totalSavedGrew: 'Total ahorrado: {bytes} (creció {grew})', // 'Total Saved: {bytes} (grew by {bytes})'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    metricOriginal: 'Original', // 'Original' (metric label)
+    metricOutput: 'Salida', // 'Output' (metric label)
+    metricSpaceSaved: 'Espacio ahorrado', // 'Space Saved' (metric label)
+    metricReduction: 'Reducción', // 'Reduction' (metric label)
+    metricSizeChange: 'Cambio de tamaño', // 'Size Change' (metric label)
+    underTarget: 'Menos de {target} ({bytes})', // 'Under {target} ({bytes})'
+    targetMissed: 'Objetivo no alcanzado — {bytes}', // 'Target missed — {bytes}'
+    compare: 'Comparar', // 'Compare'
+    download: 'Descargar', // 'Download'
+    removeImage: 'Quitar {name}', // aria-label `Remove ${item.name}`
+    grewBy: 'Creció {bytes}: la recodificación es más grande que el original', // 'Grew by {bytes} — re-encode is larger than the original.'
+    grewPngNote: 'WebP o JPG suele ser más pequeño para PNG con aspecto de foto.', // 'WebP or JPG is usually smaller for photo-like PNGs.'
+    keepOriginal: 'Conservar original', // 'Keep original'
+    keptOriginalNote: 'Se conservó el archivo original porque la recodificación lo hizo más grande.', // 'Kept original file because re-encoding made it larger.'
+    autoConvertedPng:
+      'Se convirtió automáticamente el PNG sin pérdida a {format} para conservar mayor resolución por debajo de {target}.', // 'Auto-converted lossless PNG to {format} to preserve higher resolution under {target}.'
+    formatWebpTransparency: 'WebP (transparencia conservada)', // 'WebP (transparency preserved)'
+    statusAlreadyUnderGrew:
+      'El archivo original ya estaba por debajo de {target}, y la recodificación lo hizo crecer {bytes}. Use «Conservar original» o cambie a WebP/JPG para una salida más pequeña.', // 'Original file was already under {target}, and re-encoding grew it by {bytes}. Use "Keep original" or switch to WebP/JPG for smaller output.'
+    statusAlreadyUnderClean:
+      'El archivo original ya estaba por debajo de {target}; se exportó limpiamente con calidad del {quality} %.', // 'Original file was already under {target}; exported cleanly at {quality}% quality.'
+    statusMetFull:
+      'Objetivo cumplido con resolución completa de {width}×{height} px ({qualityLabel}).', // 'Target met at full {width}×{height}px resolution ({qualityLabel}).'
+    statusMetScaled:
+      'Objetivo cumplido al escalar a {width}×{height} px ({percent} %) con {qualityLabel}.', // 'Target met by scaling to {width}×{height}px ({percent}%) at {qualityLabel}.'
+    qualityLosslessPng: 'PNG sin pérdida', // 'lossless PNG'
+    qualityPercent: 'calidad del {quality} %', // '{quality}% quality'
+    statusCannotPng:
+      'No se puede llegar a {target} con PNG sin pérdida (mínimo alcanzable: {bytes} a {width}×{height} px). Cambie el formato de salida a JPG o WebP para llegar a tamaños más pequeños.', // 'Cannot reach {target} with lossless PNG (smallest achievable: {bytes} at {width}×{height}px). Switch output format to JPG or WebP to hit smaller sizes.'
+    statusCannotFull:
+      'No se puede llegar a {target} con las dimensiones completas de {width}×{height} px (el tamaño mínimo de calidad es {bytes}). Active «Permitir escalado de dimensiones» para reducir más las dimensiones.', // 'Cannot reach {target} at full {width}×{height}px dimensions (minimum quality size is {bytes}). Enable "Allow Dimension Scaling" to shrink dimensions further.'
+    statusCannotClean:
+      'No se pudo alcanzar limpiamente el objetivo solicitado de {target}. La salida codificada honesta más pequeña es {bytes} ({width}×{height} px, calidad del {quality} %). Pruebe un objetivo mayor.', // 'Requested {target} could not be reached cleanly. Smallest honest encoded output is {bytes} ({width}×{height}px, {quality}% quality). Try a larger target size.'
+    comparisonTitlePrefix: 'Compresión objetivo ({target})', // titlePrefix `Target Compression ({target})`
+    comparisonAfterLabel: 'Comprimida ({bytes})', // afterLabel `Compressed ({bytes})`
+  },
+  '/compress-image-to-500kb': {
+    uploadTitle: 'Suelte imágenes para comprimir a menos de {target}', // 'Drop images to compress under {target}'
+    errorTargetFailed: 'Error al comprimir al tamaño objetivo.', // 'Target compression failed.'
+    errorCorruptedFile: 'Archivo de imagen dañado o ilegible.', // 'Corrupted or unreadable image file.'
+    targetMaxFileSize: 'Tamaño máximo de archivo objetivo', // 'Target Maximum File Size'
+    targetMaxSuffix: '({bytes} máx.)', // '({bytes} max)'
+    needDifferentTarget: '¿Necesita un objetivo diferente en KB?', // 'Need a different target KB?'
+    outputFormat: 'Formato de salida', // 'Output Format'
+    formatOriginal: 'Original', // 'Original' — same in Spanish
+    formatJpg: 'JPG', // 'JPG' — unchanged
+    formatWebp: 'WebP', // 'WebP' — unchanged
+    formatPng: 'PNG', // 'PNG' — unchanged
+    allowDownscale:
+      'Permitir escalado inteligente de dimensiones si la reducción de calidad por sí sola no cabe en {target}', // 'Allow intelligent dimension scaling if quality reduction alone cannot fit under {target}'
+    autoConvertPng:
+      'Convertir automáticamente PNG grandes a WebP/JPG cuando el PNG sin pérdida no puede llegar a {target} limpiamente', // 'Auto-convert large PNGs to WebP/JPG when lossless PNG cannot reach {target} cleanly'
+    transparentPngMatte: 'Color mate para PNG transparente:', // 'Transparent PNG matte color:'
+    compressToTarget: 'Comprimir a {target}', // 'Compress to {target}'
+    optimizing: 'Optimizando…', // 'Optimizing...'
+    clear: 'Borrar', // 'Clear'
+    losslessPngSelected: 'PNG sin pérdida seleccionado:', // 'Lossless PNG selected:'
+    losslessPngWarning:
+      'El PNG ignora los deslizadores de calidad, así que reducir el tamaño depende estrictamente de achicar las dimensiones en píxeles. Para fotos grandes, elija JPG o WebP para llegar a límites estrictos en KB manteniendo nitidez.', // 'PNG ignores quality sliders, so reducing size relies strictly on shrinking pixel dimensions. For large photos, choose JPG or WebP to hit strict KB limits while staying sharp.'
+    targetSummary: 'Resumen de compresión objetivo · Meta ≤ {target}', // 'Target Compression Summary · Goal ≤ {target}'
+    summaryMet: '{achieved} de {total} {images} cumplieron el objetivo de {target}', // '{achieved} of {total} {images} met the {target} target'
+    imageSingular: 'imagen', // 'image'
+    imagePlural: 'imágenes', // 'images'
+    summaryMissed: ' · {missed} no pudieron caber honestamente (detalles abajo)', // ' · {missed} could not honestly fit (details below)'
+    totalSaved: 'Total ahorrado: {bytes}', // 'Total Saved: {bytes}'
+    totalSavedGrew: 'Total ahorrado: {bytes} (creció {grew})', // 'Total Saved: {bytes} (grew by {bytes})'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    metricOriginal: 'Original', // 'Original' (metric label)
+    metricOutput: 'Salida', // 'Output' (metric label)
+    metricSpaceSaved: 'Espacio ahorrado', // 'Space Saved' (metric label)
+    metricReduction: 'Reducción', // 'Reduction' (metric label)
+    metricSizeChange: 'Cambio de tamaño', // 'Size Change' (metric label)
+    underTarget: 'Menos de {target} ({bytes})', // 'Under {target} ({bytes})'
+    targetMissed: 'Objetivo no alcanzado — {bytes}', // 'Target missed — {bytes}'
+    compare: 'Comparar', // 'Compare'
+    download: 'Descargar', // 'Download'
+    removeImage: 'Quitar {name}', // aria-label `Remove ${item.name}`
+    grewBy: 'Creció {bytes}: la recodificación es más grande que el original', // 'Grew by {bytes} — re-encode is larger than the original.'
+    grewPngNote: 'WebP o JPG suele ser más pequeño para PNG con aspecto de foto.', // 'WebP or JPG is usually smaller for photo-like PNGs.'
+    keepOriginal: 'Conservar original', // 'Keep original'
+    keptOriginalNote: 'Se conservó el archivo original porque la recodificación lo hizo más grande.', // 'Kept original file because re-encoding made it larger.'
+    autoConvertedPng:
+      'Se convirtió automáticamente el PNG sin pérdida a {format} para conservar mayor resolución por debajo de {target}.', // 'Auto-converted lossless PNG to {format} to preserve higher resolution under {target}.'
+    formatWebpTransparency: 'WebP (transparencia conservada)', // 'WebP (transparency preserved)'
+    statusAlreadyUnderGrew:
+      'El archivo original ya estaba por debajo de {target}, y la recodificación lo hizo crecer {bytes}. Use «Conservar original» o cambie a WebP/JPG para una salida más pequeña.', // 'Original file was already under {target}, and re-encoding grew it by {bytes}. Use "Keep original" or switch to WebP/JPG for smaller output.'
+    statusAlreadyUnderClean:
+      'El archivo original ya estaba por debajo de {target}; se exportó limpiamente con calidad del {quality} %.', // 'Original file was already under {target}; exported cleanly at {quality}% quality.'
+    statusMetFull:
+      'Objetivo cumplido con resolución completa de {width}×{height} px ({qualityLabel}).', // 'Target met at full {width}×{height}px resolution ({qualityLabel}).'
+    statusMetScaled:
+      'Objetivo cumplido al escalar a {width}×{height} px ({percent} %) con {qualityLabel}.', // 'Target met by scaling to {width}×{height}px ({percent}%) at {qualityLabel}.'
+    qualityLosslessPng: 'PNG sin pérdida', // 'lossless PNG'
+    qualityPercent: 'calidad del {quality} %', // '{quality}% quality'
+    statusCannotPng:
+      'No se puede llegar a {target} con PNG sin pérdida (mínimo alcanzable: {bytes} a {width}×{height} px). Cambie el formato de salida a JPG o WebP para llegar a tamaños más pequeños.', // 'Cannot reach {target} with lossless PNG (smallest achievable: {bytes} at {width}×{height}px). Switch output format to JPG or WebP to hit smaller sizes.'
+    statusCannotFull:
+      'No se puede llegar a {target} con las dimensiones completas de {width}×{height} px (el tamaño mínimo de calidad es {bytes}). Active «Permitir escalado de dimensiones» para reducir más las dimensiones.', // 'Cannot reach {target} at full {width}×{height}px dimensions (minimum quality size is {bytes}). Enable "Allow Dimension Scaling" to shrink dimensions further.'
+    statusCannotClean:
+      'No se pudo alcanzar limpiamente el objetivo solicitado de {target}. La salida codificada honesta más pequeña es {bytes} ({width}×{height} px, calidad del {quality} %). Pruebe un objetivo mayor.', // 'Requested {target} could not be reached cleanly. Smallest honest encoded output is {bytes} ({width}×{height}px, {quality}% quality). Try a larger target size.'
+    comparisonTitlePrefix: 'Compresión objetivo ({target})', // titlePrefix `Target Compression ({target})`
+    comparisonAfterLabel: 'Comprimida ({bytes})', // afterLabel `Compressed ({bytes})`
+  },
+  '/bulk-image-compressor': {
+    uploadTitle: 'Suelte docenas de imágenes para comprimir en lote', // 'Drop dozens of images for bulk compression'
+    errorCompressionFailed: 'Error al comprimir.', // 'Compression failed.'
+    errorCorruptedFile: 'Archivo de imagen dañado o ilegible.', // 'Corrupted or unreadable image file.'
+    quickBatchProfiles: 'Perfiles rápidos de lote:', // 'Quick Batch Profiles:'
+    profileWebFast: 'Web Fast (WebP 75 %)', // 'Web Fast (WebP 75%)'
+    profileEmailSharing: 'Correo / Compartir (JPG 65 %)', // 'Email / Sharing (JPG 65%)'
+    profileHighFidelity: 'Alta fidelidad (85 %)', // 'High Fidelity (85%)'
+    compressingBatch: 'Comprimiendo lote en local…', // 'Compressing batch locally...'
+    // Strings rendered by CompressionControls, ResultsList and ComparisonModal
+    // come from the shared i18n-es.ts dictionary sections (compressionControls,
+    // resultsList, comparisonModal) — already translated in Batch 1.
+  },
+  '/target-file-size-compressor': {
+    uploadTitleTemplate: 'Suelte imágenes para comprimir por debajo de {target}', // `Drop images to compress under ${targetLabel}`
+    targetMaxFileSize: 'Tamaño máximo de archivo objetivo', // 'Target Maximum File Size'
+    targetNumberAria: 'Número de tamaño de archivo objetivo', // aria-label 'Target file size number'
+    maxSuffix: '({size} máx.)', // '({formatBytes(effectiveTargetBytes)} max)'
+    needDifferentTarget: '¿Necesita otro objetivo de KB?', // 'Need a different target KB?'
+    preset20kb: '20 KB', // '20 KB' — unchanged
+    preset50kb: '50 KB', // '50 KB' — unchanged
+    preset100kb: '100 KB', // '100 KB' — unchanged
+    preset200kb: '200 KB', // '200 KB' — unchanged
+    preset500kb: '500 KB', // '500 KB' — unchanged
+    preset1mb: '1 MB', // '1 MB' — unchanged
+    outputFormat: 'Formato de salida', // 'Output Format'
+    formatOriginal: 'Original', // 'Original' — same in Spanish
+    formatJpg: 'JPG', // 'JPG' — unchanged
+    allowDownscale: 'Permitir la escala inteligente de dimensiones si solo bajar la calidad no alcanza {target}', // 'Allow intelligent dimension scaling if quality reduction alone cannot fit under {targetLabel}'
+    autoSwitchPng: 'Convertir automáticamente PNG grandes a WebP/JPG cuando el PNG sin pérdida no llega a {target} limpiamente', // 'Auto-convert large PNGs to WebP/JPG when lossless PNG cannot reach {targetLabel} cleanly'
+    transparentPngMatteColor: 'Color mate para PNG transparente:', // 'Transparent PNG matte color:'
+    losslessPngTitle: 'PNG sin pérdida seleccionado:', // 'Lossless PNG selected:'
+    losslessPngNote: 'El PNG ignora los deslizadores de calidad, así que reducir el tamaño depende estrictamente de achicar las dimensiones en píxeles. Para fotos grandes, elija JPG o WebP para alcanzar límites estrictos de KB manteniendo la nitidez.', // 'PNG ignores quality sliders, so reducing size relies strictly on shrinking pixel dimensions. For large photos, choose JPG or WebP to hit strict KB limits while staying sharp.'
+    compressToTarget: 'Comprimir a {target}', // 'Compress to {targetLabel}'
+    optimizing: 'Optimizando…', // 'Optimizing...'
+    clear: 'Limpiar', // 'Clear'
+    targetSummary: 'Resumen de compresión objetivo · Meta ≤ {target}', // 'Target Compression Summary · Goal ≤ {targetLabel}'
+    summaryMet: '{achieved} de {total} {images} cumplieron el objetivo de {target}', // '{achievedCount} of {doneItems.length} {image/images} met the {targetLabel} target'
+    imageSingular: 'imagen', // 'image'
+    imagePlural: 'imágenes', // 'images'
+    summaryMissed: '· {missed} no pudieron encajar con honestidad (detalles abajo)', // '· {missed} could not honestly fit (details below)'
+    totalSaved: 'Total ahorrado: {saved}', // 'Total Saved: {formatBytes(totalSaved)}'
+    totalGrew: '(creció {grew})', // '(grew by {formatBytes(Math.abs(totalSaved))})'
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    underTarget: 'Por debajo de {target} ({size})', // 'Under {targetLabel} ({formatBytes(compressedSize)})'
+    targetMissed: 'Objetivo no alcanzado — {size}', // 'Target missed — {formatBytes(compressedSize)}'
+    columnOriginal: 'Original', // 'Original'
+    columnOutput: 'Salida', // 'Output'
+    columnSpaceSaved: 'Espacio ahorrado', // 'Space Saved'
+    columnReduction: 'Reducción', // 'Reduction'
+    columnSizeChange: 'Cambio de tamaño', // 'Size Change'
+    grewBy: 'Creció {amount}: la recodificación es más grande que el original.', // 'Grew by {amount} — re-encode is larger than the original.'
+    grewPngHint: 'WebP o JPG suele ser más pequeño para PNG fotográficos.', // 'WebP or JPG is usually smaller for photo-like PNGs.'
+    keepOriginal: 'Conservar original', // 'Keep original'
+    keptOriginalNote: 'Se conservó el archivo original porque la recodificación lo hizo más grande.', // 'Kept original file because re-encoding made it larger.'
+    statusAlreadyUnder: 'El archivo original ya estaba por debajo de {target}; se exportó limpiamente con calidad del {quality} %.', // 'Original file was already under {target}; exported cleanly at {quality}% quality.'
+    statusMetFull: 'Objetivo alcanzado con resolución completa de {width}×{height} px ({quality}).', // 'Target met at full {width}×{height}px resolution ({quality}% quality / lossless PNG).'
+    statusMetScaled: 'Objetivo alcanzado al escalar a {width}×{height} px (escala del {scale} %).', // 'Target met by scaling to {width}×{height}px ({scale}% scale).'
+    statusCannotPng: 'No se puede llegar a {target} con PNG sin pérdida (mínimo alcanzable: {size}).', // 'Cannot reach {target} with lossless PNG (smallest achievable: {size}).'
+    statusCannotFull: 'No se puede llegar a {target} con dimensiones completas de {width}×{height} px (el tamaño mínimo con calidad es {size}).', // 'Cannot reach {target} at full {width}×{height}px dimensions (minimum quality size is {size}).'
+    statusCannotCleanly: 'El objetivo de {target} no se pudo alcanzar limpiamente. La salida codificada honesta más pequeña es {size}.', // 'Requested {target} could not be reached cleanly. Smallest honest encoded output is {size}.'
+    switchedFormatNote: 'PNG sin pérdida convertido automáticamente a {format}.', // 'Auto-converted lossless PNG to {format}.'
+    errorTargetFailed: 'Error en la compresión objetivo.', // 'Target compression failed.'
+    errorCorruptedFile: 'Archivo de imagen dañado o ilegible.', // 'Corrupted or unreadable image file.'
+    comparisonTitlePrefix: 'Compresión objetivo ({target})', // `Target Compression (${targetLabel})`
+    comparisonAfterLabel: 'Comprimida ({size})', // `Compressed (${formatBytes(compressedSize)})`
+    compare: 'Comparar', // 'Compare'
+    download: 'Descargar', // 'Download'
+    removeImage: 'Eliminar {name}', // aria-label `Remove ${item.name}`
+  },
+  '/bulk-image-resizer': {
+    uploadTitle: 'Suelte varias imágenes para redimensionar en lote', // 'Drop multiple images to bulk resize'
+    batchResizeStrategy: 'Estrategia de redimensionado en lote', // 'Batch Resize Strategy'
+    strategyBounding: 'Ajuste máximo An × Al', // 'Fit Max W × H'
+    strategyWidth: 'Ancho uniforme', // 'Uniform Width'
+    strategyExact: 'An × Al exacto', // 'Exact W × H'
+    strategyPercentage: 'Porcentaje (%)', // 'Percentage (%)'
+    outputFormat: 'Formato de salida', // 'Output Format'
+    formatOriginal: 'Original', // 'Original' — same in Spanish
+    formatJpg: 'JPG', // 'JPG' — unchanged
+    scaleAllImages: 'Escalar todas las imágenes:', // 'Scale All Images:'
+    maxWidth: 'Ancho máx. (px)', // 'Max Width (px)'
+    targetWidth: 'Ancho objetivo (px)', // 'Target Width (px)'
+    exactWidth: 'Ancho exacto (px)', // 'Exact Width (px)'
+    maxHeight: 'Alto máx. (px)', // 'Max Height (px)'
+    exactHeight: 'Alto exacto (px)', // 'Exact Height (px)'
+    doNotEnlarge: 'No ampliar imágenes más pequeñas', // 'Do not enlarge smaller images'
+    fitMode: 'Modo de ajuste', // 'Fit Mode'
+    fitContain: 'Contener', // 'Contain'
+    fitCover: 'Cubrir', // 'Cover'
+    fitStretch: 'Estirar', // 'Stretch'
+    presetFullHd: 'Full HD 1920px', // 'Full HD 1920px' — unchanged
+    presetBlog: 'Blog 1200px', // 'Blog 1200px' — unchanged
+    presetEcommerce: 'Comercio electrónico 1000×1000', // 'E-commerce 1000×1000'
+    presetThumbnail: 'Miniatura 600px', // 'Thumbnail 600px'
+    quality: 'Calidad:', // 'Quality:'
+    matteBg: 'Fondo mate:', // 'Matte BG:'
+    resizingProgress: 'Redimensionando ({processed}/{total})…', // 'Resizing ({processedCount}/{totalCount})...'
+    bulkResize: 'Redimensionar en lote ({count})', // 'Bulk Resize ({items.length})'
+    clear: 'Limpiar', // 'Clear'
+    bulkResizeComplete: 'Redimensionado en lote completo', // 'Bulk Resize Complete'
+    imagesResizedReadySingular: '{count} imagen redimensionada y lista', // '{count} image resized and ready'
+    imagesResizedReadyPlural: '{count} imágenes redimensionadas y listas', // '{count} images resized and ready'
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    errorResizeFailed: 'Error en el redimensionado en lote.', // 'Batch resize failed.'
+    errorCorruptedFile: 'Archivo de imagen dañado o ilegible.', // 'Corrupted or unreadable image file.'
+    comparisonTitlePrefix: 'Comparación de redimensionado en lote', // 'Bulk Resize Comparison'
+    comparisonAfterLabel: 'Redimensionada (después)', // 'Resized (After)'
+    compare: 'Comparar', // 'Compare'
+    download: 'Descargar', // 'Download'
+    removeImage: 'Eliminar {name}', // aria-label `Remove ${item.name}`
+  },
+  '/bulk-image-converter': {
+    uploadTitle: 'Suelte varias imágenes para convertir formatos en lote', // 'Drop multiple images to bulk convert formats'
+    convertBatchToFormat: 'Convertir lote a formato', // 'Convert Batch To Format'
+    formatWebp: 'WebP (el más ligero para web)', // 'WebP (Smallest Web)'
+    formatJpg: 'JPG (universal)', // 'JPG (Universal)'
+    formatPng: 'PNG (sin pérdida y con transparencia)', // 'PNG (Lossless Alpha)'
+    optionalFilenameSuffix: 'Sufijo de nombre de archivo opcional', // 'Optional Filename Suffix'
+    placeholderSuffix: 'p. ej. _web', // placeholder 'e.g. _web'
+    transparentFill: 'Relleno transparente', // 'Transparent Fill'
+    qualityLosslessPng: 'Calidad (PNG sin pérdida)', // 'Quality (Lossless PNG)'
+    qualityPercent: 'Calidad ({quality} %)', // 'Quality ({quality}%)'
+    convertingProgress: 'Convirtiendo ({processed}/{total})…', // 'Converting ({processedCount}/{totalCount})...'
+    convertAll: 'Convertir todo ({count})', // 'Convert All ({items.length})'
+    clear: 'Limpiar', // 'Clear'
+    bulkConversionSummary: 'Resumen de conversión en lote', // 'Bulk Conversion Summary'
+    filesConvertedSummary: '{count} archivos convertidos a {format} · {original} → {converted}', // '{count} files converted to {format} · {totalOrig} → {totalOut}'
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    convertedTo: 'Convertido a {ext}', // 'Converted to {ext}'
+    errorConversionFailed: 'Error en la conversión en lote.', // 'Batch conversion failed.'
+    errorUnsupportedFile: 'Archivo de imagen no compatible o dañado.', // 'Unsupported or corrupted image file.'
+    comparisonTitlePrefix: 'Conversión de formato en lote', // 'Bulk Format Conversion'
+    comparisonAfterLabel: 'Convertida (después)', // 'Converted (After)'
+    compare: 'Comparar', // 'Compare'
+    download: 'Descargar', // 'Download'
+    removeImage: 'Eliminar {name}', // aria-label `Remove ${item.name}`
+  },
+  '/web-image-optimizer': {
+    uploadTitle: 'Suelte recursos web para optimizarlos para Core Web Vitals', // 'Drop website assets to optimize for Core Web Vitals'
+    webPerformancePresets: 'Plantillas de rendimiento web', // 'Web Performance Presets'
+    presetHero: 'Encabezado / Banner', // 'Hero / Banner'
+    presetHeroDesc: 'Máx. 1600 px · WebP 80 %', // 'Max 1600px · WebP 80%'
+    presetProduct: 'Producto de comercio electrónico', // 'E-Commerce Product'
+    presetProductDesc: 'Máx. 1200 px · WebP 82 %', // 'Max 1200px · WebP 82%'
+    presetThumb: 'Tarjeta / Miniatura', // 'Card / Thumbnail'
+    presetThumbDesc: 'Máx. 640 px · WebP 75 %', // 'Max 640px · WebP 75%'
+    presetOg: 'OG social / Correo', // 'Social OG / Email'
+    presetOgDesc: 'Máx. 1200 px · JPG 82 %', // 'Max 1200px · JPG 82%'
+    presetRetina: 'Gráfico Retina 2×', // 'Retina 2× Graphic'
+    presetRetinaDesc: 'Máx. 1920 px · WebP 88 %', // 'Max 1920px · WebP 88%'
+    webFormat: 'Formato web', // 'Web Format'
+    maxDimension: 'Dimensión máxima (borde largo)', // 'Max Dimension (Long Edge)'
+    keepOriginalDimensions: 'Conservar dimensiones originales', // 'Keep Original Dimensions'
+    max1920: 'Máx. 1920 px (Retina / Full HD)', // 'Max 1920px (Retina / Full HD)'
+    max1600: 'Máx. 1600 px (Encabezado / Banner)', // 'Max 1600px (Hero / Banner)'
+    max1200: 'Máx. 1200 px (Blog / Producto)', // 'Max 1200px (Blog / Product)'
+    max800: 'Máx. 800 px (dentro del contenido)', // 'Max 800px (In-Content)'
+    max640: 'Máx. 640 px (miniaturas)', // 'Max 640px (Thumbnails)'
+    quality: 'Calidad:', // 'Quality:'
+    onlyDownscale: 'Solo reducir imágenes más grandes (los metadatos EXIF y GPS se eliminan automáticamente)', // 'Only downscale larger images (EXIF & GPS metadata automatically stripped)'
+    optimizing: 'Optimizando…', // 'Optimizing...'
+    optimizeForWeb: 'Optimizar para web ({count})', // 'Optimize for Web ({items.length})'
+    clear: 'Limpiar', // 'Clear'
+    webPerformanceSummary: 'Resumen de rendimiento web', // 'Web Performance Summary'
+    pageWeightSaved: '({percent} % más ligero · {saved} de peso de página ahorrado)', // '({totalPct}% lighter · {formatBytes(totalSaved)} page weight saved)'
+    pageWeightGrew: '(+{percent} % · creció {amount})', // '(+{totalPct}% · grew by {formatBytes})'
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    webReady: 'Listo para web ({percent})', // 'Web-Ready ({formatPercent})'
+    grewBy: 'Creció {amount} ({percent})', // 'Grew by {amount} ({formatPercent})'
+    copyImg: 'Copiar <img>', // 'Copy <img>'
+    copiedHtml: 'HTML copiado', // 'Copied HTML'
+    copyImgTitle: 'Copiar etiqueta HTML img responsiva con ancho y alto explícitos', // title 'Copy responsive HTML img tag with explicit width and height'
+    errorOptimizationFailed: 'Error en la optimización web.', // 'Web optimization failed.'
+    errorCorruptedFile: 'Imagen dañada o no compatible.', // 'Corrupted or unsupported image.'
+    comparisonTitlePrefix: 'Comparación de optimización web', // 'Web Optimization Comparison'
+    comparisonAfterLabel: 'Lista para web (después)', // 'Web-Ready (After)'
+    compare: 'Comparar', // 'Compare'
+    download: 'Descargar', // 'Download'
+    removeImage: 'Eliminar {name}', // aria-label `Remove ${item.name}`
+  },
+  '/gif-compressor': {
+    uploadTitle: 'Suelte un GIF animado para comprimirlo', // 'Drop an animated GIF to compress'
+    decodingGif: 'Decodificando fotogramas de GIF animado en local en su navegador…', // 'Decoding animated GIF frames locally in your browser...'
+    frameSingular: 'fotograma', // 'frame'
+    framePlural: 'fotogramas', // 'frames'
+    presetLight: 'Ligero', // 'Light'
+    presetBalanced: 'Equilibrado', // 'Balanced'
+    presetMaxShrink: 'Máxima reducción', // 'Max Shrink'
+    colorPaletteLimit: 'Límite de colores de paleta', // 'Color Palette Limit'
+    colorsCount: '{count} colores', // '{maxColors} colors'
+    outputScale: 'Escala de salida', // 'Output Scale'
+    scaleWithDims: '{percent} % ({width}×{height})', // '{scalePercent}% ({targetOutW}×{targetOutH})'
+    frameRateOptimization: 'Optimización de velocidad de fotogramas', // 'Frame Rate Optimization'
+    keepAllFrames: 'Conservar todos los fotogramas', // 'Keep All Frames'
+    dropEvery2nd: 'Eliminar cada 2.º fotograma (~50 % más pequeño)', // 'Drop Every 2nd Frame (~50% smaller)'
+    keep1of3: 'Conservar 1 de cada 3 fotogramas', // 'Keep 1 of Every 3 Frames'
+    compressingGif: 'Comprimiendo GIF ({progress} %)…', // 'Compressing GIF ({encodeProgress}%)...'
+    compressGif: 'Comprimir GIF', // 'Compress GIF'
+    reset: 'Restablecer', // 'Reset'
+    originalGif: 'GIF original', // 'Original GIF'
+    compressedGif: 'GIF comprimido', // 'Compressed GIF'
+    sizeChange: 'Cambio de tamaño', // 'Size Change'
+    sizeAndFrames: '{size} · {frames}f', // '{formatBytes(size)} · {frames}f'
+    downloadCompressedGif: 'Descargar GIF comprimido', // 'Download Compressed GIF'
+    notSmallerNotice: 'Este GIF original ya estaba muy optimizado o usa una paleta de fotograma completo más grande que la entrada. Para achicarlo por debajo de {size}, reduzca el color de paleta a 32–64 colores, baje la escala de salida al 75 % o 50 %, o elimine cada 2.º fotograma.', // 'This source GIF was already heavily optimized or uses a full-frame palette larger than the input. To shrink it below {size}, reduce Color Palette to 32–64 colors, lower Output Scale to 75% or 50%, or drop every 2nd frame.'
+    compressedByNotice: 'Comprimido un {percent} % ({saved} ahorrados) limpiamente en su navegador.', // 'Compressed by {percent}% ({saved} saved) cleanly in your browser.'
+    originalLabel: 'Original ({width}×{height} px)', // 'Original ({width}×{height}px)'
+    compressedLabel: 'Comprimido ({width}×{height} px)', // 'Compressed ({width}×{height}px)'
+    altOriginalGif: 'GIF original', // alt 'Original GIF'
+    altCompressedGif: 'GIF comprimido', // alt 'Compressed GIF'
+    errorGifFailed: 'Error en la compresión de GIF.', // 'GIF compression failed.'
+    errorDecodeFrames: 'No se pudieron decodificar los fotogramas del GIF.', // 'Could not decode GIF frames.'
+    errorTooSmall: 'El archivo es demasiado pequeño para ser un GIF válido.', // 'File is too small to be a valid GIF.'
+    errorNotValidGif: 'El archivo seleccionado no es una animación GIF87a o GIF89a válida.', // 'Selected file is not a valid GIF87a or GIF89a animation.'
+    errorInvalidDims: 'El GIF tiene dimensiones de lienzo 0×0 no válidas.', // 'GIF has invalid 0x0 canvas dimensions.'
+    errorTruncatedColorTable: 'Tabla de colores global del GIF truncada.', // 'Truncated GIF Global Color Table.'
+    errorNoFrames: 'No se pudo decodificar ningún fotograma de imagen de este archivo GIF.', // 'Could not decode any image frames from this GIF file.'
+    errorCanvasContext: 'No se pudo inicializar el contexto de lienzo 2D.', // 'Unable to initialize 2D canvas context.'
+  },
+  '/heic-to-jpg': {
+    uploadTitle: 'Suelte fotos HEIC o HEIF de iPhone para convertirlas a JPG', // 'Drop iPhone HEIC or HEIF photos to convert to JPG'
+    notice: 'Decodifica fotos HEIC y HEIF de Apple en local dentro de su navegador con WebAssembly del lado del cliente (heic2any): sus fotos nunca salen de su dispositivo.', // 'Decodes Apple HEIC and HEIF photos locally inside your browser using client-side WebAssembly (heic2any) — your photos never leave your device.'
+    conversionPipeline: 'Flujo de conversión:', // 'Conversion Pipeline:'
+    outputQuality: 'Calidad de salida JPG', // 'JPG Output Quality'
+    smallerFile: 'Archivo más pequeño (20 %)', // 'Smaller file (20%)'
+    balanced: 'Equilibrado (85 %)', // 'Balanced (85%)'
+    maxDetail: 'Máximo detalle (100 %)', // 'Max detail (100%)'
+    reconvertAll: 'Volver a convertir todo', // 'Re-convert All'
+    converting: 'Convirtiendo…', // 'Converting...'
+    clear: 'Limpiar', // 'Clear'
+    batchSummary: 'Resumen de lote de HEIC → JPG', // 'HEIC → JPG Batch Summary'
+    filesConverted: '{count} {files} convertidos · {original} → {converted}', // '{count} {file/files} converted · {totalOrig} → {totalOut}'
+    fileSingular: 'archivo', // 'file'
+    filePlural: 'archivos', // 'files'
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    columnChange: 'Cambio', // 'Change'
+    compare: 'Comparar', // 'Compare'
+    downloadTarget: 'Descargar JPG', // 'Download JPG'
+    removeImage: 'Eliminar {name}', // aria-label `Remove ${item.name}`
+    errorDecodeHint: 'No se pudo decodificar este archivo HEIC/HEIF. Asegúrese de que sea una foto HEIC válida de iPhone o Apple.', // 'Could not decode this HEIC/HEIF file. Ensure it is a valid iPhone/Apple HEIC photo.'
+    errorDecodeFile: 'No se pudo decodificar "{filename}". Verifique que sea una imagen HEIC válida.', // 'Could not decode "{filename}". Verify it is a valid HEIC image.'
+    errorConvertFailed: 'No se pudo convertir {name} a JPG.', // `Failed to convert ${item.name} to JPG.`
+    comparisonTitlePrefix: 'HEIC → JPG', // `${sourceLabel} → ${targetLabel}`
+    comparisonAfterLabel: 'JPG ({size})', // `${targetLabel} (${formatBytes(compressedSize)})`
+  },
+  '/jpg-to-png': {
+    uploadTitle: 'Suelte imágenes JPG o JPEG para convertirlas a PNG sin pérdida', // 'Drop JPG or JPEG images to convert to lossless PNG'
+    conversionPipeline: 'Flujo de conversión:', // 'Conversion Pipeline:'
+    losslessPngOutput: 'Salida PNG sin pérdida', // 'Lossless PNG Output'
+    losslessPngEncoding: 'Codificación PNG sin pérdida', // 'Lossless PNG Encoding'
+    losslessPngNote: 'El PNG preserva los bordes nítidos, el texto y la transparencia alfa sin artefactos de compresión con pérdida.', // 'PNG preserves sharp edges, text, and alpha transparency with zero lossy compression artifacts.'
+    reconvertAll: 'Volver a convertir todo', // 'Re-convert All'
+    converting: 'Convirtiendo…', // 'Converting...'
+    clear: 'Limpiar', // 'Clear'
+    batchSummary: 'Resumen de lote de JPG → PNG', // 'JPG → PNG Batch Summary'
+    filesConverted: '{count} {files} convertidos · {original} → {converted}', // '{count} {file/files} converted · {totalOrig} → {totalOut}'
+    fileSingular: 'archivo', // 'file'
+    filePlural: 'archivos', // 'files'
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    columnChange: 'Cambio', // 'Change'
+    compare: 'Comparar', // 'Compare'
+    downloadTarget: 'Descargar PNG', // 'Download PNG'
+    removeImage: 'Eliminar {name}', // aria-label `Remove ${item.name}`
+    errorDecodeFile: 'No se pudo decodificar "{filename}". Verifique que sea una imagen JPG válida.', // 'Could not decode "{filename}". Verify it is a valid JPG image.'
+    errorConvertFailed: 'No se pudo convertir {name} a PNG.', // `Failed to convert ${item.name} to PNG.`
+    comparisonTitlePrefix: 'JPG → PNG', // `${sourceLabel} → ${targetLabel}`
+    comparisonAfterLabel: 'PNG ({size})', // `${targetLabel} (${formatBytes(compressedSize)})`
+  },
+  '/png-to-jpg': {
+    uploadTitle: 'Suelte archivos PNG para convertirlos a JPG más pequeños', // 'Drop PNG files to convert to smaller JPG'
+    conversionPipeline: 'Flujo de conversión:', // 'Conversion Pipeline:'
+    outputQuality: 'Calidad de salida JPG', // 'JPG Output Quality'
+    smallerFile: 'Archivo más pequeño (20 %)', // 'Smaller file (20%)'
+    balanced: 'Equilibrado (85 %)', // 'Balanced (85%)'
+    maxDetail: 'Máximo detalle (100 %)', // 'Max detail (100%)'
+    transparentMatteColor: 'Color mate para fondo transparente', // 'Transparent Background Matte Color'
+    matteWhite: 'Blanco', // 'White'
+    matteBlack: 'Negro', // 'Black'
+    matteLightGray: 'Gris claro', // 'Light Gray'
+    matteNote: 'El JPG no admite transparencia; las zonas transparentes se rellenan limpiamente con este color.', // 'JPG does not support transparency; transparent areas fill cleanly with this color.'
+    reconvertAll: 'Volver a convertir todo', // 'Re-convert All'
+    converting: 'Convirtiendo…', // 'Converting...'
+    clear: 'Limpiar', // 'Clear'
+    batchSummary: 'Resumen de lote de PNG → JPG', // 'PNG → JPG Batch Summary'
+    filesConverted: '{count} {files} convertidos · {original} → {converted}', // '{count} {file/files} converted · {totalOrig} → {totalOut}'
+    fileSingular: 'archivo', // 'file'
+    filePlural: 'archivos', // 'files'
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    columnChange: 'Cambio', // 'Change'
+    compare: 'Comparar', // 'Compare'
+    downloadTarget: 'Descargar JPG', // 'Download JPG'
+    removeImage: 'Eliminar {name}', // aria-label `Remove ${item.name}`
+    errorDecodeFile: 'No se pudo decodificar "{filename}". Verifique que sea una imagen PNG válida.', // 'Could not decode "{filename}". Verify it is a valid PNG image.'
+    errorConvertFailed: 'No se pudo convertir {name} a JPG.', // `Failed to convert ${item.name} to JPG.`
+    comparisonTitlePrefix: 'PNG → JPG', // `${sourceLabel} → ${targetLabel}`
+    comparisonAfterLabel: 'JPG ({size})', // `${targetLabel} (${formatBytes(compressedSize)})`
+  },
+  '/jpg-to-webp': {
+    uploadTitle: 'Suelte imágenes JPG para convertirlas a WebP ligero', // 'Drop JPG images to convert to lightweight WebP'
+    conversionPipeline: 'Flujo de conversión:', // 'Conversion Pipeline:'
+    outputQualityLabel: 'Calidad de salida WebP', // 'WebP Output Quality'
+    qualityAriaLabel: 'calidad de salida WebP', // aria-label 'WebP output quality'
+    smallerFile: 'Archivo más pequeño (20 %)', // 'Smaller file (20%)'
+    balanced: 'Equilibrado (85 %)', // 'Balanced (85%)'
+    maxDetail: 'Máximo detalle (100 %)', // 'Max detail (100%)'
+    batchSummary: 'Resumen del lote {source} → {target}', // '{source} → {target} Batch Summary'
+    fileSingular: 'archivo', // 'file'
+    filePlural: 'archivos', // 'files'
+    filesConvertedSuffix: 'convertidos', // 'converted' (in '{count} file(s) converted')
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    changeLabel: 'Cambio', // 'Change'
+    compare: 'Comparar', // 'Compare'
+    downloadTarget: 'Descargar WebP', // 'Download WebP'
+    removeImage: 'Eliminar {name}', // aria-label `Remove ${item.name}`
+    converting: 'Convirtiendo…', // 'Converting...'
+    reconvertAll: 'Volver a convertir todo', // 'Re-convert All'
+    clear: 'Limpiar', // 'Clear'
+    comparisonTitlePrefix: 'JPG → WebP', // titlePrefix `${sourceLabel} → ${targetLabel}`
+    comparisonAfterLabel: 'WebP ({size})', // afterLabel `${targetLabel} (${formatBytes(...)})`
+    errorConvertFailed: 'No se pudo convertir {name} a WebP.', // `Failed to convert ${item.name} to ${targetLabel}.`
+    errorCouldNotDecode: 'No se pudo decodificar "{name}". Verifique que sea una imagen JPG válida.', // `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`
+  },
+  '/webp-to-jpg': {
+    uploadTitle: 'Suelte imágenes WebP para convertirlas a JPG universal', // 'Drop WebP images to convert to universal JPG'
+    conversionPipeline: 'Flujo de conversión:', // 'Conversion Pipeline:'
+    outputQualityLabel: 'Calidad de salida JPG', // 'JPG Output Quality'
+    qualityAriaLabel: 'calidad de salida JPG', // aria-label 'JPG output quality'
+    smallerFile: 'Archivo más pequeño (20 %)', // 'Smaller file (20%)'
+    balanced: 'Equilibrado (85 %)', // 'Balanced (85%)'
+    maxDetail: 'Máximo detalle (100 %)', // 'Max detail (100%)'
+    matteColorLabel: 'Color mate de fondo transparente', // 'Transparent Background Matte Color'
+    matteAriaLabel: 'Color mate de fondo', // aria-label 'Matte background color'
+    matteWhite: 'Blanco', // 'White'
+    matteBlack: 'Negro', // 'Black'
+    matteLightGray: 'Gris claro', // 'Light Gray'
+    matteHint: 'JPG no admite transparencia; las zonas transparentes se rellenan con limpieza con este color.', // 'JPG does not support transparency; transparent areas fill cleanly with this color.'
+    batchSummary: 'Resumen del lote {source} → {target}', // '{source} → {target} Batch Summary'
+    fileSingular: 'archivo', // 'file'
+    filePlural: 'archivos', // 'files'
+    filesConvertedSuffix: 'convertidos', // 'converted' (in '{count} file(s) converted')
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    changeLabel: 'Cambio', // 'Change'
+    compare: 'Comparar', // 'Compare'
+    downloadTarget: 'Descargar JPG', // 'Download JPG'
+    removeImage: 'Eliminar {name}', // aria-label `Remove ${item.name}`
+    converting: 'Convirtiendo…', // 'Converting...'
+    reconvertAll: 'Volver a convertir todo', // 'Re-convert All'
+    clear: 'Limpiar', // 'Clear'
+    comparisonTitlePrefix: 'WebP → JPG', // titlePrefix `${sourceLabel} → ${targetLabel}`
+    comparisonAfterLabel: 'JPG ({size})', // afterLabel `${targetLabel} (${formatBytes(...)})`
+    errorConvertFailed: 'No se pudo convertir {name} a JPG.', // `Failed to convert ${item.name} to ${targetLabel}.`
+    errorCouldNotDecode: 'No se pudo decodificar "{name}". Verifique que sea una imagen WebP válida.', // `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`
+  },
+  '/png-to-webp': {
+    uploadTitle: 'Suelte archivos PNG para convertirlos a WebP transparente', // 'Drop PNG files to convert to transparent WebP'
+    conversionPipeline: 'Flujo de conversión:', // 'Conversion Pipeline:'
+    outputQualityLabel: 'Calidad de salida WebP', // 'WebP Output Quality'
+    qualityAriaLabel: 'calidad de salida WebP', // aria-label 'WebP output quality'
+    smallerFile: 'Archivo más pequeño (20 %)', // 'Smaller file (20%)'
+    balanced: 'Equilibrado (85 %)', // 'Balanced (85%)'
+    maxDetail: 'Máximo detalle (100 %)', // 'Max detail (100%)'
+    batchSummary: 'Resumen del lote {source} → {target}', // '{source} → {target} Batch Summary'
+    fileSingular: 'archivo', // 'file'
+    filePlural: 'archivos', // 'files'
+    filesConvertedSuffix: 'convertidos', // 'converted' (in '{count} file(s) converted')
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    changeLabel: 'Cambio', // 'Change'
+    compare: 'Comparar', // 'Compare'
+    downloadTarget: 'Descargar WebP', // 'Download WebP'
+    removeImage: 'Eliminar {name}', // aria-label `Remove ${item.name}`
+    converting: 'Convirtiendo…', // 'Converting...'
+    reconvertAll: 'Volver a convertir todo', // 'Re-convert All'
+    clear: 'Limpiar', // 'Clear'
+    comparisonTitlePrefix: 'PNG → WebP', // titlePrefix `${sourceLabel} → ${targetLabel}`
+    comparisonAfterLabel: 'WebP ({size})', // afterLabel `${targetLabel} (${formatBytes(...)})`
+    errorConvertFailed: 'No se pudo convertir {name} a WebP.', // `Failed to convert ${item.name} to ${targetLabel}.`
+    errorCouldNotDecode: 'No se pudo decodificar "{name}". Verifique que sea una imagen PNG válida.', // `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`
+  },
+  '/webp-to-png': {
+    uploadTitle: 'Suelte archivos WebP para convertirlos a PNG sin pérdida', // 'Drop WebP files to convert to lossless PNG'
+    conversionPipeline: 'Flujo de conversión:', // 'Conversion Pipeline:'
+    losslessPngOutput: 'Salida PNG sin pérdida', // 'Lossless PNG Output'
+    losslessPngEncodingTitle: 'Codificación PNG sin pérdida', // 'Lossless PNG Encoding'
+    losslessPngEncodingDesc: 'PNG conserva bordes nítidos, texto y transparencia alfa sin artefactos de compresión con pérdida.', // 'PNG preserves sharp edges, text, and alpha transparency with zero lossy compression artifacts.'
+    batchSummary: 'Resumen del lote {source} → {target}', // '{source} → {target} Batch Summary'
+    fileSingular: 'archivo', // 'file'
+    filePlural: 'archivos', // 'files'
+    filesConvertedSuffix: 'convertidos', // 'converted' (in '{count} file(s) converted')
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    changeLabel: 'Cambio', // 'Change'
+    compare: 'Comparar', // 'Compare'
+    downloadTarget: 'Descargar PNG', // 'Download PNG'
+    removeImage: 'Eliminar {name}', // aria-label `Remove ${item.name}`
+    converting: 'Convirtiendo…', // 'Converting...'
+    reconvertAll: 'Volver a convertir todo', // 'Re-convert All'
+    clear: 'Limpiar', // 'Clear'
+    comparisonTitlePrefix: 'WebP → PNG', // titlePrefix `${sourceLabel} → ${targetLabel}`
+    comparisonAfterLabel: 'PNG ({size})', // afterLabel `${targetLabel} (${formatBytes(...)})`
+    errorConvertFailed: 'No se pudo convertir {name} a PNG.', // `Failed to convert ${item.name} to ${targetLabel}.`
+    errorCouldNotDecode: 'No se pudo decodificar "{name}". Verifique que sea una imagen WebP válida.', // `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`
+  },
+  '/svg-to-png': {
+    uploadTitle: 'Suelte archivos vectoriales SVG para rasterizarlos a PNG', // 'Drop SVG vector files to rasterize to PNG'
+    notice:
+      'Rasteriza gráficos SVG integrados en local con HTML5 Canvas y conserva los fondos transparentes. Limitación: las URL de <image> externas, las hojas de estilo CSS externas o las fuentes web, o los scripts referenciados dentro de un SVG pueden no representarse en la exportación independiente de Canvas.', // 'Rasterizes inline SVG graphics locally via HTML5 Canvas with transparent backgrounds preserved. Limitation: external <image> URLs, external CSS stylesheets/webfonts, or scripts referenced inside an SVG may not render in standalone Canvas export.'
+    conversionPipeline: 'Flujo de conversión:', // 'Conversion Pipeline:'
+    losslessPngOutput: 'Salida PNG sin pérdida', // 'Lossless PNG Output'
+    losslessPngEncodingTitle: 'Codificación PNG sin pérdida', // 'Lossless PNG Encoding'
+    losslessPngEncodingDesc: 'PNG conserva bordes nítidos, texto y transparencia alfa sin artefactos de compresión con pérdida.', // 'PNG preserves sharp edges, text, and alpha transparency with zero lossy compression artifacts.'
+    rasterExportScale: 'Escala de exportación de rasterización', // 'Raster Export Scale'
+    rasterExportScaleHint: 'Multiplicador aplicado a las dimensiones intrínsecas del SVG (límite de 8000 px). Pulse Volver a convertir todo después de cambiar la escala.', // 'Multiplier applied to the SVG's intrinsic dimensions (capped at 8000px). Click Re-convert All after changing scale.'
+    batchSummary: 'Resumen del lote {source} → {target}', // '{source} → {target} Batch Summary'
+    fileSingular: 'archivo', // 'file'
+    filePlural: 'archivos', // 'files'
+    filesConvertedSuffix: 'convertidos', // 'converted' (in '{count} file(s) converted')
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    changeLabel: 'Cambio', // 'Change'
+    compare: 'Comparar', // 'Compare'
+    downloadTarget: 'Descargar PNG', // 'Download PNG'
+    removeImage: 'Eliminar {name}', // aria-label `Remove ${item.name}`
+    converting: 'Convirtiendo…', // 'Converting...'
+    reconvertAll: 'Volver a convertir todo', // 'Re-convert All'
+    clear: 'Limpiar', // 'Clear'
+    comparisonTitlePrefix: 'SVG → PNG', // titlePrefix `${sourceLabel} → ${targetLabel}`
+    comparisonAfterLabel: 'PNG ({size})', // afterLabel `${targetLabel} (${formatBytes(...)})`
+    errorConvertFailed: 'No se pudo convertir {name} a PNG.', // `Failed to convert ${item.name} to ${targetLabel}.`
+    errorCouldNotDecode: 'No se pudo rasterizar este SVG. Asegúrese de que el archivo sea marcado SVG XML válido sin errores de sintaxis.', // decodeErrorHint 'Could not rasterize this SVG. Ensure the file is valid XML SVG markup without malformed syntax.'
+  },
+  '/avif-to-jpg': {
+    uploadTitle: 'Suelte imágenes AVIF para convertirlas a JPG universal', // 'Drop AVIF images to convert to universal JPG'
+    notice:
+      'Decodifica imágenes AVIF en local con el decodificador AVIF nativo de su navegador (compatible con Chrome, Edge, Firefox y Safari modernos) y exporta archivos JPG estándar.', // 'Decodes AVIF images locally using your browser’s native AVIF decoder (supported in modern Chrome, Edge, Firefox, and Safari) and exports standard JPG files.'
+    conversionPipeline: 'Flujo de conversión:', // 'Conversion Pipeline:'
+    outputQualityLabel: 'Calidad de salida JPG', // 'JPG Output Quality'
+    qualityAriaLabel: 'calidad de salida JPG', // aria-label 'JPG output quality'
+    smallerFile: 'Archivo más pequeño (20 %)', // 'Smaller file (20%)'
+    balanced: 'Equilibrado (85 %)', // 'Balanced (85%)'
+    maxDetail: 'Máximo detalle (100 %)', // 'Max detail (100%)'
+    matteColorLabel: 'Color mate de fondo transparente', // 'Transparent Background Matte Color'
+    matteAriaLabel: 'Color mate de fondo', // aria-label 'Matte background color'
+    matteWhite: 'Blanco', // 'White'
+    matteBlack: 'Negro', // 'Black'
+    matteLightGray: 'Gris claro', // 'Light Gray'
+    matteHint: 'JPG no admite transparencia; las zonas transparentes se rellenan con limpieza con este color.', // 'JPG does not support transparency; transparent areas fill cleanly with this color.'
+    batchSummary: 'Resumen del lote {source} → {target}', // '{source} → {target} Batch Summary'
+    fileSingular: 'archivo', // 'file'
+    filePlural: 'archivos', // 'files'
+    filesConvertedSuffix: 'convertidos', // 'converted' (in '{count} file(s) converted')
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    changeLabel: 'Cambio', // 'Change'
+    compare: 'Comparar', // 'Compare'
+    downloadTarget: 'Descargar JPG', // 'Download JPG'
+    removeImage: 'Eliminar {name}', // aria-label `Remove ${item.name}`
+    converting: 'Convirtiendo…', // 'Converting...'
+    reconvertAll: 'Volver a convertir todo', // 'Re-convert All'
+    clear: 'Limpiar', // 'Clear'
+    comparisonTitlePrefix: 'AVIF → JPG', // titlePrefix `${sourceLabel} → ${targetLabel}`
+    comparisonAfterLabel: 'JPG ({size})', // afterLabel `${targetLabel} (${formatBytes(...)})`
+    errorConvertFailed: 'No se pudo convertir {name} a JPG.', // `Failed to convert ${item.name} to ${targetLabel}.`
+    errorCouldNotDecode: 'Su navegador no pudo decodificar esta imagen AVIF. Verifique que el archivo sea una imagen .avif válida y pruebe con un navegador moderno Chrome, Firefox, Edge o Safari.', // decodeErrorHint 'Your browser could not decode this AVIF image. Verify the file is a valid .avif image and try a modern Chrome, Firefox, Edge, or Safari browser.'
+  },
+  '/bmp-to-jpg': {
+    uploadTitle: 'Suelte mapas de bits BMP sin comprimir para convertirlos a JPG compacto', // 'Drop uncompressed BMP bitmaps to convert to compact JPG'
+    conversionPipeline: 'Flujo de conversión:', // 'Conversion Pipeline:'
+    outputQualityLabel: 'Calidad de salida JPG', // 'JPG Output Quality'
+    qualityAriaLabel: 'calidad de salida JPG', // aria-label 'JPG output quality'
+    smallerFile: 'Archivo más pequeño (20 %)', // 'Smaller file (20%)'
+    balanced: 'Equilibrado (85 %)', // 'Balanced (85%)'
+    maxDetail: 'Máximo detalle (100 %)', // 'Max detail (100%)'
+    batchSummary: 'Resumen del lote {source} → {target}', // '{source} → {target} Batch Summary'
+    fileSingular: 'archivo', // 'file'
+    filePlural: 'archivos', // 'files'
+    filesConvertedSuffix: 'convertidos', // 'converted' (in '{count} file(s) converted')
+    creatingZip: 'Creando ZIP…', // 'Creating ZIP...'
+    downloadAllZip: 'Descargar todo (ZIP)', // 'Download All (ZIP)'
+    changeLabel: 'Cambio', // 'Change'
+    compare: 'Comparar', // 'Compare'
+    downloadTarget: 'Descargar JPG', // 'Download JPG'
+    removeImage: 'Eliminar {name}', // aria-label `Remove ${item.name}`
+    converting: 'Convirtiendo…', // 'Converting...'
+    reconvertAll: 'Volver a convertir todo', // 'Re-convert All'
+    clear: 'Limpiar', // 'Clear'
+    comparisonTitlePrefix: 'BMP → JPG', // titlePrefix `${sourceLabel} → ${targetLabel}`
+    comparisonAfterLabel: 'JPG ({size})', // afterLabel `${targetLabel} (${formatBytes(...)})`
+    errorConvertFailed: 'No se pudo convertir {name} a JPG.', // `Failed to convert ${item.name} to ${targetLabel}.`
+    errorCouldNotDecode: 'No se pudo decodificar "{name}". Verifique que sea una imagen BMP válida.', // `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`
+  },
+  '/remove-background': {
+    uploadTitle: 'Suelte una foto para eliminar su fondo con IA', // 'Drop a photo to remove its background with AI'
+    modelLoadingTitle: 'Cargando modelo de IA en el navegador (isnet_quint8)', // 'Loading in-browser AI model (isnet_quint8)'
+    modelCache: 'Caché del modelo', // 'Model Cache'
+    progressWasm: 'Cargando el motor de IA WebAssembly…', // 'Loading WebAssembly AI runtime...'
+    progressModel: 'Descargando el modelo de IA para eliminar fondos (~35 MB, guardado en caché para uso futuro)…', // 'Downloading AI background removal model (~35 MB, cached for future use)...'
+    progressCompute: 'Eliminando el fondo en local en su navegador…', // 'Removing background locally in your browser...'
+    progressPreparing: 'Preparando el modelo de IA en el navegador…', // 'Preparing in-browser AI model...'
+    progressInitLibrary: 'Cargando la biblioteca de IA para eliminar fondos…', // 'Loading AI background removal library...'
+    progressInitModule: 'Inicializando el módulo de IA para eliminar fondos…', // 'Initializing AI background removal module...'
+    errorModelInit: 'No se pudo inicializar el modelo de IA para fondos: {message}', // `Could not initialize the AI background model: ${err.message}`
+    errorModelInitGeneric: 'No se pudo inicializar el modelo de IA para fondos en este navegador.', // 'Could not initialize the AI background model in this browser.'
+    errorDecodeOutput: 'No se pudo decodificar la salida PNG transparente.', // 'Failed to decode transparent PNG output.'
+    errorRemovalFailed: 'La eliminación de fondo falló en este navegador. Pruebe otra imagen o recargue la página.', // 'Background removal failed in this browser. Try another image or reload.'
+    beforeAfterPreview: 'Vista previa de antes y después', // 'Before & After Preview'
+    splitCompare: 'Comparación dividida', // 'Split Compare'
+    newImage: 'Nueva imagen', // 'New Image'
+    originalLabel: 'Original', // 'Original'
+    transparentCutout: 'Recorte transparente (PNG)', // 'Transparent Cutout (PNG)'
+    solidBackgroundPreview: 'Vista previa de fondo sólido', // 'Solid Background Preview'
+    waitingForResult: 'Esperando el resultado…', // 'Waiting for result...'
+    processingLocally: 'Procesando en local…', // 'Processing locally...'
+    cutoutStatus: 'Estado del recorte', // 'Cutout Status'
+    ready: 'Listo', // 'Ready'
+    backgroundFillOption: 'Opción de relleno de fondo', // 'Background Fill Option'
+    bgTransparent: 'Transparente', // 'Transparent'
+    bgWhite: 'Blanco', // 'White'
+    bgBlack: 'Negro', // 'Black'
+    bgCustom: 'Personalizado', // 'Custom'
+    customBackgroundColor: 'Color de fondo personalizado', // 'Custom Background Color'
+    downloadTransparentPng: 'Descargar PNG transparente', // 'Download Transparent PNG'
+    downloadWithWhite: 'Descargar con fondo blanco', // 'Download with White Background'
+    downloadWithBlack: 'Descargar con fondo negro', // 'Download with Black Background'
+    downloadWithCustom: 'Descargar con fondo {color}', // 'Download with {color} Background'
+    rerunRemoval: 'Volver a ejecutar la eliminación', // 'Re-run Removal'
+    comparisonTitlePrefix: 'Comparación de eliminación de fondo', // 'Background Removal Comparison'
+    comparisonAfterTransparent: 'Recorte (PNG transparente)', // 'Cutout (Transparent PNG)'
+    comparisonAfterSolid: 'Recorte (fondo sólido)', // 'Cutout (Solid BG)'
+    altOriginal: 'Original {name}', // alt `Original ${sourceFile.name}`
+    altCutout: 'Fondo eliminado {name}', // alt `Background removed ${sourceFile.name}`
+  },
 } as const;
