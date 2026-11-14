@@ -28,7 +28,7 @@ export const AboutPageZh: React.FC<AboutPageZhProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/zh/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>返回图片压缩器</span>
@@ -36,20 +36,20 @@ export const AboutPageZh: React.FC<AboutPageZhProps> = ({ onNavigate }) => {
         </div>
 
         {/* Page Title */}
-        <div className="border-b border-slate-200 pb-6 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <div className="border-b border-[var(--line)] pb-6 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">
             关于 CompressMyPic
           </h1>
-          <p className="mt-3 text-lg font-medium text-slate-700 leading-relaxed">
+          <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             CompressMyPic 是一款免费、私密的图片压缩器。直接在浏览器中压缩 JPG、PNG 与 WebP 图片——快速、安全，无需把文件上传到任何地方。
           </p>
         </div>
 
         {/* Core Content */}
-        <div className="space-y-8 text-base text-slate-600 leading-relaxed">
+        <div className="space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Cpu className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Cpu className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <span>什么是 CompressMyPic？</span>
             </h2>
             <p>
@@ -64,8 +64,8 @@ export const AboutPageZh: React.FC<AboutPageZhProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Layers className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <span>支持的格式：JPG、PNG 与 WebP</span>
             </h2>
             <p>
@@ -77,44 +77,44 @@ export const AboutPageZh: React.FC<AboutPageZhProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Shield className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Shield className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>我们的核心原则</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">绝对隐私</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-0 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">绝对隐私</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   没有任何文件会接触外部服务器或数据库。你的照片和敏感图片始终只留在你的本地设备上。因为压缩在本地完成，你的作品不会被任何人看到。
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">简单免费</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-2 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">简单免费</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   无需安装软件，没有付费套餐，没有隐藏费用，无需创建账号，无需邮箱验证，也没有试用限制。在线免费压缩图片——真正免费，无需注册，压缩后的图片也没有水印。
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">画质由你掌控</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-6 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">画质由你掌控</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   我们提供精细的控制：实时拖动“画质”滑块，选择低、均衡或高预设，挑选输出文件格式，并排比较每张图片，立即发现差异。按你的方式减小图片体积而不损失画质。
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">批量图片压缩器</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-9 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">批量图片压缩器</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   一次用相同设置压缩多张图片，并通过“全部下载（ZIP）”按钮一次性下载全部——这是为照片库、产品目录和网站图片文件夹准备的批量图片压缩器。
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">自动安全检查</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-10 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">自动安全检查</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   压缩器会检测图片中的透明部分。如果你为透明 PNG 选择了 JPEG 输出，我们会显示警告，因为 JPEG 不支持透明背景——这样你就不会意外丢失透明通道。
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">快速性能</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-12 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">快速性能</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   因为所有处理都在你的设备本地完成，无需等待文件上传到服务器再下载回来。无论在电脑还是手机上，即使是每张最大 20 MB 的大文件，也能快速压缩照片。
                 </p>
               </div>
@@ -122,8 +122,8 @@ export const AboutPageZh: React.FC<AboutPageZhProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Users className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Users className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <span>CompressMyPic 适合谁？</span>
             </h2>
             <p>
@@ -135,8 +135,8 @@ export const AboutPageZh: React.FC<AboutPageZhProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Lock className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Lock className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>隐私与安全</span>
             </h2>
             <p>
@@ -150,7 +150,7 @@ export const AboutPageZh: React.FC<AboutPageZhProps> = ({ onNavigate }) => {
               <button
                 type="button"
                 onClick={() => onNavigate('/zh/yinsi-zhengce')}
-                className="text-blue-600 hover:text-blue-700 font-semibold cursor-pointer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
               >
                 隐私政策
               </button>
@@ -159,8 +159,8 @@ export const AboutPageZh: React.FC<AboutPageZhProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>我们的使命</span>
             </h2>
             <p>
@@ -175,14 +175,14 @@ export const AboutPageZh: React.FC<AboutPageZhProps> = ({ onNavigate }) => {
             <button
               type="button"
               onClick={() => onNavigate('/zh/')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-2.5 btn-purple-pill text-sm font-semibold shadow-sm cursor-pointer"
             >
               开始压缩图片
             </button>
             <button
               type="button"
               onClick={() => onNavigate('/zh/lianxi-women')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-white text-slate-900 text-sm font-bold border border-slate-200 shadow-xs hover:bg-slate-50 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-2.5 rounded-full bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:bg-[var(--surface-2)] transition-colors cursor-pointer"
             >
               联系我们
             </button>

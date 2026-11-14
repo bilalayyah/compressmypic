@@ -7,6 +7,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, Mail, Globe, Target, CheckCircle2, Layers, Gauge } from 'lucide-react';
+import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
 
 interface Guide100kbPageZhProps {
   onNavigate: (path: string) => void;
@@ -206,14 +207,14 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
   };
 
   return (
-    <div className="py-10 sm:py-16">
+    <div className="bg-[var(--bg)] py-10 sm:py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
           <button
             type="button"
             onClick={() => onNavigate('/zh/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>返回图片压缩器</span>
@@ -221,20 +222,22 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
         </div>
 
         {/* Page Title */}
-        <div className="border-b border-slate-200 pb-6 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <div className="border-b border-[var(--line)] pb-6 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             如何把图片压缩到 100KB，用于网站和邮件
           </h1>
-          <p className="mt-3 text-lg font-medium text-slate-700 leading-relaxed">
+          <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             一张 4 MB 的照片会拖慢你的网站，还会堵塞邮件。把它缩小到约 100KB，页面加载会变快，邮件也能即时发送——而且如果方法得当，没有人能看出差别。
           </p>
         </div>
 
         {/* Core Content */}
-        <div className="space-y-8 text-base text-slate-600 leading-relaxed">
+        <div className="space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Target className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Target className="w-4 h-4" />
+              </span>
               <span>为什么 100KB 是神奇的数字</span>
             </h2>
             <p>
@@ -246,19 +249,24 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Gauge className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(2)} flex items-center justify-center shrink-0`}>
+                <Gauge className="w-4 h-4" />
+              </span>
               <span>分步指南：把图片缩小到 100KB</span>
             </h2>
-            <ol className="space-y-4">
+            <ol className="space-y-3">
               {STEPS.map((step, i) => (
-                <li key={step.title} className="flex gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white text-sm font-bold flex items-center justify-center mt-0.5">
+                <li
+                  key={step.title}
+                  className={`flex gap-3.5 p-4 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(i * 2)}`}
+                >
+                  <span className="flex-shrink-0 w-7 h-7 rounded-lg btn-purple-grad text-sm font-mono font-bold flex items-center justify-center mt-0.5 shadow-xs">
                     {i + 1}
                   </span>
                   <div>
-                    <div className="font-bold text-slate-900 text-sm sm:text-base">{step.title}</div>
-                    <p className="text-sm sm:text-base">{step.text}</p>
+                    <div className="font-sans font-bold text-[var(--ink-navy)] text-sm sm:text-base">{step.title}</div>
+                    <p className="text-sm sm:text-base text-[var(--ink-2)] mt-0.5">{step.text}</p>
                   </div>
                 </li>
               ))}
@@ -269,49 +277,51 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
             <img
               src="/guides/reduce-image-size-to-100kb-1.png"
               alt="把一张大照片上传到 CompressMyPic 以缩小到 100KB 的截图"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               上传你的照片——原始体积会立即显示，所以你知道还需要缩小多少。
             </figcaption>
           </figure>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Globe className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(4)} flex items-center justify-center shrink-0`}>
+                <Globe className="w-4 h-4" />
+              </span>
               <span>常见目标一览</span>
             </h2>
             <p>
               100KB 不是人们需要的唯一目标。同样的方法适用于任何体积——以下是每个目标的预期情况：
             </p>
             <div className="overflow-x-auto pt-1">
-              <table className="w-full text-sm border border-slate-200 rounded-xl overflow-hidden">
+              <table className="w-full text-sm border border-[var(--line)] rounded-2xl overflow-hidden bg-[var(--surface)] shadow-[var(--shadow)]">
                 <thead>
-                  <tr className="bg-slate-50 text-slate-900 text-left">
-                    <th className="px-4 py-3 font-bold">目标</th>
-                    <th className="px-4 py-3 font-bold">典型画质</th>
-                    <th className="px-4 py-3 font-bold">适合</th>
+                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-left border-b border-[var(--line)]">
+                    <th className="px-4 py-3 font-semibold">目标</th>
+                    <th className="px-4 py-3 font-semibold">典型画质</th>
+                    <th className="px-4 py-3 font-semibold">适合</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-[var(--line)]">
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">200KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">200KB</td>
                     <td className="px-4 py-3">70–80%</td>
                     <td className="px-4 py-3">博客照片、大型网页图片</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">100KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">100KB</td>
                     <td className="px-4 py-3">50–70%</td>
                     <td className="px-4 py-3">网站照片、邮件附件</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">50KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">50KB</td>
                     <td className="px-4 py-3">40–55% + WebP</td>
                     <td className="px-4 py-3">缩略图、聊天、快速页面</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">20KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">20KB</td>
                     <td className="px-4 py-3">25–40% + WebP</td>
                     <td className="px-4 py-3">图标、微小预览图</td>
                   </tr>
@@ -323,12 +333,14 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Mail className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-2">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(6)} flex items-center justify-center shrink-0`}>
+                <Mail className="w-4 h-4" />
+              </span>
               <span>网站与邮件小技巧</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5">
+            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
               <li>网站请用 WebP 输出——它是达到 100KB 的最快方式，而且所有现代浏览器都支持它。</li>
               <li>邮件请用 JPG，它是最安全的格式，因为所有邮件应用都能打开它。一张 100KB 的 JPG 可以即时添加附件，绝不会因为体积而被退回。</li>
               <li>把同一页面或同一封邮件的所有照片一起压缩，然后用“全部下载（ZIP）”按钮全部下载。</li>
@@ -341,46 +353,53 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
             <img
               src="/guides/reduce-image-size-to-100kb-2.png"
               alt="实时压缩前后文件体积的截图，显示图片已缩小到约 100KB"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               实时压缩前后体积会显示你的进度——降低滑块，直到压缩后的体积接近 100KB。
             </figcaption>
           </figure>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-7">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(7)} flex items-center justify-center shrink-0`}>
+                <CheckCircle2 className="w-4 h-4" />
+              </span>
               <span>何时无法达到 100KB</span>
             </h2>
-            <p>
+            <p className="text-sm sm:text-base">
               有些图片根本无法在不难看的情况下达到 100KB：非常大、细节非常丰富的照片，或者必须保持 PNG 格式的透明 PNG。遇到这种情况，请不要勉强。一张清晰的 180KB 照片每次都胜过一张毁掉的 100KB 照片——对网站来说它加载仍然很快，对邮件来说它仍然远低于任何附件限制。目标是一张看起来依然好看的小文件，而不是一个神奇的数字。
             </p>
           </section>
 
           {/* FAQ */}
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Layers className="w-4 h-4" />
+              </span>
               <span>常见问题</span>
             </h2>
             <div className="space-y-3">
-              {FAQ_DATA.map((item) => {
+              {FAQ_DATA.map((item, idx) => {
                 const isOpen = openIds.has(item.id);
                 return (
-                  <div key={item.id} className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
+                  <div
+                    key={item.id}
+                    className={`border rounded-2xl overflow-hidden shadow-[var(--shadow)] transition-shadow hover:shadow-[var(--shadow-lg)] ${getPastelCardClass(idx)}`}
+                  >
                     <button
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className={`w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors ${isOpen ? 'bg-slate-50/50' : 'hover:bg-slate-50/50'}`}
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
-                      <span className="text-sm sm:text-base font-bold text-slate-900">{item.question}</span>
-                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-600' : 'text-slate-400'}`} />
+                      <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
+                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'}`} />
                     </button>
                     {isOpen && (
-                      <div className="px-5 py-4 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 bg-white">
+                      <div className="px-5 py-4 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/55 dark:bg-slate-900/35">
                         {item.answer}
                       </div>
                     )}
@@ -392,23 +411,23 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
 
           {/* Related guides */}
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900">相关指南</h2>
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">相关指南</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button
                 type="button"
                 onClick={() => onNavigate('/zh/zhinan/whatsapp-tupian-yasuo')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">如何在 WhatsApp 上压缩图片而不损失画质</div>
-                <p className="text-xs text-slate-600 mt-1">先自己缩小照片，再作为文件发送，这样 WhatsApp 就无法再模糊它们。</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">如何在 WhatsApp 上压缩图片而不损失画质</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">先自己缩小照片，再作为文件发送，这样 WhatsApp 就无法再模糊它们。</p>
               </button>
               <button
                 type="button"
                 onClick={() => onNavigate('/zh/zhinan/jpg-vs-png-vs-webp')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">JPG、PNG 与 WebP 对比——应该用哪种格式？</div>
-                <p className="text-xs text-slate-600 mt-1">对比文件体积、画质与透明支持，帮你每次都选对格式。</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG、PNG 与 WebP 对比——应该用哪种格式？</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">对比文件体积、画质与透明支持，帮你每次都选对格式。</p>
               </button>
             </div>
           </section>
@@ -417,14 +436,14 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
             <button
               type="button"
               onClick={() => onNavigate('/zh/')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               免费压缩图片
             </button>
             <button
               type="button"
               onClick={() => onNavigate('/zh/zhinan/jpg-vs-png-vs-webp')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-white text-slate-900 text-sm font-bold border border-slate-200 shadow-xs hover:bg-slate-50 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#7c3aed]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               JPG、PNG 与 WebP 对比
             </button>
