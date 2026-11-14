@@ -129,7 +129,7 @@ export const FR = {
   },
   hero: {
     pill: 'Compression 100 % privée sur votre appareil · Aucun envoi vers des serveurs',
-    h1: 'Compresseur d’images gratuit – Compressez vos images en ligne et réduisez leur taille sans perdre en qualité',
+    h1: 'Compresseur d’images gratuit – Compressez vos images en ligne',
     sub: 'Réduisez la taille de vos fichiers image sans sacrifier la qualité visible. Compressez vos images en ligne gratuitement avec notre compresseur d’images et de photos : un optimiseur d’images en ligne pour JPG, PNG, WebP et HEIC. Rapide, sûr, sans inscription, sans filigrane et avec une compression simple, directement dans votre navigateur.',
     badge1: 'Vos images ne quittent jamais votre appareil',
     badge2: 'Traitement instantané dans le navigateur',
@@ -388,6 +388,7 @@ export const FR = {
     featuresTitle: 'Pourquoi utiliser {name} de CompressMyPic ?',
     faqTitle: '{name} — Questions fréquentes',
     relatedTitle: 'Outils d’images gratuits associés',
+    relatedLinksIntro: 'Vous pourriez aussi avoir besoin de :',
     commentsTitle: 'Commentaires',
     commentsNote: 'Partagez votre avis sur cet outil : écrivez simplement votre nom et publiez. Aucun compte nécessaire.',
     commentsNamePlaceholder: 'Votre nom',
@@ -439,10 +440,9 @@ export const FR = {
     altProcessed: 'Version traitée de {name}', // 'Processed version of {name}'
   },
   homeMeta: {
-    seoTitle: 'Compresseur d’images gratuit online – Réduire à 100 Ko',
-    seoDescription:
-      'Compressez des images en ligne gratuitement : réduisez leur taille sans perdre en qualité. JPG, PNG et WebP, sans inscription ni filigrane, sur votre appareil.',
-    h1: 'Compresseur d’images gratuit',
+    seoTitle: 'Compresseur d’images gratuit – Compressez vos images en ligne, sans inscription',
+    seoDescription: 'Compressez vos images en ligne gratuitement et réduisez la taille des JPG, PNG et WebP sans perdre en qualité. Sans inscription ni filigrane — vos photos ne quittent jamais votre navigateur.',
+    h1: 'Compresseur d’images gratuit – Compressez vos images en ligne',
     subtitle: 'Réduisez la taille des fichiers JPG, PNG, WebP et HEIC directement dans votre navigateur.',
   },
   categories: {
@@ -529,10 +529,10 @@ export const HOME_FR = {
   name: 'Compresseur d’images',
   shortDescription: 'Compressez des images JPG, PNG, WebP et HEIC sans perdre en qualité.',
   category: 'compress',
-  seoTitle: 'Compresseur d’images gratuit online – Réduire à 100 Ko',
+  seoTitle: 'Compresseur d’images gratuit – Compressez vos images en ligne, sans inscription',
   seoDescription:
-    'Compressez des images en ligne gratuitement : réduisez leur taille sans perdre en qualité. JPG, PNG et WebP, sans inscription ni filigrane, sur votre appareil.',
-  h1: 'Compresseur d’images gratuit',
+    'Compressez vos images en ligne gratuitement et réduisez la taille des JPG, PNG et WebP sans perdre en qualité. Sans inscription ni filigrane — vos photos ne quittent jamais votre navigateur.',
+  h1: 'Compresseur d’images gratuit – Compressez vos images en ligne',
   subtitle: 'Réduisez la taille des fichiers JPG, PNG, WebP et HEIC directement dans votre navigateur.',
   howToSteps: [],
   features: [],

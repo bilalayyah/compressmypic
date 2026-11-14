@@ -26,10 +26,9 @@ export const TOOLS_REGISTRY_FR: ToolDefinition[] = [
   name: 'Compresseur d’images',
   shortDescription: 'Compressez des images JPG, PNG, WebP et HEIC sans perdre en qualité.',
   category: 'compress',
-  seoTitle: 'Compresseur d’images gratuit en ligne – Réduire à 100 Ko',
-  seoDescription:
-    'Compressez des images en ligne gratuitement : réduisez leur taille sans perdre en qualité. JPG, PNG et WebP, sans inscription ni filigrane, sur votre appareil.',
-  h1: 'Compresseur d’images gratuit',
+  seoTitle: 'Compresseur d’images gratuit – Compressez vos images en ligne, sans inscription',
+  seoDescription: 'Compressez vos images en ligne gratuitement et réduisez la taille des JPG, PNG et WebP sans perdre en qualité. Sans inscription ni filigrane — vos photos ne quittent jamais votre navigateur.',
+  h1: 'Compresseur d’images gratuit – Compressez vos images en ligne',
   subtitle: 'Réduisez la taille des fichiers JPG, PNG, WebP et HEIC directement dans votre navigateur.',
   howToSteps: [],
   features: [],
@@ -551,7 +550,7 @@ export const TOOLS_REGISTRY_FR: ToolDefinition[] = [
     seoTitle: "Image en PDF gratuit en ligne – Fusionner des photos",
     seoDescription:
       "Transformez des photos en un seul PDF dans votre navigateur. Réorganisez les pages, choisissez A4 ou Lettre US, réglez les marges et enregistrez hors ligne.",
-    h1: "Convertisseur d'image en PDF",
+    h1: "Convertisseur gratuit d’images en PDF en ligne",
     subtitle:
       "Idéal pour les étudiants, les freelances, les comptables et tous ceux qui envoient des pièces d'identité ou des reçus, ce convertisseur privé d'image en PDF fusionne plusieurs photos en un seul PDF net de plusieurs pages. Réorganisez les pages librement, choisissez les dimensions A4, Lettre US ou Ajuster à l'image, ajustez les marges et la qualité, et construisez votre document localement sans aucun envoi vers un serveur.",
     howToSteps: [
@@ -7793,9 +7792,8 @@ export const TOOLS_REGISTRY_FR: ToolDefinition[] = [
     name: 'Suppression d’arrière-plan par IA',
     shortDescription: 'Supprimez l’arrière-plan de vos images avec l’IA dans le navigateur et exportez des PNG transparents.',
     category: 'ai-tools',
-    seoTitle: 'Suppression d’arrière-plan gratuite en ligne – IA',
-    seoDescription:
-      'Supprimez l’arrière-plan de vos images gratuitement avec l’IA, sans inscription. Téléchargez un PNG transparent ou un fond blanc, noir ou personnalisé.',
+    seoTitle: 'Supprimer l’arrière-plan d’une image gratuitement – IA, sans inscription',
+    seoDescription: 'Supprimez l’arrière-plan de n’importe quelle image gratuitement avec l’IA du navigateur. Téléchargez un PNG transparent ou ajoutez un fond blanc, noir ou personnalisé — sans inscription ni envoi.',
     h1: 'Suppresseur d’arrière-plan IA gratuit en ligne',
     subtitle:
       'Supprimez l’arrière-plan des portraits, des photos de produit, des animaux et des logos grâce à notre suppresseur d’arrière-plan IA gratuit, qui fonctionne entièrement dans votre navigateur. Conçu pour les vendeurs, les créateurs et les designers qui ont besoin de découpes propres rapidement, il charge un modèle IA compact une seule fois (environ 35 Mo, mis en cache ensuite), traite une photo à la fois jusqu’à 20 Mo et exporte un PNG transparent — ou place votre découpe sur un fond blanc, noir ou personnalisé.',
