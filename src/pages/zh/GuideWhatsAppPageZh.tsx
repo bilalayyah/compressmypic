@@ -185,6 +185,31 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "如何在 WhatsApp 上压缩图片而不损失画质",
+          description: "学习如何在 WhatsApp 上压缩图片而不损失画质：先用免费在线工具以均衡预设压缩照片，查看实时压缩前后体积，再作为文件发送，避免 WhatsApp 二次压缩。本指南免费、私密、无需注册，附分步操作与 20 个常见问题解答，让照片保持清晰、发送更快。日常分享以每张 100–300 KB 为目标，既省流量又清晰。",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/zh/zhinan/whatsapp-tupian-yasuo",
+          inLanguage: 'zh',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "首页", item: "https://compressmypic.online/zh/" },
+            { '@type': 'ListItem', position: 2, name: "指南" },
+            { '@type': 'ListItem', position: 3, name: "如何在 WhatsApp 上压缩图片而不损失画质", item: "https://compressmypic.online/zh/zhinan/whatsapp-tupian-yasuo" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -230,6 +255,9 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             如何在 WhatsApp 上压缩图片而不损失画质
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            作者：<a href="/zh/guanyu-women" onClick={(e) => { e.preventDefault(); onNavigate('/zh/guanyu-women'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             WhatsApp 会缩小你发送的每一张照片——往往缩得比实际需要的多得多。先自己压缩照片，再用正确的方式发送，照片就会保持清晰、发送快速，还能节省流量。
           </p>

@@ -177,6 +177,31 @@ export const GuideFormatsPageZh: React.FC<GuideFormatsPageZhProps> = ({ onNaviga
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "JPG、PNG、WebP 对比：应该选择哪种格式？",
+          description: "JPG、PNG、WebP 简单对比：文件大小、画质与透明支持一目了然，帮你为照片、标志、截图和网站选对格式，并用免费在线工具在几秒内压缩或转换图片。了解 JPG 为何最适合照片、PNG 为何最适合标志、WebP 为何是网站的最佳选择，以及转换时如何保留透明背景。无需注册、无水印，附分步指南与 20 个常见问题解答。",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/zh/zhinan/jpg-vs-png-vs-webp",
+          inLanguage: 'zh',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "首页", item: "https://compressmypic.online/zh/" },
+            { '@type': 'ListItem', position: 2, name: "指南" },
+            { '@type': 'ListItem', position: 3, name: "JPG、PNG、WebP 对比：应该选择哪种格式？", item: "https://compressmypic.online/zh/zhinan/jpg-vs-png-vs-webp" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -222,6 +247,9 @@ export const GuideFormatsPageZh: React.FC<GuideFormatsPageZhProps> = ({ onNaviga
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             JPG、PNG 与 WebP 对比——应该选择哪种格式？
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            作者：<a href="/zh/guanyu-women" onClick={(e) => { e.preventDefault(); onNavigate('/zh/guanyu-women'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             选错格式可能让你的图片比实际需要的大十倍——或者毁掉一个透明标志。下面是简单、诚实的对比，以及如何在几秒钟内转换格式。
           </p>

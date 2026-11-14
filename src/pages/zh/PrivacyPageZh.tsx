@@ -41,7 +41,7 @@ export const PrivacyPageZh: React.FC<PrivacyPageZhProps> = ({ onNavigate }) => {
             </h1>
           </div>
           <p className="text-xs text-[var(--ink-3)] font-medium">
-            最后更新：2026年11月12日
+            最后更新：2026年11月14日
           </p>
         </div>
 
@@ -81,12 +81,12 @@ export const PrivacyPageZh: React.FC<PrivacyPageZhProps> = ({ onNavigate }) => {
               </a>
               ）或{' '}
               <a
-                href="http://www.aboutads.info/choices/"
+                href="https://www.aboutads.info/choices/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
               >
-                http://www.aboutads.info/choices/
+                https://www.aboutads.info/choices/
               </a>
               {' '}选择退出个性化广告。
             </p>
@@ -97,7 +97,7 @@ export const PrivacyPageZh: React.FC<PrivacyPageZhProps> = ({ onNavigate }) => {
               4. 数据分析
             </h2>
             <p>
-              我们目前不使用数据分析 Cookie。如果情况发生变化，本政策将会更新。
+              我们使用 Cloudflare Web Analytics 以汇总形式了解网站的使用情况——例如，哪些工具最受欢迎、哪些页面被访问。Cloudflare Web Analytics 注重隐私：它不使用 Cookie，不会跨网站追踪个别访客，也不收集个人标识符。它只记录无法用于识别你的匿名汇总使用统计数据。我们不使用 Google Analytics，也不使用任何会设置追踪 Cookie 的其他分析服务。
             </p>
           </section>
 
@@ -110,9 +110,88 @@ export const PrivacyPageZh: React.FC<PrivacyPageZhProps> = ({ onNavigate }) => {
             </p>
           </section>
 
-          <section className="space-y-2 pt-2 border-t border-[var(--line)]">
+                    <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              6. 联系方式
+              6. Cookie 与同意
+            </h2>
+            <p>
+              CompressMyPic 本身不会为其图片工具设置任何 Cookie：压缩完全在你的浏览器中进行，不需要我们这边保存任何 Cookie、帐户或偏好设置。本网站的 Cookie 来自第三方服务。Google AdSense 及其合作伙伴可能会设置广告 Cookie，以便向你展示相关广告并衡量广告的展示频率。你的浏览器会把这些 Cookie 保存在你的设备上，你可以随时通过浏览器设置将其删除。
+            </p>
+            <p>
+              如果你从欧洲经济区或英国访问本站，根据《通用数据保护条例》（GDPR）和 Google 的欧盟用户同意政策，我们会在展示个性化广告之前征求你的同意。你可以随时通过清除浏览器 Cookie 或更改本站提供的同意选项来撤回同意。选择非个性化广告并不会完全停止广告，但意味着广告不再基于你的浏览记录。
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              7. 你在 GDPR 下的权利
+            </h2>
+            <p>
+              如果你位于欧洲经济区或英国，《通用数据保护条例》（GDPR）赋予你对个人数据的权利。你可以要求我们提供一份我们所持有的关于你的个人数据的副本，要求我们在数据有误时予以更正，要求我们删除数据，要求我们限制其使用，并反对我们对其进行处理。如果处理基于你的同意，你可以随时撤回同意，撤回不影响我们此前合法进行的处理。
+            </p>
+            <p>
+              由于我们的工具在本地处理图片，且我们没有用户帐户，因此我们通常持有的唯一个人数据，就是你通过联系表格发送的姓名、电子邮箱地址和消息。要行使上述任何权利，请发送电子邮件至<a
+                href="mailto:bilalayyah@gmail.com"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                bilalayyah@gmail.com
+              </a>，我们将在 30 天内回复。如果你认为我们不公平地处理了你的数据，你也有权向当地的数据保护机构投诉。
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              8. 数据保留
+            </h2>
+            <p>
+              我们仅在实现收集目的所需的时间内保留个人数据。联系表格的消息仅保留到你的询问得到答复、对话结束为止，之后还会短暂保留一段时间以备后续问题；它们绝不会用于营销，也绝不会与第三方分享。你的图片则完全不会被保留：它们仅在你使用工具期间存在于你的浏览器内存中，一旦关闭或刷新标签页即被清除。汇总的分析数据不包含任何个人信息，仅以摘要形式保存。
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              9. 安全与 reCAPTCHA
+            </h2>
+            <p>
+              本站通过 HTTPS 提供服务，因此你的浏览器与本站之间的连接是加密的。我们的联系表格通过 FormSubmit 提供，它会把你的消息转发到我们的电子邮箱；表格受 Google reCAPTCHA 保护，以阻止垃圾信息和自动化滥用。提交表格时，reCAPTCHA 可能会收集硬件和软件信息，例如你的浏览器和设备详情，以区分真人与机器人；这受 Google 的<a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+              >
+                隐私政策
+              </a>和<a
+                href="https://policies.google.com/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+              >
+                使用条款
+              </a>约束。我们绝不会要求你通过联系表格发送密码、支付信息或敏感的个人文件，你也不应在消息中包含这些内容。
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              10. 儿童隐私
+            </h2>
+            <p>
+              CompressMyPic 是面向普通公众的工具，并非针对 13 岁以下儿童。我们不会有意收集儿童的个人信息。如果你是家长或监护人，并且认为你的孩子通过联系表格向我们发送了个人信息，请发送电子邮件给我们，我们会立即删除。
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              11. 本政策的变更
+            </h2>
+            <p>
+              当网站发生变化时，我们可能会更新本政策——例如新增分析服务、新的广告合作伙伴或新的联系方式。届时，我们会更改本页面顶部的「最后更新」日期，并在此用通俗的语言说明重大变更。在变更后继续使用本站，即表示你接受更新后的政策。
+            </p>
+          </section>
+
+<section className="space-y-2 pt-2 border-t border-[var(--line)]">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              12. 联系方式
             </h2>
             <p>
               如果您对本政策有任何疑问，请通过以下邮箱联系我们：{' '}

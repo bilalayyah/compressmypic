@@ -54,9 +54,9 @@ export const AllToolsPageZh: React.FC<AllToolsPageZhProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   useEffect(() => {
-    document.title = '全部工具 – 免费在线图片工具 | CompressMyPic';
+    document.title = '全部免费图片工具 | CompressMyPic';
     const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute('content', 'CompressMyPic 免费图片工具共 48 款：在线压缩、转换、裁剪与编辑图片，无需注册。');
+    if (metaDescription) metaDescription.setAttribute('content', 'CompressMyPic 免费图片工具共 48 款：在线压缩、转换、裁剪、调整大小与编辑图片，直接在浏览器中使用，无需注册，支持 JPG、PNG、WebP 与 HEIC，图片不会上传。');
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
@@ -129,9 +129,63 @@ export const AllToolsPageZh: React.FC<AllToolsPageZhProps> = ({
         </div>
       </section>
 
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
+            <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
         {visibleTools.length === 0 ? (
           <p className="text-center text-sm text-[var(--ink-2)] py-10">{strings.noResults}</p>
+        ) : !q && selectedCategory === 'all' ? (
+          <div className="space-y-10">
+            {activeCategories.map((cat) => {
+              const catTools = catalogTools.filter((t) => t.category === cat.id);
+              if (catTools.length === 0) return null;
+              return (
+                <div key={cat.id}>
+                  <h2 className="text-2xl font-sans font-bold text-[var(--ink-navy)] mb-5">
+                    {cat.label} ({catTools.length})
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {catTools.map((tool) => {
+                      const index = catalogTools.indexOf(tool);
+              const cat = categories.find((c) => c.id === tool.category)?.label;
+              return (
+                <a
+                  key={tool.slug}
+                  href={tool.slug}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate(tool.slug);
+                  }}
+                  className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#7c3aed]/40 transition-all duration-200 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-3.5">
+                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center shadow-2xs transition-transform group-hover:scale-105 ${getPastelTileClass(index)}`}>
+                        <Sparkles className="w-5 h-5" />
+                      </div>
+                      {cat && (
+                        <span className="text-[11px] font-semibold text-[var(--ink-3)] bg-[var(--surface-2)] border border-[var(--line)] px-2.5 py-0.5 rounded-full">
+                          {cat}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-[17px] font-sans font-bold text-[var(--ink-navy)] group-hover:text-[#7c3aed] dark:group-hover:text-[#c4b5fd] transition-colors leading-snug">
+                      {tool.name}
+                    </h3>
+                    <p className="mt-1.5 text-sm text-[var(--ink-3)] leading-relaxed">
+                      {tool.shortDescription}
+                    </p>
+                  </div>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#7c3aed] dark:text-[#c4b5fd]">
+                    <span>{strings.openTool}</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  </span>
+                </a>
+              );
+                                })}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {visibleTools.map((tool, index) => {
@@ -170,7 +224,7 @@ export const AllToolsPageZh: React.FC<AllToolsPageZhProps> = ({
                   </span>
                 </a>
               );
-            })}
+                        })}
           </div>
         )}
       </section>

@@ -136,6 +136,48 @@ export const AboutPageZh: React.FC<AboutPageZhProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Users className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>制作者：Bilal</span>
+            </h2>
+            <p>
+              CompressMyPic 由独立开发者 Bilal 创建，他为网络打造免费且尊重隐私的工具。他之所以创立 CompressMyPic，是因为对那些图片压缩器感到失望——它们只为了把文件变小，就迫使用户把私人照片上传到陌生人的服务器。他的答案是一款在访客自己的浏览器中完成全部工作的工具：无需上传、无需帐户、没有水印，最后也不会收到意外的账单。
+            </p>
+            <p>
+              Bilal 亲自设计、开发并维护网站上的全部 48 款工具，从压缩器和转换器，到网站图标生成器和背景去除工具。他亲自回复支持消息，阅读每一条反馈，并让所有工具对每个人都免费，无论是压缩一张照片还是一千张。网站页脚中有一句对 Shaheen 的小小致谢，他的鼓励激励 Bilal 不断开发，并让这些工具真正实用，而不仅仅是受欢迎。
+            </p>
+            <p>
+              如果你想关注他的工作，可以在
+              <a
+                href="https://github.com/bilalayyah/compressmypic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                GitHub
+              </a>
+              上找到该项目，在
+              <a
+                href="https://dev.to/bilalayyah"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                Dev.to
+              </a>
+              上阅读 Bilal 的指南，或通过
+              <button
+                type="button"
+                onClick={() => onNavigate('/zh/lianxi-women')}
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+              >
+                联系页面
+              </button>
+              打个招呼。
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
               <Lock className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>隐私与安全</span>
             </h2>

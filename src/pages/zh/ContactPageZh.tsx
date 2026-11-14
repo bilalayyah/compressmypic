@@ -5,7 +5,7 @@
 // Back-link points at the Chinese home /zh/.
 
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Send, CheckCircle2, AlertCircle, Mail, RotateCcw, Clock, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Send, CheckCircle2, AlertCircle, Mail, RotateCcw, Clock, ShieldCheck, Github, MessageSquare, Lightbulb, Bug } from 'lucide-react';
 
 interface ContactPageZhProps {
   onNavigate: (path: string) => void;
@@ -156,10 +156,12 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                    <label htmlFor="contact-name" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                       您的姓名 <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                     </label>
                     <input
+                      id="contact-name"
+                      name="name"
                       type="text"
                       required
                       value={contactName}
@@ -170,10 +172,12 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                    <label htmlFor="contact-email" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                       电子邮箱 <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                     </label>
                     <input
+                      id="contact-email"
+                      name="email"
                       type="email"
                       required
                       value={contactEmail}
@@ -185,10 +189,12 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                  <label htmlFor="contact-subject" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                     主题 <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                   </label>
                   <input
+                      id="contact-subject"
+                      name="subject"
                     type="text"
                     required
                     value={contactSubject}
@@ -199,10 +205,12 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                  <label htmlFor="contact-message" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                     消息 <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                   </label>
                   <textarea
+                      id="contact-message"
+                      name="message"
                     rows={5}
                     required
                     value={contactMessage}
@@ -232,6 +240,90 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
               </form>
             )}
           </div>
+        </div>
+
+        {/* Extra Information Sections */}
+        <div className="mt-12 space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Mail className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>谁在运营 CompressMyPic</span>
+            </h2>
+            <p>
+              CompressMyPic 由独立开发者 Bilal 创建并维护，他希望打造一款真正免费且尊重用户隐私的图片压缩器。与大多数在线工具不同，CompressMyPic 绝不会把你的照片上传到服务器：每张图片都在你自己的浏览器中直接压缩。Bilal 会亲自阅读每一条消息，并利用你的反馈修复错误、提升质量，决定接下来开发哪些新工具。
+            </p>
+            <p>
+              这是一个小型的独立项目，而不是一家大公司，因此你总能得到直接而坦诚的答复——即使答案是某个功能暂时还无法实现。在你和工具的制作者之间，没有客服排队，也没有自动聊天机器人。
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>你可以就哪些事情联系我们？</span>
+            </h2>
+            <p>
+              获得帮助最快的方法是准确告诉我们发生了什么。报告错误时，请注明你使用的工具名称、浏览器以及图片文件类型——例如 iPhone 的 HEIC 照片或透明 PNG 图片。请求新功能时，请描述你想完成什么，以及现有工具为什么不够用。我们也欢迎关于错误结果的报告，例如压缩后的图片看起来比预期的差，以及对我们的指南或任何翻译页面的更正。
+            </p>
+            <p>
+              你也可以就合作、媒体采访和新工具建议与我们联系。如果你运营网站、博客或课堂，并想向读者或学生推荐 CompressMyPic，我们很乐意听到你的消息——只需使用上方的表格，并写一个清晰的主题，这样你的消息就能快速送达正确的地方。
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Github className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>联系 Bilal 的其他方式</span>
+            </h2>
+            <p>
+              如果你更喜欢公开渠道，可以在网上找到 Bilal 和 CompressMyPic 项目。源代码托管在 GitHub，你也可以在那里报告技术问题并关注开发进展。关于图片压缩的详细指南发布在 Dev.to 上，产品也已在 Indie Hackers 上线，你可以在那里关注进展并留下反馈。
+            </p>
+            <ul className="list-disc pl-6 space-y-1.5">
+              <li>
+                <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
+                {' '}— 源代码、错误报告和开发动态。
+              </li>
+              <li>
+                <a href="https://dev.to/bilalayyah" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Dev.to — dev.to/bilalayyah</a>
+                {' '}— JPG、PNG 与 WebP 压缩指南。
+              </li>
+              <li>
+                <a href="https://www.indiehackers.com/product/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Indie Hackers — indiehackers.com/product/compressmypic</a>
+                {' '}— 产品页面、里程碑和社区反馈。
+              </li>
+            </ul>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Lightbulb className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>写信之前</span>
+            </h2>
+            <p>
+              几个快速检查就能解决大多数问题，无需等待回复。主压缩器每张图片最大支持 20 MB，格式转换器每个文件最大支持 25 MB——更大的文件会在开始前被拒绝。非常旧的浏览器可能不支持 AVIF 或 HEIC 等新格式，因此尝试最新版 Chrome、Edge、Firefox 或 Safari 通常就能修复看似损坏的工具。而且，由于你的图片从不离开你的设备，某一张照片出现问题通常是文件本身造成的，而不是网站的问题。
+            </p>
+            <p>
+              写信时，请注明你的浏览器名称和版本、使用的工具，以及图片的大小和格式。我们用英语回复，通常在 24–48 个工作小时内答复。如果你的问题是关于我们如何处理你的数据，也可以先阅读我们的
+              <button
+                type="button"
+                onClick={() => onNavigate('/zh/yinsi-zhengce')}
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+              >
+                隐私政策
+              </button>
+              ——里面用通俗的语言说明，你的图片绝不会被上传或存储。
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Bug className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>报告问题</span>
+            </h2>
+            <p>
+              发现了损坏的内容？请告诉我们它发生在哪个页面、你点击了什么，以及你原本期望看到什么。截图非常有帮助，如果问题涉及某张特定图片，请告诉我们它的格式和大小——但请不要向我们发送私人或敏感照片。我们会尽快修复报告的错误，并在修复上线后通过电子邮件通知你。
+            </p>
+          </section>
         </div>
       </div>
     </div>

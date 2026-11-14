@@ -181,6 +181,31 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "如何把图片压缩到 100KB：网站与邮件指南",
+          description: "用免费在线压缩器把图片压缩到 100KB，用于网站和邮件。本分步指南教你从均衡预设开始，用画质滑块和 WebP 输出逐步缩小图片。了解 200KB、100KB、50KB 与 20KB 各自适合什么用途，以及何时不必强求精确的 100KB。无需注册、无水印，图片始终保留在你的设备上，附 20 个常见问题解答。",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/zh/zhinan/jiang-tupian-yasuo-zhi-100kb",
+          inLanguage: 'zh',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "首页", item: "https://compressmypic.online/zh/" },
+            { '@type': 'ListItem', position: 2, name: "指南" },
+            { '@type': 'ListItem', position: 3, name: "如何把图片压缩到 100KB：网站与邮件指南", item: "https://compressmypic.online/zh/zhinan/jiang-tupian-yasuo-zhi-100kb" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -226,6 +251,9 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             如何把图片压缩到 100KB，用于网站和邮件
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            作者：<a href="/zh/guanyu-women" onClick={(e) => { e.preventDefault(); onNavigate('/zh/guanyu-women'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             一张 4 MB 的照片会拖慢你的网站，还会堵塞邮件。把它缩小到约 100KB，页面加载会变快，邮件也能即时发送——而且如果方法得当，没有人能看出差别。
           </p>
