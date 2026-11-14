@@ -178,6 +178,31 @@ export const GuideWhatsAppPageEs: React.FC<GuideWhatsAppPageEsProps> = ({ onNavi
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "Comprimir imágenes para WhatsApp sin perder calidad",
+          description: "Aprenda a comprimir imágenes para WhatsApp sin perder calidad. Gratis y privado, sin registro: reduzca sus fotos antes de enviarlas para que lleguen nítidas.",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/es/guias/comprimir-imagenes-para-whatsapp",
+          inLanguage: 'es',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "Inicio", item: "https://compressmypic.online/es/" },
+            { '@type': 'ListItem', position: 2, name: "Guías" },
+            { '@type': 'ListItem', position: 3, name: "Comprimir imágenes para WhatsApp sin perder calidad", item: "https://compressmypic.online/es/guias/comprimir-imagenes-para-whatsapp" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -223,6 +248,9 @@ export const GuideWhatsAppPageEs: React.FC<GuideWhatsAppPageEsProps> = ({ onNavi
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             Cómo comprimir imágenes para WhatsApp sin perder calidad
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            Por <a href="/es/acerca-de" onClick={(e) => { e.preventDefault(); onNavigate('/es/acerca-de'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             WhatsApp reduce cada foto que usted envía, muchas veces mucho más de lo necesario. Comprima sus fotos usted mismo primero y envíelas de la manera correcta: llegarán nítidas, se enviarán rápido y consumirán menos datos móviles.
           </p>
