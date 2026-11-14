@@ -77,6 +77,7 @@ export const JA = {
     processedLocally: 'HTML5 Canvasでローカル処理', // 'Processed locally via HTML5 Canvas'
     bottomRights:
       '© {year} CompressMyPic. 無断転載を禁じます。無料のブラウザ内画像圧縮ユーティリティ。', // '© {year} CompressMyPic. All rights reserved. Free client-side image compression utility.'
+    deployedNote: 'Crafted with ❤️ by Bilal inspired by Shaheen',
     contactLabel: 'お問い合わせ：bilalayyah@gmail.com', // 'Contact: bilalayyah@gmail.com'
     toolsLinks: [
       { slug: '/', label: '画像圧縮' }, // 'Compress Images'
