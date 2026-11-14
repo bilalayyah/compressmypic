@@ -43,16 +43,16 @@ export const DEFAULT_LANG: SupportedLang = 'en';
 
 export const SUPPORTED_LANGUAGES: LanguageMeta[] = [
   { code: 'en', prefix: '', nativeName: 'English', englishName: 'English', dir: 'ltr', variant: 'Default', phase: 0, status: 'live', directoryPath: '' },
-  { code: 'es', prefix: 'es', nativeName: 'Español', englishName: 'Spanish', dir: 'ltr', variant: 'Neutral Latin American', phase: 1, status: 'in-progress', directoryPath: '/es/todas-las-herramientas' },
-  { code: 'pt', prefix: 'pt', nativeName: 'Português', englishName: 'Portuguese', dir: 'ltr', variant: 'Brazilian Portuguese (pt-BR)', phase: 2, status: 'in-progress', directoryPath: '/pt/todas-as-ferramentas' },
-  { code: 'fr', prefix: 'fr', nativeName: 'Français', englishName: 'French', dir: 'ltr', variant: 'Natural international French', phase: 2, status: 'in-progress', directoryPath: '/fr/tous-les-outils' },
-  { code: 'de', prefix: 'de', nativeName: 'Deutsch', englishName: 'German', dir: 'ltr', variant: 'Standard German', phase: 3, status: 'in-progress', directoryPath: '/de/alle-tools' },
-  { code: 'it', prefix: 'it', nativeName: 'Italiano', englishName: 'Italian', dir: 'ltr', variant: 'Standard Italian', phase: 3, status: 'in-progress', directoryPath: '/it/tutti-gli-strumenti' },
-  { code: 'id', prefix: 'id', nativeName: 'Bahasa Indonesia', englishName: 'Indonesian', dir: 'ltr', variant: 'Standard Bahasa Indonesia', phase: 4, status: 'in-progress', directoryPath: '/id/semua-alat' },
-  { code: 'ru', prefix: 'ru', nativeName: 'Русский', englishName: 'Russian', dir: 'ltr', variant: 'Standard Russian', phase: 4, status: 'in-progress', directoryPath: '/ru/vse-instrumenty' },
-  { code: 'ja', prefix: 'ja', nativeName: '日本語', englishName: 'Japanese', dir: 'ltr', variant: 'Natural modern Japanese', phase: 5, status: 'in-progress', directoryPath: '/ja/tools' },
-  { code: 'ko', prefix: 'ko', nativeName: '한국어', englishName: 'Korean', dir: 'ltr', variant: 'Standard South Korean', phase: 5, status: 'in-progress', directoryPath: '/ko/tools' },
-  { code: 'zh', prefix: 'zh', nativeName: '简体中文', englishName: 'Chinese (Simplified)', dir: 'ltr', variant: 'Simplified Mandarin Chinese', phase: 6, status: 'in-progress', directoryPath: '/zh/all-tools' },
+  { code: 'es', prefix: 'es', nativeName: 'Español', englishName: 'Spanish', dir: 'ltr', variant: 'Neutral Latin American', phase: 1, status: 'live', directoryPath: '/es/todas-las-herramientas' },
+  { code: 'pt', prefix: 'pt', nativeName: 'Português', englishName: 'Portuguese', dir: 'ltr', variant: 'Brazilian Portuguese (pt-BR)', phase: 2, status: 'live', directoryPath: '/pt/todas-as-ferramentas' },
+  { code: 'fr', prefix: 'fr', nativeName: 'Français', englishName: 'French', dir: 'ltr', variant: 'Natural international French', phase: 2, status: 'live', directoryPath: '/fr/tous-les-outils' },
+  { code: 'de', prefix: 'de', nativeName: 'Deutsch', englishName: 'German', dir: 'ltr', variant: 'Standard German', phase: 3, status: 'live', directoryPath: '/de/alle-tools' },
+  { code: 'it', prefix: 'it', nativeName: 'Italiano', englishName: 'Italian', dir: 'ltr', variant: 'Standard Italian', phase: 3, status: 'live', directoryPath: '/it/tutti-gli-strumenti' },
+  { code: 'id', prefix: 'id', nativeName: 'Bahasa Indonesia', englishName: 'Indonesian', dir: 'ltr', variant: 'Standard Bahasa Indonesia', phase: 4, status: 'live', directoryPath: '/id/semua-alat' },
+  { code: 'ru', prefix: 'ru', nativeName: 'Русский', englishName: 'Russian', dir: 'ltr', variant: 'Standard Russian', phase: 4, status: 'live', directoryPath: '/ru/vse-instrumenty' },
+  { code: 'ja', prefix: 'ja', nativeName: '日本語', englishName: 'Japanese', dir: 'ltr', variant: 'Natural modern Japanese', phase: 5, status: 'live', directoryPath: '/ja/tools' },
+  { code: 'ko', prefix: 'ko', nativeName: '한국어', englishName: 'Korean', dir: 'ltr', variant: 'Standard South Korean', phase: 5, status: 'live', directoryPath: '/ko/tools' },
+  { code: 'zh', prefix: 'zh', nativeName: '简体中文', englishName: 'Chinese (Simplified)', dir: 'ltr', variant: 'Simplified Mandarin Chinese', phase: 6, status: 'live', directoryPath: '/zh/all-tools' },
 ];
 
 export const SUPPORTED_LANGS: SupportedLang[] = SUPPORTED_LANGUAGES.map((l) => l.code);
