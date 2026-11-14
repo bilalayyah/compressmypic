@@ -26,7 +26,7 @@ export const TOOLS_REGISTRY_FR: ToolDefinition[] = [
   name: 'Compresseur d’images',
   shortDescription: 'Compressez des images JPG, PNG, WebP et HEIC sans perdre en qualité.',
   category: 'compress',
-  seoTitle: 'Compresseur d’images gratuit online – Réduire à 100 Ko',
+  seoTitle: 'Compresseur d’images gratuit en ligne – Réduire à 100 Ko',
   seoDescription:
     'Compressez des images en ligne gratuitement : réduisez leur taille sans perdre en qualité. JPG, PNG et WebP, sans inscription ni filigrane, sur votre appareil.',
   h1: 'Compresseur d’images gratuit',
@@ -41,7 +41,7 @@ export const TOOLS_REGISTRY_FR: ToolDefinition[] = [
     name: "Redimensionneur d'image",
     shortDescription: "Redimensionnez vos images en pixels exacts, en pourcentage ou avec des préréglages pour les réseaux sociaux.",
     category: "resize",
-    seoTitle: "Redimensionneur d'image gratuit online – En pixels ou %",
+    seoTitle: "Redimensionneur d'image gratuit en ligne – En pixels ou %",
     seoDescription:
       "Redimensionnez vos images gratuitement en ligne par pixels exacts, pourcentage ou préréglages pour les réseaux sociaux. Lots dans le navigateur, export ZIP.",
     h1: "Redimensionneur d'image gratuit online",
@@ -210,7 +210,7 @@ export const TOOLS_REGISTRY_FR: ToolDefinition[] = [
     name: "Convertisseur d'image",
     shortDescription: "Convertissez JPG, PNG, WebP, HEIC, BMP, GIF et SVG dans votre navigateur.",
     category: "convert",
-    seoTitle: "Convertisseur d'image gratuit online – JPG, PNG, WebP",
+    seoTitle: "Convertisseur d'image gratuit en ligne – JPG, PNG, WebP",
     seoDescription:
       "Convertissez JPG, PNG, WebP, HEIC, SVG, BMP, GIF et AVIF dans votre navigateur. Convertissez vos lots en privé, avec contrôle de la qualité et export ZIP.",
     h1: "Convertisseur d'image gratuit online",
@@ -548,7 +548,7 @@ export const TOOLS_REGISTRY_FR: ToolDefinition[] = [
     name: "Image en PDF",
     shortDescription: "Combinez vos images JPG, PNG, WebP et HEIC en un PDF de plusieurs pages.",
     category: "convert",
-    seoTitle: "Image en PDF gratuit online – Fusionner des photos",
+    seoTitle: "Image en PDF gratuit en ligne – Fusionner des photos",
     seoDescription:
       "Transformez des photos en un seul PDF dans votre navigateur. Réorganisez les pages, choisissez A4 ou Lettre US, réglez les marges et enregistrez hors ligne.",
     h1: "Convertisseur d'image en PDF",
