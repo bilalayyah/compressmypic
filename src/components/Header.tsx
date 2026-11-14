@@ -16,6 +16,16 @@ import {
 import { TOOLS_REGISTRY, TOOL_CATEGORIES } from '../data/tools';
 import type { ToolDefinition } from '../data/tools';
 import { SUPPORTED_LANGUAGES, type SupportedLang } from '../locales/config';
+import { ES_PATH_BY_EN } from '../locales/es/slugs';
+import { PT_PATH_BY_EN } from '../locales/pt/slugs';
+import { FR_PATH_BY_EN } from '../locales/fr/slugs';
+import { DE_PATH_BY_EN } from '../locales/de/slugs';
+import { IT_PATH_BY_EN } from '../locales/it/slugs';
+import { ID_PATH_BY_EN } from '../locales/id/slugs';
+import { RU_PATH_BY_EN } from '../locales/ru/slugs';
+import { JA_PATH_BY_EN } from '../locales/ja/slugs';
+import { KO_PATH_BY_EN } from '../locales/ko/slugs';
+import { ZH_PATH_BY_EN } from '../locales/zh/slugs';
 import { ThemePreference, useTheme } from '../utils/theme';
 
 export interface HeaderStrings {
@@ -104,7 +114,27 @@ export const Header: React.FC<HeaderProps> = ({
   const [langMenuOpen, setLangMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchOpen, setSearchOpen] = useState(false);
+  const mobileSearchRef = useRef<HTMLInputElement>(null);
   const headerRef = useRef<HTMLElement>(null);
+
+  // Localized header nav URLs (SEO audit #31): logo + Home -> /<lang>/,
+  // About / Contact -> the localized slugs for the active language.
+  const PATH_BY_EN_BY_LANG: Partial<Record<SupportedLang, Record<string, string>>> = {
+    es: ES_PATH_BY_EN,
+    pt: PT_PATH_BY_EN,
+    fr: FR_PATH_BY_EN,
+    de: DE_PATH_BY_EN,
+    it: IT_PATH_BY_EN,
+    id: ID_PATH_BY_EN,
+    ru: RU_PATH_BY_EN,
+    ja: JA_PATH_BY_EN,
+    ko: KO_PATH_BY_EN,
+    zh: ZH_PATH_BY_EN,
+  };
+  const localizedMap = PATH_BY_EN_BY_LANG[lang];
+  const homeUrl = lang === 'en' ? '/' : `/${lang}/`;
+  const aboutUrl = localizedMap?.['/about'] ?? '/about';
+  const contactUrl = localizedMap?.['/contact'] ?? '/contact';
 
   const { preference, resolvedTheme, setPreference } = useTheme();
 
@@ -198,13 +228,13 @@ export const Header: React.FC<HeaderProps> = ({
       ref={headerRef}
       className="sticky top-0 z-40 header-pastel-band border-b border-[var(--line)] shadow-xs"
     >
-      <div className="max-w-[1220px] mx-auto px-3 sm:px-6 h-[68px] flex items-center justify-between gap-3 sm:gap-4 min-w-0">
+      <div className="max-w-[1220px] mx-auto px-2 sm:px-6 h-[68px] flex items-center justify-between gap-2 sm:gap-4 min-w-0">
         {/* Zone 1: Brand Wordmark */}
         <a
-          href="/"
+          href={homeUrl}
           onClick={(e) => {
             e.preventDefault();
-            handleNav('/');
+            handleNav(homeUrl);
           }}
           aria-label={strings.homeAriaLabel}
           className="flex items-center gap-2 sm:gap-2.5 whitespace-nowrap shrink-0 group py-1"
@@ -215,7 +245,7 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
           </span>
-          <span className="font-sans text-[1.08rem] sm:text-[1.22rem] font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
+          <span className="font-sans text-[1rem] sm:text-[1.22rem] font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
             Compress<span className="text-[#7c3aed] dark:text-[#a78bfa]">MyPic</span>
           </span>
         </a>
@@ -223,10 +253,10 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Zone 2: Navigation Links */}
         <nav className="hidden lg:flex items-center gap-0.5 text-[0.875rem] font-medium text-[var(--ink)] min-w-0">
           <a
-            href="/"
+            href={homeUrl}
             onClick={(e) => {
               e.preventDefault();
-              handleNav('/');
+              handleNav(homeUrl);
             }}
             className="px-2.5 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
           >
@@ -258,7 +288,7 @@ export const Header: React.FC<HeaderProps> = ({
                   const catTools = toolsRegistry.filter((t) => t.category === cat.id);
                   return (
                     <div key={cat.id} className="space-y-1.5">
-                      <p className="text-[11px] font-bold uppercase tracking-wider text-[var(--ink-3)] px-2">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] px-2">
                         {cat.label}
                       </p>
                       <div className="space-y-0.5">
@@ -304,20 +334,20 @@ export const Header: React.FC<HeaderProps> = ({
             {strings.faq}
           </a>
           <a
-            href="/about"
+            href={aboutUrl}
             onClick={(e) => {
               e.preventDefault();
-              handleNav('/about');
+              handleNav(aboutUrl);
             }}
             className="px-2.5 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.about}
           </a>
           <a
-            href="/contact"
+            href={contactUrl}
             onClick={(e) => {
               e.preventDefault();
-              handleNav('/contact');
+              handleNav(contactUrl);
             }}
             className="px-2.5 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
           >
@@ -326,7 +356,7 @@ export const Header: React.FC<HeaderProps> = ({
         </nav>
 
         {/* Zone 3: Desktop Search + Language Pill + Theme Pill + All Tools Pill / Mobile Menu */}
-        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <div className="flex items-center gap-2 shrink-0">
           {/* Header Desktop Search Input + Purple Search Button */}
           <div className="hidden xl:block relative">
             <form
@@ -388,7 +418,7 @@ export const Header: React.FC<HeaderProps> = ({
               aria-expanded={langMenuOpen}
               aria-haspopup="menu"
               title={strings.languageLabel}
-              className="inline-flex items-center gap-1 sm:gap-1.5 h-9 px-2 sm:px-3 rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 transition-colors cursor-pointer text-xs font-semibold shadow-2xs"
+              className="inline-flex items-center gap-1 sm:gap-1.5 h-11 px-1.5 sm:px-3 rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 transition-colors cursor-pointer text-xs font-semibold shadow-2xs"
             >
               <Globe className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <span className="hidden xl:inline">{lang.toUpperCase()}</span>
@@ -408,27 +438,49 @@ export const Header: React.FC<HeaderProps> = ({
                 {SUPPORTED_LANGUAGES.map((language) => {
                   const isActive = language.code === lang;
                   const isAvailable = availableLanguages.includes(language.code);
+                  // Language switcher items are real <a> anchors (SEO audit #30)
+                  // so crawlers can reach every language home. Clicking still
+                  // switches language via onLanguageChange (SPA navigation).
+                  const langHref = language.code === 'en' ? '/' : `/${language.code}/`;
+                  const itemClassName = `w-full flex items-center justify-between gap-2 px-3.5 py-2 text-xs font-semibold transition-colors ${
+                    !isAvailable
+                      ? 'text-[var(--ink-3)] opacity-55 cursor-not-allowed'
+                      : isActive
+                      ? 'bg-[var(--accent-soft)] text-[#6d28d9] dark:text-[#ddd6fe] cursor-pointer'
+                      : 'text-[var(--ink-2)] hover:bg-[var(--surface-2)] hover:text-[var(--ink)] cursor-pointer'
+                  }`;
+                  if (!isAvailable) {
+                    return (
+                      <button
+                        key={language.code}
+                        type="button"
+                        role="menuitemradio"
+                        aria-checked={isActive}
+                        aria-disabled
+                        disabled
+                        title={comingSoonTitle}
+                        className={itemClassName}
+                      >
+                        <span>{language.nativeName}</span>
+                        {isActive && <Check className="w-3.5 h-3.5 shrink-0" />}
+                      </button>
+                    );
+                  }
                   return (
-                    <button
+                    <a
                       key={language.code}
-                      type="button"
+                      href={langHref}
                       role="menuitemradio"
                       aria-checked={isActive}
-                      aria-disabled={!isAvailable}
-                      disabled={!isAvailable}
-                      title={isAvailable ? undefined : comingSoonTitle}
-                      onClick={() => handleSelectLanguage(language.code)}
-                      className={`w-full flex items-center justify-between gap-2 px-3.5 py-2 text-xs font-semibold transition-colors ${
-                        !isAvailable
-                          ? 'text-[var(--ink-3)] opacity-55 cursor-not-allowed'
-                          : isActive
-                          ? 'bg-[var(--accent-soft)] text-[#6d28d9] dark:text-[#ddd6fe] cursor-pointer'
-                          : 'text-[var(--ink-2)] hover:bg-[var(--surface-2)] hover:text-[var(--ink)] cursor-pointer'
-                      }`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleSelectLanguage(language.code);
+                      }}
+                      className={itemClassName}
                     >
                       <span>{language.nativeName}</span>
                       {isActive && <Check className="w-3.5 h-3.5 shrink-0" />}
-                    </button>
+                    </a>
                   );
                 })}
               </div>
@@ -450,7 +502,7 @@ export const Header: React.FC<HeaderProps> = ({
               aria-haspopup="menu"
               data-testid="theme-toggle-button"
               title={strings.themeTitle.replace('{current}', currentThemeLabel)}
-              className="inline-flex items-center gap-1 sm:gap-1.5 h-9 px-2 sm:px-3 rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 transition-colors cursor-pointer text-xs font-semibold shadow-2xs"
+              className="inline-flex items-center gap-1 sm:gap-1.5 h-11 px-1.5 sm:px-3 rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 transition-colors cursor-pointer text-xs font-semibold shadow-2xs"
             >
               <CurrentThemeIcon className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <ChevronDown
@@ -496,10 +548,27 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             type="button"
             onClick={() => handleNav('/#tools-directory')}
-            className="hidden lg:inline-flex items-center gap-1.5 px-4 py-2 text-[0.82rem] font-semibold btn-purple-pill shadow-xs whitespace-nowrap shrink-0 cursor-pointer"
+            className="hidden lg:inline-flex items-center gap-1.5 px-4 h-11 text-[0.82rem] font-semibold btn-purple-pill shadow-xs whitespace-nowrap shrink-0 cursor-pointer"
           >
             <LayoutGrid className="w-3.5 h-3.5" />
             <span>All Tools</span>
+          </button>
+
+          {/* Mobile Search Button (SEO audit #17): opens the mobile menu and
+              focuses the search field inside it, so tool pages have a search
+              affordance on mobile too. */}
+          <button
+            type="button"
+            onClick={() => {
+              setMobileMenuOpen(true);
+              setThemeMenuOpen(false);
+              setLangMenuOpen(false);
+              window.setTimeout(() => mobileSearchRef.current?.focus(), 80);
+            }}
+            className="lg:hidden h-11 w-11 grid place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 cursor-pointer shrink-0"
+            aria-label="Search tools"
+          >
+            <Search className="w-5 h-5" />
           </button>
 
           {/* Mobile Menu Button */}
@@ -510,7 +579,7 @@ export const Header: React.FC<HeaderProps> = ({
               setThemeMenuOpen(false);
               setLangMenuOpen(false);
             }}
-            className="lg:hidden p-1.5 rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 cursor-pointer shrink-0"
+            className="lg:hidden h-11 w-11 grid place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 cursor-pointer shrink-0"
             aria-label={strings.menuAriaLabel}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -521,11 +590,58 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-[var(--line)] bg-[var(--surface)] px-4 pt-3 pb-6 space-y-2 max-h-[82vh] overflow-y-auto shadow-[var(--shadow-lg)]">
+          {/* Mobile Search (SEO audit #17): the same tool search as desktop,
+              so mobile visitors can find tools from any page. */}
+          <form
+            onSubmit={handleSearchSubmit}
+            className="flex items-center bg-[var(--surface-2)] border border-[var(--line)] rounded-full px-3 py-1"
+          >
+            <Search className="w-4 h-4 text-[var(--ink-3)] shrink-0 mr-2" />
+            <input
+              ref={mobileSearchRef}
+              type="search"
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setSearchOpen(true);
+              }}
+              onFocus={() => setSearchOpen(true)}
+              placeholder="Search tools..."
+              aria-label="Search tools"
+              className="w-full text-sm text-[var(--ink)] bg-transparent! border-0! p-0! placeholder:text-[var(--ink-3)]"
+            />
+            <button
+              type="submit"
+              className="ml-2 px-3 h-11 text-xs font-semibold btn-purple-pill shrink-0 cursor-pointer"
+            >
+              Search
+            </button>
+          </form>
+          {searchQuery.trim() !== '' && matchingTools.length > 0 && (
+            <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-2">
+              {matchingTools.map((tool) => (
+                <a
+                  key={tool.slug}
+                  href={tool.slug}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav(tool.slug);
+                    setSearchQuery('');
+                  }}
+                  className="block px-3 py-2 rounded-xl hover:bg-[var(--accent-soft)] transition-colors"
+                >
+                  <div className="text-sm font-semibold text-[var(--ink)]">{tool.name}</div>
+                  <div className="text-xs text-[var(--ink-3)]">{tool.shortDescription}</div>
+                </a>
+              ))}
+            </div>
+          )}
+
           <a
-            href="/"
+            href={homeUrl}
             onClick={(e) => {
               e.preventDefault();
-              handleNav('/');
+              handleNav(homeUrl);
             }}
             className="block px-3 py-2 text-base font-medium text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-xl"
           >
@@ -534,10 +650,10 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Mobile Quick Theme Selector */}
           <div className="py-2 border-t border-[var(--line)] px-1">
-            <p className="px-2 text-[11px] font-semibold uppercase tracking-wide text-[var(--ink-3)] mb-2">
+            <p className="px-2 text-xs font-semibold uppercase tracking-wide text-[var(--ink-3)] mb-2">
               {strings.themeHeading}
             </p>
-            <div className="grid grid-cols-3 gap-1.5 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-xl">
+            <div className="grid grid-cols-3 gap-2 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-xl">
               {THEME_OPTIONS.map(({ id, shortLabel, Icon }) => {
                 const isActive = preference === id;
                 return (
@@ -545,7 +661,7 @@ export const Header: React.FC<HeaderProps> = ({
                     key={id}
                     type="button"
                     onClick={() => handleSelectTheme(id)}
-                    className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
+                    className={`flex items-center justify-center gap-1.5 min-h-11 py-2 px-2 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
                       isActive
                         ? 'bg-[var(--surface)] text-[#7c3aed] dark:text-[#c4b5fd] shadow-xs'
                         : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
@@ -561,31 +677,47 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Mobile Language Selector */}
           <div className="py-2 border-t border-[var(--line)] px-1">
-            <p className="px-2 text-[11px] font-semibold uppercase tracking-wide text-[var(--ink-3)] mb-2">
+            <p className="px-2 text-xs font-semibold uppercase tracking-wide text-[var(--ink-3)] mb-2">
               {strings.languageLabel}
             </p>
-            <div className="grid grid-cols-3 gap-1.5 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-xl">
+            <div className="grid grid-cols-3 gap-2 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-xl">
               {SUPPORTED_LANGUAGES.map((language) => {
                 const isActive = language.code === lang;
                 const isAvailable = availableLanguages.includes(language.code);
+                const itemClassName = `flex items-center justify-center gap-1.5 min-h-11 py-2 px-2 rounded-lg text-xs font-semibold transition-colors ${
+                  !isAvailable
+                    ? 'text-[var(--ink-3)] opacity-50 cursor-not-allowed'
+                    : isActive
+                    ? 'bg-[var(--surface)] text-[#7c3aed] dark:text-[#c4b5fd] shadow-xs cursor-pointer'
+                    : 'text-[var(--ink-2)] hover:text-[var(--ink)] cursor-pointer'
+                }`;
+                if (!isAvailable) {
+                  return (
+                    <button
+                      key={language.code}
+                      type="button"
+                      aria-disabled
+                      disabled
+                      title={comingSoonTitle}
+                      className={itemClassName}
+                    >
+                      <span>{language.code.toUpperCase()}</span>
+                    </button>
+                  );
+                }
+                // Real <a> anchor (SEO audit #30); click still switches language.
                 return (
-                  <button
+                  <a
                     key={language.code}
-                    type="button"
-                    aria-disabled={!isAvailable}
-                    disabled={!isAvailable}
-                    title={isAvailable ? undefined : comingSoonTitle}
-                    onClick={() => handleSelectLanguage(language.code)}
-                    className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-semibold transition-colors ${
-                      !isAvailable
-                        ? 'text-[var(--ink-3)] opacity-50 cursor-not-allowed'
-                        : isActive
-                        ? 'bg-[var(--surface)] text-[#7c3aed] dark:text-[#c4b5fd] shadow-xs cursor-pointer'
-                        : 'text-[var(--ink-2)] hover:text-[var(--ink)] cursor-pointer'
-                    }`}
+                    href={language.code === 'en' ? '/' : `/${language.code}/`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleSelectLanguage(language.code);
+                    }}
+                    className={itemClassName}
                   >
                     <span>{language.code.toUpperCase()}</span>
-                  </button>
+                  </a>
                 );
               })}
             </div>
@@ -597,7 +729,7 @@ export const Header: React.FC<HeaderProps> = ({
               if (catTools.length === 0) return null;
               return (
                 <div key={cat.id}>
-                  <p className="px-3 text-[11px] font-semibold uppercase tracking-wide text-[var(--ink-3)]">
+                  <p className="px-3 text-xs font-semibold uppercase tracking-wide text-[var(--ink-3)]">
                     {cat.label}
                   </p>
                   <div className="mt-1 grid grid-cols-2 gap-1">
@@ -609,7 +741,7 @@ export const Header: React.FC<HeaderProps> = ({
                           e.preventDefault();
                           handleNav(tool.slug);
                         }}
-                        className="block px-3 py-1.5 text-xs font-medium text-[var(--ink-2)] hover:bg-[var(--accent-soft)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] rounded-lg truncate"
+                        className="block px-3 py-1.5 text-xs font-medium leading-snug text-[var(--ink-2)] hover:bg-[var(--accent-soft)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] rounded-lg"
                       >
                         {tool.name}
                       </a>
@@ -642,20 +774,20 @@ export const Header: React.FC<HeaderProps> = ({
               {strings.faq}
             </a>
             <a
-              href="/about"
+              href={aboutUrl}
               onClick={(e) => {
                 e.preventDefault();
-                handleNav('/about');
+                handleNav(aboutUrl);
               }}
               className="block px-3 py-2 text-base font-medium text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-xl"
             >
               {strings.aboutUs}
             </a>
             <a
-              href="/contact"
+              href={contactUrl}
               onClick={(e) => {
                 e.preventDefault();
-                handleNav('/contact');
+                handleNav(contactUrl);
               }}
               className="block px-3 py-2 text-base font-medium text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-xl"
             >

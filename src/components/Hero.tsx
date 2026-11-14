@@ -13,7 +13,7 @@ export interface HeroStrings {
 
 const EN_STRINGS: HeroStrings = {
   pill: '100% Private Client-Side Compression · No Server Uploads',
-  h1: 'Free Image Compressor – Compress Images Online & Reduce Size Without Losing Quality',
+  h1: 'Free Image Compressor – Compress Images Online',
   sub: 'Reduce image file sizes without sacrificing noticeable quality. Compress image online free with our free image compressor and photo compressor — an online image optimizer for JPG, PNG, WebP and HEIC. Fast, secure, no signup, no watermark, and easy image compression directly in your browser.',
   badge1: 'Your images never leave your device',
   badge2: 'Instant browser processing',
@@ -125,7 +125,7 @@ export const Hero: React.FC<HeroProps> = ({
             onFocus={() => setDropdownOpen(true)}
             placeholder="Search 48 free image tools (compress, resize, convert)..."
             aria-label="Search free image tools"
-            className="w-full text-sm text-[var(--ink)] bg-transparent! border-0! focus:outline-none! focus:ring-0! p-0! placeholder:text-[var(--ink-3)]"
+            className="hero-search-input w-full text-sm text-[var(--ink)] bg-transparent! border-0! p-0! placeholder:text-[var(--ink-3)]"
           />
           <kbd className="hidden sm:inline-flex items-center gap-0.5 px-2 py-0.5 ml-2 rounded-md bg-[var(--surface-2)] border border-[var(--line)] text-[11px] font-mono font-semibold text-[var(--ink-3)] shrink-0">
             ⌘K

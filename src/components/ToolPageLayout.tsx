@@ -13,6 +13,16 @@ import { AdSlot } from './AdSlot';
 import { Comments, EN_COMMENT_STRINGS, type CommentStrings } from './Comments';
 import type { SupportedLang } from '../locales/config';
 import { getOgLocale, getOgLocaleAlternates } from '../locales/alternates';
+import { ES_ALL_TOOLS_PATH } from '../locales/es/slugs';
+import { PT_ALL_TOOLS_PATH } from '../locales/pt/slugs';
+import { FR_ALL_TOOLS_PATH } from '../locales/fr/slugs';
+import { DE_ALL_TOOLS_PATH } from '../locales/de/slugs';
+import { IT_ALL_TOOLS_PATH } from '../locales/it/slugs';
+import { ID_ALL_TOOLS_PATH } from '../locales/id/slugs';
+import { RU_ALL_TOOLS_PATH } from '../locales/ru/slugs';
+import { JA_ALL_TOOLS_PATH } from '../locales/ja/slugs';
+import { KO_ALL_TOOLS_PATH } from '../locales/ko/slugs';
+import { ZH_ALL_TOOLS_PATH } from '../locales/zh/slugs';
 import { getPastelCardClass, getPastelTileClass } from '../utils/pastel';
 
 export interface ToolPageLayoutStrings {
@@ -25,6 +35,8 @@ export interface ToolPageLayoutStrings {
   featuresTitle: string; // contains {name}
   faqTitle: string; // contains {name}
   relatedTitle: string;
+  /** Lead-in for the contextual related-tool links under the FAQ list. */
+  relatedLinksIntro?: string;
   commentsTitle?: string;
   commentsNote?: string;
   commentsNamePlaceholder?: string;
@@ -49,6 +61,7 @@ const EN_STRINGS: ToolPageLayoutStrings = {
   featuresTitle: 'Why Use CompressMyPic {name}?',
   faqTitle: '{name} — Frequently Asked Questions',
   relatedTitle: 'Related Free Image Tools',
+  relatedLinksIntro: 'You may also need:',
   commentsTitle: 'Comments',
   commentsNote: 'Share your thoughts about this tool — just write your name and post. No account needed.',
   commentsNamePlaceholder: 'Your name',
@@ -101,9 +114,21 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
   const categoryLabel =
     categoryLabels.find((c) => c.id === tool.category)?.label || 'Tools';
 
-  const relatedTools = tool.relatedSlugs
+  // Related tools: the tool's own curated list first, then the closest
+  // same-category tools, then any other tools — always 6–8 cards so the
+  // section is a real internal-linking hub, never just the 4 curated ones.
+  const explicitRelated = tool.relatedSlugs
     .map((slug) => toolRegistry[slug])
     .filter((t): t is ToolDefinition => Boolean(t));
+  const seenSlugs = new Set<string>([tool.slug, ...explicitRelated.map((t) => t.slug)]);
+  const registryTools = Object.values(toolRegistry);
+  const sameCategory = registryTools.filter(
+    (t) => t.category === tool.category && !seenSlugs.has(t.slug)
+  );
+  const otherTools = registryTools.filter(
+    (t) => t.category !== tool.category && !seenSlugs.has(t.slug)
+  );
+  const relatedTools = [...explicitRelated, ...sameCategory, ...otherTools].slice(0, 8);
 
   const pagePath = canonicalPath ?? tool.slug;
   const commentStrings: CommentStrings = {
@@ -219,11 +244,17 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
     setMetaTag('meta[property="og:description"]', 'property', 'og:description', seoDescription);
     setMetaTag('meta[property="og:url"]', 'property', 'og:url', canonicalUrl);
     setMetaTag('meta[property="og:type"]', 'property', 'og:type', 'website');
+    // Per-tool OG image (SEO audit issue 22): public/og-<slug>.png exists for
+    // every tool; fall back to the generic image for the home slug.
+    const ogImageUrl =
+      tool.slug && tool.slug !== '/'
+        ? `https://compressmypic.online/og-${tool.slug.slice(1)}.png`
+        : 'https://compressmypic.online/og-image.png';
     setMetaTag(
       'meta[property="og:image"]',
       'property',
       'og:image',
-      'https://compressmypic.online/og-image.png',
+      ogImageUrl,
       true
     );
     setOgLocaleTags(getOgLocale(lang), getOgLocaleAlternates(lang));
@@ -236,7 +267,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
       'meta[name="twitter:image"]',
       'name',
       'twitter:image',
-      'https://compressmypic.online/og-image.png',
+      ogImageUrl,
       true
     );
     setMetaTag('meta[name="twitter:image:alt"]', 'name', 'twitter:image:alt', seoTitle);
@@ -265,7 +296,66 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
     const slugKey = pagePath.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'home';
     const scriptId = `tool-${slugKey}-jsonld`;
 
-    const graph: Record<string, unknown>[] = [];
+    // Per-page JSON-LD: a correct BreadcrumbList (Home > Category > Tool)
+    // and a localized WebApplication for this exact tool — never the old
+    // static site-wide blocks that used to live in index.html.
+    const homeUrl =
+      lang === 'en'
+        ? 'https://compressmypic.online/'
+        : `https://compressmypic.online/${lang}/`;
+    const directoryPathByLang: Record<string, string> = {
+      es: ES_ALL_TOOLS_PATH,
+      pt: PT_ALL_TOOLS_PATH,
+      fr: FR_ALL_TOOLS_PATH,
+      de: DE_ALL_TOOLS_PATH,
+      it: IT_ALL_TOOLS_PATH,
+      id: ID_ALL_TOOLS_PATH,
+      ru: RU_ALL_TOOLS_PATH,
+      ja: JA_ALL_TOOLS_PATH,
+      ko: KO_ALL_TOOLS_PATH,
+      zh: ZH_ALL_TOOLS_PATH,
+    };
+    const directoryPath = directoryPathByLang[lang];
+    const breadcrumbItems: Record<string, unknown>[] = [
+      { '@type': 'ListItem', position: 1, name: ui.home, item: homeUrl },
+    ];
+    if (directoryPath) {
+      breadcrumbItems.push({
+        '@type': 'ListItem',
+        position: 2,
+        name: categoryLabel,
+        item: `https://compressmypic.online${directoryPath}`,
+      });
+    } else {
+      // English has no standalone tools-directory page (the directory lives
+      // on the homepage), so the category crumb carries a name only.
+      breadcrumbItems.push({ '@type': 'ListItem', position: 2, name: categoryLabel });
+    }
+    breadcrumbItems.push({
+      '@type': 'ListItem',
+      position: 3,
+      name: tool.name,
+      item: canonicalUrl,
+    });
+
+    const graph: Record<string, unknown>[] = [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumbItems,
+      },
+      {
+        '@type': 'WebApplication',
+        name: tool.name,
+        url: canonicalUrl,
+        applicationCategory: 'MultimediaApplication',
+        operatingSystem: 'All',
+        browserRequirements: 'Requires JavaScript. Requires HTML5 Canvas.',
+        description: tool.seoDescription,
+        inLanguage: lang,
+        isAccessibleForFree: true,
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      },
+    ];
     if (tool.howToSteps.length > 0) {
       graph.push({
         '@type': 'HowTo',
@@ -483,6 +573,28 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                 );
               })}
             </div>
+            {/* Contextual links: 2–3 real links to the closest related tools,
+                in this page's language, inside the FAQ text area. */}
+            {relatedTools.length > 0 && (
+              <p className="mt-6 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed">
+                {ui.relatedLinksIntro ?? EN_STRINGS.relatedLinksIntro}{' '}
+                {relatedTools.slice(0, 3).map((rel, i) => (
+                  <span key={rel.slug}>
+                    {i > 0 && <span aria-hidden="true"> · </span>}
+                    <a
+                      href={rel.slug}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        onNavigate(rel.slug);
+                      }}
+                      className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] underline underline-offset-2"
+                    >
+                      {rel.name}
+                    </a>
+                  </span>
+                ))}
+              </p>
+            )}
           </div>
         </section>
       )}

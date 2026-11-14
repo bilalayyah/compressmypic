@@ -1,5 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ShieldCheck } from 'lucide-react';
+import { isSupportedLang, type SupportedLang } from '../locales/config';
+import { ES_ALL_TOOLS_PATH } from '../locales/es/slugs';
+import { PT_ALL_TOOLS_PATH } from '../locales/pt/slugs';
+import { FR_ALL_TOOLS_PATH } from '../locales/fr/slugs';
+import { DE_ALL_TOOLS_PATH } from '../locales/de/slugs';
+import { IT_ALL_TOOLS_PATH } from '../locales/it/slugs';
+import { ID_ALL_TOOLS_PATH } from '../locales/id/slugs';
+import { RU_ALL_TOOLS_PATH } from '../locales/ru/slugs';
+import { JA_ALL_TOOLS_PATH } from '../locales/ja/slugs';
+import { KO_ALL_TOOLS_PATH } from '../locales/ko/slugs';
+import { ZH_ALL_TOOLS_PATH } from '../locales/zh/slugs';
 
 export interface FooterStrings {
   blurb: string;
@@ -127,6 +138,64 @@ export const Footer: React.FC<FooterProps> = ({
 }) => {
   const strings: FooterStrings = { ...DEFAULT_FOOTER_STRINGS, ...stringsProp };
 
+  // Active language, derived from the localized About URL (Footer gets no
+  // `lang` prop, but localizePath maps '/about' -> e.g. '/de/ueber-uns').
+  // Used for the localized tools-directory link (SEO audit #29).
+  const detectedLang: SupportedLang = (() => {
+    const m = /^\/([a-z]{2})\//.exec(localizePath('/about'));
+    return m && isSupportedLang(m[1]) ? m[1] : 'en';
+  })();
+  const DIRECTORY_PATH_BY_LANG: Record<Exclude<SupportedLang, 'en'>, string> = {
+    es: ES_ALL_TOOLS_PATH,
+    pt: PT_ALL_TOOLS_PATH,
+    fr: FR_ALL_TOOLS_PATH,
+    de: DE_ALL_TOOLS_PATH,
+    it: IT_ALL_TOOLS_PATH,
+    id: ID_ALL_TOOLS_PATH,
+    ru: RU_ALL_TOOLS_PATH,
+    ja: JA_ALL_TOOLS_PATH,
+    ko: KO_ALL_TOOLS_PATH,
+    zh: ZH_ALL_TOOLS_PATH,
+  };
+  // Localized "All Tools" label for the directory link, loaded from the
+  // active locale's own dictionary (toolsDirectory.allTools) so no string
+  // is invented here. Explicit literal dynamic imports (like App's): the
+  // locale ui modules are code-split, and a static import would pull all
+  // 10 dictionaries into the main bundle.
+  const UI_LABEL_IMPORTERS: Record<Exclude<SupportedLang, 'en'>, () => Promise<string | undefined>> = {
+    es: () => import('../locales/es/ui').then((m) => m.ES.toolsDirectory.allTools),
+    pt: () => import('../locales/pt/ui').then((m) => m.PT.toolsDirectory.allTools),
+    fr: () => import('../locales/fr/ui').then((m) => m.FR.toolsDirectory.allTools),
+    de: () => import('../locales/de/ui').then((m) => m.DE.toolsDirectory.allTools),
+    it: () => import('../locales/it/ui').then((m) => m.IT.toolsDirectory.allTools),
+    id: () => import('../locales/id/ui').then((m) => m.ID.toolsDirectory.allTools),
+    ru: () => import('../locales/ru/ui').then((m) => m.RU.toolsDirectory.allTools),
+    ja: () => import('../locales/ja/ui').then((m) => m.JA.toolsDirectory.allTools),
+    ko: () => import('../locales/ko/ui').then((m) => m.KO.toolsDirectory.allTools),
+    zh: () => import('../locales/zh/ui').then((m) => m.ZH.toolsDirectory.allTools),
+  };
+  const [directoryLabel, setDirectoryLabel] = useState('All Tools');
+  useEffect(() => {
+    if (detectedLang === 'en') {
+      setDirectoryLabel('All Tools');
+      return;
+    }
+    let cancelled = false;
+    UI_LABEL_IMPORTERS[detectedLang]()
+      .then((label) => {
+        if (!cancelled && label) setDirectoryLabel(label);
+      })
+      .catch(() => {
+        // Keep the English fallback label.
+      });
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [detectedLang]);
+  const directoryHref =
+    detectedLang === 'en' ? '/#tools-directory' : DIRECTORY_PATH_BY_LANG[detectedLang];
+
   return (
     <footer className="footer-pastel-band text-[var(--ink-2)] border-t border-[var(--line)] text-sm">
       <div className="max-w-[1180px] mx-auto px-4 sm:px-6 py-12 lg:py-16">
@@ -180,7 +249,7 @@ export const Footer: React.FC<FooterProps> = ({
                       e.preventDefault();
                       onNavigate(link.slug);
                     }}
-                    className="text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors"
+                    className="inline-flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors"
                   >
                     {link.label}
                   </a>
@@ -203,7 +272,7 @@ export const Footer: React.FC<FooterProps> = ({
                       e.preventDefault();
                       onNavigate(link.slug);
                     }}
-                    className="text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors block text-left"
+                    className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors text-left"
                   >
                     {link.label}
                   </a>
@@ -224,7 +293,7 @@ export const Footer: React.FC<FooterProps> = ({
                       e.preventDefault();
                       onNavigate(link.slug);
                     }}
-                    className="text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors block text-left"
+                    className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors text-left"
                   >
                     {link.label}
                   </a>
@@ -247,7 +316,7 @@ export const Footer: React.FC<FooterProps> = ({
                       e.preventDefault();
                       onNavigate(link.slug);
                     }}
-                    className="text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors"
+                    className="inline-flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors"
                   >
                     {link.label}
                   </a>
@@ -262,10 +331,22 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Compact Advanced Compression, Editing & Developer Tools Directory */}
         <div className="pt-8 pb-6 border-t border-[var(--line)]">
-          <h4 className="text-[11px] font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">
+          <h4 className="text-xs font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">
             {strings.directoryHeading}
           </h4>
           <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-[var(--ink-2)]">
+            {/* Localized tools-directory link (SEO audit #29): the non-EN
+                directory pages had no inbound links. */}
+            <a
+              href={directoryHref}
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate(directoryHref);
+              }}
+              className="inline-flex items-center min-h-6 font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline transition-colors"
+            >
+              {directoryLabel}
+            </a>
             {strings.directoryLinks.map((item) => (
               <a
                 key={item.slug}
@@ -274,7 +355,7 @@ export const Footer: React.FC<FooterProps> = ({
                   e.preventDefault();
                   onNavigate(item.slug);
                 }}
-                className="text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors"
+                className="inline-flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors"
               >
                 {item.label}
               </a>
