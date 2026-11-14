@@ -170,6 +170,31 @@ export const GuideFormatsPageFr: React.FC<GuideFormatsPageFrProps> = ({ onNaviga
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "JPG vs PNG vs WebP : quel format utiliser ?",
+          description: "JPG vs PNG vs WebP expliqués simplement : comparez la taille, la qualité et la transparence pour choisir le format adapté à vos photos, logos et sites web.",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/fr/guides/jpg-vs-png-vs-webp",
+          inLanguage: 'fr',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "Accueil", item: "https://compressmypic.online/fr/" },
+            { '@type': 'ListItem', position: 2, name: "Guides" },
+            { '@type': 'ListItem', position: 3, name: "JPG vs PNG vs WebP : quel format utiliser ?", item: "https://compressmypic.online/fr/guides/jpg-vs-png-vs-webp" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -215,6 +240,9 @@ export const GuideFormatsPageFr: React.FC<GuideFormatsPageFrProps> = ({ onNaviga
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             JPG vs PNG vs WebP : quel format utiliser ?
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            Par <a href="/fr/a-propos" onClick={(e) => { e.preventDefault(); onNavigate('/fr/a-propos'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             Choisir le mauvais format peut rendre votre image dix fois plus grande que nécessaire, ou ruiner un logo transparent. Voici la comparaison simple et honnête, et comment convertir entre les formats en quelques secondes.
           </p>

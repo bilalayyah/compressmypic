@@ -129,6 +129,48 @@ export const AboutPageFr: React.FC<AboutPageFrProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Users className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Le créateur : Bilal</span>
+            </h2>
+            <p>
+              CompressMyPic a été créé par Bilal, un créateur indépendant qui construit des outils gratuits et respectueux de la vie privée pour le web. Il a lancé CompressMyPic après s'être agacé des compresseurs d'images qui obligeaient les gens à téléverser des photos personnelles vers le serveur d'un inconnu juste pour réduire la taille d'un fichier. Sa réponse a été un outil qui fait tout le travail dans le navigateur du visiteur : aucun téléversement, aucun compte, aucun filigrane et aucune facture surprise à la fin.
+            </p>
+            <p>
+              Bilal conçoit, construit et maintient lui-même les 48 outils du site, du compresseur et des convertisseurs au générateur de favicon et au suppresseur d'arrière-plan. Il répond personnellement aux messages d'assistance, lit chaque retour et maintient les outils gratuits pour tous, qu'ils compressent une photo ou mille. Le pied de page du site porte un petit hommage à Shaheen, dont les encouragements ont inspiré Bilal à continuer de construire et à rendre les outils vraiment utiles plutôt que simplement populaires.
+            </p>
+            <p>
+              Si vous voulez suivre le travail, vous pouvez trouver le projet sur 
+              <a
+                href="https://github.com/bilalayyah/compressmypic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                GitHub
+              </a>
+              , lire les guides de Bilal sur 
+              <a
+                href="https://dev.to/bilalayyah"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                Dev.to
+              </a>
+               ou dire bonjour via la 
+              <button
+                type="button"
+                onClick={() => onNavigate('/fr/contact')}
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+              >
+                page de contact
+              </button>
+              .
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
               <Lock className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>Confidentialité et sécurité</span>
             </h2>
