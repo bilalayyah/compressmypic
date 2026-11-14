@@ -148,7 +148,7 @@ export const KO = {
   },
   hero: {
     pill: '100% 개인정보 보호 기기 내 압축 · 서버 업로드 없음', // '100% Private Client-Side Compression · No Server Uploads'
-    h1: '무료 이미지 압축기 – 온라인에서 화질 저하 없이 이미지 용량 줄이기', // 'Free Image Compressor – Compress Images Online & Reduce Size Without Losing Quality'
+    h1: '무료 이미지 압축기 – 온라인에서 이미지 압축', // 'Free Image Compressor – Compress Images Online'
     sub: '눈에 띄는 화질 저하 없이 이미지 파일 용량을 줄이세요. 무료 이미지 압축기 및 사진 압축기로 온라인에서 이미지를 무료로 압축하세요. JPG, PNG, WebP, HEIC용 온라인 이미지 최적화 도구입니다. 빠르고 안전하며 가입도, 워터마크도 필요 없고 브라우저에서 바로 이미지를 압축할 수 있습니다.', // 'Reduce image file sizes without sacrificing noticeable quality. Compress image online free with our free image compressor and photo compressor — an online image optimizer for JPG, PNG, WebP and HEIC. Fast, secure, no signup, no watermark, and easy image compression directly in your browser.'
     badge1: '이미지가 기기를 절대 떠나지 않습니다', // 'Your images never leave your device'
     badge2: '브라우저에서 즉시 처리', // 'Instant browser processing'
@@ -407,6 +407,7 @@ export const KO = {
     featuresTitle: 'CompressMyPic {name}을 사용해야 하는 이유', // 'Why Use CompressMyPic {name}?'
     faqTitle: '{name} — 자주 묻는 질문', // '{name} — Frequently Asked Questions'
     relatedTitle: '관련 무료 이미지 도구', // 'Related Free Image Tools'
+    relatedLinksIntro: '함께 사용하면 좋은 도구:', // 'You may also need:'
     commentsTitle: '댓글',
     commentsNote: '이 도구에 대한 의견을 공유하세요. 이름만 쓰고 게시하면 됩니다. 계정이 필요 없습니다.',
     commentsNamePlaceholder: '이름',
@@ -458,10 +459,9 @@ export const KO = {
     altProcessed: '{name}의 처리된 버전', // 'Processed version of {name}'
   },
   homeMeta: {
-    seoTitle: '무료 온라인 이미지 압축 – 용량을 100KB까지 줄이기', // 'Free Image Compressor Online – Reduce Image Size to 100KB'
-    seoDescription:
-      '이미지를 온라인에서 무료로 압축하세요 — 화질 저하 없이 JPG, PNG, WebP 파일 용량을 줄입니다. 가입도, 워터마크도 없이 브라우저에서 바로 압축하세요. 사진 용량을 20KB, 50KB, 100KB, 200KB까지 줄이고 여러 장을 한 번에 압축해 ZIP으로 다운로드하세요.', // 'Compress image online free — reduce image size without losing quality. Compress JPG, PNG and WebP with no signup and no watermark, right in your browser.'
-    h1: '무료 온라인 이미지 압축기', // 'Free Image Compressor'
+    seoTitle: '무료 이미지 압축기 – 온라인에서 이미지 압축, 가입 불필요', // 'Free Image Compressor – Compress Images Online, No Signup'
+    seoDescription: '이미지를 온라인에서 무료로 압축하고 JPG, PNG, WebP 용량을 화질 저하 없이 줄이세요. 가입도, 워터마크도 필요 없습니다. 사진은 브라우저를 절대 떠나지 않습니다.', // 'Compress images online free and reduce JPG, PNG and WebP size without losing quality. No signup, no watermark — your photos never leave your own browser.'
+    h1: '무료 이미지 압축기 – 온라인에서 이미지 압축', // 'Free Image Compressor – Compress Images Online'
     subtitle: 'JPG, PNG, WebP, HEIC 파일 용량을 브라우저에서 바로 줄이세요.', // 'Reduce JPG, PNG, WebP & HEIC file size directly in your browser.'
   },
   categories: {
