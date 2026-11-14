@@ -154,24 +154,6 @@ export const Guide100kbPageEs: React.FC<Guide100kbPageEsProps> = ({ onNavigate }
     if (metaDescription) metaDescription.setAttribute('content', 'Reduzca el tamaño de una imagen a 100 KB para sitios web y correo electrónico con un compresor online gratis. Guía paso a paso, sin registro ni marca de agua.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/es/guias/reducir-imagen-a-100kb';
-    // hreflang: same DOM mechanism the English page uses for its canonical.
-    const alternates = [
-      { lang: 'en', href: 'https://compressmypic.online/guides/reduce-image-size-to-100kb' },
-      { lang: 'es', href: 'https://compressmypic.online/es/guias/reducir-imagen-a-100kb' },
-      { lang: 'x-default', href: 'https://compressmypic.online/guides/reduce-image-size-to-100kb' },
-    ];
-    const createdLinks: HTMLLinkElement[] = [];
-    alternates.forEach(({ lang, href }) => {
-      let link = document.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${lang}"]`);
-      if (!link) {
-        link = document.createElement('link');
-        link.rel = 'alternate';
-        link.setAttribute('hreflang', lang);
-        document.head.appendChild(link);
-        createdLinks.push(link);
-      }
-      link.href = href;
-    });
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -201,7 +183,6 @@ export const Guide100kbPageEs: React.FC<Guide100kbPageEsProps> = ({ onNavigate }
     return () => {
       const existing = document.getElementById('guide-100kb-jsonld');
       if (existing) existing.remove();
-      createdLinks.forEach((link) => link.remove());
     };
   }, []);
 

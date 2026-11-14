@@ -158,24 +158,6 @@ export const GuideWhatsAppPageDe: React.FC<GuideWhatsAppPageDeProps> = ({ onNavi
     if (metaDescription) metaDescription.setAttribute('content', 'Erfahren Sie, wie Sie Bilder für WhatsApp komprimieren, ohne Qualität zu verlieren. Kostenlos, privat, ohne Anmeldung – verkleinern Sie Fotos vor dem Senden, damit sie scharf bleiben und schnell gesendet werden.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/de/anleitungen/bilder-fuer-whatsapp-komprimieren';
-    // hreflang: same DOM mechanism the English page uses for its canonical.
-    const alternates = [
-      { lang: 'en', href: 'https://compressmypic.online/guides/compress-images-for-whatsapp' },
-      { lang: 'de', href: 'https://compressmypic.online/de/anleitungen/bilder-fuer-whatsapp-komprimieren' },
-      { lang: 'x-default', href: 'https://compressmypic.online/guides/compress-images-for-whatsapp' },
-    ];
-    const createdLinks: HTMLLinkElement[] = [];
-    alternates.forEach(({ lang, href }) => {
-      let link = document.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${lang}"]`);
-      if (!link) {
-        link = document.createElement('link');
-        link.rel = 'alternate';
-        link.setAttribute('hreflang', lang);
-        document.head.appendChild(link);
-        createdLinks.push(link);
-      }
-      link.href = href;
-    });
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -205,7 +187,6 @@ export const GuideWhatsAppPageDe: React.FC<GuideWhatsAppPageDeProps> = ({ onNavi
     return () => {
       const existing = document.getElementById('guide-whatsapp-jsonld');
       if (existing) existing.remove();
-      createdLinks.forEach((link) => link.remove());
     };
   }, []);
 
