@@ -406,6 +406,18 @@ export const KO = {
     featuresTitle: 'CompressMyPic {name}을 사용해야 하는 이유', // 'Why Use CompressMyPic {name}?'
     faqTitle: '{name} — 자주 묻는 질문', // '{name} — Frequently Asked Questions'
     relatedTitle: '관련 무료 이미지 도구', // 'Related Free Image Tools'
+    commentsTitle: '댓글',
+    commentsNote: '이 도구에 대한 의견을 공유하세요. 이름만 쓰고 게시하면 됩니다. 계정이 필요 없습니다.',
+    commentsNamePlaceholder: '이름',
+    commentsTextPlaceholder: '댓글을 작성하세요…',
+    commentsSubmit: '댓글 게시',
+    commentsPosting: '게시 중…',
+    commentsEmpty: '첫 댓글을 남겨보세요.',
+    commentsPosted: '감사합니다! 댓글이 게시되었습니다.',
+    commentsLoadError: '댓글을 불러올 수 없습니다. 다시 시도해 주세요.',
+    commentsPostError: '댓글을 게시할 수 없습니다. 다시 시도해 주세요.',
+    commentsRetry: '다시 시도',
+    commentsLoading: '댓글을 불러오는 중…',
   },
   uploadZone: {
     dropText: '이미지를 여기에 드래그 앤 드롭하세요', // 'Drag & drop images here'
