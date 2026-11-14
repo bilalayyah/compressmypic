@@ -21,7 +21,7 @@ export const AboutPagePt: React.FC<AboutPagePtProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/pt/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Voltar ao compressor de imagens</span>
@@ -29,20 +29,20 @@ export const AboutPagePt: React.FC<AboutPagePtProps> = ({ onNavigate }) => {
         </div>
 
         {/* Page Title */}
-        <div className="border-b border-slate-200 pb-6 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <div className="border-b border-[var(--line)] pb-6 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">
             Sobre o CompressMyPic
           </h1>
-          <p className="mt-3 text-lg font-medium text-slate-700 leading-relaxed">
+          <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             O CompressMyPic é um compressor de imagens gratuito e privado. Comprima imagens JPG, PNG e WebP diretamente no seu navegador: rápido, seguro e sem enviar seus arquivos para lugar nenhum.
           </p>
         </div>
 
         {/* Core Content */}
-        <div className="space-y-8 text-base text-slate-600 leading-relaxed">
+        <div className="space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Cpu className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Cpu className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <span>O que é o CompressMyPic?</span>
             </h2>
             <p>
@@ -57,8 +57,8 @@ export const AboutPagePt: React.FC<AboutPagePtProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Layers className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <span>Formatos compatíveis: JPG, PNG e WebP</span>
             </h2>
             <p>
@@ -70,44 +70,44 @@ export const AboutPagePt: React.FC<AboutPagePtProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Shield className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Shield className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>Nossos princípios fundamentais</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Privacidade absoluta</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-0 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">Privacidade absoluta</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   Nenhum arquivo toca jamais um servidor externo nem um banco de dados. Suas fotos e seus gráficos sensíveis ficam estritamente no seu dispositivo. Como a compressão é feita no seu próprio navegador, ninguém mais vê o seu trabalho.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Simples e grátis</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-2 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">Simples e grátis</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   Sem instalar programas, sem planos pagos, sem cobranças ocultas, sem criar contas, sem verificação por e-mail e sem limites de teste. Comprima imagens online grátis: é realmente grátis, sem cadastro e sem marca d'água nas suas imagens comprimidas.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">A qualidade é você quem controla</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-6 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">A qualidade é você quem controla</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   Você tem um controle preciso: mova o controle deslizante de Qualidade em tempo real, escolha qualquer um dos ajustes predefinidos Baixo, Equilibrado ou Alto, escolha o formato do arquivo de saída e compare cada imagem lado a lado para detectar as diferenças na hora. Reduza o tamanho das suas imagens sem perder qualidade, do seu jeito.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Compressor de imagens em lote</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-9 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">Compressor de imagens em lote</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   Comprima várias imagens de uma vez com os mesmos ajustes e baixe todas juntas com o botão Baixar tudo (ZIP): um compressor de imagens em lote para bibliotecas de fotos, catálogos de produtos e pastas de imagens de sites.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Verificações automáticas de segurança</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-10 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">Verificações automáticas de segurança</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   O compressor detecta a transparência das suas imagens. Se você escolher saída em JPEG para um PNG transparente, mostramos um aviso porque o JPEG não aceita transparência, assim você nunca perde seu canal alfa por acidente.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Desempenho rápido</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-12 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">Desempenho rápido</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   Como todo o processamento é feito localmente no seu dispositivo, você não precisa esperar os arquivos subirem e descerem de um servidor. Você pode comprimir fotos rapidamente, mesmo arquivos grandes de até 20 MB por imagem, no computador ou no celular.
                 </p>
               </div>
@@ -115,8 +115,8 @@ export const AboutPagePt: React.FC<AboutPagePtProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Users className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Users className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <span>Para quem é o CompressMyPic?</span>
             </h2>
             <p>
@@ -128,8 +128,8 @@ export const AboutPagePt: React.FC<AboutPagePtProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Lock className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Lock className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>Privacidade e segurança</span>
             </h2>
             <p>
@@ -143,7 +143,7 @@ export const AboutPagePt: React.FC<AboutPagePtProps> = ({ onNavigate }) => {
               <button
                 type="button"
                 onClick={() => onNavigate('/pt/privacidade')}
-                className="text-blue-600 hover:text-blue-700 font-semibold cursor-pointer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
               >
                 Política de Privacidade
               </button>
@@ -152,8 +152,8 @@ export const AboutPagePt: React.FC<AboutPagePtProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>Nossa missão</span>
             </h2>
             <p>
@@ -168,14 +168,14 @@ export const AboutPagePt: React.FC<AboutPagePtProps> = ({ onNavigate }) => {
             <button
               type="button"
               onClick={() => onNavigate('/pt/')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-2.5 btn-purple-pill text-sm font-semibold shadow-sm cursor-pointer"
             >
               Começar a comprimir imagens
             </button>
             <button
               type="button"
               onClick={() => onNavigate('/pt/contato')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-white text-slate-900 text-sm font-bold border border-slate-200 shadow-xs hover:bg-slate-50 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-2.5 rounded-full bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:bg-[var(--surface-2)] transition-colors cursor-pointer"
             >
               Fale conosco
             </button>
