@@ -15,6 +15,7 @@ import { toIndonesianPath } from '../locales/id/slugs';
 import { toRussianPath } from '../locales/ru/slugs';
 import { toJapanesePath } from '../locales/ja/slugs';
 import { toKoreanPath } from '../locales/ko/slugs';
+import { toChinesePath } from '../locales/zh/slugs';
 import { getAlternates } from '../locales/alternates';
 
 import { ToolPageLayout } from '../components/ToolPageLayout';
@@ -94,6 +95,13 @@ export interface PageKoStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageZhStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface AddBackgroundPageProps {
   onNavigate: (path: string) => void;
   lang?: SupportedLang;
@@ -109,6 +117,7 @@ interface AddBackgroundPageProps {
   ruStrings?: PageRuStrings;
   jaStrings?: PageJaStrings;
   koStrings?: PageKoStrings;
+  zhStrings?: PageZhStrings;
 }
 
 type BackdropMode = 'solid' | 'gradient' | 'blur';
@@ -144,11 +153,12 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
   ruStrings,
   jaStrings,
   koStrings,
+  zhStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG['/add-background-to-image'];
   const t = (key: string, fallback: string) => {
     const table =
-      lang === 'ja' ? jaStrings?.toolUi : lang === 'ko' ? koStrings?.toolUi : lang === 'id' ? idStrings?.toolUi : lang === 'ru' ? ruStrings?.toolUi : lang === 'de' ? deStrings?.toolUi : lang === 'it' ? itStrings?.toolUi : lang === 'pt' ? ptStrings?.toolUi : lang === 'fr' ? frStrings?.toolUi : lang === 'es' ? esStrings?.toolUi : undefined;
+      lang === 'zh' ? zhStrings?.toolUi : lang === 'ja' ? jaStrings?.toolUi : lang === 'ko' ? koStrings?.toolUi : lang === 'id' ? idStrings?.toolUi : lang === 'ru' ? ruStrings?.toolUi : lang === 'de' ? deStrings?.toolUi : lang === 'it' ? itStrings?.toolUi : lang === 'pt' ? ptStrings?.toolUi : lang === 'fr' ? frStrings?.toolUi : lang === 'es' ? esStrings?.toolUi : undefined;
     return table ? (table[key] as string | undefined) ?? fallback : fallback;
   };
 
@@ -338,8 +348,8 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={lang === 'ja' ? jaStrings?.layoutUi : lang === 'ko' ? koStrings?.layoutUi : lang === 'id' ? idStrings?.layoutUi : lang === 'ru' ? ruStrings?.layoutUi : lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
-      canonicalPath={lang === 'ja' ? toJapanesePath(activeTool.slug) : lang === 'ko' ? toKoreanPath(activeTool.slug) : lang === 'id' ? toIndonesianPath(activeTool.slug) : lang === 'ru' ? toRussianPath(activeTool.slug) : lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
+      ui={lang === 'zh' ? zhStrings?.layoutUi : lang === 'ja' ? jaStrings?.layoutUi : lang === 'ko' ? koStrings?.layoutUi : lang === 'id' ? idStrings?.layoutUi : lang === 'ru' ? ruStrings?.layoutUi : lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
+      canonicalPath={lang === 'zh' ? toChinesePath(activeTool.slug) : lang === 'ja' ? toJapanesePath(activeTool.slug) : lang === 'ko' ? toKoreanPath(activeTool.slug) : lang === 'id' ? toIndonesianPath(activeTool.slug) : lang === 'ru' ? toRussianPath(activeTool.slug) : lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
       alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
@@ -355,7 +365,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
             title={t('uploadTitle', 'Drop an image or transparent PNG to add a backdrop')}
-            strings={lang === 'ja' ? jaStrings?.uploadZone : lang === 'ko' ? koStrings?.uploadZone : lang === 'id' ? idStrings?.uploadZone : lang === 'ru' ? ruStrings?.uploadZone : lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
+            strings={lang === 'zh' ? zhStrings?.uploadZone : lang === 'ja' ? jaStrings?.uploadZone : lang === 'ko' ? koStrings?.uploadZone : lang === 'id' ? idStrings?.uploadZone : lang === 'ru' ? ruStrings?.uploadZone : lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">

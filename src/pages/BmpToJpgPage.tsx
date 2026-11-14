@@ -67,6 +67,13 @@ export interface PageKoStrings {
   comparisonModal: ComparisonModalStrings;
   toolUi: Record<string, string>;
 }
+export interface PageZhStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 
 
 interface BmpToJpgPageProps {
@@ -84,6 +91,7 @@ interface BmpToJpgPageProps {
   ruStrings?: PageRuStrings;
   jaStrings?: PageJaStrings;
   koStrings?: PageKoStrings;
+  zhStrings?: PageZhStrings;
 }
 
 export const BmpToJpgPage: React.FC<BmpToJpgPageProps> = ({
@@ -101,9 +109,12 @@ export const BmpToJpgPage: React.FC<BmpToJpgPageProps> = ({
   ruStrings,
   jaStrings,
   koStrings,
+  zhStrings,
 }) => {
   const t = (key: string, fallback: string) =>
-    lang === 'ja' && jaStrings?.toolUi
+    lang === 'zh' && zhStrings?.toolUi
+      ? ((zhStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'ja' && jaStrings?.toolUi
       ? ((jaStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'ko' && koStrings?.toolUi
       ? ((koStrings.toolUi[key] as string | undefined) ?? fallback)
@@ -137,6 +148,7 @@ export const BmpToJpgPage: React.FC<BmpToJpgPageProps> = ({
     tool={tool}
     toolRegistry={toolRegistry}
     categoryLabels={categoryLabels}
+    zhStrings={zhStrings}
     jaStrings={jaStrings}
     koStrings={koStrings}
     esStrings={esStrings}
