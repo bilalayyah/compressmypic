@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, FileImage, Camera, Layers, Globe, CheckCircle2, Scale } from 'lucide-react';
+import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
 
 interface GuideFormatsPageIdProps {
   onNavigate: (path: string) => void;
@@ -195,14 +196,14 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
   };
 
   return (
-    <div className="py-10 sm:py-16">
+    <div className="bg-[var(--bg)] py-10 sm:py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
           <button
             type="button"
             onClick={() => onNavigate('/id/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Kembali ke Kompresor Gambar</span>
@@ -210,50 +211,52 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
         </div>
 
         {/* Page Title */}
-        <div className="border-b border-slate-200 pb-6 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <div className="border-b border-[var(--line)] pb-6 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             JPG vs PNG vs WebP — Format Mana yang Harus Anda Gunakan?
           </h1>
-          <p className="mt-3 text-lg font-medium text-slate-700 leading-relaxed">
+          <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             Memilih format yang salah dapat membuat gambar Anda sepuluh kali lebih besar dari yang seharusnya — atau merusak logo transparan. Berikut perbandingan yang sederhana dan jujur, serta cara beralih antar format dalam hitungan detik.
           </p>
         </div>
 
         {/* Core Content */}
-        <div className="space-y-8 text-base text-slate-600 leading-relaxed">
+        <div className="space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Scale className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Scale className="w-4 h-4" />
+              </span>
               <span>Jawaban Singkat</span>
             </h2>
             <p>
               Jika Anda hanya mengingat satu hal, ingatlah ini: gunakan JPG untuk foto, PNG untuk logo dan apa pun yang membutuhkan transparansi, dan WebP kapan pun Anda menginginkan file terkecil — terutama di situs web. Tabel di bawah ini menunjukkan alasannya.
             </p>
             <div className="overflow-x-auto pt-1">
-              <table className="w-full text-sm border border-slate-200 rounded-xl overflow-hidden">
+              <table className="w-full text-sm border border-[var(--line)] rounded-2xl overflow-hidden bg-[var(--surface)] shadow-[var(--shadow)]">
                 <thead>
-                  <tr className="bg-slate-50 text-slate-900 text-left">
-                    <th className="px-4 py-3 font-bold">Format</th>
-                    <th className="px-4 py-3 font-bold">Ukuran file</th>
-                    <th className="px-4 py-3 font-bold">Transparansi</th>
-                    <th className="px-4 py-3 font-bold">Terbaik untuk</th>
+                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-left border-b border-[var(--line)]">
+                    <th className="px-4 py-3 font-semibold">Format</th>
+                    <th className="px-4 py-3 font-semibold">Ukuran file</th>
+                    <th className="px-4 py-3 font-semibold">Transparansi</th>
+                    <th className="px-4 py-3 font-semibold">Terbaik untuk</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-[var(--line)]">
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">JPG</td>
+                    <td className="px-4 py-3 font-bold text-[#7c3aed] dark:text-[#c4b5fd]">JPG</td>
                     <td className="px-4 py-3">Kecil</td>
                     <td className="px-4 py-3">Tidak</td>
                     <td className="px-4 py-3">Foto, berbagi, mencetak</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">PNG</td>
+                    <td className="px-4 py-3 font-bold text-[#7c3aed] dark:text-[#c4b5fd]">PNG</td>
                     <td className="px-4 py-3">Besar</td>
                     <td className="px-4 py-3">Ya</td>
                     <td className="px-4 py-3">Logo, ikon, tangkapan layar</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">WebP</td>
+                    <td className="px-4 py-3 font-bold text-[#7c3aed] dark:text-[#c4b5fd]">WebP</td>
                     <td className="px-4 py-3">Terkecil</td>
                     <td className="px-4 py-3">Ya</td>
                     <td className="px-4 py-3">Situs web, foto web</td>
@@ -263,32 +266,38 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
             </div>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Camera className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-2">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(2)} flex items-center justify-center shrink-0`}>
+                <Camera className="w-4 h-4" />
+              </span>
               <span>JPG: Terbaik untuk Foto</span>
             </h2>
-            <p>
+            <p className="text-sm sm:text-base">
               JPG (juga ditulis JPEG) adalah format foto klasik. Format ini menggunakan kompresi lossy: membuang detail halus yang nyaris tidak terlihat oleh mata, sehingga file menjadi jauh lebih kecil. Foto kamera sebesar 5 MB dapat menjadi 500 KB sebagai JPG dan tetap terlihat bagus. JPG tidak dapat membuat transparansi, sehingga menjadi pilihan yang salah untuk logo — tetapi untuk foto biasa apa pun, format ini adalah pilihan default yang aman dan universal yang dapat dibuka oleh setiap perangkat dan aplikasi.
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-6">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(6)} flex items-center justify-center shrink-0`}>
+                <Layers className="w-4 h-4" />
+              </span>
               <span>PNG: Terbaik untuk Logo dan Transparansi</span>
             </h2>
-            <p>
+            <p className="text-sm sm:text-base">
               PNG bersifat lossless: format ini menyimpan setiap piksel secara persis, dan mendukung latar belakang transparan. Hal itu menjadikannya format yang tepat untuk logo, ikon, dan grafis berisi teks. Harganya adalah ukuran file — foto yang disimpan sebagai PNG dapat berukuran 5–10 kali lebih besar daripada foto yang sama sebagai JPG. Jangan pernah menyimpan foto kamera sebagai PNG kecuali Anda memiliki alasan khusus.
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Globe className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-0">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Globe className="w-4 h-4" />
+              </span>
               <span>WebP: Terbaik untuk Situs Web</span>
             </h2>
-            <p>
+            <p className="text-sm sm:text-base">
               WebP adalah format modern yang dibuat oleh Google. Format ini melakukan semuanya: kompresi lossy seperti JPG, transparansi seperti PNG, dan file yang biasanya 25–35% lebih kecil daripada JPG dengan kualitas visual yang sama. Setiap browser modern mendukungnya, itulah sebabnya format ini adalah yang terbaik untuk gambar situs web. Satu-satunya kelemahannya adalah kompatibilitas dengan perangkat lunak lama — dan pratinjau WhatsApp, yang masih lebih aman menggunakan JPG.
             </p>
           </section>
@@ -297,28 +306,33 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
             <img
               src="/guides/jpg-vs-png-vs-webp-1.png"
               alt="Tangkapan layar membandingkan foto yang sama yang disimpan sebagai JPG, PNG, dan WebP beserta ukuran file-nya"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               Foto yang sama dalam tiga format: WebP adalah yang terkecil, PNG adalah yang terbesar, dan JPG berada di antaranya.
             </figcaption>
           </figure>
 
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <FileImage className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(4)} flex items-center justify-center shrink-0`}>
+                <FileImage className="w-4 h-4" />
+              </span>
               <span>Langkah demi Langkah: Mengompres atau Mengonversi Gambar Anda</span>
             </h2>
-            <ol className="space-y-4">
+            <ol className="space-y-3">
               {STEPS.map((step, i) => (
-                <li key={step.title} className="flex gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white text-sm font-bold flex items-center justify-center mt-0.5">
+                <li
+                  key={step.title}
+                  className={`flex gap-3.5 p-4 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(i * 2)}`}
+                >
+                  <span className="flex-shrink-0 w-7 h-7 rounded-lg btn-purple-grad text-sm font-mono font-bold flex items-center justify-center mt-0.5 shadow-xs">
                     {i + 1}
                   </span>
                   <div>
-                    <div className="font-bold text-slate-900 text-sm sm:text-base">{step.title}</div>
-                    <p className="text-sm sm:text-base">{step.text}</p>
+                    <div className="font-sans font-bold text-[var(--ink-navy)] text-sm sm:text-base">{step.title}</div>
+                    <p className="text-sm sm:text-base text-[var(--ink-2)] mt-0.5">{step.text}</p>
                   </div>
                 </li>
               ))}
@@ -326,32 +340,34 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(7)} flex items-center justify-center shrink-0`}>
+                <CheckCircle2 className="w-4 h-4" />
+              </span>
               <span>Format Mana untuk Pekerjaan Apa?</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Foto kamera — JPG atau WebP</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(0)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">Foto kamera — JPG atau WebP</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   JPG untuk berbagi dan mencetak, WebP untuk situs web Anda. Keduanya menjaga foto tetap terlihat bagus dengan ukuran yang jauh lebih kecil dari aslinya.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Logo dan ikon — PNG atau WebP</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(3)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">Logo dan ikon — PNG atau WebP</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   Anda membutuhkan transparansi, jadi JPG tidak bisa. PNG adalah pilihan klasik yang aman; WebP lebih kecil dan berfungsi di semua tempat modern.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Tangkapan layar — WebP atau PNG</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(6)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">Tangkapan layar — WebP atau PNG</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   Teks yang tajam dan warna datar cocok dengan WebP dan PNG. JPG mengaburkan tepi teks, jadi hindari JPG untuk tangkapan layar.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Gambar situs web — WebP</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(9)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">Gambar situs web — WebP</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   File terkecil berarti halaman yang lebih cepat. Konversi foto situs web Anda ke WebP dan pertahankan JPG sebagai cadangan untuk browser yang sangat lama.
                 </p>
               </div>
@@ -362,36 +378,41 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
             <img
               src="/guides/jpg-vs-png-vs-webp-2.png"
               alt="Tangkapan layar memilih format keluaran JPG, PNG, atau WebP di CompressMyPic"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               Pilih format keluaran Anda di CompressMyPic — pertahankan format asli, atau konversi ke JPG, PNG, atau WebP.
             </figcaption>
           </figure>
 
           {/* FAQ */}
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Layers className="w-4 h-4" />
+              </span>
               <span>Pertanyaan yang Sering Diajukan</span>
             </h2>
             <div className="space-y-3">
-              {FAQ_DATA.map((item) => {
+              {FAQ_DATA.map((item, idx) => {
                 const isOpen = openIds.has(item.id);
                 return (
-                  <div key={item.id} className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
+                  <div
+                    key={item.id}
+                    className={`border rounded-2xl overflow-hidden shadow-[var(--shadow)] transition-shadow hover:shadow-[var(--shadow-lg)] ${getPastelCardClass(idx)}`}
+                  >
                     <button
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className={`w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors ${isOpen ? 'bg-slate-50/50' : 'hover:bg-slate-50/50'}`}
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
-                      <span className="text-sm sm:text-base font-bold text-slate-900">{item.question}</span>
-                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-600' : 'text-slate-400'}`} />
+                      <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
+                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'}`} />
                     </button>
                     {isOpen && (
-                      <div className="px-5 py-4 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 bg-white">
+                      <div className="px-5 py-4 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/55 dark:bg-slate-900/35">
                         {item.answer}
                       </div>
                     )}
@@ -403,23 +424,23 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
 
           {/* Related guides */}
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900">Panduan Terkait</h2>
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">Panduan Terkait</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button
                 type="button"
                 onClick={() => onNavigate('/id/panduan/mengompres-gambar-untuk-whatsapp')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">Cara mengompres gambar untuk WhatsApp tanpa kehilangan kualitas</div>
-                <p className="text-xs text-slate-600 mt-1">Perkecil foto sendiri terlebih dahulu, lalu kirim sebagai dokumen agar WhatsApp tidak dapat membuatnya buram.</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Cara mengompres gambar untuk WhatsApp tanpa kehilangan kualitas</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Perkecil foto sendiri terlebih dahulu, lalu kirim sebagai dokumen agar WhatsApp tidak dapat membuatnya buram.</p>
               </button>
               <button
                 type="button"
                 onClick={() => onNavigate('/id/panduan/mengurangi-ukuran-gambar-menjadi-100-kb')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">Cara mengurangi ukuran gambar menjadi 100KB untuk situs web dan email</div>
-                <p className="text-xs text-slate-600 mt-1">Panduan langkah demi langkah untuk mencapai 100KB tanpa merusak foto Anda.</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Cara mengurangi ukuran gambar menjadi 100KB untuk situs web dan email</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Panduan langkah demi langkah untuk mencapai 100KB tanpa merusak foto Anda.</p>
               </button>
             </div>
           </section>
@@ -428,14 +449,14 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
             <button
               type="button"
               onClick={() => onNavigate('/id/')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               Kompres Gambar Gratis
             </button>
             <button
               type="button"
               onClick={() => onNavigate('/id/panduan/mengompres-gambar-untuk-whatsapp')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-white text-slate-900 text-sm font-bold border border-slate-200 shadow-xs hover:bg-slate-50 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#7c3aed]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               Kompres untuk WhatsApp
             </button>
