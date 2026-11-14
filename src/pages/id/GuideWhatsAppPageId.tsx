@@ -178,6 +178,31 @@ export const GuideWhatsAppPageId: React.FC<GuideWhatsAppPageIdProps> = ({ onNavi
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "Mengompres Gambar untuk WhatsApp Tanpa Kehilangan Kualitas",
+          description: "Pelajari cara mengompres gambar untuk WhatsApp tanpa kehilangan kualitas. Gratis, privat, tanpa daftar — perkecil foto sebelum mengirim agar tetap tajam dan cepat terkirim.",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/id/panduan/mengompres-gambar-untuk-whatsapp",
+          inLanguage: 'id',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "Beranda", item: "https://compressmypic.online/id/" },
+            { '@type': 'ListItem', position: 2, name: "Panduan" },
+            { '@type': 'ListItem', position: 3, name: "Mengompres Gambar untuk WhatsApp Tanpa Kehilangan Kualitas", item: "https://compressmypic.online/id/panduan/mengompres-gambar-untuk-whatsapp" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -223,6 +248,9 @@ export const GuideWhatsAppPageId: React.FC<GuideWhatsAppPageIdProps> = ({ onNavi
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             Cara Mengompres Gambar untuk WhatsApp Tanpa Kehilangan Kualitas
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            Oleh <a href="/id/tentang-kami" onClick={(e) => { e.preventDefault(); onNavigate('/id/tentang-kami'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             WhatsApp memperkecil setiap foto yang Anda kirim — sering kali jauh lebih kecil dari yang seharusnya. Kompres foto Anda sendiri terlebih dahulu, lalu kirim dengan cara yang tepat, dan foto akan tiba dalam keadaan tajam, cepat terkirim, dan hemat kuota.
           </p>

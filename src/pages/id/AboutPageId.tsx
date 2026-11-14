@@ -129,6 +129,48 @@ export const AboutPageId: React.FC<AboutPageIdProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Users className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Pembuatnya: Bilal</span>
+            </h2>
+            <p>
+              CompressMyPic dibuat oleh Bilal, seorang pembuat independen yang membangun alat gratis yang mengutamakan privasi untuk web. Ia memulai CompressMyPic setelah frustrasi dengan kompresor gambar yang memaksa orang mengunggah foto pribadi ke server orang asing hanya untuk memperkecil file. Jawabannya adalah alat yang melakukan seluruh pekerjaan di dalam browser pengunjung sendiri — tanpa unggahan, tanpa akun, tanpa watermark, dan tanpa tagihan mengejutkan di akhir.
+            </p>
+            <p>
+              Bilal merancang, membangun, dan memelihara sendiri ke-48 alat di situs ini, dari kompresor dan konverter hingga generator favicon dan penghapus latar belakang. Ia menjawab pesan dukungan secara pribadi, membaca setiap masukan, dan menjaga alat-alat ini gratis untuk semua orang, baik mereka mengompres satu foto maupun seribu foto. Footer situs memuat penghargaan kecil untuk Shaheen, yang dukungannya menginspirasi Bilal untuk terus membangun dan membuat alat-alat ini benar-benar berguna, bukan sekadar populer.
+            </p>
+            <p>
+              Jika Anda ingin mengikuti pekerjaannya, Anda dapat menemukan proyek ini di 
+              <a
+                href="https://github.com/bilalayyah/compressmypic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                GitHub
+              </a>
+              , membaca panduan Bilal di 
+              <a
+                href="https://dev.to/bilalayyah"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                Dev.to
+              </a>
+              , atau menyapa melalui 
+              <button
+                type="button"
+                onClick={() => onNavigate('/id/kontak')}
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+              >
+                halaman kontak
+              </button>
+              .
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
               <Lock className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>Privasi &amp; Keamanan</span>
             </h2>

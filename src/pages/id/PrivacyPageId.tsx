@@ -35,7 +35,7 @@ export const PrivacyPageId: React.FC<PrivacyPageIdProps> = ({ onNavigate }) => {
             </h1>
           </div>
           <p className="text-xs text-[var(--ink-3)] font-medium">
-            Terakhir diperbarui: 12 Nov 2026
+            Terakhir diperbarui: 14 Nov 2026
           </p>
         </div>
 
@@ -75,12 +75,12 @@ export const PrivacyPageId: React.FC<PrivacyPageIdProps> = ({ onNavigate }) => {
               </a>
               ) atau{' '}
               <a
-                href="http://www.aboutads.info/choices/"
+                href="https://www.aboutads.info/choices/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
               >
-                http://www.aboutads.info/choices/
+                https://www.aboutads.info/choices/
               </a>
               .
             </p>
@@ -91,7 +91,7 @@ export const PrivacyPageId: React.FC<PrivacyPageIdProps> = ({ onNavigate }) => {
               4. Analitik
             </h2>
             <p>
-              Saat ini kami tidak menggunakan cookie analitik. Jika hal itu berubah, kebijakan ini akan diperbarui.
+              Kami menggunakan Cloudflare Web Analytics untuk memahami, secara agregat, bagaimana situs ini digunakan — misalnya, alat mana yang populer dan halaman mana yang dikunjungi. Cloudflare Web Analytics mengutamakan privasi: tidak menggunakan cookie, tidak melacak pengunjung secara individual di berbagai situs web, dan tidak mengumpulkan pengenal pribadi. Layanan ini hanya mencatat statistik penggunaan anonim dan agregat yang tidak dapat digunakan untuk mengidentifikasi Anda. Kami tidak menggunakan Google Analytics atau layanan analitik lain yang memasang cookie pelacak.
             </p>
           </section>
 
@@ -104,9 +104,88 @@ export const PrivacyPageId: React.FC<PrivacyPageIdProps> = ({ onNavigate }) => {
             </p>
           </section>
 
-          <section className="space-y-2 pt-2 border-t border-[var(--line)]">
+                    <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              6. Kontak
+              6. Cookie dan Persetujuan
+            </h2>
+            <p>
+              CompressMyPic sendiri tidak memasang cookie apa pun untuk alat gambarnya: kompresi berjalan sepenuhnya di browser Anda dan tidak memerlukan cookie, akun, atau preferensi yang disimpan oleh kami. Cookie di situs ini berasal dari layanan pihak ketiga. Google AdSense dan mitranya dapat memasang cookie iklan untuk menampilkan iklan yang relevan kepada Anda dan mengukur seberapa sering suatu iklan ditampilkan. Browser Anda menyimpan cookie ini di perangkat Anda, dan Anda dapat menghapusnya kapan saja melalui pengaturan browser.
+            </p>
+            <p>
+              Jika Anda berkunjung dari Kawasan Ekonomi Eropa atau Britania Raya, kami meminta persetujuan Anda sebelum menampilkan iklan yang dipersonalisasi, sesuai dengan GDPR dan Kebijakan Persetujuan Pengguna UE dari Google. Anda dapat menarik persetujuan itu kapan saja dengan menghapus cookie browser Anda atau mengubah pilihan persetujuan yang ditawarkan di situs. Memilih iklan yang tidak dipersonalisasi tidak menghentikan iklan sepenuhnya, tetapi berarti iklan tidak lagi didasarkan pada riwayat penjelajahan Anda.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              7. Hak Anda Berdasarkan GDPR
+            </h2>
+            <p>
+              Jika Anda berada di Kawasan Ekonomi Eropa atau Britania Raya, Peraturan Perlindungan Data Umum (GDPR) memberi Anda hak atas data pribadi Anda. Anda dapat meminta salinan data pribadi yang kami miliki tentang Anda, meminta kami memperbaikinya jika salah, meminta kami menghapusnya, meminta kami membatasi penggunaannya, dan menolak pemrosesannya. Jika pemrosesan didasarkan pada persetujuan Anda, Anda dapat menarik persetujuan itu kapan saja; penarikan tersebut tidak memengaruhi apa yang telah kami lakukan secara sah sebelumnya.
+            </p>
+            <p>
+              Karena alat kami memproses gambar secara lokal dan kami tidak memiliki akun pengguna, satu-satunya data pribadi yang biasanya kami miliki adalah nama, alamat email, dan pesan yang Anda kirim melalui formulir kontak. Untuk menggunakan salah satu hak ini, kirim email kepada kami di <a
+                href="mailto:bilalayyah@gmail.com"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                bilalayyah@gmail.com
+              </a> dan kami akan membalas dalam 30 hari. Anda juga berhak mengajukan keluhan kepada otoritas perlindungan data setempat jika Anda merasa kami menangani data Anda secara tidak adil.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              8. Penyimpanan Data
+            </h2>
+            <p>
+              Kami menyimpan data pribadi hanya selama diperlukan untuk tujuan pengumpulannya. Pesan formulir kontak disimpan hanya sampai pertanyaan Anda dijawab dan percakapan selesai, serta untuk jangka waktu singkat setelahnya jika ada pertanyaan lanjutan; pesan tersebut tidak pernah digunakan untuk pemasaran dan tidak pernah dibagikan kepada pihak ketiga. Gambar Anda tidak pernah disimpan sama sekali: gambar hanya ada di memori browser Anda saat Anda menggunakan alat dan akan terhapus begitu Anda menutup atau memuat ulang tab. Data analitik agregat tidak berisi informasi pribadi dan hanya disimpan dalam bentuk ringkasan.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              9. Keamanan dan reCAPTCHA
+            </h2>
+            <p>
+              Situs ini disajikan melalui HTTPS, sehingga koneksi antara browser Anda dan situs terenkripsi. Formulir kontak kami disampaikan melalui FormSubmit, yang meneruskan pesan Anda ke alamat email kami, dan formulir tersebut dilindungi oleh Google reCAPTCHA untuk memblokir spam dan penyalahgunaan otomatis. Saat Anda mengirim formulir, reCAPTCHA dapat mengumpulkan informasi perangkat keras dan perangkat lunak, seperti detail browser dan perangkat Anda, untuk membedakan manusia dari bot; hal ini diatur oleh <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+              >
+                Kebijakan Privasi
+              </a> dan <a
+                href="https://policies.google.com/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+              >
+                Persyaratan Layanan
+              </a> Google. Kami tidak pernah meminta Anda mengirim kata sandi, detail pembayaran, atau dokumen pribadi yang sensitif melalui formulir kontak, dan Anda tidak boleh menyertakannya dalam pesan.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              10. Privasi Anak
+            </h2>
+            <p>
+              CompressMyPic adalah alat untuk khalayak umum dan tidak ditujukan kepada anak di bawah usia 13 tahun. Kami tidak dengan sengaja mengumpulkan informasi pribadi dari anak-anak. Jika Anda adalah orang tua atau wali dan yakin anak Anda telah mengirim informasi pribadi kepada kami melalui formulir kontak, silakan kirim email kepada kami dan kami akan segera menghapusnya.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              11. Perubahan pada Kebijakan Ini
+            </h2>
+            <p>
+              Kami dapat memperbarui kebijakan ini saat situs berubah — misalnya, jika kami menambahkan layanan analitik baru, mitra iklan baru, atau cara baru untuk menghubungi kami. Jika demikian, kami akan mengubah tanggal «Terakhir diperbarui» di bagian atas halaman ini, dan perubahan penting akan dijelaskan di sini dengan bahasa yang sederhana. Terus menggunakan situs setelah perubahan berarti Anda menerima kebijakan yang diperbarui.
+            </p>
+          </section>
+
+<section className="space-y-2 pt-2 border-t border-[var(--line)]">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              12. Kontak
             </h2>
             <p>
               Jika Anda memiliki pertanyaan tentang kebijakan ini, hubungi kami di{' '}

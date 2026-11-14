@@ -35,7 +35,7 @@ export const TermsPageId: React.FC<TermsPageIdProps> = ({ onNavigate }) => {
             </h1>
           </div>
           <p className="text-xs text-[var(--ink-3)] font-medium">
-            Terakhir diperbarui: 12 Nov 2026
+            Terakhir diperbarui: 14 Nov 2026
           </p>
         </div>
 
@@ -77,9 +77,66 @@ export const TermsPageId: React.FC<TermsPageIdProps> = ({ onNavigate }) => {
             </p>
           </section>
 
-          <section className="space-y-2 pt-2 border-t border-[var(--line)]">
+                    <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              5. Kontak
+              5. Ketersediaan dan Perubahan Layanan
+            </h2>
+            <p>
+              CompressMyPic adalah layanan gratis dan kami tidak menjamin layanan ini akan selalu tersedia. Kami dapat mengubah, menangguhkan, atau menghentikan alat, fitur, atau seluruh situs web kapan saja, dengan atau tanpa pemberitahuan — misalnya, untuk memperbaiki bug, mengganti teknologi yang tidak lagi berfungsi di browser modern, atau menjaga layanan tetap gratis. Kami juga dapat menetapkan batas yang wajar, seperti ukuran file maksimum per gambar (saat ini 20 MB untuk kompresor utama dan 25 MB untuk konverter format), dan kami dapat mengubah batas tersebut seiring dengan peningkatan browser dan perangkat. Karena semua pemrosesan terjadi di browser Anda, gangguan pada situs web tidak pernah membahayakan gambar asli Anda: file Anda tetap berada di perangkat Anda.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              6. Penggunaan yang Dapat Diterima
+            </h2>
+            <p>
+              Anda setuju untuk menggunakan CompressMyPic hanya untuk tujuan yang sah dan dengan cara yang tidak merugikan layanan atau orang lain. Secara khusus, Anda tidak boleh mencoba membebani, merusak, atau merekayasa balik situs web, menguji kelemahan keamanannya, menggunakan skrip otomatis untuk mengirim sejumlah besar permintaan, atau menggunakan layanan untuk memproses gambar yang melanggar hak cipta orang lain, berisi materi ilegal, atau dimaksudkan untuk menipu atau melecehkan. Anda bertanggung jawab untuk memastikan bahwa Anda berhak menggunakan setiap gambar yang Anda proses, dan untuk menyimpan cadangan gambar penting sebelum mengompres atau mengonversinya.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              7. Batasan Tanggung Jawab
+            </h2>
+            <p>
+              Sejauh diizinkan oleh hukum, CompressMyPic dan pemiliknya tidak bertanggung jawab atas kerugian tidak langsung, insidental, atau konsekuensial yang timbul dari penggunaan layanan Anda — termasuk, namun tidak terbatas pada, kehilangan data, kehilangan keuntungan, atau biaya pembuatan ulang gambar. Karena layanan ini gratis, total tanggung jawab kami atas klaim apa pun yang terkait dengan layanan dibatasi pada jumlah yang Anda bayar untuk menggunakannya, yaitu nol. Hal ini tidak membatasi tanggung jawab apa pun yang tidak dapat dibatasi oleh hukum, seperti tanggung jawab atas penipuan atau atas kematian atau cedera pribadi yang disebabkan oleh kelalaian.
+            </p>
+            <p>
+              Kompresi pada dasarnya adalah proses lossy: mengurangi ukuran file dapat mengurangi kualitasnya, dan beberapa format, seperti JPEG, tidak dapat mempertahankan transparansi. Anda bertanggung jawab untuk memeriksa hasil kompresi sebelum menghapus atau menimpa file asli, dan kami tidak bertanggung jawab atas penurunan kualitas, hilangnya transparansi, atau perubahan lain yang disebabkan kompresi pada gambar yang Anda pilih untuk diproses.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              8. Layanan Pihak Ketiga
+            </h2>
+            <p>
+              Situs ini menggunakan layanan pihak ketiga untuk beroperasi, termasuk hosting dan pengiriman konten melalui Cloudflare, periklanan melalui Google AdSense, dan pengiriman pesan melalui FormSubmit. Layanan tersebut memiliki syarat dan kebijakan privasi masing-masing, dan penggunaan Anda atas layanan tersebut diatur oleh dokumen-dokumen tersebut serta oleh syarat ini. Kami tidak bertanggung jawab atas ketersediaan, konten, atau praktik situs web atau layanan pihak ketiga yang ditautkan dari CompressMyPic.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              9. Hukum yang Berlaku
+            </h2>
+            <p>
+              Syarat ini diatur oleh hukum Uni Emirat Arab, tempat situs ini dioperasikan, tanpa memperhatikan aturan konflik hukumnya. Setiap sengketa yang timbul dari atau terkait dengan syarat ini atau penggunaan layanan Anda akan diselesaikan oleh pengadilan Uni Emirat Arab. Jika ada bagian dari syarat ini yang dinyatakan tidak dapat ditegakkan, bagian lainnya akan tetap berlaku sepenuhnya.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              10. Perubahan pada Syarat Ini
+            </h2>
+            <p>
+              Kami dapat memperbarui syarat ini saat layanan berubah — misalnya, saat kami menambahkan alat baru, mengubah batas ukuran file, atau mulai menggunakan layanan pihak ketiga yang baru. Jika demikian, kami akan memperbarui tanggal «Terakhir diperbarui» di bagian atas halaman ini. Jika Anda terus menggunakan CompressMyPic setelah syarat berubah, Anda menerima syarat yang diperbarui. Jika Anda tidak setuju dengan suatu perubahan, berhentilah menggunakan layanan ini.
+            </p>
+          </section>
+
+<section className="space-y-2 pt-2 border-t border-[var(--line)]">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              11. Kontak
             </h2>
             <p>
               Jika Anda memiliki pertanyaan mengenai syarat ini, silakan hubungi kami di{' '}

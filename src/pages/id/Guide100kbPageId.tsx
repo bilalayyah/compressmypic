@@ -174,6 +174,31 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "Cara Mengurangi Ukuran Gambar menjadi 100KB untuk Web & Email",
+          description: "Kurangi ukuran gambar menjadi 100KB untuk situs web dan email dengan kompresor online gratis. Panduan langkah demi langkah — tanpa daftar, tanpa watermark, gambar tetap di perangkat Anda.",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/id/panduan/mengurangi-ukuran-gambar-menjadi-100-kb",
+          inLanguage: 'id',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "Beranda", item: "https://compressmypic.online/id/" },
+            { '@type': 'ListItem', position: 2, name: "Panduan" },
+            { '@type': 'ListItem', position: 3, name: "Cara Mengurangi Ukuran Gambar menjadi 100KB untuk Web & Email", item: "https://compressmypic.online/id/panduan/mengurangi-ukuran-gambar-menjadi-100-kb" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -219,6 +244,9 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             Cara Mengurangi Ukuran Gambar menjadi 100KB untuk Situs Web dan Email
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            Oleh <a href="/id/tentang-kami" onClick={(e) => { e.preventDefault(); onNavigate('/id/tentang-kami'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             Foto sebesar 4 MB memperlambat situs web Anda dan menyumbat email. Mengecilkannya menjadi sekitar 100KB membuat halaman dimuat dengan cepat dan email terkirim seketika — dan jika Anda melakukannya dengan benar, tidak ada yang dapat melihat perbedaannya.
           </p>
