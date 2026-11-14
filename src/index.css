@@ -370,3 +370,37 @@ button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
     50% { transform: translateY(-9px); }
   }
 }
+
+
+/* Global Framer-inspired accents shared by every tool interface */
+:root {
+  --cmp-accent: #7654e8;
+  --cmp-accent-strong: #6540d8;
+  --cmp-pink: #df69e8;
+  --cmp-ring: rgba(118,84,232,.22);
+}
+:where(.bg-blue-600) { background-color: #7654e8 !important; }
+:where(.hover\\:bg-blue-700:hover) { background-color: #6540d8 !important; }
+:where(.active\\:bg-blue-800:active) { background-color: #5531c5 !important; }
+:where(.text-blue-600) { color: #7654e8 !important; }
+:where(.text-blue-700) { color: #6540d8 !important; }
+:where(.border-blue-100), :where(.border-blue-200) { border-color: #e7defe !important; }
+:where(.bg-blue-50) { background-color: #f5f1ff !important; }
+:where(.hover\\:border-blue-300:hover), :where(.hover\\:border-blue-400:hover) { border-color: #b9a7fa !important; }
+:where(input[type="range"]::-webkit-slider-thumb) { background: #7654e8; }
+:where(input[type="range"]::-moz-range-thumb) { background: #7654e8; }
+.cmp-tool-page section { scroll-margin-top: 6rem; }
+.cmp-tool-page h2 { letter-spacing: -.025em; }
+.cmp-tool-page button:focus-visible,
+.cmp-tool-page a:focus-visible,
+.cmp-tool-page input:focus-visible,
+.cmp-tool-page select:focus-visible,
+.cmp-tool-page textarea:focus-visible {
+  outline: 3px solid var(--cmp-ring);
+  outline-offset: 2px;
+}
+.cmp-tool-page .rounded-xl { border-radius: 1rem; }
+.cmp-tool-page .rounded-2xl { border-radius: 1.35rem; }
+@media (max-width: 640px) {
+  .cmp-tool-page section { scroll-margin-top: 4.5rem; }
+}
