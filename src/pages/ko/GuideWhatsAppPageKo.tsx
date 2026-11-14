@@ -178,6 +178,31 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "화질 저하 없이 WhatsApp용 이미지를 압축하는 방법",
+          description: "화질 저하 없이 WhatsApp용 이미지를 압축하는 방법을 알아보세요. 무료, 개인정보 보호, 가입 불필요 — 보내기 전에 사진을 줄여 선명하게 유지하고 빠르게 전송하세요.",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/ko/gaideu/watsae-yong-imiji-apchuk",
+          inLanguage: 'ko',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "홈", item: "https://compressmypic.online/ko/" },
+            { '@type': 'ListItem', position: 2, name: "가이드" },
+            { '@type': 'ListItem', position: 3, name: "화질 저하 없이 WhatsApp용 이미지를 압축하는 방법", item: "https://compressmypic.online/ko/gaideu/watsae-yong-imiji-apchuk" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -223,6 +248,9 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             화질 저하 없이 WhatsApp용 이미지를 압축하는 방법
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            글쓴이: <a href="/ko/hoesa-sogae" onClick={(e) => { e.preventDefault(); onNavigate('/ko/hoesa-sogae'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             WhatsApp은 보내는 모든 사진을 축소합니다. 종종 필요한 것보다 훨씬 더 많이요. 사진을 먼저 직접 압축한 뒤 올바른 방법으로 보내면 사진이 선명하게 도착하고, 빠르게 전송되며, 모바일 데이터도 적게 사용합니다.
           </p>

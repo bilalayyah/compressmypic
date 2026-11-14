@@ -174,6 +174,31 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "웹과 이메일용 이미지 크기를 100KB로 줄이는 방법",
+          description: "무료 온라인 압축기로 웹사이트와 이메일용 이미지 크기를 100KB로 줄이세요. 단계별 가이드 — 가입 불필요, 워터마크 없음, 이미지는 기기에 머뭅니다.",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi",
+          inLanguage: 'ko',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "홈", item: "https://compressmypic.online/ko/" },
+            { '@type': 'ListItem', position: 2, name: "가이드" },
+            { '@type': 'ListItem', position: 3, name: "웹과 이메일용 이미지 크기를 100KB로 줄이는 방법", item: "https://compressmypic.online/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -219,6 +244,9 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             웹사이트와 이메일용 이미지 크기를 100KB로 줄이는 방법
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            글쓴이: <a href="/ko/hoesa-sogae" onClick={(e) => { e.preventDefault(); onNavigate('/ko/hoesa-sogae'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             4MB 사진은 웹사이트를 느리게 만들고 이메일을 막히게 합니다. 약 100KB로 줄이면 페이지가 빠르게 로드되고 이메일이 즉시 전송됩니다. 제대로 하면 아무도 차이를 알아차리지 못합니다.
           </p>

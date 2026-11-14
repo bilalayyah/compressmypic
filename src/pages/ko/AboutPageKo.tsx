@@ -129,6 +129,48 @@ export const AboutPageKo: React.FC<AboutPageKoProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Users className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>제작자: Bilal</span>
+            </h2>
+            <p>
+              CompressMyPic은 웹을 위한 무료이며 개인정보를 존중하는 도구를 만드는 독립 크리에이터 Bilal이 만들었습니다. 그는 파일을 작게 만들기 위해 개인 사진을 낯선 사람의 서버에 업로드해야 하는 이미지 압축기에 좌절하여 CompressMyPic을 시작했습니다. 그의 해답은 방문자 자신의 브라우저 안에서 모든 작업을 수행하는 도구였습니다. 업로드도, 계정도, 워터마크도, 마지막에 날아오는 예상치 못한 청구서도 없습니다.
+            </p>
+            <p>
+              Bilal은 압축기와 변환기부터 파비콘 생성기와 배경 제거기에 이르기까지 사이트의 48가지 도구를 모두 직접 설계하고 만들고 유지 관리합니다. 지원 메시지에 직접 답하고 모든 피드백을 읽으며, 사진 한 장을 압축하든 천 장을 압축하든 모든 사람에게 도구를 무료로 제공합니다. 사이트 바닥글에는 Shaheen에 대한 작은 감사가 담겨 있는데, 그의 격려가 Bilal에게 계속 만들고 도구를 단순히 인기 있는 것이 아니라 진정으로 유용한 것으로 만들도록 영감을 주었습니다.
+            </p>
+            <p>
+              그의 작업을 지켜보고 싶다면 
+              <a
+                href="https://github.com/bilalayyah/compressmypic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                GitHub
+              </a>
+              에서 프로젝트를 찾거나, 
+              <a
+                href="https://dev.to/bilalayyah"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                Dev.to
+              </a>
+              에서 Bilal의 가이드를 읽거나, 
+              <button
+                type="button"
+                onClick={() => onNavigate('/ko/mun-ui')}
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+              >
+                문의 페이지
+              </button>
+              를 통해 인사할 수 있습니다.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
               <Lock className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>개인정보 보호 및 보안</span>
             </h2>

@@ -170,6 +170,31 @@ export const GuideFormatsPageKo: React.FC<GuideFormatsPageKoProps> = ({ onNaviga
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "JPG vs PNG vs WebP: 어떤 형식을 사용해야 할까요?",
+          description: "JPG vs PNG vs WebP를 간단히 설명합니다. 파일 크기, 화질, 투명도를 비교해 사진, 로고, 웹사이트에 맞는 형식을 선택하세요.",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/ko/gaideu/jpg-vs-png-vs-webp",
+          inLanguage: 'ko',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "홈", item: "https://compressmypic.online/ko/" },
+            { '@type': 'ListItem', position: 2, name: "가이드" },
+            { '@type': 'ListItem', position: 3, name: "JPG vs PNG vs WebP: 어떤 형식을 사용해야 할까요?", item: "https://compressmypic.online/ko/gaideu/jpg-vs-png-vs-webp" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -215,6 +240,9 @@ export const GuideFormatsPageKo: React.FC<GuideFormatsPageKoProps> = ({ onNaviga
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             JPG vs PNG vs WebP — 어떤 형식을 사용해야 할까요?
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            글쓴이: <a href="/ko/hoesa-sogae" onClick={(e) => { e.preventDefault(); onNavigate('/ko/hoesa-sogae'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             잘못된 형식을 선택하면 이미지가 필요한 것보다 10배 커지거나 투명한 로고가 망가질 수 있습니다. 간단하고 정직한 비교와 몇 초 만에 형식을 변환하는 방법을 소개합니다.
           </p>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Send, CheckCircle2, AlertCircle, Mail, RotateCcw, Clock, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Send, CheckCircle2, AlertCircle, Mail, RotateCcw, Clock, ShieldCheck, Github, MessageSquare, Lightbulb, Bug } from 'lucide-react';
 
 interface ContactPageKoProps {
   onNavigate: (path: string) => void;
@@ -150,10 +150,12 @@ export const ContactPageKo: React.FC<ContactPageKoProps> = ({ onNavigate }) => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                    <label htmlFor="contact-name" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                       이름 <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                     </label>
                     <input
+                      id="contact-name"
+                      name="name"
                       type="text"
                       required
                       value={contactName}
@@ -164,10 +166,12 @@ export const ContactPageKo: React.FC<ContactPageKoProps> = ({ onNavigate }) => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                    <label htmlFor="contact-email" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                       이메일 주소 <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                     </label>
                     <input
+                      id="contact-email"
+                      name="email"
                       type="email"
                       required
                       value={contactEmail}
@@ -179,10 +183,12 @@ export const ContactPageKo: React.FC<ContactPageKoProps> = ({ onNavigate }) => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                  <label htmlFor="contact-subject" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                     제목 <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                   </label>
                   <input
+                      id="contact-subject"
+                      name="subject"
                     type="text"
                     required
                     value={contactSubject}
@@ -193,10 +199,12 @@ export const ContactPageKo: React.FC<ContactPageKoProps> = ({ onNavigate }) => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                  <label htmlFor="contact-message" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                     메시지 <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                   </label>
                   <textarea
+                      id="contact-message"
+                      name="message"
                     rows={5}
                     required
                     value={contactMessage}
@@ -226,6 +234,90 @@ export const ContactPageKo: React.FC<ContactPageKoProps> = ({ onNavigate }) => {
               </form>
             )}
           </div>
+        </div>
+
+        {/* Extra Information Sections */}
+        <div className="mt-12 space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Mail className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>CompressMyPic 운영자</span>
+            </h2>
+            <p>
+              CompressMyPic은 개인정보를 존중하는 진정으로 무료인 이미지 압축기를 만들고 싶었던 독립 크리에이터 Bilal이 만들고 운영하고 있습니다. 대부분의 온라인 도구와 달리 CompressMyPic은 사용자의 사진을 서버에 업로드하지 않습니다. 모든 이미지는 사용자의 브라우저 안에서 직접 압축됩니다. Bilal은 모든 메시지를 직접 읽고, 여러분의 피드백을 바탕으로 버그를 수정하고 품질을 개선하며 다음에 만들 도구를 결정합니다.
+            </p>
+            <p>
+              이곳은 대기업이 아닌 작은 독립 프로젝트이기 때문에, 특정 기능을 아직 만들 수 없다는 답변일 때에도 항상 직접적이고 솔직한 답변을 받으실 수 있습니다. 여러분과 도구를 만든 사람 사이에 지원 대기열이나 자동 챗봇은 없습니다.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>어떤 내용으로 문의할 수 있나요?</span>
+            </h2>
+            <p>
+              가장 빨리 도움을 받는 방법은 정확히 무슨 일이 일어났는지 알려주는 것입니다. 버그를 신고할 때는 사용하던 도구의 이름, 브라우저, 이미지 파일 형식을 알려주세요. 예를 들어 iPhone의 HEIC 사진이나 투명 PNG 같은 것입니다. 기능을 요청할 때는 무엇을 하려고 했는지, 그리고 현재 도구로는 왜 부족한지 설명해 주세요. 압축된 이미지가 예상보다 나쁘게 보이는 등 잘못된 결과에 대한 신고나 가이드 및 번역 페이지에 대한 수정 제안도 환영합니다.
+            </p>
+            <p>
+              파트너십, 언론 문의, 새 도구에 대한 제안에 대해서도 문의하실 수 있습니다. 웹사이트, 블로그, 교실을 운영하면서 독자나 학생에게 CompressMyPic을 추천하고 싶으시다면ぜひ 연락해 주세요. 위 양식을 사용하고 명확한 제목을 적어 주시면 메시지가 빠르게 올바른 곳에 도착합니다.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Github className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Bilal에게 연락하는 다른 방법</span>
+            </h2>
+            <p>
+              공개 채널을 선호하신다면 웹에서 Bilal과 CompressMyPic 프로젝트를 찾으실 수 있습니다. 소스 코드는 GitHub에 있으며, 기술적인 문제를 신고하고 개발 과정을 지켜볼 수도 있습니다. 이미지 압축에 대한 자세한 가이드는 Dev.to에 게시되며, 제품은 Indie Hackers에 등록되어 있어 진행 상황을 확인하고 피드백을 남길 수 있습니다.
+            </p>
+            <ul className="list-disc pl-6 space-y-1.5">
+              <li>
+                <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
+                {' '}— 소스 코드, 버그 신고, 개발 소식.
+              </li>
+              <li>
+                <a href="https://dev.to/bilalayyah" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Dev.to — dev.to/bilalayyah</a>
+                {' '}— JPG, PNG, WebP 압축 가이드.
+              </li>
+              <li>
+                <a href="https://www.indiehackers.com/product/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Indie Hackers — indiehackers.com/product/compressmypic</a>
+                {' '}— 제품 페이지, 주요 성과, 커뮤니티 피드백.
+              </li>
+            </ul>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Lightbulb className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>문의하기 전에</span>
+            </h2>
+            <p>
+              몇 가지 빠른 확인만으로 대부분의 문제를 답변을 기다리지 않고 해결할 수 있습니다. 기본 압축기는 이미지 한 장당 최대 20MB까지, 형식 변환기는 파일당 최대 25MB까지 지원합니다. 그보다 큰 파일은 시작 전에 거부됩니다. 매우 오래된 브라우저는 AVIF나 HEIC 같은 최신 형식을 지원하지 않을 수 있으므로, 최신 버전의 Chrome, Edge, Firefox 또는 Safari를 사용해 보면 고장난 것처럼 보이던 도구가 해결되는 경우가 많습니다. 또한 이미지가 사용자의 기기를 절대 떠나지 않으므로, 특정 사진에만 문제가 있다면 원인은 웹사이트가 아니라 파일 자체에 있는 경우가 대부분입니다.
+            </p>
+            <p>
+              문의하실 때는 브라우저 이름과 버전, 사용하던 도구, 이미지의 크기와 형식을 알려주세요. 영어로 답변드리며 보통 24~48 업무 시간 이내에 회신합니다. 데이터 처리 방법에 대한 질문이 있으시다면 먼저 
+              <button
+                type="button"
+                onClick={() => onNavigate('/ko/gaein-jeongbo')}
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+              >
+                개인정보처리방침
+              </button>
+              을 읽어보세요. 이미지가 절대 업로드되거나 저장되지 않는다고 쉬운 말로 설명되어 있습니다.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Bug className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>문제 신고하기</span>
+            </h2>
+            <p>
+              고장난 부분을 발견하셨나요? 어느 페이지에서 발생했는지, 무엇을 클릭했는지, 대신 무엇을 보기를 기대했는지 알려주세요. 스크린샷이 큰 도움이 되며, 특정 이미지와 관련된 문제라면 형식과 크기를 알려주세요. 단, 사적인 사진이나 민감한 사진은 절대 보내지 마세요. 신고된 버그는 최대한 빨리 수정하고, 수정이 적용되면 이메일로 알려드리겠습니다.
+            </p>
+          </section>
         </div>
       </div>
     </div>

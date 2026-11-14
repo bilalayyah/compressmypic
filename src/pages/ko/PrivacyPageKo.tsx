@@ -35,7 +35,7 @@ export const PrivacyPageKo: React.FC<PrivacyPageKoProps> = ({ onNavigate }) => {
             </h1>
           </div>
           <p className="text-xs text-[var(--ink-3)] font-medium">
-            최종 업데이트: 2026년 11월 12일
+            최종 업데이트: 2026년 11월 14일
           </p>
         </div>
 
@@ -75,12 +75,12 @@ export const PrivacyPageKo: React.FC<PrivacyPageKoProps> = ({ onNavigate }) => {
               </a>
               ) 또는{' '}
               <a
-                href="http://www.aboutads.info/choices/"
+                href="https://www.aboutads.info/choices/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
               >
-                http://www.aboutads.info/choices/
+                https://www.aboutads.info/choices/
               </a>
               에서 맞춤 광고를 거부할 수 있습니다.
             </p>
@@ -91,7 +91,7 @@ export const PrivacyPageKo: React.FC<PrivacyPageKoProps> = ({ onNavigate }) => {
               4. 분석
             </h2>
             <p>
-              현재 분석 쿠키를 사용하지 않습니다. 변경되는 경우 이 방침이 업데이트됩니다.
+              저희는 사이트가 어떻게 사용되는지 종합적으로 파악하기 위해 Cloudflare Web Analytics를 사용합니다. 예를 들어 어떤 도구가 인기 있는지, 어떤 페이지를 방문하는지 등입니다. Cloudflare Web Analytics는 개인정보 보호를 우선으로 합니다. 쿠키를 사용하지 않고, 웹사이트를 넘나들며 개별 방문자를 추적하지 않으며, 개인 식별자를 수집하지 않습니다. 여러분을 식별하는 데 사용할 수 없는 익명화된 종합 사용 통계만 기록합니다. 저희는 Google Analytics나 추적 쿠키를 설정하는 다른 분석 서비스를 사용하지 않습니다.
             </p>
           </section>
 
@@ -104,9 +104,88 @@ export const PrivacyPageKo: React.FC<PrivacyPageKoProps> = ({ onNavigate }) => {
             </p>
           </section>
 
-          <section className="space-y-2 pt-2 border-t border-[var(--line)]">
+                    <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              6. 문의
+              6. 쿠키 및 동의
+            </h2>
+            <p>
+              CompressMyPic 자체는 이미지 도구에 대해 어떠한 쿠키도 설정하지 않습니다. 압축은 전적으로 사용자의 브라우저 안에서 이루어지며, 저희 측의 쿠키, 계정, 저장된 설정이 필요하지 않습니다. 이 사이트의 쿠키는 제3자 서비스에서 제공됩니다. Google AdSense와 그 파트너는 관련성 있는 광고를 표시하고 광고 노출 횟수를 측정하기 위해 광고 쿠키를 설정할 수 있습니다. 이러한 쿠키는 사용자의 브라우저에 의해 기기에 저장되며, 브라우저 설정에서 언제든지 삭제할 수 있습니다.
+            </p>
+            <p>
+              유럽경제지역 또는 영국에서 방문하시는 경우, GDPR 및 Google의 EU 사용자 동의 정책에 따라 개인 맞춤형 광고를 표시하기 전에 동의를 요청합니다. 브라우저 쿠키를 삭제하거나 사이트에서 제공하는 동의 선택을 변경하여 언제든지 동의를 철회할 수 있습니다. 개인 맞춤형이 아닌 광고를 선택해도 광고가 완전히 사라지는 것은 아니지만, 광고가 더 이상 사용자의 탐색 기록을 기반으로 하지 않게 됩니다.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              7. GDPR에 따른 권리
+            </h2>
+            <p>
+              유럽경제지역 또는 영국에 거주하시는 경우, 일반 데이터 보호 규정(GDPR)에 따라 개인 데이터에 대한 권리가 있습니다. 저희가 보유한 사용자 개인 데이터의 사본을 요청하거나, 잘못된 경우 정정을 요청하거나, 삭제를 요청하거나, 사용 제한을 요청하거나, 처리에 이의를 제기할 수 있습니다. 처리가 사용자의 동의에 근거한 경우 언제든지 동의를 철회할 수 있으며, 철회는 그 전에 적법하게 수행된 내용에 영향을 주지 않습니다.
+            </p>
+            <p>
+              저희 도구는 이미지를 로컬에서 처리하고 사용자 계정이 없으므로, 저희가 일반적으로 보유하는 개인 데이터는 문의 양식을 통해 보내주신 이름, 이메일 주소, 메시지뿐입니다. 이러한 권리를 행사하시려면 <a
+                href="mailto:bilalayyah@gmail.com"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                bilalayyah@gmail.com
+              </a>로 이메일을 보내주세요. 30일 이내에 답변드리겠습니다. 또한 저희가 데이터를 부당하게 처리했다고 생각되시면 현지 데이터 보호 기관에 불만을 제기할 권리도 있습니다.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              8. 데이터 보존
+            </h2>
+            <p>
+              저희는 개인 데이터를 수집한 목적에 필요한 기간 동안만 보관합니다. 문의 양식 메시지는 문의에 답변이 완료되고 대화가 끝날 때까지, 그리고 후속 질문에 대비해 그 후 짧은 기간 동안만 보관됩니다. 마케팅에 사용되거나 제3자와 공유되는 일은 결코 없습니다. 사용자의 이미지는 전혀 보관되지 않습니다. 도구를 사용하는 동안 사용자의 브라우저 메모리에만 존재하며, 탭을 닫거나 새로고침하는 순간 삭제됩니다. 집계된 분석 데이터에는 개인 정보가 포함되지 않으며 요약 형태로만 보관됩니다.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              9. 보안 및 reCAPTCHA
+            </h2>
+            <p>
+              이 사이트는 HTTPS로 제공되므로 사용자의 브라우저와 사이트 간의 연결이 암호화됩니다. 저희 문의 양식은 FormSubmit을 통해 제공되며, 사용자의 메시지를 저희 이메일 주소로 전달하고, 양식은 스팸 및 자동화된 악용을 차단하기 위해 Google reCAPTCHA로 보호됩니다. 양식을 제출하면 reCAPTCHA는 사람과 봇을 구별하기 위해 브라우저 및 기기 세부 정보와 같은 하드웨어 및 소프트웨어 정보를 수집할 수 있으며, 이는 Google의 <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+              >
+                개인정보처리방침
+              </a> 및 <a
+                href="https://policies.google.com/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+              >
+                이용약관
+              </a>의 적용을 받습니다. 저희는 문의 양식을 통해 비밀번호, 결제 정보, 민감한 개인 문서를 보내달라고 요청하지 않으며, 메시지에도 포함하지 마세요.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              10. 어린이 개인정보 보호
+            </h2>
+            <p>
+              CompressMyPic은 일반 대중을 위한 도구이며 13세 미만 어린이를 대상으로 하지 않습니다. 저희는 어린이의 개인 정보를 고의로 수집하지 않습니다. 부모님이나 보호자로서 자녀가 문의 양식을 통해 개인 정보를 보냈다고 생각되시면 이메일로 연락해 주세요. 즉시 삭제하겠습니다.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              11. 본 방침의 변경
+            </h2>
+            <p>
+              저희는 사이트가 변경될 때 본 방침을 업데이트할 수 있습니다. 예를 들어 새로운 분석 서비스, 새로운 광고 파트너, 새로운 연락 방법을 추가하는 경우가 그렇습니다. 그럴 경우 이 페이지 상단의 ‘최종 업데이트’ 날짜를 변경하고, 중요한 변경 사항은 이곳에서 쉬운 말로 설명합니다. 변경 후에도 사이트를 계속 사용하면 업데이트된 방침에 동의한 것으로 간주됩니다.
+            </p>
+          </section>
+
+<section className="space-y-2 pt-2 border-t border-[var(--line)]">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              12. 문의
             </h2>
             <p>
               이 방침에 대해 질문이 있으시면{' '}
