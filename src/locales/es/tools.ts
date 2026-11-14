@@ -24,10 +24,9 @@ export const TOOLS_REGISTRY_ES: ToolDefinition[] = [
     name: 'Compresor de imágenes',
     shortDescription: 'Comprima imágenes JPG, PNG, WebP y HEIC sin perder calidad.',
     category: 'compress',
-    seoTitle: 'Compresor de imágenes gratis online – Reduzca a 100KB',
-    seoDescription:
-      'Comprima imágenes online gratis: reduzca el tamaño sin perder calidad. Comprima JPG, PNG y WebP sin registro ni marca de agua, directamente en su navegador.',
-    h1: 'Compresor de imágenes gratis',
+    seoTitle: 'Compresor de imágenes gratis – Comprima imágenes online, sin registro',
+    seoDescription: 'Comprima imágenes online gratis y reduzca el tamaño de JPG, PNG y WebP sin perder calidad. Sin registro ni marca de agua: sus fotos nunca salen de su navegador.',
+    h1: 'Compresor de imágenes gratis – Comprima imágenes online',
     subtitle: 'Reduzca el tamaño de archivos JPG, PNG, WebP y HEIC directamente en su navegador.',
     howToSteps: [],
     features: [],
@@ -859,7 +858,7 @@ export const TOOLS_REGISTRY_ES: ToolDefinition[] = [
     seoTitle: 'Convertir imagen a PDF gratis – Una fotos en PDF',
     seoDescription:
       'Convierta varias fotos en un solo PDF con nuestro conversor de imagen a PDF en el navegador. Ordene las páginas, elija A4 o Carta y guárdelo sin conexión.',
-    h1: 'Convertidor de imagen a PDF',
+    h1: 'Convertidor gratuito de imágenes a PDF online',
     subtitle:
       'Ideal para estudiantes, freelancers, contadores y cualquier persona que envíe identificaciones o recibos, este conversor privado de imagen a PDF une varias fotos en un solo PDF nítido de varias páginas. Reordene las páginas libremente, elija A4, Carta de EE. UU. o ajuste al tamaño de la imagen, ajuste los márgenes y la calidad, y cree su documento en local sin subir nada a ningún servidor.',
     howToSteps: [
@@ -7805,9 +7804,8 @@ export const TOOLS_REGISTRY_ES: ToolDefinition[] = [
     name: 'Eliminador de fondo con IA',
     shortDescription: 'Elimine el fondo de sus imágenes con IA en el navegador y exporte PNG transparentes.',
     category: 'ai-tools',
-    seoTitle: 'Eliminador de fondo gratis online – IA en el navegador',
-    seoDescription:
-      'Elimine el fondo de sus imágenes gratis con IA en el navegador. Descargue un PNG transparente o fondo blanco, negro o personalizado, en privado y sin registro.',
+    seoTitle: 'Quitar fondo de imagen gratis – IA, sin registro',
+    seoDescription: 'Quite el fondo de cualquier imagen gratis con IA en el navegador. Descargue un PNG transparente o añada un fondo blanco, negro o personalizado, sin registro ni subidas.',
     h1: 'Eliminador de fondo con IA gratis online',
     subtitle:
       'Elimine el fondo de retratos, fotos de producto, mascotas y logotipos con nuestro eliminador de fondo con IA gratis, que funciona por completo en su navegador. Pensado para vendedores, creadores y diseñadores que necesitan recortes limpios con rapidez, carga un modelo de IA compacto una sola vez (unos 35 MB, guardado en caché después), procesa una foto a la vez de hasta 20 MB y exporta un PNG transparente, o coloca su recorte sobre un fondo blanco, negro o personalizado.',
