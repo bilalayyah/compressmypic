@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Send, CheckCircle2, AlertCircle, Mail, RotateCcw, Clock, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Send, CheckCircle2, AlertCircle, Mail, RotateCcw, Clock, ShieldCheck, Github, MessageSquare, Lightbulb, Bug } from 'lucide-react';
 
 interface ContactPageRuProps {
   onNavigate: (path: string) => void;
@@ -152,10 +152,12 @@ export const ContactPageRu: React.FC<ContactPageRuProps> = ({ onNavigate }) => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                    <label htmlFor="contact-name" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                       Ваше имя <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                     </label>
                     <input
+                      id="contact-name"
+                      name="name"
                       type="text"
                       required
                       value={contactName}
@@ -166,10 +168,12 @@ export const ContactPageRu: React.FC<ContactPageRuProps> = ({ onNavigate }) => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                    <label htmlFor="contact-email" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                       Адрес электронной почты <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                     </label>
                     <input
+                      id="contact-email"
+                      name="email"
                       type="email"
                       required
                       value={contactEmail}
@@ -181,10 +185,12 @@ export const ContactPageRu: React.FC<ContactPageRuProps> = ({ onNavigate }) => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                  <label htmlFor="contact-subject" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                     Тема <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                   </label>
                   <input
+                      id="contact-subject"
+                      name="subject"
                     type="text"
                     required
                     value={contactSubject}
@@ -195,10 +201,12 @@ export const ContactPageRu: React.FC<ContactPageRuProps> = ({ onNavigate }) => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                  <label htmlFor="contact-message" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                     Сообщение <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                   </label>
                   <textarea
+                      id="contact-message"
+                      name="message"
                     rows={5}
                     required
                     value={contactMessage}
@@ -228,6 +236,90 @@ export const ContactPageRu: React.FC<ContactPageRuProps> = ({ onNavigate }) => {
               </form>
             )}
           </div>
+        </div>
+
+        {/* Extra Information Sections */}
+        <div className="mt-12 space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Mail className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Кто управляет CompressMyPic</span>
+            </h2>
+            <p>
+              CompressMyPic создан и поддерживается Билалом — независимым разработчиком, который хотел сделать по-настоящему бесплатный компрессор изображений, уважающий вашу приватность. В отличие от большинства онлайн-инструментов, CompressMyPic никогда не загружает ваши фотографии на сервер: каждое изображение сжимается прямо в вашем браузере. Билал лично читает каждое сообщение и использует ваши отзывы, чтобы исправлять ошибки, улучшать качество и решать, какие новые инструменты создавать дальше.
+            </p>
+            <p>
+              Поскольку это небольшой независимый проект, а не крупная компания, вы всегда получите прямой и честный ответ — даже если ответ заключается в том, что та или иная функция пока невозможна. Между вами и человеком, создавшим инструмент, нет ни очереди в поддержку, ни автоматического чат-бота.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>О чём нам можно написать?</span>
+            </h2>
+            <p>
+              Самый быстрый способ получить помощь — точно рассказать, что произошло. Сообщая об ошибке, укажите название инструмента, которым вы пользовались, ваш браузер и тип файла изображения — например, фото HEIC с iPhone или прозрачный PNG. Предлагая функцию, опишите, чего вы пытались добиться и почему существующих инструментов недостаточно. Мы также принимаем сообщения о неверных результатах — например, если сжатое изображение выглядит хуже, чем ожидалось, — и исправления к нашим руководствам или переведённым страницам.
+            </p>
+            <p>
+              Нам можно писать о партнёрстве, запросах прессы и предложениях новых инструментов. Если вы ведёте сайт, блог или учебный класс и хотите порекомендовать CompressMyPic своим читателям или ученикам, мы будем рады узнать об этом — просто используйте форму выше и укажите понятную тему, чтобы сообщение быстро попало по назначению.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Github className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Другие способы связаться с Билалом</span>
+            </h2>
+            <p>
+              Если вы предпочитаете публичный канал, Билала и проект CompressMyPic можно найти в интернете. Исходный код размещён на GitHub, где также можно сообщать о технических проблемах и следить за разработкой. Подробные руководства по сжатию изображений публикуются на Dev.to, а продукт представлен на Indie Hackers, где можно следить за его развитием и оставлять отзывы.
+            </p>
+            <ul className="list-disc pl-6 space-y-1.5">
+              <li>
+                <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
+                {' '}— исходный код, сообщения об ошибках и новости разработки.
+              </li>
+              <li>
+                <a href="https://dev.to/bilalayyah" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Dev.to — dev.to/bilalayyah</a>
+                {' '}— руководства по сжатию JPG, PNG и WebP.
+              </li>
+              <li>
+                <a href="https://www.indiehackers.com/product/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Indie Hackers — indiehackers.com/product/compressmypic</a>
+                {' '}— страница продукта, этапы и отзывы сообщества.
+              </li>
+            </ul>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Lightbulb className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Прежде чем написать</span>
+            </h2>
+            <p>
+              Несколько быстрых проверок решают большинство проблем без ожидания ответа. Основной компрессор принимает изображения до 20 МБ каждое, а конвертеры форматов — до 25 МБ на файл; файл большего размера будет отклонён ещё до начала работы. Очень старые браузеры могут не поддерживать новые форматы, такие как AVIF или HEIC, поэтому попробуйте актуальную версию Chrome, Edge, Firefox или Safari — часто это чинит инструмент, который кажется сломанным. А поскольку ваши изображения никогда не покидают ваше устройство, проблема с конкретной фотографией обычно вызвана самим файлом, а не сайтом.
+            </p>
+            <p>
+              Когда вы пишете нам, укажите название и версию вашего браузера, инструмент, которым вы пользовались, а также размер и формат изображения. Мы отвечаем на английском языке, обычно в течение 24–48 рабочих часов. Если ваш вопрос касается того, как обрабатываются ваши данные, сначала прочитайте нашу 
+              <button
+                type="button"
+                onClick={() => onNavigate('/ru/konfidentsialnost')}
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+              >
+                Политику конфиденциальности
+              </button>
+               — там простым языком объясняется, что ваши изображения никогда не загружаются и не сохраняются.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Bug className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Сообщить о проблеме</span>
+            </h2>
+            <p>
+              Нашли что-то сломанное? Сообщите нам, на какой странице это произошло, на что вы нажали и что ожидали увидеть вместо этого. Скриншоты очень помогают, а если проблема связана с конкретным изображением, укажите его формат и размер — но никогда не отправляйте нам личные или конфиденциальные фотографии. Мы исправляем сообщённые ошибки как можно быстрее и сообщим вам по электронной почте, когда исправление будет опубликовано.
+            </p>
+          </section>
         </div>
       </div>
     </div>

@@ -129,6 +129,48 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Users className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Создатель: Билал</span>
+            </h2>
+            <p>
+              CompressMyPic создан Билалом — независимым разработчиком, который делает бесплатные инструменты для веба, уважающие приватность. Он запустил CompressMyPic, устав от компрессоров изображений, которые заставляли людей загружать личные фотографии на сервер незнакомца, просто чтобы уменьшить размер файла. Его ответом стал инструмент, который выполняет всю работу прямо в браузере посетителя: без загрузки, без учётной записи, без водяного знака и без неожиданного счёта в конце.
+            </p>
+            <p>
+              Билал сам проектирует, создаёт и поддерживает все 48 инструментов сайта — от компрессора и конвертеров до генератора фавиконов и удалителя фона. Он лично отвечает на сообщения поддержки, читает каждый отзыв и сохраняет инструменты бесплатными для всех, сжимают ли они одну фотографию или тысячу. В подвале сайта есть небольшая благодарность Шахину, чья поддержка вдохновила Билала продолжать создавать и делать инструменты по-настоящему полезными, а не просто популярными.
+            </p>
+            <p>
+              Если хотите следить за работой, проект можно найти на 
+              <a
+                href="https://github.com/bilalayyah/compressmypic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                GitHub
+              </a>
+              , прочитать руководства Билала на 
+              <a
+                href="https://dev.to/bilalayyah"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                Dev.to
+              </a>
+               или поздороваться через 
+              <button
+                type="button"
+                onClick={() => onNavigate('/ru/kontakty')}
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+              >
+                страницу контактов
+              </button>
+              .
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
               <Lock className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>Приватность и безопасность</span>
             </h2>

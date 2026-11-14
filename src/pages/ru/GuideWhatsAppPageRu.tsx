@@ -178,6 +178,31 @@ export const GuideWhatsAppPageRu: React.FC<GuideWhatsAppPageRuProps> = ({ onNavi
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "Как сжать изображения для WhatsApp без потери качества",
+          description: "Узнайте, как сжать изображения для WhatsApp без потери качества. Бесплатно, приватно, без регистрации — уменьшайте фото перед отправкой, чтобы они оставались чёткими и отправлялись быстро.",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/ru/rukovodstva/szhat-izobrazheniya-dlya-whatsapp",
+          inLanguage: 'ru',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "Главная", item: "https://compressmypic.online/ru/" },
+            { '@type': 'ListItem', position: 2, name: "Руководства" },
+            { '@type': 'ListItem', position: 3, name: "Как сжать изображения для WhatsApp без потери качества", item: "https://compressmypic.online/ru/rukovodstva/szhat-izobrazheniya-dlya-whatsapp" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -223,6 +248,9 @@ export const GuideWhatsAppPageRu: React.FC<GuideWhatsAppPageRuProps> = ({ onNavi
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             Как сжать изображения для WhatsApp без потери качества
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            Автор: <a href="/ru/o-nas" onClick={(e) => { e.preventDefault(); onNavigate('/ru/o-nas'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             WhatsApp уменьшает каждую фотографию, которую вы отправляете, — зачастую гораздо сильнее, чем нужно. Сожмите фотографии сами заранее, а затем отправьте их правильным способом, и они дойдут чёткими, отправятся быстро и израсходуют меньше мобильного трафика.
           </p>

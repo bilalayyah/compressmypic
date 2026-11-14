@@ -174,6 +174,31 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "Как уменьшить размер изображения до 100 КБ для веба и электронной почты",
+          description: "Уменьшите размер изображения до 100 КБ для сайтов и электронной почты с помощью бесплатного online-компрессора. Пошаговое руководство — без регистрации, без водяных знаков, изображения остаются на вашем устройстве.",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/ru/rukovodstva/umenshit-razmer-izobrazheniya-do-100-kb",
+          inLanguage: 'ru',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "Главная", item: "https://compressmypic.online/ru/" },
+            { '@type': 'ListItem', position: 2, name: "Руководства" },
+            { '@type': 'ListItem', position: 3, name: "Как уменьшить размер изображения до 100 КБ для веба и электронной почты", item: "https://compressmypic.online/ru/rukovodstva/umenshit-razmer-izobrazheniya-do-100-kb" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -219,6 +244,9 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             Как уменьшить размер изображения до 100 КБ для сайтов и электронной почты
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            Автор: <a href="/ru/o-nas" onClick={(e) => { e.preventDefault(); onNavigate('/ru/o-nas'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             Фотография на 4 МБ замедляет ваш сайт и забивает электронную почту. Уменьшение её примерно до 100 КБ делает страницы быстрыми, а письма отправляются мгновенно — и если сделать это правильно, никто не заметит разницы.
           </p>

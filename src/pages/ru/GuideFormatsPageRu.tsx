@@ -170,6 +170,31 @@ export const GuideFormatsPageRu: React.FC<GuideFormatsPageRuProps> = ({ onNaviga
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "JPG против PNG против WebP: какой формат выбрать?",
+          description: "JPG против PNG против WebP — простое объяснение: размер файла, качество и прозрачность в сравнении, чтобы вы могли выбрать правильный формат для фото, логотипов и сайтов.",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/ru/rukovodstva/jpg-protiv-png-protiv-webp",
+          inLanguage: 'ru',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "Главная", item: "https://compressmypic.online/ru/" },
+            { '@type': 'ListItem', position: 2, name: "Руководства" },
+            { '@type': 'ListItem', position: 3, name: "JPG против PNG против WebP: какой формат выбрать?", item: "https://compressmypic.online/ru/rukovodstva/jpg-protiv-png-protiv-webp" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -215,6 +240,9 @@ export const GuideFormatsPageRu: React.FC<GuideFormatsPageRuProps> = ({ onNaviga
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             JPG против PNG против WebP — какой формат выбрать?
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            Автор: <a href="/ru/o-nas" onClick={(e) => { e.preventDefault(); onNavigate('/ru/o-nas'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             Неправильный формат может сделать ваше изображение в десять раз больше, чем нужно, или испортить прозрачный логотип. Вот простое и честное сравнение, а также то, как конвертировать между форматами за секунды.
           </p>
