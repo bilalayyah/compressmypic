@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, MessageCircle, Send, Smartphone, CheckCircle2, FileWarning, Layers } from 'lucide-react';
+import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
 
 interface GuideWhatsAppPageKoProps {
   onNavigate: (path: string) => void;
@@ -203,14 +204,14 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
   };
 
   return (
-    <div className="py-10 sm:py-16">
+    <div className="bg-[var(--bg)] py-10 sm:py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
           <button
             type="button"
             onClick={() => onNavigate('/ko/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>이미지 압축기로 돌아가기</span>
@@ -218,20 +219,22 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
         </div>
 
         {/* Page Title */}
-        <div className="border-b border-slate-200 pb-6 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <div className="border-b border-[var(--line)] pb-6 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             화질 저하 없이 WhatsApp용 이미지를 압축하는 방법
           </h1>
-          <p className="mt-3 text-lg font-medium text-slate-700 leading-relaxed">
+          <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             WhatsApp은 보내는 모든 사진을 축소합니다. 종종 필요한 것보다 훨씬 더 많이요. 사진을 먼저 직접 압축한 뒤 올바른 방법으로 보내면 사진이 선명하게 도착하고, 빠르게 전송되며, 모바일 데이터도 적게 사용합니다.
           </p>
         </div>
 
         {/* Core Content */}
-        <div className="space-y-8 text-base text-slate-600 leading-relaxed">
+        <div className="space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <MessageCircle className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(7)} flex items-center justify-center shrink-0`}>
+                <MessageCircle className="w-4 h-4" />
+              </span>
               <span>WhatsApp이 사진을 흐릿하게 만드는 이유</span>
             </h2>
             <p>
@@ -243,19 +246,24 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Send className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Send className="w-4 h-4" />
+              </span>
               <span>단계별 가이드: WhatsApp용 사진 압축하기</span>
             </h2>
-            <ol className="space-y-4">
+            <ol className="space-y-3">
               {STEPS.map((step, i) => (
-                <li key={step.title} className="flex gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white text-sm font-bold flex items-center justify-center mt-0.5">
+                <li
+                  key={step.title}
+                  className={`flex gap-3.5 p-4 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(i * 2)}`}
+                >
+                  <span className="flex-shrink-0 w-7 h-7 rounded-lg btn-purple-grad text-sm font-mono font-bold flex items-center justify-center mt-0.5 shadow-xs">
                     {i + 1}
                   </span>
                   <div>
-                    <div className="font-bold text-slate-900 text-sm sm:text-base">{step.title}</div>
-                    <p className="text-sm sm:text-base">{step.text}</p>
+                    <div className="font-sans font-bold text-[var(--ink-navy)] text-sm sm:text-base">{step.title}</div>
+                    <p className="text-sm sm:text-base text-[var(--ink-2)] mt-0.5">{step.text}</p>
                   </div>
                 </li>
               ))}
@@ -266,50 +274,54 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
             <img
               src="/guides/compress-images-for-whatsapp-1.png"
               alt="WhatsApp으로 보내기 전에 CompressMyPic에 사진을 업로드하는 스크린샷"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               사진을 CompressMyPic에 업로드하세요. 드래그 앤 드롭하거나 갤러리에서 선택하세요.
             </figcaption>
           </figure>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Smartphone className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(2)} flex items-center justify-center shrink-0`}>
+                <Smartphone className="w-4 h-4" />
+              </span>
               <span>어떤 화질 설정을 사용해야 하나요?</span>
             </h2>
             <p>
               모든 사진에 맞는 완벽한 숫자는 없습니다. 사진과 용도에 따라 다릅니다. 아래를 시작점으로 삼고 매번 전후 비교를 확인하세요.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">일상 사진: 70%</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(0)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">일상 사진: 70%</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   균형 프리셋입니다. 크기를 크게 절약하면서도 모든 휴대폰 화면에서 사진이 여전히 선명하게 보입니다. WhatsApp에 가장 좋은 기본 설정입니다.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">중요한 사진: 80~85%</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(4)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">중요한 사진: 80~85%</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   가족 사진, 여행 사진, 보관하고 싶은 모든 사진. 파일이 더 크지만 얼굴과 풍경의 세밀한 디테일이 살아남습니다.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">빠른 공유: 50~60%</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(8)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">빠른 공유: 50~60%</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   밈, 빠른 업데이트, 느린 모바일 데이터로 보내는 사진. 휴대폰 화면 크기에서는 여전히 괜찮아 보이면서 파일이 훨씬 작아집니다.
                 </p>
               </div>
             </div>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-7">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(7)} flex items-center justify-center shrink-0`}>
+                <CheckCircle2 className="w-4 h-4" />
+              </span>
               <span>최상의 결과를 위한 팁</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5">
+            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
               <li>한 번만, 단 한 번만 압축하세요. 이미 압축한 사진을 두 번째로 압축하면 거의 절약되지 않으면서 세부 묘사만 사라집니다.</li>
               <li>화질이 중요하다면 압축한 파일을 항상 문서로 보내세요. WhatsApp이 다시 압축하지 못하게 하는 유일한 방법입니다.</li>
               <li>여러 장의 사진을 같은 설정으로 한 번에 압축하고 모두 다운로드(ZIP) 버튼으로 함께 다운로드하세요.</li>
@@ -322,20 +334,22 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
             <img
               src="/guides/compress-images-for-whatsapp-2.png"
               alt="CompressMyPic에서 화질 슬라이더와 실시간 전후 파일 크기를 보여주는 스크린샷"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               화질 슬라이더를 움직이면 파일이 원하는 크기가 될 때까지 전후 크기가 실시간으로 업데이트됩니다.
             </figcaption>
           </figure>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <FileWarning className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-10">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(10)} flex items-center justify-center shrink-0`}>
+                <FileWarning className="w-4 h-4" />
+              </span>
               <span>피해야 할 흔한 실수</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5">
+            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
               <li>압축한 뒤 사진을 사진으로 보내기 — WhatsApp이 두 번째로 압축해 작업이 무용지물이 됩니다.</li>
               <li>얼굴이 있는 사진의 화질을 40% 아래로 낮추기 — 낮은 화질에서는 피부와 세밀한 디테일이 금방 뭉개집니다.</li>
               <li>카메라 사진에 PNG 사용하기 — PNG 파일은 사진에 JPG보다 훨씬 크며 WhatsApp에서 얻는 것이 없습니다.</li>
@@ -345,26 +359,31 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
 
           {/* FAQ */}
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Layers className="w-4 h-4" />
+              </span>
               <span>자주 묻는 질문</span>
             </h2>
             <div className="space-y-3">
-              {FAQ_DATA.map((item) => {
+              {FAQ_DATA.map((item, idx) => {
                 const isOpen = openIds.has(item.id);
                 return (
-                  <div key={item.id} className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
+                  <div
+                    key={item.id}
+                    className={`border rounded-2xl overflow-hidden shadow-[var(--shadow)] transition-shadow hover:shadow-[var(--shadow-lg)] ${getPastelCardClass(idx)}`}
+                  >
                     <button
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className={`w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors ${isOpen ? 'bg-slate-50/50' : 'hover:bg-slate-50/50'}`}
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
-                      <span className="text-sm sm:text-base font-bold text-slate-900">{item.question}</span>
-                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-600' : 'text-slate-400'}`} />
+                      <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
+                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'}`} />
                     </button>
                     {isOpen && (
-                      <div className="px-5 py-4 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 bg-white">
+                      <div className="px-5 py-4 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/55 dark:bg-slate-900/35">
                         {item.answer}
                       </div>
                     )}
@@ -376,23 +395,23 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
 
           {/* Related guides */}
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900">관련 가이드</h2>
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">관련 가이드</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button
                 type="button"
                 onClick={() => onNavigate('/ko/gaideu/jpg-vs-png-vs-webp')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">JPG vs PNG vs WebP — 어떤 형식을 사용해야 할까요?</div>
-                <p className="text-xs text-slate-600 mt-1">파일 크기, 화질, 투명도를 비교해 매번 올바른 형식을 선택하세요.</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG vs PNG vs WebP — 어떤 형식을 사용해야 할까요?</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">파일 크기, 화질, 투명도를 비교해 매번 올바른 형식을 선택하세요.</p>
               </button>
               <button
                 type="button"
                 onClick={() => onNavigate('/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">웹사이트와 이메일용 이미지 크기를 100KB로 줄이는 방법</div>
-                <p className="text-xs text-slate-600 mt-1">사진을 망치지 않고 100KB에 도달하는 단계별 가이드입니다.</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">웹사이트와 이메일용 이미지 크기를 100KB로 줄이는 방법</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">사진을 망치지 않고 100KB에 도달하는 단계별 가이드입니다.</p>
               </button>
             </div>
           </section>
@@ -401,14 +420,14 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
             <button
               type="button"
               onClick={() => onNavigate('/ko/')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               이미지 무료 압축하기
             </button>
             <button
               type="button"
               onClick={() => onNavigate('/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-white text-slate-900 text-sm font-bold border border-slate-200 shadow-xs hover:bg-slate-50 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#7c3aed]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               이미지를 100KB로 줄이기
             </button>

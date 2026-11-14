@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, Mail, Globe, Target, CheckCircle2, Layers, Gauge } from 'lucide-react';
+import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
 
 interface Guide100kbPageKoProps {
   onNavigate: (path: string) => void;
@@ -199,14 +200,14 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
   };
 
   return (
-    <div className="py-10 sm:py-16">
+    <div className="bg-[var(--bg)] py-10 sm:py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
           <button
             type="button"
             onClick={() => onNavigate('/ko/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>이미지 압축기로 돌아가기</span>
@@ -214,20 +215,22 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
         </div>
 
         {/* Page Title */}
-        <div className="border-b border-slate-200 pb-6 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <div className="border-b border-[var(--line)] pb-6 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             웹사이트와 이메일용 이미지 크기를 100KB로 줄이는 방법
           </h1>
-          <p className="mt-3 text-lg font-medium text-slate-700 leading-relaxed">
+          <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             4MB 사진은 웹사이트를 느리게 만들고 이메일을 막히게 합니다. 약 100KB로 줄이면 페이지가 빠르게 로드되고 이메일이 즉시 전송됩니다. 제대로 하면 아무도 차이를 알아차리지 못합니다.
           </p>
         </div>
 
         {/* Core Content */}
-        <div className="space-y-8 text-base text-slate-600 leading-relaxed">
+        <div className="space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Target className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Target className="w-4 h-4" />
+              </span>
               <span>100KB가 마법의 숫자인 이유</span>
             </h2>
             <p>
@@ -239,19 +242,24 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Gauge className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(2)} flex items-center justify-center shrink-0`}>
+                <Gauge className="w-4 h-4" />
+              </span>
               <span>단계별 가이드: 이미지를 100KB로 줄이기</span>
             </h2>
-            <ol className="space-y-4">
+            <ol className="space-y-3">
               {STEPS.map((step, i) => (
-                <li key={step.title} className="flex gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white text-sm font-bold flex items-center justify-center mt-0.5">
+                <li
+                  key={step.title}
+                  className={`flex gap-3.5 p-4 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(i * 2)}`}
+                >
+                  <span className="flex-shrink-0 w-7 h-7 rounded-lg btn-purple-grad text-sm font-mono font-bold flex items-center justify-center mt-0.5 shadow-xs">
                     {i + 1}
                   </span>
                   <div>
-                    <div className="font-bold text-slate-900 text-sm sm:text-base">{step.title}</div>
-                    <p className="text-sm sm:text-base">{step.text}</p>
+                    <div className="font-sans font-bold text-[var(--ink-navy)] text-sm sm:text-base">{step.title}</div>
+                    <p className="text-sm sm:text-base text-[var(--ink-2)] mt-0.5">{step.text}</p>
                   </div>
                 </li>
               ))}
@@ -262,49 +270,51 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
             <img
               src="/guides/reduce-image-size-to-100kb-1.png"
               alt="100KB로 줄이기 위해 CompressMyPic에 큰 사진을 업로드하는 스크린샷"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               사진을 업로드하세요. 원본 크기가 바로 표시되므로 얼마나 줄여야 하는지 알 수 있습니다.
             </figcaption>
           </figure>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Globe className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(4)} flex items-center justify-center shrink-0`}>
+                <Globe className="w-4 h-4" />
+              </span>
               <span>한눈에 보는 일반적인 목표</span>
             </h2>
             <p>
               100KB가 유일한 목표는 아닙니다. 같은 방법이 모든 크기에 적용됩니다. 각 크기마다 예상되는 설정은 다음과 같습니다.
             </p>
             <div className="overflow-x-auto pt-1">
-              <table className="w-full text-sm border border-slate-200 rounded-xl overflow-hidden">
+              <table className="w-full text-sm border border-[var(--line)] rounded-2xl overflow-hidden bg-[var(--surface)] shadow-[var(--shadow)]">
                 <thead>
-                  <tr className="bg-slate-50 text-slate-900 text-left">
-                    <th className="px-4 py-3 font-bold">목표</th>
-                    <th className="px-4 py-3 font-bold">일반적인 화질</th>
-                    <th className="px-4 py-3 font-bold">적합한 용도</th>
+                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-left border-b border-[var(--line)]">
+                    <th className="px-4 py-3 font-semibold">목표</th>
+                    <th className="px-4 py-3 font-semibold">일반적인 화질</th>
+                    <th className="px-4 py-3 font-semibold">적합한 용도</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-[var(--line)]">
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">200KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">200KB</td>
                     <td className="px-4 py-3">70~80%</td>
                     <td className="px-4 py-3">블로그 사진, 큰 웹 이미지</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">100KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">100KB</td>
                     <td className="px-4 py-3">50~70%</td>
                     <td className="px-4 py-3">웹사이트 사진, 이메일 첨부 파일</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">50KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">50KB</td>
                     <td className="px-4 py-3">40~55% + WebP</td>
                     <td className="px-4 py-3">썸네일, 채팅, 빠른 페이지</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">20KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">20KB</td>
                     <td className="px-4 py-3">25~40% + WebP</td>
                     <td className="px-4 py-3">아이콘, 작은 미리 보기</td>
                   </tr>
@@ -316,12 +326,14 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Mail className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-2">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(6)} flex items-center justify-center shrink-0`}>
+                <Mail className="w-4 h-4" />
+              </span>
               <span>웹사이트와 이메일을 위한 팁</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5">
+            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
               <li>웹사이트에는 WebP 출력을 사용하세요. 100KB에 도달하는 가장 빠른 방법이며 모든 최신 브라우저가 지원합니다.</li>
               <li>이메일에는 JPG가 가장 안전한 형식입니다. 모든 이메일 앱이 열 수 있습니다. 100KB JPG는 즉시 첨부되고 크기 때문에 반송되는 일이 없습니다.</li>
               <li>한 페이지나 한 이메일용 사진을 모두 함께 압축한 뒤 모두 다운로드(ZIP) 버튼으로 함께 다운로드하세요.</li>
@@ -334,46 +346,53 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
             <img
               src="/guides/reduce-image-size-to-100kb-2.png"
               alt="약 100KB로 줄어든 이미지의 실시간 전후 파일 크기를 보여주는 스크린샷"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               실시간 전후 크기가 진행 상황을 보여줍니다. 압축된 크기가 100KB 근처가 될 때까지 슬라이더를 낮추세요.
             </figcaption>
           </figure>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-7">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(7)} flex items-center justify-center shrink-0`}>
+                <CheckCircle2 className="w-4 h-4" />
+              </span>
               <span>100KB에 도달할 수 없을 때</span>
             </h2>
-            <p>
+            <p className="text-sm sm:text-base">
               어떤 이미지는 보기에 나쁘지 않게 100KB에 도달할 수 없습니다. 매우 크고 매우 디테일이 많은 사진이나, PNG로 유지해야 하는 투명도가 있는 PNG가 그렇습니다. 그럴 때는 억지로 하지 마세요. 선명한 180KB 사진이 망가진 100KB 사진보다 항상 낫습니다. 웹사이트에서는 여전히 빠르게 로드되고 이메일에서는 여전히 첨부 제한을 훨씬 밑돕니다. 목표는 여전히 좋아 보이는 작은 파일이지, 마법의 숫자가 아닙니다.
             </p>
           </section>
 
           {/* FAQ */}
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Layers className="w-4 h-4" />
+              </span>
               <span>자주 묻는 질문</span>
             </h2>
             <div className="space-y-3">
-              {FAQ_DATA.map((item) => {
+              {FAQ_DATA.map((item, idx) => {
                 const isOpen = openIds.has(item.id);
                 return (
-                  <div key={item.id} className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
+                  <div
+                    key={item.id}
+                    className={`border rounded-2xl overflow-hidden shadow-[var(--shadow)] transition-shadow hover:shadow-[var(--shadow-lg)] ${getPastelCardClass(idx)}`}
+                  >
                     <button
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className={`w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors ${isOpen ? 'bg-slate-50/50' : 'hover:bg-slate-50/50'}`}
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
-                      <span className="text-sm sm:text-base font-bold text-slate-900">{item.question}</span>
-                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-600' : 'text-slate-400'}`} />
+                      <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
+                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'}`} />
                     </button>
                     {isOpen && (
-                      <div className="px-5 py-4 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 bg-white">
+                      <div className="px-5 py-4 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/55 dark:bg-slate-900/35">
                         {item.answer}
                       </div>
                     )}
@@ -385,23 +404,23 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
 
           {/* Related guides */}
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900">관련 가이드</h2>
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">관련 가이드</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button
                 type="button"
                 onClick={() => onNavigate('/ko/gaideu/watsae-yong-imiji-apchuk')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">화질 저하 없이 WhatsApp용 이미지를 압축하는 방법</div>
-                <p className="text-xs text-slate-600 mt-1">먼저 직접 사진을 축소한 뒤 문서로 보내 WhatsApp이 사진을 흐릿하게 만들지 못하게 하세요.</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">화질 저하 없이 WhatsApp용 이미지를 압축하는 방법</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">먼저 직접 사진을 축소한 뒤 문서로 보내 WhatsApp이 사진을 흐릿하게 만들지 못하게 하세요.</p>
               </button>
               <button
                 type="button"
                 onClick={() => onNavigate('/ko/gaideu/jpg-vs-png-vs-webp')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">JPG vs PNG vs WebP — 어떤 형식을 사용해야 할까요?</div>
-                <p className="text-xs text-slate-600 mt-1">파일 크기, 화질, 투명도를 비교해 매번 올바른 형식을 선택하세요.</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG vs PNG vs WebP — 어떤 형식을 사용해야 할까요?</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">파일 크기, 화질, 투명도를 비교해 매번 올바른 형식을 선택하세요.</p>
               </button>
             </div>
           </section>
@@ -410,14 +429,14 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
             <button
               type="button"
               onClick={() => onNavigate('/ko/')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               이미지 무료 압축하기
             </button>
             <button
               type="button"
               onClick={() => onNavigate('/ko/gaideu/jpg-vs-png-vs-webp')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-white text-slate-900 text-sm font-bold border border-slate-200 shadow-xs hover:bg-slate-50 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#7c3aed]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               JPG vs PNG vs WebP
             </button>

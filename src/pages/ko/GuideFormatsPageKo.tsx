@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, FileImage, Camera, Layers, Globe, CheckCircle2, Scale } from 'lucide-react';
+import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
 
 interface GuideFormatsPageKoProps {
   onNavigate: (path: string) => void;
@@ -195,14 +196,14 @@ export const GuideFormatsPageKo: React.FC<GuideFormatsPageKoProps> = ({ onNaviga
   };
 
   return (
-    <div className="py-10 sm:py-16">
+    <div className="bg-[var(--bg)] py-10 sm:py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
           <button
             type="button"
             onClick={() => onNavigate('/ko/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>이미지 압축기로 돌아가기</span>
@@ -210,50 +211,52 @@ export const GuideFormatsPageKo: React.FC<GuideFormatsPageKoProps> = ({ onNaviga
         </div>
 
         {/* Page Title */}
-        <div className="border-b border-slate-200 pb-6 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <div className="border-b border-[var(--line)] pb-6 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             JPG vs PNG vs WebP — 어떤 형식을 사용해야 할까요?
           </h1>
-          <p className="mt-3 text-lg font-medium text-slate-700 leading-relaxed">
+          <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             잘못된 형식을 선택하면 이미지가 필요한 것보다 10배 커지거나 투명한 로고가 망가질 수 있습니다. 간단하고 정직한 비교와 몇 초 만에 형식을 변환하는 방법을 소개합니다.
           </p>
         </div>
 
         {/* Core Content */}
-        <div className="space-y-8 text-base text-slate-600 leading-relaxed">
+        <div className="space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Scale className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Scale className="w-4 h-4" />
+              </span>
               <span>짧은 답변</span>
             </h2>
             <p>
               한 가지만 기억한다면 이것을 기억하세요. 사진에는 JPG, 로고와 투명도가 필요한 모든 것에는 PNG, 가장 작은 파일이 필요할 때는 WebP를 사용하세요. 특히 웹사이트에서요. 아래 표가 그 이유를 보여줍니다.
             </p>
             <div className="overflow-x-auto pt-1">
-              <table className="w-full text-sm border border-slate-200 rounded-xl overflow-hidden">
+              <table className="w-full text-sm border border-[var(--line)] rounded-2xl overflow-hidden bg-[var(--surface)] shadow-[var(--shadow)]">
                 <thead>
-                  <tr className="bg-slate-50 text-slate-900 text-left">
-                    <th className="px-4 py-3 font-bold">형식</th>
-                    <th className="px-4 py-3 font-bold">파일 크기</th>
-                    <th className="px-4 py-3 font-bold">투명도</th>
-                    <th className="px-4 py-3 font-bold">가장 적합한 용도</th>
+                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-left border-b border-[var(--line)]">
+                    <th className="px-4 py-3 font-semibold">형식</th>
+                    <th className="px-4 py-3 font-semibold">파일 크기</th>
+                    <th className="px-4 py-3 font-semibold">투명도</th>
+                    <th className="px-4 py-3 font-semibold">가장 적합한 용도</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-[var(--line)]">
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">JPG</td>
+                    <td className="px-4 py-3 font-bold text-[#7c3aed] dark:text-[#c4b5fd]">JPG</td>
                     <td className="px-4 py-3">작음</td>
                     <td className="px-4 py-3">아니요</td>
                     <td className="px-4 py-3">사진, 공유, 인쇄</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">PNG</td>
+                    <td className="px-4 py-3 font-bold text-[#7c3aed] dark:text-[#c4b5fd]">PNG</td>
                     <td className="px-4 py-3">큼</td>
                     <td className="px-4 py-3">예</td>
                     <td className="px-4 py-3">로고, 아이콘, 스크린샷</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">WebP</td>
+                    <td className="px-4 py-3 font-bold text-[#7c3aed] dark:text-[#c4b5fd]">WebP</td>
                     <td className="px-4 py-3">가장 작음</td>
                     <td className="px-4 py-3">예</td>
                     <td className="px-4 py-3">웹사이트, 웹 사진</td>
@@ -263,32 +266,38 @@ export const GuideFormatsPageKo: React.FC<GuideFormatsPageKoProps> = ({ onNaviga
             </div>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Camera className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-2">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(2)} flex items-center justify-center shrink-0`}>
+                <Camera className="w-4 h-4" />
+              </span>
               <span>JPG: 사진에 가장 적합</span>
             </h2>
-            <p>
+            <p className="text-sm sm:text-base">
               JPG(JPEG라고도 표기)는 고전적인 사진 형식입니다. 손실 압축을 사용합니다. 눈이 거의 알아차리지 못하는 미세한 세부 묘사를 버려 파일을 극적으로 작게 만듭니다. 5MB 카메라 사진이 JPG로 500KB가 되면서도 여전히 훌륭하게 보일 수 있습니다. JPG는 투명도를 지원하지 않으므로 로고에는 잘못된 선택이지만, 일반적인 사진에는 모든 기기와 앱에서 열 수 있는 안전하고 보편적인 기본 형식입니다.
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-6">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(6)} flex items-center justify-center shrink-0`}>
+                <Layers className="w-4 h-4" />
+              </span>
               <span>PNG: 로고와 투명도에 가장 적합</span>
             </h2>
-            <p>
+            <p className="text-sm sm:text-base">
               PNG는 무손실 형식입니다. 모든 픽셀을 정확히 유지하고 투명한 배경을 지원합니다. 그래서 로고, 아이콘, 글자가 있는 그래픽에 적합한 형식입니다. 대가는 파일 크기입니다. 사진으로 저장한 PNG는 같은 사진을 JPG로 저장한 것보다 5~10배 커질 수 있습니다. 특별한 이유가 없다면 카메라 사진을 PNG로 저장하지 마세요.
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Globe className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-0">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Globe className="w-4 h-4" />
+              </span>
               <span>WebP: 웹사이트에 가장 적합</span>
             </h2>
-            <p>
+            <p className="text-sm sm:text-base">
               WebP는 Google이 만든 최신 형식입니다. 모든 것을 해냅니다. JPG 같은 손실 압축, PNG 같은 투명도, 그리고 같은 눈에 보이는 화질에서 JPG보다 보통 25~35% 작은 파일입니다. 모든 최신 브라우저가 지원하므로 웹사이트 이미지에 가장 좋은 형식입니다. 유일한 약점은 오래된 소프트웨어와의 호환성과 WhatsApp 미리 보기입니다. 그곳에서는 JPG가 여전히 더 안전합니다.
             </p>
           </section>
@@ -297,28 +306,33 @@ export const GuideFormatsPageKo: React.FC<GuideFormatsPageKoProps> = ({ onNaviga
             <img
               src="/guides/jpg-vs-png-vs-webp-1.png"
               alt="같은 사진을 JPG, PNG, WebP로 저장하고 파일 크기를 비교한 스크린샷"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               같은 사진을 세 가지 형식으로: WebP가 가장 작고, PNG가 가장 크며, JPG가 그 중간입니다.
             </figcaption>
           </figure>
 
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <FileImage className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(4)} flex items-center justify-center shrink-0`}>
+                <FileImage className="w-4 h-4" />
+              </span>
               <span>단계별 가이드: 이미지 압축 또는 변환하기</span>
             </h2>
-            <ol className="space-y-4">
+            <ol className="space-y-3">
               {STEPS.map((step, i) => (
-                <li key={step.title} className="flex gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white text-sm font-bold flex items-center justify-center mt-0.5">
+                <li
+                  key={step.title}
+                  className={`flex gap-3.5 p-4 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(i * 2)}`}
+                >
+                  <span className="flex-shrink-0 w-7 h-7 rounded-lg btn-purple-grad text-sm font-mono font-bold flex items-center justify-center mt-0.5 shadow-xs">
                     {i + 1}
                   </span>
                   <div>
-                    <div className="font-bold text-slate-900 text-sm sm:text-base">{step.title}</div>
-                    <p className="text-sm sm:text-base">{step.text}</p>
+                    <div className="font-sans font-bold text-[var(--ink-navy)] text-sm sm:text-base">{step.title}</div>
+                    <p className="text-sm sm:text-base text-[var(--ink-2)] mt-0.5">{step.text}</p>
                   </div>
                 </li>
               ))}
@@ -326,32 +340,34 @@ export const GuideFormatsPageKo: React.FC<GuideFormatsPageKoProps> = ({ onNaviga
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(7)} flex items-center justify-center shrink-0`}>
+                <CheckCircle2 className="w-4 h-4" />
+              </span>
               <span>작업별 형식 선택</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">카메라 사진 — JPG 또는 WebP</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(0)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">카메라 사진 — JPG 또는 WebP</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   공유와 인쇄에는 JPG, 웹사이트에는 WebP를 사용하세요. 두 형식 모두 원본 크기의 일부만으로 사진을 훌륭하게 유지합니다.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">로고와 아이콘 — PNG 또는 WebP</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(3)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">로고와 아이콘 — PNG 또는 WebP</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   투명도가 필요하므로 JPG는 제외됩니다. PNG는 안전한 고전 형식이고, WebP는 더 작으며 최신 환경 어디에서나 작동합니다.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">스크린샷 — WebP 또는 PNG</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(6)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">스크린샷 — WebP 또는 PNG</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   날카로운 글자와 평평한 색상은 WebP와 PNG에 잘 맞습니다. JPG는 글자 모서리를 흐릿하게 하므로 스크린샷에는 피하세요.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">웹사이트 이미지 — WebP</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(9)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">웹사이트 이미지 — WebP</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   가장 작은 파일은 더 빠른 페이지를 의미합니다. 웹사이트 사진을 WebP로 변환하고 아주 오래된 브라우저를 위해 JPG를 대체 형식으로 유지하세요.
                 </p>
               </div>
@@ -362,36 +378,41 @@ export const GuideFormatsPageKo: React.FC<GuideFormatsPageKoProps> = ({ onNaviga
             <img
               src="/guides/jpg-vs-png-vs-webp-2.png"
               alt="CompressMyPic에서 출력 형식 JPG, PNG, WebP를 선택하는 스크린샷"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               CompressMyPic에서 출력 형식을 선택하세요. 원본을 유지하거나 JPG, PNG, WebP로 변환하세요.
             </figcaption>
           </figure>
 
           {/* FAQ */}
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Layers className="w-4 h-4" />
+              </span>
               <span>자주 묻는 질문</span>
             </h2>
             <div className="space-y-3">
-              {FAQ_DATA.map((item) => {
+              {FAQ_DATA.map((item, idx) => {
                 const isOpen = openIds.has(item.id);
                 return (
-                  <div key={item.id} className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
+                  <div
+                    key={item.id}
+                    className={`border rounded-2xl overflow-hidden shadow-[var(--shadow)] transition-shadow hover:shadow-[var(--shadow-lg)] ${getPastelCardClass(idx)}`}
+                  >
                     <button
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className={`w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors ${isOpen ? 'bg-slate-50/50' : 'hover:bg-slate-50/50'}`}
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
-                      <span className="text-sm sm:text-base font-bold text-slate-900">{item.question}</span>
-                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-600' : 'text-slate-400'}`} />
+                      <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
+                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'}`} />
                     </button>
                     {isOpen && (
-                      <div className="px-5 py-4 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 bg-white">
+                      <div className="px-5 py-4 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/55 dark:bg-slate-900/35">
                         {item.answer}
                       </div>
                     )}
@@ -403,23 +424,23 @@ export const GuideFormatsPageKo: React.FC<GuideFormatsPageKoProps> = ({ onNaviga
 
           {/* Related guides */}
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900">관련 가이드</h2>
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">관련 가이드</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button
                 type="button"
                 onClick={() => onNavigate('/ko/gaideu/watsae-yong-imiji-apchuk')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">화질 저하 없이 WhatsApp용 이미지를 압축하는 방법</div>
-                <p className="text-xs text-slate-600 mt-1">먼저 직접 사진을 축소한 뒤 문서로 보내 WhatsApp이 사진을 흐릿하게 만들지 못하게 하세요.</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">화질 저하 없이 WhatsApp용 이미지를 압축하는 방법</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">먼저 직접 사진을 축소한 뒤 문서로 보내 WhatsApp이 사진을 흐릿하게 만들지 못하게 하세요.</p>
               </button>
               <button
                 type="button"
                 onClick={() => onNavigate('/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">웹사이트와 이메일용 이미지 크기를 100KB로 줄이는 방법</div>
-                <p className="text-xs text-slate-600 mt-1">사진을 망치지 않고 100KB에 도달하는 단계별 가이드입니다.</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">웹사이트와 이메일용 이미지 크기를 100KB로 줄이는 방법</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">사진을 망치지 않고 100KB에 도달하는 단계별 가이드입니다.</p>
               </button>
             </div>
           </section>
@@ -428,14 +449,14 @@ export const GuideFormatsPageKo: React.FC<GuideFormatsPageKoProps> = ({ onNaviga
             <button
               type="button"
               onClick={() => onNavigate('/ko/')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               이미지 무료 압축하기
             </button>
             <button
               type="button"
               onClick={() => onNavigate('/ko/gaideu/watsae-yong-imiji-apchuk')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-white text-slate-900 text-sm font-bold border border-slate-200 shadow-xs hover:bg-slate-50 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#7c3aed]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               WhatsApp용으로 압축하기
             </button>
