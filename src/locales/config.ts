@@ -52,7 +52,7 @@ export const SUPPORTED_LANGUAGES: LanguageMeta[] = [
   { code: 'ru', prefix: 'ru', nativeName: 'Русский', englishName: 'Russian', dir: 'ltr', variant: 'Standard Russian', phase: 4, status: 'in-progress', directoryPath: '/ru/vse-instrumenty' },
   { code: 'ja', prefix: 'ja', nativeName: '日本語', englishName: 'Japanese', dir: 'ltr', variant: 'Natural modern Japanese', phase: 5, status: 'in-progress', directoryPath: '/ja/tools' },
   { code: 'ko', prefix: 'ko', nativeName: '한국어', englishName: 'Korean', dir: 'ltr', variant: 'Standard South Korean', phase: 5, status: 'in-progress', directoryPath: '/ko/tools' },
-  { code: 'zh', prefix: 'zh', nativeName: '简体中文', englishName: 'Chinese (Simplified)', dir: 'ltr', variant: 'Simplified Mandarin Chinese', phase: 6, status: 'planned', directoryPath: '/zh/all-tools' },
+  { code: 'zh', prefix: 'zh', nativeName: '简体中文', englishName: 'Chinese (Simplified)', dir: 'ltr', variant: 'Simplified Mandarin Chinese', phase: 6, status: 'in-progress', directoryPath: '/zh/all-tools' },
 ];
 
 export const SUPPORTED_LANGS: SupportedLang[] = SUPPORTED_LANGUAGES.map((l) => l.code);

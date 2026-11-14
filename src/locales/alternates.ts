@@ -1,11 +1,11 @@
 // Shared hreflang alternates for CompressMyPic — all language versions of a page.
 // Single module so every page (in any language) lists the FULL reciprocal set:
-// en + es + pt + fr + de + it + id + ru + ja + ko + x-default. The per-language helpers
+// en + es + pt + fr + de + it + id + ru + ja + ko + zh + x-default. The per-language helpers
 // (getEsAlternates, getPtAlternates, getFrAlternates, getDeAlternates,
-// getItAlternates, getIdAlternates, getRuAlternates, getJaAlternates, getKoAlternates) return only their own pair and must NOT be used for tool
+// getItAlternates, getIdAlternates, getRuAlternates, getJaAlternates, getKoAlternates, getZhAlternates) return only their own pair and must NOT be used for tool
 // pages anymore — a page listing only its own pair makes Google treat the
 // other versions' annotations as non-reciprocal.
-// One-way imports only (this module imports the nine slug maps; no slug map
+// One-way imports only (this module imports the ten slug maps; no slug map
 // imports this module), so there are no circular imports.
 
 import { ES_PATH_BY_EN } from './es/slugs';
@@ -17,6 +17,7 @@ import { ID_PATH_BY_EN } from './id/slugs';
 import { RU_PATH_BY_EN } from './ru/slugs';
 import { JA_PATH_BY_EN } from './ja/slugs';
 import { KO_PATH_BY_EN } from './ko/slugs';
+import { ZH_PATH_BY_EN } from './zh/slugs';
 
 const BASE = 'https://compressmypic.online';
 
@@ -36,6 +37,7 @@ export function getAlternates(enPath: string): HreflangAlternate[] {
   const ru = RU_PATH_BY_EN[enPath];
   const ja = JA_PATH_BY_EN[enPath];
   const ko = KO_PATH_BY_EN[enPath];
+  const zh = ZH_PATH_BY_EN[enPath];
   const items: HreflangAlternate[] = [{ lang: 'en', href: `${BASE}${enPath}` }];
   if (es) items.push({ lang: 'es', href: `${BASE}${es}` });
   if (pt) items.push({ lang: 'pt', href: `${BASE}${pt}` });
@@ -46,6 +48,7 @@ export function getAlternates(enPath: string): HreflangAlternate[] {
   if (ru) items.push({ lang: 'ru', href: `${BASE}${ru}` });
   if (ja) items.push({ lang: 'ja', href: `${BASE}${ja}` });
   if (ko) items.push({ lang: 'ko', href: `${BASE}${ko}` });
+  if (zh) items.push({ lang: 'zh', href: `${BASE}${zh}` });
   items.push({ lang: 'x-default', href: `${BASE}${enPath}` });
   return items;
 }
