@@ -21,6 +21,7 @@ import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { TermsPage } from './pages/TermsPage';
+import { AdminCommentsPage } from './pages/AdminCommentsPage';
 import { GuideWhatsAppPage } from './pages/GuideWhatsAppPage';
 import { GuideFormatsPage } from './pages/GuideFormatsPage';
 import { Guide100kbPage } from './pages/Guide100kbPage';
@@ -179,6 +180,7 @@ const KNOWN_ROUTES = [
   '/contact',
   '/privacy',
   '/terms',
+  '/admin/comments',
   '/guides/compress-images-for-whatsapp',
   '/guides/jpg-vs-png-vs-webp',
   '/guides/reduce-image-size-to-100kb',
@@ -1748,6 +1750,10 @@ export default function App() {
         </main>
       ) : lang !== 'en' && currentPath === '/' ? (
         renderHome(activeUi)
+      ) : currentPath === '/admin/comments' ? (
+        <main className="flex-1">
+          <AdminCommentsPage onNavigate={handleNavigate} />
+        </main>
       ) : currentPath === ES_ALL_TOOLS_PATH ? (
         <main className="flex-1">
           <AllToolsPageEs onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
