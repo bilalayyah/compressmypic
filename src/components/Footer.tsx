@@ -11,6 +11,7 @@ export interface FooterStrings {
   directoryHeading: string;
   processedLocally: string;
   bottomRights: string; // contains {year}
+  deployedNote: string; // 'Crafted with ❤️ by Bilal inspired by Shaheen' — Bilal/Shaheen render in script font
   contactLabel: string; // 'Contacto: bilalayyah@gmail.com'
   toolsLinks: Array<{ slug: string; label: string }>;
   legalLinks: Array<{ slug: string; label: string }>;
@@ -31,6 +32,7 @@ const DEFAULT_FOOTER_STRINGS: FooterStrings = {
   processedLocally: 'Processed locally via HTML5 Canvas',
   bottomRights:
     '© {year} CompressMyPic. All rights reserved. Free client-side image compression utility.',
+  deployedNote: 'Crafted with ❤️ by Bilal inspired by Shaheen',
   contactLabel: 'Contact: bilalayyah@gmail.com',
   toolsLinks: [
     { slug: '/', label: 'Compress Images' },
@@ -283,6 +285,17 @@ export const Footer: React.FC<FooterProps> = ({
         {/* Bottom Bar */}
         <div className="pt-6 border-t border-[var(--line)] flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--ink-3)] gap-4">
           <p>{strings.bottomRights.replace('{year}', String(new Date().getFullYear()))}</p>
+          <p>
+            {strings.deployedNote.split(/(Bilal|Shaheen)/g).map((part, index) =>
+              part === 'Bilal' || part === 'Shaheen' ? (
+                <span key={index} className="font-script text-base">
+                  {part}
+                </span>
+              ) : (
+                <span key={index}>{part}</span>
+              ),
+            )}
+          </p>
           <div className="flex items-center gap-4">
             <span>{strings.contactLabel}</span>
           </div>
