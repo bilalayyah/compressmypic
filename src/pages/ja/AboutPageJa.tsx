@@ -129,6 +129,48 @@ export const AboutPageJa: React.FC<AboutPageJaProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Users className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>制作者：Bilal</span>
+            </h2>
+            <p>
+              CompressMyPicは、ウェブ向けに無料でプライバシーを重視したツールを作る独立系クリエイター、Bilalによって作られました。彼は、ファイルを小さくするためだけに個人の写真を他人のサーバーにアップロードしなければならない画像圧縮ツールに不満を感じ、CompressMyPicを始めました。彼の答えは、訪問者自身のブラウザーの中で作業のすべてを行うツールでした。アップロードも、アカウントも、透かしも、最後に届く予想外の請求もありません。
+            </p>
+            <p>
+              Bilalは、圧縮ツールや変換ツールからファビコンジェネレーターや背景除去ツールまで、サイト上の48のツールをすべて自分で設計し、構築し、維持しています。サポートメッセージには自分で返信し、すべてのフィードバックを読み、1枚の写真を圧縮する人も1000枚を圧縮する人も、誰にとってもツールを無料に保っています。サイトのフッターにはShaheenへの小さな謝辞があり、その励ましがBilalに、ツールを作り続け、単に人気があるだけでなく本当に役立つものにするよう促しました。
+            </p>
+            <p>
+              彼の活動をフォローしたい場合は、
+              <a
+                href="https://github.com/bilalayyah/compressmypic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                GitHub
+              </a>
+              でプロジェクトを見つけたり、
+              <a
+                href="https://dev.to/bilalayyah"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                Dev.to
+              </a>
+              でBilalのガイドを読んだり、
+              <button
+                type="button"
+                onClick={() => onNavigate('/ja/otoiawase')}
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+              >
+                お問い合わせページ
+              </button>
+              から挨拶したりできます。
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
               <Lock className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>プライバシーとセキュリティ</span>
             </h2>

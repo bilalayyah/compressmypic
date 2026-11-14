@@ -174,6 +174,31 @@ export const Guide100kbPageJa: React.FC<Guide100kbPageJaProps> = ({ onNavigate }
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "画像サイズを100KBまで小さくする方法｜Web・メール用",
+          description: "無料のオンライン圧縮ツールで画像サイズを100KBまで小さくする方法をステップごとに解説。登録不要、透かしなし。画像はお使いの端末内に留まります。",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/ja/gaido/gazo-saizu-o-100kb-ni-hedasu",
+          inLanguage: 'ja',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "ホーム", item: "https://compressmypic.online/ja/" },
+            { '@type': 'ListItem', position: 2, name: "ガイド" },
+            { '@type': 'ListItem', position: 3, name: "画像サイズを100KBまで小さくする方法｜Web・メール用", item: "https://compressmypic.online/ja/gaido/gazo-saizu-o-100kb-ni-hedasu" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -219,6 +244,9 @@ export const Guide100kbPageJa: React.FC<Guide100kbPageJaProps> = ({ onNavigate }
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             画像サイズを100KBまで小さくする方法｜ウェブサイトとメール用
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            著者：<a href="/ja/nitsuite" onClick={(e) => { e.preventDefault(); onNavigate('/ja/nitsuite'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             4MBの写真はウェブサイトを遅くし、メールも詰まらせます。100KB程度まで小さくすれば、ページは速く読み込まれ、メールもすぐに送れます。正しく行えば、誰にも違いはわかりません。
           </p>

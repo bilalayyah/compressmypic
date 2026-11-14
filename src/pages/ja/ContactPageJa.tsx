@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Send, CheckCircle2, AlertCircle, Mail, RotateCcw, Clock, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Send, CheckCircle2, AlertCircle, Mail, RotateCcw, Clock, ShieldCheck, Github, MessageSquare, Lightbulb, Bug } from 'lucide-react';
 
 interface ContactPageJaProps {
   onNavigate: (path: string) => void;
@@ -150,10 +150,12 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                    <label htmlFor="contact-name" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                       お名前 <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                     </label>
                     <input
+                      id="contact-name"
+                      name="name"
                       type="text"
                       required
                       value={contactName}
@@ -164,10 +166,12 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                    <label htmlFor="contact-email" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                       メールアドレス <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                     </label>
                     <input
+                      id="contact-email"
+                      name="email"
                       type="email"
                       required
                       value={contactEmail}
@@ -179,10 +183,12 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                  <label htmlFor="contact-subject" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                     件名 <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                   </label>
                   <input
+                      id="contact-subject"
+                      name="subject"
                     type="text"
                     required
                     value={contactSubject}
@@ -193,10 +199,12 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                  <label htmlFor="contact-message" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                     メッセージ <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                   </label>
                   <textarea
+                      id="contact-message"
+                      name="message"
                     rows={5}
                     required
                     value={contactMessage}
@@ -226,6 +234,90 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
               </form>
             )}
           </div>
+        </div>
+
+        {/* Extra Information Sections */}
+        <div className="mt-12 space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Mail className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>CompressMyPicの運営者について</span>
+            </h2>
+            <p>
+              CompressMyPicは、プライバシーを尊重する真に無料の画像圧縮ツールを作りたいと考えた独立系クリエイター、Bilalによって作られ、運営されています。ほとんどのオンラインツールとは異なり、CompressMyPicがあなたの写真をサーバーにアップロードすることは決してありません。すべての画像はあなた自身のブラウザーの中で圧縮されます。Bilalはすべてのメッセージを自分で読み、バグの修正、品質の向上、次に作るツールの決定にあなたのフィードバックを活かしています。
+            </p>
+            <p>
+              これは大企業ではなく小さな独立プロジェクトですので、いつも直接的で正直な回答が得られます。たとえその答えが、ある機能はまだ実現できないというものであってもです。あなたとツールを作った人の間に、サポートの待ち行列も自動チャットボットもありません。
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>どのような内容でご連絡いただけますか</span>
+            </h2>
+            <p>
+              サポートを最も早く受ける方法は、何が起きたのかを正確に伝えることです。バグを報告する場合は、使用していたツールの名前、ブラウザー、画像ファイルの種類をお知らせください。たとえば、iPhoneのHEIC写真や透明なPNGなどです。機能をリクエストする場合は、何をしようとしていたのか、なぜ今のツールでは足りないのかを説明してください。圧縮した画像が予想より悪く見えるといった誤った結果の報告や、ガイドや翻訳ページの修正も歓迎します。
+            </p>
+            <p>
+              パートナーシップ、報道関係のお問い合わせ、新しいツールの提案についてもご連絡いただけます。ウェブサイト、ブログ、教室を運営していて、読者や生徒にCompressMyPicをすすめたい場合は、ぜひご連絡ください。上のフォームを使い、件名を明確にしていただければ、メッセージがすみやかに適切な場所へ届きます。
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Github className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Bilalへのその他の連絡方法</span>
+            </h2>
+            <p>
+              公開のチャンネルをご希望の場合は、ウェブ上でBilalとCompressMyPicプロジェクトを見つけることができます。ソースコードはGitHubにあり、技術的な問題の報告や開発のフォローもできます。画像圧縮についての詳しいガイドはDev.toで公開されており、Indie Hackersにも製品が掲載されていて、進捗をフォローしたりフィードバックを残したりできます。
+            </p>
+            <ul className="list-disc pl-6 space-y-1.5">
+              <li>
+                <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
+                {' '}— ソースコード、バグ報告、開発の最新情報。
+              </li>
+              <li>
+                <a href="https://dev.to/bilalayyah" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Dev.to — dev.to/bilalayyah</a>
+                {' '}— JPG、PNG、WebP圧縮のガイド。
+              </li>
+              <li>
+                <a href="https://www.indiehackers.com/product/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Indie Hackers — indiehackers.com/product/compressmypic</a>
+                {' '}— 製品ページ、マイルストーン、コミュニティからのフィードバック。
+              </li>
+            </ul>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Lightbulb className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>ご連絡の前に</span>
+            </h2>
+            <p>
+              いくつかの簡単な確認で、返信を待たずにほとんどの問題が解決します。メインの圧縮ツールは1枚あたり最大20MBまでの画像に対応し、形式変換ツールは1ファイルあたり最大25MBまで対応しています。これより大きいファイルは開始前に拒否されます。非常に古いブラウザーではAVIFやHEICのような新しい形式に対応していない場合がありますので、最新版のChrome、Edge、Firefox、Safariを試すと、壊れているように見えるツールが直ることがよくあります。また、画像があなたのデバイスから離れることは決してありませんので、特定の写真だけに問題がある場合、その原因はウェブサイトではなくファイルそのものにあることがほとんどです。
+            </p>
+            <p>
+              ご連絡の際は、ブラウザーの名前とバージョン、使用していたツール、画像のサイズと形式をお知らせください。英語で返信し、通常24〜48営業時間以内にお答えします。データの取り扱いについてのご質問の場合は、まず
+              <button
+                type="button"
+                onClick={() => onNavigate('/ja/puraibashi')}
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+              >
+                プライバシーポリシー
+              </button>
+              をお読みください。画像がアップロードされたり保存されたりすることは決してないと、平易な言葉で説明しています。
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Bug className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>問題を報告する</span>
+            </h2>
+            <p>
+              壊れているものを見つけましたか？どのページで起きたのか、何をクリックしたのか、代わりに何が表示されると思っていたのかを教えてください。スクリーンショットがあると大いに役立ちます。特定の画像に関する問題の場合は、その形式とサイズをお知らせください。ただし、プライベートな写真やセンシティブな写真を送らないでください。報告されたバグはできるだけ早く修正し、修正が公開されたらメールでお知らせします。
+            </p>
+          </section>
         </div>
       </div>
     </div>

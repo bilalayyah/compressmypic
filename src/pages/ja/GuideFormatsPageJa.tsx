@@ -170,6 +170,31 @@ export const GuideFormatsPageJa: React.FC<GuideFormatsPageJaProps> = ({ onNaviga
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "JPG・PNG・WebPの違いと使い分け｜どれを選ぶべき？",
+          description: "JPG・PNG・WebPをわかりやすく比較。ファイルサイズ、画質、透明対応の違いを解説し、写真・ロゴ・ウェブサイトに合った形式の選び方を紹介します。",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/ja/gaido/jpg-vs-png-vs-webp",
+          inLanguage: 'ja',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "ホーム", item: "https://compressmypic.online/ja/" },
+            { '@type': 'ListItem', position: 2, name: "ガイド" },
+            { '@type': 'ListItem', position: 3, name: "JPG・PNG・WebPの違いと使い分け｜どれを選ぶべき？", item: "https://compressmypic.online/ja/gaido/jpg-vs-png-vs-webp" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -215,6 +240,9 @@ export const GuideFormatsPageJa: React.FC<GuideFormatsPageJaProps> = ({ onNaviga
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             JPG・PNG・WebPの違いと使い分け｜どれを選ぶべき？
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            著者：<a href="/ja/nitsuite" onClick={(e) => { e.preventDefault(); onNavigate('/ja/nitsuite'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             間違った形式を選ぶと、画像が必要以上に10倍も大きくなったり、透明なロゴが台無しになったりします。シンプルで正直な比較と、数秒で形式を変換する方法を紹介します。
           </p>

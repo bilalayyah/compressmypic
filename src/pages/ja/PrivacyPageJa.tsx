@@ -35,7 +35,7 @@ export const PrivacyPageJa: React.FC<PrivacyPageJaProps> = ({ onNavigate }) => {
             </h1>
           </div>
           <p className="text-xs text-[var(--ink-3)] font-medium">
-            最終更新日：2026年11月12日
+            最終更新日：2026年11月14日
           </p>
         </div>
 
@@ -75,12 +75,12 @@ export const PrivacyPageJa: React.FC<PrivacyPageJaProps> = ({ onNavigate }) => {
               </a>
               ）または{' '}
               <a
-                href="http://www.aboutads.info/choices/"
+                href="https://www.aboutads.info/choices/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
               >
-                http://www.aboutads.info/choices/
+                https://www.aboutads.info/choices/
               </a>
               をご覧ください。
             </p>
@@ -91,7 +91,7 @@ export const PrivacyPageJa: React.FC<PrivacyPageJaProps> = ({ onNavigate }) => {
               4. アナリティクス
             </h2>
             <p>
-              現在、当社はアナリティクスCookieを使用していません。変更があった場合は、このポリシーを更新します。
+              当社は、サイトがどのように利用されているかを集計形式で把握するために、Cloudflare Web Analyticsを使用しています。たとえば、どのツールが人気か、どのページが訪問されているかなどです。Cloudflare Web Analyticsはプライバシーを第一に考えたものです。Cookieを使用せず、訪問者をウェブサイト間で個別に追跡することも、個人を特定できる情報を収集することもありません。記録されるのは、あなたを特定できない匿名化された集計利用統計のみです。当社はGoogle Analyticsや、トラッキングCookieを設定するその他の分析サービスを使用していません。
             </p>
           </section>
 
@@ -104,9 +104,88 @@ export const PrivacyPageJa: React.FC<PrivacyPageJaProps> = ({ onNavigate }) => {
             </p>
           </section>
 
-          <section className="space-y-2 pt-2 border-t border-[var(--line)]">
+                    <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              6. お問い合わせ
+              6. Cookieと同意
+            </h2>
+            <p>
+              CompressMyPic自体は、画像ツール用にCookieを一切設定しません。圧縮はすべてお使いのブラウザー内で行われ、当社側でCookie、アカウント、保存された設定を必要としません。このサイトのCookieはサードパーティのサービスによるものです。Google AdSenseとそのパートナーは、関連性の高い広告を表示したり、広告の表示回数を測定したりするために、広告Cookieを設定する場合があります。これらのCookieはお使いのブラウザーによってデバイスに保存され、ブラウザーの設定からいつでも削除できます。
+            </p>
+            <p>
+              欧州経済領域または英国からアクセスされる場合、GDPRおよびGoogleのEUユーザー同意ポリシーに従い、パーソナライズド広告を表示する前に同意をお願いしています。同意は、ブラウザーのCookieを削除するか、サイト上で提供される同意の選択を変更することで、いつでも撤回できます。パーソナライズされていない広告を選んでも広告が完全になくなるわけではありませんが、広告が閲覧履歴に基づかなくなります。
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              7. GDPRに基づくあなたの権利
+            </h2>
+            <p>
+              欧州経済領域または英国にお住まいの場合、一般データ保護規則（GDPR）により、ご自身の個人データに対する権利が認められています。当社が保有するあなたの個人データのコピーを請求したり、誤りがある場合に訂正を求めたり、削除を求めたり、利用の制限を求めたり、処理に異議を唱えたりできます。処理があなたの同意に基づいている場合、同意はいつでも撤回できます。撤回しても、それ以前に適法に行われた処理には影響しません。
+            </p>
+            <p>
+              当社のツールは画像をローカルで処理し、ユーザーアカウントもありませんので、当社が通常保有する個人データは、お問い合わせフォームから送信されたお名前、メールアドレス、メッセージのみです。これらの権利を行使するには、<a
+                href="mailto:bilalayyah@gmail.com"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                bilalayyah@gmail.com
+              </a>までメールでご連絡ください。30日以内に返信いたします。また、当社があなたのデータを不公平に取り扱ったと思われる場合は、お住まいの地域のデータ保護当局に苦情を申し立てる権利もあります。
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              8. データの保存期間
+            </h2>
+            <p>
+              当社は、個人データを収集した目的に必要な期間のみ保存します。お問い合わせフォームのメッセージは、お問い合わせへの回答が終わり、会話が終了するまでの間、およびその後の短期間、フォローアップの質問に備えてのみ保存されます。マーケティングに使用されることは決してなく、第三者と共有されることもありません。あなたの画像は一切保存されません。ツールを使用している間、ブラウザーのメモリー内にのみ存在し、タブを閉じるか更新すると消去されます。集計された分析データには個人情報は含まれず、要約形式でのみ保存されます。
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              9. セキュリティとreCAPTCHA
+            </h2>
+            <p>
+              このサイトはHTTPSで提供されており、お使いのブラウザーとサイト間の接続は暗号化されています。お問い合わせフォームはFormSubmitを通じて提供され、あなたのメッセージは当社のメールアドレスに転送されます。また、フォームはGoogle reCAPTCHAによって保護されており、スパムや自動化された不正利用をブロックします。フォームを送信すると、reCAPTCHAは人間とボットを区別するために、ブラウザーやデバイスの詳細などのハードウェアおよびソフトウェア情報を収集する場合があります。これはGoogleの<a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+              >
+                プライバシーポリシー
+              </a>と<a
+                href="https://policies.google.com/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+              >
+                利用規約
+              </a>に準拠します。当社がお問い合わせフォームでパスワード、支払い情報、機密性の高い個人書類の送信を求めることは決してありません。また、メッセージにそれらを含めないでください。
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              10. 子どものプライバシー
+            </h2>
+            <p>
+              CompressMyPicは一般向けのツールであり、13歳未満の子どもを対象としていません。当社は、子どもから個人情報を意図的に収集することはありません。保護者の方で、お子様がお問い合わせフォームを通じて個人情報を送信したと思われる場合は、メールでご連絡ください。速やかに削除いたします。
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              11. 本ポリシーの変更
+            </h2>
+            <p>
+              当社は、サイトが変更された場合に本ポリシーを更新することがあります。たとえば、新しい分析サービス、新しい広告パートナー、または新しい連絡方法を追加する場合です。その際は、このページ上部の「最終更新日」を変更し、重要な変更についてはここで平易な言葉で説明します。変更後にサイトを引き続き利用することは、更新されたポリシーに同意したことになります。
+            </p>
+          </section>
+
+<section className="space-y-2 pt-2 border-t border-[var(--line)]">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              12. お問い合わせ
             </h2>
             <p>
               このポリシーについてご質問がある場合は、{' '}

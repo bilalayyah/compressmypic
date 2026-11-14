@@ -178,6 +178,31 @@ export const GuideWhatsAppPageJa: React.FC<GuideWhatsAppPageJaProps> = ({ onNavi
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "WhatsApp用に画像を圧縮する方法｜画質を落とさず送る",
+          description: "WhatsApp用に画質を落とさず画像を圧縮する方法を解説。無料でプライバシーを守り、登録不要。送信前に写真を小さくして、くっきりしたまま速く送れます。",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/ja/gaido/whatsapp-yo-gazo-asshuku",
+          inLanguage: 'ja',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "ホーム", item: "https://compressmypic.online/ja/" },
+            { '@type': 'ListItem', position: 2, name: "ガイド" },
+            { '@type': 'ListItem', position: 3, name: "WhatsApp用に画像を圧縮する方法｜画質を落とさず送る", item: "https://compressmypic.online/ja/gaido/whatsapp-yo-gazo-asshuku" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -223,6 +248,9 @@ export const GuideWhatsAppPageJa: React.FC<GuideWhatsAppPageJaProps> = ({ onNavi
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             WhatsApp用に画質を落とさず画像を圧縮する方法
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            著者：<a href="/ja/nitsuite" onClick={(e) => { e.preventDefault(); onNavigate('/ja/nitsuite'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             WhatsAppは送る写真をすべて縮小します。しかも、必要以上に小さくしてしまうことがよくあります。まず自分で写真を圧縮し、正しい方法で送れば、写真はくっきりしたまま届き、速く送れて、モバイルデータも少なく済みます。
           </p>
