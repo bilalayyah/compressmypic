@@ -415,6 +415,18 @@ export const JA = {
     featuresTitle: 'CompressMyPicの{name}を使う理由', // 'Why Use CompressMyPic {name}?'
     faqTitle: '{name} — よくある質問', // '{name} — Frequently Asked Questions'
     relatedTitle: '関連する無料画像ツール', // 'Related Free Image Tools'
+    commentsTitle: 'コメント',
+    commentsNote: 'このツールについての感想を共有しましょう — 名前を書いて投稿するだけ。アカウントは不要です。',
+    commentsNamePlaceholder: 'あなたの名前',
+    commentsTextPlaceholder: 'コメントを書く…',
+    commentsSubmit: 'コメントを投稿',
+    commentsPosting: '投稿中…',
+    commentsEmpty: '最初のコメントを投稿しましょう。',
+    commentsPosted: 'ありがとうございます！コメントが公開されました。',
+    commentsLoadError: 'コメントを読み込めませんでした。もう一度お試しください。',
+    commentsPostError: 'コメントを投稿できませんでした。もう一度お試しください。',
+    commentsRetry: '再試行',
+    commentsLoading: 'コメントを読み込み中…',
   },
   uploadZone: {
     dropText: '画像をここにドラッグ＆ドロップ', // 'Drag & drop images here'
