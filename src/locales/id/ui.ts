@@ -68,6 +68,7 @@ export const ID = {
     processedLocally: 'Diproses secara lokal dengan HTML5 Canvas',
     bottomRights:
       '© {year} CompressMyPic. Hak cipta dilindungi. Utilitas kompresi gambar gratis di browser.',
+    deployedNote: 'Crafted with ❤️ by Bilal inspired by Shaheen',
     contactLabel: 'Kontak: bilalayyah@gmail.com',
     toolsLinks: [
       { slug: '/', label: 'Kompres Gambar' },
