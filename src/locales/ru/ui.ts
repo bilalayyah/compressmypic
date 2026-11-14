@@ -65,6 +65,7 @@ export const RU = {
     processedLocally: 'Обрабатывается локально с помощью HTML5 Canvas',
     bottomRights:
       '© {year} CompressMyPic. Все права защищены. Бесплатная утилита для сжатия изображений в браузере.',
+    deployedNote: 'Crafted with ❤️ by Bilal inspired by Shaheen',
     contactLabel: 'Контакт: bilalayyah@gmail.com',
     toolsLinks: [
       { slug: '/', label: 'Сжать изображения' },
