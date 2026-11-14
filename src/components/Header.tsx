@@ -11,6 +11,7 @@ import {
   Globe,
   Search,
   LayoutGrid,
+  Layers,
 } from 'lucide-react';
 import { TOOLS_REGISTRY, TOOL_CATEGORIES } from '../data/tools';
 import type { ToolDefinition } from '../data/tools';
@@ -212,16 +213,10 @@ export const Header: React.FC<HeaderProps> = ({
             className="w-8 h-8 sm:w-9 sm:h-9 rounded-[10px] btn-purple-grad grid place-items-center shadow-xs shrink-0"
             aria-hidden="true"
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 sm:w-5 sm:h-5">
-              <path d="M8 3H5a2 2 0 0 0-2 2v3" />
-              <path d="M16 3h3a2 2 0 0 1 2 2v3" />
-              <path d="M8 21H5a2 2 0 0 1-2-2v-3" />
-              <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
-              <circle cx="12" cy="12" r="3.2" />
-            </svg>
+            <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
           </span>
           <span className="font-sans text-[1.08rem] sm:text-[1.22rem] font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
-            Compress<span className="text-[#7c3aed] dark:text-[#a78bfa]">My</span>Pic
+            Compress<span className="text-[#7c3aed] dark:text-[#a78bfa]">MyPic</span>
           </span>
         </a>
 
