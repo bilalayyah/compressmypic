@@ -145,7 +145,7 @@ export const DE = {
   },
   hero: {
     pill: '100 % private Komprimierung auf Ihrem Gerät · Kein Server-Upload',
-    h1: 'Kostenloser Bildkompressor – Bilder online komprimieren und Größe reduzieren ohne Qualitätsverlust',
+    h1: 'Kostenloser Bildkompressor – Bilder online komprimieren',
     sub: 'Reduzieren Sie die Dateigröße Ihrer Bilder ohne sichtbaren Qualitätsverlust. Komprimieren Sie Bilder online kostenlos mit unserem kostenlosen Bild- und Fotokompressor – einem Online-Bildoptimierer für JPG, PNG, WebP und HEIC. Schnell, sicher, ohne Anmeldung, ohne Wasserzeichen und mit einfacher Bildkomprimierung direkt in Ihrem Browser.',
     badge1: 'Ihre Bilder verlassen niemals Ihr Gerät',
     badge2: 'Sofortige Verarbeitung im Browser',
@@ -404,6 +404,7 @@ export const DE = {
     featuresTitle: 'Warum {name} von CompressMyPic verwenden?',
     faqTitle: '{name} – Häufige Fragen',
     relatedTitle: 'Verwandte kostenlose Bild-Tools',
+    relatedLinksIntro: 'Das könnte Sie auch interessieren:',
     commentsTitle: 'Kommentare',
     commentsNote: 'Teilen Sie Ihre Meinung zu diesem Tool — schreiben Sie einfach Ihren Namen und posten Sie. Kein Konto nötig.',
     commentsNamePlaceholder: 'Ihr Name',
@@ -455,10 +456,9 @@ export const DE = {
     altProcessed: 'Verarbeitete Version von {name}', // 'Processed version of {name}'
   },
   homeMeta: {
-    seoTitle: 'Kostenloser Bildkompressor online – 100 KB',
-    seoDescription:
-      'Bilder online kostenlos komprimieren – Dateigröße reduzieren ohne Qualitätsverlust. JPG, PNG und WebP komprimieren ohne Anmeldung und ohne Wasserzeichen.',
-    h1: 'Kostenloser Bildkompressor online',
+    seoTitle: 'Kostenloser Bildkompressor – Bilder online komprimieren, ohne Anmeldung',
+    seoDescription: 'Bilder online kostenlos komprimieren und JPG-, PNG- und WebP-Dateien verkleinern, ohne Qualität zu verlieren. Ohne Anmeldung und ohne Wasserzeichen – Ihre Fotos verlassen nie Ihren Browser.',
+    h1: 'Kostenloser Bildkompressor – Bilder online komprimieren',
     subtitle: 'Verkleinern Sie JPG-, PNG-, WebP- und HEIC-Dateien direkt in Ihrem Browser.',
   },
   categories: {

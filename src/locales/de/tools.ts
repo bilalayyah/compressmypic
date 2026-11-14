@@ -26,10 +26,9 @@ export const TOOLS_REGISTRY_DE: ToolDefinition[] = [
   name: 'Bildkompressor',
   shortDescription: 'Komprimieren Sie JPG-, PNG-, WebP- und HEIC-Bilder ohne Qualitätsverlust.',
   category: 'compress',
-  seoTitle: 'Kostenloser Bildkompressor online – 100 KB',
-  seoDescription:
-    'Bilder online kostenlos komprimieren – Dateigröße reduzieren ohne Qualitätsverlust. JPG, PNG und WebP komprimieren ohne Anmeldung und ohne Wasserzeichen.',
-  h1: 'Kostenloser Bildkompressor online',
+  seoTitle: 'Kostenloser Bildkompressor – Bilder online komprimieren, ohne Anmeldung',
+  seoDescription: 'Bilder online kostenlos komprimieren und JPG-, PNG- und WebP-Dateien verkleinern, ohne Qualität zu verlieren. Ohne Anmeldung und ohne Wasserzeichen – Ihre Fotos verlassen nie Ihren Browser.',
+  h1: 'Kostenloser Bildkompressor – Bilder online komprimieren',
   subtitle: 'Verkleinern Sie JPG-, PNG-, WebP- und HEIC-Dateien direkt in Ihrem Browser.',
   howToSteps: [],
   features: [],
@@ -551,7 +550,7 @@ export const TOOLS_REGISTRY_DE: ToolDefinition[] = [
     seoTitle: 'Bild zu PDF kostenlos – Fotos zu PDF zusammenführen',
     seoDescription:
       'Fotos kostenlos in ein PDF verwandeln – Seiten neu ordnen, A4 oder Letter wählen, Ränder einstellen. Ihr Dokument entsteht lokal im Browser, ohne Upload.',
-    h1: 'Bild-zu-PDF-Konverter',
+    h1: 'Kostenloser Online-Konverter von Bild zu PDF',
     subtitle:
       'Ideal für Studierende, Freiberufler, Buchhalter und alle, die Ausweise oder Belege einreichen: Dieser private Bild-zu-PDF-Konverter führt mehrere Fotos zu einem einzigen, gestochen scharfen, mehrseitigen PDF zusammen. Ordnen Sie Seiten frei neu, wählen Sie A4, US Letter oder „An Bildgröße anpassen“, passen Sie Ränder und Qualität an und erstellen Sie Ihr Dokument lokal – ohne einen einzigen Server-Upload.',
     howToSteps: [
@@ -7691,9 +7690,8 @@ export const TOOLS_REGISTRY_DE: ToolDefinition[] = [
     name: 'KI-Hintergrundentferner',
     shortDescription: 'Entfernen Sie Bildhintergründe mit KI im Browser und exportieren Sie transparente PNGs.',
     category: 'ai-tools',
-    seoTitle: 'Hintergrund entfernen – kostenlos mit KI online',
-    seoDescription:
-      'Entfernen Sie Bildhintergründe kostenlos mit KI im Browser. Transparentes PNG herunterladen oder Weiß, Schwarz oder Farbe wählen – privat, ohne Anmeldung.',
+    seoTitle: 'Bildhintergrund kostenlos entfernen – KI, ohne Anmeldung',
+    seoDescription: 'Entfernen Sie den Hintergrund jedes Bildes kostenlos mit KI im Browser. Laden Sie ein transparentes PNG herunter oder wählen Sie einen weißen, schwarzen oder eigenen Hintergrund – ohne Anmeldung und ohne Upload.',
     h1: 'Kostenloser Online-KI-Hintergrundentferner',
     subtitle:
       'Entfernen Sie Hintergründe aus Porträts, Produktfotos, Haustieren und Logos mit unserem kostenlosen KI-Hintergrundentferner, der vollständig in Ihrem Browser läuft. Der Konverter wurde für Verkäufer, Creator und Designer entwickelt, die schnell saubere Freisteller benötigen: Er lädt einmal ein kompaktes KI-Modell (ca. 35 MB, danach zwischengespeichert), verarbeitet ein Foto nach dem anderen bis zu 20 MB und exportiert ein transparentes PNG – oder legt Ihren Freisteller auf einen weißen, schwarzen oder eigenen Hintergrund.',
