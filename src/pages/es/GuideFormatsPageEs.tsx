@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, FileImage, Camera, Layers, Globe, CheckCircle2, Scale } from 'lucide-react';
+import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
 
 interface GuideFormatsPageEsProps {
   onNavigate: (path: string) => void;
@@ -195,14 +196,14 @@ export const GuideFormatsPageEs: React.FC<GuideFormatsPageEsProps> = ({ onNaviga
   };
 
   return (
-    <div className="py-10 sm:py-16">
+    <div className="bg-[var(--bg)] py-10 sm:py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
           <button
             type="button"
             onClick={() => onNavigate('/es/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Volver al compresor de imágenes</span>
@@ -210,50 +211,52 @@ export const GuideFormatsPageEs: React.FC<GuideFormatsPageEsProps> = ({ onNaviga
         </div>
 
         {/* Page Title */}
-        <div className="border-b border-slate-200 pb-6 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <div className="border-b border-[var(--line)] pb-6 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             JPG vs PNG vs WebP: ¿qué formato debería usar?
           </h1>
-          <p className="mt-3 text-lg font-medium text-slate-700 leading-relaxed">
+          <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             Elegir el formato equivocado puede hacer que su imagen sea diez veces más grande de lo necesario, o arruinar un logotipo transparente. Aquí tiene la comparación sencilla y honesta, y cómo convertir entre formatos en segundos.
           </p>
         </div>
 
         {/* Core Content */}
-        <div className="space-y-8 text-base text-slate-600 leading-relaxed">
+        <div className="space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Scale className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Scale className="w-4 h-4" />
+              </span>
               <span>La respuesta corta</span>
             </h2>
             <p>
               Si solo recuerda una cosa, recuerde esto: use JPG para las fotos, PNG para los logotipos y todo lo que necesita transparencia, y WebP cuando desee el archivo más pequeño, sobre todo en un sitio web. La tabla siguiente muestra por qué.
             </p>
             <div className="overflow-x-auto pt-1">
-              <table className="w-full text-sm border border-slate-200 rounded-xl overflow-hidden">
+              <table className="w-full text-sm border border-[var(--line)] rounded-2xl overflow-hidden bg-[var(--surface)] shadow-[var(--shadow)]">
                 <thead>
-                  <tr className="bg-slate-50 text-slate-900 text-left">
-                    <th className="px-4 py-3 font-bold">Formato</th>
-                    <th className="px-4 py-3 font-bold">Tamaño de archivo</th>
-                    <th className="px-4 py-3 font-bold">Transparencia</th>
-                    <th className="px-4 py-3 font-bold">Ideal para</th>
+                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-left border-b border-[var(--line)]">
+                    <th className="px-4 py-3 font-semibold">Formato</th>
+                    <th className="px-4 py-3 font-semibold">Tamaño de archivo</th>
+                    <th className="px-4 py-3 font-semibold">Transparencia</th>
+                    <th className="px-4 py-3 font-semibold">Ideal para</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-[var(--line)]">
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">JPG</td>
+                    <td className="px-4 py-3 font-bold text-[#7c3aed] dark:text-[#c4b5fd]">JPG</td>
                     <td className="px-4 py-3">Pequeño</td>
                     <td className="px-4 py-3">No</td>
                     <td className="px-4 py-3">Fotos, compartir, imprimir</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">PNG</td>
+                    <td className="px-4 py-3 font-bold text-[#7c3aed] dark:text-[#c4b5fd]">PNG</td>
                     <td className="px-4 py-3">Grande</td>
                     <td className="px-4 py-3">Sí</td>
                     <td className="px-4 py-3">Logotipos, iconos, capturas de pantalla</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">WebP</td>
+                    <td className="px-4 py-3 font-bold text-[#7c3aed] dark:text-[#c4b5fd]">WebP</td>
                     <td className="px-4 py-3">El más pequeño</td>
                     <td className="px-4 py-3">Sí</td>
                     <td className="px-4 py-3">Sitios web, fotos web</td>
@@ -263,32 +266,38 @@ export const GuideFormatsPageEs: React.FC<GuideFormatsPageEsProps> = ({ onNaviga
             </div>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Camera className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-2">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(2)} flex items-center justify-center shrink-0`}>
+                <Camera className="w-4 h-4" />
+              </span>
               <span>JPG: el mejor para las fotos</span>
             </h2>
-            <p>
+            <p className="text-sm sm:text-base">
               JPG (también escrito JPEG) es el formato clásico para fotos. Usa compresión con pérdida: elimina detalles finos que su ojo apenas nota, lo que hace que los archivos sean mucho más pequeños. Una foto de cámara de 5 MB puede convertirse en 500 KB como JPG y seguir viéndose muy bien. JPG no admite transparencia, así que es la opción incorrecta para los logotipos, pero para cualquier foto normal es la opción segura y universal que todos los dispositivos y aplicaciones pueden abrir.
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-6">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(6)} flex items-center justify-center shrink-0`}>
+                <Layers className="w-4 h-4" />
+              </span>
               <span>PNG: el mejor para logotipos y transparencia</span>
             </h2>
-            <p>
+            <p className="text-sm sm:text-base">
               PNG no tiene pérdida: conserva cada píxel exactamente y admite fondos transparentes. Eso lo convierte en el formato adecuado para logotipos, iconos y gráficos con texto. El precio es el tamaño del archivo: una foto guardada como PNG puede ser de 5 a 10 veces más grande que la misma foto como JPG. Nunca guarde una foto de cámara como PNG a menos que tenga una razón específica.
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Globe className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-0">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Globe className="w-4 h-4" />
+              </span>
               <span>WebP: el mejor para sitios web</span>
             </h2>
-            <p>
+            <p className="text-sm sm:text-base">
               WebP es el formato moderno creado por Google. Lo hace todo: compresión con pérdida como JPG, transparencia como PNG, y archivos que suelen ser entre un 25 y un 35 % más pequeños que JPG con la misma calidad visible. Todos los navegadores modernos lo admiten, por eso es el mejor formato para las imágenes de sitios web. Su única debilidad es la compatibilidad con programas antiguos, y con las vistas previas de WhatsApp, donde JPG sigue siendo más seguro.
             </p>
           </section>
@@ -297,28 +306,33 @@ export const GuideFormatsPageEs: React.FC<GuideFormatsPageEsProps> = ({ onNaviga
             <img
               src="/guides/jpg-vs-png-vs-webp-1.png"
               alt="Captura de pantalla que compara la misma foto guardada como JPG, PNG y WebP con sus tamaños de archivo"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               La misma foto en tres formatos: WebP es el más pequeño, PNG es el más grande y JPG queda en el medio.
             </figcaption>
           </figure>
 
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <FileImage className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(4)} flex items-center justify-center shrink-0`}>
+                <FileImage className="w-4 h-4" />
+              </span>
               <span>Paso a paso: comprima o convierta su imagen</span>
             </h2>
-            <ol className="space-y-4">
+            <ol className="space-y-3">
               {STEPS.map((step, i) => (
-                <li key={step.title} className="flex gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white text-sm font-bold flex items-center justify-center mt-0.5">
+                <li
+                  key={step.title}
+                  className={`flex gap-3.5 p-4 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(i * 2)}`}
+                >
+                  <span className="flex-shrink-0 w-7 h-7 rounded-lg btn-purple-grad text-sm font-mono font-bold flex items-center justify-center mt-0.5 shadow-xs">
                     {i + 1}
                   </span>
                   <div>
-                    <div className="font-bold text-slate-900 text-sm sm:text-base">{step.title}</div>
-                    <p className="text-sm sm:text-base">{step.text}</p>
+                    <div className="font-sans font-bold text-[var(--ink-navy)] text-sm sm:text-base">{step.title}</div>
+                    <p className="text-sm sm:text-base text-[var(--ink-2)] mt-0.5">{step.text}</p>
                   </div>
                 </li>
               ))}
@@ -326,32 +340,34 @@ export const GuideFormatsPageEs: React.FC<GuideFormatsPageEsProps> = ({ onNaviga
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(7)} flex items-center justify-center shrink-0`}>
+                <CheckCircle2 className="w-4 h-4" />
+              </span>
               <span>¿Qué formato para cada trabajo?</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Fotos de cámara: JPG o WebP</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(0)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">Fotos de cámara: JPG o WebP</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   JPG para compartir e imprimir, WebP para su sitio web. Ambos mantienen las fotos con muy buen aspecto a una fracción del tamaño original.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Logotipos e iconos: PNG o WebP</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(3)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">Logotipos e iconos: PNG o WebP</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   Necesita transparencia, así que JPG queda descartado. PNG es el clásico seguro; WebP es más pequeño y funciona en todos los lugares modernos.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Capturas de pantalla: WebP o PNG</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(6)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">Capturas de pantalla: WebP o PNG</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   El texto nítido y los colores planos van bien con WebP y PNG. JPG difumina los bordes del texto, así que evítelo en las capturas de pantalla.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Imágenes de sitios web: WebP</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(9)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">Imágenes de sitios web: WebP</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   Los archivos más pequeños significan páginas más rápidas. Convierta las fotos de su sitio web a WebP y conserve JPG como alternativa para los navegadores muy antiguos.
                 </p>
               </div>
@@ -362,36 +378,41 @@ export const GuideFormatsPageEs: React.FC<GuideFormatsPageEsProps> = ({ onNaviga
             <img
               src="/guides/jpg-vs-png-vs-webp-2.png"
               alt="Captura de pantalla de cómo elegir el formato de salida JPG, PNG o WebP en CompressMyPic"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               Elija su formato de salida en CompressMyPic: conserve el original o convierta a JPG, PNG o WebP.
             </figcaption>
           </figure>
 
           {/* FAQ */}
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Layers className="w-4 h-4" />
+              </span>
               <span>Preguntas frecuentes</span>
             </h2>
             <div className="space-y-3">
-              {FAQ_DATA.map((item) => {
+              {FAQ_DATA.map((item, idx) => {
                 const isOpen = openIds.has(item.id);
                 return (
-                  <div key={item.id} className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
+                  <div
+                    key={item.id}
+                    className={`border rounded-2xl overflow-hidden shadow-[var(--shadow)] transition-shadow hover:shadow-[var(--shadow-lg)] ${getPastelCardClass(idx)}`}
+                  >
                     <button
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className={`w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors ${isOpen ? 'bg-slate-50/50' : 'hover:bg-slate-50/50'}`}
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
-                      <span className="text-sm sm:text-base font-bold text-slate-900">{item.question}</span>
-                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-600' : 'text-slate-400'}`} />
+                      <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
+                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'}`} />
                     </button>
                     {isOpen && (
-                      <div className="px-5 py-4 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 bg-white">
+                      <div className="px-5 py-4 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/55 dark:bg-slate-900/35">
                         {item.answer}
                       </div>
                     )}
@@ -403,23 +424,23 @@ export const GuideFormatsPageEs: React.FC<GuideFormatsPageEsProps> = ({ onNaviga
 
           {/* Related guides */}
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900">Guías relacionadas</h2>
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">Guías relacionadas</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button
                 type="button"
                 onClick={() => onNavigate('/es/guias/comprimir-imagenes-para-whatsapp')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">Cómo comprimir imágenes para WhatsApp sin perder calidad</div>
-                <p className="text-xs text-slate-600 mt-1">Reduzca las fotos usted mismo primero y luego envíelas como documentos para que WhatsApp no pueda difuminarlas.</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Cómo comprimir imágenes para WhatsApp sin perder calidad</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Reduzca las fotos usted mismo primero y luego envíelas como documentos para que WhatsApp no pueda difuminarlas.</p>
               </button>
               <button
                 type="button"
                 onClick={() => onNavigate('/es/guias/reducir-imagen-a-100kb')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">Cómo reducir el tamaño de una imagen a 100 KB para sitios web y correo electrónico</div>
-                <p className="text-xs text-slate-600 mt-1">Guía paso a paso para llegar a 100 KB sin arruinar su foto.</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Cómo reducir el tamaño de una imagen a 100 KB para sitios web y correo electrónico</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Guía paso a paso para llegar a 100 KB sin arruinar su foto.</p>
               </button>
             </div>
           </section>
@@ -428,14 +449,14 @@ export const GuideFormatsPageEs: React.FC<GuideFormatsPageEsProps> = ({ onNaviga
             <button
               type="button"
               onClick={() => onNavigate('/es/')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               Comprimir imágenes gratis
             </button>
             <button
               type="button"
               onClick={() => onNavigate('/es/guias/comprimir-imagenes-para-whatsapp')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-white text-slate-900 text-sm font-bold border border-slate-200 shadow-xs hover:bg-slate-50 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#7c3aed]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               Comprimir para WhatsApp
             </button>

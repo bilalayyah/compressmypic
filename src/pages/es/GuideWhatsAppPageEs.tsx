@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, MessageCircle, Send, Smartphone, CheckCircle2, FileWarning, Layers } from 'lucide-react';
+import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
 
 interface GuideWhatsAppPageEsProps {
   onNavigate: (path: string) => void;
@@ -203,14 +204,14 @@ export const GuideWhatsAppPageEs: React.FC<GuideWhatsAppPageEsProps> = ({ onNavi
   };
 
   return (
-    <div className="py-10 sm:py-16">
+    <div className="bg-[var(--bg)] py-10 sm:py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
           <button
             type="button"
             onClick={() => onNavigate('/es/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Volver al compresor de imágenes</span>
@@ -218,20 +219,22 @@ export const GuideWhatsAppPageEs: React.FC<GuideWhatsAppPageEsProps> = ({ onNavi
         </div>
 
         {/* Page Title */}
-        <div className="border-b border-slate-200 pb-6 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <div className="border-b border-[var(--line)] pb-6 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             Cómo comprimir imágenes para WhatsApp sin perder calidad
           </h1>
-          <p className="mt-3 text-lg font-medium text-slate-700 leading-relaxed">
+          <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             WhatsApp reduce cada foto que usted envía, muchas veces mucho más de lo necesario. Comprima sus fotos usted mismo primero y envíelas de la manera correcta: llegarán nítidas, se enviarán rápido y consumirán menos datos móviles.
           </p>
         </div>
 
         {/* Core Content */}
-        <div className="space-y-8 text-base text-slate-600 leading-relaxed">
+        <div className="space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <MessageCircle className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(7)} flex items-center justify-center shrink-0`}>
+                <MessageCircle className="w-4 h-4" />
+              </span>
               <span>Por qué WhatsApp hace que sus fotos se vean borrosas</span>
             </h2>
             <p>
@@ -243,19 +246,24 @@ export const GuideWhatsAppPageEs: React.FC<GuideWhatsAppPageEsProps> = ({ onNavi
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Send className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Send className="w-4 h-4" />
+              </span>
               <span>Paso a paso: comprima una foto para WhatsApp</span>
             </h2>
-            <ol className="space-y-4">
+            <ol className="space-y-3">
               {STEPS.map((step, i) => (
-                <li key={step.title} className="flex gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white text-sm font-bold flex items-center justify-center mt-0.5">
+                <li
+                  key={step.title}
+                  className={`flex gap-3.5 p-4 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(i * 2)}`}
+                >
+                  <span className="flex-shrink-0 w-7 h-7 rounded-lg btn-purple-grad text-sm font-mono font-bold flex items-center justify-center mt-0.5 shadow-xs">
                     {i + 1}
                   </span>
                   <div>
-                    <div className="font-bold text-slate-900 text-sm sm:text-base">{step.title}</div>
-                    <p className="text-sm sm:text-base">{step.text}</p>
+                    <div className="font-sans font-bold text-[var(--ink-navy)] text-sm sm:text-base">{step.title}</div>
+                    <p className="text-sm sm:text-base text-[var(--ink-2)] mt-0.5">{step.text}</p>
                   </div>
                 </li>
               ))}
@@ -266,50 +274,54 @@ export const GuideWhatsAppPageEs: React.FC<GuideWhatsAppPageEsProps> = ({ onNavi
             <img
               src="/guides/compress-images-for-whatsapp-1.png"
               alt="Captura de pantalla de cómo subir una foto a CompressMyPic antes de enviarla por WhatsApp"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               Suba su foto a CompressMyPic: arrastre la foto y suéltela, o elíjala de su galería.
             </figcaption>
           </figure>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Smartphone className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(2)} flex items-center justify-center shrink-0`}>
+                <Smartphone className="w-4 h-4" />
+              </span>
               <span>¿Qué ajuste de calidad debería usar?</span>
             </h2>
             <p>
               No existe un número perfecto único: depende de la foto y de para qué sea. Use esto como punto de partida y revise la comparación del antes y el después cada vez:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Fotos cotidianas: 70 %</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(0)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">Fotos cotidianas: 70 %</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   El ajuste predefinido Equilibrado. Un gran ahorro de tamaño, y la foto sigue viéndose nítida en cualquier pantalla de celular. La mejor opción por defecto para WhatsApp.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Fotos importantes: 80–85 %</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(4)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">Fotos importantes: 80–85 %</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   Fotos de familia, fotos de viajes, cualquier cosa que desee conservar. El archivo es más grande, pero los detalles finos de las caras y los paisajes se conservan.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Envíos rápidos: 50–60 %</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(8)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">Envíos rápidos: 50–60 %</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   Memes, actualizaciones rápidas, fotos con datos móviles lentos. Archivos mucho más pequeños que siguen viéndose bien en el tamaño de la pantalla de un celular.
                 </p>
               </div>
             </div>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-7">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(7)} flex items-center justify-center shrink-0`}>
+                <CheckCircle2 className="w-4 h-4" />
+              </span>
               <span>Consejos para obtener los mejores resultados</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5">
+            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
               <li>Comprima una sola vez, y solo una vez. Comprimir una foto ya comprimida una segunda vez elimina detalles casi sin ahorrar más tamaño.</li>
               <li>Envíe siempre el archivo comprimido como documento si la calidad importa: es la única manera de evitar que WhatsApp lo comprima de nuevo.</li>
               <li>Comprima varias fotos a la vez con los mismos ajustes y descárguelas todas con el botón Descargar todo (ZIP).</li>
@@ -322,20 +334,22 @@ export const GuideWhatsAppPageEs: React.FC<GuideWhatsAppPageEsProps> = ({ onNavi
             <img
               src="/guides/compress-images-for-whatsapp-2.png"
               alt="Captura de pantalla del control deslizante de calidad y del tamaño del archivo en vivo, antes y después, en CompressMyPic"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               Mueva el control deslizante de calidad y observe cómo el tamaño del antes y el después se actualiza en vivo hasta que el archivo tenga el tamaño que desea.
             </figcaption>
           </figure>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <FileWarning className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-10">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(10)} flex items-center justify-center shrink-0`}>
+                <FileWarning className="w-4 h-4" />
+              </span>
               <span>Errores comunes que debe evitar</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5">
+            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
               <li>Enviar la foto como foto después de comprimirla: WhatsApp la comprimirá una segunda vez y deshará su trabajo.</li>
               <li>Bajar la calidad por debajo del 40 % en fotos con caras: la piel y los detalles finos se vuelven bloques muy rápido con calidad baja.</li>
               <li>Usar PNG para las fotos de cámara: los archivos PNG son mucho más grandes que los JPG para las fotos y no le aportan nada en WhatsApp.</li>
@@ -345,26 +359,31 @@ export const GuideWhatsAppPageEs: React.FC<GuideWhatsAppPageEsProps> = ({ onNavi
 
           {/* FAQ */}
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Layers className="w-4 h-4" />
+              </span>
               <span>Preguntas frecuentes</span>
             </h2>
             <div className="space-y-3">
-              {FAQ_DATA.map((item) => {
+              {FAQ_DATA.map((item, idx) => {
                 const isOpen = openIds.has(item.id);
                 return (
-                  <div key={item.id} className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
+                  <div
+                    key={item.id}
+                    className={`border rounded-2xl overflow-hidden shadow-[var(--shadow)] transition-shadow hover:shadow-[var(--shadow-lg)] ${getPastelCardClass(idx)}`}
+                  >
                     <button
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className={`w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors ${isOpen ? 'bg-slate-50/50' : 'hover:bg-slate-50/50'}`}
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
-                      <span className="text-sm sm:text-base font-bold text-slate-900">{item.question}</span>
-                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-600' : 'text-slate-400'}`} />
+                      <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
+                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'}`} />
                     </button>
                     {isOpen && (
-                      <div className="px-5 py-4 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 bg-white">
+                      <div className="px-5 py-4 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/55 dark:bg-slate-900/35">
                         {item.answer}
                       </div>
                     )}
@@ -376,23 +395,23 @@ export const GuideWhatsAppPageEs: React.FC<GuideWhatsAppPageEsProps> = ({ onNavi
 
           {/* Related guides */}
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900">Guías relacionadas</h2>
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">Guías relacionadas</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button
                 type="button"
                 onClick={() => onNavigate('/es/guias/jpg-vs-png-vs-webp')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">JPG vs PNG vs WebP: ¿qué formato debería usar?</div>
-                <p className="text-xs text-slate-600 mt-1">Tamaño de archivo, calidad y transparencia comparados, para que elija el formato correcto cada vez.</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG vs PNG vs WebP: ¿qué formato debería usar?</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Tamaño de archivo, calidad y transparencia comparados, para que elija el formato correcto cada vez.</p>
               </button>
               <button
                 type="button"
                 onClick={() => onNavigate('/es/guias/reducir-imagen-a-100kb')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">Cómo reducir el tamaño de una imagen a 100 KB para sitios web y correo electrónico</div>
-                <p className="text-xs text-slate-600 mt-1">Guía paso a paso para llegar a 100 KB sin arruinar su foto.</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Cómo reducir el tamaño de una imagen a 100 KB para sitios web y correo electrónico</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Guía paso a paso para llegar a 100 KB sin arruinar su foto.</p>
               </button>
             </div>
           </section>
@@ -401,14 +420,14 @@ export const GuideWhatsAppPageEs: React.FC<GuideWhatsAppPageEsProps> = ({ onNavi
             <button
               type="button"
               onClick={() => onNavigate('/es/')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               Comprimir imágenes gratis
             </button>
             <button
               type="button"
               onClick={() => onNavigate('/es/comprimir-imagen-a-100kb')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-white text-slate-900 text-sm font-bold border border-slate-200 shadow-xs hover:bg-slate-50 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#7c3aed]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               Reducir una imagen a 100 KB
             </button>
