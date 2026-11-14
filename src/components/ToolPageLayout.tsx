@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { ToolDefinition, TOOL_BY_SLUG, TOOL_CATEGORIES } from '../data/tools';
 import { AdSlot } from './AdSlot';
+import { Comments, EN_COMMENT_STRINGS, type CommentStrings } from './Comments';
 import type { SupportedLang } from '../locales/config';
 import { getOgLocale, getOgLocaleAlternates } from '../locales/alternates';
 import { getPastelCardClass, getPastelTileClass } from '../utils/pastel';
@@ -24,6 +25,18 @@ export interface ToolPageLayoutStrings {
   featuresTitle: string; // contains {name}
   faqTitle: string; // contains {name}
   relatedTitle: string;
+  commentsTitle?: string;
+  commentsNote?: string;
+  commentsNamePlaceholder?: string;
+  commentsTextPlaceholder?: string;
+  commentsSubmit?: string;
+  commentsPosting?: string;
+  commentsEmpty?: string;
+  commentsPosted?: string;
+  commentsLoadError?: string;
+  commentsPostError?: string;
+  commentsRetry?: string;
+  commentsLoading?: string;
 }
 
 const EN_STRINGS: ToolPageLayoutStrings = {
@@ -36,6 +49,18 @@ const EN_STRINGS: ToolPageLayoutStrings = {
   featuresTitle: 'Why Use CompressMyPic {name}?',
   faqTitle: '{name} — Frequently Asked Questions',
   relatedTitle: 'Related Free Image Tools',
+  commentsTitle: 'Comments',
+  commentsNote: 'Share your thoughts about this tool — just write your name and post. No account needed.',
+  commentsNamePlaceholder: 'Your name',
+  commentsTextPlaceholder: 'Write your comment…',
+  commentsSubmit: 'Post comment',
+  commentsPosting: 'Posting…',
+  commentsEmpty: 'Be the first to comment.',
+  commentsPosted: 'Thanks! Your comment is live.',
+  commentsLoadError: 'Comments couldn’t be loaded. Please try again.',
+  commentsPostError: 'Couldn’t post your comment. Please try again.',
+  commentsRetry: 'Retry',
+  commentsLoading: 'Loading comments…',
 };
 
 export interface HreflangAlternate {
@@ -81,6 +106,21 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
     .filter((t): t is ToolDefinition => Boolean(t));
 
   const pagePath = canonicalPath ?? tool.slug;
+  const commentStrings: CommentStrings = {
+    ...EN_COMMENT_STRINGS,
+    title: ui.commentsTitle ?? EN_COMMENT_STRINGS.title,
+    note: ui.commentsNote ?? EN_COMMENT_STRINGS.note,
+    namePlaceholder: ui.commentsNamePlaceholder ?? EN_COMMENT_STRINGS.namePlaceholder,
+    textPlaceholder: ui.commentsTextPlaceholder ?? EN_COMMENT_STRINGS.textPlaceholder,
+    submit: ui.commentsSubmit ?? EN_COMMENT_STRINGS.submit,
+    posting: ui.commentsPosting ?? EN_COMMENT_STRINGS.posting,
+    empty: ui.commentsEmpty ?? EN_COMMENT_STRINGS.empty,
+    posted: ui.commentsPosted ?? EN_COMMENT_STRINGS.posted,
+    loadError: ui.commentsLoadError ?? EN_COMMENT_STRINGS.loadError,
+    postError: ui.commentsPostError ?? EN_COMMENT_STRINGS.postError,
+    retry: ui.commentsRetry ?? EN_COMMENT_STRINGS.retry,
+    loading: ui.commentsLoading ?? EN_COMMENT_STRINGS.loading,
+  };
   const canonicalUrl = `https://compressmypic.online${pagePath === '/' ? '/' : pagePath}`;
 
   useEffect(() => {
@@ -482,6 +522,19 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
           </div>
         </section>
       )}
+
+      {/* Comments: anonymous, name-only — own Worker + KV backend */}
+      <section className="py-12 sm:py-16 border-t border-[var(--line)] bg-[var(--bg-soft)]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="font-sans text-xl sm:text-2xl font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
+            {commentStrings.title}
+          </h2>
+          <p className="text-sm text-[var(--ink-3)] mt-2 leading-relaxed">{commentStrings.note}</p>
+          <div className="mt-6">
+            <Comments key={pagePath} pagePath={pagePath} lang={lang} strings={commentStrings} />
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
