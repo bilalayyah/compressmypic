@@ -11,8 +11,8 @@ import { UploadZone } from './components/UploadZone';
 import { CompressionControls } from './components/CompressionControls';
 import { ResultsList } from './components/ResultsList';
 import { ComparisonModal } from './components/ComparisonModal';
-import { EducationalContent } from './components/EducationalContent';
-import { FaqSection } from './components/FaqSection';
+import { EducationalContent, HOW_IT_WORKS_STEPS } from './components/EducationalContent';
+import { FaqSection, FAQ_DATA } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { ShareSection } from './components/ShareSection';
 import { AdSlot } from './components/AdSlot';
@@ -83,7 +83,7 @@ import { RU_PATH_BY_EN, EN_PATH_BY_RU, RU_HOME_ALIAS, RU_ALL_TOOLS_PATH } from '
 import { JA_PATH_BY_EN, EN_PATH_BY_JA, JA_HOME_ALIAS, JA_ALL_TOOLS_PATH } from './locales/ja/slugs';
 import { KO_PATH_BY_EN, EN_PATH_BY_KO, KO_HOME_ALIAS, KO_ALL_TOOLS_PATH } from './locales/ko/slugs';
 import { ZH_PATH_BY_EN, EN_PATH_BY_ZH, ZH_HOME_ALIAS, ZH_ALL_TOOLS_PATH } from './locales/zh/slugs';
-import { getAlternates } from './locales/alternates';
+import { getAlternates, getOgLocale, getOgLocaleAlternates } from './locales/alternates';
 import { AboutPageEs } from './pages/es/AboutPageEs';
 import { ContactPageEs } from './pages/es/ContactPageEs';
 import { PrivacyPageEs } from './pages/es/PrivacyPageEs';
@@ -968,6 +968,49 @@ export default function App() {
     const twDesc = document.querySelector('meta[name="twitter:description"]');
     if (twDesc) twDesc.setAttribute('content', nextDesc);
 
+    // Phase 7 (F1+F3): per-language og:locale (+10 alternates, UPDATE the
+    // existing tag, never a second og:locale) and localized image alt text.
+    // Same mapping as ToolPageLayout via getOgLocale()/getOgLocaleAlternates();
+    // the image stays the single shared branded og-image.png and the alt is
+    // the page's localized title, never an English fallback.
+    const setOgLocaleTags = (locale: string, alternateLocales: string[]) => {
+      let el = document.head.querySelector<HTMLMetaElement>('meta[property="og:locale"]');
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute('property', 'og:locale');
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', locale);
+      document
+        .head
+        .querySelectorAll('meta[property="og:locale:alternate"]')
+        .forEach((old) => old.remove());
+      for (const alt of alternateLocales) {
+        const altEl = document.createElement('meta');
+        altEl.setAttribute('property', 'og:locale:alternate');
+        altEl.setAttribute('content', alt);
+        document.head.appendChild(altEl);
+      }
+    };
+    setOgLocaleTags(getOgLocale(lang), getOgLocaleAlternates(lang));
+
+    const setMetaContent = (
+      selector: string,
+      attrKey: 'name' | 'property',
+      attrVal: string,
+      content: string
+    ) => {
+      let el = document.head.querySelector<HTMLMetaElement>(selector);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attrKey, attrVal);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    };
+    setMetaContent('meta[property="og:image:alt"]', 'property', 'og:image:alt', nextTitle);
+    setMetaContent('meta[name="twitter:image:alt"]', 'name', 'twitter:image:alt', nextTitle);
+
     // hreflang: App owns home/legal/directory/guide pages; ToolPageLayout owns
     // tool pages, so App never writes (or removes) alternates for a translated
     // tool page — its layout writes them. For every other page without a
@@ -1049,8 +1092,94 @@ export default function App() {
       // otherwise the English page carries no hreflang at all and Google
       // treats the translated pages' annotations as non-reciprocal.
       setHreflangLinks(getAlternates(currentPath));
-    } else {
+    } else if (!isToolPage) {
+      // Phase 7 (F7): never strip hreflang from a tool page — ToolPageLayout
+      // owns those links, and a future untranslated tool must keep whatever
+      // hreflang it has rather than losing it here.
       removeHreflangLinks();
+    }
+
+    // Phase 7 (F2): home-page FAQPage + HowTo JSON-LD, injected per language
+    // from the exact data the home page renders (EN: FAQ_DATA +
+    // HOW_IT_WORKS_STEPS; localized: activeUi.faqSection.faqs +
+    // activeUi.educational.sections[2] "How It Works" bullets, split on the
+    // first ': ' exactly as EducationalContent renders them). This replaces
+    // the static EN FAQPage/HowTo blocks removed from index.html, so the
+    // home page carries exactly 1 localized FAQPage + 1 localized HowTo
+    // (plus the static WebApplication) in every language. Tool and guide
+    // pages inject their own blocks and never get this one.
+    const splitBullet = (bullet: string): { title: string; description: string } => {
+      const idx = bullet.indexOf(': ');
+      if (idx === -1) return { title: bullet, description: '' };
+      return { title: bullet.slice(0, idx), description: bullet.slice(idx + 2) };
+    };
+    const homeJsonLdId = 'home-jsonld';
+    const existingHomeJsonLd = document.getElementById(homeJsonLdId);
+    if (currentPath === '/') {
+      const homeFaqs = activeUi ? activeUi.faqSection.faqs : FAQ_DATA;
+      const howToSection = activeUi ? activeUi.educational.sections[2] : undefined;
+      const howToBullets: string[] =
+        howToSection && 'bullets' in howToSection && howToSection.bullets
+          ? [...howToSection.bullets]
+          : [];
+      const graph: Record<string, unknown>[] = [];
+      const howToSteps = activeUi
+        ? howToBullets.map((bullet, i) => {
+            const { title, description } = splitBullet(bullet);
+            return {
+              '@type': 'HowToStep',
+              position: i + 1,
+              name: title,
+              text: description || bullet,
+            };
+          })
+        : HOW_IT_WORKS_STEPS.map((s, i) => ({
+            '@type': 'HowToStep',
+            position: i + 1,
+            name: s.title,
+            text: s.description,
+          }));
+      if (howToSteps.length > 0) {
+        graph.push({
+          '@type': 'HowTo',
+          name: activeUi
+            ? howToSection?.heading
+            : 'How to Compress Images Online with CompressMyPic',
+          description: activeUi
+            ? howToSection?.body ?? ''
+            : 'Compress image online free in three steps: upload your images, adjust the quality, and download the compressed files.',
+          url: nextCanonical,
+          step: howToSteps,
+        });
+      }
+      if (homeFaqs.length > 0) {
+        graph.push({
+          '@type': 'FAQPage',
+          name: activeUi ? activeUi.faqSection.heading : 'Frequently Asked Questions',
+          url: nextCanonical,
+          mainEntity: homeFaqs.map((f) => ({
+            '@type': 'Question',
+            name: f.question,
+            acceptedAnswer: { '@type': 'Answer', text: f.answer },
+          })),
+        });
+      }
+      if (graph.length > 0) {
+        const jsonLd = { '@context': 'https://schema.org', '@graph': graph };
+        if (existingHomeJsonLd) {
+          existingHomeJsonLd.textContent = JSON.stringify(jsonLd);
+        } else {
+          const script = document.createElement('script');
+          script.type = 'application/ld+json';
+          script.id = homeJsonLdId;
+          script.text = JSON.stringify(jsonLd);
+          document.head.appendChild(script);
+        }
+      } else if (existingHomeJsonLd) {
+        existingHomeJsonLd.remove();
+      }
+    } else if (existingHomeJsonLd) {
+      existingHomeJsonLd.remove();
     }
   }, [currentPath, lang, esLocale, ptLocale, frLocale, deLocale, itLocale, idLocale, ruLocale, jaLocale, koLocale, zhLocale]);
 
@@ -1123,7 +1252,10 @@ export default function App() {
       isDirectoryPath ||
       (mapForNext !== undefined && Boolean(mapForNext[route.path]));
     const finalTarget = next !== 'en' && !existsInNext ? `/${next}/` : target;
-    window.history.pushState(null, '', withBasePath(finalTarget));
+    // Phase 7 (F4): keep the current query string and hash across a language
+    // switch (e.g. ?test=1#faq) — previously pushState dropped both.
+    const suffix = `${window.location.search}${window.location.hash}`;
+    window.history.pushState(null, '', withBasePath(finalTarget) + suffix);
     setLang(next);
     setRoute(parsePath(finalTarget));
     window.scrollTo({ top: 0 });
