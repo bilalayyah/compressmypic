@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layers, ShieldCheck } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 
 export interface FooterStrings {
   blurb: string;
@@ -126,8 +126,8 @@ export const Footer: React.FC<FooterProps> = ({
   const strings: FooterStrings = { ...DEFAULT_FOOTER_STRINGS, ...stringsProp };
 
   return (
-    <footer className="bg-slate-900 dark:bg-slate-950 text-slate-400 border-t border-slate-800 text-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    <footer className="footer-pastel-band text-[var(--ink-2)] border-t border-[var(--line)] text-sm">
+      <div className="max-w-[1180px] mx-auto px-4 sm:px-6 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Col 1: Brand Info */}
           <div className="space-y-4 md:col-span-1">
@@ -137,25 +137,36 @@ export const Footer: React.FC<FooterProps> = ({
                 e.preventDefault();
                 onNavigate('/');
               }}
-              className="flex items-center gap-2.5 text-white font-bold text-lg tracking-tight"
+              className="inline-flex items-center gap-[10px] text-[var(--ink-navy)] font-sans font-extrabold text-[1.15rem] tracking-tight"
             >
-              <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center text-white">
-                <Layers className="w-4 h-4" />
-              </div>
-              <span>Compress<span className="text-blue-500">MyPic</span></span>
+              <span
+                className="w-8 h-8 rounded-[10px] btn-purple-grad grid place-items-center shrink-0"
+                aria-hidden="true"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+                  <path d="M16 3h3a2 2 0 0 1 2 2v3" />
+                  <path d="M8 21H5a2 2 0 0 1-2-2v-3" />
+                  <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+                  <circle cx="12" cy="12" r="3.2" />
+                </svg>
+              </span>
+              <span>
+                Compress<span className="text-[#7c3aed] dark:text-[#a78bfa]">My</span>Pic
+              </span>
             </a>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs text-[var(--ink-3)] leading-relaxed">
               {strings.blurb}
             </p>
-            <div className="inline-flex items-center gap-1.5 text-xs text-emerald-400 font-medium">
-              <ShieldCheck className="w-4 h-4 text-emerald-500" />
+            <div className="inline-flex items-center gap-1.5 text-xs text-[#15803d] dark:text-[#4ade80] font-semibold">
+              <ShieldCheck className="w-4 h-4 shrink-0" />
               <span>{strings.privacyNote}</span>
             </div>
           </div>
 
           {/* Col 2: Image Tools */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">
+            <h4 className="text-xs font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">
               {strings.toolsHeading}
             </h4>
             <ul className="space-y-2 text-xs">
@@ -167,7 +178,7 @@ export const Footer: React.FC<FooterProps> = ({
                       e.preventDefault();
                       onNavigate(link.slug);
                     }}
-                    className="hover:text-white transition-colors"
+                    className="text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors"
                   >
                     {link.label}
                   </a>
@@ -178,7 +189,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Col 3: Legal & Trust */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">
+            <h4 className="text-xs font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">
               {strings.legalHeading}
             </h4>
             <ul className="space-y-2 text-xs">
@@ -190,7 +201,7 @@ export const Footer: React.FC<FooterProps> = ({
                       e.preventDefault();
                       onNavigate(link.slug);
                     }}
-                    className="hover:text-white transition-colors block text-left"
+                    className="text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors block text-left"
                   >
                     {link.label}
                   </a>
@@ -201,19 +212,31 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Guides */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">{strings.guidesHeading}</h4>
-            <ul className="space-y-2 text-xs text-slate-400">
+            <h4 className="text-xs font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">{strings.guidesHeading}</h4>
+            <ul className="space-y-2 text-xs text-[var(--ink-2)]">
               {strings.guidesLinks.map((link) => (
-                <li key={link.slug}><a href={localizePath(link.slug)} onClick={(e) => { e.preventDefault(); onNavigate(link.slug); }} className="hover:text-white transition-colors block text-left">{link.label}</a></li>
+                <li key={link.slug}>
+                  <a
+                    href={localizePath(link.slug)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavigate(link.slug);
+                    }}
+                    className="text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors block text-left"
+                  >
+                    {link.label}
+                  </a>
+                </li>
               ))}
             </ul>
           </div>
+
           {/* Col 4: More Tools */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">
+            <h4 className="text-xs font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">
               {strings.moreHeading}
             </h4>
-            <ul className="space-y-2 text-xs text-slate-400">
+            <ul className="space-y-2 text-xs text-[var(--ink-2)]">
               {strings.moreLinks.map((link) => (
                 <li key={link.slug}>
                   <a
@@ -222,13 +245,13 @@ export const Footer: React.FC<FooterProps> = ({
                       e.preventDefault();
                       onNavigate(link.slug);
                     }}
-                    className="hover:text-white transition-colors"
+                    className="text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors"
                   >
                     {link.label}
                   </a>
                 </li>
               ))}
-              <li className="pt-2 text-slate-500">
+              <li className="pt-2 text-[var(--ink-3)]">
                 {strings.processedLocally}
               </li>
             </ul>
@@ -236,11 +259,11 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Compact Advanced Compression, Editing & Developer Tools Directory */}
-        <div className="pt-8 pb-6 border-t border-slate-800">
-          <h4 className="text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-3">
+        <div className="pt-8 pb-6 border-t border-[var(--line)]">
+          <h4 className="text-[11px] font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">
             {strings.directoryHeading}
           </h4>
-          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-slate-400">
+          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-[var(--ink-2)]">
             {strings.directoryLinks.map((item) => (
               <a
                 key={item.slug}
@@ -249,7 +272,7 @@ export const Footer: React.FC<FooterProps> = ({
                   e.preventDefault();
                   onNavigate(item.slug);
                 }}
-                className="hover:text-white transition-colors"
+                className="text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors"
               >
                 {item.label}
               </a>
@@ -258,7 +281,7 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div className="pt-6 border-t border-[var(--line)] flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--ink-3)] gap-4">
           <p>{strings.bottomRights.replace('{year}', String(new Date().getFullYear()))}</p>
           <div className="flex items-center gap-4">
             <span>{strings.contactLabel}</span>

@@ -181,81 +181,85 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
 
   return (
     <div className="w-full">
-      <div
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
-        onClick={() => !disabled && fileInputRef.current?.click()}
-        className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-12 text-center transition-all cursor-pointer select-none ${
-          isDragging
-            ? 'border-blue-500 bg-blue-50/70 scale-[1.01]'
-            : 'border-slate-300 hover:border-blue-400 bg-white hover:bg-slate-50/60 shadow-xs'
-        } ${disabled ? 'opacity-60 cursor-not-allowed' : ''}`}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            fileInputRef.current?.click();
-          }
-        }}
-        aria-label={strings?.ariaLabel ?? 'Upload images area. Drag and drop or click to browse files.'}
-      >
-        <input
-          ref={fileInputRef}
-          type="file"
-          multiple={multiple}
-          accept={accept}
-          onChange={handleFileInputChange}
-          className="hidden"
-          disabled={disabled}
-        />
+      <div className="panel-pastel-blue border rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)]">
+        <div
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+          onClick={() => !disabled && fileInputRef.current?.click()}
+          className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-12 text-center transition-all cursor-pointer select-none ${
+            isDragging
+              ? 'border-[#7c3aed] bg-[#ede9fe]/70 dark:bg-[#7c3aed]/20 scale-[1.005]'
+              : 'dropzone-pastel-blue hover:border-[#7c3aed] hover:bg-white/95 dark:hover:bg-slate-800/80'
+          } ${disabled ? 'opacity-60 cursor-not-allowed' : ''}`}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              fileInputRef.current?.click();
+            }
+          }}
+          aria-label={strings?.ariaLabel ?? 'Upload images area. Drag and drop or click to browse files.'}
+        >
+          <input
+            ref={fileInputRef}
+            type="file"
+            multiple={multiple}
+            accept={accept}
+            onChange={handleFileInputChange}
+            className="hidden"
+            disabled={disabled}
+          />
 
-        <div className="flex flex-col items-center justify-center max-w-md mx-auto">
-          <div
-            className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-colors ${
-              isDragging ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-600'
-            }`}
-          >
-            <UploadCloud className="w-8 h-8" />
-          </div>
+          <div className="flex flex-col items-center justify-center max-w-md mx-auto">
+            <div
+              className={`w-[60px] h-[60px] rounded-2xl flex items-center justify-center mb-4 transition-all shadow-xs ${
+                isDragging
+                  ? 'btn-purple-grad'
+                  : 'pastel-tile-0 border border-[#ddd6fe] dark:border-[#8b5cf6]/35'
+              }`}
+            >
+              <UploadCloud className="w-7 h-7" />
+            </div>
 
-          <p className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
-            {resolvedTitle}
-          </p>
-          <p className="mt-1 text-sm text-slate-500">
-            {subtitle || (
-              <>
-                {browsePrefix}{' '}
-                <span className="text-blue-600 font-semibold underline underline-offset-2">
-                  {browseButtonText}
-                </span>{' '}
-                {browseSuffixText}
-              </>
-            )}
-          </p>
+            <p className="font-sans text-xl sm:text-2xl font-bold text-[var(--ink-navy)] tracking-[-0.015em]">
+              {resolvedTitle}
+            </p>
+            <p className="mt-1.5 text-sm text-[var(--ink-3)]">
+              {subtitle || (
+                <>
+                  {browsePrefix}{' '}
+                  <span className="text-[#7c3aed] dark:text-[#c4b5fd] font-semibold underline underline-offset-2">
+                    {browseButtonText}
+                  </span>{' '}
+                  {browseSuffixText}
+                </>
+              )}
+            </p>
 
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-xs text-slate-500">
-            <span className="inline-flex items-center gap-1 font-medium bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">
-              <FileImage className="w-3.5 h-3.5" />
-              {formatsLabel}
-            </span>
-            <span className="font-medium bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">
-              {strings?.hint
-                ? strings.hint.replace('{max}', String(maxFileSizeMB))
-                : `Max ${maxFileSizeMB} MB per image`}
-            </span>
-            <span className="hidden sm:inline-flex items-center gap-1 font-medium bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">
-              <Sparkles className="w-3.5 h-3.5 text-blue-500" />
-              {strings?.orPaste ?? 'Paste (Ctrl+V) supported'}
-            </span>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-xs text-[var(--ink-2)]">
+              <span className="inline-flex items-center gap-1.5 font-medium bg-[var(--surface)] border border-[var(--line)] text-[var(--ink-2)] px-3 py-1 rounded-full shadow-2xs">
+                <FileImage className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#c4b5fd]" />
+                {formatsLabel}
+              </span>
+              <span className="font-medium bg-[var(--surface)] border border-[var(--line)] text-[var(--ink-2)] px-3 py-1 rounded-full shadow-2xs">
+                {strings?.hint
+                  ? strings.hint.replace('{max}', String(maxFileSizeMB))
+                  : `Max ${maxFileSizeMB} MB per image`}
+              </span>
+              <span className="hidden sm:inline-flex items-center gap-1.5 font-medium bg-[var(--surface)] border border-[var(--line)] text-[var(--ink-2)] px-3 py-1 rounded-full shadow-2xs">
+                <Sparkles className="w-3.5 h-3.5 text-[#16a34a] dark:text-[#4ade80]" />
+                {strings?.orPaste ?? 'Paste (Ctrl+V) supported'}
+              </span>
+            </div>
           </div>
         </div>
       </div>
 
       {errorMessage && (
-        <div className="mt-3 flex items-start gap-2 p-3 bg-red-50 border border-red-200 text-red-700 text-xs sm:text-sm rounded-xl">
-          <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
+        <div className="mt-3 flex items-start gap-2 p-3.5 pastel-card-14 border text-[#991b1b] dark:text-[#fecaca] text-xs sm:text-sm rounded-2xl">
+          <AlertCircle className="w-4 h-4 mt-0.5 shrink-0 text-[#dc2626] dark:text-[#f87171]" />
           <span>{errorMessage}</span>
         </div>
       )}

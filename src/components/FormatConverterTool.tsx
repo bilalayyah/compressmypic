@@ -222,13 +222,6 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
     };
   }, []);
 
-  // Re-convert already-converted items when the target format changes.
-  // The generic converter page lets the user switch format AFTER an upload;
-  // without this, the stale previous-format blob stays attached and Download
-  // silently saves the wrong format. Format-specific wrapper pages pass a
-  // fixed targetFormat, so this is a no-op for them. If a conversion is in
-  // flight when the format changes, the re-convert waits until it finishes
-  // (isProcessing dep) instead of racing it.
   const prevTargetFormatRef = useRef(targetFormat);
   const formatChangePendingRef = useRef(false);
   useEffect(() => {
@@ -538,13 +531,13 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
           <div
             className={`rounded-2xl border p-4 text-xs sm:text-sm flex items-start gap-3 ${
               noticeTone === 'warning'
-                ? 'bg-amber-50 border-amber-200 text-amber-900'
-                : 'bg-blue-50 border-blue-200 text-blue-900'
+                ? 'pastel-card-10 text-[var(--ink)]'
+                : 'pastel-card-2 text-[var(--ink-2)]'
             }`}
           >
             <Info
               className={`w-4 h-4 mt-0.5 shrink-0 ${
-                noticeTone === 'warning' ? 'text-amber-600' : 'text-blue-600'
+                noticeTone === 'warning' ? 'text-[#ea580c] dark:text-[#fb923c]' : 'text-[#2563eb] dark:text-[#60a5fa]'
               }`}
             />
             <p className="leading-relaxed">{notice}</p>
@@ -552,19 +545,19 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
         )}
 
         {/* Conversion Controls Card */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+        <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[var(--line)]">
             <div className="flex items-center gap-2.5 flex-wrap">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+              <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)]">
                 {t('conversionPipeline', 'Conversion Pipeline:')}
               </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-bold">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-navy)] text-xs font-bold">
                 <span>{sourceLabel}</span>
-                <ArrowRight className="w-3.5 h-3.5 text-blue-600" />
-                <span className="text-blue-700">{targetLabel}</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+                <span className="text-[#7c3aed] dark:text-[#a78bfa]">{targetLabel}</span>
               </span>
               {targetFormat === 'png' && (
-                <span className="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-md">
+                <span className="text-xs font-medium text-[#15803d] dark:text-[#86efac] bg-[#dcfce7] dark:bg-[#16a34a]/20 border border-[#bbf7d0] dark:border-[#16a34a]/35 px-3 py-0.5 rounded-full">
                   {t('losslessPngOutput', 'Lossless PNG Output')}
                 </span>
               )}
@@ -576,7 +569,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                   type="button"
                   onClick={handleReconvertAll}
                   disabled={isProcessing}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white text-xs sm:text-sm font-semibold rounded-xl shadow-xs cursor-pointer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 btn-purple-grad disabled:opacity-50 text-xs sm:text-sm font-semibold shadow-sm cursor-pointer"
                 >
                   {isProcessing ? (
                     <>
@@ -594,7 +587,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                   type="button"
                   onClick={handleClearAll}
                   disabled={isProcessing}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-xs sm:text-sm font-medium rounded-xl cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[var(--surface-2)] border border-[var(--line)] hover:bg-[#fee2e2] hover:text-[#b91c1c] hover:border-[#fecaca] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] text-[var(--ink-2)] text-xs sm:text-sm font-medium rounded-[11px] cursor-pointer transition-colors"
                 >
                   <Trash2 className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('clear', 'Clear')}</span>
@@ -607,10 +600,10 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
             {targetFormat !== 'png' ? (
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)]">
                     {t('outputQualityLabel', t('outputQuality', `${targetLabel} Output Quality`))}
                   </span>
-                  <span className="text-sm font-bold font-mono text-blue-600">{quality}%</span>
+                  <span className="text-sm font-bold font-mono text-[#7c3aed] dark:text-[#a78bfa]">{quality}%</span>
                 </div>
                 <input
                   type="range"
@@ -618,18 +611,18 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                   max={100}
                   value={quality}
                   onChange={(e) => setQuality(Number(e.target.value))}
-                  className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                  className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                   aria-label={t('qualityAriaLabel', `${targetLabel} output quality`)}
                 />
-                <div className="flex justify-between text-[11px] text-slate-400 mt-1">
+                <div className="flex justify-between text-[11px] text-[var(--ink-3)] mt-1">
                   <span>{t('smallerFile', 'Smaller file (20%)')}</span>
                   <span>{t('balanced', 'Balanced (85%)')}</span>
                   <span>{t('maxDetail', 'Max detail (100%)')}</span>
                 </div>
               </div>
             ) : (
-              <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-xs text-slate-600">
-                <strong className="text-slate-800 block mb-0.5">
+              <div className="bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] p-3.5 text-xs text-[var(--ink-2)]">
+                <strong className="text-[var(--ink-navy)] block mb-0.5">
                   {t('losslessPngEncodingTitle', t('losslessPngEncoding', 'Lossless PNG Encoding'))}
                 </strong>
                 {t(
@@ -644,26 +637,26 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
 
             {allowSvgScale && (
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                   {t('rasterExportScale', 'Raster Export Scale')}
                 </span>
-                <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
+                <div className="inline-flex p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] gap-1">
                   {SVG_SCALE_OPTIONS.map((factor) => (
                     <button
                       key={factor}
                       type="button"
                       onClick={() => setScale(factor)}
-                      className={`px-3.5 py-1.5 text-xs font-bold rounded-lg cursor-pointer transition-colors ${
+                      className={`px-3.5 py-1.5 text-xs font-bold rounded-[8px] cursor-pointer transition-colors ${
                         scale === factor
-                          ? 'bg-blue-600 text-white shadow-xs'
-                          : 'text-slate-600 hover:text-slate-900'
+                          ? 'btn-purple-grad shadow-xs'
+                          : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {factor}×
                     </button>
                   ))}
                 </div>
-                <p className="text-[11px] text-slate-500 mt-1.5">
+                <p className="text-[11px] text-[var(--ink-3)] mt-1.5">
                   {t(
                     'rasterExportScaleHint',
                     "Multiplier applied to the SVG's intrinsic dimensions (capped at 8000px). Click Re-convert All after changing scale."
@@ -674,7 +667,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
 
             {showBackgroundColor && (
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                   {t('matteColorLabel', t('transparentMatteColor', 'Transparent Background Matte Color'))}
                 </span>
                 <div className="flex items-center gap-2.5 flex-wrap">
@@ -682,7 +675,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                     type="color"
                     value={backgroundColor}
                     onChange={(e) => setBackgroundColor(e.target.value)}
-                    className="w-9 h-9 rounded-lg border border-slate-300 cursor-pointer p-0.5 bg-white"
+                    className="w-9 h-9 rounded-[8px] border border-[var(--line-strong)] cursor-pointer p-0.5 bg-[var(--surface)]"
                     aria-label={t('matteAriaLabel', 'Matte background color')}
                   />
                   {['#ffffff', '#000000', '#f8fafc'].map((preset) => (
@@ -690,10 +683,10 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                       key={preset}
                       type="button"
                       onClick={() => setBackgroundColor(preset)}
-                      className={`px-2.5 py-1 text-xs font-mono rounded-lg border cursor-pointer ${
+                      className={`px-3 py-1 text-xs font-mono rounded-full border cursor-pointer transition-colors ${
                         backgroundColor.toLowerCase() === preset
-                          ? 'border-blue-600 bg-blue-50 text-blue-700 font-bold'
-                          : 'border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100'
+                          ? 'border-[#7c3aed] bg-[#ede9fe] text-[#6d28d9] dark:bg-[#7c3aed]/25 dark:text-[#ddd6fe] dark:border-[#8b5cf6] font-bold'
+                          : 'border-[var(--line)] bg-[var(--surface-2)] text-[var(--ink-2)] hover:border-[var(--line-strong)]'
                       }`}
                     >
                       {preset === '#ffffff'
@@ -703,9 +696,9 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                         : t('matteLightGray', 'Light Gray')}
                     </button>
                   ))}
-                  <span className="text-xs font-mono text-slate-500">{backgroundColor}</span>
+                  <span className="text-xs font-mono text-[var(--ink-3)]">{backgroundColor}</span>
                 </div>
-                <p className="text-[11px] text-slate-500 mt-1.5">
+                <p className="text-[11px] text-[var(--ink-3)] mt-1.5">
                   {t(
                     'matteHint',
                     t(
@@ -723,21 +716,21 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
         {items.length > 0 && (
           <div className="space-y-4">
             {doneItems.length > 0 && (
-              <div className="bg-slate-900 text-white rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="panel-pastel-blue border rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-[var(--shadow)]">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
                     {t('batchSummary', `${sourceLabel} → ${targetLabel} Batch Summary`)
                       .replace('{source}', sourceLabel)
                       .replace('{target}', targetLabel)}
                   </span>
-                  <p className="text-sm font-semibold mt-1">{batchConvertedText}</p>
+                  <p className="text-sm font-semibold text-[var(--ink-navy)] mt-1">{batchConvertedText}</p>
                 </div>
                 {doneItems.length > 1 && (
                   <button
                     type="button"
                     onClick={handleDownloadAllZip}
                     disabled={isZipping}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl cursor-pointer shrink-0"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 btn-purple-grad text-sm font-semibold cursor-pointer shrink-0 shadow-sm"
                   >
                     <FileArchive className="w-4 h-4" />
                     <span>
@@ -760,12 +753,12 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
               return (
                 <div
                   key={item.id}
-                  className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xs"
+                  className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-[var(--shadow)]"
                 >
                   <div className="flex items-center gap-4 min-w-0 w-full md:w-auto">
                     <div
                       onClick={() => isDone && setComparisonTarget(item)}
-                      className={`relative w-20 h-20 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shrink-0 ${
+                      className={`relative w-20 h-20 rounded-[11px] overflow-hidden bg-[var(--surface-2)] border border-[var(--line)] shrink-0 ${
                         isDone ? 'cursor-pointer' : ''
                       }`}
                     >
@@ -775,17 +768,17 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                         className="w-full h-full object-contain"
                       />
                       {isBusy && (
-                        <div className="absolute inset-0 bg-white/80 flex items-center justify-center">
-                          <RotateCcw className="w-5 h-5 text-blue-600 animate-spin" />
+                        <div className="absolute inset-0 bg-[var(--surface)]/85 flex items-center justify-center">
+                          <RotateCcw className="w-5 h-5 text-[#7c3aed] animate-spin" />
                         </div>
                       )}
                     </div>
 
                     <div className="min-w-0 flex-1">
-                      <h3 className="text-sm font-bold text-slate-900 truncate">
+                      <h3 className="text-sm font-sans font-bold text-[var(--ink-navy)] truncate">
                         {isDone ? item.outputFilename : item.name}
                       </h3>
-                      <p className="text-xs text-slate-500 mt-0.5 font-mono">
+                      <p className="text-xs text-[var(--ink-3)] mt-0.5 font-mono">
                         {item.originalWidth > 0 ? `${item.originalWidth}×${item.originalHeight}px` : '—'}
                         {isDone &&
                         item.compressedWidth &&
@@ -797,7 +790,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                       </p>
 
                       {isErr && (
-                        <span className="inline-flex items-center gap-1 text-xs text-red-600 font-medium mt-1.5">
+                        <span className="inline-flex items-center gap-1 text-xs text-[#dc2626] dark:text-[#fca5a5] font-medium mt-1.5">
                           <AlertCircle className="w-3.5 h-3.5 shrink-0" />
                           <span>{item.errorMessage}</span>
                         </span>
@@ -806,30 +799,30 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                   </div>
 
                   {isDone && item.compressedSize !== null && (
-                    <div className="grid grid-cols-3 gap-3 py-2 px-3 sm:px-4 bg-slate-50 rounded-xl w-full md:w-auto text-center md:text-left">
+                    <div className="grid grid-cols-3 gap-3 py-2 px-3 sm:px-4 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] w-full md:w-auto text-center md:text-left">
                       <div>
-                        <span className="text-[11px] text-slate-400 block font-medium">
+                        <span className="text-[11px] text-[var(--ink-3)] block font-medium">
                           {sourceLabel}
                         </span>
-                        <span className="text-xs sm:text-sm font-semibold font-mono text-slate-700 tabular-nums">
+                        <span className="text-xs sm:text-sm font-semibold font-mono text-[var(--ink-2)] tabular-nums">
                           {formatBytes(item.originalSize)}
                         </span>
                       </div>
                       <div>
-                        <span className="text-[11px] text-slate-400 block font-medium">
+                        <span className="text-[11px] text-[var(--ink-3)] block font-medium">
                           {targetLabel}
                         </span>
-                        <span className="text-xs sm:text-sm font-bold font-mono text-blue-700 tabular-nums">
+                        <span className="text-xs sm:text-sm font-bold font-mono text-[#7c3aed] dark:text-[#a78bfa] tabular-nums">
                           {formatBytes(item.compressedSize)}
                         </span>
                       </div>
                       <div>
-                        <span className="text-[11px] text-slate-400 block font-medium">
+                        <span className="text-[11px] text-[var(--ink-3)] block font-medium">
                           {t('changeLabel', t('columnChange', 'Change'))}
                         </span>
                         <span
                           className={`text-xs sm:text-sm font-bold font-mono tabular-nums ${
-                            sizeShrank ? 'text-emerald-600' : 'text-slate-600'
+                            sizeShrank ? 'text-[#16a34a] dark:text-[#4ade80]' : 'text-[var(--ink-2)]'
                           }`}
                         >
                           {sizeShrank
@@ -846,9 +839,9 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                         <button
                           type="button"
                           onClick={() => setComparisonTarget(item)}
-                          className="px-3 py-2 text-slate-700 hover:bg-slate-100 text-xs font-semibold rounded-lg flex items-center gap-1.5 cursor-pointer"
+                          className="px-3.5 py-2 text-[var(--ink-2)] bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#c4b5fd] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
                         >
-                          <SplitSquareVertical className="w-4 h-4 text-blue-600" />
+                          <SplitSquareVertical className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
                           <span>{t('compare', 'Compare')}</span>
                         </button>
                         <button
@@ -857,7 +850,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                             item.compressedBlob &&
                             triggerDownload(item.compressedBlob, item.outputFilename)
                           }
-                          className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg cursor-pointer"
+                          className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#16a34a] hover:bg-[#15803d] text-white text-xs font-semibold rounded-[11px] cursor-pointer transition-colors shadow-xs"
                         >
                           <Download className="w-4 h-4" />
                           <span>{t('downloadTarget', `Download ${targetLabel}`)}</span>
@@ -867,7 +860,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                     <button
                       type="button"
                       onClick={() => handleRemove(item.id)}
-                      className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
+                      className="p-2 text-[var(--ink-3)] hover:text-[#dc2626] hover:bg-[#fee2e2] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] rounded-[11px] cursor-pointer transition-colors"
                       aria-label={t('removeImage', 'Remove {name}').replace('{name}', item.name)}
                     >
                       <Trash2 className="w-4 h-4" />

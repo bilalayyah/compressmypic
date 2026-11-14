@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
-  Layers,
   Menu,
   X,
   ArrowUpRight,
@@ -10,6 +9,8 @@ import {
   Monitor,
   Check,
   Globe,
+  Search,
+  LayoutGrid,
 } from 'lucide-react';
 import { TOOLS_REGISTRY, TOOL_CATEGORIES } from '../data/tools';
 import type { ToolDefinition } from '../data/tools';
@@ -100,6 +101,8 @@ export const Header: React.FC<HeaderProps> = ({
   const [toolsOpen, setToolsOpen] = useState(false);
   const [themeMenuOpen, setThemeMenuOpen] = useState(false);
   const [langMenuOpen, setLangMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchOpen, setSearchOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
   const { preference, resolvedTheme, setPreference } = useTheme();
@@ -110,6 +113,7 @@ export const Header: React.FC<HeaderProps> = ({
         setToolsOpen(false);
         setThemeMenuOpen(false);
         setLangMenuOpen(false);
+        setSearchOpen(false);
       }
     };
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -117,6 +121,7 @@ export const Header: React.FC<HeaderProps> = ({
         setToolsOpen(false);
         setThemeMenuOpen(false);
         setLangMenuOpen(false);
+        setSearchOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -133,6 +138,7 @@ export const Header: React.FC<HeaderProps> = ({
     setToolsOpen(false);
     setThemeMenuOpen(false);
     setLangMenuOpen(false);
+    setSearchOpen(false);
   };
 
   const handleSelectTheme = (next: ThemePreference) => {
@@ -149,6 +155,28 @@ export const Header: React.FC<HeaderProps> = ({
   const activeCategories = categoryLabels.filter((cat) =>
     toolsRegistry.some((t) => t.category === cat.id)
   );
+
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+  const matchingTools = normalizedQuery
+    ? toolsRegistry
+        .filter(
+          (t) =>
+            t.name.toLowerCase().includes(normalizedQuery) ||
+            t.shortDescription.toLowerCase().includes(normalizedQuery) ||
+            t.slug.toLowerCase().includes(normalizedQuery)
+        )
+        .slice(0, 7)
+    : [];
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (matchingTools.length > 0) {
+      handleNav(matchingTools[0].slug);
+      setSearchQuery('');
+    } else {
+      handleNav('/#tools-directory');
+    }
+  };
 
   const CurrentThemeIcon =
     preference === 'light'
@@ -167,9 +195,9 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800"
+      className="sticky top-0 z-40 header-pastel-band border-b border-[var(--line)] shadow-xs"
     >
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3 sm:gap-6">
+      <div className="max-w-[1220px] mx-auto px-3 sm:px-6 h-[68px] flex items-center justify-between gap-3 sm:gap-4 min-w-0">
         {/* Zone 1: Brand Wordmark */}
         <a
           href="/"
@@ -178,25 +206,34 @@ export const Header: React.FC<HeaderProps> = ({
             handleNav('/');
           }}
           aria-label={strings.homeAriaLabel}
-          className="flex items-center gap-2.5 text-xl font-bold tracking-tight text-slate-900 dark:text-white whitespace-nowrap shrink-0 group"
+          className="flex items-center gap-2 sm:gap-2.5 whitespace-nowrap shrink-0 group py-1"
         >
-          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-sm group-hover:bg-blue-700 transition-colors">
-            <Layers className="w-5 h-5" />
-          </div>
-          <span>
-            Compress<span className="text-blue-600 dark:text-blue-400">MyPic</span>
+          <span
+            className="w-8 h-8 sm:w-9 sm:h-9 rounded-[10px] btn-purple-grad grid place-items-center shadow-xs shrink-0"
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 sm:w-5 sm:h-5">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+              <path d="M16 3h3a2 2 0 0 1 2 2v3" />
+              <path d="M8 21H5a2 2 0 0 1-2-2v-3" />
+              <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+              <circle cx="12" cy="12" r="3.2" />
+            </svg>
+          </span>
+          <span className="font-sans text-[1.08rem] sm:text-[1.22rem] font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
+            Compress<span className="text-[#7c3aed] dark:text-[#a78bfa]">My</span>Pic
           </span>
         </a>
 
         {/* Zone 2: Navigation Links */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <nav className="hidden lg:flex items-center gap-0.5 text-[0.875rem] font-medium text-[var(--ink)] min-w-0">
           <a
             href="/"
             onClick={(e) => {
               e.preventDefault();
               handleNav('/');
             }}
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap shrink-0"
+            className="px-2.5 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.home}
           </a>
@@ -209,8 +246,9 @@ export const Header: React.FC<HeaderProps> = ({
                 setToolsOpen(!toolsOpen);
                 setThemeMenuOpen(false);
                 setLangMenuOpen(false);
+                setSearchOpen(false);
               }}
-              className="flex items-center gap-1 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer whitespace-nowrap"
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[0.875rem] font-medium text-[var(--ink)] hover:bg-white/70 dark:hover:bg-white/10 transition-colors cursor-pointer whitespace-nowrap"
               aria-expanded={toolsOpen}
               aria-haspopup="true"
             >
@@ -220,12 +258,12 @@ export const Header: React.FC<HeaderProps> = ({
               />
             </button>
             {toolsOpen && (
-              <div className="absolute left-0 top-full mt-2 w-[780px] max-w-[94vw] max-h-[78vh] overflow-y-auto rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-xl grid grid-cols-3 gap-5">
+              <div className="absolute left-0 top-full mt-2 w-[780px] max-w-[94vw] max-h-[78vh] overflow-y-auto rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-lg)] grid grid-cols-3 gap-5 z-50">
                 {activeCategories.map((cat) => {
                   const catTools = toolsRegistry.filter((t) => t.category === cat.id);
                   return (
                     <div key={cat.id} className="space-y-1.5">
-                      <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-400 px-2">
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-[var(--ink-3)] px-2">
                         {cat.label}
                       </p>
                       <div className="space-y-0.5">
@@ -237,7 +275,7 @@ export const Header: React.FC<HeaderProps> = ({
                               e.preventDefault();
                               handleNav(tool.slug);
                             }}
-                            className="block px-2 py-1 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-blue-500/20 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                            className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[var(--ink-2)] hover:bg-[var(--accent-soft)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors"
                           >
                             {tool.name}
                           </a>
@@ -256,7 +294,7 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               handleNav('/#how-it-works');
             }}
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap shrink-0"
+            className="px-2.5 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.howItWorks}
           </a>
@@ -266,7 +304,7 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               handleNav('/#faq');
             }}
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap shrink-0"
+            className="px-2.5 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.faq}
           </a>
@@ -276,7 +314,7 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               handleNav('/about');
             }}
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap shrink-0"
+            className="px-2.5 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.about}
           </a>
@@ -286,15 +324,62 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               handleNav('/contact');
             }}
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap shrink-0"
+            className="px-2.5 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.contact}
           </a>
         </nav>
 
-        {/* Zone 3: Language Switcher + Theme Switcher + Primary Action / Mobile Menu */}
-        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
-          {/* Language Switcher Dropdown (Desktop, Tablet & Mobile) */}
+        {/* Zone 3: Desktop Search + Language Pill + Theme Pill + All Tools Pill / Mobile Menu */}
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          {/* Header Desktop Search Input + Purple Search Button */}
+          <div className="hidden xl:block relative">
+            <form
+              onSubmit={handleSearchSubmit}
+              className="flex items-center bg-[var(--surface)] border border-[var(--line)] rounded-full p-1 pl-3 shadow-xs w-[250px]"
+            >
+              <Search className="w-3.5 h-3.5 text-[var(--ink-3)] shrink-0 mr-1.5" />
+              <input
+                type="search"
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setSearchOpen(true);
+                }}
+                onFocus={() => setSearchOpen(true)}
+                placeholder="Search tools..."
+                aria-label="Search tools"
+                className="w-full text-xs text-[var(--ink)] bg-transparent! border-0! focus:outline-none! focus:ring-0! p-0! placeholder:text-[var(--ink-3)]"
+              />
+              <button
+                type="submit"
+                className="ml-1.5 px-3 py-1 text-[11px] font-semibold btn-purple-pill shrink-0 cursor-pointer"
+              >
+                Search
+              </button>
+            </form>
+
+            {searchOpen && matchingTools.length > 0 && (
+              <div className="absolute right-0 top-full mt-2 w-[300px] rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-2 shadow-[var(--shadow-lg)] z-50">
+                {matchingTools.map((tool) => (
+                  <button
+                    key={tool.slug}
+                    type="button"
+                    onClick={() => {
+                      handleNav(tool.slug);
+                      setSearchQuery('');
+                    }}
+                    className="w-full text-left px-3 py-2 rounded-xl hover:bg-[var(--accent-soft)] transition-colors cursor-pointer"
+                  >
+                    <div className="text-xs font-semibold text-[var(--ink)]">{tool.name}</div>
+                    <div className="text-[11px] text-[var(--ink-3)] truncate">{tool.shortDescription}</div>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Language Switcher Pill */}
           <div className="relative">
             <button
               type="button"
@@ -302,17 +387,18 @@ export const Header: React.FC<HeaderProps> = ({
                 setLangMenuOpen(!langMenuOpen);
                 setToolsOpen(false);
                 setThemeMenuOpen(false);
+                setSearchOpen(false);
               }}
               aria-label={strings.languageLabel}
               aria-expanded={langMenuOpen}
               aria-haspopup="menu"
               title={strings.languageLabel}
-              className="inline-flex items-center gap-1.5 h-9 px-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer text-xs font-semibold"
+              className="inline-flex items-center gap-1 sm:gap-1.5 h-9 px-2 sm:px-3 rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 transition-colors cursor-pointer text-xs font-semibold shadow-2xs"
             >
-              <Globe className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              <span className="hidden lg:inline">{lang.toUpperCase()}</span>
+              <Globe className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span className="hidden xl:inline">{lang.toUpperCase()}</span>
               <ChevronDown
-                className={`w-3.5 h-3.5 text-slate-400 transition-transform ${
+                className={`w-3.5 h-3.5 text-[var(--ink-3)] transition-transform ${
                   langMenuOpen ? 'rotate-180' : ''
                 }`}
               />
@@ -322,7 +408,7 @@ export const Header: React.FC<HeaderProps> = ({
               <div
                 role="menu"
                 aria-label={strings.languageLabel}
-                className="absolute right-0 top-full mt-2 w-48 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 py-1.5 shadow-xl z-50"
+                className="absolute right-0 top-full mt-2 w-48 rounded-2xl border border-[var(--line)] bg-[var(--surface)] py-1.5 shadow-[var(--shadow-lg)] z-50"
               >
                 {SUPPORTED_LANGUAGES.map((language) => {
                   const isActive = language.code === lang;
@@ -339,10 +425,10 @@ export const Header: React.FC<HeaderProps> = ({
                       onClick={() => handleSelectLanguage(language.code)}
                       className={`w-full flex items-center justify-between gap-2 px-3.5 py-2 text-xs font-semibold transition-colors ${
                         !isAvailable
-                          ? 'text-slate-400 dark:text-slate-500 cursor-not-allowed'
+                          ? 'text-[var(--ink-3)] opacity-55 cursor-not-allowed'
                           : isActive
-                          ? 'bg-blue-50 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 cursor-pointer'
-                          : 'text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700/70 cursor-pointer'
+                          ? 'bg-[var(--accent-soft)] text-[#6d28d9] dark:text-[#ddd6fe] cursor-pointer'
+                          : 'text-[var(--ink-2)] hover:bg-[var(--surface-2)] hover:text-[var(--ink)] cursor-pointer'
                       }`}
                     >
                       <span>{language.nativeName}</span>
@@ -354,7 +440,7 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </div>
 
-          {/* Theme Switcher Dropdown (Desktop, Tablet & Mobile) */}
+          {/* Theme Switcher Pill */}
           <div className="relative">
             <button
               type="button"
@@ -362,24 +448,18 @@ export const Header: React.FC<HeaderProps> = ({
                 setThemeMenuOpen(!themeMenuOpen);
                 setToolsOpen(false);
                 setLangMenuOpen(false);
+                setSearchOpen(false);
               }}
               aria-label={strings.themeAriaLabel.replace('{current}', currentThemeLabel)}
               aria-expanded={themeMenuOpen}
               aria-haspopup="menu"
               data-testid="theme-toggle-button"
               title={strings.themeTitle.replace('{current}', currentThemeLabel)}
-              className="inline-flex items-center gap-1.5 h-9 px-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer text-xs font-semibold"
+              className="inline-flex items-center gap-1 sm:gap-1.5 h-9 px-2 sm:px-3 rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 transition-colors cursor-pointer text-xs font-semibold shadow-2xs"
             >
-              <CurrentThemeIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              <span className="hidden lg:inline">
-                {preference === 'system'
-                  ? strings.themeSystemShort
-                  : preference === 'dark'
-                  ? strings.themeDarkShort
-                  : strings.themeLightShort}
-              </span>
+              <CurrentThemeIcon className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <ChevronDown
-                className={`w-3.5 h-3.5 text-slate-400 transition-transform ${
+                className={`w-3.5 h-3.5 text-[var(--ink-3)] transition-transform ${
                   themeMenuOpen ? 'rotate-180' : ''
                 }`}
               />
@@ -389,7 +469,7 @@ export const Header: React.FC<HeaderProps> = ({
               <div
                 role="menu"
                 aria-label={strings.themeHeading}
-                className="absolute right-0 top-full mt-2 w-48 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 py-1.5 shadow-xl z-50"
+                className="absolute right-0 top-full mt-2 w-48 rounded-2xl border border-[var(--line)] bg-[var(--surface)] py-1.5 shadow-[var(--shadow-lg)] z-50"
               >
                 {THEME_OPTIONS.map(({ id, label, Icon }) => {
                   const isActive = preference === id;
@@ -402,8 +482,8 @@ export const Header: React.FC<HeaderProps> = ({
                       onClick={() => handleSelectTheme(id)}
                       className={`w-full flex items-center justify-between gap-2 px-3.5 py-2 text-xs font-semibold transition-colors cursor-pointer ${
                         isActive
-                          ? 'bg-blue-50 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300'
-                          : 'text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700/70'
+                          ? 'bg-[var(--accent-soft)] text-[#6d28d9] dark:text-[#ddd6fe]'
+                          : 'text-[var(--ink-2)] hover:bg-[var(--surface-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       <span className="flex items-center gap-2.5">
@@ -420,11 +500,11 @@ export const Header: React.FC<HeaderProps> = ({
 
           <button
             type="button"
-            onClick={onScrollToTool}
-            className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 active:bg-blue-800 transition-colors shadow-sm whitespace-nowrap shrink-0 cursor-pointer"
+            onClick={() => handleNav('/#tools-directory')}
+            className="hidden lg:inline-flex items-center gap-1.5 px-4 py-2 text-[0.82rem] font-semibold btn-purple-pill shadow-xs whitespace-nowrap shrink-0 cursor-pointer"
           >
-            <span>{strings.compressImages}</span>
-            <ArrowUpRight className="w-4 h-4" />
+            <LayoutGrid className="w-3.5 h-3.5" />
+            <span>All Tools</span>
           </button>
 
           {/* Mobile Menu Button */}
@@ -435,34 +515,34 @@ export const Header: React.FC<HeaderProps> = ({
               setThemeMenuOpen(false);
               setLangMenuOpen(false);
             }}
-            className="md:hidden p-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="lg:hidden p-1.5 rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 cursor-pointer shrink-0"
             aria-label={strings.menuAriaLabel}
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-3 pb-6 space-y-2 max-h-[82vh] overflow-y-auto">
+        <div className="lg:hidden border-t border-[var(--line)] bg-[var(--surface)] px-4 pt-3 pb-6 space-y-2 max-h-[82vh] overflow-y-auto shadow-[var(--shadow-lg)]">
           <a
             href="/"
             onClick={(e) => {
               e.preventDefault();
               handleNav('/');
             }}
-            className="block px-3 py-2 text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md"
+            className="block px-3 py-2 text-base font-medium text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-xl"
           >
             {strings.home}
           </a>
 
           {/* Mobile Quick Theme Selector */}
-          <div className="py-2 border-t border-slate-100 dark:border-slate-800 px-1">
-            <p className="px-2 text-[11px] font-semibold uppercase tracking-wide text-slate-400 mb-2">
+          <div className="py-2 border-t border-[var(--line)] px-1">
+            <p className="px-2 text-[11px] font-semibold uppercase tracking-wide text-[var(--ink-3)] mb-2">
               {strings.themeHeading}
             </p>
-            <div className="grid grid-cols-3 gap-1.5 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl">
+            <div className="grid grid-cols-3 gap-1.5 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-xl">
               {THEME_OPTIONS.map(({ id, shortLabel, Icon }) => {
                 const isActive = preference === id;
                 return (
@@ -472,8 +552,8 @@ export const Header: React.FC<HeaderProps> = ({
                     onClick={() => handleSelectTheme(id)}
                     className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
                       isActive
-                        ? 'bg-white dark:bg-slate-700 text-blue-700 dark:text-blue-300 shadow-xs'
-                        : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                        ? 'bg-[var(--surface)] text-[#7c3aed] dark:text-[#c4b5fd] shadow-xs'
+                        : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
                     <Icon className="w-3.5 h-3.5" />
@@ -485,11 +565,11 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Mobile Language Selector */}
-          <div className="py-2 border-t border-slate-100 dark:border-slate-800 px-1">
-            <p className="px-2 text-[11px] font-semibold uppercase tracking-wide text-slate-400 mb-2">
+          <div className="py-2 border-t border-[var(--line)] px-1">
+            <p className="px-2 text-[11px] font-semibold uppercase tracking-wide text-[var(--ink-3)] mb-2">
               {strings.languageLabel}
             </p>
-            <div className="grid grid-cols-3 gap-1.5 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl">
+            <div className="grid grid-cols-3 gap-1.5 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-xl">
               {SUPPORTED_LANGUAGES.map((language) => {
                 const isActive = language.code === lang;
                 const isAvailable = availableLanguages.includes(language.code);
@@ -503,10 +583,10 @@ export const Header: React.FC<HeaderProps> = ({
                     onClick={() => handleSelectLanguage(language.code)}
                     className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-semibold transition-colors ${
                       !isAvailable
-                        ? 'text-slate-400 dark:text-slate-500 cursor-not-allowed'
+                        ? 'text-[var(--ink-3)] opacity-50 cursor-not-allowed'
                         : isActive
-                        ? 'bg-white dark:bg-slate-700 text-blue-700 dark:text-blue-300 shadow-xs cursor-pointer'
-                        : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white cursor-pointer'
+                        ? 'bg-[var(--surface)] text-[#7c3aed] dark:text-[#c4b5fd] shadow-xs cursor-pointer'
+                        : 'text-[var(--ink-2)] hover:text-[var(--ink)] cursor-pointer'
                     }`}
                   >
                     <span>{language.code.toUpperCase()}</span>
@@ -516,13 +596,13 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
 
-          <div className="pt-2 border-t border-slate-100 dark:border-slate-800 space-y-3">
+          <div className="pt-2 border-t border-[var(--line)] space-y-3">
             {activeCategories.map((cat) => {
               const catTools = toolsRegistry.filter((t) => t.category === cat.id && t.slug !== '/');
               if (catTools.length === 0) return null;
               return (
                 <div key={cat.id}>
-                  <p className="px-3 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                  <p className="px-3 text-[11px] font-semibold uppercase tracking-wide text-[var(--ink-3)]">
                     {cat.label}
                   </p>
                   <div className="mt-1 grid grid-cols-2 gap-1">
@@ -534,7 +614,7 @@ export const Header: React.FC<HeaderProps> = ({
                           e.preventDefault();
                           handleNav(tool.slug);
                         }}
-                        className="block px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-blue-500/20 hover:text-blue-600 dark:hover:text-blue-300 rounded-md truncate"
+                        className="block px-3 py-1.5 text-xs font-medium text-[var(--ink-2)] hover:bg-[var(--accent-soft)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] rounded-lg truncate"
                       >
                         {tool.name}
                       </a>
@@ -545,14 +625,14 @@ export const Header: React.FC<HeaderProps> = ({
             })}
           </div>
 
-          <div className="pt-2 border-t border-slate-100 dark:border-slate-800 space-y-1">
+          <div className="pt-2 border-t border-[var(--line)] space-y-1">
             <a
               href="/#how-it-works"
               onClick={(e) => {
                 e.preventDefault();
                 handleNav('/#how-it-works');
               }}
-              className="block px-3 py-2 text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md"
+              className="block px-3 py-2 text-base font-medium text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-xl"
             >
               {strings.howItWorks}
             </a>
@@ -562,7 +642,7 @@ export const Header: React.FC<HeaderProps> = ({
                 e.preventDefault();
                 handleNav('/#faq');
               }}
-              className="block px-3 py-2 text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md"
+              className="block px-3 py-2 text-base font-medium text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-xl"
             >
               {strings.faq}
             </a>
@@ -572,7 +652,7 @@ export const Header: React.FC<HeaderProps> = ({
                 e.preventDefault();
                 handleNav('/about');
               }}
-              className="block px-3 py-2 text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md"
+              className="block px-3 py-2 text-base font-medium text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-xl"
             >
               {strings.aboutUs}
             </a>
@@ -582,13 +662,13 @@ export const Header: React.FC<HeaderProps> = ({
                 e.preventDefault();
                 handleNav('/contact');
               }}
-              className="block px-3 py-2 text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md"
+              className="block px-3 py-2 text-base font-medium text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-xl"
             >
               {strings.contactUs}
             </a>
           </div>
 
-          <div className="pt-2">
+          <div className="pt-2 flex flex-col gap-2">
             <button
               type="button"
               onClick={() => {
@@ -598,7 +678,7 @@ export const Header: React.FC<HeaderProps> = ({
                 setLangMenuOpen(false);
                 onScrollToTool();
               }}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 active:bg-blue-800 transition-colors shadow-sm"
+              className="w-full flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold btn-purple-pill shadow-xs cursor-pointer"
             >
               <span>{strings.compressImages}</span>
               <ArrowUpRight className="w-4 h-4" />

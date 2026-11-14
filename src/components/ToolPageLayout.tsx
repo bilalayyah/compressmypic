@@ -1,20 +1,3 @@
-// ToolPageLayout — multilingual replacement.
-// Target path in the repo: src/components/ToolPageLayout.tsx (REPLACE the whole file).
-// Changes vs the English original:
-//  - New optional props: lang, ui (layout chrome strings), canonicalPath (the actual
-//    URL path of the page, e.g. '/es/redimensionar-imagenes'), alternates (hreflang
-//    alternates computed by App.tsx), toolRegistry + categoryLabels (the active
-//    language's registry, for related tools + category label). English behaviour is
-//    unchanged when the new props are omitted.
-//  - SEO effect: canonical / og:url / JSON-LD url use canonicalPath (self-referencing
-//    per language — never canonicalize a localized page to English). hreflang
-//    <link rel="alternate"> tags are written from `alternates` (incl. x-default) and
-//    removed on cleanup. JSON-LD HowTo/FAQPage names use the localized templates.
-//  - The tool's `slug` stays the ENGLISH slug in every language's registry (it is the
-//    lookup key); App.tsx's handleNavigate translates English slugs to the current
-//    language's slug when navigating (breadcrumb + related tools), so this component
-//    keeps calling onNavigate with English slugs exactly as before.
-
 import React, { useEffect, useState } from 'react';
 import {
   ChevronRight,
@@ -29,6 +12,7 @@ import { ToolDefinition, TOOL_BY_SLUG, TOOL_CATEGORIES } from '../data/tools';
 import { AdSlot } from './AdSlot';
 import type { SupportedLang } from '../locales/config';
 import { getOgLocale, getOgLocaleAlternates } from '../locales/alternates';
+import { getPastelCardClass, getPastelTileClass } from '../utils/pastel';
 
 export interface ToolPageLayoutStrings {
   home: string;
@@ -162,9 +146,6 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
       }
     };
 
-    // Phase 7 (F1): og:locale — UPDATE the existing tag, never duplicate it,
-    // and replace the whole og:locale:alternate set (10 others). Same logic
-    // as App.tsx; both use getOgLocale()/getOgLocaleAlternates().
     const setOgLocaleTags = (locale: string, alternateLocales: string[]) => {
       let el = document.head.querySelector<HTMLMetaElement>('meta[property="og:locale"]');
       if (!el) {
@@ -205,9 +186,6 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
       'https://compressmypic.online/og-image.png',
       true
     );
-    // Phase 7 (F1+F3): per-language og:locale (+10 alternates) and localized
-    // image alt text. The image stays the single shared branded og-image.png;
-    // the alt is the page's localized seoTitle, never an English fallback.
     setOgLocaleTags(getOgLocale(lang), getOgLocaleAlternates(lang));
     setMetaTag('meta[property="og:image:alt"]', 'property', 'og:image:alt', seoTitle);
 
@@ -299,13 +277,13 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
   }, [tool, canonicalUrl, pagePath, ui]);
 
   return (
-    <div className="bg-white dark:bg-slate-950">
-      {/* Hero / Page Header */}
-      <section className="pt-8 pb-6 sm:pt-12 sm:pb-8 px-4 max-w-5xl mx-auto text-center">
-        {/* Breadcrumb */}
+    <div className="bg-[var(--bg)]">
+      {/* Left-Aligned Tool Page Header */}
+      <section className="pt-8 pb-6 sm:pt-11 sm:pb-8 px-4 sm:px-6 max-w-[1180px] mx-auto text-left">
+        {/* Grey Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
-          className="flex items-center justify-center gap-1.5 text-xs font-medium text-slate-500 mb-5 flex-wrap"
+          className="flex items-center justify-start gap-1.5 text-xs font-medium text-[var(--ink-3)] mb-4 flex-wrap"
         >
           <a
             href="/"
@@ -313,75 +291,83 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
               e.preventDefault();
               onNavigate('/');
             }}
-            className="hover:text-blue-600 transition-colors"
+            className="text-[var(--ink-3)] hover:text-[#7c3aed] transition-colors"
           >
             {ui.home}
           </a>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-          <span className="text-slate-600">{categoryLabel}</span>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-          <span className="text-slate-900 font-semibold">{tool.name}</span>
+          <ChevronRight className="w-3.5 h-3.5 text-[var(--ink-3)]" />
+          <span className="text-[var(--ink-3)]">{categoryLabel}</span>
+          <ChevronRight className="w-3.5 h-3.5 text-[var(--ink-3)]" />
+          <span className="text-[var(--ink-navy)] font-semibold">{tool.name}</span>
         </nav>
 
-        {/* Privacy Pill */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs sm:text-sm font-medium mb-5">
-          <Lock className="w-3.5 h-3.5 text-blue-600" />
-          <span>{ui.privacyPill}</span>
+        {/* Category Pill + Runs Locally in Browser */}
+        <div className="flex flex-wrap items-center gap-2.5 mb-4">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ede9fe] dark:bg-[#7c3aed]/25 border border-[#ddd6fe] dark:border-[#8b5cf6]/35 text-[#6d28d9] dark:text-[#ddd6fe] text-xs font-semibold">
+            {categoryLabel}
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--ink-3)]">
+            <Lock className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#c4b5fd]" />
+            <span>{ui.privacyPill}</span>
+          </span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight text-balance leading-tight">
+        {/* Left-Aligned Bold Near-Black Navy Sans H1 */}
+        <h1 className="font-sans text-3xl sm:text-4xl lg:text-[2.85rem] font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] text-balance leading-[1.12] max-w-4xl">
           {tool.h1}
         </h1>
-        <p className="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-3.5 text-base sm:text-lg text-[var(--ink-3)] max-w-3xl leading-relaxed">
           {tool.subtitle}
         </p>
 
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs sm:text-sm text-slate-500 font-medium">
+        <div className="mt-4 flex flex-wrap items-center justify-start gap-y-2 gap-x-5 text-xs sm:text-sm text-[var(--ink-3)] font-medium">
           <div className="flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <ShieldCheck className="w-4 h-4 text-[#16a34a] dark:text-[#4ade80]" />
             <span>{ui.noUploads}</span>
           </div>
-          <span aria-hidden="true" className="text-slate-300 hidden sm:inline">
+          <span aria-hidden="true" className="text-[var(--line-strong)] hidden sm:inline">
             ·
           </span>
           <div className="flex items-center gap-1.5">
-            <Zap className="w-4 h-4 text-blue-600" />
+            <Zap className="w-4 h-4 text-[#7c3aed] dark:text-[#c4b5fd]" />
             <span>{ui.freeNote}</span>
           </div>
         </div>
       </section>
 
       {/* Main Tool Workspace */}
-      <section className="max-w-5xl w-full mx-auto px-4 sm:px-6 pb-14">
+      <section className="max-w-[1180px] w-full mx-auto px-4 sm:px-6 pb-14">
         {children}
       </section>
 
-      {/* Reserved Non-Intrusive Ad Slot (Below tool workspace, never over buttons/controls) */}
+      {/* Reserved Non-Intrusive Ad Slot */}
       <div className="px-4">
         <AdSlot slotId={`tool-${tool.slug.replace(/\//g, '')}-mid`} format="horizontal" />
       </div>
 
-      {/* How to Use Section */}
+      {/* How to Use Section: Numbered Step Cards Cycling Pastel Palettes */}
       {tool.howToSteps.length > 0 && (
-        <section className="py-12 sm:py-16 border-t border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+        <section className="py-12 sm:py-16 border-t border-[var(--line)] bg-[var(--bg-soft)]">
+          <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
+            <h2 className="font-sans text-2xl sm:text-3xl font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
               {ui.howToTitle.replace('{name}', tool.name)}
             </h2>
-            <p className="mt-2 text-base text-slate-600">{ui.howToIntro}</p>
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <p className="mt-2 text-base text-[var(--ink-3)] max-w-2xl">{ui.howToIntro}</p>
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-5">
               {tool.howToSteps.map((step, index) => (
                 <div
                   key={step.title}
-                  className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs"
+                  className={`border rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col gap-3 items-start ${getPastelCardClass(index * 2)}`}
                 >
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-blue-50 text-blue-600 text-sm font-extrabold mb-3">
+                  <span className="w-8 h-8 rounded-lg btn-purple-grad font-mono font-bold text-sm flex items-center justify-center shadow-xs shrink-0">
                     {index + 1}
                   </span>
-                  <h3 className="text-base font-bold text-slate-900">{step.title}</h3>
-                  <p className="mt-1.5 text-sm text-slate-600 leading-normal">
-                    {step.description}
-                  </p>
+                  <div>
+                    <h3 className="font-sans text-base font-bold text-[var(--ink-navy)]">{step.title}</h3>
+                    <p className="mt-1.5 text-sm text-[var(--ink-2)] leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -389,24 +375,24 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
         </section>
       )}
 
-      {/* Key Capabilities & Privacy */}
+      {/* Key Capabilities & Privacy: Light Blue/Purple Pastel Cards with Purple Checkmarks */}
       {tool.features.length > 0 && (
-        <section className="py-12 sm:py-16 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+        <section className="py-12 sm:py-16 border-t border-[var(--line)] bg-[var(--bg)]">
+          <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
+            <h2 className="font-sans text-2xl sm:text-3xl font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
               {ui.featuresTitle.replace('{name}', tool.name)}
             </h2>
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {tool.features.map((feat) => (
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {tool.features.map((feat, idx) => (
                 <div
                   key={feat.title}
-                  className="bg-slate-50/70 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl p-5"
+                  className={`border rounded-2xl p-5 shadow-[var(--shadow)] ${idx % 2 === 0 ? 'pastel-card-0' : 'pastel-card-2'}`}
                 >
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-[#7c3aed] dark:text-[#c4b5fd] shrink-0 mt-0.5" />
                     <div>
-                      <h3 className="text-base font-bold text-slate-900">{feat.title}</h3>
-                      <p className="mt-1.5 text-sm text-slate-600 leading-normal">
+                      <h3 className="font-sans text-base font-bold text-[var(--ink-navy)]">{feat.title}</h3>
+                      <p className="mt-1.5 text-sm text-[var(--ink-2)] leading-relaxed">
                         {feat.description}
                       </p>
                     </div>
@@ -418,11 +404,11 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
         </section>
       )}
 
-      {/* Tool-Specific FAQ Section */}
+      {/* Tool-Specific FAQ Section: Full Cycling Pastel Gradient FAQ Cards */}
       {tool.faqs.length > 0 && (
-        <section className="py-12 sm:py-16 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900">
+        <section className="py-12 sm:py-16 border-t border-[var(--line)] bg-[var(--bg-soft)]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="font-sans text-2xl sm:text-3xl font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
               {ui.faqTitle.replace('{name}', tool.name)}
             </h2>
             <div className="mt-6 space-y-3">
@@ -431,25 +417,25 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                 return (
                   <div
                     key={faq.question}
-                    className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs"
+                    className={`border rounded-2xl overflow-hidden shadow-[var(--shadow)] transition-shadow hover:shadow-[var(--shadow-lg)] ${getPastelCardClass(idx)}`}
                   >
                     <button
                       type="button"
                       onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
                       aria-expanded={isOpen}
-                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left hover:bg-slate-50/50 transition-colors cursor-pointer"
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left hover:bg-white/30 dark:hover:bg-white/5 transition-colors cursor-pointer"
                     >
-                      <span className="text-sm sm:text-base font-bold text-slate-900">
+                      <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">
                         {faq.question}
                       </span>
                       <ChevronDown
                         className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${
-                          isOpen ? 'rotate-180 text-blue-600' : 'text-slate-400'
+                          isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'
                         }`}
                       />
                     </button>
                     {isOpen && (
-                      <div className="px-5 py-4 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 bg-white">
+                      <div className="px-5 py-4 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/55 dark:bg-slate-900/35">
                         {faq.answer}
                       </div>
                     )}
@@ -461,15 +447,15 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
         </section>
       )}
 
-      {/* Related Tools Internal Linking */}
+      {/* Related Tools: White Cards with Pastel Tile & Open tool link */}
       {relatedTools.length > 0 && (
-        <section className="py-12 sm:py-16 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6">
-            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+        <section className="py-12 sm:py-16 border-t border-[var(--line)] bg-[var(--bg)]">
+          <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
+            <h2 className="font-sans text-xl sm:text-2xl font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
               {ui.relatedTitle}
             </h2>
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {relatedTools.map((rel) => (
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {relatedTools.map((rel, idx) => (
                 <a
                   key={rel.slug}
                   href={rel.slug}
@@ -477,15 +463,19 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                     e.preventDefault();
                     onNavigate(rel.slug);
                   }}
-                  className="group flex items-center justify-between gap-4 p-4 rounded-xl border border-slate-200 bg-white hover:border-blue-300 hover:shadow-sm transition-all"
+                  className="group flex items-start justify-between gap-4 p-5 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#7c3aed]/40 hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all"
                 >
-                  <div>
-                    <h3 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                      {rel.name}
-                    </h3>
-                    <p className="text-xs text-slate-600 mt-0.5">{rel.shortDescription}</p>
+                  <div className="flex items-start gap-3.5 min-w-0">
+                    <span className={`w-9 h-9 rounded-lg ${getPastelTileClass(idx * 2)} flex items-center justify-center shrink-0 text-xs font-bold`}>
+                      <ArrowRight className="w-4 h-4" />
+                    </span>
+                    <div className="min-w-0">
+                      <h3 className="font-sans text-base font-bold text-[var(--ink-navy)] group-hover:text-[#7c3aed] dark:group-hover:text-[#c4b5fd] transition-colors">
+                        {rel.name}
+                      </h3>
+                      <p className="text-xs text-[var(--ink-3)] mt-1 leading-relaxed">{rel.shortDescription}</p>
+                    </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 transition-colors" />
                 </a>
               ))}
             </div>

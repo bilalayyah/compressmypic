@@ -86,7 +86,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({
   const totalCompressedBytes = doneImages.reduce((acc, img) => acc + (img.compressedSize || 0), 0);
   const stillProcessing = images.some((img) => img.status === 'compressing');
 
-  const basisOriginalBytes = stillProcessing ? doneOriginalBytes : doneOriginalBytes;
+  const basisOriginalBytes = doneOriginalBytes;
   const totalSpaceSaved = basisOriginalBytes - totalCompressedBytes;
   const totalGrew = !stillProcessing && doneImages.length > 0 && totalSpaceSaved < 0;
   const overallPercentage =
@@ -97,9 +97,9 @@ export const ResultsList: React.FC<ResultsListProps> = ({
   return (
     <div className="space-y-6">
       {/* Total Overview & Bulk Download Header */}
-      <div className="bg-slate-900 text-white rounded-2xl p-5 sm:p-7 shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="panel-pastel-blue border rounded-2xl p-5 sm:p-7 shadow-[var(--shadow)] flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div>
-          <div className="flex items-center gap-2 text-xs font-semibold text-blue-400 tracking-wider uppercase mb-1">
+          <div className="flex items-center gap-2 text-xs font-bold text-[#6d28d9] dark:text-[#c4b5fd] tracking-wider uppercase mb-1">
             <span>{strings?.summary ?? 'Compression Summary'}</span>
             <span aria-hidden="true">·</span>
             <span>{images.length} {images.length === 1 ? strings?.image ?? 'Image' : strings?.images ?? 'Images'}</span>
@@ -107,48 +107,48 @@ export const ResultsList: React.FC<ResultsListProps> = ({
 
           <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2 mt-2">
             <div>
-              <span className="text-xs text-slate-400 block">{strings?.totalOriginal ?? 'Total Original:'}</span>
-              <span className="text-lg font-bold font-mono text-slate-200 tabular-nums">
+              <span className="text-xs text-[var(--ink-3)] block">{strings?.totalOriginal ?? 'Total Original:'}</span>
+              <span className="text-lg font-bold font-mono text-[var(--ink-2)] tabular-nums">
                 {formatBytes(stillProcessing ? totalOriginalBytes : basisOriginalBytes || totalOriginalBytes)}
               </span>
             </div>
             <div>
-              <span className="text-xs text-slate-400 block">{strings?.totalCompressed ?? 'Total Compressed:'}</span>
-              <span className="text-lg font-bold font-mono text-white tabular-nums">
+              <span className="text-xs text-[var(--ink-3)] block">{strings?.totalCompressed ?? 'Total Compressed:'}</span>
+              <span className="text-lg font-bold font-mono text-[var(--ink-navy)] tabular-nums">
                 {stillProcessing ? strings?.processing ?? 'Processing...' : formatBytes(totalCompressedBytes)}
               </span>
             </div>
             <div>
-              <span className="text-xs text-slate-400 block">{strings?.totalSaved ?? 'Total Saved:'}</span>
+              <span className="text-xs text-[var(--ink-3)] block">{strings?.totalSaved ?? 'Total Saved:'}</span>
               {stillProcessing ? (
-                <span className="text-lg font-bold font-mono text-slate-300 tabular-nums">
+                <span className="text-lg font-bold font-mono text-[var(--ink-2)] tabular-nums">
                   {strings?.processing ?? 'Processing...'}
                 </span>
               ) : totalGrew ? (
-                <span className="text-lg font-bold font-mono text-red-400 tabular-nums">
+                <span className="text-lg font-bold font-mono text-[#ea580c] dark:text-[#fb923c] tabular-nums">
                   {formatBytes(totalSpaceSaved)}{' '}
                   {strings?.grewBy
                     ? strings.grewBy.replace('{bytes}', formatBytes(Math.abs(totalSpaceSaved)))
                     : `(grew by ${formatBytes(Math.abs(totalSpaceSaved))})`}
                 </span>
               ) : (
-                <span className="text-lg font-bold font-mono text-emerald-400 tabular-nums">
+                <span className="text-lg font-bold font-mono text-[#15803d] dark:text-[#4ade80] tabular-nums">
                   {formatBytes(totalSpaceSaved)}
                 </span>
               )}
             </div>
             {overallPercentage !== null && overallPercentage !== 0 && (
               <div>
-                <span className="text-xs text-slate-400 block">
+                <span className="text-xs text-[var(--ink-3)] block">
                   {overallPercentage > 0 ? strings?.reduction ?? 'Reduction:' : strings?.sizeChange ?? 'Size Change:'}
                 </span>
                 {overallPercentage > 0 ? (
-                  <span className="text-xl font-extrabold font-mono text-emerald-300 tabular-nums flex items-center">
+                  <span className="text-xl font-extrabold font-mono text-[#15803d] dark:text-[#4ade80] tabular-nums flex items-center">
                     <ArrowDown className="w-5 h-5 mr-0.5 inline" />
                     {overallPercentage}%
                   </span>
                 ) : (
-                  <span className="text-xl font-extrabold font-mono text-red-400 tabular-nums flex items-center">
+                  <span className="text-xl font-extrabold font-mono text-[#ea580c] dark:text-[#fb923c] tabular-nums flex items-center">
                     <ArrowUp className="w-5 h-5 mr-0.5 inline" />
                     +{Math.abs(overallPercentage)}%
                   </span>
@@ -164,7 +164,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({
             type="button"
             onClick={onDownloadAllZip}
             disabled={isZipping || doneImages.length === 0}
-            className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-blue-600 hover:bg-blue-500 active:bg-blue-700 disabled:opacity-50 text-white text-sm font-bold rounded-xl shadow-md transition-all cursor-pointer whitespace-nowrap"
+            className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 btn-purple-grad disabled:opacity-45 text-sm font-semibold shadow-sm cursor-pointer whitespace-nowrap"
           >
             {isZipping ? (
               <>
@@ -210,10 +210,10 @@ export const ResultsList: React.FC<ResultsListProps> = ({
           return (
             <div
               key={image.id}
-              className={`bg-white border rounded-2xl p-4 sm:p-5 shadow-xs transition-colors space-y-3 ${
+              className={`bg-[var(--surface)] border rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] transition-colors space-y-3 ${
                 isLarger
-                  ? 'border-red-200 hover:border-red-300'
-                  : 'border-slate-200 hover:border-slate-300'
+                  ? 'border-[#fb923c]/60 hover:border-[#ea580c]'
+                  : 'border-[var(--line)] hover:border-[var(--line-strong)]'
               }`}
             >
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -222,7 +222,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                   {/* Thumbnail Preview with comparison indicator */}
                   <div
                     onClick={() => isDone && onOpenComparison(image)}
-                    className={`relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shrink-0 ${
+                    className={`relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden bg-[var(--surface-2)] border border-[var(--line)] shrink-0 ${
                       isDone ? 'cursor-pointer group' : ''
                     }`}
                     title={isDone ? strings?.compareTitle ?? 'Click to inspect visual quality comparison' : ''}
@@ -233,12 +233,12 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                       className="w-full h-full object-cover"
                     />
                     {isCompressing && (
-                      <div className="absolute inset-0 bg-white/80 backdrop-blur-xs flex items-center justify-center">
-                        <RotateCcw className="w-6 h-6 text-blue-600 animate-spin" />
+                      <div className="absolute inset-0 bg-[var(--surface)]/80 backdrop-blur-xs flex items-center justify-center">
+                        <RotateCcw className="w-6 h-6 text-[#7c3aed] animate-spin" />
                       </div>
                     )}
                     {isDone && (
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-[11px] font-semibold gap-1">
+                      <div className="absolute inset-0 bg-slate-900/55 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-[11px] font-semibold gap-1">
                         <SplitSquareVertical className="w-4 h-4" />
                         <span>{strings?.compare ?? 'Compare'}</span>
                       </div>
@@ -248,17 +248,17 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                   {/* Info Text */}
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
-                      <h3 className="text-sm sm:text-base font-bold text-slate-900 truncate">
+                      <h3 className="text-sm sm:text-base font-bold text-[var(--ink-navy)] truncate">
                         {image.name}
                       </h3>
                       {image.hasAlpha && (
-                        <span className="text-[10px] font-mono font-medium px-1.5 py-0.5 bg-slate-100 text-slate-600 rounded">
+                        <span className="text-[10px] font-mono font-medium px-2 py-0.5 bg-[var(--accent-soft)] border border-[#ddd6fe] dark:border-[#8b5cf6]/35 text-[#6d28d9] dark:text-[#ddd6fe] rounded-full">
                           {strings?.alpha ?? 'Alpha'}
                         </span>
                       )}
                     </div>
 
-                    <p className="text-xs text-slate-500 mt-0.5">
+                    <p className="text-xs text-[var(--ink-3)] mt-0.5 font-mono">
                       {image.originalWidth}×{image.originalHeight}px · {strings?.formatLabel ?? 'Format:'}{' '}
                       {image.outputExtension.toUpperCase().replace('.', '')}
                     </p>
@@ -266,33 +266,33 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                     {/* Status Indicator */}
                     <div className="mt-2 flex items-center gap-2">
                       {isDone && keptOriginal && (
-                        <span className="inline-flex items-center gap-1 text-xs text-blue-700 font-semibold">
-                          <ShieldCheck className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                        <span className="inline-flex items-center gap-1 text-xs text-[#6d28d9] dark:text-[#c4b5fd] font-semibold">
+                          <ShieldCheck className="w-3.5 h-3.5 text-[#7c3aed] shrink-0" />
                           {strings?.keptOriginal ?? 'Kept original (re-encode was larger)'}
                         </span>
                       )}
                       {isDone && isLarger && (
-                        <span className="inline-flex items-center gap-1 text-xs text-red-600 font-semibold">
-                          <AlertTriangle className="w-3.5 h-3.5 text-red-500 shrink-0" />
+                        <span className="inline-flex items-center gap-1 text-xs text-[#c2410c] dark:text-[#fdba74] font-semibold">
+                          <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
                           {strings?.grewByStatus
                             ? strings.grewByStatus.replace('{bytes}', formatBytes(growthBytes))
                             : `Grew by ${formatBytes(growthBytes)} — re-encode is larger than the original`}
                         </span>
                       )}
                       {isDone && !keptOriginal && !isLarger && (
-                        <span className="inline-flex items-center gap-1 text-xs text-emerald-700 font-medium">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <span className="inline-flex items-center gap-1 text-xs text-[#15803d] dark:text-[#4ade80] font-semibold">
+                          <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
                           {strings?.compressedOk ?? 'Compressed successfully'}
                         </span>
                       )}
                       {isCompressing && (
-                        <span className="text-xs text-blue-600 font-medium animate-pulse">
+                        <span className="text-xs text-[#7c3aed] dark:text-[#c4b5fd] font-medium animate-pulse">
                           {strings?.optimizing ?? 'Optimizing pixels...'}
                         </span>
                       )}
                       {isError && (
-                        <span className="inline-flex items-center gap-1 text-xs text-red-600 font-medium">
-                          <AlertCircle className="w-3.5 h-3.5 text-red-500 shrink-0" />
+                        <span className="inline-flex items-center gap-1 text-xs text-[#dc2626] dark:text-[#f87171] font-medium">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
                           {image.errorMessage || (strings?.compressionError ?? 'Compression error')}
                         </span>
                       )}
@@ -302,42 +302,42 @@ export const ResultsList: React.FC<ResultsListProps> = ({
 
                 {/* Middle Column: Quantitative Metrics */}
                 {isDone && image.compressedSize !== null && (
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2 px-3 sm:px-4 bg-slate-50 rounded-xl w-full md:w-auto text-center md:text-left">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2.5 px-3 sm:px-4 bg-[var(--surface-2)] border border-[var(--line)] rounded-xl w-full md:w-auto text-center md:text-left">
                     <div>
-                      <span className="text-[11px] text-slate-400 block font-medium">{strings?.original ?? 'Original'}</span>
-                      <span className="text-xs sm:text-sm font-semibold font-mono text-slate-700 tabular-nums">
+                      <span className="text-[11px] text-[var(--ink-3)] block font-medium">{strings?.original ?? 'Original'}</span>
+                      <span className="text-xs sm:text-sm font-semibold font-mono text-[var(--ink-2)] tabular-nums">
                         {formatBytes(image.originalSize)}
                       </span>
                     </div>
                     <div>
-                      <span className="text-[11px] text-slate-400 block font-medium">
+                      <span className="text-[11px] text-[var(--ink-3)] block font-medium">
                         {keptOriginal ? strings?.output ?? 'Output' : strings?.compressed ?? 'Compressed'}
                       </span>
                       <span
                         className={`text-xs sm:text-sm font-bold font-mono tabular-nums ${
-                          isLarger ? 'text-red-600' : 'text-slate-900'
+                          isLarger ? 'text-[#ea580c] dark:text-[#fb923c]' : 'text-[var(--ink-navy)]'
                         }`}
                       >
                         {formatBytes(image.compressedSize)}
                       </span>
                     </div>
                     <div>
-                      <span className="text-[11px] text-slate-400 block font-medium">{strings?.spaceSaved ?? 'Space Saved'}</span>
+                      <span className="text-[11px] text-[var(--ink-3)] block font-medium">{strings?.spaceSaved ?? 'Space Saved'}</span>
                       <span
                         className={`text-xs sm:text-sm font-semibold font-mono tabular-nums ${
-                          realSpaceSaved < 0 ? 'text-red-600' : 'text-emerald-600'
+                          realSpaceSaved < 0 ? 'text-[#ea580c] dark:text-[#fb923c]' : 'text-[#15803d] dark:text-[#4ade80]'
                         }`}
                       >
                         {formatBytes(realSpaceSaved)}
                       </span>
                     </div>
                     <div>
-                      <span className="text-[11px] text-slate-400 block font-medium">
+                      <span className="text-[11px] text-[var(--ink-3)] block font-medium">
                         {isLarger ? strings?.sizeChange ?? 'Size Change' : strings?.reduction ?? 'Reduction'}
                       </span>
                       <span
                         className={`text-xs sm:text-sm font-bold font-mono tabular-nums ${
-                          isLarger ? 'text-red-600' : 'text-blue-600'
+                          isLarger ? 'text-[#ea580c] dark:text-[#fb923c]' : 'text-[#15803d] dark:text-[#4ade80]'
                         }`}
                       >
                         {formatPercent(image.compressionPercentage)}
@@ -347,23 +347,23 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                 )}
 
                 {/* Right Column: Actions */}
-                <div className="flex items-center gap-2 w-full md:w-auto justify-end border-t border-slate-100 md:border-t-0 pt-3 md:pt-0">
+                <div className="flex items-center gap-2 w-full md:w-auto justify-end border-t border-[var(--line)] md:border-t-0 pt-3 md:pt-0">
                   {isDone && (
                     <>
                       <button
                         type="button"
                         onClick={() => onOpenComparison(image)}
-                        className="p-2 sm:px-3 sm:py-2 text-slate-700 hover:text-slate-900 hover:bg-slate-100 text-xs font-semibold rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
+                        className="px-3.5 py-2 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed]/50 text-[var(--ink)] text-xs font-semibold rounded-[11px] transition-colors cursor-pointer flex items-center gap-1.5"
                         title={strings?.compareActionTitle ?? 'Compare visual before/after'}
                       >
-                        <SplitSquareVertical className="w-4 h-4 text-blue-600" />
+                        <SplitSquareVertical className="w-4 h-4 text-[#7c3aed] dark:text-[#c4b5fd]" />
                         <span className="hidden sm:inline">{strings?.compare ?? 'Compare'}</span>
                       </button>
 
                       <button
                         type="button"
                         onClick={() => onDownloadSingle(image)}
-                        className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs font-bold rounded-lg shadow-xs transition-colors cursor-pointer whitespace-nowrap"
+                        className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[#16a34a] hover:bg-[#15803d] text-white text-xs font-semibold rounded-[11px] shadow-xs transition-colors cursor-pointer whitespace-nowrap"
                       >
                         <Download className="w-4 h-4" />
                         <span>{strings?.download ?? 'Download'}</span>
@@ -375,7 +375,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                     <button
                       type="button"
                       onClick={() => onRecompressSingle(image.id)}
-                      className="inline-flex items-center gap-1 px-3 py-2 text-xs font-semibold text-blue-600 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1 px-3.5 py-2 text-xs font-semibold text-[#7c3aed] hover:bg-[var(--accent-soft)] rounded-[11px] transition-colors cursor-pointer"
                     >
                       <RotateCcw className="w-4 h-4" />
                       <span>{strings?.retry ?? 'Retry'}</span>
@@ -385,7 +385,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                   <button
                     type="button"
                     onClick={() => onRemoveImage(image.id)}
-                    className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
+                    className="p-2 text-[var(--ink-3)] hover:text-[#dc2626] hover:bg-red-50 dark:hover:bg-red-950/40 rounded-lg transition-colors cursor-pointer"
                     title={strings?.removeTitle ?? 'Remove image'}
                     aria-label={strings?.removeAriaLabel ? strings.removeAriaLabel.replace('{name}', image.name) : `Remove ${image.name}`}
                   >
@@ -396,9 +396,9 @@ export const ResultsList: React.FC<ResultsListProps> = ({
 
               {/* Honest Inflation Guard Warning + Keep Original Option */}
               {isLarger && (
-                <div className="rounded-xl border border-amber-200 bg-amber-50 px-3.5 py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-amber-900">
+                <div className="rounded-xl border pastel-card-10 px-3.5 py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[var(--ink)]">
                   <div className="flex items-start gap-2">
-                    <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                    <AlertTriangle className="w-4 h-4 text-[#ea580c] dark:text-[#fb923c] shrink-0 mt-0.5" />
                     <p className="leading-relaxed">
                       <strong>
                         {strings?.largerTitle
@@ -416,9 +416,9 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                     <button
                       type="button"
                       onClick={() => onKeepOriginal(image.id)}
-                      className="shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-amber-300 dark:border-amber-500/50 text-amber-900 dark:text-amber-200 hover:bg-amber-100 dark:hover:bg-amber-500/20 font-bold text-xs cursor-pointer transition-colors"
+                      className="shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-[10px] bg-[var(--surface)] border border-[var(--line)] text-[var(--ink)] hover:border-[#7c3aed] font-bold text-xs cursor-pointer transition-colors"
                     >
-                      <ShieldCheck className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                      <ShieldCheck className="w-3.5 h-3.5 text-[#7c3aed]" />
                       <span>{strings?.keepOriginal ?? 'Keep original'}</span>
                     </button>
                   )}

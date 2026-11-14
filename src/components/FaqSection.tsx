@@ -1,13 +1,6 @@
-// FaqSection — multilingual replacement.
-// Target path in the repo: src/components/FaqSection.tsx (REPLACE the whole file).
-// Change vs the English original: new optional props `heading`, `subheading`, `faqs`.
-// App.tsx passes ES.faqSection (from the active locale file) when the page is
-// localized; when omitted, the English FAQ_DATA below is used, so English behaviour
-// is unchanged. No Spanish text is hardcoded here — the dictionary stays in
-// src/locales/es/ui.ts (loaded lazily by App.tsx).
-
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { getPastelCardClass } from '../utils/pastel';
 
 interface FaqItem {
   id: string;
@@ -147,40 +140,42 @@ export const FaqSection: React.FC<FaqSectionProps> = ({
   };
 
   return (
-    <section id="faq" className="py-14 sm:py-20 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+    <section id="faq" className="py-16 sm:py-20 border-t border-[var(--line)] bg-[var(--bg)]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-10">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">
             {heading}
           </h2>
-          <p className="mt-3 text-base text-slate-600 max-w-2xl mx-auto">
+          <p className="mt-3 text-base text-[var(--ink-3)] max-w-2xl mx-auto">
             {subheading}
           </p>
         </div>
 
         <div className="space-y-3">
-          {faqs.map((item) => {
+          {faqs.map((item, idx) => {
             const isOpen = openIds.has(item.id);
             return (
               <div
                 key={item.id}
-                className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs"
+                className={`border rounded-2xl overflow-hidden shadow-[var(--shadow)] transition-shadow hover:shadow-[var(--shadow-lg)] ${getPastelCardClass(idx)}`}
               >
                 <button
                   type="button"
                   onClick={() => toggleFaq(item.id)}
                   aria-expanded={isOpen}
-                  className={`w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors ${isOpen ? 'bg-slate-50/50' : 'hover:bg-slate-50/50'}`}
+                  className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                 >
-                  <span className="text-sm sm:text-base font-bold text-slate-900">
+                  <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">
                     {item.question}
                   </span>
                   <ChevronDown
-                    className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-600' : 'text-slate-400'}`}
+                    className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${
+                      isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'
+                    }`}
                   />
                 </button>
                 {isOpen && (
-                  <div className="px-5 py-4 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 bg-white">
+                  <div className="px-5 py-4 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/55 dark:bg-slate-900/35">
                     {item.answer}
                   </div>
                 )}

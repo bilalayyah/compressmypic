@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { X, ZoomIn, ZoomOut, Maximize2, SplitSquareVertical, Columns } from 'lucide-react';
+import { X, ZoomIn, ZoomOut, SplitSquareVertical, Columns } from 'lucide-react';
 import { ImageItem } from '../types';
 import { formatBytes, formatPercent } from '../utils/formatters';
 
@@ -56,13 +56,12 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
   const altCompressedText = altCompressed.replace('{name}', image.name);
   const altOriginalText = altOriginal.replace('{name}', image.name);
   const altProcessedText = altProcessed.replace('{name}', image.name);
-  const [sliderPosition, setSliderPosition] = useState(50); // 0 to 100%
+  const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const [viewMode, setViewMode] = useState<'slider' | 'sideBySide'>('slider');
-  const [zoom, setZoom] = useState<number>(1); // 1 = 100%
+  const [zoom, setZoom] = useState<number>(1);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Close on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -101,28 +100,28 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-xs p-3 sm:p-6"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-xs p-3 sm:p-6"
       role="dialog"
       aria-modal="true"
       aria-label={modalAriaLabel}
     >
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-5xl h-[90vh] flex flex-col overflow-hidden border border-slate-200">
+      <div className="bg-[var(--surface)] rounded-2xl shadow-[var(--shadow-lg)] w-full max-w-5xl h-[90vh] flex flex-col overflow-hidden border border-[var(--line)]">
         {/* Modal Header */}
-        <div className="px-5 py-4 border-b border-slate-200 flex items-center justify-between gap-4 bg-slate-50">
+        <div className="px-5 py-4 border-b border-[var(--line)] flex items-center justify-between gap-4 header-pastel-band">
           <div className="min-w-0">
-            <h2 className="text-base font-bold text-slate-900 truncate">
+            <h2 className="font-sans text-lg font-bold text-[var(--ink-navy)] truncate">
               {titlePrefix}: {image.name}
             </h2>
-            <div className="flex items-center gap-2 text-xs text-slate-500 mt-0.5">
-              <span>{originalLabel} <strong className="font-mono text-slate-700 tabular-nums">{formatBytes(image.originalSize)}</strong></span>
+            <div className="flex items-center gap-2 text-xs text-[var(--ink-2)] mt-0.5 flex-wrap">
+              <span>{originalLabel} <strong className="font-mono text-[var(--ink)] tabular-nums">{formatBytes(image.originalSize)}</strong></span>
               <span aria-hidden="true">·</span>
               <span>
                 {outputLabel}{' '}
                 <strong
                   className={`font-mono tabular-nums ${
                     image.compressedSize && image.compressedSize > image.originalSize
-                      ? 'text-red-600'
-                      : 'text-emerald-600'
+                      ? 'text-[#ea580c] dark:text-[#fb923c]'
+                      : 'text-[#15803d] dark:text-[#4ade80]'
                   }`}
                 >
                   {image.compressedSize ? formatBytes(image.compressedSize) : 'N/A'}
@@ -131,13 +130,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
               <span aria-hidden="true">·</span>
               <span>
                 {image.compressedSize && image.compressedSize > image.originalSize ? sizeChangeLabel : reductionLabel}{' '}
-                <strong
-                  className={`font-mono tabular-nums ${
-                    image.compressedSize && image.compressedSize > image.originalSize
-                      ? 'text-red-600'
-                      : 'text-blue-600'
-                  }`}
-                >
+                <strong className="font-mono tabular-nums text-[#7c3aed] dark:text-[#c4b5fd]">
                   {formatPercent(image.compressionPercentage)}
                 </strong>
               </span>
@@ -146,48 +139,48 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
 
           <div className="flex items-center gap-2 shrink-0">
             {/* View Mode Switcher */}
-            <div className="hidden sm:flex items-center p-0.5 bg-slate-200/70 rounded-lg">
+            <div className="hidden sm:flex items-center p-0.5 bg-[var(--surface)] border border-[var(--line)] rounded-xl">
               <button
                 type="button"
                 onClick={() => setViewMode('slider')}
-                className={`p-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer flex items-center gap-1 ${
-                  viewMode === 'slider' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
+                className={`px-2.5 py-1.5 text-xs font-medium rounded-[9px] transition-colors cursor-pointer flex items-center gap-1 ${
+                  viewMode === 'slider' ? 'bg-[var(--accent-soft)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs font-semibold' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                 }`}
                 title={sliderLabel}
               >
-                <SplitSquareVertical className="w-3.5 h-3.5" />
+                <SplitSquareVertical className="w-3.5 h-3.5 text-[#7c3aed]" />
                 <span>{sliderLabel}</span>
               </button>
               <button
                 type="button"
                 onClick={() => setViewMode('sideBySide')}
-                className={`p-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer flex items-center gap-1 ${
-                  viewMode === 'sideBySide' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
+                className={`px-2.5 py-1.5 text-xs font-medium rounded-[9px] transition-colors cursor-pointer flex items-center gap-1 ${
+                  viewMode === 'sideBySide' ? 'bg-[var(--accent-soft)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs font-semibold' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                 }`}
                 title={sideBySideLabel}
               >
-                <Columns className="w-3.5 h-3.5" />
+                <Columns className="w-3.5 h-3.5 text-[#7c3aed]" />
                 <span>{sideBySideLabel}</span>
               </button>
             </div>
 
             {/* Zoom Controls */}
-            <div className="flex items-center p-0.5 bg-slate-200/70 rounded-lg">
+            <div className="flex items-center p-0.5 bg-[var(--surface)] border border-[var(--line)] rounded-xl">
               <button
                 type="button"
                 onClick={() => setZoom((z) => Math.max(0.5, z - 0.25))}
-                className="p-1.5 text-slate-700 hover:text-slate-900 hover:bg-white rounded-md transition-colors cursor-pointer"
+                className="p-1.5 text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-lg transition-colors cursor-pointer"
                 title={zoomOutLabel}
               >
                 <ZoomOut className="w-4 h-4" />
               </button>
-              <span className="px-2 text-xs font-mono font-medium text-slate-700 tabular-nums">
+              <span className="px-2 text-xs font-mono font-medium text-[var(--ink)] tabular-nums">
                 {Math.round(zoom * 100)}%
               </span>
               <button
                 type="button"
                 onClick={() => setZoom((z) => Math.min(2.5, z + 0.25))}
-                className="p-1.5 text-slate-700 hover:text-slate-900 hover:bg-white rounded-md transition-colors cursor-pointer"
+                className="p-1.5 text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-lg transition-colors cursor-pointer"
                 title={zoomInLabel}
               >
                 <ZoomIn className="w-4 h-4" />
@@ -197,20 +190,20 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer"
+              className="p-2 text-[var(--ink-2)] hover:text-[var(--ink)] bg-[var(--surface)] border border-[var(--line)] rounded-full transition-colors cursor-pointer"
               aria-label={closeLabel}
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
           </div>
         </div>
 
         {/* Comparison Viewport */}
-        <div className="flex-1 overflow-auto bg-slate-950/90 flex items-center justify-center p-4 select-none relative">
+        <div className="flex-1 overflow-auto bg-[#0f172a] flex items-center justify-center p-4 select-none relative">
           {viewMode === 'slider' ? (
             <div
               ref={containerRef}
-              className="relative max-h-full max-w-full overflow-hidden rounded-lg shadow-lg cursor-ew-resize"
+              className="relative max-h-full max-w-full overflow-hidden rounded-2xl shadow-lg cursor-ew-resize"
               style={{
                 transform: `scale(${zoom})`,
                 transformOrigin: 'center center',
@@ -244,20 +237,23 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
 
               {/* Vertical Divider Line */}
               <div
-                className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg pointer-events-none"
+                className="absolute top-0 bottom-0 w-0.5 bg-white shadow-[0_0_0_1px_rgba(15,23,42,0.25)] pointer-events-none"
                 style={{ left: `${sliderPosition}%` }}
               >
                 {/* Center Handle */}
-                <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white text-slate-800 shadow-md flex items-center justify-center text-xs font-bold border border-slate-200">
-                  ↔
+                <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-[42px] h-[42px] rounded-full bg-white text-[#0f172a] shadow-lg flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                    <path d="m9 8-4 4 4 4" />
+                    <path d="m15 8 4 4-4 4" />
+                  </svg>
                 </div>
               </div>
 
               {/* Badges */}
-              <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-xs text-white text-[11px] font-medium px-2 py-0.5 rounded-md pointer-events-none">
+              <div className="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-xs text-slate-100 text-[11px] font-bold uppercase tracking-[0.06em] px-3 py-1 rounded-full pointer-events-none">
                 {beforeLabel}
               </div>
-              <div className="absolute top-3 right-3 bg-blue-600/90 backdrop-blur-xs text-white text-[11px] font-medium px-2 py-0.5 rounded-md pointer-events-none">
+              <div className="absolute top-3 right-3 bg-[#7c3aed]/90 backdrop-blur-xs text-white text-[11px] font-bold uppercase tracking-[0.06em] px-3 py-1 rounded-full pointer-events-none">
                 {afterLabel}
               </div>
             </div>
@@ -270,20 +266,20 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                 transformOrigin: 'center center',
               }}
             >
-              <div className="flex flex-col items-center bg-slate-900 rounded-lg p-2 border border-slate-800">
+              <div className="flex flex-col items-center bg-[#1e293b] rounded-2xl p-3 border border-slate-700">
                 <span className="text-xs font-semibold text-slate-300 mb-2">{beforeLabel}</span>
                 <img
                   src={image.originalPreviewUrl}
                   alt={altOriginalText}
-                  className="max-h-[55vh] object-contain rounded"
+                  className="max-h-[55vh] object-contain rounded-lg"
                 />
               </div>
-              <div className="flex flex-col items-center bg-slate-900 rounded-lg p-2 border border-slate-800">
-                <span className="text-xs font-semibold text-blue-400 mb-2">{afterLabel}</span>
+              <div className="flex flex-col items-center bg-[#1e293b] rounded-2xl p-3 border border-slate-700">
+                <span className="text-xs font-semibold text-[#c4b5fd] mb-2">{afterLabel}</span>
                 <img
                   src={image.compressedPreviewUrl || image.originalPreviewUrl}
                   alt={altProcessedText}
-                  className="max-h-[55vh] object-contain rounded"
+                  className="max-h-[55vh] object-contain rounded-lg"
                 />
               </div>
             </div>
@@ -291,12 +287,12 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
         </div>
 
         {/* Modal Footer / Instructions */}
-        <div className="px-5 py-3 border-t border-slate-200 bg-white flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
+        <div className="px-5 py-3 border-t border-[var(--line)] bg-[var(--surface)] flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--ink-2)] gap-2">
           <span>{instruction}</span>
           <div className="flex items-center gap-3">
-            <span>{qualityLabel} <strong>{image.quality}%</strong></span>
+            <span>{qualityLabel} <strong className="text-[var(--ink)]">{image.quality}%</strong></span>
             <span aria-hidden="true">·</span>
-            <span>{formatLabel} <strong>{image.outputExtension.toUpperCase().replace('.', '')}</strong></span>
+            <span>{formatLabel} <strong className="text-[var(--ink)]">{image.outputExtension.toUpperCase().replace('.', '')}</strong></span>
           </div>
         </div>
       </div>

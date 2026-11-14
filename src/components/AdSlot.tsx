@@ -25,7 +25,7 @@ export const AdSlot: React.FC<AdSlotProps> = ({
   return (
     <aside
       aria-label="Advertisement"
-      className={`w-full max-w-4xl mx-auto my-6 text-center select-none ${className}`}
+      className={`w-full max-w-4xl mx-auto my-6 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-3 sm:p-4 shadow-[var(--shadow)] overflow-hidden text-center select-none ${className}`}
     >
       <ins
         className="adsbygoogle"

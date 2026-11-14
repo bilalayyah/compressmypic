@@ -471,18 +471,18 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             {/* Preview Panel */}
-            <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4">
+            <div className="lg:col-span-7 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
+                <div className="inline-flex p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] gap-1">
                   {(['after', 'before', 'split'] as const).map((tab) => (
                     <button
                       key={tab}
                       type="button"
                       onClick={() => setViewCompare(tab)}
-                      className={`px-3 py-1.5 text-xs font-semibold rounded-lg capitalize cursor-pointer ${
+                      className={`px-3 py-1.5 text-xs font-semibold rounded-[8px] capitalize cursor-pointer transition-colors ${
                         viewCompare === tab
-                          ? 'bg-white text-slate-900 shadow-xs'
-                          : 'text-slate-600 hover:text-slate-900'
+                          ? 'btn-purple-grad shadow-xs'
+                          : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {tab === 'split'
@@ -499,15 +499,15 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                     type="button"
                     onClick={handleOpenComparison}
                     disabled={isExporting}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-[var(--ink-2)] bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#c4b5fd] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] rounded-[11px] cursor-pointer transition-colors"
                   >
-                    <SplitSquareVertical className="w-3.5 h-3.5 text-blue-600" />
+                    <SplitSquareVertical className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
                     <span>{t('fullscreenCompare', 'Fullscreen Compare')}</span>
                   </button>
                   <button
                     type="button"
                     onClick={handleClear}
-                    className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
+                    className="p-2 text-[var(--ink-3)] hover:text-[#dc2626] hover:bg-[#fee2e2] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] rounded-[11px] cursor-pointer transition-colors"
                     title={t('removeImage', 'Remove image')}
                     aria-label={t('removeImage', 'Remove image')}
                   >
@@ -518,10 +518,10 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
 
               {/* Image Viewport */}
               <div
-                className="relative rounded-xl overflow-hidden border border-slate-200 bg-slate-100 flex items-center justify-center min-h-[280px] max-h-[520px]"
+                className="relative rounded-[11px] overflow-hidden border border-[var(--line)] bg-[var(--surface-2)] flex items-center justify-center min-h-[280px] max-h-[520px]"
                 style={{
                   backgroundImage:
-                    'linear-gradient(45deg, #e2e8f0 25%, transparent 25%), linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #e2e8f0 75%), linear-gradient(-45deg, transparent 75%, #e2e8f0 75%)',
+                    'linear-gradient(45deg, rgba(148,163,184,0.16) 25%, transparent 25%), linear-gradient(-45deg, rgba(148,163,184,0.16) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(148,163,184,0.16) 75%), linear-gradient(-45deg, transparent 75%, rgba(148,163,184,0.16) 75%)',
                   backgroundSize: '20px 20px',
                   backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px',
                 }}
@@ -561,20 +561,20 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
 
               {viewCompare === 'split' && (
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-medium text-slate-500">{t2('beforeLabel', 'splitBeforeLabel', 'Before')}</span>
+                  <span className="text-xs font-medium text-[var(--ink-3)]">{t2('beforeLabel', 'splitBeforeLabel', 'Before')}</span>
                   <input
                     type="range"
                     min={0}
                     max={100}
                     value={splitPercent}
                     onChange={(e) => setSplitPercent(parseInt(e.target.value, 10))}
-                    className="flex-1 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    className="flex-1 h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                   />
-                  <span className="text-xs font-medium text-blue-600">{t2('afterLabel', 'splitAfterLabel', 'After')}</span>
+                  <span className="text-xs font-medium text-[#7c3aed] dark:text-[#a78bfa]">{t2('afterLabel', 'splitAfterLabel', 'After')}</span>
                 </div>
               )}
 
-              <div className="flex flex-wrap items-center justify-between text-xs text-slate-500 font-mono">
+              <div className="flex flex-wrap items-center justify-between text-xs text-[var(--ink-3)] font-mono">
                 <span className="truncate max-w-xs">{sourceFile?.name}</span>
                 <span>
                   {imageInfo.width}×{imageInfo.height}px · {sourceFile ? formatBytes(sourceFile.size) : ''}
@@ -583,16 +583,16 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
             </div>
 
             {/* Controls Panel */}
-            <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+            <div className="lg:col-span-5 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-5">
               <div className="flex items-center justify-between">
-                <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                  <ModeIcon className="w-4 h-4 text-blue-600" />
+                <h2 className="text-base font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+                  <ModeIcon className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
                   <span>{t2('brightnessControls', 'controlsHeading', `${cfg.label} Controls`)}</span>
                 </h2>
                 <button
                   type="button"
                   onClick={() => setValue(0)}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>{t('reset', 'Reset')}</span>
@@ -602,8 +602,8 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
               {/* Slider */}
               <div>
                 <div className="flex items-center justify-between text-xs mb-2">
-                  <span className="font-semibold text-slate-700">{t2('brightnessLevel', 'levelLabel', `${cfg.label} Level`)}</span>
-                  <span className="font-mono font-bold text-blue-600 tabular-nums">
+                  <span className="font-semibold text-[var(--ink-2)]">{t2('brightnessLevel', 'levelLabel', `${cfg.label} Level`)}</span>
+                  <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa] tabular-nums">
                     {value > 0 ? `+${value}%` : `${value}%`}
                   </span>
                 </div>
@@ -613,9 +613,9 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                   max={100}
                   value={value}
                   onChange={(e) => setValue(parseInt(e.target.value, 10))}
-                  className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                  className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                 />
-                <div className="flex justify-between text-[11px] text-slate-400 mt-1">
+                <div className="flex justify-between text-[11px] text-[var(--ink-3)] mt-1">
                   <span>{t('minLabel', cfg.minLabel)}</span>
                   <span>0%</span>
                   <span>{t('maxLabel', cfg.maxLabel)}</span>
@@ -624,7 +624,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
 
               {/* Presets */}
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                   {t('quickPresets', 'Quick Presets')}
                 </span>
                 <div className="grid grid-cols-2 gap-2">
@@ -633,10 +633,10 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                       key={preset.label}
                       type="button"
                       onClick={() => setValue(preset.value)}
-                      className={`px-3 py-2 text-xs font-semibold rounded-xl border text-left transition-colors cursor-pointer ${
+                      className={`px-3 py-2 text-xs font-semibold rounded-[11px] border text-left transition-colors cursor-pointer ${
                         value === preset.value
-                          ? 'bg-blue-50 border-blue-500 text-blue-700'
-                          : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+                          ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/25 border-[#7c3aed] dark:border-[#8b5cf6] text-[#6d28d9] dark:text-[#ddd6fe]'
+                          : 'bg-[var(--surface-2)] border-[var(--line)] text-[var(--ink-2)] hover:border-[var(--line-strong)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {presetLabel(preset)}
@@ -646,21 +646,21 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
               </div>
 
               {/* Output Format & Quality */}
-              <div className="pt-4 border-t border-slate-100 space-y-4">
+              <div className="pt-4 border-t border-[var(--line)] space-y-4">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                     {t('outputFormat', 'Output Format')}
                   </span>
-                  <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-xl">
+                  <div className="grid grid-cols-4 gap-1 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px]">
                     {(['original', 'jpeg', 'png', 'webp'] as OutputFormatChoice[]).map((fmt) => (
                       <button
                         key={fmt}
                         type="button"
                         onClick={() => setFormat(fmt)}
-                        className={`py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
+                        className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-colors ${
                           format === fmt
-                            ? 'bg-blue-600 text-white shadow-xs'
-                            : 'text-slate-600 hover:text-slate-900'
+                            ? 'btn-purple-grad shadow-xs'
+                            : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                         }`}
                       >
                         {fmt === 'original' ? t('formatOriginal', 'Original') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
@@ -672,8 +672,8 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                 {format !== 'png' && (
                   <div>
                     <div className="flex justify-between text-xs mb-1.5">
-                      <span className="font-semibold text-slate-700">{t('quality', 'Quality')}</span>
-                      <span className="font-mono font-bold text-slate-700">{quality}%</span>
+                      <span className="font-semibold text-[var(--ink-2)]">{t('quality', 'Quality')}</span>
+                      <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{quality}%</span>
                     </div>
                     <input
                       type="range"
@@ -681,7 +681,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                       max={100}
                       value={quality}
                       onChange={(e) => setQuality(parseInt(e.target.value, 10))}
-                      className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                      className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                     />
                   </div>
                 )}
@@ -690,7 +690,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                   type="button"
                   onClick={handleDownload}
                   disabled={isExporting}
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm transition-colors cursor-pointer disabled:opacity-60"
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 btn-purple-grad text-sm font-semibold shadow-sm cursor-pointer disabled:opacity-60"
                 >
                   {isExporting ? (
                     <Loader2 className="w-4 h-4 animate-spin" />
@@ -705,7 +705,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
         )}
 
         {error && (
-          <div className="flex items-start gap-2 p-3.5 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl">
+          <div className="flex items-start gap-2 p-3.5 pastel-card-14 border text-[#b91c1c] dark:text-[#fca5a5] text-sm rounded-[11px]">
             <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
             <span>{error}</span>
           </div>

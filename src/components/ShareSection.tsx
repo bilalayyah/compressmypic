@@ -84,25 +84,25 @@ export function ShareSection({ strings = DEFAULT_STRINGS }: { strings?: ShareSec
 
   return (
     <section className="max-w-5xl w-full mx-auto px-4 sm:px-6 py-10">
-      <div className="bg-blue-50 border border-blue-100 rounded-2xl px-6 py-8 text-center">
+      <div className="panel-pastel-blue border rounded-2xl px-6 py-8 text-center shadow-[var(--shadow)]">
         <div className="flex items-center justify-center gap-2 mb-2">
-          <Share2 className="w-5 h-5 text-blue-600" />
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900">{strings.heading}</h2>
+          <Share2 className="w-5 h-5 text-[#7c3aed] dark:text-[#c4b5fd]" />
+          <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)]">{strings.heading}</h2>
         </div>
-        <p className="text-slate-600 mb-6">{strings.text}</p>
+        <p className="text-[var(--ink-2)] mb-6">{strings.text}</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           {shareLinks.map((s) => (
-            <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={strings.shareOn.replace('{name}', s.name)} title={strings.shareOn.replace('{name}', s.name)} className="w-12 h-12 rounded-full flex items-center justify-center text-white shadow-sm hover:opacity-85 hover:scale-105 transition" style={{ backgroundColor: s.bg }}>
+            <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={strings.shareOn.replace('{name}', s.name)} title={strings.shareOn.replace('{name}', s.name)} className="w-11 h-11 rounded-full flex items-center justify-center text-white shadow-sm hover:opacity-85 hover:scale-105 transition" style={{ backgroundColor: s.bg }}>
               {s.icon}
             </a>
           ))}
-          <button onClick={handleCopy} aria-label={strings.copyLink} title={strings.copyLink} className="h-12 px-4 rounded-full bg-white border border-slate-200 text-slate-700 font-medium flex items-center gap-2 shadow-sm hover:bg-slate-50 transition">
-            {copied ? <Check className="w-5 h-5 text-green-600" /> : <Link2 className="w-5 h-5" />}
+          <button onClick={handleCopy} aria-label={strings.copyLink} title={strings.copyLink} className="h-11 px-5 rounded-full bg-[var(--surface)] border border-[var(--line)] text-[var(--ink)] font-semibold text-sm flex items-center gap-2 hover:border-[#7c3aed]/50 transition cursor-pointer shadow-2xs">
+            {copied ? <Check className="w-4 h-4 text-[#16a34a]" /> : <Link2 className="w-4 h-4 text-[#7c3aed]" />}
             {copied ? strings.copied : strings.copyLink}
           </button>
           {canNativeShare && (
-            <button onClick={handleNativeShare} className="h-12 px-5 rounded-full bg-blue-600 text-white font-medium flex items-center gap-2 shadow-sm hover:bg-blue-700 transition">
-              <Share2 className="w-5 h-5" /> {strings.share}
+            <button onClick={handleNativeShare} className="h-11 px-5 btn-purple-pill font-semibold text-sm flex items-center gap-2 shadow-sm cursor-pointer">
+              <Share2 className="w-4 h-4" /> {strings.share}
             </button>
           )}
         </div>

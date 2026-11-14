@@ -36,6 +36,7 @@ import {
   ZoomIn,
 } from 'lucide-react';
 import { TOOLS_REGISTRY, TOOL_CATEGORIES, ToolCategoryId, ToolDefinition } from '../data/tools';
+import { getPastelTileClass } from '../utils/pastel';
 
 interface ToolsDirectoryStrings {
   eyebrow: string;
@@ -123,7 +124,7 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<'all' | ToolCategoryId>('all');
 
-  const otherTools = toolsRegistry.filter((t) => t.slug !== currentPath);
+  const otherTools = toolsRegistry.filter((t) => t.slug !== '/' && t.slug !== currentPath);
   const activeCategories = categoryLabels.filter((cat) =>
     otherTools.some((t) => t.category === cat.id)
   );
@@ -133,31 +134,31 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
       : otherTools.filter((t) => t.category === selectedCategory);
 
   return (
-    <section className="py-14 sm:py-18 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
+    <section id="tools-directory" className="py-16 sm:py-20 bg-[var(--bg)] border-t border-[var(--line)]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-7">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
+            <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#7c3aed] dark:text-[#c4b5fd]">
               {strings.eyebrow}
             </span>
-            <h2 className="mt-1 text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="mt-1.5 text-2xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">
               {strings.heading}
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-slate-600">
+            <p className="mt-2.5 text-sm sm:text-base text-[var(--ink-3)]">
               {strings.subheading}
             </p>
           </div>
         </div>
 
         {/* Category Filter Tabs */}
-        <div className="flex flex-wrap gap-2 mb-7">
+        <div className="flex flex-wrap gap-2 mb-8">
           <button
             type="button"
             onClick={() => setSelectedCategory('all')}
-            className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl border transition-colors cursor-pointer ${
+            className={`px-4 py-2 text-[13px] font-semibold border transition-all cursor-pointer ${
               selectedCategory === 'all'
-                ? 'bg-blue-600 text-white border-blue-600 shadow-xs'
-                : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
+                ? 'btn-purple-pill border-transparent shadow-xs'
+                : 'rounded-full bg-[var(--surface)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#7c3aed]/50 hover:text-[var(--ink)]'
             }`}
           >
             {strings.allTools} ({otherTools.length})
@@ -169,10 +170,10 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
                 key={cat.id}
                 type="button"
                 onClick={() => setSelectedCategory(cat.id as ToolCategoryId)}
-                className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl border transition-colors cursor-pointer ${
+                className={`px-4 py-2 text-[13px] font-semibold border transition-all cursor-pointer ${
                   selectedCategory === cat.id
-                    ? 'bg-blue-600 text-white border-blue-600 shadow-xs'
-                    : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
+                    ? 'btn-purple-pill border-transparent shadow-xs'
+                    : 'rounded-full bg-[var(--surface)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#7c3aed]/50 hover:text-[var(--ink)]'
                 }`}
               >
                 {cat.label} ({count})
@@ -181,10 +182,11 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
           })}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {visibleTools.map((tool) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {visibleTools.map((tool, index) => {
             const Icon = TOOL_ICONS[tool.slug] || Sparkles;
             const cat = categoryLabels.find((c) => c.id === tool.category)?.label;
+            const tileClass = getPastelTileClass(index);
             return (
               <a
                 key={tool.slug}
@@ -193,27 +195,29 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
                   e.preventDefault();
                   onNavigate(tool.slug);
                 }}
-                className="group bg-white border border-slate-200 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-300 transition-all flex flex-col justify-between"
+                className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#7c3aed]/40 transition-all duration-200 flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                  <div className="flex items-center justify-between gap-2 mb-3.5">
+                    <div
+                      className={`w-10 h-10 rounded-lg flex items-center justify-center shadow-2xs transition-transform group-hover:scale-105 ${tileClass}`}
+                    >
                       <Icon className="w-5 h-5" />
                     </div>
                     {cat && (
-                      <span className="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">
+                      <span className="text-[11px] font-semibold text-[var(--ink-3)] bg-[var(--surface-2)] border border-[var(--line)] px-2.5 py-0.5 rounded-full">
                         {cat}
                       </span>
                     )}
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-[17px] font-sans font-bold text-[var(--ink-navy)] group-hover:text-[#7c3aed] dark:group-hover:text-[#c4b5fd] transition-colors leading-snug">
                     {tool.name}
                   </h3>
-                  <p className="mt-1.5 text-sm text-slate-600 leading-normal">
+                  <p className="mt-1.5 text-sm text-[var(--ink-3)] leading-relaxed line-clamp-2">
                     {tool.shortDescription}
                   </p>
                 </div>
-                <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-blue-600">
+                <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#7c3aed] dark:text-[#c4b5fd]">
                   <span>{strings.openTool}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </span>
