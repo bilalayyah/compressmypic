@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Send, CheckCircle2, AlertCircle, Mail, RotateCcw, Clock, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Send, CheckCircle2, AlertCircle, Mail, RotateCcw, Clock, ShieldCheck, Github, MessageSquare, Lightbulb, Bug } from 'lucide-react';
 
 interface ContactPageDeProps {
   onNavigate: (path: string) => void;
@@ -152,10 +152,12 @@ export const ContactPageDe: React.FC<ContactPageDeProps> = ({ onNavigate }) => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                    <label htmlFor="contact-name" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                       Ihr Name <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                     </label>
                     <input
+                      id="contact-name"
+                      name="name"
                       type="text"
                       required
                       value={contactName}
@@ -166,10 +168,12 @@ export const ContactPageDe: React.FC<ContactPageDeProps> = ({ onNavigate }) => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                    <label htmlFor="contact-email" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                       E-Mail-Adresse <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                     </label>
                     <input
+                      id="contact-email"
+                      name="email"
                       type="email"
                       required
                       value={contactEmail}
@@ -181,10 +185,12 @@ export const ContactPageDe: React.FC<ContactPageDeProps> = ({ onNavigate }) => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                  <label htmlFor="contact-subject" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                     Betreff <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                   </label>
                   <input
+                      id="contact-subject"
+                      name="subject"
                     type="text"
                     required
                     value={contactSubject}
@@ -195,10 +201,12 @@ export const ContactPageDe: React.FC<ContactPageDeProps> = ({ onNavigate }) => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                  <label htmlFor="contact-message" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                     Nachricht <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                   </label>
                   <textarea
+                      id="contact-message"
+                      name="message"
                     rows={5}
                     required
                     value={contactMessage}
@@ -228,6 +236,90 @@ export const ContactPageDe: React.FC<ContactPageDeProps> = ({ onNavigate }) => {
               </form>
             )}
           </div>
+        </div>
+
+        {/* Extra Information Sections */}
+        <div className="mt-12 space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Mail className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Wer betreibt CompressMyPic</span>
+            </h2>
+            <p>
+              CompressMyPic wird von Bilal gebaut und gepflegt, einem unabhängigen Entwickler, der einen wirklich kostenlosen Bildkomprimierer wollte, der Ihre Privatsphäre respektiert. Im Gegensatz zu den meisten Online-Tools lädt CompressMyPic Ihre Fotos niemals auf einen Server hoch: Jedes Bild wird direkt in Ihrem eigenen Browser komprimiert. Bilal liest jede Nachricht persönlich und nutzt Ihr Feedback, um Fehler zu beheben, die Qualität zu verbessern und zu entscheiden, welche neuen Tools als Nächstes entstehen.
+            </p>
+            <p>
+              Weil dies ein kleines, unabhängiges Projekt ist und kein großes Unternehmen, erhalten Sie immer eine direkte, ehrliche Antwort – auch dann, wenn die Antwort lautet, dass eine bestimmte Funktion noch nicht möglich ist. Es gibt keine Support-Warteschlange und keinen automatisierten Chatbot zwischen Ihnen und der Person, die das Tool gebaut hat.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Worüber können Sie uns schreiben?</span>
+            </h2>
+            <p>
+              Am schnellsten helfen wir Ihnen, wenn Sie genau beschreiben, was passiert ist. Geben Sie bei einem Fehlerbericht bitte an, welches Tool Sie verwendet haben, welchen Browser Sie nutzen und um welchen Bildtyp es sich handelt – zum Beispiel ein HEIC-Foto von einem iPhone oder ein transparentes PNG. Beschreiben Sie bei einem Funktionswunsch, was Sie erreichen wollten und warum die aktuellen Tools dafür nicht ausreichen. Wir freuen uns auch über Meldungen zu falschen Ergebnissen, etwa wenn ein komprimiertes Bild schlechter aussieht als erwartet, sowie über Korrekturen an unseren Anleitungen oder an übersetzten Seiten.
+            </p>
+            <p>
+              Sie können uns auch zu Partnerschaften, Presseanfragen und Vorschlägen für neue Tools schreiben. Wenn Sie eine Website, einen Blog oder einen Klassenraum betreiben und CompressMyPic Ihren Lesern oder Schülern empfehlen möchten, würden wir uns freuen, von Ihnen zu hören – nutzen Sie einfach das Formular oben und wählen Sie eine klare Betreffzeile, damit Ihre Nachricht schnell an die richtige Stelle gelangt.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Github className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Andere Wege, Bilal zu erreichen</span>
+            </h2>
+            <p>
+              Wenn Sie einen öffentlichen Kanal bevorzugen, finden Sie Bilal und das CompressMyPic-Projekt auch im Web. Der Quellcode liegt auf GitHub, wo Sie auch technische Probleme melden und die Entwicklung verfolgen können. Längere Anleitungen zur Bildkomprimierung erscheinen auf Dev.to, und das Produkt ist auf Indie Hackers gelistet, wo Sie seinen Fortschritt verfolgen und Feedback hinterlassen können.
+            </p>
+            <ul className="list-disc pl-6 space-y-1.5">
+              <li>
+                <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
+                {' '}— Quellcode, Fehlermeldungen und Neuigkeiten zur Entwicklung.
+              </li>
+              <li>
+                <a href="https://dev.to/bilalayyah" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Dev.to — dev.to/bilalayyah</a>
+                {' '}— Anleitungen zu JPG, PNG und WebP.
+              </li>
+              <li>
+                <a href="https://www.indiehackers.com/product/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Indie Hackers — indiehackers.com/product/compressmypic</a>
+                {' '}— Produktseite, Meilensteine und Feedback aus der Community.
+              </li>
+            </ul>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Lightbulb className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Bevor Sie schreiben</span>
+            </h2>
+            <p>
+              Ein paar kurze Prüfungen lösen die meisten Probleme, ohne dass Sie auf eine Antwort warten müssen. Der Hauptkomprimierer akzeptiert Bilder bis zu 20 MB pro Datei, während die Formatkonverter bis zu 25 MB pro Datei akzeptieren – eine größere Datei wird abgelehnt, bevor sie überhaupt startet. Sehr alte Browser unterstützen neuere Formate wie AVIF oder HEIC möglicherweise nicht; eine aktuelle Version von Chrome, Edge, Firefox oder Safari behebt oft ein Tool, das defekt wirkt. Und weil Ihre Bilder Ihr Gerät nie verlassen, liegt ein Problem mit einem bestimmten Foto in der Regel an der Datei selbst und nicht an der Website.
+            </p>
+            <p>
+              Wenn Sie uns doch schreiben, nennen Sie bitte Ihren Browser mit Version, das verwendete Tool sowie Größe und Format des Bildes. Wir antworten auf Englisch und in der Regel innerhalb von 24–48 Geschäftsstunden. Wenn Ihre Frage betrifft, wie wir mit Ihren Daten umgehen, lesen Sie zuerst unsere 
+              <button
+                type="button"
+                onClick={() => onNavigate('/de/datenschutz')}
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+              >
+                Datenschutzerklärung
+              </button>
+               – dort steht in einfacher Sprache, dass Ihre Bilder niemals hochgeladen oder gespeichert werden.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Bug className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Ein Problem melden</span>
+            </h2>
+            <p>
+              Haben Sie etwas Defektes gefunden? Teilen Sie uns mit, auf welcher Seite es passiert ist, worauf Sie geklickt haben und was Sie stattdessen erwartet hätten. Screenshots helfen sehr, und wenn das Problem ein bestimmtes Bild betrifft, nennen Sie uns bitte dessen Format und Größe – senden Sie uns aber bitte niemals private oder sensible Fotos. Wir beheben gemeldete Fehler so schnell wie möglich und informieren Sie per E-Mail, sobald die Korrektur live ist.
+            </p>
+          </section>
         </div>
       </div>
     </div>

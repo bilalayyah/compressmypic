@@ -37,7 +37,7 @@ export const PrivacyPageDe: React.FC<PrivacyPageDeProps> = ({ onNavigate }) => {
             </h1>
           </div>
           <p className="text-xs text-[var(--ink-3)] font-medium">
-            Zuletzt aktualisiert: 12. Nov. 2026
+            Zuletzt aktualisiert: 14. Nov. 2026
           </p>
         </div>
 
@@ -77,12 +77,12 @@ export const PrivacyPageDe: React.FC<PrivacyPageDeProps> = ({ onNavigate }) => {
               </a>
               ) oder{' '}
               <a
-                href="http://www.aboutads.info/choices/"
+                href="https://www.aboutads.info/choices/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
               >
-                http://www.aboutads.info/choices/
+                https://www.aboutads.info/choices/
               </a>
               {' '}besuchen.
             </p>
@@ -93,7 +93,7 @@ export const PrivacyPageDe: React.FC<PrivacyPageDeProps> = ({ onNavigate }) => {
               4. Analyse
             </h2>
             <p>
-              Wir verwenden derzeit keine Analyse-Cookies. Sollte sich das ändern, wird diese Erklärung aktualisiert.
+              Wir verwenden Cloudflare Web Analytics, um in zusammengefasster Form zu verstehen, wie die Website genutzt wird – zum Beispiel, welche Tools beliebt sind und welche Seiten besucht werden. Cloudflare Web Analytics ist datenschutzfreundlich: Es verwendet keine Cookies, verfolgt einzelne Besucher nicht über Websites hinweg und erfasst keine persönlichen Identifikatoren. Es zeichnet nur anonymisierte, zusammengefasste Nutzungsstatistiken auf, mit denen Sie nicht identifiziert werden können. Wir verwenden kein Google Analytics und keinen anderen Analysedienst, der Tracking-Cookies setzt.
             </p>
           </section>
 
@@ -106,9 +106,88 @@ export const PrivacyPageDe: React.FC<PrivacyPageDeProps> = ({ onNavigate }) => {
             </p>
           </section>
 
-          <section className="space-y-2 pt-2 border-t border-[var(--line)]">
+                    <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              6. Kontakt
+              6. Cookies und Einwilligung
+            </h2>
+            <p>
+              CompressMyPic selbst setzt keine Cookies für seine Bild-Tools: Die Komprimierung läuft vollständig in Ihrem Browser und benötigt kein Cookie, kein Konto und keine gespeicherte Einstellung unsererseits. Cookies auf dieser Website stammen von Drittanbietern. Google AdSense und seine Partner können Werbe-Cookies setzen, um Ihnen relevante Anzeigen zu zeigen und zu messen, wie oft eine Anzeige eingeblendet wird. Ihr Browser speichert diese Cookies auf Ihrem Gerät, und Sie können sie jederzeit über Ihre Browser-Einstellungen löschen.
+            </p>
+            <p>
+              Wenn Sie aus dem Europäischen Wirtschaftsraum oder dem Vereinigten Königreich zugreifen, bitten wir gemäß der DSGVO und der EU-Nutzereinwilligungsrichtlinie von Google um Ihre Einwilligung, bevor personalisierte Werbung angezeigt wird. Sie können diese Einwilligung jederzeit widerrufen, indem Sie Ihre Browser-Cookies löschen oder die Einwilligungsauswahl auf der Website ändern. Die Wahl nicht-personalisierter Werbung stoppt die Werbung nicht vollständig, bedeutet aber, dass Anzeigen nicht mehr auf Ihrem Browserverlauf basieren.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              7. Ihre Rechte nach der DSGVO
+            </h2>
+            <p>
+              Wenn Sie sich im Europäischen Wirtschaftsraum oder im Vereinigten Königreich befinden, gibt Ihnen die Datenschutz-Grundverordnung (DSGVO) Rechte über Ihre personenbezogenen Daten. Sie können eine Kopie der personenbezogenen Daten verlangen, die wir über Sie speichern, deren Berichtigung verlangen, wenn sie falsch sind, ihre Löschung verlangen, die Einschränkung ihrer Verwendung verlangen und der Verarbeitung widersprechen. Wenn die Verarbeitung auf Ihrer Einwilligung beruht, können Sie diese jederzeit widerrufen; der Widerruf berührt nicht die Rechtmäßigkeit dessen, was wir zuvor rechtmäßig getan haben.
+            </p>
+            <p>
+              Da unsere Tools Bilder lokal verarbeiten und wir keine Benutzerkonten führen, sind die einzigen personenbezogenen Daten, die wir normalerweise besitzen, der Name, die E-Mail-Adresse und die Nachricht, die Sie über das Kontaktformular senden. Um eines dieser Rechte auszuüben, schreiben Sie uns an <a
+                href="mailto:bilalayyah@gmail.com"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                bilalayyah@gmail.com
+              </a> und wir antworten innerhalb von 30 Tagen. Sie haben außerdem das Recht, sich bei Ihrer örtlichen Datenschutzbehörde zu beschweren, wenn Sie der Meinung sind, dass wir Ihre Daten unfair behandelt haben.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              8. Speicherdauer
+            </h2>
+            <p>
+              Wir speichern personenbezogene Daten nur so lange, wie es für den Zweck nötig ist, für den sie erhoben wurden. Nachrichten aus dem Kontaktformular werden nur aufbewahrt, bis Ihre Anfrage beantwortet und das Gespräch abgeschlossen ist, sowie für einen kurzen Zeitraum danach für den Fall von Rückfragen; sie werden niemals für Marketing verwendet und niemals an Dritte weitergegeben. Ihre Bilder werden überhaupt nicht gespeichert: Sie existieren nur im Arbeitsspeicher Ihres Browsers, während Sie ein Tool nutzen, und werden gelöscht, sobald Sie den Tab schließen oder neu laden. Aggregierte Analysedaten enthalten keine persönlichen Informationen und werden nur in zusammengefasster Form aufbewahrt.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              9. Sicherheit und reCAPTCHA
+            </h2>
+            <p>
+              Die Website wird über HTTPS ausgeliefert, sodass die Verbindung zwischen Ihrem Browser und der Website verschlüsselt ist. Unser Kontaktformular wird über FormSubmit bereitgestellt, das Ihre Nachricht an unsere E-Mail-Adresse weiterleitet, und das Formular ist durch Google reCAPTCHA geschützt, um Spam und automatisierten Missbrauch zu blockieren. Wenn Sie das Formular absenden, kann reCAPTCHA Hardware- und Softwareinformationen wie Ihre Browser- und Gerätedaten erfassen, um Menschen von Bots zu unterscheiden; hierfür gelten die <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+              >
+                Datenschutzerklärung
+              </a> und die <a
+                href="https://policies.google.com/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+              >
+                Nutzungsbedingungen
+              </a> von Google. Wir bitten Sie niemals, Passwörter, Zahlungsdaten oder sensible persönliche Dokumente über das Kontaktformular zu senden, und Sie sollten sie auch niemals in eine Nachricht aufnehmen.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              10. Datenschutz von Kindern
+            </h2>
+            <p>
+              CompressMyPic ist ein Tool für ein allgemeines Publikum und richtet sich nicht an Kinder unter 13 Jahren. Wir erfassen wissentlich keine personenbezogenen Daten von Kindern. Wenn Sie ein Elternteil oder Erziehungsberechtigter sind und glauben, dass Ihr Kind uns über das Kontaktformular personenbezogene Daten gesendet hat, schreiben Sie uns bitte eine E-Mail, und wir werden sie umgehend löschen.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              11. Änderungen dieser Erklärung
+            </h2>
+            <p>
+              Wir können diese Erklärung aktualisieren, wenn sich die Website ändert – zum Beispiel, wenn wir einen neuen Analysedienst, einen neuen Werbepartner oder eine neue Kontaktmöglichkeit hinzufügen. In diesem Fall ändern wir das Datum „Zuletzt aktualisiert" oben auf dieser Seite, und wesentliche Änderungen werden hier in einfacher Sprache beschrieben. Wenn Sie die Website nach einer Änderung weiterhin nutzen, akzeptieren Sie die aktualisierte Erklärung.
+            </p>
+          </section>
+
+<section className="space-y-2 pt-2 border-t border-[var(--line)]">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              12. Kontakt
             </h2>
             <p>
               Wenn Sie Fragen zu dieser Erklärung haben, kontaktieren Sie uns unter{' '}

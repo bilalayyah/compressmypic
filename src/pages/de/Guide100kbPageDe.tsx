@@ -174,6 +174,31 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "Bild auf 100 KB verkleinern für Web & E-Mail",
+          description: "Bild auf 100 KB verkleinern für Websites und E-Mails mit einem kostenlosen Online-Komprimierer. Schritt-für-Schritt-Anleitung – ohne Anmeldung, ohne Wasserzeichen, Bilder bleiben auf Ihrem Gerät.",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/de/anleitungen/bild-auf-100-kb-verkleinern",
+          inLanguage: 'de',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "Startseite", item: "https://compressmypic.online/de/" },
+            { '@type': 'ListItem', position: 2, name: "Anleitungen" },
+            { '@type': 'ListItem', position: 3, name: "Bild auf 100 KB verkleinern für Web & E-Mail", item: "https://compressmypic.online/de/anleitungen/bild-auf-100-kb-verkleinern" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -219,6 +244,9 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             Bild auf 100 KB verkleinern für Websites und E-Mails
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            Von <a href="/de/ueber-uns" onClick={(e) => { e.preventDefault(); onNavigate('/de/ueber-uns'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             Ein 4-MB-Foto verlangsamt Ihre Website und verstopft eine E-Mail. Wenn Sie es auf etwa 100 KB verkleinern, laden Seiten schnell und E-Mails werden sofort gesendet – und wenn Sie es richtig machen, kann niemand den Unterschied erkennen.
           </p>
