@@ -21,7 +21,7 @@ export const AboutPageJa: React.FC<AboutPageJaProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/ja/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>画像圧縮ツールに戻る</span>
@@ -29,20 +29,20 @@ export const AboutPageJa: React.FC<AboutPageJaProps> = ({ onNavigate }) => {
         </div>
 
         {/* Page Title */}
-        <div className="border-b border-slate-200 pb-6 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <div className="border-b border-[var(--line)] pb-6 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">
             CompressMyPicについて
           </h1>
-          <p className="mt-3 text-lg font-medium text-slate-700 leading-relaxed">
+          <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             CompressMyPicは、無料でプライバシーを守る画像圧縮ツールです。JPG、PNG、WebPの画像をブラウザー上で直接圧縮できます。速く、安全で、ファイルをどこにもアップロードしません。
           </p>
         </div>
 
         {/* Core Content */}
-        <div className="space-y-8 text-base text-slate-600 leading-relaxed">
+        <div className="space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Cpu className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Cpu className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <span>CompressMyPicとは？</span>
             </h2>
             <p>
@@ -57,8 +57,8 @@ export const AboutPageJa: React.FC<AboutPageJaProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Layers className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <span>対応形式：JPG、PNG、WebP</span>
             </h2>
             <p>
@@ -70,44 +70,44 @@ export const AboutPageJa: React.FC<AboutPageJaProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Shield className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Shield className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>私たちの基本理念</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">徹底したプライバシー</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-0 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">徹底したプライバシー</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   ファイルが外部サーバーやデータベースに触れることは一切ありません。写真や大切な画像は、お使いの端末内に厳密に留まります。圧縮はお使いの端末上で行われるため、他の誰かに見られることはありません。
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">シンプルで無料</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-2 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">シンプルで無料</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   ソフトウェアのインストールも、有料プランも、隠れた料金も、アカウント作成も、メール認証も、試用制限もありません。オンラインで無料で画像を圧縮できます。登録不要で、圧縮後の画像に透かしも付きません。
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">画質はあなたが決める</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-6 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">画質はあなたが決める</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   画質スライダーをリアルタイムで動かしたり、「低」「バランス」「高」のプリセットを選んだり、出力形式を選んだり、画像を並べて比べたりして、違いをすぐに確認できます。画質を落とさずに画像サイズを小さくできます。すべてあなたの思いどおりに。
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">一括画像圧縮</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-9 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">一括画像圧縮</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   複数の画像を同じ設定でまとめて圧縮し、「すべてダウンロード（ZIP）」ボタンで一括ダウンロードできます。写真ライブラリーや商品カタログ、ウェブサイトの画像フォルダーに便利な一括圧縮ツールです。
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">自動の安全チェック</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-10 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">自動の安全チェック</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   圧縮ツールは画像の透明部分を検出します。透明なPNGに対してJPEG出力を選ぶと警告が表示されます。JPEGは透明に対応していないため、うっかり透明情報を失うことがありません。
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">高速な処理</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-12 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">高速な処理</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   すべての処理がお使いの端末上で行われるため、ファイルをサーバーに送って戻ってくるのを待つ必要がありません。1枚あたり最大20MBまでの大きなファイルでも、パソコンでもスマートフォンでもすばやく圧縮できます。
                 </p>
               </div>
@@ -115,8 +115,8 @@ export const AboutPageJa: React.FC<AboutPageJaProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Users className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Users className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <span>どなたのためのツールですか？</span>
             </h2>
             <p>
@@ -128,8 +128,8 @@ export const AboutPageJa: React.FC<AboutPageJaProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Lock className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Lock className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>プライバシーとセキュリティ</span>
             </h2>
             <p>
@@ -143,7 +143,7 @@ export const AboutPageJa: React.FC<AboutPageJaProps> = ({ onNavigate }) => {
               <button
                 type="button"
                 onClick={() => onNavigate('/ja/puraibashi')}
-                className="text-blue-600 hover:text-blue-700 font-semibold cursor-pointer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
               >
                 プライバシーポリシー
               </button>
@@ -152,8 +152,8 @@ export const AboutPageJa: React.FC<AboutPageJaProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>私たちのミッション</span>
             </h2>
             <p>
@@ -168,14 +168,14 @@ export const AboutPageJa: React.FC<AboutPageJaProps> = ({ onNavigate }) => {
             <button
               type="button"
               onClick={() => onNavigate('/ja/')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-2.5 btn-purple-pill text-sm font-semibold shadow-sm cursor-pointer"
             >
               画像圧縮を始める
             </button>
             <button
               type="button"
               onClick={() => onNavigate('/ja/otoiawase')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-white text-slate-900 text-sm font-bold border border-slate-200 shadow-xs hover:bg-slate-50 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-2.5 rounded-full bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:bg-[var(--surface-2)] transition-colors cursor-pointer"
             >
               お問い合わせ
             </button>

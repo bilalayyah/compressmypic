@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, FileImage, Camera, Layers, Globe, CheckCircle2, Scale } from 'lucide-react';
+import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
 
 interface GuideFormatsPageJaProps {
   onNavigate: (path: string) => void;
@@ -195,14 +196,14 @@ export const GuideFormatsPageJa: React.FC<GuideFormatsPageJaProps> = ({ onNaviga
   };
 
   return (
-    <div className="py-10 sm:py-16">
+    <div className="bg-[var(--bg)] py-10 sm:py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
           <button
             type="button"
             onClick={() => onNavigate('/ja/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>画像圧縮ツールに戻る</span>
@@ -210,50 +211,52 @@ export const GuideFormatsPageJa: React.FC<GuideFormatsPageJaProps> = ({ onNaviga
         </div>
 
         {/* Page Title */}
-        <div className="border-b border-slate-200 pb-6 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <div className="border-b border-[var(--line)] pb-6 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             JPG・PNG・WebPの違いと使い分け｜どれを選ぶべき？
           </h1>
-          <p className="mt-3 text-lg font-medium text-slate-700 leading-relaxed">
+          <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             間違った形式を選ぶと、画像が必要以上に10倍も大きくなったり、透明なロゴが台無しになったりします。シンプルで正直な比較と、数秒で形式を変換する方法を紹介します。
           </p>
         </div>
 
         {/* Core Content */}
-        <div className="space-y-8 text-base text-slate-600 leading-relaxed">
+        <div className="space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Scale className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Scale className="w-4 h-4" />
+              </span>
               <span>結論から言うと</span>
             </h2>
             <p>
               ひとつだけ覚えるなら、これです。写真にはJPG、ロゴや透明が必要なものにはPNG、最も小さいファイルがほしいとき、特にウェブサイトではWebPを使います。理由は下の表のとおりです。
             </p>
             <div className="overflow-x-auto pt-1">
-              <table className="w-full text-sm border border-slate-200 rounded-xl overflow-hidden">
+              <table className="w-full text-sm border border-[var(--line)] rounded-2xl overflow-hidden bg-[var(--surface)] shadow-[var(--shadow)]">
                 <thead>
-                  <tr className="bg-slate-50 text-slate-900 text-left">
-                    <th className="px-4 py-3 font-bold">形式</th>
-                    <th className="px-4 py-3 font-bold">ファイルサイズ</th>
-                    <th className="px-4 py-3 font-bold">透明対応</th>
-                    <th className="px-4 py-3 font-bold">最適な用途</th>
+                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-left border-b border-[var(--line)]">
+                    <th className="px-4 py-3 font-semibold">形式</th>
+                    <th className="px-4 py-3 font-semibold">ファイルサイズ</th>
+                    <th className="px-4 py-3 font-semibold">透明対応</th>
+                    <th className="px-4 py-3 font-semibold">最適な用途</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-[var(--line)]">
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">JPG</td>
+                    <td className="px-4 py-3 font-bold text-[#7c3aed] dark:text-[#c4b5fd]">JPG</td>
                     <td className="px-4 py-3">小さい</td>
                     <td className="px-4 py-3">なし</td>
                     <td className="px-4 py-3">写真、共有、印刷</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">PNG</td>
+                    <td className="px-4 py-3 font-bold text-[#7c3aed] dark:text-[#c4b5fd]">PNG</td>
                     <td className="px-4 py-3">大きい</td>
                     <td className="px-4 py-3">あり</td>
                     <td className="px-4 py-3">ロゴ、アイコン、スクリーンショット</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">WebP</td>
+                    <td className="px-4 py-3 font-bold text-[#7c3aed] dark:text-[#c4b5fd]">WebP</td>
                     <td className="px-4 py-3">最も小さい</td>
                     <td className="px-4 py-3">あり</td>
                     <td className="px-4 py-3">ウェブサイト、ウェブ用写真</td>
@@ -263,32 +266,38 @@ export const GuideFormatsPageJa: React.FC<GuideFormatsPageJaProps> = ({ onNaviga
             </div>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Camera className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-2">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(2)} flex items-center justify-center shrink-0`}>
+                <Camera className="w-4 h-4" />
+              </span>
               <span>JPG：写真に最適</span>
             </h2>
-            <p>
+            <p className="text-sm sm:text-base">
               JPG（JPEGとも書きます）は、定番の写真形式です。非可逆圧縮を使い、目ではほとんど気づかない細部を捨てることで、ファイルを劇的に小さくします。5MBのカメラ写真も、JPGなら500KBになって、それでもきれいに見えます。JPGは透明に対応していないため、ロゴには向きません。しかし、通常の写真であれば、すべての端末やアプリで開ける、安全で汎用的な初期設定です。
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-6">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(6)} flex items-center justify-center shrink-0`}>
+                <Layers className="w-4 h-4" />
+              </span>
               <span>PNG：ロゴと透明に最適</span>
             </h2>
-            <p>
+            <p className="text-sm sm:text-base">
               PNGは可逆形式です。すべてのピクセルを正確に残し、透明な背景にも対応します。そのため、ロゴやアイコン、文字のあるグラフィックに適した形式です。代償はファイルサイズです。写真をPNGで保存すると、同じ写真をJPGで保存した場合の5〜10倍の大きさになることがあります。特別な理由がない限り、カメラ写真をPNGで保存してはいけません。
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Globe className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-0">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Globe className="w-4 h-4" />
+              </span>
               <span>WebP：ウェブサイトに最適</span>
             </h2>
-            <p>
+            <p className="text-sm sm:text-base">
               WebPはGoogleが作ったモダンな形式です。JPGのような非可逆圧縮も、PNGのような透明対応もでき、ファイルは同じ目に見える画質で通常JPGより25〜35％小さくなります。すべてのモダンなブラウザーが対応しているため、ウェブサイトの画像に最適な形式です。唯一の弱点は古いソフトウェアとの互換性と、WhatsAppのプレビューで、そこではJPGのほうが今も安全です。
             </p>
           </section>
@@ -297,28 +306,33 @@ export const GuideFormatsPageJa: React.FC<GuideFormatsPageJaProps> = ({ onNaviga
             <img
               src="/guides/jpg-vs-png-vs-webp-1.png"
               alt="同じ写真をJPG、PNG、WebPで保存し、ファイルサイズを比べているスクリーンショット"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               同じ写真を3つの形式で保存した場合：WebPが最も小さく、PNGが最も大きく、JPGはその中間です。
             </figcaption>
           </figure>
 
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <FileImage className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(4)} flex items-center justify-center shrink-0`}>
+                <FileImage className="w-4 h-4" />
+              </span>
               <span>手順：画像を圧縮または変換する</span>
             </h2>
-            <ol className="space-y-4">
+            <ol className="space-y-3">
               {STEPS.map((step, i) => (
-                <li key={step.title} className="flex gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white text-sm font-bold flex items-center justify-center mt-0.5">
+                <li
+                  key={step.title}
+                  className={`flex gap-3.5 p-4 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(i * 2)}`}
+                >
+                  <span className="flex-shrink-0 w-7 h-7 rounded-lg btn-purple-grad text-sm font-mono font-bold flex items-center justify-center mt-0.5 shadow-xs">
                     {i + 1}
                   </span>
                   <div>
-                    <div className="font-bold text-slate-900 text-sm sm:text-base">{step.title}</div>
-                    <p className="text-sm sm:text-base">{step.text}</p>
+                    <div className="font-sans font-bold text-[var(--ink-navy)] text-sm sm:text-base">{step.title}</div>
+                    <p className="text-sm sm:text-base text-[var(--ink-2)] mt-0.5">{step.text}</p>
                   </div>
                 </li>
               ))}
@@ -326,32 +340,34 @@ export const GuideFormatsPageJa: React.FC<GuideFormatsPageJaProps> = ({ onNaviga
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(7)} flex items-center justify-center shrink-0`}>
+                <CheckCircle2 className="w-4 h-4" />
+              </span>
               <span>用途別の形式はどれ？</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">カメラ写真 — JPGまたはWebP</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(0)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">カメラ写真 — JPGまたはWebP</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   共有や印刷にはJPG、ウェブサイトにはWebPを使います。どちらも写真をきれいに保ったまま、元のサイズの何分の1かにできます。
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">ロゴとアイコン — PNGまたはWebP</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(3)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">ロゴとアイコン — PNGまたはWebP</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   透明が必要なため、JPGは使えません。PNGは安全な定番で、WebPは小さく、モダンな環境ではどこでも使えます。
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">スクリーンショット — WebPまたはPNG</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(6)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">スクリーンショット — WebPまたはPNG</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   シャープな文字と平らな色にはWebPとPNGが適しています。JPGは文字の輪郭をぼかすため、スクリーンショットには避けてください。
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">ウェブサイトの画像 — WebP</div>
-                <p className="text-xs text-slate-600">
+              <div className={`p-5 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(9)}`}>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm mb-1.5">ウェブサイトの画像 — WebP</div>
+                <p className="text-xs text-[var(--ink-2)] leading-relaxed">
                   ファイルが最も小さいため、ページが速くなります。ウェブサイトの写真をWebPに変換し、非常に古いブラウザー用にJPGを代替として残します。
                 </p>
               </div>
@@ -362,36 +378,41 @@ export const GuideFormatsPageJa: React.FC<GuideFormatsPageJaProps> = ({ onNaviga
             <img
               src="/guides/jpg-vs-png-vs-webp-2.png"
               alt="CompressMyPicで出力形式としてJPG、PNG、WebPを選んでいるスクリーンショット"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               CompressMyPicで出力形式を選びます。元の形式のままにするか、JPG、PNG、WebPに変換します。
             </figcaption>
           </figure>
 
           {/* FAQ */}
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Layers className="w-4 h-4" />
+              </span>
               <span>よくある質問</span>
             </h2>
             <div className="space-y-3">
-              {FAQ_DATA.map((item) => {
+              {FAQ_DATA.map((item, idx) => {
                 const isOpen = openIds.has(item.id);
                 return (
-                  <div key={item.id} className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
+                  <div
+                    key={item.id}
+                    className={`border rounded-2xl overflow-hidden shadow-[var(--shadow)] transition-shadow hover:shadow-[var(--shadow-lg)] ${getPastelCardClass(idx)}`}
+                  >
                     <button
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className={`w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors ${isOpen ? 'bg-slate-50/50' : 'hover:bg-slate-50/50'}`}
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
-                      <span className="text-sm sm:text-base font-bold text-slate-900">{item.question}</span>
-                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-600' : 'text-slate-400'}`} />
+                      <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
+                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'}`} />
                     </button>
                     {isOpen && (
-                      <div className="px-5 py-4 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 bg-white">
+                      <div className="px-5 py-4 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/55 dark:bg-slate-900/35">
                         {item.answer}
                       </div>
                     )}
@@ -403,23 +424,23 @@ export const GuideFormatsPageJa: React.FC<GuideFormatsPageJaProps> = ({ onNaviga
 
           {/* Related guides */}
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900">関連ガイド</h2>
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">関連ガイド</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button
                 type="button"
                 onClick={() => onNavigate('/ja/gaido/whatsapp-yo-gazo-asshuku')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">WhatsApp用に画質を落とさず画像を圧縮する方法</div>
-                <p className="text-xs text-slate-600 mt-1">まず自分で写真を小さくし、ドキュメントとして送ることで、WhatsAppにぼやけさせない方法を解説します。</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">WhatsApp用に画質を落とさず画像を圧縮する方法</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">まず自分で写真を小さくし、ドキュメントとして送ることで、WhatsAppにぼやけさせない方法を解説します。</p>
               </button>
               <button
                 type="button"
                 onClick={() => onNavigate('/ja/gaido/gazo-saizu-o-100kb-ni-hedasu')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">画像サイズを100KBまで小さくする方法｜Web・メール用</div>
-                <p className="text-xs text-slate-600 mt-1">写真を劣化させずに100KBまで小さくする手順を解説します。</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">画像サイズを100KBまで小さくする方法｜Web・メール用</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">写真を劣化させずに100KBまで小さくする手順を解説します。</p>
               </button>
             </div>
           </section>
@@ -428,14 +449,14 @@ export const GuideFormatsPageJa: React.FC<GuideFormatsPageJaProps> = ({ onNaviga
             <button
               type="button"
               onClick={() => onNavigate('/ja/')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               無料で画像を圧縮する
             </button>
             <button
               type="button"
               onClick={() => onNavigate('/ja/gaido/whatsapp-yo-gazo-asshuku')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-white text-slate-900 text-sm font-bold border border-slate-200 shadow-xs hover:bg-slate-50 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#7c3aed]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               WhatsApp用に圧縮する
             </button>

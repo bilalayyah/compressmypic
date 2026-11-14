@@ -19,7 +19,7 @@ export const TermsPageJa: React.FC<TermsPageJaProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/ja/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>画像圧縮ツールに戻る</span>
@@ -27,22 +27,22 @@ export const TermsPageJa: React.FC<TermsPageJaProps> = ({ onNavigate }) => {
         </div>
 
         {/* Page Title */}
-        <div className="border-b border-slate-200 pb-6 mb-8">
+        <div className="border-b border-[var(--line)] pb-6 mb-8">
           <div className="flex items-center gap-2.5 mb-2">
-            <FileText className="w-6 h-6 text-indigo-600" />
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <FileText className="w-6 h-6 text-[#7c3aed] dark:text-[#a78bfa]" />
+            <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">
               利用規約
             </h1>
           </div>
-          <p className="text-xs text-slate-500 font-medium">
+          <p className="text-xs text-[var(--ink-3)] font-medium">
             最終更新日：2026年11月12日
           </p>
         </div>
 
         {/* Content */}
-        <div className="space-y-6 text-base text-slate-700 leading-relaxed">
+        <div className="space-y-6 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-900">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
               1. 規約への同意
             </h2>
             <p>
@@ -51,7 +51,7 @@ export const TermsPageJa: React.FC<TermsPageJaProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-900">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
               2. 許可される利用
             </h2>
             <p>
@@ -60,7 +60,7 @@ export const TermsPageJa: React.FC<TermsPageJaProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-900">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
               3. 知的財産権
             </h2>
             <p>
@@ -69,7 +69,7 @@ export const TermsPageJa: React.FC<TermsPageJaProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-900">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
               4. 保証の免責
             </h2>
             <p>
@@ -77,15 +77,15 @@ export const TermsPageJa: React.FC<TermsPageJaProps> = ({ onNavigate }) => {
             </p>
           </section>
 
-          <section className="space-y-2 pt-2 border-t border-slate-200">
-            <h2 className="text-lg font-bold text-slate-900">
+          <section className="space-y-2 pt-2 border-t border-[var(--line)]">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
               5. お問い合わせ
             </h2>
             <p>
               本規約についてご質問がある場合は、{' '}
               <a
                 href="mailto:bilalayyah@gmail.com"
-                className="text-blue-600 hover:underline font-semibold"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
               >
                 bilalayyah@gmail.com
               </a>
