@@ -147,7 +147,7 @@ export const PT = {
   },
   hero: {
     pill: 'Compressão 100% privada no seu dispositivo · Sem envio para servidores',
-    h1: 'Compressor de imagens grátis – Comprima imagens online e reduza o tamanho sem perder qualidade',
+    h1: 'Compressor de imagens grátis – Comprima imagens online',
     sub: 'Reduza o tamanho dos seus arquivos de imagem sem abrir mão da qualidade visível. Comprima imagens online grátis com nosso compressor de imagens e fotos: um otimizador de imagens online para JPG, PNG, WebP e HEIC. Rápido, seguro, sem cadastro, sem marca d’água e com compressão fácil direto no seu navegador.',
     badge1: 'Suas imagens nunca saem do seu dispositivo',
     badge2: 'Processamento instantâneo no navegador',
@@ -406,6 +406,7 @@ export const PT = {
     featuresTitle: 'Por que usar {name} do CompressMyPic?',
     faqTitle: '{name} — Perguntas frequentes',
     relatedTitle: 'Ferramentas de imagens grátis relacionadas',
+    relatedLinksIntro: 'Você também pode precisar de:',
     commentsTitle: 'Comentários',
     commentsNote: 'Compartilhe sua opinião sobre esta ferramenta: basta escrever seu nome e publicar. Não precisa de conta.',
     commentsNamePlaceholder: 'Seu nome',
@@ -457,10 +458,9 @@ export const PT = {
     altProcessed: 'Versão processada de {name}', // 'Processed version of {name}'
   },
   homeMeta: {
-    seoTitle: 'Compressor de imagens grátis online – Reduza para 100KB',
-    seoDescription:
-      'Comprima imagens online grátis: reduza o tamanho sem perder qualidade. Comprima JPG, PNG e WebP sem cadastro nem marca d’água, direto no seu navegador.',
-    h1: 'Compressor de imagens grátis',
+    seoTitle: 'Compressor de imagens grátis – Comprima imagens online, sem cadastro',
+    seoDescription: 'Comprima imagens online grátis e reduza o tamanho de JPG, PNG e WebP sem perder qualidade. Sem cadastro nem marca d’água — suas fotos nunca saem do navegador.',
+    h1: 'Compressor de imagens grátis – Comprima imagens online',
     subtitle: 'Reduza o tamanho de arquivos JPG, PNG, WebP e HEIC direto no seu navegador.',
   },
   categories: {
