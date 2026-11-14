@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, Mail, Globe, Target, CheckCircle2, Layers, Gauge } from 'lucide-react';
+import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
 
 interface Guide100kbPageDeProps {
   onNavigate: (path: string) => void;
@@ -199,14 +200,14 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
   };
 
   return (
-    <div className="py-10 sm:py-16">
+    <div className="bg-[var(--bg)] py-10 sm:py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
           <button
             type="button"
             onClick={() => onNavigate('/de/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Zurück zum Bildkomprimierer</span>
@@ -214,20 +215,22 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
         </div>
 
         {/* Page Title */}
-        <div className="border-b border-slate-200 pb-6 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <div className="border-b border-[var(--line)] pb-6 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             Bild auf 100 KB verkleinern für Websites und E-Mails
           </h1>
-          <p className="mt-3 text-lg font-medium text-slate-700 leading-relaxed">
+          <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             Ein 4-MB-Foto verlangsamt Ihre Website und verstopft eine E-Mail. Wenn Sie es auf etwa 100 KB verkleinern, laden Seiten schnell und E-Mails werden sofort gesendet – und wenn Sie es richtig machen, kann niemand den Unterschied erkennen.
           </p>
         </div>
 
         {/* Core Content */}
-        <div className="space-y-8 text-base text-slate-600 leading-relaxed">
+        <div className="space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Target className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Target className="w-4 h-4" />
+              </span>
               <span>Warum 100 KB die magische Zahl ist</span>
             </h2>
             <p>
@@ -239,19 +242,24 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Gauge className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(2)} flex items-center justify-center shrink-0`}>
+                <Gauge className="w-4 h-4" />
+              </span>
               <span>Schritt für Schritt: Bild auf 100 KB verkleinern</span>
             </h2>
-            <ol className="space-y-4">
+            <ol className="space-y-3">
               {STEPS.map((step, i) => (
-                <li key={step.title} className="flex gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white text-sm font-bold flex items-center justify-center mt-0.5">
+                <li
+                  key={step.title}
+                  className={`flex gap-3.5 p-4 rounded-2xl border shadow-[var(--shadow)] ${getPastelCardClass(i * 2)}`}
+                >
+                  <span className="flex-shrink-0 w-7 h-7 rounded-lg btn-purple-grad text-sm font-mono font-bold flex items-center justify-center mt-0.5 shadow-xs">
                     {i + 1}
                   </span>
                   <div>
-                    <div className="font-bold text-slate-900 text-sm sm:text-base">{step.title}</div>
-                    <p className="text-sm sm:text-base">{step.text}</p>
+                    <div className="font-sans font-bold text-[var(--ink-navy)] text-sm sm:text-base">{step.title}</div>
+                    <p className="text-sm sm:text-base text-[var(--ink-2)] mt-0.5">{step.text}</p>
                   </div>
                 </li>
               ))}
@@ -262,49 +270,51 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
             <img
               src="/guides/reduce-image-size-to-100kb-1.png"
               alt="Screenshot: Großes Foto bei CompressMyPic hochladen, um es auf 100 KB zu verkleinern"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               Laden Sie Ihr Foto hoch – die Originalgröße wird sofort angezeigt, sodass Sie wissen, wie weit Sie gehen müssen.
             </figcaption>
           </figure>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Globe className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(4)} flex items-center justify-center shrink-0`}>
+                <Globe className="w-4 h-4" />
+              </span>
               <span>Gängige Ziele auf einen Blick</span>
             </h2>
             <p>
               100 KB ist nicht das einzige Ziel, das Menschen brauchen. Dieselbe Methode funktioniert für jede Größe – hier sehen Sie, was Sie jeweils erwarten können:
             </p>
             <div className="overflow-x-auto pt-1">
-              <table className="w-full text-sm border border-slate-200 rounded-xl overflow-hidden">
+              <table className="w-full text-sm border border-[var(--line)] rounded-2xl overflow-hidden bg-[var(--surface)] shadow-[var(--shadow)]">
                 <thead>
-                  <tr className="bg-slate-50 text-slate-900 text-left">
-                    <th className="px-4 py-3 font-bold">Ziel</th>
-                    <th className="px-4 py-3 font-bold">Typische Qualität</th>
-                    <th className="px-4 py-3 font-bold">Gut für</th>
+                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-left border-b border-[var(--line)]">
+                    <th className="px-4 py-3 font-semibold">Ziel</th>
+                    <th className="px-4 py-3 font-semibold">Typische Qualität</th>
+                    <th className="px-4 py-3 font-semibold">Gut für</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-[var(--line)]">
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">200 KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">200 KB</td>
                     <td className="px-4 py-3">70–80 %</td>
                     <td className="px-4 py-3">Blogfotos, große Webbilder</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">100 KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">100 KB</td>
                     <td className="px-4 py-3">50–70 %</td>
                     <td className="px-4 py-3">Website-Fotos, E-Mail-Anhänge</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">50 KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">50 KB</td>
                     <td className="px-4 py-3">40–55 % + WebP</td>
                     <td className="px-4 py-3">Vorschaubilder, Chat, schnelle Seiten</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-bold text-slate-900">20 KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">20 KB</td>
                     <td className="px-4 py-3">25–40 % + WebP</td>
                     <td className="px-4 py-3">Symbole, winzige Vorschauen</td>
                   </tr>
@@ -316,12 +326,14 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Mail className="w-5 h-5 text-blue-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-2">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(6)} flex items-center justify-center shrink-0`}>
+                <Mail className="w-4 h-4" />
+              </span>
               <span>Tipps für Websites und E-Mails</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5">
+            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
               <li>Verwenden Sie für Websites die WebP-Ausgabe – das ist der schnellste Weg, 100 KB zu erreichen, und jeder moderne Browser unterstützt es.</li>
               <li>Verwenden Sie für E-Mails JPG, das sicherste Format, da jede E-Mail-App es öffnet. Ein 100-KB-JPG hängt sich sofort an und wird wegen der Größe niemals abgewiesen.</li>
               <li>Komprimieren Sie alle Fotos für eine Seite oder eine E-Mail gemeinsam und laden Sie sie dann alle mit der Schaltfläche „Alle herunterladen (ZIP)“ herunter.</li>
@@ -334,46 +346,53 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
             <img
               src="/guides/reduce-image-size-to-100kb-2.png"
               alt="Screenshot: Live-Anzeige der Vorher-Nachher-Dateigröße, die zeigt, dass ein Bild auf etwa 100 KB verkleinert wurde"
-              className="w-full rounded-xl border border-slate-200 shadow-sm"
+              className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
             />
-            <figcaption className="text-xs text-slate-500 text-center">
+            <figcaption className="text-xs text-[var(--ink-3)] text-center">
               Die Live-Anzeige der Vorher-Nachher-Größe zeigt Ihren Fortschritt – senken Sie den Regler, bis die komprimierte Größe nahe bei 100 KB liegt.
             </figcaption>
           </figure>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+          <section className="space-y-3 rounded-2xl border p-5 sm:p-6 shadow-[var(--shadow)] pastel-card-7">
+            <h2 className="text-xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(7)} flex items-center justify-center shrink-0`}>
+                <CheckCircle2 className="w-4 h-4" />
+              </span>
               <span>Wenn 100 KB nicht möglich sind</span>
             </h2>
-            <p>
+            <p className="text-sm sm:text-base">
               Manche Bilder können 100 KB einfach nicht erreichen, ohne schlecht auszusehen: ein sehr großes, sehr detailreiches Foto oder ein PNG mit Transparenz, das PNG bleiben muss. In diesem Fall erzwingen Sie es nicht. Ein scharfes 180-KB-Foto ist jedes Mal besser als ein ruiniertes 100-KB-Foto – für eine Website lädt es weiterhin schnell, und für E-Mails liegt es weiterhin weit unter jedem Anhangslimit. Das Ziel ist eine kleine Datei, die weiterhin gut aussieht, nicht eine magische Zahl.
             </p>
           </section>
 
           {/* FAQ */}
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight flex items-center gap-2.5">
+              <span className={`w-8 h-8 rounded-lg ${getPastelTileClass(0)} flex items-center justify-center shrink-0`}>
+                <Layers className="w-4 h-4" />
+              </span>
               <span>Häufig gestellte Fragen</span>
             </h2>
             <div className="space-y-3">
-              {FAQ_DATA.map((item) => {
+              {FAQ_DATA.map((item, idx) => {
                 const isOpen = openIds.has(item.id);
                 return (
-                  <div key={item.id} className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
+                  <div
+                    key={item.id}
+                    className={`border rounded-2xl overflow-hidden shadow-[var(--shadow)] transition-shadow hover:shadow-[var(--shadow-lg)] ${getPastelCardClass(idx)}`}
+                  >
                     <button
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className={`w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors ${isOpen ? 'bg-slate-50/50' : 'hover:bg-slate-50/50'}`}
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
-                      <span className="text-sm sm:text-base font-bold text-slate-900">{item.question}</span>
-                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-600' : 'text-slate-400'}`} />
+                      <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
+                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'}`} />
                     </button>
                     {isOpen && (
-                      <div className="px-5 py-4 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 bg-white">
+                      <div className="px-5 py-4 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/55 dark:bg-slate-900/35">
                         {item.answer}
                       </div>
                     )}
@@ -385,23 +404,23 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
 
           {/* Related guides */}
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900">Verwandte Anleitungen</h2>
+            <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">Verwandte Anleitungen</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button
                 type="button"
                 onClick={() => onNavigate('/de/anleitungen/bilder-fuer-whatsapp-komprimieren')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">Bilder für WhatsApp komprimieren ohne Qualitätsverlust</div>
-                <p className="text-xs text-slate-600 mt-1">Verkleinern Sie Fotos zuerst selbst und senden Sie sie dann als Dokumente, damit WhatsApp sie nicht unscharf machen kann.</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Bilder für WhatsApp komprimieren ohne Qualitätsverlust</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Verkleinern Sie Fotos zuerst selbst und senden Sie sie dann als Dokumente, damit WhatsApp sie nicht unscharf machen kann.</p>
               </button>
               <button
                 type="button"
                 onClick={() => onNavigate('/de/anleitungen/jpg-vs-png-vs-webp')}
-                className="text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer"
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
-                <div className="font-bold text-slate-900 text-sm">JPG vs PNG vs WebP – welches Format sollten Sie verwenden?</div>
-                <p className="text-xs text-slate-600 mt-1">Dateigröße, Qualität und Transparenz im Vergleich, damit Sie jedes Mal das richtige Format wählen.</p>
+                <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG vs PNG vs WebP – welches Format sollten Sie verwenden?</div>
+                <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Dateigröße, Qualität und Transparenz im Vergleich, damit Sie jedes Mal das richtige Format wählen.</p>
               </button>
             </div>
           </section>
@@ -410,14 +429,14 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
             <button
               type="button"
               onClick={() => onNavigate('/de/')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               Bilder kostenlos komprimieren
             </button>
             <button
               type="button"
               onClick={() => onNavigate('/de/anleitungen/jpg-vs-png-vs-webp')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-white text-slate-900 text-sm font-bold border border-slate-200 shadow-xs hover:bg-slate-50 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#7c3aed]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               JPG vs PNG vs WebP
             </button>
