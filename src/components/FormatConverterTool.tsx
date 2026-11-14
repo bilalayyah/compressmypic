@@ -222,6 +222,28 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
     };
   }, []);
 
+  // Re-convert already-converted items when the target format changes.
+  // The generic converter page lets the user switch format AFTER an upload;
+  // without this, the stale previous-format blob stays attached and Download
+  // silently saves the wrong format. Format-specific wrapper pages pass a
+  // fixed targetFormat, so this is a no-op for them. If a conversion is in
+  // flight when the format changes, the re-convert waits until it finishes
+  // (isProcessing dep) instead of racing it.
+  const prevTargetFormatRef = useRef(targetFormat);
+  const formatChangePendingRef = useRef(false);
+  useEffect(() => {
+    if (prevTargetFormatRef.current !== targetFormat) {
+      prevTargetFormatRef.current = targetFormat;
+      formatChangePendingRef.current = true;
+    }
+    if (!formatChangePendingRef.current || isProcessing) return;
+    const done = itemsRef.current.filter((i) => i.status === 'done' && i.compressedBlob);
+    formatChangePendingRef.current = false;
+    if (done.length === 0) return;
+    void handleReconvertAll();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [targetFormat, isProcessing]);
+
   const targetLabel = TARGET_LABEL[targetFormat];
 
   const convertSingleItem = async (
