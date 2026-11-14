@@ -15,9 +15,11 @@
               window.matchMedia('(prefers-color-scheme: dark)').matches);
           if (isDark) {
             document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
             document.documentElement.style.colorScheme = 'dark';
           } else {
             document.documentElement.classList.remove('dark');
+            document.documentElement.setAttribute('data-theme', 'light');
             document.documentElement.style.colorScheme = 'light';
           }
         } catch (e) {}
@@ -27,7 +29,7 @@
     <meta name="description" content="Compress image online free — reduce image size without losing quality. Compress JPG, PNG and WebP with no signup and no watermark, right in your browser." />
     <meta name="keywords" content="image compressor, compress image, image optimizer, photo compressor, reduce image size, compress JPG, compress PNG, compress JPEG, image size reducer, photo size reducer, compress WebP, optimize images for web, JPG compressor, PNG compressor, compress image online free, reduce image size without losing quality, compress JPG to 100KB, compress image to 100KB free online, reduce image size to 200KB, compress image to 50KB, compress image to 20KB, reduce image size in KB, compress PNG online free, compress image online free no watermark, free image compressor no signup, compress photo for website, reduce JPEG file size, compress image for WhatsApp, compress image for Instagram, compress image for Facebook, compress images for email attachment, bulk image compressor, batch image compressor, compress multiple images at once, how to compress image without losing quality, reduce photo file size, online image optimizer, compress image to 500KB, reduce image size for website, compress image without losing quality" />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#2563eb" />
+    <meta name="theme-color" content="#f8f7ff" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="author" content="CompressMyPic" />
     <!-- Canonical URL: https://compressmypic.online/ -->
@@ -59,10 +61,10 @@
     <meta name="twitter:description" content="Compress image online free — reduce image size without losing quality. Compress JPG, PNG and WebP with no signup and no watermark, right in your browser." />
     <meta name="twitter:image" content="https://compressmypic.online/og-image.png" />
     <meta name="twitter:image:alt" content="CompressMyPic – Free online image compressor" />
-    <!-- Google Web Fonts: Plus Jakarta Sans for refined display & body -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Google Web Fonts: Inter for headings/UI/body, JetBrains Mono for technical values -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
     <!-- Schema.org WebApplication JSON-LD -->
     <script type="application/ld+json">
     {
@@ -105,7 +107,7 @@
     }
     </script>
   </head>
-  <body class="bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased font-sans selection:bg-blue-100 selection:text-blue-900 dark:selection:bg-blue-900/60 dark:selection:text-blue-100">
+  <body class="bg-[var(--bg)] text-[var(--ink)] antialiased font-sans selection:bg-[var(--accent-soft)] selection:text-[var(--ink)]">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
