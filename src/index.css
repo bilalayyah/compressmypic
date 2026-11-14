@@ -22,7 +22,7 @@
   --ink: #111827;
   --ink-navy: #0f172a;
   --ink-2: #374151;
-  --ink-3: #6b7280;
+  --ink-3: #666d7a; /* darkened from #6b7280: muted-text contrast 4.54 -> ~4.89 on page bg (SEO audit #39) */
   --accent: #7c3aed;
   --accent-deep: #6d28d9;
   --accent-soft: #ede9fe;
@@ -145,6 +145,13 @@
 
   :focus-visible {
     outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* Hero search: visible keyboard focus (SEO audit #37). The hero input
+     must never suppress its outline again. */
+  .hero-search-input:focus-visible {
+    outline: 2px solid #7c3aed;
     outline-offset: 2px;
   }
 

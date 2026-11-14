@@ -10,68 +10,189 @@ import { Hero } from './components/Hero';
 import { UploadZone } from './components/UploadZone';
 import { CompressionControls } from './components/CompressionControls';
 import { ResultsList } from './components/ResultsList';
-import { ComparisonModal } from './components/ComparisonModal';
+const ComparisonModal = React.lazy(() =>
+  import('./components/ComparisonModal').then((m) => ({ default: m.ComparisonModal }))
+);
 import { EducationalContent, HOW_IT_WORKS_STEPS } from './components/EducationalContent';
 import { FaqSection, FAQ_DATA } from './components/FaqSection';
 import { Footer } from './components/Footer';
-import { ShareSection } from './components/ShareSection';
+const ShareSection = React.lazy(() =>
+  import('./components/ShareSection').then((m) => ({ default: m.ShareSection }))
+);
 import { AdSlot } from './components/AdSlot';
-import { ToolsDirectorySection } from './components/ToolsDirectorySection';
-import { AboutPage } from './pages/AboutPage';
-import { ContactPage } from './pages/ContactPage';
-import { PrivacyPage } from './pages/PrivacyPage';
-import { TermsPage } from './pages/TermsPage';
-import { AdminCommentsPage } from './pages/AdminCommentsPage';
-import { GuideWhatsAppPage } from './pages/GuideWhatsAppPage';
-import { GuideFormatsPage } from './pages/GuideFormatsPage';
-import { Guide100kbPage } from './pages/Guide100kbPage';
-import { ImageResizerPage } from './pages/ImageResizerPage';
-import { ImageConverterPage } from './pages/ImageConverterPage';
-import { RotateFlipPage } from './pages/RotateFlipPage';
-import { ImageToPdfPage } from './pages/ImageToPdfPage';
-import { MetadataViewerPage } from './pages/MetadataViewerPage';
-import { RemoveMetadataPage } from './pages/RemoveMetadataPage';
-import { FaviconGeneratorPage } from './pages/FaviconGeneratorPage';
-import { ColorPickerPage } from './pages/ColorPickerPage';
-import { DimensionsCheckerPage } from './pages/DimensionsCheckerPage';
-import { ImageCropperPage } from './pages/ImageCropperPage';
-import { ImageWatermarkPage } from './pages/ImageWatermarkPage';
-import { BlurPixelatePage } from './pages/BlurPixelatePage';
-import { AddTextPage } from './pages/AddTextPage';
-import { ImageBorderPage } from './pages/ImageBorderPage';
-import { RoundCornersPage } from './pages/RoundCornersPage';
-import { BrightnessEditorPage } from './pages/BrightnessEditorPage';
-import { ContrastEditorPage } from './pages/ContrastEditorPage';
-import { SaturationEditorPage } from './pages/SaturationEditorPage';
-import { ImageFiltersPage } from './pages/ImageFiltersPage';
-import { AddBackgroundPage } from './pages/AddBackgroundPage';
-import { ImageSplitterPage } from './pages/ImageSplitterPage';
-import { DpiChangerPage } from './pages/DpiChangerPage';
-import { ImageToBase64Page } from './pages/ImageToBase64Page';
-import { Base64ToImagePage } from './pages/Base64ToImagePage';
-import { PaletteExtractorPage } from './pages/PaletteExtractorPage';
-import { GifMakerPage } from './pages/GifMakerPage';
-import { CollageMakerPage } from './pages/CollageMakerPage';
-import { Compress50KbPage } from './pages/Compress50KbPage';
-import { Compress100KbPage } from './pages/Compress100KbPage';
-import { Compress200KbPage } from './pages/Compress200KbPage';
-import { Compress500KbPage } from './pages/Compress500KbPage';
-import { BulkCompressorPage } from './pages/BulkCompressorPage';
-import { TargetFileSizePage } from './pages/TargetFileSizePage';
-import { BulkResizerPage } from './pages/BulkResizerPage';
-import { BulkConverterPage } from './pages/BulkConverterPage';
-import { WebOptimizerPage } from './pages/WebOptimizerPage';
-import { GifCompressorPage } from './pages/GifCompressorPage';
-import { HeicToJpgPage } from './pages/HeicToJpgPage';
-import { JpgToPngPage } from './pages/JpgToPngPage';
-import { PngToJpgPage } from './pages/PngToJpgPage';
-import { JpgToWebpPage } from './pages/JpgToWebpPage';
-import { WebpToJpgPage } from './pages/WebpToJpgPage';
-import { PngToWebpPage } from './pages/PngToWebpPage';
-import { WebpToPngPage } from './pages/WebpToPngPage';
-import { SvgToPngPage } from './pages/SvgToPngPage';
-import { AvifToJpgPage } from './pages/AvifToJpgPage';
-import { BmpToJpgPage } from './pages/BmpToJpgPage';
+const ToolsDirectorySection = React.lazy(() =>
+  import('./components/ToolsDirectorySection').then((m) => ({ default: m.ToolsDirectorySection }))
+);
+// Route pages are lazy-loaded (code-split): each tool / legal / guide /
+// localized page ships as its own chunk, fetched only when its route opens.
+// The home compressor UI stays in the initial bundle. Shared components
+// (Header, Hero, UploadZone, ...) stay static. Every lazy page renders
+// inside the <Suspense> around the page router below.
+const AboutPage = React.lazy(() =>
+  import('./pages/AboutPage').then((m) => ({ default: m.AboutPage }))
+);
+const ContactPage = React.lazy(() =>
+  import('./pages/ContactPage').then((m) => ({ default: m.ContactPage }))
+);
+const PrivacyPage = React.lazy(() =>
+  import('./pages/PrivacyPage').then((m) => ({ default: m.PrivacyPage }))
+);
+const TermsPage = React.lazy(() =>
+  import('./pages/TermsPage').then((m) => ({ default: m.TermsPage }))
+);
+const AdminCommentsPage = React.lazy(() =>
+  import('./pages/AdminCommentsPage').then((m) => ({ default: m.AdminCommentsPage }))
+);
+const GuideWhatsAppPage = React.lazy(() =>
+  import('./pages/GuideWhatsAppPage').then((m) => ({ default: m.GuideWhatsAppPage }))
+);
+const GuideFormatsPage = React.lazy(() =>
+  import('./pages/GuideFormatsPage').then((m) => ({ default: m.GuideFormatsPage }))
+);
+const Guide100kbPage = React.lazy(() =>
+  import('./pages/Guide100kbPage').then((m) => ({ default: m.Guide100kbPage }))
+);
+const ImageResizerPage = React.lazy(() =>
+  import('./pages/ImageResizerPage').then((m) => ({ default: m.ImageResizerPage }))
+);
+const ImageConverterPage = React.lazy(() =>
+  import('./pages/ImageConverterPage').then((m) => ({ default: m.ImageConverterPage }))
+);
+const RotateFlipPage = React.lazy(() =>
+  import('./pages/RotateFlipPage').then((m) => ({ default: m.RotateFlipPage }))
+);
+const ImageToPdfPage = React.lazy(() =>
+  import('./pages/ImageToPdfPage').then((m) => ({ default: m.ImageToPdfPage }))
+);
+const MetadataViewerPage = React.lazy(() =>
+  import('./pages/MetadataViewerPage').then((m) => ({ default: m.MetadataViewerPage }))
+);
+const RemoveMetadataPage = React.lazy(() =>
+  import('./pages/RemoveMetadataPage').then((m) => ({ default: m.RemoveMetadataPage }))
+);
+const FaviconGeneratorPage = React.lazy(() =>
+  import('./pages/FaviconGeneratorPage').then((m) => ({ default: m.FaviconGeneratorPage }))
+);
+const ColorPickerPage = React.lazy(() =>
+  import('./pages/ColorPickerPage').then((m) => ({ default: m.ColorPickerPage }))
+);
+const DimensionsCheckerPage = React.lazy(() =>
+  import('./pages/DimensionsCheckerPage').then((m) => ({ default: m.DimensionsCheckerPage }))
+);
+const ImageCropperPage = React.lazy(() =>
+  import('./pages/ImageCropperPage').then((m) => ({ default: m.ImageCropperPage }))
+);
+const ImageWatermarkPage = React.lazy(() =>
+  import('./pages/ImageWatermarkPage').then((m) => ({ default: m.ImageWatermarkPage }))
+);
+const BlurPixelatePage = React.lazy(() =>
+  import('./pages/BlurPixelatePage').then((m) => ({ default: m.BlurPixelatePage }))
+);
+const AddTextPage = React.lazy(() =>
+  import('./pages/AddTextPage').then((m) => ({ default: m.AddTextPage }))
+);
+const ImageBorderPage = React.lazy(() =>
+  import('./pages/ImageBorderPage').then((m) => ({ default: m.ImageBorderPage }))
+);
+const RoundCornersPage = React.lazy(() =>
+  import('./pages/RoundCornersPage').then((m) => ({ default: m.RoundCornersPage }))
+);
+const BrightnessEditorPage = React.lazy(() =>
+  import('./pages/BrightnessEditorPage').then((m) => ({ default: m.BrightnessEditorPage }))
+);
+const ContrastEditorPage = React.lazy(() =>
+  import('./pages/ContrastEditorPage').then((m) => ({ default: m.ContrastEditorPage }))
+);
+const SaturationEditorPage = React.lazy(() =>
+  import('./pages/SaturationEditorPage').then((m) => ({ default: m.SaturationEditorPage }))
+);
+const ImageFiltersPage = React.lazy(() =>
+  import('./pages/ImageFiltersPage').then((m) => ({ default: m.ImageFiltersPage }))
+);
+const AddBackgroundPage = React.lazy(() =>
+  import('./pages/AddBackgroundPage').then((m) => ({ default: m.AddBackgroundPage }))
+);
+const ImageSplitterPage = React.lazy(() =>
+  import('./pages/ImageSplitterPage').then((m) => ({ default: m.ImageSplitterPage }))
+);
+const DpiChangerPage = React.lazy(() =>
+  import('./pages/DpiChangerPage').then((m) => ({ default: m.DpiChangerPage }))
+);
+const ImageToBase64Page = React.lazy(() =>
+  import('./pages/ImageToBase64Page').then((m) => ({ default: m.ImageToBase64Page }))
+);
+const Base64ToImagePage = React.lazy(() =>
+  import('./pages/Base64ToImagePage').then((m) => ({ default: m.Base64ToImagePage }))
+);
+const PaletteExtractorPage = React.lazy(() =>
+  import('./pages/PaletteExtractorPage').then((m) => ({ default: m.PaletteExtractorPage }))
+);
+const GifMakerPage = React.lazy(() =>
+  import('./pages/GifMakerPage').then((m) => ({ default: m.GifMakerPage }))
+);
+const CollageMakerPage = React.lazy(() =>
+  import('./pages/CollageMakerPage').then((m) => ({ default: m.CollageMakerPage }))
+);
+const Compress50KbPage = React.lazy(() =>
+  import('./pages/Compress50KbPage').then((m) => ({ default: m.Compress50KbPage }))
+);
+const Compress100KbPage = React.lazy(() =>
+  import('./pages/Compress100KbPage').then((m) => ({ default: m.Compress100KbPage }))
+);
+const Compress200KbPage = React.lazy(() =>
+  import('./pages/Compress200KbPage').then((m) => ({ default: m.Compress200KbPage }))
+);
+const Compress500KbPage = React.lazy(() =>
+  import('./pages/Compress500KbPage').then((m) => ({ default: m.Compress500KbPage }))
+);
+const BulkCompressorPage = React.lazy(() =>
+  import('./pages/BulkCompressorPage').then((m) => ({ default: m.BulkCompressorPage }))
+);
+const TargetFileSizePage = React.lazy(() =>
+  import('./pages/TargetFileSizePage').then((m) => ({ default: m.TargetFileSizePage }))
+);
+const BulkResizerPage = React.lazy(() =>
+  import('./pages/BulkResizerPage').then((m) => ({ default: m.BulkResizerPage }))
+);
+const BulkConverterPage = React.lazy(() =>
+  import('./pages/BulkConverterPage').then((m) => ({ default: m.BulkConverterPage }))
+);
+const WebOptimizerPage = React.lazy(() =>
+  import('./pages/WebOptimizerPage').then((m) => ({ default: m.WebOptimizerPage }))
+);
+const GifCompressorPage = React.lazy(() =>
+  import('./pages/GifCompressorPage').then((m) => ({ default: m.GifCompressorPage }))
+);
+const HeicToJpgPage = React.lazy(() =>
+  import('./pages/HeicToJpgPage').then((m) => ({ default: m.HeicToJpgPage }))
+);
+const JpgToPngPage = React.lazy(() =>
+  import('./pages/JpgToPngPage').then((m) => ({ default: m.JpgToPngPage }))
+);
+const PngToJpgPage = React.lazy(() =>
+  import('./pages/PngToJpgPage').then((m) => ({ default: m.PngToJpgPage }))
+);
+const JpgToWebpPage = React.lazy(() =>
+  import('./pages/JpgToWebpPage').then((m) => ({ default: m.JpgToWebpPage }))
+);
+const WebpToJpgPage = React.lazy(() =>
+  import('./pages/WebpToJpgPage').then((m) => ({ default: m.WebpToJpgPage }))
+);
+const PngToWebpPage = React.lazy(() =>
+  import('./pages/PngToWebpPage').then((m) => ({ default: m.PngToWebpPage }))
+);
+const WebpToPngPage = React.lazy(() =>
+  import('./pages/WebpToPngPage').then((m) => ({ default: m.WebpToPngPage }))
+);
+const SvgToPngPage = React.lazy(() =>
+  import('./pages/SvgToPngPage').then((m) => ({ default: m.SvgToPngPage }))
+);
+const AvifToJpgPage = React.lazy(() =>
+  import('./pages/AvifToJpgPage').then((m) => ({ default: m.AvifToJpgPage }))
+);
+const BmpToJpgPage = React.lazy(() =>
+  import('./pages/BmpToJpgPage').then((m) => ({ default: m.BmpToJpgPage }))
+);
 import { TOOL_BY_SLUG, TOOLS_REGISTRY, TOOL_CATEGORIES } from './data/tools';
 import { SUPPORTED_LANGS, LANG_STORAGE_KEY, type SupportedLang } from './locales/config';
 import { ES_PATH_BY_EN, EN_PATH_BY_ES, ES_HOME_ALIAS, ES_ALL_TOOLS_PATH } from './locales/es/slugs';
@@ -85,94 +206,257 @@ import { JA_PATH_BY_EN, EN_PATH_BY_JA, JA_HOME_ALIAS, JA_ALL_TOOLS_PATH } from '
 import { KO_PATH_BY_EN, EN_PATH_BY_KO, KO_HOME_ALIAS, KO_ALL_TOOLS_PATH } from './locales/ko/slugs';
 import { ZH_PATH_BY_EN, EN_PATH_BY_ZH, ZH_HOME_ALIAS, ZH_ALL_TOOLS_PATH } from './locales/zh/slugs';
 import { getAlternates, getOgLocale, getOgLocaleAlternates } from './locales/alternates';
-import { AboutPageEs } from './pages/es/AboutPageEs';
-import { ContactPageEs } from './pages/es/ContactPageEs';
-import { PrivacyPageEs } from './pages/es/PrivacyPageEs';
-import { TermsPageEs } from './pages/es/TermsPageEs';
-import { AllToolsPageEs } from './pages/es/AllToolsPageEs';
-import { GuideWhatsAppPageEs } from './pages/es/GuideWhatsAppPageEs';
-import { GuideFormatsPageEs } from './pages/es/GuideFormatsPageEs';
-import { Guide100kbPageEs } from './pages/es/Guide100kbPageEs';
-import { AboutPagePt } from './pages/pt/AboutPagePt';
-import { ContactPagePt } from './pages/pt/ContactPagePt';
-import { PrivacyPagePt } from './pages/pt/PrivacyPagePt';
-import { TermsPagePt } from './pages/pt/TermsPagePt';
-import { AllToolsPagePt } from './pages/pt/AllToolsPagePt';
-import { GuideWhatsAppPagePt } from './pages/pt/GuideWhatsAppPagePt';
-import { GuideFormatsPagePt } from './pages/pt/GuideFormatsPagePt';
-import { Guide100kbPagePt } from './pages/pt/Guide100kbPagePt';
-import { AboutPageFr } from './pages/fr/AboutPageFr';
-import { ContactPageFr } from './pages/fr/ContactPageFr';
-import { PrivacyPageFr } from './pages/fr/PrivacyPageFr';
-import { TermsPageFr } from './pages/fr/TermsPageFr';
-import { AllToolsPageFr } from './pages/fr/AllToolsPageFr';
-import { GuideWhatsAppPageFr } from './pages/fr/GuideWhatsAppPageFr';
-import { GuideFormatsPageFr } from './pages/fr/GuideFormatsPageFr';
-import { Guide100kbPageFr } from './pages/fr/Guide100kbPageFr';
-import { AboutPageDe } from './pages/de/AboutPageDe';
-import { ContactPageDe } from './pages/de/ContactPageDe';
-import { PrivacyPageDe } from './pages/de/PrivacyPageDe';
-import { TermsPageDe } from './pages/de/TermsPageDe';
-import { AllToolsPageDe } from './pages/de/AllToolsPageDe';
-import { GuideWhatsAppPageDe } from './pages/de/GuideWhatsAppPageDe';
-import { GuideFormatsPageDe } from './pages/de/GuideFormatsPageDe';
-import { Guide100kbPageDe } from './pages/de/Guide100kbPageDe';
-import { AboutPageIt } from './pages/it/AboutPageIt';
-import { ContactPageIt } from './pages/it/ContactPageIt';
-import { PrivacyPageIt } from './pages/it/PrivacyPageIt';
-import { TermsPageIt } from './pages/it/TermsPageIt';
-import { AllToolsPageIt } from './pages/it/AllToolsPageIt';
-import { GuideWhatsAppPageIt } from './pages/it/GuideWhatsAppPageIt';
-import { GuideFormatsPageIt } from './pages/it/GuideFormatsPageIt';
-import { Guide100kbPageIt } from './pages/it/Guide100kbPageIt';
-import { AboutPageId } from './pages/id/AboutPageId';
-import { ContactPageId } from './pages/id/ContactPageId';
-import { PrivacyPageId } from './pages/id/PrivacyPageId';
-import { TermsPageId } from './pages/id/TermsPageId';
-import { AllToolsPageId } from './pages/id/AllToolsPageId';
-import { GuideWhatsAppPageId } from './pages/id/GuideWhatsAppPageId';
-import { GuideFormatsPageId } from './pages/id/GuideFormatsPageId';
-import { Guide100kbPageId } from './pages/id/Guide100kbPageId';
-import { AboutPageRu } from './pages/ru/AboutPageRu';
-import { ContactPageRu } from './pages/ru/ContactPageRu';
-import { PrivacyPageRu } from './pages/ru/PrivacyPageRu';
-import { TermsPageRu } from './pages/ru/TermsPageRu';
-import { AllToolsPageRu } from './pages/ru/AllToolsPageRu';
-import { GuideWhatsAppPageRu } from './pages/ru/GuideWhatsAppPageRu';
-import { GuideFormatsPageRu } from './pages/ru/GuideFormatsPageRu';
-import { Guide100kbPageRu } from './pages/ru/Guide100kbPageRu';
-import { AboutPageJa } from './pages/ja/AboutPageJa';
-import { ContactPageJa } from './pages/ja/ContactPageJa';
-import { PrivacyPageJa } from './pages/ja/PrivacyPageJa';
-import { TermsPageJa } from './pages/ja/TermsPageJa';
-import { AllToolsPageJa } from './pages/ja/AllToolsPageJa';
-import { GuideWhatsAppPageJa } from './pages/ja/GuideWhatsAppPageJa';
-import { GuideFormatsPageJa } from './pages/ja/GuideFormatsPageJa';
-import { Guide100kbPageJa } from './pages/ja/Guide100kbPageJa';
-import { AboutPageKo } from './pages/ko/AboutPageKo';
-import { ContactPageKo } from './pages/ko/ContactPageKo';
-import { PrivacyPageKo } from './pages/ko/PrivacyPageKo';
-import { TermsPageKo } from './pages/ko/TermsPageKo';
-import { AllToolsPageKo } from './pages/ko/AllToolsPageKo';
-import { GuideWhatsAppPageKo } from './pages/ko/GuideWhatsAppPageKo';
-import { GuideFormatsPageKo } from './pages/ko/GuideFormatsPageKo';
-import { Guide100kbPageKo } from './pages/ko/Guide100kbPageKo';
-import { AboutPageZh } from './pages/zh/AboutPageZh';
-import { ContactPageZh } from './pages/zh/ContactPageZh';
-import { PrivacyPageZh } from './pages/zh/PrivacyPageZh';
-import { TermsPageZh } from './pages/zh/TermsPageZh';
-import { AllToolsPageZh } from './pages/zh/AllToolsPageZh';
-import { GuideWhatsAppPageZh } from './pages/zh/GuideWhatsAppPageZh';
-import { GuideFormatsPageZh } from './pages/zh/GuideFormatsPageZh';
-import { Guide100kbPageZh } from './pages/zh/Guide100kbPageZh';
+const AboutPageEs = React.lazy(() =>
+  import('./pages/es/AboutPageEs').then((m) => ({ default: m.AboutPageEs }))
+);
+const ContactPageEs = React.lazy(() =>
+  import('./pages/es/ContactPageEs').then((m) => ({ default: m.ContactPageEs }))
+);
+const PrivacyPageEs = React.lazy(() =>
+  import('./pages/es/PrivacyPageEs').then((m) => ({ default: m.PrivacyPageEs }))
+);
+const TermsPageEs = React.lazy(() =>
+  import('./pages/es/TermsPageEs').then((m) => ({ default: m.TermsPageEs }))
+);
+const AllToolsPageEs = React.lazy(() =>
+  import('./pages/es/AllToolsPageEs').then((m) => ({ default: m.AllToolsPageEs }))
+);
+const GuideWhatsAppPageEs = React.lazy(() =>
+  import('./pages/es/GuideWhatsAppPageEs').then((m) => ({ default: m.GuideWhatsAppPageEs }))
+);
+const GuideFormatsPageEs = React.lazy(() =>
+  import('./pages/es/GuideFormatsPageEs').then((m) => ({ default: m.GuideFormatsPageEs }))
+);
+const Guide100kbPageEs = React.lazy(() =>
+  import('./pages/es/Guide100kbPageEs').then((m) => ({ default: m.Guide100kbPageEs }))
+);
+const AboutPagePt = React.lazy(() =>
+  import('./pages/pt/AboutPagePt').then((m) => ({ default: m.AboutPagePt }))
+);
+const ContactPagePt = React.lazy(() =>
+  import('./pages/pt/ContactPagePt').then((m) => ({ default: m.ContactPagePt }))
+);
+const PrivacyPagePt = React.lazy(() =>
+  import('./pages/pt/PrivacyPagePt').then((m) => ({ default: m.PrivacyPagePt }))
+);
+const TermsPagePt = React.lazy(() =>
+  import('./pages/pt/TermsPagePt').then((m) => ({ default: m.TermsPagePt }))
+);
+const AllToolsPagePt = React.lazy(() =>
+  import('./pages/pt/AllToolsPagePt').then((m) => ({ default: m.AllToolsPagePt }))
+);
+const GuideWhatsAppPagePt = React.lazy(() =>
+  import('./pages/pt/GuideWhatsAppPagePt').then((m) => ({ default: m.GuideWhatsAppPagePt }))
+);
+const GuideFormatsPagePt = React.lazy(() =>
+  import('./pages/pt/GuideFormatsPagePt').then((m) => ({ default: m.GuideFormatsPagePt }))
+);
+const Guide100kbPagePt = React.lazy(() =>
+  import('./pages/pt/Guide100kbPagePt').then((m) => ({ default: m.Guide100kbPagePt }))
+);
+const AboutPageFr = React.lazy(() =>
+  import('./pages/fr/AboutPageFr').then((m) => ({ default: m.AboutPageFr }))
+);
+const ContactPageFr = React.lazy(() =>
+  import('./pages/fr/ContactPageFr').then((m) => ({ default: m.ContactPageFr }))
+);
+const PrivacyPageFr = React.lazy(() =>
+  import('./pages/fr/PrivacyPageFr').then((m) => ({ default: m.PrivacyPageFr }))
+);
+const TermsPageFr = React.lazy(() =>
+  import('./pages/fr/TermsPageFr').then((m) => ({ default: m.TermsPageFr }))
+);
+const AllToolsPageFr = React.lazy(() =>
+  import('./pages/fr/AllToolsPageFr').then((m) => ({ default: m.AllToolsPageFr }))
+);
+const GuideWhatsAppPageFr = React.lazy(() =>
+  import('./pages/fr/GuideWhatsAppPageFr').then((m) => ({ default: m.GuideWhatsAppPageFr }))
+);
+const GuideFormatsPageFr = React.lazy(() =>
+  import('./pages/fr/GuideFormatsPageFr').then((m) => ({ default: m.GuideFormatsPageFr }))
+);
+const Guide100kbPageFr = React.lazy(() =>
+  import('./pages/fr/Guide100kbPageFr').then((m) => ({ default: m.Guide100kbPageFr }))
+);
+const AboutPageDe = React.lazy(() =>
+  import('./pages/de/AboutPageDe').then((m) => ({ default: m.AboutPageDe }))
+);
+const ContactPageDe = React.lazy(() =>
+  import('./pages/de/ContactPageDe').then((m) => ({ default: m.ContactPageDe }))
+);
+const PrivacyPageDe = React.lazy(() =>
+  import('./pages/de/PrivacyPageDe').then((m) => ({ default: m.PrivacyPageDe }))
+);
+const TermsPageDe = React.lazy(() =>
+  import('./pages/de/TermsPageDe').then((m) => ({ default: m.TermsPageDe }))
+);
+const AllToolsPageDe = React.lazy(() =>
+  import('./pages/de/AllToolsPageDe').then((m) => ({ default: m.AllToolsPageDe }))
+);
+const GuideWhatsAppPageDe = React.lazy(() =>
+  import('./pages/de/GuideWhatsAppPageDe').then((m) => ({ default: m.GuideWhatsAppPageDe }))
+);
+const GuideFormatsPageDe = React.lazy(() =>
+  import('./pages/de/GuideFormatsPageDe').then((m) => ({ default: m.GuideFormatsPageDe }))
+);
+const Guide100kbPageDe = React.lazy(() =>
+  import('./pages/de/Guide100kbPageDe').then((m) => ({ default: m.Guide100kbPageDe }))
+);
+const AboutPageIt = React.lazy(() =>
+  import('./pages/it/AboutPageIt').then((m) => ({ default: m.AboutPageIt }))
+);
+const ContactPageIt = React.lazy(() =>
+  import('./pages/it/ContactPageIt').then((m) => ({ default: m.ContactPageIt }))
+);
+const PrivacyPageIt = React.lazy(() =>
+  import('./pages/it/PrivacyPageIt').then((m) => ({ default: m.PrivacyPageIt }))
+);
+const TermsPageIt = React.lazy(() =>
+  import('./pages/it/TermsPageIt').then((m) => ({ default: m.TermsPageIt }))
+);
+const AllToolsPageIt = React.lazy(() =>
+  import('./pages/it/AllToolsPageIt').then((m) => ({ default: m.AllToolsPageIt }))
+);
+const GuideWhatsAppPageIt = React.lazy(() =>
+  import('./pages/it/GuideWhatsAppPageIt').then((m) => ({ default: m.GuideWhatsAppPageIt }))
+);
+const GuideFormatsPageIt = React.lazy(() =>
+  import('./pages/it/GuideFormatsPageIt').then((m) => ({ default: m.GuideFormatsPageIt }))
+);
+const Guide100kbPageIt = React.lazy(() =>
+  import('./pages/it/Guide100kbPageIt').then((m) => ({ default: m.Guide100kbPageIt }))
+);
+const AboutPageId = React.lazy(() =>
+  import('./pages/id/AboutPageId').then((m) => ({ default: m.AboutPageId }))
+);
+const ContactPageId = React.lazy(() =>
+  import('./pages/id/ContactPageId').then((m) => ({ default: m.ContactPageId }))
+);
+const PrivacyPageId = React.lazy(() =>
+  import('./pages/id/PrivacyPageId').then((m) => ({ default: m.PrivacyPageId }))
+);
+const TermsPageId = React.lazy(() =>
+  import('./pages/id/TermsPageId').then((m) => ({ default: m.TermsPageId }))
+);
+const AllToolsPageId = React.lazy(() =>
+  import('./pages/id/AllToolsPageId').then((m) => ({ default: m.AllToolsPageId }))
+);
+const GuideWhatsAppPageId = React.lazy(() =>
+  import('./pages/id/GuideWhatsAppPageId').then((m) => ({ default: m.GuideWhatsAppPageId }))
+);
+const GuideFormatsPageId = React.lazy(() =>
+  import('./pages/id/GuideFormatsPageId').then((m) => ({ default: m.GuideFormatsPageId }))
+);
+const Guide100kbPageId = React.lazy(() =>
+  import('./pages/id/Guide100kbPageId').then((m) => ({ default: m.Guide100kbPageId }))
+);
+const AboutPageRu = React.lazy(() =>
+  import('./pages/ru/AboutPageRu').then((m) => ({ default: m.AboutPageRu }))
+);
+const ContactPageRu = React.lazy(() =>
+  import('./pages/ru/ContactPageRu').then((m) => ({ default: m.ContactPageRu }))
+);
+const PrivacyPageRu = React.lazy(() =>
+  import('./pages/ru/PrivacyPageRu').then((m) => ({ default: m.PrivacyPageRu }))
+);
+const TermsPageRu = React.lazy(() =>
+  import('./pages/ru/TermsPageRu').then((m) => ({ default: m.TermsPageRu }))
+);
+const AllToolsPageRu = React.lazy(() =>
+  import('./pages/ru/AllToolsPageRu').then((m) => ({ default: m.AllToolsPageRu }))
+);
+const GuideWhatsAppPageRu = React.lazy(() =>
+  import('./pages/ru/GuideWhatsAppPageRu').then((m) => ({ default: m.GuideWhatsAppPageRu }))
+);
+const GuideFormatsPageRu = React.lazy(() =>
+  import('./pages/ru/GuideFormatsPageRu').then((m) => ({ default: m.GuideFormatsPageRu }))
+);
+const Guide100kbPageRu = React.lazy(() =>
+  import('./pages/ru/Guide100kbPageRu').then((m) => ({ default: m.Guide100kbPageRu }))
+);
+const AboutPageJa = React.lazy(() =>
+  import('./pages/ja/AboutPageJa').then((m) => ({ default: m.AboutPageJa }))
+);
+const ContactPageJa = React.lazy(() =>
+  import('./pages/ja/ContactPageJa').then((m) => ({ default: m.ContactPageJa }))
+);
+const PrivacyPageJa = React.lazy(() =>
+  import('./pages/ja/PrivacyPageJa').then((m) => ({ default: m.PrivacyPageJa }))
+);
+const TermsPageJa = React.lazy(() =>
+  import('./pages/ja/TermsPageJa').then((m) => ({ default: m.TermsPageJa }))
+);
+const AllToolsPageJa = React.lazy(() =>
+  import('./pages/ja/AllToolsPageJa').then((m) => ({ default: m.AllToolsPageJa }))
+);
+const GuideWhatsAppPageJa = React.lazy(() =>
+  import('./pages/ja/GuideWhatsAppPageJa').then((m) => ({ default: m.GuideWhatsAppPageJa }))
+);
+const GuideFormatsPageJa = React.lazy(() =>
+  import('./pages/ja/GuideFormatsPageJa').then((m) => ({ default: m.GuideFormatsPageJa }))
+);
+const Guide100kbPageJa = React.lazy(() =>
+  import('./pages/ja/Guide100kbPageJa').then((m) => ({ default: m.Guide100kbPageJa }))
+);
+const AboutPageKo = React.lazy(() =>
+  import('./pages/ko/AboutPageKo').then((m) => ({ default: m.AboutPageKo }))
+);
+const ContactPageKo = React.lazy(() =>
+  import('./pages/ko/ContactPageKo').then((m) => ({ default: m.ContactPageKo }))
+);
+const PrivacyPageKo = React.lazy(() =>
+  import('./pages/ko/PrivacyPageKo').then((m) => ({ default: m.PrivacyPageKo }))
+);
+const TermsPageKo = React.lazy(() =>
+  import('./pages/ko/TermsPageKo').then((m) => ({ default: m.TermsPageKo }))
+);
+const AllToolsPageKo = React.lazy(() =>
+  import('./pages/ko/AllToolsPageKo').then((m) => ({ default: m.AllToolsPageKo }))
+);
+const GuideWhatsAppPageKo = React.lazy(() =>
+  import('./pages/ko/GuideWhatsAppPageKo').then((m) => ({ default: m.GuideWhatsAppPageKo }))
+);
+const GuideFormatsPageKo = React.lazy(() =>
+  import('./pages/ko/GuideFormatsPageKo').then((m) => ({ default: m.GuideFormatsPageKo }))
+);
+const Guide100kbPageKo = React.lazy(() =>
+  import('./pages/ko/Guide100kbPageKo').then((m) => ({ default: m.Guide100kbPageKo }))
+);
+const AboutPageZh = React.lazy(() =>
+  import('./pages/zh/AboutPageZh').then((m) => ({ default: m.AboutPageZh }))
+);
+const ContactPageZh = React.lazy(() =>
+  import('./pages/zh/ContactPageZh').then((m) => ({ default: m.ContactPageZh }))
+);
+const PrivacyPageZh = React.lazy(() =>
+  import('./pages/zh/PrivacyPageZh').then((m) => ({ default: m.PrivacyPageZh }))
+);
+const TermsPageZh = React.lazy(() =>
+  import('./pages/zh/TermsPageZh').then((m) => ({ default: m.TermsPageZh }))
+);
+const AllToolsPageZh = React.lazy(() =>
+  import('./pages/zh/AllToolsPageZh').then((m) => ({ default: m.AllToolsPageZh }))
+);
+const GuideWhatsAppPageZh = React.lazy(() =>
+  import('./pages/zh/GuideWhatsAppPageZh').then((m) => ({ default: m.GuideWhatsAppPageZh }))
+);
+const GuideFormatsPageZh = React.lazy(() =>
+  import('./pages/zh/GuideFormatsPageZh').then((m) => ({ default: m.GuideFormatsPageZh }))
+);
+const Guide100kbPageZh = React.lazy(() =>
+  import('./pages/zh/Guide100kbPageZh').then((m) => ({ default: m.Guide100kbPageZh }))
+);
 
 const RemoveBackgroundPage = React.lazy(() =>
   import('./pages/RemoveBackgroundPage').then((m) => ({ default: m.RemoveBackgroundPage }))
 );
+const NotFoundPage = React.lazy(() =>
+  import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage }))
+);
 import { CompressionSettings, ImageFormat, ImageItem } from './types';
 import { compressSingleImage, detectTransparency, loadImageFromFile, toDecodableBlob } from './utils/compressor';
 import { getFileExtension } from './utils/formatters';
-import { createZipArchive, triggerDownload } from './utils/zip';
+import { trackPageView, trackFileCompressed, trackFileDownloaded } from './utils/analytics';
 
 const KNOWN_ROUTES = [
   '/',
@@ -234,7 +518,7 @@ const KNOWN_ROUTES = [
   '/remove-background',
 ];
 
-interface ParsedPath { path: string; lang: SupportedLang; }
+interface ParsedPath { path: string; lang: SupportedLang; notFound?: boolean; }
 
 function parsePath(rawPathname: string): ParsedPath {
   const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
@@ -252,7 +536,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === ES_ALL_TOOLS_PATH.slice(3)) return { path: ES_ALL_TOOLS_PATH, lang: 'es' };
     const enPath = EN_PATH_BY_ES[p]; // keys carry the '/es' prefix (see slug map)
     if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'es' };
-    return { path: '/', lang: 'es' }; // unknown Spanish path → Spanish home
+    return { path: p, lang: 'es', notFound: true }; // unknown path in this language -> 404 page
   }
   // Portuguese prefix: /pt/<portuguese-slug>
   if (p === '/pt' || p.startsWith('/pt/')) {
@@ -262,7 +546,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === PT_ALL_TOOLS_PATH.slice(3)) return { path: PT_ALL_TOOLS_PATH, lang: 'pt' };
     const enPath = EN_PATH_BY_PT[p]; // keys carry the '/pt' prefix (see slug map)
     if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'pt' };
-    return { path: '/', lang: 'pt' }; // unknown Portuguese path → Portuguese home
+    return { path: p, lang: 'pt', notFound: true }; // unknown path in this language -> 404 page
   }
   // French prefix: /fr/<french-slug>
   if (p === '/fr' || p.startsWith('/fr/')) {
@@ -272,7 +556,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === FR_ALL_TOOLS_PATH.slice(3)) return { path: FR_ALL_TOOLS_PATH, lang: 'fr' };
     const enPath = EN_PATH_BY_FR[p]; // keys carry the '/fr' prefix (see slug map)
     if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'fr' };
-    return { path: '/', lang: 'fr' }; // unknown French path → French home
+    return { path: p, lang: 'fr', notFound: true }; // unknown path in this language -> 404 page
   }
   // German prefix: /de/<german-slug>
   if (p === '/de' || p.startsWith('/de/')) {
@@ -282,7 +566,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === DE_ALL_TOOLS_PATH.slice(3)) return { path: DE_ALL_TOOLS_PATH, lang: 'de' };
     const enPath = EN_PATH_BY_DE[p]; // keys carry the '/de' prefix (see slug map)
     if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'de' };
-    return { path: '/', lang: 'de' }; // unknown German path → German home
+    return { path: p, lang: 'de', notFound: true }; // unknown path in this language -> 404 page
   }
   // Italian prefix: /it/<italian-slug>
   if (p === '/it' || p.startsWith('/it/')) {
@@ -292,7 +576,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === IT_ALL_TOOLS_PATH.slice(3)) return { path: IT_ALL_TOOLS_PATH, lang: 'it' };
     const enPath = EN_PATH_BY_IT[p]; // keys carry the '/it' prefix (see slug map)
     if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'it' };
-    return { path: '/', lang: 'it' }; // unknown Italian path → Italian home
+    return { path: p, lang: 'it', notFound: true }; // unknown path in this language -> 404 page
   }
   // Indonesian prefix: /id/<indonesian-slug>
   if (p === '/id' || p.startsWith('/id/')) {
@@ -302,7 +586,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === ID_ALL_TOOLS_PATH.slice(3)) return { path: ID_ALL_TOOLS_PATH, lang: 'id' };
     const enPath = EN_PATH_BY_ID[p]; // keys carry the '/id' prefix (see slug map)
     if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'id' };
-    return { path: '/', lang: 'id' }; // unknown Indonesian path → Indonesian home
+    return { path: p, lang: 'id', notFound: true }; // unknown path in this language -> 404 page
   }
   // Russian prefix: /ru/<russian-slug>
   if (p === '/ru' || p.startsWith('/ru/')) {
@@ -312,7 +596,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === RU_ALL_TOOLS_PATH.slice(3)) return { path: RU_ALL_TOOLS_PATH, lang: 'ru' };
     const enPath = EN_PATH_BY_RU[p]; // keys carry the '/ru' prefix (see slug map)
     if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'ru' };
-    return { path: '/', lang: 'ru' }; // unknown Russian path → Russian home
+    return { path: p, lang: 'ru', notFound: true }; // unknown path in this language -> 404 page
   }
   // Japanese prefix: /ja/<japanese-slug>
   if (p === '/ja' || p.startsWith('/ja/')) {
@@ -322,7 +606,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === JA_ALL_TOOLS_PATH.slice(3)) return { path: JA_ALL_TOOLS_PATH, lang: 'ja' };
     const enPath = EN_PATH_BY_JA[p]; // keys carry the '/ja' prefix (see slug map)
     if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'ja' };
-    return { path: '/', lang: 'ja' }; // unknown Japanese path → Japanese home
+    return { path: p, lang: 'ja', notFound: true }; // unknown path in this language -> 404 page
   }
   // Korean prefix: /ko/<korean-slug>
   if (p === '/ko' || p.startsWith('/ko/')) {
@@ -332,7 +616,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === KO_ALL_TOOLS_PATH.slice(3)) return { path: KO_ALL_TOOLS_PATH, lang: 'ko' };
     const enPath = EN_PATH_BY_KO[p]; // keys carry the '/ko' prefix (see slug map)
     if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'ko' };
-    return { path: '/', lang: 'ko' }; // unknown Korean path → Korean home
+    return { path: p, lang: 'ko', notFound: true }; // unknown path in this language -> 404 page
   }
   // Chinese prefix: /zh/<chinese-slug>
   if (p === '/zh' || p.startsWith('/zh/')) {
@@ -342,9 +626,9 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === ZH_ALL_TOOLS_PATH.slice(3)) return { path: ZH_ALL_TOOLS_PATH, lang: 'zh' };
     const enPath = EN_PATH_BY_ZH[p]; // keys carry the '/zh' prefix (see slug map)
     if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'zh' };
-    return { path: '/', lang: 'zh' }; // unknown Chinese path → Chinese home
+    return { path: p, lang: 'zh', notFound: true }; // unknown path in this language -> 404 page
   }
-  return KNOWN_ROUTES.includes(p) ? { path: p, lang: 'en' } : { path: '/', lang: 'en' };
+  return KNOWN_ROUTES.includes(p) ? { path: p, lang: 'en' } : { path: p, lang: 'en', notFound: true }; // unknown English path -> 404 page
 }
 
 /** English path → the equivalent path in `lang` (identity for 'en').
@@ -485,8 +769,14 @@ export default function App() {
     return { path: '/', lang: 'en' };
   });
   const currentPath = route.path;
+  // Unknown URL (no known route): the router renders <NotFoundPage/> instead of home.
+  const isNotFound = route.notFound === true;
 
   const [lang, setLang] = useState<SupportedLang>(route.lang);
+  // "All Tools" target for the 404 page: EN uses the home directory anchor;
+  // localized languages have a dedicated directory page.
+  const allToolsPath =
+    lang === 'es' ? ES_ALL_TOOLS_PATH : lang === 'pt' ? PT_ALL_TOOLS_PATH : lang === 'fr' ? FR_ALL_TOOLS_PATH : lang === 'de' ? DE_ALL_TOOLS_PATH : lang === 'it' ? IT_ALL_TOOLS_PATH : lang === 'id' ? ID_ALL_TOOLS_PATH : lang === 'ru' ? RU_ALL_TOOLS_PATH : lang === 'ja' ? JA_ALL_TOOLS_PATH : lang === 'ko' ? KO_ALL_TOOLS_PATH : lang === 'zh' ? ZH_ALL_TOOLS_PATH : '/#tools-directory';
   const [esLocale, setEsLocale] = useState<EsLocale | null>(null);
   const [ptLocale, setPtLocale] = useState<PtLocale | null>(null);
   const [frLocale, setFrLocale] = useState<FrLocale | null>(null);
@@ -630,6 +920,14 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  // GA4 pageviews (SEO audit issue 10): the gtag snippet in index.html uses
+  // send_page_view: false, so this is the single source of pageviews — fired
+  // on mount and on every client-side route change. Never call trackPageView
+  // inside handleNavigate (it would double-fire).
+  useEffect(() => {
+    trackPageView(window.location.pathname + window.location.search, document.title);
+  }, [route.path, route.lang]);
+
   // Keep the language state in sync when the route changes (e.g. browser
   // back/forward): the route is the source of truth for the URL's language.
   useEffect(() => {
@@ -676,6 +974,9 @@ export default function App() {
 
   // Update document title, meta description, OpenGraph, and canonical tag based on active route
   useEffect(() => {
+    // Unknown URL: <NotFoundPage/> owns document.title + the robots meta
+    // (noindex, nofollow) — do not overwrite them with home-page SEO tags.
+    if (route.notFound) return;
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     const baseDomain = 'https://compressmypic.online';
     const toolMeta =
@@ -687,17 +988,18 @@ export default function App() {
       '/contact': 'Contact CompressMyPic – Free Online Image Compressor',
       '/privacy': 'Privacy Policy – CompressMyPic Free Image Compressor',
       '/terms': 'Terms of Service – CompressMyPic Free Image Compressor',
+      '/admin/comments': 'Comments Admin — CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'Compress Images for WhatsApp Without Losing Quality',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: Which Format Should You Use?',
       '/guides/reduce-image-size-to-100kb': 'How to Reduce Image Size to 100KB for Web & Email',
     };
 
     const staticDescriptions: Record<string, string> = {
-      '/': 'Compress image online free — reduce image size without losing quality. Compress JPG, PNG, WebP and HEIC with no signup and no watermark, right in your browser.',
+      '/': 'Compress images online free and reduce JPG, PNG and WebP size without losing quality. No signup, no watermark — your photos never leave your own browser.',
       '/about': 'About CompressMyPic – a free online image compressor for JPG, PNG and WebP. Compress images online free, with no signup, no watermark and no server upload.',
       '/contact': 'Contact CompressMyPic – get help with the free online image compressor. Compress images online free and reduce image size without losing quality.',
       '/privacy': 'Privacy Policy for CompressMyPic – the free online image compressor. Your images are compressed in your browser and never uploaded to a server.',
-      '/terms': 'Terms of Service for CompressMyPic – the free online image compressor. Compress images online free, no signup, no watermark.',
+      '/terms': 'Terms of Service for CompressMyPic — the free online image compressor. Read the rules for using our free tools: fair use, your content, liability and more.',
       '/guides/compress-images-for-whatsapp': 'Learn how to compress images for WhatsApp without losing quality. Free, private, no signup — shrink photos before sending so they stay sharp and send fast.',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP explained simply: file size, quality and transparency compared, so you can pick the right format for photos, logos and websites.',
       '/guides/reduce-image-size-to-100kb': 'Reduce image size to 100KB for websites and email with a free online compressor. Step-by-step guide — no signup, no watermark, images stay on your device.',
@@ -709,7 +1011,7 @@ export default function App() {
       '/contact': 'Contacto – CompressMyPic, compresor de imágenes gratis online',
       '/privacy': 'Política de privacidad – CompressMyPic',
       '/terms': 'Términos de servicio – CompressMyPic',
-      [ES_ALL_TOOLS_PATH]: 'Todas las herramientas – CompressMyPic',
+      [ES_ALL_TOOLS_PATH]: 'Todas las herramientas de imagen gratis | CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'Comprimir imágenes para WhatsApp sin perder calidad',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: ¿qué formato debería usar?',
       '/guides/reduce-image-size-to-100kb': 'Cómo reducir una imagen a 100 KB para web y correo',
@@ -721,7 +1023,7 @@ export default function App() {
       '/contact': 'Fale conosco - CompressMyPic',
       '/privacy': 'Política de Privacidade - CompressMyPic',
       '/terms': 'Termos de Serviço - CompressMyPic',
-      [PT_ALL_TOOLS_PATH]: 'Todas as ferramentas – CompressMyPic',
+      [PT_ALL_TOOLS_PATH]: 'Todas as ferramentas de imagem grátis | CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'Comprimir imagens para WhatsApp sem perder qualidade',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: qual formato devo usar?',
       '/guides/reduce-image-size-to-100kb': 'Como reduzir uma imagem para 100 KB para web e e-mail',
@@ -733,7 +1035,7 @@ export default function App() {
       '/contact': 'Contactez-nous - CompressMyPic',
       '/privacy': 'Politique de confidentialité - CompressMyPic',
       '/terms': 'Conditions d’utilisation - CompressMyPic',
-      [FR_ALL_TOOLS_PATH]: 'Tous les outils – CompressMyPic',
+      [FR_ALL_TOOLS_PATH]: 'Tous les outils image gratuits en ligne | CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'Compresser des images pour WhatsApp sans perdre en qualité',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP : quel format utiliser ?',
       '/guides/reduce-image-size-to-100kb': 'Comment réduire une image à 100 Ko pour le web et l’e-mail',
@@ -745,7 +1047,7 @@ export default function App() {
       '/contact': 'Kontakt – CompressMyPic',
       '/privacy': 'Datenschutzerklärung – CompressMyPic',
       '/terms': 'Nutzungsbedingungen – CompressMyPic',
-      [DE_ALL_TOOLS_PATH]: 'Alle Tools – CompressMyPic',
+      [DE_ALL_TOOLS_PATH]: 'Alle kostenlosen Bildtools online | CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'Bilder für WhatsApp komprimieren ohne Qualitätsverlust',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: Welches Format sollten Sie verwenden?',
       '/guides/reduce-image-size-to-100kb': 'Bild auf 100 KB verkleinern für Web & E-Mail',
@@ -757,7 +1059,7 @@ export default function App() {
       '/contact': 'Contattaci - CompressMyPic',
       '/privacy': 'Informativa sulla privacy - CompressMyPic',
       '/terms': 'Termini di servizio - CompressMyPic',
-      [IT_ALL_TOOLS_PATH]: 'Tutti gli strumenti – CompressMyPic',
+      [IT_ALL_TOOLS_PATH]: 'Tutti gli strumenti immagine gratuiti | CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'Comprimere immagini per WhatsApp senza perdere qualità',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: quale formato dovresti usare?',
       '/guides/reduce-image-size-to-100kb': 'Come ridurre le dimensioni di un’immagine a 100 KB per siti web ed email',
@@ -768,7 +1070,7 @@ export default function App() {
       '/contact': 'Hubungi Kami - CompressMyPic',
       '/privacy': 'Kebijakan Privasi - CompressMyPic',
       '/terms': 'Syarat Layanan - CompressMyPic',
-      [ID_ALL_TOOLS_PATH]: 'Semua Alat – CompressMyPic',
+      [ID_ALL_TOOLS_PATH]: 'Semua alat gambar online gratis | CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'Mengompres Gambar untuk WhatsApp Tanpa Kehilangan Kualitas',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: Format Mana yang Harus Anda Gunakan?',
       '/guides/reduce-image-size-to-100kb': 'Cara Mengurangi Ukuran Gambar menjadi 100KB untuk Web & Email',
@@ -779,7 +1081,7 @@ export default function App() {
       '/contact': 'Связаться с нами — CompressMyPic',
       '/privacy': 'Политика конфиденциальности — CompressMyPic',
       '/terms': 'Условия использования — CompressMyPic',
-      [RU_ALL_TOOLS_PATH]: 'Все инструменты – CompressMyPic',
+      [RU_ALL_TOOLS_PATH]: 'Все бесплатные инструменты для изображений | CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'Как сжать изображения для WhatsApp без потери качества',
       '/guides/jpg-vs-png-vs-webp': 'JPG против PNG против WebP: какой формат выбрать?',
       '/guides/reduce-image-size-to-100kb': 'Как уменьшить размер изображения до 100 КБ для веба и электронной почты',
@@ -790,7 +1092,7 @@ export default function App() {
       '/contact': 'お問い合わせ - CompressMyPic',
       '/privacy': 'プライバシーポリシー - CompressMyPic',
       '/terms': '利用規約 - CompressMyPic',
-      [JA_ALL_TOOLS_PATH]: 'すべてのツール – CompressMyPic',
+      [JA_ALL_TOOLS_PATH]: 'すべての無料画像ツール | CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'WhatsApp用に画像を圧縮する方法｜画質を落とさず送る',
       '/guides/jpg-vs-png-vs-webp': 'JPG・PNG・WebPの違いと使い分け｜どれを選ぶべき？',
       '/guides/reduce-image-size-to-100kb': '画像サイズを100KBまで小さくする方法｜Web・メール用',
@@ -801,7 +1103,7 @@ export default function App() {
       '/contact': '문의하기 - CompressMyPic',
       '/privacy': '개인정보처리방침 - CompressMyPic',
       '/terms': '이용약관 - CompressMyPic',
-      [KO_ALL_TOOLS_PATH]: '모든 도구 – CompressMyPic',
+      [KO_ALL_TOOLS_PATH]: '모든 무료 이미지 도구 | CompressMyPic',
       '/guides/compress-images-for-whatsapp': '화질 저하 없이 WhatsApp용 이미지를 압축하는 방법',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: 어떤 형식을 사용해야 할까요?',
       '/guides/reduce-image-size-to-100kb': '웹과 이메일용 이미지 크기를 100KB로 줄이는 방법',
@@ -812,7 +1114,7 @@ export default function App() {
       '/contact': '联系我们 - CompressMyPic',
       '/privacy': '隐私政策 - CompressMyPic',
       '/terms': '使用条款 - CompressMyPic',
-      [ZH_ALL_TOOLS_PATH]: '全部工具 – CompressMyPic',
+      [ZH_ALL_TOOLS_PATH]: '全部免费图片工具 | CompressMyPic',
       '/guides/compress-images-for-whatsapp': '如何在 WhatsApp 上压缩图片而不损失画质',
       '/guides/jpg-vs-png-vs-webp': 'JPG、PNG、WebP 对比：应该选择哪种格式？',
       '/guides/reduce-image-size-to-100kb': '如何把图片压缩到 100KB：网站与邮件指南',
@@ -823,8 +1125,8 @@ export default function App() {
       '/about': 'Acerca de CompressMyPic: un compresor de imágenes online gratis para JPG, PNG y WebP, sin registro, sin marca de agua y sin subir nada a ningún servidor.',
       '/contact': '¿Tiene preguntas, comentarios o necesita ayuda? Escríbale a nuestro equipo con el formulario de abajo o contáctenos directamente por correo electrónico.',
       '/privacy': 'CompressMyPic procesa sus imágenes localmente en su navegador: nunca se suben a nuestros servidores y no recopilamos, almacenamos ni compartimos sus imágenes.',
-      '/terms': 'Al usar CompressMyPic, acepta cumplir estos Términos del Servicio. Lea las condiciones de uso permitido, responsabilidades y limitaciones del servicio gratuito.',
-      [ES_ALL_TOOLS_PATH]: 'Explore las 48 herramientas gratuitas de CompressMyPic para comprimir, convertir y editar imágenes online, directamente en su navegador y sin registro.',
+      '/terms': 'Términos del servicio de CompressMyPic, el compresor de imágenes online gratis. Lea las reglas de uso de nuestras herramientas gratuitas: uso justo, su contenido y responsabilidad.',
+      [ES_ALL_TOOLS_PATH]: 'Las 48 herramientas gratis de CompressMyPic para comprimir, convertir, recortar y editar imágenes online, directamente en tu navegador y sin registrarte.',
       '/guides/compress-images-for-whatsapp': 'Aprenda a comprimir imágenes para WhatsApp sin perder calidad. Gratis y privado, sin registro: reduzca sus fotos antes de enviarlas para que lleguen nítidas.',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP explicado de forma sencilla: compare tamaño, calidad y transparencia para elegir el formato adecuado para sus fotos, logotipos y sitios web.',
       '/guides/reduce-image-size-to-100kb': 'Reduzca el tamaño de una imagen a 100 KB para sitios web y correo electrónico con un compresor online gratis. Guía paso a paso, sin registro ni marca de agua.',
@@ -835,8 +1137,8 @@ export default function App() {
       '/about': 'Sobre o CompressMyPic: um compressor de imagens online grátis para JPG, PNG e WebP, sem cadastro, sem marca d’água e sem enviar nada para nenhum servidor.',
       '/contact': 'Tem perguntas, comentários ou precisa de ajuda? Escreva para nossa equipe com o formulário abaixo ou fale conosco diretamente por e-mail.',
       '/privacy': 'O CompressMyPic processa suas imagens localmente no seu navegador: elas nunca são enviadas para os nossos servidores e não coletamos, armazenamos nem compartilhamos suas imagens.',
-      '/terms': 'Ao usar o CompressMyPic, você concorda em cumprir estes Termos de Serviço. Leia as condições de uso permitido, responsabilidades e limitações do serviço gratuito.',
-      [PT_ALL_TOOLS_PATH]: 'As 48 ferramentas grátis do CompressMyPic para comprimir, converter e editar imagens, diretamente no seu navegador, sem cadastro.',
+      '/terms': 'Termos de Serviço do CompressMyPic, o compressor de imagens online grátis. Leia as regras de uso das nossas ferramentas gratuitas: uso justo, seu conteúdo e responsabilidade.',
+      [PT_ALL_TOOLS_PATH]: 'As 48 ferramentas grátis do CompressMyPic para comprimir, converter, cortar e editar imagens JPG, PNG e WebP online, direto no seu navegador e sem cadastro.',
       '/guides/compress-images-for-whatsapp': 'Aprenda a comprimir imagens para WhatsApp sem perder qualidade. Grátis e privado, sem cadastro: reduza suas fotos antes de enviar para que cheguem nítidas.',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP explicado de forma simples: compare tamanho, qualidade e transparência para escolher o formato certo para suas fotos, logotipos e sites.',
       '/guides/reduce-image-size-to-100kb': 'Reduza o tamanho de uma imagem para 100 KB para sites e e-mail com um compressor online grátis. Guia passo a passo, sem cadastro nem marca d’água.',
@@ -847,8 +1149,8 @@ export default function App() {
       '/about': 'À propos de CompressMyPic : un compresseur d’images online gratuit pour JPG, PNG et WebP, sans inscription, sans filigrane et sans rien envoyer vers un serveur.',
       '/contact': 'Vous avez des questions, des commentaires ou besoin d’aide ? Écrivez à notre équipe avec le formulaire ci-dessous ou contactez-nous directement par e-mail.',
       '/privacy': 'CompressMyPic traite vos images localement dans votre navigateur : elles ne sont jamais envoyées vers nos serveurs et nous ne collectons, ne stockons ni ne partageons vos images.',
-      '/terms': 'En utilisant CompressMyPic, vous acceptez de respecter ces Conditions d’utilisation. Lisez les conditions d’usage autorisé, les responsabilités et les limites du service gratuit.',
-      [FR_ALL_TOOLS_PATH]: 'Les 48 outils gratuits de CompressMyPic pour compresser, convertir et éditer des images, directement dans votre navigateur, sans inscription.',
+      '/terms': 'Conditions d’utilisation de CompressMyPic, le compresseur d’images en ligne gratuit. Lisez les règles d’usage de nos outils gratuits : usage raisonnable, votre contenu et responsabilité.',
+      [FR_ALL_TOOLS_PATH]: 'Les 48 outils gratuits de CompressMyPic pour compresser, convertir, recadrer et éditer des images en ligne, directement dans votre navigateur, sans inscription.',
       '/guides/compress-images-for-whatsapp': 'Apprenez à compresser des images pour WhatsApp sans perdre en qualité. Gratuit et privé, sans inscription : réduisez vos photos avant de les envoyer pour qu’elles arrivent nettes.',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP expliqué simplement : comparez taille, qualité et transparence pour choisir le bon format pour vos photos, logos et sites web.',
       '/guides/reduce-image-size-to-100kb': 'Réduisez la taille d’une image à 100 Ko pour les sites web et l’e-mail avec un compresseur online gratuit. Guide pas à pas, sans inscription ni filigrane.',
@@ -859,8 +1161,8 @@ export default function App() {
       '/about': 'Über CompressMyPic: ein kostenloser Online-Bildkomprimierer für JPG, PNG und WebP, ohne Anmeldung, ohne Wasserzeichen und ohne Upload auf einen Server.',
       '/contact': 'Haben Sie Fragen, Feedback oder brauchen Sie Hilfe? Wenden Sie sich über das Formular unten an unser Team oder kontaktieren Sie uns direkt per E-Mail.',
       '/privacy': 'CompressMyPic verarbeitet Ihre Bilder lokal in Ihrem Browser: Sie werden niemals auf unsere Server hochgeladen, und wir erfassen, speichern oder teilen Ihre Bilder nicht.',
-      '/terms': 'Mit der Nutzung von CompressMyPic stimmen Sie diesen Nutzungsbedingungen zu. Lesen Sie die Bedingungen für erlaubte Nutzung, Verantwortlichkeiten und Einschränkungen des kostenlosen Dienstes.',
-      [DE_ALL_TOOLS_PATH]: 'Entdecken Sie die 48 kostenlosen Tools von CompressMyPic zum Komprimieren, Konvertieren und Bearbeiten von Bildern online, direkt in Ihrem Browser und ohne Anmeldung.',
+      '/terms': 'Nutzungsbedingungen von CompressMyPic, dem kostenlosen Online-Bildkomprimierer. Lesen Sie die Regeln für unsere kostenlosen Tools: faire Nutzung, Ihre Inhalte und Haftung.',
+      [DE_ALL_TOOLS_PATH]: 'Alle 48 kostenlosen Bildtools von CompressMyPic: Bilder online komprimieren, konvertieren, zuschneiden und bearbeiten – direkt im Browser, ohne Anmeldung.',
       '/guides/compress-images-for-whatsapp': 'Lernen Sie, Bilder für WhatsApp zu komprimieren, ohne Qualität zu verlieren. Kostenlos und privat, ohne Anmeldung: Verkleinern Sie Ihre Fotos vor dem Senden, damit sie scharf ankommen.',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP einfach erklärt: Vergleichen Sie Größe, Qualität und Transparenz, um das richtige Format für Ihre Fotos, Logos und Websites zu wählen.',
       '/guides/reduce-image-size-to-100kb': 'Verkleinern Sie ein Bild auf 100 KB für Websites und E-Mails mit einem kostenlosen Online-Komprimierer. Schritt-für-Schritt-Anleitung, ohne Anmeldung und ohne Wasserzeichen.',
@@ -871,8 +1173,8 @@ export default function App() {
       '/about': 'Chi è CompressMyPic: un compressore di immagini online gratuito per JPG, PNG e WebP, senza registrazione, senza filigrana e senza caricare nulla su nessun server.',
       '/contact': 'Hai domande, commenti o hai bisogno di aiuto? Scrivi al nostro team con il modulo qui sotto, oppure contattaci direttamente via email.',
       '/privacy': 'CompressMyPic elabora le tue immagini localmente nel tuo browser: non vengono mai caricate sui nostri server e non raccogliamo, archiviamo né condividiamo le tue immagini.',
-      '/terms': 'Accedendo a CompressMyPic e utilizzandolo, accetti di rispettare i presenti Termini di servizio. Leggi le condizioni d’uso consentito, le responsabilità e i limiti del servizio gratuito.',
-      [IT_ALL_TOOLS_PATH]: 'Scopri i 48 strumenti gratuiti di CompressMyPic per comprimere, convertire e modificare immagini online, direttamente nel tuo browser e senza registrazione.',
+      '/terms': 'Termini di servizio di CompressMyPic, il compressore di immagini online gratuito. Leggi le regole per usare i nostri strumenti gratuiti: uso corretto, i tuoi contenuti e responsabilità.',
+      [IT_ALL_TOOLS_PATH]: 'I 48 strumenti gratuiti di CompressMyPic per comprimere, convertire, ritagliare e modificare immagini online, direttamente nel browser e senza registrazione.',
       '/guides/compress-images-for-whatsapp': 'Impara a comprimere le immagini per WhatsApp senza perdere qualità. Gratis e privato, senza registrazione: riduci le tue foto prima di inviarle, così arrivano nitide.',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP spiegato in modo semplice: confronta dimensioni, qualità e trasparenza per scegliere il formato giusto per le tue foto, i tuoi loghi e i tuoi siti.',
       '/guides/reduce-image-size-to-100kb': 'Riduci le dimensioni di un’immagine a 100 KB per siti web ed email con un compressore online gratuito. Guida passo passo, senza registrazione né filigrana.',
@@ -882,8 +1184,8 @@ export default function App() {
       '/about': 'CompressMyPic adalah kompresor gambar gratis dan privat. Kompres gambar JPG, PNG, dan WebP langsung di browser Anda — cepat, aman, dan tanpa mengunggah file Anda ke mana pun.',
       '/contact': 'Punya pertanyaan, masukan, atau butuh bantuan? Hubungi tim kami melalui formulir di bawah ini, atau hubungi kami langsung lewat email.',
       '/privacy': 'CompressMyPic adalah kompresor gambar online gratis. Gambar diproses secara lokal di browser Anda menggunakan HTML5 Canvas — gambar tidak pernah diunggah ke server kami, dan kami tidak mengumpulkan, menyimpan, atau membagikan gambar Anda.',
-      '/terms': 'Dengan mengakses dan menggunakan CompressMyPic, Anda setuju untuk mematuhi dan terikat oleh Syarat Layanan ini.',
-      [ID_ALL_TOOLS_PATH]: '48 alat gratis CompressMyPic untuk mengompres, mengonversi, dan mengedit gambar — langsung di browser Anda.',
+      '/terms': 'Syarat Layanan CompressMyPic, kompresor gambar online gratis. Baca aturan penggunaan alat gratis kami: penggunaan wajar, konten Anda, dan tanggung jawab.',
+      [ID_ALL_TOOLS_PATH]: '48 alat gambar gratis CompressMyPic untuk mengompres, mengonversi, memotong, dan mengedit gambar online — langsung di browser Anda, tanpa perlu mendaftar.',
       '/guides/compress-images-for-whatsapp': 'WhatsApp memperkecil setiap foto yang Anda kirim — sering kali jauh lebih kecil dari yang seharusnya. Kompres foto Anda sendiri terlebih dahulu, lalu kirim dengan cara yang tepat, dan foto akan tiba dalam keadaan tajam, cepat terkirim, dan hemat kuota.',
       '/guides/jpg-vs-png-vs-webp': 'Memilih format yang salah dapat membuat gambar Anda sepuluh kali lebih besar dari yang seharusnya — atau merusak logo transparan. Berikut perbandingan yang sederhana dan jujur, serta cara beralih antar format dalam hitungan detik.',
       '/guides/reduce-image-size-to-100kb': 'Foto sebesar 4 MB memperlambat situs web Anda dan menyumbat email. Mengecilkannya menjadi sekitar 100KB membuat halaman dimuat dengan cepat dan email terkirim seketika.',
@@ -893,8 +1195,8 @@ export default function App() {
       '/about': 'CompressMyPic — это бесплатный и приватный компрессор изображений. Сжимайте изображения JPG, PNG и WebP прямо в браузере — быстро, безопасно и без загрузки файлов куда-либо.',
       '/contact': 'Есть вопросы, отзывы или нужна помощь? Обратитесь к нашей команде через форму ниже или свяжитесь с нами напрямую по электронной почте.',
       '/privacy': 'CompressMyPic — это бесплатный online-компрессор изображений. Изображения обрабатываются локально в вашем браузере с помощью HTML5 Canvas — они никогда не загружаются на наши серверы, и мы не собираем, не храним и не передаём ваши изображения.',
-      '/terms': 'Получая доступ к CompressMyPic и используя его, вы соглашаетесь соблюдать настоящие Условия использования и обязуетесь их выполнять.',
-      [RU_ALL_TOOLS_PATH]: 'Все 48 бесплатных инструментов CompressMyPic для сжатия, конвертации и редактирования изображений — прямо в вашем браузере.',
+      '/terms': 'Условия использования CompressMyPic — бесплатного онлайн-компрессора изображений. Прочитайте правила использования наших бесплатных инструментов: добросовестное использование, ваш контент и ответственность.',
+      [RU_ALL_TOOLS_PATH]: 'Все 48 бесплатных инструментов CompressMyPic для сжатия, конвертации, обрезки и редактирования изображений онлайн — прямо в браузере, без регистрации.',
       '/guides/compress-images-for-whatsapp': 'WhatsApp уменьшает каждую фотографию, которую вы отправляете, — зачастую гораздо сильнее, чем нужно. Сожмите фотографии сами заранее, а затем отправьте их правильным способом, и они дойдут чёткими, отправятся быстро и израсходуют меньше мобильного трафика.',
       '/guides/jpg-vs-png-vs-webp': 'Неправильный формат может сделать ваше изображение в десять раз больше, чем нужно, или испортить прозрачный логотип. Вот простое и честное сравнение, а также то, как конвертировать между форматами за секунды.',
       '/guides/reduce-image-size-to-100kb': 'Фотография на 4 МБ замедляет ваш сайт и забивает электронную почту. Уменьшение её примерно до 100 КБ делает страницы быстрыми, а письма отправляются мгновенно.',
@@ -904,8 +1206,8 @@ export default function App() {
       '/about': 'CompressMyPicは、無料でプライバシーを守る画像圧縮ツールです。JPG、PNG、WebPの画像をブラウザー上で直接圧縮できます。速く、安全で、ファイルをどこにもアップロードしません。',
       '/contact': 'ご質問やご感想、サポートが必要な場合は、下のフォームからご連絡いただくか、メールで直接お問い合わせください。',
       '/privacy': 'CompressMyPicは、無料のオンライン画像圧縮ツールです。画像はHTML5 Canvasを使ってお使いのブラウザー上でローカルに処理されます。画像が当社のサーバーにアップロードされることは決してなく、当社は画像を収集、保存、共有しません。',
-      '/terms': 'CompressMyPicにアクセスし、ご利用いただくことにより、お客様は本利用規約を遵守し、これに拘束されることに同意したものとみなされます。',
-      [JA_ALL_TOOLS_PATH]: 'CompressMyPicの無料ツール48種類で、画像の圧縮・変換・編集をブラウザー上で直接行えます。',
+      '/terms': 'CompressMyPic（無料オンライン画像圧縮ツール）の利用規約。無料ツールの利用ルール（公正な利用、コンテンツ、責任など）をご確認ください。',
+      [JA_ALL_TOOLS_PATH]: 'CompressMyPicの無料画像ツール48種類：画像の圧縮、変換、切り抜き、編集、リサイズがブラウザー上で直接でき、登録不要。JPG、PNG、WebP、HEICに対応し、写真はアップロードされません。',
       '/guides/compress-images-for-whatsapp': 'WhatsAppは送る写真をすべて縮小します。しかも、必要以上に小さくしてしまうことがよくあります。まず自分で写真を圧縮し、正しい方法で送れば、写真はくっきりしたまま届き、速く送れて、モバイルデータも少なく済みます。',
       '/guides/jpg-vs-png-vs-webp': '間違った形式を選ぶと、画像が必要以上に10倍も大きくなったり、透明なロゴが台無しになったりします。シンプルで正直な比較と、数秒で形式を変換する方法を紹介します。',
       '/guides/reduce-image-size-to-100kb': '4MBの写真はウェブサイトを遅くし、メールも詰まらせます。100KB程度まで小さくすれば、ページは速く読み込まれ、メールもすぐに送れます。正しく行えば、誰にも違いはわかりません。',
@@ -915,8 +1217,8 @@ export default function App() {
       '/about': 'CompressMyPic은 무료이며 개인정보를 보호하는 이미지 압축기입니다. JPG, PNG, WebP 이미지를 브라우저에서 바로 압축하세요. 빠르고 안전하며, 파일을 어디에도 업로드하지 않습니다.',
       '/contact': '질문, 피드백이 있거나 도움이 필요하신가요? 아래 양식을 이용해 팀에 연락하거나 이메일로 직접 문의해 주세요.',
       '/privacy': 'CompressMyPic은 무료 온라인 이미지 압축기입니다. 이미지는 HTML5 Canvas를 이용해 사용자의 브라우저에서 로컬로 처리됩니다. 이미지는 절대 저희 서버에 업로드되지 않으며, 저희는 사용자의 이미지를 수집, 저장, 공유하지 않습니다.',
-      '/terms': 'CompressMyPic에 접속하고 이용함으로써 사용자는 본 이용약관을 준수하고 그 구속을 받는 데 동의합니다.',
-      [KO_ALL_TOOLS_PATH]: 'CompressMyPic의 무료 도구 48가지로 이미지를 압축, 변환, 편집하세요 — 브라우저에서 바로.',
+      '/terms': '무료 온라인 이미지 압축기 CompressMyPic의 이용약관. 무료 도구 이용 규칙(공정한 이용, 콘텐츠, 책임 등)을 확인하세요.',
+      [KO_ALL_TOOLS_PATH]: 'CompressMyPic의 무료 이미지 도구 48가지로 이미지를 압축, 변환, 자르고, 크기를 조정하세요. 브라우저에서 바로 사용 가능하며 가입이 필요 없고, JPG, PNG, WebP, HEIC를 지원합니다.',
       '/guides/compress-images-for-whatsapp': 'WhatsApp은 보내는 모든 사진을 축소합니다. 종종 필요한 것보다 훨씬 더 많이요. 사진을 먼저 직접 압축한 뒤 올바른 방법으로 보내면 사진이 선명하게 도착하고, 빠르게 전송되며, 모바일 데이터도 적게 사용합니다.',
       '/guides/jpg-vs-png-vs-webp': '잘못된 형식을 선택하면 이미지가 필요한 것보다 10배 커지거나 투명한 로고가 망가질 수 있습니다. 간단하고 정직한 비교와 몇 초 만에 형식을 변환하는 방법을 소개합니다.',
       '/guides/reduce-image-size-to-100kb': '4MB 사진은 웹사이트를 느리게 만들고 이메일을 막히게 합니다. 약 100KB로 줄이면 페이지가 빠르게 로드되고 이메일이 즉시 전송됩니다. 제대로 하면 아무도 차이를 알아차리지 못합니다.',
@@ -926,8 +1228,8 @@ export default function App() {
       '/about': 'CompressMyPic 是一款免费、私密的图片压缩器。直接在浏览器中压缩 JPG、PNG 与 WebP 图片——快速、安全，无需把文件上传到任何地方。',
       '/contact': '有问题、反馈或需要帮助？请使用下面的表格联系我们的团队，或直接通过邮箱联系我们。',
       '/privacy': 'CompressMyPic 是一款免费在线图片压缩器。图片使用 HTML5 Canvas 在您的浏览器本地处理——图片绝不会上传到我们的服务器，我们也不会收集、存储或分享您的图片。',
-      '/terms': '访问和使用 CompressMyPic，即表示您同意遵守本使用条款并受其约束。',
-      [ZH_ALL_TOOLS_PATH]: '用 CompressMyPic 的 48 款免费工具，在浏览器中直接压缩、转换和编辑图片。',
+      '/terms': 'CompressMyPic（免费在线图片压缩器）使用条款。请阅读免费工具的使用规则：合理使用、您的内容与责任等。',
+      [ZH_ALL_TOOLS_PATH]: 'CompressMyPic 免费图片工具共 48 款：在线压缩、转换、裁剪、调整大小与编辑图片，直接在浏览器中使用，无需注册，支持 JPG、PNG、WebP 与 HEIC，图片不会上传。',
       '/guides/compress-images-for-whatsapp': 'WhatsApp 会缩小你发送的每一张照片——往往缩得比实际需要的多得多。先自己压缩照片，再用正确的方式发送，照片就会保持清晰、发送快速，还能节省流量。',
       '/guides/jpg-vs-png-vs-webp': '选错格式可能让你的图片比实际需要的大十倍——或者毁掉一个透明标志。下面是简单、诚实的对比，以及如何在几秒钟内转换格式。',
       '/guides/reduce-image-size-to-100kb': '一张 4 MB 的照片会拖慢你的网站，还会堵塞邮件。把它缩小到约 100KB，页面加载会变快，邮件也能即时发送——而且如果方法得当，没有人能看出差别。',
@@ -1183,6 +1485,59 @@ export default function App() {
     } else if (existingHomeJsonLd) {
       existingHomeJsonLd.remove();
     }
+
+    // Per-page JSON-LD (SEO audit issue 19): a localized WebPage for the
+    // info/legal pages and a localized WebApplication for the home page
+    // (home has no ToolPageLayout, so it would otherwise get no per-page
+    // WebApplication). Same stable-id pattern as ToolPageLayout: one script
+    // tag, replaced on route change, removed when the route needs no block.
+    // The static Organization block lives in index.html and is never
+    // duplicated here. Tool/guide pages inject their own blocks and never
+    // get this one.
+    const pageJsonLdId = 'app-page-jsonld';
+    const existingPageJsonLd = document.getElementById(pageJsonLdId);
+    const upsertPageJsonLd = (jsonLd: Record<string, unknown>) => {
+      if (existingPageJsonLd) {
+        existingPageJsonLd.textContent = JSON.stringify(jsonLd);
+      } else {
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.id = pageJsonLdId;
+        script.text = JSON.stringify(jsonLd);
+        document.head.appendChild(script);
+      }
+    };
+    const isInfoPage =
+      currentPath === '/about' ||
+      currentPath === '/contact' ||
+      currentPath === '/privacy' ||
+      currentPath === '/terms';
+    if (currentPath === '/') {
+      upsertPageJsonLd({
+        '@context': 'https://schema.org',
+        '@type': 'WebApplication',
+        name: 'CompressMyPic',
+        url: nextCanonical,
+        applicationCategory: 'MultimediaApplication',
+        operatingSystem: 'All',
+        browserRequirements: 'Requires JavaScript. Requires HTML5 Canvas.',
+        description: nextDesc,
+        inLanguage: lang,
+        isAccessibleForFree: true,
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      });
+    } else if (isInfoPage) {
+      upsertPageJsonLd({
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: nextTitle,
+        description: nextDesc,
+        url: nextCanonical,
+        inLanguage: lang,
+      });
+    } else if (existingPageJsonLd) {
+      existingPageJsonLd.remove();
+    }
   }, [currentPath, lang, esLocale, ptLocale, frLocale, deLocale, itLocale, idLocale, ruLocale, jaLocale, koLocale, zhLocale]);
 
   const handleNavigate = (path: string) => {
@@ -1412,6 +1767,20 @@ export default function App() {
       processedItems.push(processed);
     }
 
+    // GA4 (issue 40): one file_compressed event per run, done files only —
+    // never for errored files.
+    const doneSelected = processedItems.filter((item) => item.status === 'done');
+    if (doneSelected.length > 0) {
+      trackFileCompressed({
+        tool_slug: '/',
+        file_count: doneSelected.length,
+        original_size_bytes: doneSelected.reduce((sum, item) => sum + item.originalSize, 0),
+        compressed_size_bytes: doneSelected.reduce((sum, item) => sum + (item.compressedSize ?? 0), 0),
+        output_format: settings.format === 'original' ? undefined : settings.format,
+        quality: settings.quality,
+      });
+    }
+
     setImages((prev) =>
       prev.map((existing) => {
         const found = processedItems.find((p) => p.id === existing.id);
@@ -1446,6 +1815,20 @@ export default function App() {
       updatedList.push(compressed);
     }
 
+    // GA4 (issue 40): one file_compressed event per run, done files only —
+    // never for errored files.
+    const doneRecompressed = updatedList.filter((img) => img.status === 'done');
+    if (doneRecompressed.length > 0) {
+      trackFileCompressed({
+        tool_slug: '/',
+        file_count: doneRecompressed.length,
+        original_size_bytes: doneRecompressed.reduce((sum, img) => sum + img.originalSize, 0),
+        compressed_size_bytes: doneRecompressed.reduce((sum, img) => sum + (img.compressedSize ?? 0), 0),
+        output_format: settings.format === 'original' ? undefined : settings.format,
+        quality: settings.quality,
+      });
+    }
+
     setImages(updatedList);
     setIsCompressing(false);
   };
@@ -1462,6 +1845,18 @@ export default function App() {
     );
 
     const updated = await processImage(target, settings);
+    // GA4 (issue 40): one file_compressed event per run, only when the
+    // re-compression actually finished — never for errored files.
+    if (updated.status === 'done') {
+      trackFileCompressed({
+        tool_slug: '/',
+        file_count: 1,
+        original_size_bytes: updated.originalSize,
+        compressed_size_bytes: updated.compressedSize ?? undefined,
+        output_format: settings.format === 'original' ? undefined : settings.format,
+        quality: settings.quality,
+      });
+    }
     setImages((prev) => prev.map((img) => (img.id === id ? updated : img)));
   };
 
@@ -1523,7 +1918,14 @@ export default function App() {
    */
   const handleDownloadSingle = (image: ImageItem) => {
     if (!image.compressedBlob) return;
-    triggerDownload(image.compressedBlob, image.outputFilename);
+    const blob = image.compressedBlob;
+    // utils/zip (jszip) loads on demand so the ZIP library stays out of the
+    // initial bundle — it is only needed when the user downloads a file.
+    void import('./utils/zip').then(({ triggerDownload }) => {
+      triggerDownload(blob, image.outputFilename);
+      // GA4 (issue 40): conversion event, fired after the download starts.
+      trackFileDownloaded({ tool_slug: '/', download_type: 'single', file_count: 1 });
+    });
   };
 
   /**
@@ -1533,10 +1935,17 @@ export default function App() {
     try {
       setIsZipping(true);
       setZipProgress(0);
+      const { createZipArchive, triggerDownload } = await import('./utils/zip');
       const zipBlob = await createZipArchive(images, (percent) => {
         setZipProgress(percent);
       });
       triggerDownload(zipBlob, 'compressed_images_compressmypic.zip');
+      // GA4 (issue 40): conversion event, fired after the download starts.
+      trackFileDownloaded({
+        tool_slug: '/',
+        download_type: 'zip',
+        file_count: images.filter((img) => img.status === 'done').length,
+      });
     } catch (err) {
       console.error('ZIP creation failed:', err);
       alert('Failed to package ZIP archive. Please download images individually.');
@@ -1593,6 +2002,14 @@ export default function App() {
   // for English (components fall back to their English defaults).
   const renderHome = (strings: EsLocale['ui'] | PtLocale['ui'] | FrLocale['ui'] | DeLocale['ui'] | ItLocale['ui'] | IdLocale['ui'] | RuLocale['ui'] | JaLocale['ui'] | KoLocale['ui'] | ZhLocale['ui'] | null) => (
     <>
+          {/* Home <main> wraps the whole home page (SEO audit issue 23) so the
+              skip link lands on one landmark containing Hero, the compressor,
+              the directory, share, ads, educational content, guides and FAQ.
+              It keeps id="main" + the tool ref, with className "flex-1" like
+              every other router main; the compressor block keeps the old
+              main's width/padding on its own inner wrapper, so nothing
+              renders differently. */}
+          <main id="main" ref={toolRef} className="flex-1">
           <Hero
             strings={strings?.hero}
             onNavigate={handleNavigate}
@@ -1600,7 +2017,11 @@ export default function App() {
             toolsRegistry={toolsRegistry}
           />
 
-          <main id="home-compressor-workspace" ref={toolRef} className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 pb-16">
+          {/* Named anchor kept for the Hero "start compressing" scroll target
+              (Hero.tsx scrolls to #home-compressor-workspace); the main
+              landmark itself is now #main for the skip link. */}
+          <span id="home-compressor-workspace" aria-hidden="true" className="block" />
+          <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 pb-16">
             <div className="space-y-6">
               {/* Upload Dropzone */}
               <UploadZone
@@ -1641,19 +2062,36 @@ export default function App() {
                 />
               )}
             </div>
-          </main>
+          </div>
 
           {/* Tools Directory Grid */}
-          <ToolsDirectorySection
-            onNavigate={handleNavigate}
-            currentPath="/"
-            toolsRegistry={toolsRegistry}
-            categoryLabels={categoryLabels}
-            strings={strings?.toolsDirectory}
-          />
+          <Suspense fallback={null}>
+            <ToolsDirectorySection
+              onNavigate={handleNavigate}
+              currentPath="/"
+              toolsRegistry={toolsRegistry}
+              categoryLabels={categoryLabels}
+              strings={strings?.toolsDirectory}
+            />
+          </Suspense>
+
+          {/* Visible link to the tools directory (SEO audit issue 29): EN
+              anchors to the directory section on this page; localized
+              languages have a dedicated directory page. */}
+          <p className="py-6 text-center">
+            <a
+              href={allToolsPath}
+              onClick={(e) => { e.preventDefault(); handleNavigate(allToolsPath); }}
+              className="text-base font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+            >
+              {strings?.toolsDirectory.allTools ?? 'All Tools'}
+            </a>
+          </p>
 
           {/* Share Section */}
-                    <ShareSection strings={strings?.shareSection} />
+                    <Suspense fallback={null}>
+                      <ShareSection strings={strings?.shareSection} />
+                    </Suspense>
           {/* Reserved AdSlot 2: Between Tool and Educational Content */}
           <div className="px-4">
             <AdSlot slotId="mid-content-banner" format="horizontal" />
@@ -1715,11 +2153,20 @@ export default function App() {
           <div className="px-4 pb-6">
             <AdSlot slotId="footer-bottom-banner" format="horizontal" />
           </div>
+          </main>
     </>
   );
 
   return (
     <div className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--ink)]">
+      {/* Skip link: first focusable element — jumps to the main content landmark (#main). */}
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus-visible:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-[#7c3aed] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:underline"
+      >
+        Skip to main content
+      </a>
+
       {/* 1. Header */}
       <Header
         onNavigate={handleNavigate}
@@ -1732,14 +2179,19 @@ export default function App() {
         availableLanguages={availableLanguages}
       />
 
-      {/* Reserved AdSlot 1: Below Header (stays invisible until real AdSense IDs supplied) */}
-      <div className="px-4">
-        <AdSlot slotId="header-top-banner" format="horizontal" />
-      </div>
-
       {/* 2. Page Router */}
+      {/* Suspense boundary for the lazy route pages above (incl. the 404 page). */}
+      <Suspense
+        fallback={
+          <main id="main" className="flex-1">
+            <div className="max-w-5xl mx-auto px-4 py-20 text-center text-sm text-[var(--ink-3)]">
+              Loading…
+            </div>
+          </main>
+        }
+      >
       {showLocaleLoading ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <div className="max-w-5xl mx-auto px-4 py-20 text-center">
             <div
               className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-[var(--line-strong)] border-t-[#7c3aed]"
@@ -1751,359 +2203,359 @@ export default function App() {
       ) : lang !== 'en' && currentPath === '/' ? (
         renderHome(activeUi)
       ) : currentPath === '/admin/comments' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AdminCommentsPage onNavigate={handleNavigate} />
         </main>
       ) : currentPath === ES_ALL_TOOLS_PATH ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AllToolsPageEs onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
         </main>
       ) : currentPath === PT_ALL_TOOLS_PATH ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AllToolsPagePt onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
         </main>
       ) : currentPath === FR_ALL_TOOLS_PATH ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AllToolsPageFr onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
         </main>
       ) : currentPath === DE_ALL_TOOLS_PATH ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AllToolsPageDe onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
         </main>
       ) : currentPath === IT_ALL_TOOLS_PATH ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AllToolsPageIt onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
         </main>
       ) : currentPath === ID_ALL_TOOLS_PATH ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AllToolsPageId onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
         </main>
       ) : currentPath === RU_ALL_TOOLS_PATH ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AllToolsPageRu onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
         </main>
       ) : currentPath === JA_ALL_TOOLS_PATH ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AllToolsPageJa onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
         </main>
       ) : currentPath === KO_ALL_TOOLS_PATH ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AllToolsPageKo onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
         </main>
       ) : currentPath === ZH_ALL_TOOLS_PATH ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AllToolsPageZh onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
         </main>
       ) : lang === 'es' && currentPath === '/about' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AboutPageEs onNavigate={handleNavigate} />
         </main>
       ) : lang === 'pt' && currentPath === '/about' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AboutPagePt onNavigate={handleNavigate} />
         </main>
       ) : lang === 'fr' && currentPath === '/about' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AboutPageFr onNavigate={handleNavigate} />
         </main>
       ) : lang === 'de' && currentPath === '/about' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AboutPageDe onNavigate={handleNavigate} />
         </main>
       ) : lang === 'it' && currentPath === '/about' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AboutPageIt onNavigate={handleNavigate} />
         </main>
       ) : lang === 'id' && currentPath === '/about' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AboutPageId onNavigate={handleNavigate} />
         </main>
       ) : lang === 'ru' && currentPath === '/about' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AboutPageRu onNavigate={handleNavigate} />
         </main>
       ) : lang === 'ja' && currentPath === '/about' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AboutPageJa onNavigate={handleNavigate} />
         </main>
       ) : lang === 'ko' && currentPath === '/about' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AboutPageKo onNavigate={handleNavigate} />
         </main>
       ) : lang === 'zh' && currentPath === '/about' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AboutPageZh onNavigate={handleNavigate} />
         </main>
       ) : lang === 'es' && currentPath === '/contact' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ContactPageEs onNavigate={handleNavigate} />
         </main>
       ) : lang === 'pt' && currentPath === '/contact' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ContactPagePt onNavigate={handleNavigate} />
         </main>
       ) : lang === 'fr' && currentPath === '/contact' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ContactPageFr onNavigate={handleNavigate} />
         </main>
       ) : lang === 'de' && currentPath === '/contact' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ContactPageDe onNavigate={handleNavigate} />
         </main>
       ) : lang === 'it' && currentPath === '/contact' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ContactPageIt onNavigate={handleNavigate} />
         </main>
       ) : lang === 'id' && currentPath === '/contact' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ContactPageId onNavigate={handleNavigate} />
         </main>
       ) : lang === 'ru' && currentPath === '/contact' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ContactPageRu onNavigate={handleNavigate} />
         </main>
       ) : lang === 'ja' && currentPath === '/contact' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ContactPageJa onNavigate={handleNavigate} />
         </main>
       ) : lang === 'ko' && currentPath === '/contact' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ContactPageKo onNavigate={handleNavigate} />
         </main>
       ) : lang === 'zh' && currentPath === '/contact' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ContactPageZh onNavigate={handleNavigate} />
         </main>
       ) : lang === 'es' && currentPath === '/privacy' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <PrivacyPageEs onNavigate={handleNavigate} />
         </main>
       ) : lang === 'pt' && currentPath === '/privacy' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <PrivacyPagePt onNavigate={handleNavigate} />
         </main>
       ) : lang === 'fr' && currentPath === '/privacy' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <PrivacyPageFr onNavigate={handleNavigate} />
         </main>
       ) : lang === 'de' && currentPath === '/privacy' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <PrivacyPageDe onNavigate={handleNavigate} />
         </main>
       ) : lang === 'it' && currentPath === '/privacy' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <PrivacyPageIt onNavigate={handleNavigate} />
         </main>
       ) : lang === 'id' && currentPath === '/privacy' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <PrivacyPageId onNavigate={handleNavigate} />
         </main>
       ) : lang === 'ru' && currentPath === '/privacy' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <PrivacyPageRu onNavigate={handleNavigate} />
         </main>
       ) : lang === 'ja' && currentPath === '/privacy' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <PrivacyPageJa onNavigate={handleNavigate} />
         </main>
       ) : lang === 'ko' && currentPath === '/privacy' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <PrivacyPageKo onNavigate={handleNavigate} />
         </main>
       ) : lang === 'zh' && currentPath === '/privacy' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <PrivacyPageZh onNavigate={handleNavigate} />
         </main>
       ) : lang === 'es' && currentPath === '/terms' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <TermsPageEs onNavigate={handleNavigate} />
         </main>
       ) : lang === 'pt' && currentPath === '/terms' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <TermsPagePt onNavigate={handleNavigate} />
         </main>
       ) : lang === 'fr' && currentPath === '/terms' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <TermsPageFr onNavigate={handleNavigate} />
         </main>
       ) : lang === 'de' && currentPath === '/terms' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <TermsPageDe onNavigate={handleNavigate} />
         </main>
       ) : lang === 'it' && currentPath === '/terms' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <TermsPageIt onNavigate={handleNavigate} />
         </main>
       ) : lang === 'id' && currentPath === '/terms' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <TermsPageId onNavigate={handleNavigate} />
         </main>
       ) : lang === 'ru' && currentPath === '/terms' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <TermsPageRu onNavigate={handleNavigate} />
         </main>
       ) : lang === 'ja' && currentPath === '/terms' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <TermsPageJa onNavigate={handleNavigate} />
         </main>
       ) : lang === 'ko' && currentPath === '/terms' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <TermsPageKo onNavigate={handleNavigate} />
         </main>
       ) : lang === 'zh' && currentPath === '/terms' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <TermsPageZh onNavigate={handleNavigate} />
         </main>
       ) : currentPath === '/about' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AboutPage onNavigate={handleNavigate} />
         </main>
       ) : currentPath === '/contact' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ContactPage onNavigate={handleNavigate} />
         </main>
       ) : currentPath === '/privacy' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <PrivacyPage onNavigate={handleNavigate} />
         </main>
       ) : currentPath === '/terms' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <TermsPage onNavigate={handleNavigate} />
         </main>
             ) : lang === 'es' && currentPath === '/guides/compress-images-for-whatsapp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideWhatsAppPageEs onNavigate={handleNavigate} />
               </main>
             ) : lang === 'pt' && currentPath === '/guides/compress-images-for-whatsapp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideWhatsAppPagePt onNavigate={handleNavigate} />
               </main>
             ) : lang === 'fr' && currentPath === '/guides/compress-images-for-whatsapp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideWhatsAppPageFr onNavigate={handleNavigate} />
               </main>
             ) : lang === 'de' && currentPath === '/guides/compress-images-for-whatsapp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideWhatsAppPageDe onNavigate={handleNavigate} />
               </main>
             ) : lang === 'it' && currentPath === '/guides/compress-images-for-whatsapp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideWhatsAppPageIt onNavigate={handleNavigate} />
               </main>
             ) : lang === 'id' && currentPath === '/guides/compress-images-for-whatsapp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideWhatsAppPageId onNavigate={handleNavigate} />
               </main>
             ) : lang === 'ru' && currentPath === '/guides/compress-images-for-whatsapp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideWhatsAppPageRu onNavigate={handleNavigate} />
               </main>
             ) : lang === 'ja' && currentPath === '/guides/compress-images-for-whatsapp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideWhatsAppPageJa onNavigate={handleNavigate} />
               </main>
             ) : lang === 'ko' && currentPath === '/guides/compress-images-for-whatsapp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideWhatsAppPageKo onNavigate={handleNavigate} />
               </main>
             ) : lang === 'zh' && currentPath === '/guides/compress-images-for-whatsapp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideWhatsAppPageZh onNavigate={handleNavigate} />
               </main>
             ) : lang === 'es' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideFormatsPageEs onNavigate={handleNavigate} />
               </main>
             ) : lang === 'pt' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideFormatsPagePt onNavigate={handleNavigate} />
               </main>
             ) : lang === 'fr' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideFormatsPageFr onNavigate={handleNavigate} />
               </main>
             ) : lang === 'de' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideFormatsPageDe onNavigate={handleNavigate} />
               </main>
             ) : lang === 'it' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideFormatsPageIt onNavigate={handleNavigate} />
               </main>
             ) : lang === 'id' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideFormatsPageId onNavigate={handleNavigate} />
               </main>
             ) : lang === 'ru' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideFormatsPageRu onNavigate={handleNavigate} />
               </main>
             ) : lang === 'ja' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideFormatsPageJa onNavigate={handleNavigate} />
               </main>
             ) : lang === 'ko' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideFormatsPageKo onNavigate={handleNavigate} />
               </main>
             ) : lang === 'zh' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <GuideFormatsPageZh onNavigate={handleNavigate} />
               </main>
             ) : lang === 'es' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <Guide100kbPageEs onNavigate={handleNavigate} />
               </main>
             ) : lang === 'pt' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <Guide100kbPagePt onNavigate={handleNavigate} />
               </main>
             ) : lang === 'fr' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <Guide100kbPageFr onNavigate={handleNavigate} />
               </main>
             ) : lang === 'de' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <Guide100kbPageDe onNavigate={handleNavigate} />
               </main>
             ) : lang === 'it' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <Guide100kbPageIt onNavigate={handleNavigate} />
               </main>
             ) : lang === 'id' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <Guide100kbPageId onNavigate={handleNavigate} />
               </main>
             ) : lang === 'ru' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <Guide100kbPageRu onNavigate={handleNavigate} />
               </main>
             ) : lang === 'ja' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <Guide100kbPageJa onNavigate={handleNavigate} />
               </main>
             ) : lang === 'ko' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <Guide100kbPageKo onNavigate={handleNavigate} />
               </main>
             ) : lang === 'zh' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                 <Guide100kbPageZh onNavigate={handleNavigate} />
               </main>
             ) : currentPath === '/guides/compress-images-for-whatsapp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                         <GuideWhatsAppPage onNavigate={handleNavigate} />
               </main>
             ) : currentPath === '/guides/jpg-vs-png-vs-webp' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                         <GuideFormatsPage onNavigate={handleNavigate} />
               </main>
             ) : currentPath === '/guides/reduce-image-size-to-100kb' ? (
-              <main className="flex-1">
+              <main id="main" className="flex-1">
                         <Guide100kbPage onNavigate={handleNavigate} />
               </main>
       ) : currentPath === '/image-resizer' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ImageResizerPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -2213,7 +2665,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-converter' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ImageConverterPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -2323,7 +2775,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/rotate-flip-image' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <RotateFlipPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -2433,7 +2885,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-to-pdf' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ImageToPdfPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -2543,7 +2995,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-metadata-viewer' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <MetadataViewerPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -2653,7 +3105,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/remove-image-metadata' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <RemoveMetadataPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -2763,7 +3215,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/favicon-generator' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <FaviconGeneratorPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -2873,7 +3325,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-color-picker' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ColorPickerPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -2983,7 +3435,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-dimensions-checker' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <DimensionsCheckerPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -3093,7 +3545,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-cropper' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ImageCropperPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -3203,7 +3655,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-watermark' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ImageWatermarkPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -3313,7 +3765,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/blur-pixelate-image' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <BlurPixelatePage
             onNavigate={handleNavigate}
             lang={lang}
@@ -3423,7 +3875,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/add-text-to-image' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AddTextPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -3533,7 +3985,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-border-generator' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ImageBorderPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -3643,7 +4095,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/round-image-corners' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <RoundCornersPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -3753,7 +4205,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-brightness-editor' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <BrightnessEditorPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -3863,7 +4315,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-contrast-editor' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ContrastEditorPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -3973,7 +4425,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-saturation-editor' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <SaturationEditorPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -4083,7 +4535,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-filters' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ImageFiltersPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -4193,7 +4645,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/add-background-to-image' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AddBackgroundPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -4303,7 +4755,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-splitter' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ImageSplitterPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -4413,7 +4865,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-dpi-changer' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <DpiChangerPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -4523,7 +4975,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-to-base64' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <ImageToBase64Page
             onNavigate={handleNavigate}
             lang={lang}
@@ -4633,7 +5085,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/base64-to-image' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <Base64ToImagePage
             onNavigate={handleNavigate}
             lang={lang}
@@ -4743,7 +5195,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-color-palette-extractor' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <PaletteExtractorPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -4853,7 +5305,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/gif-maker' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <GifMakerPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -4963,7 +5415,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/image-collage-maker' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <CollageMakerPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -5073,7 +5525,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/compress-image-to-50kb' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <Compress50KbPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -5183,7 +5635,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/compress-image-to-100kb' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <Compress100KbPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -5293,7 +5745,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/compress-image-to-200kb' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <Compress200KbPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -5403,7 +5855,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/compress-image-to-500kb' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <Compress500KbPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -5513,7 +5965,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/bulk-image-compressor' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <BulkCompressorPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -5629,7 +6081,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/target-file-size-compressor' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <TargetFileSizePage
             onNavigate={handleNavigate}
             lang={lang}
@@ -5739,7 +6191,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/bulk-image-resizer' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <BulkResizerPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -5849,7 +6301,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/bulk-image-converter' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <BulkConverterPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -5959,7 +6411,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/web-image-optimizer' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <WebOptimizerPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -6069,7 +6521,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/gif-compressor' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <GifCompressorPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -6179,7 +6631,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/heic-to-jpg' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <HeicToJpgPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -6289,7 +6741,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/jpg-to-png' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <JpgToPngPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -6399,7 +6851,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/png-to-jpg' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <PngToJpgPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -6509,7 +6961,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/jpg-to-webp' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <JpgToWebpPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -6619,7 +7071,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/webp-to-jpg' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <WebpToJpgPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -6729,7 +7181,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/png-to-webp' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <PngToWebpPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -6839,7 +7291,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/webp-to-png' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <WebpToPngPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -6949,7 +7401,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/svg-to-png' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <SvgToPngPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -7059,7 +7511,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/avif-to-jpg' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <AvifToJpgPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -7169,7 +7621,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/bmp-to-jpg' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <BmpToJpgPage
             onNavigate={handleNavigate}
             lang={lang}
@@ -7279,7 +7731,7 @@ zhStrings={
           />
         </main>
       ) : currentPath === '/remove-background' ? (
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           <Suspense
             fallback={
               <div className="max-w-5xl mx-auto px-4 py-20 text-center text-sm text-[var(--ink-3)]">
@@ -7396,9 +7848,14 @@ zhStrings={
           />
           </Suspense>
         </main>
+      ) : isNotFound ? (
+        <main id="main" className="flex-1">
+          <NotFoundPage onNavigate={handleNavigate} lang={lang} allToolsPath={allToolsPath} />
+        </main>
       ) : (
         renderHome(null)
       )}
+      </Suspense>
 
       {/* 3. Footer */}
       <Footer
@@ -7420,6 +7877,7 @@ zhStrings={
 
       {/* Comparison Modal */}
       {comparisonTarget && (
+        <Suspense fallback={null}>
         <ComparisonModal
           image={comparisonTarget}
           onClose={() => setComparisonTarget(null)}
@@ -7443,6 +7901,7 @@ zhStrings={
           altOriginal={activeUi?.comparisonModal.altOriginal}
           altProcessed={activeUi?.comparisonModal.altProcessed}
         />
+        </Suspense>
       )}
     </div>
   );
