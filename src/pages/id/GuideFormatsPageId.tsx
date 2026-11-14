@@ -150,24 +150,6 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
     if (metaDescription) metaDescription.setAttribute('content', 'JPG vs PNG vs WebP dijelaskan dengan sederhana: ukuran file, kualitas, dan transparansi dibandingkan, agar Anda dapat memilih format yang tepat untuk foto, logo, dan situs web.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/id/panduan/jpg-vs-png-vs-webp';
-    // hreflang: same DOM mechanism the English page uses for its canonical.
-    const alternates = [
-      { lang: 'en', href: 'https://compressmypic.online/guides/jpg-vs-png-vs-webp' },
-      { lang: 'id', href: 'https://compressmypic.online/id/panduan/jpg-vs-png-vs-webp' },
-      { lang: 'x-default', href: 'https://compressmypic.online/guides/jpg-vs-png-vs-webp' },
-    ];
-    const createdLinks: HTMLLinkElement[] = [];
-    alternates.forEach(({ lang, href }) => {
-      let link = document.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${lang}"]`);
-      if (!link) {
-        link = document.createElement('link');
-        link.rel = 'alternate';
-        link.setAttribute('hreflang', lang);
-        document.head.appendChild(link);
-        createdLinks.push(link);
-      }
-      link.href = href;
-    });
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -197,7 +179,6 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
     return () => {
       const existing = document.getElementById('guide-formats-jsonld');
       if (existing) existing.remove();
-      createdLinks.forEach((link) => link.remove());
     };
   }, []);
 
