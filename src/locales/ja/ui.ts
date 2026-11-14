@@ -157,7 +157,7 @@ export const JA = {
   },
   hero: {
     pill: '100% プライベートなデバイス内圧縮・サーバーへのアップロードなし', // '100% Private Client-Side Compression · No Server Uploads'
-    h1: '無料画像圧縮ツール – 画像をオンラインで圧縮し、画質そのままサイズを小さく', // 'Free Image Compressor – Compress Images Online & Reduce Size Without Losing Quality'
+    h1: '無料画像圧縮ツール – 画像をオンラインで圧縮', // 'Free Image Compressor – Compress Images Online'
     sub: '目に見える画質を落とさずに、画像ファイルのサイズを小さくできます。無料の画像圧縮ツール・写真圧縮ツールで、JPG・PNG・WebP・HEIC対応のオンライン画像最適化ツール。高速・安全、登録不要・透かしなし、ブラウザで直接かんたんに画像を圧縮できます。', // 'Reduce image file sizes without sacrificing noticeable quality. Compress image online free with our free image compressor and photo compressor — an online image optimizer for JPG, PNG, WebP and HEIC. Fast, secure, no signup, no watermark, and easy image compression directly in your browser.'
     badge1: '画像がデバイスから外に出ることはありません', // 'Your images never leave your device'
     badge2: 'ブラウザで瞬時に処理', // 'Instant browser processing'
@@ -416,6 +416,7 @@ export const JA = {
     featuresTitle: 'CompressMyPicの{name}を使う理由', // 'Why Use CompressMyPic {name}?'
     faqTitle: '{name} — よくある質問', // '{name} — Frequently Asked Questions'
     relatedTitle: '関連する無料画像ツール', // 'Related Free Image Tools'
+    relatedLinksIntro: 'こちらもご利用ください：', // 'You may also need:'
     commentsTitle: 'コメント',
     commentsNote: 'このツールについての感想を共有しましょう — 名前を書いて投稿するだけ。アカウントは不要です。',
     commentsNamePlaceholder: 'あなたの名前',
@@ -467,10 +468,9 @@ export const JA = {
     altProcessed: '{name}の処理済みバージョン', // 'Processed version of {name}'
   },
   homeMeta: {
-    seoTitle: '無料画像圧縮ツール オンライン – 画像サイズを100KBまで小さく', // 'Free Image Compressor Online – Reduce Image Size to 100KB'
-    seoDescription:
-      '画像をオンラインで無料圧縮 — 画質を落とさずに画像サイズを小さくできます。JPG・PNG・WebP・HEICに対応し、登録不要・透かしなし。ブラウザ内で直接処理するので、写真もウェブサイトの画像も安全に圧縮できます。今すぐ無料でお試しください。インストールも不要です。何枚でも圧縮できます。数秒で完了します。', // 'Compress image online free — reduce image size without losing quality. Compress JPG, PNG and WebP with no signup and no watermark, right in your browser.'
-    h1: '無料画像圧縮ツール オンライン', // 'Free Image Compressor'
+    seoTitle: '無料画像圧縮ツール – オンラインで画像を圧縮、登録不要', // 'Free Image Compressor – Compress Images Online, No Signup'
+    seoDescription: '画像をオンラインで無料圧縮し、JPG・PNG・WebPのサイズを画質そのまま小さくできます。登録不要・透かしなし——写真がブラウザから外に出ることはありません。', // 'Compress images online free and reduce JPG, PNG and WebP size without losing quality. No signup, no watermark — your photos never leave your own browser.'
+    h1: '無料画像圧縮ツール – 画像をオンラインで圧縮', // 'Free Image Compressor – Compress Images Online'
     subtitle: 'JPG・PNG・WebP・HEICのファイルサイズを、ブラウザで直接小さくできます。', // 'Reduce JPG, PNG, WebP & HEIC file size directly in your browser.'
   },
   categories: {

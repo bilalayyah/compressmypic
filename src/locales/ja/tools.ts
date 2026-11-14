@@ -26,10 +26,9 @@ export const TOOLS_REGISTRY_JA: ToolDefinition[] = [
   name: '画像圧縮ツール', // 'Image Compressor'
   shortDescription: 'JPG・PNG・WebP・HEIC画像を画質を落とさずに圧縮できます。', // 'Compress JPG, PNG, WebP & HEIC images without losing quality.'
   category: 'compress',
-  seoTitle: '無料画像圧縮ツール オンライン – 画像サイズを100KBまで小さく',
-  seoDescription:
-    '画像をオンラインで無料圧縮 — 画質を落とさずに画像サイズを小さくできます。JPG・PNG・WebP・HEICに対応し、登録不要・透かしなし。ブラウザ内で直接処理するので、写真もウェブサイトの画像も安全に圧縮できます。今すぐ無料でお試しください。インストールも不要です。何枚でも圧縮できます。数秒で完了します。',
-  h1: '無料画像圧縮ツール オンライン', // 'Free Image Compressor'
+  seoTitle: '無料画像圧縮ツール – オンラインで画像を圧縮、登録不要',
+  seoDescription: '画像をオンラインで無料圧縮し、JPG・PNG・WebPのサイズを画質そのまま小さくできます。登録不要・透かしなし——写真がブラウザから外に出ることはありません。',
+  h1: '無料画像圧縮ツール – 画像をオンラインで圧縮', // 'Free Image Compressor – Compress Images Online'
   subtitle: 'JPG・PNG・WebP・HEICのファイルサイズを、ブラウザで直接小さくできます。', // 'Reduce JPG, PNG, WebP & HEIC file size directly in your browser.'
   howToSteps: [],
   features: [],
@@ -551,7 +550,7 @@ export const TOOLS_REGISTRY_JA: ToolDefinition[] = [
     seoTitle: '画像をPDFに変換無料オンライン｜写真をPDF化',
     seoDescription:
       'ブラウザの画像→PDF変換ツールで、複数の写真を1つのドキュメントにまとめます。ページ順の変更、A4・USレターサイズの選択、余白と画質の設定ができ、サーバーへのアップロードなしにオフラインで保存できます。登録不要で無料です。領収書、身分証、スライド、スキャン書類を1つのPDFにまとめるのに最適です。',
-    h1: '画像をPDFに変換するツール',
+    h1: '無料オンライン画像からPDFへの変換ツール',
     subtitle:
       '学生、フリーランサー、経理担当者、そして身分証や領収書を提出するすべての方に最適な、プライベートな画像→PDF変換ツールは、複数の写真を1つのくっきりした複数ページPDFにまとめます。ページ順を自由に並べ替え、A4・USレター・画像サイズに合わせる寸法を選び、余白と画質を調整して、サーバーへのアップロードなしにローカルでドキュメントを作成できます。',
     howToSteps: [
@@ -7598,9 +7597,8 @@ export const TOOLS_REGISTRY_JA: ToolDefinition[] = [
     name: '背景除去',
     shortDescription: 'ブラウザ内のAIで画像の背景を除去し、透明PNGとして書き出す。',
     category: 'ai-tools',
-    seoTitle: '無料の背景除去｜AI切り抜き・登録不要',
-    seoDescription:
-      'ブラウザ内のAIで画像の背景を無料で除去できます。透明PNGをダウンロードするか、白・黒・カスタムの背景を付けられます。プライベートで、登録も透かしもありません。写真はアップロードされず、お使いのデバイス上で処理されます。商品写真やポートレート、ペットの写真にも使えます。1日の制限や透かしはありません。',
+    seoTitle: '画像の背景を無料で除去 – AI、登録不要',
+    seoDescription: 'ブラウザ内のAIで、あらゆる画像の背景を無料で除去できます。透明PNGをダウンロードするか、白・黒・カスタムの背景を追加できます。登録もアップロードも不要です。',
     h1: '無料オンラインAI背景除去ツール',
     subtitle:
       'ポートレートや商品写真、ペット、ロゴから背景を除去する、無料のAI背景除去ツールです。ブラウザ内で完全に動作します。きれいな切り抜きを素早く必要とする販売者やクリエイター、デザイナーのために作られました。コンパクトなAIモデルを一度だけ読み込み（約35MB、以降はキャッシュ）、1回に1枚ずつ最大20MBまでの写真を処理し、透明PNGとして書き出します。白・黒・カスタムの背景に切り抜きを置くこともできます。',
