@@ -148,7 +148,7 @@ export const ID = {
   },
   hero: {
     pill: 'Kompresi 100% Privat di Perangkat · Tanpa Unggahan ke Server',
-    h1: 'Kompresor Gambar Gratis – Kompres Gambar Online & Perkecil Ukuran Tanpa Kehilangan Kualitas',
+    h1: 'Kompresor Gambar Gratis – Kompres Gambar Online',
     sub: 'Perkecil ukuran file gambar tanpa mengorbankan kualitas yang terlihat. Kompres gambar online gratis dengan kompresor gambar dan kompresor foto gratis kami — pengoptimal gambar online untuk JPG, PNG, WebP, dan HEIC. Cepat, aman, tanpa daftar, tanpa watermark, dan kompresi gambar yang mudah langsung di browser Anda.',
     badge1: 'Gambar Anda tidak pernah meninggalkan perangkat Anda',
     badge2: 'Pemrosesan instan di browser',
@@ -407,6 +407,7 @@ export const ID = {
     featuresTitle: 'Mengapa Menggunakan {name} dari CompressMyPic?',
     faqTitle: '{name} — Pertanyaan yang Sering Diajukan',
     relatedTitle: 'Alat Gambar Gratis Terkait',
+    relatedLinksIntro: 'Anda mungkin juga membutuhkan:',
     commentsTitle: 'Komentar',
     commentsNote: 'Bagikan pendapat Anda tentang alat ini — cukup tulis nama Anda dan kirim. Tidak perlu akun.',
     commentsNamePlaceholder: 'Nama Anda',
@@ -458,10 +459,9 @@ export const ID = {
     altProcessed: 'Versi yang diproses dari {name}', // 'Processed version of {name}'
   },
   homeMeta: {
-    seoTitle: 'Kompresor Gambar Gratis online – Kurangi ke 100 KB',
-    seoDescription:
-      'Kompres gambar online gratis — perkecil ukuran gambar tanpa mengurangi kualitas. Kompres JPG, PNG, dan WebP tanpa daftar dan tanpa watermark, di browser.',
-    h1: 'Kompresor Gambar Gratis online',
+    seoTitle: 'Kompresor Gambar Gratis – Kompres Gambar Online, Tanpa Daftar',
+    seoDescription: 'Kompres gambar online gratis dan perkecil ukuran JPG, PNG, dan WebP tanpa mengurangi kualitas. Tanpa daftar, tanpa watermark — foto Anda tidak pernah meninggalkan browser Anda.',
+    h1: 'Kompresor Gambar Gratis – Kompres Gambar Online',
     subtitle: 'Perkecil ukuran file JPG, PNG, WebP & HEIC langsung di browser Anda.',
   },
   categories: {

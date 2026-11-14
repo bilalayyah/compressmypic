@@ -26,10 +26,9 @@ export const TOOLS_REGISTRY_ID: ToolDefinition[] = [
   name: 'Kompresor Gambar',
   shortDescription: 'Kompres gambar JPG, PNG, WebP & HEIC tanpa mengurangi kualitas.',
   category: 'compress',
-  seoTitle: 'Kompresor Gambar Gratis online – Kurangi ke 100 KB',
-  seoDescription:
-    'Kompres gambar online gratis — perkecil ukuran gambar tanpa mengurangi kualitas. Kompres JPG, PNG, dan WebP tanpa daftar dan tanpa watermark, di browser.',
-  h1: 'Kompresor Gambar Gratis online',
+  seoTitle: 'Kompresor Gambar Gratis – Kompres Gambar Online, Tanpa Daftar',
+  seoDescription: 'Kompres gambar online gratis dan perkecil ukuran JPG, PNG, dan WebP tanpa mengurangi kualitas. Tanpa daftar, tanpa watermark — foto Anda tidak pernah meninggalkan browser Anda.',
+  h1: 'Kompresor Gambar Gratis – Kompres Gambar Online',
   subtitle: 'Perkecil ukuran file JPG, PNG, WebP & HEIC langsung di browser Anda.',
   howToSteps: [],
   features: [],
@@ -551,7 +550,7 @@ export const TOOLS_REGISTRY_ID: ToolDefinition[] = [
     seoTitle: 'Gambar ke PDF Gratis – Gabung Foto jadi PDF',
     seoDescription:
       'Ubah foto menjadi PDF secara gratis – susun ulang halaman, pilih ukuran A4 atau Letter, atur margin. Dokumen Anda dibuat lokal di browser, tanpa upload.',
-    h1: 'Konverter Gambar ke PDF',
+    h1: 'Konverter Gambar ke PDF Online Gratis',
     subtitle:
       'Ideal untuk pelajar, freelancer, akuntan, dan siapa pun yang mengirimkan KTP atau kuitansi, konverter gambar ke PDF privat ini menggabungkan beberapa foto menjadi satu PDF multi-halaman yang tajam. Susun ulang halaman dengan bebas, pilih ukuran A4, US Letter, atau Sesuai Ukuran Gambar, sesuaikan margin dan kualitas, lalu buat dokumen Anda secara lokal tanpa satu pun upload ke server.',
     howToSteps: [
@@ -7595,9 +7594,8 @@ export const TOOLS_REGISTRY_ID: ToolDefinition[] = [
     name: 'Penghapus Latar Belakang',
     shortDescription: 'Hapus latar belakang gambar dengan AI di browser dan ekspor PNG transparan.',
     category: 'ai-tools',
-    seoTitle: 'Penghapus Latar Belakang Gratis – AI, Tanpa Daftar',
-    seoDescription:
-      'Hapus latar belakang gambar gratis dengan AI di browser. Unduh PNG transparan atau tambahkan latar putih, hitam, atau kustom — privat dan tanpa watermark.',
+    seoTitle: 'Hapus Latar Gambar Gratis – AI, Tanpa Daftar',
+    seoDescription: 'Hapus latar dari gambar apa pun gratis dengan AI di browser. Unduh PNG transparan atau tambahkan latar putih, hitam, atau khusus — tanpa daftar dan tanpa unggahan.',
     h1: 'Penghapus Latar Belakang AI Online Gratis',
     subtitle:
       'Hapus latar belakang dari potret, foto produk, hewan peliharaan, dan logo dengan penghapus latar belakang AI gratis kami, yang berjalan sepenuhnya di browser Anda. Dibuat untuk penjual, kreator, dan desainer yang membutuhkan potongan bersih dengan cepat, alat ini memuat model AI yang ringkas sekali (sekitar 35 MB, tersimpan di cache setelahnya), memproses satu foto hingga 20 MB dalam satu waktu, dan mengekspor PNG transparan — atau menempatkan potongan Anda di atas latar belakang putih, hitam, atau kustom.',
