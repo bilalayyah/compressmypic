@@ -65,6 +65,7 @@ export const DE = {
     processedLocally: 'Lokal verarbeitet mit HTML5 Canvas',
     bottomRights:
       '© {year} CompressMyPic. Alle Rechte vorbehalten. Kostenloses Browser-Tool zur Bildkomprimierung.',
+    deployedNote: 'Crafted with ❤️ by Bilal inspired by Shaheen',
     contactLabel: 'Kontakt: bilalayyah@gmail.com',
     toolsLinks: [
       { slug: '/', label: 'Bilder komprimieren' },
