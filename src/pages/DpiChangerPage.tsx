@@ -24,6 +24,7 @@ import { toIndonesianPath } from '../locales/id/slugs';
 import { toRussianPath } from '../locales/ru/slugs';
 import { toJapanesePath } from '../locales/ja/slugs';
 import { toKoreanPath } from '../locales/ko/slugs';
+import { toChinesePath } from '../locales/zh/slugs';
 import { getAlternates } from '../locales/alternates';
 
 import { ToolPageLayout } from '../components/ToolPageLayout';
@@ -100,6 +101,13 @@ export interface PageKoStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageZhStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface DpiChangerPageProps {
   onNavigate: (path: string) => void;
   lang?: SupportedLang;
@@ -115,6 +123,7 @@ interface DpiChangerPageProps {
   ruStrings?: PageRuStrings;
   jaStrings?: PageJaStrings;
   koStrings?: PageKoStrings;
+  zhStrings?: PageZhStrings;
 }
 
 interface DpiItem {
@@ -148,11 +157,12 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
   ruStrings,
   jaStrings,
   koStrings,
+  zhStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG['/image-dpi-changer'];
   const t = (key: string, fallback: string) => {
     const table =
-      lang === 'ja' ? jaStrings?.toolUi : lang === 'ko' ? koStrings?.toolUi : lang === 'id' ? idStrings?.toolUi : lang === 'ru' ? ruStrings?.toolUi : lang === 'de' ? deStrings?.toolUi : lang === 'it' ? itStrings?.toolUi : lang === 'pt' ? ptStrings?.toolUi : lang === 'fr' ? frStrings?.toolUi : lang === 'es' ? esStrings?.toolUi : undefined;
+      lang === 'zh' ? zhStrings?.toolUi : lang === 'ja' ? jaStrings?.toolUi : lang === 'ko' ? koStrings?.toolUi : lang === 'id' ? idStrings?.toolUi : lang === 'ru' ? ruStrings?.toolUi : lang === 'de' ? deStrings?.toolUi : lang === 'it' ? itStrings?.toolUi : lang === 'pt' ? ptStrings?.toolUi : lang === 'fr' ? frStrings?.toolUi : lang === 'es' ? esStrings?.toolUi : undefined;
     return table ? (table[key] as string | undefined) ?? fallback : fallback;
   };
 
@@ -266,8 +276,8 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={lang === 'ja' ? jaStrings?.layoutUi : lang === 'ko' ? koStrings?.layoutUi : lang === 'id' ? idStrings?.layoutUi : lang === 'ru' ? ruStrings?.layoutUi : lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
-      canonicalPath={lang === 'ja' ? toJapanesePath(activeTool.slug) : lang === 'ko' ? toKoreanPath(activeTool.slug) : lang === 'id' ? toIndonesianPath(activeTool.slug) : lang === 'ru' ? toRussianPath(activeTool.slug) : lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
+      ui={lang === 'zh' ? zhStrings?.layoutUi : lang === 'ja' ? jaStrings?.layoutUi : lang === 'ko' ? koStrings?.layoutUi : lang === 'id' ? idStrings?.layoutUi : lang === 'ru' ? ruStrings?.layoutUi : lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
+      canonicalPath={lang === 'zh' ? toChinesePath(activeTool.slug) : lang === 'ja' ? toJapanesePath(activeTool.slug) : lang === 'ko' ? toKoreanPath(activeTool.slug) : lang === 'id' ? toIndonesianPath(activeTool.slug) : lang === 'ru' ? toRussianPath(activeTool.slug) : lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
       alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
@@ -282,7 +292,7 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
           allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
           supportedFormatsLabel="JPG, PNG (lossless) + WebP, HEIC, BMP"
           title={t('uploadTitle', 'Drop JPG or PNG images to update DPI metadata')}
-          strings={lang === 'ja' ? jaStrings?.uploadZone : lang === 'ko' ? koStrings?.uploadZone : lang === 'id' ? idStrings?.uploadZone : lang === 'ru' ? ruStrings?.uploadZone : lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
+          strings={lang === 'zh' ? zhStrings?.uploadZone : lang === 'ja' ? jaStrings?.uploadZone : lang === 'ko' ? koStrings?.uploadZone : lang === 'id' ? idStrings?.uploadZone : lang === 'ru' ? ruStrings?.uploadZone : lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
         />
 
         {/* Controls */}
