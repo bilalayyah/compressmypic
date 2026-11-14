@@ -10,7 +10,6 @@ import {
 } from 'lucide-react';
 import { ToolDefinition, TOOL_BY_SLUG, TOOL_CATEGORIES } from '../data/tools';
 import { AdSlot } from './AdSlot';
-import { Comments } from './Comments';
 import type { SupportedLang } from '../locales/config';
 import { getOgLocale, getOgLocaleAlternates } from '../locales/alternates';
 import { getPastelCardClass, getPastelTileClass } from '../utils/pastel';
@@ -25,10 +24,6 @@ export interface ToolPageLayoutStrings {
   featuresTitle: string; // contains {name}
   faqTitle: string; // contains {name}
   relatedTitle: string;
-  /** Heading above the comments widget. Optional — falls back to English. */
-  commentsTitle?: string;
-  /** Short note under the comments heading. Optional — falls back to English. */
-  commentsNote?: string;
 }
 
 const EN_STRINGS: ToolPageLayoutStrings = {
@@ -41,8 +36,6 @@ const EN_STRINGS: ToolPageLayoutStrings = {
   featuresTitle: 'Why Use CompressMyPic {name}?',
   faqTitle: '{name} — Frequently Asked Questions',
   relatedTitle: 'Related Free Image Tools',
-  commentsTitle: 'Comments',
-  commentsNote: 'Share your thoughts about this tool — sign in with GitHub to join the discussion.',
 };
 
 export interface HreflangAlternate {
@@ -489,22 +482,6 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
           </div>
         </section>
       )}
-
-      {/* Comments: free Giscus widget (GitHub Discussions), one thread per page */}
-      <section className="py-12 sm:py-16 border-t border-[var(--line)] bg-[var(--bg-soft)]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="font-sans text-2xl sm:text-3xl font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
-            {ui.commentsTitle ?? 'Comments'}
-          </h2>
-          <p className="mt-2 text-base text-[var(--ink-3)] max-w-2xl">
-            {ui.commentsNote ??
-              'Share your thoughts about this tool — sign in with GitHub to join the discussion.'}
-          </p>
-          <div className="mt-6">
-            <Comments key={pagePath} pagePath={pagePath} lang={lang} />
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
