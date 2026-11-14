@@ -56,9 +56,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Compressor',
     shortDescription: 'Compress JPG, PNG, WebP & HEIC images without losing quality.',
     category: 'compress',
-    seoTitle: 'Free Image Compressor Online – Reduce Image Size to 100KB',
+    seoTitle: 'Free Image Compressor – Compress Images Online, No Signup',
     seoDescription:
-      'Compress image online free — reduce image size without losing quality. Compress JPG, PNG and WebP with no signup and no watermark, right in your browser.',
+      'Compress images online free and reduce JPG, PNG and WebP size without losing quality. No signup, no watermark — your photos never leave your own browser.',
     h1: 'Free Image Compressor',
     subtitle: 'Reduce JPG, PNG, WebP & HEIC file size directly in your browser.',
     howToSteps: [],
@@ -581,7 +581,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     seoTitle: 'Free Image to PDF Converter – Combine Photos to PDF',
     seoDescription:
       'Turn multiple photos into one document with our browser image to PDF converter. Reorder pages, pick A4 or Letter size, set margins, and save directly offline.',
-    h1: 'Image to PDF Converter',
+    h1: 'Free Online Image to PDF Converter',
     subtitle:
       'Ideal for students, freelancers, accountants, and anyone submitting IDs or receipts, this private image to PDF converter merges multiple photos into one crisp multi-page PDF. Reorder pages freely, pick A4, US Letter, or Fit-to-Image dimensions, adjust margins and quality, and build your document locally with zero server uploads.',
     howToSteps: [
@@ -7617,9 +7617,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Background Remover',
     shortDescription: 'Remove image backgrounds with AI in-browser and export transparent PNGs.',
     category: 'ai-tools',
-    seoTitle: 'Free Background Remover – AI Cutouts, No Signup',
+    seoTitle: 'Remove Background from Image Free – AI, No Signup',
     seoDescription:
-      'Remove image backgrounds free with in-browser AI. Download a transparent PNG or add a white, black, or custom background — private, no signup, no watermark.',
+      'Remove the background from any image free with in-browser AI. Download a transparent PNG or add a white, black or custom background — no signup, no upload.',
     h1: 'Free Online AI Background Remover',
     subtitle:
       'Remove backgrounds from portraits, product photos, pets, and logos with our free AI background remover, running entirely in your browser. Made for sellers, creators, and designers who need clean cutouts fast, it loads a compact AI model once (about 35 MB, cached afterward), processes one photo at a time up to 20 MB, and exports a transparent PNG — or places your cutout on a white, black, or custom background.',
