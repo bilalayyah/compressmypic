@@ -52,3 +52,34 @@ export function getAlternates(enPath: string): HreflangAlternate[] {
   items.push({ lang: 'x-default', href: `${BASE}${enPath}` });
   return items;
 }
+
+// --- Open Graph locale (Phase 7, F1) ---------------------------------------
+// og:locale uses underscore + territory codes (OG spec), NOT hreflang codes:
+// one variant per language, so pt is pt_BR (Brazilian) and zh is zh_CN
+// (Simplified). Shared by App.tsx and ToolPageLayout.tsx so both write
+// identical values; hreflang values in getAlternates() are untouched.
+export const OG_LOCALE_BY_LANG: Record<string, string> = {
+  en: 'en_US',
+  es: 'es_ES',
+  pt: 'pt_BR',
+  fr: 'fr_FR',
+  de: 'de_DE',
+  it: 'it_IT',
+  id: 'id_ID',
+  ru: 'ru_RU',
+  ja: 'ja_JP',
+  ko: 'ko_KR',
+  zh: 'zh_CN',
+};
+
+/** og:locale value for a language code (falls back to en_US). */
+export function getOgLocale(lang: string): string {
+  return OG_LOCALE_BY_LANG[lang] ?? 'en_US';
+}
+
+/** The 10 og:locale:alternate values for a page in `lang` (every locale except its own). */
+export function getOgLocaleAlternates(lang: string): string[] {
+  return Object.entries(OG_LOCALE_BY_LANG)
+    .filter(([code]) => code !== lang)
+    .map(([, locale]) => locale);
+}
