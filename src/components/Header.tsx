@@ -169,7 +169,7 @@ export const Header: React.FC<HeaderProps> = ({
       ref={headerRef}
       className="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4 sm:gap-6">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3 sm:gap-6">
         {/* Zone 1: Brand Wordmark */}
         <a
           href="/"
@@ -293,7 +293,7 @@ export const Header: React.FC<HeaderProps> = ({
         </nav>
 
         {/* Zone 3: Language Switcher + Theme Switcher + Primary Action / Mobile Menu */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
           {/* Language Switcher Dropdown (Desktop, Tablet & Mobile) */}
           <div className="relative">
             <button
@@ -307,7 +307,7 @@ export const Header: React.FC<HeaderProps> = ({
               aria-expanded={langMenuOpen}
               aria-haspopup="menu"
               title={strings.languageLabel}
-              className="inline-flex items-center gap-1.5 h-9 px-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer text-xs font-semibold"
+              className="inline-flex items-center gap-1.5 h-9 px-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer text-xs font-semibold"
             >
               <Globe className="w-4 h-4 text-blue-600 dark:text-blue-400" />
               <span className="hidden lg:inline">{lang.toUpperCase()}</span>
@@ -368,7 +368,7 @@ export const Header: React.FC<HeaderProps> = ({
               aria-haspopup="menu"
               data-testid="theme-toggle-button"
               title={strings.themeTitle.replace('{current}', currentThemeLabel)}
-              className="inline-flex items-center gap-1.5 h-9 px-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer text-xs font-semibold"
+              className="inline-flex items-center gap-1.5 h-9 px-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer text-xs font-semibold"
             >
               <CurrentThemeIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
               <span className="hidden lg:inline">
@@ -435,7 +435,7 @@ export const Header: React.FC<HeaderProps> = ({
               setThemeMenuOpen(false);
               setLangMenuOpen(false);
             }}
-            className="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="md:hidden p-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
             aria-label={strings.menuAriaLabel}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
