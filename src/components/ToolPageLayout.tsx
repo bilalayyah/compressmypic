@@ -28,6 +28,7 @@ import {
 import { ToolDefinition, TOOL_BY_SLUG, TOOL_CATEGORIES } from '../data/tools';
 import { AdSlot } from './AdSlot';
 import type { SupportedLang } from '../locales/config';
+import { getOgLocale, getOgLocaleAlternates } from '../locales/alternates';
 
 export interface ToolPageLayoutStrings {
   home: string;
@@ -161,6 +162,34 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
       }
     };
 
+    // Phase 7 (F1): og:locale — UPDATE the existing tag, never duplicate it,
+    // and replace the whole og:locale:alternate set (10 others). Same logic
+    // as App.tsx; both use getOgLocale()/getOgLocaleAlternates().
+    const setOgLocaleTags = (locale: string, alternateLocales: string[]) => {
+      let el = document.head.querySelector<HTMLMetaElement>('meta[property="og:locale"]');
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute('property', 'og:locale');
+        el.setAttribute('content', locale);
+        document.head.appendChild(el);
+        createdElements.push(el);
+      } else {
+        restorableAttrs.push({ el, attr: 'content', prev: el.getAttribute('content') });
+        el.setAttribute('content', locale);
+      }
+      document
+        .head
+        .querySelectorAll('meta[property="og:locale:alternate"]')
+        .forEach((old) => old.remove());
+      for (const alt of alternateLocales) {
+        const altEl = document.createElement('meta');
+        altEl.setAttribute('property', 'og:locale:alternate');
+        altEl.setAttribute('content', alt);
+        document.head.appendChild(altEl);
+        createdElements.push(altEl);
+      }
+    };
+
     setMetaTag('meta[name="description"]', 'name', 'description', seoDescription);
     setCanonicalLink(canonicalUrl);
     setMetaTag('meta[name="robots"]', 'name', 'robots', 'index, follow');
@@ -176,6 +205,11 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
       'https://compressmypic.online/og-image.png',
       true
     );
+    // Phase 7 (F1+F3): per-language og:locale (+10 alternates) and localized
+    // image alt text. The image stays the single shared branded og-image.png;
+    // the alt is the page's localized seoTitle, never an English fallback.
+    setOgLocaleTags(getOgLocale(lang), getOgLocaleAlternates(lang));
+    setMetaTag('meta[property="og:image:alt"]', 'property', 'og:image:alt', seoTitle);
 
     setMetaTag('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image', true);
     setMetaTag('meta[name="twitter:title"]', 'name', 'twitter:title', seoTitle);
@@ -187,6 +221,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
       'https://compressmypic.online/og-image.png',
       true
     );
+    setMetaTag('meta[name="twitter:image:alt"]', 'name', 'twitter:image:alt', seoTitle);
 
     if (alternates && alternates.length > 0) {
       setHreflangLinks(alternates);
@@ -206,7 +241,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tool, canonicalUrl, alternates]);
+  }, [tool, canonicalUrl, alternates, lang]);
 
   useEffect(() => {
     const slugKey = pagePath.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'home';

@@ -15,7 +15,7 @@ interface FaqItem {
   answer: string;
 }
 
-const FAQ_DATA: FaqItem[] = [
+export const FAQ_DATA: FaqItem[] = [
   {
     id: 'faq-1',
     question: 'How can I compress an image online for free?',

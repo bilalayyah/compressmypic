@@ -22,6 +22,12 @@ const howItWorksSteps = [
   },
 ];
 
+/** Plain-data form of the 3 home "How It Works" steps (no icons), exported
+ * for the home-page HowTo JSON-LD in App.tsx — single source of truth, so the
+ * structured data always matches the steps rendered below. */
+export const HOW_IT_WORKS_STEPS: Array<{ step: string; title: string; description: string }> =
+  howItWorksSteps.map(({ step, title, description }) => ({ step, title, description }));
+
 const features = [
   {
     title: 'Compress JPG, PNG, WebP & HEIC',
