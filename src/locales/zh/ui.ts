@@ -412,6 +412,18 @@ export const ZH = {
     featuresTitle: '为什么使用CompressMyPic的{name}？', // 'Why Use CompressMyPic {name}?'
     faqTitle: '{name} — 常见问题', // '{name} — Frequently Asked Questions'
     relatedTitle: '相关免费图片工具', // 'Related Free Image Tools'
+    commentsTitle: '评论',
+    commentsNote: '分享您对这个工具的看法 — 只需写下您的名字即可发布，无需账号。',
+    commentsNamePlaceholder: '您的名字',
+    commentsTextPlaceholder: '写下您的评论…',
+    commentsSubmit: '发布评论',
+    commentsPosting: '发布中…',
+    commentsEmpty: '成为第一个评论的人。',
+    commentsPosted: '谢谢！您的评论已发布。',
+    commentsLoadError: '无法加载评论，请重试。',
+    commentsPostError: '无法发布评论，请重试。',
+    commentsRetry: '重试',
+    commentsLoading: '正在加载评论…',
   },
   uploadZone: {
     dropText: '将图片拖放到此处', // 'Drag & drop images here'
