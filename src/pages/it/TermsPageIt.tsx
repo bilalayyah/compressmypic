@@ -21,7 +21,7 @@ export const TermsPageIt: React.FC<TermsPageItProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/it/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Torna al compressore di immagini</span>
@@ -29,22 +29,22 @@ export const TermsPageIt: React.FC<TermsPageItProps> = ({ onNavigate }) => {
         </div>
 
         {/* Page Title */}
-        <div className="border-b border-slate-200 pb-6 mb-8">
+        <div className="border-b border-[var(--line)] pb-6 mb-8">
           <div className="flex items-center gap-2.5 mb-2">
-            <FileText className="w-6 h-6 text-indigo-600" />
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <FileText className="w-6 h-6 text-[#7c3aed] dark:text-[#a78bfa]" />
+            <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">
               Termini di servizio
             </h1>
           </div>
-          <p className="text-xs text-slate-500 font-medium">
+          <p className="text-xs text-[var(--ink-3)] font-medium">
             Ultimo aggiornamento: 12 novembre 2026
           </p>
         </div>
 
         {/* Content */}
-        <div className="space-y-6 text-base text-slate-700 leading-relaxed">
+        <div className="space-y-6 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-900">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
               1. Accettazione dei termini
             </h2>
             <p>
@@ -53,7 +53,7 @@ export const TermsPageIt: React.FC<TermsPageItProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-900">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
               2. Uso consentito
             </h2>
             <p>
@@ -62,7 +62,7 @@ export const TermsPageIt: React.FC<TermsPageItProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-900">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
               3. Diritti di proprietà intellettuale
             </h2>
             <p>
@@ -71,7 +71,7 @@ export const TermsPageIt: React.FC<TermsPageItProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-900">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
               4. Esclusione di garanzie
             </h2>
             <p>
@@ -79,15 +79,15 @@ export const TermsPageIt: React.FC<TermsPageItProps> = ({ onNavigate }) => {
             </p>
           </section>
 
-          <section className="space-y-2 pt-2 border-t border-slate-200">
-            <h2 className="text-lg font-bold text-slate-900">
+          <section className="space-y-2 pt-2 border-t border-[var(--line)]">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
               5. Contatti
             </h2>
             <p>
               Se hai domande su questi termini, scrivici all’indirizzo{' '}
               <a
                 href="mailto:bilalayyah@gmail.com"
-                className="text-blue-600 hover:underline font-semibold"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
               >
                 bilalayyah@gmail.com
               </a>
