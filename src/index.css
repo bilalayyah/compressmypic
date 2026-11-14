@@ -343,3 +343,30 @@ html.dark input[type="range"]::-moz-range-thumb {
     border-color: rgba(96, 165, 250, 0.6);
   }
 }
+
+
+/* CompressMyPic — Framer-inspired visual foundation */
+:root {
+  --cmp-accent: #7654e8;
+  --cmp-accent-strong: #6540d8;
+  --cmp-pink: #df69e8;
+  --cmp-ink: #17142b;
+  --cmp-muted: #716d82;
+  --cmp-surface: #faf9ff;
+}
+html { scroll-padding-top: 6rem; }
+body {
+  background: #ffffff;
+  color: var(--cmp-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: rgba(118,84,232,.18); color: #24164e; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+@media (prefers-reduced-motion: no-preference) {
+  .cmp-float { animation: cmp-float 7s ease-in-out infinite; }
+  @keyframes cmp-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-9px); }
+  }
+}
