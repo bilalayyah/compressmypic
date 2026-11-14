@@ -1591,9 +1591,14 @@ export default function App() {
   // for English (components fall back to their English defaults).
   const renderHome = (strings: EsLocale['ui'] | PtLocale['ui'] | FrLocale['ui'] | DeLocale['ui'] | ItLocale['ui'] | IdLocale['ui'] | RuLocale['ui'] | JaLocale['ui'] | KoLocale['ui'] | ZhLocale['ui'] | null) => (
     <>
-          <Hero strings={strings?.hero} />
+          <Hero
+            strings={strings?.hero}
+            onNavigate={handleNavigate}
+            onScrollToTool={scrollToTool}
+            toolsRegistry={toolsRegistry}
+          />
 
-          <main ref={toolRef} className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 pb-16">
+          <main id="home-compressor-workspace" ref={toolRef} className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 pb-16">
             <div className="space-y-6">
               {/* Upload Dropzone */}
               <UploadZone
@@ -1666,28 +1671,34 @@ export default function App() {
 
           {/* FAQ Section */}
           {/* Guides Section */}
-      <section className="py-16 sm:py-20 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+      <section className="py-16 sm:py-20 bg-[var(--bg-soft)] border-t border-[var(--line)]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">{strings?.guidesSection.heading ?? 'Guides'}</h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">{strings?.guidesSection.subheading ?? 'Step-by-step guides to get smaller files without losing visible quality.'}</p>
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <a href={toLocalizedPath('/guides/compress-images-for-whatsapp', lang)} onClick={(e) => { e.preventDefault(); handleNavigate('/guides/compress-images-for-whatsapp'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
-              <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3"><MessageCircle className="w-5 h-5" /></div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-slate-50">{strings?.guidesSection.cards[0].title ?? 'How to compress images for WhatsApp without losing quality'}</h3>
-              <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-normal">{strings?.guidesSection.cards[0].desc ?? 'Shrink photos before sending so they stay sharp and send fast.'}</p>
-              <span className="mt-3 inline-block text-sm font-semibold text-blue-600 dark:text-blue-400">{strings?.guidesSection.cards[0].cta ?? 'Read guide →'}</span>
+          <h2 className="text-2xl sm:text-3xl font-sans font-bold text-[var(--ink-navy)] tracking-tight">{strings?.guidesSection.heading ?? 'Guides'}</h2>
+          <p className="mt-4 text-base sm:text-lg text-[var(--ink-2)] leading-relaxed">{strings?.guidesSection.subheading ?? 'Step-by-step guides to get smaller files without losing visible quality.'}</p>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <a href={toLocalizedPath('/guides/compress-images-for-whatsapp', lang)} onClick={(e) => { e.preventDefault(); handleNavigate('/guides/compress-images-for-whatsapp'); }} className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#c4b5fd] dark:hover:border-[#8b5cf6] transition-all duration-200 flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-lg pastel-tile-6 flex items-center justify-center mb-3.5"><MessageCircle className="w-5 h-5" /></div>
+                <h3 className="text-lg font-sans font-bold text-[var(--ink-navy)] group-hover:text-[#7c3aed] dark:group-hover:text-[#c4b5fd] transition-colors leading-snug">{strings?.guidesSection.cards[0].title ?? 'How to compress images for WhatsApp without losing quality'}</h3>
+                <p className="mt-1.5 text-sm text-[var(--ink-3)] leading-relaxed">{strings?.guidesSection.cards[0].desc ?? 'Shrink photos before sending so they stay sharp and send fast.'}</p>
+              </div>
+              <span className="mt-4 inline-block text-[13px] font-semibold text-[#7c3aed] dark:text-[#c4b5fd]">{strings?.guidesSection.cards[0].cta ?? 'Read guide →'}</span>
             </a>
-            <a href={toLocalizedPath('/guides/jpg-vs-png-vs-webp', lang)} onClick={(e) => { e.preventDefault(); handleNavigate('/guides/jpg-vs-png-vs-webp'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
-              <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3"><FileImage className="w-5 h-5" /></div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-slate-50">{strings?.guidesSection.cards[1].title ?? 'JPG vs PNG vs WebP: Which Format Should You Use?'}</h3>
-              <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-normal">{strings?.guidesSection.cards[1].desc ?? 'File size, quality and transparency compared, so you can pick the right format.'}</p>
-              <span className="mt-3 inline-block text-sm font-semibold text-blue-600 dark:text-blue-400">{strings?.guidesSection.cards[1].cta ?? 'Read guide →'}</span>
+            <a href={toLocalizedPath('/guides/jpg-vs-png-vs-webp', lang)} onClick={(e) => { e.preventDefault(); handleNavigate('/guides/jpg-vs-png-vs-webp'); }} className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#c4b5fd] dark:hover:border-[#8b5cf6] transition-all duration-200 flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-lg pastel-tile-2 flex items-center justify-center mb-3.5"><FileImage className="w-5 h-5" /></div>
+                <h3 className="text-lg font-sans font-bold text-[var(--ink-navy)] group-hover:text-[#7c3aed] dark:group-hover:text-[#c4b5fd] transition-colors leading-snug">{strings?.guidesSection.cards[1].title ?? 'JPG vs PNG vs WebP: Which Format Should You Use?'}</h3>
+                <p className="mt-1.5 text-sm text-[var(--ink-3)] leading-relaxed">{strings?.guidesSection.cards[1].desc ?? 'File size, quality and transparency compared, so you can pick the right format.'}</p>
+              </div>
+              <span className="mt-4 inline-block text-[13px] font-semibold text-[#7c3aed] dark:text-[#c4b5fd]">{strings?.guidesSection.cards[1].cta ?? 'Read guide →'}</span>
             </a>
-            <a href={toLocalizedPath('/guides/reduce-image-size-to-100kb', lang)} onClick={(e) => { e.preventDefault(); handleNavigate('/guides/reduce-image-size-to-100kb'); }} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-200 dark:hover:border-blue-500/50 transition-shadow">
-              <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3"><Zap className="w-5 h-5" /></div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-slate-50">{strings?.guidesSection.cards[2].title ?? 'How to Reduce Image Size to 100KB for Web &amp; Email'}</h3>
-              <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-normal">{strings?.guidesSection.cards[2].desc ?? 'Step-by-step: hit 100KB without losing visible quality.'}</p>
-              <span className="mt-3 inline-block text-sm font-semibold text-blue-600 dark:text-blue-400">{strings?.guidesSection.cards[2].cta ?? 'Read guide →'}</span>
+            <a href={toLocalizedPath('/guides/reduce-image-size-to-100kb', lang)} onClick={(e) => { e.preventDefault(); handleNavigate('/guides/reduce-image-size-to-100kb'); }} className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#c4b5fd] dark:hover:border-[#8b5cf6] transition-all duration-200 flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-lg pastel-tile-0 flex items-center justify-center mb-3.5"><Zap className="w-5 h-5" /></div>
+                <h3 className="text-lg font-sans font-bold text-[var(--ink-navy)] group-hover:text-[#7c3aed] dark:group-hover:text-[#c4b5fd] transition-colors leading-snug">{strings?.guidesSection.cards[2].title ?? 'How to Reduce Image Size to 100KB for Web &amp; Email'}</h3>
+                <p className="mt-1.5 text-sm text-[var(--ink-3)] leading-relaxed">{strings?.guidesSection.cards[2].desc ?? 'Step-by-step: hit 100KB without losing visible quality.'}</p>
+              </div>
+              <span className="mt-4 inline-block text-[13px] font-semibold text-[#7c3aed] dark:text-[#c4b5fd]">{strings?.guidesSection.cards[2].cta ?? 'Read guide →'}</span>
             </a>
           </div>
         </div>
@@ -1706,7 +1717,7 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100">
+    <div className="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--ink)]">
       {/* 1. Header */}
       <Header
         onNavigate={handleNavigate}
@@ -1729,10 +1740,10 @@ export default function App() {
         <main className="flex-1">
           <div className="max-w-5xl mx-auto px-4 py-20 text-center">
             <div
-              className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-slate-300 border-t-blue-600"
+              className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-[var(--line-strong)] border-t-[#7c3aed]"
               aria-hidden="true"
             />
-            <p className="mt-4 text-sm text-slate-500">{localeLoadingText}</p>
+            <p className="mt-4 text-sm text-[var(--ink-3)]">{localeLoadingText}</p>
           </div>
         </main>
       ) : lang !== 'en' && currentPath === '/' ? (
@@ -7265,7 +7276,7 @@ zhStrings={
         <main className="flex-1">
           <Suspense
             fallback={
-              <div className="max-w-5xl mx-auto px-4 py-20 text-center text-sm text-slate-500">
+              <div className="max-w-5xl mx-auto px-4 py-20 text-center text-sm text-[var(--ink-3)]">
                 Loading Background Remover...
               </div>
             }
