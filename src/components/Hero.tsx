@@ -34,20 +34,20 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ strings = EN_STRINGS }) => {
   return (
-    <section className="pt-10 pb-6 sm:pt-14 sm:pb-8 text-center px-4 max-w-4xl mx-auto">
+    <section className="relative isolate overflow-hidden pt-16 pb-12 sm:pt-24 sm:pb-16 text-center px-4 max-w-5xl mx-auto">
       {/* Primary Trust Callout */}
-      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs sm:text-sm font-medium mb-6">
+      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-50 border border-violet-100 text-violet-700 text-xs sm:text-sm font-semibold mb-7 shadow-[0_6px_24px_rgba(118,84,232,0.08)]">
         <Lock className="w-3.5 h-3.5 text-blue-600" />
         <span>{strings.pill}</span>
       </div>
-      <h1 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold text-slate-900 tracking-tight text-balance leading-tight sm:leading-tight">
+      <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold bg-gradient-to-r from-[#21183d] via-[#6844d9] to-[#d45cce] bg-clip-text text-transparent tracking-[-0.045em] text-balance leading-[1.08] sm:leading-[1.06]">
         {strings.h1}
       </h1>
-      <p className="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed text-balance">
+      <p className="mt-6 text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed text-balance">
         {strings.sub}
       </p>
       {/* Trust Badges Bar */}
-      <div className="mt-6 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs sm:text-sm text-slate-500 font-medium">
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-y-3 gap-x-7 text-xs sm:text-sm text-slate-500 font-medium">
         <div className="flex items-center gap-1.5">
           <ShieldCheck className="w-4 h-4 text-emerald-600" />
           <span>{strings.badge1}</span>
