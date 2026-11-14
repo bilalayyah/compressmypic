@@ -68,6 +68,7 @@ export const KO = {
     processedLocally: 'HTML5 Canvas로 기기에서 처리', // 'Processed locally via HTML5 Canvas'
     bottomRights:
       '© {year} CompressMyPic. 모든 권리 보유. 무료 브라우저 기반 이미지 압축 유틸리티.', // '© {year} CompressMyPic. All rights reserved. Free client-side image compression utility.'
+    deployedNote: 'Crafted with ❤️ by Bilal inspired by Shaheen',
     contactLabel: '문의: bilalayyah@gmail.com', // 'Contact: bilalayyah@gmail.com'
     toolsLinks: [
       { slug: '/', label: '이미지 압축' }, // 'Compress Images'
