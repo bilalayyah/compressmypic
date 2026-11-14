@@ -1,0 +1,17 @@
+# Trailing-slash duplicates -> canonical slash-less URL (301).
+# Single dynamic rule: the splat captures the whole path (including
+# locale prefixes, e.g. /de/alle-tools/) and the destination drops the
+# trailing slash. Must stay ABOVE the SPA fallback: _redirects rules
+# are first-match-wins. Root "/" alone does not match (the pattern
+# needs two slashes), so the homepage is untouched. The destination
+# has no trailing slash, so the rule cannot loop (a second slash, e.g.
+# /image-resizer//, strips one slash per hop and terminates).
+# Known limits of _redirects (per Cloudflare Pages docs, 2026-11-14):
+# no case-insensitive matching, so mixed-case duplicates
+# (/Image-Resizer) cannot be 301'd here, and query strings cannot be
+# stripped by _redirects; both are handled by the rendered canonical
+# tag instead.
+/*/ /:splat 301
+
+# SPA fallback: serve the app shell for every remaining path.
+/*    /index.html   200

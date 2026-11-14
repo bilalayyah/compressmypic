@@ -19,18 +19,6 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://compressmypic.online/#how-it-works</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://compressmypic.online/#faq</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://compressmypic.online/es/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://compressmypic.online/es/" />
