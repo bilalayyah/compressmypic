@@ -167,9 +167,9 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800"
+      className="sticky top-0 z-40 bg-white/85 dark:bg-slate-950/85 backdrop-blur-xl border-b border-violet-100/80 dark:border-slate-800 shadow-[0_8px_30px_rgba(30,20,70,0.04)]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4 sm:gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[76px] flex items-center justify-between gap-4 sm:gap-6">
         {/* Zone 1: Brand Wordmark */}
         <a
           href="/"
@@ -180,11 +180,11 @@ export const Header: React.FC<HeaderProps> = ({
           aria-label={strings.homeAriaLabel}
           className="flex items-center gap-2.5 text-xl font-bold tracking-tight text-slate-900 dark:text-white whitespace-nowrap shrink-0 group"
         >
-          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-sm group-hover:bg-blue-700 transition-colors">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-violet-600 to-fuchsia-500 flex items-center justify-center text-white shadow-sm group-hover:bg-violet-700 transition-colors">
             <Layers className="w-5 h-5" />
           </div>
           <span>
-            Compress<span className="text-blue-600 dark:text-blue-400">MyPic</span>
+            Compress<span className="text-violet-600 dark:text-violet-400">MyPic</span>
           </span>
         </a>
 
@@ -196,7 +196,7 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               handleNav('/');
             }}
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap shrink-0"
+            className="hover:text-violet-600 dark:hover:text-violet-400 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.home}
           </a>
@@ -210,7 +210,7 @@ export const Header: React.FC<HeaderProps> = ({
                 setThemeMenuOpen(false);
                 setLangMenuOpen(false);
               }}
-              className="flex items-center gap-1 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer whitespace-nowrap"
+              className="flex items-center gap-1 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-violet-600 dark:hover:text-violet-400 transition-colors cursor-pointer whitespace-nowrap"
               aria-expanded={toolsOpen}
               aria-haspopup="true"
             >
@@ -237,7 +237,7 @@ export const Header: React.FC<HeaderProps> = ({
                               e.preventDefault();
                               handleNav(tool.slug);
                             }}
-                            className="block px-2 py-1 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-blue-500/20 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                            className="block px-2 py-1 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-violet-50 dark:hover:bg-violet-500/20 hover:text-violet-600 dark:hover:text-violet-300 transition-colors"
                           >
                             {tool.name}
                           </a>
@@ -256,7 +256,7 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               handleNav('/#how-it-works');
             }}
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap shrink-0"
+            className="hover:text-violet-600 dark:hover:text-violet-400 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.howItWorks}
           </a>
@@ -266,7 +266,7 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               handleNav('/#faq');
             }}
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap shrink-0"
+            className="hover:text-violet-600 dark:hover:text-violet-400 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.faq}
           </a>
@@ -276,7 +276,7 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               handleNav('/about');
             }}
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap shrink-0"
+            className="hover:text-violet-600 dark:hover:text-violet-400 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.about}
           </a>
@@ -286,7 +286,7 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               handleNav('/contact');
             }}
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap shrink-0"
+            className="hover:text-violet-600 dark:hover:text-violet-400 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.contact}
           </a>
@@ -309,7 +309,7 @@ export const Header: React.FC<HeaderProps> = ({
               title={strings.languageLabel}
               className="inline-flex items-center gap-1.5 h-9 px-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer text-xs font-semibold"
             >
-              <Globe className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <Globe className="w-4 h-4 text-violet-600 dark:text-violet-400" />
               <span className="hidden lg:inline">{lang.toUpperCase()}</span>
               <ChevronDown
                 className={`w-3.5 h-3.5 text-slate-400 transition-transform ${
@@ -341,7 +341,7 @@ export const Header: React.FC<HeaderProps> = ({
                         !isAvailable
                           ? 'text-slate-400 dark:text-slate-500 cursor-not-allowed'
                           : isActive
-                          ? 'bg-blue-50 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 cursor-pointer'
+                          ? 'bg-violet-50 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300 cursor-pointer'
                           : 'text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700/70 cursor-pointer'
                       }`}
                     >
@@ -370,7 +370,7 @@ export const Header: React.FC<HeaderProps> = ({
               title={strings.themeTitle.replace('{current}', currentThemeLabel)}
               className="inline-flex items-center gap-1.5 h-9 px-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer text-xs font-semibold"
             >
-              <CurrentThemeIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <CurrentThemeIcon className="w-4 h-4 text-violet-600 dark:text-violet-400" />
               <span className="hidden lg:inline">
                 {preference === 'system'
                   ? strings.themeSystemShort
@@ -402,7 +402,7 @@ export const Header: React.FC<HeaderProps> = ({
                       onClick={() => handleSelectTheme(id)}
                       className={`w-full flex items-center justify-between gap-2 px-3.5 py-2 text-xs font-semibold transition-colors cursor-pointer ${
                         isActive
-                          ? 'bg-blue-50 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300'
+                          ? 'bg-violet-50 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300'
                           : 'text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700/70'
                       }`}
                     >
@@ -421,7 +421,7 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             type="button"
             onClick={onScrollToTool}
-            className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 active:bg-blue-800 transition-colors shadow-sm whitespace-nowrap shrink-0 cursor-pointer"
+            className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-white bg-violet-600 rounded-xl hover:bg-violet-700 active:bg-violet-800 transition-colors shadow-sm whitespace-nowrap shrink-0 cursor-pointer"
           >
             <span>{strings.compressImages}</span>
             <ArrowUpRight className="w-4 h-4" />
@@ -435,7 +435,7 @@ export const Header: React.FC<HeaderProps> = ({
               setThemeMenuOpen(false);
               setLangMenuOpen(false);
             }}
-            className="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-violet-500"
             aria-label={strings.menuAriaLabel}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -472,7 +472,7 @@ export const Header: React.FC<HeaderProps> = ({
                     onClick={() => handleSelectTheme(id)}
                     className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
                       isActive
-                        ? 'bg-white dark:bg-slate-700 text-blue-700 dark:text-blue-300 shadow-xs'
+                        ? 'bg-white dark:bg-slate-700 text-violet-700 dark:text-violet-300 shadow-xs'
                         : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
@@ -505,7 +505,7 @@ export const Header: React.FC<HeaderProps> = ({
                       !isAvailable
                         ? 'text-slate-400 dark:text-slate-500 cursor-not-allowed'
                         : isActive
-                        ? 'bg-white dark:bg-slate-700 text-blue-700 dark:text-blue-300 shadow-xs cursor-pointer'
+                        ? 'bg-white dark:bg-slate-700 text-violet-700 dark:text-violet-300 shadow-xs cursor-pointer'
                         : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white cursor-pointer'
                     }`}
                   >
@@ -534,7 +534,7 @@ export const Header: React.FC<HeaderProps> = ({
                           e.preventDefault();
                           handleNav(tool.slug);
                         }}
-                        className="block px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-blue-500/20 hover:text-blue-600 dark:hover:text-blue-300 rounded-md truncate"
+                        className="block px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-violet-50 dark:hover:bg-violet-500/20 hover:text-violet-600 dark:hover:text-violet-300 rounded-md truncate"
                       >
                         {tool.name}
                       </a>
@@ -598,7 +598,7 @@ export const Header: React.FC<HeaderProps> = ({
                 setLangMenuOpen(false);
                 onScrollToTool();
               }}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 active:bg-blue-800 transition-colors shadow-sm"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-violet-600 rounded-lg hover:bg-violet-700 active:bg-violet-800 transition-colors shadow-sm"
             >
               <span>{strings.compressImages}</span>
               <ArrowUpRight className="w-4 h-4" />
