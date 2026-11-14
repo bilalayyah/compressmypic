@@ -154,7 +154,7 @@ export const ZH = {
   },
   hero: {
     pill: '100% 私密本地压缩 · 不上传服务器', // '100% Private Client-Side Compression · No Server Uploads'
-    h1: '免费图片压缩工具 – 在线压缩图片，在不损失画质的前提下减小体积', // 'Free Image Compressor – Compress Images on the web & Reduce Size Without Losing Quality'
+    h1: '免费图片压缩工具 – 在线压缩图片', // 'Free Image Compressor – Compress Images Online'
     sub: '在不损失肉眼可见画质的前提下减小图片文件体积。免费在线压缩图片，使用我们的免费图片压缩工具和照片压缩工具——一款支持JPG、PNG、WebP和HEIC的在线图片优化工具。快速、安全，无需注册、无水印，直接在浏览器中轻松压缩图片。', // 'Reduce image file sizes without sacrificing noticeable quality. Compress image on the web free with our free image compressor and photo compressor — an on the web image optimizer for JPG, PNG, WebP and HEIC. Fast, secure, no signup, no watermark, and easy image compression directly in your browser.'
     badge1: '您的图片永远不会离开您的设备', // 'Your images never leave your device'
     badge2: '浏览器即时处理', // 'Instant browser processing'
@@ -413,6 +413,7 @@ export const ZH = {
     featuresTitle: '为什么使用CompressMyPic的{name}？', // 'Why Use CompressMyPic {name}?'
     faqTitle: '{name} — 常见问题', // '{name} — Frequently Asked Questions'
     relatedTitle: '相关免费图片工具', // 'Related Free Image Tools'
+    relatedLinksIntro: '您可能还需要：', // 'You may also need:'
     commentsTitle: '评论',
     commentsNote: '分享您对这个工具的看法 — 只需写下您的名字即可发布，无需账号。',
     commentsNamePlaceholder: '您的名字',
@@ -464,10 +465,9 @@ export const ZH = {
     altProcessed: '{name}的处理后版本', // 'Processed version of {name}'
   },
   homeMeta: {
-    seoTitle: '免费在线图片压缩工具 – 图片压缩到100KB', // 'Free Image Compressor on the web – Reduce Image Size to 100KB'
-    seoDescription:
-      '免费在线压缩图片，在不损失肉眼可见画质的前提下减小图片体积。支持JPG、PNG、WebP和HEIC，无需注册、无水印，直接在浏览器中处理，安全又快速。立即免费压缩您的照片和网站图片吧。无论是网站图片、社交媒体照片还是邮件附件，都能快速变小、保持清晰，几秒钟即可完成，无需安装任何软件。随时随地都能用。', // 'Compress image on the web free — reduce image size without losing quality. Compress JPG, PNG and WebP with no signup and no watermark, right in your browser.'
-    h1: '免费在线图片压缩工具', // 'Free Image Compressor'
+    seoTitle: '免费图片压缩工具 – 在线压缩图片，无需注册', // 'Free Image Compressor – Compress Images Online, No Signup'
+    seoDescription: '免费在线压缩图片，在不损失画质的前提下减小 JPG、PNG 和 WebP 的体积。无需注册、无水印——您的照片永远不会离开浏览器。', // 'Compress images online free and reduce JPG, PNG and WebP size without losing quality. No signup, no watermark — your photos never leave your own browser.'
+    h1: '免费图片压缩工具 – 在线压缩图片', // 'Free Image Compressor – Compress Images Online'
     subtitle: '直接在浏览器中减小JPG、PNG、WebP和HEIC的文件体积。', // 'Reduce JPG, PNG, WebP & HEIC file size directly in your browser.'
   },
   categories: {

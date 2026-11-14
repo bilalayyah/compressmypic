@@ -26,10 +26,9 @@ export const TOOLS_REGISTRY_ZH: ToolDefinition[] = [
   name: '图片压缩器', // 'Image Compressor'
   shortDescription: '在不损失画质的前提下压缩JPG、PNG、WebP和HEIC图片。', // 'Compress JPG, PNG, WebP & HEIC images without losing quality.'
   category: 'compress',
-  seoTitle: '免费在线图片压缩工具 – 图片压缩到100KB',
-  seoDescription:
-    '免费在线压缩图片，在不损失肉眼可见画质的前提下减小图片体积。支持JPG、PNG、WebP和HEIC，无需注册、无水印，直接在浏览器中处理，安全又快速。立即免费压缩您的照片和网站图片吧。无论是网站图片、社交媒体照片还是邮件附件，都能快速变小、保持清晰，几秒钟即可完成，无需安装任何软件。随时随地都能用。',
-  h1: '免费在线图片压缩工具', // 'Free Image Compressor'
+  seoTitle: '免费图片压缩工具 – 在线压缩图片，无需注册',
+  seoDescription: '免费在线压缩图片，在不损失画质的前提下减小 JPG、PNG 和 WebP 的体积。无需注册、无水印——您的照片永远不会离开浏览器。',
+  h1: '免费图片压缩工具 – 在线压缩图片', // 'Free Image Compressor – Compress Images Online'
   subtitle: '直接在浏览器中减小JPG、PNG、WebP和HEIC的文件体积。', // 'Reduce JPG, PNG, WebP & HEIC file size directly in your browser.'
   howToSteps: [],
   features: [],
@@ -551,7 +550,7 @@ export const TOOLS_REGISTRY_ZH: ToolDefinition[] = [
     seoTitle: '免费图片转 PDF 转换器 – 合并多张照片为 PDF',
     seoDescription:
       '使用浏览器图片转 PDF 转换器，把多张照片合并为一份文档。自由调整页面顺序，选择 A4 或 Letter 尺寸，设置边距、方向与画质，离线本地生成，无需上传服务器，没有水印，适合收据、证件与扫描件提交。把身份证件、收据与课堂笔记快速整理为一份清晰的 PDF，方便打印、归档与提交，随时随地都能用，上手简单。',
-    h1: '图片转 PDF 转换器',
+    h1: '免费在线图片转 PDF 转换器',
     subtitle:
       '适合学生、自由职业者、会计以及任何需要提交身份证件或收据的人，这款私密图片转 PDF 转换器可把多张照片合并为一份清晰的多页 PDF。自由调整页面顺序，选择 A4、US Letter 或适应图片尺寸，调整边距与画质，并在本地生成文档，全程零服务器上传。',
     howToSteps: [
@@ -7598,9 +7597,8 @@ export const TOOLS_REGISTRY_ZH: ToolDefinition[] = [
     name: '背景去除工具',
     shortDescription: '使用 AI 在浏览器中去除图片背景，导出透明 PNG。',
     category: 'ai-tools',
-    seoTitle: '免费在线AI抠图去背景 — 无需注册',
-    seoDescription:
-      '免费在线用浏览器内AI去除图片背景。下载透明PNG，或加上白色、黑色或自定义背景。私密处理，无需注册，没有水印，一次处理一张照片，最大20 MB，首次加载约35 MB模型后缓存，人像、产品与宠物抠图都干净利落，支持分屏对比边缘，导出图片保持原始分辨率，可直接用于Canva与PowerPoint，手机浏览器同样支持。',
+    seoTitle: '免费去除图片背景 – AI 处理，无需注册',
+    seoDescription: '用浏览器内置 AI 免费去除任何图片的背景。下载透明 PNG，或添加白色、黑色或自定义背景——无需注册，无需上传。',
     h1: '免费在线AI背景去除工具',
     subtitle:
       '使用免费的AI背景去除工具，去除人像、产品照片、宠物和标志的背景，全程在浏览器内运行。专为需要快速干净抠图的卖家、创作者和设计师打造；只需加载一次小巧的AI模型（约35 MB，之后会缓存），一次处理一张最大20 MB的照片，导出透明PNG，或把抠图放在白色、黑色或自定义背景上。',
