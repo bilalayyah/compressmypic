@@ -21,7 +21,7 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/ru/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Назад к компрессору изображений</span>
@@ -29,20 +29,20 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
         </div>
 
         {/* Page Title */}
-        <div className="border-b border-slate-200 pb-6 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <div className="border-b border-[var(--line)] pb-6 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">
             О CompressMyPic
           </h1>
-          <p className="mt-3 text-lg font-medium text-slate-700 leading-relaxed">
+          <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             CompressMyPic — это бесплатный и приватный компрессор изображений. Сжимайте изображения JPG, PNG и WebP прямо в браузере — быстро, безопасно и без загрузки файлов куда-либо.
           </p>
         </div>
 
         {/* Core Content */}
-        <div className="space-y-8 text-base text-slate-600 leading-relaxed">
+        <div className="space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Cpu className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Cpu className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <span>Что такое CompressMyPic?</span>
             </h2>
             <p>
@@ -57,8 +57,8 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Layers className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <span>Поддерживаемые форматы: JPG, PNG и WebP</span>
             </h2>
             <p>
@@ -70,44 +70,44 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Shield className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Shield className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>Наши основные принципы</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Абсолютная приватность</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-0 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">Абсолютная приватность</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   Ни один файл никогда не касается внешнего сервера или базы данных. Ваши фотографии и конфиденциальная графика остаются строго на вашем локальном устройстве. Поскольку сжатие происходит на стороне клиента, вашу работу не видит никто другой.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Просто и бесплатно</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-2 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">Просто и бесплатно</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   Никакой установки программ, платных тарифов, скрытых платежей, создания аккаунта, подтверждения электронной почты и пробных ограничений. Сжимайте изображения online бесплатно — это действительно бесплатно, без регистрации и без водяных знаков на сжатых изображениях.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Качество, которым управляете вы</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-6 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">Качество, которым управляете вы</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   Мы поддерживаем точную настройку: перемещайте ползунок качества в реальном времени, выбирайте любой из пресетов «Низкое», «Сбалансированное» или «Высокое», задавайте выходной формат файла и сравнивайте каждое изображение рядом, чтобы мгновенно заметить различия. Уменьшайте размер изображения без потери качества — на ваших условиях.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Пакетный компрессор изображений</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-9 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">Пакетный компрессор изображений</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   Сжимайте несколько изображений сразу с одинаковыми настройками и скачивайте их все вместе с помощью кнопки «Скачать все (ZIP)» — пакетный компрессор изображений для фотобиблиотек, каталогов товаров и папок с изображениями для сайтов.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Автоматические проверки безопасности</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-10 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">Автоматические проверки безопасности</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   Компрессор определяет прозрачность в ваших изображениях. Если вы выберете выходной формат JPEG для прозрачного PNG, мы покажем предупреждение, потому что JPEG не поддерживает прозрачность, — так вы никогда случайно не потеряете альфа-канал.
                 </p>
               </div>
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                <div className="font-bold text-slate-900 text-sm mb-1">Быстрая работа</div>
-                <p className="text-xs text-slate-600">
+              <div className="p-4 rounded-2xl border pastel-card-12 shadow-[var(--shadow)]">
+                <div className="font-bold text-[var(--ink-navy)] text-sm mb-1">Быстрая работа</div>
+                <p className="text-xs text-[var(--ink-2)]">
                   Поскольку вся обработка происходит локально на вашем устройстве, не нужно ждать, пока файлы загрузятся на сервер и вернутся обратно. Вы можете быстро сжимать фотографии, даже большие файлы до 20 МБ на изображение, на компьютере или телефоне.
                 </p>
               </div>
@@ -115,8 +115,8 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Users className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Users className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <span>Для кого предназначен CompressMyPic?</span>
             </h2>
             <p>
@@ -128,8 +128,8 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <Lock className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Lock className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>Приватность и безопасность</span>
             </h2>
             <p>
@@ -143,7 +143,7 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
               <button
                 type="button"
                 onClick={() => onNavigate('/ru/konfidentsialnost')}
-                className="text-blue-600 hover:text-blue-700 font-semibold cursor-pointer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
               >
                 Политику конфиденциальности
               </button>
@@ -152,8 +152,8 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>Наша миссия</span>
             </h2>
             <p>
@@ -168,14 +168,14 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
             <button
               type="button"
               onClick={() => onNavigate('/ru/')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-2.5 btn-purple-pill text-sm font-semibold shadow-sm cursor-pointer"
             >
               Начать сжимать изображения
             </button>
             <button
               type="button"
               onClick={() => onNavigate('/ru/kontakty')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-white text-slate-900 text-sm font-bold border border-slate-200 shadow-xs hover:bg-slate-50 transition-colors cursor-pointer"
+              className="flex-1 px-5 py-2.5 rounded-full bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:bg-[var(--surface-2)] transition-colors cursor-pointer"
             >
               Связаться с нами
             </button>
