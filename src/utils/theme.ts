@@ -32,11 +32,12 @@ export function applyTheme(preference: ThemePreference): ResolvedTheme {
   if (typeof document !== 'undefined') {
     const root = document.documentElement;
     root.classList.toggle('dark', resolved === 'dark');
+    root.setAttribute('data-theme', resolved);
     root.style.colorScheme = resolved;
 
     const themeColorMeta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
     if (themeColorMeta) {
-      themeColorMeta.content = resolved === 'dark' ? '#0b1120' : '#2563eb';
+      themeColorMeta.content = resolved === 'dark' ? '#0f172a' : '#f8f7ff';
     }
   }
   return resolved;
