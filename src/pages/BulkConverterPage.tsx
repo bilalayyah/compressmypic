@@ -191,6 +191,26 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
     };
   }, []);
 
+  // D1 REAL fix (same defect as /image-converter): re-convert
+  // already-converted items when the target format changes, so Download /
+  // Download ZIP never serve the stale previous-format blobs. If a
+  // conversion is in flight when the format changes, the re-convert waits
+  // until it finishes (isProcessing dep) instead of racing it.
+  const prevTargetFormatRef = useRef(targetFormat);
+  const formatChangePendingRef = useRef(false);
+  useEffect(() => {
+    if (prevTargetFormatRef.current !== targetFormat) {
+      prevTargetFormatRef.current = targetFormat;
+      formatChangePendingRef.current = true;
+    }
+    if (!formatChangePendingRef.current || isProcessing) return;
+    const done = itemsRef.current.filter((i) => i.status === 'done' && i.compressedBlob);
+    formatChangePendingRef.current = false;
+    if (done.length === 0) return;
+    void handleConvertAll();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [targetFormat, isProcessing]);
+
   const convertItem = async (item: ImageItem): Promise<ImageItem> => {
     try {
       const res = await convertImageFile(item.file, targetFormat, quality, backgroundColor);

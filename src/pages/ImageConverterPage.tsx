@@ -178,6 +178,28 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({
     };
   }, []);
 
+  // D1 REAL fix: re-convert already-converted items when the target format
+  // changes. The Phase 8 fix landed in FormatConverterTool.tsx, which this
+  // page does NOT use — this page has its own inline implementation, so the
+  // effect belongs here. Without it, the stale previous-format blob stays
+  // attached and Download silently saves the wrong format. If a conversion
+  // is in flight when the format changes, the re-convert waits until it
+  // finishes (isProcessing dep) instead of racing it.
+  const prevTargetFormatRef = useRef(targetFormat);
+  const formatChangePendingRef = useRef(false);
+  useEffect(() => {
+    if (prevTargetFormatRef.current !== targetFormat) {
+      prevTargetFormatRef.current = targetFormat;
+      formatChangePendingRef.current = true;
+    }
+    if (!formatChangePendingRef.current || isProcessing) return;
+    const done = itemsRef.current.filter((i) => i.status === 'done' && i.compressedBlob);
+    formatChangePendingRef.current = false;
+    if (done.length === 0) return;
+    void handleConvertAll();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [targetFormat, isProcessing]);
+
   const convertItem = async (
     item: ImageItem,
     fmt: 'jpeg' | 'png' | 'webp' = targetFormat,
