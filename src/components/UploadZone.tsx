@@ -186,10 +186,10 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         onClick={() => !disabled && fileInputRef.current?.click()}
-        className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-12 text-center transition-all cursor-pointer select-none ${
+        className={`relative border-2 border-dashed rounded-[28px] p-8 sm:p-14 text-center transition-all cursor-pointer select-none ${
           isDragging
-            ? 'border-blue-500 bg-blue-50/70 scale-[1.01]'
-            : 'border-slate-300 hover:border-blue-400 bg-white hover:bg-slate-50/60 shadow-xs'
+            ? 'border-violet-500 bg-violet-50/70 scale-[1.01]'
+            : 'border-violet-200 hover:border-violet-400 bg-gradient-to-br from-white via-white to-violet-50/70 hover:from-violet-50/60 hover:to-fuchsia-50/50 shadow-[0_18px_55px_rgba(88,60,170,0.08)]'
         } ${disabled ? 'opacity-60 cursor-not-allowed' : ''}`}
         role="button"
         tabIndex={0}
@@ -213,21 +213,21 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
 
         <div className="flex flex-col items-center justify-center max-w-md mx-auto">
           <div
-            className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-colors ${
-              isDragging ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-600'
+            className={`w-20 h-20 rounded-[24px] flex items-center justify-center mb-4 transition-colors ${
+              isDragging ? 'bg-violet-600 text-white' : 'bg-violet-50 text-violet-600'
             }`}
           >
             <UploadCloud className="w-8 h-8" />
           </div>
 
-          <p className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
+          <p className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
             {resolvedTitle}
           </p>
           <p className="mt-1 text-sm text-slate-500">
             {subtitle || (
               <>
                 {browsePrefix}{' '}
-                <span className="text-blue-600 font-semibold underline underline-offset-2">
+                <span className="text-violet-600 font-semibold underline underline-offset-2">
                   {browseButtonText}
                 </span>{' '}
                 {browseSuffixText}
@@ -246,7 +246,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
                 : `Max ${maxFileSizeMB} MB per image`}
             </span>
             <span className="hidden sm:inline-flex items-center gap-1 font-medium bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">
-              <Sparkles className="w-3.5 h-3.5 text-blue-500" />
+              <Sparkles className="w-3.5 h-3.5 text-violet-500" />
               {strings?.orPaste ?? 'Paste (Ctrl+V) supported'}
             </span>
           </div>
