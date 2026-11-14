@@ -288,7 +288,7 @@ export const Footer: React.FC<FooterProps> = ({
           <p>
             {strings.deployedNote.split(/(Bilal|Shaheen)/g).map((part, index) =>
               part === 'Bilal' || part === 'Shaheen' ? (
-                <span key={index} className="font-script text-base pr-2">
+                <span key={index} className="font-script text-base pr-1">
                   {part}
                 </span>
               ) : (
