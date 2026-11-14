@@ -146,7 +146,7 @@ export const IT = {
   },
   hero: {
     pill: 'Compressione 100% privata sul dispositivo · Nessun caricamento sui server',
-    h1: 'Compressore di immagini gratuito – Comprimi immagini online e riduci le dimensioni senza perdere qualità',
+    h1: 'Compressore di immagini gratuito – Comprimi immagini online',
     sub: 'Riduci le dimensioni dei file immagine senza sacrificare la qualità visibile. Comprimi immagini online gratis con il nostro compressore di immagini e foto gratuito: un ottimizzatore di immagini online per JPG, PNG, WebP e HEIC. Veloce, sicuro, senza registrazione, senza filigrana e con una compressione facile direttamente nel browser.',
     badge1: 'Le tue immagini non lasciano mai il tuo dispositivo',
     badge2: 'Elaborazione istantanea nel browser',
@@ -405,6 +405,7 @@ export const IT = {
     featuresTitle: 'Perché usare {name} di CompressMyPic?',
     faqTitle: '{name} — Domande frequenti',
     relatedTitle: 'Strumenti gratuiti per immagini correlati',
+    relatedLinksIntro: 'Potrebbe servirti anche:',
     commentsTitle: 'Commenti',
     commentsNote: 'Condividi la tua opinione su questo strumento: scrivi solo il tuo nome e pubblica. Nessun account necessario.',
     commentsNamePlaceholder: 'Il tuo nome',
@@ -456,10 +457,9 @@ export const IT = {
     altProcessed: 'Versione elaborata di {name}', // 'Processed version of {name}'
   },
   homeMeta: {
-    seoTitle: 'Compressore immagini gratis online – Riduci a 100 KB',
-    seoDescription:
-      'Comprimi immagini gratis: riduci le dimensioni senza perdere qualità. Comprimi JPG, PNG e WebP senza registrazione né filigrana, direttamente nel browser.',
-    h1: 'Compressore di immagini gratuito online',
+    seoTitle: 'Compressore di immagini gratuito – Comprimi immagini online, senza registrazione',
+    seoDescription: 'Comprimi immagini online gratis e riduci le dimensioni di JPG, PNG e WebP senza perdere qualità. Senza registrazione né filigrana: le tue foto non lasciano mai il browser.',
+    h1: 'Compressore di immagini gratuito – Comprimi immagini online',
     subtitle: 'Riduci le dimensioni dei file JPG, PNG, WebP e HEIC direttamente nel browser.',
   },
   categories: {

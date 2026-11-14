@@ -26,10 +26,9 @@ export const TOOLS_REGISTRY_IT: ToolDefinition[] = [
   name: 'Compressore di immagini',
   shortDescription: 'Comprimi immagini JPG, PNG, WebP e HEIC senza perdere qualità.',
   category: 'compress',
-  seoTitle: 'Compressore immagini gratis online – Riduci a 100 KB',
-  seoDescription:
-    'Comprimi immagini gratis: riduci le dimensioni senza perdere qualità. Comprimi JPG, PNG e WebP senza registrazione né filigrana, direttamente nel browser.',
-  h1: 'Compressore di immagini gratuito online',
+  seoTitle: 'Compressore di immagini gratuito – Comprimi immagini online, senza registrazione',
+  seoDescription: 'Comprimi immagini online gratis e riduci le dimensioni di JPG, PNG e WebP senza perdere qualità. Senza registrazione né filigrana: le tue foto non lasciano mai il browser.',
+  h1: 'Compressore di immagini gratuito – Comprimi immagini online',
   subtitle: 'Riduci le dimensioni dei file JPG, PNG, WebP e HEIC direttamente nel browser.',
   howToSteps: [],
   features: [],
@@ -551,7 +550,7 @@ export const TOOLS_REGISTRY_IT: ToolDefinition[] = [
     seoTitle: 'Immagine in PDF gratis – Unisci foto in PDF',
     seoDescription:
       'Trasforma più foto in un unico documento con il convertitore da immagine a PDF nel browser. Riordina le pagine, scegli A4 o Letter e salva offline, gratis.',
-    h1: 'Convertitore da immagine a PDF',
+    h1: 'Convertitore gratuito online da immagine a PDF',
     subtitle:
       'Ideale per studenti, freelance, commercialisti e chiunque invii documenti o ricevute, questo convertitore privato da immagine a PDF unisce più foto in un unico PDF nitido multi-pagina. Riordina le pagine liberamente, scegli A4, Letter USA o Adatta all\'immagine, regola margini e qualità e crea il documento localmente senza caricare nulla su server.',
     howToSteps: [
@@ -7680,9 +7679,8 @@ export const TOOLS_REGISTRY_IT: ToolDefinition[] = [
     name: 'Rimuovi Sfondo',
     shortDescription: 'Rimuovi lo sfondo delle immagini con l’IA nel browser ed esporta PNG trasparenti.',
     category: 'ai-tools',
-    seoTitle: 'Rimuovi sfondo gratis – Ritagli AI, senza registrazione',
-    seoDescription:
-      'Rimuovi lo sfondo delle foto gratis con l’IA nel browser. Scarica un PNG trasparente o aggiungi uno sfondo bianco, nero o personalizzato — privato, senza login.',
+    seoTitle: 'Rimuovi lo sfondo da un’immagine gratis – IA, senza registrazione',
+    seoDescription: 'Rimuovi lo sfondo da qualsiasi immagine gratis con l’IA nel browser. Scarica un PNG trasparente o aggiungi uno sfondo bianco, nero o personalizzato: senza registrazione né caricamenti.',
     h1: 'Rimuovi sfondo AI gratuito online',
     subtitle:
       'Rimuovi lo sfondo da ritratti, foto di prodotto, animali e loghi con il nostro rimuovi sfondo AI gratuito, che funziona interamente nel tuo browser. Pensato per venditori, creator e designer che vogliono ritagli puliti in fretta, carica un modello AI compatto una sola volta (circa 35 MB, poi memorizzato nella cache), elabora una foto alla volta fino a 20 MB ed esporta un PNG trasparente — oppure posiziona il ritaglio su uno sfondo bianco, nero o personalizzato.',
