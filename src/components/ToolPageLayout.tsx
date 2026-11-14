@@ -299,9 +299,9 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
   }, [tool, canonicalUrl, pagePath, ui]);
 
   return (
-    <div className="bg-white dark:bg-slate-950">
+    <div className="cmp-tool-page bg-white dark:bg-slate-950">
       {/* Hero / Page Header */}
-      <section className="pt-8 pb-6 sm:pt-12 sm:pb-8 px-4 max-w-5xl mx-auto text-center">
+      <section className="relative pt-12 pb-10 sm:pt-16 sm:pb-12 px-4 max-w-6xl mx-auto text-center">
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
@@ -313,7 +313,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
               e.preventDefault();
               onNavigate('/');
             }}
-            className="hover:text-blue-600 transition-colors"
+            className="hover:text-violet-600 transition-colors"
           >
             {ui.home}
           </a>
@@ -324,15 +324,15 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
         </nav>
 
         {/* Privacy Pill */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs sm:text-sm font-medium mb-5">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-violet-50 border border-violet-100 text-violet-700 text-xs sm:text-sm font-semibold mb-7 shadow-[0_8px_28px_rgba(118,84,232,0.08)]">
           <Lock className="w-3.5 h-3.5 text-blue-600" />
           <span>{ui.privacyPill}</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight text-balance leading-tight">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-[#21183d] via-[#6844d9] to-[#d45cce] bg-clip-text text-transparent tracking-[-0.04em] text-balance leading-[1.08]">
           {tool.h1}
         </h1>
-        <p className="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-5 text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
           {tool.subtitle}
         </p>
 
@@ -352,7 +352,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
       </section>
 
       {/* Main Tool Workspace */}
-      <section className="max-w-5xl w-full mx-auto px-4 sm:px-6 pb-14">
+      <section className="max-w-6xl w-full mx-auto px-4 sm:px-6 pb-16">
         {children}
       </section>
 
@@ -363,8 +363,8 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
 
       {/* How to Use Section */}
       {tool.howToSteps.length > 0 && (
-        <section className="py-12 sm:py-16 border-t border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <section className="py-16 sm:py-20 border-t border-violet-100 dark:border-slate-800 bg-[#faf9ff] dark:bg-slate-900">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               {ui.howToTitle.replace('{name}', tool.name)}
             </h2>
@@ -373,7 +373,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
               {tool.howToSteps.map((step, index) => (
                 <div
                   key={step.title}
-                  className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs"
+                  className="bg-white border border-violet-100 rounded-2xl p-6 shadow-[0_10px_35px_rgba(40,20,90,0.05)]"
                 >
                   <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-blue-50 text-blue-600 text-sm font-extrabold mb-3">
                     {index + 1}
@@ -391,7 +391,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
 
       {/* Key Capabilities & Privacy */}
       {tool.features.length > 0 && (
-        <section className="py-12 sm:py-16 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+        <section className="py-16 sm:py-20 border-t border-violet-100 dark:border-slate-800 bg-white dark:bg-slate-950">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               {ui.featuresTitle.replace('{name}', tool.name)}
@@ -400,7 +400,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
               {tool.features.map((feat) => (
                 <div
                   key={feat.title}
-                  className="bg-slate-50/70 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl p-5"
+                  className="bg-white dark:bg-slate-800/80 border border-violet-100 dark:border-slate-700 rounded-2xl p-6 shadow-[0_10px_35px_rgba(40,20,90,0.04)]"
                 >
                   <div className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
@@ -420,7 +420,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
 
       {/* Tool-Specific FAQ Section */}
       {tool.faqs.length > 0 && (
-        <section className="py-12 sm:py-16 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900">
+        <section className="py-16 sm:py-20 border-t border-violet-100 dark:border-slate-800 bg-[#faf9ff] dark:bg-slate-900">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               {ui.faqTitle.replace('{name}', tool.name)}
@@ -431,7 +431,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                 return (
                   <div
                     key={faq.question}
-                    className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs"
+                    className="border border-violet-100 rounded-2xl overflow-hidden bg-white shadow-[0_8px_28px_rgba(40,20,90,0.04)]"
                   >
                     <button
                       type="button"
@@ -477,7 +477,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                     e.preventDefault();
                     onNavigate(rel.slug);
                   }}
-                  className="group flex items-center justify-between gap-4 p-4 rounded-xl border border-slate-200 bg-white hover:border-blue-300 hover:shadow-sm transition-all"
+                  className="group flex items-center justify-between gap-4 p-4 rounded-xl border border-violet-100 bg-white hover:border-violet-300 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 rounded-2xl"
                 >
                   <div>
                     <h3 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
