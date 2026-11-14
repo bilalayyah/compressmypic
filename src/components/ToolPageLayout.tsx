@@ -353,7 +353,9 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
 
       {/* Main Tool Workspace */}
       <section className="max-w-6xl w-full mx-auto px-4 sm:px-6 pb-16">
-        {children}
+        <div className="cmp-tool-workspace relative isolate">
+          {children}
+        </div>
       </section>
 
       {/* Reserved Non-Intrusive Ad Slot (Below tool workspace, never over buttons/controls) */}
