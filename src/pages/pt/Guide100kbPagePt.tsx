@@ -174,6 +174,31 @@ export const Guide100kbPagePt: React.FC<Guide100kbPagePtProps> = ({ onNavigate }
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "Como reduzir uma imagem para 100 KB para web e e-mail",
+          description: "Reduza o tamanho de uma imagem para 100 KB para sites e e-mail com um compressor online grátis. Guia passo a passo, sem cadastro nem marca d'água.",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/pt/guias/reduzir-imagem-para-100kb",
+          inLanguage: 'pt',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "Início", item: "https://compressmypic.online/pt/" },
+            { '@type': 'ListItem', position: 2, name: "Guias" },
+            { '@type': 'ListItem', position: 3, name: "Como reduzir uma imagem para 100 KB para web e e-mail", item: "https://compressmypic.online/pt/guias/reduzir-imagem-para-100kb" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -219,6 +244,9 @@ export const Guide100kbPagePt: React.FC<Guide100kbPagePtProps> = ({ onNavigate }
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             Como reduzir o tamanho de uma imagem para 100 KB para sites e e-mail
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            Por <a href="/pt/sobre" onClick={(e) => { e.preventDefault(); onNavigate('/pt/sobre'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             Uma foto de 4 MB faz seu site carregar devagar e trava um e-mail. Reduzi-la para cerca de 100 KB faz as páginas carregarem rápido e os e-mails serem enviados na hora, e se você fizer bem, ninguém consegue notar a diferença.
           </p>

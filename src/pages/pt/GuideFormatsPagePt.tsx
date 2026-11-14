@@ -170,6 +170,31 @@ export const GuideFormatsPagePt: React.FC<GuideFormatsPagePtProps> = ({ onNaviga
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "JPG vs PNG vs WebP: qual formato devo usar?",
+          description: "JPG vs PNG vs WebP explicado de forma simples: compare tamanho, qualidade e transparência para escolher o formato certo para suas fotos, logotipos e sites.",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/pt/guias/jpg-vs-png-vs-webp",
+          inLanguage: 'pt',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "Início", item: "https://compressmypic.online/pt/" },
+            { '@type': 'ListItem', position: 2, name: "Guias" },
+            { '@type': 'ListItem', position: 3, name: "JPG vs PNG vs WebP: qual formato devo usar?", item: "https://compressmypic.online/pt/guias/jpg-vs-png-vs-webp" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -215,6 +240,9 @@ export const GuideFormatsPagePt: React.FC<GuideFormatsPagePtProps> = ({ onNaviga
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             JPG vs PNG vs WebP: qual formato devo usar?
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            Por <a href="/pt/sobre" onClick={(e) => { e.preventDefault(); onNavigate('/pt/sobre'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             Escolher o formato errado pode deixar sua imagem dez vezes maior do que o necessário, ou estragar um logotipo transparente. Aqui está a comparação simples e honesta, e como converter entre formatos em segundos.
           </p>
