@@ -203,12 +203,15 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
   const [compositeBlob, setCompositeBlob] = useState<Blob | null>(null);
   const [compositePreviewUrl, setCompositePreviewUrl] = useState<string | null>(null);
 
-  // Model preload & inference state
+  // Model preload & inference state. The @imgly library + isnet_quint8 model
+  // (~35 MB from the imgly CDN) are loaded ON DEMAND — only when the user
+  // drops their first image — never on page mount, so opening this page no
+  // longer keeps the network busy for a minute (networkidle never fired).
   const [modelReady, setModelReady] = useState<boolean>(false);
-  const [isModelLoading, setIsModelLoading] = useState<boolean>(true);
+  const [isModelLoading, setIsModelLoading] = useState<boolean>(false);
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
   const [progressText, setProgressText] = useState<string>(
-    t('progressInitModule', 'Initializing AI background removal module...')
+    t('progressModelOnDemand', 'The AI model loads when you add your first image — about 35 MB, then cached.')
   );
   const [progressPct, setProgressPct] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -265,27 +268,11 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
     [modelReady]
   );
 
-  // Lazy-load the library & quantized isnet_quint8 model only when this page opens
+  // No model preload on mount: ensureModelLoaded() runs only from
+  // runBackgroundRemoval() (first image) so page load stays quiet.
+  // This effect only revokes preview object URLs on unmount.
   useEffect(() => {
-    let active = true;
-    ensureModelLoaded().catch((err) => {
-      if (!active) return;
-      console.error('Background removal model preload failed:', err);
-      setError(
-        err instanceof Error
-          ? t(
-              'errorModelInit',
-              'Could not initialize the AI background model: {message}'
-            ).replace('{message}', err.message)
-          : t(
-              'errorModelInitGeneric',
-              'Could not initialize the AI background model in this browser.'
-            )
-      );
-    });
-
     return () => {
-      active = false;
       if (urlsRef.current.orig) URL.revokeObjectURL(urlsRef.current.orig);
       if (urlsRef.current.cutout) URL.revokeObjectURL(urlsRef.current.cutout);
       if (urlsRef.current.composite) URL.revokeObjectURL(urlsRef.current.composite);

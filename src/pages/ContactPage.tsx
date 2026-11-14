@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Send, CheckCircle2, AlertCircle, Mail, RotateCcw, Clock, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Send, CheckCircle2, AlertCircle, Mail, RotateCcw, Clock, ShieldCheck, Github, MessageSquare, Lightbulb, Bug } from 'lucide-react';
 
 interface ContactPageProps {
   onNavigate: (path: string) => void;
@@ -10,7 +10,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
   const [contactEmail, setContactEmail] = useState('');
   const [contactSubject, setContactSubject] = useState('');
   const [contactMessage, setContactMessage] = useState('');
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -150,10 +150,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                    <label htmlFor="contact-name" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                       Your Name <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                     </label>
                     <input
+                      id="contact-name"
+                      name="name"
                       type="text"
                       required
                       value={contactName}
@@ -164,10 +166,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                    <label htmlFor="contact-email" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                       Email Address <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                     </label>
                     <input
+                      id="contact-email"
+                      name="email"
                       type="email"
                       required
                       value={contactEmail}
@@ -179,10 +183,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                  <label htmlFor="contact-subject" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                     Subject <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                   </label>
                   <input
+                    id="contact-subject"
+                    name="subject"
                     type="text"
                     required
                     value={contactSubject}
@@ -193,10 +199,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
+                  <label htmlFor="contact-message" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
                     Message <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
                   </label>
                   <textarea
+                    id="contact-message"
+                    name="message"
                     rows={5}
                     required
                     value={contactMessage}
@@ -226,6 +234,90 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
               </form>
             )}
           </div>
+        </div>
+
+        {/* Extra Information Sections */}
+        <div className="mt-12 space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Mail className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Who Runs CompressMyPic</span>
+            </h2>
+            <p>
+              CompressMyPic is built and maintained by Bilal, an independent maker who wanted a truly free image compressor that respects your privacy. Unlike most online tools, CompressMyPic never uploads your photos to a server: every image is compressed right inside your own browser. Bilal reads every message personally and uses your feedback to fix bugs, improve quality, and decide which new tools to build next.
+            </p>
+            <p>
+              Because this is a small, independent project rather than a large company, you will always get a direct, honest answer — even when the answer is that a particular feature is not possible yet. There is no support desk queue and no automated chatbot standing between you and the person who built the tool.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>What Can You Write to Us About?</span>
+            </h2>
+            <p>
+              The fastest way to get help is to tell us exactly what happened. For a bug report, please include the name of the tool you were using, your browser, and the type of image file — for example, a HEIC photo from an iPhone or a transparent PNG. For a feature request, describe what you were trying to do and why the current tools did not cover it. We also welcome reports of wrong results, such as a compressed image that looks worse than expected, and corrections to our guides or to any translated page.
+            </p>
+            <p>
+              You can also write about partnerships, press enquiries, and suggestions for new tools. If you run a website, a blog, or a classroom and want to recommend CompressMyPic to your readers or students, we would love to hear from you — just use the form above and choose a clear subject line so your message reaches the right place quickly.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Github className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Other Ways to Reach Bilal</span>
+            </h2>
+            <p>
+              If you prefer a public channel, you can find Bilal and the CompressMyPic project on the web. The source code lives on GitHub, where you can also report technical issues and follow development. Longer guides about image compression are published on Dev.to, and the product is listed on Indie Hackers, where you can follow its progress and leave feedback.
+            </p>
+            <ul className="list-disc pl-6 space-y-1.5">
+              <li>
+                <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
+                {' '}— source code, issue reports, and development updates.
+              </li>
+              <li>
+                <a href="https://dev.to/bilalayyah" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Dev.to — dev.to/bilalayyah</a>
+                {' '}— guides on JPG, PNG, and WebP compression.
+              </li>
+              <li>
+                <a href="https://www.indiehackers.com/product/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Indie Hackers — indiehackers.com/product/compressmypic</a>
+                {' '}— product page, milestones, and community feedback.
+              </li>
+            </ul>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Lightbulb className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Before You Write</span>
+            </h2>
+            <p>
+              A few quick checks solve most problems without waiting for a reply. The main compressor accepts images up to 20 MB each, while the format converters accept up to 25 MB per file — a file larger than that will be rejected before it starts. Very old browsers may not support newer formats such as AVIF or HEIC, so trying a recent version of Chrome, Edge, Firefox, or Safari often fixes a tool that seems broken. And because your images never leave your device, a problem with one particular photo is usually caused by the file itself, not by the website.
+            </p>
+            <p>
+              When you do write, please include your browser name and version, the tool you were using, and the size and format of the image. We reply in English and usually answer within 24–48 business hours. If your question is about how your data is handled, you can also read our{' '}
+              <button
+                type="button"
+                onClick={() => onNavigate('/privacy')}
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+              >
+                Privacy Policy
+              </button>
+              {' '}first — it explains in plain language that your images are never uploaded or stored.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Bug className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Report a Problem</span>
+            </h2>
+            <p>
+              Found something broken? Tell us which page it happened on, what you clicked, and what you expected to see instead. Screenshots help a great deal, and if the problem involves a specific image, let us know its format and size — but please never send us private or sensitive photos. We fix reported bugs as quickly as we can, and we will let you know by email once the fix is live.
+            </p>
+          </section>
         </div>
       </div>
     </div>

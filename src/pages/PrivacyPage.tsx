@@ -35,7 +35,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
             </h1>
           </div>
           <p className="text-xs text-[var(--ink-3)] font-medium">
-            Last updated: 12 Nov 2026
+            Last updated: 14 Nov 2026
           </p>
         </div>
 
@@ -75,12 +75,12 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
               </a>
               ) or{' '}
               <a
-                href="http://www.aboutads.info/choices/"
+                href="https://www.aboutads.info/choices/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
               >
-                http://www.aboutads.info/choices/
+                https://www.aboutads.info/choices/
               </a>
               .
             </p>
@@ -91,7 +91,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
               4. Analytics
             </h2>
             <p>
-              We do not currently use analytics cookies. If that changes, this policy will be updated.
+              We use Cloudflare Web Analytics to understand, in aggregate, how the site is used — for example, which tools are popular and which pages receive visits. Cloudflare Web Analytics is privacy-first: it does not use cookies, does not track individual visitors across websites, and does not collect personal identifiers. It only records anonymized, aggregated usage statistics that cannot be used to identify you. We do not use Google Analytics or any other analytics service that sets tracking cookies.
             </p>
           </section>
 
@@ -104,9 +104,94 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
             </p>
           </section>
 
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              6. Cookies and Consent
+            </h2>
+            <p>
+              CompressMyPic itself does not set any cookies for its image tools: compression runs entirely in your browser and needs no cookie, account, or stored preference on our side. Cookies on this site come from third-party services. Google AdSense and its partners may set advertising cookies to show you relevant ads and to measure how often an ad is shown. Your browser stores these cookies on your device, and you can delete them at any time through your browser settings.
+            </p>
+            <p>
+              If you visit from the European Economic Area or the United Kingdom, we ask for your consent before personalized advertising is shown, in line with the GDPR and Google's EU User Consent Policy. You can withdraw that consent at any time by clearing your browser cookies or by changing the consent choice offered on the site. Choosing non-personalized ads does not stop advertising altogether, but it means ads are no longer based on your browsing history.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              7. Your Rights Under the GDPR
+            </h2>
+            <p>
+              If you are in the European Economic Area or the United Kingdom, the General Data Protection Regulation (GDPR) gives you rights over your personal data. You may ask us for a copy of the personal data we hold about you, ask us to correct it if it is wrong, ask us to delete it, ask us to limit how we use it, and object to our processing of it. Where processing is based on your consent, you may withdraw that consent at any time, and withdrawing consent does not affect anything we did lawfully before the withdrawal.
+            </p>
+            <p>
+              Because our tools process images locally and we keep no user accounts, the only personal data we normally hold is the name, email address, and message you send through the contact form. To exercise any of these rights, email us at{' '}
+              <a
+                href="mailto:bilalayyah@gmail.com"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                bilalayyah@gmail.com
+              </a>
+              {' '}and we will respond within 30 days. You also have the right to complain to your local data protection authority if you believe we have handled your data unfairly.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              8. Data Retention
+            </h2>
+            <p>
+              We keep personal data only for as long as it is needed for the purpose it was collected. Contact-form messages are kept only until your inquiry has been answered and the conversation is finished, and for a short period afterwards in case of follow-up questions; they are never used for marketing and never shared with third parties. Your images are never retained at all: they exist only in your browser's memory while you use a tool and are erased the moment you close or refresh the tab. Aggregated analytics data contains no personal information and is kept only in summary form.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              9. Security and reCAPTCHA
+            </h2>
+            <p>
+              The site is served over HTTPS, so the connection between your browser and the site is encrypted. Our contact form is delivered through FormSubmit, which forwards your message to our email address, and the form is protected by Google reCAPTCHA to block spam and automated abuse. When you submit the form, reCAPTCHA may collect hardware and software information, such as your browser and device details, to tell humans apart from bots; this is governed by Google's{' '}
+              <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+              >
+                Privacy Policy
+              </a>
+              {' '}and{' '}
+              <a
+                href="https://policies.google.com/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+              >
+                Terms of Service
+              </a>
+              . We never ask you to send passwords, payment details, or sensitive personal documents through the contact form, and you should never include them in a message.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              10. Children's Privacy
+            </h2>
+            <p>
+              CompressMyPic is a general-audience tool and is not directed at children under the age of 13. We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has sent us personal information through the contact form, please email us and we will delete it promptly.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              11. Changes to This Policy
+            </h2>
+            <p>
+              We may update this policy when the site changes — for example, if we add a new analytics service, a new advertising partner, or a new way to contact us. When we do, we will change the "Last updated" date at the top of this page, and significant changes will be described here in plain language. Continuing to use the site after a change means you accept the updated policy.
+            </p>
+          </section>
+
           <section className="space-y-2 pt-2 border-t border-[var(--line)]">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              6. Contact
+              12. Contact
             </h2>
             <p>
               If you have questions about this policy, contact us at{' '}

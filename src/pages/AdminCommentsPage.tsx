@@ -50,7 +50,7 @@ export const AdminCommentsPage: React.FC<AdminCommentsPageProps> = ({ onNavigate
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
   useEffect(() => {
-    document.title = 'Comments Admin - CompressMyPic';
+    document.title = 'Comments Admin — CompressMyPic';
     window.scrollTo({ top: 0, behavior: 'instant' });
     let meta = document.querySelector('meta[name="robots"]');
     const created = !meta;

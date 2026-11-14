@@ -35,7 +35,7 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onNavigate }) => {
             </h1>
           </div>
           <p className="text-xs text-[var(--ink-3)] font-medium">
-            Last updated: 12 Nov 2026
+            Last updated: 14 Nov 2026
           </p>
         </div>
 
@@ -77,9 +77,66 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onNavigate }) => {
             </p>
           </section>
 
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              5. Service Availability and Changes
+            </h2>
+            <p>
+              CompressMyPic is a free service and we do not guarantee that it will be available at all times. We may change, suspend, or discontinue any tool, feature, or the entire website at any time, with or without notice — for example, to fix a bug, to replace a technology that no longer works in modern browsers, or to keep the service free. We may also set reasonable limits, such as a maximum file size per image (currently 20 MB for the main compressor and 25 MB for the format converters), and we may change those limits as browsers and devices improve. Because all processing happens in your browser, an interruption to the website never puts your original images at risk: your files stay on your device.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              6. Acceptable Use
+            </h2>
+            <p>
+              You agree to use CompressMyPic only for lawful purposes and in a way that does not harm the service or other people. In particular, you must not attempt to overload, damage, or reverse-engineer the website, probe it for security weaknesses, use automated scripts to submit large numbers of requests, or use the service to process images that infringe someone else's copyright, contain illegal material, or are intended to deceive or harass. You are responsible for making sure you have the right to use every image you process, and for keeping a backup of any image that matters to you before compressing or converting it.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              7. Limitation of Liability
+            </h2>
+            <p>
+              To the fullest extent permitted by law, CompressMyPic and its owner will not be liable for any indirect, incidental, or consequential loss arising from your use of the service — including, but not limited to, loss of data, loss of profits, or the cost of re-creating an image. Because the service is free, our total liability for any claim connected with the service is limited to the amount you paid to use it, which is zero. This does not limit any liability that cannot be limited by law, such as liability for fraud or for death or personal injury caused by negligence.
+            </p>
+            <p>
+              Compression is a lossy process by nature: reducing a file's size can reduce its quality, and some formats, such as JPEG, cannot preserve transparency. You are responsible for checking the compressed result before you delete or overwrite an original file, and we are not responsible for quality loss, missing transparency, or any other change that compression makes to an image you chose to process.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              8. Third-Party Services
+            </h2>
+            <p>
+              The site uses third-party services to operate, including hosting and content delivery through Cloudflare, advertising through Google AdSense, and message delivery through FormSubmit. Those services have their own terms and privacy policies, and your use of them is governed by those documents as well as by these terms. We are not responsible for the availability, content, or practices of third-party websites or services linked from CompressMyPic.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              9. Governing Law
+            </h2>
+            <p>
+              These terms are governed by the laws of the United Arab Emirates, where the site is operated from, without regard to its conflict-of-law rules. Any dispute arising from or connected with these terms or your use of the service will be resolved by the courts of the United Arab Emirates. If any part of these terms is found to be unenforceable, the remaining parts will continue to apply in full.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              10. Changes to These Terms
+            </h2>
+            <p>
+              We may update these terms when the service changes — for example, when we add new tools, change file-size limits, or start using a new third-party service. When we do, we will update the "Last updated" date at the top of this page. If you continue to use CompressMyPic after the terms have changed, you accept the updated terms. If you do not agree with a change, please stop using the service.
+            </p>
+          </section>
+
           <section className="space-y-2 pt-2 border-t border-[var(--line)]">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              5. Contact
+              11. Contact
             </h2>
             <p>
               If you have any questions regarding these terms, please reach out to us at{' '}

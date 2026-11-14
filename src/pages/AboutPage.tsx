@@ -129,6 +129,48 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <Users className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <span>Meet the Maker: Bilal</span>
+            </h2>
+            <p>
+              CompressMyPic was created by Bilal, an independent maker who builds free, privacy-first tools for the web. He started CompressMyPic after getting frustrated with image compressors that forced people to upload personal photos to a stranger's server just to make a file smaller. His answer was a tool that does the whole job inside the visitor's own browser — no upload, no account, no watermark, and no surprise bill at the end.
+            </p>
+            <p>
+              Bilal designs, builds, and maintains all 48 tools on the site himself, from the compressor and converters to the favicon generator and background remover. He answers support messages personally, reads every piece of feedback, and keeps the tools free for everyone, whether they compress one photo or a thousand. The site's footer carries a small credit to Shaheen, whose encouragement inspired Bilal to keep building and to make the tools genuinely useful rather than merely popular.
+            </p>
+            <p>
+              If you want to follow the work, you can find the project on{' '}
+              <a
+                href="https://github.com/bilalayyah/compressmypic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                GitHub
+              </a>
+              {', '}read Bilal's guides on{' '}
+              <a
+                href="https://dev.to/bilalayyah"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+              >
+                Dev.to
+              </a>
+              {', '}or say hello through the{' '}
+              <button
+                type="button"
+                onClick={() => onNavigate('/contact')}
+                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+              >
+                contact page
+              </button>
+              .
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
               <Lock className="w-5 h-5 text-[#16a34a] dark:text-[#4ade80]" />
               <span>Privacy &amp; Security</span>
             </h2>
