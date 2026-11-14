@@ -37,7 +37,7 @@ export const TermsPageIt: React.FC<TermsPageItProps> = ({ onNavigate }) => {
             </h1>
           </div>
           <p className="text-xs text-[var(--ink-3)] font-medium">
-            Ultimo aggiornamento: 12 novembre 2026
+            Ultimo aggiornamento: 14 novembre 2026
           </p>
         </div>
 
@@ -79,9 +79,66 @@ export const TermsPageIt: React.FC<TermsPageItProps> = ({ onNavigate }) => {
             </p>
           </section>
 
-          <section className="space-y-2 pt-2 border-t border-[var(--line)]">
+                    <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              5. Contatti
+              5. Disponibilità e modifiche del servizio
+            </h2>
+            <p>
+              CompressMyPic è un servizio gratuito e non garantiamo che sia sempre disponibile. Possiamo modificare, sospendere o interrompere qualsiasi strumento, funzione o l’intero sito web in qualsiasi momento, con o senza preavviso — ad esempio, per correggere un bug, sostituire una tecnologia che non funziona più nei browser moderni o mantenere il servizio gratuito. Possiamo anche stabilire limiti ragionevoli, come una dimensione massima di file per immagine (attualmente 20 MB per il compressore principale e 25 MB per i convertitori di formato), e possiamo modificare tali limiti man mano che browser e dispositivi migliorano. Poiché tutta l’elaborazione avviene nel vostro browser, un’interruzione del sito web non mette mai a rischio le vostre immagini originali: i vostri file restano sul vostro dispositivo.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              6. Uso accettabile
+            </h2>
+            <p>
+              Accettate di utilizzare CompressMyPic solo per scopi leciti e in modo da non danneggiare il servizio o altre persone. In particolare, non dovete tentare di sovraccaricare, danneggiare o decodificare il sito web, sondarne le vulnerabilità di sicurezza, utilizzare script automatizzati per inviare un gran numero di richieste, né utilizzare il servizio per elaborare immagini che violano il copyright di altri, contengono materiale illegale o sono destinate a ingannare o molestare. Siete responsabili di assicurarvi di avere il diritto di utilizzare ogni immagine che elaborate e di conservare una copia di backup di qualsiasi immagine importante prima di comprimerla o convertirla.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              7. Limitazione di responsabilità
+            </h2>
+            <p>
+              Nella misura massima consentita dalla legge, CompressMyPic e il suo proprietario non saranno responsabili di alcuna perdita indiretta, incidentale o consequenziale derivante dal vostro utilizzo del servizio — inclusi, a titolo esemplificativo, perdita di dati, perdita di profitti o costi di ricreazione di un’immagine. Poiché il servizio è gratuito, la nostra responsabilità totale per qualsiasi reclamo relativo al servizio è limitata all’importo pagato per utilizzarlo, che è zero. Ciò non limita alcuna responsabilità che non può essere limitata per legge, come la responsabilità per frode o per morte o lesioni personali causate da negligenza.
+            </p>
+            <p>
+              La compressione è per natura un processo con perdita: ridurre le dimensioni di un file può ridurne la qualità, e alcuni formati, come JPEG, non possono preservare la trasparenza. Siete responsabili di controllare il risultato compresso prima di eliminare o sovrascrivere un file originale, e non siamo responsabili di perdita di qualità, mancanza di trasparenza o qualsiasi altra modifica che la compressione apporta a un’immagine che avete scelto di elaborare.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              8. Servizi di terze parti
+            </h2>
+            <p>
+              Il sito utilizza servizi di terze parti per funzionare, tra cui hosting e distribuzione dei contenuti tramite Cloudflare, pubblicità tramite Google AdSense e invio di messaggi tramite FormSubmit. Questi servizi hanno i propri termini e informative sulla privacy, e il vostro utilizzo di essi è regolato da tali documenti oltre che da questi termini. Non siamo responsabili della disponibilità, del contenuto o delle pratiche di siti web o servizi di terze parti collegati da CompressMyPic.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              9. Legge applicabile
+            </h2>
+            <p>
+              Questi termini sono regolati dalle leggi degli Emirati Arabi Uniti, da dove il sito è gestito, senza riguardo alle loro norme sul conflitto di leggi. Qualsiasi controversia derivante da o connessa a questi termini o al vostro utilizzo del servizio sarà risolta dai tribunali degli Emirati Arabi Uniti. Se una parte di questi termini risulta inapplicabile, le restanti parti continueranno ad applicarsi integralmente.
+            </p>
+          </section>
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              10. Modifiche a questi termini
+            </h2>
+            <p>
+              Possiamo aggiornare questi termini quando il servizio cambia — ad esempio, quando aggiungiamo nuovi strumenti, modifichiamo i limiti di dimensione dei file o iniziamo a utilizzare un nuovo servizio di terze parti. In tal caso, aggiorneremo la data di «Ultimo aggiornamento» in cima a questa pagina. Se continuate a utilizzare CompressMyPic dopo la modifica dei termini, accettate i termini aggiornati. Se non siete d’accordo con una modifica, interrompete l’utilizzo del servizio.
+            </p>
+          </section>
+
+<section className="space-y-2 pt-2 border-t border-[var(--line)]">
+            <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
+              11. Contatti
             </h2>
             <p>
               Se hai domande su questi termini, scrivici all’indirizzo{' '}

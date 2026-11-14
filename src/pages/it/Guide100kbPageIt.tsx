@@ -174,6 +174,31 @@ export const Guide100kbPageIt: React.FC<Guide100kbPageItProps> = ({ onNavigate }
             acceptedAnswer: { '@type': 'Answer', text: f.answer },
           })),
         },
+        {
+          '@type': 'Article',
+          headline: "Come ridurre le dimensioni di un’immagine a 100 KB per siti web ed email",
+          description: "Riduci le dimensioni di un’immagine a 100 KB per siti web ed email con un compressore online gratuito. Guida passo dopo passo: nessuna registrazione, nessuna filigrana, le immagini restano sul tuo dispositivo.",
+          image: 'https://compressmypic.online/og-image.png',
+          author: { '@type': 'Person', name: 'Bilal' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'CompressMyPic',
+            url: 'https://compressmypic.online/',
+            logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
+          },
+          datePublished: '2026-11-14',
+          dateModified: '2026-11-14',
+          mainEntityOfPage: "https://compressmypic.online/it/guide/ridurre-immagine-a-100-kb",
+          inLanguage: 'it',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: "Home", item: "https://compressmypic.online/it/" },
+            { '@type': 'ListItem', position: 2, name: "Guide" },
+            { '@type': 'ListItem', position: 3, name: "Come ridurre le dimensioni di un’immagine a 100 KB per siti web ed email", item: "https://compressmypic.online/it/guide/ridurre-immagine-a-100-kb" },
+          ],
+        },
       ],
     };
     const script = document.createElement('script');
@@ -219,6 +244,9 @@ export const Guide100kbPageIt: React.FC<Guide100kbPageItProps> = ({ onNavigate }
           <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-[-0.025em] leading-[1.15]">
             Come ridurre le dimensioni di un’immagine a 100 KB per siti web ed email
           </h1>
+          <p className="mt-3 text-sm text-[var(--ink-3)]">
+            Di <a href="/it/chi-siamo" onClick={(e) => { e.preventDefault(); onNavigate('/it/chi-siamo'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+          </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             Una foto da 4 MB rallenta il tuo sito web e intasa un’email. Ridurla a circa 100 KB fa caricare le pagine in fretta e inviare le email all’istante, e se lo fai bene nessuno noterà la differenza.
           </p>
