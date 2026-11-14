@@ -369,30 +369,30 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4">
+            <div className="lg:col-span-7 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                  <Layers className="w-3.5 h-3.5 text-blue-600" />
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5">
+                  <Layers className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
                   {t('backgroundPreview', 'Background Preview')}
                 </span>
                 <button
                   type="button"
                   onClick={handleClear}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink-3)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] cursor-pointer transition-colors"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                   <span>{t('changeImage', 'Change Image')}</span>
                 </button>
               </div>
 
-              <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-100 p-4 flex items-center justify-center min-h-[300px] max-h-[540px]">
+              <div className="rounded-[12px] overflow-hidden border border-[var(--line)] bg-[var(--surface-2)] p-4 flex items-center justify-center min-h-[300px] max-h-[540px]">
                 <canvas
                   ref={previewCanvasRef}
-                  className="max-w-full max-h-[480px] w-auto h-auto object-contain block rounded-lg shadow-xs"
+                  className="max-w-full max-h-[480px] w-auto h-auto object-contain block rounded-[8px] shadow-xs"
                 />
               </div>
 
-              <div className="flex justify-between text-xs text-slate-500 font-mono">
+              <div className="flex justify-between text-xs text-[var(--ink-3)] font-mono">
                 <span className="truncate max-w-xs">{sourceFile?.name}</span>
                 <span>
                   {t('outputDimensionsPrefix', 'Output:')} {fullDims.w}×{fullDims.h}px · {sourceFile ? formatBytes(sourceFile.size) : ''}
@@ -400,12 +400,12 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
               </div>
             </div>
 
-            <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+            <div className="lg:col-span-5 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-5">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                   {t('backgroundType', 'Background Type')}
                 </span>
-                <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl">
+                <div className="grid grid-cols-3 gap-1 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px]">
                   {(
                     [
                       { id: 'solid', label: t('modeSolidColor', 'Solid Color') },
@@ -417,8 +417,8 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
                       key={m.id}
                       type="button"
                       onClick={() => setBgMode(m.id)}
-                      className={`py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
-                        bgMode === m.id ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
+                      className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
+                        bgMode === m.id ? 'btn-purple-grad shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {m.label}
@@ -434,7 +434,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
                       type="color"
                       value={solidColor}
                       onChange={(e) => setSolidColor(e.target.value)}
-                      className="w-9 h-9 rounded-lg border border-slate-200 cursor-pointer p-0.5"
+                      className="w-9 h-9 rounded-[8px] border border-[var(--line-strong)] cursor-pointer p-0.5 bg-[var(--surface-2)]"
                     />
                     <div className="flex flex-wrap gap-1.5">
                       {['#ffffff', '#0f172a', '#2563eb', '#10b981', '#fef3c7', '#f1f5f9'].map((c) => (
@@ -442,7 +442,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
                           key={c}
                           type="button"
                           onClick={() => setSolidColor(c)}
-                          className="w-7 h-7 rounded-lg border border-slate-300 cursor-pointer"
+                          className="w-7 h-7 rounded-[8px] border border-[var(--line-strong)] cursor-pointer"
                           style={{ backgroundColor: c }}
                           aria-label={t('selectColor', 'Select color {color}').replace('{color}', c)}
                         />
@@ -455,29 +455,29 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
               {bgMode === 'gradient' && (
                 <div className="space-y-3">
                   <div className="flex items-center gap-4">
-                    <label className="flex items-center gap-2 text-xs font-semibold text-slate-700">
+                    <label className="flex items-center gap-2 text-xs font-semibold text-[var(--ink-2)]">
                       <input
                         type="color"
                         value={gradColor1}
                         onChange={(e) => setGradColor1(e.target.value)}
-                        className="w-8 h-8 rounded-lg border border-slate-200 cursor-pointer p-0.5"
+                        className="w-8 h-8 rounded-[8px] border border-[var(--line-strong)] cursor-pointer p-0.5 bg-[var(--surface-2)]"
                       />
                       <span>{t('color1', 'Color 1')}</span>
                     </label>
-                    <label className="flex items-center gap-2 text-xs font-semibold text-slate-700">
+                    <label className="flex items-center gap-2 text-xs font-semibold text-[var(--ink-2)]">
                       <input
                         type="color"
                         value={gradColor2}
                         onChange={(e) => setGradColor2(e.target.value)}
-                        className="w-8 h-8 rounded-lg border border-slate-200 cursor-pointer p-0.5"
+                        className="w-8 h-8 rounded-[8px] border border-[var(--line-strong)] cursor-pointer p-0.5 bg-[var(--surface-2)]"
                       />
                       <span>{t('color2', 'Color 2')}</span>
                     </label>
                   </div>
                   <div>
                     <div className="flex justify-between text-xs mb-1">
-                      <span className="font-semibold text-slate-700">{t('angle', 'Angle')}</span>
-                      <span className="font-mono text-blue-600">{gradAngle}°</span>
+                      <span className="font-semibold text-[var(--ink-2)]">{t('angle', 'Angle')}</span>
+                      <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{gradAngle}°</span>
                     </div>
                     <input
                       type="range"
@@ -485,7 +485,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
                       max={360}
                       value={gradAngle}
                       onChange={(e) => setGradAngle(parseInt(e.target.value, 10))}
-                      className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                      className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                     />
                   </div>
                 </div>
@@ -494,8 +494,8 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
               {bgMode === 'blur' && (
                 <div>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-semibold text-slate-700">{t('backdropBlurRadius', 'Backdrop Blur Radius')}</span>
-                    <span className="font-mono text-blue-600">{blurRadius}px</span>
+                    <span className="font-semibold text-[var(--ink-2)]">{t('backdropBlurRadius', 'Backdrop Blur Radius')}</span>
+                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{blurRadius}px</span>
                   </div>
                   <input
                     type="range"
@@ -503,23 +503,23 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
                     max={50}
                     value={blurRadius}
                     onChange={(e) => setBlurRadius(parseInt(e.target.value, 10))}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                   />
                 </div>
               )}
 
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                   {t('canvasAspectRatio', 'Canvas Aspect Ratio')}
                 </span>
-                <div className="grid grid-cols-5 gap-1 p-1 bg-slate-100 rounded-xl">
+                <div className="grid grid-cols-5 gap-1 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px]">
                   {(['original', '1:1', '16:9', '9:16', '4:5'] as AspectChoice[]).map((r) => (
                     <button
                       key={r}
                       type="button"
                       onClick={() => setAspect(r)}
-                      className={`py-1.5 text-xs font-semibold rounded-lg capitalize cursor-pointer ${
-                        aspect === r ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600'
+                      className={`py-1.5 text-xs font-semibold rounded-[8px] capitalize cursor-pointer transition-all ${
+                        aspect === r ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {r === 'original' ? t('aspectOriginal', 'Orig') : r}
@@ -531,8 +531,8 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-semibold text-slate-700">{t('imageScale', 'Image Scale')}</span>
-                    <span className="font-mono text-blue-600">{fgScale}%</span>
+                    <span className="font-semibold text-[var(--ink-2)]">{t('imageScale', 'Image Scale')}</span>
+                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{fgScale}%</span>
                   </div>
                   <input
                     type="range"
@@ -540,13 +540,13 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
                     max={100}
                     value={fgScale}
                     onChange={(e) => setFgScale(parseInt(e.target.value, 10))}
-                    className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-1.5 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                   />
                 </div>
                 <div>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-semibold text-slate-700">{t('roundness', 'Roundness')}</span>
-                    <span className="font-mono text-blue-600">{fgRadiusPct}%</span>
+                    <span className="font-semibold text-[var(--ink-2)]">{t('roundness', 'Roundness')}</span>
+                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{fgRadiusPct}%</span>
                   </div>
                   <input
                     type="range"
@@ -554,30 +554,30 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
                     max={30}
                     value={fgRadiusPct}
                     onChange={(e) => setFgRadiusPct(parseInt(e.target.value, 10))}
-                    className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-1.5 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                   />
                 </div>
               </div>
 
-              <label className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
-                <span className="text-xs font-semibold text-slate-700">{t('dropShadowBehindImage', 'Drop Shadow Behind Image')}</span>
+              <label className="flex items-center justify-between p-3 rounded-[11px] bg-[var(--surface-2)] border border-[var(--line)] cursor-pointer">
+                <span className="text-xs font-semibold text-[var(--ink-2)]">{t('dropShadowBehindImage', 'Drop Shadow Behind Image')}</span>
                 <input
                   type="checkbox"
                   checked={fgShadow}
                   onChange={(e) => setFgShadow(e.target.checked)}
-                  className="w-4 h-4 accent-blue-600 rounded cursor-pointer"
+                  className="w-4 h-4 accent-[#7c3aed] rounded cursor-pointer"
                 />
               </label>
 
-              <div className="pt-4 border-t border-slate-100 space-y-3">
-                <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl">
+              <div className="pt-4 border-t border-[var(--line)] space-y-3">
+                <div className="grid grid-cols-3 gap-1 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px]">
                   {(['png', 'jpeg', 'webp'] as const).map((fmt) => (
                     <button
                       key={fmt}
                       type="button"
                       onClick={() => setOutFormat(fmt)}
-                      className={`py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
-                        outFormat === fmt ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
+                      className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
+                        outFormat === fmt ? 'btn-purple-grad shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt === 'png' ? t('formatPng', 'PNG') : t('formatWebp', 'WEBP')}
@@ -589,7 +589,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
                   type="button"
                   onClick={handleDownload}
                   disabled={isExporting}
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer disabled:opacity-60"
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 btn-purple-grad text-sm font-semibold shadow-sm cursor-pointer disabled:opacity-60"
                 >
                   {isExporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
                   <span>{isExporting ? t('exporting', 'Exporting...') : t('downloadImage', 'Download Image')}</span>
@@ -600,7 +600,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
         )}
 
         {error && (
-          <div className="flex items-start gap-2 p-3.5 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl">
+          <div className="flex items-start gap-2 p-3.5 pastel-card-14 border text-[#b91c1c] dark:text-[#fca5a5] text-sm rounded-2xl">
             <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
             <span>{error}</span>
           </div>

@@ -37,6 +37,7 @@ import {
 import { PaletteSwatch, extractDominantPalette } from '../utils/canvasEffects';
 import { formatBytes, getBaseFilename, sanitizeFilename } from '../utils/formatters';
 import { triggerDownload } from '../utils/zip';
+import { getPastelCardClass } from '../utils/pastel';
 
 export interface PageEsStrings {
   layoutUi: ToolPageLayoutStrings;
@@ -292,8 +293,8 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({
         ) : (
           <div className="space-y-6">
             {/* Top Bar + Source Image + Controls */}
-            <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-              <div className="lg:col-span-5 rounded-xl border border-slate-200 bg-slate-100 p-3 flex items-center justify-center max-h-[280px]">
+            <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              <div className="lg:col-span-5 rounded-xl border border-[var(--line)] bg-[var(--surface-2)] p-3 flex items-center justify-center max-h-[280px]">
                 <img
                   src={imageInfo.previewUrl}
                   alt={sourceFile?.name || t('sourceAlt', 'Source')}
@@ -304,11 +305,11 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({
               <div className="lg:col-span-7 space-y-5">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                      <Palette className="w-4 h-4 text-blue-600" />
+                    <h2 className="font-sans text-lg font-bold text-[var(--ink-navy)] flex items-center gap-2">
+                      <Palette className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
                       <span>{t('extractedPalette', 'Extracted Palette ({count} Colors)').replace('{count}', String(swatches.length))}</span>
                     </h2>
-                    <p className="text-xs text-slate-500 font-mono mt-0.5">
+                    <p className="text-xs text-[var(--ink-3)] font-mono mt-0.5">
                       {sourceFile?.name} · {imageInfo.width}×{imageInfo.height}px ·{' '}
                       {sourceFile ? formatBytes(sourceFile.size) : ''}
                     </p>
@@ -316,7 +317,7 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({
                   <button
                     type="button"
                     onClick={handleClear}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink-3)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] cursor-pointer transition-colors"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                     <span>{t('changeImage', 'Change')}</span>
@@ -325,8 +326,8 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({
 
                 <div>
                   <div className="flex justify-between text-xs mb-1.5">
-                    <span className="font-semibold text-slate-700">{t('numberOfColors', 'Number of Colors')}</span>
-                    <span className="font-mono font-bold text-blue-600">{t('colorsCount', '{count} colors').replace('{count}', String(colorCount))}</span>
+                    <span className="font-semibold text-[var(--ink-2)]">{t('numberOfColors', 'Number of Colors')}</span>
+                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{t('colorsCount', '{count} colors').replace('{count}', String(colorCount))}</span>
                   </div>
                   <input
                     type="range"
@@ -334,13 +335,13 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({
                     max={12}
                     value={colorCount}
                     onChange={(e) => setColorCount(parseInt(e.target.value, 10))}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                   />
                 </div>
 
                 {/* Proportional Color Strip */}
                 {swatches.length > 0 && (
-                  <div className="h-7 w-full rounded-xl overflow-hidden flex border border-slate-200">
+                  <div className="h-7 w-full rounded-[11px] overflow-hidden flex border border-[var(--line)]">
                     {swatches.map((s) => (
                       <div
                         key={s.hex}
@@ -355,23 +356,23 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({
                   <button
                     type="button"
                     onClick={() => copyText(cssVarsText, 'css')}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-xl cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--surface-2)] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] border border-[var(--line)] hover:border-[#7c3aed] text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                   >
-                    {copiedKey === 'css' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copiedKey === 'css' ? <Check className="w-3.5 h-3.5 text-[#16a34a] dark:text-[#4ade80]" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedKey === 'css' ? t('copiedCss', 'Copied CSS!') : t('copyCssVariables', 'Copy CSS Variables')}</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => copyText(jsonText, 'json')}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-xl cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--surface-2)] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] border border-[var(--line)] hover:border-[#7c3aed] text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                   >
-                    {copiedKey === 'json' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copiedKey === 'json' ? <Check className="w-3.5 h-3.5 text-[#16a34a] dark:text-[#4ade80]" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedKey === 'json' ? t('copiedJson', 'Copied JSON!') : t('copyJson', 'Copy JSON')}</span>
                   </button>
                   <button
                     type="button"
                     onClick={handleExportPngCard}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 btn-purple-grad text-xs font-semibold cursor-pointer"
                   >
                     <Download className="w-3.5 h-3.5" />
                     <span>{t('downloadPalettePng', 'Download Palette PNG')}</span>
@@ -385,16 +386,16 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({
               {swatches.map((swatch, idx) => (
                 <div
                   key={`${swatch.hex}-${idx}`}
-                  className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs flex flex-col"
+                  className={`${getPastelCardClass(idx)} border rounded-2xl overflow-hidden shadow-[var(--shadow)] flex flex-col`}
                 >
                   <div
                     className="h-24 w-full relative flex items-end justify-between p-3"
                     style={{ backgroundColor: swatch.hex }}
                   >
-                    <span className="px-2 py-0.5 rounded-md bg-black/55 backdrop-blur-xs text-white text-[11px] font-mono font-bold">
+                    <span className="px-2 py-0.5 rounded-[8px] bg-[#0f172a]/75 backdrop-blur-xs text-[#f8fafc] text-[11px] font-mono font-bold">
                       {swatch.hex}
                     </span>
-                    <span className="px-2 py-0.5 rounded-md bg-white/90 text-slate-800 text-[11px] font-mono font-bold">
+                    <span className="px-2 py-0.5 rounded-[8px] bg-white/90 text-[#0f172a] text-[11px] font-mono font-bold">
                       {swatch.percentage}%
                     </span>
                   </div>
@@ -410,14 +411,14 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({
                           key={row.label}
                           type="button"
                           onClick={() => copyText(row.val, k)}
-                          className="w-full flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-lg bg-slate-50 hover:bg-blue-50 text-left transition-colors cursor-pointer"
+                          className="w-full flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-[9px] bg-[var(--surface)]/80 hover:bg-[var(--surface)] border border-[var(--line)]/70 text-left transition-colors cursor-pointer"
                         >
-                          <span className="text-slate-400 font-bold">{row.label}</span>
-                          <span className="font-mono text-slate-800 truncate">{row.val}</span>
+                          <span className="text-[var(--ink-3)] font-bold">{row.label}</span>
+                          <span className="font-mono text-[var(--ink-navy)] truncate">{row.val}</span>
                           {copiedKey === k ? (
-                            <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                            <Check className="w-3.5 h-3.5 text-[#16a34a] dark:text-[#4ade80] shrink-0" />
                           ) : (
-                            <Copy className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                            <Copy className="w-3.5 h-3.5 text-[var(--ink-3)] shrink-0" />
                           )}
                         </button>
                       );
@@ -430,7 +431,7 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({
         )}
 
         {error && (
-          <div className="flex items-start gap-2 p-3.5 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl">
+          <div className="flex items-start gap-2 p-3.5 pastel-card-14 border text-[#b91c1c] dark:text-[#fca5a5] text-sm rounded-2xl">
             <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
             <span>{error}</span>
           </div>

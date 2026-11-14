@@ -323,15 +323,15 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4">
+            <div className="lg:col-span-7 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)]">
                   {t('liveCornerPreview', 'Live Corner Preview')}
                 </span>
                 <button
                   type="button"
                   onClick={handleClear}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink-3)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] cursor-pointer transition-colors"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                   <span>{t('changeImage', 'Change Image')}</span>
@@ -339,10 +339,10 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
               </div>
 
               <div
-                className="rounded-xl overflow-hidden border border-slate-200 flex items-center justify-center p-4 min-h-[280px] max-h-[520px]"
+                className="rounded-xl overflow-hidden border border-[var(--line)] bg-[var(--surface-2)] flex items-center justify-center p-4 min-h-[280px] max-h-[520px]"
                 style={{
                   backgroundImage:
-                    'linear-gradient(45deg, #e2e8f0 25%, transparent 25%), linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #e2e8f0 75%), linear-gradient(-45deg, transparent 75%, #e2e8f0 75%)',
+                    'linear-gradient(45deg, rgba(148, 163, 184, 0.16) 25%, transparent 25%), linear-gradient(-45deg, rgba(148, 163, 184, 0.16) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(148, 163, 184, 0.16) 75%), linear-gradient(-45deg, transparent 75%, rgba(148, 163, 184, 0.16) 75%)',
                   backgroundSize: '20px 20px',
                   backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px',
                 }}
@@ -353,7 +353,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                 />
               </div>
 
-              <div className="flex justify-between text-xs text-slate-500 font-mono">
+              <div className="flex justify-between text-xs text-[var(--ink-3)] font-mono">
                 <span className="truncate max-w-xs">{sourceFile?.name}</span>
                 <span>
                   {imageInfo.width}×{imageInfo.height}px · {sourceFile ? formatBytes(sourceFile.size) : ''}
@@ -361,24 +361,24 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
               </div>
             </div>
 
-            <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+            <div className="lg:col-span-5 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-5">
               <div className="flex items-center justify-between">
-                <h2 className="text-base font-bold text-slate-900">{t('cornerSettings', 'Corner Settings')}</h2>
+                <h2 className="font-sans text-lg font-bold text-[var(--ink-navy)]">{t('cornerSettings', 'Corner Settings')}</h2>
                 <button
                   type="button"
                   onClick={() => {
                     setPerCorner(false);
                     setUniformPercent(100);
                   }}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#6d28d9] dark:text-[#c4b5fd] hover:underline cursor-pointer"
                 >
                   <Circle className="w-3.5 h-3.5" />
                   <span>{t('fullCirclePill', 'Full Circle / Pill')}</span>
                 </button>
               </div>
 
-              <label className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
-                <span className="text-xs font-semibold text-slate-700">
+              <label className="flex items-center justify-between p-3 rounded-[11px] bg-[var(--surface-2)] border border-[var(--line)] cursor-pointer">
+                <span className="text-xs font-semibold text-[var(--ink-2)]">
                   {t('individualPerCorner', 'Individual Per-Corner Control')}
                 </span>
                 <input
@@ -394,15 +394,15 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                       setBlPercent(uniformPercent);
                     }
                   }}
-                  className="w-4 h-4 accent-blue-600 rounded cursor-pointer"
+                  className="w-4 h-4 accent-[#7c3aed] rounded cursor-pointer"
                 />
               </label>
 
               {!perCorner ? (
                 <div>
                   <div className="flex justify-between text-xs mb-1.5">
-                    <span className="font-semibold text-slate-700">{t('allCornersRadius', 'All Corners Radius')}</span>
-                    <span className="font-mono font-bold text-blue-600">
+                    <span className="font-semibold text-[var(--ink-2)]">{t('allCornersRadius', 'All Corners Radius')}</span>
+                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">
                       {Math.round((uniformPercent / 100) * (Math.min(imageInfo.width, imageInfo.height) / 2))}px ({uniformPercent}%)
                     </span>
                   </div>
@@ -412,7 +412,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                     max={100}
                     value={uniformPercent}
                     onChange={(e) => setUniformPercent(parseInt(e.target.value, 10))}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                   />
                 </div>
               ) : (
@@ -423,10 +423,10 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                     { id: 'bl', label: 'Bottom Left', val: blPercent, set: setBlPercent },
                     { id: 'br', label: 'Bottom Right', val: brPercent, set: setBrPercent },
                   ].map((c) => (
-                    <div key={c.id} className="p-2.5 rounded-xl border border-slate-200 bg-slate-50/70">
-                      <div className="flex justify-between text-[11px] font-semibold text-slate-700 mb-1">
+                    <div key={c.id} className="p-2.5 rounded-[11px] border border-[var(--line)] bg-[var(--surface-2)]">
+                      <div className="flex justify-between text-[11px] font-semibold text-[var(--ink-2)] mb-1">
                         <span>{cornerLabelById[c.id] ?? c.label}</span>
-                        <span className="font-mono text-blue-600">{c.val}%</span>
+                        <span className="font-mono text-[#7c3aed] dark:text-[#a78bfa]">{c.val}%</span>
                       </div>
                       <input
                         type="range"
@@ -434,7 +434,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                         max={100}
                         value={c.val}
                         onChange={(e) => c.set(parseInt(e.target.value, 10))}
-                        className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                        className="w-full h-1.5 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                       />
                     </div>
                   ))}
@@ -442,7 +442,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
               )}
 
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                   {t('outerCornerFill', 'Outer Corner Fill')}
                 </span>
                 <div className="grid grid-cols-2 gap-2">
@@ -452,10 +452,10 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                       setBgMode('transparent');
                       if (outFormat === 'jpeg') setOutFormat('png');
                     }}
-                    className={`py-2 text-xs font-semibold rounded-xl border cursor-pointer ${
+                    className={`py-2 text-xs font-semibold rounded-[11px] border cursor-pointer transition-colors ${
                       bgMode === 'transparent'
-                        ? 'bg-blue-50 border-blue-500 text-blue-700'
-                        : 'bg-white border-slate-200 text-slate-700'
+                        ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/20 border-[#7c3aed] text-[#6d28d9] dark:text-[#ddd6fe]'
+                        : 'bg-[var(--surface-2)] border-[var(--line)] text-[var(--ink-2)] hover:border-[#7c3aed]'
                     }`}
                   >
                     {t('transparentPngWebp', 'Transparent (PNG/WebP)')}
@@ -463,10 +463,10 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                   <button
                     type="button"
                     onClick={() => setBgMode('solid')}
-                    className={`py-2 text-xs font-semibold rounded-xl border cursor-pointer ${
+                    className={`py-2 text-xs font-semibold rounded-[11px] border cursor-pointer transition-colors ${
                       bgMode === 'solid'
-                        ? 'bg-blue-50 border-blue-500 text-blue-700'
-                        : 'bg-white border-slate-200 text-slate-700'
+                        ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/20 border-[#7c3aed] text-[#6d28d9] dark:text-[#ddd6fe]'
+                        : 'bg-[var(--surface-2)] border-[var(--line)] text-[var(--ink-2)] hover:border-[#7c3aed]'
                     }`}
                   >
                     {t('solidColor', 'Solid Color')}
@@ -478,28 +478,28 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                       type="color"
                       value={bgColor}
                       onChange={(e) => setBgColor(e.target.value)}
-                      className="w-9 h-9 rounded-lg border border-slate-200 cursor-pointer p-0.5"
+                      className="w-9 h-9 rounded-[8px] border border-[var(--line-strong)] cursor-pointer p-0.5 bg-[var(--surface-2)]"
                     />
-                    <span className="text-xs font-mono text-slate-600">{bgColor.toUpperCase()}</span>
+                    <span className="text-xs font-mono text-[var(--ink-2)]">{bgColor.toUpperCase()}</span>
                   </div>
                 )}
               </div>
 
-              <div className="pt-4 border-t border-slate-100 space-y-4">
+              <div className="pt-4 border-t border-[var(--line)] space-y-4">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                     {t('outputFormat', 'Output Format')}
                   </span>
-                  <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl">
+                  <div className="grid grid-cols-3 gap-1 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px]">
                     {(['png', 'webp', 'jpeg'] as const).map((fmt) => (
                       <button
                         key={fmt}
                         type="button"
                         onClick={() => setOutFormat(fmt)}
-                        className={`py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
+                        className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                           outFormat === fmt
-                            ? 'bg-blue-600 text-white shadow-xs'
-                            : 'text-slate-600 hover:text-slate-900'
+                            ? 'bg-[#7c3aed] text-white shadow-xs'
+                            : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                         }`}
                       >
                         {fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
@@ -512,7 +512,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                   type="button"
                   onClick={handleDownload}
                   disabled={isExporting}
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer disabled:opacity-60"
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 btn-purple-grad text-sm font-semibold shadow-xs cursor-pointer disabled:opacity-60"
                 >
                   {isExporting ? (
                     <Loader2 className="w-4 h-4 animate-spin" />
@@ -527,7 +527,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
         )}
 
         {error && (
-          <div className="flex items-start gap-2 p-3.5 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl">
+          <div className="flex items-start gap-2 p-3.5 pastel-card-14 border text-[#b91c1c] dark:text-[#fca5a5] text-sm rounded-2xl">
             <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
             <span>{error}</span>
           </div>

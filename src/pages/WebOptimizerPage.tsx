@@ -42,6 +42,7 @@ import {
 } from '../utils/imageProcessing';
 import { formatBytes, formatPercent } from '../utils/formatters';
 import { createFilesZipArchive, triggerDownload } from '../utils/zip';
+import { getPastelCardClass } from '../utils/pastel';
 
 export interface PageEsStrings {
   layoutUi: ToolPageLayoutStrings;
@@ -524,37 +525,37 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
         />
 
         {/* Web Optimization Presets & Controls */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+        <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-5">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5 mb-2.5">
-              <Globe className="w-3.5 h-3.5 text-blue-600" />
+            <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5 mb-2.5">
+              <Globe className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <span>{t('webPerformancePresets', 'Web Performance Presets')}</span>
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5">
-              {localizedPresets.map((preset) => (
+              {localizedPresets.map((preset, idx) => (
                 <button
                   key={preset.id}
                   type="button"
                   onClick={() => handleSelectPreset(preset)}
-                  className={`text-left p-3 rounded-xl border transition-all cursor-pointer ${
+                  className={`text-left p-3 rounded-[11px] border transition-all cursor-pointer ${
                     activePresetId === preset.id
-                      ? 'bg-blue-50 border-blue-400 text-blue-900 shadow-xs'
-                      : 'bg-slate-50/70 border-slate-200 text-slate-700 hover:border-blue-300'
+                      ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/25 border-[#7c3aed] ring-1 ring-[#7c3aed] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs'
+                      : `${getPastelCardClass(idx)} text-[var(--ink-2)] hover:border-[#7c3aed]/60`
                   }`}
                 >
-                  <p className="text-xs font-bold">{preset.label}</p>
-                  <p className="text-[11px] text-slate-500 mt-0.5">{preset.description}</p>
+                  <p className="text-xs font-bold text-[var(--ink-navy)]">{preset.label}</p>
+                  <p className="text-[11px] text-[var(--ink-3)] mt-0.5">{preset.description}</p>
                 </button>
               ))}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-slate-100">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-[var(--line)]">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                 {t('webFormat', 'Web Format')}
               </span>
-              <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
+              <div className="inline-flex p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] gap-1">
                 {(['webp', 'jpeg', 'png'] as const).map((f) => (
                   <button
                     key={f}
@@ -563,8 +564,8 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                       setActivePresetId('custom');
                       setFormat(f);
                     }}
-                    className={`px-3 py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
-                      format === f ? 'bg-blue-600 text-white' : 'text-slate-600 hover:text-slate-900'
+                    className={`px-3 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
+                      format === f ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
                     {f === 'jpeg' ? 'JPG' : f.toUpperCase()}
@@ -574,7 +575,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
             </div>
 
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                 {t('maxDimension', 'Max Dimension (Long Edge)')}
               </span>
               <select
@@ -583,7 +584,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                   setActivePresetId('custom');
                   setMaxEdge(parseInt(e.target.value, 10));
                 }}
-                className="w-full px-3 py-2 text-xs font-semibold border border-slate-300 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 text-xs font-semibold border border-[var(--line-strong)] rounded-[11px] bg-[var(--surface-2)] text-[var(--ink)] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
               >
                 <option value={0}>{t('keepOriginalDimensions', 'Keep Original Dimensions')}</option>
                 <option value={1920}>{t('max1920', 'Max 1920px (Retina / Full HD)')}</option>
@@ -596,8 +597,8 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
 
             <div>
               <div className="flex justify-between text-xs mb-2">
-                <span className="font-bold uppercase tracking-wider text-slate-500">
-                  {t('quality', 'Quality:')} <strong className="text-blue-600 font-mono">{quality}%</strong>
+                <span className="font-bold uppercase tracking-wider text-[var(--ink-3)]">
+                  {t('quality', 'Quality:')} <strong className="text-[#7c3aed] dark:text-[#a78bfa] font-mono">{quality}%</strong>
                 </span>
               </div>
               <input
@@ -610,18 +611,18 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                   setActivePresetId('custom');
                   setQuality(parseInt(e.target.value, 10));
                 }}
-                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer disabled:opacity-40"
+                className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer disabled:opacity-40"
               />
             </div>
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
-            <label className="flex items-center gap-2 text-xs text-slate-600 cursor-pointer">
+            <label className="flex items-center gap-2 text-xs text-[var(--ink-2)] cursor-pointer">
               <input
                 type="checkbox"
                 checked={preventUpscale}
                 onChange={(e) => setPreventUpscale(e.target.checked)}
-                className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                className="w-4 h-4 rounded border-[var(--line-strong)] accent-[#7c3aed]"
               />
               <span>{t('onlyDownscale', 'Only downscale larger images (EXIF & GPS metadata automatically stripped)')}</span>
             </label>
@@ -632,7 +633,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                   type="button"
                   onClick={() => void handleOptimizeAll()}
                   disabled={isProcessing}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white text-sm font-semibold rounded-xl cursor-pointer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 btn-purple-grad disabled:opacity-50 text-sm font-semibold cursor-pointer"
                 >
                   {isProcessing ? (
                     <>
@@ -650,7 +651,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                   type="button"
                   onClick={handleClearAll}
                   disabled={isProcessing}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2.5 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-sm font-medium rounded-xl cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#fecaca] hover:bg-[#fee2e2] hover:text-[#dc2626] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] text-[var(--ink-2)] text-sm font-medium rounded-[11px] cursor-pointer transition-colors"
                 >
                   <Trash2 className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('clear', 'Clear')}</span>
@@ -664,14 +665,14 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
         {items.length > 0 && (
           <div className="space-y-4">
             {doneItems.length > 0 && (
-              <div className="bg-slate-900 text-white rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="panel-pastel-blue border rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
                     {t('webPerformanceSummary', 'Web Performance Summary')}
                   </span>
-                  <p className="text-sm font-semibold mt-0.5">
+                  <p className="text-sm font-semibold text-[var(--ink-navy)] mt-0.5">
                     {formatBytes(totalOrig)} → {formatBytes(totalOut)}{' '}
-                    <span className={totalSaved < 0 ? 'text-red-400' : 'text-emerald-400'}>
+                    <span className={totalSaved < 0 ? 'text-[#c2410c] dark:text-[#fdba74]' : 'text-[#15803d] dark:text-[#4ade80]'}>
                       {totalSaved < 0
                         ? t('pageWeightGrew', '(+{percent}% · grew by {amount})')
                             .replace('{percent}', String(Math.abs(totalPct)))
@@ -687,7 +688,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                     type="button"
                     onClick={handleDownloadZip}
                     disabled={isZipping}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl cursor-pointer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 btn-purple-grad text-sm font-semibold cursor-pointer"
                   >
                     <FileArchive className="w-4 h-4" />
                     <span>{isZipping ? t('creatingZip', 'Creating ZIP...') : t('downloadAllZip', 'Download All (ZIP)')}</span>
@@ -703,12 +704,12 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
               return (
                 <div
                   key={item.id}
-                  className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4"
+                  className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 shadow-[var(--shadow)]"
                 >
                   <div className="flex items-center gap-4 min-w-0 w-full lg:w-auto">
                     <div
                       onClick={() => isDone && setComparisonTarget(item)}
-                      className={`relative w-20 h-20 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shrink-0 ${
+                      className={`relative w-20 h-20 rounded-xl overflow-hidden bg-[var(--surface-2)] border border-[var(--line)] shrink-0 ${
                         isDone ? 'cursor-pointer' : ''
                       }`}
                     >
@@ -718,16 +719,16 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                         className="w-full h-full object-cover"
                       />
                       {isBusy && (
-                        <div className="absolute inset-0 bg-white/80 flex items-center justify-center">
-                          <RotateCcw className="w-5 h-5 text-blue-600 animate-spin" />
+                        <div className="absolute inset-0 bg-[var(--surface)]/80 flex items-center justify-center">
+                          <RotateCcw className="w-5 h-5 text-[#7c3aed] animate-spin" />
                         </div>
                       )}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <h3 className="text-sm font-bold text-slate-900 truncate">
+                      <h3 className="font-sans text-sm font-bold text-[var(--ink-navy)] truncate">
                         {isDone ? item.outputFilename : item.name}
                       </h3>
-                      <p className="text-xs text-slate-500 mt-0.5 font-mono">
+                      <p className="text-xs text-[var(--ink-3)] mt-0.5 font-mono">
                         {item.originalWidth}×{item.originalHeight}px · {formatBytes(item.originalSize)}
                         {isDone && item.compressedWidth
                           ? ` → ${item.compressedWidth}×${item.compressedHeight}px · ${formatBytes(
@@ -738,21 +739,21 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                       <div className="mt-1.5 flex flex-wrap items-center gap-2">
                         {isDone && (
                           (item.compressedSize || 0) > item.originalSize ? (
-                            <span className="inline-flex items-center gap-1 text-xs text-red-600 font-semibold">
-                              <AlertCircle className="w-3.5 h-3.5 text-red-500" />
+                            <span className="inline-flex items-center gap-1 text-xs text-[#c2410c] dark:text-[#fdba74] font-semibold">
+                              <AlertCircle className="w-3.5 h-3.5 text-[#c2410c] dark:text-[#fdba74]" />
                               {t('grewBy', 'Grew by {amount} ({percent})')
                                 .replace('{amount}', formatBytes((item.compressedSize || 0) - item.originalSize))
                                 .replace('{percent}', formatPercent(item.compressionPercentage))}
                             </span>
                           ) : (
-                            <span className="inline-flex items-center gap-1 text-xs text-emerald-700 font-semibold">
-                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                            <span className="inline-flex items-center gap-1 text-xs text-[#15803d] dark:text-[#4ade80] font-semibold">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-[#16a34a] dark:text-[#4ade80]" />
                               {t('webReady', 'Web-Ready ({percent})').replace('{percent}', formatPercent(item.compressionPercentage))}
                             </span>
                           )
                         )}
                         {isErr && (
-                          <span className="inline-flex items-center gap-1 text-xs text-red-600 font-medium">
+                          <span className="inline-flex items-center gap-1 text-xs text-[#dc2626] dark:text-[#f87171] font-medium">
                             <AlertCircle className="w-3.5 h-3.5" />
                             {item.errorMessage}
                           </span>
@@ -767,17 +768,17 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                         <button
                           type="button"
                           onClick={() => void handleCopyImgTag(item)}
-                          className="px-3 py-2 text-slate-700 hover:bg-slate-100 text-xs font-semibold rounded-lg flex items-center gap-1.5 cursor-pointer border border-slate-200"
+                          className="px-3.5 py-2 text-[var(--ink-2)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer border border-[var(--line)] hover:border-[#7c3aed] transition-colors"
                           title={t('copyImgTitle', 'Copy responsive HTML img tag with explicit width and height')}
                         >
                           {copiedId === item.id ? (
                             <>
-                              <Check className="w-3.5 h-3.5 text-emerald-600" />
-                              <span className="text-emerald-700">{t('copiedHtml', 'Copied HTML')}</span>
+                              <Check className="w-3.5 h-3.5 text-[#16a34a] dark:text-[#4ade80]" />
+                              <span className="text-[#15803d] dark:text-[#4ade80]">{t('copiedHtml', 'Copied HTML')}</span>
                             </>
                           ) : (
                             <>
-                              <Code2 className="w-3.5 h-3.5 text-slate-500" />
+                              <Code2 className="w-3.5 h-3.5 text-[var(--ink-3)]" />
                               <span>{t('copyImg', 'Copy <img>')}</span>
                             </>
                           )}
@@ -785,9 +786,9 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                         <button
                           type="button"
                           onClick={() => setComparisonTarget(item)}
-                          className="px-3 py-2 text-slate-700 hover:bg-slate-100 text-xs font-semibold rounded-lg flex items-center gap-1.5 cursor-pointer"
+                          className="px-3.5 py-2 text-[var(--ink-2)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
                         >
-                          <SplitSquareVertical className="w-4 h-4 text-blue-600" />
+                          <SplitSquareVertical className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
                           <span>{t('compare', 'Compare')}</span>
                         </button>
                         <button
@@ -796,7 +797,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                             item.compressedBlob &&
                             triggerDownload(item.compressedBlob, item.outputFilename)
                           }
-                          className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg cursor-pointer"
+                          className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#16a34a] hover:bg-[#15803d] text-white text-xs font-semibold rounded-[11px] shadow-xs cursor-pointer transition-colors"
                         >
                           <Download className="w-4 h-4" />
                           <span>{t('download', 'Download')}</span>
@@ -806,7 +807,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                     <button
                       type="button"
                       onClick={() => handleRemove(item.id)}
-                      className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
+                      className="p-2 text-[var(--ink-3)] hover:text-[#dc2626] hover:bg-[#fee2e2] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] rounded-lg cursor-pointer transition-colors"
                       aria-label={t('removeImage', 'Remove {name}').replace('{name}', item.name)}
                     >
                       <Trash2 className="w-4 h-4" />

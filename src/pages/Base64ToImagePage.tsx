@@ -28,6 +28,7 @@ import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { canvasToBlob } from '../utils/imageProcessing';
 import { formatBytes } from '../utils/formatters';
+import { getPastelCardClass } from '../utils/pastel';
 import { triggerDownload } from '../utils/zip';
 
 export interface PageEsStrings {
@@ -328,10 +329,10 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({
       categoryLabels={categoryLabels}
     >
       <div className="space-y-6">
-        <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-4">
+        <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-4">
           <div className="flex items-center justify-between gap-3">
-            <label className="text-sm font-bold text-slate-900 flex items-center gap-2">
-              <FileCode2 className="w-4 h-4 text-blue-600" />
+            <label className="text-sm font-bold text-[var(--ink-navy)] flex items-center gap-2">
+              <FileCode2 className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
               <span>{t('pasteLabel', 'Paste Base64 String or Data URL')}</span>
             </label>
             {input && (
@@ -341,7 +342,7 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({
                   setInput('');
                   decodeString('');
                 }}
-                className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink-3)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] cursor-pointer transition-colors"
               >
                 <Trash2 className="w-3.5 h-3.5" />
                 <span>{t('clear', 'Clear')}</span>
@@ -358,16 +359,16 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({
               decodeString(val);
             }}
             placeholder={t('inputPlaceholder', 'Paste data:image/png;base64,iVBORw0KGgo... or raw Base64 bytes here')}
-            className="w-full p-3.5 font-mono text-xs bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3.5 font-mono text-xs bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
           />
 
-          <div className="flex items-center justify-between text-xs text-slate-500">
+          <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[var(--ink-3)]">
             <span>{t('supportsNote', 'Supports PNG, JPG, WebP, GIF, SVG, BMP, and ICO Base64 payloads')}</span>
             <button
               type="button"
               onClick={() => decodeString(input)}
               disabled={isDecoding || !input.trim()}
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl cursor-pointer disabled:opacity-50"
+              className="px-5 py-2 btn-purple-grad font-semibold cursor-pointer disabled:opacity-50 shadow-xs"
             >
               {isDecoding ? t('decoding', 'Decoding...') : t('decodeImage', 'Decode Image')}
             </button>
@@ -375,26 +376,26 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({
         </div>
 
         {error && (
-          <div className="flex items-start gap-2 p-3.5 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl">
+          <div className="flex items-start gap-2 p-3.5 pastel-card-14 border text-[#b91c1c] dark:text-[#fca5a5] text-sm rounded-2xl">
             <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
             <span>{error}</span>
           </div>
         )}
 
         {isDecoding && (
-          <div className="flex items-center justify-center p-8 text-sm text-slate-600 gap-2">
-            <Loader2 className="w-5 h-5 text-blue-600 animate-spin" />
+          <div className="flex items-center justify-center p-8 text-sm text-[var(--ink-2)] gap-2">
+            <Loader2 className="w-5 h-5 text-[#7c3aed] animate-spin" />
             <span>{t('decodingBytes', 'Decoding Base64 bytes...')}</span>
           </div>
         )}
 
         {decoded && (
-          <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             <div
-              className="lg:col-span-7 rounded-xl border border-slate-200 p-4 flex items-center justify-center min-h-[240px] max-h-[440px]"
+              className="lg:col-span-7 rounded-[12px] border border-[var(--line)] bg-[var(--surface-2)] p-4 flex items-center justify-center min-h-[240px] max-h-[440px]"
               style={{
                 backgroundImage:
-                  'linear-gradient(45deg, #e2e8f0 25%, transparent 25%), linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #e2e8f0 75%), linear-gradient(-45deg, transparent 75%, #e2e8f0 75%)',
+                  'linear-gradient(45deg, rgba(148, 163, 184, 0.16) 25%, transparent 25%), linear-gradient(-45deg, rgba(148, 163, 184, 0.16) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(148, 163, 184, 0.16) 75%), linear-gradient(-45deg, transparent 75%, rgba(148, 163, 184, 0.16) 75%)',
                 backgroundSize: '20px 20px',
                 backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px',
               }}
@@ -407,42 +408,42 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({
             </div>
 
             <div className="lg:col-span-5 space-y-4">
-              <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+              <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#15803d] dark:text-[#86efac] bg-[#dcfce7] dark:bg-[#16a34a]/20 border border-[#bbf7d0] dark:border-[#16a34a]/35 px-3 py-1.5 rounded-full">
+                <CheckCircle2 className="w-4 h-4" />
                 <span>{t('validImageDecoded', 'Valid Image Decoded')}</span>
               </div>
 
               <div className="grid grid-cols-2 gap-2.5 text-xs">
-                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                  <span className="text-slate-500 block">{t('detectedFormat', 'Detected Format')}</span>
-                  <span className="font-mono font-bold text-slate-900 uppercase">
+                <div className={`p-3 rounded-[11px] border ${getPastelCardClass(0)}`}>
+                  <span className="text-[var(--ink-3)] block">{t('detectedFormat', 'Detected Format')}</span>
+                  <span className="font-mono font-bold text-[var(--ink-navy)] uppercase">
                     {decoded.mimeType.replace('image/', '')}
                   </span>
                 </div>
-                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                  <span className="text-slate-500 block">{t('binarySize', 'Binary Size')}</span>
-                  <span className="font-mono font-bold text-slate-900">{formatBytes(decoded.size)}</span>
+                <div className={`p-3 rounded-[11px] border ${getPastelCardClass(2)}`}>
+                  <span className="text-[var(--ink-3)] block">{t('binarySize', 'Binary Size')}</span>
+                  <span className="font-mono font-bold text-[var(--ink-navy)]">{formatBytes(decoded.size)}</span>
                 </div>
-                <div className="col-span-2 p-3 bg-slate-50 rounded-xl border border-slate-200">
-                  <span className="text-slate-500 block">{t('dimensions', 'Dimensions')}</span>
-                  <span className="font-mono font-bold text-slate-900">
+                <div className={`col-span-2 p-3 rounded-[11px] border ${getPastelCardClass(5)}`}>
+                  <span className="text-[var(--ink-3)] block">{t('dimensions', 'Dimensions')}</span>
+                  <span className="font-mono font-bold text-[var(--ink-navy)]">
                     {decoded.width} × {decoded.height} px
                   </span>
                 </div>
               </div>
 
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                   {t('downloadFormat', 'Download Format')}
                 </span>
-                <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-xl">
+                <div className="grid grid-cols-4 gap-1 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px]">
                   {(['original', 'png', 'jpeg', 'webp'] as const).map((fmt) => (
                     <button
                       key={fmt}
                       type="button"
                       onClick={() => setExportFmt(fmt)}
-                      className={`py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
-                        exportFmt === fmt ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
+                      className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-colors ${
+                        exportFmt === fmt ? 'btn-purple-grad shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {fmt === 'original' ? t('formatOriginal', 'Original') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
@@ -454,7 +455,7 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({
               <button
                 type="button"
                 onClick={handleDownload}
-                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 btn-purple-grad text-sm font-semibold shadow-sm cursor-pointer"
               >
                 <Download className="w-4 h-4" />
                 <span>{t('downloadImageFile', 'Download Image File')}</span>

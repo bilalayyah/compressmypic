@@ -26,6 +26,7 @@ import {
   loadExtendedImageInfo,
 } from '../utils/imageProcessing';
 import { triggerDownload } from '../utils/zip';
+import { getPastelCardClass } from '../utils/pastel';
 
 interface ColorValues {
   hex: string;
@@ -353,7 +354,7 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
         )}
 
         {errorMsg && (
-          <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700">
+          <div className="p-4 pastel-card-14 border rounded-2xl text-sm text-[#b91c1c] dark:text-[#fca5a5]">
             {errorMsg}
           </div>
         )}
@@ -361,10 +362,10 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
         {loadedImg && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Interactive Image Canvas */}
-            <div className="lg:col-span-2 bg-white border border-slate-200 rounded-2xl p-4 shadow-xs space-y-3">
+            <div className="lg:col-span-2 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 shadow-[var(--shadow)] space-y-3">
               <div className="flex items-center justify-between gap-2">
-                <div className="text-xs text-slate-600 font-medium truncate">
-                  <strong className="text-slate-900">{imageName}</strong> ({imageDims?.w}×
+                <div className="text-xs text-[var(--ink-2)] font-medium truncate">
+                  <strong className="text-[var(--ink-navy)]">{imageName}</strong> ({imageDims?.w}×
                   {imageDims?.h}px) — {t('clickAnywhereToPin', 'Click anywhere to pin a color')}
                 </div>
                 <button
@@ -375,14 +376,14 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
                     setHoverColor(null);
                     setPalette([]);
                   }}
-                  className="inline-flex items-center gap-1 px-3 py-1.5 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-xs font-semibold rounded-lg cursor-pointer shrink-0"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#fecaca] hover:bg-[#fee2e2] hover:text-[#dc2626] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] text-[var(--ink-2)] text-xs font-semibold rounded-[11px] cursor-pointer shrink-0 transition-colors"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                   <span>{t('newImage', 'New Image')}</span>
                 </button>
               </div>
 
-              <div className="bg-slate-950/5 border border-slate-200 rounded-xl overflow-hidden flex items-center justify-center p-2">
+              <div className="bg-[var(--surface-2)] border border-[var(--line)] rounded-[12px] overflow-hidden flex items-center justify-center p-2">
                 <canvas
                   ref={canvasRef}
                   onMouseMove={handleCanvasMove}
@@ -394,14 +395,14 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
 
             {/* Color Inspector Panel */}
             <div className="space-y-4">
-              <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-4">
+              <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] space-y-4">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                    <Pipette className="w-4 h-4 text-blue-600" />
+                  <h2 className="font-sans text-base font-bold text-[var(--ink-navy)] flex items-center gap-2">
+                    <Pipette className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
                     <span>{t('pixelInspector', 'Pixel Inspector')}</span>
                   </h2>
                   {activeColor && (
-                    <span className="text-xs font-mono text-slate-500">
+                    <span className="text-xs font-mono text-[var(--ink-3)]">
                       x:{activeColor.x}, y:{activeColor.y}
                     </span>
                   )}
@@ -413,15 +414,15 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
                     ref={loupeCanvasRef}
                     width={88}
                     height={88}
-                    className="w-22 h-22 rounded-xl border border-slate-300 bg-slate-100 shrink-0"
+                    className="w-22 h-22 rounded-[11px] border border-[var(--line-strong)] bg-[var(--surface-2)] shrink-0"
                   />
                   {selectedColor && (
                     <div className="flex-1 space-y-2">
                       <div
-                        className="w-full h-14 rounded-xl border border-slate-200 shadow-inner"
+                        className="w-full h-14 rounded-[11px] border border-[var(--line)] shadow-inner"
                         style={{ backgroundColor: (activeColor || selectedColor).hex }}
                       />
-                      <p className="text-xs font-mono font-bold text-slate-900 text-center">
+                      <p className="text-xs font-mono font-bold text-[var(--ink-navy)] text-center">
                         {(activeColor || selectedColor).hex}
                       </p>
                     </div>
@@ -429,7 +430,7 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
                 </div>
 
                 {selectedColor && (
-                  <div className="space-y-2 pt-2 border-t border-slate-100">
+                  <div className="space-y-2 pt-2 border-t border-[var(--line)]">
                     {(
                       [
                         { label: 'HEX', value: selectedColor.hex },
@@ -437,27 +438,27 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
                         { label: 'HSL', value: selectedColor.hsl },
                         { label: 'CMYK', value: selectedColor.cmyk },
                       ] as const
-                    ).map((row) => (
+                    ).map((row, idx) => (
                       <div
                         key={row.label}
-                        className="flex items-center justify-between gap-2 p-2.5 bg-slate-50 rounded-xl border border-slate-200/70"
+                        className={`flex items-center justify-between gap-2 p-2.5 rounded-[11px] border ${getPastelCardClass(idx)}`}
                       >
                         <div className="min-w-0">
-                          <span className="text-[10px] font-bold uppercase text-slate-400 block">
+                          <span className="text-[10px] font-bold uppercase text-[var(--ink-3)] block">
                             {row.label}
                           </span>
-                          <span className="text-xs font-mono font-semibold text-slate-800 truncate block">
+                          <span className="text-xs font-mono font-semibold text-[var(--ink-navy)] truncate block">
                             {row.value}
                           </span>
                         </div>
                         <button
                           type="button"
                           onClick={() => copyValue(row.label, row.value)}
-                          className="p-1.5 text-slate-500 hover:text-blue-600 hover:bg-white rounded-lg cursor-pointer shrink-0"
+                          className="p-1.5 text-[var(--ink-3)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[var(--surface)] rounded-[8px] cursor-pointer shrink-0 transition-colors"
                           title={t('copyLabel', 'Copy {label}').replace('{label}', row.label)}
                         >
                           {copiedKey === row.label ? (
-                            <Check className="w-4 h-4 text-emerald-600" />
+                            <Check className="w-4 h-4 text-[#15803d] dark:text-[#4ade80]" />
                           ) : (
                             <Copy className="w-4 h-4" />
                           )}
@@ -469,16 +470,16 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
               </div>
 
               {/* Picked Swatch History */}
-              <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-3">
+              <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] space-y-3">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-bold text-slate-900">
+                  <h3 className="font-sans text-base font-bold text-[var(--ink-navy)]">
                     {t('pickedSwatches', 'Picked Swatches ({count})').replace('{count}', String(palette.length))}
                   </h3>
                   {palette.length > 0 && (
                     <button
                       type="button"
                       onClick={exportCssVariables}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:underline cursor-pointer"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline cursor-pointer"
                     >
                       <Download className="w-3.5 h-3.5" />
                       <span>{t('exportCss', 'Export CSS')}</span>
@@ -487,7 +488,7 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
                 </div>
 
                 {palette.length === 0 ? (
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-[var(--ink-3)]">
                     {t('clickPixelsHint', 'Click pixels on the image to save colors to your palette.')}
                   </p>
                 ) : (
@@ -500,14 +501,14 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
                           setSelectedColor(c);
                           copyValue(`swatch-${c.hex}`, c.hex);
                         }}
-                        className="group flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 rounded-lg border border-slate-200 hover:border-blue-400 bg-slate-50 text-xs font-mono cursor-pointer"
+                        className="group flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 rounded-full border border-[var(--line)] hover:border-[#7c3aed] bg-[var(--surface-2)] text-xs font-mono cursor-pointer transition-colors"
                         title={t('clickToSelectCopy', 'Click to select & copy {hex}').replace('{hex}', c.hex)}
                       >
                         <span
-                          className="w-4 h-4 rounded border border-slate-300"
+                          className="w-4 h-4 rounded-full border border-[var(--line-strong)]"
                           style={{ backgroundColor: c.hex }}
                         />
-                        <span className="text-slate-700 font-semibold">{c.hex}</span>
+                        <span className="text-[var(--ink-2)] font-semibold">{c.hex}</span>
                       </button>
                     ))}
                   </div>

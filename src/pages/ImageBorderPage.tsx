@@ -387,16 +387,16 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4">
+            <div className="lg:col-span-7 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                  <Frame className="w-3.5 h-3.5 text-blue-600" />
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5">
+                  <Frame className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
                   {t('framedPreview', 'Framed Preview')}
                 </span>
                 <button
                   type="button"
                   onClick={handleClear}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink-3)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] cursor-pointer transition-colors"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                   <span>{t('changeImage', 'Change Image')}</span>
@@ -404,10 +404,10 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
               </div>
 
               <div
-                className="rounded-xl overflow-hidden border border-slate-200 p-4 flex items-center justify-center min-h-[300px] max-h-[540px]"
+                className="rounded-[12px] overflow-hidden border border-[var(--line)] bg-[var(--surface-2)] p-4 flex items-center justify-center min-h-[300px] max-h-[540px]"
                 style={{
                   backgroundImage:
-                    'linear-gradient(45deg, #e2e8f0 25%, transparent 25%), linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #e2e8f0 75%), linear-gradient(-45deg, transparent 75%, #e2e8f0 75%)',
+                    'linear-gradient(45deg, rgba(148, 163, 184, 0.16) 25%, transparent 25%), linear-gradient(-45deg, rgba(148, 163, 184, 0.16) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(148, 163, 184, 0.16) 75%), linear-gradient(-45deg, transparent 75%, rgba(148, 163, 184, 0.16) 75%)',
                   backgroundSize: '20px 20px',
                   backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px',
                 }}
@@ -418,7 +418,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
                 />
               </div>
 
-              <div className="flex justify-between text-xs text-slate-500 font-mono">
+              <div className="flex justify-between text-xs text-[var(--ink-3)] font-mono">
                 <span className="truncate max-w-xs">{sourceFile?.name}</span>
                 <span>
                   {imageInfo.width}×{imageInfo.height}px · {sourceFile ? formatBytes(sourceFile.size) : ''}
@@ -426,9 +426,9 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
               </div>
             </div>
 
-            <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+            <div className="lg:col-span-5 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-5">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                   {t('quickFramePresets', 'Quick Frame Presets')}
                 </span>
                 <div className="grid grid-cols-2 gap-2">
@@ -442,7 +442,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
                       key={p.id}
                       type="button"
                       onClick={() => applyFramePreset(p.id as 'gallery' | 'polaroid' | 'dark' | 'sunset')}
-                      className="px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-slate-700 cursor-pointer"
+                      className="px-3 py-2 text-xs font-semibold rounded-full border border-[var(--line)] bg-[var(--surface-2)] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-2)] cursor-pointer transition-colors"
                     >
                       {presetLabelById[p.id] ?? p.label}
                     </button>
@@ -451,17 +451,17 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
               </div>
 
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                   {t('borderStyle', 'Border Style')}
                 </span>
-                <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl">
+                <div className="grid grid-cols-3 gap-1 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px]">
                   {(['solid', 'gradient', 'polaroid'] as BorderType[]).map((bt) => (
                     <button
                       key={bt}
                       type="button"
                       onClick={() => setBorderType(bt)}
-                      className={`py-1.5 text-xs font-semibold rounded-lg capitalize cursor-pointer ${
-                        borderType === bt ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
+                      className={`py-1.5 text-xs font-semibold rounded-[8px] capitalize cursor-pointer transition-all ${
+                        borderType === bt ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {bt === 'solid'
@@ -475,23 +475,23 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
               </div>
 
               <div className="flex flex-wrap items-center gap-4">
-                <label className="flex items-center gap-2 text-xs font-semibold text-slate-700">
+                <label className="flex items-center gap-2 text-xs font-semibold text-[var(--ink-2)]">
                   <input
                     type="color"
                     value={color1}
                     onChange={(e) => setColor1(e.target.value)}
-                    className="w-8 h-8 rounded-lg border border-slate-200 cursor-pointer p-0.5"
+                    className="w-8 h-8 rounded-[8px] border border-[var(--line-strong)] cursor-pointer p-0.5 bg-[var(--surface-2)]"
                   />
                   <span>{borderType === 'gradient' ? t('startColor', 'Start Color') : t('borderColor', 'Border Color')}</span>
                 </label>
 
                 {borderType === 'gradient' && (
-                  <label className="flex items-center gap-2 text-xs font-semibold text-slate-700">
+                  <label className="flex items-center gap-2 text-xs font-semibold text-[var(--ink-2)]">
                     <input
                       type="color"
                       value={color2}
                       onChange={(e) => setColor2(e.target.value)}
-                      className="w-8 h-8 rounded-lg border border-slate-200 cursor-pointer p-0.5"
+                      className="w-8 h-8 rounded-[8px] border border-[var(--line-strong)] cursor-pointer p-0.5 bg-[var(--surface-2)]"
                     />
                     <span>{t('endColor', 'End Color')}</span>
                   </label>
@@ -501,8 +501,8 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
               {borderType === 'gradient' && (
                 <div>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-semibold text-slate-700">{t('gradientAngle', 'Gradient Angle')}</span>
-                    <span className="font-mono text-blue-600">{gradientAngle}°</span>
+                    <span className="font-semibold text-[var(--ink-2)]">{t('gradientAngle', 'Gradient Angle')}</span>
+                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{gradientAngle}°</span>
                   </div>
                   <input
                     type="range"
@@ -510,15 +510,15 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
                     max={360}
                     value={gradientAngle}
                     onChange={(e) => setGradientAngle(parseInt(e.target.value, 10))}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                   />
                 </div>
               )}
 
               <div>
                 <div className="flex justify-between text-xs mb-1">
-                  <span className="font-semibold text-slate-700">{t('borderSize', 'Border Size')}</span>
-                  <span className="font-mono text-blue-600">{borderSizePct}%</span>
+                  <span className="font-semibold text-[var(--ink-2)]">{t('borderSize', 'Border Size')}</span>
+                  <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{borderSizePct}%</span>
                 </div>
                 <input
                   type="range"
@@ -526,15 +526,15 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
                   max={25}
                   value={borderSizePct}
                   onChange={(e) => setBorderSizePct(parseInt(e.target.value, 10))}
-                  className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                  className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-semibold text-slate-700">{t('frameRadius', 'Frame Radius')}</span>
-                    <span className="font-mono text-blue-600">{outerRadiusPct}%</span>
+                    <span className="font-semibold text-[var(--ink-2)]">{t('frameRadius', 'Frame Radius')}</span>
+                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{outerRadiusPct}%</span>
                   </div>
                   <input
                     type="range"
@@ -542,13 +542,13 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
                     max={30}
                     value={outerRadiusPct}
                     onChange={(e) => setOuterRadiusPct(parseInt(e.target.value, 10))}
-                    className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-1.5 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                   />
                 </div>
                 <div>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-semibold text-slate-700">{t('photoRadius', 'Photo Radius')}</span>
-                    <span className="font-mono text-blue-600">{innerRadiusPct}%</span>
+                    <span className="font-semibold text-[var(--ink-2)]">{t('photoRadius', 'Photo Radius')}</span>
+                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{innerRadiusPct}%</span>
                   </div>
                   <input
                     type="range"
@@ -556,23 +556,23 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
                     max={30}
                     value={innerRadiusPct}
                     onChange={(e) => setInnerRadiusPct(parseInt(e.target.value, 10))}
-                    className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-1.5 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                   />
                 </div>
               </div>
 
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                   {t('dropShadow', 'Drop Shadow')}
                 </span>
-                <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-xl">
+                <div className="grid grid-cols-4 gap-1 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px]">
                   {(['none', 'soft', 'medium', 'deep'] as ShadowLevel[]).map((s) => (
                     <button
                       key={s}
                       type="button"
                       onClick={() => setShadow(s)}
-                      className={`py-1.5 text-xs font-semibold rounded-lg capitalize cursor-pointer ${
-                        shadow === s ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600'
+                      className={`py-1.5 text-xs font-semibold rounded-[8px] capitalize cursor-pointer transition-all ${
+                        shadow === s ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {s === 'none'
@@ -587,15 +587,15 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-slate-100 space-y-3">
-                <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl">
+              <div className="pt-4 border-t border-[var(--line)] space-y-3">
+                <div className="grid grid-cols-3 gap-1 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px]">
                   {(['png', 'jpeg', 'webp'] as const).map((fmt) => (
                     <button
                       key={fmt}
                       type="button"
                       onClick={() => setOutFormat(fmt)}
-                      className={`py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
-                        outFormat === fmt ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
+                      className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
+                        outFormat === fmt ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
@@ -607,7 +607,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
                   type="button"
                   onClick={handleDownload}
                   disabled={isExporting}
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer disabled:opacity-60"
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 btn-purple-grad text-sm font-semibold shadow-xs cursor-pointer disabled:opacity-60"
                 >
                   {isExporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
                   <span>{isExporting ? t('exporting', 'Exporting...') : t('downloadFramedImage', 'Download Framed Image')}</span>
@@ -618,7 +618,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
         )}
 
         {error && (
-          <div className="flex items-start gap-2 p-3.5 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl">
+          <div className="flex items-start gap-2 p-3.5 pastel-card-14 border text-[#b91c1c] dark:text-[#fca5a5] text-sm rounded-2xl">
             <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
             <span>{error}</span>
           </div>

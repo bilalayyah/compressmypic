@@ -296,10 +296,10 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
         />
 
         {/* Controls */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-4">
+        <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-4">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div className="space-y-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">
+              <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block">
                 {t('targetDpiPresets', 'Target DPI Presets')}
               </span>
               <div className="flex flex-wrap gap-2">
@@ -312,10 +312,10 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
                       setTargetDpi(p.dpi);
                       reprocessAll(p.dpi);
                     }}
-                    className={`px-3 py-1.5 text-xs font-semibold rounded-xl border cursor-pointer transition-colors ${
+                    className={`px-3.5 py-1.5 text-xs font-semibold rounded-full border cursor-pointer transition-colors ${
                       targetDpi === p.dpi
-                        ? 'bg-blue-600 text-white border-blue-600'
-                        : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+                        ? 'bg-[#7c3aed] text-white border-[#7c3aed]'
+                        : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe]'
                     }`}
                   >
                     {t(DPI_PRESET_LABEL_KEYS[p.dpi] ?? 'preset300HighPrint', p.label)}
@@ -324,9 +324,9 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
               </div>
             </div>
 
-            <div className="flex items-end gap-2.5">
+            <div className="flex flex-wrap items-end gap-2.5">
               <div>
-                <label className="text-xs font-semibold text-slate-700 block mb-1">
+                <label className="text-xs font-semibold text-[var(--ink-2)] block mb-1">
                   {t('customDpi', 'Custom DPI')}
                 </label>
                 <input
@@ -335,7 +335,7 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
                   max={2400}
                   value={targetDpi}
                   onChange={(e) => setTargetDpi(Math.max(1, Math.min(2400, parseInt(e.target.value, 10) || 1)))}
-                  className="w-28 px-3 py-2 text-sm font-mono border border-slate-300 rounded-xl"
+                  className="w-28 px-3 py-2 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
                 />
               </div>
               {items.length > 0 && (
@@ -344,7 +344,7 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
                     type="button"
                     disabled={isProcessing}
                     onClick={() => reprocessAll(targetDpi)}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 btn-purple-grad text-xs font-semibold shadow-xs cursor-pointer"
                   >
                     <Printer className="w-4 h-4" />
                     <span>{t('applyDpi', 'Apply {dpi} DPI').replace('{dpi}', String(targetDpi))}</span>
@@ -352,7 +352,7 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
                   <button
                     type="button"
                     onClick={handleClear}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-xs font-semibold rounded-xl cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#fecaca] hover:bg-[#fee2e2] hover:text-[#dc2626] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] text-[var(--ink-2)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                   >
                     <Trash2 className="w-4 h-4" />
                     <span>{t('clear', 'Clear')}</span>
@@ -364,12 +364,12 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
         </div>
 
         {doneItems.length > 1 && (
-          <div className="bg-slate-900 text-white rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="panel-pastel-blue border rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
                 {t('batchReady', 'Batch Ready')}
               </span>
-              <p className="text-sm font-semibold mt-0.5">
+              <p className="text-sm font-semibold text-[var(--ink-navy)] mt-0.5">
                 {t('filesUpdatedToDpi', '{count} files updated to {dpi} DPI').replace('{count}', String(doneItems.length)).replace('{dpi}', String(targetDpi))}
               </p>
             </div>
@@ -377,7 +377,7 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
               type="button"
               onClick={handleDownloadZip}
               disabled={isZipping}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 btn-purple-grad text-sm font-semibold cursor-pointer"
             >
               <FileArchive className="w-4 h-4" />
               <span>{isZipping ? t('creatingZip', 'Creating ZIP...') : t('downloadAllZip', 'Download All (ZIP)')}</span>
@@ -399,41 +399,41 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
               return (
                 <div
                   key={item.id}
-                  className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+                  className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
                 >
                   <div className="flex items-center gap-4 min-w-0 w-full md:w-auto">
-                    <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shrink-0 flex items-center justify-center">
+                    <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-[var(--surface-2)] border border-[var(--line)] shrink-0 flex items-center justify-center">
                       {res?.previewUrl ? (
                         <img src={res.previewUrl} alt={item.file.name} className="max-w-full max-h-full object-contain" />
                       ) : (
-                        <Loader2 className="w-5 h-5 text-blue-600 animate-spin" />
+                        <Loader2 className="w-5 h-5 text-[#7c3aed] animate-spin" />
                       )}
                     </div>
 
                     <div className="min-w-0 flex-1 space-y-1">
-                      <h3 className="text-sm font-bold text-slate-900 truncate">{item.file.name}</h3>
+                      <h3 className="font-sans text-sm font-bold text-[var(--ink-navy)] truncate">{item.file.name}</h3>
                       {res && (
                         <>
-                          <p className="text-xs text-slate-500 font-mono">
+                          <p className="text-xs text-[var(--ink-3)] font-mono">
                             {res.width}×{res.height}px · {formatBytes(res.size)}
                           </p>
                           <div className="flex flex-wrap items-center gap-2 text-xs">
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-mono">
+                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-2)] font-mono">
                               {res.beforeDpi.dpiX ? t('beforeDpi', 'Before: {dpi} DPI').replace('{dpi}', String(res.beforeDpi.dpiX)) : t('beforeNotSet', 'Before: Not set')}
                             </span>
-                            <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-mono font-semibold">
-                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                            <ArrowRight className="w-3.5 h-3.5 text-[var(--ink-3)]" />
+                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#dcfce7] dark:bg-[#16a34a]/20 border border-[#bbf7d0] dark:border-[#16a34a]/35 text-[#15803d] dark:text-[#86efac] font-mono font-semibold">
+                              <CheckCircle2 className="w-3.5 h-3.5" />
                               {t('verifiedDpi', 'Verified: {dpi} DPI').replace('{dpi}', String(res.afterDpi.dpiX ?? targetDpi))}
                             </span>
-                            <span className="text-[11px] font-medium text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md">
+                            <span className="text-[11px] font-medium text-[#6d28d9] dark:text-[#ddd6fe] bg-[#ede9fe] dark:bg-[#7c3aed]/25 px-2.5 py-0.5 rounded-full">
                               {methodBadge}
                             </span>
                           </div>
                         </>
                       )}
                       {item.status === 'error' && (
-                        <span className="inline-flex items-center gap-1 text-xs text-red-600 font-medium">
+                        <span className="inline-flex items-center gap-1 text-xs text-[#dc2626] dark:text-[#f87171] font-medium">
                           <AlertCircle className="w-3.5 h-3.5" />
                           {item.error}
                         </span>
@@ -446,7 +446,7 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
                       <button
                         type="button"
                         onClick={() => triggerDownload(res.blob, res.outputFilename)}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg cursor-pointer"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#16a34a] hover:bg-[#15803d] text-white text-xs font-semibold rounded-[11px] shadow-xs cursor-pointer transition-colors"
                       >
                         <Download className="w-4 h-4" />
                         <span>{t('download', 'Download')}</span>
@@ -455,7 +455,7 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
                     <button
                       type="button"
                       onClick={() => handleRemove(item.id)}
-                      className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
+                      className="p-2 text-[var(--ink-3)] hover:text-[#dc2626] hover:bg-[#fee2e2] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] rounded-lg cursor-pointer transition-colors"
                       aria-label={t('removeImage', 'Remove {name}').replace('{name}', item.file.name)}
                     >
                       <Trash2 className="w-4 h-4" />

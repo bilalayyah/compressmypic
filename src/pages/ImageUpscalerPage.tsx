@@ -391,24 +391,24 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
     <ToolPageLayout tool={tool} onNavigate={onNavigate}>
       <div className="space-y-6">
         {/* Settings Bar (available before & after upload) */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex flex-wrap items-center gap-4">
             {/* Scale Factor */}
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1.5">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-1.5">
                 Upscale Factor
               </span>
-              <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
+              <div className="inline-flex p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] gap-1">
                 {([2, 4] as UpscaleFactor[]).map((factor) => (
                   <button
                     key={factor}
                     type="button"
                     disabled={isUpscaling}
                     onClick={() => setScaleFactor(factor)}
-                    className={`px-3.5 py-1.5 text-xs font-bold rounded-lg cursor-pointer transition-all disabled:opacity-50 ${
+                    className={`px-3.5 py-1.5 text-xs font-bold rounded-[8px] cursor-pointer transition-all disabled:opacity-50 ${
                       scaleFactor === factor
-                        ? 'bg-blue-600 text-white shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900'
+                        ? 'bg-[#7c3aed] text-white shadow-xs'
+                        : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
                     {factor}x Resolution
@@ -419,18 +419,18 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
 
             {/* ESRGAN Model Tier */}
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1.5">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-1.5">
                 AI Model
               </span>
-              <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
+              <div className="inline-flex p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] gap-1">
                 <button
                   type="button"
                   disabled={isUpscaling}
                   onClick={() => setModelTier('slim')}
-                  className={`px-3 py-1.5 text-xs font-semibold rounded-lg cursor-pointer transition-all disabled:opacity-50 ${
+                  className={`px-3 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all disabled:opacity-50 ${
                     modelTier === 'slim'
-                      ? 'bg-white text-blue-700 shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs'
+                      : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                   }`}
                 >
                   Slim (~2 MB, Fast)
@@ -439,10 +439,10 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
                   type="button"
                   disabled={isUpscaling}
                   onClick={() => setModelTier('medium')}
-                  className={`px-3 py-1.5 text-xs font-semibold rounded-lg cursor-pointer transition-all disabled:opacity-50 ${
+                  className={`px-3 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all disabled:opacity-50 ${
                     modelTier === 'medium'
-                      ? 'bg-white text-blue-700 shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs'
+                      : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                   }`}
                 >
                   Medium (~8 MB, Detail)
@@ -452,20 +452,20 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
 
             {/* Output Format */}
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1.5">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-1.5">
                 Output Format
               </span>
-              <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
+              <div className="inline-flex p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] gap-1">
                 {(['png', 'jpeg', 'webp'] as UpscaleOutputFormat[]).map((fmt) => (
                   <button
                     key={fmt}
                     type="button"
                     disabled={isUpscaling}
                     onClick={() => setOutputFormat(fmt)}
-                    className={`px-2.5 py-1.5 text-xs font-semibold rounded-lg cursor-pointer transition-all disabled:opacity-50 ${
+                    className={`px-2.5 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all disabled:opacity-50 ${
                       outputFormat === fmt
-                        ? 'bg-white text-blue-700 shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900'
+                        ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs'
+                        : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
                     {fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}
@@ -478,12 +478,12 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
           {/* Model status indicator */}
           <div className="text-xs font-medium flex items-center gap-2 shrink-0">
             {isModelLoading ? (
-              <span className="inline-flex items-center gap-1.5 text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-xl">
+              <span className="inline-flex items-center gap-1.5 text-[#6d28d9] dark:text-[#ddd6fe] bg-[#ede9fe] dark:bg-[#7c3aed]/20 border border-[#7c3aed]/30 px-3 py-1.5 rounded-full">
                 <Loader2 className="w-3.5 h-3.5 animate-spin" />
                 <span>{modelStageText}</span>
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-xl">
+              <span className="inline-flex items-center gap-1.5 text-[#15803d] dark:text-[#86efac] bg-[#dcfce7] dark:bg-[#16a34a]/20 border border-[#bbf7d0] dark:border-[#16a34a]/35 px-3 py-1.5 rounded-full">
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 <span>
                   ESRGAN {modelTier === 'slim' ? 'Slim' : 'Medium'} ({scaleFactor}x) Ready
@@ -508,8 +508,8 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
         ) : (
           <div className="space-y-4">
             {isVeryLargeOutput && (
-              <div className="flex items-start gap-2.5 p-3.5 bg-amber-50 border border-amber-200 text-amber-800 text-xs rounded-xl">
-                <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
+              <div className="flex items-start gap-2.5 p-3.5 pastel-card-10 border text-[var(--ink-navy)] text-xs rounded-2xl">
+                <AlertCircle className="w-4 h-4 mt-0.5 shrink-0 text-[#c2410c] dark:text-[#fdba74]" />
                 <span>
                   Target output is {predictedW}×{predictedH}px ({scaleFactor}x). Large images require
                   more browser WebGL memory and may take longer to process.
@@ -519,10 +519,10 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
               {/* Before / After Preview */}
-              <div className="lg:col-span-8 bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4">
+              <div className="lg:col-span-8 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
                 <div className="flex items-center justify-between gap-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                    <ZoomIn className="w-3.5 h-3.5 text-blue-600" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5">
+                    <ZoomIn className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
                     <span>Before &amp; After Upscale</span>
                   </span>
                   <div className="flex items-center gap-3">
@@ -530,7 +530,7 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
                       <button
                         type="button"
                         onClick={() => setShowCompare(true)}
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700 cursor-pointer"
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-[#6d28d9] dark:text-[#c4b5fd] hover:text-[#7c3aed] cursor-pointer"
                       >
                         <SplitSquareVertical className="w-3.5 h-3.5" />
                         <span>Split Compare</span>
@@ -539,7 +539,7 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
                     <button
                       type="button"
                       onClick={handleClear}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink-3)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] cursor-pointer transition-colors"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                       <span>New Image</span>
@@ -550,38 +550,38 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Original */}
                   <div className="space-y-1.5">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--ink-3)] block">
                       Original
                     </span>
-                    <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-100 flex items-center justify-center min-h-[220px] max-h-[360px] p-2">
+                    <div className="rounded-xl overflow-hidden border border-[var(--line)] bg-[var(--surface-2)] flex items-center justify-center min-h-[220px] max-h-[360px] p-2">
                       <img
                         src={imageInfo.previewUrl}
                         alt={`Original ${sourceFile.name}`}
                         className="max-w-full max-h-[330px] object-contain rounded"
                       />
                     </div>
-                    <p className="text-xs text-slate-600 font-mono">
+                    <p className="text-xs text-[var(--ink-2)] font-mono">
                       {imageInfo.width} × {imageInfo.height} px · {formatBytes(sourceFile.size)}
                     </p>
                   </div>
 
                   {/* Upscaled */}
                   <div className="space-y-1.5">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600 block">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd] block">
                       Upscaled ({scaleFactor}x {modelTier === 'slim' ? 'Slim' : 'Medium'})
                     </span>
-                    <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-100 flex items-center justify-center min-h-[220px] max-h-[360px] p-2 relative">
+                    <div className="rounded-xl overflow-hidden border border-[var(--line)] bg-[var(--surface-2)] flex items-center justify-center min-h-[220px] max-h-[360px] p-2 relative">
                       {isUpscaling ? (
                         <div className="flex flex-col items-center justify-center text-center px-4 py-8">
-                          <Loader2 className="w-7 h-7 text-blue-600 animate-spin mb-2" />
-                          <p className="text-xs font-bold text-slate-800">
+                          <Loader2 className="w-7 h-7 text-[#7c3aed] animate-spin mb-2" />
+                          <p className="text-xs font-bold text-[var(--ink-navy)]">
                             {isModelLoading
                               ? modelStageText
                               : `Upscaling ${scaleFactor}x locally... ${upscaleProgress}%`}
                           </p>
-                          <div className="w-44 h-2 bg-slate-200 rounded-full overflow-hidden mt-2.5">
+                          <div className="w-44 h-2 bg-[var(--line)] rounded-full overflow-hidden mt-2.5">
                             <div
-                              className="h-full bg-blue-600 transition-all duration-150"
+                              className="h-full bg-[#7c3aed] transition-all duration-150"
                               style={{ width: `${upscaleProgress}%` }}
                             />
                           </div>
@@ -593,12 +593,12 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
                           className="max-w-full max-h-[330px] object-contain rounded"
                         />
                       ) : (
-                        <span className="text-xs text-slate-500">
+                        <span className="text-xs text-[var(--ink-3)]">
                           Click &ldquo;Upscale Image&rdquo; to apply settings.
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-slate-600 font-mono">
+                    <p className="text-xs text-[var(--ink-2)] font-mono">
                       {upscaledDims && upscaledBlob
                         ? `${upscaledDims.w} × ${upscaledDims.h} px · ${formatBytes(upscaledBlob.size)}`
                         : `Target: ${predictedW} × ${predictedH} px`}
@@ -608,38 +608,38 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
               </div>
 
               {/* Metrics & Action Panel */}
-              <div className="lg:col-span-4 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+              <div className="lg:col-span-4 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-5">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-1">
                     Image Details
                   </span>
-                  <p className="text-sm font-bold text-slate-900 truncate">{sourceFile.name}</p>
+                  <p className="text-sm font-bold text-[var(--ink-navy)] truncate">{sourceFile.name}</p>
                 </div>
 
-                <div className="rounded-xl bg-slate-50 border border-slate-200 p-3.5 space-y-2 text-xs">
+                <div className="rounded-xl pastel-card-0 border p-3.5 space-y-2 text-xs">
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Original Dimensions</span>
-                    <span className="font-mono font-semibold text-slate-800">
+                    <span className="text-[var(--ink-3)]">Original Dimensions</span>
+                    <span className="font-mono font-semibold text-[var(--ink-navy)]">
                       {imageInfo.width} × {imageInfo.height} px
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Upscaled Dimensions</span>
-                    <span className="font-mono font-bold text-blue-600">
+                    <span className="text-[var(--ink-3)]">Upscaled Dimensions</span>
+                    <span className="font-mono font-bold text-[#6d28d9] dark:text-[#ddd6fe]">
                       {upscaledDims
                         ? `${upscaledDims.w} × ${upscaledDims.h} px`
                         : `${predictedW} × ${predictedH} px`}
                     </span>
                   </div>
-                  <div className="flex justify-between border-t border-slate-200 pt-2">
-                    <span className="text-slate-500">Original Size</span>
-                    <span className="font-mono font-semibold text-slate-800">
+                  <div className="flex justify-between border-t border-[var(--line)] pt-2">
+                    <span className="text-[var(--ink-3)]">Original Size</span>
+                    <span className="font-mono font-semibold text-[var(--ink-navy)]">
                       {formatBytes(sourceFile.size)}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Upscaled Size</span>
-                    <span className="font-mono font-semibold text-slate-800">
+                    <span className="text-[var(--ink-3)]">Upscaled Size</span>
+                    <span className="font-mono font-semibold text-[var(--ink-navy)]">
                       {upscaledBlob ? formatBytes(upscaledBlob.size) : '—'}
                     </span>
                   </div>
@@ -650,7 +650,7 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
                     <button
                       type="button"
                       onClick={handleAbort}
-                      className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-red-600 hover:bg-red-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer transition-colors"
+                      className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#dc2626] hover:bg-[#b91c1c] text-white text-sm font-semibold rounded-[11px] shadow-sm cursor-pointer transition-colors"
                     >
                       <XCircle className="w-4 h-4" />
                       <span>Cancel Upscaling ({upscaleProgress}%)</span>
@@ -661,7 +661,7 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
                         type="button"
                         onClick={handleDownload}
                         disabled={!upscaledBlob}
-                        className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer transition-colors"
+                        className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 btn-purple-grad disabled:opacity-50 text-sm font-semibold shadow-sm cursor-pointer"
                       >
                         <Download className="w-4 h-4" />
                         <span>
@@ -680,9 +680,9 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
                             outputFormat
                           )
                         }
-                        className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold rounded-xl cursor-pointer transition-colors"
+                        className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                       >
-                        <Play className="w-3.5 h-3.5 fill-current text-blue-600" />
+                        <Play className="w-3.5 h-3.5 fill-current text-[#7c3aed] dark:text-[#a78bfa]" />
                         <span>
                           Run {scaleFactor}x ({modelTier === 'slim' ? 'Slim' : 'Medium'}) Upscale
                         </span>
@@ -696,7 +696,7 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
         )}
 
         {error && (
-          <div className="flex items-start gap-2.5 p-4 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl">
+          <div className="flex items-start gap-2.5 p-4 pastel-card-14 border text-[#b91c1c] dark:text-[#fca5a5] text-sm rounded-2xl">
             <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
             <span>{error}</span>
           </div>

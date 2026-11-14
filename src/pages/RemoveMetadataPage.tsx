@@ -308,20 +308,20 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
         />
 
         {items.length > 0 && (
-          <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+          <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-5">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                   {t('strippingMethod', 'Stripping Method')}
                 </span>
-                <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
+                <div className="inline-flex flex-wrap p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] gap-1">
                   <button
                     type="button"
                     onClick={() => setMode('lossless')}
-                    className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
+                    className={`px-3.5 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                       mode === 'lossless'
-                        ? 'bg-white text-blue-700 shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900'
+                        ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs'
+                        : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
                     {t('losslessStrip', 'Lossless Binary Strip (JPG/PNG)')}
@@ -329,10 +329,10 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
                   <button
                     type="button"
                     onClick={() => setMode('reencode')}
-                    className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
+                    className={`px-3.5 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                       mode === 'reencode'
-                        ? 'bg-white text-blue-700 shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900'
+                        ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs'
+                        : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
                     {t('fullCanvasReencode', 'Full Canvas Re-encode')}
@@ -341,19 +341,19 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
               </div>
 
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                   {t('outputFormat', 'Output Format')}
                 </span>
-                <div className="inline-flex p-1 bg-slate-100 rounded-xl gap-1">
+                <div className="inline-flex p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] gap-1">
                   {(['original', 'jpeg', 'png', 'webp'] as OutputFormatChoice[]).map((fmt) => (
                     <button
                       key={fmt}
                       type="button"
                       onClick={() => setFormat(fmt)}
-                      className={`px-3 py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
+                      className={`px-3 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                         format === fmt
-                          ? 'bg-blue-600 text-white shadow-xs'
-                          : 'text-slate-600 hover:text-slate-900'
+                          ? 'bg-[#7c3aed] text-white shadow-xs'
+                          : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {fmt === 'original'
@@ -367,11 +367,11 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="pt-4 border-t border-[var(--line)] flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="flex-1 max-w-md">
-                <span className="text-xs font-semibold text-slate-700 block mb-1.5">
+                <span className="text-xs font-semibold text-[var(--ink-2)] block mb-1.5">
                   {t('reencodeQuality', 'Re-encode Quality (used for WebP/HEIC or Full Re-encode):')}{' '}
-                  <strong className="text-blue-600 font-mono">{quality}%</strong>
+                  <strong className="text-[#7c3aed] dark:text-[#a78bfa] font-mono">{quality}%</strong>
                 </span>
                 <input
                   type="range"
@@ -379,7 +379,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
                   max={100}
                   value={quality}
                   onChange={(e) => setQuality(parseInt(e.target.value, 10))}
-                  className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                  className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                 />
               </div>
 
@@ -388,7 +388,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
                   type="button"
                   onClick={handleReprocessAll}
                   disabled={isProcessing}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl cursor-pointer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 btn-purple-grad text-sm font-semibold cursor-pointer"
                 >
                   {isProcessing ? (
                     <>
@@ -405,7 +405,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
                 <button
                   type="button"
                   onClick={handleClearAll}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2.5 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-sm font-medium rounded-xl cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#fecaca] hover:bg-[#fee2e2] hover:text-[#dc2626] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] text-[var(--ink-2)] text-sm font-medium rounded-[11px] cursor-pointer transition-colors"
                 >
                   <Trash2 className="w-4 h-4" />
                   <span>{t('clear', 'Clear')}</span>
@@ -418,12 +418,12 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
         {items.length > 0 && (
           <div className="space-y-4">
             {doneItems.length > 1 && (
-              <div className="bg-slate-900 text-white rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="panel-pastel-blue border rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
                     {t('privacyVerified', 'Privacy Verified')}
                   </span>
-                  <p className="text-sm font-semibold mt-0.5">
+                  <p className="text-sm font-semibold text-[var(--ink-navy)] mt-0.5">
                     {t('cleanImagesReady', '{count} clean images ready with metadata stripped').replace('{count}', String(doneItems.length))}
                   </p>
                 </div>
@@ -431,7 +431,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
                   type="button"
                   onClick={handleDownloadZip}
                   disabled={isZipping}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 btn-purple-grad text-sm font-semibold cursor-pointer"
                 >
                   <FileArchive className="w-4 h-4" />
                   <span>{isZipping ? t('creatingZip', 'Creating ZIP...') : t('downloadAllCleanZip', 'Download All Clean (ZIP)')}</span>
@@ -442,32 +442,32 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
             {items.map((item) => (
               <div
                 key={item.id}
-                className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+                className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
               >
                 <div className="flex items-center gap-4 min-w-0 w-full md:w-auto">
                   <img
                     src={item.previewUrl}
                     alt={item.name}
-                    className="w-16 h-16 rounded-xl object-cover border border-slate-200 shrink-0"
+                    className="w-16 h-16 rounded-xl object-cover border border-[var(--line)] shrink-0"
                   />
                   <div className="min-w-0 flex-1">
-                    <h3 className="text-sm font-bold text-slate-900 truncate">{item.outputFilename}</h3>
+                    <h3 className="font-sans text-sm font-bold text-[var(--ink-navy)] truncate">{item.outputFilename}</h3>
                     {item.status === 'done' && (
                       <>
-                        <p className="text-xs text-slate-500 font-mono mt-0.5">
+                        <p className="text-xs text-[var(--ink-3)] font-mono mt-0.5">
                           {item.width}×{item.height}px · {formatBytes(item.originalSize)} →{' '}
                           {formatBytes(item.outputSize)}
                         </p>
                         <div className="mt-1.5 flex flex-wrap items-center gap-2">
-                          <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">
-                            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                          <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#15803d] dark:text-[#86efac] bg-[#dcfce7] dark:bg-[#16a34a]/20 border border-[#bbf7d0] dark:border-[#16a34a]/35 px-2.5 py-0.5 rounded-full">
+                            <ShieldCheck className="w-3.5 h-3.5" />
                             {item.beforeTagsCount > 0
                               ? t('strippedTags', 'Stripped {before} metadata tags → {after} remaining')
                                   .replace('{before}', String(item.beforeTagsCount))
                                   .replace('{after}', String(item.afterTagsCount))
                               : t('verifiedClean', 'Verified clean (0 EXIF/GPS tags)')}
                           </span>
-                          <span className="text-[11px] font-medium text-slate-500">
+                          <span className="text-[11px] font-medium text-[var(--ink-3)]">
                             {item.methodUsed === 'lossless-strip'
                               ? t('losslessBinaryStrip', 'Lossless binary strip')
                               : t('cleanCanvasExport', 'Clean Canvas export')}
@@ -476,12 +476,12 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
                       </>
                     )}
                     {item.status === 'processing' && (
-                      <span className="text-xs text-blue-600 font-medium animate-pulse">
+                      <span className="text-xs text-[#7c3aed] dark:text-[#a78bfa] font-medium animate-pulse">
                         {t('scrubbing', 'Scrubbing EXIF & GPS headers...')}
                       </span>
                     )}
                     {item.status === 'error' && (
-                      <span className="inline-flex items-center gap-1 text-xs text-red-600 font-medium mt-1">
+                      <span className="inline-flex items-center gap-1 text-xs text-[#dc2626] dark:text-[#f87171] font-medium mt-1">
                         <AlertCircle className="w-3.5 h-3.5" />
                         {item.errorMessage}
                       </span>
@@ -494,7 +494,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
                     <button
                       type="button"
                       onClick={() => triggerDownload(item.blob!, item.outputFilename)}
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#16a34a] hover:bg-[#15803d] text-white text-xs font-semibold rounded-[11px] shadow-xs cursor-pointer transition-colors"
                     >
                       <Download className="w-4 h-4" />
                       <span>{t('downloadClean', 'Download Clean')}</span>
@@ -503,7 +503,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
                   <button
                     type="button"
                     onClick={() => handleRemove(item.id)}
-                    className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
+                    className="p-2 text-[var(--ink-3)] hover:text-[#dc2626] hover:bg-[#fee2e2] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] rounded-lg cursor-pointer transition-colors"
                     aria-label={t('removeItem', 'Remove {name}').replace('{name}', item.name)}
                   >
                     <Trash2 className="w-4 h-4" />

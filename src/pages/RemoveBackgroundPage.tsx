@@ -502,25 +502,25 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
       <div className="space-y-6">
         {/* First-time model download status banner */}
         {isModelLoading && !isProcessing && (
-          <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="panel-pastel-blue border rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-start gap-3">
-              <Loader2 className="w-5 h-5 text-blue-600 animate-spin shrink-0 mt-0.5" />
+              <Loader2 className="w-5 h-5 text-[#7c3aed] dark:text-[#c4b5fd] animate-spin shrink-0 mt-0.5" />
               <div>
-                <p className="text-sm font-bold text-slate-900">
+                <p className="text-sm font-bold text-[var(--ink-navy)]">
                   {t('modelLoadingTitle', 'Loading in-browser AI model (isnet_quint8)')}
                 </p>
-                <p className="text-xs text-slate-600 mt-0.5">{progressText}</p>
+                <p className="text-xs text-[var(--ink-2)] mt-0.5">{progressText}</p>
               </div>
             </div>
             {progressPct !== null && (
               <div className="w-full sm:w-44 shrink-0">
-                <div className="flex justify-between text-[11px] font-mono text-blue-700 mb-1">
+                <div className="flex justify-between text-[11px] font-mono text-[#6d28d9] dark:text-[#c4b5fd] mb-1">
                   <span>{t('modelCache', 'Model Cache')}</span>
                   <span>{progressPct}%</span>
                 </div>
-                <div className="w-full h-2 bg-blue-100 rounded-full overflow-hidden">
+                <div className="w-full h-2 bg-[var(--surface)] rounded-full overflow-hidden border border-[var(--line)]">
                   <div
-                    className="h-full bg-blue-600 transition-all duration-200"
+                    className="h-full bg-[#7c3aed] transition-all duration-200"
                     style={{ width: `${progressPct}%` }}
                   />
                 </div>
@@ -545,10 +545,10 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             {/* Before / After Preview Area */}
-            <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4">
+            <div className="lg:col-span-7 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
               <div className="flex items-center justify-between gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
                   <span>{t('beforeAfterPreview', 'Before & After Preview')}</span>
                 </span>
                 <div className="flex items-center gap-3">
@@ -556,7 +556,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
                     <button
                       type="button"
                       onClick={() => setShowCompare(true)}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700 cursor-pointer"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#6d28d9] dark:text-[#c4b5fd] hover:text-[#7c3aed] cursor-pointer"
                     >
                       <SplitSquareVertical className="w-3.5 h-3.5" />
                       <span>{t('splitCompare', 'Split Compare')}</span>
@@ -566,7 +566,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
                     type="button"
                     onClick={handleClear}
                     disabled={isProcessing}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer disabled:opacity-50"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink-3)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] cursor-pointer disabled:opacity-50 transition-colors"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                     <span>{t('newImage', 'New Image')}</span>
@@ -577,10 +577,10 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Original */}
                 <div className="space-y-1.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--ink-3)] block">
                     {t('originalLabel', 'Original')}
                   </span>
-                  <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-100 flex items-center justify-center min-h-[220px] max-h-[340px] p-2">
+                  <div className="rounded-xl overflow-hidden border border-[var(--line)] bg-[var(--surface-2)] flex items-center justify-center min-h-[220px] max-h-[340px] p-2">
                     {originalPreviewUrl && (
                       <img
                         src={originalPreviewUrl}
@@ -589,28 +589,27 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
                       />
                     )}
                   </div>
-                  <p className="text-[11px] text-slate-500 font-mono truncate">
+                  <p className="text-[11px] text-[var(--ink-3)] font-mono truncate">
                     {originalDims.w}×{originalDims.h}px · {formatBytes(sourceFile.size)}
                   </p>
                 </div>
 
                 {/* Result Cutout */}
                 <div className="space-y-1.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600 block">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd] block">
                     {bgChoice === 'transparent'
                       ? t('transparentCutout', 'Transparent Cutout (PNG)')
                       : t('solidBackgroundPreview', 'Solid Background Preview')}
                   </span>
                   <div
-                    className="rounded-xl overflow-hidden border border-slate-200 flex items-center justify-center min-h-[220px] max-h-[340px] p-2 relative"
+                    className="rounded-xl overflow-hidden border border-[var(--line)] bg-[var(--surface-2)] flex items-center justify-center min-h-[220px] max-h-[340px] p-2 relative"
                     style={
                       bgChoice === 'transparent'
                         ? {
                             backgroundImage:
-                              'linear-gradient(45deg, #e2e8f0 25%, transparent 25%), linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #e2e8f0 75%), linear-gradient(-45deg, transparent 75%, #e2e8f0 75%)',
+                              'linear-gradient(45deg, rgba(148, 163, 184, 0.16) 25%, transparent 25%), linear-gradient(-45deg, rgba(148, 163, 184, 0.16) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(148, 163, 184, 0.16) 75%), linear-gradient(-45deg, transparent 75%, rgba(148, 163, 184, 0.16) 75%)',
                             backgroundSize: '16px 16px',
                             backgroundPosition: '0 0, 0 8px, 8px -8px, -8px 0px',
-                            backgroundColor: '#ffffff',
                           }
                         : {
                             backgroundColor:
@@ -623,13 +622,13 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
                     }
                   >
                     {isProcessing ? (
-                      <div className="flex flex-col items-center justify-center text-center px-4 py-8 bg-white/90 rounded-xl shadow-xs">
-                        <Loader2 className="w-7 h-7 text-blue-600 animate-spin mb-2" />
-                        <p className="text-xs font-bold text-slate-800">{progressText}</p>
+                      <div className="flex flex-col items-center justify-center text-center px-4 py-8 bg-[var(--surface)]/95 border border-[var(--line)] rounded-xl shadow-[var(--shadow)]">
+                        <Loader2 className="w-7 h-7 text-[#7c3aed] animate-spin mb-2" />
+                        <p className="text-xs font-bold text-[var(--ink-navy)]">{progressText}</p>
                         {progressPct !== null && (
-                          <div className="w-40 h-1.5 bg-slate-200 rounded-full overflow-hidden mt-2">
+                          <div className="w-40 h-1.5 bg-[var(--line)] rounded-full overflow-hidden mt-2">
                             <div
-                              className="h-full bg-blue-600 transition-all duration-200"
+                              className="h-full bg-[#7c3aed] transition-all duration-200"
                               style={{ width: `${progressPct}%` }}
                             />
                           </div>
@@ -642,12 +641,12 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
                         className="max-w-full max-h-[310px] object-contain"
                       />
                     ) : (
-                      <span className="text-xs text-slate-500">
+                      <span className="text-xs text-[var(--ink-3)]">
                         {t('waitingForResult', 'Waiting for result...')}
                       </span>
                     )}
                   </div>
-                  <p className="text-[11px] text-slate-500 font-mono">
+                  <p className="text-[11px] text-[var(--ink-3)] font-mono">
                     {activeBlob
                       ? `${cutoutImg?.naturalWidth || originalDims.w}×${
                           cutoutImg?.naturalHeight || originalDims.h
@@ -661,28 +660,28 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
             </div>
 
             {/* Controls & Download Panel */}
-            <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+            <div className="lg:col-span-5 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-5">
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)]">
                     {t('cutoutStatus', 'Cutout Status')}
                   </span>
                   {cutoutBlob && (
-                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600">
+                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#15803d] dark:text-[#86efac] bg-[#dcfce7] dark:bg-[#16a34a]/20 border border-[#bbf7d0] dark:border-[#16a34a]/35 px-2.5 py-0.5 rounded-full">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                       {t('ready', 'Ready')}
                     </span>
                   )}
                 </div>
-                <p className="text-xs text-slate-600 truncate font-medium">{sourceFile.name}</p>
+                <p className="text-xs text-[var(--ink-2)] truncate font-medium">{sourceFile.name}</p>
               </div>
 
               {/* Solid Background Color Option */}
-              <div className="pt-4 border-t border-slate-100 space-y-3">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">
+              <div className="pt-4 border-t border-[var(--line)] space-y-3">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block">
                   {t('backgroundFillOption', 'Background Fill Option')}
                 </span>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-1 bg-slate-100 rounded-xl">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px]">
                   {(
                     [
                       { id: 'transparent', label: t('bgTransparent', 'Transparent') },
@@ -696,10 +695,10 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
                       type="button"
                       disabled={!cutoutBlob || isProcessing}
                       onClick={() => setBgChoice(opt.id)}
-                      className={`py-2 px-2 text-xs font-semibold rounded-lg cursor-pointer transition-all disabled:opacity-50 ${
+                      className={`py-2 px-2 text-xs font-semibold rounded-[8px] cursor-pointer transition-all disabled:opacity-50 ${
                         bgChoice === opt.id
-                          ? 'bg-blue-600 text-white shadow-xs'
-                          : 'text-slate-600 hover:text-slate-900'
+                          ? 'bg-[#7c3aed] text-white shadow-xs'
+                          : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {opt.label}
@@ -708,28 +707,28 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
                 </div>
 
                 {bgChoice === 'custom' && (
-                  <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200">
-                    <label className="flex items-center gap-2.5 text-xs font-semibold text-slate-700 cursor-pointer">
+                  <div className="flex items-center justify-between p-3 rounded-[11px] bg-[var(--surface-2)] border border-[var(--line)]">
+                    <label className="flex items-center gap-2.5 text-xs font-semibold text-[var(--ink-2)] cursor-pointer">
                       <input
                         type="color"
                         value={customColor}
                         onChange={(e) => setCustomColor(e.target.value)}
-                        className="w-8 h-8 rounded-lg border border-slate-300 cursor-pointer p-0.5"
+                        className="w-8 h-8 rounded-[8px] border border-[var(--line-strong)] cursor-pointer p-0.5 bg-[var(--surface)]"
                       />
                       <span>{t('customBackgroundColor', 'Custom Background Color')}</span>
                     </label>
-                    <span className="text-xs font-mono text-slate-600 uppercase">{customColor}</span>
+                    <span className="text-xs font-mono text-[var(--ink-2)] uppercase">{customColor}</span>
                   </div>
                 )}
               </div>
 
               {/* Download Actions */}
-              <div className="pt-4 border-t border-slate-100 space-y-2.5">
+              <div className="pt-4 border-t border-[var(--line)] space-y-2.5">
                 <button
                   type="button"
                   onClick={handleDownloadTransparent}
                   disabled={!cutoutBlob || isProcessing}
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 btn-purple-grad disabled:opacity-50 text-sm font-semibold shadow-sm cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
                   <span>
@@ -743,7 +742,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
                     type="button"
                     onClick={handleDownloadSolid}
                     disabled={!compositeBlob || isProcessing}
-                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 disabled:opacity-50 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer transition-colors"
+                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#16a34a] hover:bg-[#15803d] disabled:opacity-50 text-white text-sm font-semibold rounded-[11px] shadow-sm cursor-pointer transition-colors"
                   >
                     <Download className="w-4 h-4" />
                     <span>
@@ -764,7 +763,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
                   type="button"
                   onClick={() => sourceFile && void runBackgroundRemoval(sourceFile)}
                   disabled={isProcessing}
-                  className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 text-slate-700 text-xs font-semibold rounded-xl cursor-pointer transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 disabled:opacity-50 text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
                   <span>{t('rerunRemoval', 'Re-run Removal')}</span>
@@ -775,7 +774,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
         )}
 
         {error && (
-          <div className="flex items-start gap-2.5 p-4 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl">
+          <div className="flex items-start gap-2.5 p-4 pastel-card-14 border text-[#b91c1c] dark:text-[#fca5a5] text-sm rounded-2xl">
             <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
             <span>{error}</span>
           </div>

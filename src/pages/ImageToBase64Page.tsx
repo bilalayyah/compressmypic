@@ -273,14 +273,14 @@ export const ImageToBase64Page: React.FC<ImageToBase64PageProps> = ({
         ) : (
           <div className="space-y-5">
             {/* Summary Card */}
-            <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center gap-4 min-w-0">
-                <div className="w-16 h-16 rounded-xl border border-slate-200 bg-slate-100 overflow-hidden shrink-0 flex items-center justify-center p-1">
+                <div className="w-16 h-16 rounded-xl border border-[var(--line)] bg-[var(--surface-2)] overflow-hidden shrink-0 flex items-center justify-center p-1">
                   <img src={previewUrl} alt={file.name} className="max-w-full max-h-full object-contain" />
                 </div>
                 <div className="min-w-0">
-                  <h2 className="text-sm font-bold text-slate-900 truncate">{file.name}</h2>
-                  <p className="text-xs text-slate-500 font-mono mt-0.5">
+                  <h2 className="font-sans text-sm font-bold text-[var(--ink-navy)] truncate">{file.name}</h2>
+                  <p className="text-xs text-[var(--ink-3)] font-mono mt-0.5">
                     {t('fileLabel', 'File:')} {formatBytes(file.size)}
                     {dims && dims.w > 0 ? ` · ${dims.w}×${dims.h}px` : ''} · {t('outputLabel', 'Output:')}{' '}
                     {outputString.length.toLocaleString()} {t('charsLabel', 'chars')} ({overheadPct >= 0 ? `+${overheadPct}%` : `${overheadPct}%`})
@@ -290,7 +290,7 @@ export const ImageToBase64Page: React.FC<ImageToBase64PageProps> = ({
               <button
                 type="button"
                 onClick={handleClear}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-700 text-xs font-semibold rounded-xl cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#fecaca] hover:bg-[#fee2e2] hover:text-[#dc2626] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] text-[var(--ink-2)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
               >
                 <Trash2 className="w-4 h-4" />
                 <span>{t('encodeAnother', 'Encode Another')}</span>
@@ -298,9 +298,9 @@ export const ImageToBase64Page: React.FC<ImageToBase64PageProps> = ({
             </div>
 
             {/* Output Panel */}
-            <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-4">
+            <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="inline-flex flex-wrap p-1 bg-slate-100 rounded-xl gap-1">
+                <div className="inline-flex flex-wrap p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] gap-1">
                   {(
                     [
                       { id: 'dataUrl', label: t('tabDataUrl', 'Data URL') },
@@ -313,8 +313,8 @@ export const ImageToBase64Page: React.FC<ImageToBase64PageProps> = ({
                       key={t.id}
                       type="button"
                       onClick={() => setTab(t.id)}
-                      className={`px-3 py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
-                        tab === t.id ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
+                      className={`px-3 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
+                        tab === t.id ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {t.label}
@@ -326,15 +326,15 @@ export const ImageToBase64Page: React.FC<ImageToBase64PageProps> = ({
                   <button
                     type="button"
                     onClick={handleCopy}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 btn-purple-grad text-xs font-semibold shadow-xs cursor-pointer"
                   >
-                    {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                    {copied ? <Check className="w-4 h-4 text-[#86efac]" /> : <Copy className="w-4 h-4" />}
                     <span>{copied ? t('copied', 'Copied!') : t('copyOutput', 'Copy Output')}</span>
                   </button>
                   <button
                     type="button"
                     onClick={handleDownloadTxt}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-xl cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                   >
                     <Download className="w-4 h-4" />
                     <span>{t('saveTxt', 'Save .TXT')}</span>
@@ -343,13 +343,13 @@ export const ImageToBase64Page: React.FC<ImageToBase64PageProps> = ({
               </div>
 
               <div className="relative">
-                <Code2 className="w-4 h-4 text-slate-400 absolute top-3 left-3 pointer-events-none" />
+                <Code2 className="w-4 h-4 text-[#94a3b8] absolute top-3.5 left-3.5 pointer-events-none" />
                 <textarea
                   readOnly
                   value={outputString}
                   onFocus={(e) => e.target.select()}
                   rows={9}
-                  className="w-full pl-9 pr-3 py-3 font-mono text-xs bg-slate-900 text-slate-100 rounded-xl border border-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-9 pr-3 py-3 font-mono text-xs bg-[#0f172a] text-[#e2e8f0] rounded-xl border border-[#334155] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
                 />
               </div>
             </div>
@@ -357,7 +357,7 @@ export const ImageToBase64Page: React.FC<ImageToBase64PageProps> = ({
         )}
 
         {error && (
-          <div className="flex items-start gap-2 p-3.5 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl">
+          <div className="flex items-start gap-2 p-3.5 pastel-card-14 border text-[#b91c1c] dark:text-[#fca5a5] text-sm rounded-2xl">
             <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
             <span>{error}</span>
           </div>

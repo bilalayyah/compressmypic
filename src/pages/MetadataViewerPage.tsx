@@ -252,7 +252,7 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
         />
 
         {errorMsg && (
-          <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700">
+          <div className="p-4 pastel-card-14 border rounded-2xl text-sm text-[#b91c1c] dark:text-[#fca5a5]">
             {errorMsg}
           </div>
         )}
@@ -260,32 +260,32 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
         {report && (
           <div className="space-y-6">
             {/* Summary Banner */}
-            <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs flex flex-col md:flex-row gap-5 items-start md:items-center justify-between">
+            <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] flex flex-col md:flex-row gap-5 items-start md:items-center justify-between">
               <div className="flex items-center gap-4 min-w-0">
                 {previewUrl && (
                   <img
                     src={previewUrl}
                     alt={report.filename}
-                    className="w-20 h-20 rounded-xl object-cover border border-slate-200 shrink-0"
+                    className="w-20 h-20 rounded-xl object-cover border border-[var(--line)] shrink-0"
                   />
                 )}
                 <div className="min-w-0">
-                  <h2 className="text-base sm:text-lg font-bold text-slate-900 truncate">
+                  <h2 className="font-sans text-base sm:text-lg font-bold text-[var(--ink-navy)] truncate">
                     {report.filename}
                   </h2>
-                  <p className="text-xs text-slate-500 font-mono mt-0.5">
+                  <p className="text-xs text-[var(--ink-3)] font-mono mt-0.5">
                     {report.containerFormat} · {report.width}×{report.height}px ·{' '}
                     {report.formattedSize}
                   </p>
                   <div className="mt-2">
                     {report.hasSensitiveMetadata ? (
-                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-800 border border-amber-200">
-                        <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
+                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-[#ffedd5] dark:bg-[#ea580c]/20 text-[#c2410c] dark:text-[#fdba74] border border-[#fed7aa] dark:border-[#ea580c]/35">
+                        <AlertTriangle className="w-3.5 h-3.5" />
                         {t('embeddedMetadataFound', 'Embedded metadata found ({count} tag types)').replace('{count}', String(report.sensitiveSummary.length))}
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200">
-                        <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-[#dcfce7] dark:bg-[#16a34a]/20 text-[#15803d] dark:text-[#86efac] border border-[#bbf7d0] dark:border-[#16a34a]/35">
+                        <ShieldCheck className="w-3.5 h-3.5" />
                         {t('noTagsDetected', 'No EXIF, GPS, or hidden camera tags detected')}
                       </span>
                     )}
@@ -298,24 +298,24 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
                   <button
                     type="button"
                     onClick={() => onNavigate('/remove-image-metadata')}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#ede9fe] dark:bg-[#7c3aed]/20 hover:bg-[#ddd6fe] dark:hover:bg-[#7c3aed]/30 text-[#6d28d9] dark:text-[#ddd6fe] border border-[#c4b5fd] dark:border-[#7c3aed]/40 text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                   >
-                    <ShieldOff className="w-4 h-4" />
+                    <ShieldOff className="w-4 h-4 text-[#7c3aed] dark:text-[#c4b5fd]" />
                     <span>{t('stripMetadata', 'Strip Metadata')}</span>
                   </button>
                 )}
                 <button
                   type="button"
                   onClick={handleCopyJson}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-xl cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--surface-2)] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] border border-[var(--line)] hover:border-[#7c3aed] text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                 >
-                  {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
+                  {copied ? <Check className="w-4 h-4 text-[#16a34a] dark:text-[#4ade80]" /> : <Copy className="w-4 h-4" />}
                   <span>{copied ? t('copiedJson', 'Copied JSON') : t('copyJson', 'Copy JSON')}</span>
                 </button>
                 <button
                   type="button"
                   onClick={handleDownloadJson}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 btn-purple-grad text-xs font-semibold cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
                   <span>{t('exportJson', 'Export JSON')}</span>
@@ -323,7 +323,7 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
                 <button
                   type="button"
                   onClick={handleClear}
-                  className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-xl cursor-pointer"
+                  className="p-2 text-[var(--ink-3)] hover:text-[#dc2626] hover:bg-[#fee2e2] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] rounded-lg cursor-pointer transition-colors"
                   title={t('clear', 'Clear')}
                 >
                   <Trash2 className="w-4 h-4" />
@@ -333,19 +333,19 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
 
             {/* GPS Highlight if present */}
             {report.gpsCoords && (
-              <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-                <div className="text-sm text-amber-900">
-                  <p className="font-bold">{t('gpsDetected', 'GPS Location Coordinates Detected')}</p>
+              <div className="p-4 pastel-card-10 border rounded-2xl flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-[#c2410c] dark:text-[#fdba74] shrink-0 mt-0.5" />
+                <div className="text-sm text-[var(--ink-navy)]">
+                  <p className="font-bold text-[#c2410c] dark:text-[#fdba74]">{t('gpsDetected', 'GPS Location Coordinates Detected')}</p>
                   <p className="text-xs font-mono mt-1">
                     {t('latitude', 'Latitude:')} {report.gpsCoords.latitude} · {t('longitude', 'Longitude:')} {report.gpsCoords.longitude}
                   </p>
-                  <p className="text-xs text-amber-700 mt-1">
+                  <p className="text-xs text-[var(--ink-2)] mt-1">
                     {gpsWarningParts[0]}
                     <button
                       type="button"
                       onClick={() => onNavigate('/remove-image-metadata')}
-                      className="underline font-semibold cursor-pointer"
+                      className="underline font-semibold text-[#6d28d9] dark:text-[#c4b5fd] cursor-pointer"
                     >
                       {gpsWarningLinkText}
                     </button>
@@ -356,30 +356,30 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
             )}
 
             {/* Metadata Table */}
-            <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
-              <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
-                <h3 className="text-sm font-bold text-slate-900">
+            <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl overflow-hidden shadow-[var(--shadow)]">
+              <div className="px-5 py-3.5 bg-[var(--surface-2)] border-b border-[var(--line)] flex items-center justify-between">
+                <h3 className="font-sans text-base font-bold text-[var(--ink-navy)]">
                   {t('extractedMetadata', 'Extracted Metadata ({count} properties)').replace('{count}', String(report.entries.length))}
                 </h3>
               </div>
-              <div className="divide-y divide-slate-100">
+              <div className="divide-y divide-[var(--line)]">
                 {report.entries.map((entry, idx) => (
                   <div
                     key={`${entry.group}-${entry.key}-${idx}`}
                     className="px-5 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 text-sm"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="text-[11px] font-bold uppercase px-2 py-0.5 rounded bg-slate-100 text-slate-600">
+                      <span className="text-[11px] font-bold uppercase px-2 py-0.5 rounded-full bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-2)]">
                         {entry.group}
                       </span>
-                      <span className="font-semibold text-slate-800">{entry.key}</span>
+                      <span className="font-semibold text-[var(--ink-navy)]">{entry.key}</span>
                       {entry.sensitive && (
-                        <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">
+                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#ffedd5] dark:bg-[#ea580c]/20 text-[#c2410c] dark:text-[#fdba74] border border-[#fed7aa] dark:border-[#ea580c]/35">
                           {t('privacyTag', 'Privacy Tag')}
                         </span>
                       )}
                     </div>
-                    <span className="font-mono text-xs sm:text-sm text-slate-700 break-all sm:text-right">
+                    <span className="font-mono text-xs sm:text-sm text-[var(--ink-2)] break-all sm:text-right">
                       {entry.value}
                     </span>
                   </div>

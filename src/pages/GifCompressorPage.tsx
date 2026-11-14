@@ -307,15 +307,15 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
         />
 
         {errorMessage && (
-          <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700 flex items-start gap-2.5">
+          <div className="p-4 pastel-card-14 border rounded-2xl text-sm text-[#b91c1c] dark:text-[#fca5a5] flex items-start gap-2.5">
             <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
             <span>{errorMessage}</span>
           </div>
         )}
 
         {isDecoding && (
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-800 flex items-center gap-3">
-            <RotateCcw className="w-4 h-4 animate-spin text-blue-600" />
+          <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 text-sm text-[var(--ink-2)] flex items-center gap-3 shadow-[var(--shadow)]">
+            <RotateCcw className="w-4 h-4 animate-spin text-[#7c3aed] dark:text-[#a78bfa]" />
             <span>{t('decodingGif', 'Decoding animated GIF frames locally in your browser...')}</span>
           </div>
         )}
@@ -323,13 +323,13 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
         {sourceFile && decodedGif && (
           <>
             {/* Compression Controls */}
-            <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+            <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[var(--line)]">
                 <div className="flex items-center gap-2.5">
-                  <Film className="w-5 h-5 text-blue-600" />
+                  <Film className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
                   <div>
-                    <h2 className="text-sm font-bold text-slate-900">{sourceFile.name}</h2>
-                    <p className="text-xs text-slate-500 font-mono">
+                    <h2 className="font-sans text-sm font-bold text-[var(--ink-navy)]">{sourceFile.name}</h2>
+                    <p className="text-xs text-[var(--ink-3)] font-mono">
                       {decodedGif.width}×{decodedGif.height}px · {decodedGif.frames.length}{' '}
                       {decodedGif.frames.length === 1 ? t('frameSingular', 'frame') : t('framePlural', 'frames')} ·{' '}
                       {formatBytes(sourceFile.size)}
@@ -341,21 +341,21 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                   <button
                     type="button"
                     onClick={() => handleApplyLevel('light')}
-                    className="px-3 py-1.5 text-xs font-semibold bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 rounded-lg cursor-pointer"
+                    className="px-3.5 py-1.5 text-xs font-semibold bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 text-[var(--ink-2)] rounded-full cursor-pointer transition-colors"
                   >
                     {t('presetLight', 'Light')}
                   </button>
                   <button
                     type="button"
                     onClick={() => handleApplyLevel('balanced')}
-                    className="px-3 py-1.5 text-xs font-semibold bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 rounded-lg cursor-pointer"
+                    className="px-3.5 py-1.5 text-xs font-semibold bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 text-[var(--ink-2)] rounded-full cursor-pointer transition-colors"
                   >
                     {t('presetBalanced', 'Balanced')}
                   </button>
                   <button
                     type="button"
                     onClick={() => handleApplyLevel('strong')}
-                    className="px-3 py-1.5 text-xs font-semibold bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 rounded-lg cursor-pointer"
+                    className="px-3.5 py-1.5 text-xs font-semibold bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 text-[var(--ink-2)] rounded-full cursor-pointer transition-colors"
                   >
                     {t('presetMaxShrink', 'Max Shrink')}
                   </button>
@@ -366,8 +366,8 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                 {/* Palette Colors */}
                 <div>
                   <div className="flex justify-between text-xs mb-2">
-                    <span className="font-bold text-slate-700">{t('colorPaletteLimit', 'Color Palette Limit')}</span>
-                    <span className="font-mono font-bold text-blue-600">{t('colorsCount', '{count} colors').replace('{count}', String(maxColors))}</span>
+                    <span className="font-bold text-[var(--ink-2)]">{t('colorPaletteLimit', 'Color Palette Limit')}</span>
+                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{t('colorsCount', '{count} colors').replace('{count}', String(maxColors))}</span>
                   </div>
                   <input
                     type="range"
@@ -376,7 +376,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                     step={8}
                     value={maxColors}
                     onChange={(e) => setMaxColors(parseInt(e.target.value, 10))}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                   />
                   <div className="flex gap-1.5 mt-2">
                     {[256, 128, 64, 32].map((c) => (
@@ -384,10 +384,10 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                         key={c}
                         type="button"
                         onClick={() => setMaxColors(c)}
-                        className={`px-2 py-1 text-[11px] font-semibold rounded-md cursor-pointer ${
+                        className={`px-2.5 py-1 text-[11px] font-semibold rounded-full cursor-pointer transition-colors ${
                           maxColors === c
-                            ? 'bg-blue-600 text-white'
-                            : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                            ? 'bg-[#7c3aed] text-white'
+                            : 'bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-2)] hover:border-[var(--line-strong)]'
                         }`}
                       >
                         {c}
@@ -399,8 +399,8 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                 {/* Resize Scale */}
                 <div>
                   <div className="flex justify-between text-xs mb-2">
-                    <span className="font-bold text-slate-700">{t('outputScale', 'Output Scale')}</span>
-                    <span className="font-mono font-bold text-blue-600">
+                    <span className="font-bold text-[var(--ink-2)]">{t('outputScale', 'Output Scale')}</span>
+                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">
                       {t('scaleWithDims', '{percent}% ({width}×{height})')
                         .replace('{percent}', String(scalePercent))
                         .replace('{width}', String(targetOutW))
@@ -413,10 +413,10 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                         key={pct}
                         type="button"
                         onClick={() => setScalePercent(pct)}
-                        className={`px-3 py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
+                        className={`px-3 py-1.5 text-xs font-semibold rounded-full cursor-pointer transition-colors ${
                           scalePercent === pct
-                            ? 'bg-blue-600 text-white'
-                            : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                            ? 'bg-[#7c3aed] text-white'
+                            : 'bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-2)] hover:border-[var(--line-strong)]'
                         }`}
                       >
                         {pct}%
@@ -427,7 +427,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
 
                 {/* Frame Drop */}
                 <div>
-                  <span className="text-xs font-bold text-slate-700 block mb-2">
+                  <span className="text-xs font-bold text-[var(--ink-2)] block mb-2">
                     {t('frameRateOptimization', 'Frame Rate Optimization')}
                   </span>
                   <div className="flex flex-col gap-1.5">
@@ -443,10 +443,10 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                         type="button"
                         onClick={() => setFrameStep(opt.step)}
                         disabled={decodedGif.frames.length <= 2 && opt.step > 1}
-                        className={`text-left px-3 py-1.5 text-xs font-medium rounded-lg border cursor-pointer disabled:opacity-40 ${
+                        className={`text-left px-3 py-1.5 text-xs font-medium rounded-[10px] border cursor-pointer disabled:opacity-40 transition-colors ${
                           frameStep === opt.step
-                            ? 'bg-blue-50 border-blue-400 text-blue-800 font-semibold'
-                            : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                            ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/25 border-[#7c3aed] dark:border-[#8b5cf6] text-[#6d28d9] dark:text-[#ddd6fe] font-semibold'
+                            : 'bg-[var(--surface-2)] border-[var(--line)] text-[var(--ink-2)] hover:border-[var(--line-strong)]'
                         }`}
                       >
                         {opt.label}
@@ -456,14 +456,14 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+              <div className="pt-3 border-t border-[var(--line)] flex items-center justify-between gap-3">
                 <button
                   type="button"
                   onClick={() =>
                     void runCompression(sourceFile, decodedGif, maxColors, scalePercent, frameStep)
                   }
                   disabled={isCompressing}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white text-sm font-semibold rounded-xl shadow-xs cursor-pointer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 btn-purple-grad disabled:opacity-50 text-sm font-semibold shadow-xs cursor-pointer"
                 >
                   {isCompressing ? (
                     <>
@@ -484,7 +484,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                   type="button"
                   onClick={handleReset}
                   disabled={isCompressing}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2.5 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-sm font-medium rounded-xl cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#fecaca] hover:bg-[#fee2e2] hover:text-[#dc2626] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] text-[var(--ink-2)] text-sm font-medium rounded-[11px] cursor-pointer transition-colors"
                 >
                   <Trash2 className="w-4 h-4" />
                   <span>{t('reset', 'Reset')}</span>
@@ -495,25 +495,25 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
             {/* Result & Animated Previews */}
             {result && (
               <div className="space-y-4">
-                <div className="bg-slate-900 text-white rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="panel-pastel-blue border rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div className="flex flex-wrap gap-x-6 gap-y-2">
                     <div>
-                      <span className="text-[11px] uppercase tracking-wider text-slate-400 block">
+                      <span className="text-[11px] uppercase tracking-wider text-[var(--ink-3)] font-semibold block">
                         {t('originalGif', 'Original GIF')}
                       </span>
-                      <span className="text-base font-bold font-mono">
+                      <span className="text-base font-bold font-mono text-[var(--ink-navy)]">
                         {t('sizeAndFrames', '{size} · {frames}f')
                           .replace('{size}', formatBytes(result.originalSize))
                           .replace('{frames}', String(result.originalFrames))}
                       </span>
                     </div>
                     <div>
-                      <span className="text-[11px] uppercase tracking-wider text-slate-400 block">
+                      <span className="text-[11px] uppercase tracking-wider text-[var(--ink-3)] font-semibold block">
                         {t('compressedGif', 'Compressed GIF')}
                       </span>
                       <span
                         className={`text-base font-bold font-mono ${
-                          result.isSmaller ? 'text-emerald-400' : 'text-amber-300'
+                          result.isSmaller ? 'text-[#15803d] dark:text-[#4ade80]' : 'text-[#ea580c] dark:text-[#fb923c]'
                         }`}
                       >
                         {t('sizeAndFrames', '{size} · {frames}f')
@@ -522,12 +522,12 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                       </span>
                     </div>
                     <div>
-                      <span className="text-[11px] uppercase tracking-wider text-slate-400 block">
+                      <span className="text-[11px] uppercase tracking-wider text-[var(--ink-3)] font-semibold block">
                         {t('sizeChange', 'Size Change')}
                       </span>
                       <span
                         className={`text-base font-extrabold font-mono ${
-                          result.isSmaller ? 'text-emerald-300' : 'text-amber-300'
+                          result.isSmaller ? 'text-[#15803d] dark:text-[#4ade80]' : 'text-[#ea580c] dark:text-[#fb923c]'
                         }`}
                       >
                         {result.isSmaller
@@ -543,7 +543,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                       const clean = sanitizeFilename(getBaseFilename(sourceFile.name));
                       triggerDownload(result.blob, `${clean}_compressed.gif`);
                     }}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl cursor-pointer shrink-0"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 btn-purple-grad text-sm font-semibold cursor-pointer shrink-0"
                   >
                     <Download className="w-4 h-4" />
                     <span>{t('downloadCompressedGif', 'Download Compressed GIF')}</span>
@@ -551,8 +551,8 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                 </div>
 
                 {!result.isSmaller && (
-                  <div className="p-3.5 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900 flex items-start gap-2.5">
-                    <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                  <div className="p-3.5 pastel-card-10 border rounded-xl text-xs text-[var(--ink)] flex items-start gap-2.5">
+                    <AlertTriangle className="w-4 h-4 text-[#ea580c] dark:text-[#fb923c] shrink-0 mt-0.5" />
                     {((lang === 'zh' && zhStrings) || (lang === 'ja' && jaStrings) || (lang === 'ko' && koStrings) || (lang === 'id' && idStrings) || (lang === 'ru' && ruStrings) || (lang === 'de' && deStrings) || (lang === 'it' && itStrings) || (lang === 'es' && esStrings) || (lang === 'pt' && ptStrings) || (lang === 'fr' && frStrings)) ? (
                       <p>
                         {t(
@@ -571,8 +571,8 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                 )}
 
                 {result.isSmaller && (
-                  <div className="p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <div className="p-3.5 pastel-card-7 border rounded-xl text-xs text-[#15803d] dark:text-[#86efac] flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#16a34a] dark:text-[#4ade80] shrink-0" />
                     {((lang === 'zh' && zhStrings) || (lang === 'ja' && jaStrings) || (lang === 'ko' && koStrings) || (lang === 'id' && idStrings) || (lang === 'ru' && ruStrings) || (lang === 'de' && deStrings) || (lang === 'it' && itStrings) || (lang === 'es' && esStrings) || (lang === 'pt' && ptStrings) || (lang === 'fr' && frStrings)) ? (
                       <span>
                         {t(
@@ -591,8 +591,8 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                 )}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-white border border-slate-200 rounded-2xl p-4">
-                    <div className="flex justify-between text-xs font-semibold text-slate-600 mb-3">
+                  <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 shadow-[var(--shadow)]">
+                    <div className="flex justify-between text-xs font-semibold text-[var(--ink-2)] mb-3">
                       <span>
                         {t('originalLabel', 'Original ({width}×{height}px)')
                           .replace('{width}', String(result.originalWidth))
@@ -600,7 +600,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                       </span>
                       <span className="font-mono">{formatBytes(result.originalSize)}</span>
                     </div>
-                    <div className="bg-slate-100 rounded-xl overflow-hidden flex items-center justify-center min-h-[200px]">
+                    <div className="bg-[var(--surface-2)] border border-[var(--line)] rounded-[12px] overflow-hidden flex items-center justify-center min-h-[200px]">
                       {sourcePreviewUrl && (
                         <img
                           src={sourcePreviewUrl}
@@ -611,16 +611,16 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                     </div>
                   </div>
 
-                  <div className="bg-white border border-slate-200 rounded-2xl p-4">
-                    <div className="flex justify-between text-xs font-semibold text-slate-600 mb-3">
+                  <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 shadow-[var(--shadow)]">
+                    <div className="flex justify-between text-xs font-semibold text-[var(--ink-2)] mb-3">
                       <span>
                         {t('compressedLabel', 'Compressed ({width}×{height}px)')
                           .replace('{width}', String(result.outputWidth))
                           .replace('{height}', String(result.outputHeight))}
                       </span>
-                      <span className="font-mono text-blue-600">{formatBytes(result.compressedSize)}</span>
+                      <span className="font-mono text-[#15803d] dark:text-[#4ade80] font-bold">{formatBytes(result.compressedSize)}</span>
                     </div>
-                    <div className="bg-slate-100 rounded-xl overflow-hidden flex items-center justify-center min-h-[200px]">
+                    <div className="bg-[var(--surface-2)] border border-[var(--line)] rounded-[12px] overflow-hidden flex items-center justify-center min-h-[200px]">
                       <img
                         src={result.previewUrl}
                         alt={t('altCompressedGif', 'Compressed GIF')}

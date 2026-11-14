@@ -40,6 +40,7 @@ import {
 import { resolveOutputFormat } from '../utils/compressor';
 import { formatBytes, getBaseFilename, sanitizeFilename } from '../utils/formatters';
 import { createFilesZipArchive, triggerDownload } from '../utils/zip';
+import { getPastelCardClass } from '../utils/pastel';
 
 export interface PageEsStrings {
   layoutUi: ToolPageLayoutStrings;
@@ -327,23 +328,23 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
           <>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
               {/* Visual Cut-Line Overlay Preview */}
-              <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4">
+              <div className="lg:col-span-7 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                    <Grid className="w-3.5 h-3.5 text-blue-600" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5">
+                    <Grid className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
                     {t('cutLinePreview', 'Cut-Line Preview ({rows} × {cols} = {tiles} tiles)').replace('{rows}', String(effectiveRows)).replace('{cols}', String(effectiveCols)).replace('{tiles}', String(effectiveRows * effectiveCols))}
                   </span>
                   <button
                     type="button"
                     onClick={handleClear}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink-3)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] cursor-pointer transition-colors"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                     <span>{t('changeImage', 'Change Image')}</span>
                   </button>
                 </div>
 
-                <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-100 p-3 flex items-center justify-center">
+                <div className="rounded-[12px] overflow-hidden border border-[var(--line)] bg-[var(--surface-2)] p-3 flex items-center justify-center">
                   <div className="relative inline-block max-w-full">
                     <img
                       src={imageInfo.previewUrl}
@@ -360,9 +361,9 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                       {Array.from({ length: effectiveRows * effectiveCols }).map((_, idx) => (
                         <div
                           key={idx}
-                          className="border border-dashed border-white/90 shadow-[inset_0_0_0_1px_rgba(37,99,235,0.45)] flex items-center justify-center"
+                          className="border border-dashed border-white/90 shadow-[inset_0_0_0_1px_rgba(124,58,237,0.55)] flex items-center justify-center"
                         >
-                          <span className="px-1.5 py-0.5 rounded bg-slate-900/65 text-white text-[10px] font-mono font-bold">
+                          <span className="px-1.5 py-0.5 rounded bg-[#0f172a]/80 text-[#f8fafc] text-[10px] font-mono font-bold">
                             {idx + 1}
                           </span>
                         </div>
@@ -371,7 +372,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                   </div>
                 </div>
 
-                <div className="flex justify-between text-xs text-slate-500 font-mono">
+                <div className="flex justify-between text-xs text-[var(--ink-3)] font-mono">
                   <span className="truncate max-w-xs">{sourceFile?.name}</span>
                   <span>
                     {imageInfo.width}×{imageInfo.height}px · {sourceFile ? formatBytes(sourceFile.size) : ''}
@@ -380,12 +381,12 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
               </div>
 
               {/* Split Settings */}
-              <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+              <div className="lg:col-span-5 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-5">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                     {t('splitLayout', 'Split Layout')}
                   </span>
-                  <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl">
+                  <div className="grid grid-cols-3 gap-1 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px]">
                     {(
                       [
                         { id: 'grid', label: t('modeGrid', 'Grid (N×M)') },
@@ -397,8 +398,8 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                         key={m.id}
                         type="button"
                         onClick={() => setMode(m.id)}
-                        className={`py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
-                          mode === m.id ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
+                        className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
+                          mode === m.id ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                         }`}
                       >
                         {m.label}
@@ -410,7 +411,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                 <div className="grid grid-cols-2 gap-3">
                   {mode !== 'vertical' && (
                     <div>
-                      <label className="text-xs font-semibold text-slate-700 block mb-1">
+                      <label className="text-xs font-semibold text-[var(--ink-2)] block mb-1">
                         {t('rowsLabel', 'Rows (Horizontal Cuts)')}
                       </label>
                       <input
@@ -419,13 +420,13 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                         max={10}
                         value={rows}
                         onChange={(e) => setRows(Math.max(1, Math.min(10, parseInt(e.target.value, 10) || 1)))}
-                        className="w-full px-3 py-2 text-sm font-mono border border-slate-300 rounded-xl"
+                        className="w-full px-3 py-2 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
                       />
                     </div>
                   )}
                   {mode !== 'horizontal' && (
                     <div>
-                      <label className="text-xs font-semibold text-slate-700 block mb-1">
+                      <label className="text-xs font-semibold text-[var(--ink-2)] block mb-1">
                         {t('columnsLabel', 'Columns (Vertical Cuts)')}
                       </label>
                       <input
@@ -434,7 +435,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                         max={10}
                         value={cols}
                         onChange={(e) => setCols(Math.max(1, Math.min(10, parseInt(e.target.value, 10) || 1)))}
-                        className="w-full px-3 py-2 text-sm font-mono border border-slate-300 rounded-xl"
+                        className="w-full px-3 py-2 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
                       />
                     </div>
                   )}
@@ -455,22 +456,22 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                         setRows(p.r);
                         setCols(p.c);
                       }}
-                      className="px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 cursor-pointer"
+                      className="px-3 py-1.5 text-xs font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-2)] cursor-pointer transition-colors"
                     >
                       {p.label}
                     </button>
                   ))}
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 space-y-3">
-                  <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-xl">
+                <div className="pt-4 border-t border-[var(--line)] space-y-3">
+                  <div className="grid grid-cols-4 gap-1 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px]">
                     {(['original', 'jpeg', 'png', 'webp'] as OutputFormatChoice[]).map((fmt) => (
                       <button
                         key={fmt}
                         type="button"
                         onClick={() => setFormat(fmt)}
-                        className={`py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
-                          format === fmt ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
+                        className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
+                          format === fmt ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                         }`}
                       >
                         {fmt === 'original' ? t('formatOriginal', 'Orig') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
@@ -481,8 +482,8 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                   {format !== 'png' && (
                     <div>
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="font-semibold text-slate-700">{t('tileQuality', 'Tile Quality')}</span>
-                        <span className="font-mono text-slate-700">{quality}%</span>
+                        <span className="font-semibold text-[var(--ink-2)]">{t('tileQuality', 'Tile Quality')}</span>
+                        <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{quality}%</span>
                       </div>
                       <input
                         type="range"
@@ -490,7 +491,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                         max={100}
                         value={quality}
                         onChange={(e) => setQuality(parseInt(e.target.value, 10))}
-                        className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                        className="w-full h-1.5 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                       />
                     </div>
                   )}
@@ -503,7 +504,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                       generateSplitTiles(sourceFile, imageInfo, effectiveRows, effectiveCols, format, quality)
                     }
                     disabled={isSplitting}
-                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer disabled:opacity-60"
+                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 btn-purple-grad text-sm font-semibold shadow-xs cursor-pointer disabled:opacity-60"
                   >
                     {isSplitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Scissors className="w-4 h-4" />}
                     <span>
@@ -519,12 +520,12 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
             {/* Generated Tiles Result */}
             {tiles.length > 0 && (
               <div className="space-y-4">
-                <div className="bg-slate-900 text-white rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="panel-pastel-blue border rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
                       {t('splitComplete', 'Split Complete')}
                     </span>
-                    <p className="text-sm font-semibold mt-0.5">
+                    <p className="text-sm font-semibold text-[var(--ink-navy)] mt-0.5">
                       {t('tilesGenerated', '{count} image tiles generated at full resolution').replace('{count}', String(tiles.length))}
                     </p>
                   </div>
@@ -532,7 +533,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                     type="button"
                     onClick={handleDownloadAllZip}
                     disabled={isZipping}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl cursor-pointer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 btn-purple-grad text-sm font-semibold cursor-pointer"
                   >
                     <FileArchive className="w-4 h-4" />
                     <span>{isZipping ? t('packagingZip', 'Packaging ZIP...') : t('downloadAllTilesZip', 'Download All Tiles (ZIP)')}</span>
@@ -540,19 +541,19 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                  {tiles.map((tile) => (
+                  {tiles.map((tile, idx) => (
                     <div
                       key={tile.id}
-                      className="bg-white border border-slate-200 rounded-xl p-3 flex flex-col justify-between gap-2.5 shadow-xs"
+                      className={`border rounded-2xl p-3 flex flex-col justify-between gap-2.5 shadow-[var(--shadow)] ${getPastelCardClass(idx)}`}
                     >
-                      <div className="aspect-square rounded-lg overflow-hidden bg-slate-100 border border-slate-100 flex items-center justify-center">
+                      <div className="aspect-square rounded-xl overflow-hidden bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center">
                         <img
                           src={tile.previewUrl}
                           alt={tile.filename}
                           className="max-w-full max-h-full object-contain"
                         />
                       </div>
-                      <div className="text-[11px] font-mono text-slate-600 flex justify-between">
+                      <div className="text-[11px] font-mono text-[var(--ink-3)] flex justify-between">
                         <span>R{tile.row}·C{tile.col}</span>
                         <span>
                           {tile.width}×{tile.height}
@@ -561,7 +562,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                       <button
                         type="button"
                         onClick={() => triggerDownload(tile.blob, tile.filename)}
-                        className="w-full inline-flex items-center justify-center gap-1.5 py-1.5 bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-800 text-xs font-semibold rounded-lg transition-colors cursor-pointer"
+                        className="w-full inline-flex items-center justify-center gap-1.5 py-1.5 bg-[#16a34a] hover:bg-[#15803d] text-white text-xs font-semibold rounded-[11px] shadow-xs transition-colors cursor-pointer"
                       >
                         <Download className="w-3.5 h-3.5" />
                         <span>{t('download', 'Download')}</span>
@@ -575,7 +576,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
         )}
 
         {error && (
-          <div className="flex items-start gap-2 p-3.5 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl">
+          <div className="flex items-start gap-2 p-3.5 pastel-card-14 border text-[#b91c1c] dark:text-[#fca5a5] text-sm rounded-2xl">
             <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
             <span>{error}</span>
           </div>

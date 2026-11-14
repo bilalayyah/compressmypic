@@ -459,23 +459,23 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4">
+            <div className="lg:col-span-7 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                  <Type className="w-3.5 h-3.5 text-blue-600" />
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5">
+                  <Type className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
                   {t('dragAnyText', 'Drag Any Text Directly on Image')}
                 </span>
                 <button
                   type="button"
                   onClick={handleClear}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-red-600 cursor-pointer"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--ink-3)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] cursor-pointer transition-colors"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                   <span>{t('changeImage', 'Change Image')}</span>
                 </button>
               </div>
 
-              <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-100 p-3 flex items-center justify-center min-h-[300px] max-h-[540px]">
+              <div className="rounded-[12px] overflow-hidden border border-[var(--line)] bg-[var(--surface-2)] p-3 flex items-center justify-center min-h-[300px] max-h-[540px]">
                 <canvas
                   ref={previewCanvasRef}
                   onPointerDown={handleCanvasPointerDown}
@@ -483,7 +483,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                 />
               </div>
 
-              <div className="flex justify-between text-xs text-slate-500 font-mono">
+              <div className="flex justify-between text-xs text-[var(--ink-3)] font-mono">
                 <span className="truncate max-w-xs">{sourceFile?.name}</span>
                 <span>
                   {imageInfo.width}×{imageInfo.height}px · {sourceFile ? formatBytes(sourceFile.size) : ''}
@@ -491,7 +491,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
               </div>
             </div>
 
-            <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-4">
+            <div className="lg:col-span-5 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-4">
               {/* Layer Tabs */}
               <div className="flex items-center justify-between gap-2">
                 <div className="flex flex-wrap gap-1.5">
@@ -500,10 +500,10 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                       key={layer.id}
                       type="button"
                       onClick={() => setActiveLayerId(layer.id)}
-                      className={`px-2.5 py-1 text-xs font-semibold rounded-lg border cursor-pointer ${
+                      className={`px-3 py-1 text-xs font-semibold rounded-full border cursor-pointer transition-colors ${
                         layer.id === activeLayer?.id
-                          ? 'bg-blue-600 text-white border-blue-600'
-                          : 'bg-slate-50 text-slate-700 border-slate-200'
+                          ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/25 border-[#7c3aed] dark:border-[#8b5cf6] text-[#6d28d9] dark:text-[#ddd6fe]'
+                          : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[var(--line-strong)]'
                       }`}
                     >
                       {t('textLayer', 'Text {index}').replace('{index}', String(idx + 1))}
@@ -514,7 +514,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                   <button
                     type="button"
                     onClick={handleAddLayer}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg cursor-pointer"
+                    className="inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold bg-[var(--accent-soft)] text-[#6d28d9] dark:text-[#ddd6fe] hover:bg-[#7c3aed] hover:text-white rounded-full cursor-pointer transition-colors"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>{t('add', 'Add')}</span>
@@ -523,7 +523,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                     <button
                       type="button"
                       onClick={() => handleDeleteLayer(activeLayer.id)}
-                      className="p-1.5 text-slate-400 hover:text-red-600 rounded-lg cursor-pointer"
+                      className="p-1.5 text-[var(--ink-3)] hover:text-[#dc2626] hover:bg-[#fee2e2] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] rounded-full cursor-pointer transition-colors"
                       aria-label={t('deleteActiveTextLayer', 'Delete active text layer')}
                     >
                       <Trash2 className="w-3.5 h-3.5" />
@@ -535,24 +535,24 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
               {activeLayer && (
                 <>
                   <div>
-                    <label className="text-xs font-semibold text-slate-700 block mb-1">
+                    <label className="text-xs font-semibold text-[var(--ink-2)] block mb-1">
                       {t('textContent', 'Text Content (multi-line supported)')}
                     </label>
                     <textarea
                       rows={2}
                       value={activeLayer.text}
                       onChange={(e) => updateActiveLayer({ text: e.target.value })}
-                      className="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs font-semibold text-slate-700 block mb-1">{t('font', 'Font')}</label>
+                      <label className="text-xs font-semibold text-[var(--ink-2)] block mb-1">{t('font', 'Font')}</label>
                       <select
                         value={activeLayer.fontFamily}
                         onChange={(e) => updateActiveLayer({ fontFamily: e.target.value })}
-                        className="w-full px-2.5 py-2 text-xs border border-slate-300 rounded-xl bg-white"
+                        className="w-full px-2.5 py-2 text-xs border border-[var(--line-strong)] rounded-[11px] bg-[var(--surface-2)] text-[var(--ink)] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
                       >
                         {FONT_OPTIONS.map((f) => (
                           <option key={f.label} value={f.value}>
@@ -563,7 +563,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                     </div>
 
                     <div className="flex items-end gap-2">
-                      <label className="flex items-center gap-2 text-xs font-semibold text-slate-700 border border-slate-200 rounded-xl px-2.5 py-1.5">
+                      <label className="flex items-center gap-2 text-xs font-semibold text-[var(--ink-2)] border border-[var(--line)] bg-[var(--surface-2)] rounded-[11px] px-2.5 py-1.5">
                         <input
                           type="color"
                           value={activeLayer.color}
@@ -575,10 +575,10 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                       <button
                         type="button"
                         onClick={() => updateActiveLayer({ bold: !activeLayer.bold })}
-                        className={`p-2 rounded-xl border cursor-pointer ${
+                        className={`p-2 rounded-[11px] border cursor-pointer transition-colors ${
                           activeLayer.bold
-                            ? 'bg-blue-600 text-white border-blue-600'
-                            : 'bg-white text-slate-700 border-slate-200'
+                            ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/25 text-[#6d28d9] dark:text-[#ddd6fe] border-[#7c3aed] dark:border-[#8b5cf6]'
+                            : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[var(--line-strong)]'
                         }`}
                         aria-label={t('toggleBold', 'Toggle Bold')}
                       >
@@ -587,10 +587,10 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                       <button
                         type="button"
                         onClick={() => updateActiveLayer({ italic: !activeLayer.italic })}
-                        className={`p-2 rounded-xl border cursor-pointer ${
+                        className={`p-2 rounded-[11px] border cursor-pointer transition-colors ${
                           activeLayer.italic
-                            ? 'bg-blue-600 text-white border-blue-600'
-                            : 'bg-white text-slate-700 border-slate-200'
+                            ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/25 text-[#6d28d9] dark:text-[#ddd6fe] border-[#7c3aed] dark:border-[#8b5cf6]'
+                            : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[var(--line-strong)]'
                         }`}
                         aria-label={t('toggleItalic', 'Toggle Italic')}
                       >
@@ -602,8 +602,8 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="font-semibold text-slate-700">{t('size', 'Size')}</span>
-                        <span className="font-mono text-blue-600">{activeLayer.fontSizePct}%</span>
+                        <span className="font-semibold text-[var(--ink-2)]">{t('size', 'Size')}</span>
+                        <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{activeLayer.fontSizePct}%</span>
                       </div>
                       <input
                         type="range"
@@ -611,13 +611,13 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                         max={22}
                         value={activeLayer.fontSizePct}
                         onChange={(e) => updateActiveLayer({ fontSizePct: parseInt(e.target.value, 10) })}
-                        className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                        className="w-full h-1.5 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                       />
                     </div>
                     <div>
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="font-semibold text-slate-700">{t('rotation', 'Rotation')}</span>
-                        <span className="font-mono text-blue-600">{activeLayer.rotation}°</span>
+                        <span className="font-semibold text-[var(--ink-2)]">{t('rotation', 'Rotation')}</span>
+                        <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{activeLayer.rotation}°</span>
                       </div>
                       <input
                         type="range"
@@ -625,19 +625,19 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                         max={180}
                         value={activeLayer.rotation}
                         onChange={(e) => updateActiveLayer({ rotation: parseInt(e.target.value, 10) })}
-                        className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                        className="w-full h-1.5 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2 pt-1">
-                    <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200">
-                      <label className="flex items-center gap-2 text-xs font-semibold text-slate-700 cursor-pointer">
+                    <div className="flex items-center justify-between gap-2 p-2.5 rounded-[11px] bg-[var(--surface-2)] border border-[var(--line)]">
+                      <label className="flex items-center gap-2 text-xs font-semibold text-[var(--ink-2)] cursor-pointer">
                         <input
                           type="checkbox"
                           checked={activeLayer.outline}
                           onChange={(e) => updateActiveLayer({ outline: e.target.checked })}
-                          className="w-4 h-4 accent-blue-600 rounded"
+                          className="w-4 h-4 accent-[#7c3aed] rounded"
                         />
                         <span>{t('textOutline', 'Text Outline')}</span>
                       </label>
@@ -647,7 +647,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                             type="color"
                             value={activeLayer.outlineColor}
                             onChange={(e) => updateActiveLayer({ outlineColor: e.target.value })}
-                            className="w-6 h-6 rounded border border-slate-300 cursor-pointer p-0"
+                            className="w-6 h-6 rounded border border-[var(--line-strong)] cursor-pointer p-0"
                           />
                           <input
                             type="range"
@@ -655,34 +655,34 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                             max={10}
                             value={activeLayer.outlineWidth}
                             onChange={(e) => updateActiveLayer({ outlineWidth: parseInt(e.target.value, 10) })}
-                            className="w-20 h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                            className="w-20 h-1.5 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                           />
                         </div>
                       )}
                     </div>
 
-                    <label className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
-                      <span className="text-xs font-semibold text-slate-700">{t('dropShadow', 'Drop Shadow')}</span>
+                    <label className="flex items-center justify-between p-2.5 rounded-[11px] bg-[var(--surface-2)] border border-[var(--line)] cursor-pointer">
+                      <span className="text-xs font-semibold text-[var(--ink-2)]">{t('dropShadow', 'Drop Shadow')}</span>
                       <input
                         type="checkbox"
                         checked={activeLayer.shadow}
                         onChange={(e) => updateActiveLayer({ shadow: e.target.checked })}
-                        className="w-4 h-4 accent-blue-600 rounded"
+                        className="w-4 h-4 accent-[#7c3aed] rounded"
                       />
                     </label>
                   </div>
                 </>
               )}
 
-              <div className="pt-3 border-t border-slate-100 space-y-3">
-                <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-xl">
+              <div className="pt-3 border-t border-[var(--line)] space-y-3">
+                <div className="grid grid-cols-4 gap-1 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px]">
                   {(['original', 'jpeg', 'png', 'webp'] as OutputFormatChoice[]).map((fmt) => (
                     <button
                       key={fmt}
                       type="button"
                       onClick={() => setFormat(fmt)}
-                      className={`py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
-                        format === fmt ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
+                      className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
+                        format === fmt ? 'btn-purple-grad shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {fmt === 'original' ? t('formatOrig', 'Orig') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
@@ -692,8 +692,8 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                 {format !== 'png' && (
                   <div>
                     <div className="flex justify-between text-xs mb-1">
-                      <span className="font-semibold text-slate-700">{t('quality', 'Quality')}</span>
-                      <span className="font-mono text-slate-700">{quality}%</span>
+                      <span className="font-semibold text-[var(--ink-2)]">{t('quality', 'Quality')}</span>
+                      <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{quality}%</span>
                     </div>
                     <input
                       type="range"
@@ -701,7 +701,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                       max={100}
                       value={quality}
                       onChange={(e) => setQuality(parseInt(e.target.value, 10))}
-                      className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                      className="w-full h-1.5 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                     />
                   </div>
                 )}
@@ -709,7 +709,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                   type="button"
                   onClick={handleDownload}
                   disabled={isExporting}
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer disabled:opacity-60"
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 btn-purple-grad text-sm font-semibold shadow-sm cursor-pointer disabled:opacity-60"
                 >
                   {isExporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
                   <span>{isExporting ? t('exporting', 'Exporting...') : t('downloadImageWithText', 'Download Image with Text')}</span>
@@ -720,7 +720,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
         )}
 
         {error && (
-          <div className="flex items-start gap-2 p-3.5 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl">
+          <div className="flex items-start gap-2 p-3.5 pastel-card-14 border text-[#b91c1c] dark:text-[#fca5a5] text-sm rounded-2xl">
             <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
             <span>{error}</span>
           </div>

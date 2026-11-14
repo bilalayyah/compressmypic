@@ -456,35 +456,35 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             {/* Crop Viewport */}
-            <div className="lg:col-span-8 bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4">
+            <div className="lg:col-span-8 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                  <Crop className="w-4 h-4 text-blue-600" />
+                <div className="flex items-center gap-2 text-xs font-semibold text-[var(--ink-2)]">
+                  <Crop className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
                   <span>
                     {t('selection', 'Selection:')}{' '}
-                    <strong className="font-mono text-blue-600">
+                    <strong className="font-mono text-[#7c3aed] dark:text-[#a78bfa]">
                       {pixelCrop.w} × {pixelCrop.h}px
                     </strong>
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="inline-flex items-center bg-slate-100 rounded-lg p-0.5">
+                  <div className="inline-flex items-center bg-[var(--surface-2)] border border-[var(--line)] rounded-[10px] p-0.5">
                     <button
                       type="button"
                       onClick={() => setZoom((z) => Math.max(1, Number((z - 0.25).toFixed(2))))}
-                      className="p-1.5 text-slate-700 hover:bg-white rounded-md cursor-pointer"
+                      className="p-1.5 text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface)] rounded-[7px] cursor-pointer transition-colors"
                       aria-label={t('zoomOut', 'Zoom out')}
                     >
                       <ZoomOut className="w-4 h-4" />
                     </button>
-                    <span className="px-2 text-xs font-mono font-semibold text-slate-700">
+                    <span className="px-2 text-xs font-mono font-semibold text-[var(--ink-2)]">
                       {Math.round(zoom * 100)}%
                     </span>
                     <button
                       type="button"
                       onClick={() => setZoom((z) => Math.min(3, Number((z + 0.25).toFixed(2))))}
-                      className="p-1.5 text-slate-700 hover:bg-white rounded-md cursor-pointer"
+                      className="p-1.5 text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface)] rounded-[7px] cursor-pointer transition-colors"
                       aria-label={t('zoomIn', 'Zoom in')}
                     >
                       <ZoomIn className="w-4 h-4" />
@@ -493,7 +493,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
                   <button
                     type="button"
                     onClick={handleClear}
-                    className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
+                    className="p-1.5 text-[var(--ink-3)] hover:text-[#dc2626] hover:bg-[#fee2e2] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] rounded-lg cursor-pointer transition-colors"
                     aria-label={t('removeImage', 'Remove image')}
                   >
                     <Trash2 className="w-4 h-4" />
@@ -501,7 +501,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
                 </div>
               </div>
 
-              <div className="rounded-xl border border-slate-200 bg-slate-900/95 overflow-auto max-h-[540px] p-4 flex items-center justify-center">
+              <div className="rounded-[12px] border border-[#334155] bg-[#0f172a] overflow-auto max-h-[540px] p-4 flex items-center justify-center">
                 <div
                   ref={stageRef}
                   className="relative inline-block select-none touch-none overflow-hidden"
@@ -527,7 +527,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
                       top: `${crop.y * 100}%`,
                       width: `${crop.w * 100}%`,
                       height: `${crop.h * 100}%`,
-                      boxShadow: '0 0 0 9999px rgba(15, 23, 42, 0.58)',
+                      boxShadow: '0 0 0 9999px rgba(15, 23, 42, 0.65)',
                     }}
                   >
                     {/* Rule of thirds grid */}
@@ -548,14 +548,14 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
                       <div
                         key={h.id}
                         onPointerDown={(e) => startDrag(h.id, e)}
-                        className={`absolute w-3.5 h-3.5 bg-blue-600 border-2 border-white rounded-xs shadow-sm touch-none ${h.posClass} ${h.cursor}`}
+                        className={`absolute w-3.5 h-3.5 bg-[#7c3aed] border-2 border-white rounded-[3px] shadow-sm touch-none ${h.posClass} ${h.cursor}`}
                       />
                     ))}
                   </div>
                 </div>
               </div>
 
-              <div className="flex justify-between text-xs text-slate-500 font-mono">
+              <div className="flex justify-between text-xs text-[var(--ink-3)] font-mono">
                 <span className="truncate max-w-xs">{sourceFile?.name}</span>
                 <span>
                   {t('originalLabel', 'Original:')} {imageInfo.width}×{imageInfo.height}px · {sourceFile ? formatBytes(sourceFile.size) : ''}
@@ -564,9 +564,9 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
             </div>
 
             {/* Crop Controls */}
-            <div className="lg:col-span-4 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+            <div className="lg:col-span-4 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-5">
               <div className="flex items-center justify-between">
-                <h2 className="text-base font-bold text-slate-900">{t('cropOptions', 'Crop Options')}</h2>
+                <h2 className="font-sans text-lg font-bold text-[var(--ink-navy)]">{t('cropOptions', 'Crop Options')}</h2>
                 <button
                   type="button"
                   onClick={() => {
@@ -574,7 +574,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
                     setCrop({ x: 0, y: 0, w: 1, h: 1 });
                     setZoom(1);
                   }}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#7c3aed] dark:text-[#a78bfa] hover:underline cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>{t('selectFull', 'Select Full')}</span>
@@ -582,7 +582,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
               </div>
 
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                   {t('aspectRatioPreset', 'Aspect Ratio Preset')}
                 </span>
                 <div className="grid grid-cols-4 gap-1.5">
@@ -591,10 +591,10 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
                       key={preset.id}
                       type="button"
                       onClick={() => applyAspectPreset(preset)}
-                      className={`py-2 text-xs font-semibold rounded-lg border cursor-pointer ${
+                      className={`py-2 text-xs font-semibold rounded-[9px] border cursor-pointer transition-colors ${
                         aspectId === preset.id
-                          ? 'bg-blue-600 text-white border-blue-600'
-                          : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+                          ? 'bg-[#7c3aed] text-white border-[#7c3aed]'
+                          : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe]'
                       }`}
                     >
                       {preset.id === 'free' ? t('aspectFree', preset.label) : preset.label}
@@ -604,29 +604,29 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
               </div>
 
               <div className="grid grid-cols-2 gap-2.5 text-xs">
-                <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200">
-                  <span className="text-slate-500 block">{t('cropWidth', 'Crop Width')}</span>
-                  <span className="font-mono font-bold text-slate-900">{pixelCrop.w} px</span>
+                <div className="p-2.5 pastel-card-0 rounded-[11px] border">
+                  <span className="text-[var(--ink-3)] block">{t('cropWidth', 'Crop Width')}</span>
+                  <span className="font-mono font-bold text-[var(--ink-navy)]">{pixelCrop.w} px</span>
                 </div>
-                <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200">
-                  <span className="text-slate-500 block">{t('cropHeight', 'Crop Height')}</span>
-                  <span className="font-mono font-bold text-slate-900">{pixelCrop.h} px</span>
+                <div className="p-2.5 pastel-card-2 rounded-[11px] border">
+                  <span className="text-[var(--ink-3)] block">{t('cropHeight', 'Crop Height')}</span>
+                  <span className="font-mono font-bold text-[var(--ink-navy)]">{pixelCrop.h} px</span>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-slate-100 space-y-4">
+              <div className="pt-4 border-t border-[var(--line)] space-y-4">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                     {t('outputFormat', 'Output Format')}
                   </span>
-                  <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-xl">
+                  <div className="grid grid-cols-4 gap-1 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px]">
                     {(['original', 'jpeg', 'png', 'webp'] as OutputFormatChoice[]).map((fmt) => (
                       <button
                         key={fmt}
                         type="button"
                         onClick={() => setFormat(fmt)}
-                        className={`py-1.5 text-xs font-semibold rounded-lg cursor-pointer ${
-                          format === fmt ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600'
+                        className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
+                          format === fmt ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                         }`}
                       >
                         {fmt === 'original' ? t('formatOriginal', 'Original') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
@@ -638,8 +638,8 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
                 {format !== 'png' && (
                   <div>
                     <div className="flex justify-between text-xs mb-1">
-                      <span className="font-semibold text-slate-700">{t('quality', 'Quality')}</span>
-                      <span className="font-mono font-bold text-slate-700">{quality}%</span>
+                      <span className="font-semibold text-[var(--ink-2)]">{t('quality', 'Quality')}</span>
+                      <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{quality}%</span>
                     </div>
                     <input
                       type="range"
@@ -647,7 +647,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
                       max={100}
                       value={quality}
                       onChange={(e) => setQuality(parseInt(e.target.value, 10))}
-                      className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                      className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                     />
                   </div>
                 )}
@@ -656,7 +656,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
                   type="button"
                   onClick={handleDownload}
                   disabled={isExporting}
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm cursor-pointer disabled:opacity-60"
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 btn-purple-grad text-sm font-semibold shadow-xs cursor-pointer disabled:opacity-60"
                 >
                   {isExporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
                   <span>{isExporting ? t('cropping', 'Cropping...') : t('cropAndDownload', 'Crop & Download')}</span>
@@ -667,7 +667,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
         )}
 
         {error && (
-          <div className="flex items-start gap-2 p-3.5 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl">
+          <div className="flex items-start gap-2 p-3.5 pastel-card-14 border text-[#b91c1c] dark:text-[#fca5a5] text-sm rounded-2xl">
             <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
             <span>{error}</span>
           </div>

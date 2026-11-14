@@ -191,11 +191,13 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
     };
   }, []);
 
-  // D1 REAL fix (same defect as /image-converter): re-convert
-  // already-converted items when the target format changes, so Download /
-  // Download ZIP never serve the stale previous-format blobs. If a
-  // conversion is in flight when the format changes, the re-convert waits
-  // until it finishes (isProcessing dep) instead of racing it.
+  // D1 REAL fix: re-convert already-converted items when the target format
+  // changes. The Phase 8 fix landed in FormatConverterTool.tsx, which this
+  // page does NOT use — this page has its own inline implementation, so the
+  // effect belongs here. Without it, the stale previous-format blob stays
+  // attached and Download silently saves the wrong format. If a conversion
+  // is in flight when the format changes, the re-convert waits until it
+  // finishes (isProcessing dep) instead of racing it.
   const prevTargetFormatRef = useRef(targetFormat);
   const formatChangePendingRef = useRef(false);
   useEffect(() => {
@@ -421,13 +423,13 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
           strings={lang === 'zh' ? zhStrings?.uploadZone : lang === 'ja' ? jaStrings?.uploadZone : lang === 'ko' ? koStrings?.uploadZone : lang === 'id' ? idStrings?.uploadZone : lang === 'ru' ? ruStrings?.uploadZone : lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
         />
 
-        <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+        <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-5">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-2">
                 {t('convertBatchToFormat', 'Convert Batch To Format')}
               </span>
-              <div className="inline-flex flex-wrap p-1 bg-slate-100 rounded-xl gap-1">
+              <div className="inline-flex flex-wrap p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] gap-1">
                 {(
                   [
                     { id: 'webp', label: t('formatWebp', 'WebP (Smallest Web)') },
@@ -439,10 +441,10 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
                     key={f.id}
                     type="button"
                     onClick={() => setTargetFormat(f.id)}
-                    className={`px-3.5 py-2 text-xs font-semibold rounded-lg cursor-pointer transition-all ${
+                    className={`px-3.5 py-2 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                       targetFormat === f.id
-                        ? 'bg-blue-600 text-white shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900'
+                        ? 'bg-[#7c3aed] text-white shadow-xs'
+                        : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
                     {f.label}
@@ -453,7 +455,7 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
 
             <div className="flex flex-wrap items-center gap-4">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1.5">
+                <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-1.5">
                   {t('optionalFilenameSuffix', 'Optional Filename Suffix')}
                 </span>
                 <input
@@ -461,13 +463,13 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
                   value={filenameSuffix}
                   onChange={(e) => setFilenameSuffix(e.target.value)}
                   placeholder={t('placeholderSuffix', 'e.g. _web')}
-                  className="w-36 px-3 py-2 text-xs font-mono border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-36 px-3 py-2 text-xs font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
                 />
               </div>
 
               {targetFormat === 'jpeg' && (
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1.5">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-1.5">
                     {t('transparentFill', 'Transparent Fill')}
                   </span>
                   <div className="flex items-center gap-2">
@@ -475,19 +477,19 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
                       type="color"
                       value={backgroundColor}
                       onChange={(e) => setBackgroundColor(e.target.value)}
-                      className="w-8 h-8 rounded-lg border border-slate-300 cursor-pointer"
+                      className="w-8 h-8 rounded-[8px] border border-[var(--line-strong)] cursor-pointer"
                     />
-                    <span className="text-xs font-mono text-slate-600">{backgroundColor}</span>
+                    <span className="text-xs font-mono text-[var(--ink-2)]">{backgroundColor}</span>
                   </div>
                 </div>
               )}
             </div>
           </div>
 
-          <div className="pt-4 border-t border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="pt-4 border-t border-[var(--line)] flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex-1 max-w-md">
               <div className="flex justify-between text-xs mb-1.5">
-                <span className="font-semibold text-slate-700">
+                <span className="font-semibold text-[var(--ink-2)]">
                   {targetFormat === 'png'
                     ? t('qualityLosslessPng', 'Quality (Lossless PNG)')
                     : t('qualityPercent', 'Quality ({quality}%)').replace('{quality}', String(quality))}
@@ -500,7 +502,7 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
                 value={quality}
                 disabled={targetFormat === 'png'}
                 onChange={(e) => setQuality(parseInt(e.target.value, 10))}
-                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer disabled:opacity-40"
+                className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer disabled:opacity-40"
               />
             </div>
 
@@ -510,7 +512,7 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
                   type="button"
                   onClick={handleConvertAll}
                   disabled={isProcessing}
-                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white text-sm font-semibold rounded-xl shadow-xs cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 btn-purple-grad disabled:opacity-50 text-sm font-semibold shadow-xs cursor-pointer"
                 >
                   {isProcessing ? (
                     <>
@@ -532,7 +534,7 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
                   type="button"
                   onClick={handleClearAll}
                   disabled={isProcessing}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2.5 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-sm font-medium rounded-xl cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#fecaca] hover:text-[#dc2626] hover:bg-[#fee2e2] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] text-[var(--ink-2)] text-sm font-medium rounded-[11px] cursor-pointer transition-colors"
                 >
                   <Trash2 className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('clear', 'Clear')}</span>
@@ -545,12 +547,12 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
         {items.length > 0 && (
           <div className="space-y-4">
             {doneItems.length > 0 && (
-              <div className="bg-slate-900 text-white rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="panel-pastel-blue border rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
                     {t('bulkConversionSummary', 'Bulk Conversion Summary')}
                   </span>
-                  <p className="text-sm font-semibold mt-0.5">
+                  <p className="text-sm font-semibold text-[var(--ink-navy)] mt-0.5">
                     {t('filesConvertedSummary', '{count} files converted to {format} · {original} → {converted}')
                       .replace('{count}', String(doneItems.length))
                       .replace('{format}', targetFormat === 'jpeg' ? 'JPG' : targetFormat.toUpperCase())
@@ -562,7 +564,7 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
                   type="button"
                   onClick={handleDownloadZip}
                   disabled={isZipping}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 btn-purple-grad text-sm font-semibold cursor-pointer"
                 >
                   <FileArchive className="w-4 h-4" />
                   <span>{isZipping ? t('creatingZip', 'Creating ZIP...') : t('downloadAllZip', 'Download All (ZIP)')}</span>
@@ -577,12 +579,12 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
               return (
                 <div
                   key={item.id}
-                  className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+                  className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-[var(--shadow)]"
                 >
                   <div className="flex items-center gap-4 min-w-0 w-full md:w-auto">
                     <div
                       onClick={() => isDone && setComparisonTarget(item)}
-                      className={`relative w-20 h-20 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shrink-0 ${
+                      className={`relative w-20 h-20 rounded-xl overflow-hidden bg-[var(--surface-2)] border border-[var(--line)] shrink-0 ${
                         isDone ? 'cursor-pointer' : ''
                       }`}
                     >
@@ -592,16 +594,16 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
                         className="w-full h-full object-cover"
                       />
                       {isBusy && (
-                        <div className="absolute inset-0 bg-white/80 flex items-center justify-center">
-                          <RotateCcw className="w-5 h-5 text-blue-600 animate-spin" />
+                        <div className="absolute inset-0 bg-[var(--surface)]/80 flex items-center justify-center">
+                          <RotateCcw className="w-5 h-5 text-[#7c3aed] animate-spin" />
                         </div>
                       )}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <h3 className="text-sm font-bold text-slate-900 truncate">
+                      <h3 className="font-sans text-sm font-bold text-[var(--ink-navy)] truncate">
                         {isDone ? item.outputFilename : item.name}
                       </h3>
-                      <p className="text-xs text-slate-500 mt-0.5 font-mono">
+                      <p className="text-xs text-[var(--ink-3)] mt-0.5 font-mono">
                         {item.originalWidth}×{item.originalHeight}px · {formatBytes(item.originalSize)}
                         {isDone && item.compressedSize !== null
                           ? ` → ${formatBytes(item.compressedSize)}`
@@ -609,8 +611,8 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
                       </p>
                       <div className="mt-1.5">
                         {isDone && (
-                          <span className="inline-flex items-center gap-1 text-xs text-emerald-700 font-medium">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                          <span className="inline-flex items-center gap-1 text-xs text-[#15803d] dark:text-[#4ade80] font-semibold">
+                            <CheckCircle2 className="w-3.5 h-3.5" />
                             {t('convertedTo', 'Converted to {ext}').replace(
                               '{ext}',
                               item.outputExtension.replace('.', '').toUpperCase()
@@ -618,7 +620,7 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
                           </span>
                         )}
                         {isErr && (
-                          <span className="inline-flex items-center gap-1 text-xs text-red-600 font-medium">
+                          <span className="inline-flex items-center gap-1 text-xs text-[#dc2626] dark:text-[#f87171] font-medium">
                             <AlertCircle className="w-3.5 h-3.5" />
                             {item.errorMessage}
                           </span>
@@ -633,9 +635,9 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
                         <button
                           type="button"
                           onClick={() => setComparisonTarget(item)}
-                          className="px-3 py-2 text-slate-700 hover:bg-slate-100 text-xs font-semibold rounded-lg flex items-center gap-1.5 cursor-pointer"
+                          className="px-3.5 py-2 text-[var(--ink)] bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed]/50 text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
                         >
-                          <SplitSquareVertical className="w-4 h-4 text-blue-600" />
+                          <SplitSquareVertical className="w-4 h-4 text-[#7c3aed] dark:text-[#c4b5fd]" />
                           <span>{t('compare', 'Compare')}</span>
                         </button>
                         <button
@@ -644,7 +646,7 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
                             item.compressedBlob &&
                             triggerDownload(item.compressedBlob, item.outputFilename)
                           }
-                          className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg cursor-pointer"
+                          className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#16a34a] hover:bg-[#15803d] text-white text-xs font-semibold rounded-[11px] shadow-xs cursor-pointer transition-colors"
                         >
                           <Download className="w-4 h-4" />
                           <span>{t('download', 'Download')}</span>
@@ -654,7 +656,7 @@ export const BulkConverterPage: React.FC<BulkConverterPageProps> = ({
                     <button
                       type="button"
                       onClick={() => handleRemove(item.id)}
-                      className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
+                      className="p-2 text-[var(--ink-3)] hover:text-[#dc2626] hover:bg-[#fee2e2] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] rounded-lg cursor-pointer transition-colors"
                       aria-label={t('removeImage', 'Remove {name}').replace('{name}', item.name)}
                     >
                       <Trash2 className="w-4 h-4" />

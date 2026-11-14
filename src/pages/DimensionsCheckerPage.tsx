@@ -296,11 +296,11 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({
         />
 
         {rows.length > 0 && (
-          <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-4">
+          <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] space-y-4">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div className="flex flex-wrap items-end gap-3">
                 <div>
-                  <label className="text-xs font-semibold text-slate-600 block mb-1">
+                  <label className="text-xs font-semibold text-[var(--ink-2)] block mb-1">
                     {t('minWidthCheck', 'Min Width Check (px)')}
                   </label>
                   <input
@@ -309,11 +309,11 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({
                     placeholder={t('placeholderMinWidth', 'e.g. 1200')}
                     value={minWidth}
                     onChange={(e) => setMinWidth(e.target.value)}
-                    className="w-32 px-3 py-2 text-xs font-mono border border-slate-300 rounded-xl"
+                    className="w-32 px-3 py-2 text-xs font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-semibold text-slate-600 block mb-1">
+                  <label className="text-xs font-semibold text-[var(--ink-2)] block mb-1">
                     {t('minHeightCheck', 'Min Height Check (px)')}
                   </label>
                   <input
@@ -322,7 +322,7 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({
                     placeholder={t('placeholderMinHeight', 'e.g. 630')}
                     value={minHeight}
                     onChange={(e) => setMinHeight(e.target.value)}
-                    className="w-32 px-3 py-2 text-xs font-mono border border-slate-300 rounded-xl"
+                    className="w-32 px-3 py-2 text-xs font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
                   />
                 </div>
               </div>
@@ -331,7 +331,7 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({
                 <button
                   type="button"
                   onClick={handleExportCsv}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 btn-purple-grad text-xs font-semibold shadow-xs cursor-pointer"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>{t('exportCsv', 'Export CSV')}</span>
@@ -339,7 +339,7 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({
                 <button
                   type="button"
                   onClick={handleExportJson}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-xl cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--surface-2)] hover:border-[#c4b5fd] border border-[var(--line)] text-[var(--ink)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>{t('exportJson', 'Export JSON')}</span>
@@ -347,7 +347,7 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({
                 <button
                   type="button"
                   onClick={handleClear}
-                  className="inline-flex items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-xs font-semibold rounded-xl cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#fecaca] hover:bg-[#fee2e2] hover:text-[#dc2626] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] text-[var(--ink-2)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                   <span>{t('clear', 'Clear')}</span>
@@ -355,10 +355,10 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({
               </div>
             </div>
 
-            <div className="overflow-x-auto border border-slate-200 rounded-xl">
+            <div className="overflow-x-auto border border-[var(--line)] rounded-xl">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-slate-50 border-b border-slate-200 text-[11px] uppercase tracking-wider text-slate-500">
+                  <tr className="bg-[var(--surface-2)] border-b border-[var(--line)] text-[11px] uppercase tracking-wider text-[var(--ink-3)]">
                     <th className="py-3 px-4">{t('headerImage', 'Image')}</th>
                     <th className="py-3 px-4">{t('headerDimensions', 'Dimensions')}</th>
                     <th className="py-3 px-4">{t('headerAspectRatio', 'Aspect Ratio')}</th>
@@ -368,62 +368,62 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({
                     {hasRule && <th className="py-3 px-4">{t('headerSpecCheck', 'Spec Check')}</th>}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-[var(--line)]">
                   {rows.map((r) => {
                     const passes =
                       (!minWNum || r.width >= minWNum) && (!minHNum || r.height >= minHNum);
                     return (
-                      <tr key={r.id} className="hover:bg-slate-50/70">
+                      <tr key={r.id} className="hover:bg-[var(--surface-2)]/60">
                         <td className="py-3 px-4">
                           <div className="flex items-center gap-3 min-w-[160px]">
                             <img
                               src={r.previewUrl}
                               alt={r.name}
-                              className="w-10 h-10 rounded-lg object-cover border border-slate-200 shrink-0"
+                              className="w-10 h-10 rounded-[8px] object-cover border border-[var(--line)] shrink-0"
                             />
-                            <span className="font-semibold text-slate-900 truncate max-w-[180px]">
+                            <span className="font-semibold text-[var(--ink-navy)] truncate max-w-[180px]">
                               {r.name}
                             </span>
                           </div>
                         </td>
-                        <td className="py-3 px-4 font-mono font-bold text-slate-900 whitespace-nowrap">
+                        <td className="py-3 px-4 font-mono font-bold text-[var(--ink-navy)] whitespace-nowrap">
                           {r.width} × {r.height} px
-                          <span className="block text-[11px] font-normal text-slate-500">
+                          <span className="block text-[11px] font-normal text-[var(--ink-3)]">
                             {r.megapixels} MP
                           </span>
                         </td>
-                        <td className="py-3 px-4 font-mono text-slate-700 whitespace-nowrap">
+                        <td className="py-3 px-4 font-mono text-[var(--ink-2)] whitespace-nowrap">
                           {r.aspectCommon || r.aspectExact}
-                          <span className="block text-[11px] text-slate-500">
+                          <span className="block text-[11px] text-[var(--ink-3)]">
                             ({r.aspectDecimal}:1)
                           </span>
                         </td>
-                        <td className="py-3 px-4 text-slate-700 whitespace-nowrap">
+                        <td className="py-3 px-4 text-[var(--ink-2)] whitespace-nowrap">
                           {r.orientation === 'Landscape'
                             ? t('orientationLandscape', 'Landscape')
                             : r.orientation === 'Portrait'
                               ? t('orientationPortrait', 'Portrait')
                               : t('orientationSquare', 'Square')}
                         </td>
-                        <td className="py-3 px-4 text-slate-700 whitespace-nowrap font-mono">
+                        <td className="py-3 px-4 text-[var(--ink-2)] whitespace-nowrap font-mono">
                           {formatBytes(r.size)}
-                          <span className="block text-[11px] text-slate-500">
+                          <span className="block text-[11px] text-[var(--ink-3)]">
                             {r.format}
                             {r.hasAlpha ? t('alphaTag', ' · Alpha') : ''}
                           </span>
                         </td>
-                        <td className="py-3 px-4 font-mono text-xs text-slate-600 whitespace-nowrap">
+                        <td className="py-3 px-4 font-mono text-xs text-[var(--ink-3)] whitespace-nowrap">
                           {r.print300Dpi}
                         </td>
                         {hasRule && (
                           <td className="py-3 px-4 whitespace-nowrap">
                             {passes ? (
-                              <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">
+                              <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#15803d] dark:text-[#86efac] bg-[#dcfce7] dark:bg-[#16a34a]/20 border border-[#bbf7d0] dark:border-[#16a34a]/35 px-2.5 py-0.5 rounded-full">
                                 <CheckCircle2 className="w-3.5 h-3.5" />
                                 {t('specPass', 'Pass')}
                               </span>
                             ) : (
-                              <span className="inline-flex items-center gap-1 text-xs font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md">
+                              <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#b91c1c] dark:text-[#fca5a5] pastel-card-14 border px-2.5 py-0.5 rounded-full">
                                 <AlertTriangle className="w-3.5 h-3.5" />
                                 {t('specBelowMin', 'Below Min')}
                               </span>

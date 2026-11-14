@@ -478,31 +478,31 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({
         />
 
         {/* Quick Batch Profiles */}
-        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-700">
-            <Layers className="w-4 h-4 text-blue-600 shrink-0" />
+        <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-[var(--shadow)]">
+          <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[var(--ink-2)]">
+            <Layers className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa] shrink-0" />
             <span>{t('quickBatchProfiles', 'Quick Batch Profiles:')}</span>
           </div>
           <div className="flex flex-wrap gap-2">
             <button
               type="button"
               onClick={() => applyQuickBatchProfile(75, 'webp')}
-              className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:border-blue-300 hover:text-blue-700 cursor-pointer"
+              className="px-3.5 py-1.5 text-xs font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-2)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 cursor-pointer transition-colors"
             >
-              <Zap className="w-3.5 h-3.5 inline mr-1 text-blue-600" />
+              <Zap className="w-3.5 h-3.5 inline mr-1 text-[#7c3aed] dark:text-[#a78bfa]" />
               {t('profileWebFast', 'Web Fast (WebP 75%)')}
             </button>
             <button
               type="button"
               onClick={() => applyQuickBatchProfile(65, 'jpeg')}
-              className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:border-blue-300 hover:text-blue-700 cursor-pointer"
+              className="px-3.5 py-1.5 text-xs font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-2)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 cursor-pointer transition-colors"
             >
               {t('profileEmailSharing', 'Email / Sharing (JPG 65%)')}
             </button>
             <button
               type="button"
               onClick={() => applyQuickBatchProfile(85, 'original')}
-              className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:border-blue-300 hover:text-blue-700 cursor-pointer"
+              className="px-3.5 py-1.5 text-xs font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-2)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 cursor-pointer transition-colors"
             >
               {t('profileHighFidelity', 'High Fidelity (85%)')}
             </button>
@@ -510,16 +510,16 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({
         </div>
 
         {isCompressing && totalToProcess > 0 && (
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 space-y-2">
-            <div className="flex justify-between text-xs font-semibold text-blue-800">
+          <div className="panel-pastel-blue border rounded-2xl p-4 space-y-2 shadow-[var(--shadow)]">
+            <div className="flex justify-between text-xs font-semibold text-[#6d28d9] dark:text-[#c4b5fd]">
               <span>{t('compressingBatch', 'Compressing batch locally...')}</span>
               <span className="font-mono">
                 {processedCount} / {totalToProcess}
               </span>
             </div>
-            <div className="w-full h-2 bg-blue-100 rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-[var(--surface)] rounded-full overflow-hidden">
               <div
-                className="h-full bg-blue-600 transition-all duration-200"
+                className="h-full bg-[#7c3aed] transition-all duration-200"
                 style={{ width: `${Math.round((processedCount / totalToProcess) * 100)}%` }}
               />
             </div>

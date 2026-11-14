@@ -43,6 +43,7 @@ import {
 } from '../utils/pdfGenerator';
 import { formatBytes } from '../utils/formatters';
 import { triggerDownload } from '../utils/zip';
+import { getPastelTileClass } from '../utils/pastel';
 
 interface PdfPageItem {
   id: string;
@@ -307,17 +308,17 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
         />
 
         {errorMsg && (
-          <div className="flex items-start gap-2 p-3.5 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700">
+          <div className="flex items-start gap-2 p-3.5 pastel-card-14 border rounded-2xl text-sm text-[#b91c1c] dark:text-[#fca5a5]">
             <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
             <span>{errorMsg}</span>
           </div>
         )}
 
         {pages.length > 0 && (
-          <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+          <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-5">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1.5">
+                <label className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-1.5">
                   {t('pageSize', 'Page Size')}
                 </label>
                 <select
@@ -326,7 +327,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                     setPageSize(e.target.value as PdfPageSize);
                     setPdfBlob(null);
                   }}
-                  className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
                 >
                   <option value="a4">{t('pageSizeA4', 'A4 (210 × 297 mm)')}</option>
                   <option value="letter">{t('pageSizeLetter', 'US Letter (8.5 × 11 in)')}</option>
@@ -335,7 +336,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
               </div>
 
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1.5">
+                <label className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-1.5">
                   {t('orientation', 'Orientation')}
                 </label>
                 <select
@@ -345,7 +346,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                     setOrientation(e.target.value as PdfOrientation);
                     setPdfBlob(null);
                   }}
-                  className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+                  className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed] disabled:opacity-50"
                 >
                   <option value="auto">{t('orientationAuto', 'Auto (Match Photo)')}</option>
                   <option value="portrait">{t('orientationPortrait', 'Portrait')}</option>
@@ -354,7 +355,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
               </div>
 
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1.5">
+                <label className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-1.5">
                   {t('margin', 'Margin')}
                 </label>
                 <select
@@ -363,7 +364,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                     setMargin(e.target.value as PdfMargin);
                     setPdfBlob(null);
                   }}
-                  className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
                 >
                   <option value="none">{t('marginNone', 'No Margin (Full Bleed)')}</option>
                   <option value="small">{t('marginSmall', 'Small Margin')}</option>
@@ -372,7 +373,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
               </div>
 
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1.5">
+                <label className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-1.5">
                   {t('imagePlacement', 'Image Placement')}
                 </label>
                 <select
@@ -381,7 +382,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                     setFit(e.target.value as PdfImageFit);
                     setPdfBlob(null);
                   }}
-                  className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
                 >
                   <option value="contain">{t('placementContain', 'Contain (Full Image)')}</option>
                   <option value="cover">{t('placementCover', 'Cover (Fill Page)')}</option>
@@ -389,23 +390,23 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="pt-4 border-t border-[var(--line)] flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="flex flex-col sm:flex-row gap-4 flex-1">
                 <div className="flex-1 max-w-xs">
-                  <label className="text-xs font-semibold text-slate-700 block mb-1">
+                  <label className="text-xs font-semibold text-[var(--ink-2)] block mb-1">
                     {t('pdfFilename', 'PDF Filename')}
                   </label>
                   <input
                     type="text"
                     value={filename}
                     onChange={(e) => setFilename(e.target.value)}
-                    className="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
                   />
                 </div>
                 <div className="flex-1 max-w-xs">
-                  <label className="text-xs font-semibold text-slate-700 block mb-1.5">
+                  <label className="text-xs font-semibold text-[var(--ink-2)] block mb-1.5">
                     {t('pdfImageQuality', 'PDF Image Quality:')}{' '}
-                    <strong className="text-blue-600 font-mono">{quality}%</strong>
+                    <strong className="text-[#7c3aed] dark:text-[#a78bfa] font-mono">{quality}%</strong>
                   </label>
                   <input
                     type="range"
@@ -416,7 +417,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                       setQuality(parseInt(e.target.value, 10));
                       setPdfBlob(null);
                     }}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                   />
                 </div>
               </div>
@@ -426,7 +427,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                   type="button"
                   onClick={handleGeneratePdf}
                   disabled={isGenerating}
-                  className="flex-1 md:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white text-sm font-bold rounded-xl shadow-xs cursor-pointer"
+                  className="flex-1 md:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 btn-purple-grad disabled:opacity-50 text-sm font-semibold shadow-xs cursor-pointer"
                 >
                   {isGenerating ? (
                     <>
@@ -449,7 +450,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                   type="button"
                   onClick={clearAll}
                   disabled={isGenerating}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2.5 bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-sm font-medium rounded-xl cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#fecaca] hover:bg-[#fee2e2] hover:text-[#dc2626] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] text-[var(--ink-2)] text-sm font-medium rounded-[11px] cursor-pointer transition-colors"
                 >
                   <Trash2 className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('clear', 'Clear')}</span>
@@ -458,9 +459,9 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
             </div>
 
             {pdfBlob && (
-              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="flex items-center gap-2 text-sm text-emerald-800 font-semibold">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+              <div className="p-4 pastel-card-7 border rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="flex items-center gap-2 text-sm text-[#15803d] dark:text-[#86efac] font-semibold">
+                  <CheckCircle2 className="w-5 h-5 shrink-0" />
                   <span>
                     {t('pdfReady', 'PDF ready ({count} {pages} · {size})')
                       .replace('{count}', String(pages.length))
@@ -479,7 +480,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                       filename.trim().endsWith('.pdf') ? filename.trim() : `${filename.trim()}.pdf`
                     )
                   }
-                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg cursor-pointer"
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[#16a34a] hover:bg-[#15803d] text-white text-xs font-semibold rounded-[11px] shadow-xs cursor-pointer transition-colors"
                 >
                   <Download className="w-4 h-4" />
                   <span>{t('downloadPdfAgain', 'Download PDF Again')}</span>
@@ -491,7 +492,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
 
         {pages.length > 0 && (
           <div className="space-y-3">
-            <h2 className="text-sm font-bold text-slate-700 uppercase tracking-wider">
+            <h2 className="font-sans text-base font-bold text-[var(--ink-navy)]">
               {t('pageOrder', 'Page Order ({count} {pages})')
                 .replace('{count}', String(pages.length))
                 .replace(
@@ -502,20 +503,20 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
             {pages.map((page, index) => (
               <div
                 key={page.id}
-                className="bg-white border border-slate-200 rounded-xl p-3.5 flex items-center justify-between gap-4"
+                className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-3.5 shadow-[var(--shadow)] flex items-center justify-between gap-4"
               >
                 <div className="flex items-center gap-3 min-w-0">
-                  <span className="w-7 h-7 rounded-lg bg-blue-50 text-blue-700 text-xs font-bold flex items-center justify-center shrink-0">
+                  <span className={`w-7 h-7 rounded-lg ${getPastelTileClass(index)} text-xs font-bold flex items-center justify-center shrink-0`}>
                     {index + 1}
                   </span>
                   <img
                     src={page.previewUrl}
                     alt={page.name}
-                    className="w-14 h-14 rounded-lg object-cover border border-slate-200 shrink-0"
+                    className="w-14 h-14 rounded-xl object-cover border border-[var(--line)] shrink-0"
                   />
                   <div className="min-w-0">
-                    <p className="text-sm font-bold text-slate-900 truncate">{page.name}</p>
-                    <p className="text-xs text-slate-500 font-mono">
+                    <p className="text-sm font-bold text-[var(--ink-navy)] truncate">{page.name}</p>
+                    <p className="text-xs text-[var(--ink-3)] font-mono">
                       {page.width}×{page.height}px · {formatBytes(page.size)}
                     </p>
                   </div>
@@ -526,7 +527,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                     type="button"
                     disabled={index === 0}
                     onClick={() => movePage(index, -1)}
-                    className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 rounded-lg cursor-pointer"
+                    className="p-2 text-[var(--ink-3)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 disabled:opacity-30 rounded-lg cursor-pointer transition-colors"
                     title={t('movePageUp', 'Move page up')}
                   >
                     <ArrowUp className="w-4 h-4" />
@@ -535,7 +536,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                     type="button"
                     disabled={index === pages.length - 1}
                     onClick={() => movePage(index, 1)}
-                    className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 rounded-lg cursor-pointer"
+                    className="p-2 text-[var(--ink-3)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 disabled:opacity-30 rounded-lg cursor-pointer transition-colors"
                     title={t('movePageDown', 'Move page down')}
                   >
                     <ArrowDown className="w-4 h-4" />
@@ -543,7 +544,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                   <button
                     type="button"
                     onClick={() => removePage(page.id)}
-                    className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
+                    className="p-2 text-[var(--ink-3)] hover:text-[#dc2626] hover:bg-[#fee2e2] dark:hover:bg-[#ef4444]/15 dark:hover:text-[#fca5a5] rounded-lg cursor-pointer transition-colors"
                     title={t('removePage', 'Remove page')}
                   >
                     <Trash2 className="w-4 h-4" />
