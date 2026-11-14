@@ -133,14 +133,14 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
       : otherTools.filter((t) => t.category === selectedCategory);
 
   return (
-    <section className="py-14 sm:py-18 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+    <section className="py-20 sm:py-24 bg-[#faf9ff] dark:bg-slate-950 border-t border-violet-100 dark:border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
+            <span className="text-xs font-bold uppercase tracking-wider text-violet-600">
               {strings.eyebrow}
             </span>
-            <h2 className="mt-1 text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="mt-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
               {strings.heading}
             </h2>
             <p className="mt-2 text-sm sm:text-base text-slate-600">
@@ -156,7 +156,7 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
             onClick={() => setSelectedCategory('all')}
             className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl border transition-colors cursor-pointer ${
               selectedCategory === 'all'
-                ? 'bg-blue-600 text-white border-blue-600 shadow-xs'
+                ? 'bg-violet-600 text-white border-violet-600 shadow-xs'
                 : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
             }`}
           >
@@ -171,7 +171,7 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
                 onClick={() => setSelectedCategory(cat.id as ToolCategoryId)}
                 className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl border transition-colors cursor-pointer ${
                   selectedCategory === cat.id
-                    ? 'bg-blue-600 text-white border-blue-600 shadow-xs'
+                    ? 'bg-violet-600 text-white border-violet-600 shadow-xs'
                     : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
                 }`}
               >
@@ -181,7 +181,7 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
           })}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {visibleTools.map((tool) => {
             const Icon = TOOL_ICONS[tool.slug] || Sparkles;
             const cat = categoryLabels.find((c) => c.id === tool.category)?.label;
@@ -193,11 +193,11 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
                   e.preventDefault();
                   onNavigate(tool.slug);
                 }}
-                className="group bg-white border border-slate-200 rounded-xl p-5 shadow-xs hover:shadow-md hover:border-blue-300 transition-all flex flex-col justify-between"
+                className="group bg-white dark:bg-slate-900 border border-violet-100 dark:border-slate-800 rounded-2xl p-6 shadow-[0_8px_30px_rgba(40,20,90,0.045)] hover:shadow-[0_20px_50px_rgba(100,70,220,0.13)] hover:-translate-y-1 hover:border-violet-300 transition-all duration-300 flex flex-col justify-between min-h-[220px]"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <div className="w-11 h-11 rounded-2xl bg-violet-50 text-violet-600 flex items-center justify-center group-hover:bg-violet-600 group-hover:text-white transition-colors">
                       <Icon className="w-5 h-5" />
                     </div>
                     {cat && (
@@ -206,14 +206,14 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
                       </span>
                     )}
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-violet-600 transition-colors">
                     {tool.name}
                   </h3>
                   <p className="mt-1.5 text-sm text-slate-600 leading-normal">
                     {tool.shortDescription}
                   </p>
                 </div>
-                <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-blue-600">
+                <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-violet-600">
                   <span>{strings.openTool}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </span>
