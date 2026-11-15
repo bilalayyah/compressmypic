@@ -596,7 +596,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
                   </div>
                 ) : (
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1 mb-1.5">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1 mb-1.5">
                       <Move className="w-3 h-3" />
                       {t('anchorPresets', 'Anchor Presets (or drag on image)')}
                     </span>
@@ -609,7 +609,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
                             setPosX(a.x);
                             setPosY(a.y);
                           }}
-                          className={`py-1.5 text-[11px] font-semibold rounded-[8px] border cursor-pointer transition-colors ${
+                          className={`py-1.5 text-xs font-semibold rounded-[8px] border cursor-pointer transition-colors ${
                             Math.abs(posX - a.x) < 0.04 && Math.abs(posY - a.y) < 0.04
                               ? 'bg-[#7c3aed] text-white border-[#7c3aed]'
                               : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe]'

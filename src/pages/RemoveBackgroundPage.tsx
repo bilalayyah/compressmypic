@@ -501,7 +501,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
             </div>
             {progressPct !== null && (
               <div className="w-full sm:w-44 shrink-0">
-                <div className="flex justify-between text-[11px] font-mono text-[#6d28d9] dark:text-[#c4b5fd] mb-1">
+                <div className="flex justify-between text-xs font-mono text-[#6d28d9] dark:text-[#c4b5fd] mb-1">
                   <span>{t('modelCache', 'Model Cache')}</span>
                   <span>{progressPct}%</span>
                 </div>
@@ -564,7 +564,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Original */}
                 <div className="space-y-1.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--ink-3)] block">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block">
                     {t('originalLabel', 'Original')}
                   </span>
                   <div className="rounded-xl overflow-hidden border border-[var(--line)] bg-[var(--surface-2)] flex items-center justify-center min-h-[220px] max-h-[340px] p-2">
@@ -576,14 +576,14 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
                       />
                     )}
                   </div>
-                  <p className="text-[11px] text-[var(--ink-3)] font-mono truncate">
+                  <p className="text-xs text-[var(--ink-3)] font-mono truncate">
                     {originalDims.w}×{originalDims.h}px · {formatBytes(sourceFile.size)}
                   </p>
                 </div>
 
                 {/* Result Cutout */}
                 <div className="space-y-1.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd] block">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd] block">
                     {bgChoice === 'transparent'
                       ? t('transparentCutout', 'Transparent Cutout (PNG)')
                       : t('solidBackgroundPreview', 'Solid Background Preview')}
@@ -633,7 +633,7 @@ export const RemoveBackgroundPage: React.FC<RemoveBackgroundPageProps> = ({
                       </span>
                     )}
                   </div>
-                  <p className="text-[11px] text-[var(--ink-3)] font-mono">
+                  <p className="text-xs text-[var(--ink-3)] font-mono">
                     {activeBlob
                       ? `${cutoutImg?.naturalWidth || originalDims.w}×${
                           cutoutImg?.naturalHeight || originalDims.h

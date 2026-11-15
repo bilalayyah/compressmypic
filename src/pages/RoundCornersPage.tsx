@@ -424,7 +424,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                     { id: 'br', label: 'Bottom Right', val: brPercent, set: setBrPercent },
                   ].map((c) => (
                     <div key={c.id} className="p-2.5 rounded-[11px] border border-[var(--line)] bg-[var(--surface-2)]">
-                      <div className="flex justify-between text-[11px] font-semibold text-[var(--ink-2)] mb-1">
+                      <div className="flex justify-between text-xs font-semibold text-[var(--ink-2)] mb-1">
                         <span>{cornerLabelById[c.id] ?? c.label}</span>
                         <span className="font-mono text-[#7c3aed] dark:text-[#a78bfa]">{c.val}%</span>
                       </div>

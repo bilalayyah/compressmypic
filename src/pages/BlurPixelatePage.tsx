@@ -548,7 +548,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({
                     onChange={(e) => setBrushSizePct(parseInt(e.target.value, 10))}
                     className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                   />
-                  <p className="mt-1.5 text-[11px] text-[var(--ink-3)]">
+                  <p className="mt-1.5 text-xs text-[var(--ink-3)]">
                     {t('brushHint', 'Click and drag directly on the photo to hide faces, text, or license plates.')}
                   </p>
                 </div>

@@ -467,7 +467,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
                                   .replace('{after}', String(item.afterTagsCount))
                               : t('verifiedClean', 'Verified clean (0 EXIF/GPS tags)')}
                           </span>
-                          <span className="text-[11px] font-medium text-[var(--ink-3)]">
+                          <span className="text-xs font-medium text-[var(--ink-3)]">
                             {item.methodUsed === 'lossless-strip'
                               ? t('losslessBinaryStrip', 'Lossless binary strip')
                               : t('cleanCanvasExport', 'Clean Canvas export')}

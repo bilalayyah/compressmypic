@@ -358,7 +358,7 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({
             <div className="overflow-x-auto border border-[var(--line)] rounded-xl">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[var(--surface-2)] border-b border-[var(--line)] text-[11px] uppercase tracking-wider text-[var(--ink-3)]">
+                  <tr className="bg-[var(--surface-2)] border-b border-[var(--line)] text-xs uppercase tracking-wider text-[var(--ink-3)]">
                     <th className="py-3 px-4">{t('headerImage', 'Image')}</th>
                     <th className="py-3 px-4">{t('headerDimensions', 'Dimensions')}</th>
                     <th className="py-3 px-4">{t('headerAspectRatio', 'Aspect Ratio')}</th>
@@ -388,13 +388,13 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({
                         </td>
                         <td className="py-3 px-4 font-mono font-bold text-[var(--ink-navy)] whitespace-nowrap">
                           {r.width} × {r.height} px
-                          <span className="block text-[11px] font-normal text-[var(--ink-3)]">
+                          <span className="block text-xs font-normal text-[var(--ink-3)]">
                             {r.megapixels} MP
                           </span>
                         </td>
                         <td className="py-3 px-4 font-mono text-[var(--ink-2)] whitespace-nowrap">
                           {r.aspectCommon || r.aspectExact}
-                          <span className="block text-[11px] text-[var(--ink-3)]">
+                          <span className="block text-xs text-[var(--ink-3)]">
                             ({r.aspectDecimal}:1)
                           </span>
                         </td>
@@ -407,7 +407,7 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({
                         </td>
                         <td className="py-3 px-4 text-[var(--ink-2)] whitespace-nowrap font-mono">
                           {formatBytes(r.size)}
-                          <span className="block text-[11px] text-[var(--ink-3)]">
+                          <span className="block text-xs text-[var(--ink-3)]">
                             {r.format}
                             {r.hasAlpha ? t('alphaTag', ' · Alpha') : ''}
                           </span>

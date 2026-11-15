@@ -640,7 +640,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                               : 'border-[var(--line)] bg-[var(--surface-2)] hover:border-[#7c3aed]/60'
                           }`}
                         >
-                          <div className="flex items-center justify-between text-[11px] font-semibold text-[var(--ink-3)]">
+                          <div className="flex items-center justify-between text-xs font-semibold text-[var(--ink-3)]">
                             <span>{t('cellLabel', 'Cell {n}').replace('{n}', String(idx + 1))}</span>
                             <div className="flex items-center gap-0.5">
                               {idx > 0 && (
@@ -701,7 +701,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                                 targetSlotRef.current = idx;
                                 slotFileInputRef.current?.click();
                               }}
-                              className="h-20 rounded-[8px] border-2 border-dashed border-[var(--line-strong)] hover:border-[#7c3aed] bg-[var(--surface)] flex flex-col items-center justify-center text-[var(--ink-3)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] text-[11px] font-semibold cursor-pointer transition-colors"
+                              className="h-20 rounded-[8px] border-2 border-dashed border-[var(--line-strong)] hover:border-[#7c3aed] bg-[var(--surface)] flex flex-col items-center justify-center text-[var(--ink-3)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] text-xs font-semibold cursor-pointer transition-colors"
                             >
                               <Plus className="w-4 h-4 mb-0.5" />
                               <span>{t('addPhoto', 'Add Photo')}</span>
@@ -905,7 +905,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                   </span>
                   <div className="grid grid-cols-2 gap-2.5">
                     <div>
-                      <label className="text-[11px] font-semibold text-[var(--ink-3)] block mb-1">{t('widthLabel', 'Width')}</label>
+                      <label className="text-xs font-semibold text-[var(--ink-3)] block mb-1">{t('widthLabel', 'Width')}</label>
                       <input
                         type="number"
                         min={200}
@@ -918,7 +918,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                       />
                     </div>
                     <div>
-                      <label className="text-[11px] font-semibold text-[var(--ink-3)] block mb-1">{t('heightLabel', 'Height')}</label>
+                      <label className="text-xs font-semibold text-[var(--ink-3)] block mb-1">{t('heightLabel', 'Height')}</label>
                       <input
                         type="number"
                         min={200}
@@ -944,7 +944,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                           setOutWidth(s.w);
                           setOutHeight(s.h);
                         }}
-                        className="py-1.5 text-[11px] font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-2)] cursor-pointer transition-colors"
+                        className="py-1.5 text-xs font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-2)] cursor-pointer transition-colors"
                       >
                         {s.label}
                       </button>

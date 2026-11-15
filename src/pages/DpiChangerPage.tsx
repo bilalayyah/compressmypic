@@ -426,7 +426,7 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
                               <CheckCircle2 className="w-3.5 h-3.5" />
                               {t('verifiedDpi', 'Verified: {dpi} DPI').replace('{dpi}', String(res.afterDpi.dpiX ?? targetDpi))}
                             </span>
-                            <span className="text-[11px] font-medium text-[#6d28d9] dark:text-[#ddd6fe] bg-[#ede9fe] dark:bg-[#7c3aed]/25 px-2.5 py-0.5 rounded-full">
+                            <span className="text-xs font-medium text-[#6d28d9] dark:text-[#ddd6fe] bg-[#ede9fe] dark:bg-[#7c3aed]/25 px-2.5 py-0.5 rounded-full">
                               {methodBadge}
                             </span>
                           </div>

@@ -464,7 +464,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({
                         )}
                       </div>
                       <span
-                        className={`block text-[11px] font-semibold truncate ${
+                        className={`block text-xs font-semibold truncate ${
                           active ? 'text-[#6d28d9] dark:text-[#ddd6fe]' : 'text-[var(--ink-2)]'
                         }`}
                       >

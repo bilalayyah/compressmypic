@@ -392,10 +392,10 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({
                     className="h-24 w-full relative flex items-end justify-between p-3"
                     style={{ backgroundColor: swatch.hex }}
                   >
-                    <span className="px-2 py-0.5 rounded-[8px] bg-[#0f172a]/75 backdrop-blur-xs text-[#f8fafc] text-[11px] font-mono font-bold">
+                    <span className="px-2 py-0.5 rounded-[8px] bg-[#0f172a]/75 backdrop-blur-xs text-[#f8fafc] text-xs font-mono font-bold">
                       {swatch.hex}
                     </span>
-                    <span className="px-2 py-0.5 rounded-[8px] bg-white/90 text-[#0f172a] text-[11px] font-mono font-bold">
+                    <span className="px-2 py-0.5 rounded-[8px] bg-white/90 text-[#0f172a] text-xs font-mono font-bold">
                       {swatch.percentage}%
                     </span>
                   </div>

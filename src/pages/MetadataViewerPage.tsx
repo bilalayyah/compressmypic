@@ -369,7 +369,7 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
                     className="px-5 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 text-sm"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="text-[11px] font-bold uppercase px-2 py-0.5 rounded-full bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-2)]">
+                      <span className="text-xs font-bold uppercase px-2 py-0.5 rounded-full bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-2)]">
                         {entry.group}
                       </span>
                       <span className="font-semibold text-[var(--ink-navy)]">{entry.key}</span>

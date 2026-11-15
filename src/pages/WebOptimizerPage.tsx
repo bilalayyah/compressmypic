@@ -544,7 +544,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                   }`}
                 >
                   <p className="text-xs font-bold text-[var(--ink-navy)]">{preset.label}</p>
-                  <p className="text-[11px] text-[var(--ink-3)] mt-0.5">{preset.description}</p>
+                  <p className="text-xs text-[var(--ink-3)] mt-0.5">{preset.description}</p>
                 </button>
               ))}
             </div>

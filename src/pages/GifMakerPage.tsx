@@ -589,7 +589,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                           invalidateEncodedGif();
                           setGlobalDelayMs(p.ms);
                         }}
-                        className={`py-1.5 text-[11px] font-semibold rounded-full border cursor-pointer transition-colors ${
+                        className={`py-1.5 text-xs font-semibold rounded-full border cursor-pointer transition-colors ${
                           globalDelayMs === p.ms
                             ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/25 border-[#7c3aed] dark:border-[#8b5cf6] text-[#6d28d9] dark:text-[#ddd6fe]'
                             : 'bg-[var(--surface-2)] border-[var(--line)] text-[var(--ink-2)] hover:border-[var(--line-strong)]'
@@ -664,7 +664,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                   </div>
                   <div className="grid grid-cols-2 gap-2.5">
                     <div>
-                      <label className="text-[11px] font-semibold text-[var(--ink-3)] block mb-1">{t('widthLabel', 'Width')}</label>
+                      <label className="text-xs font-semibold text-[var(--ink-3)] block mb-1">{t('widthLabel', 'Width')}</label>
                       <input
                         type="number"
                         min={16}
@@ -675,7 +675,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                       />
                     </div>
                     <div>
-                      <label className="text-[11px] font-semibold text-[var(--ink-3)] block mb-1">{t('heightLabel', 'Height')}</label>
+                      <label className="text-xs font-semibold text-[var(--ink-3)] block mb-1">{t('heightLabel', 'Height')}</label>
                       <input
                         type="number"
                         min={16}
@@ -692,7 +692,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                         key={p.label}
                         type="button"
                         onClick={() => applySizePreset(p.maxSide)}
-                        className="py-1.5 text-[11px] font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-2)] cursor-pointer transition-colors"
+                        className="py-1.5 text-xs font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-2)] cursor-pointer transition-colors"
                       >
                         {p.label}
                       </button>
@@ -850,7 +850,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                         </span>
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <label className="text-[11px] text-[var(--ink-3)]">{t('delayMsLabel', 'Delay (ms):')}</label>
+                        <label className="text-xs text-[var(--ink-3)]">{t('delayMsLabel', 'Delay (ms):')}</label>
                         <input
                           type="number"
                           min={20}

@@ -553,7 +553,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                           className="max-w-full max-h-full object-contain"
                         />
                       </div>
-                      <div className="text-[11px] font-mono text-[var(--ink-3)] flex justify-between">
+                      <div className="text-xs font-mono text-[var(--ink-3)] flex justify-between">
                         <span>R{tile.row}·C{tile.col}</span>
                         <span>
                           {tile.width}×{tile.height}

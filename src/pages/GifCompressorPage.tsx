@@ -384,7 +384,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                         key={c}
                         type="button"
                         onClick={() => setMaxColors(c)}
-                        className={`px-2.5 py-1 text-[11px] font-semibold rounded-full cursor-pointer transition-colors ${
+                        className={`px-2.5 py-1 text-xs font-semibold rounded-full cursor-pointer transition-colors ${
                           maxColors === c
                             ? 'bg-[#7c3aed] text-white'
                             : 'bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-2)] hover:border-[var(--line-strong)]'
@@ -498,7 +498,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                 <div className="panel-pastel-blue border rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div className="flex flex-wrap gap-x-6 gap-y-2">
                     <div>
-                      <span className="text-[11px] uppercase tracking-wider text-[var(--ink-3)] font-semibold block">
+                      <span className="text-xs uppercase tracking-wider text-[var(--ink-3)] font-semibold block">
                         {t('originalGif', 'Original GIF')}
                       </span>
                       <span className="text-base font-bold font-mono text-[var(--ink-navy)]">
@@ -508,7 +508,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                       </span>
                     </div>
                     <div>
-                      <span className="text-[11px] uppercase tracking-wider text-[var(--ink-3)] font-semibold block">
+                      <span className="text-xs uppercase tracking-wider text-[var(--ink-3)] font-semibold block">
                         {t('compressedGif', 'Compressed GIF')}
                       </span>
                       <span
@@ -522,7 +522,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                       </span>
                     </div>
                     <div>
-                      <span className="text-[11px] uppercase tracking-wider text-[var(--ink-3)] font-semibold block">
+                      <span className="text-xs uppercase tracking-wider text-[var(--ink-3)] font-semibold block">
                         {t('sizeChange', 'Size Change')}
                       </span>
                       <span

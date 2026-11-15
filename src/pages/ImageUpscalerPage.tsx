@@ -395,7 +395,7 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
           <div className="flex flex-wrap items-center gap-4">
             {/* Scale Factor */}
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-1.5">
+              <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-1.5">
                 Upscale Factor
               </span>
               <div className="inline-flex p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] gap-1">
@@ -419,7 +419,7 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
 
             {/* ESRGAN Model Tier */}
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-1.5">
+              <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-1.5">
                 AI Model
               </span>
               <div className="inline-flex p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] gap-1">
@@ -452,7 +452,7 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
 
             {/* Output Format */}
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-1.5">
+              <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block mb-1.5">
                 Output Format
               </span>
               <div className="inline-flex p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] gap-1">
@@ -550,7 +550,7 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Original */}
                   <div className="space-y-1.5">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--ink-3)] block">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] block">
                       Original
                     </span>
                     <div className="rounded-xl overflow-hidden border border-[var(--line)] bg-[var(--surface-2)] flex items-center justify-center min-h-[220px] max-h-[360px] p-2">
@@ -567,7 +567,7 @@ export const ImageUpscalerPage: React.FC<ImageUpscalerPageProps> = ({ onNavigate
 
                   {/* Upscaled */}
                   <div className="space-y-1.5">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd] block">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd] block">
                       Upscaled ({scaleFactor}x {modelTier === 'slim' ? 'Slim' : 'Medium'})
                     </span>
                     <div className="rounded-xl overflow-hidden border border-[var(--line)] bg-[var(--surface-2)] flex items-center justify-center min-h-[220px] max-h-[360px] p-2 relative">
