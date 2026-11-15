@@ -1,6 +1,16 @@
 # _redirects — CompressMyPic (Cloudflare Pages)
 #
-# NO ACTIVE RULES. This file is intentionally rules-only-comments.
+# ACTIVE RULE (1): prerendered EN homepage.
+# /  ->  /home.html  (200 rewrite, URL stays "/")
+# The homepage cannot be prerendered as public/index.html — Vite
+# overwrites dist/index.html with its own shell on every build, so a
+# committed public/index.html would NOT survive the Cloudflare build
+# (verified locally 2026-11-15). Instead the rendered home lives at
+# public/home.html (snapshot captured 2026-11-15, 202 KB, full content:
+# H1, 2,740 words in <main>, 53 tool links) and this rewrite serves it
+# for "/". Regenerate home.html whenever the JS bundle hash changes
+# (it references /assets/index-D2skg1qK.js) or home content changes.
+/   /home.html   200
 #
 # REMOVED 2026-11-15 — trailing-slash 301 rule (/* /:splat 301):
 # Live-verified in a real browser (Chromium, 2026-11-15 ~08:36 Dubai):
