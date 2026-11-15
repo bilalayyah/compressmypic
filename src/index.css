@@ -1,4 +1,13 @@
 @import "tailwindcss";
+/* Build-stability fix (2026-11-15): Tailwind v4 auto-scans every file not in
+   .gitignore, INCLUDING public/. The 627 prerendered HTML files in public/
+   change the generated CSS on every upload, which cascades to ALL asset
+   hashes (entry JS, CSS, every lazy chunk) — so the live pages' hardcoded
+   asset URLs 404 after each deploy. Excluding public/ makes the CSS (and
+   therefore every asset hash) depend only on src/, so builds are stable
+   across uploads. The prerendered HTML's classes are a subset of src/'s
+   (the HTML is rendered from these components), so no utility is lost. */
+@source not "../public";
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
