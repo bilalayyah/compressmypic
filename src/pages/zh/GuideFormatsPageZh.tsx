@@ -339,7 +339,7 @@ export const GuideFormatsPageZh: React.FC<GuideFormatsPageZhProps> = ({ onNaviga
 
           <figure className="space-y-2">
             <img
-              src="/guides/jpg-vs-png-vs-webp-1.png"
+              src="/guides/jpg-vs-png-vs-webp-1.webp"
               alt="同一张照片分别保存为 JPG、PNG 与 WebP 及其文件体积的对比截图"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
@@ -411,7 +411,7 @@ export const GuideFormatsPageZh: React.FC<GuideFormatsPageZhProps> = ({ onNaviga
 
           <figure className="space-y-2">
             <img
-              src="/guides/jpg-vs-png-vs-webp-2.png"
+              src="/guides/jpg-vs-png-vs-webp-2.webp"
               alt="在 CompressMyPic 中选择 JPG、PNG 或 WebP 输出格式的截图"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"

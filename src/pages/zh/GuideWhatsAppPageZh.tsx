@@ -307,7 +307,7 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
 
           <figure className="space-y-2">
             <img
-              src="/guides/compress-images-for-whatsapp-1.png"
+              src="/guides/compress-images-for-whatsapp-1.webp"
               alt="在 WhatsApp 上发送之前，把照片上传到 CompressMyPic 的截图"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
@@ -367,7 +367,7 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
 
           <figure className="space-y-2">
             <img
-              src="/guides/compress-images-for-whatsapp-2.png"
+              src="/guides/compress-images-for-whatsapp-2.webp"
               alt="CompressMyPic 中画质滑块与实时压缩前后文件体积的截图"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"

@@ -303,7 +303,7 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
 
           <figure className="space-y-2">
             <img
-              src="/guides/reduce-image-size-to-100kb-1.png"
+              src="/guides/reduce-image-size-to-100kb-1.webp"
               alt="把一张大照片上传到 CompressMyPic 以缩小到 100KB 的截图"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
@@ -379,7 +379,7 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
 
           <figure className="space-y-2">
             <img
-              src="/guides/reduce-image-size-to-100kb-2.png"
+              src="/guides/reduce-image-size-to-100kb-2.webp"
               alt="实时压缩前后文件体积的截图，显示图片已缩小到约 100KB"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
