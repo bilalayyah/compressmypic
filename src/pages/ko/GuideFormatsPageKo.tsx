@@ -332,7 +332,7 @@ export const GuideFormatsPageKo: React.FC<GuideFormatsPageKoProps> = ({ onNaviga
 
           <figure className="space-y-2">
             <img
-              src="/guides/jpg-vs-png-vs-webp-1.png"
+              src="/guides/jpg-vs-png-vs-webp-1.webp"
               alt="같은 사진을 JPG, PNG, WebP로 저장하고 파일 크기를 비교한 스크린샷"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
@@ -404,7 +404,7 @@ export const GuideFormatsPageKo: React.FC<GuideFormatsPageKoProps> = ({ onNaviga
 
           <figure className="space-y-2">
             <img
-              src="/guides/jpg-vs-png-vs-webp-2.png"
+              src="/guides/jpg-vs-png-vs-webp-2.webp"
               alt="CompressMyPic에서 출력 형식 JPG, PNG, WebP를 선택하는 스크린샷"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
