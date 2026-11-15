@@ -295,7 +295,7 @@ export const Header: React.FC<HeaderProps> = ({
                         {catTools.map((tool) => (
                           <a
                             key={tool.slug}
-                            href={tool.slug}
+                            href={localizedMap?.[tool.slug] ?? tool.slug}
                             onClick={(e) => {
                               e.preventDefault();
                               handleNav(tool.slug);
@@ -314,7 +314,7 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           <a
-            href="/#how-it-works"
+            href={`${homeUrl}#how-it-works`}
             onClick={(e) => {
               e.preventDefault();
               handleNav('/#how-it-works');
@@ -324,7 +324,7 @@ export const Header: React.FC<HeaderProps> = ({
             {strings.howItWorks}
           </a>
           <a
-            href="/#faq"
+            href={`${homeUrl}#faq`}
             onClick={(e) => {
               e.preventDefault();
               handleNav('/#faq');
@@ -356,7 +356,7 @@ export const Header: React.FC<HeaderProps> = ({
         </nav>
 
         {/* Zone 3: Desktop Search + Language Pill + Theme Pill + All Tools Pill / Mobile Menu */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {/* Header Desktop Search Input + Purple Search Button */}
           <div className="hidden xl:block relative">
             <form
@@ -423,7 +423,7 @@ export const Header: React.FC<HeaderProps> = ({
               <Globe className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <span className="hidden xl:inline">{lang.toUpperCase()}</span>
               <ChevronDown
-                className={`w-3.5 h-3.5 text-[var(--ink-3)] transition-transform ${
+                className={`hidden sm:block w-3.5 h-3.5 text-[var(--ink-3)] transition-transform ${
                   langMenuOpen ? 'rotate-180' : ''
                 }`}
               />
@@ -506,7 +506,7 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <CurrentThemeIcon className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
               <ChevronDown
-                className={`w-3.5 h-3.5 text-[var(--ink-3)] transition-transform ${
+                className={`hidden sm:block w-3.5 h-3.5 text-[var(--ink-3)] transition-transform ${
                   themeMenuOpen ? 'rotate-180' : ''
                 }`}
               />
@@ -565,7 +565,7 @@ export const Header: React.FC<HeaderProps> = ({
               setLangMenuOpen(false);
               window.setTimeout(() => mobileSearchRef.current?.focus(), 80);
             }}
-            className="lg:hidden h-11 w-11 grid place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 cursor-pointer shrink-0"
+            className="lg:hidden h-10 w-10 sm:h-11 sm:w-11 grid place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 cursor-pointer shrink-0"
             aria-label="Search tools"
           >
             <Search className="w-5 h-5" />
@@ -579,7 +579,7 @@ export const Header: React.FC<HeaderProps> = ({
               setThemeMenuOpen(false);
               setLangMenuOpen(false);
             }}
-            className="lg:hidden h-11 w-11 grid place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 cursor-pointer shrink-0"
+            className="lg:hidden h-10 w-10 sm:h-11 sm:w-11 grid place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 cursor-pointer shrink-0"
             aria-label={strings.menuAriaLabel}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -622,7 +622,7 @@ export const Header: React.FC<HeaderProps> = ({
               {matchingTools.map((tool) => (
                 <a
                   key={tool.slug}
-                  href={tool.slug}
+                  href={localizedMap?.[tool.slug] ?? tool.slug}
                   onClick={(e) => {
                     e.preventDefault();
                     handleNav(tool.slug);
@@ -736,7 +736,7 @@ export const Header: React.FC<HeaderProps> = ({
                     {catTools.map((tool) => (
                       <a
                         key={tool.slug}
-                        href={tool.slug}
+                        href={localizedMap?.[tool.slug] ?? tool.slug}
                         onClick={(e) => {
                           e.preventDefault();
                           handleNav(tool.slug);
@@ -754,7 +754,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           <div className="pt-2 border-t border-[var(--line)] space-y-1">
             <a
-              href="/#how-it-works"
+              href={`${homeUrl}#how-it-works`}
               onClick={(e) => {
                 e.preventDefault();
                 handleNav('/#how-it-works');
@@ -764,7 +764,7 @@ export const Header: React.FC<HeaderProps> = ({
               {strings.howItWorks}
             </a>
             <a
-              href="/#faq"
+              href={`${homeUrl}#faq`}
               onClick={(e) => {
                 e.preventDefault();
                 handleNav('/#faq');

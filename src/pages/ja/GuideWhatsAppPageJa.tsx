@@ -158,7 +158,7 @@ export const GuideWhatsAppPageJa: React.FC<GuideWhatsAppPageJaProps> = ({ onNavi
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'WhatsApp用に画質を落とさず画像を圧縮する方法を解説。無料でプライバシーを守り、登録不要。送信前に写真を小さくして、くっきりしたまま速く送れます。');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ja/gaido/whatsapp-yo-gazo-asshuku';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ja/gaido/whatsapp-yo-gazo-asshuku/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -192,7 +192,7 @@ export const GuideWhatsAppPageJa: React.FC<GuideWhatsAppPageJaProps> = ({ onNavi
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/ja/gaido/whatsapp-yo-gazo-asshuku",
+          mainEntityOfPage: "https://compressmypic.online/ja/gaido/whatsapp-yo-gazo-asshuku/",
           inLanguage: 'ja',
         },
         {
@@ -200,7 +200,7 @@ export const GuideWhatsAppPageJa: React.FC<GuideWhatsAppPageJaProps> = ({ onNavi
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "ホーム", item: "https://compressmypic.online/ja/" },
             { '@type': 'ListItem', position: 2, name: "ガイド" },
-            { '@type': 'ListItem', position: 3, name: "WhatsApp用に画像を圧縮する方法｜画質を落とさず送る", item: "https://compressmypic.online/ja/gaido/whatsapp-yo-gazo-asshuku" },
+            { '@type': 'ListItem', position: 3, name: "WhatsApp用に画像を圧縮する方法｜画質を落とさず送る", item: "https://compressmypic.online/ja/gaido/whatsapp-yo-gazo-asshuku/" },
           ],
         },
       ],
@@ -209,6 +209,8 @@ export const GuideWhatsAppPageJa: React.FC<GuideWhatsAppPageJaProps> = ({ onNavi
     script.type = 'application/ld+json';
     script.id = 'guide-whatsapp-ja-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-whatsapp-ja-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-whatsapp-ja-jsonld');

@@ -150,7 +150,7 @@ export const GuideFormatsPageJa: React.FC<GuideFormatsPageJaProps> = ({ onNaviga
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'JPG・PNG・WebPをわかりやすく比較。ファイルサイズ、画質、透明対応の違いを解説し、写真・ロゴ・ウェブサイトに合った形式の選び方を紹介します。');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ja/gaido/jpg-vs-png-vs-webp';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ja/gaido/jpg-vs-png-vs-webp/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -184,7 +184,7 @@ export const GuideFormatsPageJa: React.FC<GuideFormatsPageJaProps> = ({ onNaviga
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/ja/gaido/jpg-vs-png-vs-webp",
+          mainEntityOfPage: "https://compressmypic.online/ja/gaido/jpg-vs-png-vs-webp/",
           inLanguage: 'ja',
         },
         {
@@ -192,7 +192,7 @@ export const GuideFormatsPageJa: React.FC<GuideFormatsPageJaProps> = ({ onNaviga
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "ホーム", item: "https://compressmypic.online/ja/" },
             { '@type': 'ListItem', position: 2, name: "ガイド" },
-            { '@type': 'ListItem', position: 3, name: "JPG・PNG・WebPの違いと使い分け｜どれを選ぶべき？", item: "https://compressmypic.online/ja/gaido/jpg-vs-png-vs-webp" },
+            { '@type': 'ListItem', position: 3, name: "JPG・PNG・WebPの違いと使い分け｜どれを選ぶべき？", item: "https://compressmypic.online/ja/gaido/jpg-vs-png-vs-webp/" },
           ],
         },
       ],
@@ -201,6 +201,8 @@ export const GuideFormatsPageJa: React.FC<GuideFormatsPageJaProps> = ({ onNaviga
     script.type = 'application/ld+json';
     script.id = 'guide-formats-ja-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-formats-ja-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-formats-ja-jsonld');

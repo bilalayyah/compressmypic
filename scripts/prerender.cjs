@@ -239,7 +239,10 @@ async function renderRoute(browser, baseUrl, routePath, attempt) {
     // normally on live pages (it is in index.html <head>).
     await page.route('**/*', (route) => {
       const u = route.request().url();
-      if (/googlesyndication\.com|doubleclick\.net|googleadservices\.com/.test(u)) return route.abort();
+      // googletagmanager + google-analytics are aborted too (re-audit M6):
+      // the loader injects gtag.js on every page, and without the abort the
+      // prerender would fire real pageviews into GA4 for all 627 routes.
+      if (/googlesyndication\.com|doubleclick\.net|googleadservices\.com|googletagmanager\.com|google-analytics\.com/.test(u)) return route.abort();
       return route.continue();
     });
     const errors = [];

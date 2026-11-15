@@ -154,7 +154,7 @@ export const Guide100kbPageJa: React.FC<Guide100kbPageJaProps> = ({ onNavigate }
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', '無料のオンライン圧縮ツールで画像サイズを100KBまで小さくする方法をステップごとに解説。登録不要、透かしなし。画像はお使いの端末内に留まります。');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ja/gaido/gazo-saizu-o-100kb-ni-hedasu';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ja/gaido/gazo-saizu-o-100kb-ni-hedasu/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -188,7 +188,7 @@ export const Guide100kbPageJa: React.FC<Guide100kbPageJaProps> = ({ onNavigate }
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/ja/gaido/gazo-saizu-o-100kb-ni-hedasu",
+          mainEntityOfPage: "https://compressmypic.online/ja/gaido/gazo-saizu-o-100kb-ni-hedasu/",
           inLanguage: 'ja',
         },
         {
@@ -196,7 +196,7 @@ export const Guide100kbPageJa: React.FC<Guide100kbPageJaProps> = ({ onNavigate }
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "ホーム", item: "https://compressmypic.online/ja/" },
             { '@type': 'ListItem', position: 2, name: "ガイド" },
-            { '@type': 'ListItem', position: 3, name: "画像サイズを100KBまで小さくする方法｜Web・メール用", item: "https://compressmypic.online/ja/gaido/gazo-saizu-o-100kb-ni-hedasu" },
+            { '@type': 'ListItem', position: 3, name: "画像サイズを100KBまで小さくする方法｜Web・メール用", item: "https://compressmypic.online/ja/gaido/gazo-saizu-o-100kb-ni-hedasu/" },
           ],
         },
       ],
@@ -205,6 +205,8 @@ export const Guide100kbPageJa: React.FC<Guide100kbPageJaProps> = ({ onNavigate }
     script.type = 'application/ld+json';
     script.id = 'guide-100kb-ja-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-100kb-ja-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-100kb-ja-jsonld');

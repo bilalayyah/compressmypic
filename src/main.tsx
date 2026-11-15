@@ -2,6 +2,7 @@ import {createRoot} from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 import {isSupportedLang, LANG_STORAGE_KEY, type SupportedLang} from './locales/config';
+import { loadThirdPartyScripts } from './utils/thirdParty';
 import {EN_PATH_BY_ES} from './locales/es/slugs';
 import {EN_PATH_BY_PT} from './locales/pt/slugs';
 import {EN_PATH_BY_FR} from './locales/fr/slugs';
@@ -153,6 +154,20 @@ async function preloadPage(pathname: string): Promise<void> {
 }
 
 async function start(): Promise<void> {
+  // H5 (re-audit 2026-11-15): the entry bundle must mount exactly once per
+  // page load. A second execution (e.g. if the entry is ever loaded twice
+  // under two URLs again, as in the H1 dual-bundle defect) would create a
+  // second React root and fire a second pageview + tool_used. The flag lives
+  // on window because two executions have separate module scopes — a
+  // module-level flag would not be shared. A full navigation (including the
+  // prerender's page.goto per route) creates a fresh window, so this never
+  // blocks a legitimate mount.
+  const w = window as unknown as { __cmpAppStarted?: boolean };
+  if (w.__cmpAppStarted) return;
+  w.__cmpAppStarted = true;
+  // M6 (re-audit 2026-11-15): AdSense + GA4 load here (skipped on
+  // /admin/comments/) — they are no longer static tags in index.html.
+  loadThirdPartyScripts();
   const pathname = window.location.pathname;
   const urlLang = localeFromPath(pathname);
   // App also redirects '/' to the stored language preference on mount; if

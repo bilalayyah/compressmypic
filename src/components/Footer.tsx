@@ -12,6 +12,28 @@ import { JA_ALL_TOOLS_PATH } from '../locales/ja/slugs';
 import { KO_ALL_TOOLS_PATH } from '../locales/ko/slugs';
 import { ZH_ALL_TOOLS_PATH } from '../locales/zh/slugs';
 
+// M8 (re-audit 2026-11-15): Funding Choices consent revocation — the
+// OFFICIAL mechanism (developers.google.com/funding-choices/fc-api-docs +
+// AdSense Help "Add a consent revocation link to your site").
+// googlefc.showRevocationMessage() clears the EU consent record and shows
+// the GDPR message again so the visitor can change their decision. No extra
+// tag is needed — the message is served through the existing AdSense tag.
+// There is NO __tcfapi('show', …) command in the IAB TCF v2 API (it only
+// reads consent state); do not invent one.
+declare global {
+  interface Window {
+    googlefc?: {
+      showRevocationMessage?: () => void;
+      callbackQueue?: Array<Record<string, unknown> | (() => void)>;
+    };
+    __tcfapi?: (
+      command: string,
+      version: number,
+      callback: (tcData: { gdprApplies?: boolean }, success: boolean) => void,
+    ) => void;
+  }
+}
+
 export interface FooterStrings {
   blurb: string;
   privacyNote: string;
@@ -24,6 +46,11 @@ export interface FooterStrings {
   bottomRights: string; // contains {year}
   deployedNote: string; // 'Crafted with ❤️ by Bilal inspired by Shaheen' — Bilal/Shaheen render in script font
   contactLabel: string; // 'Contacto: bilalayyah@gmail.com'
+  /** M8 (re-audit 2026-11-15): Funding Choices consent-revocation link label.
+      Google's required wording is 'Privacy and cookie settings'; the label is
+      translated per locale. The link only appears where the GDPR message
+      applies (see the CONSENT_API_READY + gdprApplies gate in Footer). */
+  cookieSettingsLabel: string;
   toolsLinks: Array<{ slug: string; label: string }>;
   legalLinks: Array<{ slug: string; label: string }>;
   guidesLinks: Array<{ slug: string; label: string }>;
@@ -45,6 +72,7 @@ const DEFAULT_FOOTER_STRINGS: FooterStrings = {
     '© {year} CompressMyPic. All rights reserved. Free client-side image compression utility.',
   deployedNote: 'Crafted with ❤️ by Bilal inspired by Shaheen',
   contactLabel: 'Contact: bilalayyah@gmail.com',
+  cookieSettingsLabel: 'Privacy and cookie settings',
   toolsLinks: [
     { slug: '/', label: 'Compress Images' },
     { slug: '/image-resizer', label: 'Image Resizer' },
@@ -195,6 +223,47 @@ export const Footer: React.FC<FooterProps> = ({
   }, [detectedLang]);
   const directoryHref =
     detectedLang === 'en' ? '/#tools-directory' : DIRECTORY_PATH_BY_LANG[detectedLang];
+
+  // M8: reveal the "Privacy and cookie settings" revocation link only where
+  // the GDPR message applies. Google's Example 2 pattern: hidden by default,
+  // shown from the CONSENT_API_READY callback when tcdata.gdprApplies is
+  // true — so it never dead-clicks for visitors outside the EEA/UK/CH.
+  // window.googlefc may not exist yet when this effect runs (adsbygoogle.js
+  // loads async); creating the callbackQueue object here is the documented
+  // pattern — the script picks up the pre-existing queue when it loads.
+  const [showCookieSettings, setShowCookieSettings] = useState(false);
+  useEffect(() => {
+    const w = window;
+    w.googlefc = w.googlefc ?? {};
+    const queue = (w.googlefc.callbackQueue ??= []);
+    queue.push({
+      CONSENT_API_READY: () => {
+        if (typeof w.__tcfapi === 'function') {
+          w.__tcfapi('addEventListener', 2, (tcData, success) => {
+            if (success && tcData?.gdprApplies) setShowCookieSettings(true);
+          });
+        } else {
+          // No TCF API (e.g. consent library blocked): show the link
+          // anyway — showRevocationMessage() is a no-op where no GDPR
+          // message applies.
+          setShowCookieSettings(true);
+        }
+      },
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // The only supported way to invoke a messaging call asynchronously is via
+  // the callbackQueue (Funding Choices JS API docs).
+  const openConsentSettings = () => {
+    const fc = window.googlefc;
+    if (!fc?.showRevocationMessage) return;
+    if (fc.callbackQueue) {
+      fc.callbackQueue.push(fc.showRevocationMessage);
+    } else {
+      fc.showRevocationMessage();
+    }
+  };
 
   return (
     <footer className="footer-pastel-band text-[var(--ink-2)] border-t border-[var(--line)] text-sm">
@@ -378,6 +447,15 @@ export const Footer: React.FC<FooterProps> = ({
             )}
           </p>
           <div className="flex items-center gap-4">
+            {showCookieSettings && (
+              <button
+                type="button"
+                onClick={openConsentSettings}
+                className="text-[var(--ink-3)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] hover:underline transition-colors cursor-pointer"
+              >
+                {strings.cookieSettingsLabel}
+              </button>
+            )}
             <span>{strings.contactLabel}</span>
           </div>
         </div>

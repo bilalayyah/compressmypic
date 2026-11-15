@@ -70,6 +70,7 @@ export const ID = {
       '© {year} CompressMyPic. Hak cipta dilindungi. Utilitas kompresi gambar gratis di browser.',
     deployedNote: 'Crafted with ❤️ by Bilal inspired by Shaheen',
     contactLabel: 'Kontak: bilalayyah@gmail.com',
+    cookieSettingsLabel: 'Pengaturan privasi dan cookie',
     toolsLinks: [
       { slug: '/', label: 'Kompres Gambar' },
       { slug: '/image-resizer', label: 'Pengubah Ukuran Gambar' },

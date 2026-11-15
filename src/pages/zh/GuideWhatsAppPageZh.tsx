@@ -165,7 +165,7 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', '学习如何在 WhatsApp 上压缩图片而不损失画质：先用免费在线工具以均衡预设压缩照片，查看实时压缩前后体积，再作为文件发送，避免 WhatsApp 二次压缩。本指南免费、私密、无需注册，附分步操作与 20 个常见问题解答，让照片保持清晰、发送更快。日常分享以每张 100–300 KB 为目标，既省流量又清晰。');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/zh/zhinan/whatsapp-tupian-yasuo';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/zh/zhinan/whatsapp-tupian-yasuo/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -199,7 +199,7 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/zh/zhinan/whatsapp-tupian-yasuo",
+          mainEntityOfPage: "https://compressmypic.online/zh/zhinan/whatsapp-tupian-yasuo/",
           inLanguage: 'zh',
         },
         {
@@ -207,7 +207,7 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "首页", item: "https://compressmypic.online/zh/" },
             { '@type': 'ListItem', position: 2, name: "指南" },
-            { '@type': 'ListItem', position: 3, name: "如何在 WhatsApp 上压缩图片而不损失画质", item: "https://compressmypic.online/zh/zhinan/whatsapp-tupian-yasuo" },
+            { '@type': 'ListItem', position: 3, name: "如何在 WhatsApp 上压缩图片而不损失画质", item: "https://compressmypic.online/zh/zhinan/whatsapp-tupian-yasuo/" },
           ],
         },
       ],
@@ -216,6 +216,8 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
     script.type = 'application/ld+json';
     script.id = 'guide-whatsapp-zh-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-whatsapp-zh-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-whatsapp-zh-jsonld');

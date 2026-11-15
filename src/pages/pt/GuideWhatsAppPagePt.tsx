@@ -158,7 +158,7 @@ export const GuideWhatsAppPagePt: React.FC<GuideWhatsAppPagePtProps> = ({ onNavi
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'Aprenda a comprimir imagens para WhatsApp sem perder qualidade. Grátis e privado, sem cadastro: reduza suas fotos antes de enviar para que elas cheguem nítidas.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/pt/guias/comprimir-imagens-para-whatsapp';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/pt/guias/comprimir-imagens-para-whatsapp/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -192,7 +192,7 @@ export const GuideWhatsAppPagePt: React.FC<GuideWhatsAppPagePtProps> = ({ onNavi
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/pt/guias/comprimir-imagens-para-whatsapp",
+          mainEntityOfPage: "https://compressmypic.online/pt/guias/comprimir-imagens-para-whatsapp/",
           inLanguage: 'pt',
         },
         {
@@ -200,7 +200,7 @@ export const GuideWhatsAppPagePt: React.FC<GuideWhatsAppPagePtProps> = ({ onNavi
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Início", item: "https://compressmypic.online/pt/" },
             { '@type': 'ListItem', position: 2, name: "Guias" },
-            { '@type': 'ListItem', position: 3, name: "Comprimir imagens para WhatsApp sem perder qualidade", item: "https://compressmypic.online/pt/guias/comprimir-imagens-para-whatsapp" },
+            { '@type': 'ListItem', position: 3, name: "Comprimir imagens para WhatsApp sem perder qualidade", item: "https://compressmypic.online/pt/guias/comprimir-imagens-para-whatsapp/" },
           ],
         },
       ],
@@ -209,6 +209,8 @@ export const GuideWhatsAppPagePt: React.FC<GuideWhatsAppPagePtProps> = ({ onNavi
     script.type = 'application/ld+json';
     script.id = 'guide-whatsapp-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-whatsapp-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-whatsapp-jsonld');

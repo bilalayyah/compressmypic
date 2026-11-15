@@ -150,7 +150,7 @@ export const GuideFormatsPage: React.FC<GuideFormatsPageProps> = ({ onNavigate }
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'JPG vs PNG vs WebP explained simply: file size, quality and transparency compared, so you can pick the right format for photos, logos and websites.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/guides/jpg-vs-png-vs-webp';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/guides/jpg-vs-png-vs-webp/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -184,7 +184,7 @@ export const GuideFormatsPage: React.FC<GuideFormatsPageProps> = ({ onNavigate }
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/guides/jpg-vs-png-vs-webp",
+          mainEntityOfPage: "https://compressmypic.online/guides/jpg-vs-png-vs-webp/",
           inLanguage: 'en',
         },
         {
@@ -192,7 +192,7 @@ export const GuideFormatsPage: React.FC<GuideFormatsPageProps> = ({ onNavigate }
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Home", item: "https://compressmypic.online/" },
             { '@type': 'ListItem', position: 2, name: "Guides" },
-            { '@type': 'ListItem', position: 3, name: "JPG vs PNG vs WebP: Which Format Should You Use?", item: "https://compressmypic.online/guides/jpg-vs-png-vs-webp" },
+            { '@type': 'ListItem', position: 3, name: "JPG vs PNG vs WebP: Which Format Should You Use?", item: "https://compressmypic.online/guides/jpg-vs-png-vs-webp/" },
           ],
         },
       ],
@@ -201,6 +201,8 @@ export const GuideFormatsPage: React.FC<GuideFormatsPageProps> = ({ onNavigate }
     script.type = 'application/ld+json';
     script.id = 'guide-formats-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-formats-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-formats-jsonld');

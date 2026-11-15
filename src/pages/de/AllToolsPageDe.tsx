@@ -11,6 +11,7 @@ import React, { useEffect, useState } from 'react';
 import { ArrowRight, Search, Sparkles } from 'lucide-react';
 import type { ToolDefinition } from '../../data/tools';
 import { getPastelTileClass } from '../../utils/pastel';
+import { localizePath } from '../../locales/alternates';
 
 export interface AllToolsPageStrings {
   heading: string;
@@ -146,7 +147,7 @@ export const AllToolsPageDe: React.FC<AllToolsPageDeProps> = ({
               return (
                 <a
                   key={tool.slug}
-                  href={tool.slug}
+                  href={localizePath(tool.slug, 'de')}
                   onClick={(e) => {
                     e.preventDefault();
                     onNavigate(tool.slug);
@@ -190,7 +191,7 @@ export const AllToolsPageDe: React.FC<AllToolsPageDeProps> = ({
               return (
                 <a
                   key={tool.slug}
-                  href={tool.slug}
+                  href={localizePath(tool.slug, 'de')}
                   onClick={(e) => {
                     e.preventDefault();
                     onNavigate(tool.slug);

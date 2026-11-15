@@ -150,7 +150,7 @@ export const GuideFormatsPageDe: React.FC<GuideFormatsPageDeProps> = ({ onNaviga
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'JPG vs PNG vs WebP einfach erklärt: Dateigröße, Qualität und Transparenz im Vergleich, damit Sie das richtige Format für Fotos, Logos und Websites wählen.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/de/anleitungen/jpg-vs-png-vs-webp';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/de/anleitungen/jpg-vs-png-vs-webp/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -184,7 +184,7 @@ export const GuideFormatsPageDe: React.FC<GuideFormatsPageDeProps> = ({ onNaviga
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/de/anleitungen/jpg-vs-png-vs-webp",
+          mainEntityOfPage: "https://compressmypic.online/de/anleitungen/jpg-vs-png-vs-webp/",
           inLanguage: 'de',
         },
         {
@@ -192,7 +192,7 @@ export const GuideFormatsPageDe: React.FC<GuideFormatsPageDeProps> = ({ onNaviga
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Startseite", item: "https://compressmypic.online/de/" },
             { '@type': 'ListItem', position: 2, name: "Anleitungen" },
-            { '@type': 'ListItem', position: 3, name: "JPG vs PNG vs WebP: Welches Format sollten Sie verwenden?", item: "https://compressmypic.online/de/anleitungen/jpg-vs-png-vs-webp" },
+            { '@type': 'ListItem', position: 3, name: "JPG vs PNG vs WebP: Welches Format sollten Sie verwenden?", item: "https://compressmypic.online/de/anleitungen/jpg-vs-png-vs-webp/" },
           ],
         },
       ],
@@ -201,6 +201,8 @@ export const GuideFormatsPageDe: React.FC<GuideFormatsPageDeProps> = ({ onNaviga
     script.type = 'application/ld+json';
     script.id = 'guide-formats-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-formats-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-formats-jsonld');

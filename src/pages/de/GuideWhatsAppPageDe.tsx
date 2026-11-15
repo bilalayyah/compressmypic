@@ -158,7 +158,7 @@ export const GuideWhatsAppPageDe: React.FC<GuideWhatsAppPageDeProps> = ({ onNavi
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'Erfahren Sie, wie Sie Bilder für WhatsApp komprimieren, ohne Qualität zu verlieren. Kostenlos, privat, ohne Anmeldung – verkleinern Sie Fotos vor dem Senden, damit sie scharf bleiben und schnell gesendet werden.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/de/anleitungen/bilder-fuer-whatsapp-komprimieren';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/de/anleitungen/bilder-fuer-whatsapp-komprimieren/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -192,7 +192,7 @@ export const GuideWhatsAppPageDe: React.FC<GuideWhatsAppPageDeProps> = ({ onNavi
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/de/anleitungen/bilder-fuer-whatsapp-komprimieren",
+          mainEntityOfPage: "https://compressmypic.online/de/anleitungen/bilder-fuer-whatsapp-komprimieren/",
           inLanguage: 'de',
         },
         {
@@ -200,7 +200,7 @@ export const GuideWhatsAppPageDe: React.FC<GuideWhatsAppPageDeProps> = ({ onNavi
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Startseite", item: "https://compressmypic.online/de/" },
             { '@type': 'ListItem', position: 2, name: "Anleitungen" },
-            { '@type': 'ListItem', position: 3, name: "Bilder für WhatsApp komprimieren ohne Qualitätsverlust", item: "https://compressmypic.online/de/anleitungen/bilder-fuer-whatsapp-komprimieren" },
+            { '@type': 'ListItem', position: 3, name: "Bilder für WhatsApp komprimieren ohne Qualitätsverlust", item: "https://compressmypic.online/de/anleitungen/bilder-fuer-whatsapp-komprimieren/" },
           ],
         },
       ],
@@ -209,6 +209,8 @@ export const GuideWhatsAppPageDe: React.FC<GuideWhatsAppPageDeProps> = ({ onNavi
     script.type = 'application/ld+json';
     script.id = 'guide-whatsapp-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-whatsapp-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-whatsapp-jsonld');

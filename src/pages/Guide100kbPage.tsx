@@ -154,7 +154,7 @@ export const Guide100kbPage: React.FC<Guide100kbPageProps> = ({ onNavigate }) =>
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'Reduce image size to 100KB for websites and email with a free online compressor. Step-by-step guide — no signup, no watermark, images stay on your device.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/guides/reduce-image-size-to-100kb';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/guides/reduce-image-size-to-100kb/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -188,7 +188,7 @@ export const Guide100kbPage: React.FC<Guide100kbPageProps> = ({ onNavigate }) =>
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/guides/reduce-image-size-to-100kb",
+          mainEntityOfPage: "https://compressmypic.online/guides/reduce-image-size-to-100kb/",
           inLanguage: 'en',
         },
         {
@@ -196,7 +196,7 @@ export const Guide100kbPage: React.FC<Guide100kbPageProps> = ({ onNavigate }) =>
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Home", item: "https://compressmypic.online/" },
             { '@type': 'ListItem', position: 2, name: "Guides" },
-            { '@type': 'ListItem', position: 3, name: "How to Reduce Image Size to 100KB for Web & Email", item: "https://compressmypic.online/guides/reduce-image-size-to-100kb" },
+            { '@type': 'ListItem', position: 3, name: "How to Reduce Image Size to 100KB for Web & Email", item: "https://compressmypic.online/guides/reduce-image-size-to-100kb/" },
           ],
         },
       ],
@@ -205,6 +205,8 @@ export const Guide100kbPage: React.FC<Guide100kbPageProps> = ({ onNavigate }) =>
     script.type = 'application/ld+json';
     script.id = 'guide-100kb-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-100kb-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-100kb-jsonld');

@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { TOOL_BY_SLUG } from '../data/tools';
 import type { SupportedLang } from '../locales/config';
+import { localizePath } from '../locales/alternates';
 
 interface NotFoundPageProps {
   onNavigate?: (path: string) => void;
@@ -117,7 +118,7 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({
             {results.map((tool) => (
               <li key={tool.slug}>
                 <a
-                  href={tool.slug}
+                  href={localizePath(tool.slug, lang ?? 'en')}
                   onClick={go(tool.slug)}
                   className="block px-4 py-3 text-sm font-semibold text-[#6d28d9] dark:text-[#c4b5fd] hover:bg-[var(--surface-2)] cursor-pointer"
                 >

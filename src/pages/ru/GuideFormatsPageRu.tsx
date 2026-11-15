@@ -150,7 +150,7 @@ export const GuideFormatsPageRu: React.FC<GuideFormatsPageRuProps> = ({ onNaviga
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'JPG против PNG против WebP — простое объяснение: размер файла, качество и прозрачность в сравнении, чтобы вы могли выбрать правильный формат для фото, логотипов и сайтов.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ru/rukovodstva/jpg-protiv-png-protiv-webp';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ru/rukovodstva/jpg-protiv-png-protiv-webp/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -184,7 +184,7 @@ export const GuideFormatsPageRu: React.FC<GuideFormatsPageRuProps> = ({ onNaviga
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/ru/rukovodstva/jpg-protiv-png-protiv-webp",
+          mainEntityOfPage: "https://compressmypic.online/ru/rukovodstva/jpg-protiv-png-protiv-webp/",
           inLanguage: 'ru',
         },
         {
@@ -192,7 +192,7 @@ export const GuideFormatsPageRu: React.FC<GuideFormatsPageRuProps> = ({ onNaviga
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Главная", item: "https://compressmypic.online/ru/" },
             { '@type': 'ListItem', position: 2, name: "Руководства" },
-            { '@type': 'ListItem', position: 3, name: "JPG против PNG против WebP: какой формат выбрать?", item: "https://compressmypic.online/ru/rukovodstva/jpg-protiv-png-protiv-webp" },
+            { '@type': 'ListItem', position: 3, name: "JPG против PNG против WebP: какой формат выбрать?", item: "https://compressmypic.online/ru/rukovodstva/jpg-protiv-png-protiv-webp/" },
           ],
         },
       ],
@@ -201,6 +201,8 @@ export const GuideFormatsPageRu: React.FC<GuideFormatsPageRuProps> = ({ onNaviga
     script.type = 'application/ld+json';
     script.id = 'guide-formats-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-formats-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-formats-jsonld');

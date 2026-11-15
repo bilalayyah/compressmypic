@@ -154,7 +154,7 @@ export const Guide100kbPageEs: React.FC<Guide100kbPageEsProps> = ({ onNavigate }
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'Reduzca el tamaño de una imagen a 100 KB para sitios web y correo electrónico con un compresor online gratis. Guía paso a paso, sin registro ni marca de agua.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/es/guias/reducir-imagen-a-100kb';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/es/guias/reducir-imagen-a-100kb/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -188,7 +188,7 @@ export const Guide100kbPageEs: React.FC<Guide100kbPageEsProps> = ({ onNavigate }
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/es/guias/reducir-imagen-a-100kb",
+          mainEntityOfPage: "https://compressmypic.online/es/guias/reducir-imagen-a-100kb/",
           inLanguage: 'es',
         },
         {
@@ -196,7 +196,7 @@ export const Guide100kbPageEs: React.FC<Guide100kbPageEsProps> = ({ onNavigate }
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Inicio", item: "https://compressmypic.online/es/" },
             { '@type': 'ListItem', position: 2, name: "Guías" },
-            { '@type': 'ListItem', position: 3, name: "Cómo reducir una imagen a 100 KB para web y correo", item: "https://compressmypic.online/es/guias/reducir-imagen-a-100kb" },
+            { '@type': 'ListItem', position: 3, name: "Cómo reducir una imagen a 100 KB para web y correo", item: "https://compressmypic.online/es/guias/reducir-imagen-a-100kb/" },
           ],
         },
       ],
@@ -205,6 +205,8 @@ export const Guide100kbPageEs: React.FC<Guide100kbPageEsProps> = ({ onNavigate }
     script.type = 'application/ld+json';
     script.id = 'guide-100kb-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-100kb-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-100kb-jsonld');

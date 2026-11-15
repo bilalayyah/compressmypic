@@ -35,7 +35,7 @@ export const PrivacyPageJa: React.FC<PrivacyPageJaProps> = ({ onNavigate }) => {
             </h1>
           </div>
           <p className="text-xs text-[var(--ink-3)] font-medium">
-            最終更新日：2026年11月14日
+            最終更新日：2026年11月15日
           </p>
         </div>
 
@@ -91,7 +91,7 @@ export const PrivacyPageJa: React.FC<PrivacyPageJaProps> = ({ onNavigate }) => {
               4. アナリティクス
             </h2>
             <p>
-              当社は、サイトがどのように利用されているかを集計形式で把握するために、Cloudflare Web Analyticsを使用しています。たとえば、どのツールが人気か、どのページが訪問されているかなどです。Cloudflare Web Analyticsはプライバシーを第一に考えたものです。Cookieを使用せず、訪問者をウェブサイト間で個別に追跡することも、個人を特定できる情報を収集することもありません。記録されるのは、あなたを特定できない匿名化された集計利用統計のみです。当社はGoogle Analyticsや、トラッキングCookieを設定するその他の分析サービスを使用していません。
+              当社は、サイトがどのように利用されているかを集計形式で把握するために、Google Analytics 4（GA4）を使用しています。たとえば、どのツールが人気か、どのページが訪問されているかなどです。GA4は、訪問したページ、滞在時間、デバイスやブラウザに関する一般的な情報などの匿名化された利用データを収集します。訪問を区別するために、お使いのデバイスにCookie（_gaなど）を設定する場合があります。当社は、個人を特定するためにGA4を使用しません。Google Analytics オプトアウト アドオン（https://tools.google.com/dlpage/gaoptout）をインストールするか、ブラウザの設定でCookieを無効にすることで、いつでもGoogle Analyticsをオプトアウトできます。
             </p>
           </section>
 

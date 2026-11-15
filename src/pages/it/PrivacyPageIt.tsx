@@ -37,7 +37,7 @@ export const PrivacyPageIt: React.FC<PrivacyPageItProps> = ({ onNavigate }) => {
             </h1>
           </div>
           <p className="text-xs text-[var(--ink-3)] font-medium">
-            Ultimo aggiornamento: 14 novembre 2026
+            Ultimo aggiornamento: 15 novembre 2026
           </p>
         </div>
 
@@ -93,7 +93,7 @@ export const PrivacyPageIt: React.FC<PrivacyPageItProps> = ({ onNavigate }) => {
               4. Analisi
             </h2>
             <p>
-              Utilizziamo Cloudflare Web Analytics per capire, in forma aggregata, come viene usato il sito — ad esempio, quali strumenti sono popolari e quali pagine ricevono visite. Cloudflare Web Analytics è attento alla privacy: non usa cookie, non traccia i singoli visitatori tra siti web diversi e non raccoglie identificatori personali. Registra solo statistiche di utilizzo anonime e aggregate, che non possono essere usate per identificarvi. Non utilizziamo Google Analytics né altri servizi di analisi che installano cookie di tracciamento.
+              Utilizziamo Google Analytics 4 (GA4) per capire, in forma aggregata, come viene usato il sito — ad esempio, quali strumenti sono popolari e quali pagine ricevono visite. GA4 raccoglie dati di utilizzo anonimi come le pagine visitate, il tempo trascorso e informazioni generali sul dispositivo e sul browser. GA4 può impostare cookie sul dispositivo (come _ga) per distinguere una visita dall'altra. Non utilizziamo GA4 per identificarvi personalmente. Potete rinunciare a Google Analytics in qualsiasi momento installando il componente aggiuntivo per la disattivazione di Google Analytics (https://tools.google.com/dlpage/gaoptout) o disattivando i cookie nelle impostazioni del browser.
             </p>
           </section>
 

@@ -157,7 +157,7 @@ export const GuideFormatsPageZh: React.FC<GuideFormatsPageZhProps> = ({ onNaviga
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'JPG、PNG、WebP 简单对比：文件大小、画质与透明支持一目了然，帮你为照片、标志、截图和网站选对格式，并用免费在线工具在几秒内压缩或转换图片。了解 JPG 为何最适合照片、PNG 为何最适合标志、WebP 为何是网站的最佳选择，以及转换时如何保留透明背景。无需注册、无水印，附分步指南与 20 个常见问题解答。');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/zh/zhinan/jpg-vs-png-vs-webp';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/zh/zhinan/jpg-vs-png-vs-webp/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -191,7 +191,7 @@ export const GuideFormatsPageZh: React.FC<GuideFormatsPageZhProps> = ({ onNaviga
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/zh/zhinan/jpg-vs-png-vs-webp",
+          mainEntityOfPage: "https://compressmypic.online/zh/zhinan/jpg-vs-png-vs-webp/",
           inLanguage: 'zh',
         },
         {
@@ -199,7 +199,7 @@ export const GuideFormatsPageZh: React.FC<GuideFormatsPageZhProps> = ({ onNaviga
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "首页", item: "https://compressmypic.online/zh/" },
             { '@type': 'ListItem', position: 2, name: "指南" },
-            { '@type': 'ListItem', position: 3, name: "JPG、PNG、WebP 对比：应该选择哪种格式？", item: "https://compressmypic.online/zh/zhinan/jpg-vs-png-vs-webp" },
+            { '@type': 'ListItem', position: 3, name: "JPG、PNG、WebP 对比：应该选择哪种格式？", item: "https://compressmypic.online/zh/zhinan/jpg-vs-png-vs-webp/" },
           ],
         },
       ],
@@ -208,6 +208,8 @@ export const GuideFormatsPageZh: React.FC<GuideFormatsPageZhProps> = ({ onNaviga
     script.type = 'application/ld+json';
     script.id = 'guide-formats-zh-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-formats-zh-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-formats-zh-jsonld');

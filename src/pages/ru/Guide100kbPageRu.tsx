@@ -154,7 +154,7 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'Уменьшите размер изображения до 100 КБ для сайтов и электронной почты с помощью бесплатного online-компрессора. Пошаговое руководство — без регистрации, без водяных знаков, изображения остаются на вашем устройстве.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ru/rukovodstva/umenshit-razmer-izobrazheniya-do-100-kb';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ru/rukovodstva/umenshit-razmer-izobrazheniya-do-100-kb/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -188,7 +188,7 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/ru/rukovodstva/umenshit-razmer-izobrazheniya-do-100-kb",
+          mainEntityOfPage: "https://compressmypic.online/ru/rukovodstva/umenshit-razmer-izobrazheniya-do-100-kb/",
           inLanguage: 'ru',
         },
         {
@@ -196,7 +196,7 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Главная", item: "https://compressmypic.online/ru/" },
             { '@type': 'ListItem', position: 2, name: "Руководства" },
-            { '@type': 'ListItem', position: 3, name: "Как уменьшить размер изображения до 100 КБ для веба и электронной почты", item: "https://compressmypic.online/ru/rukovodstva/umenshit-razmer-izobrazheniya-do-100-kb" },
+            { '@type': 'ListItem', position: 3, name: "Как уменьшить размер изображения до 100 КБ для веба и электронной почты", item: "https://compressmypic.online/ru/rukovodstva/umenshit-razmer-izobrazheniya-do-100-kb/" },
           ],
         },
       ],
@@ -205,6 +205,8 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
     script.type = 'application/ld+json';
     script.id = 'guide-100kb-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-100kb-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-100kb-jsonld');

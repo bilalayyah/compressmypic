@@ -1,17 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5754238751997058" crossorigin="anonymous"></script>
-    <!-- Google Analytics 4 (G-NW1G6KEZZY) — send_page_view: false; this is an
-         SPA, so pageviews are sent manually by trackPageView (App.tsx) on every
-         route change; the automatic one would double-count the first load. -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NW1G6KEZZY"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-NW1G6KEZZY', { 'send_page_view': false });
-    </script>
+    <!-- M6 (re-audit 2026-11-15): the AdSense script + GA4 gtag snippet are
+         NO LONGER static tags here — src/utils/thirdParty.ts injects them
+         dynamically before the app mounts, skipping /admin/comments/. -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>

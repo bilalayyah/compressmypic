@@ -154,7 +154,7 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'Kurangi ukuran gambar menjadi 100KB untuk situs web dan email dengan kompresor online gratis. Panduan langkah demi langkah — tanpa daftar, tanpa watermark, gambar tetap di perangkat Anda.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/id/panduan/mengurangi-ukuran-gambar-menjadi-100-kb';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/id/panduan/mengurangi-ukuran-gambar-menjadi-100-kb/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -188,7 +188,7 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/id/panduan/mengurangi-ukuran-gambar-menjadi-100-kb",
+          mainEntityOfPage: "https://compressmypic.online/id/panduan/mengurangi-ukuran-gambar-menjadi-100-kb/",
           inLanguage: 'id',
         },
         {
@@ -196,7 +196,7 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Beranda", item: "https://compressmypic.online/id/" },
             { '@type': 'ListItem', position: 2, name: "Panduan" },
-            { '@type': 'ListItem', position: 3, name: "Cara Mengurangi Ukuran Gambar menjadi 100KB untuk Web & Email", item: "https://compressmypic.online/id/panduan/mengurangi-ukuran-gambar-menjadi-100-kb" },
+            { '@type': 'ListItem', position: 3, name: "Cara Mengurangi Ukuran Gambar menjadi 100KB untuk Web & Email", item: "https://compressmypic.online/id/panduan/mengurangi-ukuran-gambar-menjadi-100-kb/" },
           ],
         },
       ],
@@ -205,6 +205,8 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
     script.type = 'application/ld+json';
     script.id = 'guide-100kb-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-100kb-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-100kb-jsonld');

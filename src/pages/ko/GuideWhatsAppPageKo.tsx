@@ -158,7 +158,7 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', '화질 저하 없이 WhatsApp용 이미지를 압축하는 방법을 알아보세요. 무료, 개인정보 보호, 가입 불필요 — 보내기 전에 사진을 줄여 선명하게 유지하고 빠르게 전송하세요.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ko/gaideu/watsae-yong-imiji-apchuk';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ko/gaideu/watsae-yong-imiji-apchuk/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -192,7 +192,7 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/ko/gaideu/watsae-yong-imiji-apchuk",
+          mainEntityOfPage: "https://compressmypic.online/ko/gaideu/watsae-yong-imiji-apchuk/",
           inLanguage: 'ko',
         },
         {
@@ -200,7 +200,7 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "홈", item: "https://compressmypic.online/ko/" },
             { '@type': 'ListItem', position: 2, name: "가이드" },
-            { '@type': 'ListItem', position: 3, name: "화질 저하 없이 WhatsApp용 이미지를 압축하는 방법", item: "https://compressmypic.online/ko/gaideu/watsae-yong-imiji-apchuk" },
+            { '@type': 'ListItem', position: 3, name: "화질 저하 없이 WhatsApp용 이미지를 압축하는 방법", item: "https://compressmypic.online/ko/gaideu/watsae-yong-imiji-apchuk/" },
           ],
         },
       ],
@@ -209,6 +209,8 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
     script.type = 'application/ld+json';
     script.id = 'guide-whatsapp-ko-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-whatsapp-ko-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-whatsapp-ko-jsonld');

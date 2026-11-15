@@ -36,6 +36,8 @@ import {
   ZoomIn,
 } from 'lucide-react';
 import { TOOLS_REGISTRY, TOOL_CATEGORIES, ToolCategoryId, ToolDefinition } from '../data/tools';
+import { localizePath } from '../locales/alternates';
+import type { SupportedLang } from '../locales/config';
 import { getPastelTileClass } from '../utils/pastel';
 
 interface ToolsDirectoryStrings {
@@ -49,6 +51,8 @@ interface ToolsDirectoryStrings {
 interface ToolsDirectorySectionProps {
   onNavigate: (path: string) => void;
   currentPath?: string;
+  /** Active language — tool cards link the same-language tool URL (M2, re-audit 2026-11-15). */
+  lang?: SupportedLang;
   toolsRegistry?: ToolDefinition[];
   categoryLabels?: Array<{ id: string; label: string }>;
   strings?: ToolsDirectoryStrings;
@@ -118,6 +122,7 @@ const TOOL_ICONS: Record<string, React.ComponentType<{ className?: string }>> = 
 export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
   onNavigate,
   currentPath = '/',
+  lang = 'en',
   toolsRegistry = TOOLS_REGISTRY,
   categoryLabels = TOOL_CATEGORIES,
   strings = DEFAULT_STRINGS,
@@ -190,10 +195,10 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
             return (
               <a
                 key={tool.slug}
-                href={tool.slug}
+                href={localizePath(tool.slug, lang)}
                 onClick={(e) => {
                   e.preventDefault();
-                  onNavigate(tool.slug);
+                  onNavigate(localizePath(tool.slug, lang));
                 }}
                 className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#7c3aed]/40 transition-all duration-200 flex flex-col justify-between"
               >

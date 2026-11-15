@@ -205,7 +205,7 @@ import { RU_PATH_BY_EN, EN_PATH_BY_RU, RU_HOME_ALIAS, RU_ALL_TOOLS_PATH } from '
 import { JA_PATH_BY_EN, EN_PATH_BY_JA, JA_HOME_ALIAS, JA_ALL_TOOLS_PATH } from './locales/ja/slugs';
 import { KO_PATH_BY_EN, EN_PATH_BY_KO, KO_HOME_ALIAS, KO_ALL_TOOLS_PATH } from './locales/ko/slugs';
 import { ZH_PATH_BY_EN, EN_PATH_BY_ZH, ZH_HOME_ALIAS, ZH_ALL_TOOLS_PATH } from './locales/zh/slugs';
-import { getAlternates, getOgLocale, getOgLocaleAlternates } from './locales/alternates';
+import { getAlternates, getOgLocale, getOgLocaleAlternates, withTrailingSlash } from './locales/alternates';
 const AboutPageEs = React.lazy(() =>
   import('./pages/es/AboutPageEs').then((m) => ({ default: m.AboutPageEs }))
 );
@@ -1249,7 +1249,9 @@ export default function App() {
       langDescriptions?.[currentPath] ||
       staticDescriptions[currentPath] ||
       staticDescriptions['/'];
-    const nextCanonical = `${baseDomain}${toLocalizedPath(currentPath, lang)}`;
+    // M1 (re-audit 2026-11-15): canonicals are trailing-slash URLs — pages
+    // serve at /tool/ (the slash-less form 308-redirects).
+    const nextCanonical = `${baseDomain}${withTrailingSlash(toLocalizedPath(currentPath, lang))}`;
 
     document.title = nextTitle;
     if (canonicalLink) canonicalLink.href = nextCanonical;
@@ -1374,20 +1376,22 @@ export default function App() {
     } else if (!isToolPage && hasLocalizedEquivalent) {
       // A localized directory has no standalone English page — its English
       // equivalent is the home page (which hosts the tools directory section).
+      // M1 (re-audit 2026-11-15): hreflang hrefs are trailing-slash URLs.
       const enEquivalent = isDirectoryPath ? '/' : currentPath;
+      const hreflangHref = (p: string) => `${baseDomain}${withTrailingSlash(p)}`;
       setHreflangLinks([
-        { lang: 'en', href: `${baseDomain}${enEquivalent}` },
-        { lang: 'es', href: `${baseDomain}${toLocalizedPath(currentPath, 'es')}` },
-        { lang: 'pt', href: `${baseDomain}${toLocalizedPath(currentPath, 'pt')}` },
-        { lang: 'fr', href: `${baseDomain}${toLocalizedPath(currentPath, 'fr')}` },
-        { lang: 'de', href: `${baseDomain}${toLocalizedPath(currentPath, 'de')}` },
-        { lang: 'it', href: `${baseDomain}${toLocalizedPath(currentPath, 'it')}` },
-        { lang: 'id', href: `${baseDomain}${toLocalizedPath(currentPath, 'id')}` },
-        { lang: 'ru', href: `${baseDomain}${toLocalizedPath(currentPath, 'ru')}` },
-        { lang: 'ja', href: `${baseDomain}${toLocalizedPath(currentPath, 'ja')}` },
-        { lang: 'ko', href: `${baseDomain}${toLocalizedPath(currentPath, 'ko')}` },
-        { lang: 'zh', href: `${baseDomain}${toLocalizedPath(currentPath, 'zh')}` },
-        { lang: 'x-default', href: `${baseDomain}${enEquivalent}` },
+        { lang: 'en', href: hreflangHref(enEquivalent) },
+        { lang: 'es', href: hreflangHref(toLocalizedPath(currentPath, 'es')) },
+        { lang: 'pt', href: hreflangHref(toLocalizedPath(currentPath, 'pt')) },
+        { lang: 'fr', href: hreflangHref(toLocalizedPath(currentPath, 'fr')) },
+        { lang: 'de', href: hreflangHref(toLocalizedPath(currentPath, 'de')) },
+        { lang: 'it', href: hreflangHref(toLocalizedPath(currentPath, 'it')) },
+        { lang: 'id', href: hreflangHref(toLocalizedPath(currentPath, 'id')) },
+        { lang: 'ru', href: hreflangHref(toLocalizedPath(currentPath, 'ru')) },
+        { lang: 'ja', href: hreflangHref(toLocalizedPath(currentPath, 'ja')) },
+        { lang: 'ko', href: hreflangHref(toLocalizedPath(currentPath, 'ko')) },
+        { lang: 'zh', href: hreflangHref(toLocalizedPath(currentPath, 'zh')) },
+        { lang: 'x-default', href: hreflangHref(enEquivalent) },
       ]);
     } else if (isToolPage && hasLocalizedEquivalent && lang === 'en') {
       // English tool page with translated equivalents: ToolPageLayout only
@@ -2069,6 +2073,7 @@ export default function App() {
             <ToolsDirectorySection
               onNavigate={handleNavigate}
               currentPath="/"
+              lang={lang}
               toolsRegistry={toolsRegistry}
               categoryLabels={categoryLabels}
               strings={strings?.toolsDirectory}

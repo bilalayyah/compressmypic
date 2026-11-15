@@ -150,7 +150,7 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'JPG vs PNG vs WebP dijelaskan dengan sederhana: ukuran file, kualitas, dan transparansi dibandingkan, agar Anda dapat memilih format yang tepat untuk foto, logo, dan situs web.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/id/panduan/jpg-vs-png-vs-webp';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/id/panduan/jpg-vs-png-vs-webp/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -184,7 +184,7 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/id/panduan/jpg-vs-png-vs-webp",
+          mainEntityOfPage: "https://compressmypic.online/id/panduan/jpg-vs-png-vs-webp/",
           inLanguage: 'id',
         },
         {
@@ -192,7 +192,7 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Beranda", item: "https://compressmypic.online/id/" },
             { '@type': 'ListItem', position: 2, name: "Panduan" },
-            { '@type': 'ListItem', position: 3, name: "JPG vs PNG vs WebP: Format Mana yang Harus Anda Gunakan?", item: "https://compressmypic.online/id/panduan/jpg-vs-png-vs-webp" },
+            { '@type': 'ListItem', position: 3, name: "JPG vs PNG vs WebP: Format Mana yang Harus Anda Gunakan?", item: "https://compressmypic.online/id/panduan/jpg-vs-png-vs-webp/" },
           ],
         },
       ],
@@ -201,6 +201,8 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
     script.type = 'application/ld+json';
     script.id = 'guide-formats-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-formats-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-formats-jsonld');

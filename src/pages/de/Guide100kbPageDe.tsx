@@ -154,7 +154,7 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'Bild auf 100 KB verkleinern für Websites und E-Mails mit einem kostenlosen Online-Komprimierer. Schritt-für-Schritt-Anleitung – ohne Anmeldung, ohne Wasserzeichen, Bilder bleiben auf Ihrem Gerät.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/de/anleitungen/bild-auf-100-kb-verkleinern';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/de/anleitungen/bild-auf-100-kb-verkleinern/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -188,7 +188,7 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/de/anleitungen/bild-auf-100-kb-verkleinern",
+          mainEntityOfPage: "https://compressmypic.online/de/anleitungen/bild-auf-100-kb-verkleinern/",
           inLanguage: 'de',
         },
         {
@@ -196,7 +196,7 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Startseite", item: "https://compressmypic.online/de/" },
             { '@type': 'ListItem', position: 2, name: "Anleitungen" },
-            { '@type': 'ListItem', position: 3, name: "Bild auf 100 KB verkleinern für Web & E-Mail", item: "https://compressmypic.online/de/anleitungen/bild-auf-100-kb-verkleinern" },
+            { '@type': 'ListItem', position: 3, name: "Bild auf 100 KB verkleinern für Web & E-Mail", item: "https://compressmypic.online/de/anleitungen/bild-auf-100-kb-verkleinern/" },
           ],
         },
       ],
@@ -205,6 +205,8 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
     script.type = 'application/ld+json';
     script.id = 'guide-100kb-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-100kb-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-100kb-jsonld');

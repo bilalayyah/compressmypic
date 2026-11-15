@@ -158,7 +158,7 @@ export const GuideWhatsAppPageId: React.FC<GuideWhatsAppPageIdProps> = ({ onNavi
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'Pelajari cara mengompres gambar untuk WhatsApp tanpa kehilangan kualitas. Gratis, privat, tanpa daftar — perkecil foto sebelum mengirim agar tetap tajam dan cepat terkirim.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/id/panduan/mengompres-gambar-untuk-whatsapp';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/id/panduan/mengompres-gambar-untuk-whatsapp/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -192,7 +192,7 @@ export const GuideWhatsAppPageId: React.FC<GuideWhatsAppPageIdProps> = ({ onNavi
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/id/panduan/mengompres-gambar-untuk-whatsapp",
+          mainEntityOfPage: "https://compressmypic.online/id/panduan/mengompres-gambar-untuk-whatsapp/",
           inLanguage: 'id',
         },
         {
@@ -200,7 +200,7 @@ export const GuideWhatsAppPageId: React.FC<GuideWhatsAppPageIdProps> = ({ onNavi
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Beranda", item: "https://compressmypic.online/id/" },
             { '@type': 'ListItem', position: 2, name: "Panduan" },
-            { '@type': 'ListItem', position: 3, name: "Mengompres Gambar untuk WhatsApp Tanpa Kehilangan Kualitas", item: "https://compressmypic.online/id/panduan/mengompres-gambar-untuk-whatsapp" },
+            { '@type': 'ListItem', position: 3, name: "Mengompres Gambar untuk WhatsApp Tanpa Kehilangan Kualitas", item: "https://compressmypic.online/id/panduan/mengompres-gambar-untuk-whatsapp/" },
           ],
         },
       ],
@@ -209,6 +209,8 @@ export const GuideWhatsAppPageId: React.FC<GuideWhatsAppPageIdProps> = ({ onNavi
     script.type = 'application/ld+json';
     script.id = 'guide-whatsapp-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-whatsapp-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-whatsapp-jsonld');

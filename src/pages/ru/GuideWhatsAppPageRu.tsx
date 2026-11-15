@@ -158,7 +158,7 @@ export const GuideWhatsAppPageRu: React.FC<GuideWhatsAppPageRuProps> = ({ onNavi
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'Узнайте, как сжать изображения для WhatsApp без потери качества. Бесплатно, приватно, без регистрации — уменьшайте фото перед отправкой, чтобы они оставались чёткими и отправлялись быстро.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ru/rukovodstva/szhat-izobrazheniya-dlya-whatsapp';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ru/rukovodstva/szhat-izobrazheniya-dlya-whatsapp/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -192,7 +192,7 @@ export const GuideWhatsAppPageRu: React.FC<GuideWhatsAppPageRuProps> = ({ onNavi
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/ru/rukovodstva/szhat-izobrazheniya-dlya-whatsapp",
+          mainEntityOfPage: "https://compressmypic.online/ru/rukovodstva/szhat-izobrazheniya-dlya-whatsapp/",
           inLanguage: 'ru',
         },
         {
@@ -200,7 +200,7 @@ export const GuideWhatsAppPageRu: React.FC<GuideWhatsAppPageRuProps> = ({ onNavi
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Главная", item: "https://compressmypic.online/ru/" },
             { '@type': 'ListItem', position: 2, name: "Руководства" },
-            { '@type': 'ListItem', position: 3, name: "Как сжать изображения для WhatsApp без потери качества", item: "https://compressmypic.online/ru/rukovodstva/szhat-izobrazheniya-dlya-whatsapp" },
+            { '@type': 'ListItem', position: 3, name: "Как сжать изображения для WhatsApp без потери качества", item: "https://compressmypic.online/ru/rukovodstva/szhat-izobrazheniya-dlya-whatsapp/" },
           ],
         },
       ],
@@ -209,6 +209,8 @@ export const GuideWhatsAppPageRu: React.FC<GuideWhatsAppPageRuProps> = ({ onNavi
     script.type = 'application/ld+json';
     script.id = 'guide-whatsapp-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-whatsapp-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-whatsapp-jsonld');

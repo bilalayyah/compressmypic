@@ -35,7 +35,7 @@ export const PrivacyPageKo: React.FC<PrivacyPageKoProps> = ({ onNavigate }) => {
             </h1>
           </div>
           <p className="text-xs text-[var(--ink-3)] font-medium">
-            최종 업데이트: 2026년 11월 14일
+            최종 업데이트: 2026년 11월 15일
           </p>
         </div>
 
@@ -91,7 +91,7 @@ export const PrivacyPageKo: React.FC<PrivacyPageKoProps> = ({ onNavigate }) => {
               4. 분석
             </h2>
             <p>
-              저희는 사이트가 어떻게 사용되는지 종합적으로 파악하기 위해 Cloudflare Web Analytics를 사용합니다. 예를 들어 어떤 도구가 인기 있는지, 어떤 페이지를 방문하는지 등입니다. Cloudflare Web Analytics는 개인정보 보호를 우선으로 합니다. 쿠키를 사용하지 않고, 웹사이트를 넘나들며 개별 방문자를 추적하지 않으며, 개인 식별자를 수집하지 않습니다. 여러분을 식별하는 데 사용할 수 없는 익명화된 종합 사용 통계만 기록합니다. 저희는 Google Analytics나 추적 쿠키를 설정하는 다른 분석 서비스를 사용하지 않습니다.
+              저희는 사이트가 어떻게 사용되는지 종합적으로 파악하기 위해 Google Analytics 4(GA4)를 사용합니다. 예를 들어 어떤 도구가 인기 있는지, 어떤 페이지를 방문하는지 등입니다. GA4는 방문한 페이지, 체류 시간, 기기 및 브라우저에 대한 일반적인 정보 등 익명화된 사용 데이터를 수집합니다. GA4는 방문을 구분하기 위해 기기에 쿠키(_ga 등)를 설정할 수 있습니다. 저희는 개인을 식별하기 위해 GA4를 사용하지 않습니다. Google Analytics 차단 부가기능(https://tools.google.com/dlpage/gaoptout)을 설치하거나 브라우저 설정에서 쿠키를 비활성화하여 언제든지 Google Analytics를 거부할 수 있습니다.
             </p>
           </section>
 

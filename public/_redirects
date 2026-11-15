@@ -1,5 +1,13 @@
 # _redirects — CompressMyPic (Cloudflare Pages)
 #
+# ACTIVE RULE (0): WhatsApp compressor 301 (re-audit 2026-11-15, H3).
+# /compress-image-for-whatsapp/ 404s — no such tool exists (only the guide).
+# Redirect to the guide instead of building a new tool page (new tools go
+# through AI Studio — a separate decision, not this fix). Both forms, because
+# Pages 308-redirects the slash-less form to the slash form first.
+/compress-image-for-whatsapp/ /guides/compress-images-for-whatsapp/ 301
+/compress-image-for-whatsapp /guides/compress-images-for-whatsapp/ 301
+#
 # ACTIVE RULE (1): prerendered EN homepage.
 # /  ->  /home/  (200 rewrite, URL stays "/")
 # The homepage cannot be prerendered as public/index.html — Vite
@@ -14,7 +22,7 @@
 # up at "/home" instead of staying "/". A directory target (/home/)
 # is served directly with 200 and the URL stays "/".
 # Regenerate home/index.html whenever the JS bundle hash changes
-# (it references /assets/index-D2skg1qK.js) or home content changes.
+# (it references /assets/index-DhZU0Opj.js) or home content changes.
 /   /home/   200
 #
 # REMOVED 2026-11-15 — trailing-slash 301 rule (/* /:splat 301):

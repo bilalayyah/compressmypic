@@ -41,7 +41,7 @@ export const PrivacyPageZh: React.FC<PrivacyPageZhProps> = ({ onNavigate }) => {
             </h1>
           </div>
           <p className="text-xs text-[var(--ink-3)] font-medium">
-            最后更新：2026年11月14日
+            最后更新：2026年11月15日
           </p>
         </div>
 
@@ -97,7 +97,7 @@ export const PrivacyPageZh: React.FC<PrivacyPageZhProps> = ({ onNavigate }) => {
               4. 数据分析
             </h2>
             <p>
-              我们使用 Cloudflare Web Analytics 以汇总形式了解网站的使用情况——例如，哪些工具最受欢迎、哪些页面被访问。Cloudflare Web Analytics 注重隐私：它不使用 Cookie，不会跨网站追踪个别访客，也不收集个人标识符。它只记录无法用于识别你的匿名汇总使用统计数据。我们不使用 Google Analytics，也不使用任何会设置追踪 Cookie 的其他分析服务。
+              我们使用 Google Analytics 4（GA4）以汇总形式了解网站的使用情况——例如，哪些工具最受欢迎、哪些页面被访问。GA4 会收集匿名使用数据，例如您访问的页面、停留时间以及关于您的设备和浏览器的一般信息。GA4 可能会在您的设备上设置 Cookie（例如 _ga），以区分不同的访问。我们不会使用 GA4 来识别您的个人身份。您可以随时通过安装 Google Analytics（分析）停用插件（https://tools.google.com/dlpage/gaoptout）或在浏览器设置中禁用 Cookie 来退出 Google Analytics。
             </p>
           </section>
 

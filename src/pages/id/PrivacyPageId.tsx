@@ -35,7 +35,7 @@ export const PrivacyPageId: React.FC<PrivacyPageIdProps> = ({ onNavigate }) => {
             </h1>
           </div>
           <p className="text-xs text-[var(--ink-3)] font-medium">
-            Terakhir diperbarui: 14 Nov 2026
+            Terakhir diperbarui: 15 Nov 2026
           </p>
         </div>
 
@@ -91,7 +91,7 @@ export const PrivacyPageId: React.FC<PrivacyPageIdProps> = ({ onNavigate }) => {
               4. Analitik
             </h2>
             <p>
-              Kami menggunakan Cloudflare Web Analytics untuk memahami, secara agregat, bagaimana situs ini digunakan — misalnya, alat mana yang populer dan halaman mana yang dikunjungi. Cloudflare Web Analytics mengutamakan privasi: tidak menggunakan cookie, tidak melacak pengunjung secara individual di berbagai situs web, dan tidak mengumpulkan pengenal pribadi. Layanan ini hanya mencatat statistik penggunaan anonim dan agregat yang tidak dapat digunakan untuk mengidentifikasi Anda. Kami tidak menggunakan Google Analytics atau layanan analitik lain yang memasang cookie pelacak.
+              Kami menggunakan Google Analytics 4 (GA4) untuk memahami, secara agregat, bagaimana situs ini digunakan — misalnya, alat mana yang populer dan halaman mana yang dikunjungi. GA4 mengumpulkan data penggunaan anonim seperti halaman yang Anda kunjungi, berapa lama Anda berada di sana, dan informasi umum tentang perangkat serta browser Anda. GA4 dapat memasang cookie di perangkat Anda (seperti _ga) untuk membedakan satu kunjungan dengan kunjungan lainnya. Kami tidak menggunakan GA4 untuk mengidentifikasi Anda secara pribadi. Anda dapat memilih tidak ikut serta dalam Google Analytics kapan saja dengan memasang Pengaya Penyisihan Google Analytics (https://tools.google.com/dlpage/gaoptout) atau menonaktifkan cookie di pengaturan browser Anda.
             </p>
           </section>
 

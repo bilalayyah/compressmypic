@@ -26,6 +26,51 @@ export interface HreflangAlternate {
   href: string;
 }
 
+/**
+ * Append a trailing slash to a page path (root '/' is already slashed).
+ * Used for every URL Google sees: canonicals, hreflang hrefs, JSON-LD
+ * `url`/`item` values. Pages serve at the trailing-slash URL (Cloudflare
+ * Pages 308-redirects the slash-less form to the directory index), so the
+ * slash-less canonicals pointed at a 308 — re-audit issue M1 (2026-11-15).
+ * Asset URLs (og-*.png, favicon.svg) must NEVER go through this.
+ */
+export function withTrailingSlash(path: string): string {
+  if (!path || path === '/') return '/';
+  return path.endsWith('/') ? path : `${path}/`;
+}
+
+/** English path -> localized path maps, one per language (same maps the
+ *  header already uses for its nav URLs). */
+const PATH_BY_EN_BY_LANG: Record<string, Record<string, string>> = {
+  es: ES_PATH_BY_EN,
+  pt: PT_PATH_BY_EN,
+  fr: FR_PATH_BY_EN,
+  de: DE_PATH_BY_EN,
+  it: IT_PATH_BY_EN,
+  id: ID_PATH_BY_EN,
+  ru: RU_PATH_BY_EN,
+  ja: JA_PATH_BY_EN,
+  ko: KO_PATH_BY_EN,
+  zh: ZH_PATH_BY_EN,
+};
+
+/**
+ * Localized path for an English tool/static path in `lang` (falls back to
+ * the English path when no equivalent exists). Re-audit issue M2
+ * (2026-11-15): directory cards, related-tool links and header tool links
+ * rendered EN slugs on non-EN pages even though same-language equivalents
+ * exist. Home is NOT handled here — use localizedHomePath() for it.
+ */
+export function localizePath(enPath: string, lang: string): string {
+  if (!lang || lang === 'en') return enPath;
+  return PATH_BY_EN_BY_LANG[lang]?.[enPath] ?? enPath;
+}
+
+/** Localized home URL for a language: '/' for EN, '/<lang>/' otherwise. */
+export function localizedHomePath(lang: string): string {
+  return !lang || lang === 'en' ? '/' : `/${lang}/`;
+}
+
 /** Full hreflang set for the English path: en + every translated version that exists + x-default (EN). */
 export function getAlternates(enPath: string): HreflangAlternate[] {
   const es = ES_PATH_BY_EN[enPath];
@@ -38,18 +83,18 @@ export function getAlternates(enPath: string): HreflangAlternate[] {
   const ja = JA_PATH_BY_EN[enPath];
   const ko = KO_PATH_BY_EN[enPath];
   const zh = ZH_PATH_BY_EN[enPath];
-  const items: HreflangAlternate[] = [{ lang: 'en', href: `${BASE}${enPath}` }];
-  if (es) items.push({ lang: 'es', href: `${BASE}${es}` });
-  if (pt) items.push({ lang: 'pt', href: `${BASE}${pt}` });
-  if (fr) items.push({ lang: 'fr', href: `${BASE}${fr}` });
-  if (de) items.push({ lang: 'de', href: `${BASE}${de}` });
-  if (it) items.push({ lang: 'it', href: `${BASE}${it}` });
-  if (id) items.push({ lang: 'id', href: `${BASE}${id}` });
-  if (ru) items.push({ lang: 'ru', href: `${BASE}${ru}` });
-  if (ja) items.push({ lang: 'ja', href: `${BASE}${ja}` });
-  if (ko) items.push({ lang: 'ko', href: `${BASE}${ko}` });
-  if (zh) items.push({ lang: 'zh', href: `${BASE}${zh}` });
-  items.push({ lang: 'x-default', href: `${BASE}${enPath}` });
+  const items: HreflangAlternate[] = [{ lang: 'en', href: `${BASE}${withTrailingSlash(enPath)}` }];
+  if (es) items.push({ lang: 'es', href: `${BASE}${withTrailingSlash(es)}` });
+  if (pt) items.push({ lang: 'pt', href: `${BASE}${withTrailingSlash(pt)}` });
+  if (fr) items.push({ lang: 'fr', href: `${BASE}${withTrailingSlash(fr)}` });
+  if (de) items.push({ lang: 'de', href: `${BASE}${withTrailingSlash(de)}` });
+  if (it) items.push({ lang: 'it', href: `${BASE}${withTrailingSlash(it)}` });
+  if (id) items.push({ lang: 'id', href: `${BASE}${withTrailingSlash(id)}` });
+  if (ru) items.push({ lang: 'ru', href: `${BASE}${withTrailingSlash(ru)}` });
+  if (ja) items.push({ lang: 'ja', href: `${BASE}${withTrailingSlash(ja)}` });
+  if (ko) items.push({ lang: 'ko', href: `${BASE}${withTrailingSlash(ko)}` });
+  if (zh) items.push({ lang: 'zh', href: `${BASE}${withTrailingSlash(zh)}` });
+  items.push({ lang: 'x-default', href: `${BASE}${withTrailingSlash(enPath)}` });
   return items;
 }
 

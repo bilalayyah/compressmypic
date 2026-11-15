@@ -13,7 +13,7 @@ import { AdSlot } from './AdSlot';
 import { trackToolUsed } from '../utils/analytics';
 import { Comments, EN_COMMENT_STRINGS, type CommentStrings } from './Comments';
 import type { SupportedLang } from '../locales/config';
-import { getOgLocale, getOgLocaleAlternates } from '../locales/alternates';
+import { getOgLocale, getOgLocaleAlternates, localizePath, localizedHomePath, withTrailingSlash } from '../locales/alternates';
 import { ES_ALL_TOOLS_PATH } from '../locales/es/slugs';
 import { PT_ALL_TOOLS_PATH } from '../locales/pt/slugs';
 import { FR_ALL_TOOLS_PATH } from '../locales/fr/slugs';
@@ -147,7 +147,10 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
     retry: ui.commentsRetry ?? EN_COMMENT_STRINGS.retry,
     loading: ui.commentsLoading ?? EN_COMMENT_STRINGS.loading,
   };
-  const canonicalUrl = `https://compressmypic.online${pagePath === '/' ? '/' : pagePath}`;
+  // M1 (re-audit 2026-11-15): canonicals are trailing-slash URLs — pages
+  // serve at /tool/ (the slash-less form 308-redirects), so a slash-less
+  // canonical pointed at a redirect.
+  const canonicalUrl = `https://compressmypic.online${withTrailingSlash(pagePath)}`;
 
   useEffect(() => {
     const seoTitle = tool.seoTitle;
@@ -328,7 +331,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
         '@type': 'ListItem',
         position: 2,
         name: categoryLabel,
-        item: `https://compressmypic.online${directoryPath}`,
+        item: `https://compressmypic.online${withTrailingSlash(directoryPath)}`,
       });
     } else {
       // English has no standalone tools-directory page (the directory lives
@@ -420,7 +423,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
           className="flex items-center justify-start gap-1.5 text-xs font-medium text-[var(--ink-3)] mb-4 flex-wrap"
         >
           <a
-            href="/"
+            href={localizedHomePath(lang)}
             onClick={(e) => {
               e.preventDefault();
               onNavigate('/');
@@ -586,7 +589,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                   <span key={rel.slug}>
                     {i > 0 && <span aria-hidden="true"> · </span>}
                     <a
-                      href={rel.slug}
+                      href={localizePath(rel.slug, lang)}
                       onClick={(e) => {
                         e.preventDefault();
                         onNavigate(rel.slug);
@@ -614,7 +617,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
               {relatedTools.map((rel, idx) => (
                 <a
                   key={rel.slug}
-                  href={rel.slug}
+                  href={localizePath(rel.slug, lang)}
                   onClick={(e) => {
                     e.preventDefault();
                     onNavigate(rel.slug);

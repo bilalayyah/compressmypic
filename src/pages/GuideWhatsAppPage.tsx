@@ -158,7 +158,7 @@ export const GuideWhatsAppPage: React.FC<GuideWhatsAppPageProps> = ({ onNavigate
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'Learn how to compress images for WhatsApp without losing quality. Free, private, no signup — shrink photos before sending so they stay sharp and send fast.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/guides/compress-images-for-whatsapp';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/guides/compress-images-for-whatsapp/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -192,7 +192,7 @@ export const GuideWhatsAppPage: React.FC<GuideWhatsAppPageProps> = ({ onNavigate
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/guides/compress-images-for-whatsapp",
+          mainEntityOfPage: "https://compressmypic.online/guides/compress-images-for-whatsapp/",
           inLanguage: 'en',
         },
         {
@@ -200,7 +200,7 @@ export const GuideWhatsAppPage: React.FC<GuideWhatsAppPageProps> = ({ onNavigate
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Home", item: "https://compressmypic.online/" },
             { '@type': 'ListItem', position: 2, name: "Guides" },
-            { '@type': 'ListItem', position: 3, name: "Compress Images for WhatsApp Without Losing Quality", item: "https://compressmypic.online/guides/compress-images-for-whatsapp" },
+            { '@type': 'ListItem', position: 3, name: "Compress Images for WhatsApp Without Losing Quality", item: "https://compressmypic.online/guides/compress-images-for-whatsapp/" },
           ],
         },
       ],
@@ -209,6 +209,8 @@ export const GuideWhatsAppPage: React.FC<GuideWhatsAppPageProps> = ({ onNavigate
     script.type = 'application/ld+json';
     script.id = 'guide-whatsapp-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-whatsapp-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-whatsapp-jsonld');

@@ -161,7 +161,7 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', '用免费在线压缩器把图片压缩到 100KB，用于网站和邮件。本分步指南教你从均衡预设开始，用画质滑块和 WebP 输出逐步缩小图片。了解 200KB、100KB、50KB 与 20KB 各自适合什么用途，以及何时不必强求精确的 100KB。无需注册、无水印，图片始终保留在你的设备上，附 20 个常见问题解答。');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/zh/zhinan/jiang-tupian-yasuo-zhi-100kb';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/zh/zhinan/jiang-tupian-yasuo-zhi-100kb/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -195,7 +195,7 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/zh/zhinan/jiang-tupian-yasuo-zhi-100kb",
+          mainEntityOfPage: "https://compressmypic.online/zh/zhinan/jiang-tupian-yasuo-zhi-100kb/",
           inLanguage: 'zh',
         },
         {
@@ -203,7 +203,7 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "首页", item: "https://compressmypic.online/zh/" },
             { '@type': 'ListItem', position: 2, name: "指南" },
-            { '@type': 'ListItem', position: 3, name: "如何把图片压缩到 100KB：网站与邮件指南", item: "https://compressmypic.online/zh/zhinan/jiang-tupian-yasuo-zhi-100kb" },
+            { '@type': 'ListItem', position: 3, name: "如何把图片压缩到 100KB：网站与邮件指南", item: "https://compressmypic.online/zh/zhinan/jiang-tupian-yasuo-zhi-100kb/" },
           ],
         },
       ],
@@ -212,6 +212,8 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
     script.type = 'application/ld+json';
     script.id = 'guide-100kb-zh-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-100kb-zh-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-100kb-zh-jsonld');

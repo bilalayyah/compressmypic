@@ -154,7 +154,7 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', '무료 온라인 압축기로 웹사이트와 이메일용 이미지 크기를 100KB로 줄이세요. 단계별 가이드 — 가입 불필요, 워터마크 없음, 이미지는 기기에 머뭅니다.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -188,7 +188,7 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi",
+          mainEntityOfPage: "https://compressmypic.online/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi/",
           inLanguage: 'ko',
         },
         {
@@ -196,7 +196,7 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "홈", item: "https://compressmypic.online/ko/" },
             { '@type': 'ListItem', position: 2, name: "가이드" },
-            { '@type': 'ListItem', position: 3, name: "웹과 이메일용 이미지 크기를 100KB로 줄이는 방법", item: "https://compressmypic.online/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi" },
+            { '@type': 'ListItem', position: 3, name: "웹과 이메일용 이미지 크기를 100KB로 줄이는 방법", item: "https://compressmypic.online/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi/" },
           ],
         },
       ],
@@ -205,6 +205,8 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
     script.type = 'application/ld+json';
     script.id = 'guide-100kb-ko-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-100kb-ko-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-100kb-ko-jsonld');

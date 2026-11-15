@@ -158,7 +158,7 @@ export const GuideWhatsAppPageFr: React.FC<GuideWhatsAppPageFrProps> = ({ onNavi
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'Apprenez à compresser des images pour WhatsApp sans perdre en qualité. Gratuit et privé, sans inscription : réduisez vos photos avant de les envoyer pour qu’elles arrivent nettes.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/fr/guides/compresser-images-pour-whatsapp';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/fr/guides/compresser-images-pour-whatsapp/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -192,7 +192,7 @@ export const GuideWhatsAppPageFr: React.FC<GuideWhatsAppPageFrProps> = ({ onNavi
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/fr/guides/compresser-images-pour-whatsapp",
+          mainEntityOfPage: "https://compressmypic.online/fr/guides/compresser-images-pour-whatsapp/",
           inLanguage: 'fr',
         },
         {
@@ -200,7 +200,7 @@ export const GuideWhatsAppPageFr: React.FC<GuideWhatsAppPageFrProps> = ({ onNavi
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Accueil", item: "https://compressmypic.online/fr/" },
             { '@type': 'ListItem', position: 2, name: "Guides" },
-            { '@type': 'ListItem', position: 3, name: "Compresser des images pour WhatsApp sans perdre en qualité", item: "https://compressmypic.online/fr/guides/compresser-images-pour-whatsapp" },
+            { '@type': 'ListItem', position: 3, name: "Compresser des images pour WhatsApp sans perdre en qualité", item: "https://compressmypic.online/fr/guides/compresser-images-pour-whatsapp/" },
           ],
         },
       ],
@@ -209,6 +209,8 @@ export const GuideWhatsAppPageFr: React.FC<GuideWhatsAppPageFrProps> = ({ onNavi
     script.type = 'application/ld+json';
     script.id = 'guide-whatsapp-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-whatsapp-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-whatsapp-jsonld');

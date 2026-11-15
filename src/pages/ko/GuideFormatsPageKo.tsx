@@ -150,7 +150,7 @@ export const GuideFormatsPageKo: React.FC<GuideFormatsPageKoProps> = ({ onNaviga
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'JPG vs PNG vs WebP를 간단히 설명합니다. 파일 크기, 화질, 투명도를 비교해 사진, 로고, 웹사이트에 맞는 형식을 선택하세요.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ko/gaideu/jpg-vs-png-vs-webp';
+    if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/ko/gaideu/jpg-vs-png-vs-webp/';
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     const jsonLd = {
@@ -184,7 +184,7 @@ export const GuideFormatsPageKo: React.FC<GuideFormatsPageKoProps> = ({ onNaviga
           },
           datePublished: '2026-11-14',
           dateModified: '2026-11-14',
-          mainEntityOfPage: "https://compressmypic.online/ko/gaideu/jpg-vs-png-vs-webp",
+          mainEntityOfPage: "https://compressmypic.online/ko/gaideu/jpg-vs-png-vs-webp/",
           inLanguage: 'ko',
         },
         {
@@ -192,7 +192,7 @@ export const GuideFormatsPageKo: React.FC<GuideFormatsPageKoProps> = ({ onNaviga
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "홈", item: "https://compressmypic.online/ko/" },
             { '@type': 'ListItem', position: 2, name: "가이드" },
-            { '@type': 'ListItem', position: 3, name: "JPG vs PNG vs WebP: 어떤 형식을 사용해야 할까요?", item: "https://compressmypic.online/ko/gaideu/jpg-vs-png-vs-webp" },
+            { '@type': 'ListItem', position: 3, name: "JPG vs PNG vs WebP: 어떤 형식을 사용해야 할까요?", item: "https://compressmypic.online/ko/gaideu/jpg-vs-png-vs-webp/" },
           ],
         },
       ],
@@ -201,6 +201,8 @@ export const GuideFormatsPageKo: React.FC<GuideFormatsPageKoProps> = ({ onNaviga
     script.type = 'application/ld+json';
     script.id = 'guide-formats-ko-jsonld';
     script.text = JSON.stringify(jsonLd);
+    const prev = document.getElementById('guide-formats-ko-jsonld');
+    if (prev) prev.remove();
     document.head.appendChild(script);
     return () => {
       const existing = document.getElementById('guide-formats-ko-jsonld');
