@@ -332,7 +332,7 @@ export const GuideFormatsPageJa: React.FC<GuideFormatsPageJaProps> = ({ onNaviga
 
           <figure className="space-y-2">
             <img
-              src="/guides/jpg-vs-png-vs-webp-1.png"
+              src="/guides/jpg-vs-png-vs-webp-1.webp"
               alt="同じ写真をJPG、PNG、WebPで保存し、ファイルサイズを比べているスクリーンショット"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
@@ -404,7 +404,7 @@ export const GuideFormatsPageJa: React.FC<GuideFormatsPageJaProps> = ({ onNaviga
 
           <figure className="space-y-2">
             <img
-              src="/guides/jpg-vs-png-vs-webp-2.png"
+              src="/guides/jpg-vs-png-vs-webp-2.webp"
               alt="CompressMyPicで出力形式としてJPG、PNG、WebPを選んでいるスクリーンショット"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"

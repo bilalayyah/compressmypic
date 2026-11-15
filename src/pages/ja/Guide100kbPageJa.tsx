@@ -296,7 +296,7 @@ export const Guide100kbPageJa: React.FC<Guide100kbPageJaProps> = ({ onNavigate }
 
           <figure className="space-y-2">
             <img
-              src="/guides/reduce-image-size-to-100kb-1.png"
+              src="/guides/reduce-image-size-to-100kb-1.webp"
               alt="100KBまで小さくするために大きな写真をCompressMyPicにアップロードしているスクリーンショット"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
@@ -372,7 +372,7 @@ export const Guide100kbPageJa: React.FC<Guide100kbPageJaProps> = ({ onNavigate }
 
           <figure className="space-y-2">
             <img
-              src="/guides/reduce-image-size-to-100kb-2.png"
+              src="/guides/reduce-image-size-to-100kb-2.webp"
               alt="画像がおよそ100KBまで小さくなったことを示す圧縮前後のファイルサイズのスクリーンショット"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
