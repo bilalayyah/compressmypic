@@ -41,7 +41,7 @@ declare global {
  * someone else's property) and is worse than no ID at all. Leave it '' until
  * the real property exists; until then every function below is a no-op.
  */
-export const MEASUREMENT_ID = '';
+export const MEASUREMENT_ID = 'G-NW1G6KEZZY';
 
 /** True once a real measurement ID has been configured. */
 export function isAnalyticsConfigured(): boolean {
