@@ -300,7 +300,7 @@ export const GuideWhatsAppPagePt: React.FC<GuideWhatsAppPagePtProps> = ({ onNavi
 
           <figure className="space-y-2">
             <img
-              src="/guides/compress-images-for-whatsapp-1.png"
+              src="/guides/compress-images-for-whatsapp-1.webp"
               alt="Captura de tela de como enviar uma foto para o CompressMyPic antes de enviá-la pelo WhatsApp"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
@@ -360,7 +360,7 @@ export const GuideWhatsAppPagePt: React.FC<GuideWhatsAppPagePtProps> = ({ onNavi
 
           <figure className="space-y-2">
             <img
-              src="/guides/compress-images-for-whatsapp-2.png"
+              src="/guides/compress-images-for-whatsapp-2.webp"
               alt="Captura de tela do controle deslizante de qualidade e do tamanho do arquivo ao vivo, antes e depois, no CompressMyPic"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"

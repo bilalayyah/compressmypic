@@ -332,7 +332,7 @@ export const GuideFormatsPagePt: React.FC<GuideFormatsPagePtProps> = ({ onNaviga
 
           <figure className="space-y-2">
             <img
-              src="/guides/jpg-vs-png-vs-webp-1.png"
+              src="/guides/jpg-vs-png-vs-webp-1.webp"
               alt="Captura de tela comparando a mesma foto salva como JPG, PNG e WebP com seus tamanhos de arquivo"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
@@ -404,7 +404,7 @@ export const GuideFormatsPagePt: React.FC<GuideFormatsPagePtProps> = ({ onNaviga
 
           <figure className="space-y-2">
             <img
-              src="/guides/jpg-vs-png-vs-webp-2.png"
+              src="/guides/jpg-vs-png-vs-webp-2.webp"
               alt="Captura de tela de como escolher o formato de saída JPG, PNG ou WebP no CompressMyPic"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"

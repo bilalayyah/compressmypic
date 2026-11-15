@@ -154,7 +154,7 @@ export const AllToolsPagePt: React.FC<AllToolsPagePtProps> = ({
                         <Sparkles className="w-5 h-5" />
                       </div>
                       {cat && (
-                        <span className="text-[11px] font-semibold text-[var(--ink-3)] bg-[var(--surface-2)] border border-[var(--line)] px-2.5 py-0.5 rounded-full">
+                        <span className="text-xs font-semibold text-[var(--ink-3)] bg-[var(--surface-2)] border border-[var(--line)] px-2.5 py-0.5 rounded-full">
                           {cat}
                         </span>
                       )}
@@ -198,7 +198,7 @@ export const AllToolsPagePt: React.FC<AllToolsPagePtProps> = ({
                         <Sparkles className="w-5 h-5" />
                       </div>
                       {cat && (
-                        <span className="text-[11px] font-semibold text-[var(--ink-3)] bg-[var(--surface-2)] border border-[var(--line)] px-2.5 py-0.5 rounded-full">
+                        <span className="text-xs font-semibold text-[var(--ink-3)] bg-[var(--surface-2)] border border-[var(--line)] px-2.5 py-0.5 rounded-full">
                           {cat}
                         </span>
                       )}
