@@ -1,17 +1,23 @@
-# Trailing-slash duplicates -> canonical slash-less URL (301).
-# Single dynamic rule: the splat captures the whole path (including
-# locale prefixes, e.g. /de/alle-tools/) and the destination drops the
-# trailing slash. Must stay ABOVE the SPA fallback: _redirects rules
-# are first-match-wins. Root "/" alone does not match (the pattern
-# needs two slashes), so the homepage is untouched. The destination
-# has no trailing slash, so the rule cannot loop (a second slash, e.g.
-# /image-resizer//, strips one slash per hop and terminates).
-# Known limits of _redirects (per Cloudflare Pages docs, 2026-11-14):
-# no case-insensitive matching, so mixed-case duplicates
-# (/Image-Resizer) cannot be 301'd here, and query strings cannot be
-# stripped by _redirects; both are handled by the rendered canonical
-# tag instead.
-/*/ /:splat 301
-
-# SPA fallback: serve the app shell for every remaining path.
-/*    /index.html   200
+# _redirects — CompressMyPic (Cloudflare Pages)
+#
+# NO ACTIVE RULES. This file is intentionally rules-only-comments.
+#
+# REMOVED 2026-11-15 — trailing-slash 301 rule (/* /:splat 301):
+# Live-verified in a real browser (Chromium, 2026-11-15 ~08:36 Dubai):
+# every prerendered directory route was in a redirect LOOP —
+# Cloudflare Pages 308-redirects /image-resizer -> /image-resizer/
+# (directory index), while the rule 301-redirected it back to
+# /image-resizer. Browsers died with ERR_TOO_MANY_REDIRECTS.
+# The rule was written when routes were SPA-fallback (no directories
+# existed, so the 308 never fired). With 626 prerendered directories
+# live, the rule MUST stay out. Do NOT re-add it.
+# Consequence: pages serve at the trailing-slash URL
+# (e.g. /image-resizer/); canonical tags in the prerendered files
+# still point to the slash-less URL — Google follows the 308 and
+# honours the canonical, so pages stay crawlable/indexable.
+#
+# REMOVED 2026-11-15 — SPA fallback (/* /index.html 200):
+# All 626 routes are prerendered to static files now, so unknown URLs
+# return a real HTTP 404 served from public/404.html instead of the
+# homepage shell. Do NOT re-add the fallback: it would turn every 404
+# back into a soft 404.
