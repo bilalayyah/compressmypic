@@ -8,6 +8,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
 import { getPastelTileClass } from '../utils/pastel';
+import { trackFormSubmit } from '../utils/analytics';
 import type { SupportedLang } from '../locales/config';
 
 export interface CommentStrings {
@@ -127,6 +128,8 @@ export const Comments: React.FC<{
       setComments((prev) => [data.comment as Comment, ...prev]);
       setText('');
       setPosted(true);
+      // GA4 (issue #40): form_submit fires ONLY on successful post.
+      trackFormSubmit({ form_id: 'comment', form_name: 'Comment form' });
     } catch {
       setPostError(s.postError);
     } finally {

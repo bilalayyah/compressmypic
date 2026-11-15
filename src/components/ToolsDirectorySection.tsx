@@ -138,7 +138,7 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-7">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#7c3aed] dark:text-[#c4b5fd]">
+            <span className="text-xs font-bold uppercase tracking-[0.14em] text-[#7c3aed] dark:text-[#c4b5fd]">
               {strings.eyebrow}
             </span>
             <h2 className="mt-1.5 text-2xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">
@@ -205,7 +205,7 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
                       <Icon className="w-5 h-5" />
                     </div>
                     {cat && (
-                      <span className="text-[11px] font-semibold text-[var(--ink-3)] bg-[var(--surface-2)] border border-[var(--line)] px-2.5 py-0.5 rounded-full">
+                      <span className="text-xs font-semibold text-[var(--ink-3)] bg-[var(--surface-2)] border border-[var(--line)] px-2.5 py-0.5 rounded-full">
                         {cat}
                       </span>
                     )}

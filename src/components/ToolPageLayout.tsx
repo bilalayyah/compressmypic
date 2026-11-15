@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { ToolDefinition, TOOL_BY_SLUG, TOOL_CATEGORIES } from '../data/tools';
 import { AdSlot } from './AdSlot';
+import { trackToolUsed } from '../utils/analytics';
 import { Comments, EN_COMMENT_STRINGS, type CommentStrings } from './Comments';
 import type { SupportedLang } from '../locales/config';
 import { getOgLocale, getOgLocaleAlternates } from '../locales/alternates';
@@ -152,6 +153,9 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
     const seoTitle = tool.seoTitle;
     const seoDescription = tool.seoDescription;
 
+    // GA4 (issue #40): top-of-funnel event — which tools people actually open.
+    trackToolUsed({ tool_slug: tool.slug, tool_name: tool.name, language: lang });
+
     const prevTitle = document.title;
     document.title = seoTitle;
 
@@ -255,7 +259,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
       'property',
       'og:image',
       ogImageUrl,
-      true
+      false
     );
     setOgLocaleTags(getOgLocale(lang), getOgLocaleAlternates(lang));
     setMetaTag('meta[property="og:image:alt"]', 'property', 'og:image:alt', seoTitle);
@@ -268,7 +272,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
       'name',
       'twitter:image',
       ogImageUrl,
-      true
+      false
     );
     setMetaTag('meta[name="twitter:image:alt"]', 'name', 'twitter:image:alt', seoTitle);
 

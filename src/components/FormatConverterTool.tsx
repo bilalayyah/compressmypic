@@ -614,7 +614,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                   className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                   aria-label={t('qualityAriaLabel', `${targetLabel} output quality`)}
                 />
-                <div className="flex justify-between text-[11px] text-[var(--ink-3)] mt-1">
+                <div className="flex justify-between text-xs text-[var(--ink-3)] mt-1">
                   <span>{t('smallerFile', 'Smaller file (20%)')}</span>
                   <span>{t('balanced', 'Balanced (85%)')}</span>
                   <span>{t('maxDetail', 'Max detail (100%)')}</span>
@@ -656,7 +656,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                     </button>
                   ))}
                 </div>
-                <p className="text-[11px] text-[var(--ink-3)] mt-1.5">
+                <p className="text-xs text-[var(--ink-3)] mt-1.5">
                   {t(
                     'rasterExportScaleHint',
                     "Multiplier applied to the SVG's intrinsic dimensions (capped at 8000px). Click Re-convert All after changing scale."
@@ -698,7 +698,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                   ))}
                   <span className="text-xs font-mono text-[var(--ink-3)]">{backgroundColor}</span>
                 </div>
-                <p className="text-[11px] text-[var(--ink-3)] mt-1.5">
+                <p className="text-xs text-[var(--ink-3)] mt-1.5">
                   {t(
                     'matteHint',
                     t(
@@ -801,7 +801,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                   {isDone && item.compressedSize !== null && (
                     <div className="grid grid-cols-3 gap-3 py-2 px-3 sm:px-4 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] w-full md:w-auto text-center md:text-left">
                       <div>
-                        <span className="text-[11px] text-[var(--ink-3)] block font-medium">
+                        <span className="text-xs text-[var(--ink-3)] block font-medium">
                           {sourceLabel}
                         </span>
                         <span className="text-xs sm:text-sm font-semibold font-mono text-[var(--ink-2)] tabular-nums">
@@ -809,7 +809,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                         </span>
                       </div>
                       <div>
-                        <span className="text-[11px] text-[var(--ink-3)] block font-medium">
+                        <span className="text-xs text-[var(--ink-3)] block font-medium">
                           {targetLabel}
                         </span>
                         <span className="text-xs sm:text-sm font-bold font-mono text-[#7c3aed] dark:text-[#a78bfa] tabular-nums">
@@ -817,7 +817,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                         </span>
                       </div>
                       <div>
-                        <span className="text-[11px] text-[var(--ink-3)] block font-medium">
+                        <span className="text-xs text-[var(--ink-3)] block font-medium">
                           {t('changeLabel', t('columnChange', 'Change'))}
                         </span>
                         <span

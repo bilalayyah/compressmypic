@@ -615,7 +615,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                   onChange={(e) => setValue(parseInt(e.target.value, 10))}
                   className="w-full h-2 bg-[var(--line)] rounded-lg appearance-none cursor-pointer"
                 />
-                <div className="flex justify-between text-[11px] text-[var(--ink-3)] mt-1">
+                <div className="flex justify-between text-xs text-[var(--ink-3)] mt-1">
                   <span>{t('minLabel', cfg.minLabel)}</span>
                   <span>0%</span>
                   <span>{t('maxLabel', cfg.maxLabel)}</span>

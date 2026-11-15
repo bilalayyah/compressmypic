@@ -904,13 +904,13 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                     {isDone && item.compressedSize !== null && (
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2 px-3 sm:px-4 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] w-full md:w-auto text-center md:text-left">
                         <div>
-                          <span className="text-[11px] text-[var(--ink-3)] block font-medium">{t('columnOriginal', t('metricOriginal', 'Original'))}</span>
+                          <span className="text-xs text-[var(--ink-3)] block font-medium">{t('columnOriginal', t('metricOriginal', 'Original'))}</span>
                           <span className="text-xs sm:text-sm font-semibold font-mono text-[var(--ink-2)] tabular-nums">
                             {formatBytes(item.originalSize)}
                           </span>
                         </div>
                         <div>
-                          <span className="text-[11px] text-[var(--ink-3)] block font-medium">{t('columnOutput', t('metricOutput', 'Output'))}</span>
+                          <span className="text-xs text-[var(--ink-3)] block font-medium">{t('columnOutput', t('metricOutput', 'Output'))}</span>
                           <span
                             className={`text-xs sm:text-sm font-bold font-mono tabular-nums ${
                               item.compressedSize > item.originalSize && !item.keptOriginal
@@ -924,7 +924,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                           </span>
                         </div>
                         <div>
-                          <span className="text-[11px] text-[var(--ink-3)] block font-medium">{t('columnSpaceSaved', t('metricSpaceSaved', 'Space Saved'))}</span>
+                          <span className="text-xs text-[var(--ink-3)] block font-medium">{t('columnSpaceSaved', t('metricSpaceSaved', 'Space Saved'))}</span>
                           <span
                             className={`text-xs sm:text-sm font-semibold font-mono tabular-nums ${
                               (item.spaceSaved ?? 0) < 0 ? 'text-[#ea580c] dark:text-[#fb923c]' : 'text-[#16a34a] dark:text-[#4ade80]'
@@ -934,7 +934,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                           </span>
                         </div>
                         <div>
-                          <span className="text-[11px] text-[var(--ink-3)] block font-medium">
+                          <span className="text-xs text-[var(--ink-3)] block font-medium">
                             {(item.compressionPercentage ?? 0) < 0
                               ? t('columnSizeChange', t('metricSizeChange', 'Size Change'))
                               : t('columnReduction', t('metricReduction', 'Reduction'))}

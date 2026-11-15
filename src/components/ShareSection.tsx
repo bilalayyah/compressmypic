@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Share2, Link2, Check, Mail } from 'lucide-react';
+import { trackOutboundClick } from '../utils/analytics';
 
 export interface ShareSectionStrings {
   heading: string;
@@ -92,7 +93,7 @@ export function ShareSection({ strings = DEFAULT_STRINGS }: { strings?: ShareSec
         <p className="text-[var(--ink-2)] mb-6">{strings.text}</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           {shareLinks.map((s) => (
-            <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={strings.shareOn.replace('{name}', s.name)} title={strings.shareOn.replace('{name}', s.name)} className="w-11 h-11 rounded-full flex items-center justify-center text-white shadow-sm hover:opacity-85 hover:scale-105 transition" style={{ backgroundColor: s.bg }}>
+            <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={strings.shareOn.replace('{name}', s.name)} title={strings.shareOn.replace('{name}', s.name)} onClick={() => trackOutboundClick({ link_url: s.url, link_text: s.name })} className="w-11 h-11 rounded-full flex items-center justify-center text-white shadow-sm hover:opacity-85 hover:scale-105 transition" style={{ backgroundColor: s.bg }}>
               {s.icon}
             </a>
           ))}

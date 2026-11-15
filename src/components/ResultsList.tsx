@@ -238,7 +238,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                       </div>
                     )}
                     {isDone && (
-                      <div className="absolute inset-0 bg-slate-900/55 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-[11px] font-semibold gap-1">
+                      <div className="absolute inset-0 bg-slate-900/55 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-semibold gap-1">
                         <SplitSquareVertical className="w-4 h-4" />
                         <span>{strings?.compare ?? 'Compare'}</span>
                       </div>
@@ -304,13 +304,13 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                 {isDone && image.compressedSize !== null && (
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2.5 px-3 sm:px-4 bg-[var(--surface-2)] border border-[var(--line)] rounded-xl w-full md:w-auto text-center md:text-left">
                     <div>
-                      <span className="text-[11px] text-[var(--ink-3)] block font-medium">{strings?.original ?? 'Original'}</span>
+                      <span className="text-xs text-[var(--ink-3)] block font-medium">{strings?.original ?? 'Original'}</span>
                       <span className="text-xs sm:text-sm font-semibold font-mono text-[var(--ink-2)] tabular-nums">
                         {formatBytes(image.originalSize)}
                       </span>
                     </div>
                     <div>
-                      <span className="text-[11px] text-[var(--ink-3)] block font-medium">
+                      <span className="text-xs text-[var(--ink-3)] block font-medium">
                         {keptOriginal ? strings?.output ?? 'Output' : strings?.compressed ?? 'Compressed'}
                       </span>
                       <span
@@ -322,7 +322,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                       </span>
                     </div>
                     <div>
-                      <span className="text-[11px] text-[var(--ink-3)] block font-medium">{strings?.spaceSaved ?? 'Space Saved'}</span>
+                      <span className="text-xs text-[var(--ink-3)] block font-medium">{strings?.spaceSaved ?? 'Space Saved'}</span>
                       <span
                         className={`text-xs sm:text-sm font-semibold font-mono tabular-nums ${
                           realSpaceSaved < 0 ? 'text-[#ea580c] dark:text-[#fb923c]' : 'text-[#15803d] dark:text-[#4ade80]'
@@ -332,7 +332,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                       </span>
                     </div>
                     <div>
-                      <span className="text-[11px] text-[var(--ink-3)] block font-medium">
+                      <span className="text-xs text-[var(--ink-3)] block font-medium">
                         {isLarger ? strings?.sizeChange ?? 'Size Change' : strings?.reduction ?? 'Reduction'}
                       </span>
                       <span

@@ -127,7 +127,7 @@ export const Hero: React.FC<HeroProps> = ({
             aria-label="Search free image tools"
             className="hero-search-input w-full text-sm text-[var(--ink)] bg-transparent! border-0! p-0! placeholder:text-[var(--ink-3)]"
           />
-          <kbd className="hidden sm:inline-flex items-center gap-0.5 px-2 py-0.5 ml-2 rounded-md bg-[var(--surface-2)] border border-[var(--line)] text-[11px] font-mono font-semibold text-[var(--ink-3)] shrink-0">
+          <kbd className="hidden sm:inline-flex items-center gap-0.5 px-2 py-0.5 ml-2 rounded-md bg-[var(--surface-2)] border border-[var(--line)] text-xs font-mono font-semibold text-[var(--ink-3)] shrink-0">
             ⌘K
           </kbd>
         </form>
