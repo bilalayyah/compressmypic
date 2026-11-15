@@ -296,7 +296,7 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
 
           <figure className="space-y-2">
             <img
-              src="/guides/reduce-image-size-to-100kb-1.png"
+              src="/guides/reduce-image-size-to-100kb-1.webp"
               alt="Tangkapan layar mengunggah foto besar ke CompressMyPic untuk menguranginya menjadi 100KB"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
@@ -372,7 +372,7 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
 
           <figure className="space-y-2">
             <img
-              src="/guides/reduce-image-size-to-100kb-2.png"
+              src="/guides/reduce-image-size-to-100kb-2.webp"
               alt="Tangkapan layar ukuran file sebelum dan sesudah secara langsung yang menunjukkan gambar dikurangi menjadi sekitar 100KB"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"

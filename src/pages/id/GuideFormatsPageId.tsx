@@ -332,7 +332,7 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
 
           <figure className="space-y-2">
             <img
-              src="/guides/jpg-vs-png-vs-webp-1.png"
+              src="/guides/jpg-vs-png-vs-webp-1.webp"
               alt="Tangkapan layar membandingkan foto yang sama yang disimpan sebagai JPG, PNG, dan WebP beserta ukuran file-nya"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
@@ -404,7 +404,7 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
 
           <figure className="space-y-2">
             <img
-              src="/guides/jpg-vs-png-vs-webp-2.png"
+              src="/guides/jpg-vs-png-vs-webp-2.webp"
               alt="Tangkapan layar memilih format keluaran JPG, PNG, atau WebP di CompressMyPic"
               className="w-full rounded-2xl border border-[var(--line)] shadow-[var(--shadow)] bg-[var(--surface)]"
               loading="lazy"
