@@ -985,24 +985,25 @@ export default function App() {
 
     const staticTitles: Record<string, string> = {
       '/about': 'About CompressMyPic – Free Online Image Compressor',
-      '/contact': 'Contact CompressMyPic – Free Online Image Compressor',
-      '/privacy': 'Privacy Policy – CompressMyPic Free Image Compressor',
-      '/terms': 'Terms of Service – CompressMyPic Free Image Compressor',
-      '/admin/comments': 'Comments Admin — CompressMyPic',
+      '/contact': 'Contact CompressMyPic – Help, Feedback & Bug Reports',
+      '/privacy': 'Privacy Policy | CompressMyPic – Your Images Stay Private',
+      '/terms': 'Terms of Service | CompressMyPic – Free Image Tools Rules',
+      '/admin/comments': 'Comments Admin | CompressMyPic (Private Page)',
       '/guides/compress-images-for-whatsapp': 'Compress Images for WhatsApp Without Losing Quality',
-      '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: Which Format Should You Use?',
-      '/guides/reduce-image-size-to-100kb': 'How to Reduce Image Size to 100KB for Web & Email',
+      '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: Which Image Format Is Best? (Guide)',
+      '/guides/reduce-image-size-to-100kb': 'How to Reduce Image Size to 100KB: Step-by-Step Guide',
     };
 
     const staticDescriptions: Record<string, string> = {
       '/': 'Compress images online free and reduce JPG, PNG and WebP size without losing quality. No signup, no watermark — your photos never leave your own browser.',
       '/about': 'About CompressMyPic – a free online image compressor for JPG, PNG and WebP. Compress images online free, with no signup, no watermark and no server upload.',
-      '/contact': 'Contact CompressMyPic – get help with the free online image compressor. Compress images online free and reduce image size without losing quality.',
-      '/privacy': 'Privacy Policy for CompressMyPic – the free online image compressor. Your images are compressed in your browser and never uploaded to a server.',
-      '/terms': 'Terms of Service for CompressMyPic — the free online image compressor. Read the rules for using our free tools: fair use, your content, liability and more.',
+      '/contact': 'Contact CompressMyPic for help, feedback or bug reports about our free image tools. We reply by email — please tell us the tool name and what went wrong.',
+      '/privacy': 'Privacy Policy for CompressMyPic: your images are compressed in your browser and never uploaded. Read how cookies, ads and analytics work on this site.',
+      '/terms': 'Terms of Service for CompressMyPic: fair use, your content, liability and service changes for our free online image tools. Plain rules, no legal jargon.',
+      '/admin/comments': 'Private admin page for moderating CompressMyPic comments. This page is not for public use — please use the contact page for help, feedback or bug reports.',
       '/guides/compress-images-for-whatsapp': 'Learn how to compress images for WhatsApp without losing quality. Free, private, no signup — shrink photos before sending so they stay sharp and send fast.',
-      '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP explained simply: file size, quality and transparency compared, so you can pick the right format for photos, logos and websites.',
-      '/guides/reduce-image-size-to-100kb': 'Reduce image size to 100KB for websites and email with a free online compressor. Step-by-step guide — no signup, no watermark, images stay on your device.',
+      '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP compared: file size, quality, transparency and browser support — pick the right image format for photos, logos, websites and social media.',
+      '/guides/reduce-image-size-to-100kb': 'Step-by-step guide: reduce any image to 100KB for websites and email — which format, quality and dimensions to use, plus the common mistakes to avoid.',
     };
 
     const staticTitlesEs: Record<string, string> = {
@@ -1316,6 +1317,27 @@ export default function App() {
     };
     setMetaContent('meta[property="og:image:alt"]', 'property', 'og:image:alt', nextTitle);
     setMetaContent('meta[name="twitter:image:alt"]', 'name', 'twitter:image:alt', nextTitle);
+
+    // Quick wins (2026-11-16): guide pages are articles, everything else is
+    // a website. Guide pages carry article:published_time matching the
+    // datePublished in their JSON-LD (2026-11-14 for all 3 guides, all
+    // locales). Non-guide routes explicitly reset og:type and drop the tag
+    // so SPA navigation away from a guide never leaves a stale "article".
+    // parsePath() normalizes every localized guide URL back to its EN
+    // canonical currentPath (via the EN_PATH_BY_<LANG> slug maps), so one
+    // '/guides/' prefix check covers all 11 locales.
+    const isGuidePage = currentPath.startsWith('/guides/');
+    setMetaContent('meta[property="og:type"]', 'property', 'og:type', isGuidePage ? 'article' : 'website');
+    if (isGuidePage) {
+      setMetaContent(
+        'meta[property="article:published_time"]',
+        'property',
+        'article:published_time',
+        '2026-11-14T00:00:00+04:00'
+      );
+    } else {
+      document.head.querySelector('meta[property="article:published_time"]')?.remove();
+    }
 
     // hreflang: App owns home/legal/directory/guide pages; ToolPageLayout owns
     // tool pages, so App never writes (or removes) alternates for a translated

@@ -457,8 +457,8 @@ export const DE = {
     altProcessed: 'Verarbeitete Version von {name}', // 'Processed version of {name}'
   },
   homeMeta: {
-    seoTitle: 'Kostenloser Bildkompressor – Bilder online komprimieren, ohne Anmeldung',
-    seoDescription: 'Bilder online kostenlos komprimieren und JPG-, PNG- und WebP-Dateien verkleinern, ohne Qualität zu verlieren. Ohne Anmeldung und ohne Wasserzeichen – Ihre Fotos verlassen nie Ihren Browser.',
+    seoTitle: 'Kostenloser Bildkompressor – Bilder online verkleinern',
+    seoDescription: 'Bilder online kostenlos komprimieren: JPG, PNG und WebP verkleinern ohne Qualitätsverlust. Ohne Anmeldung, ohne Wasserzeichen – Ihre Fotos bleiben im Browser.',
     h1: 'Kostenloser Bildkompressor – Bilder online komprimieren',
     subtitle: 'Verkleinern Sie JPG-, PNG-, WebP- und HEIC-Dateien direkt in Ihrem Browser.',
   },

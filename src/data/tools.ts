@@ -4491,9 +4491,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Compress Image to 100KB',
     shortDescription: 'Reduce image size under 100KB cleanly without visible blur.',
     category: 'compress',
-    seoTitle: 'Compress Image to 100KB Online – Shrink Photos Cleanly',
+    seoTitle: 'Compress Image to 100KB Online Free – Exact Size Tool',
     seoDescription:
-      'Compress image to 100KB online free in your browser for job portals, resumes, and web pages. Keep crisp detail with smart quality search and batch ZIP export.',
+      'Compress any image to exactly 100KB online, free, in your browser — for job portals, resumes and web pages. Instant batch ZIP export, no signup, no upload.',
     h1: 'Compress Image to 100KB Online',
     subtitle:
       'Hit the proven web and portal sweet spot when you compress image to 100KB without sacrificing crispness. Built for job applicants attaching portfolio headshots, bloggers preparing fast article thumbnails, and HR portals with tight attachment caps, this local tool tests quality settings and optional scaling inside your browser on inputs up to 25 MB.',
@@ -7617,7 +7617,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Background Remover',
     shortDescription: 'Remove image backgrounds with AI in-browser and export transparent PNGs.',
     category: 'ai-tools',
-    seoTitle: 'Remove Background from Image Free – AI, No Signup',
+    seoTitle: 'Free AI Background Remover – Remove Image Background',
     seoDescription:
       'Remove the background from any image free with in-browser AI. Download a transparent PNG or add a white, black or custom background — no signup, no upload.',
     h1: 'Free Online AI Background Remover',

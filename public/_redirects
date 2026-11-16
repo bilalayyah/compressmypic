@@ -14,16 +14,20 @@
 # overwrites dist/index.html with its own shell on every build, so a
 # committed public/index.html would NOT survive the Cloudflare build
 # (verified locally 2026-11-15). Instead the rendered home lives at
-# public/home/index.html (snapshot captured 2026-11-15, 202 KB, full
-# content: H1, 2,740 words in <main>, 53 tool links) and this rewrite
+# public/home/index.html (snapshot captured 2026-11-16, quick wins,
+# 200 KB, full content: H1, 2,738 words in <main>) and this rewrite
 # serves it for "/".
 # LESSON (2026-11-15): do NOT point the rewrite at /home.html — Pages
 # 308-redirects *.html URLs to their clean form (/home), so "/" ended
 # up at "/home" instead of staying "/". A directory target (/home/)
 # is served directly with 200 and the URL stays "/".
 # Regenerate home/index.html whenever the JS bundle hash changes
-# (it references /assets/index-DhZU0Opj.js) or home content changes.
+# (it references /assets/index-B6Hq_WNW.js) or home content changes.
 /   /home/   200
+#
+# ACTIVE RULE (2): 100KB redirects (audit 2026-11-16, M1).
+/reduce-image-to-100kb/ /compress-image-to-100kb/ 301
+/reduce-image-size-to-100kb/ /guides/reduce-image-size-to-100kb/ 301
 #
 # REMOVED 2026-11-15 — trailing-slash 301 rule (/* /:splat 301):
 # Live-verified in a real browser (Chromium, 2026-11-15 ~08:36 Dubai):

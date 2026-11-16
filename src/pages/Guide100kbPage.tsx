@@ -150,7 +150,7 @@ export const Guide100kbPage: React.FC<Guide100kbPageProps> = ({ onNavigate }) =>
   const [openIds, setOpenIds] = useState<Set<string>>(new Set(['kb-faq-1', 'kb-faq-2']));
 
   useEffect(() => {
-    document.title = 'How to Reduce Image Size to 100KB for Web & Email';
+    document.title = 'How to Reduce Image Size to 100KB: Step-by-Step Guide';
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'Reduce image size to 100KB for websites and email with a free online compressor. Step-by-step guide — no signup, no watermark, images stay on your device.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
@@ -176,8 +176,8 @@ export const Guide100kbPage: React.FC<Guide100kbPageProps> = ({ onNavigate }) =>
         },
         {
           '@type': 'Article',
-          headline: "How to Reduce Image Size to 100KB for Web & Email",
-          description: "Reduce image size to 100KB for websites and email with a free online compressor. Step-by-step guide — no signup, no watermark, images stay on your device.",
+          headline: "How to Reduce Image Size to 100KB: Step-by-Step Guide",
+          description: "Step-by-step guide: reduce any image to 100KB for websites and email — which format, quality and dimensions to use, plus the common mistakes to avoid.",
           image: 'https://compressmypic.online/og-image.png',
           author: { '@type': 'Person', name: 'Bilal' },
           publisher: {
@@ -187,7 +187,7 @@ export const Guide100kbPage: React.FC<Guide100kbPageProps> = ({ onNavigate }) =>
             logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
           },
           datePublished: '2026-11-14',
-          dateModified: '2026-11-14',
+          dateModified: '2026-11-16',
           mainEntityOfPage: "https://compressmypic.online/guides/reduce-image-size-to-100kb/",
           inLanguage: 'en',
         },
@@ -196,7 +196,7 @@ export const Guide100kbPage: React.FC<Guide100kbPageProps> = ({ onNavigate }) =>
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Home", item: "https://compressmypic.online/" },
             { '@type': 'ListItem', position: 2, name: "Guides" },
-            { '@type': 'ListItem', position: 3, name: "How to Reduce Image Size to 100KB for Web & Email", item: "https://compressmypic.online/guides/reduce-image-size-to-100kb/" },
+            { '@type': 'ListItem', position: 3, name: "How to Reduce Image Size to 100KB: Step-by-Step Guide", item: "https://compressmypic.online/guides/reduce-image-size-to-100kb/" },
           ],
         },
       ],
@@ -234,7 +234,7 @@ export const Guide100kbPage: React.FC<Guide100kbPageProps> = ({ onNavigate }) =>
           <button
             type="button"
             onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Image Compressor</span>

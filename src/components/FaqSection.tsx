@@ -17,7 +17,7 @@ export const FAQ_DATA: FaqItem[] = [
   {
     id: 'faq-2',
     question: 'How do I compress an image to 100KB?',
-    answer: 'CompressMyPic does not have an exact target-KB input box, so you cannot type in 100KB directly. Instead, upload your image, choose a preset or lower the quality slider, and watch the live before-and-after size shown for each image. Adjust the quality or switch the output format to WebP until the compressed size is close to 100KB, then download it.',
+    answer: 'CompressMyPic has a tool made exactly for this: open /compress-image-to-100kb/, upload your image, and type in the exact target size — for example 100KB. The tool finds the quality setting that hits that size and shows you the before-and-after result, so you can download the image at exactly 100KB. The same tool works for any target size, not just 100KB.',
   },
   {
     id: 'faq-3',
@@ -27,7 +27,7 @@ export const FAQ_DATA: FaqItem[] = [
   {
     id: 'faq-4',
     question: 'How do I compress a JPEG to 100KB?',
-    answer: 'To reduce JPEG file size, upload your JPEG, choose JPEG as the output format, then lower the quality slider step by step while watching the live compressed size. Because there is no exact target-KB box, use the before-and-after size display to stop when the file is close to 100KB.',
+    answer: 'To reduce a JPEG to exactly 100KB, use the target-size tool at /compress-image-to-100kb/: upload your JPEG, type in 100KB as the exact target, and it finds the quality that hits that size. Choose JPEG as the output format and check the live before-and-after size display before downloading.',
   },
   {
     id: 'faq-5',

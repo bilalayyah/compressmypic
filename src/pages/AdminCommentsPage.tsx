@@ -50,7 +50,7 @@ export const AdminCommentsPage: React.FC<AdminCommentsPageProps> = ({ onNavigate
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
   useEffect(() => {
-    document.title = 'Comments Admin — CompressMyPic';
+    document.title = 'Comments Admin | CompressMyPic (Private Page)';
     window.scrollTo({ top: 0, behavior: 'instant' });
     let meta = document.querySelector('meta[name="robots"]');
     const created = !meta;
@@ -146,7 +146,7 @@ export const AdminCommentsPage: React.FC<AdminCommentsPageProps> = ({ onNavigate
           <button
             type="button"
             onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Image Compressor</span>

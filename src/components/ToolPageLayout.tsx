@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   ChevronRight,
   Lock,
@@ -152,12 +152,16 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
   // canonical pointed at a redirect.
   const canonicalUrl = `https://compressmypic.online${withTrailingSlash(pagePath)}`;
 
+  // GA4 (issue #40, audit 2026-11-16): 'tool_used' fires only on first REAL
+  // use per page view — never on mount, scroll, or hover. Refs for the
+  // first-interaction listeners (see the effect after the SEO useEffect).
+  const layoutRootRef = useRef<HTMLDivElement | null>(null);
+  const toolAreaRef = useRef<HTMLElement | null>(null);
+  const toolUsedFiredRef = useRef(false);
+
   useEffect(() => {
     const seoTitle = tool.seoTitle;
     const seoDescription = tool.seoDescription;
-
-    // GA4 (issue #40): top-of-funnel event — which tools people actually open.
-    trackToolUsed({ tool_slug: tool.slug, tool_name: tool.name, language: lang });
 
     const prevTitle = document.title;
     document.title = seoTitle;
@@ -299,6 +303,43 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tool, canonicalUrl, alternates, lang]);
 
+  // GA4 (issue #40, audit 2026-11-16): fire 'tool_used' only on first real
+  // use per page view. A file-input 'change' or a file 'drop' anywhere in
+  // the layout, or a first pointer interaction inside the tool workspace,
+  // counts as use. Scroll and hover never fire it.
+  useEffect(() => {
+    // New tool or language = new page view: allow the event once again.
+    toolUsedFiredRef.current = false;
+  }, [tool.slug, lang]);
+
+  useEffect(() => {
+    const fireOnce = () => {
+      if (toolUsedFiredRef.current) return;
+      toolUsedFiredRef.current = true;
+      trackToolUsed({ tool_slug: tool.slug, tool_name: tool.name, language: lang });
+    };
+    const root = layoutRootRef.current;
+    const toolArea = toolAreaRef.current;
+    if (root) {
+      // Capture phase so the events are seen even if a child stops propagation.
+      root.addEventListener('change', fireOnce, true);
+      root.addEventListener('drop', fireOnce, true);
+    }
+    if (toolArea) {
+      toolArea.addEventListener('pointerdown', fireOnce, true);
+    }
+    return () => {
+      if (root) {
+        root.removeEventListener('change', fireOnce, true);
+        root.removeEventListener('drop', fireOnce, true);
+      }
+      if (toolArea) {
+        toolArea.removeEventListener('pointerdown', fireOnce, true);
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tool.slug, tool.name, lang]);
+
   useEffect(() => {
     const slugKey = pagePath.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'home';
     const scriptId = `tool-${slugKey}-jsonld`;
@@ -414,7 +455,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
   }, [tool, canonicalUrl, pagePath, ui]);
 
   return (
-    <div className="bg-[var(--bg)]">
+    <div ref={layoutRootRef} className="bg-[var(--bg)]">
       {/* Left-Aligned Tool Page Header */}
       <section className="pt-8 pb-6 sm:pt-11 sm:pb-8 px-4 sm:px-6 max-w-[1180px] mx-auto text-left">
         {/* Grey Breadcrumb */}
@@ -473,7 +514,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
       </section>
 
       {/* Main Tool Workspace */}
-      <section className="max-w-[1180px] w-full mx-auto px-4 sm:px-6 pb-14">
+      <section ref={toolAreaRef} className="max-w-[1180px] w-full mx-auto px-4 sm:px-6 pb-14">
         {children}
       </section>
 

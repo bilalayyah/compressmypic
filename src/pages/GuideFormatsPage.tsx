@@ -146,7 +146,7 @@ export const GuideFormatsPage: React.FC<GuideFormatsPageProps> = ({ onNavigate }
   const [openIds, setOpenIds] = useState<Set<string>>(new Set(['fmt-faq-1', 'fmt-faq-10']));
 
   useEffect(() => {
-    document.title = 'JPG vs PNG vs WebP: Which Format Should You Use?';
+    document.title = 'JPG vs PNG vs WebP: Which Image Format Is Best? (Guide)';
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) metaDescription.setAttribute('content', 'JPG vs PNG vs WebP explained simply: file size, quality and transparency compared, so you can pick the right format for photos, logos and websites.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
@@ -172,8 +172,8 @@ export const GuideFormatsPage: React.FC<GuideFormatsPageProps> = ({ onNavigate }
         },
         {
           '@type': 'Article',
-          headline: "JPG vs PNG vs WebP: Which Format Should You Use?",
-          description: "JPG vs PNG vs WebP explained simply: file size, quality and transparency compared, so you can pick the right format for photos, logos and websites.",
+          headline: "JPG vs PNG vs WebP: Which Image Format Is Best? (Guide)",
+          description: "JPG vs PNG vs WebP compared: file size, quality, transparency and browser support — pick the right image format for photos, logos, websites and social media.",
           image: 'https://compressmypic.online/og-image.png',
           author: { '@type': 'Person', name: 'Bilal' },
           publisher: {
@@ -183,7 +183,7 @@ export const GuideFormatsPage: React.FC<GuideFormatsPageProps> = ({ onNavigate }
             logo: { '@type': 'ImageObject', url: 'https://compressmypic.online/favicon.svg' },
           },
           datePublished: '2026-11-14',
-          dateModified: '2026-11-14',
+          dateModified: '2026-11-16',
           mainEntityOfPage: "https://compressmypic.online/guides/jpg-vs-png-vs-webp/",
           inLanguage: 'en',
         },
@@ -192,7 +192,7 @@ export const GuideFormatsPage: React.FC<GuideFormatsPageProps> = ({ onNavigate }
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Home", item: "https://compressmypic.online/" },
             { '@type': 'ListItem', position: 2, name: "Guides" },
-            { '@type': 'ListItem', position: 3, name: "JPG vs PNG vs WebP: Which Format Should You Use?", item: "https://compressmypic.online/guides/jpg-vs-png-vs-webp/" },
+            { '@type': 'ListItem', position: 3, name: "JPG vs PNG vs WebP: Which Image Format Is Best? (Guide)", item: "https://compressmypic.online/guides/jpg-vs-png-vs-webp/" },
           ],
         },
       ],
@@ -230,7 +230,7 @@ export const GuideFormatsPage: React.FC<GuideFormatsPageProps> = ({ onNavigate }
           <button
             type="button"
             onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Image Compressor</span>

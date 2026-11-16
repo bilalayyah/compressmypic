@@ -21,7 +21,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Image Compressor</span>

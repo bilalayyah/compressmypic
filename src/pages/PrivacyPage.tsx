@@ -7,7 +7,7 @@ interface PrivacyPageProps {
 
 export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
   useEffect(() => {
-    document.title = 'Privacy Policy - CompressMyPic';
+    document.title = 'Privacy Policy | CompressMyPic – Your Images Stay Private';
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
@@ -19,7 +19,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Image Compressor</span>

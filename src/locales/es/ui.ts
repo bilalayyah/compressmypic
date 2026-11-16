@@ -436,8 +436,8 @@ export const ES = {
     altProcessed: 'Versión procesada de {name}', // 'Processed version of {name}'
   },
   homeMeta: {
-    seoTitle: 'Compresor de imágenes gratis – Comprima imágenes online, sin registro',
-    seoDescription: 'Comprima imágenes online gratis y reduzca el tamaño de JPG, PNG y WebP sin perder calidad. Sin registro ni marca de agua: sus fotos nunca salen de su navegador.',
+    seoTitle: 'Compresor de imágenes gratis – Comprima fotos online',
+    seoDescription: 'Comprima imágenes online gratis y reduzca el tamaño de JPG, PNG y WebP sin perder calidad. Sin registro ni marca de agua: sus fotos nunca salen del navegador.',
     h1: 'Compresor de imágenes gratis – Comprima imágenes online',
     subtitle: 'Reduzca el tamaño de archivos JPG, PNG, WebP y HEIC directamente en su navegador.',
   },

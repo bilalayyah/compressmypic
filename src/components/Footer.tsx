@@ -456,7 +456,7 @@ export const Footer: React.FC<FooterProps> = ({
                 {strings.cookieSettingsLabel}
               </button>
             )}
-            <span>{strings.contactLabel}</span>
+            <a href="mailto:bilalayyah@gmail.com">{strings.contactLabel}</a>
           </div>
         </div>
       </div>

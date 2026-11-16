@@ -581,6 +581,8 @@ export const Header: React.FC<HeaderProps> = ({
             }}
             className="lg:hidden h-10 w-10 sm:h-11 sm:w-11 grid place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 cursor-pointer shrink-0"
             aria-label={strings.menuAriaLabel}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -589,7 +591,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-[var(--line)] bg-[var(--surface)] px-4 pt-3 pb-6 space-y-2 max-h-[82vh] overflow-y-auto shadow-[var(--shadow-lg)]">
+        <div id="mobile-menu" className="lg:hidden border-t border-[var(--line)] bg-[var(--surface)] px-4 pt-3 pb-6 space-y-2 max-h-[82vh] overflow-y-auto shadow-[var(--shadow-lg)]">
           {/* Mobile Search (SEO audit #17): the same tool search as desktop,
               so mobile visitors can find tools from any page. */}
           <form
