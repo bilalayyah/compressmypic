@@ -18936,8 +18936,387 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       readingMinutes: 11,
     },
     relatedToolSlugs: ['/image-metadata-viewer', '/image-converter', '/image-cropper', '/image-to-base64'],
+  },
+  {
+    id: 'background-remover-guide',
+    toolSlug: '/remove-background',
+    categoryId: 'ai-tools',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'background-remover-guide',
+      title: 'Background Remover: Complete Guide',
+      description:
+        'What a background remover is, how the AI finds your subject, and how to get a clean transparent cutout — free, in your browser, with no upload.',
+      body: `
+<p>A background remover takes a photo and separates the subject from everything behind it. The result is a clean cutout you can place on any background, or keep transparent.</p>
+<p>It sounds like a job for a designer with expensive software. Today, a small AI model running in your browser does it in seconds, with no upload and no account.</p>
+<p>This guide explains what a background remover is, how the AI works, what it handles well, where it struggles, and how to get a clean result every time.</p>
+<h2 id="what-is-a-background-remover">What Is a Background Remover?</h2>
+<p>A background remover is a tool that finds the main subject in a photo and deletes the rest. The subject might be a person, a product, a pet, a car, or a logo.</p>
+<p>Everything behind the subject becomes transparent. The cutout keeps its original shape, so a round bottle stays round and a person keeps their outline.</p>
+<p>The result is usually saved as a PNG with transparency. That file can sit on a website, a slide, a thumbnail, or a product listing without a visible box around it.</p>
+<p>Before AI tools, this job needed manual selection. A designer traced the outline by hand, pixel by pixel, which took minutes or hours for a single photo.</p>
+<p>Modern removers do the same job automatically. The AI has learned what people, products, and animals look like, so it can guess the outline in a few seconds.</p>
+<h2 id="how-ai-background-removal-works">How AI Background Removal Works</h2>
+<p>The tool uses a trained AI model that looks at every pixel and decides whether it belongs to the subject or the background. This task is called image segmentation.</p>
+<p>The model was trained on thousands of photos where the subject was already marked. From those examples, it learned the patterns that separate a person from a wall or a shoe from a floor.</p>
+<p>When you upload a photo, the model scans it and builds a mask. The mask is a map that marks each pixel as subject or background, with soft values along the edges.</p>
+<p>The tool then applies the mask and removes the background pixels. The subject stays untouched, and the empty area becomes transparent instead of white.</p>
+<p>Edge quality is the hardest part of the job. Hair, fur, glass, and fine details sit between subject and background, so the mask softens there rather than cutting sharply.</p>
+<p>The model does not understand what it sees in the way a person does. It matches patterns, so an unusual pose or an object it has rarely seen can produce a rough outline.</p>
+<h2 id="what-happens-in-your-browser">What Happens Inside Your Browser</h2>
+<p>The <a href="/remove-background/">Background Remover</a> runs entirely in your browser. Nothing is uploaded to a server, and no account is needed at any point.</p>
+<p>On your first visit, the page downloads a compact AI model of about 35 MB. The model is called isnet_quint8, and it is small enough to run on an ordinary laptop or phone.</p>
+<p>After the first download, the model is cached in your browser. Later visits start instantly, because the model is already there and ready to run.</p>
+<p>The actual removal runs on your own device through WebAssembly. Your photo stays in browser memory, and closing the tab clears it completely.</p>
+<p>This design has a clear trade-off. A small on-device model protects your privacy and costs nothing, but it cannot match the fine detail of a large cloud model on tricky edges.</p>
+<h2 id="photos-you-can-upload">The Photos You Can Upload</h2>
+<p>The tool accepts JPG, PNG, WebP, HEIC, BMP, and AVIF files. That covers photos from phones, cameras, screenshots, and design exports without converting first.</p>
+<p>HEIC photos from iPhones are converted to a decodable image automatically before the model runs, so you can upload them directly from your camera roll.</p>
+<p>Each photo can be up to 20 MB, and the tool processes one photo at a time. That limit covers high-resolution phone and camera shots comfortably.</p>
+<p>One photo at a time is a deliberate choice. The AI model focuses all of your device memory on a single clean cutout, instead of splitting it across a batch.</p>
+<h2 id="transparent-or-solid-background">Transparent PNG or Solid Background?</h2>
+<p>After the cutout is ready, you choose how to export it. The transparent PNG keeps the background empty, so the cutout works on any colour or design behind it.</p>
+<p>A transparent PNG is the flexible option. Designers place it in Canva, Photoshop, Figma, or PowerPoint, and the cutout blends into whatever sits behind it.</p>
+<p>The trade-off is file size. PNG stores every pixel losslessly, so a large detailed cutout can be bigger than the original JPG, which was heavily compressed.</p>
+<p>You can also export the cutout on a solid background instead. White, black, or any custom colour fills the empty area before the file is saved.</p>
+<p>A white background is the standard choice for marketplace listings. Amazon and eBay prefer crisp white-background images for main product thumbnails, and the tool exports exactly that.</p>
+<h2 id="who-uses-a-background-remover">Who Uses a Background Remover?</h2>
+<p>Online sellers are the biggest users. A product photo with a clean background looks professional, and marketplaces often require it for the main listing image.</p>
+<p>Content creators use cutouts for thumbnails, channel art, and social posts. A person cut out of a busy room stands out far more on a small phone screen.</p>
+<p>Designers use background removal as a first step. The cutout goes into a poster, a slide deck, a flyer, or a website hero, where the designer controls the final background.</p>
+<p>Small businesses use it for logos and team photos. A logo with a transparent background sits neatly on a website header, a business card, or a sign.</p>
+<p>Everyday users use it too. A pet photo becomes a sticker, a portrait becomes a profile picture, and a holiday snap becomes a clean print without the clutter behind it.</p>
+<h2 id="what-makes-a-clean-cutout">What Makes a Clean Cutout</h2>
+<p>Photos with a clear subject and good contrast against the background work best. Portraits, product shots, pets, cars, and logos with sharp outlines give the model an easy job.</p>
+<p>Flat lighting and a simple backdrop help a lot. A product on a plain table is far easier to separate than the same product on a patterned rug.</p>
+<p>Distance matters too. A subject that fills a good part of the frame is easier to outline than a tiny figure lost in a wide landscape.</p>
+<p>Sharp focus helps as well. A blurry edge gives the model no clear line to follow, so the mask softens and the cutout looks less crisp.</p>
+<p>If your photo is busy, crop closer to the subject before uploading. A tighter frame removes distractions and gives the model less background to confuse with the subject.</p>
+<p>Colour contrast matters as much as shape. A dark subject on a light background, or a bright product on a dark table, gives the model a strong signal to follow.</p>
+<h2 id="where-the-ai-struggles">Where the AI Struggles</h2>
+<p>Fine hair and fur are the hardest case for a compact model. Strands are thin, they blend into the background, and the model often softens them or loses a few hairs.</p>
+<p>Transparent and glass objects confuse the model as well. A glass bottle shows the background through it, so the AI cannot tell where the bottle ends.</p>
+<p>Subjects that match the background colour are another weak spot. Same-colour clothing against a same-colour wall gives the model no contrast to work with.</p>
+<p>Busy scenery makes the job harder. When the subject blends into a cluttered background, the small on-device model has to guess where the subject ends.</p>
+<p>Shadows can be caught as part of the subject. A strong shadow on the floor may survive the cutout, so check the result and re-shoot with softer light if needed.</p>
+<p>Reflections cause similar trouble. A shiny floor or a mirror behind the subject can look like part of the scene, and the model may keep a reflection it should have removed.</p>
+<h2 id="background-remover-vs-other-tools">Background Remover vs Other Tools</h2>
+<p>Removing a background is only one step in preparing an image. The cutout often needs a new background, a different size, or a smaller file before it is ready to publish.</p>
+<p>The <a href="/add-background-to-image/">Add Background to Image</a> tool places your cutout on a colour, a gradient, or another photo. It is the natural next step after removal.</p>
+<p>The <a href="/image-cropper/">Image Cropper</a> trims the cutout or the original photo before removal. Cropping closer to the subject often improves the AI result noticeably.</p>
+<p>The <a href="/image-converter/">Image Converter</a> changes the file format afterwards. A transparent PNG can become a WebP for the web, or a white-background version can become a JPG for a listing.</p>
+<p>For a full walkthrough of the process, read <a href="/blog/how-to-remove-background-from-image/">How to Remove a Background from an Image</a>. For a head-to-head comparison with manual editing, see <a href="/blog/ai-background-removal-vs-manual-cutout/">AI Background Removal vs Manual Cutout</a>.</p>
+<h2 id="product-photos">Background Remover for Product Photos</h2>
+<p>Product photos are the most common use for background removal, because a clean listing image sells better than a cluttered one. Buyers judge a product in a second, and the background is the first thing they notice after the product itself.</p>
+<p>Start with the best photo you have. A product shot on a plain surface, in soft daylight, with the product centred, gives the AI a clear subject and a simple background.</p>
+<p>After removal, export on white for the main listing image. Most marketplaces want a pure white background, and a white export from the tool matches that requirement without extra editing.</p>
+<p>Keep the transparent PNG as well. The same cutout can go on a coloured banner, a social post, or your own website, where a white box would look out of place.</p>
+<p>Check the edges at full size before publishing. Zoom into the cutout and look for leftover background around corners, handles, and thin parts such as straps or cords.</p>
+<p>If the listing needs a specific size, resize the cutout afterwards. The exported PNG keeps the original resolution, so you can shrink it to the marketplace dimensions without losing sharpness.</p>
+<h2 id="people-and-portraits">Background Remover for People and Portraits</h2>
+<p>Portraits are the second most common use. A headshot cut out of a messy room becomes a clean profile photo, a CV picture, or a team page portrait.</p>
+<p>Hair is the main challenge in portraits. Loose strands, curls, and flyaway hairs blur the edge between subject and background, and a compact model may soften them.</p>
+<p>A plain background behind the person helps more than any setting. A wall, a curtain, or a door gives the model a clear contrast line around the head and shoulders.</p>
+<p>Good light on the face helps too. A well-lit subject stands out from a darker background, and the model follows that contrast around the outline.</p>
+<p>After removal, place the portrait on a background that suits its purpose. A neutral grey or soft colour works for a professional profile, while a bold colour suits a social thumbnail.</p>
+<p>Always check the Split Compare view for portraits. Look closely at the hairline, the ears, and the shoulders, where a small error is easy to spot and easy to fix by re-shooting.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>Open the <a href="/remove-background/">Background Remover</a> and wait for the AI model to load. The first visit downloads about 35 MB, and later visits start instantly.</p>
+<p>Drop one photo up to 20 MB into the page. The AI isolates your subject locally and shows the original next to the transparent cutout.</p>
+<p>Use Split Compare to drag across the before-and-after view. Check the edges around hair, fur, and fine details before you download anything.</p>
+<p>Choose transparent, white, black, or a custom background, then download. The file is named after your photo with _no_bg added, and you can click New Image for the next photo.</p>
+<h2 id="background-remover-summary">The Short Version</h2>
+<p>A background remover uses AI to separate the subject of a photo from everything behind it, and exports the result as a transparent PNG or on a solid background.</p>
+<p>The CompressMyPic tool runs a compact model entirely in your browser, so your photos are never uploaded, there is no signup, and there is no watermark or daily limit.</p>
+<p>Clear subjects on simple backgrounds give the cleanest cutouts. Hair, glass, and busy scenes are the known limits, and a closer crop before uploading helps more than any setting.</p>
+`,
+      faqs: [
+        {
+          question: 'What is a background remover?',
+          answer: 'A background remover is a tool that finds the main subject in a photo — a person, product, pet, or logo — and deletes everything behind it. The result is a cutout with a transparent background, usually saved as a PNG, that you can place on any colour, design, or slide. Modern removers do this with AI, so there is no manual tracing involved.',
+        },
+        {
+          question: 'What is the difference between a transparent PNG and a white-background image?',
+          answer: 'A transparent PNG has no background at all, so the cutout blends into whatever sits behind it — a website, a slide, or a coloured banner. A white-background image fills the empty area with solid white, which is what marketplaces like Amazon and eBay want for main listing photos. Choose transparent when the cutout will go into a design, and white when it will be listed or printed as-is.',
+        },
+        {
+          question: 'Do I need design skills to use a background remover?',
+          answer: 'No. You upload a photo, the AI finds the subject, and you download the cutout. There is nothing to draw, no layers to manage, and no software to learn. If you can drag a file into a browser window, you can remove a background.',
+        },
+        {
+          question: 'Can a background remover handle photos with several people in them?',
+          answer: 'Yes. The AI model looks for subjects, not just one subject, so a group photo can be cut out with all the people kept together. The edges between people standing close together may be less clean than a single portrait, so check the result with Split Compare before downloading.',
+        },
+        {
+          question: 'Which format should I download after removing a background?',
+          answer: 'Download a PNG if you want transparency, because JPG cannot store transparent pixels — a JPG cutout always needs a solid background. If you exported on white or black, a JPG is fine and usually smaller. Keep the transparent PNG as your master copy, and create other formats from it later.',
+        },
+        {
+          question: 'Can I remove the background from a screenshot?',
+          answer: 'Yes. A screenshot is a regular image file, so the tool accepts it like any other photo. Screenshots with windows, text, and interface elements usually separate cleanly because the edges are sharp. Very small text or thin lines near the edge may be softened, so check the cutout before using it.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/add-background-to-image', '/image-cropper', '/image-converter'],
+  },
+  {
+    id: 'how-to-remove-background-from-image',
+    toolSlug: '/remove-background',
+    categoryId: 'ai-tools',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-remove-background-from-image',
+      title: 'How to Remove a Background from an Image',
+      description:
+        'Remove the background from any photo in six steps: pick the right photo, upload it, check the cutout with Split Compare, and download a transparent PNG.',
+      body: `
+<p>Removing a background from a photo takes less than a minute once you know the steps. Pick a good photo, upload it, check the cutout, and download it.</p>
+<p>This guide walks through the whole process on the CompressMyPic <a href="/remove-background/">Background Remover</a>, from the first model load to the finished file. It also covers the problems that show up most often and how to fix them.</p>
+<p>No design skill is needed. If you can drag a file into a browser window, you can remove a background.</p>
+<p>Your photo never leaves your device. The whole process runs in your browser, so private photos stay private from start to finish.</p>
+<h2 id="pick-the-right-photo">Before You Start: Pick the Right Photo</h2>
+<p>A good result starts before you upload anything. The photo you choose decides most of the quality, so spend a minute picking the right one.</p>
+<p>Choose a photo where the subject is clear and fills a good part of the frame. A person, product, or pet that stands out from the background gives the AI an easy job.</p>
+<p>Prefer a simple background. A plain wall, a table, or an open sky separates cleanly, while a crowded room or a patterned backdrop makes the AI guess.</p>
+<p>Check the light. Soft, even light on the subject and a little contrast with the background helps the model find the outline. Harsh shadows behind the subject cause trouble later.</p>
+<p>If the photo is wider than it needs to be, crop it first. The <a href="/image-cropper/">Image Cropper</a> trims the extra scene, and a tighter frame usually produces a cleaner cutout.</p>
+<h2 id="step-1-model-load">Step 1: Wait for the AI Model to Load</h2>
+<p>Open the <a href="/remove-background/">Background Remover</a> page. On your first visit, the page downloads a compact AI model of about 35 MB before the tool is ready.</p>
+<p>The download takes a few seconds on a fast connection and longer on slow Wi-Fi. Wait for the page to say the model is ready before you upload a photo.</p>
+<p>This download happens only once. The model is cached in your browser, so later visits start instantly with no waiting at all.</p>
+<p>If you are on mobile data, use Wi-Fi for the first visit. The 35 MB model download is the only large transfer, and everything after it is small.</p>
+<h2 id="step-2-upload">Step 2: Upload Your Photo</h2>
+<p>Drag your photo into the dropzone, or click it to pick a file from your device. The tool accepts JPG, PNG, WebP, HEIC, BMP, and AVIF files up to 20 MB.</p>
+<p>Upload one photo at a time. The tool processes a single photo so the AI model can focus all of your device memory on one clean cutout.</p>
+<p>HEIC photos from iPhones work directly. The tool converts them to a decodable image automatically, so you do not need to convert them first.</p>
+<p>Large photos take a little longer because the AI runs on your device. A 20 MB camera shot needs more processing time than a small phone photo, so be patient for a few seconds.</p>
+<p>Keep the original file safe. The tool never changes your source photo, so you can always upload it again or use it for a different edit later.</p>
+<h2 id="step-3-ai-cutout">Step 3: Let the AI Cut Out the Subject</h2>
+<p>Once the photo is uploaded, the AI scans it and builds a mask that marks each pixel as subject or background. This usually takes a few seconds.</p>
+<p>You do not need to draw anything or mark the subject yourself. The model has learned what people, products, and animals look like, so it finds the outline on its own.</p>
+<p>When it finishes, the page shows your original photo next to the transparent cutout. The subject stays untouched, and the background becomes empty space.</p>
+<p>If the first pass catches a shadow as part of the subject, use Re-run Removal. The model is deterministic, so the result is usually identical, but a changed input can improve it.</p>
+<h2 id="step-4-split-compare">Step 4: Check the Cutout with Split Compare</h2>
+<p>Before you download, check the cutout carefully. Click Split Compare to drag across the before-and-after view and see exactly what was kept and what was removed.</p>
+<p>Look at the edges first. Hair, fur, ears, handles, straps, and thin parts are where mistakes show up, so zoom in and inspect them closely.</p>
+<p>Watch for leftover background around corners and edges. A small patch of the old background can survive near a complex outline, and it is easy to miss at a small size.</p>
+<p>Also check for missing pieces. A same-colour sleeve, a glass part, or a thin cord can be cut away with the background, leaving a gap in the subject.</p>
+<p>If the result is not clean, do not force it. Try a photo with stronger contrast, crop closer to the subject, or re-shoot with a plainer background, then upload again.</p>
+<p>Pay special attention to hands, feet, and anything the subject holds. Small items near the edge of the frame are easy to cut by mistake, and the compare view shows them clearly.</p>
+<h2 id="step-5-choose-background">Step 5: Choose Transparent or a Solid Background</h2>
+<p>When the cutout looks good, choose how to export it. Transparent keeps the background empty, so the cutout works on any colour or design behind it.</p>
+<p>Pick transparent when the cutout will go into a design tool. Canva, Photoshop, Figma, PowerPoint, and Google Slides all accept transparent PNGs, and the cutout blends into any slide or layout.</p>
+<p>Pick white when the image is for a marketplace listing. Amazon and eBay prefer crisp white-background images for main product thumbnails, and the white export matches that rule.</p>
+<p>Pick black for a dramatic look, or a custom colour to match your brand. The custom option takes any hex colour, so the background can match your website or packaging exactly.</p>
+<p>Remember that a transparent PNG is larger than a JPG of the same image. PNG stores every pixel losslessly, so a big detailed cutout can outweigh the original photo.</p>
+<h2 id="step-6-download">Step 6: Download Your Cutout</h2>
+<p>Click the download button for the version you chose. The transparent PNG is named after your photo with _no_bg added, so you can find it easily later.</p>
+<p>The download keeps the original resolution. A 4000-pixel product photo stays 4000 pixels wide, so the cutout is sharp enough for print as well as the web.</p>
+<p>After downloading, click New Image to process the next photo. There is no daily limit, so you can work through a whole set of photos one by one.</p>
+<p>Save the transparent PNG as your master copy. From it, you can create white-background, resized, or compressed versions later without removing the background again.</p>
+<h2 id="fixing-common-problems">Fixing Common Problems</h2>
+<p>A faint halo around the subject is the most common flaw. It happens when the edge between subject and background is soft, and the model keeps a thin ring of the old background.</p>
+<p>A halo is easier to prevent than to fix. Re-shoot with a plain background that contrasts with the subject, and the edge will come out cleaner.</p>
+<p>If part of the subject is missing, the subject probably blends into the background. Same-colour clothing, glass, or camouflage patterns confuse the model, so change the backdrop and try again.</p>
+<p>If the background is busy, the edges may look rough. Crop the photo closer to the subject before uploading, which removes distractions and gives the model less to guess about.</p>
+<p>If the cutout looks fine at a small size but rough when zoomed in, the photo itself may be low resolution. Start from the highest-quality original you have, not a compressed copy.</p>
+<p>If a shadow survives as a dark patch under the subject, it was probably strong in the original photo. Re-shoot with softer, more even light, and the shadow will usually disappear from the cutout.</p>
+<h2 id="product-photo-workflow">Removing Backgrounds from Product Photos, Step by Step</h2>
+<p>Product photos follow the same steps, with a few extra checks. A listing image is judged at a glance, so the edges and the background colour matter more than anywhere else.</p>
+<p>Photograph the product on a plain surface in soft daylight before you start. A white sheet, a plain table, or a light wall gives the AI a simple background to remove.</p>
+<p>Upload the photo and check the cutout at full size. Zoom into corners, handles, straps, and cords, where leftover background hides most often.</p>
+<p>Export on white for the main listing image. Marketplaces expect a pure white background, and the white export from the tool matches that requirement directly.</p>
+<p>Keep the transparent PNG as well. The same cutout can go on a coloured banner, a social post, or your own store page, where a white box would look out of place.</p>
+<p>Work through a batch one photo at a time. There is no daily limit, so you can remove the background from a whole product range in one sitting.</p>
+<h2 id="portrait-workflow">Removing Backgrounds from Portraits</h2>
+<p>Portraits need extra care around hair. Loose strands, curls, and flyaway hairs blur the edge between the person and the background, and a compact model may soften them.</p>
+<p>Ask the person to stand against a plain wall or curtain. A clear contrast line around the head and shoulders gives the model the easiest outline to follow.</p>
+<p>Light the face well and keep the background a little darker if you can. A well-lit subject against a darker backdrop separates more cleanly than a dim subject in a bright room.</p>
+<p>After removal, use Split Compare and look closely at the hairline, the ears, and the shoulders. A small error there is easy to spot at full size and hard to notice later.</p>
+<p>Place the finished portrait on a background that suits its purpose. A neutral grey or soft colour works for a professional profile, while a bold colour suits a social thumbnail.</p>
+<h2 id="removing-background-on-phone">Removing a Background on Your Phone</h2>
+<p>The tool works on mobile browsers too. It runs in Safari on iOS and Chrome on Android, with the same upload, compare, and download controls.</p>
+<p>Use Wi-Fi for the first visit so the 35 MB model downloads quickly. After that, the model is cached and the removal itself runs on the phone.</p>
+<p>Large photos take longer on a phone because the AI runs on the phone processor. A high-resolution camera shot may need a few extra seconds compared with a laptop.</p>
+<p>Downloading works the same way. The PNG saves to your photos or files app, ready to share or open in a design app on the phone.</p>
+<h2 id="what-to-do-next">What to Do Next with Your Cutout</h2>
+<p>A cutout is rarely the final image. Most people place it on a new background, resize it, or compress it before publishing, and each step has a tool for it.</p>
+<p>The <a href="/add-background-to-image/">Add Background to Image</a> tool puts your cutout on a colour, a gradient, or another photo. It is the natural next step after removal.</p>
+<p>The <a href="/image-cropper/">Image Cropper</a> trims the cutout to the exact shape you need, such as a square for a profile picture or a wide crop for a banner.</p>
+<p>The <a href="/image-converter/">Image Converter</a> changes the format. A transparent PNG can become a WebP for faster web pages, or a white-background version can become a JPG for a listing.</p>
+<p>If the PNG is too large for your page, compress it afterwards. The main compressor on the <a href="/">CompressMyPic homepage</a> shrinks images while keeping them sharp.</p>
+<p>Store the transparent cutout in a folder with your other design assets. The same file can serve a listing, a social post, and a slide deck, so you only remove the background once.</p>
+<h2 id="how-to-remove-background-summary">Quick Checklist</h2>
+<p>Pick a photo with a clear subject, a simple background, and good light. Crop it closer to the subject if the scene is busy.</p>
+<p>Open the <a href="/remove-background/">Background Remover</a>, wait for the model to load on your first visit, then upload one photo up to 20 MB.</p>
+<p>Check the cutout with Split Compare, choose transparent or a solid background, and download the PNG. Save the transparent version as your master copy.</p>
+<p>For the full background on how the tool works, read <a href="/blog/background-remover-guide/">Background Remover: Complete Guide</a>. To decide whether AI or manual editing suits a job, see <a href="/blog/ai-background-removal-vs-manual-cutout/">AI Background Removal vs Manual Cutout</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Should I crop my photo before removing the background?',
+          answer: 'Yes, if the scene is busy. Cropping closer to the subject removes distractions and gives the AI less background to confuse with the subject, which usually produces a cleaner edge. Use the Image Cropper first, then upload the cropped photo. If the photo already has a plain background, cropping is optional.',
+        },
+        {
+          question: 'Can I change the background colour after I download the cutout?',
+          answer: 'Only if you downloaded the transparent PNG. A transparent cutout can be placed on any colour later, in any design app or with the Add Background to Image tool. If you downloaded the white-background version, the white is baked into the file and cannot be removed, so always keep the transparent PNG as your master copy.',
+        },
+        {
+          question: 'Why does my cutout have a faint halo around the edges?',
+          answer: 'A halo is a thin ring of the old background that survives because the edge between subject and background is soft. It happens most with blurry edges, low contrast, or busy scenery. Prevent it by re-shooting with a plain background that contrasts with the subject — a dark subject on a light wall, for example — and the edge will come out much cleaner.',
+        },
+        {
+          question: 'Can I remove the background from a logo that sits on a white background?',
+          answer: 'Yes, and logos are one of the easiest cases because their outlines are sharp and the background is plain. Upload the logo, check the cutout, and download the transparent PNG. The result sits neatly on a website header, a business card, or a slide without a white box around it.',
+        },
+        {
+          question: 'How do I add a new background after removing the old one?',
+          answer: 'Download the transparent PNG first, then open the Add Background to Image tool and upload the cutout. You can place it on a solid colour, a gradient, or another photo, and export the finished image. Doing removal and background replacement as two separate steps keeps the cutout reusable for other designs.',
+        },
+        {
+          question: 'What size should my photo be for the best result?',
+          answer: 'Use the highest-quality original you have, up to the 20 MB limit. A sharp, high-resolution photo gives the model a clear edge to follow, while a small or heavily compressed copy blurs the outline and produces a rougher cutout. The tool keeps the original resolution in the download, so starting big costs nothing.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/add-background-to-image', '/image-cropper', '/image-resizer'],
+  },
+  {
+    id: 'ai-background-removal-vs-manual-cutout',
+    toolSlug: '/remove-background',
+    categoryId: 'ai-tools',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'ai-background-removal-vs-manual-cutout',
+      title: 'AI Background Removal vs Manual Cutout',
+      description:
+        'AI background removal is fast, free, and private — but manual cutout still wins on hair, glass, and high-stakes images. A full comparison of speed, accuracy, cost, and privacy.',
+      body: `
+<p>There are two ways to cut a subject out of a photo. An AI model can do it in seconds, or a person can trace the outline by hand.</p>
+<p>Both methods produce a transparent cutout. The difference lies in speed, accuracy, cost, and control, and the right choice depends on the photo and the job.</p>
+<p>This article compares AI background removal with manual cutout in detail, so you can choose the right method for each image and each job instead of guessing.</p>
+<h2 id="two-ways-to-cut-out">Two Ways to Cut Out a Subject</h2>
+<p>AI background removal uses a trained model to find the subject automatically. You upload a photo, the model builds a mask, and the background disappears.</p>
+<p>Manual cutout uses a person and an editor. The editor selects the subject with a pen tool, a lasso, or a brush, refining the edge until it looks right.</p>
+<p>The AI route is fast and free on tools like the CompressMyPic <a href="/remove-background/">Background Remover</a>. The manual route is slow and needs skill, but it gives full control over every pixel.</p>
+<p>Most people today start with AI. It handles the majority of photos well, and the ones it struggles with are the ones worth doing by hand.</p>
+<p>Understanding both methods matters. The comparison is not about which is better in general, but about which fits the photo in front of you.</p>
+<h2 id="how-ai-removal-works">How AI Removal Works</h2>
+<p>An AI background remover is a model trained on thousands of photos where the subject was already marked. It learned the patterns that separate people, products, and animals from their surroundings.</p>
+<p>When you upload a photo, the model scans every pixel and decides whether it belongs to the subject or the background. The result is a mask, a map of subject against background.</p>
+<p>The CompressMyPic tool runs a compact model called isnet_quint8, about 35 MB, entirely in your browser. Your photo is never uploaded to a server.</p>
+<p>The model is small by design. A compact model runs on ordinary devices without a paid cloud service, but it has less detail to work with than a large server model.</p>
+<p>The mask is applied automatically, and the background becomes transparent. The whole process takes only a few seconds, and there is nothing to draw or adjust.</p>
+<h2 id="model-size-tradeoff">Small On-Device Models vs Large Cloud Models</h2>
+<p>Not all AI background removers are the same. The model running in your browser is small and fast, while cloud tools run much larger models on powerful servers.</p>
+<p>A small model like isnet_quint8 is about 35 MB. It downloads once, runs on your device, and needs no upload, no account, and no payment.</p>
+<p>A large cloud model can be hundreds of megabytes or more. It sees finer detail and handles hair and busy scenes better, because it has more capacity to learn from.</p>
+<p>The price of a large model is the upload. Your photo travels to a server, waits in a queue, and comes back as a cutout, which takes longer and raises privacy questions.</p>
+<p>Large models also cost money to run. Cloud providers charge per image or per month, while the on-device model costs nothing after the first download.</p>
+<p>For most photos, the small model is enough. The large model earns its cost only on difficult edges, where the extra detail changes the visible result.</p>
+<h2 id="how-manual-cutout-works">How Manual Cutout Works</h2>
+<p>Manual cutout starts with a selection. The editor traces the subject outline with a pen tool for smooth curves, a lasso for freehand shapes, or a brush for fine areas.</p>
+<p>The selection is then refined. Feathering softens the edge, contrast adjustments tighten it, and the editor zooms in to fix small errors around hair and thin parts.</p>
+<p>For hair and fur, editors use specialised masking tools. They paint over the strands, sample nearby colours, and blend the edge so individual hairs survive.</p>
+<p>The process is slow because it is judgement all the way through. Every curve, corner, and strand needs a decision, and a complex photo can take an hour or more.</p>
+<p>The reward is precision. A skilled editor can cut out glass, fine jewellery, wispy hair, and transparent objects that no automatic model handles cleanly.</p>
+<h2 id="speed-comparison">Speed: Seconds Against Minutes</h2>
+<p>Speed is the biggest difference between the two methods. AI removal finishes a photo in seconds, including the model load on the first visit.</p>
+<p>Manual cutout takes minutes for a simple product on a plain background. A portrait with hair takes much longer, and a complex scene can take hours.</p>
+<p>That gap matters most in volume. A seller with fifty product photos can finish them with AI in one sitting, while manual work would take days.</p>
+<p>AI also removes the waiting time. There is no queue, no freelancer to brief, and no back-and-forth over revisions, because the result appears immediately.</p>
+<p>Manual work earns its time only when the photo is difficult. For a simple cutout, the extra hours buy almost nothing that the AI did not already deliver.</p>
+<h2 id="accuracy-comparison">Accuracy: Edges, Hair, and Fine Detail</h2>
+<p>Accuracy is where manual work still leads. A human editor sees the subject, understands it, and can follow an edge that confuses a model.</p>
+<p>Hair and fur are the clearest example. Fine strands blend into the background, and a compact AI model often softens them or loses a few hairs entirely.</p>
+<p>Glass and transparent objects are another weak spot for AI. A bottle shows the background through it, so the model cannot tell where the bottle ends and the room begins.</p>
+<p>Subjects that match the background colour also trouble AI. Same-colour clothing against a same-colour wall gives the model no contrast to follow.</p>
+<p>Manual editors handle all of these cases. They use context, not just pixels, and they can decide that a faint strand belongs to the subject even when the colours match.</p>
+<p>Edge softness is another AI weakness. A compact model blends the boundary slightly, which looks fine at a small size but shows up as a blurry rim on a large print.</p>
+<h2 id="cost-and-access">Cost and Access</h2>
+<p>AI background removal on CompressMyPic is free, with no signup, no watermark, and no daily limit. The tool runs in the browser, so there is nothing to install.</p>
+<p>Cloud AI tools often charge per image or per month. They use larger models and can handle trickier edges, but the cost adds up for a seller with hundreds of photos.</p>
+<p>Manual cutout costs time or money. Doing it yourself needs an editor and the skill to use it, while hiring an editor costs per image and per revision.</p>
+<p>Access is also a factor. AI works on any device with a browser, including a phone, while manual editing needs a desktop editor and a steady hand with a mouse or pen.</p>
+<p>For most everyday cutouts, free AI is the sensible default. Paying for manual work makes sense only when the photo is difficult and the result will be seen at large size.</p>
+<p>Revisions also cost differently. With AI, a second attempt is free and instant, while a manual revision means another round of waiting and another charge from the editor.</p>
+<h2 id="privacy-comparison">Privacy: Where Your Photo Goes</h2>
+<p>Privacy separates the methods more than people expect. The CompressMyPic tool processes your photo in your own browser, so the file never leaves your device.</p>
+<p>Cloud AI tools upload your photo to their servers. Most delete it afterwards, but the file still travels over the internet and sits on someone else's machine.</p>
+<p>Manual work has the same question. A hired editor receives your photos, and a personal or client photo passes through another person's hands and storage.</p>
+<p>For private photos, such as family portraits or client work under an agreement, on-device AI is the safest option. Nothing is uploaded, stored, or viewed by anyone else.</p>
+<h2 id="when-ai-wins">When AI Wins</h2>
+<p>AI wins on clear subjects with simple backgrounds. Portraits, product shots, pets, cars, and logos with sharp outlines come out clean in seconds.</p>
+<p>AI wins on volume. A batch of listing photos, a set of thumbnails, or a folder of social images is finished in minutes instead of days.</p>
+<p>AI wins on cost. Free, unlimited, on-device removal beats paying per image for work that the model already handles well.</p>
+<p>AI wins on speed of iteration. You can try a photo, check the result, re-shoot, and try again in the time a manual edit would still be starting.</p>
+<p>AI wins for non-designers. Anyone who can upload a file can remove a background, with no software to learn and no skill to build first.</p>
+<h2 id="when-manual-wins">When Manual Still Wins</h2>
+<p>Manual cutout wins on fine hair and fur. A portrait with loose curls, a pet with long fur, or a bride with a veil needs a human eye on the edge.</p>
+<p>Manual wins on glass and transparency. Bottles, spectacles, windows, and sheer fabric need judgement about what is subject and what is seen through it.</p>
+<p>Manual wins on high-stakes images. A hero shot for a campaign, a print ad, or a large poster will be seen at full size, where small AI errors become visible.</p>
+<p>Manual wins on unusual subjects. An object the model has rarely seen, an odd pose, or a strange angle can produce a rough outline that only a person can fix.</p>
+<p>Manual wins when the edge itself is the product. Jewellery, lace, and fine craft depend on tiny details, and those details are exactly what a compact model softens.</p>
+<h2 id="hybrid-workflow">A Hybrid Workflow</h2>
+<p>The best workflow is often both methods together. Start with AI, which does most of the work in seconds, then fix only the parts it got wrong.</p>
+<p>Run the photo through the <a href="/remove-background/">Background Remover</a> first and check the cutout with Split Compare. Most photos will be done at this step.</p>
+<p>For the photos that are not clean, open the cutout in an editor and refine the edges by hand. You are fixing a small area, not tracing the whole subject.</p>
+<p>This hybrid approach saves the most time. The AI handles the bulk of the outline, and your manual effort goes only where it changes the result.</p>
+<h2 id="future-of-background-removal">What the Future Holds</h2>
+<p>AI background removal keeps improving. Models are getting smaller and more accurate at the same time, so the gap between on-device and cloud quality narrows every year.</p>
+<p>Phone chips are also getting faster. The same model that needed a laptop a few years ago now runs on a mid-range phone in seconds.</p>
+<p>Manual cutout will not disappear. As AI handles the easy work, human editors will focus on the hardest images, where judgement and taste still matter.</p>
+<p>The likely future is a blend. AI will do the first pass on every photo, and editors will refine only the edges that need a human eye.</p>
+<p>That blend is already here. The hybrid workflow in this article is the practical version of it, and it works with the free tools available today.</p>
+<h2 id="which-should-you-choose">Which Should You Choose?</h2>
+<p>Choose AI when the subject is clear, the background is simple, and the image will be seen at normal size. That covers most product photos, thumbnails, and social posts.</p>
+<p>Choose manual when the photo has fine hair, glass, or transparent parts, or when it will be printed large or used as a campaign hero image.</p>
+<p>Choose the hybrid route when you have many photos and a few are difficult. Let the AI finish the easy ones, and spend your manual time only on the hard cases.</p>
+<p>For a hands-on walkthrough of the AI route, read <a href="/blog/how-to-remove-background-from-image/">How to Remove a Background from an Image</a>. For the full background on the tool, see <a href="/blog/background-remover-guide/">Background Remover: Complete Guide</a>.</p>
+<h2 id="ai-vs-manual-summary">The Short Version</h2>
+<p>AI background removal is fast, free, and private, and it handles clear subjects on simple backgrounds in seconds. Manual cutout is slow and needs skill, but it wins on hair, glass, transparency, and high-stakes images.</p>
+<p>Most photos belong to AI. The manual method earns its time only on difficult edges and images that will be seen at large size.</p>
+<p>The smartest workflow combines both: let the AI do the bulk of the work, and refine by hand only where the result needs it.</p>
+`,
+      faqs: [
+        {
+          question: 'When is manual cutout still better than AI removal?',
+          answer: 'Manual cutout is still better for fine hair and fur, glass and transparent objects, and images that will be printed large or used as campaign heroes. A human editor can follow an edge that confuses a model and decide what belongs to the subject when colours match. For clear subjects on simple backgrounds, AI is already as good and far faster.',
+        },
+        {
+          question: 'How accurate is AI background removal compared to a human editor?',
+          answer: 'On clear subjects with simple backgrounds, AI is very close to a human editor — the outline is clean and most viewers cannot tell the difference. The gap appears on fine detail: wispy hair, fur, lace, and glass, where a compact model softens edges that a person would trace precisely. At normal viewing sizes the difference is small; at full size on a large print it becomes visible.',
+        },
+        {
+          question: 'Does AI background removal work on video?',
+          answer: 'No, not with this tool. The Background Remover handles still images only — one photo at a time, up to 20 MB. Removing a background from video needs frame-by-frame masking, which is a different job done by video editors or specialised video tools, not by an image background remover.',
+        },
+        {
+          question: 'Is AI background removal cheaper than hiring an editor?',
+          answer: 'Yes, by a wide margin. The CompressMyPic tool is free with no daily limit, so removing a background costs nothing. A hired editor charges per image and per revision, which adds up quickly for a seller with hundreds of product photos. Paying an editor only makes sense for difficult images where the extra accuracy is visible in the final use.',
+        },
+        {
+          question: 'Can AI remove backgrounds from images with glass or transparent objects?',
+          answer: 'It struggles. A glass bottle shows the background through it, so the model cannot tell where the bottle ends and the room begins, and it may cut away parts of the glass or keep parts of the background. For glass, spectacles, and sheer fabric, manual cutout — or the hybrid workflow of AI first, then hand refinement — gives a much better result.',
+        },
+        {
+          question: 'Will AI background removal replace photo editors?',
+          answer: 'No. AI has taken over the routine work — clear subjects, simple backgrounds, bulk photos — but editors still own the hard cases: fine hair, glass, transparency, and high-stakes images where the edge itself matters. The realistic future is a blend, with AI doing the first pass and editors refining only the edges that need a human eye.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/add-background-to-image', '/image-cropper', '/image-converter'],
   }
-  // BATCH3-AI-TOOLS (3 articles)
 ];
 
 // --- Route resolution (EN paths only; parsePath normalizes first) ---

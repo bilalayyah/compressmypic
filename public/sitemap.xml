@@ -14179,5 +14179,29 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://compressmypic.online/blog/background-remover-guide/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blog/background-remover-guide/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blog/background-remover-guide/" />
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/blog/how-to-remove-background-from-image/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blog/how-to-remove-background-from-image/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blog/how-to-remove-background-from-image/" />
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/blog/ai-background-removal-vs-manual-cutout/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blog/ai-background-removal-vs-manual-cutout/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blog/ai-background-removal-vs-manual-cutout/" />
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <!-- /Blog (Batch 2) -->
 </urlset>
