@@ -152,7 +152,7 @@ export const Guide100kbPage: React.FC<Guide100kbPageProps> = ({ onNavigate }) =>
   useEffect(() => {
     document.title = 'How to Reduce Image Size to 100KB: Step-by-Step Guide';
     const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute('content', 'Reduce image size to 100KB for websites and email with a free online compressor. Step-by-step guide — no signup, no watermark, images stay on your device.');
+    if (metaDescription) metaDescription.setAttribute('content', 'Step-by-step guide: reduce any image to 100KB for websites and email — which format, quality and dimensions to use, plus the common mistakes to avoid.');
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (canonicalLink) canonicalLink.href = 'https://compressmypic.online/guides/reduce-image-size-to-100kb/';
     window.scrollTo({ top: 0, behavior: 'instant' });
