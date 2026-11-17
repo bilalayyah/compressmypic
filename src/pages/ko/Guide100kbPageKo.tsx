@@ -195,7 +195,7 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "홈", item: "https://compressmypic.online/ko/" },
-            { '@type': 'ListItem', position: 2, name: "가이드" },
+            { '@type': 'ListItem', position: 2, name: "가이드", item: "https://compressmypic.online/ko/" },
             { '@type': 'ListItem', position: 3, name: "웹과 이메일용 이미지 크기를 100KB로 줄이는 방법", item: "https://compressmypic.online/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi/" },
           ],
         },

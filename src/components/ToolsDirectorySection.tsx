@@ -38,6 +38,7 @@ import {
 import { TOOLS_REGISTRY, TOOL_CATEGORIES, ToolCategoryId, ToolDefinition } from '../data/tools';
 import { localizePath } from '../locales/alternates';
 import type { SupportedLang } from '../locales/config';
+import { CategoryGuides } from './blog/CategoryGuides';
 import { getPastelTileClass } from '../utils/pastel';
 
 interface ToolsDirectoryStrings {
@@ -230,6 +231,9 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
             );
           })}
         </div>
+        {selectedCategory !== 'all' ? (
+          <CategoryGuides categoryId={selectedCategory} lang={lang} categories={categoryLabels} />
+        ) : null}
       </div>
     </section>
   );

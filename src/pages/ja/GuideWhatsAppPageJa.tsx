@@ -199,7 +199,7 @@ export const GuideWhatsAppPageJa: React.FC<GuideWhatsAppPageJaProps> = ({ onNavi
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "ホーム", item: "https://compressmypic.online/ja/" },
-            { '@type': 'ListItem', position: 2, name: "ガイド" },
+            { '@type': 'ListItem', position: 2, name: "ガイド", item: "https://compressmypic.online/ja/" },
             { '@type': 'ListItem', position: 3, name: "WhatsApp用に画像を圧縮する方法｜画質を落とさず送る", item: "https://compressmypic.online/ja/gaido/whatsapp-yo-gazo-asshuku/" },
           ],
         },

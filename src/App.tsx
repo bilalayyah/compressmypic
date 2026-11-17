@@ -43,6 +43,15 @@ const TermsPage = React.lazy(() =>
 const AdminCommentsPage = React.lazy(() =>
   import('./pages/AdminCommentsPage').then((m) => ({ default: m.AdminCommentsPage }))
 );
+const BlogHomePage = React.lazy(() =>
+  import('./pages/BlogHomePage').then((m) => ({ default: m.BlogHomePage }))
+);
+const BlogCategoryPage = React.lazy(() =>
+  import('./pages/BlogCategoryPage').then((m) => ({ default: m.BlogCategoryPage }))
+);
+const ArticlePage = React.lazy(() =>
+  import('./pages/ArticlePage').then((m) => ({ default: m.ArticlePage }))
+);
 const GuideWhatsAppPage = React.lazy(() =>
   import('./pages/GuideWhatsAppPage').then((m) => ({ default: m.GuideWhatsAppPage }))
 );
@@ -206,6 +215,23 @@ import { JA_PATH_BY_EN, EN_PATH_BY_JA, JA_HOME_ALIAS, JA_ALL_TOOLS_PATH } from '
 import { KO_PATH_BY_EN, EN_PATH_BY_KO, KO_HOME_ALIAS, KO_ALL_TOOLS_PATH } from './locales/ko/slugs';
 import { ZH_PATH_BY_EN, EN_PATH_BY_ZH, ZH_HOME_ALIAS, ZH_ALL_TOOLS_PATH } from './locales/zh/slugs';
 import { getAlternates, getOgLocale, getOgLocaleAlternates, withTrailingSlash } from './locales/alternates';
+import { BlogContext } from './components/blog/BlogContext';
+import { EN_BLOG_STRINGS } from './components/blog/blogStrings';
+import {
+  getBlogArticleAlternates,
+  getBlogArticleById,
+  getBlogArticleUrl,
+  getBlogArticleVersion,
+  getBlogCategoryAlternates,
+  getBlogCategoryLabel,
+  getBlogCategoryUrl,
+  getBlogHomeAlternates,
+  getBlogHomeUrl,
+  isBlogArticlePublishedIn,
+  isBlogEnPath,
+  resolveBlogRoute,
+} from './data/blogArticles';
+import type { BlogArticle } from './types/blog';
 const AboutPageEs = React.lazy(() =>
   import('./pages/es/AboutPageEs').then((m) => ({ default: m.AboutPageEs }))
 );
@@ -535,7 +561,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === ES_HOME_ALIAS.slice(3)) return { path: '/', lang: 'es' }; // /es/comprimir-imagenes → /es/
     if (rest === ES_ALL_TOOLS_PATH.slice(3)) return { path: ES_ALL_TOOLS_PATH, lang: 'es' };
     const enPath = EN_PATH_BY_ES[p]; // keys carry the '/es' prefix (see slug map)
-    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'es' };
+    if (enPath && (KNOWN_ROUTES.includes(enPath) || resolveBlogRoute(enPath))) return { path: enPath, lang: 'es' };
     return { path: p, lang: 'es', notFound: true }; // unknown path in this language -> 404 page
   }
   // Portuguese prefix: /pt/<portuguese-slug>
@@ -545,7 +571,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === PT_HOME_ALIAS.slice(3)) return { path: '/', lang: 'pt' }; // /pt/comprimir-imagens → /pt/
     if (rest === PT_ALL_TOOLS_PATH.slice(3)) return { path: PT_ALL_TOOLS_PATH, lang: 'pt' };
     const enPath = EN_PATH_BY_PT[p]; // keys carry the '/pt' prefix (see slug map)
-    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'pt' };
+    if (enPath && (KNOWN_ROUTES.includes(enPath) || resolveBlogRoute(enPath))) return { path: enPath, lang: 'pt' };
     return { path: p, lang: 'pt', notFound: true }; // unknown path in this language -> 404 page
   }
   // French prefix: /fr/<french-slug>
@@ -555,7 +581,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === FR_HOME_ALIAS.slice(3)) return { path: '/', lang: 'fr' }; // /fr/compresser-images → /fr/
     if (rest === FR_ALL_TOOLS_PATH.slice(3)) return { path: FR_ALL_TOOLS_PATH, lang: 'fr' };
     const enPath = EN_PATH_BY_FR[p]; // keys carry the '/fr' prefix (see slug map)
-    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'fr' };
+    if (enPath && (KNOWN_ROUTES.includes(enPath) || resolveBlogRoute(enPath))) return { path: enPath, lang: 'fr' };
     return { path: p, lang: 'fr', notFound: true }; // unknown path in this language -> 404 page
   }
   // German prefix: /de/<german-slug>
@@ -565,7 +591,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === DE_HOME_ALIAS.slice(3)) return { path: '/', lang: 'de' }; // /de/bilder-komprimieren → /de/
     if (rest === DE_ALL_TOOLS_PATH.slice(3)) return { path: DE_ALL_TOOLS_PATH, lang: 'de' };
     const enPath = EN_PATH_BY_DE[p]; // keys carry the '/de' prefix (see slug map)
-    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'de' };
+    if (enPath && (KNOWN_ROUTES.includes(enPath) || resolveBlogRoute(enPath))) return { path: enPath, lang: 'de' };
     return { path: p, lang: 'de', notFound: true }; // unknown path in this language -> 404 page
   }
   // Italian prefix: /it/<italian-slug>
@@ -575,7 +601,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === IT_HOME_ALIAS.slice(3)) return { path: '/', lang: 'it' }; // /it/comprimere-immagini → /it/
     if (rest === IT_ALL_TOOLS_PATH.slice(3)) return { path: IT_ALL_TOOLS_PATH, lang: 'it' };
     const enPath = EN_PATH_BY_IT[p]; // keys carry the '/it' prefix (see slug map)
-    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'it' };
+    if (enPath && (KNOWN_ROUTES.includes(enPath) || resolveBlogRoute(enPath))) return { path: enPath, lang: 'it' };
     return { path: p, lang: 'it', notFound: true }; // unknown path in this language -> 404 page
   }
   // Indonesian prefix: /id/<indonesian-slug>
@@ -585,7 +611,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === ID_HOME_ALIAS.slice(3)) return { path: '/', lang: 'id' }; // /id/kompres-gambar → /id/
     if (rest === ID_ALL_TOOLS_PATH.slice(3)) return { path: ID_ALL_TOOLS_PATH, lang: 'id' };
     const enPath = EN_PATH_BY_ID[p]; // keys carry the '/id' prefix (see slug map)
-    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'id' };
+    if (enPath && (KNOWN_ROUTES.includes(enPath) || resolveBlogRoute(enPath))) return { path: enPath, lang: 'id' };
     return { path: p, lang: 'id', notFound: true }; // unknown path in this language -> 404 page
   }
   // Russian prefix: /ru/<russian-slug>
@@ -595,7 +621,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === RU_HOME_ALIAS.slice(3)) return { path: '/', lang: 'ru' }; // /ru/szhat-izobrazhenie → /ru/
     if (rest === RU_ALL_TOOLS_PATH.slice(3)) return { path: RU_ALL_TOOLS_PATH, lang: 'ru' };
     const enPath = EN_PATH_BY_RU[p]; // keys carry the '/ru' prefix (see slug map)
-    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'ru' };
+    if (enPath && (KNOWN_ROUTES.includes(enPath) || resolveBlogRoute(enPath))) return { path: enPath, lang: 'ru' };
     return { path: p, lang: 'ru', notFound: true }; // unknown path in this language -> 404 page
   }
   // Japanese prefix: /ja/<japanese-slug>
@@ -605,7 +631,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === JA_HOME_ALIAS.slice(3)) return { path: '/', lang: 'ja' }; // /ja/gazo-asshuku → /ja/
     if (rest === JA_ALL_TOOLS_PATH.slice(3)) return { path: JA_ALL_TOOLS_PATH, lang: 'ja' };
     const enPath = EN_PATH_BY_JA[p]; // keys carry the '/ja' prefix (see slug map)
-    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'ja' };
+    if (enPath && (KNOWN_ROUTES.includes(enPath) || resolveBlogRoute(enPath))) return { path: enPath, lang: 'ja' };
     return { path: p, lang: 'ja', notFound: true }; // unknown path in this language -> 404 page
   }
   // Korean prefix: /ko/<korean-slug>
@@ -615,7 +641,7 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === KO_HOME_ALIAS.slice(3)) return { path: '/', lang: 'ko' }; // /ko/imiji-apchuk → /ko/
     if (rest === KO_ALL_TOOLS_PATH.slice(3)) return { path: KO_ALL_TOOLS_PATH, lang: 'ko' };
     const enPath = EN_PATH_BY_KO[p]; // keys carry the '/ko' prefix (see slug map)
-    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'ko' };
+    if (enPath && (KNOWN_ROUTES.includes(enPath) || resolveBlogRoute(enPath))) return { path: enPath, lang: 'ko' };
     return { path: p, lang: 'ko', notFound: true }; // unknown path in this language -> 404 page
   }
   // Chinese prefix: /zh/<chinese-slug>
@@ -625,10 +651,10 @@ function parsePath(rawPathname: string): ParsedPath {
     if (rest === ZH_HOME_ALIAS.slice(3)) return { path: '/', lang: 'zh' }; // /zh/yasuo-tupian → /zh/
     if (rest === ZH_ALL_TOOLS_PATH.slice(3)) return { path: ZH_ALL_TOOLS_PATH, lang: 'zh' };
     const enPath = EN_PATH_BY_ZH[p]; // keys carry the '/zh' prefix (see slug map)
-    if (enPath && KNOWN_ROUTES.includes(enPath)) return { path: enPath, lang: 'zh' };
+    if (enPath && (KNOWN_ROUTES.includes(enPath) || resolveBlogRoute(enPath))) return { path: enPath, lang: 'zh' };
     return { path: p, lang: 'zh', notFound: true }; // unknown path in this language -> 404 page
   }
-  return KNOWN_ROUTES.includes(p) ? { path: p, lang: 'en' } : { path: p, lang: 'en', notFound: true }; // unknown English path -> 404 page
+  return KNOWN_ROUTES.includes(p) || resolveBlogRoute(p) ? { path: p, lang: 'en' } : { path: p, lang: 'en', notFound: true }; // unknown English path -> 404 page
 }
 
 /** English path → the equivalent path in `lang` (identity for 'en').
@@ -694,6 +720,7 @@ interface EsLocale {
   tools: typeof import('./locales/es/tools').TOOL_BY_SLUG_ES;
   categories: typeof import('./locales/es/tools').TOOL_CATEGORIES_ES;
   toolUi: typeof import('./locales/es/ui').TOOL_UI_ES;
+  blog: typeof import('./locales/es/blog').ES_BLOG_OVERRIDES;
 }
 
 interface PtLocale {
@@ -701,6 +728,7 @@ interface PtLocale {
   tools: typeof import('./locales/pt/tools').TOOL_BY_SLUG_PT;
   categories: typeof import('./locales/pt/tools').TOOL_CATEGORIES_PT;
   toolUi: typeof import('./locales/pt/ui').TOOL_UI_PT;
+  blog: typeof import('./locales/pt/blog').PT_BLOG_OVERRIDES;
 }
 
 interface FrLocale {
@@ -708,6 +736,7 @@ interface FrLocale {
   tools: typeof import('./locales/fr/tools').TOOL_BY_SLUG_FR;
   categories: typeof import('./locales/fr/tools').TOOL_CATEGORIES_FR;
   toolUi: typeof import('./locales/fr/ui').TOOL_UI_FR;
+  blog: typeof import('./locales/fr/blog').FR_BLOG_OVERRIDES;
 }
 
 interface DeLocale {
@@ -715,6 +744,7 @@ interface DeLocale {
   tools: typeof import('./locales/de/tools').TOOL_BY_SLUG_DE;
   categories: typeof import('./locales/de/tools').TOOL_CATEGORIES_DE;
   toolUi: typeof import('./locales/de/ui').TOOL_UI_DE;
+  blog: typeof import('./locales/de/blog').DE_BLOG_OVERRIDES;
 }
 
 interface ItLocale {
@@ -722,6 +752,7 @@ interface ItLocale {
   tools: typeof import('./locales/it/tools').TOOL_BY_SLUG_IT;
   categories: typeof import('./locales/it/tools').TOOL_CATEGORIES_IT;
   toolUi: typeof import('./locales/it/ui').TOOL_UI_IT;
+  blog: typeof import('./locales/it/blog').IT_BLOG_OVERRIDES;
 }
 
 interface IdLocale {
@@ -729,6 +760,7 @@ interface IdLocale {
   tools: typeof import('./locales/id/tools').TOOL_BY_SLUG_ID;
   categories: typeof import('./locales/id/tools').TOOL_CATEGORIES_ID;
   toolUi: typeof import('./locales/id/ui').TOOL_UI_ID;
+  blog: typeof import('./locales/id/blog').ID_BLOG_OVERRIDES;
 }
 
 interface RuLocale {
@@ -736,6 +768,7 @@ interface RuLocale {
   tools: typeof import('./locales/ru/tools').TOOL_BY_SLUG_RU;
   categories: typeof import('./locales/ru/tools').TOOL_CATEGORIES_RU;
   toolUi: typeof import('./locales/ru/ui').TOOL_UI_RU;
+  blog: typeof import('./locales/ru/blog').RU_BLOG_OVERRIDES;
 }
 
 interface JaLocale {
@@ -743,6 +776,7 @@ interface JaLocale {
   tools: typeof import('./locales/ja/tools').TOOL_BY_SLUG_JA;
   categories: typeof import('./locales/ja/tools').TOOL_CATEGORIES_JA;
   toolUi: typeof import('./locales/ja/ui').TOOL_UI_JA;
+  blog: typeof import('./locales/ja/blog').JA_BLOG_OVERRIDES;
 }
 
 interface KoLocale {
@@ -750,6 +784,7 @@ interface KoLocale {
   tools: typeof import('./locales/ko/tools').TOOL_BY_SLUG_KO;
   categories: typeof import('./locales/ko/tools').TOOL_CATEGORIES_KO;
   toolUi: typeof import('./locales/ko/ui').TOOL_UI_KO;
+  blog: typeof import('./locales/ko/blog').KO_BLOG_OVERRIDES;
 }
 
 interface ZhLocale {
@@ -757,6 +792,7 @@ interface ZhLocale {
   tools: typeof import('./locales/zh/tools').TOOL_BY_SLUG_ZH;
   categories: typeof import('./locales/zh/tools').TOOL_CATEGORIES_ZH;
   toolUi: typeof import('./locales/zh/ui').TOOL_UI_ZH;
+  blog: typeof import('./locales/zh/blog').ZH_BLOG_OVERRIDES;
 }
 
 type AnyLocale = EsLocale | PtLocale | FrLocale | DeLocale | ItLocale | IdLocale | RuLocale | JaLocale | KoLocale | ZhLocale;
@@ -795,98 +831,117 @@ export default function App() {
     lang === 'es' ? esLocale : lang === 'pt' ? ptLocale : lang === 'fr' ? frLocale : lang === 'de' ? deLocale : lang === 'it' ? itLocale : lang === 'id' ? idLocale : lang === 'ru' ? ruLocale : lang === 'ja' ? jaLocale : lang === 'ko' ? koLocale : lang === 'zh' ? zhLocale : null;
   const activeUi = activeLocale?.ui ?? null;
 
+  // Blog (Batch 2): the resolved blog route for the current EN path (null
+  // off-blog), the article for article routes, the active language's blog
+  // UI strings (EN fallback) and article overrides (empty for EN).
+  const blogRoute = isBlogEnPath(currentPath) ? resolveBlogRoute(currentPath) : null;
+  const blogArticle: BlogArticle | undefined =
+    blogRoute?.kind === 'article' ? getBlogArticleById(blogRoute.articleId) : undefined;
+  const blogStrings = activeUi?.blog ?? EN_BLOG_STRINGS;
+  const blogOverrides = activeLocale?.blog ?? {};
+
   // Generic loader — later languages add one branch each; only the selected
   // language's files are ever downloaded (Vite code-splits each dynamic import).
   const loadLocale = useCallback(async (target: SupportedLang) => {
     if (target === 'en') return;
     if (target === 'es' && !esLocale) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod] = await Promise.all([
+      const [uiMod, toolsMod, blogMod] = await Promise.all([
         import('./locales/es/ui'),
         import('./locales/es/tools'),
+        import('./locales/es/blog'),
       ]);
-      setEsLocale({ ui: uiMod.ES, tools: toolsMod.TOOL_BY_SLUG_ES, categories: toolsMod.TOOL_CATEGORIES_ES, toolUi: uiMod.TOOL_UI_ES });
+      setEsLocale({ ui: uiMod.ES, tools: toolsMod.TOOL_BY_SLUG_ES, categories: toolsMod.TOOL_CATEGORIES_ES, toolUi: uiMod.TOOL_UI_ES, blog: blogMod.ES_BLOG_OVERRIDES });
       setLocaleLoading(false);
     }
     if (target === 'pt' && !ptLocale) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod] = await Promise.all([
+      const [uiMod, toolsMod, blogMod] = await Promise.all([
         import('./locales/pt/ui'),
         import('./locales/pt/tools'),
+        import('./locales/pt/blog'),
       ]);
-      setPtLocale({ ui: uiMod.PT, tools: toolsMod.TOOL_BY_SLUG_PT, categories: toolsMod.TOOL_CATEGORIES_PT, toolUi: uiMod.TOOL_UI_PT });
+      setPtLocale({ ui: uiMod.PT, tools: toolsMod.TOOL_BY_SLUG_PT, categories: toolsMod.TOOL_CATEGORIES_PT, toolUi: uiMod.TOOL_UI_PT, blog: blogMod.PT_BLOG_OVERRIDES });
       setLocaleLoading(false);
     }
     if (target === 'fr' && !frLocale) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod] = await Promise.all([
+      const [uiMod, toolsMod, blogMod] = await Promise.all([
         import('./locales/fr/ui'),
         import('./locales/fr/tools'),
+        import('./locales/fr/blog'),
       ]);
-      setFrLocale({ ui: uiMod.FR, tools: toolsMod.TOOL_BY_SLUG_FR, categories: toolsMod.TOOL_CATEGORIES_FR, toolUi: uiMod.TOOL_UI_FR });
+      setFrLocale({ ui: uiMod.FR, tools: toolsMod.TOOL_BY_SLUG_FR, categories: toolsMod.TOOL_CATEGORIES_FR, toolUi: uiMod.TOOL_UI_FR, blog: blogMod.FR_BLOG_OVERRIDES });
       setLocaleLoading(false);
     }
     if (target === 'de' && !deLocale) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod] = await Promise.all([
+      const [uiMod, toolsMod, blogMod] = await Promise.all([
         import('./locales/de/ui'),
         import('./locales/de/tools'),
+        import('./locales/de/blog'),
       ]);
-      setDeLocale({ ui: uiMod.DE, tools: toolsMod.TOOL_BY_SLUG_DE, categories: toolsMod.TOOL_CATEGORIES_DE, toolUi: uiMod.TOOL_UI_DE });
+      setDeLocale({ ui: uiMod.DE, tools: toolsMod.TOOL_BY_SLUG_DE, categories: toolsMod.TOOL_CATEGORIES_DE, toolUi: uiMod.TOOL_UI_DE, blog: blogMod.DE_BLOG_OVERRIDES });
       setLocaleLoading(false);
     }
     if (target === 'it' && !itLocale) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod] = await Promise.all([
+      const [uiMod, toolsMod, blogMod] = await Promise.all([
         import('./locales/it/ui'),
         import('./locales/it/tools'),
+        import('./locales/it/blog'),
       ]);
-      setItLocale({ ui: uiMod.IT, tools: toolsMod.TOOL_BY_SLUG_IT, categories: toolsMod.TOOL_CATEGORIES_IT, toolUi: uiMod.TOOL_UI_IT });
+      setItLocale({ ui: uiMod.IT, tools: toolsMod.TOOL_BY_SLUG_IT, categories: toolsMod.TOOL_CATEGORIES_IT, toolUi: uiMod.TOOL_UI_IT, blog: blogMod.IT_BLOG_OVERRIDES });
       setLocaleLoading(false);
     }
     if (target === 'id' && !idLocale) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod] = await Promise.all([
+      const [uiMod, toolsMod, blogMod] = await Promise.all([
         import('./locales/id/ui'),
         import('./locales/id/tools'),
+        import('./locales/id/blog'),
       ]);
-      setIdLocale({ ui: uiMod.ID, tools: toolsMod.TOOL_BY_SLUG_ID, categories: toolsMod.TOOL_CATEGORIES_ID, toolUi: uiMod.TOOL_UI_ID });
+      setIdLocale({ ui: uiMod.ID, tools: toolsMod.TOOL_BY_SLUG_ID, categories: toolsMod.TOOL_CATEGORIES_ID, toolUi: uiMod.TOOL_UI_ID, blog: blogMod.ID_BLOG_OVERRIDES });
       setLocaleLoading(false);
     }
     if (target === 'ru' && !ruLocale) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod] = await Promise.all([
+      const [uiMod, toolsMod, blogMod] = await Promise.all([
         import('./locales/ru/ui'),
         import('./locales/ru/tools'),
+        import('./locales/ru/blog'),
       ]);
-      setRuLocale({ ui: uiMod.RU, tools: toolsMod.TOOL_BY_SLUG_RU, categories: toolsMod.TOOL_CATEGORIES_RU, toolUi: uiMod.TOOL_UI_RU });
+      setRuLocale({ ui: uiMod.RU, tools: toolsMod.TOOL_BY_SLUG_RU, categories: toolsMod.TOOL_CATEGORIES_RU, toolUi: uiMod.TOOL_UI_RU, blog: blogMod.RU_BLOG_OVERRIDES });
       setLocaleLoading(false);
     }
     if (target === 'ja' && !jaLocale) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod] = await Promise.all([
+      const [uiMod, toolsMod, blogMod] = await Promise.all([
         import('./locales/ja/ui'),
         import('./locales/ja/tools'),
+        import('./locales/ja/blog'),
       ]);
-      setJaLocale({ ui: uiMod.JA, tools: toolsMod.TOOL_BY_SLUG_JA, categories: toolsMod.TOOL_CATEGORIES_JA, toolUi: uiMod.TOOL_UI_JA });
+      setJaLocale({ ui: uiMod.JA, tools: toolsMod.TOOL_BY_SLUG_JA, categories: toolsMod.TOOL_CATEGORIES_JA, toolUi: uiMod.TOOL_UI_JA, blog: blogMod.JA_BLOG_OVERRIDES });
       setLocaleLoading(false);
     }
     if (target === 'ko' && !koLocale) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod] = await Promise.all([
+      const [uiMod, toolsMod, blogMod] = await Promise.all([
         import('./locales/ko/ui'),
         import('./locales/ko/tools'),
+        import('./locales/ko/blog'),
       ]);
-      setKoLocale({ ui: uiMod.KO, tools: toolsMod.TOOL_BY_SLUG_KO, categories: toolsMod.TOOL_CATEGORIES_KO, toolUi: uiMod.TOOL_UI_KO });
+      setKoLocale({ ui: uiMod.KO, tools: toolsMod.TOOL_BY_SLUG_KO, categories: toolsMod.TOOL_CATEGORIES_KO, toolUi: uiMod.TOOL_UI_KO, blog: blogMod.KO_BLOG_OVERRIDES });
       setLocaleLoading(false);
     }
     if (target === 'zh' && !zhLocale) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod] = await Promise.all([
+      const [uiMod, toolsMod, blogMod] = await Promise.all([
         import('./locales/zh/ui'),
         import('./locales/zh/tools'),
+        import('./locales/zh/blog'),
       ]);
-      setZhLocale({ ui: uiMod.ZH, tools: toolsMod.TOOL_BY_SLUG_ZH, categories: toolsMod.TOOL_CATEGORIES_ZH, toolUi: uiMod.TOOL_UI_ZH });
+      setZhLocale({ ui: uiMod.ZH, tools: toolsMod.TOOL_BY_SLUG_ZH, categories: toolsMod.TOOL_CATEGORIES_ZH, toolUi: uiMod.TOOL_UI_ZH, blog: blogMod.ZH_BLOG_OVERRIDES });
       setLocaleLoading(false);
     }
   }, [esLocale, ptLocale, frLocale, deLocale, itLocale, idLocale, ruLocale, jaLocale, koLocale, zhLocale]);
@@ -1240,19 +1295,62 @@ export default function App() {
       lang === 'es' ? staticTitlesEs : lang === 'pt' ? staticTitlesPt : lang === 'fr' ? staticTitlesFr : lang === 'de' ? staticTitlesDe : lang === 'it' ? staticTitlesIt : lang === 'id' ? staticTitlesId : lang === 'ru' ? staticTitlesRu : lang === 'ja' ? staticTitlesJa : lang === 'ko' ? staticTitlesKo : lang === 'zh' ? staticTitlesZh : undefined;
     const langDescriptions =
       lang === 'es' ? staticDescriptionsEs : lang === 'pt' ? staticDescriptionsPt : lang === 'fr' ? staticDescriptionsFr : lang === 'de' ? staticDescriptionsDe : lang === 'it' ? staticDescriptionsIt : lang === 'id' ? staticDescriptionsId : lang === 'ru' ? staticDescriptionsRu : lang === 'ja' ? staticDescriptionsJa : lang === 'ko' ? staticDescriptionsKo : lang === 'zh' ? staticDescriptionsZh : undefined;
+    // --- Blog (Batch 2) ---
+    // Title/description come from the registry + locale overrides, per
+    // language. The blog home and category hubs use the blog UI strings;
+    // articles use the localized article version. An article not yet
+    // published in the active language gets the EN title/description, an EN
+    // canonical and noindex (the page itself shows a notice, not a 404).
+    const catLabelsForSeo = activeLocale?.categories ?? TOOL_CATEGORIES;
+    let blogTitle: string | undefined;
+    let blogDesc: string | undefined;
+    let blogNoIndex = false;
+    if (blogRoute) {
+      if (blogRoute.kind === 'home') {
+        blogTitle = `${blogStrings.homeHeading} | CompressMyPic`;
+        blogDesc = blogStrings.homeSubheading;
+      } else if (blogRoute.kind === 'category') {
+        const catLabel = getBlogCategoryLabel(blogRoute.categoryId, catLabelsForSeo);
+        blogTitle = `${blogStrings.categoryGuidesHeading.replace('{category}', catLabel)} | CompressMyPic`;
+        blogDesc = blogStrings.homeSubheading;
+      } else if (blogRoute.kind === 'article' && blogArticle) {
+        const version = getBlogArticleVersion(blogArticle, lang, blogOverrides);
+        blogTitle = `${version.title} | CompressMyPic`;
+        blogDesc = version.description;
+        if (!isBlogArticlePublishedIn(blogArticle, lang)) {
+          blogNoIndex = true;
+          blogTitle = `${blogArticle.en.title} | CompressMyPic`;
+          blogDesc = blogArticle.en.description;
+        }
+      }
+    }
+
     const nextTitle =
+      blogTitle ||
       toolMeta?.seoTitle ||
       langTitles?.[currentPath] ||
       staticTitles[currentPath] ||
       'Free Image Compressor Online – Reduce Image Size to 100KB';
     const nextDesc =
+      blogDesc ||
       toolMeta?.seoDescription ||
       langDescriptions?.[currentPath] ||
       staticDescriptions[currentPath] ||
       staticDescriptions['/'];
     // M1 (re-audit 2026-11-15): canonicals are trailing-slash URLs — pages
-    // serve at /tool/ (the slash-less form 308-redirects).
-    const nextCanonical = `${baseDomain}${withTrailingSlash(toLocalizedPath(currentPath, lang))}`;
+    // serve at /tool/ (the slash-less form 308-redirects). A not-yet-
+    // translated article canonicalizes to its English version.
+    const nextCanonical =
+      blogNoIndex && blogArticle
+        ? `${baseDomain}${withTrailingSlash(getBlogArticleUrl(blogArticle, 'en'))}`
+        : `${baseDomain}${withTrailingSlash(toLocalizedPath(currentPath, lang))}`;
+
+    // Blog notice pages (article not published in this language) are
+    // noindex; every other route restores the default from index.html.
+    const robotsMeta = document.querySelector('meta[name="robots"]');
+    if (robotsMeta) {
+      robotsMeta.setAttribute('content', blogNoIndex ? 'noindex, nofollow' : 'index, follow');
+    }
 
     document.title = nextTitle;
     if (canonicalLink) canonicalLink.href = nextCanonical;
@@ -1327,7 +1425,17 @@ export default function App() {
     // canonical currentPath (via the EN_PATH_BY_<LANG> slug maps), so one
     // '/guides/' prefix check covers all 11 locales.
     const isGuidePage = currentPath.startsWith('/guides/');
-    setMetaContent('meta[property="og:type"]', 'property', 'og:type', isGuidePage ? 'article' : 'website');
+    // Blog articles are articles too (og:type article + published/modified
+    // times from the registry); a not-yet-translated article is a notice
+    // page, so it stays a website with no article times.
+    const isBlogArticlePage =
+      blogRoute?.kind === 'article' && blogArticle !== undefined && !blogNoIndex;
+    setMetaContent(
+      'meta[property="og:type"]',
+      'property',
+      'og:type',
+      isGuidePage || isBlogArticlePage ? 'article' : 'website'
+    );
     if (isGuidePage) {
       setMetaContent(
         'meta[property="article:published_time"]',
@@ -1335,8 +1443,26 @@ export default function App() {
         'article:published_time',
         '2026-11-14T00:00:00+04:00'
       );
+    } else if (isBlogArticlePage && blogArticle) {
+      setMetaContent(
+        'meta[property="article:published_time"]',
+        'property',
+        'article:published_time',
+        new Date(blogArticle.publishedAt).toISOString()
+      );
+      if (blogArticle.updatedAt) {
+        setMetaContent(
+          'meta[property="article:modified_time"]',
+          'property',
+          'article:modified_time',
+          new Date(blogArticle.updatedAt).toISOString()
+        );
+      } else {
+        document.head.querySelector('meta[property="article:modified_time"]')?.remove();
+      }
     } else {
       document.head.querySelector('meta[property="article:published_time"]')?.remove();
+      document.head.querySelector('meta[property="article:modified_time"]')?.remove();
     }
 
     // hreflang: App owns home/legal/directory/guide pages; ToolPageLayout owns
@@ -1393,7 +1519,22 @@ export default function App() {
       );
     const toolPageOwnedByLayout =
       isToolPage && lang !== 'en' && Boolean(activeLocale?.tools[currentPath]);
-    if (toolPageOwnedByLayout) {
+    if (blogRoute) {
+      // Blog pages: alternates ONLY for published locales (from the slug
+      // maps, via the registry helpers) — never a draft locale. The generic
+      // branch below would link all 11 languages, including untranslated
+      // ones. A not-yet-translated article gets no hreflang at all — its EN
+      // canonical is the only version.
+      if (blogRoute.kind === 'article' && blogNoIndex) {
+        removeHreflangLinks();
+      } else if (blogRoute.kind === 'article' && blogArticle) {
+        setHreflangLinks(getBlogArticleAlternates(blogArticle));
+      } else if (blogRoute.kind === 'category') {
+        setHreflangLinks(getBlogCategoryAlternates(blogRoute.categoryId));
+      } else {
+        setHreflangLinks(getBlogHomeAlternates());
+      }
+    } else if (toolPageOwnedByLayout) {
       // Translated tool page: ToolPageLayout writes the alternates.
     } else if (!isToolPage && hasLocalizedEquivalent) {
       // A localized directory has no standalone English page — its English
@@ -1561,6 +1702,114 @@ export default function App() {
         url: nextCanonical,
         inLanguage: lang,
       });
+    } else if (blogRoute) {
+      // Blog JSON-LD (Batch 2): Blog / CollectionPage / BlogPosting +
+      // BreadcrumbList (every element carries `item` — the GSC fix pattern)
+      // + FAQPage only when FAQs are visibly shown. A not-yet-translated
+      // article gets no block (notice page).
+      const homeCrumb = {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'CompressMyPic',
+        item: `${baseDomain}${lang === 'en' ? '/' : `/${lang}/`}`,
+      };
+      const blogCrumb = {
+        '@type': 'ListItem',
+        position: 2,
+        name: blogStrings.blog,
+        item: `${baseDomain}${getBlogHomeUrl(lang)}`,
+      };
+      if (blogRoute.kind === 'home') {
+        upsertPageJsonLd({
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'Blog',
+              name: blogStrings.homeHeading,
+              description: blogStrings.homeSubheading,
+              url: nextCanonical,
+              inLanguage: lang,
+            },
+            { '@type': 'BreadcrumbList', itemListElement: [homeCrumb, blogCrumb] },
+          ],
+        });
+      } else if (blogRoute.kind === 'category') {
+        const catLabel = getBlogCategoryLabel(blogRoute.categoryId, catLabelsForSeo);
+        upsertPageJsonLd({
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'CollectionPage',
+              name: blogStrings.categoryGuidesHeading.replace('{category}', catLabel),
+              description: blogStrings.homeSubheading,
+              url: nextCanonical,
+              inLanguage: lang,
+            },
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                homeCrumb,
+                blogCrumb,
+                {
+                  '@type': 'ListItem',
+                  position: 3,
+                  name: catLabel,
+                  item: `${baseDomain}${getBlogCategoryUrl(blogRoute.categoryId, lang)}`,
+                },
+              ],
+            },
+          ],
+        });
+      } else if (blogRoute.kind === 'article' && blogArticle && !blogNoIndex) {
+        const version = getBlogArticleVersion(blogArticle, lang, blogOverrides);
+        const catLabel = getBlogCategoryLabel(blogArticle.categoryId, catLabelsForSeo);
+        const graph: Record<string, unknown>[] = [
+          {
+            '@type': 'BlogPosting',
+            headline: version.title,
+            description: version.description,
+            url: nextCanonical,
+            datePublished: blogArticle.publishedAt,
+            ...(blogArticle.updatedAt ? { dateModified: blogArticle.updatedAt } : {}),
+            author: { '@type': 'Organization', name: 'CompressMyPic', url: 'https://compressmypic.online' },
+            publisher: { '@type': 'Organization', name: 'CompressMyPic', url: 'https://compressmypic.online' },
+            mainEntityOfPage: { '@type': 'WebPage', '@id': nextCanonical },
+            inLanguage: lang,
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              homeCrumb,
+              blogCrumb,
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: catLabel,
+                item: `${baseDomain}${getBlogCategoryUrl(blogArticle.categoryId, lang)}`,
+              },
+              { '@type': 'ListItem', position: 4, name: version.title, item: nextCanonical },
+            ],
+          },
+        ];
+        if (version.faqs && version.faqs.length > 0) {
+          graph.push({
+            '@type': 'FAQPage',
+            name: blogStrings.faqHeading,
+            url: nextCanonical,
+            mainEntity: version.faqs.map((f) => ({
+              '@type': 'Question',
+              name: f.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: f.answer.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim(),
+              },
+            })),
+          });
+        }
+        upsertPageJsonLd({ '@context': 'https://schema.org', '@graph': graph });
+      } else if (existingPageJsonLd) {
+        existingPageJsonLd.remove();
+      }
     } else if (existingPageJsonLd) {
       existingPageJsonLd.remove();
     }
@@ -1634,7 +1883,14 @@ export default function App() {
       route.path === '/' ||
       isDirectoryPath ||
       (mapForNext !== undefined && Boolean(mapForNext[route.path]));
-    const finalTarget = next !== 'en' && !existsInNext ? `/${next}/` : target;
+    // Blog (Batch 2): a blog page with no equivalent in the target language
+    // falls back to that language's blog home, not its site home.
+    const finalTarget =
+      next !== 'en' && !existsInNext
+        ? isBlogEnPath(route.path)
+          ? getBlogHomeUrl(next)
+          : `/${next}/`
+        : target;
     // Phase 7 (F4): keep the current query string and hash across a language
     // switch (e.g. ?test=1#faq) — previously pushState dropped both.
     const suffix = `${window.location.search}${window.location.hash}`;
@@ -2023,6 +2279,23 @@ export default function App() {
   };
   const availableLanguages: SupportedLang[] = SUPPORTED_LANGS.filter((l) => pageHasLang(l));
 
+  // Switcher anchor hrefs (Batch 2): on blog routes, the equivalent
+  // translated page — or the localized blog home when the translation is
+  // not published. Everywhere else, the language home (existing behaviour).
+  const languageHrefFor = (target: SupportedLang): string => {
+    const defaultHref = target === 'en' ? '/' : `/${target}/`;
+    if (!isBlogEnPath(route.path)) return defaultHref;
+    const r = resolveBlogRoute(route.path);
+    if (!r) return defaultHref;
+    if (r.kind === 'home') return getBlogHomeUrl(target);
+    if (r.kind === 'category') return getBlogCategoryUrl(r.categoryId, target);
+    const a = getBlogArticleById(r.articleId);
+    if (!a) return getBlogHomeUrl(target);
+    return isBlogArticlePublishedIn(a, target)
+      ? getBlogArticleUrl(a, target)
+      : getBlogHomeUrl(target);
+  };
+
   // Homepage (compressor app). Extracted so the English and Spanish home
   // branches render the same DOM; `strings` is the Spanish bundle, or null
   // for English (components fall back to their English defaults).
@@ -2204,10 +2477,14 @@ export default function App() {
         toolsRegistry={toolsRegistry}
         categoryLabels={categoryLabels}
         availableLanguages={availableLanguages}
+        languageHrefFor={languageHrefFor}
       />
 
       {/* 2. Page Router */}
       {/* Suspense boundary for the lazy route pages above (incl. the 404 page). */}
+      {/* BlogContext (Batch 2): active language's article overrides + blog
+          UI strings for every blog page and hook below. */}
+      <BlogContext.Provider value={{ overrides: blogOverrides, strings: blogStrings }}>
       <Suspense
         fallback={
           <main id="main" className="flex-1">
@@ -2232,6 +2509,34 @@ export default function App() {
       ) : currentPath === '/admin/comments' ? (
         <main id="main" className="flex-1">
           <AdminCommentsPage onNavigate={handleNavigate} />
+        </main>
+      ) : blogRoute ? (
+        <main id="main" className="flex-1">
+          {blogRoute.kind === 'home' ? (
+            <BlogHomePage
+              lang={lang}
+              onNavigate={handleNavigate}
+              tools={toolsRegistry}
+              categories={categoryLabels}
+              guidesSection={activeUi?.guidesSection}
+            />
+          ) : blogRoute.kind === 'category' ? (
+            <BlogCategoryPage
+              lang={lang}
+              categoryId={blogRoute.categoryId}
+              onNavigate={handleNavigate}
+              tools={toolsRegistry}
+              categories={categoryLabels}
+            />
+          ) : blogArticle ? (
+            <ArticlePage
+              lang={lang}
+              article={blogArticle}
+              onNavigate={handleNavigate}
+              tools={toolsRegistry}
+              categories={categoryLabels}
+            />
+          ) : null}
         </main>
       ) : currentPath === ES_ALL_TOOLS_PATH ? (
         <main id="main" className="flex-1">
@@ -7883,6 +8188,7 @@ zhStrings={
         renderHome(null)
       )}
       </Suspense>
+      </BlogContext.Provider>
 
       {/* 3. Footer */}
       <Footer

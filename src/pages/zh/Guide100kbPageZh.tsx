@@ -202,7 +202,7 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "首页", item: "https://compressmypic.online/zh/" },
-            { '@type': 'ListItem', position: 2, name: "指南" },
+            { '@type': 'ListItem', position: 2, name: "指南", item: "https://compressmypic.online/zh/" },
             { '@type': 'ListItem', position: 3, name: "如何把图片压缩到 100KB：网站与邮件指南", item: "https://compressmypic.online/zh/zhinan/jiang-tupian-yasuo-zhi-100kb/" },
           ],
         },

@@ -195,7 +195,7 @@ export const Guide100kbPageJa: React.FC<Guide100kbPageJaProps> = ({ onNavigate }
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "ホーム", item: "https://compressmypic.online/ja/" },
-            { '@type': 'ListItem', position: 2, name: "ガイド" },
+            { '@type': 'ListItem', position: 2, name: "ガイド", item: "https://compressmypic.online/ja/" },
             { '@type': 'ListItem', position: 3, name: "画像サイズを100KBまで小さくする方法｜Web・メール用", item: "https://compressmypic.online/ja/gaido/gazo-saizu-o-100kb-ni-hedasu/" },
           ],
         },

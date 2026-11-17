@@ -64,6 +64,16 @@ export const JA_PATH_BY_EN: Record<string, string> = {
   '/guides/compress-images-for-whatsapp': '/ja/gaido/whatsapp-yo-gazo-asshuku',
   '/guides/jpg-vs-png-vs-webp': '/ja/gaido/jpg-vs-png-vs-webp',
   '/guides/reduce-image-size-to-100kb': '/ja/gaido/gazo-saizu-o-100kb-ni-hedasu',
+  // --- Blog (Batch 2) ---
+  '/blog': '/ja/blog',
+  '/blog/category/compress': '/ja/blog/category/asshuku',
+  '/blog/category/resize': '/ja/blog/category/saizu-henko',
+  '/blog/category/convert': '/ja/blog/category/henkan',
+  '/blog/category/crop-edit': '/ja/blog/category/torimingu-to-henshu',
+  '/blog/category/ai-tools': '/ja/blog/category/ai-tsuru',
+  '/blog/category/create': '/ja/blog/category/sakusei',
+  '/blog/category/privacy': '/ja/blog/category/puraibashi',
+  '/blog/category/developer': '/ja/blog/category/kaihatsusha-tsuru',
 };
 
 export const EN_PATH_BY_JA: Record<string, string> = Object.fromEntries(

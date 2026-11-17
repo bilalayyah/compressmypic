@@ -195,7 +195,7 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Beranda", item: "https://compressmypic.online/id/" },
-            { '@type': 'ListItem', position: 2, name: "Panduan" },
+            { '@type': 'ListItem', position: 2, name: "Panduan", item: "https://compressmypic.online/id/" },
             { '@type': 'ListItem', position: 3, name: "Cara Mengurangi Ukuran Gambar menjadi 100KB untuk Web & Email", item: "https://compressmypic.online/id/panduan/mengurangi-ukuran-gambar-menjadi-100-kb/" },
           ],
         },

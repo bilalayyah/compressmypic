@@ -40,6 +40,7 @@ export interface FooterStrings {
   toolsHeading: string;
   legalHeading: string;
   guidesHeading: string;
+  blogLabel: string;
   moreHeading: string;
   directoryHeading: string;
   processedLocally: string;
@@ -65,6 +66,7 @@ const DEFAULT_FOOTER_STRINGS: FooterStrings = {
   toolsHeading: 'Image Tools',
   legalHeading: 'Trust & Legal',
   guidesHeading: 'Guides',
+  blogLabel: 'Blog',
   moreHeading: 'More Utilities',
   directoryHeading: 'Advanced Compression, Editing & Developer Tools',
   processedLocally: 'Processed locally via HTML5 Canvas',
@@ -354,6 +356,18 @@ export const Footer: React.FC<FooterProps> = ({
           <div>
             <h4 className="text-xs font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">{strings.guidesHeading}</h4>
             <ul className="space-y-2 text-xs text-[var(--ink-2)]">
+              <li>
+                <a
+                  href={localizePath('/blog')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/blog');
+                  }}
+                  className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors text-left font-semibold"
+                >
+                  {strings.blogLabel}
+                </a>
+              </li>
               {strings.guidesLinks.map((link) => (
                 <li key={link.slug}>
                   <a

@@ -64,6 +64,16 @@ export const IT_PATH_BY_EN: Record<string, string> = {
   '/guides/compress-images-for-whatsapp': '/it/guide/comprimere-immagini-per-whatsapp',
   '/guides/jpg-vs-png-vs-webp': '/it/guide/jpg-vs-png-vs-webp',
   '/guides/reduce-image-size-to-100kb': '/it/guide/ridurre-immagine-a-100-kb',
+  // --- Blog (Batch 2) ---
+  '/blog': '/it/blog',
+  '/blog/category/compress': '/it/blog/category/comprimere',
+  '/blog/category/resize': '/it/blog/category/ridimensionare',
+  '/blog/category/convert': '/it/blog/category/convertire',
+  '/blog/category/crop-edit': '/it/blog/category/ritagliare-e-modificare',
+  '/blog/category/ai-tools': '/it/blog/category/strumenti-ia',
+  '/blog/category/create': '/it/blog/category/creare',
+  '/blog/category/privacy': '/it/blog/category/privacy',
+  '/blog/category/developer': '/it/blog/category/sviluppatori',
 };
 
 export const EN_PATH_BY_IT: Record<string, string> = Object.fromEntries(

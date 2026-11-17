@@ -13,6 +13,7 @@ import {EN_PATH_BY_RU} from './locales/ru/slugs';
 import {EN_PATH_BY_JA} from './locales/ja/slugs';
 import {EN_PATH_BY_KO} from './locales/ko/slugs';
 import {EN_PATH_BY_ZH} from './locales/zh/slugs';
+import { isBlogEnPath, resolveBlogRoute } from './data/blogArticles';
 
 // SEO audit issue 4 (non-EN CLS 1.2964): the app used to render its first
 // paint with English strings, then swap in the locale dictionary once the
@@ -48,34 +49,34 @@ function localeFromPath(pathname: string): SupportedLang | null {
 async function preloadLocale(lang: SupportedLang): Promise<void> {
   switch (lang) {
     case 'es':
-      await Promise.all([import('./locales/es/ui'), import('./locales/es/tools')]);
+      await Promise.all([import('./locales/es/ui'), import('./locales/es/tools'), import('./locales/es/blog')]);
       break;
     case 'pt':
-      await Promise.all([import('./locales/pt/ui'), import('./locales/pt/tools')]);
+      await Promise.all([import('./locales/pt/ui'), import('./locales/pt/tools'), import('./locales/pt/blog')]);
       break;
     case 'fr':
-      await Promise.all([import('./locales/fr/ui'), import('./locales/fr/tools')]);
+      await Promise.all([import('./locales/fr/ui'), import('./locales/fr/tools'), import('./locales/fr/blog')]);
       break;
     case 'de':
-      await Promise.all([import('./locales/de/ui'), import('./locales/de/tools')]);
+      await Promise.all([import('./locales/de/ui'), import('./locales/de/tools'), import('./locales/de/blog')]);
       break;
     case 'it':
-      await Promise.all([import('./locales/it/ui'), import('./locales/it/tools')]);
+      await Promise.all([import('./locales/it/ui'), import('./locales/it/tools'), import('./locales/it/blog')]);
       break;
     case 'id':
-      await Promise.all([import('./locales/id/ui'), import('./locales/id/tools')]);
+      await Promise.all([import('./locales/id/ui'), import('./locales/id/tools'), import('./locales/id/blog')]);
       break;
     case 'ru':
-      await Promise.all([import('./locales/ru/ui'), import('./locales/ru/tools')]);
+      await Promise.all([import('./locales/ru/ui'), import('./locales/ru/tools'), import('./locales/ru/blog')]);
       break;
     case 'ja':
-      await Promise.all([import('./locales/ja/ui'), import('./locales/ja/tools')]);
+      await Promise.all([import('./locales/ja/ui'), import('./locales/ja/tools'), import('./locales/ja/blog')]);
       break;
     case 'ko':
-      await Promise.all([import('./locales/ko/ui'), import('./locales/ko/tools')]);
+      await Promise.all([import('./locales/ko/ui'), import('./locales/ko/tools'), import('./locales/ko/blog')]);
       break;
     case 'zh':
-      await Promise.all([import('./locales/zh/ui'), import('./locales/zh/tools')]);
+      await Promise.all([import('./locales/zh/ui'), import('./locales/zh/tools'), import('./locales/zh/blog')]);
       break;
     default:
       break;
@@ -143,6 +144,14 @@ function resolvePageModule(pathname: string): string | null {
   // No EN path: a home alias (e.g. /de/bilder-komprimieren) or an unknown
   // path (404 page) — nothing to preload, App handles both itself.
   if (!enPath) return null;
+  // Blog routes (Batch 2): one page component per route kind, shared by all
+  // languages — resolve by kind, not by slug. (Draft articles resolve to
+  // null here; App 404s them.)
+  if (isBlogEnPath(enPath)) {
+    const blogRoute = resolveBlogRoute(enPath);
+    if (!blogRoute) return null;
+    return BLOG_PAGE_MODULES[blogRoute.kind] ?? null;
+  }
   return TOOL_PAGE_MODULES[enPath] ?? LOCALIZED_PAGE_MODULES[`${lang}|${enPath}`] ?? null;
 }
 
@@ -271,6 +280,16 @@ void start();
 // 48 tools + 78 localized legal/guide/admin pages + 10 directories; home is
 // inline and needs no entry). Regenerate with /tmp/gen-pagemap.cjs if the
 // router changes; a stale entry only costs a missed preload, never a crash.
+// Blog pages (Batch 2) are NOT in these maps: the three blog components are
+// shared by all languages and resolve by route kind (BLOG_PAGE_MODULES, via
+// resolveBlogRoute in resolvePageModule above), so the generator must skip
+// App.tsx's `blogRoute?.kind` branches — it does (they match no tool/legal/
+// directory branch pattern).
+const BLOG_PAGE_MODULES: Record<string, string> = {
+  home: './pages/BlogHomePage.tsx',
+  category: './pages/BlogCategoryPage.tsx',
+  article: './pages/ArticlePage.tsx',
+};
 const TOOL_PAGE_MODULES: Record<string, string> = {
   '/add-background-to-image': './pages/AddBackgroundPage.tsx',
   '/add-text-to-image': './pages/AddTextPage.tsx',

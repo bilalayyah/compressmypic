@@ -46,6 +46,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 const { spawn, execSync } = require('child_process');
 const { createRequire } = require('module');
 
@@ -103,10 +104,22 @@ function loadPlaywright() {
   try {
     return require('playwright');
   } catch {
-    const screenshotToolPkg = path.resolve(
+    // Fallback 1: the screenshot-tool checkout, resolved relative to this
+    // script (only correct when the repo sits 4 levels under
+    // ~/workspace/compressmypic/ — e.g. blog-project/work/<clone>).
+    const relativePkg = path.resolve(
       __dirname, '..', '..', '..', '..', 'screenshot-tool', 'package.json',
     );
-    return createRequire(screenshotToolPkg)('playwright');
+    try {
+      return createRequire(relativePkg)('playwright');
+    } catch {
+      // Fallback 2 (Batch 2): the fixed homedir path — works from ANY
+      // checkout depth, including the reference clone in ~/workspace/tmp/.
+      const homePkg = path.join(
+        os.homedir(), 'workspace', 'compressmypic', 'screenshot-tool', 'package.json',
+      );
+      return createRequire(homePkg)('playwright');
+    }
   }
 }
 
@@ -285,9 +298,12 @@ async function renderRoute(browser, baseUrl, routePath, attempt) {
       throw new Error(`prerendered HTML still contains the URL-encoded preview origin ${encodeURIComponent(baseUrl)}`);
     }
     const title = await page.evaluate(() => document.title);
+    // H1-count assertion (Batch 2): exactly one <h1> per page. Article
+    // bodies must not contain an <h1> (the page title is the one <h1>) —
+    // a second one fails the route instead of shipping it.
     const h1 = await page.evaluate(() => {
-      const el = document.querySelector('h1');
-      return el ? el.textContent.trim().slice(0, 120) : '';
+      const els = [...document.querySelectorAll('h1')];
+      return { text: els[0] ? els[0].textContent.trim().slice(0, 120) : '', count: els.length };
     });
     return { html, title, h1, errors, thin: !html.includes('<footer') || html.length < 8000 };
   } finally {
@@ -391,7 +407,8 @@ async function main() {
         try {
           const { html, title, h1, errors, thin } = await renderRoute(browser, baseUrl, routePath, attempt);
           if (!title) throw new Error('empty document.title after render');
-          if (!h1) throw new Error('no <h1> after render');
+          if (!h1.text) throw new Error('no <h1> after render');
+          if (h1.count > 1) throw new Error(`multiple <h1> elements after render (${h1.count}) — article bodies must not contain an <h1>`);
           const doc = `<!doctype html>\n${html}\n`;
           fs.mkdirSync(path.dirname(outFile), { recursive: true });
           fs.writeFileSync(outFile, doc, 'utf8');
@@ -408,7 +425,7 @@ async function main() {
           if (errors.length) console.warn(`[prerender] WARNING pageerrors on ${routePath}: ${errors.slice(0, 2).join(' | ')}`);
           const routeSecs = ((Date.now() - routeStarted) / 1000).toFixed(1);
           if (Number(routeSecs) > 15) console.log(`[prerender] slow route ${routePath}: ${routeSecs}s`);
-          results.push({ routePath, title, h1, bytes: Buffer.byteLength(doc) });
+          results.push({ routePath, title, h1: h1.text, bytes: Buffer.byteLength(doc) });
           return null;
         } catch (e) {
           const msg = String((e && e.message) || e).slice(0, 300);

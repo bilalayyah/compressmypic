@@ -64,6 +64,16 @@ export const KO_PATH_BY_EN: Record<string, string> = {
   '/guides/compress-images-for-whatsapp': '/ko/gaideu/watsae-yong-imiji-apchuk',
   '/guides/jpg-vs-png-vs-webp': '/ko/gaideu/jpg-vs-png-vs-webp',
   '/guides/reduce-image-size-to-100kb': '/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi',
+  // --- Blog (Batch 2) ---
+  '/blog': '/ko/blog',
+  '/blog/category/compress': '/ko/blog/category/apchuk',
+  '/blog/category/resize': '/ko/blog/category/keugi-jojeong',
+  '/blog/category/convert': '/ko/blog/category/byeonhwan',
+  '/blog/category/crop-edit': '/ko/blog/category/jareugi-pyeonjip',
+  '/blog/category/ai-tools': '/ko/blog/category/ai-dogu',
+  '/blog/category/create': '/ko/blog/category/mandeulgi',
+  '/blog/category/privacy': '/ko/blog/category/gaeinjeongbo-dogu',
+  '/blog/category/developer': '/ko/blog/category/gaebalja-dogu',
 };
 
 export const EN_PATH_BY_KO: Record<string, string> = Object.fromEntries(

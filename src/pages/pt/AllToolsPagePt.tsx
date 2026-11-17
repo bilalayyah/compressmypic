@@ -11,7 +11,8 @@
 
 import React, { useState } from 'react';
 import { ArrowRight, Search, Sparkles } from 'lucide-react';
-import type { ToolDefinition } from '../../data/tools';
+import type { ToolDefinition, ToolCategoryId } from '../../data/tools';
+import { CategoryGuides } from '../../components/blog/CategoryGuides';
 import { getPastelTileClass } from '../../utils/pastel';
 import { localizePath } from '../../locales/alternates';
 
@@ -220,6 +221,13 @@ export const AllToolsPagePt: React.FC<AllToolsPagePtProps> = ({
                         })}
           </div>
         )}
+        {selectedCategory !== 'all' ? (
+          <CategoryGuides
+            categoryId={selectedCategory as ToolCategoryId}
+            lang="pt"
+            categories={categories}
+          />
+        ) : null}
       </section>
     </div>
   );

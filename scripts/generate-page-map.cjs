@@ -4,8 +4,13 @@
 // LOCALIZED_PAGE_MODULES, DIRECTORY_PAGE_MODULES).
 // Run: node scripts/generate-page-map.cjs
 // Verifies counts against expectations; exits non-zero on mismatch.
+// Blog pages (Batch 2) are intentionally NOT in the output: the three blog
+// components are shared by all languages and resolve by route kind in
+// main.tsx (BLOG_PAGE_MODULES) — the router's `blogRoute?.kind` branches
+// match no branch pattern below, so the counts stay 48/78/10.
 const fs = require('fs');
-const appPath = '/home/hatch/workspace/compressmypic/seo-audit-fixes/work/D/src/App.tsx';
+const path = require('path');
+const appPath = path.join(__dirname, '..', 'src', 'App.tsx');
 const src = fs.readFileSync(appPath, 'utf8');
 
 // 1. component name -> module specifier (as written in App.tsx lazy imports)
@@ -59,9 +64,8 @@ for (const b of branches) {
 }
 
 // Directory paths: read from each locale's slugs.ts (ALL_TOOLS_PATH const)
-const fs2 = require('fs');
 for (const [prefix, lang] of Object.entries(LANG_FROM_CONST)) {
-  const slugs = fs2.readFileSync(`/home/hatch/workspace/compressmypic/seo-audit-fixes/work/D/src/locales/${lang}/slugs.ts`, 'utf8');
+  const slugs = fs.readFileSync(path.join(__dirname, '..', 'src', 'locales', lang, 'slugs.ts'), 'utf8');
   const pm = slugs.match(new RegExp(`${prefix}_ALL_TOOLS_PATH = '([^']+)'`));
   if (!pm) { console.error('no directory path for', lang); process.exit(1); }
   const key = `${prefix}_ALL_TOOLS_PATH`;

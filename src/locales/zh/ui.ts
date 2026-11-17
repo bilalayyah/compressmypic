@@ -45,6 +45,7 @@ export const ZH = {
     howItWorks: '使用方法', // 'How It Works'
     faq: '常见问题', // 'FAQ'
     about: '关于', // 'About'
+    blog: '博客',
     contact: '联系', // 'Contact'
     compressImages: '压缩图片', // 'Compress Images'
     themeLight: '浅色模式', // 'Light Mode'
@@ -69,6 +70,7 @@ export const ZH = {
     toolsHeading: '图片工具', // 'Image Tools'
     legalHeading: '信任与法律', // 'Trust & Legal'
     guidesHeading: '指南', // 'Guides'
+    blogLabel: '博客',
     moreHeading: '更多实用工具', // 'More Utilities'
     directoryHeading: '高级压缩、编辑与开发者工具', // 'Advanced Compression, Editing & Developer Tools'
     processedLocally: '通过HTML5 Canvas在本地处理', // 'Processed locally via HTML5 Canvas'
@@ -389,6 +391,45 @@ export const ZH = {
         cta: '阅读指南 →', // 'Read guide →'
       },
     ],
+  },
+  blog: {
+    blog: '博客',
+    homeHeading: '图片指南、教程与资源',
+    homeSubheading:
+      '压缩、调整大小、转换和编辑图片的实用指南——为真实任务而写，而非为搜索引擎而写。',
+    searchPlaceholder: '搜索指南…',
+    searchNoResults: '未找到与“{query}”相关的指南。',
+    featuredHeading: '精选指南',
+    latestHeading: '最新指南（{count}）',
+    categoriesHeading: '按分类浏览',
+    emptyHeading: '暂无指南',
+    emptyText:
+      '我们正在撰写本版块的第一批指南。请稍后再来——或先试用上方的免费工具。',
+    readArticle: '阅读指南 →',
+    minRead: '阅读约 {minutes} 分钟',
+    publishedOn: '发布于 {date}',
+    updatedOn: '更新于 {date}',
+    bylineAuthor: 'CompressMyPic编辑团队',
+    tableOfContents: '本页内容',
+    faqHeading: '常见问题',
+    relatedArticlesHeading: '相关指南',
+    relatedToolsHeading: '试用工具',
+    tryToolCta: '试用{tool}——免费，无需注册',
+    prevArticle: '← 上一篇指南',
+    nextArticle: '下一篇指南 →',
+    backToBlog: '← 返回博客',
+    shareHeading: '分享本指南',
+    copyLink: '复制链接',
+    copied: '已复制！',
+    shareOnX: '分享到 X',
+    shareOnFacebook: '分享到 Facebook',
+    notAvailableHeading: '本指南暂未提供您的语言版本',
+    notAvailableText:
+      '我们仍在翻译本指南。您可以阅读英文版，或浏览已有您的语言版本的指南。',
+    viewBlogHome: '浏览博客',
+    guidesHeading: '我们的分步指南',
+    categoryGuidesHeading: '指南：{category}',
+    relatedArticlesForTool: '相关指南：{tool}',
   },
   shareSection: {
     heading: '与朋友分享CompressMyPic', // 'Share CompressMyPic with friends'

@@ -199,7 +199,7 @@ export const GuideWhatsAppPageFr: React.FC<GuideWhatsAppPageFrProps> = ({ onNavi
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Accueil", item: "https://compressmypic.online/fr/" },
-            { '@type': 'ListItem', position: 2, name: "Guides" },
+            { '@type': 'ListItem', position: 2, name: "Guides", item: "https://compressmypic.online/fr/" },
             { '@type': 'ListItem', position: 3, name: "Compresser des images pour WhatsApp sans perdre en qualité", item: "https://compressmypic.online/fr/guides/compresser-images-pour-whatsapp/" },
           ],
         },

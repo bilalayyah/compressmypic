@@ -30,6 +30,7 @@ import { ThemePreference, useTheme } from '../utils/theme';
 
 export interface HeaderStrings {
   home: string; tools: string; howItWorks: string; faq: string; about: string;
+  blog: string;
   contact: string; compressImages: string;
   themeLight: string; themeDark: string; themeSystem: string;
   themeLightShort: string; themeDarkShort: string; themeSystemShort: string;
@@ -48,6 +49,7 @@ const DEFAULT_HEADER_STRINGS: HeaderStrings = {
   howItWorks: 'How It Works',
   faq: 'FAQ',
   about: 'About',
+  blog: 'Blog',
   contact: 'Contact',
   compressImages: 'Compress Images',
   themeLight: 'Light Mode',
@@ -83,6 +85,11 @@ interface HeaderProps {
   /** Languages that have a translation of the CURRENT page (App computes this).
       Defaults to ['en']. */
   availableLanguages?: SupportedLang[];
+  /** Per-language href for the switcher anchors. App passes a resolver that
+      points at the equivalent translated page on blog routes (falling back
+      to the localized blog home when the translation is not published).
+      Defaults to the language home (`/` / `/<lang>/`). */
+  languageHrefFor?: (lang: SupportedLang) => string;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -94,8 +101,13 @@ export const Header: React.FC<HeaderProps> = ({
   toolsRegistry = TOOLS_REGISTRY,
   categoryLabels = TOOL_CATEGORIES,
   availableLanguages = ['en'],
+  languageHrefFor,
 }) => {
   const strings: HeaderStrings = { ...DEFAULT_HEADER_STRINGS, ...stringsProp };
+  /** Switcher anchor href for a language: the equivalent translated page
+   *  when App provides a resolver, else the language home. */
+  const langHrefFor = (code: SupportedLang) =>
+    languageHrefFor ? languageHrefFor(code) : code === 'en' ? '/' : `/${code}/`;
 
   const THEME_OPTIONS: {
     id: ThemePreference;
@@ -134,6 +146,7 @@ export const Header: React.FC<HeaderProps> = ({
   const localizedMap = PATH_BY_EN_BY_LANG[lang];
   const homeUrl = lang === 'en' ? '/' : `/${lang}/`;
   const aboutUrl = localizedMap?.['/about'] ?? '/about';
+  const blogUrl = localizedMap?.['/blog'] ?? '/blog';
   const contactUrl = localizedMap?.['/contact'] ?? '/contact';
 
   const { preference, resolvedTheme, setPreference } = useTheme();
@@ -344,6 +357,16 @@ export const Header: React.FC<HeaderProps> = ({
             {strings.about}
           </a>
           <a
+            href={blogUrl}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav('/blog');
+            }}
+            className="px-2.5 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
+          >
+            {strings.blog}
+          </a>
+          <a
             href={contactUrl}
             onClick={(e) => {
               e.preventDefault();
@@ -441,7 +464,7 @@ export const Header: React.FC<HeaderProps> = ({
                   // Language switcher items are real <a> anchors (SEO audit #30)
                   // so crawlers can reach every language home. Clicking still
                   // switches language via onLanguageChange (SPA navigation).
-                  const langHref = language.code === 'en' ? '/' : `/${language.code}/`;
+                  const langHref = langHrefFor(language.code);
                   const itemClassName = `w-full flex items-center justify-between gap-2 px-3.5 py-2 text-xs font-semibold transition-colors ${
                     !isAvailable
                       ? 'text-[var(--ink-3)] opacity-55 cursor-not-allowed'
@@ -711,7 +734,7 @@ export const Header: React.FC<HeaderProps> = ({
                 return (
                   <a
                     key={language.code}
-                    href={language.code === 'en' ? '/' : `/${language.code}/`}
+                    href={langHrefFor(language.code)}
                     onClick={(e) => {
                       e.preventDefault();
                       handleSelectLanguage(language.code);
@@ -784,6 +807,16 @@ export const Header: React.FC<HeaderProps> = ({
               className="block px-3 py-2 text-base font-medium text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-xl"
             >
               {strings.aboutUs}
+            </a>
+            <a
+              href={blogUrl}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNav('/blog');
+              }}
+              className="block px-3 py-2 text-base font-medium text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-xl"
+            >
+              {strings.blog}
             </a>
             <a
               href={contactUrl}

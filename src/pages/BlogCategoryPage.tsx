@@ -1,0 +1,88 @@
+// Blog category hub page — /blog/category/:categorySlug/ (and localized
+// equivalents). Header, article grid (newest first), empty state, category
+// nav. Exactly one <h1> (the category label). SEO is set by App.tsx's head
+// effect, not here. Cross-locale slug guard: App resolves the category
+// through the slug maps before rendering, so a wrong-locale slug never
+// reaches this page (it 404s instead).
+import React from 'react';
+import type { SupportedLang } from '../locales/config';
+import type { ToolCategoryId, ToolDefinition } from '../data/tools';
+import {
+  getBlogArticlesForCategory,
+  getBlogCategoryLabel,
+  getBlogHomeUrl,
+} from '../data/blogArticles';
+import { useBlog } from '../components/blog/BlogContext';
+import { BlogCard } from '../components/blog/BlogCard';
+import { BlogCategoryNav } from '../components/blog/BlogCategoryNav';
+
+interface BlogCategoryPageProps {
+  lang: SupportedLang;
+  categoryId: ToolCategoryId;
+  onNavigate: (path: string) => void;
+  tools: ToolDefinition[];
+  categories: Array<{ id: string; label: string }>;
+}
+
+export function BlogCategoryPage({ lang, categoryId, onNavigate, tools, categories }: BlogCategoryPageProps) {
+  const { strings } = useBlog();
+  const articles = getBlogArticlesForCategory(categoryId, lang);
+  const label = getBlogCategoryLabel(categoryId, categories);
+
+  const toolNameFor = (toolSlug: string): string | undefined =>
+    tools.find((t) => t.slug === `/${toolSlug}`)?.name;
+
+  return (
+    <div className="max-w-6xl mx-auto px-4 py-10 sm:py-14">
+      <nav aria-label="Breadcrumb" className="text-sm text-[var(--ink-3)]">
+        <a href={lang === 'en' ? '/' : `/${lang}/`} className="hover:text-[#7c3aed]">
+          CompressMyPic
+        </a>
+        {' / '}
+        <a href={getBlogHomeUrl(lang)} className="hover:text-[#7c3aed]">
+          {strings.blog}
+        </a>
+        {' / '}
+        <span aria-current="page" className="text-[var(--ink-2)] font-semibold">
+          {label}
+        </span>
+      </nav>
+
+      <h1 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight">{label}</h1>
+      <p className="mt-3 text-base sm:text-lg text-[var(--ink-2)] leading-relaxed max-w-3xl">
+        {strings.categoryGuidesHeading.replace('{category}', label)}
+      </p>
+
+      <div className="mt-8">
+        <BlogCategoryNav lang={lang} activeCategoryId={categoryId} categories={categories} />
+      </div>
+
+      {articles.length === 0 ? (
+        <div className="mt-10 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-8 shadow-[var(--shadow)] text-center">
+          <h2 className="text-xl font-bold">{strings.emptyHeading}</h2>
+          <p className="mt-2 text-sm text-[var(--ink-2)] leading-relaxed max-w-xl mx-auto">
+            {strings.emptyText}
+          </p>
+          <p className="mt-4">
+            <a href={getBlogHomeUrl(lang)} className="font-semibold text-[#7c3aed]">
+              {strings.viewBlogHome} →
+            </a>
+          </p>
+        </div>
+      ) : (
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {articles.map((a) => (
+            <BlogCard
+              key={a.id}
+              article={a}
+              lang={lang}
+              toolName={toolNameFor(a.toolSlug)}
+              categories={categories}
+              onNavigate={onNavigate}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}

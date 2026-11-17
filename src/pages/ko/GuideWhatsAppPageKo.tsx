@@ -199,7 +199,7 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "홈", item: "https://compressmypic.online/ko/" },
-            { '@type': 'ListItem', position: 2, name: "가이드" },
+            { '@type': 'ListItem', position: 2, name: "가이드", item: "https://compressmypic.online/ko/" },
             { '@type': 'ListItem', position: 3, name: "화질 저하 없이 WhatsApp용 이미지를 압축하는 방법", item: "https://compressmypic.online/ko/gaideu/watsae-yong-imiji-apchuk/" },
           ],
         },

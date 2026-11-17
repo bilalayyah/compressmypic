@@ -199,7 +199,7 @@ export const GuideWhatsAppPageId: React.FC<GuideWhatsAppPageIdProps> = ({ onNavi
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Beranda", item: "https://compressmypic.online/id/" },
-            { '@type': 'ListItem', position: 2, name: "Panduan" },
+            { '@type': 'ListItem', position: 2, name: "Panduan", item: "https://compressmypic.online/id/" },
             { '@type': 'ListItem', position: 3, name: "Mengompres Gambar untuk WhatsApp Tanpa Kehilangan Kualitas", item: "https://compressmypic.online/id/panduan/mengompres-gambar-untuk-whatsapp/" },
           ],
         },

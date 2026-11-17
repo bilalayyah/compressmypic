@@ -39,6 +39,7 @@ export const KO = {
     howItWorks: '사용 방법', // 'How It Works'
     faq: '자주 묻는 질문', // 'FAQ'
     about: '소개', // 'About'
+    blog: '블로그',
     contact: '문의', // 'Contact'
     compressImages: '이미지 압축', // 'Compress Images'
     themeLight: '라이트 모드', // 'Light Mode'
@@ -63,6 +64,7 @@ export const KO = {
     toolsHeading: '이미지 도구', // 'Image Tools'
     legalHeading: '신뢰 및 법률 정보', // 'Trust & Legal'
     guidesHeading: '가이드', // 'Guides'
+    blogLabel: '블로그',
     moreHeading: '기타 유틸리티', // 'More Utilities'
     directoryHeading: '고급 압축·편집·개발자 도구', // 'Advanced Compression, Editing & Developer Tools'
     processedLocally: 'HTML5 Canvas로 기기에서 처리', // 'Processed locally via HTML5 Canvas'
@@ -383,6 +385,45 @@ export const KO = {
         cta: '가이드 읽기 →', // 'Read guide →'
       },
     ],
+  },
+  blog: {
+    blog: '블로그',
+    homeHeading: '이미지 가이드, 튜토리얼 및 자료',
+    homeSubheading:
+      '이미지 압축, 크기 조정, 변환, 편집을 위한 실용적인 가이드 — 검색 엔진이 아닌 실제 작업을 위해 작성되었습니다.',
+    searchPlaceholder: '가이드 검색…',
+    searchNoResults: '“{query}”에 대한 가이드를 찾을 수 없습니다.',
+    featuredHeading: '추천 가이드',
+    latestHeading: '최신 가이드 ({count})',
+    categoriesHeading: '카테고리별로 찾아보기',
+    emptyHeading: '아직 가이드가 없습니다',
+    emptyText:
+      '이 섹션의 첫 가이드를 작성하고 있습니다. 곧 다시 확인해 주세요. 무료 도구를 먼저 사용해 보셔도 좋습니다.',
+    readArticle: '가이드 읽기 →',
+    minRead: '읽는 시간 {minutes}분',
+    publishedOn: '게시일 {date}',
+    updatedOn: '업데이트 {date}',
+    bylineAuthor: 'CompressMyPic 편집팀',
+    tableOfContents: '이 페이지의 내용',
+    faqHeading: '자주 묻는 질문',
+    relatedArticlesHeading: '관련 가이드',
+    relatedToolsHeading: '도구 사용해 보기',
+    tryToolCta: '{tool} 사용해 보기 — 무료, 가입 불필요',
+    prevArticle: '← 이전 가이드',
+    nextArticle: '다음 가이드 →',
+    backToBlog: '← 블로그로 돌아가기',
+    shareHeading: '이 가이드 공유하기',
+    copyLink: '링크 복사',
+    copied: '복사됨!',
+    shareOnX: 'X에 공유',
+    shareOnFacebook: 'Facebook에 공유',
+    notAvailableHeading: '이 가이드는 아직 사용 중인 언어로 제공되지 않습니다',
+    notAvailableText:
+      '이 가이드를 아직 번역하고 있습니다. 영어로 읽거나 사용 중인 언어로 제공되는 가이드를 살펴보세요.',
+    viewBlogHome: '블로그 살펴보기',
+    guidesHeading: '단계별 가이드',
+    categoryGuidesHeading: '가이드: {category}',
+    relatedArticlesForTool: '관련 가이드: {tool}',
   },
   shareSection: {
     heading: 'CompressMyPic을 친구들과 공유하세요', // 'Share CompressMyPic with friends'

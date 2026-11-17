@@ -191,7 +191,7 @@ export const GuideFormatsPage: React.FC<GuideFormatsPageProps> = ({ onNavigate }
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Home", item: "https://compressmypic.online/" },
-            { '@type': 'ListItem', position: 2, name: "Guides" },
+            { '@type': 'ListItem', position: 2, name: "Guides", item: "https://compressmypic.online/" },
             { '@type': 'ListItem', position: 3, name: "JPG vs PNG vs WebP: Which Image Format Is Best? (Guide)", item: "https://compressmypic.online/guides/jpg-vs-png-vs-webp/" },
           ],
         },

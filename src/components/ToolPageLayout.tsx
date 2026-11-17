@@ -25,6 +25,7 @@ import { JA_ALL_TOOLS_PATH } from '../locales/ja/slugs';
 import { KO_ALL_TOOLS_PATH } from '../locales/ko/slugs';
 import { ZH_ALL_TOOLS_PATH } from '../locales/zh/slugs';
 import { getPastelCardClass, getPastelTileClass } from '../utils/pastel';
+import { ToolRelatedArticles } from './blog/ToolRelatedArticles';
 
 export interface ToolPageLayoutStrings {
   home: string;
@@ -376,8 +377,9 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
       });
     } else {
       // English has no standalone tools-directory page (the directory lives
-      // on the homepage), so the category crumb carries a name only.
-      breadcrumbItems.push({ '@type': 'ListItem', position: 2, name: categoryLabel });
+      // on the homepage), so the category crumb points at the homepage —
+      // a name-only crumb is invalid (GSC "Missing field item").
+      breadcrumbItems.push({ '@type': 'ListItem', position: 2, name: categoryLabel, item: homeUrl });
     }
     breadcrumbItems.push({
       '@type': 'ListItem',
@@ -646,6 +648,17 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
           </div>
         </section>
       )}
+
+      {/* Related Articles (Batch 2): renders nothing until articles exist
+          for this tool — the hook reads the registry via BlogContext. */}
+      <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
+        <ToolRelatedArticles
+          toolSlug={tool.slug.slice(1)}
+          lang={lang}
+          toolName={tool.name}
+          categories={categoryLabels}
+        />
+      </div>
 
       {/* Related Tools: White Cards with Pastel Tile & Open tool link */}
       {relatedTools.length > 0 && (

@@ -198,7 +198,7 @@ export const GuideFormatsPageZh: React.FC<GuideFormatsPageZhProps> = ({ onNaviga
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "首页", item: "https://compressmypic.online/zh/" },
-            { '@type': 'ListItem', position: 2, name: "指南" },
+            { '@type': 'ListItem', position: 2, name: "指南", item: "https://compressmypic.online/zh/" },
             { '@type': 'ListItem', position: 3, name: "JPG、PNG、WebP 对比：应该选择哪种格式？", item: "https://compressmypic.online/zh/zhinan/jpg-vs-png-vs-webp/" },
           ],
         },

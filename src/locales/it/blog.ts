@@ -1,0 +1,7 @@
+// Italian (it) overrides for CompressMyPic blog articles.
+// Keys are article ids; values override the English version (no `slug` —
+// the localized slug lives in ./slugs.ts). Empty until Batch 4 localizes
+// articles. Standard Italian.
+import type { BlogArticleLocaleOverride } from '../../types/blog';
+
+export const IT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {};

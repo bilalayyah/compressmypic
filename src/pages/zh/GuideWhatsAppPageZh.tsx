@@ -206,7 +206,7 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "首页", item: "https://compressmypic.online/zh/" },
-            { '@type': 'ListItem', position: 2, name: "指南" },
+            { '@type': 'ListItem', position: 2, name: "指南", item: "https://compressmypic.online/zh/" },
             { '@type': 'ListItem', position: 3, name: "如何在 WhatsApp 上压缩图片而不损失画质", item: "https://compressmypic.online/zh/zhinan/whatsapp-tupian-yasuo/" },
           ],
         },

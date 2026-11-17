@@ -48,6 +48,7 @@ export const JA = {
     howItWorks: '使い方', // 'How It Works'
     faq: 'よくある質問', // 'FAQ'
     about: '概要', // 'About'
+    blog: 'ブログ',
     contact: 'お問い合わせ', // 'Contact'
     compressImages: '画像を圧縮', // 'Compress Images'
     themeLight: 'ライトモード', // 'Light Mode'
@@ -72,6 +73,7 @@ export const JA = {
     toolsHeading: '画像ツール', // 'Image Tools'
     legalHeading: '信頼と法務', // 'Trust & Legal'
     guidesHeading: 'ガイド', // 'Guides'
+    blogLabel: 'ブログ',
     moreHeading: 'その他のユーティリティ', // 'More Utilities'
     directoryHeading: '高度な圧縮・編集・開発者向けツール', // 'Advanced Compression, Editing & Developer Tools'
     processedLocally: 'HTML5 Canvasでローカル処理', // 'Processed locally via HTML5 Canvas'
@@ -392,6 +394,45 @@ export const JA = {
         cta: 'ガイドを読む →', // 'Read guide →'
       },
     ],
+  },
+  blog: {
+    blog: 'ブログ',
+    homeHeading: '画像ガイド、チュートリアル、リソース',
+    homeSubheading:
+      '画像の圧縮、リサイズ、変換、編集のための実践的なガイド。検索エンジンではなく、実際の作業のために書かれています。',
+    searchPlaceholder: 'ガイドを検索…',
+    searchNoResults: '「{query}」に一致するガイドが見つかりませんでした。',
+    featuredHeading: '注目のガイド',
+    latestHeading: '最新のガイド（{count}）',
+    categoriesHeading: 'カテゴリーから探す',
+    emptyHeading: 'ガイドはまだありません',
+    emptyText:
+      'このセクションの最初のガイドを執筆中です。また後でご覧ください。無料ツールもお試しください。',
+    readArticle: 'ガイドを読む →',
+    minRead: '読了時間 {minutes} 分',
+    publishedOn: '公開日 {date}',
+    updatedOn: '更新日 {date}',
+    bylineAuthor: 'CompressMyPic編集チーム',
+    tableOfContents: 'このページの内容',
+    faqHeading: 'よくある質問',
+    relatedArticlesHeading: '関連ガイド',
+    relatedToolsHeading: 'ツールを試す',
+    tryToolCta: '{tool}を試す — 無料、登録不要',
+    prevArticle: '← 前のガイド',
+    nextArticle: '次のガイド →',
+    backToBlog: '← ブログに戻る',
+    shareHeading: 'このガイドを共有',
+    copyLink: 'リンクをコピー',
+    copied: 'コピーしました！',
+    shareOnX: 'Xで共有',
+    shareOnFacebook: 'Facebookで共有',
+    notAvailableHeading: 'このガイドはまだお使いの言語では利用できません',
+    notAvailableText:
+      'このガイドは翻訳中です。英語版を読むか、お使いの言語で利用できるガイドをご覧ください。',
+    viewBlogHome: 'ブログを見る',
+    guidesHeading: 'ステップバイステップのガイド',
+    categoryGuidesHeading: 'ガイド：{category}',
+    relatedArticlesForTool: '関連ガイド：{tool}',
   },
   shareSection: {
     heading: 'CompressMyPicを友達とシェアする', // 'Share CompressMyPic with friends'

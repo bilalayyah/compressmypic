@@ -64,6 +64,16 @@ export const ZH_PATH_BY_EN: Record<string, string> = {
   '/guides/compress-images-for-whatsapp': '/zh/zhinan/whatsapp-tupian-yasuo',
   '/guides/jpg-vs-png-vs-webp': '/zh/zhinan/jpg-vs-png-vs-webp',
   '/guides/reduce-image-size-to-100kb': '/zh/zhinan/jiang-tupian-yasuo-zhi-100kb',
+  // --- Blog (Batch 2) ---
+  '/blog': '/zh/blog',
+  '/blog/category/compress': '/zh/blog/category/yasuo',
+  '/blog/category/resize': '/zh/blog/category/tiaozheng-chicun',
+  '/blog/category/convert': '/zh/blog/category/zhuanhuan',
+  '/blog/category/crop-edit': '/zh/blog/category/caijian-bianji',
+  '/blog/category/ai-tools': '/zh/blog/category/ai-gongju',
+  '/blog/category/create': '/zh/blog/category/chuangzuo',
+  '/blog/category/privacy': '/zh/blog/category/yinsi',
+  '/blog/category/developer': '/zh/blog/category/kaifazhe-gongju',
 };
 
 export const EN_PATH_BY_ZH: Record<string, string> = Object.fromEntries(

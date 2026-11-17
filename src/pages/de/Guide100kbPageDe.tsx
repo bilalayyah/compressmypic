@@ -195,7 +195,7 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Startseite", item: "https://compressmypic.online/de/" },
-            { '@type': 'ListItem', position: 2, name: "Anleitungen" },
+            { '@type': 'ListItem', position: 2, name: "Anleitungen", item: "https://compressmypic.online/de/" },
             { '@type': 'ListItem', position: 3, name: "Bild auf 100 KB verkleinern für Web & E-Mail", item: "https://compressmypic.online/de/anleitungen/bild-auf-100-kb-verkleinern/" },
           ],
         },

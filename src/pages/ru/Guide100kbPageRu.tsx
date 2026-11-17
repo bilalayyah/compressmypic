@@ -195,7 +195,7 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: "Главная", item: "https://compressmypic.online/ru/" },
-            { '@type': 'ListItem', position: 2, name: "Руководства" },
+            { '@type': 'ListItem', position: 2, name: "Руководства", item: "https://compressmypic.online/ru/" },
             { '@type': 'ListItem', position: 3, name: "Как уменьшить размер изображения до 100 КБ для веба и электронной почты", item: "https://compressmypic.online/ru/rukovodstva/umenshit-razmer-izobrazheniya-do-100-kb/" },
           ],
         },
