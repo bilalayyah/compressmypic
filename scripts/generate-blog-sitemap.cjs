@@ -1,12 +1,14 @@
-// Blog sitemap generator (Batch 2 + Batch 3) — inserts the blog home (11) +
-// category hub (88) + published article URLs into public/sitemap.xml,
-// idempotently.
+// Blog sitemap generator (Batch 2 + Batch 3 + Batch 4) — inserts the blog
+// home (11) + category hub (88) + published article URLs into
+// public/sitemap.xml, idempotently.
 //
 // SOURCE OF TRUTH: BLOG_CATEGORY_SLUGS + BLOG_ARTICLES in
-// src/data/blogArticles.ts (parsed with regexes — plain literals).
-// Homes are the 11 /<lang>/blog/ paths. Articles are EN-only in Batch 3
-// (one URL each, en + x-default alternates, per-article lastmod from
-// publishedAt); Batch 4 adds localized article URLs.
+// src/data/blogArticles.ts, and each locale's article slugs in
+// src/locales/<lang>/slugs.ts (parsed with regexes — plain literals).
+// Homes are the 11 /<lang>/blog/ paths. Articles get ONE URL per published
+// locale (EN + every locale with a slugs.ts entry for that article),
+// alternates = published locales + x-default → EN, per-article lastmod
+// from publishedAt. Batch 3 was EN-only; Batch 4 adds localized URLs.
 //
 // Usage:
 //   node scripts/generate-blog-sitemap.cjs          # insert/update the block
@@ -144,7 +146,80 @@ function articleEntryXml(article) {
   return lines.join('\n');
 }
 
-function buildBlogBlock(slugs, articles) {
+function withSlash(p) {
+  return p.endsWith('/') ? p : `${p}/`;
+}
+
+/**
+ * Localized article slugs per language, from each locale's slugs.ts
+ * (Batch 4). Returns { lang: Map(enSlug -> localizedPath) }. An article is
+ * published in a locale exactly when that locale's map has its EN slug.
+ * Throws on an entry for an unknown EN slug, a path that doesn't start
+ * with /<lang>/blog/, or a duplicate localized path — a bad slug entry
+ * must fail loudly, never silently drop or duplicate a URL.
+ */
+function parseLocaleArticleSlugs(articles) {
+  const known = new Set(articles.map((a) => a.slug));
+  const out = {};
+  for (const lang of LANGS) {
+    if (lang === 'en') continue;
+    const file = path.join(REPO_ROOT, 'src', 'locales', lang, 'slugs.ts');
+    const src = fs.readFileSync(file, 'utf8');
+    const map = new Map();
+    for (const m of src.matchAll(/'(\/blog\/[^']+)':\s*'(\/[^']+)'/g)) {
+      const enPath = m[1];
+      const locPath = m[2];
+      if (enPath === '/blog' || enPath.startsWith('/blog/category/')) continue;
+      const enSlug = enPath.slice('/blog/'.length);
+      if (!known.has(enSlug)) {
+        throw new Error(`slugs.ts (${lang}): article entry for unknown EN slug: ${enSlug}`);
+      }
+      if (!locPath.startsWith(`/${lang}/blog/`)) {
+        throw new Error(`slugs.ts (${lang}): bad localized path for ${enSlug}: ${locPath}`);
+      }
+      if ([...map.values()].includes(locPath)) {
+        throw new Error(`slugs.ts (${lang}): duplicate localized path: ${locPath}`);
+      }
+      map.set(enSlug, locPath);
+    }
+    out[lang] = map;
+  }
+  return out;
+}
+
+/** Published locales for an article, EN first, then LANGS order. */
+function publishedLocales(article, localeSlugs) {
+  const locales = ['en'];
+  for (const lang of LANGS) {
+    if (lang !== 'en' && localeSlugs[lang].has(article.slug)) locales.push(lang);
+  }
+  return locales;
+}
+
+/** Article entries (Batch 4): one URL per published locale. Alternates are
+ *  exactly the published locales + x-default → EN. lastmod = publishedAt. */
+function articleEntriesXml(article, localeSlugs) {
+  const locales = publishedLocales(article, localeSlugs);
+  const urlFor = (lang) =>
+    lang === 'en' ? `/blog/${article.slug}/` : withSlash(localeSlugs[lang].get(article.slug));
+  return locales.map((lang) => {
+    const urlPath = urlFor(lang);
+    const lines = ['  <url>', `    <loc>${BASE}${urlPath}</loc>`];
+    for (const l of locales) {
+      lines.push(
+        `    <xhtml:link rel="alternate" hreflang="${l}" href="${BASE}${urlFor(l)}" />`
+      );
+    }
+    lines.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE}${urlFor('en')}" />`);
+    lines.push(`    <lastmod>${article.publishedAt}</lastmod>`);
+    lines.push('    <changefreq>weekly</changefreq>');
+    lines.push('    <priority>0.7</priority>');
+    lines.push('  </url>');
+    return lines.join('\n');
+  });
+}
+
+function buildBlogBlock(slugs, articles, localeSlugs) {
   const parts = [BLOCK_START];
   // Homes (11), EN first.
   for (const lang of LANGS) {
@@ -161,9 +236,10 @@ function buildBlogBlock(slugs, articles) {
       parts.push(entryXml(blogCategoryPath(categoryId, lang, slugs), alternates, '0.8'));
     }
   }
-  // Articles (Batch 3): registry order, EN only.
+  // Articles (Batch 3 EN-only, Batch 4 localized): registry order, one
+  // entry per published locale.
   for (const article of articles) {
-    parts.push(articleEntryXml(article));
+    parts.push(...articleEntriesXml(article, localeSlugs));
   }
   parts.push(BLOCK_END);
   return parts.join('\n');
@@ -172,9 +248,14 @@ function buildBlogBlock(slugs, articles) {
 function main() {
   const slugs = parseCategorySlugs();
   const articles = parseArticles();
+  const localeSlugs = parseLocaleArticleSlugs(articles);
   const categoryIds = Object.keys(slugs.en);
-  const expectedBlogUrls = LANGS.length + categoryIds.length * LANGS.length + articles.length;
-  const block = buildBlogBlock(slugs, articles);
+  const articleUrlCount = articles.reduce(
+    (n, a) => n + publishedLocales(a, localeSlugs).length,
+    0
+  );
+  const expectedBlogUrls = LANGS.length + categoryIds.length * LANGS.length + articleUrlCount;
+  const block = buildBlogBlock(slugs, articles, localeSlugs);
 
   let sitemap = fs.readFileSync(SITEMAP_PATH, 'utf8');
   const original = sitemap;
@@ -200,7 +281,7 @@ function main() {
   const tmp = `${SITEMAP_PATH}.tmp`;
   fs.writeFileSync(tmp, next);
   fs.renameSync(tmp, SITEMAP_PATH);
-  console.log(`sitemap updated: ${urlCount} URLs (${expectedBlogUrls} blog: 11 homes + 88 hubs + ${articles.length} articles).`);
+  console.log(`sitemap updated: ${urlCount} URLs (${expectedBlogUrls} blog: 11 homes + 88 hubs + ${articleUrlCount} article URLs across ${articles.length} articles).`);
 }
 
 main();

@@ -12,12 +12,14 @@
 //     exactly the expected localized set, and every alternate href is itself
 //     a <loc> in the sitemap.
 //  6. Blog article URLs: exactly the published-article set from the registry
-//     (BLOG_ARTICLES, status 'published'), each once, alternates exactly
-//     {en, x-default} pointing at the EN URL, lastmod == publishedAt; no
-//     other article URLs.
-//  7. Total URL count == 626 + 99 + <published articles> (869 when Batch 3
-//     is complete). The article count is read from the registry, so the
-//     expectation follows each Batch 3 category automatically.
+//     (BLOG_ARTICLES, status 'published') × published locales (EN + every
+//     locale with a slugs.ts entry for that article), each once, alternates
+//     exactly the published locales + x-default → EN, lastmod == publishedAt;
+//     no other article URLs.
+//  7. Total URL count == 626 + 99 + <article URLs across all published
+//     locales> (869 after Batch 3 EN-only; 2,309 when Batch 4 is complete).
+//     The counts are read from the registry + slugs.ts, so the expectation
+//     follows each Batch 3 category and each Batch 4 language automatically.
 // Exit 0 on pass, 1 on any failure (prints every failure, not just the first).
 
 const fs = require('fs');
@@ -97,6 +99,50 @@ function parseArticles() {
   return articles;
 }
 
+function withSlash(p) {
+  return p.endsWith('/') ? p : `${p}/`;
+}
+
+/** Localized article slugs per language, from each locale's slugs.ts
+ *  (Batch 4 — same parser as the generator). */
+function parseLocaleArticleSlugs(articles) {
+  const known = new Set(articles.map((a) => a.slug));
+  const out = {};
+  for (const lang of LANGS) {
+    if (lang === 'en') continue;
+    const file = path.join(REPO_ROOT, 'src', 'locales', lang, 'slugs.ts');
+    const src = fs.readFileSync(file, 'utf8');
+    const map = new Map();
+    for (const m of src.matchAll(/'(\/blog\/[^']+)':\s*'(\/[^']+)'/g)) {
+      const enPath = m[1];
+      const locPath = m[2];
+      if (enPath === '/blog' || enPath.startsWith('/blog/category/')) continue;
+      const enSlug = enPath.slice('/blog/'.length);
+      if (!known.has(enSlug)) {
+        throw new Error(`slugs.ts (${lang}): article entry for unknown EN slug: ${enSlug}`);
+      }
+      if (!locPath.startsWith(`/${lang}/blog/`)) {
+        throw new Error(`slugs.ts (${lang}): bad localized path for ${enSlug}: ${locPath}`);
+      }
+      if ([...map.values()].includes(locPath)) {
+        throw new Error(`slugs.ts (${lang}): duplicate localized path: ${locPath}`);
+      }
+      map.set(enSlug, locPath);
+    }
+    out[lang] = map;
+  }
+  return out;
+}
+
+/** Published locales for an article, EN first, then LANGS order. */
+function publishedLocales(article, localeSlugs) {
+  const locales = ['en'];
+  for (const lang of LANGS) {
+    if (lang !== 'en' && localeSlugs[lang].has(article.slug)) locales.push(lang);
+  }
+  return locales;
+}
+
 function blogHomePath(lang) {
   return lang === 'en' ? '/blog/' : `/${lang}/blog/`;
 }
@@ -109,6 +155,7 @@ function blogCategoryPath(categoryId, lang, slugs) {
 function main() {
   const slugs = parseCategorySlugs();
   const articles = parseArticles();
+  const localeSlugs = parseLocaleArticleSlugs(articles);
   const xml = fs.readFileSync(SITEMAP_PATH, 'utf8');
 
   const urlBlocks = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((m) => m[1]);
@@ -183,21 +230,32 @@ function main() {
   for (const [loc, expected] of expectedHubs) checkAlternates(loc, expected);
 
   // 6. Blog article URLs: exactly the published-article set from the
-  // registry — each once, alternates exactly {en, x-default}, lastmod ==
-  // publishedAt; no other article URLs.
-  const articleLocs = locs.filter((loc) => {
-    if (!loc) return false;
-    const p = loc.slice(BASE.length);
-    return p.startsWith('/blog/') && !p.startsWith('/blog/category/') && p !== '/blog/' &&
-      !LANGS.some((l) => p === `/${l}/blog/`);
-  });
+  // registry × published locales — each once, alternates exactly the
+  // published locales + x-default → EN, lastmod == publishedAt; no other
+  // article URLs.
+  const isArticlePath = (p) => {
+    if (p.startsWith('/blog/') && !p.startsWith('/blog/category/') && p !== '/blog/') return true;
+    for (const l of LANGS) {
+      if (l === 'en') continue;
+      if (p.startsWith(`/${l}/blog/`) && !p.startsWith(`/${l}/blog/category/`) && p !== `/${l}/blog/`) return true;
+    }
+    return false;
+  };
+  const articleLocs = locs.filter((loc) => loc && isArticlePath(loc.slice(BASE.length)));
   const expectedArticles = new Map(); // loc -> { alternates, lastmod }
+  let articleUrlCount = 0;
   for (const a of articles) {
-    const loc = `${BASE}/blog/${a.slug}/`;
-    expectedArticles.set(loc, {
-      alternates: { en: loc, 'x-default': loc },
-      lastmod: a.publishedAt,
-    });
+    const locales = publishedLocales(a, localeSlugs);
+    const urlFor = (lang) =>
+      lang === 'en' ? `/blog/${a.slug}/` : withSlash(localeSlugs[lang].get(a.slug));
+    for (const lang of locales) {
+      const loc = `${BASE}${urlFor(lang)}`;
+      const alternates = {};
+      for (const l of locales) alternates[l] = `${BASE}${urlFor(l)}`;
+      alternates['x-default'] = `${BASE}${urlFor('en')}`;
+      expectedArticles.set(loc, { alternates, lastmod: a.publishedAt });
+      articleUrlCount++;
+    }
   }
   for (const [loc, expected] of expectedArticles) {
     const count = locs.filter((x) => x === loc).length;
@@ -218,7 +276,7 @@ function main() {
   }
 
   // 7. Total count.
-  const EXPECTED_BLOG_URLS = 11 + 88 + articles.length;
+  const EXPECTED_BLOG_URLS = 11 + 88 + articleUrlCount;
   const expectedTotal = PRE_BLOG_BASELINE + EXPECTED_BLOG_URLS;
   if (urlBlocks.length !== expectedTotal) {
     fail(`total <url> count ${urlBlocks.length}, expected ${expectedTotal} (${PRE_BLOG_BASELINE} baseline + ${EXPECTED_BLOG_URLS} blog)`);
@@ -236,7 +294,7 @@ function main() {
     process.exit(1);
   }
   console.log(
-    `sitemap OK: ${urlBlocks.length} URLs total (${blogCount} blog: 11 homes + 88 hubs + ${articles.length} articles), no duplicates, all trailing-slash, hreflang reciprocal.`
+    `sitemap OK: ${urlBlocks.length} URLs total (${blogCount} blog: 11 homes + 88 hubs + ${articles.length} articles / ${articleUrlCount} article URLs), no duplicates, all trailing-slash, hreflang reciprocal.`
   );
 }
 
