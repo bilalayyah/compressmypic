@@ -56,8 +56,13 @@ function parseArticles() {
   const src = fs.readFileSync(REGISTRY_PATH, 'utf8');
   const arrStart = src.indexOf('export const BLOG_ARTICLES');
   if (arrStart === -1) throw new Error('BLOG_ARTICLES not found in src/data/blogArticles.ts');
-  const bracket = src.indexOf('[', arrStart);
-  if (bracket === -1) throw new Error('BLOG_ARTICLES array not found');
+  // NOTE (Batch 3 fix): the array literal's '[' is the one after '= [',
+  // NOT the first '[' after the declaration — that one is the '[' in the
+  // type annotation 'BlogArticle[]', which made the parser see an empty
+  // registry (0 articles) as soon as Batch 3 added real articles.
+  const eqBracket = src.indexOf('= [', arrStart);
+  if (eqBracket === -1) throw new Error('BLOG_ARTICLES array not found');
+  const bracket = eqBracket + 2;
   const rest = src.slice(bracket + 1);
   let body;
   if (/^\s*\]/.test(rest)) {
