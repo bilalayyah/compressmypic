@@ -6,7 +6,7 @@
 // third-party widget. One thread per page (pagePath = the canonical path,
 // so every tool × language has its own comments).
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { getPastelTileClass } from '../utils/pastel';
 import { trackFormSubmit } from '../utils/analytics';
 import type { SupportedLang } from '../locales/config';
@@ -82,8 +82,6 @@ export const Comments: React.FC<{
   const [posting, setPosting] = useState(false);
   const [postError, setPostError] = useState('');
   const [posted, setPosted] = useState(false);
-  const sectionRef = useRef<HTMLDivElement | null>(null);
-  const loadedRef = useRef(false);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -100,36 +98,8 @@ export const Comments: React.FC<{
     }
   }, [pagePath]);
 
-  // Lazy-load: fetch comments only when the section nears the viewport, so a
-  // page view that never scrolls down makes no comments request at all.
-  // Falls back to loading on mount when IntersectionObserver is unavailable.
   useEffect(() => {
-    if (loadedRef.current) return;
-    if (typeof IntersectionObserver === 'undefined') {
-      loadedRef.current = true;
-      load();
-      return;
-    }
-    const el = sectionRef.current;
-    if (!el) {
-      loadedRef.current = true;
-      load();
-      return;
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          observer.disconnect();
-          if (!loadedRef.current) {
-            loadedRef.current = true;
-            load();
-          }
-        }
-      },
-      { rootMargin: '600px' },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
+    load();
   }, [load]);
 
   const submit = async (e: React.FormEvent) => {
@@ -168,7 +138,7 @@ export const Comments: React.FC<{
   };
 
   return (
-    <div ref={sectionRef}>
+    <div>
       {loading && <p className="text-sm text-[var(--ink-3)]">{s.loading}</p>}
       {loadError && (
         <div className="flex items-center gap-3">
