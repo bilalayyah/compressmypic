@@ -9231,7 +9231,4363 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     },
     relatedToolSlugs: ['/image-converter', '/jpg-to-webp', '/png-to-jpg'],
   },
-  // BATCH3-CROP-EDIT (33 articles)
+  {
+    id: 'rotate-flip-image-guide',
+    toolSlug: '/rotate-flip-image',
+    categoryId: 'crop-edit',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'rotate-flip-image-guide',
+      title: 'Rotate and Flip Images: Complete Guide',
+      description: 'Learn how to rotate and flip images online: 90 and 180 degree turns, custom angles, mirrored selfies, and EXIF orientation fixes, all in your browser.',
+      body: `
+<p>A sideways photo is one of the most common image problems. You open a picture you took on your phone and find the horizon running vertically, or a document scan that reads bottom to top.</p>
+<p>Rotation and flipping are the two moves that fix it. Rotation turns the whole image by a set angle, while flipping mirrors it left to right or top to bottom.</p>
+<p>This guide explains both moves in plain language. You will learn which angles to use, how to fix mirrored selfies, why some photos rotate on their own, and how to straighten a tilted shot without losing any corners.</p>
+<h2 id="what-rotation-and-flipping-do">What Rotation and Flipping Actually Do</h2>
+<p>Rotation spins the image around its centre. A 90 degree turn swaps width and height, so a landscape photo becomes a portrait one, and a 180 degree turn puts the image upside down.</p>
+<p>Flipping is different from rotation. A horizontal flip mirrors the image left to right, like looking at it in a mirror, while a vertical flip mirrors it top to bottom.</p>
+<p>The two moves can be combined. You can rotate a photo 90 degrees and then flip it horizontally, which is useful when a scanned page is both sideways and mirrored.</p>
+<p>Neither move changes the colours, the brightness, or the sharpness of the image. They only change where each pixel sits, so the picture itself stays the same in every other way.</p>
+<h2 id="why-photos-end-up-sideways">Why Photos End Up Sideways</h2>
+<p>Phone cameras record orientation as a note inside the file, called EXIF data, rather than by physically turning the pixels. Some apps read that note and others ignore it.</p>
+<p>When an app ignores the note, the photo appears rotated. That is why the same image can look fine in your gallery and sideways in a form, a chat app, or an old viewer.</p>
+<p>Scanners create the same problem in a different way. A page fed into a scanner upside down comes out upside down, and there is no orientation note to correct it.</p>
+<p>Selfies add a third cause. Front cameras often save a mirrored preview, so text on a shirt reads backwards until the image is flipped horizontally.</p>
+<h2 id="rotation-angles-explained">Rotation Angles Explained: 90, 180 and Custom</h2>
+<p>Ninety degrees is the workhorse angle. It fixes a photo taken in portrait mode that displays in landscape, or a landscape shot that displays as a tall portrait.</p>
+<p>One hundred and eighty degrees fixes a fully upside-down image. This happens with scanned pages, photos taken with the phone held the wrong way, and images saved by some older cameras.</p>
+<p>Custom angles handle the in-between cases. A horizon that tilts by five degrees needs a small correction, not a full quarter turn, and a slider lets you dial in the exact number.</p>
+<p>The CompressMyPic tool supports custom angles from minus 180 to plus 180 degrees. It also expands the canvas automatically, so a tilted photo never loses its corners to cropping.</p>
+<h2 id="flip-horizontal-vs-vertical">Flip Horizontal vs Flip Vertical</h2>
+<p>A horizontal flip mirrors the left and right sides. It is the fix for a mirrored selfie, where text reads backwards and a parting in the hair sits on the wrong side.</p>
+<p>A vertical flip mirrors the top and bottom. It is less common, but it fixes images that were captured upside down by a camera mounted in an unusual position.</p>
+<p>Flipping changes the meaning of an image, not just its orientation. A flipped photo of a street sign will read backwards, and a flipped map will point the wrong way.</p>
+<p>Use flips deliberately. Rotate first when the problem is only about which way is up, and flip only when the image is genuinely mirrored.</p>
+<h2 id="exif-orientation-basics">EXIF Orientation: Why Some Photos Rotate by Themselves</h2>
+<p>Every photo from a phone or camera carries EXIF metadata. One field in that metadata records which way the camera was held when the shot was taken.</p>
+<p>Modern galleries and browsers read that field and display the photo correctly. Older software, some upload forms, and a few social platforms skip it entirely.</p>
+<p>That mismatch is why a photo can look right on your phone and wrong everywhere else. The pixels were never rotated; only the note describing them was ignored.</p>
+<p>Rotating the image in an editor fixes the problem permanently. The tool rewrites the actual pixels and resets the orientation note, so the file displays correctly in any viewer.</p>
+<h2 id="formats-and-quality">Formats and Quality: What Happens to Your File</h2>
+<p>The Rotate and Flip tool accepts JPG, PNG, WebP, HEIC, GIF, BMP, and SVG files up to 20 MB each. You can keep the original format or switch to JPG, PNG, or WebP on export.</p>
+<p>Rotating by 90 or 180 degrees is nearly lossless for most formats. The pixels are rearranged, not re-encoded from scratch, so the visible quality stays the same.</p>
+<p>Custom angles are different, because the image must be re-rendered onto a new canvas. The tool handles this cleanly, but a JPG saved again at a lower quality setting will show some softening.</p>
+<p>Choose PNG or WebP when you need the sharpest result, especially for screenshots and graphics with text. For ordinary photos, JPG at a high quality setting is fine.</p>
+<h2 id="batch-rotation">Rotating Many Photos at Once</h2>
+<p>Fixing one sideways photo is quick, but a whole folder of them is tedious. The tool supports batch rotation, applying the same turn to every image in the queue at once.</p>
+<p>This is useful after a holiday or an event, when dozens of photos share the same wrong orientation. Upload them together, pick one angle, and download them all as a ZIP file.</p>
+<p>Batch mode applies the same setting to every file, so it works best when the problem is consistent. If half the photos need 90 degrees and half need 270, split them into two batches.</p>
+<p>Each file keeps its own name in the ZIP export. You can download a single file from the batch too, if only one of them needs attention.</p>
+<h2 id="straightening-tilted-photos">Straightening a Tilted Photo Without Losing Corners</h2>
+<p>A tilted horizon is a small rotation problem. The photo is only a few degrees off, but the eye notices it immediately, especially in landscapes and seascapes.</p>
+<p>Drag the rotation slider in small steps and watch the horizon level out. One or two degrees is often enough, and the change is visible in the live preview.</p>
+<p>When you rotate by a custom angle, triangular gaps appear at the corners of the frame. The tool expands the canvas to fit the whole rotated image, so no part of the photo is cut away.</p>
+<p>Those gaps are filled with a background colour or transparency, depending on the format. For JPG exports the corners become a solid colour, while PNG keeps them transparent.</p>
+<h2 id="fixing-mirrored-selfies">Fixing a Mirrored Selfie</h2>
+<p>Front-facing cameras show you a mirrored preview, because that is how a mirror behaves. Some phones save the mirrored version, and some save the corrected one.</p>
+<p>If your selfie comes out with text reading backwards, it needs a horizontal flip. One click mirrors the image back, and the text reads correctly again.</p>
+<p>Check the whole image before flipping, not just the text. A flip also moves a mole, a scar, or a hair parting to the other side, which changes how the photo looks.</p>
+<p>For profile pictures and ID-style portraits, the unmirrored version is usually the right one. It matches how other people see you, rather than how you see yourself in a mirror.</p>
+<h2 id="rotate-vs-crop">Rotate or Crop: Which Fix Comes First</h2>
+<p>Rotation and cropping solve different problems, but they often work together. Rotate first to fix the orientation, then crop to tighten the framing.</p>
+<p>Rotating after cropping can waste your work. A crop chosen for a landscape frame may no longer fit once the image turns into a portrait shape.</p>
+<p>Straightening a photo and then cropping is a common pair. Rotate by a few degrees to level the horizon, then crop away the empty corner triangles the rotation created.</p>
+<p>If you need both tools, use the <a href="/image-cropper/">Image Cropper</a> after rotating. The cropper keeps the rotated pixels exactly as they are and only trims the edges you choose.</p>
+<h2 id="privacy-local-processing">Privacy: Your Photos Stay on Your Device</h2>
+<p>Rotation happens entirely in your browser. Your photos are never uploaded to a server, which matters when the images are personal, medical, or work documents.</p>
+<p>This is a real advantage over tools that require an upload. A passport scan or a family photo should not travel to a server you cannot see, just to turn it the right way up.</p>
+<p>The tool also strips EXIF location data when it exports. A rotated photo downloaded from the tool carries no record of where it was taken.</p>
+<p>That combination is useful for ID documents and scanned forms. The orientation gets fixed and the location data gets removed in a single step.</p>
+<h2 id="common-mistakes">Common Mistakes When Rotating Images</h2>
+<p>The most common mistake is rotating the wrong direction. A photo that needs 90 degrees clockwise will look worse after 90 degrees anticlockwise, so check the preview before downloading.</p>
+<p>Another mistake is flipping when rotation is the real fix. Flipping a sideways photo mirrors it but leaves it sideways, and the result looks stranger than the original.</p>
+<p>People also forget that a 90 degree turn swaps width and height. A photo cropped to a wide banner shape becomes a tall portrait after rotation, which may not fit its destination.</p>
+<p>Finally, do not rotate the same JPG many times. Each save adds a little damage, so always rotate from the original file and save once.</p>
+<h2 id="when-to-rotate-vs-reshoot">When to Rotate and When to Reshoot</h2>
+<p>Rotation fixes orientation, but it cannot fix a bad photo. A blurry or badly lit image stays blurry and badly lit after any number of turns.</p>
+<p>Reshoot when the subject is out of focus or the lighting is wrong. No rotation angle will bring back detail that the camera never captured.</p>
+<p>Rotate when the photo itself is good and only the direction is wrong. That is the whole point of the tool: a quick fix for a good image.</p>
+<p>For documents, the same rule applies. A straight, legible scan only needs rotation, while a skewed or shadowed scan is worth feeding through the scanner again.</p>
+<h2 id="rotating-scanned-receipts">Rotating Scanned Receipts and Forms</h2>
+<p>Receipts and paper forms are often scanned at odd angles, especially when they are fed through a scanner in a hurry. A receipt scanned sideways is hard to read and harder to file.</p>
+<p>Fix the orientation before you save the scan to your records. A 90 degree turn puts the text upright, and a small custom angle straightens a receipt that sits slightly crooked on the glass.</p>
+<p>For expense records, rotate the scan and then crop away the empty scanner bed around it. The result is a clean, readable file that is easy to attach to an expense claim.</p>
+<p>Check the numbers after rotating. A total or a date that reads clearly in the preview will stay clear in the download, while a blurry scan may need to be re-scanned rather than rotated.</p>
+<h2 id="rotation-and-printing">Rotating Images for Print</h2>
+<p>Printers follow the pixels, not the orientation note. A photo that looks right on screen can print sideways if the file still relies on EXIF metadata to display correctly.</p>
+<p>Fix the orientation before you send a file to print. Rotate the pixels in the tool, download the corrected file, and print from that version instead of the original.</p>
+<p>Check the dimensions after a 90 degree turn. The width and height swap, so a landscape photo becomes a portrait one, and your paper size may need to change with it.</p>
+<p>For a framed print, rotate first and then crop to the frame ratio. Doing the steps in this order keeps the composition intact and avoids cutting off the subject.</p>
+<h2 id="rotation-file-naming">Naming and Organising Rotated Files</h2>
+<p>Rotated files deserve clear names, especially when you fix a whole batch. A name like beach-rotated.jpg is easy to find later, while a name like IMG_4821.jpg tells you nothing.</p>
+<p>Keep the originals in a separate folder. The rotated versions are the ones to share and upload, but the originals are your safety net if a rotation ever needs to be redone.</p>
+<p>When you rotate a batch, download the ZIP and extract it into a folder named for the event or the project. A tidy folder saves time when you need one photo months later.</p>
+<p>Avoid overwriting the original file with the rotated version. Once the original is gone, you cannot undo the rotation without re-editing, and each extra save adds damage to a JPG.</p>
+<h2 id="combining-rotation-with-edits">Combining Rotation with Other Edits</h2>
+<p>Rotation is often the first step in a longer edit, not the only one. A sideways photo may also need cropping, brightening, or resizing before it is ready to share.</p>
+<p>Work in a sensible order: rotate first, then crop, then adjust brightness or contrast. Each step builds on the last, and reordering them usually wastes effort.</p>
+<p>After rotating, a photo may need its brightness adjusted, since a sideways shot taken in poor light stays dark even when it is upright. The <a href="/image-brightness-editor/">Image Brightness Editor</a> handles that step.</p>
+<p>If the rotated photo is too large for its destination, resize it with the <a href="/image-resizer/">Image Resizer</a>. Resizing after rotation keeps the dimensions correct for the new orientation.</p>
+<p>If your image also needs trimming after rotation, open the <a href="/image-cropper/">Image Cropper</a> next. For the step-by-step version of this process, see <a href="/blog/how-to-rotate-flip-image/">How to Rotate or Flip an Image</a>, and for the deeper orientation problem, read <a href="/blog/image-orientation-exif-rotation/">Image Orientation: EXIF Rotation Problems Explained</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'When should I rotate an image instead of flipping it?',
+          answer: 'Rotate when the image is sideways or upside down and the content itself is correct. Flip only when the image is mirrored, such as a selfie with backwards text. If you flip a sideways photo it stays sideways, so always check which problem you actually have before choosing.',
+        },
+        {
+          question: 'Will rotating my photo make the file size much bigger?',
+          answer: 'A 90 or 180 degree rotation barely changes the file size, since the pixels are rearranged rather than re-encoded. A custom angle can change the size slightly because the image is re-rendered onto a larger canvas. The difference is usually small and easy to ignore.',
+        },
+        {
+          question: 'Why does my photo look correct in my gallery but sideways on a website?',
+          answer: 'Your gallery reads the EXIF orientation note inside the file, while the website ignores it and shows the raw pixels. Rotating the image in the tool rewrites the pixels and resets the note, so the photo displays correctly everywhere afterwards.',
+        },
+        {
+          question: 'Can I rotate a scanned document that is both sideways and upside down?',
+          answer: 'Yes. A 180 degree rotation fixes a fully upside-down page, and a 90 degree rotation fixes a sideways one. If the scan is also mirrored, add a horizontal flip after the rotation. Check the preview after each step to confirm the text reads normally.',
+        },
+        {
+          question: 'What angle should I use to fix a slightly tilted horizon?',
+          answer: 'Start with one or two degrees and watch the preview. Most tilted horizons need only a small correction, and the slider lets you fine-tune by single degrees. Larger angles are for photos that are clearly sideways, not for subtle tilts.',
+        },
+        {
+          question: 'Does rotating an image remove its location data?',
+          answer: 'Yes, exporting from the Rotate and Flip tool strips EXIF GPS tags from the file. The rotation itself rewrites the pixels, and the export does not carry the original location metadata forward. Keep your original file if you want to preserve that data.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-cropper', '/image-resizer', '/image-dimensions-checker'],
+  },
+  {
+    id: 'how-to-rotate-flip-image',
+    toolSlug: '/rotate-flip-image',
+    categoryId: 'crop-edit',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-rotate-flip-image',
+      title: 'How to Rotate or Flip an Image',
+      description: 'Rotate or flip any image in seconds: upload, pick 90 or 180 degrees or a custom angle, flip horizontally or vertically, preview, and download.',
+      body: `
+<p>A sideways photo takes seconds to fix once you know the steps. You do not need to install software or create an account, and the whole job runs in your browser.</p>
+<p>This how-to walks through the process from upload to download. It covers quick 90 degree turns, custom angles for tilted shots, and horizontal flips for mirrored selfies.</p>
+<p>By the end you will know how to fix a single photo, a whole batch of them, and the common mistakes that waste time. Keep the original file handy until you have checked the result.</p>
+<h2 id="before-you-start">Before You Start: What You Need</h2>
+<p>You need the image file itself, saved on your device or ready to paste from your clipboard. The tool accepts JPG, PNG, WebP, HEIC, GIF, BMP, and SVG files up to 20 MB each.</p>
+<p>Work from the original file, not from a copy that has already been rotated or compressed. Every extra save adds a little damage to a JPG, so the cleanest result comes from the first edit.</p>
+<p>Decide what is wrong before you open the tool. Is the photo sideways, upside down, tilted by a few degrees, or mirrored? The answer tells you whether to rotate, flip, or both.</p>
+<p>Open the <a href="/rotate-flip-image/">Rotate and Flip Image tool</a> in your browser. Everything runs locally, so your photo is never uploaded to a server.</p>
+<h2 id="step-by-step">Rotate an Image in Six Steps</h2>
+<p>The process is the same for a single photo and for a batch. Upload first, choose the move, check the preview, then download the result.</p>
+<p>For a quick fix, the 90 degree buttons are all you need. For a tilted horizon, use the custom angle slider and watch the preview as you drag it.</p>
+<ol>
+<li>Upload your image by dragging it into the dropzone, choosing it from your device, or pasting it with Ctrl+V.</li>
+<li>Click Rotate 90° Left, Rotate 90° Right, or 180° under Quick Rotate and Flip for a standard turn.</li>
+<li>For a tilted photo, drag the Rotation Angle slider to the exact degree you need, then click Apply Angle.</li>
+<li>Click Flip Horizontal to mirror a backwards selfie, or Flip Vertical to invert an upside-down capture.</li>
+<li>Click Compare on the image card to check the before-and-after orientation side by side.</li>
+<li>Click Download for one file, or Download All (ZIP) when you have rotated a whole batch.</li>
+</ol>
+<p>Check the downloaded file before you use it. Open it once, confirm the orientation is right, and only then attach it to a form or post it.</p>
+<h2 id="choosing-the-right-angle">Choosing the Right Angle</h2>
+<p>A photo that displays sideways needs 90 degrees in one direction. If the first try makes it worse, the other direction is the correct one, so undo and turn it the other way.</p>
+<p>A photo that displays upside down needs 180 degrees. There is no ambiguity here, since a half turn is the same in either direction.</p>
+<p>A tilted horizon needs a custom angle, usually between one and ten degrees. Small steps are better than large ones, because the eye is sensitive to even a slight tilt.</p>
+<p>Use the Compare button after each change. It shows the original next to the rotated version, which makes it easy to spot when you have gone too far.</p>
+<h2 id="using-custom-angles">Using Custom Angles for Tilted Shots</h2>
+<p>Custom angles are for photos that are not quite straight. A beach photo with a sloping horizon or a scanned page that sits slightly crooked both fall into this group.</p>
+<p>Drag the Rotation Angle slider slowly and watch the horizon. The preview updates live, so you can stop the moment the line looks level.</p>
+<p>Click Apply Angle to confirm the value, or Reset to 0° to start again. You can adjust as many times as you like before downloading, since nothing is saved until you export.</p>
+<p>Remember that a custom angle expands the canvas. The corners of the frame gain small triangular areas, which appear as a solid colour in JPG or transparency in PNG.</p>
+<h2 id="flipping-a-mirrored-selfie">Flipping a Mirrored Selfie</h2>
+<p>A mirrored selfie is easy to spot: text on a shirt reads backwards. The fix is one click on Flip Horizontal, which mirrors the image back to normal.</p>
+<p>Flip before you rotate if the image needs both moves. The order matters less than checking the preview, but flipping first keeps the logic simple.</p>
+<p>Check more than the text. A flip moves everything to the opposite side, including a hair parting, a mole, or a background sign, so look at the whole picture.</p>
+<p>If the selfie looks right after the flip, download it. If it still looks odd, the problem may be rotation rather than mirroring, so try a 90 degree turn instead.</p>
+<h2 id="rotating-a-batch">Rotating a Whole Batch of Photos</h2>
+<p>Upload all the photos that share the same problem in one go. The tool applies your chosen rotation to every image in the queue at the same time.</p>
+<p>This works best when the orientation problem is consistent. A folder of photos all taken in portrait mode, for example, all need the same 90 degree turn.</p>
+<p>If the photos need different angles, split them into groups. Rotate one group, download it, then clear the queue and rotate the next group.</p>
+<p>Use Download All (ZIP) for batches. Each file keeps its original name inside the ZIP, so nothing gets mixed up when you extract them.</p>
+<h2 id="choosing-output-format">Choosing an Output Format</h2>
+<p>Original format is the safest choice when you only need orientation fixed. It keeps the file type unchanged and avoids any re-encoding surprises.</p>
+<p>JPG is the best pick for photos you plan to share or upload. It keeps file sizes small and works everywhere, including old forms and messaging apps.</p>
+<p>PNG is the right choice for screenshots, logos, and graphics with text. It preserves sharp edges and transparency, which JPG cannot do.</p>
+<p>WebP sits between the two. It gives smaller files than JPG with better quality, but a few older systems still reject it, so check your destination first.</p>
+<h2 id="checking-your-result">Checking Your Result Before Downloading</h2>
+<p>Always preview before downloading. The Compare button shows the original and the rotated version together, which is the fastest way to confirm the fix.</p>
+<p>Look at the edges of the image after a custom angle rotation. The expanded canvas may have added corner areas that you did not expect, and you may want to crop them.</p>
+<p>Check the file size too. A rotated JPG should be close to the original size, and a big jump usually means the quality setting or the format changed.</p>
+<p>If something looks wrong, use the undo or reset controls. It is faster to fix the angle now than to re-edit the downloaded file later.</p>
+<h2 id="fixing-scanned-documents">Fixing Scanned Documents</h2>
+<p>Scanned pages are the most common rotation job after photos. A page fed into a scanner upside down comes out upside down, and the fix is a 180 degree turn.</p>
+<p>For a page scanned sideways, use 90 degrees. Read a line of text after rotating to confirm it runs left to right, which is the correct orientation for most documents.</p>
+<p>Small tilts in scans are common too. A page that sits slightly crooked in the scanner needs a custom angle of one or two degrees to straighten it.</p>
+<p>Straighten a scan before you crop it. If you crop first, the rotation will change the shape of the frame and may cut off a margin you wanted to keep.</p>
+<h2 id="rotating-on-mobile">Rotating Images on a Phone or Tablet</h2>
+<p>The tool works on touchscreens, so you can fix a sideways photo on the phone that took it. Upload from your gallery, tap the rotation button, and download the result.</p>
+<p>Drag the angle slider with your finger for custom angles. The preview is large enough to judge a tilted horizon, even on a small screen.</p>
+<p>Batch rotation works on mobile too, though uploading many large files over a slow connection takes longer. Do big batches on a computer when you can.</p>
+<p>Downloaded files land in your usual downloads folder. From there you can share them directly to a chat app, an email, or a social post.</p>
+<h2 id="troubleshooting">Troubleshooting: When Rotation Does Not Stick</h2>
+<p>Sometimes a photo looks fixed in the tool but sideways again after download. This usually means the original file had an EXIF orientation note that a viewer is still misreading.</p>
+<p>The fix is to rotate the downloaded file once more in the tool, or to open it in a different viewer to confirm the pixels are actually correct. The tool rewrites the pixels, so the file itself is right.</p>
+<p>Another common issue is a photo that rotates in the wrong direction. Undo the turn and rotate the other way, since 90 degrees clockwise and 90 degrees anticlockwise give opposite results.</p>
+<p>If a custom angle keeps chopping off corners, remember the canvas expands automatically. The corners are not cut; they are filled, and you can crop the fill away afterwards.</p>
+<h2 id="quick-tips">Quick Tips for Faster Rotation</h2>
+<p>Paste screenshots directly with Ctrl+V instead of saving them first. The tool accepts clipboard images, which saves a step when you are fixing a screen capture.</p>
+<p>Use keyboard-friendly habits: upload, rotate, compare, download. The same four moves handle almost every orientation problem you will meet.</p>
+<p>Keep the original file until you have checked the download. If the result is wrong, you can start again from the clean original instead of re-editing a damaged copy.</p>
+<p>Name your downloads clearly when you rotate a batch. A folder of rotated files with clear names is much easier to sort than a set of identical-looking downloads.</p>
+<h2 id="rotating-animated-gifs">Rotating Animated GIFs</h2>
+<p>Animated GIFs can be rotated, but the result depends on the tool and the file. The Rotate and Flip tool accepts GIF files, and the rotation applies to the animation frames.</p>
+<p>Check the result carefully after rotating a GIF. Some animations have many frames, and a rotation that looks right on the first frame should be checked on the later frames too.</p>
+<p>Keep the file size in mind. A GIF that is already large may grow slightly after re-rendering, so compare the downloaded size with the original before you share it.</p>
+<p>If the animation breaks or looks wrong after rotation, the safest fix is to rotate the still frames before they are assembled into a GIF. A GIF maker that starts from correctly oriented images avoids the problem entirely.</p>
+<h2 id="rotation-for-id-photos">Rotating ID and Passport Photos</h2>
+<p>ID photos must be upright, front-facing, and correctly framed, and a sideways ID photo will be rejected outright. Rotation is the fix, but it must be done carefully.</p>
+<p>Check the portal rules before you rotate. Some portals demand exact pixel dimensions as well as the right orientation, so a 90 degree turn may change the dimensions you need.</p>
+<p>Rotate the original photo, not a copy that has already been compressed. An ID photo needs a sharp face, and each extra save softens the details that the portal checks.</p>
+<p>After rotating, crop the photo to the required ratio and check the face position. The face should be centred with a little headroom, and the background should stay plain and light.</p>
+<h2 id="rotation-shortcuts">Keyboard and Clipboard Shortcuts</h2>
+<p>Pasting with Ctrl+V is the fastest way to get a screenshot into the tool. Copy the image from any program, paste it directly into the dropzone, and skip the save step entirely.</p>
+<p>For files already on your device, dragging them into the dropzone is faster than browsing through folders. Drop one file or a whole batch at once.</p>
+<p>Use the Compare button after every rotation, not just at the end. A quick check after each change catches a wrong-direction turn before it becomes a downloaded mistake.</p>
+<p>Learn the undo controls. A wrong turn is fixed in one click, while a downloaded mistake costs you the time to upload and rotate the file all over again.</p>
+<h2 id="rotation-vs-other-tools">Rotation vs the Other Editing Tools</h2>
+<p>Rotation changes orientation, but it does not change size, colour, or sharpness. If a photo is too large, too dark, or too dull, rotation alone will not fix it.</p>
+<p>Pair rotation with the <a href="/image-resizer/">Image Resizer</a> when the photo needs new dimensions for a form or a profile. Resize after rotating, so the dimensions match the new orientation.</p>
+<p>Pair it with the <a href="/image-brightness-editor/">Image Brightness Editor</a> when a sideways photo is also too dark. Brightening after rotation keeps the workflow simple and the result predictable.</p>
+<p>Pair it with the <a href="/image-cropper/">Image Cropper</a> when the rotated photo has empty corners or a distracting edge. Crop last, after the orientation is settled, so the framing matches the final shape.</p>
+<p>For a fuller explanation of why photos rotate on their own, read <a href="/blog/image-orientation-exif-rotation/">Image Orientation: EXIF Rotation Problems Explained</a>. For the complete overview, see <a href="/blog/rotate-flip-image-guide/">Rotate and Flip Images: Complete Guide</a>, and if the rotated photo needs trimming, use the <a href="/image-cropper/">Image Cropper</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I rotate a photo 90 degrees on my phone?',
+          answer: 'Open the Rotate and Flip tool in your phone browser, upload the photo from your gallery, and tap Rotate 90° Left or Rotate 90° Right. Use the Compare button to check the result, then tap Download. The file saves to your usual downloads folder.',
+        },
+        {
+          question: 'Can I rotate a photo without losing image quality?',
+          answer: 'Yes, for 90 and 180 degree turns the pixels are rearranged with almost no quality loss. Custom angles re-render the image, so choose PNG or a high JPG quality setting to keep the result sharp. Always start from the original file, not from a copy that was already edited.',
+        },
+        {
+          question: 'How do I fix a photo that is upside down?',
+          answer: 'Upload the photo and click the 180° button. A half turn fixes a fully upside-down image regardless of direction. Check the preview to confirm the subject is the right way up, then download the file.',
+        },
+        {
+          question: 'Can I rotate several photos at the same time?',
+          answer: 'Yes. Upload all the photos that need the same rotation, pick the angle once, and the tool applies it to the whole queue. Download everything as a ZIP file. If the photos need different angles, rotate them in separate groups.',
+        },
+        {
+          question: 'Why does my photo still look sideways after I rotated it?',
+          answer: 'The original file may carry an EXIF orientation note that your viewer is still misreading, or the rotation went the wrong way. Try rotating 90 degrees in the opposite direction, and check the downloaded file in a different viewer to confirm the pixels are correct.',
+        },
+        {
+          question: 'How do I straighten a photo that is only slightly tilted?',
+          answer: 'Use the custom Rotation Angle slider and drag it slowly while watching the preview. One or two degrees is usually enough for a tilted horizon. Click Apply Angle when the line looks level, then check the corners before downloading.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-cropper', '/image-resizer', '/image-dimensions-checker'],
+  },
+  {
+    id: 'image-orientation-exif-rotation',
+    toolSlug: '/rotate-flip-image',
+    categoryId: 'crop-edit',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-orientation-exif-rotation',
+      title: 'Image Orientation: EXIF Rotation Problems Explained',
+      description: 'Why does the same photo look right on your phone and sideways everywhere else? EXIF orientation explained, plus how to fix it permanently.',
+      body: `
+<p>The same photo can look perfectly fine on your phone and completely sideways on a website. Nothing about the file changed between the two views, yet the image appears rotated.</p>
+<p>The cause is a small piece of metadata called EXIF orientation. It is a note inside the file that records which way the camera was held, and not every program reads it.</p>
+<p>This article explains how EXIF orientation works, why it breaks, and how to fix a photo permanently so it displays correctly in every viewer, form, and app.</p>
+<h2 id="what-is-exif-orientation">What Is EXIF Orientation?</h2>
+<p>EXIF is the metadata standard that cameras and phones write into every photo. It records the camera model, the exposure settings, the date, and the orientation of the device.</p>
+<p>The orientation field is a single number from 1 to 8. Each value describes a combination of rotation and mirroring, such as rotated 90 degrees clockwise or flipped horizontally.</p>
+<p>When you take a photo with your phone held sideways, the sensor captures the pixels in one fixed direction. The phone then writes an orientation value that says how the image should be displayed.</p>
+<p>Viewers that understand EXIF rotate the image on screen according to that value. Viewers that do not understand it show the raw pixels, which is why the photo looks sideways.</p>
+<h2 id="the-eight-orientation-values">The Eight Orientation Values, Explained Simply</h2>
+<p>Value 1 means the image is already the right way up, and no rotation is needed. Most photos taken with the phone held normally carry this value.</p>
+<p>Values 3, 6, and 8 describe rotation. Value 3 means the image is upside down, value 6 means it needs a 90 degree clockwise turn, and value 8 means 90 degrees anticlockwise.</p>
+<p>Values 2, 4, 5, and 7 add mirroring. These appear with front cameras and some scanners, where the image is flipped as well as rotated.</p>
+<p>You never need to memorise these numbers. What matters is the pattern: a photo that looks wrong in one viewer and right in another almost always has an orientation value that one viewer ignores.</p>
+<h2 id="why-phones-store-orientation-this-way">Why Phones Store Orientation Instead of Rotating Pixels</h2>
+<p>Rotating the actual pixels takes time and processing power. Writing a single number into the metadata is instant, so phones take the fast route and let viewers do the work.</p>
+<p>This design also keeps the original sensor data untouched. The file stays exactly as the camera captured it, and the orientation note tells every program how to present it.</p>
+<p>For most users this works invisibly. Modern galleries, browsers, and social apps all read the orientation value, so photos appear correctly without anyone thinking about it.</p>
+<p>The problem appears at the edges of the system: old software, upload forms, print services, and simple viewers that never learned to read the note.</p>
+<h2 id="where-orientation-breaks">Where Orientation Breaks in Practice</h2>
+<p>Upload forms are the most common breaking point. A job portal or government site may display your photo sideways even though it looks fine in your gallery, because the form ignores EXIF.</p>
+<p>Email clients are another one. Some older clients show attached photos in their raw orientation, so a recipient sees a sideways image that looked fine to the sender.</p>
+<p>Print services can break too. A photo printed from a file that relies on the orientation note may come out rotated if the print software does not read the metadata.</p>
+<p>Even some social platforms have had this problem historically. A photo uploaded from a phone could appear rotated in a post, even though the same file looked right in the camera roll.</p>
+<h2 id="detecting-an-orientation-problem">How to Tell If Orientation Is Your Problem</h2>
+<p>The signature symptom is inconsistency. If the same file looks right in one place and wrong in another, orientation metadata is the likely cause, not a corrupt file.</p>
+<p>Open the photo in two different programs. If your phone gallery shows it correctly and a desktop viewer shows it sideways, the EXIF note is being read by one and ignored by the other.</p>
+<p>Another clue is the direction of the error. Orientation problems always rotate by 90 or 180 degrees, never by a small angle like three degrees, which points to a tilted camera instead.</p>
+<p>Check the file on a second device if you can. A photo that is sideways everywhere, including your own gallery, has genuinely rotated pixels and needs a normal rotation fix.</p>
+<h2 id="fixing-orientation-permanently">Fixing Orientation Permanently</h2>
+<p>The permanent fix is to rotate the actual pixels and reset the orientation value to 1. Once that is done, the file displays correctly in every viewer, whether it reads EXIF or not.</p>
+<p>The <a href="/rotate-flip-image/">Rotate and Flip Image tool</a> does exactly this. When you rotate an image and download it, the exported file has correctly oriented pixels and a clean orientation tag.</p>
+<p>This is better than relying on viewers to interpret the note. A fixed file works in old software, upload forms, and print services that never learned to read EXIF.</p>
+<p>Keep the original file before you fix it, in case you ever need the untouched version. The fixed file is the one to share, upload, and print.</p>
+<h2 id="orientation-vs-rotation">Orientation Metadata vs Real Rotation</h2>
+<p>Orientation metadata is a suggestion about how to display the image. Real rotation changes the pixels themselves, so the suggestion is no longer needed.</p>
+<p>Think of it like a sticky note on a painting that says this side up. A viewer that reads the note hangs the painting correctly, while one that ignores it hangs it sideways.</p>
+<p>Rotating the pixels is like repainting the picture the right way up. The sticky note becomes unnecessary, and every viewer shows the image correctly.</p>
+<p>That is why a proper rotation fix is permanent. It removes the dependency on every program agreeing about a metadata field.</p>
+<h2 id="selfies-and-mirroring">Selfies, Mirroring, and Orientation Values</h2>
+<p>Front cameras add a twist to the orientation story. Many phones save a mirrored image and record a flip in the orientation value, so the photo looks correct in the gallery.</p>
+<p>When a viewer ignores that value, the selfie appears mirrored. Text on a shirt reads backwards, and a hair parting sits on the wrong side of the head.</p>
+<p>The fix is a horizontal flip, not a rotation. Flipping mirrors the pixels back, and the exported file no longer depends on the orientation note to look right.</p>
+<p>If a selfie needs both a flip and a rotation, do the flip first and then the rotation. Check the preview after each step so you can see exactly what changed.</p>
+<h2 id="exif-and-privacy">EXIF Orientation and Privacy</h2>
+<p>The orientation field is only one part of EXIF metadata. The same file can also carry GPS coordinates, the camera model, and the date the photo was taken.</p>
+<p>That extra data is a privacy concern when you share photos publicly. A photo posted online can reveal where it was taken, even when the image itself shows nothing recognisable.</p>
+<p>Rotating an image in the CompressMyPic tool strips the GPS data during export. The orientation is fixed and the location record is removed in the same step.</p>
+<p>If you want to check what a photo reveals before sharing it, use the <a href="/image-metadata-viewer/">Image Metadata Viewer</a> to inspect the EXIF fields. To remove them entirely, use the <a href="/remove-image-metadata/">Remove Image Metadata tool</a>.</p>
+<h2 id="orientation-in-different-formats">Orientation in JPG, PNG, and WebP</h2>
+<p>JPG is where orientation problems are most common, because almost every phone saves photos as JPG with full EXIF data. The orientation field is written by default.</p>
+<p>PNG files can carry EXIF data too, but many PNG tools strip it or never write it. A PNG screenshot rarely has an orientation problem, because screenshots have no camera direction to record.</p>
+<p>WebP supports EXIF orientation as well. Modern browsers read it correctly, but older tools that convert WebP to JPG sometimes drop the orientation value and produce a sideways image.</p>
+<p>HEIC, the format used by newer iPhones, also stores orientation. Converting HEIC to JPG without handling the orientation value is a common cause of sideways photos after conversion.</p>
+<h2 id="orientation-after-conversion">Orientation Problems After Format Conversion</h2>
+<p>Converting a photo from one format to another can break its orientation. The converter may copy the pixels but drop the EXIF note, leaving a sideways image with no record of how it should be displayed.</p>
+<p>This is common when converting HEIC to JPG. The iPhone file carries an orientation value, and a converter that ignores it produces a JPG that looks rotated in every viewer.</p>
+<p>The safest workflow is to fix the orientation first, then convert. Rotate the image in the <a href="/rotate-flip-image/">Rotate and Flip tool</a>, download the corrected file, and only then convert it to another format.</p>
+<p>If a converted file already looks sideways, rotate the converted file directly. The pixels are what matter now, and a normal rotation fix will correct them.</p>
+<h2 id="orientation-and-social-media">Orientation on Social Media and Messaging Apps</h2>
+<p>Most large social platforms now read EXIF orientation correctly. A photo uploaded from a phone usually appears the right way up in a post, a story, or a profile picture.</p>
+<p>Messaging apps are more mixed. Some read the orientation value, while others display the raw pixels, so the same photo can look fine in one chat app and sideways in another.</p>
+<p>Profile pictures are a special case. Many platforms crop profile photos into a square or a circle, and a sideways source image produces a badly framed crop even when the orientation is read correctly.</p>
+<p>Fix the orientation before uploading anywhere important. A corrected file removes the guesswork and looks the same on every platform.</p>
+<h2 id="common-myths">Common Myths About Image Orientation</h2>
+<p>One myth is that a sideways photo is corrupt. It is not. The pixels are intact, and the file is healthy; only the display instruction is being ignored.</p>
+<p>Another myth is that re-saving the file in an editor always fixes it. Some editors preserve the orientation value untouched, so the file comes out exactly as sideways as it went in.</p>
+<p>A third myth is that all modern software reads EXIF. Most does, but upload forms, print kiosks, and embedded systems are often years behind, and they are the places where orientation breaks most visibly.</p>
+<p>The reliable rule is simple: if a photo matters, fix the pixels. A file with correct pixels and a clean orientation tag works everywhere, with no myths involved.</p>
+<h2 id="orientation-in-print-services">Orientation in Print Services and Kiosks</h2>
+<p>Print kiosks are among the worst offenders for ignoring EXIF orientation. A photo that looks perfect on your phone can print sideways from a kiosk that reads only the raw pixels.</p>
+<p>The fix is to correct the file before you walk to the kiosk. Rotate the pixels in the tool, download the fixed file, and print from that version instead of the original.</p>
+<p>Online print services are better, but not perfect. Some read the orientation note correctly, while others rely on the file dimensions, so a fixed file removes the guesswork entirely.</p>
+<p>For anything you pay to print, always check a test print first. A single test copy costs little, while a whole order of sideways prints costs far more.</p>
+<h2 id="orientation-and-backup-services">Orientation and Cloud Backups</h2>
+<p>Cloud backup services usually preserve EXIF data, so a photo backed up and restored keeps its orientation note. The problem is not the backup, but the programs that open the restored file.</p>
+<p>Moving photos between services can strip metadata. A file downloaded from one cloud service and uploaded to another may lose its orientation value along the way.</p>
+<p>Fix the orientation before you archive important photos. A file with correct pixels and a clean orientation tag survives any number of transfers without changing how it looks.</p>
+<p>For family photos and scanned memories, this step matters most. A photo archived sideways may stay sideways for years before anyone notices and fixes it.</p>
+<h2 id="orientation-in-old-software">Orientation in Old Software and Embedded Systems</h2>
+<p>Old photo viewers, car displays, and digital photo frames often ignore EXIF entirely. They were built before orientation metadata became standard, and they show the raw pixels.</p>
+<p>A digital photo frame that displays your holiday photos sideways is not broken. It is simply showing the pixels as the camera recorded them, without reading the orientation note.</p>
+<p>The same applies to some medical and industrial imaging systems, which display files exactly as stored. A fixed file works on these systems, while a metadata-dependent file does not.</p>
+<p>When a photo must display on hardware you do not control, fix the pixels. It is the only approach that works on every device, old or new.</p>
+<h2 id="orientation-testing-checklist">A Quick Checklist Before You Share a Photo</h2>
+<p>Open the photo in two different programs before you share it. If it looks right in both, the orientation is probably fine, and the file is safe to send.</p>
+<p>Check the photo on a second device if you can. A phone and a computer read orientation differently, so a file that looks right on both is genuinely correct.</p>
+<p>Fix the pixels when in doubt. Rotating in the <a href="/rotate-flip-image/">Rotate and Flip tool</a> takes seconds, and a fixed file removes all uncertainty about how it will display.</p>
+<p>Keep the original file in an archive folder. The fixed version is the one to share, but the original preserves the untouched sensor data in case you ever need it.</p>
+<p>For the practical steps, see <a href="/blog/how-to-rotate-flip-image/">How to Rotate or Flip an Image</a> and the full overview in <a href="/blog/rotate-flip-image-guide/">Rotate and Flip Images: Complete Guide</a>. If your photo also carries location data you would rather remove, read <a href="/blog/photo-privacy-gps-exif-risks/">Photo Privacy: GPS, EXIF and Metadata Risks</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What is EXIF orientation in simple terms?',
+          answer: 'It is a number stored inside a photo that records which way the camera was held. Viewers that read the number display the photo correctly, while viewers that ignore it show the raw pixels, which can look sideways or upside down.',
+        },
+        {
+          question: 'Why does my photo look fine on my phone but sideways on a website?',
+          answer: 'Your phone gallery reads the EXIF orientation note, but the website does not. The pixels were never rotated, so the site shows them in their raw direction. Rotating the image in an editor rewrites the pixels and fixes the problem permanently.',
+        },
+        {
+          question: 'Is a sideways photo damaged or corrupt?',
+          answer: 'No. The pixels are intact and the file is healthy. The problem is only that one program reads the orientation note and another does not. A proper rotation fix makes the file display correctly everywhere.',
+        },
+        {
+          question: 'How do I permanently fix a photo with wrong orientation?',
+          answer: 'Rotate the actual pixels in an editor and export the result, which resets the orientation value to normal. The Rotate and Flip tool does this: the downloaded file has correctly oriented pixels and no longer depends on viewers reading the metadata.',
+        },
+        {
+          question: 'Does converting HEIC to JPG cause orientation problems?',
+          answer: 'It can, if the converter copies the pixels but drops the EXIF orientation note. The safest order is to fix the orientation first, then convert the corrected file. If a converted file already looks sideways, rotate the converted file directly.',
+        },
+        {
+          question: 'Can EXIF data reveal where my photo was taken?',
+          answer: 'Yes. The same metadata that stores orientation can also store GPS coordinates, the camera model, and the date. Rotating an image in the CompressMyPic tool strips GPS tags on export, and the metadata viewer and remover tools let you inspect and delete the rest.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-metadata-viewer', '/remove-image-metadata', '/image-cropper'],
+  },
+  {
+    id: 'image-cropper-guide',
+    toolSlug: '/image-cropper',
+    categoryId: 'crop-edit',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-cropper-guide',
+      title: 'Image Cropper: Complete Guide',
+      description: 'Learn how to crop images online: aspect ratios, the rule of thirds, zoom, quality settings, and how to crop for profiles, banners, and print.',
+      body: `
+<p>Cropping is the fastest way to improve a photo. It removes distractions, tightens the framing, and reshapes an image to fit the place it will live.</p>
+<p>Every photo has a best version hiding inside it. A wide shot with empty sky becomes a strong portrait once the extra space is cut away, and a busy screenshot becomes readable once the edges are trimmed.</p>
+<p>This guide explains how cropping works, which aspect ratios to use, and how to get clean results every time. It covers the tool, the technique, and the mistakes that ruin an otherwise good crop.</p>
+<h2 id="what-cropping-does">What Cropping Actually Does</h2>
+<p>Cropping cuts away the outer parts of an image and keeps only the rectangle you select. Nothing inside that rectangle changes; the pixels you keep are exactly the pixels you started with.</p>
+<p>That is an important distinction. Cropping does not stretch, squeeze, or resample the kept area, so the quality inside the selection stays the same as the original.</p>
+<p>What changes is the shape and the file. A cropped image has fewer pixels overall, which usually means a smaller file and a tighter composition.</p>
+<p>Think of cropping as choosing what the viewer should look at. Everything outside the frame is a distraction you are allowed to remove.</p>
+<h2 id="aspect-ratios-explained">Aspect Ratios: The Shape of Your Crop</h2>
+<p>An aspect ratio describes the shape of a rectangle as a pair of numbers, such as 1:1 for a square or 16:9 for a wide screen. The numbers are a proportion, not a pixel count.</p>
+<p>A 1:1 crop is a square, and it is the shape used by most profile pictures and Instagram posts. A 4:3 crop is slightly wider than it is tall, which suits traditional photos and documents.</p>
+<p>A 16:9 crop is wide and cinematic. It fits video thumbnails, website banners, and presentation slides, where the image needs to stretch across a screen.</p>
+<p>The cropper includes presets for the common ratios, plus a free mode for custom shapes. Locking a ratio keeps the selection box in proportion while you drag it, so the shape never drifts.</p>
+<h2 id="rule-of-thirds">The Rule of Thirds and the Crop Grid</h2>
+<p>The cropper shows a rule-of-thirds grid inside the selection box. It divides the frame into nine equal parts with two horizontal and two vertical lines.</p>
+<p>The idea is simple: place the subject on one of the lines or at one of the four points where the lines cross. A face on a crossing point feels more natural than a face dead centre.</p>
+<p>Horizons belong on the upper or lower line, not in the middle. A horizon in the middle splits the photo in half and makes the composition feel flat.</p>
+<p>The grid is a guide, not a law. Use it to check your framing, and break it when the subject clearly works better in the centre, such as a symmetrical building or a portrait.</p>
+<h2 id="zoom-and-precise-framing">Zoom and Precise Framing</h2>
+<p>Zoom lets you frame a small detail inside a large photo. You can magnify the image on the stage and then drag the selection box over the exact area you want.</p>
+<p>This is useful for product photos, where a small feature needs to fill the frame, and for documents, where a single paragraph needs to be isolated from a full page.</p>
+<p>Zoom does not add detail. It only makes the existing pixels larger on screen so you can place the crop box accurately, and the output still uses the original resolution.</p>
+<p>Combine zoom with the dimension readout. The tool shows the exact output pixel size before you download, so you can confirm the crop is large enough for its destination.</p>
+<h2 id="crop-quality-and-formats">Quality, Formats, and What You Keep</h2>
+<p>Cropping preserves the quality inside the selection, but the export format still matters. JPG uses lossy compression, so the quality slider controls how much detail survives the save.</p>
+<p>PNG is lossless and keeps every pixel exactly, which makes it the right choice for screenshots, logos, and graphics with sharp text. The quality slider disappears for PNG because there is nothing to compress.</p>
+<p>WebP gives a middle ground: smaller files than PNG with quality close to it. It also preserves transparency, which matters when you crop a logo or a sticker.</p>
+<p>Cropping a transparent PNG or WebP keeps the transparency inside the selection. The background stays see-through, which is essential for overlays and stickers.</p>
+<h2 id="cropping-for-profiles">Cropping for Profile Pictures and Avatars</h2>
+<p>Profile pictures are almost always square, and most platforms crop them into a circle. That means the corners of your square will be cut off, so keep the face well inside the frame.</p>
+<p>Crop to 1:1 first, with the face centred and a little headroom above it. Then check the circular preview if your platform offers one, and adjust so nothing important touches the edge.</p>
+<p>Use the original photo, not a compressed copy. A profile picture is shown small, but a soft source still looks soft, and a sharp crop from a good original looks clean at any size.</p>
+<p>For professional profiles, crop to the head and shoulders. A wide shot with a tiny face wastes the small display area and makes the person hard to recognise.</p>
+<h2 id="cropping-for-social-media">Cropping for Social Media and Banners</h2>
+<p>Each platform has its own preferred shape. A 16:9 crop suits a video thumbnail or a Facebook cover, while a 4:5 crop suits a portrait post that fills a phone screen.</p>
+<p>Check the platform rules before you crop. A banner cropped to the wrong ratio will be stretched or re-cropped by the platform, and the result is rarely flattering.</p>
+<p>Keep the important content in the centre of the frame. Platforms often crop the edges again for different screen sizes, so anything near the border may disappear on mobile.</p>
+<p>When one photo must serve several platforms, crop from the original each time. A single crop stretched to fit another ratio will distort the image, while fresh crops stay clean.</p>
+<h2 id="cropping-documents-and-screenshots">Cropping Documents and Screenshots</h2>
+<p>Screenshots usually contain more than you need: a browser toolbar, a taskbar, or an empty margin. Cropping those away makes the important part larger and easier to read.</p>
+<p>Paste a screenshot directly into the cropper with Ctrl+V. You can trim it immediately without saving the file first, which saves a step when you are documenting a bug or a setting.</p>
+<p>For documents, crop to the paragraph or the table that matters. A full-page scan reduced to a small image becomes unreadable, while a tight crop stays sharp.</p>
+<p>Export screenshots as PNG. The lossless format keeps text crisp, while JPG compression blurs the edges of letters and makes small text hard to read.</p>
+<h2 id="crop-before-compress">Crop Before You Compress</h2>
+<p>Cropping before compressing is the most effective quality trick in image work. Every pixel you remove is data the compressor no longer needs to store.</p>
+<p>A photo cropped to half its area needs roughly half the file size at the same quality. That means the kept pixels get a bigger share of the file budget and stay sharper.</p>
+<p>For a portrait, crop to the head and shoulders before compressing. The face gets more of the file budget, so it stays clear even at a small file size.</p>
+<p>Always crop the original, not an already compressed copy. Cropping after compression throws away quality twice, while cropping first keeps the best possible source.</p>
+<h2 id="privacy-and-cropping">Privacy: Cropping Removes More Than Pixels</h2>
+<p>Cropping can remove sensitive information from a photo: a house number in the background, a name on a badge, or a face at the edge of the frame.</p>
+<p>All processing happens in your browser, so the photo is never uploaded. That matters when the image is a personal portrait, an ID document, or a private screenshot.</p>
+<p>The tool also strips EXIF GPS data when it exports. A cropped photo downloaded from the tool carries no record of where it was taken.</p>
+<p>Cropping is not a substitute for blurring when the sensitive detail sits inside the kept area. If a face or an address remains in the frame, use the <a href="/blur-pixelate-image/">Blur and Pixelate tool</a> to hide it properly.</p>
+<h2 id="common-crop-mistakes">Common Mistakes When Cropping</h2>
+<p>The most common mistake is cropping too tight. A face with no headroom looks cramped, and a subject touching the edge of the frame feels like an accident.</p>
+<p>Another mistake is cropping a small image even smaller. A crop from an already low-resolution photo can fall below the size a platform requires, and the result looks soft or gets rejected.</p>
+<p>People also forget to check the output dimensions. The tool shows the exact pixel size before download, and a crop that is too small for a banner will look blurry when stretched.</p>
+<p>Finally, do not crop and re-crop the same JPG repeatedly. Each save adds damage, so always return to the original file when you want a different crop.</p>
+<h2 id="crop-workflow-tips">A Workflow That Keeps Crops Clean</h2>
+<p>Start with the original file and decide the destination first. A profile picture, a banner, and a print need different shapes, so the ratio comes before the crop.</p>
+<p>Use the rule-of-thirds grid to place the subject, then check the dimension readout. If the output is too small, widen the selection or choose a smaller ratio.</p>
+<p>Preview the crop at full size before downloading. Zoom into the face or the text and confirm that nothing important is soft or cut off.</p>
+<p>Save the cropped file with a clear name, such as profile-square.png. You may need the same crop again, and a clear name saves you from re-doing the work.</p>
+<h2 id="cropping-group-photos">Cropping Group Photos</h2>
+<p>Group photos are hard to crop because the subject is wide and every person matters. Cutting anyone out of the frame changes the memory the photo holds.</p>
+<p>When you must crop a group photo, keep every face inside the selection box. A face half cut off at the edge looks like a mistake, even when the rest of the crop is good.</p>
+<p>Use a wide ratio such as 16:9 or 3:2 for groups. A square crop of a wide group forces you to choose between cutting people out and shrinking everyone to a tiny size.</p>
+<p>If the group photo is too wide for its destination, consider resizing instead of cropping. Resizing keeps everyone in the frame, while cropping removes people from the edges.</p>
+<h2 id="cropping-for-print">Cropping for Print</h2>
+<p>Print sizes have their own ratios, and a crop that ignores them will be trimmed by the printer. A 6 by 4 inch print is 3:2, while a 10 by 8 inch print is 5:4.</p>
+<p>Check the ratio of the paper size before you crop for print. A photo cropped to 16:9 will leave white bars on a 4:3 print, or lose its edges to the printer trim.</p>
+<p>Print also needs resolution, not just shape. A small crop printed large will look soft, so confirm the pixel count as well as the ratio before downloading.</p>
+<p>When in doubt, crop slightly larger than the print size and let the lab trim the excess. A little extra margin is safer than a crop that is exactly the wrong shape.</p>
+<h2 id="cropping-vs-resizing">Cropping vs Resizing: Which One Do You Need?</h2>
+<p>Cropping removes pixels from the edges, while resizing changes the size of the whole image. They solve different problems, and confusing them leads to bad results.</p>
+<p>Crop when the framing is wrong: too much sky, a stranger at the edge, or a subject that is too small in the frame. Resizing cannot fix framing.</p>
+<p>Resize when the framing is right but the file is too large or the dimensions are wrong. Cropping cannot change the overall size without removing content.</p>
+<p>Use both together when a photo needs framing and size changes. Crop first to fix the composition, then resize the cropped result to the exact dimensions the destination needs.</p>
+<h2 id="cropping-and-file-size">Cropping and File Size</h2>
+<p>A cropped image is usually smaller than the original, because fewer pixels remain. How much smaller depends on how much you cut away and on the export format.</p>
+<p>Cropping a photo to half its area roughly halves the file size at the same quality setting. That saving matters when the image must fit under an upload limit.</p>
+<p>For strict limits, crop first and compress second. The crop removes the pixels you do not need, and the compressor then works with a smaller image that fits the limit more easily.</p>
+<p>Check the downloaded file size before uploading it to a portal. A crop that is still too large may need a format change, such as JPG instead of PNG, or a further quality adjustment.</p>
+<p>To cut a photo into a specific shape after cropping, try the <a href="/round-image-corners/">Round Image Corners tool</a>. For the step-by-step version of this process, see <a href="/blog/how-to-crop-image/">How to Crop an Image</a>, and for ratio choices, read <a href="/blog/image-crop-ratios-explained/">Crop Ratios Explained: 1:1, 4:3, 16:9 and Custom</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What is the best aspect ratio for a profile picture?',
+          answer: 'A 1:1 square is the standard, because most platforms display profile pictures as squares or circles. Crop with the face centred and some headroom above it, since circles cut off the corners. Start from the original photo for the sharpest result.',
+        },
+        {
+          question: 'Does cropping an image reduce its quality?',
+          answer: 'No, cropping does not change the pixels inside the selection. The kept area stays exactly as sharp as the original. What changes is the total size: fewer pixels remain, so the file is smaller, but the quality of what you kept is unchanged.',
+        },
+        {
+          question: 'How do I crop a photo for a Facebook cover or website banner?',
+          answer: 'Use a wide ratio such as 16:9 and keep the important content in the centre, since platforms often re-crop the edges for mobile screens. Check the platform size rules first, then confirm the output pixel dimensions in the tool before downloading.',
+        },
+        {
+          question: 'Can I crop a screenshot on my phone?',
+          answer: 'Yes. The cropper works with touch gestures on phones and tablets, so you can drag the selection box with your finger. Upload the screenshot from your gallery or paste it, choose a ratio, and download the trimmed result as PNG for crisp text.',
+        },
+        {
+          question: 'Should I crop before or after compressing an image?',
+          answer: 'Crop first. Every pixel you remove is data the compressor no longer needs to store, so the kept area gets a bigger share of the file budget and stays sharper. Always crop the original file, not an already compressed copy.',
+        },
+        {
+          question: 'How do I know if my crop is big enough for its destination?',
+          answer: 'The cropper shows the exact output pixel dimensions before you download. Compare that number with the size your platform or printer requires. If the crop is too small, widen the selection box or start from a higher-resolution original.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-resizer', '/rotate-flip-image', '/round-image-corners'],
+  },
+  {
+    id: 'how-to-crop-image',
+    toolSlug: '/image-cropper',
+    categoryId: 'crop-edit',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-crop-image',
+      title: 'How to Crop an Image',
+      description: 'Crop any image online in seconds: upload, drag the selection box, pick an aspect ratio, check the dimensions, and download a clean crop.',
+      body: `
+<p>Cropping an image takes less than a minute once you know the steps. You upload the photo, drag a box around the part you want, and download the result.</p>
+<p>This how-to walks through the whole process. It covers choosing an aspect ratio, using the grid for better framing, checking the output size, and picking the right export format.</p>
+<p>By the end you will be able to crop a profile picture, a banner, a screenshot, or a document cleanly on any device. Keep the original file until you have checked the download.</p>
+<h2 id="before-you-start">Before You Start: Pick the Destination First</h2>
+<p>Decide where the cropped image will live before you open the tool. A profile picture needs a square, a banner needs a wide rectangle, and a print needs a specific ratio.</p>
+<p>The destination decides the aspect ratio, and the ratio decides the shape of your selection box. Starting with the wrong shape means re-doing the crop later.</p>
+<p>Use the original photo, not a compressed or edited copy. Cropping from the best available source keeps the kept pixels as sharp as possible.</p>
+<p>Open the <a href="/image-cropper/">Image Cropper tool</a> in your browser. Everything runs locally, so your photo is never uploaded to a server.</p>
+<h2 id="step-by-step">Crop an Image in Five Steps</h2>
+<p>The process is the same for a photo, a screenshot, or a scanned document. Upload, frame, check, export, and verify the download.</p>
+<p>Take your time with the framing step. A careful crop now saves you from re-doing the work when the image looks wrong in its destination.</p>
+<ol>
+<li>Upload your image by dragging it into the dropzone, choosing it from your device, or pasting a screenshot with Ctrl+V.</li>
+<li>Drag the selection box over the part you want to keep, using the eight handles to resize it from any side or corner.</li>
+<li>Pick an aspect ratio preset such as 1:1, 4:3, or 16:9, or leave it free for a custom shape.</li>
+<li>Check the output pixel dimensions shown by the tool and confirm they are large enough for the destination.</li>
+<li>Choose the export format and quality, then click Download to save the cropped image.</li>
+</ol>
+<p>Open the downloaded file once before using it. Confirm the framing is right and nothing important was cut off at the edges.</p>
+<h2 id="dragging-the-selection-box">Dragging the Selection Box</h2>
+<p>The selection box is the rectangle that defines your crop. Drag inside it to move it, or drag one of the eight handles to resize it.</p>
+<p>The corner handles resize from two sides at once, which is the fastest way to frame a subject. The edge handles adjust one side only, which is useful for fine-tuning.</p>
+<p>When an aspect ratio preset is active, the handles keep the box in proportion. The shape stays locked while the size changes, so a square stays a square.</p>
+<p>Everything outside the box darkens on the stage. That dimming helps you see exactly what will be kept and what will be cut away.</p>
+<h2 id="choosing-an-aspect-ratio">Choosing an Aspect Ratio Preset</h2>
+<p>Pick 1:1 for a square profile picture or an Instagram post. The box stays perfectly square while you drag it, so the framing stays consistent.</p>
+<p>Pick 4:3 for a traditional photo shape or a document crop. It is slightly wider than it is tall, which suits most printed photos and scanned pages.</p>
+<p>Pick 16:9 for a wide banner, a video thumbnail, or a presentation slide. The wide shape stretches across screens without leaving empty space.</p>
+<p>Use free mode when no preset fits. You can drag the box to any shape, which is useful for cutting a single paragraph from a page or a detail from a product photo.</p>
+<h2 id="using-the-grid">Using the Rule-of-Thirds Grid</h2>
+<p>The grid divides the selection box into nine equal parts. Place the subject on one of the lines or at a crossing point for a more natural composition.</p>
+<p>For a portrait, put the eyes on the upper horizontal line. For a landscape, put the horizon on the upper or lower line rather than in the middle.</p>
+<p>The grid also helps you spot a tilted subject. If a horizon runs diagonally across the grid, the photo may need straightening before or after the crop.</p>
+<p>Ignore the grid when the subject works better in the centre. A symmetrical building, a logo, or a face-on portrait often looks best dead centre.</p>
+<h2 id="zooming-for-detail">Zooming In for Precise Framing</h2>
+<p>Zoom in when the detail you want is small. A product feature, a face in a crowd, or a single line of text all benefit from a closer look before you place the box.</p>
+<p>Zooming does not change the output quality. It only magnifies the preview so you can position the selection accurately, and the export still uses the original pixels.</p>
+<p>After zooming, drag the image to centre the detail, then size the box around it. Check the dimension readout to confirm the crop is still large enough.</p>
+<p>If the zoomed crop is too small for its destination, widen the box or use a larger source image. A tiny crop stretched to fit a banner will look soft.</p>
+<h2 id="checking-dimensions">Checking Output Dimensions Before Downloading</h2>
+<p>The tool shows the exact output pixel dimensions before you download. This is the most important check in the whole process, and it takes two seconds.</p>
+<p>Compare the number with what your destination requires. A profile picture needs only a few hundred pixels, while a website banner may need over a thousand.</p>
+<p>If the crop is too small, widen the selection box. A wider box captures more pixels, which gives the destination more to work with.</p>
+<p>The Select Full button resets the box to the whole image. Use it when you have cropped too far and want to start the framing again from scratch.</p>
+<h2 id="choosing-export-format">Choosing the Export Format and Quality</h2>
+<p>Choose JPG for photos. The quality slider lets you balance file size against detail, and a setting around 85 to 90 keeps most photos looking clean.</p>
+<p>Choose PNG for screenshots, logos, and graphics with text. PNG is lossless, so the edges of letters stay sharp, and it preserves transparency when you need it.</p>
+<p>Choose WebP when you want small files with good quality. It works well for web images, though a few older systems still reject the format.</p>
+<p>Remember that the quality slider disappears for PNG, because PNG has no lossy compression to adjust. That is normal, not a bug in the tool.</p>
+<h2 id="cropping-screenshots">Cropping a Screenshot</h2>
+<p>Paste a screenshot directly with Ctrl+V to skip the save step. The image appears in the cropper immediately, ready to trim.</p>
+<p>Drag the box around the part that matters: the error message, the setting, or the button. Cut away the browser toolbar, the taskbar, and any empty space.</p>
+<p>Export screenshots as PNG. The lossless format keeps small text readable, while JPG compression blurs the edges of letters and makes them harder to read.</p>
+<p>Name the file clearly, such as error-message.png. A clear name makes the screenshot easy to find when you attach it to a message or a bug report.</p>
+<h2 id="cropping-on-mobile">Cropping on a Phone or Tablet</h2>
+<p>The cropper works with finger gestures on touchscreens. Drag the box with one finger, and pinch to zoom when you need a closer look at the framing.</p>
+<p>Upload from your gallery or take a photo directly. The tool handles the file the same way it does on a computer, and the export options are identical.</p>
+<p>Small screens make precise framing harder, so zoom in before placing the box. A careful crop on a phone is still better than a rushed one on a desktop.</p>
+<p>Downloaded crops save to your usual downloads folder. From there you can share them to a chat app, an email, or a social post without extra steps.</p>
+<h2 id="troubleshooting">Troubleshooting Common Crop Problems</h2>
+<p>If the selection box will not change shape, check whether an aspect ratio preset is locked. Switch to free mode to drag the box to any shape you like.</p>
+<p>If the downloaded crop looks blurry, the selection was probably too small. Return to the original file and widen the box, or start from a higher-resolution source.</p>
+<p>If the crop is the wrong shape for its destination, check the ratio preset. A 1:1 crop will not fit a wide banner, and a 16:9 crop will not fit a square profile slot.</p>
+<p>If the image looks dark outside the box, that is the stage dimming the area that will be removed. It is a preview effect, not a change to your file.</p>
+<h2 id="quick-tips">Quick Tips for Better Crops</h2>
+<p>Crop from the original file every time. Re-cropping a JPG that was already cropped and saved adds damage with each round.</p>
+<p>Leave a little breathing room around the subject. A face with no headroom looks cramped, and a product touching the edge looks like a mistake.</p>
+<p>Check the crop at full size before downloading. Zoom into the face or the text and confirm that nothing important is soft or cut off.</p>
+<p>Save the cropped file with a clear name. A name like banner-16x9.png is useful months later, while a name like IMG_4821.png is not.</p>
+<h2 id="cropping-product-photos">Cropping Product Photos</h2>
+<p>Product photos need consistent framing, because a shop page with mismatched crops looks careless. Crop every product image to the same ratio so the grid lines up neatly.</p>
+<p>Leave a little space around the product. A tight crop that touches the edges makes the item look cramped, while a small margin gives it room to breathe.</p>
+<p>Use a plain background and crop away any clutter at the edges. A clean product shot with a white or light background sells better than a busy one with distractions.</p>
+<p>For a shop that shows many products, crop in a batch style: same ratio, same margins, same background. Consistency across the catalogue matters more than any single perfect crop.</p>
+<h2 id="cropping-for-email">Cropping Images for Email</h2>
+<p>Images in emails need to be small and correctly shaped, because a large photo can push the text off screen or make the message slow to load.</p>
+<p>Crop the image to the part that matters before attaching it. A full screenshot with a tiny detail is useless in an email, while a tight crop of the detail is immediately clear.</p>
+<p>Export email images as JPG for photos and PNG for screenshots. The smaller file size keeps the email light, and the right format keeps the content readable.</p>
+<p>Check the cropped image on a phone before sending. Most email is read on mobile, and a crop that looks fine on a desktop may be too small or too wide on a phone screen.</p>
+<h2 id="cropping-and-accessibility">Cropping and Accessibility</h2>
+<p>A good crop helps everyone, but it matters most for people who view images at large sizes or with screen magnifiers. A tight crop of the important content is easier to follow than a wide shot full of distractions.</p>
+<p>When you crop a diagram or a chart, keep the labels and the legend inside the frame. A chart without its labels is meaningless, no matter how sharp the crop is.</p>
+<p>For instructional images, crop to one step at a time. A single clear crop per step is easier to follow than one large image that shows the whole process at once.</p>
+<p>Add a short caption or alt text when you share a cropped image. The caption explains what the crop shows, which helps people who cannot see the image clearly.</p>
+<h2 id="saving-crop-presets">Saving Time with Repeatable Crops</h2>
+<p>If you crop the same kind of image often, build a habit around it. Use the same ratio preset, the same export format, and the same naming pattern every time.</p>
+<p>A consistent routine saves minutes on every crop. You stop deciding the ratio and the format from scratch, and you start producing clean crops without thinking about it.</p>
+<p>Keep a note of the ratios your platforms need. A short list on your desk, such as profile 1:1 and banner 16:9, removes the guesswork from every cropping session.</p>
+<p>Review your crops occasionally. Platforms change their size rules, and a ratio that worked last year may no longer fit the slot you are targeting.</p>
+<p>For ratio guidance, read <a href="/blog/image-crop-ratios-explained/">Crop Ratios Explained: 1:1, 4:3, 16:9 and Custom</a>. For the full overview, see <a href="/blog/image-cropper-guide/">Image Cropper: Complete Guide</a>, and if the photo is tilted, straighten it first with the <a href="/rotate-flip-image/">Rotate and Flip tool</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I crop an image into a square for Instagram?',
+          answer: 'Upload the photo, select the 1:1 ratio preset, and drag the square box over the part you want. Keep the subject centred with a little breathing room, check the output dimensions, then download as JPG for a photo or PNG for a graphic.',
+        },
+        {
+          question: 'Can I crop a photo without installing any app?',
+          answer: 'Yes. The cropper runs entirely in your browser on any device, with no install or account needed. Upload the image, drag the selection box, choose a ratio, and download the result. Your photo is never uploaded to a server.',
+        },
+        {
+          question: 'What is the best format to download a cropped screenshot in?',
+          answer: 'PNG, because it is lossless and keeps small text sharp. JPG compression blurs the edges of letters, which makes screenshots harder to read. Use JPG only for cropped photos, where the smaller file size matters more than pixel-perfect edges.',
+        },
+        {
+          question: 'How do I crop out a person or object at the edge of a photo?',
+          answer: 'Drag the selection box so the unwanted person or object falls outside it, then download the crop. The dimmed area on the stage shows exactly what will be removed. If the object sits in the middle of the frame, cropping cannot remove it, so blur it instead.',
+        },
+        {
+          question: 'Why is my cropped image blurry when I upload it?',
+          answer: 'The selection box was probably too small, so the crop has fewer pixels than the destination needs. Return to the original file, widen the box, and check the output dimensions before downloading. Starting from a higher-resolution original also helps.',
+        },
+        {
+          question: 'Can I undo a crop after downloading it?',
+          answer: 'Not from the downloaded file, since cropping permanently removes the cut-away pixels. Keep the original photo so you can crop it again differently. In the tool, use the Select Full button to reset the box before you download.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-resizer', '/rotate-flip-image', '/round-image-corners'],
+  },
+  {
+    id: 'image-crop-ratios-explained',
+    toolSlug: '/image-cropper',
+    categoryId: 'crop-edit',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-crop-ratios-explained',
+      title: 'Crop Ratios Explained: 1:1, 4:3, 16:9 and Custom',
+      description: 'What do crop ratios mean, and which one should you pick? 1:1, 4:3, 3:2, 16:9, and custom ratios explained for profiles, print, and social media.',
+      body: `
+<p>Every crop has a ratio, whether you chose it or not. The ratio is the shape of the rectangle you keep, and it decides where the image fits and how it looks.</p>
+<p>A square crop and a wide crop are not interchangeable. One suits a profile picture, the other suits a banner, and using the wrong one means the platform will re-crop your work for you.</p>
+<p>This article explains the common ratios, what each one is for, and how to choose. It also covers custom ratios, the math behind them, and the mistakes that come from ignoring them.</p>
+<h2 id="what-is-an-aspect-ratio">What Is an Aspect Ratio?</h2>
+<p>An aspect ratio is the relationship between the width and the height of an image, written as two numbers with a colon between them, such as 16:9.</p>
+<p>The numbers describe a proportion, not a pixel count. A 16:9 image can be 1920 by 1080 pixels or 1280 by 720 pixels, and both have the same shape.</p>
+<p>To find the ratio of any image, divide the width by the height. A photo that is 1200 pixels wide and 800 tall has a ratio of 1.5, which is the same as 3:2.</p>
+<p>Ratios matter because destinations demand shapes. A platform that wants a square will crop a wide photo, and a printer that wants 4:3 will stretch or trim anything else.</p>
+<h2 id="ratio-1-1">1:1 — The Square</h2>
+<p>A 1:1 ratio means the width and height are equal, so the image is a perfect square. It is the most common ratio in social media, used by profile pictures and grid posts.</p>
+<p>Squares feel balanced and neutral. They suit portraits, product shots, and anything that needs to sit in a grid without favouring one direction.</p>
+<p>The catch is that most platforms display square profile pictures as circles. The corners of your square are cut off, so keep the face well inside the frame.</p>
+<p>When cropping to 1:1, centre the subject with a little headroom. A face touching the top edge will lose its hair to the circular crop, and a subject at the corner will be cut entirely.</p>
+<h2 id="ratio-4-3">4:3 — The Classic Photo Shape</h2>
+<p>A 4:3 ratio is slightly wider than it is tall. It was the standard shape for television screens and early digital cameras, and it still suits traditional photos.</p>
+<p>It is a good default for documents and scanned pages, where the content is wider than a square but not as wide as a video frame. It also prints well on standard paper sizes.</p>
+<p>Many phone cameras still offer a 4:3 mode. If your camera shoots in this ratio, cropping to 4:3 keeps the full frame with almost nothing removed.</p>
+<p>Use 4:3 when the subject needs a little horizontal room but the image should not feel panoramic. A group photo, a room interior, or a document all suit this shape.</p>
+<h2 id="ratio-3-2">3:2 — The Camera Standard</h2>
+<p>A 3:2 ratio comes from 35mm film cameras, and it remains the default shape for most DSLR and mirrorless cameras. It is wider than 4:3 but narrower than 16:9.</p>
+<p>It suits landscapes and street photography, where the extra width gives the scene room to breathe without turning the image into a panorama.</p>
+<p>Print sizes often match this ratio. A 6 by 4 inch print is exactly 3:2, so a photo cropped to this shape prints without any further trimming.</p>
+<p>If your camera shoots 3:2 and you print often, keep your crops in this ratio. You will avoid the surprise of a lab cutting off the edges of your favourite shot.</p>
+<h2 id="ratio-16-9">16:9 — The Wide Screen</h2>
+<p>A 16:9 ratio is the shape of modern screens: televisions, monitors, and phone displays in landscape. It is wide, cinematic, and built for content that stretches across a display.</p>
+<p>It is the right choice for video thumbnails, website banners, and presentation slides. A 16:9 crop fills the space without leaving empty bars on either side.</p>
+<p>The trade-off is vertical space. A 16:9 crop from a tall photo throws away a lot of pixels top and bottom, so the subject must fit comfortably in a thin band.</p>
+<p>Keep the important content in the middle of a 16:9 crop. Platforms often trim the sides again for mobile, so anything near the left or right edge may disappear.</p>
+<h2 id="ratio-4-5-and-9-16">4:5 and 9:16 — The Vertical Shapes</h2>
+<p>Vertical ratios matter because most people view content on a phone held upright. A 4:5 crop is a tall portrait that fills more of a phone screen than a square does.</p>
+<p>A 4:5 ratio suits portrait posts on social feeds. It shows larger on a phone than a square post, which makes the image more prominent without filling the whole screen.</p>
+<p>A 9:16 ratio is a full phone screen in portrait orientation. It is the shape of stories, reels, and vertical video, and it fills the display edge to edge.</p>
+<p>Vertical crops demand careful framing. A wide landscape squeezed into 9:16 loses most of its sides, so this ratio suits single subjects, not broad scenes.</p>
+<h2 id="custom-ratios">Custom Ratios: When No Preset Fits</h2>
+<p>Sometimes no standard ratio matches your destination. A specific banner size, a book cover, or a form with fixed pixel dimensions all need a custom shape.</p>
+<p>Free mode in the cropper lets you drag the box to any shape. The tool shows the exact output dimensions, so you can match the required size precisely.</p>
+<p>Custom ratios are also useful for cutting a detail from a larger image. A single paragraph from a page, a logo from a photo, or a face from a crowd all need shapes that no preset provides.</p>
+<p>When you use a custom ratio, write down the pixel dimensions you need first. A crop made by eye is easy to get wrong, while a crop checked against a number is exact.</p>
+<h2 id="ratio-vs-resolution">Ratio vs Resolution: Two Different Things</h2>
+<p>Ratio describes shape, while resolution describes size in pixels. Two images can share a ratio and have very different resolutions, and two images can share a resolution and have different ratios.</p>
+<p>A 1:1 crop at 500 by 500 pixels and a 1:1 crop at 2000 by 2000 pixels have the same shape, but the second one carries sixteen times as many pixels.</p>
+<p>This matters because a platform that needs 1000 pixels will stretch a 500 pixel crop and make it blurry, even though the shape is correct. The ratio was right and the resolution was wrong.</p>
+<p>Always check both numbers. The cropper shows the output dimensions, so confirm the shape with the ratio and the size with the pixel count before downloading.</p>
+<h2 id="ratio-mistakes">Mistakes That Come from the Wrong Ratio</h2>
+<p>The most common mistake is cropping to a ratio and then stretching the result to fit another shape. Stretching distorts faces and objects, and the damage is immediately visible.</p>
+<p>Another mistake is letting a platform re-crop your image. A square photo uploaded as a banner will be cropped by the platform, and it will choose what to cut, not you.</p>
+<p>People also forget that a ratio change throws away pixels. Cropping a wide photo to a square discards the left and right thirds, which may contain the subject.</p>
+<p>The fix is to choose the ratio before you crop, from the destination rules. A five-second check of the platform size guide prevents all three mistakes.</p>
+<h2 id="ratio-for-print">Ratios for Print</h2>
+<p>Print sizes have their own ratios, and they do not always match screen shapes. A 6 by 4 inch print is 3:2, a 10 by 8 inch print is 5:4, and an A4 page is roughly 1.41:1.</p>
+<p>Before printing, check the ratio of the paper size and crop to match. A photo cropped to 16:9 will leave white bars on a 4:3 print, or lose its edges to the printer trim.</p>
+<p>Print also needs resolution, not just shape. A small crop printed large will look soft, so confirm the pixel count as well as the ratio.</p>
+<p>When in doubt, crop slightly larger than the print size and let the lab trim the excess. A little extra margin is safer than a crop that is exactly the wrong shape.</p>
+<h2 id="ratio-workflow">A Workflow for Choosing Ratios</h2>
+<p>Start by listing every place the image will appear. A photo that needs to be a profile picture, a banner, and a print needs three different crops from the same original.</p>
+<p>Crop each version separately from the original file. A crop of a crop loses quality, while fresh crops from the original stay sharp.</p>
+<p>Name each file by its destination and ratio, such as avatar-1x1.png or banner-16x9.png. Clear names prevent you from uploading the wrong shape to the wrong place.</p>
+<p>Keep the original file. Destinations change their size rules, and a saved original lets you re-crop to a new ratio without starting from a damaged copy.</p>
+<h2 id="ratio-cheat-sheet">Quick Ratio Cheat Sheet</h2>
+<p>Use 1:1 for profile pictures, grid posts, and anything shown in a square or circle. Keep the subject centred with headroom.</p>
+<p>Use 4:3 for traditional photos, documents, and prints on standard paper. It is the safest general-purpose photo shape.</p>
+<p>Use 3:2 for camera photos you plan to print at 6 by 4 inches. It matches the film standard and most DSLR output.</p>
+<p>Use 16:9 for banners, thumbnails, and slides. Keep the important content in the centre, away from the edges that mobile screens trim.</p>
+<h2 id="ratio-for-video-thumbnails">Ratios for Video Thumbnails</h2>
+<p>Video thumbnails are almost always 16:9, because they sit on video players that use the widescreen shape. A thumbnail cropped to any other ratio will be stretched or letterboxed by the platform.</p>
+<p>Keep the face and the main subject large in a thumbnail crop. A thumbnail is shown small in a feed, so a tiny subject disappears and a large one draws the eye.</p>
+<p>Leave space for text if you plan to add a title on the thumbnail. A 16:9 crop with the subject on one side and empty space on the other gives the text room to sit.</p>
+<p>Check the thumbnail on a phone before publishing. A crop that looks fine on a desktop may be unreadable on a small screen, where the thumbnail is only a few centimetres wide.</p>
+<h2 id="ratio-for-ecommerce">Ratios for E-commerce and Product Listings</h2>
+<p>Product listings usually demand square images, because a grid of squares lines up neatly and looks professional. A 1:1 crop is the safest choice for most shops.</p>
+<p>Some marketplaces ask for a specific ratio, such as 4:3 or 3:2, and they will crop your image if it does not match. Check the listing rules before you crop, not after.</p>
+<p>Consistency matters more than creativity in a product grid. Crop every product to the same ratio with the same margins, so the catalogue looks tidy and trustworthy.</p>
+<p>For a hero image on a product page, a wider ratio such as 16:9 or 3:2 works better. It shows the product in context, with room for a lifestyle background around it.</p>
+<h2 id="ratio-and-composition">Ratio and Composition: How Shape Changes Feeling</h2>
+<p>A square feels calm and balanced, because no direction dominates. It suits portraits, still life, and anything that should feel centred and stable.</p>
+<p>A wide ratio feels open and cinematic, because the eye travels across the frame. It suits landscapes, cityscapes, and any scene where the width is the point.</p>
+<p>A tall ratio feels intimate and focused, because the eye moves up and down a narrow frame. It suits single subjects, such as a person, a building, or a tree.</p>
+<p>Choose the ratio for the feeling as well as the destination. A landscape cropped to a square loses its sense of space, while a portrait cropped wide loses its sense of closeness.</p>
+<h2 id="ratio-changes-over-time">Ratios Change: Keeping Up with Platforms</h2>
+<p>Platform size rules change regularly, and a ratio that worked last year may not fit this year. A feed that once wanted squares may now prefer vertical portraits, and a banner slot may have a new size.</p>
+<p>Keep the original file for every important photo. When a platform changes its rules, you can re-crop the original to the new ratio instead of stretching an old crop.</p>
+<p>Check the size guide of each platform before you crop for it. A two-minute check prevents a crop that the platform will re-crop for you, badly.</p>
+<p>Build a short list of the ratios you use most, and update it when a platform changes. A note on your desk that says profile 1:1, banner 16:9, story 9:16 saves time on every cropping session.</p>
+<p>Use 4:5 for portrait posts that need to stand out in a phone feed, and 9:16 for full-screen stories and vertical video. For the practical steps, see <a href="/blog/how-to-crop-image/">How to Crop an Image</a> and the full overview in <a href="/blog/image-cropper-guide/">Image Cropper: Complete Guide</a>. If the photo also needs resizing, use the <a href="/image-resizer/">Image Resizer</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What does 1:1 mean in cropping?',
+          answer: 'It means the width and height are equal, so the crop is a perfect square. A 1:1 crop suits profile pictures and grid posts. Keep the subject centred with headroom, since many platforms display squares as circles and cut off the corners.',
+        },
+        {
+          question: 'Which ratio should I use for a YouTube thumbnail?',
+          answer: 'Use 16:9, the standard widescreen shape, which matches the 1280 by 720 pixel thumbnail size. Keep the main subject and any text in the centre, since the edges can be trimmed on small screens.',
+        },
+        {
+          question: 'Can I crop a photo to a ratio my camera did not shoot in?',
+          answer: 'Yes. Cropping to a new ratio simply removes pixels from the edges until the shape matches. A wide photo can become a square, and a square can become a wide banner, as long as the kept area is large enough for the destination.',
+        },
+        {
+          question: 'What ratio should I use for printing a photo?',
+          answer: 'Match the paper size: 3:2 for a 6 by 4 inch print, 5:4 for a 10 by 8 inch print, and roughly 1.41:1 for A4. Check both the ratio and the pixel count, since a small crop printed large will look soft.',
+        },
+        {
+          question: 'Why does Instagram crop my photo after I upload it?',
+          answer: 'Instagram re-crops images that do not match its preferred ratios for the slot you chose. Cropping to the right ratio before uploading, such as 1:1 for a grid post or 4:5 for a portrait post, keeps the framing under your control.',
+        },
+        {
+          question: 'What is the difference between aspect ratio and resolution?',
+          answer: 'Aspect ratio is the shape of the image, such as 16:9, while resolution is the size in pixels, such as 1920 by 1080. Two images can share a ratio with different resolutions. Always check both before uploading or printing.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-resizer', '/image-dimensions-checker', '/round-image-corners'],
+  },
+  {
+    id: 'image-watermark-guide',
+    toolSlug: '/image-watermark',
+    categoryId: 'crop-edit',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-watermark-guide',
+      title: 'Image Watermark: Complete Guide',
+      description: 'Learn how to watermark images online: text and logo watermarks, tiled patterns, opacity, placement, and how to protect photos without ruining them.',
+      body: `
+<p>A watermark is a mark placed over an image to show who made it or who owns it. It can be a name, a logo, or a repeated pattern, and it travels with the file wherever the image goes.</p>
+<p>Photographers use watermarks to protect client proofs. Designers use them to brand their work. Shops use them to stop competitors from reusing product photos.</p>
+<p>This guide explains how watermarking works, which style to choose, and how to place a mark that protects the image without ruining it. It covers text, logos, opacity, and the tiled pattern that protects proofs best.</p>
+<h2 id="what-is-a-watermark">What Is a Watermark?</h2>
+<p>A watermark is a visible overlay added to an image. It is usually semi-transparent, so the photo underneath stays visible, but the mark is clear enough to read.</p>
+<p>Watermarks have existed for centuries. Paper makers pressed marks into their sheets, and photographers later stamped their names on the back of prints.</p>
+<p>Digital watermarks work the same way, except the mark is baked into the image file itself. Anyone who copies the file copies the watermark with it.</p>
+<p>A watermark does not make an image impossible to steal. It makes stealing pointless, because the stolen copy advertises its real owner.</p>
+<h2 id="text-vs-logo-watermarks">Text Watermarks vs Logo Watermarks</h2>
+<p>A text watermark is a name, a website, or a short phrase written across the image. It is quick to create, easy to read, and works for anyone without a designed logo.</p>
+<p>A logo watermark uses your own image file, usually a transparent PNG of your brand mark. It looks more professional and is harder to mistake for a random caption.</p>
+<p>Text is better when the goal is a clear copyright notice. A name and a year leave no doubt about ownership, while a logo alone may not be recognised.</p>
+<p>Logos are better for branding. A small logo in a corner marks every image as yours, and clients learn to recognise it across a whole portfolio.</p>
+<h2 id="tiled-repeat-pattern">The Tiled Repeat Pattern</h2>
+<p>A single watermark in a corner is easy to remove. Anyone can crop off a corner or paint over one small mark, and the rest of the image is clean.</p>
+<p>A tiled repeat pattern solves that problem. It places the watermark again and again across the whole image, in a grid, so no crop can remove all of it.</p>
+<p>This pattern is the standard for client proofs. A photographer sends watermarked proofs to a client, and the client cannot use them as final images without paying for the clean versions.</p>
+<p>The <a href="/image-watermark/">Image Watermark tool</a> offers a tiled mode with adjustable spacing and angle. When tiled mode is on, the corner anchor presets hide, because the pattern covers the whole frame by design.</p>
+<h2 id="opacity-and-visibility">Opacity: Visible Enough to Protect, Light Enough to See Through</h2>
+<p>Opacity controls how strong the watermark appears. At 100 percent it is solid and blocks the image beneath, while at 10 percent it is a faint ghost that is easy to miss.</p>
+<p>For proofs, an opacity around 30 to 50 percent works well. The mark is clearly readable, but the client can still judge the photo underneath it.</p>
+<p>For branding on a finished image, a lower opacity of 15 to 25 percent is usually enough. The logo is visible without distracting from the photo.</p>
+<p>Test the opacity on both light and dark parts of the image. A watermark that is clear on a dark background may vanish on a bright sky, and vice versa.</p>
+<h2 id="placement-strategy">Where to Place a Watermark</h2>
+<p>Corners are the most common placement, because they disturb the image least. A small mark in a bottom corner brands the photo without covering the subject.</p>
+<p>Corners are also the easiest to remove. A thief can crop off a corner in seconds, so corner marks are better for branding than for protection.</p>
+<p>The centre of the image is the hardest place to remove a watermark from, because cropping it away destroys the photo. A diagonal mark across the middle protects proofs far better than any corner.</p>
+<p>The tool lets you drag a single watermark to any position, or use anchor presets for the standard corners and edges. Choose the position based on your goal: branding favours corners, protection favours the centre.</p>
+<h2 id="text-size-and-scaling">Text Size: Small Photos vs Large Photos</h2>
+<p>Watermark text is sized as a percentage of the image, not as a fixed pixel count. That means the same setting looks consistent on a small thumbnail and a huge camera photo.</p>
+<p>A size that looks right on a 4000 pixel photo may be invisible on a 500 pixel thumbnail if it is set in pixels. Percentage sizing avoids that problem entirely.</p>
+<p>Check the watermark on the actual size you will share. A mark that looks subtle at full size may dominate a small preview, and a mark sized for a thumbnail may vanish on a large print.</p>
+<p>When you watermark a batch of different-sized photos, percentage sizing keeps the result consistent across all of them without any extra work.</p>
+<h2 id="watermark-colour-and-contrast">Colour and Contrast: Making the Mark Readable</h2>
+<p>White text works on dark backgrounds and black text works on light ones, but most photos contain both. A single colour will always disappear somewhere in the image.</p>
+<p>An outline or a shadow helps. A thin dark outline around white text keeps it readable on a bright sky, while a light shadow does the same for dark text on a dark background.</p>
+<p>Some watermark tools add a subtle background panel behind the text. A semi-transparent dark box makes white text readable anywhere, though it covers more of the image.</p>
+<p>Test your watermark on a busy photo before you apply it to a whole batch. A mark that reads clearly on a plain wall may vanish in a forest or a crowd.</p>
+<h2 id="rotation-and-angle">Rotation and Angle</h2>
+<p>Watermarks are often placed at a slight angle, usually around 30 to 45 degrees. A diagonal mark is harder to remove cleanly and feels less like a caption.</p>
+<p>A diagonal watermark also crosses more of the image. A horizontal mark in a corner covers a small area, while a diagonal mark passes over the centre and the edges.</p>
+<p>For proofs, a diagonal tiled pattern is the strongest option. It combines the coverage of a tile with the removal resistance of an angle.</p>
+<p>For branding, keep the angle at zero. A straight logo in a corner looks professional, while a tilted logo looks like a mistake.</p>
+<h2 id="formats-and-transparency">Formats, Transparency, and Export</h2>
+<p>The tool accepts common image formats for the base photo and for an uploaded logo. A transparent PNG logo works best, because its empty areas let the photo show through.</p>
+<p>Exporting as JPG flattens the watermark into the image permanently. That is what you want for a proof: the mark becomes part of the pixels and cannot be peeled off.</p>
+<p>Exporting as PNG or WebP can preserve transparency in the base image. If your base photo is a transparent PNG, the watermarked export keeps the see-through areas intact.</p>
+<p>The quality slider appears for JPG and WebP exports and hides for PNG, because PNG is lossless and has no quality setting to adjust.</p>
+<h2 id="watermark-vs-copyright">Watermarks and Copyright: What a Mark Can and Cannot Do</h2>
+<p>A watermark is a deterrent, not a legal shield. It shows ownership clearly, but it does not replace a copyright registration or a written licence.</p>
+<p>What it does well is make casual theft pointless. A person who wants a clean image for their website will not use a watermarked copy when a clean alternative is one search away.</p>
+<p>It also helps with attribution. A photo shared without credit still carries your name or your website, so viewers can find the source.</p>
+<p>For client work, a watermark is a payment tool as much as a protection tool. Proofs go out watermarked, and the clean files are delivered when the invoice is paid.</p>
+<h2 id="privacy-and-local-processing">Privacy: Watermarking Without Uploading</h2>
+<p>Watermarking happens entirely in your browser. Your photos and your logo are never uploaded to a server, which matters when the images are unreleased client work.</p>
+<p>This is a real advantage over cloud watermarking services. An unreleased product photo or a private wedding proof should not travel to a server you cannot see.</p>
+<p>The tool also strips EXIF GPS data on export. A watermarked photo downloaded from the tool carries no record of where it was taken.</p>
+<p>Keep your unwatermarked originals safe. Once a watermark is flattened into an export, it cannot be removed from that file, so the original is your only clean copy.</p>
+<h2 id="common-watermark-mistakes">Common Watermark Mistakes</h2>
+<p>The most common mistake is making the watermark too faint. A mark at 10 percent opacity is invisible on most screens, and it protects nothing.</p>
+<p>The opposite mistake is making it too strong. A solid black bar across the middle of a photo ruins the image for the client who needs to judge it.</p>
+<p>Placing the mark where it can be cropped away is another common error. A corner mark on a photo with empty corners is an invitation to crop, not a protection.</p>
+<p>Finally, do not watermark with a logo that has a white background. The white box will show as a rectangle over your photo, which looks unprofessional and is easy to spot.</p>
+<h2 id="watermark-workflow">A Watermark Workflow for Client Proofs</h2>
+<p>Export your proofs at a smaller size than the finals. A watermarked proof at 1200 pixels is enough for a client to judge, and it is useless for printing.</p>
+<p>Apply a tiled pattern at a moderate opacity, around 30 to 40 percent, with a diagonal angle. This protects the whole image without hiding the subject.</p>
+<p>Send the proofs with a clear note: the watermarked versions are for selection only, and clean files arrive after payment. Most clients understand this immediately.</p>
+<p>Deliver the clean finals only after the invoice is settled. Keep the watermarked proofs as your record of what was shown and when.</p>
+<h2 id="watermarking-social-media">Watermarking for Social Media</h2>
+<p>Social media is where most image theft happens, because a photo can be saved and reposted in seconds. A watermark is the simplest way to keep your name attached to your work.</p>
+<p>Keep social watermarks light. A small logo in a corner brands the image without hurting engagement, while a heavy mark across the middle makes people scroll past.</p>
+<p>Place the mark where a repost cannot easily crop it away. A corner logo on a photo with empty corners is easy to remove, so put the mark near the subject instead.</p>
+<p>Remember that social platforms compress your images when you upload them. A faint watermark may become invisible after compression, so test the mark on a downloaded copy of the post.</p>
+<h2 id="watermarking-stock-photos">Watermarking Stock and Preview Images</h2>
+<p>Stock photo sites watermark their previews for the same reason photographers watermark proofs: the preview shows the image, but the clean file is only available after payment.</p>
+<p>A tiled pattern is the standard for stock previews. It covers the whole image, so no crop can produce a usable clean copy, and the buyer can still judge the photo.</p>
+<p>If you sell photos yourself, watermark the previews you send to potential buyers. A buyer who likes the image will pay for the clean version, and a thief gains nothing from the marked copy.</p>
+<p>Keep the watermarked previews at a smaller size than the finals. A small preview is enough to judge, and it is useless for printing or large displays.</p>
+<h2 id="watermark-removal-myths">Myths About Watermark Removal</h2>
+<p>One myth is that any watermark can be removed with one click. Simple corner marks can be cropped away, but a tiled pattern across a busy photo is far harder to clean without visible damage.</p>
+<p>Another myth is that invisible watermarks protect images. Hidden digital marks can prove ownership in a dispute, but they do not stop anyone from using the image, because the thief cannot see them.</p>
+<p>A third myth is that a watermark makes an image ugly. A well-placed mark at a low opacity is barely noticeable, and most viewers accept it as a normal part of professional photography.</p>
+<p>The honest truth is that a watermark is a deterrent, not a lock. It raises the cost of theft enough that most people will not bother, which is all most photographers need.</p>
+<h2 id="watermarking-and-branding">Watermarking as Branding</h2>
+<p>A consistent watermark builds recognition over time. When every image you publish carries the same small logo in the same place, viewers start to recognise your work before they read your name.</p>
+<p>Keep the branding consistent: same logo, same position, same opacity on every image. Inconsistency makes the mark look like an afterthought rather than a brand.</p>
+<p>Use your website address in the watermark when the goal is traffic. A viewer who sees your photo shared without credit can still find your site from the mark itself.</p>
+<p>Do not watermark images that are meant to be shared freely. A heavy mark on a free resource discourages sharing, which defeats the purpose of giving it away.</p>
+<p>For the step-by-step process, see <a href="/blog/how-to-add-watermark-to-image/">How to Add a Watermark to an Image</a>. For placement and branding rules, read <a href="/blog/watermark-best-practices/">Watermark Best Practices: Placement, Opacity and Branding</a>, and to add a caption instead of a mark, try the <a href="/add-text-to-image/">Add Text to Image tool</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What is the best opacity for a watermark on client proofs?',
+          answer: 'Around 30 to 50 percent works well for proofs. The mark is clearly readable, which deters misuse, but the client can still judge the photo underneath. For branding on finished images, a lower opacity of 15 to 25 percent is usually enough.',
+        },
+        {
+          question: 'Should I watermark photos I post on social media?',
+          answer: 'It depends on your goal. A small corner logo brands your work and helps viewers find you, which suits photographers and designers. A heavy watermark across the middle can hurt engagement, so keep social marks light and place them where they do not cover the subject.',
+        },
+        {
+          question: 'Can a watermark be removed from an image?',
+          answer: 'A single corner mark can be cropped away easily, and a faint mark can sometimes be painted over. A tiled pattern across the whole image is far harder to remove, because every part of the photo carries the mark. No watermark is truly impossible to remove, but a good one makes it pointless.',
+        },
+        {
+          question: 'What file type should my logo be for watermarking?',
+          answer: 'A transparent PNG works best. Its empty areas let the photo show through, so only the logo itself appears over the image. A JPG logo has a solid white background that shows as a rectangle, which looks unprofessional.',
+        },
+        {
+          question: 'Does watermarking reduce the quality of my photo?',
+          answer: 'The watermark itself does not soften the photo, but the export does re-save the file. Choose PNG for a lossless result, or JPG at a high quality setting for photos. Always watermark a copy and keep the original file untouched.',
+        },
+        {
+          question: 'Is it safe to watermark client photos in a browser tool?',
+          answer: 'Yes, because all processing happens locally in your browser and nothing is uploaded to a server. That matters for unreleased client work. The tool also strips EXIF GPS data on export, so the downloaded file carries no location record.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/add-text-to-image', '/image-border-generator', '/remove-image-metadata'],
+  },
+  {
+    id: 'how-to-add-watermark-to-image',
+    toolSlug: '/image-watermark',
+    categoryId: 'crop-edit',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-add-watermark-to-image',
+      title: 'How to Add a Watermark to an Image',
+      description: 'Add a watermark to any image in minutes: text or logo, placement, opacity, size, and tiled patterns, with a clean export at the end.',
+      body: `
+<p>Adding a watermark takes only a few minutes, and it protects your work wherever the image travels. You do not need design software or an account, and the whole job runs in your browser.</p>
+<p>This how-to walks through the process step by step. It covers text and logo watermarks, placement, opacity, size, and the tiled pattern that protects client proofs.</p>
+<p>By the end you will know how to mark a single photo, a batch of proofs, and the mistakes that make a watermark useless. Keep your unwatermarked original safe until you have checked the result.</p>
+<h2 id="before-you-start">Before You Start: What You Need</h2>
+<p>You need the image file and, if you want a logo watermark, the logo file too. A transparent PNG logo works best, because its empty areas let the photo show through.</p>
+<p>Decide what the watermark should say before you open the tool. A name, a website, or a short phrase is enough, and shorter text is easier to read at small sizes.</p>
+<p>Think about your goal as well. A proof needs a strong, hard-to-remove mark, while a finished image for social media needs only a light brand in a corner.</p>
+<p>Open the <a href="/image-watermark/">Image Watermark tool</a> in your browser. Everything runs locally, so your photos and your logo are never uploaded to a server.</p>
+<h2 id="step-by-step">Add a Watermark in Six Steps</h2>
+<p>The process is the same for a text watermark and a logo watermark. Upload the photo, set the mark, place it, check the preview, and download the result.</p>
+<p>Take your time with placement and opacity. Those two settings decide whether the watermark protects the image or merely decorates it.</p>
+<ol>
+<li>Upload your photo by dragging it into the dropzone, choosing it from your device, or pasting it with Ctrl+V.</li>
+<li>Type your watermark text, or upload your transparent PNG logo using the logo option.</li>
+<li>Pick a position using the anchor presets, or drag the watermark to an exact custom spot.</li>
+<li>Set the opacity, size, and rotation angle, and switch on the tiled repeat pattern for client proofs.</li>
+<li>Preview the result on light and dark parts of the image to confirm the mark stays readable.</li>
+<li>Choose the export format and quality, then click Download to save the watermarked image.</li>
+</ol>
+<p>Open the downloaded file once before you share it. Confirm the watermark reads clearly and the photo underneath still looks good.</p>
+<h2 id="choosing-text-or-logo">Choosing Between a Text and a Logo Watermark</h2>
+<p>A text watermark is the fastest option. Type your name or your website, and the tool renders it over the photo in seconds, with no extra files needed.</p>
+<p>A logo watermark looks more professional, especially for photographers and studios. Upload a transparent PNG of your brand mark, and it appears over the photo exactly as designed.</p>
+<p>Text is better when the goal is a clear copyright notice. A name and a year leave no doubt about ownership, while a logo alone may not be recognised by a stranger.</p>
+<p>You can use both at once. A small logo in a corner with your website written beneath it gives branding and attribution in a single mark.</p>
+<h2 id="typing-watermark-text">Typing Your Watermark Text</h2>
+<p>Keep the text short. A name, a studio name, or a website address is enough, and short text stays readable even at a small size.</p>
+<p>Avoid long sentences in a watermark. A full copyright notice is hard to read over a busy photo, and it covers more of the image than it needs to.</p>
+<p>Use your real name or your business name, not a nickname that nobody recognises. The watermark is meant to identify you, so it should say who you are.</p>
+<p>If you leave the text input blank, the tool has nothing to render as a text mark. Type the text first, then adjust the size and the position.</p>
+<h2 id="uploading-a-logo">Uploading Your Logo as a Watermark</h2>
+<p>Prepare your logo as a transparent PNG before you start. The transparency lets the photo show through the empty areas, so only the logo itself appears over the image.</p>
+<p>A JPG logo has a solid white background that shows as a rectangle over your photo. It looks unprofessional, and it is easy to spot as a mistake.</p>
+<p>Upload the logo through the logo option in the tool. You can replace it later without reloading the page, which is useful when you want to test a different mark.</p>
+<p>Check the logo at the size you will use it. A detailed logo that looks fine at full size may turn into a blur at a small watermark size, so simplify it if needed.</p>
+<h2 id="choosing-placement">Choosing Where the Watermark Goes</h2>
+<p>Anchor presets place the mark in a standard spot: a corner, an edge, or the centre. Corners are the least distracting, while the centre is the hardest to remove.</p>
+<p>Drag the watermark to an exact custom spot when the presets do not fit. You can place the mark over a plain area of the photo, where it is readable without covering the subject.</p>
+<p>For branding, a bottom corner is usually best. It marks the image clearly without covering the subject, and viewers expect to find a logo there.</p>
+<p>For protection, the centre or a diagonal position is better. A mark in the middle cannot be cropped away without destroying the photo itself.</p>
+<h2 id="setting-opacity">Setting the Opacity</h2>
+<p>Opacity controls how strong the watermark looks. At 100 percent it is solid and blocks the image beneath, while at 10 percent it is a faint ghost that is easy to miss.</p>
+<p>For client proofs, use 30 to 50 percent. The mark is clearly readable, which deters misuse, but the client can still judge the photo underneath it.</p>
+<p>For branding on a finished image, 15 to 25 percent is usually enough. The logo is visible without distracting from the photo, and it does not fight the subject for attention.</p>
+<p>Test the opacity on both light and dark parts of the image. A mark that is clear on a dark background may vanish on a bright sky, and the reverse is also true.</p>
+<h2 id="setting-size">Setting the Watermark Size</h2>
+<p>Watermark text is sized as a percentage of the image, not as a fixed pixel count. The same setting looks consistent on a small thumbnail and a huge camera photo.</p>
+<p>A size that looks right on a large photo may be invisible on a small one if it is set in pixels. Percentage sizing avoids that problem entirely.</p>
+<p>Check the size on the actual dimensions you will share. A mark that looks subtle at full size may dominate a small preview, and a mark sized for a thumbnail may vanish on a large print.</p>
+<p>When you watermark a batch of different-sized photos, percentage sizing keeps the result consistent across all of them without any extra work from you.</p>
+<h2 id="setting-rotation">Setting the Rotation Angle</h2>
+<p>A slight angle, usually around 30 to 45 degrees, makes a watermark harder to remove and less like a caption. A diagonal mark crosses more of the image than a horizontal one.</p>
+<p>For proofs, a diagonal mark is the stronger choice. It passes over the centre and the edges, so no single crop can remove it cleanly.</p>
+<p>For branding, keep the angle at zero. A straight logo in a corner looks professional, while a tilted logo looks like a mistake that slipped through.</p>
+<p>Adjust the angle in small steps and watch the preview. A few degrees can make the difference between a mark that looks deliberate and one that looks accidental.</p>
+<h2 id="tiled-repeat-mode">Using the Tiled Repeat Pattern</h2>
+<p>A single watermark in a corner is easy to remove, because anyone can crop off a corner or paint over one small mark. A tiled pattern solves that problem.</p>
+<p>Tiled mode places the watermark again and again across the whole image in a grid, so no crop can remove all of it. It is the standard for client proofs.</p>
+<p>When tiled mode is on, the anchor presets hide, because the pattern covers the whole frame by design. You control the spacing and the angle instead.</p>
+<p>Use a lower opacity for tiled marks than for single marks. A repeated pattern at high opacity overwhelms the photo, while a light repeat protects it without hiding it.</p>
+<h2 id="preview-and-compare">Previewing Before You Download</h2>
+<p>Always preview before downloading. The preview shows exactly how the watermark will look on the exported file, including its size, opacity, and position.</p>
+<p>Check the mark on the busiest part of the photo. A watermark that reads clearly on a plain wall may vanish in a forest, a crowd, or a patterned fabric.</p>
+<p>Check it on the brightest and the darkest areas too. A white mark disappears on a bright sky, and a dark mark disappears in a shadow, so test both extremes.</p>
+<p>If the mark is unreadable somewhere important, change its colour, add an outline, or move it to a plainer area. Fixing it now is faster than re-doing the whole job.</p>
+<h2 id="choosing-export-format">Choosing the Export Format</h2>
+<p>Choose JPG for photos you plan to share or send to clients. It keeps file sizes small and works everywhere, including old forms and messaging apps.</p>
+<p>Choose PNG when the base image is a transparent graphic or a logo. PNG preserves transparency, so the see-through areas stay see-through in the export.</p>
+<p>Choose WebP when you want small files with good quality. It works well for web images, though a few older systems still reject the format.</p>
+<p>Remember that the quality slider hides for PNG, because PNG is lossless and has no quality setting to adjust. That is normal behaviour, not a problem with the tool.</p>
+<h2 id="watermarking-on-mobile">Watermarking on a Phone or Tablet</h2>
+<p>The tool works on touchscreens, so you can watermark a photo on the phone that took it. Upload from your gallery, type the text, and drag the mark into place with your finger.</p>
+<p>Positioning with a finger is less precise than with a mouse, so use the anchor presets for exact corners. They place the mark perfectly without any dragging.</p>
+<p>Check the preview at full size before downloading. A mark that looks fine on a small phone screen may be too large or too faint when viewed on a computer.</p>
+<p>Downloaded files save to your usual downloads folder. From there you can share them directly to a client, an email, or a social post.</p>
+<h2 id="troubleshooting">Troubleshooting Common Watermark Problems</h2>
+<p>If the watermark is invisible, the opacity is probably too low or the colour matches the background. Raise the opacity or switch the colour and check the preview again.</p>
+<p>If the watermark covers the subject, move it to a plainer area or reduce its size. A mark that hides the face or the product defeats the purpose of the photo.</p>
+<p>If the anchor presets are missing, check whether tiled mode is on. The presets hide in tiled mode because the pattern covers the whole frame, and they return when you switch it off.</p>
+<p>If the logo shows a white box, the logo file is a JPG, not a transparent PNG. Replace it with a transparent PNG and the white rectangle will disappear.</p>
+<h2 id="quick-tips">Quick Tips for Better Watermarks</h2>
+<p>Watermark a copy, never the original. Once a mark is flattened into an export, it cannot be removed from that file, so the original is your only clean version.</p>
+<p>Keep the text short and the logo simple. A mark that is easy to read at a glance protects better than a detailed one that turns into a blur.</p>
+<p>Test the watermark on a busy photo before you apply it to a whole batch. A mark that works on a plain background may fail on a complicated scene.</p>
+<p>Save your settings by noting them down: opacity, size, angle, and position. A short note lets you reproduce the same mark on every image you publish.</p>
+<h2 id="watermarking-a-batch">Watermarking a Batch of Photos</h2>
+<p>A wedding or an event can produce hundreds of photos that all need the same mark. Watermark them one at a time, keeping the settings identical across the set.</p>
+<p>Write your settings down before you start: the text or logo, the opacity, the size, the angle, and the position. A short note keeps every photo in the batch consistent.</p>
+<p>Work through the batch in order and preview every tenth photo. A quick check catches a setting that drifted before it affects dozens of files.</p>
+<p>Save the watermarked batch in a folder separate from the originals. A clear folder name, such as proofs-watermarked, prevents you from mixing marked and clean files.</p>
+<p>For placement and branding rules, read <a href="/blog/watermark-best-practices/">Watermark Best Practices: Placement, Opacity and Branding</a>. For the full overview, see <a href="/blog/image-watermark-guide/">Image Watermark: Complete Guide</a>, and to add a caption instead of a mark, try the <a href="/add-text-to-image/">Add Text to Image tool</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I add a watermark to a photo on my phone?',
+          answer: 'Open the Image Watermark tool in your phone browser, upload the photo from your gallery, and type your text or upload a transparent PNG logo. Use the anchor presets for exact placement, set the opacity, preview the result, and download the file.',
+        },
+        {
+          question: 'What is the best watermark position for a photo?',
+          answer: 'A bottom corner is best for branding, since it marks the image without covering the subject. The centre or a diagonal position is best for protection, since it cannot be cropped away. Choose based on whether you want branding or protection.',
+        },
+        {
+          question: 'Can I watermark multiple photos at once?',
+          answer: 'The tool handles one photo at a time, so watermark each image separately and keep the settings consistent. Note down your opacity, size, angle, and position so every photo in the set carries the same mark.',
+        },
+        {
+          question: 'Why is my watermark invisible on some parts of the photo?',
+          answer: 'The mark colour probably matches the background in those areas. White text vanishes on a bright sky and dark text vanishes in shadows. Change the colour, add an outline, or move the mark to a plainer area of the image.',
+        },
+        {
+          question: 'How do I make a watermark that cannot be cropped out?',
+          answer: 'Use the tiled repeat pattern, which places the watermark across the whole image in a grid. No single crop can remove all of it. Combine the tile with a diagonal angle and a moderate opacity for the strongest protection.',
+        },
+        {
+          question: 'Does adding a watermark change the image file size?',
+          answer: 'Only slightly. The watermark adds a small amount of data, but the file size depends mostly on the export format and quality setting. A JPG export at a high quality setting stays close to the original size.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/add-text-to-image', '/image-border-generator', '/remove-image-metadata'],
+  },
+  {
+    id: 'watermark-best-practices',
+    toolSlug: '/image-watermark',
+    categoryId: 'crop-edit',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'watermark-best-practices',
+      title: 'Watermark Best Practices: Placement, Opacity and Branding',
+      description: 'How to watermark photos properly: placement rules, opacity ranges, sizing, colour, tiled patterns, and branding that protects without ruining the image.',
+      body: `
+<p>A watermark should protect your work without ruining it. That balance is harder than it looks, because a mark that is too faint protects nothing and a mark that is too strong ruins the photo.</p>
+<p>The best watermarks follow a few simple rules about placement, opacity, size, and colour. They are consistent across your work, readable on any background, and hard to remove without damaging the image.</p>
+<p>This article collects those rules into one place. It covers where to put the mark, how strong to make it, which style to choose, and how to build a watermark habit that protects every image you publish.</p>
+<h2 id="why-watermarks-fail">Why Most Watermarks Fail</h2>
+<p>Most watermarks fail because they are too timid. A mark at 10 percent opacity in a far corner is invisible on most screens, and it protects nothing at all.</p>
+<p>Others fail because they are too aggressive. A solid black bar across the middle of a photo ruins the image for the client who needs to judge it, and it annoys every viewer.</p>
+<p>A third group fails on placement. A corner mark on a photo with empty corners invites cropping, while a mark over the subject hides the very thing the photo is about.</p>
+<p>The fix for all three failures is the same: decide the goal first, then set the placement, opacity, and size to match it. A proof and a branded social post need different marks.</p>
+<h2 id="placement-rules">Placement Rules: Corners, Edges, and Centres</h2>
+<p>Corners are the standard for branding. A small mark in a bottom corner identifies the image without covering the subject, and viewers expect to find a logo there.</p>
+<p>Edges are a middle ground. A mark along the bottom edge is visible but unobtrusive, and it is harder to crop away than a corner mark, because cropping an edge removes more of the photo.</p>
+<p>The centre is the strongest placement for protection. A mark across the middle cannot be removed without destroying the image, which is why proof watermarks sit there.</p>
+<p>Diagonal placement combines the centre and the corners. A mark running at 45 degrees crosses the whole frame, so it protects the image while leaving most of the subject visible.</p>
+<h2 id="opacity-rules">Opacity Rules: How Strong Is Strong Enough?</h2>
+<p>Opacity is the single most important watermark setting, and it is the one people get wrong most often. Too faint and the mark is useless; too strong and the photo is ruined.</p>
+<p>For client proofs, use 30 to 50 percent. The mark is clearly readable, which deters misuse, but the client can still judge the photo underneath it.</p>
+<p>For branding on finished images, use 15 to 25 percent. The logo is visible without distracting from the photo, and it does not fight the subject for attention.</p>
+<p>For social media, stay near the low end. A light mark brands the image without hurting engagement, while a heavy mark makes people scroll past.</p>
+<h2 id="size-rules">Size Rules: Big Enough to Read, Small Enough to Ignore</h2>
+<p>A watermark should be readable at the size the image will be viewed. A mark that is clear at full size may vanish in a small social feed preview.</p>
+<p>Size the mark as a percentage of the image, not as a fixed pixel count. Percentage sizing keeps the mark consistent across thumbnails and large prints alike.</p>
+<p>For a corner logo, aim for about 10 to 15 percent of the image width. That is large enough to read and small enough to stay out of the way.</p>
+<p>For a tiled pattern, use a smaller size with wider spacing. A repeated small mark protects the whole image without overwhelming any single part of it.</p>
+<h2 id="colour-and-contrast">Colour and Contrast: Readable on Any Background</h2>
+<p>White text works on dark backgrounds and black text works on light ones, but most photos contain both. A single colour will always disappear somewhere in the image.</p>
+<p>An outline solves this. A thin dark outline around white text keeps it readable on a bright sky, while a light outline does the same for dark text on a dark background.</p>
+<p>A subtle shadow is another option. It lifts the text off the background just enough to read, without the hard edge that an outline creates.</p>
+<p>Test your mark on a busy photo before you use it widely. A watermark that reads clearly on a plain wall may vanish in a forest, a crowd, or a patterned fabric.</p>
+<h2 id="text-vs-logo">Text or Logo: Which Mark Fits Your Goal?</h2>
+<p>Text is best for a clear ownership claim. A name, a year, and a website leave no doubt about who owns the image, and text is quick to create.</p>
+<p>A logo is best for branding. A small, recognisable mark in a corner builds familiarity over time, and clients learn to spot your work across a whole portfolio.</p>
+<p>Use both when the image is valuable. A logo in a corner with your website written beneath it gives branding and attribution in a single mark.</p>
+<p>Keep the logo simple. A detailed logo with fine lines turns into a blur at watermark size, while a bold, simple mark stays readable anywhere.</p>
+<h2 id="tiled-vs-single">Tiled Patterns vs Single Marks</h2>
+<p>A single mark is right for branding. It identifies the image with minimal disturbance, and it suits finished work that is meant to be seen and shared.</p>
+<p>A tiled pattern is right for protection. It repeats the mark across the whole image, so no crop can produce a clean copy, and it is the standard for client proofs.</p>
+<p>The trade-off is visual noise. A tiled pattern is more distracting than a single mark, so it belongs on proofs, not on the final images you publish.</p>
+<p>When you use a tiled pattern, lower the opacity. A repeated mark at 30 percent is strong protection, while the same pattern at 60 percent hides the photo underneath.</p>
+<h2 id="branding-consistency">Branding Consistency Across Your Work</h2>
+<p>A consistent watermark builds recognition. When every image carries the same mark in the same place, viewers start to recognise your work before they read your name.</p>
+<p>Keep the logo, the position, the opacity, and the size the same on every image. Inconsistency makes the mark look like an afterthought rather than a brand.</p>
+<p>Write your settings down. A short note with the opacity, size, angle, and position lets you reproduce the same mark on every image, even months apart.</p>
+<p>Review the mark once a year. A logo that looked modern three years ago may feel dated now, and a refresh keeps your branding current.</p>
+<h2 id="proofs-workflow">A Proof Workflow That Protects Your Income</h2>
+<p>Export proofs at a smaller size than the finals, around 1200 pixels on the long edge. A proof that size is enough for a client to judge, and it is useless for printing.</p>
+<p>Apply a tiled pattern at 30 to 40 percent opacity with a diagonal angle. This protects the whole image without hiding the subject from the client.</p>
+<p>Send the proofs with a clear note: the watermarked versions are for selection only, and clean files arrive after payment. Most clients understand this immediately.</p>
+<p>Deliver the clean finals only after the invoice is settled. Keep the watermarked proofs as your record of what was shown and when it was shown.</p>
+<h2 id="social-media-marks">Watermarks on Social Media</h2>
+<p>Social platforms compress your images when you upload them, and a faint watermark may become invisible after compression. Test the mark on a downloaded copy of the post.</p>
+<p>Keep social marks light and near the subject, not in a far corner. A corner mark is easy to crop out of a repost, while a mark near the subject survives.</p>
+<p>Remember that a heavy watermark hurts engagement. People scroll past images that look like adverts, so a light brand mark works better than a bold one.</p>
+<p>Consider whether you need a watermark at all on social media. If the goal is reach, a clean image with your name in the caption may perform better than a marked one.</p>
+<h2 id="print-and-watermarks">Watermarks and Print</h2>
+<p>Never watermark a final print file. A mark that looks subtle on screen can appear much stronger in print, where the resolution and the contrast are higher.</p>
+<p>Watermark only the proofs and the previews. The final print file should be clean, delivered after payment, and free of any mark that would spoil the result.</p>
+<p>Check the proof mark at print size before you send it. A tiled pattern that looks fine on a phone may be distracting on a large proof print.</p>
+<p>For gallery prints, the watermark belongs nowhere near the final file. A client who paid for a print expects a clean image, and a mark on it would be a breach of trust.</p>
+<h2 id="watermark-and-copyright">Watermarks and Copyright: What the Law Sees</h2>
+<p>A watermark is a deterrent, not a legal shield. It shows ownership clearly, but it does not replace a copyright registration or a written licence agreement.</p>
+<p>What it does well is make casual theft pointless. A person who wants a clean image for their website will not use a watermarked copy when a clean alternative is one search away.</p>
+<p>It also helps with attribution. A photo shared without credit still carries your name or your website, so viewers can find the original source.</p>
+<p>Keep records of your originals and your watermarked proofs. If a dispute ever arises, the original file with its metadata is far stronger evidence than the watermark alone.</p>
+<h2 id="testing-your-mark">Testing Your Watermark Before You Commit</h2>
+<p>Test the mark on three kinds of photo: a dark one, a bright one, and a busy one. A watermark that works on all three will work almost anywhere.</p>
+<p>View the test at the size the image will be shared. A mark that is clear at full size may vanish in a small feed preview, and a mark sized for a thumbnail may dominate a large print.</p>
+<p>Ask someone else to look at it. A fresh pair of eyes will spot a mark that is too faint, too strong, or badly placed far faster than the person who made it.</p>
+<p>Test the mark after the platform compresses it. Upload a test image, download it back, and check whether the watermark survived the compression.</p>
+<h2 id="mistakes-to-avoid">Mistakes That Weaken a Watermark</h2>
+<p>The most common mistake is placing the mark where it can be cropped away. A corner mark on a photo with empty corners is an invitation to crop, not a protection.</p>
+<p>Another mistake is using a logo with a white background. The white box shows as a rectangle over your photo, which looks unprofessional and is easy to spot.</p>
+<p>People also forget to watermark at all. A portfolio of clean images is a gift to anyone who wants to reuse them, so make watermarking part of your export routine.</p>
+<p>Finally, do not watermark with text that nobody can read. A script font at a tiny size is decorative, not protective, and it identifies no one.</p>
+<h2 id="watermark-habit">Building a Watermark Habit</h2>
+<p>Make watermarking the last step of every export, not an occasional task. When it is part of the routine, no image leaves your computer unmarked.</p>
+<p>Save a preset in your notes: the logo file, the opacity, the size, the angle, and the position. A short note turns a five-minute job into a one-minute job.</p>
+<p>Watermark proofs and previews by default, and deliver clean finals only after payment. The rule is simple, and it protects your income on every job.</p>
+<p>Review your watermark once a year and update it if your brand changes. A mark that matches your current logo and website keeps your work looking professional.</p>
+<h2 id="watermarking-for-print-shops">Watermarking for Print Shops and Labs</h2>
+<p>Print shops often ask for a watermarked preview before they print a large order. The preview lets the client approve the image, while the clean file stays with you until payment.</p>
+<p>Use a tiled pattern for print previews, since a single corner mark is easy to crop away and the preview may be printed at a large size. A light repeat protects the image at any scale.</p>
+<p>Check the preview mark at the size it will be printed. A pattern that looks fine on a phone screen can be distracting on a large proof print, so test before you send it.</p>
+<p>Never send the clean print file before payment is settled. The watermarked preview is the approval tool, and the clean file is the product the client pays for.</p>
+<p>For the step-by-step process, see <a href="/blog/how-to-add-watermark-to-image/">How to Add a Watermark to an Image</a>. For the full overview, see <a href="/blog/image-watermark-guide/">Image Watermark: Complete Guide</a>, and to add a caption instead of a mark, try the <a href="/add-text-to-image/">Add Text to Image tool</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Where is the safest place to put a watermark on a photo?',
+          answer: 'The centre or a diagonal position is safest, because a mark there cannot be cropped away without destroying the photo. Corners are better for branding but easy to remove. Use the centre for proofs and a corner for finished images you want to share.',
+        },
+        {
+          question: 'How visible should a watermark be?',
+          answer: 'For client proofs, 30 to 50 percent opacity is right: clearly readable but not hiding the photo. For branding on finished images, 15 to 25 percent is enough. Below 10 percent the mark is invisible on most screens and protects nothing.',
+        },
+        {
+          question: 'Should my watermark include my website address?',
+          answer: 'Yes, when the goal is attribution or traffic. A viewer who sees your photo shared without credit can still find your site from the mark. Keep it short, such as your domain name, so it stays readable at small sizes.',
+        },
+        {
+          question: 'Is a tiled watermark better than a single watermark?',
+          answer: 'For protection, yes: a tiled pattern repeats the mark across the whole image, so no crop can remove all of it. For branding, a single mark is better, since it identifies the image with less visual noise. Use tiles for proofs and single marks for finished work.',
+        },
+        {
+          question: 'Does a watermark hurt how many people engage with my photos?',
+          answer: 'A heavy watermark can, because people scroll past images that look like adverts. A light mark in a corner has little effect on engagement. Keep social media marks subtle and place them near the subject rather than across the middle.',
+        },
+        {
+          question: 'Should I watermark images I give away for free?',
+          answer: 'Usually not. A heavy mark on a free resource discourages sharing, which defeats the purpose of giving it away. If you want credit, put your name in the caption or the file description instead of marking the image itself.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/add-text-to-image', '/image-border-generator', '/remove-image-metadata'],
+  },
+  {
+    id: 'blur-pixelate-image-guide',
+    toolSlug: '/blur-pixelate-image',
+    categoryId: 'crop-edit',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'blur-pixelate-image-guide',
+      title: 'Blur and Pixelate Images: Complete Guide',
+      description: 'Learn how to blur and pixelate images online: hide faces, text, and details with smooth blur or mosaic pixelation, brush or whole-image modes.',
+      body: `
+<p>Some parts of a photo should not be shared. A face in the background, an address on a letter, or a password on a screen can all cause real harm if they reach the wrong eyes.</p>
+<p>Blurring and pixelating are the two ways to hide those details. Both make a region unreadable, but they look different and they protect differently.</p>
+<p>This guide explains both methods, when to use each one, and how to apply them cleanly. It covers brush and whole-image modes, strength settings, and the mistakes that leave sensitive details readable.</p>
+<h2 id="what-blur-does">What Blurring Does to an Image</h2>
+<p>Blurring softens a region by averaging the colours of neighbouring pixels. Sharp edges melt away, text becomes unreadable, and faces lose their features.</p>
+<p>A light blur only softens the detail slightly, while a strong blur turns the region into a smooth wash of colour. The strength setting decides how much information survives.</p>
+<p>Blur is best for backgrounds and gentle anonymisation. A softly blurred background keeps the photo looking natural while pushing the attention to the subject.</p>
+<p>For hiding sensitive information, blur must be strong. A light blur over a face or an address can sometimes be sharpened back, so use a heavy blur when privacy matters.</p>
+<h2 id="what-pixelate-does">What Pixelating Does to an Image</h2>
+<p>Pixelating replaces a region with large blocks of solid colour, like a mosaic. Each block is the average colour of the pixels beneath it, so all fine detail disappears.</p>
+<p>The block size controls the strength. Small blocks keep a rough hint of the shape, while large blocks reduce the region to a few flat squares of colour.</p>
+<p>Pixelation looks deliberately censored, which is useful when you want the viewer to know something was hidden. A blurred face looks artistic, while a pixelated face looks redacted.</p>
+<p>For hiding text, pixelation is usually safer than light blur. A mosaic with large blocks destroys letter shapes completely, while a soft blur can leave them partly readable.</p>
+<h2 id="why-censor-images">Why People Blur and Pixelate Photos</h2>
+<p>Privacy is the main reason. A photo shared online can reveal faces, addresses, number plates, and documents, and censoring those details protects the people in the image.</p>
+<p>Parents blur their children's faces before posting family photos publicly. The children did not consent to being online, and a blur keeps them out of searchable images.</p>
+<p>Journalists and researchers pixelate faces in sensitive stories. A source who spoke on condition of anonymity needs their identity hidden, not just softened.</p>
+<p>Businesses blur screens in screenshots. A screenshot of a dashboard can reveal customer names, internal URLs, or passwords, and a careful blur removes them before the image is shared.</p>
+<h2 id="brush-area-mode">Brush Area Mode: Painting Over Details</h2>
+<p>Brush Area mode lets you paint the blur or pixelation exactly where you need it. You drag the brush over a face, a number plate, or a line of text, and only those strokes are censored.</p>
+<p>The rest of the image stays sharp. That precision is what makes brush mode the right choice for most privacy work, where only a small part of the photo needs hiding.</p>
+<p>Brush size matters. A large brush covers a face in a few strokes, while a small brush lets you trace around a single word or a small detail without touching the rest.</p>
+<p>If you make a mistake while painting, the undo button removes the last stroke. You can also reset the brush entirely and start again, which is faster than trying to fix a bad stroke.</p>
+<h2 id="whole-image-mode">Whole Image Mode: Blurring Everything</h2>
+<p>Whole Image mode applies the effect to the entire photo at once. It is the right choice when the whole image is sensitive, or when you want a blurred background for a design.</p>
+<p>A fully blurred photo makes a good background for text or a presentation slide. The colours and the mood remain, but nothing distracts from the words on top.</p>
+<p>Switching to Whole Image mode changes the target area from your brush strokes to the full frame. The tool applies the current blur or pixelation strength to everything.</p>
+<p>Use whole-image mode carefully for privacy. A fully blurred photo hides everything, but it also hides the subject, so it is rarely the right choice for sharing a photo publicly.</p>
+<h2 id="smooth-blur-strength">Smooth Blur Strength: How Strong Is Strong Enough?</h2>
+<p>Blur strength is a scale, and the right value depends on what you are hiding. A background needs only a light blur, while a face or an address needs a heavy one.</p>
+<p>For faces, use a strong blur that removes all recognisable features. A light blur that leaves the eyes and the smile visible does not protect anyone.</p>
+<p>For text, a strong blur is also needed. A lightly blurred word can sometimes be guessed from its length and its shape, especially when the context gives it away.</p>
+<p>Test the result by zooming in. If you can still read the text or recognise the face at full size, increase the strength and check again.</p>
+<h2 id="mosaic-block-size">Mosaic Block Size: Bigger Blocks, Safer Censoring</h2>
+<p>Mosaic block size works like blur strength: larger blocks hide more. A small block size keeps the rough shape of the region, while a large block size reduces it to a few flat squares.</p>
+<p>For small screenshots, use a moderate block size. The text is small, so even a modest block destroys the letter shapes completely.</p>
+<p>For large photos, use larger blocks. A face in a high-resolution photo needs big blocks to hide the features, because small blocks still leave the eyes and the mouth recognisable.</p>
+<p>When in doubt, go bigger. A mosaic that is slightly too strong looks intentional, while a mosaic that is slightly too weak leaves the sensitive detail readable.</p>
+<h2 id="brush-size-settings">Brush Size: Matching the Tool to the Detail</h2>
+<p>Brush size should match the detail you are hiding. A face needs a large brush, a number plate needs a medium one, and a single word needs a small one.</p>
+<p>A brush that is too large censors more than you intended. It can cover a neighbouring face or a useful part of the image that did not need hiding.</p>
+<p>A brush that is too small takes many strokes to cover a large area, and the gaps between strokes can leave slivers of the sensitive detail visible.</p>
+<p>Adjust the brush size as you work. Start large for the main area, then switch to a smaller brush to clean up the edges and cover any missed spots.</p>
+<h2 id="hiding-faces">Hiding Faces Properly</h2>
+<p>A face needs full coverage to be hidden. The eyes, the nose, the mouth, and the hairline all carry identifying information, so the censored area must cover the whole head.</p>
+<p>Pixelation is usually the safer choice for faces. A mosaic with large blocks destroys the features completely, while a light blur can leave enough for recognition.</p>
+<p>Cover the whole head, not just the eyes. A black bar over the eyes is a movie cliché, not real protection, because the rest of the face is still recognisable.</p>
+<p>Check the result at full size. Zoom into the censored face and confirm that no feature is visible, then check the background for reflections that might show the face again.</p>
+<h2 id="hiding-text-and-numbers">Hiding Text, Numbers, and Addresses</h2>
+<p>Text is harder to hide than faces, because even a partial letter can give away the word. A licence plate, an address, or a password needs complete coverage.</p>
+<p>Pixelation with large blocks is the safest method for text. It destroys the letter shapes entirely, while a soft blur can leave the outline of the words readable.</p>
+<p>Cover the whole line, not just the sensitive word. The length of a line and the words around it can give away the hidden part, so censor generously.</p>
+<p>Check for the same text elsewhere in the image. An address on an envelope may also appear on a letter in the background, and both copies need censoring.</p>
+<h2 id="hiding-backgrounds">Blurring Backgrounds for Focus and Privacy</h2>
+<p>A blurred background makes the subject stand out. Portrait photographers have used this effect for decades, and a digital blur gives the same result after the fact.</p>
+<p>Paint the blur over the background with the brush, keeping the subject sharp. The contrast between the sharp subject and the soft background draws the eye exactly where you want it.</p>
+<p>For privacy, a blurred background can hide a location. A street sign, a house number, or a recognisable building in the background can reveal where a photo was taken.</p>
+<p>Use a light blur for backgrounds and a heavy blur for sensitive details. The two strengths serve different purposes, and mixing them up weakens both.</p>
+<h2 id="formats-and-transparency">Formats and Transparency</h2>
+<p>The tool accepts common image formats, including JPG, PNG, WebP, and HEIC, with files up to 20 MB. You can export as JPG, PNG, or WebP depending on your needs.</p>
+<p>Exporting as PNG or WebP preserves transparency in the base image. If your source is a transparent PNG graphic, the censored export keeps the see-through areas intact.</p>
+<p>For photos, JPG is usually the best export. It keeps file sizes small and works everywhere, and the censored areas compress cleanly.</p>
+<p>The quality slider appears for JPG and WebP exports and hides for PNG, because PNG is lossless and has no quality setting to adjust.</p>
+<h2 id="privacy-local-processing">Privacy: Censoring Without Uploading</h2>
+<p>All blurring and pixelating happens in your browser. Your photos are never uploaded to a server, which matters when the images contain faces, IDs, or private addresses.</p>
+<p>This is the most important feature of a censoring tool. A photo that needs hiding should never be sent to a server you cannot see, just to blur a face.</p>
+<p>The tool also strips EXIF GPS data on export. A censored photo downloaded from the tool carries no record of where it was taken, which is a second layer of protection.</p>
+<p>Keep the uncensored original safe and separate. Once you share the censored version, the original is the only copy that still shows the full image.</p>
+<h2 id="common-mistakes">Common Mistakes When Censoring Images</h2>
+<p>The most common mistake is censoring too lightly. A soft blur over a face or a small mosaic over text can leave the detail readable, which defeats the whole purpose.</p>
+<p>Another mistake is missing a reflection. A face can appear in a mirror, a window, or a pair of sunglasses in the same photo, and every copy needs censoring.</p>
+<p>People also forget the metadata. A photo with a blurred face can still carry GPS coordinates that reveal where it was taken, so check the export settings.</p>
+<p>Finally, do not share the original by accident. A censored image and its original often sit side by side in a downloads folder, and attaching the wrong one undoes all the work.</p>
+<h2 id="censoring-workflow">A Workflow for Safe Sharing</h2>
+<p>Open the original photo and list everything that needs hiding: faces, addresses, number plates, screens, and documents. Check the background as well as the foreground.</p>
+<p>Paint over each item with the brush, using pixelation for text and a strong blur or mosaic for faces. Zoom in after each stroke to confirm full coverage.</p>
+<p>Export the censored version and check it at full size. Look for missed reflections, readable text, and any detail you overlooked on the first pass.</p>
+<p>Share only the censored file. Keep the original in a separate folder, and never attach it to the same message or post as the censored version.</p>
+<h2 id="blurring-for-video-thumbnails">Blurring for Video Thumbnails and Covers</h2>
+<p>A blurred photo makes a good video thumbnail background. The soft colours set the mood, while the title text on top stays sharp and easy to read.</p>
+<p>Use Whole Image mode with a moderate blur for thumbnails. The image should be recognisable as a scene, but soft enough that the text dominates the frame.</p>
+<p>Keep the subject slightly visible in the blur. A thumbnail that is only colour feels empty, while one with a faint subject behind the text feels intentional.</p>
+<p>Export thumbnails as JPG at a high quality setting. The file needs to look clean at small sizes, and a low quality export will soften the title text as well as the background.</p>
+<p>For the step-by-step process, see <a href="/blog/how-to-blur-pixelate-image/">How to Blur or Pixelate an Image</a>. For the comparison, read <a href="/blog/blur-vs-pixelate-image/">Blur vs Pixelate: Hiding Faces, Text and Details</a>, and to remove location data entirely, use the <a href="/remove-image-metadata/">Remove Image Metadata tool</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Can a blurred face be unblurred later?',
+          answer: 'Not from the downloaded file, if the blur was strong enough. Blurring averages the pixels and destroys the original detail, so there is nothing to recover. A very light blur can sometimes be sharpened, which is why faces need a strong blur or a large mosaic.',
+        },
+        {
+          question: 'Is pixelation safer than blur for hiding a number plate?',
+          answer: 'Yes, usually. A mosaic with large blocks destroys the letter and number shapes completely, while a soft blur can leave their outlines readable. Use pixelation for text and numbers, and a strong blur or mosaic for faces.',
+        },
+        {
+          question: 'How do I blur a face in a photo on my phone?',
+          answer: 'Open the Blur and Pixelate tool in your phone browser, upload the photo, and choose Brush Area mode. Paint over the face with your finger, using a large brush and a strong blur or mosaic, then preview and download the result.',
+        },
+        {
+          question: 'Should I blur the whole background of a portrait?',
+          answer: 'Only if the background reveals something private, such as a street sign or a house number. A light blur also makes the subject stand out, which is a creative choice. Use a heavy blur for privacy and a light blur for focus.',
+        },
+        {
+          question: 'What should I do if I miss a spot while painting?',
+          answer: 'Use the undo button to remove the last stroke, or switch to a smaller brush and paint over the missed area. Zoom in after each stroke to check for gaps. The reset button clears all brush strokes if you want to start again.',
+        },
+        {
+          question: 'Does blurring a photo remove its location data?',
+          answer: 'Yes, exporting from the tool strips EXIF GPS tags from the file. The blur hides the visible details and the export removes the hidden location record. Keep the original file if you want to preserve that data.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/remove-image-metadata', '/image-cropper', '/image-filters'],
+  },
+  {
+    id: 'how-to-blur-pixelate-image',
+    toolSlug: '/blur-pixelate-image',
+    categoryId: 'crop-edit',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-blur-pixelate-image',
+      title: 'How to Blur or Pixelate an Image',
+      description: 'Blur or pixelate any image in minutes: paint over faces and text with a brush, or blur the whole image, then export a clean censored copy.',
+      body: `
+<p>Hiding a face or an address in a photo takes only a few minutes. You paint over the sensitive part with a brush, check the result, and download the censored copy.</p>
+<p>This how-to walks through the whole process. It covers brush and whole-image modes, blur and pixelation, brush size, and the checks that confirm nothing is still readable.</p>
+<p>By the end you will be able to censor a face, a number plate, a screenshot, or a document cleanly on any device. Keep the uncensored original separate until you have checked the download.</p>
+<h2 id="before-you-start">Before You Start: List What Needs Hiding</h2>
+<p>Open the original photo and list everything sensitive in it: faces, addresses, number plates, screens, documents, and names on badges. Check the background as well as the foreground.</p>
+<p>Look for reflections too. A face can appear in a mirror, a window, or a pair of sunglasses, and every copy of it needs censoring, not just the main one.</p>
+<p>Decide whether to blur or pixelate before you start. Pixelation is safer for text and numbers, while a strong blur works well for faces and backgrounds.</p>
+<p>Open the <a href="/blur-pixelate-image/">Blur and Pixelate Image tool</a> in your browser. Everything runs locally, so your photo is never uploaded to a server.</p>
+<h2 id="step-by-step">Blur or Pixelate an Image in Six Steps</h2>
+<p>The process is the same for a face, a number plate, or a screenshot. Upload, choose the mode, paint or apply, check, and download.</p>
+<p>Take your time with the painting step. A careful brush stroke now saves you from discovering a readable detail after you have already shared the image.</p>
+<ol>
+<li>Upload your image by dragging it into the dropzone, choosing it from your device, or pasting a screenshot with Ctrl+V.</li>
+<li>Choose Brush Area mode to paint over specific details, or Whole Image mode to blur the entire photo.</li>
+<li>Pick Smooth Blur or Pixelate Mosaic, then set the brush size and the strength or block size.</li>
+<li>Paint over each sensitive area with the brush, covering faces fully and text generously.</li>
+<li>Zoom in and preview the result to confirm nothing is still readable or recognisable.</li>
+<li>Choose the export format and quality, then click Download to save the censored image.</li>
+</ol>
+<p>Open the downloaded file once before you share it. Check it at full size and confirm every sensitive detail is hidden.</p>
+<h2 id="choosing-blur-or-pixelate">Choosing Between Blur and Pixelation</h2>
+<p>Choose Smooth Blur for faces and backgrounds. A strong blur removes the features while keeping the photo looking natural, and it suits portraits well.</p>
+<p>Choose Pixelate Mosaic for text, numbers, and addresses. The mosaic blocks destroy letter shapes completely, while a soft blur can leave their outlines readable.</p>
+<p>You can mix both on the same image. Paint a face with blur and a number plate with pixelation, using the mode switch between strokes.</p>
+<p>When in doubt, use pixelation. A mosaic that is slightly too strong looks intentional, while a blur that is slightly too weak leaves the detail readable.</p>
+<h2 id="using-brush-mode">Using Brush Area Mode</h2>
+<p>Brush Area mode is the precise option. You paint the effect exactly where you need it, and the rest of the image stays sharp and untouched.</p>
+<p>Start with a large brush for the main area, such as a whole face. Cover the head fully, including the hairline, the ears, and the chin, not just the eyes.</p>
+<p>Switch to a smaller brush for the edges. A small brush lets you trace around a single word or clean up the border of a censored area without touching the rest.</p>
+<p>The undo button removes your last stroke, and the reset button clears all brush strokes. Use them freely; it is faster to redo a stroke than to share a badly censored photo.</p>
+<h2 id="using-whole-image-mode">Using Whole Image Mode</h2>
+<p>Whole Image mode applies the effect to the entire photo at once. It is the right choice when the whole image is sensitive, or when you want a blurred background for a design.</p>
+<p>Switch the target area to Whole Image and the tool applies your current blur or pixelation strength to the full frame. The colours and the mood remain, but no detail survives.</p>
+<p>A fully blurred photo makes a good background for text or a presentation slide. The image adds colour without distracting from the words on top of it.</p>
+<p>Do not use whole-image mode for a photo you want people to see clearly. A fully blurred photo hides the subject as well as the sensitive details, so it is rarely the right choice for sharing.</p>
+<h2 id="setting-brush-size">Setting the Brush Size</h2>
+<p>Brush size should match the detail you are hiding. A face needs a large brush, a number plate needs a medium one, and a single word needs a small one.</p>
+<p>A brush that is too large censors more than you intended. It can cover a neighbouring face or a useful part of the image that did not need hiding.</p>
+<p>A brush that is too small takes many strokes to cover a large area, and the gaps between strokes can leave slivers of the sensitive detail visible.</p>
+<p>Adjust the size as you work. Start large for the main area, then switch small to clean up the edges and cover any missed spots.</p>
+<h2 id="setting-strength">Setting Blur Strength and Block Size</h2>
+<p>Blur strength and mosaic block size both control how much information survives. Higher values hide more, and lower values hide less.</p>
+<p>For faces, use a strong blur or large blocks. A light blur that leaves the eyes and the smile visible does not protect anyone, and small blocks still show the face shape.</p>
+<p>For small screenshots, a moderate block size is enough. The text is small, so even a modest mosaic destroys the letter shapes completely.</p>
+<p>Test the result by zooming in. If you can still read the text or recognise the face at full size, increase the strength and check again.</p>
+<h2 id="fixing-mistakes">Fixing Mistakes While Painting</h2>
+<p>If a stroke goes wrong, use the undo button to remove it. Undo works stroke by stroke, so you can step back one move at a time without losing the good work.</p>
+<p>If the whole censoring looks wrong, use the reset button to clear all brush strokes. Starting again is faster than trying to repair a messy set of strokes.</p>
+<p>Watch for gaps between strokes. A thin sliver of visible text between two brush strokes can give away the hidden word, so overlap your strokes slightly.</p>
+<p>Check the edges of each censored area. A face with a visible ear or a number plate with a visible digit is not properly hidden, even if the middle is covered.</p>
+<h2 id="preview-and-compare">Previewing Before You Download</h2>
+<p>Always preview before downloading. Zoom into each censored area at full size and confirm that no feature, letter, or number is still readable.</p>
+<p>Check the background as well as the foreground. A reflection in a window or a mirror can show the very face or address you just censored in the main image.</p>
+<p>Look at the image on a larger screen if you can. A detail that looks hidden on a phone may be readable on a computer monitor, where the image is shown bigger.</p>
+<p>If anything is still readable, increase the strength or add another stroke. Fixing it now is far easier than recalling an image you already shared.</p>
+<h2 id="choosing-export-format">Choosing the Export Format</h2>
+<p>Choose JPG for photos you plan to share. It keeps file sizes small and works everywhere, and the censored areas compress cleanly.</p>
+<p>Choose PNG for screenshots and graphics with text. PNG is lossless, so the sharp edges of the uncensored parts stay crisp, and it preserves transparency.</p>
+<p>Choose WebP when you want small files with good quality. It works well for web images, though a few older systems still reject the format.</p>
+<p>Remember that the quality slider hides for PNG, because PNG is lossless and has no quality setting to adjust. That is normal behaviour, not a problem with the tool.</p>
+<h2 id="blurring-on-mobile">Blurring on a Phone or Tablet</h2>
+<p>The tool works with touch, so you can censor a photo on the phone that took it. Upload from your gallery and paint over the sensitive areas with your finger.</p>
+<p>Use a larger brush on a small screen. Finger painting is less precise than a mouse, so a bigger brush covers the area reliably without needing many strokes.</p>
+<p>Zoom in before you paint small details. A number plate or a single word needs a close look, and zooming makes the strokes accurate even on a phone.</p>
+<p>Downloaded files save to your usual downloads folder. From there you can share the censored image directly to a chat app, an email, or a social post.</p>
+<h2 id="blurring-screenshots">Blurring a Screenshot</h2>
+<p>Paste a screenshot directly with Ctrl+V to skip the save step. The image appears in the tool immediately, ready to censor.</p>
+<p>Paint over names, email addresses, passwords, and internal URLs. A screenshot of a dashboard often reveals more than the part you meant to share.</p>
+<p>Use pixelation for text in screenshots. The mosaic destroys the letter shapes completely, while a soft blur can leave the words partly readable at full size.</p>
+<p>Export screenshots as PNG. The lossless format keeps the uncensored text sharp, which matters when the screenshot is meant to show a setting or an error message.</p>
+<h2 id="blurring-documents">Blurring a Document Photo</h2>
+<p>Document photos often contain names, addresses, and ID numbers in several places. List them all before you start painting, so none of them is missed.</p>
+<p>Cover the whole line of text, not just the sensitive word. The length of the line and the words around it can give away the hidden part.</p>
+<p>Check the edges of the document photo. A second page, a reflection, or a shadow can carry the same information in a place you did not expect.</p>
+<p>For documents you must share, consider cropping away the sensitive parts entirely. A crop removes the data permanently, while a blur only hides it in that one file.</p>
+<h2 id="troubleshooting">Troubleshooting Common Censoring Problems</h2>
+<p>If a face is still recognisable, the blur is too light or the blocks are too small. Increase the strength and paint over the face again until no feature is visible.</p>
+<p>If text is still readable, switch from blur to pixelation. A mosaic with large blocks destroys letter shapes far more reliably than a soft blur.</p>
+<p>If the undo button is missing, check whether you are in Whole Image mode. The undo and reset buttons appear only in Brush Area mode, where strokes exist to undo.</p>
+<p>If the preview looks different from the download, check the export format and quality. A low JPG quality setting can soften the whole image, including the parts you wanted sharp.</p>
+<h2 id="quick-tips">Quick Tips for Safer Censoring</h2>
+<p>Censor generously. Covering a little extra is harmless, while leaving a sliver of a face or a digit visible defeats the whole purpose.</p>
+<p>Zoom in after every stroke. A quick zoom check catches gaps and missed spots before they become a shared mistake.</p>
+<p>Share only the censored file. Keep the original in a separate folder, and never attach it to the same message or post as the censored version.</p>
+<p>Check the metadata after export. The tool strips GPS tags, but confirm the downloaded file carries no location record before you share it publicly.</p>
+<h2 id="blurring-for-presentations">Blurring a Photo for a Presentation</h2>
+<p>A blurred photo makes a clean slide background. The soft colours add visual interest, while the text on top stays sharp and easy to read from the back of the room.</p>
+<p>Use Whole Image mode with a moderate blur, then place your title and bullet points over it. The blur should be strong enough that the text is readable, but light enough that the photo still shows.</p>
+<p>Keep the slide text large and high contrast. White text on a dark blurred photo works well, while dark text needs a light blurred background to stay readable.</p>
+<p>Export the background as JPG at a high quality setting. A clean background keeps the whole slide looking professional, while a low quality export softens the text as well.</p>
+<p>For the comparison, read <a href="/blog/blur-vs-pixelate-image/">Blur vs Pixelate: Hiding Faces, Text and Details</a>. For the full overview, see <a href="/blog/blur-pixelate-image-guide/">Blur and Pixelate Images: Complete Guide</a>, and to remove location data entirely, use the <a href="/remove-image-metadata/">Remove Image Metadata tool</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I blur just one face in a group photo?',
+          answer: 'Use Brush Area mode and paint over only that face with a large brush and a strong blur or mosaic. The rest of the photo stays sharp. Zoom in afterwards to confirm the whole head is covered, including the hairline and ears.',
+        },
+        {
+          question: 'Can I blur and pixelate different parts of the same image?',
+          answer: 'Yes. Paint the face with Smooth Blur, then switch to Pixelate Mosaic and paint over the text or number plate. You can mix both effects on one image by changing the mode between strokes.',
+        },
+        {
+          question: 'What brush size should I use for a number plate?',
+          answer: 'A medium brush that covers the plate in two or three strokes works well. Use pixelation with a moderate to large block size, since text needs the mosaic to destroy the letter shapes. Zoom in to confirm no digit is still readable.',
+        },
+        {
+          question: 'How do I blur a screenshot on my phone?',
+          answer: 'Open the tool in your phone browser, upload the screenshot from your gallery, and choose Brush Area mode. Paint over names and passwords with your finger, using a large brush and pixelation for text, then download the censored copy.',
+        },
+        {
+          question: 'Why are the undo and reset buttons missing?',
+          answer: 'They appear only in Brush Area mode, where strokes exist to undo. In Whole Image mode there are no brush strokes, so the buttons hide. Switch back to Brush Area mode to paint and to use undo and reset.',
+        },
+        {
+          question: 'Is it safe to share a blurred photo of my child online?',
+          answer: 'A strongly blurred or pixelated face is much safer than a visible one, but no method is perfect. Use a large mosaic or a heavy blur, cover the whole head, and check the result at full size. Avoid sharing the original file anywhere.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/remove-image-metadata', '/image-cropper', '/image-filters'],
+  },
+  {
+    id: 'blur-vs-pixelate-image',
+    toolSlug: '/blur-pixelate-image',
+    categoryId: 'crop-edit',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'blur-vs-pixelate-image',
+      title: 'Blur vs Pixelate: Hiding Faces, Text and Details',
+      description: 'Blur or pixelate? How each method hides faces, text, and numbers, which one is safer, and when to combine them for proper redaction.',
+      body: `
+<p>Blur and pixelation both hide things, but they are not the same tool. One softens a region into a smooth wash of colour, while the other replaces it with large blocks.</p>
+<p>The difference matters when privacy is at stake. A method that looks censored can still leave a face recognisable or a word readable, and the wrong choice can expose exactly what you meant to hide.</p>
+<p>This article compares the two methods directly: how they work, how they look, which one is safer for faces and text, and when to combine them for proper redaction.</p>
+<h2 id="how-each-method-works">How Each Method Works</h2>
+<p>Blurring averages the colours of neighbouring pixels. Sharp edges melt away, text becomes unreadable, and faces lose their features as the strength increases.</p>
+<p>Pixelating replaces a region with blocks of solid colour. Each block is the average of the pixels beneath it, so all fine detail disappears and only a coarse mosaic remains.</p>
+<p>Blur keeps a sense of the original shapes. A blurred face still shows where the head is, and a blurred page still shows where the lines of text run.</p>
+<p>Pixelation destroys the shapes. A pixelated face becomes a set of squares, and a pixelated line of text becomes a row of blocks with no hint of the letters.</p>
+<h2 id="how-they-look">How They Look Side by Side</h2>
+<p>A blurred region looks soft and natural. It blends with the photo, which is why blur is popular for backgrounds and for gentle anonymisation in portraits.</p>
+<p>A pixelated region looks deliberately censored. The mosaic signals to the viewer that something was hidden on purpose, which is useful in journalism and in legal contexts.</p>
+<p>For a photo you want to look good, blur is the better choice. It hides the detail without shouting about it, and the image still feels like a photograph.</p>
+<p>For a photo where the censoring itself is the point, pixelation is better. The mosaic makes it clear that information was removed, which builds trust with the viewer.</p>
+<h2 id="safety-comparison">Which Method Is Safer?</h2>
+<p>At maximum strength, both methods are safe. A heavy blur and a large mosaic both destroy the information completely, and neither can be reversed from the exported file.</p>
+<p>At moderate strength, pixelation is safer. A mosaic with large blocks destroys letter shapes entirely, while a medium blur can leave the outlines of words readable.</p>
+<p>At light strength, neither method is safe. A soft blur over a face can sometimes be sharpened, and a small mosaic still shows the shape of the features.</p>
+<p>The rule is simple: use the strongest setting you can tolerate. A mosaic that is slightly too strong looks intentional, while a blur that is slightly too weak leaves the detail exposed.</p>
+<h2 id="hiding-faces">Hiding Faces: Blur or Pixelate?</h2>
+<p>For faces, pixelation is usually the safer choice. A mosaic with large blocks destroys the eyes, the nose, and the mouth completely, leaving nothing to recognise.</p>
+<p>A strong blur also works for faces, but it must be genuinely strong. A light blur that leaves the eyes and the smile visible does not protect anyone, no matter how soft it looks.</p>
+<p>Cover the whole head either way. The hairline, the ears, and the chin all carry identifying information, so a censored face needs full coverage, not just a bar over the eyes.</p>
+<p>Check the result at full size. Zoom into the censored face and confirm that no feature is visible, then check the background for reflections that might show the face again.</p>
+<h2 id="hiding-text">Hiding Text and Numbers: Blur or Pixelate?</h2>
+<p>For text, pixelation wins clearly. A mosaic destroys the letter shapes, while a blur only softens them, and the human brain is good at reading softened letters from context.</p>
+<p>A licence plate, an address, or a password needs complete coverage. Even a single readable digit can identify a vehicle, and a partial address can narrow a location down sharply.</p>
+<p>Cover the whole line, not just the sensitive word. The length of the line and the words around it can give away the hidden part, so censor generously.</p>
+<p>Use large blocks for large text and moderate blocks for small text. The block size should be big enough that no letter shape survives, which you can confirm by zooming in.</p>
+<h2 id="license-plates">Number Plates and Vehicle Details</h2>
+<p>A number plate is a small, high-contrast target, and it is easy to censor badly. A light blur over a plate often leaves the characters readable at full size.</p>
+<p>Pixelation with a moderate block size is the reliable method. The blocks destroy the character shapes, and the plate becomes a row of coloured squares.</p>
+<p>Cover the whole plate, including the region code and any small text around the edges. A partial plate can still identify a vehicle when combined with the car model and colour.</p>
+<p>Check for a second plate in the image. A car photographed from the front may show its plate in a window reflection, and a car in the background may have a visible plate too.</p>
+<h2 id="documents-and-screens">Documents, Screens, and Paperwork</h2>
+<p>Documents contain text in many places: headers, footers, signatures, and stamps. A single blurred line is not enough when the same information appears elsewhere on the page.</p>
+<p>Pixelate every sensitive line, not just the obvious one. A name in the header, an address in the footer, and an ID number in the body all need covering.</p>
+<p>Screenshots are similar. A dashboard can reveal customer names, internal URLs, and passwords in several panels, and each one needs its own censoring.</p>
+<p>For documents you must share, consider cropping away the sensitive parts entirely. A crop removes the data permanently, while blur and pixelation only hide it in that one file.</p>
+<h2 id="backgrounds">Backgrounds: When Blur Is the Better Tool</h2>
+<p>For backgrounds, blur is the better choice. A soft blur makes the subject stand out while keeping the photo looking natural, which is a creative effect rather than a redaction.</p>
+<p>Pixelating a background looks wrong. The mosaic draws attention to itself, and the photo stops feeling like a photograph and starts feeling like a censored document.</p>
+<p>Use a light blur for backgrounds and a heavy blur or mosaic for sensitive details. The two strengths serve different purposes, and mixing them up weakens both.</p>
+<p>For privacy, a blurred background can hide a location. A street sign, a house number, or a recognisable building can reveal where a photo was taken, and a blur removes that clue.</p>
+<h2 id="reversibility-myths">Can Censored Images Be Reversed?</h2>
+<p>A common fear is that a blurred or pixelated image can be unblurred with software. In practice, a strong censor cannot be reversed, because the original detail is gone.</p>
+<p>Blurring averages pixels and throws away the fine detail. Once the detail is averaged away, no software can know what the original pixels were.</p>
+<p>Pixelation is even more destructive. Each block replaces dozens of pixels with a single colour, so the original information is lost many times over.</p>
+<p>The exception is a very light censor. A soft blur or a tiny mosaic leaves enough information for enhancement tools to recover parts of the image, which is why sensitive details need strong settings.</p>
+<h2 id="strength-settings">Strength Settings Compared</h2>
+<p>Blur strength is a smooth scale from light to heavy. At the low end, the image is only slightly softened, and at the high end, it becomes a wash of colour.</p>
+<p>Mosaic block size is a stepped scale from small to large. Small blocks keep a rough hint of the shape, while large blocks reduce the region to a few flat squares.</p>
+<p>For the same level of safety, a large mosaic is usually stronger than a medium blur. The blocks destroy shapes outright, while the blur only softens them.</p>
+<p>Test both at full size. Zoom into the censored area and confirm that nothing is readable or recognisable, whichever method and strength you chose.</p>
+<h2 id="combining-both">Combining Blur and Pixelation</h2>
+<p>You do not have to choose one method for the whole image. Paint a face with blur and a number plate with pixelation, using the mode switch between strokes.</p>
+<p>This combination plays to the strengths of each method. The face looks natural under a strong blur, while the text is destroyed completely by the mosaic.</p>
+<p>Use blur for large, soft areas such as backgrounds and faces, and pixelation for small, sharp details such as text, numbers, and barcodes.</p>
+<p>Keep the strengths consistent within each type. A face blurred lightly and a plate pixelated heavily is fine, but a face blurred lightly on its own is not safe.</p>
+<h2 id="legal-and-ethical">Legal and Ethical Notes</h2>
+<p>Censoring a face does not always make a photo safe to publish. Laws about privacy, consent, and image rights vary, and a blurred face may not be enough in every situation.</p>
+<p>Children deserve extra care. A blurred face is better than a visible one, but the safest choice for a child who cannot consent is not to share the photo at all.</p>
+<p>For journalism, pixelation is the standard, because it signals clearly that an identity was protected. A blurred face in a news photo can look like an artistic choice rather than a redaction.</p>
+<p>When in doubt, ask the person in the photo. Consent matters more than any censoring technique, and a person who agrees to be shown does not need to be hidden.</p>
+<h2 id="when-neither-is-enough">When Neither Method Is Enough</h2>
+<p>Sometimes censoring is not the right answer at all. A photo that reveals a location through its background, its metadata, or its context may need to stay private entirely.</p>
+<p>Metadata is the hidden risk. A photo with a blurred face can still carry GPS coordinates that reveal where it was taken, so check the export settings before sharing.</p>
+<p>Context is another risk. A blurred face in front of a distinctive house, a school sign, or a workplace logo can still identify the person, even with perfect censoring.</p>
+<p>In those cases, do not share the photo. Crop it tightly, remove the metadata, or choose a different image that does not carry the same clues.</p>
+<h2 id="choosing-for-screenshots">Choosing for Screenshots</h2>
+<p>Screenshots are mostly text, so pixelation is usually the right method. The mosaic destroys the letter shapes, while a soft blur can leave the words partly readable.</p>
+<p>Use a moderate block size for screenshots. The text is small, so even a modest mosaic destroys it completely, and larger blocks would cover too much of the screen.</p>
+<p>Paint over names, email addresses, passwords, and internal URLs. A screenshot of a dashboard often reveals more than the part you meant to share.</p>
+<p>Export screenshots as PNG. The lossless format keeps the uncensored text sharp, which matters when the screenshot is meant to show a setting or an error message.</p>
+<h2 id="cheat-sheet">Quick Decision Cheat Sheet</h2>
+<p>Use pixelation for text, numbers, addresses, number plates, and passwords. The mosaic destroys the shapes completely and is the safest choice for anything written.</p>
+<p>Use a strong blur for faces when you want the photo to look natural. The blur removes the features while keeping the image feeling like a photograph.</p>
+<p>Use a light blur for backgrounds. It makes the subject stand out without drawing attention to the censoring itself.</p>
+<p>Use both methods together when an image has different kinds of sensitive detail. Blur the faces, pixelate the text, and check the whole image at full size before sharing.</p>
+<h2 id="blur-vs-pixelate-social">Blur vs Pixelate on Social Media</h2>
+<p>Social platforms compress your images when you upload them, and compression affects blur and pixelation differently. A light blur can become weaker after compression, while a mosaic stays strong.</p>
+<p>For a face you must hide on social media, pixelation is the safer choice. The mosaic survives compression and re-encoding, while a soft blur may thin out enough to reveal features.</p>
+<p>For a background you want to soften, blur is the better choice. A light blur looks natural in a feed, while a pixelated background looks like a mistake.</p>
+<p>Test the censored image after the platform compresses it. Upload a test post, download the image back, and check whether the sensitive detail is still hidden at the compressed quality.</p>
+<p>For the step-by-step process, see <a href="/blog/how-to-blur-pixelate-image/">How to Blur or Pixelate an Image</a>. For the full overview, see <a href="/blog/blur-pixelate-image-guide/">Blur and Pixelate Images: Complete Guide</a>, and to remove location data entirely, use the <a href="/remove-image-metadata/">Remove Image Metadata tool</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Which is better for hiding a face, blur or pixelate?',
+          answer: 'Pixelation is usually safer, because large mosaic blocks destroy the facial features completely. A strong blur also works, but it must be genuinely strong. A light blur that leaves the eyes and smile visible does not protect anyone, whichever method you choose.',
+        },
+        {
+          question: 'Can someone unblur a photo with AI software?',
+          answer: 'Not if the blur was strong or the mosaic was large. Both methods destroy the original pixel detail, so there is nothing for software to recover. A very light blur can sometimes be sharpened, which is why sensitive details need strong settings.',
+        },
+        {
+          question: 'Should I blur or pixelate a password in a screenshot?',
+          answer: 'Pixelate it. A mosaic with a moderate block size destroys the characters completely, while a soft blur can leave their outlines readable. Cover the whole password field, not just the characters, since the field length can give clues.',
+        },
+        {
+          question: 'Is a black bar over the eyes enough to hide a face?',
+          answer: 'No. The rest of the face, including the nose, mouth, hairline, and chin, is still recognisable. Cover the whole head with a strong blur or a large mosaic, and check the result at full size before sharing.',
+        },
+        {
+          question: 'Can I use both blur and pixelation in one image?',
+          answer: 'Yes. Paint faces with a strong blur and text or number plates with pixelation, switching modes between strokes. This plays to the strengths of each method: natural-looking faces and fully destroyed text.',
+        },
+        {
+          question: 'Does censoring a photo remove its location data too?',
+          answer: 'Not by itself. Censoring hides the visible details, but the file can still carry GPS coordinates. Exporting from the tool strips GPS tags, and the Remove Image Metadata tool deletes the rest. Check the downloaded file before sharing.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/remove-image-metadata', '/image-cropper', '/image-filters'],
+  },
+  {
+    id: 'add-text-to-image-guide',
+    toolSlug: '/add-text-to-image',
+    categoryId: 'crop-edit',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'add-text-to-image-guide',
+      title: 'Add Text to Images: Complete Guide',
+      description: 'Learn how to add text to images online: captions, titles, memes, quotes, and annotations with fonts, colours, outlines, and layered positioning.',
+      body: `
+<p>Text turns a picture into a message. A caption explains what the photo shows, a title gives it a name, and a quote gives it a voice.</p>
+<p>Adding text to an image is a simple skill with many uses: social posts, memes, presentations, product labels, and annotated screenshots all rely on it.</p>
+<p>This guide explains how to add text well. It covers fonts, size, colour, contrast, outlines, positioning, and the mistakes that make text unreadable.</p>
+<h2 id="what-text-on-image-does">What Text on an Image Does</h2>
+<p>Text adds meaning that the picture alone cannot carry. A photo of a mountain is just a mountain, but the same photo with a caption becomes a memory, a joke, or an invitation.</p>
+<p>Text also adds context. A date, a place, or a name written on the image tells the viewer what they are looking at without needing a separate explanation.</p>
+<p>For businesses, text on an image is a label. A product photo with a price, a sale banner with a discount, or a poster with an event date all use text to sell.</p>
+<p>The key is restraint. A few well-placed words strengthen an image, while a paragraph crammed onto a photo hides the very thing it was meant to describe.</p>
+<h2 id="captions-vs-watermarks">Captions, Titles, and Watermarks Are Different Jobs</h2>
+<p>A caption explains the image. It sits near the subject, it is easy to read, and it is meant to be seen by everyone who views the photo.</p>
+<p>A title names the image. It is usually larger and bolder than a caption, and it sets the tone for everything else on the page or the post.</p>
+<p>A watermark protects the image. It identifies the owner, it is often semi-transparent, and it is meant to survive copying and reposting.</p>
+<p>Do not confuse the three. A caption that looks like a watermark will be ignored, and a watermark that looks like a caption will not protect anything.</p>
+<h2 id="fonts-explained">Fonts: Choosing a Typeface That Fits</h2>
+<p>The font sets the mood of the text before anyone reads the words. A bold sans-serif feels modern and direct, while a serif feels classic and formal.</p>
+<p>Choose a font that matches the image. A playful meme needs a bold, chunky font, while a wedding photo needs something elegant and light.</p>
+<p>Limit yourself to one or two fonts per image. Mixing many typefaces looks chaotic, while a single consistent font keeps the design clean and professional.</p>
+<p>Check the font at the size you will use it. A decorative font that looks beautiful at large sizes can become unreadable when it is small.</p>
+<h2 id="text-size-scaling">Text Size: Small Photos vs Large Photos</h2>
+<p>Text size is set as a percentage of the image, from 2 percent to 22 percent. That means the same setting looks consistent on a small thumbnail and a huge camera photo.</p>
+<p>A size that looks right on a large photo may be invisible on a small one if it is set in pixels. Percentage sizing avoids that problem entirely.</p>
+<p>For a headline, use a larger size near the top of the range. For a caption or a credit line, use a smaller size that stays readable without dominating the image.</p>
+<p>Check the text on the actual size you will share. A headline that looks bold at full size may be tiny in a social feed preview, and a caption sized for a thumbnail may dominate a large print.</p>
+<h2 id="colour-and-contrast">Colour and Contrast: Making Text Readable</h2>
+<p>White text works on dark backgrounds and black text works on light ones, but most photos contain both. A single colour will always disappear somewhere in the image.</p>
+<p>Contrast is what makes text readable, not colour alone. A bright colour on a bright background fails, while a dark colour on a dark background fails just as badly.</p>
+<p>Place text over the plainest part of the photo. A caption over a clear sky or a blank wall is far easier to read than one over a busy crowd or a forest.</p>
+<p>When no plain area exists, add a background panel. A semi-transparent dark box behind white text makes it readable anywhere, though it covers more of the image.</p>
+<h2 id="outline-and-shadow">Outlines and Drop Shadows</h2>
+<p>An outline is a border drawn around each letter. A thin dark outline around white text keeps it readable on a bright sky, which is why memes use it.</p>
+<p>A drop shadow lifts the text off the background. It adds a soft dark edge behind the letters, which helps them stand out without the hard look of an outline.</p>
+<p>Use one or the other, not both at full strength. An outline plus a heavy shadow makes the text look cluttered, while a single effect keeps it clean.</p>
+<p>For classic meme text, use white letters with a thick dark outline. The combination is readable on almost any background, which is why it became the standard.</p>
+<h2 id="positioning-and-layers">Positioning and Layers</h2>
+<p>Text layers can be moved anywhere on the image. Drag a layer to place it, and the tool lets you select each layer separately when you have several.</p>
+<p>Top and bottom are the classic positions for captions. A headline at the top and a punchline at the bottom is the meme format, and it works because the eye reads top to bottom.</p>
+<p>Keep text away from the edges. A caption that touches the border looks cramped, and platforms often crop the edges again for different screen sizes.</p>
+<p>When you have several layers, select the one you want to edit before changing it. Editing the wrong layer is a common mistake, and it is easy to avoid by checking which layer is active.</p>
+<h2 id="rotating-text">Rotating Text for Effect</h2>
+<p>Text can be tilted at custom angles, which adds energy to a design. A slightly diagonal headline feels dynamic, while straight text feels calm and formal.</p>
+<p>Use rotation sparingly. A small tilt of a few degrees adds character, while a steep angle makes the text hard to read and looks like a mistake.</p>
+<p>Diagonal text works well on posters and social graphics, where the design is meant to catch the eye. It works poorly on instructions and labels, where clarity matters most.</p>
+<p>Check rotated text at the size it will be viewed. A tilt that looks fine at full size can make small text unreadable in a feed preview.</p>
+<h2 id="multi-line-text">Multi-Line Captions</h2>
+<p>Pressing Enter inside the text content creates a new line. This lets you write a caption that spans two or three lines without creating a separate layer for each one.</p>
+<p>Keep lines short. A caption that runs across the whole width of the image is hard to read, while short lines centred on the subject are easy to follow.</p>
+<p>Break lines at natural pauses in the sentence. A line break in the middle of a phrase feels awkward, while a break between phrases feels deliberate.</p>
+<p>For a meme, use one layer for the top caption and one for the bottom. Separate layers let you position each line exactly where it belongs.</p>
+<h2 id="memes">Making Memes</h2>
+<p>A meme is a photo with a short, funny caption, usually in white text with a thick dark outline at the top and the bottom. The format is simple, and that simplicity is the point.</p>
+<p>Keep the text short. A meme with a paragraph of text is not funny, because nobody reads a paragraph on a joke image. One line at the top and one at the bottom is enough.</p>
+<p>Use a bold, chunky font. The classic meme look uses a heavy sans-serif that stays readable at small sizes and on busy backgrounds.</p>
+<p>Place the top line first and the bottom line second. The eye reads the setup at the top, looks at the image, and then reads the punchline at the bottom.</p>
+<h2 id="quotes-and-titles">Quotes, Titles, and Social Graphics</h2>
+<p>A quote on a photo is a popular social format. The text is usually large, centred, and set over a plain area of the image or a darkened background.</p>
+<p>Keep quotes short. A single sentence works far better than a paragraph, because the image and the words share the space and neither should dominate.</p>
+<p>For titles, use a larger size and a bolder font than for captions. The title should be the first thing the eye finds, and the image should support it, not compete with it.</p>
+<p>Darken the image slightly behind the text when the photo is busy. A semi-transparent overlay makes white text readable without hiding the photo completely.</p>
+<h2 id="annotations">Annotations and Labels</h2>
+<p>Annotations explain parts of an image. A label with an arrow, a numbered step, or a short note turns a screenshot into instructions.</p>
+<p>Keep annotations short and place them near the thing they describe. A label far from its subject confuses the viewer, while a label right next to it is obvious.</p>
+<p>Use a consistent style for all annotations on one image. The same font, size, and colour for every label makes the image look professional and easy to follow.</p>
+<p>For screenshots, annotate with the <a href="/add-text-to-image/">Add Text to Image tool</a> after cropping. A tight crop plus a few clear labels is far more useful than a full screenshot with no guidance.</p>
+<h2 id="formats-and-export">Formats and Export</h2>
+<p>The tool accepts common image formats, including JPG, PNG, WebP, and HEIC, with files up to 20 MB. You can export as JPG, PNG, or WebP depending on your needs.</p>
+<p>Exporting as PNG or WebP preserves transparency in the base image. If your source is a transparent PNG sticker, the text export keeps the see-through areas intact.</p>
+<p>For photos with text, JPG at a high quality setting works well. Text edges can soften slightly under JPG compression, so keep the quality high for small captions.</p>
+<p>The quality slider appears for JPG and WebP exports and hides for PNG, because PNG is lossless and has no quality setting to adjust.</p>
+<h2 id="privacy-local-processing">Privacy: Adding Text Without Uploading</h2>
+<p>All text editing happens in your browser. Your photos are never uploaded to a server, which matters when the images are personal, family photos, or work screenshots.</p>
+<p>This is a real advantage over cloud editors. A family photo with a caption should not travel to a server you cannot see, just to add a few words.</p>
+<p>The tool also strips EXIF GPS data on export. A captioned photo downloaded from the tool carries no record of where it was taken.</p>
+<p>Keep the original photo without text. Once text is flattened into an export, it cannot be removed from that file, so the original is your only clean copy.</p>
+<h2 id="common-mistakes">Common Mistakes When Adding Text</h2>
+<p>The most common mistake is text that is too small. A caption that looks fine at full size can be unreadable in a social feed, where the image is shown much smaller.</p>
+<p>Another mistake is poor contrast. White text on a bright sky and black text on a dark background both vanish, so check the text on the actual photo, not on a blank canvas.</p>
+<p>People also write too much. A paragraph of text on a photo hides the image and overwhelms the viewer, while a few well-chosen words do the job better.</p>
+<p>Finally, do not place text where the platform will crop it. Social apps trim the edges of images for different screens, so keep important words well inside the frame.</p>
+<h2 id="text-on-product-photos">Text on Product Photos</h2>
+<p>Product photos often carry short text: a price, a discount, or a feature. The text should be large, bold, and placed where it does not cover the product itself.</p>
+<p>Put the price or the offer in a corner, not across the middle. A corner label leaves the product visible, while a central label hides the very thing you are selling.</p>
+<p>Use a consistent style across your whole catalogue. The same font, size, and colour for every price label makes the shop look professional and trustworthy.</p>
+<p>Keep the text short. A price and a single word, such as Sale or New, is enough. A paragraph on a product photo distracts the buyer from the product.</p>
+<p>For the step-by-step process, see <a href="/blog/how-to-add-text-to-image/">How to Add Text to an Image</a>. For readability rules, read <a href="/blog/text-on-images-readability-tips/">Text on Images: Fonts, Contrast and Readability</a>, and to mark ownership instead of adding a caption, try the <a href="/image-watermark/">Image Watermark tool</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What is the best font for text on a photo?',
+          answer: 'A bold sans-serif is the safest choice for most photos, since it stays readable at small sizes and on busy backgrounds. Serif fonts suit formal images such as wedding photos, while decorative fonts work only at large sizes. Limit yourself to one or two fonts per image.',
+        },
+        {
+          question: 'How do I make white text readable on a bright photo?',
+          answer: 'Add a dark outline or a drop shadow around the letters, which keeps them visible on bright areas. Placing the text over the darkest part of the photo also helps. A semi-transparent dark panel behind the text works when no plain area exists.',
+        },
+        {
+          question: 'Can I add more than one line of text to an image?',
+          answer: 'Yes. Press Enter inside the text content to create a new line in the same layer, or add a separate layer for each line. Separate layers let you position a top caption and a bottom caption independently, which is the classic meme layout.',
+        },
+        {
+          question: 'What is the difference between adding text and watermarking?',
+          answer: 'Adding text creates a caption, title, or annotation that is meant to be read by everyone. Watermarking adds a semi-transparent ownership mark that is meant to survive copying. Use the text tool for messages and the watermark tool for protection.',
+        },
+        {
+          question: 'How big should text be on an image for social media?',
+          answer: 'Large enough to read in a small feed preview, not just at full size. Headlines need a size near the top of the 2 to 22 percent range, while captions can be smaller. Test the result by viewing the image at the size it will appear in the feed.',
+        },
+        {
+          question: 'Does adding text to a photo remove its location data?',
+          answer: 'Yes, exporting from the tool strips EXIF GPS tags from the file. The text is flattened into the image and the location record is removed in the same step. Keep the original file if you want to preserve that data.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-watermark', '/image-border-generator', '/image-filters'],
+  },
+  {
+    id: 'how-to-add-text-to-image',
+    toolSlug: '/add-text-to-image',
+    categoryId: 'crop-edit',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-add-text-to-image',
+      title: 'How to Add Text to an Image',
+      description: 'Add text to any image in minutes: upload, type your caption, pick a font and size, set the colour and outline, position the layers, and download.',
+      body: `
+<p>Adding text to a photo takes only a few minutes. You upload the image, type your words, choose a font and a colour, and place the text where it belongs.</p>
+<p>This how-to walks through the whole process step by step. It covers single and multiple layers, font and size choices, outlines and shadows, and the export settings that keep text sharp.</p>
+<p>By the end you will be able to caption a photo, make a meme, label a screenshot, or design a social graphic on any device. Keep the original photo until you have checked the result.</p>
+<h2 id="before-you-start">Before You Start: Plan Your Words</h2>
+<p>Write your text before you open the tool. A caption decided in advance is shorter and clearer than one invented while staring at the editor.</p>
+<p>Keep it short. A headline of a few words and a caption of one line work far better than a paragraph, which hides the photo and overwhelms the viewer.</p>
+<p>Decide the mood as well. A bold font suits a meme or a sale banner, while a light serif suits a wedding photo or a quote graphic.</p>
+<p>Open the <a href="/add-text-to-image/">Add Text to Image tool</a> in your browser. Everything runs locally, so your photo is never uploaded to a server.</p>
+<h2 id="step-by-step">Add Text to an Image in Six Steps</h2>
+<p>The process is the same for a caption, a meme, or a label. Upload, type, style, position, check, and download.</p>
+<p>Take your time with the styling step. Font, size, colour, and outline decide whether the text is readable or whether it vanishes into the photo.</p>
+<ol>
+<li>Upload your image by dragging it into the dropzone, choosing it from your device, or pasting a screenshot with Ctrl+V.</li>
+<li>Click Add Text and type your caption in the text content box, using Enter for extra lines.</li>
+<li>Choose a font, set the text size between 2% and 22%, and pick a colour that contrasts with the photo.</li>
+<li>Add a text outline or drop shadow if the background is busy, then drag the layer into position.</li>
+<li>Add more layers for extra lines, selecting each one separately to style it on its own.</li>
+<li>Choose the export format and quality, then click Download to save the captioned image.</li>
+</ol>
+<p>Open the downloaded file once before you share it. Confirm the text reads clearly and nothing important in the photo is covered.</p>
+<h2 id="adding-your-first-layer">Adding Your First Text Layer</h2>
+<p>Click Add Text to create your first layer. The tool places a default caption on the image, and you replace it with your own words in the text content box.</p>
+<p>Type the words exactly as you want them to appear. Spelling mistakes on an image are hard to miss, so read the text twice before moving on.</p>
+<p>The layer appears in the centre of the image by default. Drag it to the position you want, such as the top for a headline or the bottom for a caption.</p>
+<p>Each layer is independent. You can style one layer in a large bold font and another in a small light font, without the two affecting each other.</p>
+<h2 id="choosing-a-font">Choosing a Font</h2>
+<p>The tool includes a set of built-in fonts, from bold sans-serifs to classic serifs. Pick the one that matches the mood of your image and your message.</p>
+<p>For memes and sale banners, use a bold sans-serif. The heavy letters stay readable at small sizes and on busy backgrounds, which is exactly what a meme needs.</p>
+<p>For quotes and wedding photos, use a serif or an elegant font. The lighter strokes feel formal and calm, which suits a reflective message.</p>
+<p>Check the font at the size you will use it. A decorative font that looks beautiful at large sizes can become unreadable when it is small.</p>
+<h2 id="setting-text-size">Setting the Text Size</h2>
+<p>Text size runs from 2 percent to 22 percent of the image. A headline needs a larger size near the top of the range, while a caption or a credit line needs a smaller one.</p>
+<p>Percentage sizing keeps the text consistent across different image sizes. The same setting looks right on a small thumbnail and a huge camera photo.</p>
+<p>Test the size at the dimensions you will share. A headline that looks bold at full size may be tiny in a social feed preview, where the image is shown much smaller.</p>
+<p>When you have two layers, size them differently. A large headline with a smaller caption creates a clear hierarchy, and the viewer knows what to read first.</p>
+<h2 id="choosing-a-colour">Choosing a Text Colour</h2>
+<p>White text works on dark backgrounds and black text works on light ones, but most photos contain both. Check the colour against the actual area where the text will sit.</p>
+<p>Place the text over the plainest part of the photo. A caption over a clear sky or a blank wall is far easier to read than one over a busy crowd.</p>
+<p>Bright colours can work for short headlines, but they are harder to read in long captions. Reserve strong colours for a few words, and use white or black for the rest.</p>
+<p>If no colour works, add a background panel. A semi-transparent dark box behind white text makes it readable anywhere, though it covers more of the image.</p>
+<h2 id="outline-and-shadow">Adding an Outline or Drop Shadow</h2>
+<p>An outline draws a border around each letter. A thin dark outline around white text keeps it readable on a bright sky, which is why memes use it.</p>
+<p>A drop shadow lifts the text off the background. It adds a soft dark edge behind the letters, which helps them stand out without the hard look of an outline.</p>
+<p>Use one or the other, not both at full strength. An outline plus a heavy shadow makes the text look cluttered, while a single effect keeps it clean.</p>
+<p>For classic meme text, use white letters with a thick dark outline. The combination is readable on almost any background, which is why it became the standard.</p>
+<h2 id="moving-layers">Moving and Selecting Layers</h2>
+<p>Drag a layer to move it anywhere on the image. The tool lets you select each layer separately when you have several, so you can edit one without touching the others.</p>
+<p>Click the layer you want to edit before changing its font, size, or colour. Editing the wrong layer is a common mistake, and it is easy to avoid by checking which layer is active.</p>
+<p>Top and bottom are the classic positions for captions. A headline at the top and a punchline at the bottom is the meme format, and it works because the eye reads top to bottom.</p>
+<p>Keep text away from the edges. A caption that touches the border looks cramped, and platforms often crop the edges again for different screen sizes.</p>
+<h2 id="rotating-text">Rotating Text Layers</h2>
+<p>Text layers can be tilted at custom angles, which adds energy to a design. A slightly diagonal headline feels dynamic, while straight text feels calm and formal.</p>
+<p>Use rotation sparingly. A small tilt of a few degrees adds character, while a steep angle makes the text hard to read and looks like a mistake.</p>
+<p>Diagonal text works well on posters and social graphics, where the design is meant to catch the eye. It works poorly on instructions and labels, where clarity matters most.</p>
+<p>Check rotated text at the size it will be viewed. A tilt that looks fine at full size can make small text unreadable in a feed preview.</p>
+<h2 id="multi-line-captions">Multi-Line Captions and Meme Layouts</h2>
+<p>Press Enter inside the text content box to create a new line in the same layer. This lets you write a caption that spans two or three lines without extra layers.</p>
+<p>For a meme, use one layer for the top caption and one for the bottom. Separate layers let you position each line exactly where it belongs.</p>
+<p>Keep lines short. A caption that runs across the whole width of the image is hard to read, while short lines centred on the subject are easy to follow.</p>
+<p>Break lines at natural pauses in the sentence. A line break in the middle of a phrase feels awkward, while a break between phrases feels deliberate.</p>
+<h2 id="making-a-meme">Making a Meme in Minutes</h2>
+<p>A meme is a photo with a short, funny caption, usually in white text with a thick dark outline at the top and the bottom. The format is simple, and that simplicity is the point.</p>
+<p>Upload the photo, add a top layer for the setup and a bottom layer for the punchline. Keep each line to a few words, so the joke lands quickly.</p>
+<p>Use a bold, chunky font with a dark outline. The classic meme look stays readable on almost any background, which is why it became the standard.</p>
+<p>Preview the meme at the size it will be shared. A joke that is clear at full size may be unreadable in a small feed preview, so check before you post.</p>
+<h2 id="preview-and-export">Previewing and Exporting</h2>
+<p>Always preview before downloading. Check that the text reads clearly, that nothing important in the photo is covered, and that the layers are in the right places.</p>
+<p>Choose JPG for photos with text at a high quality setting. Text edges can soften slightly under JPG compression, so keep the quality high for small captions.</p>
+<p>Choose PNG for screenshots and graphics with text. PNG is lossless, so the edges of letters stay sharp, and it preserves transparency when you need it.</p>
+<p>Remember that the quality slider hides for PNG, because PNG is lossless and has no quality setting to adjust. That is normal behaviour, not a problem with the tool.</p>
+<h2 id="adding-text-on-mobile">Adding Text on a Phone or Tablet</h2>
+<p>The tool works on touchscreens, so you can caption a photo on the phone that took it. Upload from your gallery, type the text, and drag the layer into place with your finger.</p>
+<p>Typing on a phone keyboard is slower, so write your caption before you open the tool. A short, planned caption is easier to type than one invented on the spot.</p>
+<p>Dragging layers with a finger is less precise than with a mouse. Use the centre, top, and bottom areas as guides, and zoom in to check the placement.</p>
+<p>Downloaded files save to your usual downloads folder. From there you can share the captioned image directly to a chat app, an email, or a social post.</p>
+<h2 id="troubleshooting">Troubleshooting Common Text Problems</h2>
+<p>If the text is unreadable, the colour probably matches the background. Change the colour, add an outline, or move the layer to a plainer part of the photo.</p>
+<p>If you edited the wrong layer, click the layer you meant to change and try again. The tool selects layers one at a time, so check which one is active before styling.</p>
+<p>If a layer will not move, check whether you selected it first. A layer must be active before it can be dragged, and clicking it once usually selects it.</p>
+<p>If the text looks blurry after export, the JPG quality setting may be too low. Re-export at a higher quality, or switch to PNG for the sharpest text edges.</p>
+<h2 id="quick-tips">Quick Tips for Better Text on Images</h2>
+<p>Keep the text short. A few well-chosen words strengthen an image, while a paragraph crammed onto a photo hides the very thing it was meant to describe.</p>
+<p>Use one font for the headline and one for the caption at most. Mixing many typefaces looks chaotic, while a consistent pair keeps the design clean.</p>
+<p>Check the text at the size it will be viewed. A caption that looks fine at full size can be unreadable in a social feed preview.</p>
+<p>Save the original photo without text. Once text is flattened into an export, it cannot be removed from that file, so the original is your only clean copy.</p>
+<h2 id="text-on-presentation-slides">Adding Text to a Presentation Slide Image</h2>
+<p>A photo used as a slide background often needs a title on top. Add the title as a text layer, using a large bold font that stays readable from the back of the room.</p>
+<p>Place the title over the plainest part of the photo. A headline over a clear sky or a blank wall is far easier to read than one over a busy crowd.</p>
+<p>Use a dark outline or a shadow when the background is busy. The effect lifts the letters off the photo just enough to read, without hiding the image underneath.</p>
+<p>Export the slide image as JPG at a high quality setting. The text needs to stay sharp when the slide is projected, and a low quality export will soften the letters.</p>
+<p>For readability rules, read <a href="/blog/text-on-images-readability-tips/">Text on Images: Fonts, Contrast and Readability</a>. For the full overview, see <a href="/blog/add-text-to-image-guide/">Add Text to Images: Complete Guide</a>, and to mark ownership instead of adding a caption, try the <a href="/image-watermark/">Image Watermark tool</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I add text to a photo on my phone?',
+          answer: 'Open the Add Text to Image tool in your phone browser, upload the photo from your gallery, and tap Add Text. Type your caption, choose a font and size, drag the layer into position with your finger, then download the result.',
+        },
+        {
+          question: 'Can I add two different captions to one image?',
+          answer: 'Yes. Add a separate layer for each caption, such as one at the top and one at the bottom. Select each layer on its own to style it differently, so the headline can be large and bold while the caption stays smaller.',
+        },
+        {
+          question: 'Why does my text look blurry after I download the image?',
+          answer: 'The JPG quality setting is probably too low, which softens the edges of the letters. Re-export at a higher quality setting, or switch to PNG, which is lossless and keeps text edges sharp.',
+        },
+        {
+          question: 'How do I make a classic meme with top and bottom text?',
+          answer: 'Upload the photo, add one layer for the top line and another for the bottom line, and use a bold sans-serif font in white with a thick dark outline. Keep each line to a few words so the joke lands quickly.',
+        },
+        {
+          question: 'Can I move text after I have typed it?',
+          answer: 'Yes. Select the layer and drag it anywhere on the image. You can move, resize, recolour, and rotate a layer at any time before you download. Once the image is exported, the text is flattened in and cannot be moved.',
+        },
+        {
+          question: 'What size should text be for an Instagram post?',
+          answer: 'Large enough to read in a small feed preview, not just at full size. Headlines need a size near the top of the 2 to 22 percent range. Test the result by viewing the exported image at the size it will appear in the feed.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-watermark', '/image-border-generator', '/image-filters'],
+  },
+  {
+    id: 'text-on-images-readability-tips',
+    toolSlug: '/add-text-to-image',
+    categoryId: 'crop-edit',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'text-on-images-readability-tips',
+      title: 'Text on Images: Fonts, Contrast and Readability',
+      description: 'How to make text on images readable: font choices, size rules, contrast, outlines, shadows, background panels, and testing on small screens.',
+      body: `
+<p>Text on a photo is only useful if people can read it. A beautiful caption that vanishes into a busy background is worse than no caption at all, because it frustrates the viewer.</p>
+<p>Readability is not a matter of taste. It comes from contrast, size, font choice, and placement, and each of those can be tested before you publish.</p>
+<p>This article explains the rules that make text on images readable. It covers fonts, contrast, outlines, background panels, and the testing habits that catch problems early.</p>
+<h2 id="why-readability-matters">Why Readability Matters More Than Style</h2>
+<p>A stylish font that nobody can read is a failed design. The first job of text on an image is to be read, and style only matters after that job is done.</p>
+<p>Most images are viewed on phones, in feeds, at small sizes. Text that is clear at full size on a computer can be unreadable in a feed preview, where the image is only a few centimetres wide.</p>
+<p>Readability also affects trust. A post with crisp, clear text looks professional, while a post with faint, cramped text looks careless, even when the photo itself is good.</p>
+<p>Test readability before style. If the words are hard to read, fix the contrast and the size first, and only then worry about which font looks best.</p>
+<h2 id="contrast-ratio-basics">Contrast: The Single Most Important Rule</h2>
+<p>Contrast is the difference in brightness between the text and the background behind it. High contrast means the letters stand out clearly, while low contrast means they blend in.</p>
+<p>White text on a dark background has high contrast, and black text on a light background does too. The problem comes when the background has both light and dark areas behind the same line.</p>
+<p>Check the contrast across the whole line of text, not just at one point. A caption that starts over a dark shadow and ends over a bright sky will be readable at one end and invisible at the other.</p>
+<p>When the background varies, add an outline, a shadow, or a panel behind the text. These effects create a consistent contrast zone that the photo cannot provide on its own.</p>
+<h2 id="choosing-text-colour">Choosing a Text Colour That Works</h2>
+<p>White is the safest colour for text on photos, because most photos have enough dark areas for it to read, and a dark outline makes it work on bright areas too.</p>
+<p>Black works well on light, airy photos such as beaches, snow scenes, and white walls. It fails on dark photos, where it disappears into the shadows.</p>
+<p>Bright colours such as yellow, red, or cyan can work for short headlines, but they are harder to read in long captions. Reserve strong colours for a few words.</p>
+<p>Use one colour for the main text and a second for emphasis at most. Mixing many colours looks chaotic, while a consistent pair keeps the design clean and readable.</p>
+<h2 id="choosing-background-areas">Placing Text Over the Plainest Area</h2>
+<p>The best place for text is the plainest part of the photo: a clear sky, a blank wall, a calm sea, or an out-of-focus background. Plain areas give the letters room to breathe.</p>
+<p>Avoid placing text over faces, busy patterns, or high-contrast details. The eye cannot separate the letters from the texture underneath, and the words become hard to follow.</p>
+<p>Look at the photo before you place the text. The plain areas are usually obvious once you look for them, and a small move of the layer can make a big difference.</p>
+<p>If no plain area exists, darken or blur the area behind the text. A semi-transparent overlay creates a plain zone without hiding the photo completely.</p>
+<h2 id="font-choice">Font Choice: Readable Before Decorative</h2>
+<p>A bold sans-serif is the most readable font for text on photos. Its clean, even strokes stay clear at small sizes and on busy backgrounds, which is why it is the default for captions.</p>
+<p>Serif fonts suit formal images such as wedding photos and book covers. Their small feet add elegance, but they can blur at small sizes, so use them large.</p>
+<p>Script and decorative fonts are the hardest to read. They work for a single large word, such as a name or a title, but they fail completely in a long caption.</p>
+<p>Limit yourself to one or two fonts per image. A headline font and a caption font are enough, and mixing more makes the design look cluttered and amateur.</p>
+<h2 id="font-size-rules">Font Size: Big Enough for the Smallest Screen</h2>
+<p>Text size is set as a percentage of the image, from 2 percent to 22 percent. A headline needs a larger size near the top of the range, while a caption can be smaller.</p>
+<p>Size the text for the smallest screen it will appear on, not the largest. A caption that is clear on a computer may be unreadable in a phone feed, where the image is shown much smaller.</p>
+<p>Test the size by viewing the exported image at feed size. Shrink it down on your phone and check whether the words are still readable without zooming in.</p>
+<p>When you have two layers, size them differently. A large headline with a smaller caption creates a clear hierarchy, and the viewer knows what to read first.</p>
+<h2 id="line-length-and-spacing">Line Length and Spacing</h2>
+<p>Short lines are easier to read than long ones. A caption that runs across the whole width of the image is hard to follow, while short lines centred on the subject are easy to scan.</p>
+<p>Break lines at natural pauses in the sentence. A line break in the middle of a phrase feels awkward, while a break between phrases feels deliberate and calm.</p>
+<p>Leave space between the lines. Lines that are packed tightly together blur into each other, especially at small sizes, while a little breathing room keeps them distinct.</p>
+<p>Keep the total text short. A few well-chosen words on an image work far better than a paragraph, which hides the photo and overwhelms the viewer.</p>
+<h2 id="outlines-and-shadows">Outlines and Drop Shadows</h2>
+<p>An outline is a border drawn around each letter. A thin dark outline around white text keeps it readable on a bright sky, which is why memes use it.</p>
+<p>A drop shadow lifts the text off the background. It adds a soft dark edge behind the letters, which helps them stand out without the hard look of an outline.</p>
+<p>Use one or the other, not both at full strength. An outline plus a heavy shadow makes the text look cluttered, while a single effect keeps it clean and professional.</p>
+<p>For classic meme text, use white letters with a thick dark outline. The combination is readable on almost any background, which is why it became the standard.</p>
+<h2 id="background-panels">Background Panels and Overlays</h2>
+<p>A background panel is a semi-transparent box placed behind the text. A dark panel makes white text readable anywhere, and a light panel does the same for dark text.</p>
+<p>Panels are the most reliable readability fix, because they create a consistent background that the photo cannot provide. They work on any image, no matter how busy it is.</p>
+<p>The trade-off is coverage. A panel hides part of the photo, so keep it as small as the text allows and place it over the least important area.</p>
+<p>A full-image overlay is a softer version of a panel. Darkening the whole photo slightly makes white text readable everywhere, while the image still shows through.</p>
+<h2 id="text-over-busy-photos">Text Over Busy Photos</h2>
+<p>Busy photos are the hardest case for readability. A crowd, a forest, or a city street has light and dark areas everywhere, and no single text colour works across all of them.</p>
+<p>Start with an outline or a shadow, which creates a local contrast zone around each letter. If that is not enough, add a panel behind the text.</p>
+<p>Consider blurring the area behind the text. A soft blur turns a busy background into a smooth wash of colour, which is far easier to read text over.</p>
+<p>If the photo is too busy for any fix, choose a different photo. A clean image with readable text always beats a busy image with text that nobody can read.</p>
+<h2 id="text-over-faces">Text Over Faces: What to Avoid</h2>
+<p>Never place text over a face. The eye is drawn to faces first, and text across a face competes with the features, making both the face and the words hard to read.</p>
+<p>Place captions below or beside a face, not across it. A caption under the chin or beside the shoulder is easy to read and leaves the face untouched.</p>
+<p>For a portrait with a quote, place the text in the empty space beside the person. The composition feels natural, and the words and the face each have their own area.</p>
+<p>If the portrait fills the whole frame, use a panel at the bottom. A dark bar across the lower edge gives the text a clean home without covering the face.</p>
+<h2 id="hierarchy">Hierarchy: Headline, Caption, and Credit</h2>
+<p>A clear hierarchy tells the viewer what to read first. The headline should be the largest and boldest text, the caption smaller, and the credit line smallest of all.</p>
+<p>Use size, weight, and colour to create the hierarchy. A large bold headline with a smaller light caption is instantly clear, while three lines of the same size compete with each other.</p>
+<p>Keep the hierarchy to three levels at most. More than that confuses the viewer, and the design starts to feel like a form rather than a graphic.</p>
+<p>Position supports hierarchy too. A headline at the top and a caption at the bottom is the natural reading order, and it works because the eye reads top to bottom.</p>
+<h2 id="testing-small-screens">Testing on Small Screens</h2>
+<p>Most images are viewed on phones, so test your text on a phone. Export the image, open it on your phone, and check whether the words are readable without zooming.</p>
+<p>Check the image in a feed, not just in full screen. A feed preview shows the image much smaller, and text that is clear at full size can vanish in the preview.</p>
+<p>Ask someone else to read it. A fresh pair of eyes will spot unreadable text far faster than the person who made it, because the maker already knows what the words say.</p>
+<p>Test in different light too. A phone screen in bright sunlight washes out faint text, so a caption that is readable indoors may fail outdoors.</p>
+<h2 id="accessibility">Accessibility: Text Everyone Can Read</h2>
+<p>Good readability helps everyone, but it matters most for people with low vision. High contrast, large size, and a plain background make text readable for far more people.</p>
+<p>Avoid relying on colour alone to convey meaning. A red word and a green word may look identical to a colourblind viewer, so use size or weight as well.</p>
+<p>Keep the text short and the language simple. A clear caption in plain words is accessible to more readers than a clever caption full of jargon.</p>
+<p>Add alt text when you share the image. The alt text describes the image and repeats the caption, which helps people who use screen readers.</p>
+<h2 id="common-readability-mistakes">Common Readability Mistakes</h2>
+<p>The most common mistake is text that is too small. A caption that looks fine at full size can be unreadable in a social feed, where the image is shown much smaller.</p>
+<p>Another mistake is poor contrast. White text on a bright sky and black text on a dark background both vanish, so check the text on the actual photo, not on a blank canvas.</p>
+<p>People also use too many fonts. Three or four typefaces on one image look chaotic, while one consistent font keeps the design clean and professional.</p>
+<p>Finally, do not place text where the platform will crop it. Social apps trim the edges of images for different screens, so keep important words well inside the frame.</p>
+<h2 id="readability-checklist">A Readability Checklist Before You Publish</h2>
+<p>Check the contrast across the whole line of text. Every word should be readable, not just the first few, and the background should not change under the line.</p>
+<p>Check the size on a phone in a feed preview. If the words are hard to read without zooming, increase the size or shorten the text.</p>
+<p>Check the font at the size you used it. A decorative font that looks beautiful large can become unreadable when it is small.</p>
+<p>Check the placement. The text should sit over a plain area, away from faces and edges, with enough space around it to breathe.</p>
+<p>For the practical steps, see <a href="/blog/how-to-add-text-to-image/">How to Add Text to an Image</a> and the full overview in <a href="/blog/add-text-to-image-guide/">Add Text to Images: Complete Guide</a>. To mark ownership instead of adding a caption, try the <a href="/image-watermark/">Image Watermark tool</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What makes text on a photo hard to read?',
+          answer: 'Low contrast is the main cause: white text on a bright sky or black text on a dark background vanishes. Small size, busy backgrounds, decorative fonts, and text placed over faces also hurt readability. Fix contrast and size first, then check the font and placement.',
+        },
+        {
+          question: 'Should I use an outline or a shadow for text on photos?',
+          answer: 'Either one works, but not both at full strength. A dark outline around white text is best for bright, busy backgrounds, while a soft drop shadow suits darker photos. For classic meme text, use white letters with a thick dark outline.',
+        },
+        {
+          question: 'How large should text be on an image for a phone feed?',
+          answer: 'Large enough to read without zooming when the image is shown small in a feed. Headlines need a size near the top of the 2 to 22 percent range. Test by viewing the exported image at feed size on your phone before publishing.',
+        },
+        {
+          question: 'What is the best place to put text on a photo?',
+          answer: 'Over the plainest area, such as a clear sky, a blank wall, or a calm sea, and away from faces and edges. Plain areas give the letters room to breathe. If no plain area exists, add a semi-transparent panel behind the text.',
+        },
+        {
+          question: 'How many fonts should I use on one image?',
+          answer: 'One or two at most: a headline font and a caption font. Mixing many typefaces looks chaotic and hurts readability. A single consistent font keeps the design clean, and a second font adds hierarchy only when the two clearly differ in weight or style.',
+        },
+        {
+          question: 'Does text colour matter for colourblind viewers?',
+          answer: 'Yes. Avoid relying on colour alone to convey meaning, since red and green can look identical to some viewers. Use size, weight, and contrast as well, and keep the text itself high contrast against its background.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-watermark', '/image-border-generator', '/image-filters'],
+  },
+  {
+    id: 'image-border-generator-guide',
+    toolSlug: '/image-border-generator',
+    categoryId: 'crop-edit',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-border-generator-guide',
+      title: 'Image Borders: Complete Guide',
+      description: 'Learn how to add borders to images online: solid, Polaroid, and gradient glow frames, border size, corner radius, shadows, and colours.',
+      body: `
+<p>A border is a frame around a photo. It separates the image from its surroundings, adds a finishing touch, and gives the photo a sense of being complete.</p>
+<p>Borders have been part of photography since the beginning. Prints were mounted on card, slides were held in frames, and today a digital border does the same job on screen.</p>
+<p>This guide explains how borders work, which styles to choose, and how to use them well. It covers solid borders, Polaroid styles, gradient glow frames, shadows, and colour choices.</p>
+<h2 id="what-is-a-border">What Is an Image Border?</h2>
+<p>A border is a band of colour or pattern added around the edges of an image. It sits outside the photo itself, so it does not cover any part of the picture.</p>
+<p>Borders serve two purposes. They decorate the image, giving it a finished look, and they separate it from the background, which helps it stand out on a busy page.</p>
+<p>A border is different from a crop. Cropping removes pixels from the edges, while a border adds pixels around them, making the final image slightly larger.</p>
+<p>Think of a border as a frame on a wall. The frame does not change the painting, but it changes how the painting is seen, and a good frame makes the work look better.</p>
+<h2 id="solid-borders">Solid Borders: The Classic Frame</h2>
+<p>A solid border is a single colour band of even width around the image. It is the simplest style, and it suits almost any photo, from portraits to product shots.</p>
+<p>White borders are the most common. They give the photo a clean, gallery feel, and they work on any background, because white separates the image from the page.</p>
+<p>Black borders feel more dramatic. They suit moody photos, night shots, and fine art, where the dark frame adds weight and focus to the image.</p>
+<p>Coloured borders can match a brand or a theme. A soft pastel border suits a wedding photo, while a bold colour suits a poster or a sale graphic.</p>
+<h2 id="polaroid-style">Polaroid Style: The Retro Favourite</h2>
+<p>A Polaroid border mimics the instant film look: a white frame with a thicker band at the bottom. It feels nostalgic, casual, and fun, which is why it suits holiday photos and memories.</p>
+<p>The thick bottom band is the signature of the style. It gives space for a handwritten caption, a date, or a short note, just like a real Polaroid print.</p>
+<p>Polaroid borders work best on casual, personal photos. They feel out of place on a formal portrait or a product shot, where a clean solid border is more appropriate.</p>
+<p>The <a href="/image-border-generator/">Image Border Generator</a> includes a Polaroid style as one of its border options. It applies the classic shape automatically, including the wider bottom band.</p>
+<h2 id="gradient-glow">Gradient Glow Frames</h2>
+<p>A gradient glow frame blends two or more colours around the image, creating a soft, glowing edge. It feels modern and digital, and it suits social graphics and posters.</p>
+<p>The glow is calculated from an angle and a set of colours. Changing the angle moves the blend around the frame, so the same colours can produce many different looks.</p>
+<p>Gradient frames work well on dark photos, where the bright edge adds energy. They can overwhelm a light, airy photo, so use them when the image needs drama.</p>
+<p>Keep the glow subtle for professional work. A soft gradient adds polish, while a harsh, bright glow distracts from the photo itself.</p>
+<h2 id="border-size">Border Size: From 1% to 25%</h2>
+<p>Border size is set as a percentage of the image, from 1 percent to 25 percent. A small border is a thin line, while a large border becomes a wide mat around the photo.</p>
+<p>A thin border of 1 to 3 percent suits most photos. It frames the image without taking attention away from it, and it works at any display size.</p>
+<p>A medium border of 5 to 10 percent creates a gallery feel. It gives the photo breathing room and suits prints, portfolios, and presentation slides.</p>
+<p>A large border above 15 percent becomes a design statement. It suits posters and social graphics, where the frame is part of the look rather than just an edge.</p>
+<h2 id="frame-radius-vs-photo-radius">Frame Radius vs Photo Radius</h2>
+<p>Frame radius controls the roundness of the outer edge of the border, while photo radius controls the roundness of the inner edge where the border meets the photo.</p>
+<p>Setting both to the same value gives a uniform rounded frame. Setting them differently creates a border that is thick in the middle of each side and thin at the corners.</p>
+<p>For a simple rounded frame, set both radii to the same number. The result is a clean, consistent curve that looks professional on cards and social posts.</p>
+<p>For a Polaroid style, keep the radii low. The classic instant film look has square corners, and rounding them too much breaks the retro feel.</p>
+<h2 id="drop-shadows">Drop Shadows: Adding Depth</h2>
+<p>A drop shadow adds a soft dark edge behind the framed image, which makes it look as though it is floating above the page. It adds depth and a sense of polish.</p>
+<p>Shadows work best on light backgrounds, where the dark edge is visible. On a dark background, the shadow blends in and adds little to the image.</p>
+<p>Drop shadows disappear when you export as JPG. The JPG format has no transparency, so the shadow, which needs a transparent background to show, cannot be saved in that format.</p>
+<p>Export as PNG or WebP to keep the shadow. Both formats support transparency, so the shadow survives the export and shows correctly on any background.</p>
+<h2 id="colour-choices">Choosing Border Colours</h2>
+<p>White is the safest border colour. It suits any photo, it works on any background, and it gives the image a clean, gallery feel that never looks dated.</p>
+<p>Black is the second safest. It adds drama and focus, and it suits moody photos, night shots, and fine art, where a light border would feel out of place.</p>
+<p>Match the border to a colour in the photo for a designed look. A border that picks up the colour of a dress, a sky, or a product ties the frame to the image.</p>
+<p>Avoid bright, saturated borders on serious photos. A neon frame on a wedding portrait looks like a mistake, while a soft neutral frame looks intentional.</p>
+<h2 id="quick-frame-presets">Quick Frame Presets</h2>
+<p>The tool includes four quick frame presets, each of which configures the border style, size, colour, and shadow in one click. They are a fast starting point for common looks.</p>
+<p>Presets are not locked. After clicking one, you can change any setting, including the frame colour, the size, or the shadow, to suit your photo.</p>
+<p>Use presets to explore styles quickly. Click through them and see which one suits your image, then fine-tune the settings from there.</p>
+<p>For a consistent look across a set of photos, use the same preset for all of them. A batch of images with matching frames looks like a series, while mixed frames look random.</p>
+<h2 id="borders-for-social">Borders for Social Media</h2>
+<p>Borders help a photo stand out in a crowded feed. A white border separates the image from the posts around it, and the eye is drawn to the framed photo.</p>
+<p>Keep social borders thin. A thick border takes up space in a small feed preview, leaving less room for the photo itself, which is what people came to see.</p>
+<p>Use a consistent border style across your posts. A recognisable frame becomes part of your visual identity, and followers start to spot your posts before they read your name.</p>
+<p>Check the bordered image at feed size. A border that looks fine at full size may dominate a small preview, so test before you publish.</p>
+<h2 id="borders-for-print">Borders for Print</h2>
+<p>Printed photos have used borders for over a century, and a digital border prepares an image for the same treatment. A white border around a print gives it a gallery feel.</p>
+<p>For prints, use a medium border of 5 to 10 percent. The extra space gives the print room to breathe, and it provides a margin for handling without touching the image.</p>
+<p>Check the print size before you add a border. A border adds to the total dimensions, so a photo with a border needs a larger paper size than the same photo without one.</p>
+<p>For a framed print, the border is part of the design. A white border inside a dark frame creates a mat effect, which is the classic gallery presentation.</p>
+<h2 id="borders-for-products">Borders for Product Photos</h2>
+<p>Product photos need consistent framing, because a shop page with mismatched borders looks careless. Use the same border style and size for every product image.</p>
+<p>A thin white border suits most products. It separates the item from the page background without distracting from the product itself.</p>
+<p>Avoid coloured borders on product photos unless the colour is part of your brand. A bright frame can clash with the product and make the listing look unprofessional.</p>
+<p>For a sale or a promotion, a coloured border can highlight the offer. A red or gold frame around a discounted product draws the eye, which is the point of the promotion.</p>
+<h2 id="transparency-and-formats">Transparency, Formats, and Export</h2>
+<p>The tool shows a grey and white checkerboard around the frame in the preview. That pattern means transparency, not a grey background, and it shows where the image is see-through.</p>
+<p>Exporting as PNG or WebP preserves transparency, including rounded corners and drop shadows. Exporting as JPG flattens everything onto a solid background.</p>
+<p>For a framed image with rounded corners, choose PNG or WebP. A JPG export fills the transparent corners with a solid colour, which breaks the rounded look.</p>
+<p>The quality slider appears for JPG and WebP exports and hides for PNG, because PNG is lossless and has no quality setting to adjust.</p>
+<h2 id="borders-vs-frames-vs-matting">Borders, Frames, and Matting: What Is the Difference?</h2>
+<p>A border is a band of colour around the image, added digitally. A frame is a physical object that holds a print, and matting is the card inside the frame that surrounds the print.</p>
+<p>Digital borders mimic matting. A wide white border around a photo looks like a matted print, which is why it feels at home in a gallery context.</p>
+<p>A thin border is closer to a frame edge. It defines the boundary of the image without adding the generous space that matting provides.</p>
+<p>Choose based on the feeling you want. Matting feels formal and gallery-like, while a thin frame feels modern and clean.</p>
+<h2 id="privacy-local-processing">Privacy: Framing Without Uploading</h2>
+<p>All border work happens in your browser. Your photos are never uploaded to a server, which matters when the images are personal, client work, or unreleased products.</p>
+<p>This is a real advantage over cloud editors. A product photo or a family portrait should not travel to a server you cannot see, just to add a frame.</p>
+<p>The tool also strips EXIF GPS data on export. A framed photo downloaded from the tool carries no record of where it was taken.</p>
+<p>Keep the original photo without a border. Once a border is flattened into an export, it cannot be removed from that file, so the original is your only clean copy.</p>
+<h2 id="common-border-mistakes">Common Border Mistakes</h2>
+<p>The most common mistake is a border that is too thick. A heavy frame overwhelms a small photo and leaves little room for the image itself, which is what people came to see.</p>
+<p>Another mistake is a colour that clashes with the photo. A bright border on a soft, muted image fights the photo for attention and makes the whole design look wrong.</p>
+<p>People also forget that a border adds to the total size. A photo with a 25 percent border is much larger than the original, and it may no longer fit its destination.</p>
+<p>Finally, do not use a drop shadow with a JPG export and expect it to survive. JPG has no transparency, so the shadow disappears, and the result looks flat.</p>
+<p>For the step-by-step process, see <a href="/blog/how-to-add-border-to-image/">How to Add a Border to an Image</a>. For style ideas, read <a href="/blog/image-frames-borders-styles/">Image Frames and Borders: Styles for Social and Print</a>, and to round the corners of a framed photo, try the <a href="/round-image-corners/">Round Image Corners tool</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What is the best border colour for a photo?',
+          answer: 'White is the safest choice: it suits any photo, works on any background, and gives a clean gallery feel. Black adds drama for moody or night photos. Match the border to a colour in the photo for a designed look, and avoid bright colours on serious images.',
+        },
+        {
+          question: 'Does adding a border change the size of my image?',
+          answer: 'Yes. A border adds pixels around the photo, so the final image is larger than the original. A 10 percent border on each side adds 20 percent to the width and height. Check the final dimensions before uploading to a platform with size limits.',
+        },
+        {
+          question: 'Why did my drop shadow disappear after exporting as JPG?',
+          answer: 'JPG has no transparency, and a drop shadow needs a transparent background to show. Export as PNG or WebP instead, which both support transparency and keep the shadow. The preview checkerboard shows where the image is transparent.',
+        },
+        {
+          question: 'What is the difference between a Polaroid border and a solid border?',
+          answer: 'A Polaroid border has a thicker band at the bottom, mimicking instant film, with space for a caption. A solid border is an even band of one colour on all four sides. Polaroid suits casual photos, while solid borders suit almost anything.',
+        },
+        {
+          question: 'Can I add a border to a photo on my phone?',
+          answer: 'Yes. The border generator works in a phone browser: upload from your gallery, pick a style and size, preview the frame, and download the result. Quick presets make it easy to frame a photo in seconds on a small screen.',
+        },
+        {
+          question: 'Should product photos have borders?',
+          answer: 'A thin white border usually helps, since it separates the product from the page and makes listings look tidy. Keep the style identical across the whole catalogue. Avoid coloured borders unless the colour is part of your brand.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/round-image-corners', '/add-text-to-image', '/image-filters'],
+  },
+  {
+    id: 'how-to-add-border-to-image',
+    toolSlug: '/image-border-generator',
+    categoryId: 'crop-edit',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-add-border-to-image',
+      title: 'How to Add a Border to an Image',
+      description: 'Add a border to any image in minutes: upload, pick a style, set the size and colour, add a shadow, preview, and download a framed photo.',
+      body: `
+<p>Adding a border to a photo takes only a few minutes. You upload the image, pick a style, set the size and colour, and download the framed result.</p>
+<p>This how-to walks through the whole process step by step. It covers solid, Polaroid, and gradient glow styles, corner radius, drop shadows, and the export settings that keep the frame looking right.</p>
+<p>By the end you will be able to frame a photo for social media, a print, or a product listing on any device. Keep the original photo until you have checked the result.</p>
+<h2 id="before-you-start">Before You Start: Choose the Look</h2>
+<p>Decide what the border is for before you open the tool. A social post needs a thin, clean frame, while a print needs a wider mat-style border.</p>
+<p>Think about the colour as well. White is the safest choice, black adds drama, and a colour matched to the photo gives a designed feel.</p>
+<p>Use the original photo, not a compressed copy. A border added to a sharp original looks clean, while one added to a soft copy looks rough at the edges.</p>
+<p>Open the <a href="/image-border-generator/">Image Border Generator</a> in your browser. Everything runs locally, so your photo is never uploaded to a server.</p>
+<h2 id="step-by-step">Add a Border in Six Steps</h2>
+<p>The process is the same for every border style. Upload, choose the style, set the size and colour, check the preview, and download.</p>
+<p>Take your time with the size and colour. Those two settings decide whether the border frames the photo or overwhelms it.</p>
+<ol>
+<li>Upload your image by dragging it into the dropzone, choosing it from your device, or pasting a screenshot with Ctrl+V.</li>
+<li>Pick a border style: Solid, Polaroid, or Gradient Glow, or start from one of the four quick frame presets.</li>
+<li>Set the border size between 1% and 25%, and choose the frame colour that suits your photo.</li>
+<li>Adjust the frame radius and photo radius for rounded corners, and add a drop shadow if you want depth.</li>
+<li>Preview the result, checking the corners and the shadow on both light and dark backgrounds.</li>
+<li>Choose the export format, PNG or WebP to keep transparency and shadows, then click Download.</li>
+</ol>
+<p>Open the downloaded file once before you share it. Confirm the border is even on all sides and the photo inside still looks good.</p>
+<h2 id="choosing-border-style">Choosing a Border Style</h2>
+<p>A solid border is a single colour band of even width. It is the simplest style, and it suits almost any photo, from portraits to product shots.</p>
+<p>A Polaroid border mimics instant film, with a thicker band at the bottom for a caption. It feels nostalgic and casual, which suits holiday photos and memories.</p>
+<p>A gradient glow frame blends colours around the image for a modern, digital look. It suits social graphics and posters, where the frame is part of the design.</p>
+<p>Start with solid if you are unsure. It is the safest choice, and you can switch to a fancier style once you see how the photo looks framed.</p>
+<h2 id="setting-border-size">Setting the Border Size</h2>
+<p>Border size runs from 1 percent to 25 percent of the image. A thin border of 1 to 3 percent frames the photo without taking attention away from it.</p>
+<p>A medium border of 5 to 10 percent creates a gallery feel. It gives the photo breathing room and suits prints, portfolios, and presentation slides.</p>
+<p>A large border above 15 percent becomes a design statement. It suits posters and social graphics, where the frame is part of the look.</p>
+<p>Remember that the border adds to the total size. A photo with a 10 percent border on each side is 20 percent wider and taller than the original.</p>
+<h2 id="choosing-colour">Choosing the Border Colour</h2>
+<p>White is the safest border colour. It suits any photo, works on any background, and gives the image a clean, gallery feel that never looks dated.</p>
+<p>Black adds drama and focus. It suits moody photos, night shots, and fine art, where a light border would feel out of place.</p>
+<p>Match the border to a colour in the photo for a designed look. A border that picks up the colour of a dress, a sky, or a product ties the frame to the image.</p>
+<p>After clicking a quick preset, you can still change the frame colour. Presets are a starting point, not a lock, so adjust the colour to suit your photo.</p>
+<h2 id="setting-corner-radius">Setting the Corner Radius</h2>
+<p>Frame radius controls the roundness of the outer edge of the border, while photo radius controls the roundness of the inner edge where the border meets the photo.</p>
+<p>Setting both to the same value gives a uniform rounded frame. The result is a clean, consistent curve that looks professional on cards and social posts.</p>
+<p>For a simple square frame, keep both radii at zero. Sharp corners suit formal photos and product shots, where a rounded edge would feel out of place.</p>
+<p>For a Polaroid style, keep the radii low. The classic instant film look has square corners, and rounding them too much breaks the retro feel.</p>
+<h2 id="adding-drop-shadow">Adding a Drop Shadow</h2>
+<p>A drop shadow adds a soft dark edge behind the framed image, which makes it look as though it is floating above the page. It adds depth and polish.</p>
+<p>Shadows work best on light backgrounds, where the dark edge is visible. On a dark background, the shadow blends in and adds little to the image.</p>
+<p>To keep the shadow, export as PNG or WebP. JPG has no transparency, so the shadow disappears in a JPG export and the result looks flat.</p>
+<p>For a dark charcoal or pastel frame with no shadow, turn the shadow off and choose the colour directly. A clean frame without a shadow suits minimal designs.</p>
+<h2 id="using-quick-presets">Using the Quick Frame Presets</h2>
+<p>The tool includes four quick frame presets, each of which sets the style, size, colour, and shadow in one click. They are a fast starting point for common looks.</p>
+<p>Click through the presets to see which one suits your photo. The preview updates immediately, so you can compare the looks in seconds.</p>
+<p>After clicking a preset, change any setting you like. The colour, the size, and the shadow are all adjustable, so the preset is a base, not a final answer.</p>
+<p>For a consistent look across a set of photos, use the same preset for all of them. A batch of images with matching frames looks like a series.</p>
+<h2 id="polaroid-border">Making a Polaroid Border</h2>
+<p>Choose the Polaroid style in the border options. The tool applies the classic shape automatically, including the thicker band at the bottom.</p>
+<p>The bottom band gives space for a caption. Add text there with the <a href="/add-text-to-image/">Add Text to Image tool</a> after exporting, or leave it blank for a clean retro look.</p>
+<p>Keep the corner radius low for a Polaroid frame. The classic instant film look has square corners, and rounding them too much breaks the effect.</p>
+<p>Polaroid borders suit casual, personal photos best. They feel out of place on a formal portrait or a product shot, where a clean solid border is more appropriate.</p>
+<h2 id="gradient-glow-frame">Making a Gradient Glow Frame</h2>
+<p>Choose the gradient glow style and set the angle and colours. The glow blends two or more colours around the image, creating a soft, glowing edge.</p>
+<p>Changing the angle moves the blend around the frame. The same colours can produce many different looks, so try a few angles and see which one suits the photo.</p>
+<p>Gradient frames work well on dark photos, where the bright edge adds energy. They can overwhelm a light, airy photo, so use them when the image needs drama.</p>
+<p>Keep the glow subtle for professional work. A soft gradient adds polish, while a harsh, bright glow distracts from the photo itself.</p>
+<h2 id="preview-and-compare">Previewing Before You Download</h2>
+<p>Always preview before downloading. Check that the border is even on all sides, that the corners look right, and that the colour suits the photo.</p>
+<p>The preview shows a grey and white checkerboard around the frame. That pattern means transparency, not a grey background, and it shows where the image is see-through.</p>
+<p>Check the shadow on a light background if you added one. A shadow that is invisible on a dark preview may be clear on the white page where the image will live.</p>
+<p>If the border looks too thick or too thin, adjust the size and check again. A small change in percentage can make a big difference in how the frame feels.</p>
+<h2 id="choosing-export-format">Choosing the Export Format</h2>
+<p>Choose PNG when the frame has rounded corners or a drop shadow. PNG preserves transparency, so the corners stay see-through and the shadow survives.</p>
+<p>Choose WebP when you want small files with transparency. It works well for web images, though a few older systems still reject the format.</p>
+<p>Choose JPG only for a solid rectangular border with no shadow. JPG flattens everything onto a solid background, which is fine for a simple frame.</p>
+<p>Remember that the quality slider hides for PNG, because PNG is lossless and has no quality setting to adjust. That is normal behaviour, not a problem with the tool.</p>
+<h2 id="adding-border-on-mobile">Adding a Border on a Phone or Tablet</h2>
+<p>The tool works on touchscreens, so you can frame a photo on the phone that took it. Upload from your gallery, pick a preset, and download the result.</p>
+<p>Quick presets are the easiest route on a small screen. One tap sets the style, size, colour, and shadow, and you can adjust from there if needed.</p>
+<p>Check the preview at full size before downloading. A border that looks fine on a small phone screen may be too thick or too thin when viewed on a computer.</p>
+<p>Downloaded files save to your usual downloads folder. From there you can share the framed photo directly to a chat app, an email, or a social post.</p>
+<h2 id="troubleshooting">Troubleshooting Common Border Problems</h2>
+<p>If the drop shadow disappeared, check the export format. JPG has no transparency, so the shadow only survives in PNG or WebP exports.</p>
+<p>If the corners look square when you wanted them round, check the frame radius and photo radius. Both need to be set for a uniform rounded frame.</p>
+<p>If the border looks uneven, check the size setting. A border set as a percentage can look different on tall and wide photos, so adjust it for the shape.</p>
+<p>If the framed image is too large for its destination, reduce the border size or resize the photo first. A border adds to the total dimensions, so a wide frame can push the file over a size limit.</p>
+<h2 id="framing-screenshots">Framing a Screenshot</h2>
+<p>Paste a screenshot directly with Ctrl+V to skip the save step. The image appears in the tool immediately, ready to frame.</p>
+<p>A thin white border with a soft shadow makes a screenshot look like a card. It separates the screen capture from the page and makes it look polished.</p>
+<p>Keep the border thin for screenshots. A thick frame takes up space that the screenshot content needs, especially when the text in the capture is small.</p>
+<p>Export framed screenshots as PNG. The lossless format keeps the small text sharp, which matters when the screenshot is meant to show a setting or an error message.</p>
+<h2 id="quick-tips">Quick Tips for Better Borders</h2>
+<p>Start with a preset and adjust from there. The quick frames give you a good base in one click, and fine-tuning takes only a few seconds.</p>
+<p>Keep the border thin for social media. A thick frame takes up space in a small feed preview, leaving less room for the photo itself.</p>
+<p>Use the same border style across a set of photos. Consistency makes a series look professional, while mixed frames look random.</p>
+<p>Save the original photo without a border. Once a border is flattened into an export, it cannot be removed from that file, so the original is your only clean copy.</p>
+<h2 id="border-for-presentation">Adding a Border to a Presentation Slide Image</h2>
+<p>A photo used on a slide often needs a border to separate it from the slide background. A thin white frame with a soft shadow makes the image look like a card on the slide.</p>
+<p>Keep the border thin for slides. A thick frame takes up space that the photo and the text need, especially when the slide already has a title and bullet points.</p>
+<p>Match the border colour to the slide theme. A white border suits a light theme, while a dark border suits a dark theme, and a mismatched frame looks accidental.</p>
+<p>Export the framed slide image as JPG at a high quality setting. The slide will be projected large, so the photo and the border both need to stay sharp.</p>
+<p>For style ideas, read <a href="/blog/image-frames-borders-styles/">Image Frames and Borders: Styles for Social and Print</a>. For the full overview, see <a href="/blog/image-border-generator-guide/">Image Borders: Complete Guide</a>, and to round the corners of a framed photo, try the <a href="/round-image-corners/">Round Image Corners tool</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I add a white border around a photo?',
+          answer: 'Upload the photo, choose the Solid style, set the colour to white, and pick a size of 1 to 3 percent for a thin frame or 5 to 10 percent for a gallery feel. Preview the result and export as JPG for a simple rectangular frame, or PNG if you add rounded corners or a shadow.',
+        },
+        {
+          question: 'Can I add a border to a screenshot on my phone?',
+          answer: 'Yes. Open the border generator in your phone browser, upload the screenshot from your gallery, and tap a quick preset for an instant frame. A thin white border with a soft shadow makes the screenshot look like a card. Export as PNG to keep the text sharp.',
+        },
+        {
+          question: 'Why does the preview show a grey checkerboard around my frame?',
+          answer: 'The checkerboard means transparency, not a grey background. It shows where the image is see-through, such as around rounded corners or behind a drop shadow. Export as PNG or WebP to keep that transparency in the final file.',
+        },
+        {
+          question: 'What border size should I use for an Instagram post?',
+          answer: 'A thin border of 1 to 3 percent works best, since a thick frame takes up space in a small feed preview. Keep the style consistent across your posts so your feed has a recognisable look. White is the safest colour.',
+        },
+        {
+          question: 'Can I change the colour after clicking a quick preset?',
+          answer: 'Yes. Presets set the style, size, colour, and shadow as a starting point, and every setting stays adjustable afterwards. Click a preset, then change the frame colour or any other setting to suit your photo.',
+        },
+        {
+          question: 'Does adding a border crop any part of my photo?',
+          answer: 'No. A border adds pixels around the photo instead of removing them, so nothing in the image is cut away. The final image is larger than the original by the width of the border on each side.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/round-image-corners', '/add-text-to-image', '/image-filters'],
+  },
+  {
+    id: 'image-frames-borders-styles',
+    toolSlug: '/image-border-generator',
+    categoryId: 'crop-edit',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-frames-borders-styles',
+      title: 'Image Frames and Borders: Styles for Social and Print',
+      description: 'Which frame style suits your photo? Minimal, Polaroid, gallery, gradient glow, and retro frames compared for social media, print, and product photos.',
+      body: `
+<p>A frame changes how a photo is seen. The same image in a thin white border, a Polaroid frame, or a glowing gradient edge feels like three different pictures.</p>
+<p>Choosing a style is not just decoration. The frame sets the mood, signals the context, and tells the viewer whether the photo is a memory, a product, or a piece of art.</p>
+<p>This article compares the main frame styles and where each one works best. It covers social media, print, product photos, portraits, and the colour and shadow choices that make a frame feel intentional.</p>
+<h2 id="why-frames-matter">Why Frames Matter</h2>
+<p>A frame separates the image from its surroundings. On a busy page or a crowded feed, a bordered photo stands out, while an unbordered one can blend into the background.</p>
+<p>Frames also add a sense of completion. A photo with a border feels finished, like a print that has been mounted, while a photo without one can feel like a raw file.</p>
+<p>The style of the frame sets expectations. A Polaroid frame says casual memory, a thin black frame says fine art, and a gradient glow says modern digital design.</p>
+<p>Choose the frame for the message, not just the look. A frame that matches the context strengthens the photo, while one that fights it weakens the whole image.</p>
+<h2 id="minimal-frames">Minimal Frames: Less Is More</h2>
+<p>A minimal frame is a thin, single-colour border, usually white or black, at 1 to 3 percent of the image size. It is the most versatile style, and it suits almost any photo.</p>
+<p>Minimal frames work because they do not compete with the image. The eye notices the photo first and the frame second, which is exactly the right order.</p>
+<p>They suit professional work best: portfolios, product listings, and editorial photos, where the image should speak for itself without decoration.</p>
+<p>Keep minimal frames consistent across a set. A series of photos with the same thin border looks like a curated collection, while mixed frames look random.</p>
+<h2 id="polaroid-and-retro">Polaroid and Retro Frames</h2>
+<p>A Polaroid frame mimics instant film, with a white border and a thicker band at the bottom. It feels nostalgic, casual, and personal, which is why it suits holiday photos and memories.</p>
+<p>The thick bottom band is the signature of the style. It gives space for a handwritten caption, a date, or a short note, just like a real Polaroid print.</p>
+<p>Retro frames work best on casual, personal photos. They feel out of place on a formal portrait or a product shot, where a clean minimal frame is more appropriate.</p>
+<p>Use Polaroid frames sparingly. A feed full of them feels like a theme park, while one or two among clean photos feel like a fond memory.</p>
+<h2 id="gallery-frames">Gallery Frames: The Matted Look</h2>
+<p>A gallery frame is a wide white border, usually 5 to 10 percent, that mimics a matted print. It gives the photo breathing room and a formal, curated feel.</p>
+<p>Gallery frames suit art photography, landscapes, and portraits that deserve a slow look. The wide mat slows the eye down and invites the viewer to study the image.</p>
+<p>They work best on prints and portfolios. A wide border on a small social feed preview wastes space, so keep gallery frames for large displays and print.</p>
+<p>Pair a gallery frame with a simple, neutral background. The mat should be the only decoration, and anything else competes with it.</p>
+<h2 id="gradient-and-glow">Gradient and Glow Frames</h2>
+<p>A gradient glow frame blends colours around the image, creating a soft, glowing edge. It feels modern and digital, and it suits social graphics, posters, and event announcements.</p>
+<p>The glow is calculated from an angle and a set of colours. Changing the angle moves the blend around the frame, so the same colours can produce many different looks.</p>
+<p>Gradient frames work well on dark photos, where the bright edge adds energy. They can overwhelm a light, airy photo, so use them when the image needs drama.</p>
+<p>Keep the glow subtle for professional work. A soft gradient adds polish, while a harsh, bright glow distracts from the photo itself.</p>
+<h2 id="frames-for-social">Frames for Social Media</h2>
+<p>Social feeds are crowded, and a frame helps a photo stand out. A white border separates the image from the posts around it, and the eye is drawn to the framed photo.</p>
+<p>Keep social frames thin. A thick border takes up space in a small feed preview, leaving less room for the photo itself, which is what people came to see.</p>
+<p>Use a consistent frame style across your posts. A recognisable border becomes part of your visual identity, and followers start to spot your posts before they read your name.</p>
+<p>Test the framed image at feed size. A frame that looks fine at full size may dominate a small preview, so check before you publish.</p>
+<h2 id="frames-for-print">Frames for Print</h2>
+<p>Printed photos have used borders for over a century. A white border around a print gives it a gallery feel, and it provides a margin for handling without touching the image.</p>
+<p>For prints, use a medium to wide border of 5 to 10 percent. The extra space gives the print room to breathe, and it suits the slower, more deliberate way people view prints.</p>
+<p>Check the print size before you add a border. A border adds to the total dimensions, so a photo with a frame needs a larger paper size than the same photo without one.</p>
+<p>For a framed print, the digital border is part of the design. A white border inside a dark frame creates a mat effect, which is the classic gallery presentation.</p>
+<h2 id="frames-for-products">Frames for Product Photos</h2>
+<p>Product photos need consistent framing, because a shop page with mismatched borders looks careless. Use the same frame style and size for every product image.</p>
+<p>A thin white border suits most products. It separates the item from the page background without distracting from the product itself.</p>
+<p>Avoid coloured frames on product photos unless the colour is part of your brand. A bright frame can clash with the product and make the listing look unprofessional.</p>
+<p>For a sale or a promotion, a coloured frame can highlight the offer. A red or gold border around a discounted product draws the eye, which is the point of the promotion.</p>
+<h2 id="frames-for-portraits">Frames for Portraits</h2>
+<p>Portraits suit simple frames. A thin white or black border keeps the focus on the face, while a fancy frame competes with the person for attention.</p>
+<p>Avoid wide borders on portraits. A large frame makes the face smaller in the overall image, which weakens the connection between the viewer and the subject.</p>
+<p>For a formal portrait, a black frame adds gravity. For a casual portrait, a white frame feels light and friendly, which suits family and lifestyle photos.</p>
+<p>Keep the frame consistent across a portrait series. A set of headshots with matching frames looks like a professional collection, while mixed frames look accidental.</p>
+<h2 id="frames-for-screenshots">Frames for Screenshots</h2>
+<p>A thin white border with a soft shadow makes a screenshot look like a card. It separates the screen capture from the page and makes it look polished.</p>
+<p>Keep the border thin for screenshots. A thick frame takes up space that the screenshot content needs, especially when the text in the capture is small.</p>
+<p>Export framed screenshots as PNG. The lossless format keeps the small text sharp, which matters when the screenshot is meant to show a setting or an error message.</p>
+<p>Use the same frame style for all screenshots in a guide or a tutorial. Consistency helps the reader follow the steps, while mixed frames distract from the instructions.</p>
+<h2 id="colour-theory">Colour Theory for Frames</h2>
+<p>White is the safest frame colour. It suits any photo, works on any background, and gives a clean, gallery feel that never looks dated.</p>
+<p>Black adds drama and focus. It suits moody photos, night shots, and fine art, where a light frame would feel out of place.</p>
+<p>Matching the frame to a colour in the photo creates a designed look. A frame that picks up the colour of a dress, a sky, or a product ties the border to the image.</p>
+<p>Avoid bright, saturated frames on serious photos. A neon border on a wedding portrait looks like a mistake, while a soft neutral frame looks intentional.</p>
+<h2 id="shadow-and-depth">Shadow and Depth</h2>
+<p>A drop shadow adds depth to a framed image, making it look as though it floats above the page. It suits cards, screenshots, and social graphics.</p>
+<p>Shadows work best on light backgrounds, where the dark edge is visible. On a dark background, the shadow blends in and adds little to the image.</p>
+<p>To keep a shadow, export as PNG or WebP. JPG has no transparency, so the shadow disappears in a JPG export and the result looks flat.</p>
+<p>For a minimal, flat design, skip the shadow entirely. A clean frame without depth suits editorial work and portfolios, where simplicity is the point.</p>
+<h2 id="rounded-vs-square">Rounded vs Square Frames</h2>
+<p>Square corners feel formal and precise. They suit product photos, documents, and editorial work, where a clean edge matches the content.</p>
+<p>Rounded corners feel friendly and modern. They suit social posts, cards, and app graphics, where a soft edge matches the interface around them.</p>
+<p>Frame radius controls the outer curve and photo radius controls the inner curve. Setting both to the same value gives a uniform rounded frame.</p>
+<p>For a Polaroid style, keep the corners square. The classic instant film look has sharp corners, and rounding them too much breaks the retro feel.</p>
+<h2 id="mixing-frame-and-border">Mixing Frames with Other Edits</h2>
+<p>A frame is often the last step in an edit, not the first. Crop the photo, adjust the brightness, and then add the border, so the frame matches the final image.</p>
+<p>Pair a frame with rounded corners for a card look. A thin border with a gentle radius feels like a modern app card, which suits social posts and presentations.</p>
+<p>Pair a frame with text for a poster. A bordered image with a headline on top is a complete graphic, ready to share without further work.</p>
+<p>Do not overdo the combination. A frame plus a heavy filter plus bold text can overwhelm the photo, while one strong choice at a time keeps the design clean.</p>
+<h2 id="trends-vs-timeless">Trends vs Timeless Frames</h2>
+<p>Frame styles trend like anything else. Gradient glows are popular now, Polaroid frames were popular a decade ago, and minimal white borders have never gone out of style.</p>
+<p>For work that must last, choose a timeless frame. A thin white or black border looks as good in ten years as it does today, while a trendy glow may feel dated quickly.</p>
+<p>For social posts that live for a day, trends are fine. A gradient frame that matches the current style can boost engagement, and the post will be forgotten long before the trend fades.</p>
+<p>When in doubt, go minimal. A simple frame is never wrong, and it lets the photo carry the image instead of the decoration.</p>
+<h2 id="choosing-cheat-sheet">Choosing a Frame: Quick Cheat Sheet</h2>
+<p>Use a thin white border for social posts, product photos, and anything that needs a clean, safe frame. It works everywhere and never looks wrong.</p>
+<p>Use a Polaroid frame for casual memories, holiday photos, and personal posts. It feels nostalgic and fun, which suits the content.</p>
+<p>Use a wide gallery border for prints, portfolios, and art photography. The mat effect gives the image room to breathe and a formal feel.</p>
+<p>Use a gradient glow for posters, event graphics, and social announcements. The bright edge adds energy, which suits content meant to grab attention.</p>
+<h2 id="frames-for-events">Frames for Event Announcements</h2>
+<p>Event announcements need frames that grab attention. A gradient glow or a bold coloured border makes a poster stand out in a feed full of plain photos.</p>
+<p>Match the frame to the event mood. A bright gradient suits a party or a concert, while a clean black border suits a conference or a formal dinner.</p>
+<p>Keep the event details readable. A bold frame should not cover the date, the venue, or the ticket price, so place the text well inside the frame.</p>
+<p>Use the same frame style for all posts about one event. A consistent look helps followers recognise the event across several posts, which builds anticipation.</p>
+<p>For the step-by-step process, see <a href="/blog/how-to-add-border-to-image/">How to Add a Border to an Image</a> and the full overview in <a href="/blog/image-border-generator-guide/">Image Borders: Complete Guide</a>. To round the corners of a framed photo, try the <a href="/round-image-corners/">Round Image Corners tool</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Which frame style is best for Instagram posts?',
+          answer: 'A thin white border is the safest choice: it separates the photo from the feed, works on any image, and never looks dated. Keep it at 1 to 3 percent so it does not take up space in a small preview. Use the same style across your posts for a recognisable feed.',
+        },
+        {
+          question: 'When should I use a Polaroid frame?',
+          answer: 'For casual, personal photos such as holidays, parties, and memories, where the nostalgic instant-film look fits the mood. Avoid Polaroid frames on formal portraits or product shots, where a clean solid border is more appropriate.',
+        },
+        {
+          question: 'Are gradient glow frames professional?',
+          answer: 'They can be, when used subtly on the right content. A soft gradient suits posters, event graphics, and social announcements. For portfolios, client work, or formal photos, a minimal white or black border looks more professional.',
+        },
+        {
+          question: 'What frame style works best for printed photos?',
+          answer: 'A wide white border of 5 to 10 percent, which mimics a matted gallery print and gives the photo room to breathe. Check the paper size first, since the border adds to the total dimensions and the photo needs a larger sheet.',
+        },
+        {
+          question: 'Should all my product photos use the same frame?',
+          answer: 'Yes. Consistency across a catalogue makes the shop look tidy and trustworthy, while mixed frames look random. Use one thin white border style for every product image, and save a coloured frame only for sale or promotion highlights.',
+        },
+        {
+          question: 'Do rounded corners suit every frame style?',
+          answer: 'No. Rounded corners suit social posts, cards, and app graphics, where a soft edge matches the interface. Square corners suit product photos, documents, and formal work. Keep Polaroid frames square to preserve the retro instant-film look.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/round-image-corners', '/add-text-to-image', '/image-filters'],
+  },
+  {
+    id: 'round-image-corners-guide',
+    toolSlug: '/round-image-corners',
+    categoryId: 'crop-edit',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'round-image-corners-guide',
+      title: 'Round Image Corners: Complete Guide',
+      description: 'Learn how to round image corners online: corner radius, per-corner control, circle and pill shapes, transparent vs solid fills, and formats.',
+      body: `
+<p>Rounded corners soften a photo. They turn a sharp rectangle into a friendly shape that fits modern screens, cards, and avatars.</p>
+<p>Every app and website uses rounded corners now. Profile pictures are circles, cards have soft edges, and buttons are pill-shaped, so photos with rounded corners feel at home.</p>
+<p>This guide explains how corner rounding works, which shapes to choose, and how to export the result correctly. It covers radius, per-corner control, transparency, and formats.</p>
+<h2 id="what-rounding-does">What Rounding Corners Actually Does</h2>
+<p>Rounding cuts away the corners of an image along a curve. The straight edges stay, but the sharp 90 degree corners become smooth arcs.</p>
+<p>The curve is set by a radius value. A small radius gives a gentle softening, while a large radius turns the corners into deep curves that change the whole shape.</p>
+<p>Rounding does not change the pixels inside the image. It only removes the corner areas, so the photo itself stays exactly as sharp as the original.</p>
+<p>What changes is the shape of the file. A rounded image is no longer a rectangle, and the corners must be either transparent or filled with a solid colour.</p>
+<h2 id="radius-explained">Corner Radius Explained</h2>
+<p>The radius is measured in pixels, and the tool shows a live readout of the value as you adjust it. A larger radius means a rounder corner.</p>
+<p>A small radius of 10 to 20 pixels softens the corners just enough to notice. It suits cards, thumbnails, and screenshots, where the rounding should be subtle.</p>
+<p>A medium radius of 50 to 100 pixels gives a clearly rounded look. It suits avatars, social posts, and app graphics, where the shape is part of the design.</p>
+<p>A very large radius turns the image into a circle or a pill. That is a deliberate shape change, not a subtle softening, and it suits profile pictures and badges.</p>
+<h2 id="per-corner-control">Per-Corner Control: Rounding One Corner at a Time</h2>
+<p>Most images need all four corners rounded equally, but some designs need only one or two. A blog card, for example, may have rounded top corners and square bottom ones.</p>
+<p>Per-corner mode lets you set a different radius for each corner. You can round the top two and leave the bottom two square, or round a single corner for a special effect.</p>
+<p>Turning per-corner mode off returns to a single radius for all corners. The individual values are kept while the mode is off, so you can switch back without losing your settings.</p>
+<p>Use per-corner control sparingly. A design with four different radii looks accidental, while one or two rounded corners with the rest square looks deliberate.</p>
+<h2 id="full-circle-pill">Full Circle and Pill Shapes</h2>
+<p>The Full Circle shortcut turns a square image into a perfect circle. It sets the radius to half the image size, so the corners curve all the way around.</p>
+<p>On a rectangular image, the same shortcut creates a pill shape: a rectangle with fully rounded ends. Pills suit buttons, badges, and banners.</p>
+<p>For a clean circle, start with a square photo. Crop the image to 1:1 first, then apply the full circle shortcut, and the result is a perfect round avatar.</p>
+<p>Check the result on a rectangular photo before you commit. A pill shape can look elegant, but it can also crop away important content at the sides.</p>
+<h2 id="transparent-vs-solid-fill">Transparent vs Solid Corner Fill</h2>
+<p>When corners are cut away, the empty space must be filled with something. The tool offers two choices: transparent, which leaves the corners see-through, or a solid colour.</p>
+<p>Transparent corners are the right choice for web graphics, avatars, and overlays. The image blends with any background, because the corners show whatever is behind the image.</p>
+<p>Solid fill is the right choice when the destination cannot handle transparency. A solid colour, such as white, fills the corners so the image still looks like a rectangle with rounded photo edges.</p>
+<p>Choosing transparent while JPG is selected switches the format automatically. JPG has no transparency, so the tool moves you to PNG or WebP to keep the corners see-through.</p>
+<h2 id="formats-png-webp-jpg">Formats: PNG, WebP, and JPG</h2>
+<p>PNG and WebP support transparency, so they keep rounded corners see-through. They are the right formats for avatars, logos, and any graphic that sits on a coloured background.</p>
+<p>JPG has no transparency, so rounded corners exported as JPG get a solid fill. The corners become a solid colour, usually white, which looks fine on a white page but wrong on a coloured one.</p>
+<p>For web graphics, WebP is often the best choice. It gives smaller files than PNG with the same transparency, though a few older systems still reject the format.</p>
+<p>For the sharpest result, choose PNG. It is lossless, so the curved edges stay smooth, and it works everywhere, including old browsers and messaging apps.</p>
+<h2 id="rounding-for-avatars">Rounding for Avatars and Profile Pictures</h2>
+<p>Avatars are almost always round or rounded. A square photo with rounded corners feels modern, while a sharp-cornered square feels like a raw file.</p>
+<p>Crop the photo to a square first, then round the corners. A 1:1 crop with a large radius gives a clean circle, which is the standard avatar shape.</p>
+<p>Keep the face well inside the frame. The corners are cut away, so a face near the edge may lose an ear or part of the hair to the curve.</p>
+<p>Export avatars as PNG or WebP. The transparency keeps the corners see-through, so the avatar blends with any profile background, light or dark.</p>
+<h2 id="rounding-for-cards">Rounding for Cards and UI Graphics</h2>
+<p>Cards are the building blocks of modern interfaces, and they almost always have rounded corners. A photo with matching rounded corners fits neatly inside a card.</p>
+<p>Match the photo radius to the card radius. A photo with a 16 pixel radius inside a card with a 16 pixel radius looks seamless, while mismatched radii look careless.</p>
+<p>For a blog card, round the top two corners and leave the bottom two square. The photo sits at the top of the card, and the square bottom aligns with the text below.</p>
+<p>Keep the radius consistent across all cards in a set. A grid of cards with matching corners looks professional, while mixed radii look random.</p>
+<h2 id="smooth-edges">Why Curved Edges Look Smooth, Not Jagged</h2>
+<p>A curved edge on a screen is made of square pixels, so it should look jagged. In practice it looks smooth, because the tool blends the edge pixels with the background colour.</p>
+<p>This blending is called anti-aliasing. The pixels along the curve are partially transparent, which fools the eye into seeing a smooth line instead of a staircase.</p>
+<p>Anti-aliasing works best on a transparent background. The blended pixels fade into whatever sits behind the image, so the curve looks clean on any colour.</p>
+<p>On a solid fill, the blend is less flexible. The edge pixels mix with the fill colour, so the curve looks smooth on that colour but rough on any other.</p>
+<h2 id="rounding-and-print">Rounding Corners for Print</h2>
+<p>Printed photos rarely have rounded corners, because cutting a print to a curve is extra work. A digital rounded image printed on rectangular paper will show the corners as a solid fill.</p>
+<p>If you print a rounded image, choose a solid fill that matches the paper. A white fill on white paper looks like a rounded photo, while a transparent export printed as JPG gets a white fill anyway.</p>
+<p>For stickers and labels, rounded corners are the point. A sticker with rounded corners peels cleanly and looks finished, while a sharp-cornered sticker can catch and lift.</p>
+<p>Check the print size before you round. A small radius on a large print may be invisible, while a large radius on a small print can dominate the shape.</p>
+<h2 id="rounding-vs-cropping">Rounding vs Cropping: Different Jobs</h2>
+<p>Cropping removes pixels from the edges to change the framing, while rounding removes only the corners to change the shape. They solve different problems.</p>
+<p>Crop when the framing is wrong: too much sky, a stranger at the edge, or a subject that is too small. Rounding cannot fix framing.</p>
+<p>Round when the shape is wrong: a sharp rectangle that feels harsh in a modern interface. Cropping cannot soften a corner.</p>
+<p>Use both together when a photo needs framing and shaping. Crop first to fix the composition, then round the corners of the cropped result to fit its destination.</p>
+<h2 id="rounding-and-borders">Rounding Corners and Adding Borders</h2>
+<p>Rounded corners and borders work well together. A thin border with a matching radius creates a card look that suits social posts, presentations, and product images.</p>
+<p>Match the border radius to the corner radius. A border with a 16 pixel radius around a photo with a 16 pixel radius looks seamless, while mismatched radii look careless.</p>
+<p>Round the corners first, then add the border. The border tool reads the shape of the image, so rounding first keeps the frame aligned with the curves.</p>
+<p>For a Polaroid style, keep the corners square. The classic instant film look has sharp corners, and rounding them breaks the retro feel.</p>
+<h2 id="rounding-on-mobile">Rounding Corners on a Phone or Tablet</h2>
+<p>The tool works on touchscreens, so you can round a photo on the phone that took it. Upload from your gallery, drag the radius slider, and download the result.</p>
+<p>Use the Full Circle shortcut for avatars on a small screen. One tap turns a square photo into a circle, which is faster than dragging the slider to the exact value.</p>
+<p>Check the preview at full size before downloading. A radius that looks subtle on a small phone screen may be more obvious when viewed on a computer.</p>
+<p>Downloaded files save to your usual downloads folder. From there you can set the rounded image as a profile picture or share it directly.</p>
+<h2 id="privacy-local-processing">Privacy: Rounding Without Uploading</h2>
+<p>All corner rounding happens in your browser. Your photos are never uploaded to a server, which matters when the images are personal portraits or client work.</p>
+<p>This is a real advantage over cloud editors. A profile photo or a family portrait should not travel to a server you cannot see, just to soften its corners.</p>
+<p>The tool also strips EXIF GPS data on export. A rounded photo downloaded from the tool carries no record of where it was taken.</p>
+<p>Keep the original photo without rounding. Once the corners are cut away in an export, they cannot be restored from that file, so the original is your only full copy.</p>
+<h2 id="common-rounding-mistakes">Common Mistakes When Rounding Corners</h2>
+<p>The most common mistake is exporting as JPG and expecting transparency. JPG has no transparency, so the corners become a solid fill, which looks wrong on a coloured background.</p>
+<p>Another mistake is a radius that is too large for the image. A small photo with a huge radius becomes a circle when a gentle rounding was intended.</p>
+<p>People also forget to crop to a square before making a circle. A rectangular photo with the full circle shortcut becomes a pill, not a circle, which may not fit the avatar slot.</p>
+<p>Finally, do not round the same JPG repeatedly. Each save adds damage, so always return to the original file when you want a different radius.</p>
+<h2 id="rounding-workflow">A Workflow That Keeps Rounding Clean</h2>
+<p>Start with the original file and decide the destination first. An avatar, a card, and a sticker need different shapes, so the radius comes before the rounding.</p>
+<p>Crop to the right shape before you round. A square crop for a circle, a wide crop for a pill, and a card crop for a blog image all start with the cropper.</p>
+<p>Preview the rounded result at full size before downloading. Zoom into the corners and confirm the curves are smooth and nothing important is cut away.</p>
+<p>Save the rounded file with a clear name, such as avatar-circle.png. You may need the same shape again, and a clear name saves you from re-doing the work.</p>
+<h2 id="rounding-for-stickers">Rounding Corners for Stickers and Labels</h2>
+<p>Stickers and labels look best with rounded corners. A round-cornered sticker peels cleanly and feels finished, while a sharp-cornered one can catch and lift at the edges.</p>
+<p>Use a medium radius for stickers, large enough to see but small enough to keep the design intact. A radius that is too large can cut into the text or the artwork.</p>
+<p>Export stickers as PNG or WebP to keep the corners transparent. The sticker can then sit on any background, from a laptop lid to a notebook cover, without a white box.</p>
+<p>Test the sticker at its real size before printing. A radius that looks fine on screen may be invisible on a small sticker, or may dominate a large one.</p>
+<p>For the step-by-step process, see <a href="/blog/how-to-round-image-corners/">How to Round Image Corners</a>. For the comparison, read <a href="/blog/rounded-corners-vs-circle-crop/">Rounded Corners vs Circle Crop: Avatars and Cards</a>, and to frame a rounded photo, try the <a href="/image-border-generator/">Image Border Generator</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Why do my rounded corners show a white background instead of transparency?',
+          answer: 'You probably exported as JPG, which has no transparency. JPG fills the cut-away corners with a solid colour, usually white. Export as PNG or WebP instead, which both keep the corners see-through on any background.',
+        },
+        {
+          question: 'How do I make a perfect circle from my photo?',
+          answer: 'Crop the photo to a square first, then use the Full Circle shortcut, which sets the radius to half the image size. Export as PNG or WebP to keep the corners transparent. A rectangular photo becomes a pill shape, not a circle.',
+        },
+        {
+          question: 'Can I round only the top two corners of an image?',
+          answer: 'Yes. Turn on per-corner mode and set a radius for the top two corners while leaving the bottom two at zero. This suits blog cards, where the photo sits at the top and the square bottom aligns with the text below.',
+        },
+        {
+          question: 'What radius should I use for a profile picture?',
+          answer: 'Use the Full Circle shortcut for a round avatar, or a large radius of 50 to 100 pixels for a softly rounded square. Crop to 1:1 first and keep the face well inside the frame, since the corners are cut away.',
+        },
+        {
+          question: 'Does rounding corners reduce image quality?',
+          answer: 'No, rounding only removes the corner areas and leaves the rest of the pixels untouched. The quality of the kept area stays the same as the original. Export as PNG for a lossless result, or JPG at a high quality setting for photos.',
+        },
+        {
+          question: 'Can I round the corners of a screenshot?',
+          answer: 'Yes. Paste the screenshot with Ctrl+V, set a small radius of 10 to 20 pixels for a subtle softening, and export as PNG. The rounded screenshot looks like a modern app card and blends well into guides and presentations.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-border-generator', '/image-cropper', '/add-background-to-image'],
+  },
+  {
+    id: 'how-to-round-image-corners',
+    toolSlug: '/round-image-corners',
+    categoryId: 'crop-edit',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-round-image-corners',
+      title: 'How to Round Image Corners',
+      description: 'Round image corners in minutes: upload, set the radius, use per-corner control or the circle shortcut, choose transparent or solid fill, and download.',
+      body: `
+<p>Rounding the corners of a photo takes only a few minutes. You upload the image, drag a slider to set the curve, and download the softened result.</p>
+<p>This how-to walks through the whole process step by step. It covers the radius slider, per-corner control, the full circle shortcut, fill choices, and the export formats that keep corners transparent.</p>
+<p>By the end you will be able to make a rounded avatar, a card image, or a pill-shaped banner on any device. Keep the original photo until you have checked the result.</p>
+<h2 id="before-you-start">Before You Start: Pick the Shape</h2>
+<p>Decide what shape you need before you open the tool. A circle suits an avatar, a gentle rounding suits a card, and a pill suits a banner or a badge.</p>
+<p>Check the destination as well. A profile slot may demand a circle, while a blog card may need only the top two corners rounded.</p>
+<p>Use the original photo, not a compressed copy. Rounding from a sharp original keeps the curved edges smooth, while rounding a soft copy makes the curves look rough.</p>
+<p>Open the <a href="/round-image-corners/">Round Image Corners tool</a> in your browser. Everything runs locally, so your photo is never uploaded to a server.</p>
+<h2 id="step-by-step">Round Image Corners in Five Steps</h2>
+<p>The process is the same for a gentle rounding and a full circle. Upload, set the radius, choose the fill, check the preview, and download.</p>
+<p>Take your time with the radius. A small change in the value can make a big difference in how the shape feels, so watch the preview as you drag.</p>
+<ol>
+<li>Upload your image by dragging it into the dropzone, choosing it from your device, or pasting a screenshot with Ctrl+V.</li>
+<li>Drag the All Corners Radius slider to set the curve, watching the live pixel readout as you adjust it.</li>
+<li>Turn on per-corner mode to set different radii, or use the Full Circle / Pill shortcut for a round or pill shape.</li>
+<li>Choose Transparent under Outer Corner Fill for see-through corners, or Solid Color for a filled background.</li>
+<li>Pick the export format, PNG or WebP to keep transparency, then click Download to save the result.</li>
+</ol>
+<p>Open the downloaded file once before you use it. Confirm the corners look smooth and nothing important was cut away.</p>
+<h2 id="setting-radius">Setting the Corner Radius</h2>
+<p>The radius slider controls how round the corners are. A small value gives a gentle softening, while a large value turns the corners into deep curves.</p>
+<p>A radius of 10 to 20 pixels suits cards, thumbnails, and screenshots. The rounding is subtle, and the image still feels like a rectangle with soft edges.</p>
+<p>A radius of 50 to 100 pixels gives a clearly rounded look. It suits avatars, social posts, and app graphics, where the shape is part of the design.</p>
+<p>Watch the live pixel readout next to the slider. It shows the exact radius value, so you can reproduce the same rounding on another image later.</p>
+<h2 id="per-corner-mode">Using Per-Corner Mode</h2>
+<p>Per-corner mode lets you set a different radius for each corner. Turn it on, and four separate sliders appear, one for each corner of the image.</p>
+<p>A blog card is the classic use case. Round the top two corners and leave the bottom two square, so the photo sits neatly at the top of the card.</p>
+<p>Turning per-corner mode off returns to a single radius for all corners. The individual values are kept while the mode is off, so you can switch back without losing them.</p>
+<p>Use per-corner control sparingly. A design with four different radii looks accidental, while one or two rounded corners with the rest square looks deliberate.</p>
+<h2 id="full-circle-shortcut">Using the Full Circle / Pill Shortcut</h2>
+<p>The Full Circle shortcut sets the radius to half the image size in one click. On a square photo it creates a perfect circle, and on a rectangle it creates a pill shape.</p>
+<p>For a clean circle, crop the photo to 1:1 first. A square source with the shortcut gives a perfect round avatar that fits any profile slot.</p>
+<p>On a rectangular photo, the shortcut creates a pill: a rectangle with fully rounded ends. Pills suit buttons, badges, and banners.</p>
+<p>Check the result before downloading. A pill shape can look elegant, but it can also crop away important content at the sides of a wide photo.</p>
+<h2 id="choosing-fill">Choosing Transparent or Solid Fill</h2>
+<p>When corners are cut away, the empty space must be filled. Transparent leaves the corners see-through, while solid fills them with a colour.</p>
+<p>Choose transparent for web graphics, avatars, and overlays. The image blends with any background, because the corners show whatever is behind the image.</p>
+<p>Choose solid when the destination cannot handle transparency. A solid white fill makes the image look like a rounded photo on a white card, which suits documents and prints.</p>
+<p>If you click transparent while JPG is selected, the tool switches the format automatically. JPG has no transparency, so it moves you to PNG or WebP.</p>
+<h2 id="choosing-format">Choosing the Export Format</h2>
+<p>Choose PNG for the sharpest result with transparency. It is lossless, so the curved edges stay smooth, and it works everywhere, including old browsers.</p>
+<p>Choose WebP when you want small files with transparency. It gives smaller files than PNG with the same see-through corners, though a few older systems reject it.</p>
+<p>Choose JPG only when the corners have a solid fill. JPG has no transparency, so a transparent export as JPG gets a solid fill, which may not match your background.</p>
+<p>For rounded web graphics, PNG or WebP is the right choice. For a rounded photo on a white page, JPG with a white fill works fine.</p>
+<h2 id="previewing">Previewing Before You Download</h2>
+<p>Always preview before downloading. Check that the corners are smooth, that the radius feels right, and that nothing important was cut away.</p>
+<p>Zoom into a corner and look at the curve. A smooth arc means the rounding worked well, while a jagged edge means the source was too small or too soft.</p>
+<p>Check the fill on the background where the image will live. A transparent corner looks right anywhere, while a solid fill only matches the colour it was set to.</p>
+<p>If the radius feels wrong, adjust the slider and check again. A small change in the value can make a big difference in how the shape feels.</p>
+<h2 id="rounding-for-avatar">Rounding Corners for an Avatar</h2>
+<p>Crop the photo to a square first, using the <a href="/image-cropper/">Image Cropper</a>. A 1:1 crop with the face centred gives the best starting point for a round avatar.</p>
+<p>Upload the square photo and click the Full Circle shortcut. The radius jumps to half the image size, and the photo becomes a perfect circle.</p>
+<p>Keep the face well inside the frame. The corners are cut away, so a face near the edge may lose an ear or part of the hair to the curve.</p>
+<p>Export as PNG or WebP. The transparency keeps the corners see-through, so the avatar blends with any profile background, light or dark.</p>
+<h2 id="rounding-for-cards">Rounding Corners for Cards and UI</h2>
+<p>Match the photo radius to the card radius. A photo with a 16 pixel radius inside a card with a 16 pixel radius looks seamless, while mismatched radii look careless.</p>
+<p>For a blog card, round the top two corners and leave the bottom two square. Turn on per-corner mode, set the top radii, and leave the bottom ones at zero.</p>
+<p>Keep the radius consistent across all cards in a set. A grid of cards with matching corners looks professional, while mixed radii look random.</p>
+<p>Export card images as PNG or WebP when the card sits on a coloured background. The transparency keeps the corners clean on any colour.</p>
+<h2 id="rounding-screenshots">Rounding Corners on a Screenshot</h2>
+<p>Paste a screenshot directly with Ctrl+V to skip the save step. The image appears in the tool immediately, ready to round.</p>
+<p>Use a small radius of 10 to 20 pixels for screenshots. A gentle rounding makes the capture look like a modern app card without hiding any of the content.</p>
+<p>Export rounded screenshots as PNG. The lossless format keeps the small text sharp, which matters when the screenshot shows a setting or an error message.</p>
+<p>Keep the radius consistent across all screenshots in a guide. Matching corners help the reader follow the steps, while mixed radii distract from the instructions.</p>
+<h2 id="rounding-on-mobile">Rounding Corners on a Phone or Tablet</h2>
+<p>The tool works on touchscreens, so you can round a photo on the phone that took it. Upload from your gallery, drag the radius slider, and download the result.</p>
+<p>Use the Full Circle shortcut for avatars on a small screen. One tap turns a square photo into a circle, which is faster than dragging the slider to the exact value.</p>
+<p>Check the preview at full size before downloading. A radius that looks subtle on a small phone screen may be more obvious when viewed on a computer.</p>
+<p>Downloaded files save to your usual downloads folder. From there you can set the rounded image as a profile picture or share it directly.</p>
+<h2 id="troubleshooting">Troubleshooting Common Rounding Problems</h2>
+<p>If the corners show a white background instead of transparency, check the export format. JPG has no transparency, so export as PNG or WebP to keep the corners see-through.</p>
+<p>If the shape is a pill instead of a circle, the source photo is rectangular. Crop it to a square first, then apply the Full Circle shortcut.</p>
+<p>If the corners look jagged, the source image may be too small. Start from a higher-resolution original, and the curves will render smoothly.</p>
+<p>If your per-corner values vanished, check whether you turned the mode off. The values are kept while the mode is off, so turning it back on restores them.</p>
+<h2 id="combining-with-border">Combining Rounded Corners with a Border</h2>
+<p>Round the corners first, then add a border with the <a href="/image-border-generator/">Image Border Generator</a>. The border tool reads the shape of the image, so rounding first keeps the frame aligned.</p>
+<p>Match the border radius to the corner radius. A border with a 16 pixel radius around a photo with a 16 pixel radius looks seamless.</p>
+<p>For a card look, use a thin border with a gentle radius. The combination feels like a modern app card, which suits social posts and presentations.</p>
+<p>For a Polaroid style, keep the corners square. The classic instant film look has sharp corners, and rounding them breaks the retro feel.</p>
+<h2 id="quick-tips">Quick Tips for Better Rounded Corners</h2>
+<p>Crop to the right shape before you round. A square crop for a circle, a wide crop for a pill, and a card crop for a blog image all start with the cropper.</p>
+<p>Preview at full size before downloading. Zoom into the corners and confirm the curves are smooth and nothing important is cut away.</p>
+<p>Save the rounded file with a clear name, such as avatar-circle.png. You may need the same shape again, and a clear name saves you from re-doing the work.</p>
+<p>Keep the original photo without rounding. Once the corners are cut away in an export, they cannot be restored from that file.</p>
+<h2 id="rounding-for-social-post">Rounding Corners for a Social Post</h2>
+<p>A social post with rounded corners feels modern and friendly. The soft edges match the cards and buttons of the app around it, so the image blends with the interface.</p>
+<p>Use a small to medium radius for feed posts. A gentle rounding of 10 to 20 pixels softens the image without changing its character or hiding any content.</p>
+<p>Keep the radius consistent across your posts. A feed where every image shares the same corner shape looks curated, while mixed radii look random.</p>
+<p>Export social images as JPG when the corners have a solid fill, or PNG and WebP when they are transparent. The right format keeps the corners looking clean on any background.</p>
+<h2 id="rounding-for-presentation">Rounding Corners for a Presentation</h2>
+<p>Photos on slides look better with rounded corners. The soft edges match the modern slide design, and the image feels like a deliberate element rather than a pasted rectangle.</p>
+<p>Match the photo radius to the slide theme. A deck with 16 pixel card corners needs photos with a 16 pixel radius, so the images and the cards align.</p>
+<p>Keep the radius small for slides that are projected large. A huge radius on a big screen can dominate the image, while a gentle rounding stays subtle at any size.</p>
+<p>Export presentation images as JPG at a high quality setting when the corners have a solid fill. The photo needs to stay sharp when projected, and a low quality export will soften the curves.</p>
+<p>For the comparison, read <a href="/blog/rounded-corners-vs-circle-crop/">Rounded Corners vs Circle Crop: Avatars and Cards</a>. For the full overview, see <a href="/blog/round-image-corners-guide/">Round Image Corners: Complete Guide</a>, and to frame a rounded photo, try the <a href="/image-border-generator/">Image Border Generator</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I round the corners of a photo on my phone?',
+          answer: 'Open the Round Image Corners tool in your phone browser, upload the photo from your gallery, and drag the radius slider with your finger. Use the Full Circle shortcut for a round avatar. Export as PNG or WebP to keep the corners transparent.',
+        },
+        {
+          question: 'What is the best radius for a card image?',
+          answer: 'A small to medium radius of 10 to 20 pixels suits most cards, giving a gentle softening without changing the shape. Match the photo radius to the card radius for a seamless look. For a blog card, round the top two corners and leave the bottom two square.',
+        },
+        {
+          question: 'Can I round the corners of a JPG image?',
+          answer: 'Yes, but the corners will be filled with a solid colour, since JPG has no transparency. Choose a fill colour that matches the background where the image will live, or export as PNG or WebP to keep the corners see-through.',
+        },
+        {
+          question: 'How do I replace the image without losing my radius settings?',
+          answer: 'Load the new image through the replace option in the tool, which keeps your current radius and fill settings. You can then adjust the radius for the new photo and export it with the same setup.',
+        },
+        {
+          question: 'Why do my rounded corners look jagged?',
+          answer: 'The source image is probably too small or too soft, so the curve renders as visible steps. Start from a higher-resolution original and the edges will look smooth. Exporting as PNG also helps, since it is lossless.',
+        },
+        {
+          question: 'Does rounding corners change the width and height of my photo?',
+          answer: 'No. Rounding only cuts away the corner areas and leaves the width and height unchanged. The file keeps the same pixel dimensions, with the corners either transparent or filled with a solid colour.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-border-generator', '/image-cropper', '/add-background-to-image'],
+  },
+  {
+    id: 'rounded-corners-vs-circle-crop',
+    toolSlug: '/round-image-corners',
+    categoryId: 'crop-edit',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'rounded-corners-vs-circle-crop',
+      title: 'Rounded Corners vs Circle Crop: Avatars and Cards',
+      description: 'Rounded corners or a circle crop? How each shape works for avatars, cards, and social profiles, and when to use one, the other, or both.',
+      body: `
+<p>Rounded corners and circle crops both soften a photo, but they are not the same thing. One keeps the rectangle and curves its corners, while the other turns the image into a round shape.</p>
+<p>The difference matters for avatars, cards, and social profiles, where the shape decides how the photo fits and how it is seen. The wrong shape can cut off a face or look out of place.</p>
+<p>This article compares the two shapes directly: how they work, how they look, where each one fits, and when to combine them for the best result.</p>
+<h2 id="what-each-shape-does">What Each Shape Does</h2>
+<p>Rounded corners keep the image as a rectangle and curve the four corners along an arc. The straight edges stay, but the sharp points become smooth curves.</p>
+<p>A circle crop cuts the image into a round shape. Everything outside the circle is removed, so the photo becomes a disc with no straight edges at all.</p>
+<p>Rounded corners are a gentle change. The photo still reads as a rectangle, and the rounding is a softening rather than a transformation.</p>
+<p>A circle crop is a strong change. The photo becomes a completely different shape, and the framing must be planned around the round edge from the start.</p>
+<h2 id="how-they-look">How They Look Side by Side</h2>
+<p>A rounded-corner photo looks modern and friendly. It fits cards, thumbnails, and app interfaces, where soft edges match the design around them.</p>
+<p>A circle photo looks like an avatar or a badge. It draws the eye to the centre, which is why it suits faces and logos that need to be recognised at a glance.</p>
+<p>For a photo that should feel like a photo, rounded corners are the better choice. The image keeps its rectangular character, and the rounding is a subtle polish.</p>
+<p>For a photo that should feel like an identity, a circle is better. The round shape signals that this is a person or a brand, not just a picture.</p>
+<h2 id="avatars">Avatars: Circle Wins Most of the Time</h2>
+<p>Most platforms display avatars as circles, so a circle crop is the natural choice. A square photo uploaded as an avatar will be cropped into a circle by the platform, often badly.</p>
+<p>Crop to a square first, then apply the full circle shortcut. The result is a perfect round avatar with the face centred and nothing important cut off.</p>
+<p>Rounded corners can work for avatars on platforms that show squares. A softly rounded square feels modern, while a sharp-cornered square feels like a raw file.</p>
+<p>Keep the face well inside the frame either way. The edges are cut away in both shapes, so a face near the border may lose an ear or part of the hair.</p>
+<h2 id="cards-and-ui">Cards and UI: Rounded Corners Win</h2>
+<p>Cards are rectangles with rounded corners, and a photo inside a card should match. A rounded-corner photo with the same radius as the card looks seamless.</p>
+<p>A circle photo inside a rectangular card looks wrong. The round shape fights the card edges, and the layout feels unbalanced.</p>
+<p>For a blog card, round the top two corners and leave the bottom two square. The photo sits at the top of the card, and the square bottom aligns with the text below.</p>
+<p>Keep the radius consistent across all cards in a set. A grid of cards with matching corners looks professional, while mixed radii look random.</p>
+<h2 id="social-profiles">Social Profiles: Know the Platform</h2>
+<p>Each platform has its own avatar shape. Most use circles, some use rounded squares, and a few still use sharp squares, so check the platform before you shape the photo.</p>
+<p>For a circle platform, upload a circle crop. The platform will display it exactly as you made it, with no further cropping to surprise you.</p>
+<p>For a rounded-square platform, upload a square with a gentle radius. The platform may add its own rounding, so a small radius keeps the result predictable.</p>
+<p>When one photo must serve several platforms, make a circle version and a square version from the same original. Each platform gets the shape it expects.</p>
+<h2 id="product-photos">Product Photos: Shape and Trust</h2>
+<p>Product photos suit rounded corners, not circles. A product in a circle loses its edges, and the shape feels like a badge rather than a listing.</p>
+<p>A gentle radius of 10 to 20 pixels softens a product photo without changing its character. The item stays fully visible, and the card feels modern.</p>
+<p>Keep the radius consistent across the whole catalogue. A shop with matching rounded corners looks tidy and trustworthy, while mixed shapes look careless.</p>
+<p>For a sale badge or a promotion, a circle can work. A round badge with a discount stands out on a product page, which is the point of the promotion.</p>
+<h2 id="screenshots">Screenshots: Rounded Corners Only</h2>
+<p>Screenshots should never be circle-cropped. A circle removes the corners of the screen, which is where menus, buttons, and status bars live.</p>
+<p>A small radius of 10 to 20 pixels suits screenshots. It softens the capture into a modern card look without hiding any of the content.</p>
+<p>Export rounded screenshots as PNG. The lossless format keeps the small text sharp, which matters when the screenshot shows a setting or an error message.</p>
+<p>Keep the radius consistent across all screenshots in a guide. Matching corners help the reader follow the steps, while mixed radii distract from the instructions.</p>
+<h2 id="transparency-needs">Transparency: Both Shapes Need It</h2>
+<p>Both shapes cut away parts of the image, and the empty areas must be either transparent or filled with a solid colour. The choice matters for both.</p>
+<p>Transparent corners are the right choice for web graphics, avatars, and overlays. The image blends with any background, because the cut areas show whatever is behind it.</p>
+<p>Solid fill is the right choice when the destination cannot handle transparency. A solid white fill makes the image look like a rounded photo on a white card.</p>
+<p>Export as PNG or WebP to keep transparency. JPG has no transparency, so both shapes get a solid fill in a JPG export, which looks wrong on a coloured background.</p>
+<h2 id="radius-vs-full-circle">Radius vs Full Circle: A Spectrum, Not a Choice</h2>
+<p>Radius and circle are two points on the same spectrum. A small radius is a gentle softening, a large radius is a strong curve, and a full circle is the extreme end.</p>
+<p>Think of the radius as a dial, not a switch. You can choose any value between square and circle, and the right value depends on the destination and the design.</p>
+<p>For most photos, a small to medium radius is the sweet spot. It softens the image without changing its character, and it fits almost any interface.</p>
+<p>For avatars, go all the way to a circle. A half-rounded avatar looks indecisive, while a full circle is a clear, confident shape.</p>
+<h2 id="when-to-use-each">When to Use Each Shape</h2>
+<p>Use a circle for avatars, profile pictures, and badges. The round shape signals identity, and it is what platforms and viewers expect for a face or a logo.</p>
+<p>Use rounded corners for cards, thumbnails, screenshots, and product photos. The rectangle keeps the content intact, and the softening makes it feel modern.</p>
+<p>Use a pill shape for banners, buttons, and labels. A rectangle with fully rounded ends feels like a control, which suits interactive elements.</p>
+<p>Use sharp corners for documents, formal photos, and print. A clean edge matches the content, and rounding would feel out of place.</p>
+<h2 id="combining-both">Combining Both Shapes</h2>
+<p>You do not have to choose one shape for everything. A profile can use a circle avatar and rounded-corner post images, and the two shapes complement each other.</p>
+<p>Use circles for people and rounded corners for content. The distinction helps viewers tell identities apart from posts at a glance.</p>
+<p>Keep the radius consistent within each type. All avatars should be circles, and all cards should share the same radius, so the design feels deliberate.</p>
+<p>Do not mix circles and rounded corners on the same element. A photo that is both circled and rounded is a confused shape, and it looks like a mistake.</p>
+<h2 id="platform-rules">Platform Rules: What Each Site Expects</h2>
+<p>Social platforms crop avatars into circles, so upload a circle crop to control the framing. A square uploaded to a circle slot will be cropped by the platform, often badly.</p>
+<p>Blog and shop platforms usually show rectangular images with rounded corners. A gentle radius matches the card design, while a circle would look out of place.</p>
+<p>Messaging apps show avatars as circles in the chat list and as larger images in the profile view. A circle crop works for both, since the shape is the same.</p>
+<p>Check the rules before you shape the photo. A two-minute check of the platform size guide prevents a shape that the platform will re-crop for you.</p>
+<h2 id="common-mistakes">Common Mistakes with Shapes</h2>
+<p>The most common mistake is uploading a square to a circle slot. The platform crops it, and the face ends up off-centre or partially cut off.</p>
+<p>Another mistake is a circle crop from a rectangular photo. The result is a pill, not a circle, which does not fit an avatar slot and looks wrong.</p>
+<p>People also forget that both shapes need transparency. A circle exported as JPG gets a white fill, which shows as a white square on a dark profile background.</p>
+<p>Finally, do not use a circle for a photo that needs its corners. A landscape, a document, or a group photo loses essential content when cropped into a disc.</p>
+<h2 id="print">Shapes in Print</h2>
+<p>Printed photos rarely use circles or rounded corners, because cutting a print to a curve is extra work. A digital circle printed on rectangular paper shows a solid fill.</p>
+<p>For stickers and labels, circles and rounded corners are the point. A round sticker or a rounded label peels cleanly and looks finished.</p>
+<p>If you print a rounded image, choose a solid fill that matches the paper. A white fill on white paper looks like a rounded photo, while a transparent export printed as JPG gets a white fill anyway.</p>
+<p>For a badge or a button, a circle crop is the right shape. The round design matches the physical object, and the image fills it exactly.</p>
+<h2 id="choosing-cheat-sheet">Choosing a Shape: Quick Cheat Sheet</h2>
+<p>Use a circle for avatars, profile pictures, and badges. Crop to a square first, then apply the full circle shortcut, and export as PNG or WebP.</p>
+<p>Use rounded corners for cards, thumbnails, screenshots, and product photos. A small to medium radius softens the image without changing its character.</p>
+<p>Use a pill for banners, buttons, and labels. A rectangle with fully rounded ends feels like a control, which suits interactive elements.</p>
+<p>Use sharp corners for documents, formal photos, and print. A clean edge matches the content, and rounding would feel out of place.</p>
+<h2 id="shapes-for-messaging">Shapes for Messaging Apps</h2>
+<p>Messaging apps show avatars as circles in the chat list and as larger images in the profile view. A circle crop works for both, since the shape is the same at any size.</p>
+<p>Photos shared in chats are usually shown with rounded corners by the app itself. Upload a sharp-cornered photo and the app will round it, so there is no need to round it yourself.</p>
+<p>For a group icon, a circle crop is the standard. The round shape reads clearly at a tiny size, while a rectangular image would be cropped unpredictably by the app.</p>
+<p>Keep the face centred and well inside the frame for any messaging avatar. A face near the edge can lose an ear or part of the hair to the circular crop.</p>
+<h2 id="shapes-for-email">Shapes for Email Signatures and Newsletters</h2>
+<p>Email signatures often include a small headshot, and a circle crop is the professional choice. The round photo feels personal and modern, while a square one feels like a document.</p>
+<p>Keep the headshot small in a signature, around 100 pixels wide. A large photo dominates the signature, while a small circle adds a personal touch without taking over.</p>
+<p>For newsletter headers, rounded corners suit the design. A gentle radius matches the modern email template, while sharp corners feel like a raw file.</p>
+<p>Export email images as PNG or JPG depending on transparency. A circle avatar needs PNG or WebP for see-through corners, while a rounded photo on a white email background works fine as JPG.</p>
+<p>For the step-by-step process, see <a href="/blog/how-to-round-image-corners/">How to Round Image Corners</a> and the full overview in <a href="/blog/round-image-corners-guide/">Round Image Corners: Complete Guide</a>. To frame a rounded photo, try the <a href="/image-border-generator/">Image Border Generator</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Should my profile picture be a circle or a rounded square?',
+          answer: 'A circle is the safest choice, since most platforms display avatars as circles. Crop to a square first, then apply the full circle shortcut and export as PNG or WebP. A rounded square works only on platforms that show square avatars.',
+        },
+        {
+          question: 'Can I use a circle crop for a product photo?',
+          answer: 'Usually not. A circle cuts off the corners of the product and makes the listing look like a badge rather than a shop item. Use a gentle radius of 10 to 20 pixels instead, which softens the photo without hiding any of the product.',
+        },
+        {
+          question: 'What happens if I upload a square photo to a circle avatar slot?',
+          answer: 'The platform crops it into a circle itself, and the framing is often bad: the face can end up off-centre or partially cut off. Crop to a square and apply the circle shape yourself, so you control exactly what is kept.',
+        },
+        {
+          question: 'Do rounded corners or circle crops work better for blog cards?',
+          answer: 'Rounded corners, since cards are rectangles. Round the top two corners and leave the bottom two square so the photo sits neatly above the text. A circle inside a rectangular card fights the card edges and looks unbalanced.',
+        },
+        {
+          question: 'Can I combine a circle avatar with rounded post images?',
+          answer: 'Yes, and it works well. Use circles for people and rounded corners for content, keeping the radius consistent within each type. The distinction helps viewers tell identities apart from posts at a glance.',
+        },
+        {
+          question: 'Does a circle crop change the file size much?',
+          answer: 'Only slightly. The circle removes the corner pixels, so the file is a little smaller than the square it came from. The export format matters more: PNG is larger than JPG, while WebP gives small files with transparency.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-border-generator', '/image-cropper', '/add-background-to-image'],
+  },
+  {
+    id: 'image-brightness-editor-guide',
+    toolSlug: '/image-brightness-editor',
+    categoryId: 'crop-edit',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-brightness-editor-guide',
+      title: 'Image Brightness Editor: Complete Guide',
+      description: 'Learn how to adjust image brightness online: the brightness slider, quick presets, compare modes, and how to fix dark photos without washing them out.',
+      body: `
+<p>Brightness is the simplest photo fix, and the one people reach for first. A dark photo becomes visible, a washed-out photo gains depth, and a dull shot comes back to life.</p>
+<p>But brightness is easy to overdo. Push it too far and the photo turns flat and grey, with blown-out highlights and no detail left in the bright areas.</p>
+<p>This guide explains how brightness works, how to use the slider and presets well, and how to fix dark photos without destroying them. It covers portraits, landscapes, screenshots, and the mistakes that ruin a good image.</p>
+<h2 id="what-brightness-does">What Brightness Actually Does</h2>
+<p>Brightness shifts every pixel in the image toward white or toward black. Raising it makes dark areas lighter and light areas even lighter, while lowering it darkens everything.</p>
+<p>The change is uniform across the whole image. A brightness adjustment does not pick out the shadows or the highlights; it moves the entire tonal range up or down together.</p>
+<p>That uniformity is both the strength and the weakness of brightness. It is the fastest way to fix an overall dark or light photo, but it cannot fix a photo that is dark in one part and bright in another.</p>
+<p>Think of brightness as turning the lights up or down in a room. Everything gets brighter or darker together, and the relative differences between objects stay the same.</p>
+<h2 id="why-photos-are-dark">Why Photos Come Out Dark</h2>
+<p>Phone cameras often underexpose in tricky light. A bright sky behind a person, a window in the background, or a strong light source can fool the camera into darkening the subject.</p>
+<p>Indoor photos are dark for a simpler reason: there is not enough light. A room lit by a single bulb gives the camera far less light than an outdoor scene, and the photo shows it.</p>
+<p>Scanned documents and old photos are often dark too. Age fades prints, scanners misread the tones, and the result is a grey, murky image that needs brightening.</p>
+<p>Screenshots can be dark when the screen itself was dim. A photo of a screen, or a capture taken with the brightness turned down, needs a lift to be readable.</p>
+<h2 id="brightening-vs-exposure">Brightening vs Exposure: Are They the Same?</h2>
+<p>Brightness and exposure are related but not identical. Exposure changes how much light the camera captured, while brightness changes how the captured pixels are displayed.</p>
+<p>In an editor, the two controls often feel similar, because both make the image lighter or darker. The difference is in how they treat the extremes of the tonal range.</p>
+<p>Exposure adjustments tend to affect the highlights and shadows differently, preserving more detail at the edges. Brightness moves everything evenly, which can wash out the bright areas faster.</p>
+<p>For a quick fix in a browser editor, brightness is the right tool. It is simple, predictable, and fast, and for most photos it gives the result you want.</p>
+<h2 id="slider-explained">The Brightness Slider, Explained</h2>
+<p>The brightness slider runs from negative to positive values, with zero meaning no change. Moving it right brightens the image, and moving it left darkens it.</p>
+<p>Small moves make a big difference. A change of 10 to 15 percent is often enough to fix a dark photo, and larger moves quickly wash out the highlights.</p>
+<p>The tool previews your photo at plus 15 percent right after upload. That starting point gives you an immediate sense of what a moderate brightening looks like.</p>
+<p>Drag the slider slowly and watch the preview. The live update shows exactly how the image responds, so you can stop at the point where the photo looks right.</p>
+<h2 id="quick-presets">Quick Presets for One-Click Fixes</h2>
+<p>The tool includes quick presets that apply common brightness values in one click. They are a fast way to test different levels without dragging the slider.</p>
+<p>Presets are a starting point, not a final answer. Click one, look at the preview, and then fine-tune with the slider if the result is close but not quite right.</p>
+<p>Use presets to compare options quickly. A preset at plus 15 percent next to one at plus 30 percent shows you how much brightening the photo can take before it washes out.</p>
+<p>For a batch of similar photos, the same preset keeps the results consistent. A set of dark indoor shots all brightened by the same amount looks like a series.</p>
+<h2 id="compare-modes">Compare Modes: Before, After, and Split</h2>
+<p>Compare modes show you the original and the edited version together. The After view shows the brightened image, the Before view shows the original, and the Split view shows both side by side.</p>
+<p>Split compare is the most useful for brightness work. It lets you see exactly which areas improved and which areas washed out, with a clear line between the two versions.</p>
+<p>Fullscreen compare gives you the largest view. It is the best way to judge a brightened photo, because the full-size image shows details that a small preview hides.</p>
+<p>Use the Hold to View Original option for a quick check. Press and hold to see the original, release to see the edit, and the difference is immediately obvious.</p>
+<h2 id="brightening-portraits">Brightening Portraits</h2>
+<p>Portraits need gentle brightening. A face that is too dark hides the eyes and the expression, but a face that is too bright loses skin texture and looks flat.</p>
+<p>Start with a small increase of 10 to 15 percent and check the skin tones. The face should look naturally lit, not as though a flash went off at close range.</p>
+<p>Watch the highlights on the forehead and the nose. Those areas blow out first, and a brightened portrait with white patches on the face looks worse than a dark one.</p>
+<p>For a portrait taken against a bright window, brightening alone may not be enough. The face and the background need different treatment, and a brightness fix can only move both together.</p>
+<h2 id="brightening-landscapes">Brightening Landscapes</h2>
+<p>Landscapes often need brightening in the shadows while the sky stays bright. A uniform brightness increase can wash out the sky while it fixes the foreground.</p>
+<p>Use a moderate increase and check the sky first. If the clouds lose their shape and turn into a white blank, you have gone too far.</p>
+<p>For a landscape with a dark foreground and a bright sky, brighten gently and accept some compromise. The goal is a balanced image, not a perfect one.</p>
+<p>Morning and evening photos benefit most from brightening. The low light gives rich colours, and a small lift brings out the detail without killing the mood.</p>
+<h2 id="brightening-screenshots">Brightening Screenshots and Documents</h2>
+<p>Screenshots and scanned documents need more aggressive brightening than photos. Text must be readable, and a dark scan with grey text is useless.</p>
+<p>Paste a screenshot directly with Ctrl+V to skip the save step. The image appears in the editor immediately, ready to brighten.</p>
+<p>Increase the brightness until the text is clear and the background is white. A document with a clean white background and dark text is easy to read and to print.</p>
+<p>Watch for noise in dark areas. A heavily brightened screenshot can show faint block patterns, especially in a JPEG that was already compressed.</p>
+<h2 id="darkening-photos">When to Darken Instead of Brighten</h2>
+<p>Darkening is useful when a photo is overexposed. A bright, washed-out image with no shadows needs negative brightness to bring back depth and contrast.</p>
+<p>Use negative values like minus 15 or minus 30 percent for a photo that is too bright. The shadows deepen, the colours gain richness, and the image feels more solid.</p>
+<p>Darkening also helps when a photo will sit behind text. A darkened image makes white text readable, which is useful for slides, posters, and social graphics.</p>
+<p>For a photo that is both too bright in the sky and too dark in the foreground, neither direction alone will fix it. Accept a compromise or use a different edit.</p>
+<h2 id="noise-and-quality">Noise, Quality, and the Limits of Brightening</h2>
+<p>Brightening reveals noise. A dark photo hides its grain in the shadows, and lifting the brightness brings that grain into view as a speckled texture.</p>
+<p>JPEG compression makes the problem worse. A dark, compressed JPEG shows faint block patterns when brightened strongly, because the compression artefacts become visible.</p>
+<p>The fix is to brighten gently and to start from the best original you have. A photo taken in good light needs less brightening, and less brightening means less noise.</p>
+<p>Brightening does not change the pixel dimensions or the resolution. The image stays the same size, and only the tones change, so there is no loss of detail from the edit itself.</p>
+<h2 id="formats-and-export">Formats and Export</h2>
+<p>The tool accepts common image formats, including JPG, PNG, WebP, and HEIC, with files up to 20 MB. You can export as JPG, PNG, or WebP depending on your needs.</p>
+<p>Exporting as PNG or WebP preserves transparency in the base image. If your source is a transparent PNG graphic, the brightened export keeps the see-through areas intact.</p>
+<p>For photos, JPG at a high quality setting works well. Brightening does not add much to the file size, so the export stays close to the original weight.</p>
+<p>The quality slider appears for JPG and WebP exports and hides for PNG, because PNG is lossless and has no quality setting to adjust.</p>
+<h2 id="brightness-and-contrast">Brightness and Contrast Work Together</h2>
+<p>Brightness and contrast are partners. Brightness moves the whole tonal range up or down, while contrast stretches or squeezes the distance between the dark and light ends.</p>
+<p>A photo that is both dark and flat needs both adjustments. Brighten first to lift the overall level, then add contrast to restore the depth that brightening washed out.</p>
+<p>Use the <a href="/image-contrast-editor/">Image Contrast Editor</a> after brightening when the image looks grey and lifeless. A small contrast boost brings back the shadows and the highlights.</p>
+<p>For a full comparison of the two controls, read <a href="/blog/brightness-vs-exposure-vs-contrast/">Brightness vs Exposure vs Contrast: Editing Basics</a>.</p>
+<h2 id="privacy-local-processing">Privacy: Editing Without Uploading</h2>
+<p>All brightness editing happens in your browser. Your photos are never uploaded to a server, which matters when the images are personal, family photos, or client work.</p>
+<p>This is a real advantage over cloud editors. A family photo or a private document should not travel to a server you cannot see, just to make it brighter.</p>
+<p>The tool also strips EXIF GPS data on export. A brightened photo downloaded from the tool carries no record of where it was taken.</p>
+<p>Keep the original photo without edits. Once a brightness change is flattened into an export, it cannot be undone from that file, so the original is your only clean copy.</p>
+<h2 id="common-mistakes">Common Mistakes When Adjusting Brightness</h2>
+<p>The most common mistake is brightening too much. A photo pushed to plus 50 or plus 100 percent loses its highlights entirely, and the result is a flat, white image with no detail.</p>
+<p>Another mistake is brightening a photo that is already bright. An overexposed image needs darkening, not brightening, and adding more light only makes it worse.</p>
+<p>People also forget to check the highlights. A face or a sky that looks fine in a small preview may be blown out at full size, so always check the result large.</p>
+<p>Finally, do not brighten the same JPG repeatedly. Each save adds damage, so always return to the original file when you want a different brightness level.</p>
+<h2 id="brightness-workflow">A Workflow for Clean Brightness Edits</h2>
+<p>Start with the original file and decide how much brightening it needs. A slightly dark photo needs 10 to 15 percent, while a very dark one may need 30 percent or more.</p>
+<p>Apply the brightness, then check the compare view. The split view shows exactly which areas improved and which areas washed out.</p>
+<p>Add contrast if the image looks flat after brightening. A small contrast boost restores the depth that a brightness increase can wash away.</p>
+<p>Export at a high quality setting and check the result at full size. Zoom into the bright areas and confirm that no detail was lost to over-brightening.</p>
+<h2 id="brightening-for-social">Brightening Photos for Social Media</h2>
+<p>Social feeds favour bright, clear photos. A dark photo gets scrolled past, while a well-lit one stops the thumb and earns a second look.</p>
+<p>Brighten social photos a little more than you would for print. Screens vary in brightness, and a photo that looks fine on your phone may look dark on someone else's.</p>
+<p>Keep the brightening natural. A photo pushed too far looks artificial, and followers can tell when the light does not match the scene.</p>
+<p>Test the brightened photo at feed size before posting. A photo that looks good at full size may be too dark or too bright in a small preview, so check before you publish.</p>
+<p>For the step-by-step process, see <a href="/blog/how-to-adjust-image-brightness/">How to Adjust Image Brightness</a>. For the comparison, read <a href="/blog/brightness-vs-exposure-vs-contrast/">Brightness vs Exposure vs Contrast: Editing Basics</a>, and to fix flat contrast after brightening, try the <a href="/image-contrast-editor/">Image Contrast Editor</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How much should I brighten a dark photo?',
+          answer: 'Start with 10 to 15 percent and check the preview. Most dark photos need only a small lift, and larger moves quickly wash out the highlights. Increase in small steps and stop when the subject is clearly visible without the bright areas turning white.',
+        },
+        {
+          question: 'Why does my photo look washed out after brightening?',
+          answer: 'The brightness was pushed too far, which lifts the highlights into pure white and removes all detail from the bright areas. Reduce the slider until the sky, skin, and light surfaces show texture again. Adding a little contrast afterwards can also restore depth.',
+        },
+        {
+          question: 'Can brightening fix a photo taken in very low light?',
+          answer: 'Partly. Brightening makes a dark photo visible, but it also reveals noise and compression artefacts that were hidden in the shadows. A gentle lift from a good original works best. A photo that is almost black cannot be rescued by brightness alone.',
+        },
+        {
+          question: 'Should I brighten a photo before or after cropping it?',
+          answer: 'Brighten after cropping, so you judge the brightness on the final framing. Cropping first also removes dark areas you do not need, which can change how much brightening the kept area requires.',
+        },
+        {
+          question: 'Does brightening an image change its file size?',
+          answer: 'Only slightly. Brightening changes pixel values, not pixel counts, so the file size stays close to the original. The export format and quality setting matter far more: a JPG at high quality is larger than the same image at low quality.',
+        },
+        {
+          question: 'Is it safe to brighten a personal photo in a browser tool?',
+          answer: 'Yes, because all processing happens locally in your browser and nothing is uploaded to a server. The tool also strips EXIF GPS data on export. Keep the original file if you want to preserve the location data or try a different brightness level later.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-contrast-editor', '/image-saturation-editor', '/image-filters'],
+  },
+  {
+    id: 'how-to-adjust-image-brightness',
+    toolSlug: '/image-brightness-editor',
+    categoryId: 'crop-edit',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-adjust-image-brightness',
+      title: 'How to Adjust Image Brightness',
+      description: 'Adjust image brightness in minutes: upload, drag the slider, try a preset, compare before and after, and download a clean, well-lit photo.',
+      body: `
+<p>Adjusting brightness takes only a few minutes. You upload the photo, drag a slider, check the result, and download the brighter version.</p>
+<p>This how-to walks through the whole process step by step. It covers the slider, the quick presets, the compare modes, and the export settings that keep the result looking natural.</p>
+<p>By the end you will be able to fix a dark portrait, a dull landscape, or a murky screenshot on any device. Keep the original photo until you have checked the result.</p>
+<h2 id="before-you-start">Before You Start: Judge How Dark It Is</h2>
+<p>Look at the photo before you open the tool. Is it slightly dark, very dark, or only dark in one area? The answer tells you how much brightening it needs.</p>
+<p>A slightly dark photo needs 10 to 15 percent. A very dark one may need 30 percent or more, but large moves risk washing out the highlights.</p>
+<p>Check whether the photo is also flat or dull. A dark, flat photo needs brightness and contrast together, so plan for both edits, not just one.</p>
+<p>Open the <a href="/image-brightness-editor/">Image Brightness Editor</a> in your browser. Everything runs locally, so your photo is never uploaded to a server.</p>
+<h2 id="step-by-step">Adjust Brightness in Five Steps</h2>
+<p>The process is the same for a photo, a screenshot, or a scanned document. Upload, adjust, compare, export, and verify the download.</p>
+<p>Take your time with the slider. Small moves make a big difference, and the preview shows you exactly when the photo looks right.</p>
+<ol>
+<li>Upload your image by dragging it into the dropzone, choosing it from your device, or pasting a screenshot with Ctrl+V.</li>
+<li>Drag the Brightness Level slider to the right to brighten or to the left to darken, watching the live preview.</li>
+<li>Try a quick preset for a one-click test, then fine-tune with the slider if the result is close but not quite right.</li>
+<li>Use the After, Before, Split Compare, or Fullscreen Compare modes to check the result against the original.</li>
+<li>Choose the export format and quality, then click Download to save the adjusted image.</li>
+</ol>
+<p>Open the downloaded file once before you use it. Confirm the photo looks naturally lit and no bright areas turned white.</p>
+<h2 id="using-the-slider">Using the Brightness Slider</h2>
+<p>The slider runs from negative to positive values, with zero meaning no change. Moving it right brightens the image, and moving it left darkens it.</p>
+<p>Drag slowly and watch the preview. The live update shows exactly how the image responds, so you can stop at the point where the photo looks right.</p>
+<p>Small moves are better than large ones. A change of 10 to 15 percent is often enough, and larger moves quickly wash out the highlights.</p>
+<p>The tool previews your photo at plus 15 percent right after upload. That starting point gives you an immediate sense of what a moderate brightening looks like.</p>
+<h2 id="using-quick-presets">Using the Quick Presets</h2>
+<p>The tool includes quick presets that apply common brightness values in one click. They are a fast way to test different levels without dragging the slider.</p>
+<p>Click a preset and look at the preview. If the result is close but not quite right, fine-tune with the slider from that point.</p>
+<p>Use presets to compare options quickly. A preset at plus 15 percent next to one at plus 30 percent shows you how much brightening the photo can take.</p>
+<p>For a batch of similar photos, the same preset keeps the results consistent. A set of dark indoor shots all brightened by the same amount looks like a series.</p>
+<h2 id="using-compare-modes">Using the Compare Modes</h2>
+<p>Compare modes show you the original and the edited version together. The After view shows the brightened image, and the Before view shows the original.</p>
+<p>Split Compare is the most useful for brightness work. It shows both versions side by side with a clear line between them, so you can see exactly what changed.</p>
+<p>Fullscreen Compare gives you the largest view. It is the best way to judge a brightened photo, because the full-size image shows details that a small preview hides.</p>
+<p>Check the compare view before every download. A quick look catches over-brightening that a small preview might hide.</p>
+<h2 id="brightening-a-dark-photo">Brightening a Dark Photo</h2>
+<p>Upload the dark photo and drag the slider to plus 15 percent. Check the preview: the subject should be clearly visible, and the bright areas should still show detail.</p>
+<p>If the photo is still too dark, increase the slider in small steps of 5 percent. Each step adds a little more light, and the preview shows when to stop.</p>
+<p>Watch the highlights as you go. The forehead, the sky, and any white surfaces will blow out first, and a photo with white patches looks worse than a dark one.</p>
+<p>If the photo looks flat after brightening, add contrast. Open the <a href="/image-contrast-editor/">Image Contrast Editor</a> and apply a small boost to restore depth.</p>
+<h2 id="darkening-a-bright-photo">Darkening a Bright Photo</h2>
+<p>Drag the slider to the left for a photo that is too bright. Negative values like minus 15 or minus 30 percent deepen the shadows and restore richness.</p>
+<p>Check the shadows as you darken. They should gain depth without turning into solid black patches with no detail at all.</p>
+<p>Darkening also helps when a photo will sit behind text. A darkened image makes white text readable, which suits slides, posters, and social graphics.</p>
+<p>For a photo that is both too bright in the sky and too dark in the foreground, accept a compromise. Brightness moves everything together, so neither direction alone will fix both areas.</p>
+<h2 id="fixing-a-screenshot">Fixing a Dark Screenshot</h2>
+<p>Paste a screenshot directly with Ctrl+V to skip the save step. The image appears in the editor immediately, ready to brighten.</p>
+<p>Increase the brightness until the text is clear and the background is white. A document with a clean white background and dark text is easy to read and to print.</p>
+<p>Watch for noise in dark areas. A heavily brightened screenshot can show faint block patterns, especially in a JPEG that was already compressed.</p>
+<p>Export screenshots as PNG. The lossless format keeps the small text sharp, which matters when the screenshot shows a setting or an error message.</p>
+<h2 id="previewing">Previewing Before You Download</h2>
+<p>Always preview before downloading. Check that the photo looks naturally lit, that no bright areas turned white, and that the subject is clearly visible.</p>
+<p>Use the split compare view to check the change. It shows the original and the edited version side by side, so you can see exactly what the brightness did.</p>
+<p>Zoom into the bright areas at full size. A sky or a forehead that looks fine in a small preview may be blown out when viewed large.</p>
+<p>If the result looks washed out, reduce the slider by 5 percent and check again. Small reductions often restore the detail without making the photo dark again.</p>
+<h2 id="choosing-export-format">Choosing the Export Format</h2>
+<p>Choose JPG for photos you plan to share. It keeps file sizes small and works everywhere, and a high quality setting keeps the brightened photo looking clean.</p>
+<p>Choose PNG for screenshots and graphics with text. PNG is lossless, so the edges of letters stay sharp, and it preserves transparency when you need it.</p>
+<p>Choose WebP when you want small files with good quality. It works well for web images, though a few older systems still reject the format.</p>
+<p>Remember that the quality slider hides for PNG, because PNG is lossless and has no quality setting to adjust. That is normal behaviour, not a problem with the tool.</p>
+<h2 id="adjusting-on-mobile">Adjusting Brightness on a Phone or Tablet</h2>
+<p>The tool works on touchscreens, so you can fix a dark photo on the phone that took it. Upload from your gallery, drag the slider with your finger, and download the result.</p>
+<p>Dragging a slider with a finger is less precise than with a mouse. Use the quick presets for exact values, then fine-tune with small drags.</p>
+<p>Check the preview at full size before downloading. A brightness change that looks fine on a small phone screen may be too strong when viewed on a computer.</p>
+<p>Downloaded files save to your usual downloads folder. From there you can share the brightened photo directly to a chat app, an email, or a social post.</p>
+<h2 id="troubleshooting">Troubleshooting Common Brightness Problems</h2>
+<p>If the photo looks washed out, the slider is too high. Reduce it in small steps until the highlights show detail again, then check the shadows.</p>
+<p>If the photo is still dark after brightening, the original may be too dark to rescue. A photo that is almost black cannot be fixed by brightness alone, and a retake is the better option.</p>
+<p>If noise appears in the shadows, the brightening is too strong for the source. Reduce the slider and accept a slightly darker photo, or start from a better original.</p>
+<p>If the preview looks different from the download, check the export format and quality. A low JPG quality setting can soften the whole image, including the bright areas.</p>
+<h2 id="brightness-plus-contrast">Brightness Plus Contrast: The Common Pair</h2>
+<p>A photo that is both dark and flat needs brightness and contrast together. Brighten first to lift the overall level, then add contrast to restore depth.</p>
+<p>Use the <a href="/image-contrast-editor/">Image Contrast Editor</a> after brightening when the image looks grey and lifeless. A small contrast boost brings back the shadows and the highlights.</p>
+<p>Do the steps in order: brightness first, then contrast. Reversing them can make the contrast adjustment harder to judge, because the image is still dark.</p>
+<p>Check the compare view after each step. The split view shows exactly what each adjustment did, so you can stop when the photo looks right.</p>
+<h2 id="saving-settings">Saving Your Settings for Next Time</h2>
+<p>Note down the brightness value that worked for a set of similar photos. A short note, such as indoor shots plus 20 percent, saves you from guessing next time.</p>
+<p>For a batch of photos taken in the same light, use the same value for all of them. Consistent brightness across a set looks professional, while mixed values look random.</p>
+<p>Keep the original files. A brightness value that works for one photo may not suit another, and the original lets you try a different level without extra damage.</p>
+<p>Review your notes occasionally. As your camera and your lighting improve, the brightness values you need will change, and old notes can mislead you.</p>
+<h2 id="quick-tips">Quick Tips for Better Brightness</h2>
+<p>Brighten in small steps. A change of 5 percent at a time gives you control, while a large jump can overshoot the right value before you notice.</p>
+<p>Check the highlights, not just the shadows. A photo is over-brightened when the bright areas lose detail, even if the dark areas look good.</p>
+<p>Use the compare view every time. A quick look at the original next to the edit catches mistakes that a small preview hides.</p>
+<p>Save the original photo without edits. Once a brightness change is flattened into an export, it cannot be undone from that file.</p>
+<h2 id="brightening-for-presentation">Brightening a Photo for a Presentation</h2>
+<p>A photo used on a slide needs to be bright enough to see from the back of the room. A dark image on a large screen looks muddy, while a well-lit one reads clearly.</p>
+<p>Brighten slide photos a little more than you would for a feed. Projectors wash out colours and reduce brightness, so a photo that looks fine on a laptop may look dark when projected.</p>
+<p>Check the photo on the actual projector if you can. A test slide shows whether the brightness holds up in the room, where the light is very different from your desk.</p>
+<p>Keep the brightening even across the slide. A photo that is bright in one corner and dark in another distracts the audience from the words on top of it.</p>
+<h2 id="brightening-old-scans">Brightening Old Scanned Photos</h2>
+<p>Old scanned photos are often dark and faded. Age dulls the print, the scanner misreads the tones, and the result is a grey, murky image that needs a lift.</p>
+<p>Increase the brightness in small steps and watch the faces. The goal is a photo that looks like the original print did when it was new, not a washed-out version of it.</p>
+<p>Old scans often need contrast as well as brightness. The faded print has little tonal range, so a brightness lift plus a small contrast boost restores the depth.</p>
+<p>Work from the best scan you have. A high-resolution scan brightens far better than a low-resolution one, because there is more detail for the edit to reveal.</p>
+<p>For the comparison, read <a href="/blog/brightness-vs-exposure-vs-contrast/">Brightness vs Exposure vs Contrast: Editing Basics</a>. For the full overview, see <a href="/blog/image-brightness-editor-guide/">Image Brightness Editor: Complete Guide</a>, and to fix flat contrast after brightening, try the <a href="/image-contrast-editor/">Image Contrast Editor</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I brighten a photo on my phone?',
+          answer: 'Open the Image Brightness Editor in your phone browser, upload the photo from your gallery, and drag the slider to the right with your finger. Use a quick preset for an exact value, check the compare view, and download the result.',
+        },
+        {
+          question: 'What brightness value should I use for a dark indoor photo?',
+          answer: 'Start at plus 15 percent, which is the tool preview value, and increase in steps of 5 percent until the subject is clearly visible. Most indoor photos need 15 to 30 percent. Stop before the bright areas, such as windows or lamps, turn white.',
+        },
+        {
+          question: 'Can I darken a photo that is too bright?',
+          answer: 'Yes. Drag the slider to the left into negative values, such as minus 15 or minus 30 percent. Darkening deepens the shadows and restores richness to an overexposed photo. Check the shadows so they do not turn into solid black patches.',
+        },
+        {
+          question: 'Why does my brightened photo show grainy noise?',
+          answer: 'Brightening reveals noise that was hidden in the shadows, and JPEG compression makes it worse. Reduce the slider and accept a slightly darker photo, or start from a better original taken in good light. A gentle lift shows far less noise than a strong one.',
+        },
+        {
+          question: 'Should I adjust brightness before or after contrast?',
+          answer: 'Brightness first, then contrast. Brightening lifts the overall level, and contrast restores the depth that brightening can wash out. Doing them in this order makes each adjustment easier to judge in the compare view.',
+        },
+        {
+          question: 'Can I undo a brightness change after downloading?',
+          answer: 'Not from the downloaded file, since the change is flattened into the export. Keep the original photo so you can try a different brightness level. In the tool, use the reset option to return to zero before you download.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-contrast-editor', '/image-saturation-editor', '/image-filters'],
+  },
+  {
+    id: 'brightness-vs-exposure-vs-contrast',
+    toolSlug: '/image-brightness-editor',
+    categoryId: 'crop-edit',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'brightness-vs-exposure-vs-contrast',
+      title: 'Brightness vs Exposure vs Contrast: Editing Basics',
+      description: 'Brightness, exposure, and contrast explained: what each one does to a photo, how they interact, and which control to reach for in each situation.',
+      body: `
+<p>Brightness, exposure, and contrast are the three controls every photo editor offers, and they are easy to confuse. All three make a photo lighter or darker, but they do it in different ways.</p>
+<p>Using the wrong one gives a worse result. A photo that needs contrast will look washed out if you only brighten it, and a photo that needs brightness will look harsh if you only add contrast.</p>
+<p>This article explains each control, how they differ, how they interact, and which one to reach for in each situation. It is the foundation for every other photo edit you will make.</p>
+<h2 id="what-each-does">What Each Control Does</h2>
+<p>Brightness shifts every pixel toward white or toward black, evenly across the whole image. It is the simplest control, and it fixes an overall dark or light photo.</p>
+<p>Exposure changes how much light the image appears to have captured. It affects the highlights and shadows differently, preserving more detail at the extremes than brightness does.</p>
+<p>Contrast stretches or squeezes the distance between the darkest and lightest parts of the image. Raising it makes darks darker and lights lighter, while lowering it makes everything more similar.</p>
+<p>Think of it this way: brightness moves the whole tonal range, exposure reshapes it, and contrast stretches it. Each one solves a different problem.</p>
+<h2 id="brightness-explained">Brightness, Explained Simply</h2>
+<p>Brightness is a uniform shift. Every pixel gets lighter or darker by the same amount, so the relative differences between objects stay the same.</p>
+<p>It is the fastest fix for a photo that is too dark or too light overall. A dark indoor shot brightened by 15 percent becomes visible, and the change is predictable.</p>
+<p>The weakness of brightness is the extremes. Pushing it too far washes out the highlights and turns bright areas into featureless white, because everything moves together.</p>
+<p>Use brightness when the whole photo needs to go up or down. It is the right tool for an overall exposure problem, and the wrong tool for a photo that is dark in one part only.</p>
+<h2 id="exposure-explained">Exposure, Explained Simply</h2>
+<p>Exposure mimics the camera setting of the same name. In a camera, exposure is how much light hits the sensor, and in an editor, it simulates changing that amount.</p>
+<p>Unlike brightness, exposure treats the tonal range unevenly. It has a stronger effect on the midtones and a gentler effect on the extreme highlights and shadows, which preserves more detail.</p>
+<p>That makes exposure a better choice when the highlights matter. A bright sky keeps its shape under an exposure change, while a brightness change can wash it out.</p>
+<p>Many browser editors offer brightness rather than exposure, because it is simpler to implement. When only brightness is available, use small steps and check the highlights carefully.</p>
+<h2 id="contrast-explained">Contrast, Explained Simply</h2>
+<p>Contrast is about difference. A high-contrast image has deep blacks and bright whites with a strong gap between them, while a low-contrast image has everything bunched in the middle.</p>
+<p>Raising contrast makes darks darker and lights lighter. It adds punch and depth to a flat photo, but it can also crush the shadows into black and clip the highlights into white.</p>
+<p>Lowering contrast does the opposite. It softens the image, bringing the darks and lights closer together, which suits hazy photos and soft portraits.</p>
+<p>Use contrast when a photo looks flat and grey, even though its overall brightness is right. The problem is not the level, but the spread.</p>
+<h2 id="how-they-interact">How the Three Controls Interact</h2>
+<p>Brightness and contrast interact directly. Brightening a photo often makes it look flat, because lifting the shadows reduces the gap between dark and light, and adding contrast restores it.</p>
+<p>Exposure and contrast interact too. An exposure increase can wash out the highlights, while a contrast increase brings back the depth that the exposure change removed.</p>
+<p>The common pattern is to adjust brightness first, then contrast. Brightness sets the overall level, and contrast refines the spread around that level.</p>
+<p>Changing one control changes what the others need. After a big brightness move, re-check the contrast, and after a big contrast move, re-check the brightness.</p>
+<h2 id="when-to-use-brightness">When to Use Brightness</h2>
+<p>Use brightness when the whole photo is too dark or too light. A dark indoor shot, a dull overcast landscape, or a murky scan all need an overall lift.</p>
+<p>Brightness is also the right choice for screenshots and documents. Text must be readable, and a uniform lift makes a dark scan clear without changing its character.</p>
+<p>For a photo that will sit behind text, brightness is the tool to darken it. A darkened image makes white text readable, which suits slides and posters.</p>
+<p>Avoid brightness when only part of the photo is wrong. A dark foreground with a bright sky needs a different approach, because brightness moves both parts together.</p>
+<h2 id="when-to-use-exposure">When to Use Exposure</h2>
+<p>Use exposure when the highlights matter. A landscape with a detailed sky, a portrait with bright skin highlights, or a product photo with shiny surfaces all need the gentler touch of exposure.</p>
+<p>Exposure is the better choice for a photo that is slightly off. A small exposure change corrects the level without the harsh washout that a large brightness move can cause.</p>
+<p>When your editor offers only brightness, simulate exposure by using small brightness steps and checking the highlights after each one. The result is close enough for most photos.</p>
+<p>For a photo taken in strong sunlight, exposure is the safer control. It preserves the bright areas while lifting the shadows, which brightness cannot do.</p>
+<h2 id="when-to-use-contrast">When to Use Contrast</h2>
+<p>Use contrast when a photo looks flat and grey, even though its overall brightness is right. The problem is the spread, not the level, and only contrast fixes the spread.</p>
+<p>Contrast is the right choice for hazy photos, foggy landscapes, and dull indoor shots. A small boost adds punch and makes the image feel solid again.</p>
+<p>Use negative contrast to soften a harsh photo. Midday portraits with strong shadows benefit from a gentler spread, which flattens the harsh edges.</p>
+<p>Avoid large contrast moves on photos with important shadow or highlight detail. The extremes clip first, and a clipped sky or a crushed shadow cannot be recovered.</p>
+<h2 id="order-of-edits">The Right Order: Brightness, Then Contrast</h2>
+<p>Start with brightness, because it sets the overall level. A photo that is too dark needs lifting before you can judge its contrast, and a photo that is too bright needs darkening first.</p>
+<p>Next, adjust the contrast. With the level set, you can see whether the image is flat or punchy, and a small contrast move fixes the spread.</p>
+<p>Finally, check the brightness again. A contrast change can make the image feel darker or lighter, so a small brightness tweak after contrast often improves the result.</p>
+<p>Work in small steps at each stage. A 10 percent brightness move followed by a 10 percent contrast move is easier to control than a single 30 percent move of either control.</p>
+<h2 id="portraits">Portraits: Which Control Matters Most</h2>
+<p>Portraits need gentle brightness and careful contrast. A face that is too dark hides the expression, but a face with too much contrast looks harsh and aged.</p>
+<p>Start with a small brightness lift of 10 to 15 percent. Check the skin tones: they should look naturally lit, not as though a flash went off at close range.</p>
+<p>Add contrast only if the portrait looks flat. A small boost of 10 percent is usually enough, and larger moves can make the skin look rough.</p>
+<p>For a portrait taken against a bright window, no single control fixes both the face and the background. Brighten gently and accept a compromise, or retake the photo.</p>
+<h2 id="landscapes">Landscapes: Balancing Sky and Foreground</h2>
+<p>Landscapes often need brightness for the foreground and restraint for the sky. A uniform brightness increase can wash out the clouds while it fixes the ground.</p>
+<p>Use a moderate brightness increase and check the sky first. If the clouds lose their shape, you have gone too far, and a smaller move is the right answer.</p>
+<p>Add contrast to bring back the depth that brightening removed. A landscape with a clear sky and a detailed foreground needs both controls working together.</p>
+<p>Morning and evening landscapes benefit most from this pair. The low light gives rich colours, and a small brightness lift plus a small contrast boost brings out the detail.</p>
+<h2 id="screenshots">Screenshots and Documents: Brightness First</h2>
+<p>Screenshots and scanned documents need brightness more than contrast. The goal is readable text on a clean background, and a uniform lift achieves that directly.</p>
+<p>Increase the brightness until the text is clear and the background is white. A document with a clean white background and dark text is easy to read and to print.</p>
+<p>Add contrast only if the text still looks grey after brightening. A small boost darkens the letters and sharpens the edges, which helps small text most.</p>
+<p>Export screenshots as PNG. The lossless format keeps the text sharp, which matters more than file size when the screenshot is meant to be read.</p>
+<h2 id="text-over-photos">Text Over Photos: Contrast Is the Key</h2>
+<p>Text on a photo needs contrast between the letters and the background. A bright photo with white text fails, and a dark photo with black text fails just as badly.</p>
+<p>Darken the photo behind the text to make white letters readable. A brightness decrease of 20 to 30 percent over the whole image creates a dark zone for the text.</p>
+<p>Alternatively, increase the contrast of the photo to separate the light and dark areas. A high-contrast background gives the text a clearer surface to sit on.</p>
+<p>For the full guide to readable text, read <a href="/blog/contrast-readability-text-over-photos/">Contrast for Readability: Text Over Photos</a>.</p>
+<h2 id="common-confusions">Common Confusions Between the Three</h2>
+<p>The most common confusion is treating brightness and contrast as the same thing. They are not: brightness moves the level, while contrast changes the spread, and a photo can need one without the other.</p>
+<p>Another confusion is using brightness to fix a flat photo. A flat photo is already at the right level, so brightening it only makes it brighter and flatter, not better.</p>
+<p>People also use contrast to fix a dark photo. A dark photo with high contrast is still dark, just with deeper shadows, and the subject stays hidden.</p>
+<p>The fix is to diagnose before you edit. Ask whether the photo is too dark, too flat, or both, and choose the control that matches the diagnosis.</p>
+<h2 id="testing-combinations">Testing Combinations Before You Commit</h2>
+<p>Test brightness and contrast together in small steps. A 10 percent brightness lift plus a 10 percent contrast boost is a good starting point for a dark, flat photo.</p>
+<p>Use the compare view after each change. The split view shows exactly what each adjustment did, so you can stop when the photo looks right.</p>
+<p>Check the highlights and the shadows separately. The highlights clip first under brightness, and the shadows crush first under contrast, so both extremes need attention.</p>
+<p>When a combination looks worse than the original, reset and start again. A fresh attempt with smaller steps usually beats trying to rescue a heavily edited image.</p>
+<h2 id="cheat-sheet">Quick Decision Cheat Sheet</h2>
+<p>Use brightness when the whole photo is too dark or too light. It is the fastest fix for an overall level problem, and it suits screenshots and documents best.</p>
+<p>Use exposure when the highlights matter and your editor offers it. It preserves detail in bright areas better than brightness, which suits landscapes and portraits.</p>
+<p>Use contrast when the photo looks flat and grey, even though its brightness is right. A small boost adds punch, while a small decrease softens a harsh image.</p>
+<p>Use brightness first, then contrast, when a photo needs both. The order matters, because brightness sets the level and contrast refines the spread around it.</p>
+<h2 id="three-controls-for-thumbnails">Brightness, Exposure, and Contrast for Thumbnails</h2>
+<p>Video thumbnails are shown small, so they need strong levels and clear contrast. A dark, flat thumbnail disappears in a feed, while a bright, punchy one draws the eye.</p>
+<p>Brighten the thumbnail a little more than you would a full photo. The small size hides subtlety, so a clear, well-lit image works better than a moody one.</p>
+<p>Add contrast to separate the subject from the background. A thumbnail with a clear subject and a distinct background reads instantly, even at a tiny size.</p>
+<p>Test the thumbnail at its real size before publishing. Shrink it down on your phone and check whether the subject is still clear and the text, if any, is still readable.</p>
+<p>For the practical steps, see <a href="/blog/how-to-adjust-image-brightness/">How to Adjust Image Brightness</a> and <a href="/blog/how-to-adjust-image-contrast/">How to Adjust Image Contrast</a>. For the full guides, read <a href="/blog/image-brightness-editor-guide/">Image Brightness Editor: Complete Guide</a> and <a href="/blog/image-contrast-editor-guide/">Image Contrast Editor: Complete Guide</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What is the difference between brightness and contrast?',
+          answer: 'Brightness shifts every pixel toward white or black evenly, moving the whole tonal range up or down. Contrast stretches or squeezes the gap between the darkest and lightest parts. A dark photo needs brightness, a flat photo needs contrast, and a dark flat photo needs both.',
+        },
+        {
+          question: 'Is exposure the same as brightness?',
+          answer: 'No, though they feel similar. Exposure affects the highlights and shadows differently, preserving more detail at the extremes, while brightness moves everything evenly. Exposure is gentler on bright skies, while brightness is simpler and faster for an overall fix.',
+        },
+        {
+          question: 'Should I adjust brightness or contrast first?',
+          answer: 'Brightness first, then contrast. Brightness sets the overall level, and contrast refines the spread around that level. After a contrast change, check the brightness again, since the image can feel darker or lighter than before.',
+        },
+        {
+          question: 'Why does my photo look flat after I brighten it?',
+          answer: 'Brightening lifts the shadows and reduces the gap between dark and light, which flattens the image. Add a small contrast boost afterwards to restore depth. A 10 percent brightness lift plus a 10 percent contrast boost is a good starting combination.',
+        },
+        {
+          question: 'Can contrast fix a photo that is too dark?',
+          answer: 'No. Contrast changes the spread, not the level, so a dark photo with high contrast is still dark, just with deeper shadows. Brighten the photo first to fix the level, then add contrast if it looks flat.',
+        },
+        {
+          question: 'Which control should I use for a hazy landscape photo?',
+          answer: 'Contrast, usually with a small brightness lift first. Haze flattens the tonal range, so a contrast boost restores the depth. Start with 10 percent brightness if the photo is dark, then add 10 to 20 percent contrast and check the sky.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-contrast-editor', '/image-saturation-editor', '/image-filters'],
+  },
+  {
+    id: 'image-contrast-editor-guide',
+    toolSlug: '/image-contrast-editor',
+    categoryId: 'crop-edit',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-contrast-editor-guide',
+      title: 'Image Contrast Editor: Complete Guide',
+      description: 'Learn how to adjust image contrast online: the contrast slider, quick presets, compare modes, and how to add punch without clipping highlights.',
+      body: `
+<p>Contrast is the difference between the darkest and lightest parts of a photo. It is what makes an image feel punchy and solid, or flat and grey.</p>
+<p>A photo with good contrast has deep shadows, bright highlights, and a clear sense of depth. A photo with low contrast looks hazy, as though it were taken through fog.</p>
+<p>This guide explains how contrast works, how to use the slider and presets well, and how to add punch without clipping the highlights or crushing the shadows. It covers portraits, landscapes, screenshots, and the mistakes that ruin a good image.</p>
+<h2 id="what-contrast-does">What Contrast Actually Does</h2>
+<p>Contrast stretches or squeezes the tonal range of an image. Raising it makes dark pixels darker and light pixels lighter, widening the gap between them.</p>
+<p>Lowering contrast does the opposite. It brings the darks and lights closer together, softening the image and reducing the difference between its brightest and darkest parts.</p>
+<p>Contrast does not change the overall brightness much. A photo with high contrast can be dark or light overall, but its shadows and highlights will be far apart either way.</p>
+<p>Think of contrast as the distance between the ends of a rope. Pulling the ends apart stretches the image tones, while letting them come together squeezes them into the middle.</p>
+<h2 id="why-photos-look-flat">Why Photos Look Flat</h2>
+<p>Haze is the most common cause of a flat photo. Fog, mist, and humid air scatter light, which lifts the shadows and dulls the highlights until the whole image sits in the middle.</p>
+<p>Overcast light also flattens photos. A cloudy sky gives soft, even light with no strong shadows, so the image has little tonal range to begin with.</p>
+<p>Scanned old photos often look flat too. Age fades prints, scanners misread the tones, and the result is a grey, murky image with no deep blacks or bright whites.</p>
+<p>Phone cameras can produce flat photos in low light. The sensor struggles to capture the full range, and the image comes out compressed into the middle tones.</p>
+<h2 id="slider-explained">The Contrast Slider, Explained</h2>
+<p>The contrast slider runs from negative to positive values, with zero meaning no change. Moving it right increases contrast, and moving it left decreases it.</p>
+<p>Small moves make a big difference. A change of 10 to 20 percent is often enough to fix a flat photo, and larger moves quickly clip the highlights and crush the shadows.</p>
+<p>The tool previews your photo at plus 20 percent right after upload. That starting point gives you an immediate sense of what a moderate contrast boost looks like.</p>
+<p>Drag the slider slowly and watch the preview. The live update shows exactly how the image responds, so you can stop at the point where the photo looks right.</p>
+<h2 id="quick-presets">Quick Presets for One-Click Fixes</h2>
+<p>The tool includes quick presets that apply common contrast values in one click. They are a fast way to test different levels without dragging the slider.</p>
+<p>Presets are a starting point, not a final answer. Click one, look at the preview, and then fine-tune with the slider if the result is close but not quite right.</p>
+<p>Use presets to compare options quickly. A preset at plus 10 percent next to one at plus 30 percent shows you how much contrast the photo can take before it clips.</p>
+<p>For a batch of similar photos, the same preset keeps the results consistent. A set of hazy landscapes all boosted by the same amount looks like a series.</p>
+<h2 id="compare-modes">Compare Modes: Before, After, and Split</h2>
+<p>Compare modes show you the original and the edited version together. The After view shows the contrast-boosted image, the Before view shows the original, and the Split view shows both side by side.</p>
+<p>Split compare is the most useful for contrast work. It lets you see exactly which shadows deepened and which highlights brightened, with a clear line between the two versions.</p>
+<p>Fullscreen compare gives you the largest view. It is the best way to judge a contrast edit, because the full-size image shows clipping that a small preview hides.</p>
+<p>Check the compare view before every download. A quick look catches clipped highlights and crushed shadows that a small preview might hide.</p>
+<h2 id="contrast-and-colour">Contrast and Colour: How They Affect Each Other</h2>
+<p>Contrast affects colour as well as tone. Raising contrast makes colours richer and more saturated, because the darks get darker and the brights get brighter around them.</p>
+<p>Lowering contrast mutes the colours. A soft, low-contrast image has gentle, pastel tones, which suits portraits and dreamy landscapes.</p>
+<p>That link means a contrast change is also a colour change. A photo that needs more punch may need contrast, while a photo that needs more colour may need saturation instead.</p>
+<p>For colour work specifically, use the <a href="/image-saturation-editor/">Image Saturation Editor</a> after setting the contrast. The two controls together give you full command of the image look.</p>
+<h2 id="contrast-for-portraits">Contrast for Portraits</h2>
+<p>Portraits need gentle contrast. A face with too much contrast looks harsh and aged, with deep shadows under the eyes and bright patches on the forehead.</p>
+<p>Start with a small boost of 10 percent and check the skin. The face should look defined, not as though the shadows were painted on.</p>
+<p>Negative contrast can help a harsh portrait. Midday sun creates strong shadows on a face, and a small decrease softens them without losing the overall shape.</p>
+<p>For a portrait taken in soft window light, contrast is often already right. A small boost of 5 to 10 percent is enough, and larger moves do more harm than good.</p>
+<h2 id="contrast-for-landscapes">Contrast for Landscapes</h2>
+<p>Landscapes benefit most from contrast. A hazy mountain scene, a foggy valley, or a dull sky all gain depth and drama from a moderate boost.</p>
+<p>Use a boost of 15 to 25 percent for a hazy landscape. The shadows deepen, the highlights brighten, and the scene gains the punch that the haze took away.</p>
+<p>Watch the sky as you increase contrast. Clouds clip first, turning into white blanks with no shape, and a clipped sky ruins an otherwise good landscape.</p>
+<p>For a landscape with a bright sky and a dark foreground, accept a compromise. Contrast stretches both ends, so the sky and the ground move in opposite directions.</p>
+<h2 id="contrast-for-screenshots">Contrast for Screenshots and Documents</h2>
+<p>Screenshots and scanned documents need contrast for readability. Text must stand out from the background, and a low-contrast scan with grey text is hard to read.</p>
+<p>Paste a screenshot directly with Ctrl+V to skip the save step. The image appears in the editor immediately, ready to adjust.</p>
+<p>Increase the contrast until the text is dark and the background is white. A document with strong black text on a clean white background is easy to read and to print.</p>
+<p>Watch for noise in the background. A heavily contrasted scan can show speckles and artefacts, especially in a JPEG that was already compressed.</p>
+<h2 id="negative-contrast">Negative Contrast: Softening Harsh Photos</h2>
+<p>Negative contrast softens an image by bringing the darks and lights closer together. It is the right choice for a photo taken in harsh midday sun.</p>
+<p>Use values like minus 10 or minus 20 percent to soften strong shadows on a portrait. The face keeps its shape, but the harsh edges fade into a gentler look.</p>
+<p>Negative contrast also suits dreamy, soft landscapes. A misty morning scene with low contrast feels calm and quiet, which matches the mood of the photo.</p>
+<p>Do not overdo it. A photo with too little contrast looks grey and lifeless, as though it were taken through fog, even on a clear day.</p>
+<h2 id="clipping-and-crushing">Clipping Highlights and Crushing Shadows</h2>
+<p>Clipping happens when the highlights are pushed past pure white. The detail in a bright cloud or a white shirt vanishes, and the area becomes a featureless blank.</p>
+<p>Crushing happens when the shadows are pushed past pure black. The detail in a dark coat or a shadowed corner vanishes, and the area becomes a solid black patch.</p>
+<p>Both are permanent in the exported file. Once the detail is clipped or crushed, no further edit can bring it back, so check the extremes before you download.</p>
+<p>Use the compare view to spot clipping and crushing. The split view shows exactly which areas lost detail, and a small reduction in the slider usually restores them.</p>
+<h2 id="formats-and-export">Formats and Export</h2>
+<p>The tool accepts common image formats, including JPG, PNG, WebP, and HEIC, with files up to 20 MB. You can export as JPG, PNG, or WebP depending on your needs.</p>
+<p>Exporting as PNG or WebP preserves transparency in the base image. If your source is a transparent PNG graphic, the contrast-edited export keeps the see-through areas intact.</p>
+<p>For photos, JPG at a high quality setting works well. Contrast does not add much to the file size, so the export stays close to the original weight.</p>
+<p>The quality slider appears for JPG and WebP exports and hides for PNG, because PNG is lossless and has no quality setting to adjust.</p>
+<h2 id="contrast-vs-brightness">Contrast vs Brightness: Which One First?</h2>
+<p>Brightness sets the overall level, and contrast sets the spread around that level. A photo that is too dark needs brightness first, because contrast cannot fix the level.</p>
+<p>A photo that is flat but correctly lit needs contrast only. Brightening it would make it brighter and flatter, not better, so skip the brightness step.</p>
+<p>When a photo needs both, do brightness first, then contrast. The order matters, because brightness changes what the contrast adjustment needs to do.</p>
+<p>For the full comparison, read <a href="/blog/brightness-vs-exposure-vs-contrast/">Brightness vs Exposure vs Contrast: Editing Basics</a>.</p>
+<h2 id="privacy-local-processing">Privacy: Editing Without Uploading</h2>
+<p>All contrast editing happens in your browser. Your photos are never uploaded to a server, which matters when the images are personal, family photos, or client work.</p>
+<p>This is a real advantage over cloud editors. A family photo or a private document should not travel to a server you cannot see, just to add contrast.</p>
+<p>The tool also strips EXIF GPS data on export. A contrast-edited photo downloaded from the tool carries no record of where it was taken.</p>
+<p>Keep the original photo without edits. Once a contrast change is flattened into an export, it cannot be undone from that file, so the original is your only clean copy.</p>
+<h2 id="common-mistakes">Common Mistakes When Adjusting Contrast</h2>
+<p>The most common mistake is adding too much contrast. A photo pushed to plus 50 percent or more loses its highlights and shadows entirely, and the result is a harsh, poster-like image.</p>
+<p>Another mistake is using contrast to fix a dark photo. A dark photo with high contrast is still dark, just with deeper shadows, and the subject stays hidden.</p>
+<p>People also forget to check the extremes. A sky or a shadow that looks fine in a small preview may be clipped or crushed at full size, so always check the result large.</p>
+<p>Finally, do not adjust the same JPG repeatedly. Each save adds damage, so always return to the original file when you want a different contrast level.</p>
+<h2 id="contrast-workflow">A Workflow for Clean Contrast Edits</h2>
+<p>Start with the original file and decide whether the photo is flat, harsh, or correctly spread. A flat photo needs a boost, a harsh one needs a decrease, and a correct one needs nothing.</p>
+<p>Apply the contrast, then check the compare view. The split view shows exactly which shadows deepened and which highlights brightened.</p>
+<p>Check the highlights and the shadows separately. The highlights clip first under a boost, and the shadows crush first under the same move, so both extremes need attention.</p>
+<p>Export at a high quality setting and check the result at full size. Zoom into the bright and dark areas and confirm that no detail was lost.</p>
+<h2 id="contrast-for-black-white">Contrast for Black and White Photos</h2>
+<p>Black and white photos live or die by contrast. With no colour to carry the image, the tonal range is everything, and a flat black and white photo looks grey and lifeless.</p>
+<p>Use a stronger contrast boost for black and white than for colour. A boost of 20 to 30 percent gives the image the deep blacks and bright whites that make it striking.</p>
+<p>Watch the midtones as you increase contrast. A black and white portrait needs smooth grey tones in the skin, and too much contrast turns the face into harsh black and white patches.</p>
+<p>For a black and white landscape, contrast is your main tool. The mountains, the sky, and the foreground all gain definition from a clear tonal spread.</p>
+<p>For the step-by-step process, see <a href="/blog/how-to-adjust-image-contrast/">How to Adjust Image Contrast</a>. For the comparison, read <a href="/blog/brightness-vs-exposure-vs-contrast/">Brightness vs Exposure vs Contrast: Editing Basics</a>, and to fix a dark photo before adding contrast, try the <a href="/image-brightness-editor/">Image Brightness Editor</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How much contrast should I add to a flat photo?',
+          answer: 'Start with 10 to 20 percent and check the preview. Most flat photos need only a small boost, and larger moves quickly clip the highlights and crush the shadows. Increase in small steps and stop when the image feels solid without losing detail.',
+        },
+        {
+          question: 'Why does my photo look harsh after adding contrast?',
+          answer: 'The contrast was pushed too far, which deepens the shadows and brightens the highlights past the point where detail survives. Reduce the slider until the skin, sky, and shadow areas show texture again. A 10 percent boost is often enough.',
+        },
+        {
+          question: 'Can contrast fix a photo that is too dark?',
+          answer: 'No. Contrast changes the spread, not the level, so a dark photo with high contrast is still dark, just with deeper shadows. Brighten the photo first with the brightness editor, then add contrast if it looks flat.',
+        },
+        {
+          question: 'Should I use positive or negative contrast for a portrait?',
+          answer: 'Usually a small positive boost of 5 to 10 percent, which defines the face without harshness. For a portrait taken in harsh midday sun, negative contrast of minus 10 to minus 20 percent softens the strong shadows and flatters the skin.',
+        },
+        {
+          question: 'Does increasing contrast make colours stronger too?',
+          answer: 'Yes. Raising contrast makes colours richer, because the darks get darker and the brights get brighter around them. If the colours become too strong, reduce the saturation slightly afterwards with the saturation editor.',
+        },
+        {
+          question: 'Is it safe to edit contrast on a personal photo in a browser tool?',
+          answer: 'Yes, because all processing happens locally in your browser and nothing is uploaded to a server. The tool also strips EXIF GPS data on export. Keep the original file if you want to try a different contrast level later.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-brightness-editor', '/image-saturation-editor', '/image-filters'],
+  },
+  {
+    id: 'how-to-adjust-image-contrast',
+    toolSlug: '/image-contrast-editor',
+    categoryId: 'crop-edit',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-adjust-image-contrast',
+      title: 'How to Adjust Image Contrast',
+      description: 'Adjust image contrast in minutes: upload, drag the slider, try a preset, check highlights and shadows, and download a punchy, well-balanced photo.',
+      body: `
+<p>Adjusting contrast takes only a few minutes. You upload the photo, drag a slider, check the highlights and shadows, and download the punchier version.</p>
+<p>This how-to walks through the whole process step by step. It covers the slider, the quick presets, the compare modes, and the export settings that keep the result looking natural.</p>
+<p>By the end you will be able to fix a flat landscape, soften a harsh portrait, or sharpen a dull screenshot on any device. Keep the original photo until you have checked the result.</p>
+<h2 id="before-you-start">Before You Start: Diagnose the Photo</h2>
+<p>Look at the photo before you open the tool. Is it flat and grey, harsh with deep shadows, or correctly spread? The answer tells you which direction to move the slider.</p>
+<p>A flat photo needs a positive boost of 10 to 20 percent. A harsh photo needs a negative move of 10 to 20 percent to soften the extremes.</p>
+<p>Check whether the photo is also too dark or too light. A dark, flat photo needs brightness first, because contrast alone cannot fix the level.</p>
+<p>Open the <a href="/image-contrast-editor/">Image Contrast Editor</a> in your browser. Everything runs locally, so your photo is never uploaded to a server.</p>
+<h2 id="step-by-step">Adjust Contrast in Five Steps</h2>
+<p>The process is the same for a photo, a screenshot, or a scanned document. Upload, adjust, compare, export, and verify the download.</p>
+<p>Take your time with the slider. Small moves make a big difference, and the preview shows you exactly when the photo looks right.</p>
+<ol>
+<li>Upload your image by dragging it into the dropzone, choosing it from your device, or pasting a screenshot with Ctrl+V.</li>
+<li>Drag the Contrast Level slider to the right to increase contrast or to the left to decrease it, watching the live preview.</li>
+<li>Try a quick preset for a one-click test, then fine-tune with the slider if the result is close but not quite right.</li>
+<li>Use the compare modes to check the highlights and shadows against the original before downloading.</li>
+<li>Choose the export format and quality, then click Download to save the adjusted image.</li>
+</ol>
+<p>Open the downloaded file once before you use it. Confirm the photo looks punchy without losing detail in the bright or dark areas.</p>
+<h2 id="using-the-slider">Using the Contrast Slider</h2>
+<p>The slider runs from negative to positive values, with zero meaning no change. Moving it right increases contrast, and moving it left decreases it.</p>
+<p>Drag slowly and watch the preview. The live update shows exactly how the image responds, so you can stop at the point where the photo looks right.</p>
+<p>Small moves are better than large ones. A change of 10 to 20 percent is often enough, and larger moves quickly clip the highlights and crush the shadows.</p>
+<p>The tool previews your photo at plus 20 percent right after upload. That starting point gives you an immediate sense of what a moderate contrast boost looks like.</p>
+<h2 id="using-quick-presets">Using the Quick Presets</h2>
+<p>The tool includes quick presets that apply common contrast values in one click. They are a fast way to test different levels without dragging the slider.</p>
+<p>Click a preset and look at the preview. If the result is close but not quite right, fine-tune with the slider from that point.</p>
+<p>Use presets to compare options quickly. A preset at plus 10 percent next to one at plus 30 percent shows you how much contrast the photo can take.</p>
+<p>For a batch of similar photos, the same preset keeps the results consistent. A set of hazy landscapes all boosted by the same amount looks like a series.</p>
+<h2 id="using-compare-modes">Using the Compare Modes</h2>
+<p>Compare modes show you the original and the edited version together. The After view shows the contrast-boosted image, and the Before view shows the original.</p>
+<p>Split Compare is the most useful for contrast work. It shows both versions side by side, so you can see exactly which shadows deepened and which highlights brightened.</p>
+<p>Fullscreen Compare gives you the largest view. It is the best way to judge a contrast edit, because the full-size image shows clipping that a small preview hides.</p>
+<p>Check the compare view before every download. A quick look catches clipped highlights and crushed shadows that a small preview might hide.</p>
+<h2 id="boosting-a-flat-photo">Boosting a Flat Photo</h2>
+<p>Upload the flat photo and drag the slider to plus 15 percent. Check the preview: the shadows should deepen, the highlights should brighten, and the image should feel solid.</p>
+<p>If the photo is still flat, increase the slider in small steps of 5 percent. Each step adds a little more punch, and the preview shows when to stop.</p>
+<p>Watch the highlights as you go. Clouds, white shirts, and bright skin will clip first, turning into featureless white patches with no detail.</p>
+<p>If the photo looks harsh after boosting, reduce the slider by 5 percent. A small reduction often restores the detail without making the photo flat again.</p>
+<h2 id="softening-a-harsh-photo">Softening a Harsh Photo</h2>
+<p>Drag the slider to the left for a photo taken in harsh midday sun. Negative values like minus 10 or minus 20 percent soften the strong shadows on a face.</p>
+<p>Check the face as you soften. The shadows should fade into a gentler look, while the overall shape of the face stays clear and defined.</p>
+<p>Negative contrast also suits dreamy, soft landscapes. A misty morning scene with low contrast feels calm and quiet, which matches the mood of the photo.</p>
+<p>Do not overdo it. A photo with too little contrast looks grey and lifeless, as though it were taken through fog, even on a clear day.</p>
+<h2 id="fixing-a-screenshot">Fixing a Dull Screenshot</h2>
+<p>Paste a screenshot directly with Ctrl+V to skip the save step. The image appears in the editor immediately, ready to adjust.</p>
+<p>Increase the contrast until the text is dark and the background is white. A document with strong black text on a clean white background is easy to read and to print.</p>
+<p>Watch for noise in the background. A heavily contrasted scan can show speckles and artefacts, especially in a JPEG that was already compressed.</p>
+<p>Export screenshots as PNG. The lossless format keeps the small text sharp, which matters when the screenshot shows a setting or an error message.</p>
+<h2 id="checking-shadows-highlights">Checking Shadows and Highlights</h2>
+<p>After every contrast change, check the darkest and brightest parts of the image separately. The shadows crush first under a boost, and the highlights clip first under the same move.</p>
+<p>Zoom into a shadow area and confirm it still shows detail. A coat, a tree, or a dark corner should have visible texture, not a solid black patch.</p>
+<p>Zoom into a highlight area and confirm it still shows detail. A cloud, a white shirt, or a bright forehead should have visible shape, not a white blank.</p>
+<p>If either extreme lost detail, reduce the slider by 5 percent and check again. Small reductions usually restore the detail without losing the punch.</p>
+<h2 id="previewing">Previewing Before You Download</h2>
+<p>Always preview before downloading. Check that the photo looks punchy, that no bright areas turned white, and that no dark areas turned black.</p>
+<p>Use the split compare view to check the change. It shows the original and the edited version side by side, so you can see exactly what the contrast did.</p>
+<p>Zoom into the bright and dark areas at full size. A sky or a shadow that looks fine in a small preview may be clipped or crushed when viewed large.</p>
+<p>If the result looks harsh, reduce the slider by 5 percent and check again. Small reductions often restore the detail without making the photo flat again.</p>
+<h2 id="choosing-export-format">Choosing the Export Format</h2>
+<p>Choose JPG for photos you plan to share. It keeps file sizes small and works everywhere, and a high quality setting keeps the contrast-edited photo looking clean.</p>
+<p>Choose PNG for screenshots and graphics with text. PNG is lossless, so the edges of letters stay sharp, and it preserves transparency when you need it.</p>
+<p>Choose WebP when you want small files with good quality. It works well for web images, though a few older systems still reject the format.</p>
+<p>Remember that the quality slider hides for PNG, because PNG is lossless and has no quality setting to adjust. That is normal behaviour, not a problem with the tool.</p>
+<h2 id="adjusting-on-mobile">Adjusting Contrast on a Phone or Tablet</h2>
+<p>The tool works on touchscreens, so you can fix a flat photo on the phone that took it. Upload from your gallery, drag the slider with your finger, and download the result.</p>
+<p>Dragging a slider with a finger is less precise than with a mouse. Use the quick presets for exact values, then fine-tune with small drags.</p>
+<p>Check the preview at full size before downloading. A contrast change that looks fine on a small phone screen may be too strong when viewed on a computer.</p>
+<p>Downloaded files save to your usual downloads folder. From there you can share the edited photo directly to a chat app, an email, or a social post.</p>
+<h2 id="troubleshooting">Troubleshooting Common Contrast Problems</h2>
+<p>If the photo looks harsh, the slider is too high. Reduce it in small steps until the skin, sky, and shadow areas show texture again.</p>
+<p>If the photo is still flat after boosting, the original may be too hazy to rescue. A photo taken through thick fog cannot gain detail that was never captured.</p>
+<p>If the highlights are clipped, reduce the slider and check the bright areas at full size. A small reduction usually restores the cloud or skin detail.</p>
+<p>If the preview looks different from the download, check the export format and quality. A low JPG quality setting can soften the whole image, including the contrast edges.</p>
+<h2 id="contrast-plus-brightness">Contrast Plus Brightness: The Common Pair</h2>
+<p>A photo that is both dark and flat needs brightness and contrast together. Brighten first to lift the overall level, then add contrast to restore depth.</p>
+<p>Use the <a href="/image-brightness-editor/">Image Brightness Editor</a> before adding contrast when the image is dark. A contrast boost on a dark photo only deepens the shadows.</p>
+<p>Do the steps in order: brightness first, then contrast. Reversing them can make the contrast adjustment harder to judge, because the image is still dark.</p>
+<p>Check the compare view after each step. The split view shows exactly what each adjustment did, so you can stop when the photo looks right.</p>
+<h2 id="saving-settings">Saving Your Settings for Next Time</h2>
+<p>Note down the contrast value that worked for a set of similar photos. A short note, such as hazy landscapes plus 20 percent, saves you from guessing next time.</p>
+<p>For a batch of photos taken in the same light, use the same value for all of them. Consistent contrast across a set looks professional, while mixed values look random.</p>
+<p>Keep the original files. A contrast value that works for one photo may not suit another, and the original lets you try a different level without extra damage.</p>
+<p>Review your notes occasionally. As your camera and your lighting improve, the contrast values you need will change, and old notes can mislead you.</p>
+<h2 id="quick-tips">Quick Tips for Better Contrast</h2>
+<p>Adjust in small steps. A change of 5 percent at a time gives you control, while a large jump can overshoot the right value before you notice.</p>
+<p>Check the extremes, not just the middle. A photo is over-contrasted when the highlights clip or the shadows crush, even if the midtones look good.</p>
+<p>Use the compare view every time. A quick look at the original next to the edit catches mistakes that a small preview hides.</p>
+<p>Save the original photo without edits. Once a contrast change is flattened into an export, it cannot be undone from that file.</p>
+<h2 id="contrast-for-product-photo">Adding Contrast to a Product Photo</h2>
+<p>Product photos need clear contrast so the item stands out from the background. A flat product shot looks dull, while a punchy one draws the eye to the item.</p>
+<p>Use a moderate boost of 10 to 20 percent for most products. The item should look solid and defined, with clear edges against the background.</p>
+<p>Watch the product colours as you increase contrast. A boost that is too strong can make the colours look harsh, so check the item itself, not just the background.</p>
+<p>Keep the contrast consistent across the whole catalogue. A shop with matching contrast levels looks tidy and trustworthy, while mixed levels look careless.</p>
+<p>For the comparison, read <a href="/blog/brightness-vs-exposure-vs-contrast/">Brightness vs Exposure vs Contrast: Editing Basics</a>. For the full overview, see <a href="/blog/image-contrast-editor-guide/">Image Contrast Editor: Complete Guide</a>, and to fix a dark photo before adding contrast, try the <a href="/image-brightness-editor/">Image Brightness Editor</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I add contrast to a photo on my phone?',
+          answer: 'Open the Image Contrast Editor in your phone browser, upload the photo from your gallery, and drag the slider to the right with your finger. Use a quick preset for an exact value, check the compare view, and download the result.',
+        },
+        {
+          question: 'What contrast value should I use for a hazy landscape?',
+          answer: 'Start at plus 15 to 20 percent and check the sky. Haze flattens the tonal range, so a moderate boost restores depth. Stop before the clouds turn into white blanks, and reduce the slider if the highlights clip.',
+        },
+        {
+          question: 'Can I reduce contrast to soften a harsh portrait?',
+          answer: 'Yes. Drag the slider to the left into negative values, such as minus 10 or minus 20 percent. Negative contrast softens strong shadows on the face without losing its shape. Check the skin so it stays defined and does not turn grey.',
+        },
+        {
+          question: 'Why do my photo highlights turn white after adding contrast?',
+          answer: 'The contrast was pushed too far, which clips the brightest areas into pure white. Reduce the slider in small steps until the clouds, skin, and white surfaces show detail again. A 10 to 20 percent boost is usually enough.',
+        },
+        {
+          question: 'Should I adjust contrast before or after brightness?',
+          answer: 'Brightness first, then contrast. Brightness sets the overall level, and contrast refines the spread around that level. A dark photo needs brightening before contrast, since contrast alone cannot fix the level.',
+        },
+        {
+          question: 'Can I undo a contrast change after downloading?',
+          answer: 'Not from the downloaded file, since the change is flattened into the export. Keep the original photo so you can try a different contrast level. In the tool, use the reset option to return to zero before you download.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-brightness-editor', '/image-saturation-editor', '/image-filters'],
+  },
+  {
+    id: 'contrast-readability-text-over-photos',
+    toolSlug: '/image-contrast-editor',
+    categoryId: 'crop-edit',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'contrast-readability-text-over-photos',
+      title: 'Contrast for Readability: Text Over Photos',
+      description: 'How to make text readable over photos: contrast between letters and background, darkening, overlays, panels, and testing on small screens.',
+      body: `
+<p>Text over a photo is only useful if people can read it. A headline that vanishes into a bright sky or a caption that blends into a dark shadow fails at its only job.</p>
+<p>Contrast is what makes text readable. It is the difference in brightness between the letters and the background behind them, and it can be fixed in the photo, in the text, or in both.</p>
+<p>This article explains how to build that contrast. It covers darkening, overlays, panels, colour choices, and the testing habits that catch unreadable text before you publish.</p>
+<h2 id="why-contrast-matters">Why Contrast Matters More Than Font</h2>
+<p>A beautiful font that nobody can read is a failed design. The first job of text on an image is to be read, and contrast decides whether that job gets done.</p>
+<p>Most images are viewed on phones, in feeds, at small sizes. Text that is clear at full size on a computer can be unreadable in a feed preview, where the image is only a few centimetres wide.</p>
+<p>Contrast also affects trust. A post with crisp, clear text looks professional, while a post with faint, low-contrast text looks careless, even when the photo itself is good.</p>
+<p>Fix the contrast before you worry about the font. If the words are hard to read, no typeface will save them, and a plain font with strong contrast beats a fancy one with none.</p>
+<h2 id="text-vs-background">Text vs Background: The Core Relationship</h2>
+<p>Readability comes from the gap between the text brightness and the background brightness. White text on a dark background has a large gap, and black text on a light background does too.</p>
+<p>The problem comes when the background varies behind the same line. A caption that starts over a dark shadow and ends over a bright sky will be readable at one end and invisible at the other.</p>
+<p>Check the contrast across the whole line, not just at one point. Every word should be readable, and the background should not change under the line.</p>
+<p>When the background varies, fix the background, not the text. Darken the photo, add an overlay, or place a panel behind the words to create a consistent zone.</p>
+<h2 id="choosing-text-colour">Choosing a Text Colour for Contrast</h2>
+<p>White is the safest colour for text on photos, because most photos have enough dark areas for it to read, and a dark outline makes it work on bright areas too.</p>
+<p>Black works well on light, airy photos such as beaches, snow scenes, and white walls. It fails on dark photos, where it disappears into the shadows.</p>
+<p>Bright colours such as yellow or cyan can work for short headlines, but they are harder to read in long captions. Reserve strong colours for a few words.</p>
+<p>Use one colour for the main text and a second for emphasis at most. Mixing many colours looks chaotic, while a consistent pair keeps the design clean and readable.</p>
+<h2 id="darkening-photo">Darkening the Photo Behind the Text</h2>
+<p>Darkening the whole photo is the simplest way to make white text readable. A brightness decrease of 20 to 30 percent creates a dark zone that white letters stand out against.</p>
+<p>Use the <a href="/image-brightness-editor/">Image Brightness Editor</a> to darken the photo before you add text. The darker image gives the letters a clear background without hiding the photo entirely.</p>
+<p>Check the photo after darkening. It should still be recognisable as the same image, just moodier, with the subject visible and the text clearly readable.</p>
+<p>For a photo that must stay bright, darken only the area behind the text. A local darkening, or an overlay, keeps the rest of the image bright while the text zone goes dark.</p>
+<h2 id="lightening-photo">Lightening the Photo Behind Dark Text</h2>
+<p>Lightening works the same way in reverse. A brightness increase behind black text creates a light zone that dark letters stand out against.</p>
+<p>This suits bright, airy photos where the text should feel light and clean. A white wall or a pale sky brightened further gives black text a perfect background.</p>
+<p>Watch the highlights when you lighten. A sky that is already bright can blow out into pure white, which is fine behind text but looks odd elsewhere in the photo.</p>
+<p>For most photos, darkening for white text is the safer choice. Light photos are less common than dark ones, and white text on a darkened photo is the classic readable combination.</p>
+<h2 id="overlays-and-panels">Overlays and Background Panels</h2>
+<p>An overlay is a semi-transparent layer placed over the whole photo. A dark overlay makes white text readable everywhere, while the image still shows through.</p>
+<p>A panel is a smaller version of the same idea: a semi-transparent box placed behind the text only. A dark panel makes white text readable, and a light panel does the same for dark text.</p>
+<p>Panels are the most reliable readability fix, because they create a consistent background that the photo cannot provide. They work on any image, no matter how busy it is.</p>
+<p>The trade-off is coverage. A panel hides part of the photo, so keep it as small as the text allows and place it over the least important area.</p>
+<h2 id="contrast-for-headlines">Contrast for Headlines</h2>
+<p>Headlines need the strongest contrast, because they are the first thing the eye finds. A headline that is hard to read makes the viewer skip the whole image.</p>
+<p>Use large, bold text with a strong colour gap. White bold letters on a darkened photo, or black bold letters on a light photo, are the two reliable combinations.</p>
+<p>Add an outline or a shadow to a headline when the background varies. The effect creates a local contrast zone around each letter, which keeps the headline readable anywhere.</p>
+<p>Test the headline at feed size. A headline that is clear at full size may be unreadable in a small preview, where the image is shown much smaller.</p>
+<h2 id="contrast-for-captions">Contrast for Captions and Small Text</h2>
+<p>Captions and small text need even more care than headlines, because small letters are harder to read. A caption with weak contrast is invisible in a feed preview.</p>
+<p>Use a panel behind small text. A caption over a busy photo needs the consistent background that only a panel can provide, since outlines alone may not be enough.</p>
+<p>Keep captions short. A few words with strong contrast work far better than a long sentence with weak contrast, which nobody will read anyway.</p>
+<p>Increase the size if the contrast cannot be fixed. Larger letters are easier to read at the same contrast level, so a size bump can rescue a caption that is slightly too faint.</p>
+<h2 id="testing-readability">Testing Readability Before You Publish</h2>
+<p>Test the text on a phone, in a feed, at the size it will be shown. Export the image, open it on your phone, and check whether the words are readable without zooming.</p>
+<p>Check the image in different light too. A phone screen in bright sunlight washes out faint text, so a caption that is readable indoors may fail outdoors.</p>
+<p>Ask someone else to read it. A fresh pair of eyes will spot unreadable text far faster than the person who made it, because the maker already knows what the words say.</p>
+<p>Squint at the image. If the text is still visible when you squint, the contrast is strong enough. If it vanishes, the contrast needs work.</p>
+<h2 id="contrast-for-social">Contrast for Social Media Text</h2>
+<p>Social feeds are crowded and fast, and text must be readable at a glance. A post with weak contrast gets scrolled past, while a post with strong contrast stops the thumb.</p>
+<p>Keep social text large and high contrast. Headlines need a size near the top of the range, with a strong colour gap against the photo behind them.</p>
+<p>Remember that social platforms compress your images. A faint caption may become invisible after compression, so test the text on a downloaded copy of the post.</p>
+<p>Consider whether the text belongs on the image at all. A clean photo with the words in the caption may perform better than a marked image with unreadable text.</p>
+<h2 id="contrast-for-slides">Contrast for Slides and Presentations</h2>
+<p>Slides are viewed from a distance, so the text needs very strong contrast. A headline that is readable on a laptop may be invisible from the back of a room.</p>
+<p>Darken the photo behind slide text generously. A brightness decrease of 30 percent or more gives white text a clear background, even on a large projection screen.</p>
+<p>Use large, bold text for slides. A headline should be readable from the back row, which means bigger letters and stronger contrast than a social post needs.</p>
+<p>Test the slide on the actual projector if you can. Projectors wash out colours and reduce contrast, so a slide that looks fine on a screen may fail in the room.</p>
+<h2 id="accessibility">Accessibility: Contrast Everyone Can Read</h2>
+<p>Good contrast helps everyone, but it matters most for people with low vision. High contrast, large size, and a plain background make text readable for far more people.</p>
+<p>Avoid relying on colour alone to convey meaning. A red word and a green word may look identical to a colourblind viewer, so use size or weight as well.</p>
+<p>Keep the text short and the language simple. A clear caption in plain words is accessible to more readers than a clever caption full of jargon.</p>
+<p>Add alt text when you share the image. The alt text describes the image and repeats the caption, which helps people who use screen readers.</p>
+<h2 id="common-mistakes">Common Contrast Mistakes</h2>
+<p>The most common mistake is white text on a bright photo with no outline, shadow, or panel. The letters vanish into the sky, and the viewer sees only the photo.</p>
+<p>Another mistake is text placed over a face or a busy pattern. The eye cannot separate the letters from the texture underneath, and the words become hard to follow.</p>
+<p>People also use too many colours. Three or four text colours on one image look chaotic, while one consistent colour with strong contrast keeps the design clean.</p>
+<p>Finally, do not place text where the platform will crop it. Social apps trim the edges of images for different screens, so keep important words well inside the frame.</p>
+<h2 id="contrast-and-filters">Contrast, Filters, and Text Together</h2>
+<p>Filters change the contrast of a photo, which affects the text on top of it. A high-contrast filter can make the background busier, which hurts readability.</p>
+<p>Apply the filter first, then check the text contrast. A filter that darkens the photo may improve white text, while one that brightens it may ruin the same text.</p>
+<p>For text-heavy graphics, use a mild filter or none at all. A clean photo with strong text contrast beats a heavily filtered photo with unreadable words.</p>
+<p>When a filter and text must coexist, add a panel behind the text. The panel restores the consistent background that the filter took away.</p>
+<h2 id="before-after-examples">Before and After: What Good Contrast Looks Like</h2>
+<p>A photo with white text over a bright sky and no outline is the classic failure. The words are invisible, and the viewer sees only the photo.</p>
+<p>The same photo with a dark overlay becomes readable instantly. The sky darkens, the white letters stand out, and the image still shows through the overlay.</p>
+<p>A caption over a busy crowd with a panel behind it is the reliable fix. The panel creates a clean zone, and the words are readable without hiding the whole photo.</p>
+<p>Compare your work with these examples. If your text looks like the failures, add an outline, a shadow, a panel, or a darkening step, and check again.</p>
+<h2 id="readability-checklist">A Readability Checklist Before You Publish</h2>
+<p>Check the contrast across the whole line of text. Every word should be readable, not just the first few, and the background should not change under the line.</p>
+<p>Check the size on a phone in a feed preview. If the words are hard to read without zooming, increase the size or shorten the text.</p>
+<p>Check the text in bright sunlight. A caption that is readable indoors may fail outdoors, where the screen washes out faint letters.</p>
+<p>Check the placement. The text should sit over a plain area, away from faces and edges, with enough space around it to breathe.</p>
+<p>For the practical steps, see <a href="/blog/how-to-adjust-image-contrast/">How to Adjust Image Contrast</a> and <a href="/blog/how-to-add-text-to-image/">How to Add Text to an Image</a>. For the full guides, read <a href="/blog/image-contrast-editor-guide/">Image Contrast Editor: Complete Guide</a> and <a href="/blog/text-on-images-readability-tips/">Text on Images: Fonts, Contrast and Readability</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I make white text readable on a bright photo?',
+          answer: 'Darken the photo behind the text, add a dark outline or shadow around the letters, or place a semi-transparent dark panel behind the words. A brightness decrease of 20 to 30 percent usually creates enough contrast for white text to stand out clearly.',
+        },
+        {
+          question: 'Should I darken the whole photo or just the area behind the text?',
+          answer: 'Darkening the whole photo is simpler and suits slides and posters. A panel or overlay behind the text only is better when the rest of the photo must stay bright. Both work; choose based on whether the photo itself or the text matters more.',
+        },
+        {
+          question: 'What contrast level do I need for text over a photo?',
+          answer: 'As much as you can get. White text on a dark background and black text on a light background are the two reliable combinations. Check the whole line, since a background that varies under the text can make one end readable and the other invisible.',
+        },
+        {
+          question: 'Why does my text look fine on my computer but unreadable on my phone?',
+          answer: 'The phone shows the image much smaller, especially in a feed preview, and small text with weak contrast vanishes at that size. Test the image on your phone at feed size, increase the text size, and strengthen the contrast with an outline or panel.',
+        },
+        {
+          question: 'Does a filter affect how readable text is on a photo?',
+          answer: 'Yes. Filters change the contrast and brightness of the photo, which changes the background the text sits on. Apply the filter first, then check the text contrast. Add a panel behind the text if the filter made the background busier.',
+        },
+        {
+          question: 'How do I test text contrast before publishing?',
+          answer: 'View the image on your phone at feed size, check it in bright sunlight, and squint at it: if the text is still visible when you squint, the contrast is strong enough. Ask someone else to read it too, since a fresh pair of eyes spots weak contrast fast.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/add-text-to-image', '/image-brightness-editor', '/image-filters'],
+  },
+  {
+    id: 'image-saturation-editor-guide',
+    toolSlug: '/image-saturation-editor',
+    categoryId: 'crop-edit',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-saturation-editor-guide',
+      title: 'Image Saturation Editor: Complete Guide',
+      description: 'Learn how to adjust image saturation online: the saturation slider, presets, muted and grayscale looks, skin tones, and natural colour editing.',
+      body: `
+<p>Saturation is the intensity of colour in a photo. A highly saturated image has vivid, punchy colours, while a desaturated one looks muted, soft, or completely grey.</p>
+<p>Getting saturation right is what makes a photo feel natural. Too little and the image looks washed out and lifeless, while too much makes grass glow neon and skin turn orange.</p>
+<p>This guide explains how saturation works, how to use the slider and presets well, and how to keep colours natural. It covers portraits, landscapes, food, products, and the mistakes that make photos look fake.</p>
+<h2 id="what-saturation-does">What Saturation Actually Does</h2>
+<p>Saturation controls how pure or how grey the colours in an image are. Raising it makes every colour stronger and more vivid, while lowering it drains the colour toward grey.</p>
+<p>At zero, the image looks normal. At plus 100 percent, the colours are as strong as they can be, and at minus 100 percent, the image becomes completely black and white.</p>
+<p>Saturation does not change the brightness or the contrast much. It only changes how intense the colours feel, so a dull photo can become vivid without getting brighter or darker.</p>
+<p>Think of saturation as the volume knob for colour. Turning it up makes the colours louder, while turning it down makes them quieter, and the photo itself stays the same underneath.</p>
+<h2 id="why-photos-look-dull">Why Photos Come Out Dull</h2>
+<p>Overcast light is the most common cause of dull colours. A cloudy sky scatters the light evenly, which washes out the colours and leaves the photo looking grey.</p>
+<p>Phone cameras can also mute colours in low light. The sensor struggles to capture the full colour range, and the image comes out flatter than the scene looked.</p>
+<p>Scanned old photos lose colour with age. The dyes in a print fade over decades, and the scan shows a pale, washed-out version of the original.</p>
+<p>Screenshots and screen captures often look dull too. A screen photo taken with the wrong white balance can drain the colour from an otherwise bright image.</p>
+<h2 id="slider-explained">The Saturation Slider, Explained</h2>
+<p>The saturation slider runs from minus 100 to plus 100 percent, with zero meaning no change. Moving it right boosts the colours, and moving it left drains them.</p>
+<p>Small moves make a big difference. A change of 10 to 25 percent is often enough to fix a dull photo, and larger moves quickly make the colours look artificial.</p>
+<p>The tool previews your photo at plus 25 percent right after upload. That starting point gives you an immediate sense of what a moderate saturation boost looks like.</p>
+<p>Drag the slider slowly and watch the preview. The live update shows exactly how the colours respond, so you can stop at the point where the photo looks natural.</p>
+<h2 id="quick-presets">Quick Presets for One-Click Colour</h2>
+<p>The tool includes one-click presets that apply common saturation values instantly. They are a fast way to test different looks without dragging the slider.</p>
+<p>Presets include Muted at minus 40 percent, Grayscale at minus 100 percent, and Hyper at plus 90 percent. Each one gives a distinct look in a single click.</p>
+<p>Presets are a starting point, not a final answer. Click one, look at the preview, and then fine-tune with the slider if the result is close but not quite right.</p>
+<p>For a batch of similar photos, the same preset keeps the results consistent. A set of dull landscapes all boosted by the same amount looks like a series.</p>
+<h2 id="muted-vs-grayscale">Muted vs Grayscale: Two Ways to Drain Colour</h2>
+<p>Muted at minus 40 percent softens the colours without removing them. The photo keeps a hint of its palette, but the tones feel calm, quiet, and understated.</p>
+<p>Grayscale at minus 100 percent removes all colour. The photo becomes black and white, with only brightness and contrast left to carry the image.</p>
+<p>Muted suits portraits and soft landscapes, where a gentle palette feels elegant. Grayscale suits dramatic scenes, architecture, and street photography, where shape matters more than colour.</p>
+<p>Choose muted when the colours are part of the photo but too strong. Choose grayscale when the colour distracts from the subject and the image works better without it.</p>
+<h2 id="hyper-saturation">Hyper Saturation: When More Is Too Much</h2>
+<p>Hyper at plus 90 percent pushes the colours to their limit. Grass becomes electric green, skies turn deep blue, and the whole image feels intense and artificial.</p>
+<p>Hyper suits a few specific cases: a poster, a social graphic, or a stylised image where the bold colours are the point. It does not suit natural photography.</p>
+<p>For landscapes, a moderate boost of 20 to 30 percent is usually the limit. Beyond that, the foliage looks neon and the sky looks painted, which breaks the natural feel.</p>
+<p>If a photo looks fake after boosting, reduce the slider by 10 percent and check again. Small reductions often restore the natural look without losing the vividness.</p>
+<h2 id="saturation-and-skin">Saturation and Skin Tones</h2>
+<p>Skin is the hardest thing to saturate correctly. A small boost can make a portrait look healthy, but a large one turns the skin orange, red, or yellow.</p>
+<p>Start with a small increase of 10 to 15 percent for portraits. Check the face: the skin should look warm and natural, not as though the person spent too long in the sun.</p>
+<p>Watch the cheeks and the forehead, which show over-saturation first. A face with orange cheeks and a yellow forehead has been pushed too far.</p>
+<p>For a portrait with dull skin, brighten slightly first, then add a small saturation boost. The combination restores the healthy glow without the orange cast.</p>
+<h2 id="saturation-for-landscapes">Saturation for Landscapes</h2>
+<p>Landscapes benefit most from saturation. A boost of 20 to 30 percent makes the greens richer, the skies deeper, and the whole scene feel more alive.</p>
+<p>Watch the foliage as you increase saturation. Grass and leaves turn neon first, and a landscape with glowing green fields looks artificial.</p>
+<p>For a sunset or a sunrise, a moderate boost enhances the warm colours without making them garish. The sky should look rich, not as though it were painted.</p>
+<p>For a foggy or misty landscape, keep the saturation low. The muted palette is part of the mood, and a strong boost fights the atmosphere of the scene.</p>
+<h2 id="saturation-for-food">Saturation for Food Photos</h2>
+<p>Food photos need careful saturation. A small boost makes dishes look fresh and appetising, while a large one makes them look plastic and fake.</p>
+<p>Use a boost of 10 to 20 percent for most food. The colours should look rich and inviting, with reds warm and greens fresh, but never neon.</p>
+<p>Watch the reds in particular. Tomatoes, meat, and berries turn an unnatural bright red when over-saturated, which makes the food look less appetising, not more.</p>
+<p>For a food photo taken in warm indoor light, a small saturation boost plus a slight brightness lift works well. The combination restores the fresh look that indoor light can dull.</p>
+<h2 id="saturation-for-products">Saturation for Product Photos</h2>
+<p>Product photos need accurate colour, because a buyer expects the item to match the photo. A saturation boost that changes the colour of a product is a problem, not an improvement.</p>
+<p>Use a small boost of 5 to 15 percent for products, and check the colour against the real item. The photo should match what the buyer will receive.</p>
+<p>Keep the saturation consistent across the whole catalogue. A shop with matching colour levels looks tidy and trustworthy, while mixed levels look careless.</p>
+<p>For a product with a strong brand colour, be especially careful. A boost that shifts the brand colour, even slightly, can confuse buyers and hurt trust.</p>
+<h2 id="desaturating-photos">Desaturating for a Muted, Elegant Look</h2>
+<p>Desaturating is a creative choice, not just a fix. A muted photo with soft, quiet colours feels calm and elegant, which suits weddings, portraits, and fine art.</p>
+<p>Use the Muted preset at minus 40 percent for a gentle desaturation. The colours stay visible but soft, and the photo gains a refined, understated feel.</p>
+<p>Desaturation also helps when the colours clash. A photo with a bright red object next to a bright green one can feel chaotic, and muting both brings harmony.</p>
+<p>For a fully desaturated look, use Grayscale at minus 100 percent. The image becomes black and white, which suits dramatic scenes and timeless portraits.</p>
+<h2 id="saturation-and-brightness">Saturation, Brightness, and Perceived Light</h2>
+<p>The saturation editor preserves perceived brightness as it changes the colours. That means a boost does not make the image feel lighter or darker, only more colourful.</p>
+<p>This matters because other editors can shift the brightness when they change saturation. A photo that gets brighter as it gets more colourful is harder to judge.</p>
+<p>For a dull, dark photo, brighten first and then add saturation. The order matters, because a dark photo with boosted colours still looks dark, just with stronger hues.</p>
+<p>For a bright, washed-out photo, add saturation without brightening further. The colours gain richness while the brightness stays where it is.</p>
+<h2 id="formats-and-export">Formats and Export</h2>
+<p>The tool accepts common image formats, including JPG, PNG, WebP, and HEIC, with files up to 20 MB. You can export as JPG, PNG, or WebP depending on your needs.</p>
+<p>Exporting as PNG or WebP preserves transparency in the base image. If your source is a transparent PNG sticker, the saturation-edited export keeps the see-through areas intact.</p>
+<p>For photos, JPG at a high quality setting works well. Saturation does not add much to the file size, so the export stays close to the original weight.</p>
+<p>The quality slider appears for JPG and WebP exports and hides for PNG, because PNG is lossless and has no quality setting to adjust.</p>
+<h2 id="privacy-local-processing">Privacy: Editing Without Uploading</h2>
+<p>All saturation editing happens in your browser. Your photos are never uploaded to a server, which matters when the images are personal, family photos, or client work.</p>
+<p>This is a real advantage over cloud editors. A family photo or a private product shot should not travel to a server you cannot see, just to boost its colours.</p>
+<p>The tool also strips EXIF GPS data on export. A saturation-edited photo downloaded from the tool carries no record of where it was taken.</p>
+<p>Keep the original photo without edits. Once a saturation change is flattened into an export, it cannot be undone from that file, so the original is your only clean copy.</p>
+<h2 id="common-mistakes">Common Mistakes When Adjusting Saturation</h2>
+<p>The most common mistake is boosting too much. A photo pushed to plus 60 or plus 90 percent looks artificial, with neon grass, orange skin, and a painted sky.</p>
+<p>Another mistake is saturating a photo that is already vivid. A colourful sunset or a bright flower needs little or no boost, and adding more only makes it garish.</p>
+<p>People also forget to check the skin. A landscape boost that looks fine on the scenery can turn the people in the photo orange, so always check the faces.</p>
+<p>Finally, do not adjust the same JPG repeatedly. Each save adds damage, so always return to the original file when you want a different saturation level.</p>
+<h2 id="saturation-workflow">A Workflow for Natural Colour</h2>
+<p>Start with the original file and decide whether the photo is dull, vivid, or correctly coloured. A dull photo needs a boost, a vivid one needs nothing, and a garish one needs muting.</p>
+<p>Apply the saturation, then check the preview at full size. Zoom into the skin, the foliage, and the sky, and confirm that no colour looks artificial.</p>
+<p>Add brightness or contrast if the photo needs them, after the saturation is set. The colour change can make the image feel different, so re-check the tones.</p>
+<p>Export at a high quality setting and check the result on a second screen if you can. Colours look different on different displays, and a second check catches surprises.</p>
+<h2 id="saturation-for-weddings">Saturation for Wedding Photos</h2>
+<p>Wedding photos need soft, natural colour. A gentle saturation boost of 10 to 15 percent makes the flowers richer and the dresses brighter without making the skin look orange.</p>
+<p>Watch the white dress as you boost saturation. A white dress should stay white, and a strong boost can tint it yellow or pink, which looks wrong in a wedding album.</p>
+<p>For outdoor weddings, a moderate boost enhances the greens and the sky without overpowering the couple. The people should stay the focus, not the colours around them.</p>
+<p>Keep the saturation consistent across the whole wedding set. A album with matching colour levels looks professional, while mixed levels make the day feel disjointed.</p>
+<p>For the step-by-step process, see <a href="/blog/how-to-adjust-image-saturation/">How to Adjust Image Saturation</a>. For the comparison, read <a href="/blog/saturation-vs-vibrance/">Saturation vs Vibrance: Natural Colour Editing</a>, and to add a consistent look across photos, try the <a href="/image-filters/">Image Filters tool</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How much saturation should I add to a dull photo?',
+          answer: 'Start with 10 to 25 percent and check the preview. Most dull photos need only a small boost, and larger moves quickly make the colours look artificial. Increase in small steps and stop when the image feels vivid without the grass turning neon or the skin turning orange.',
+        },
+        {
+          question: 'Why does my portrait look orange after boosting saturation?',
+          answer: 'Skin shows over-saturation first, turning orange, red, or yellow when the slider is too high. Reduce the saturation until the skin looks warm and natural. For portraits, a small boost of 10 to 15 percent is usually the limit.',
+        },
+        {
+          question: 'What is the difference between Muted and Grayscale?',
+          answer: 'Muted at minus 40 percent softens the colours without removing them, keeping a hint of the palette for a calm, elegant look. Grayscale at minus 100 percent removes all colour, turning the photo black and white. Choose muted for softness and grayscale for drama.',
+        },
+        {
+          question: 'Can saturation fix a photo taken in bad light?',
+          answer: 'Partly. Saturation restores colour intensity, but it cannot fix a photo that is too dark or too flat. Brighten the photo first, then add saturation, and add contrast if the image still looks dull. The three controls work together.',
+        },
+        {
+          question: 'Does changing saturation affect the brightness of my photo?',
+          answer: 'This editor preserves perceived brightness while it changes the colours, so a boost makes the image more vivid without making it feel lighter or darker. That makes it easier to judge the colour change on its own.',
+        },
+        {
+          question: 'Is it safe to edit saturation on a personal photo in a browser tool?',
+          answer: 'Yes, because all processing happens locally in your browser and nothing is uploaded to a server. The tool also strips EXIF GPS data on export. Keep the original file if you want to try a different saturation level later.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-filters', '/image-brightness-editor', '/image-contrast-editor'],
+  },
+  {
+    id: 'how-to-adjust-image-saturation',
+    toolSlug: '/image-saturation-editor',
+    categoryId: 'crop-edit',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-adjust-image-saturation',
+      title: 'How to Adjust Image Saturation',
+      description: 'Adjust image saturation in minutes: upload, drag the slider, try a preset, check skin tones, and download a photo with natural, vivid colour.',
+      body: `
+<p>Adjusting saturation takes only a few minutes. You upload the photo, drag a slider, check the colours, and download the more vivid version.</p>
+<p>This how-to walks through the whole process step by step. It covers the slider, the quick presets, skin tones, and the export settings that keep the colours looking natural.</p>
+<p>By the end you will be able to fix a dull landscape, soften a garish photo, or turn a colour portrait into a clean black and white on any device. Keep the original photo until you have checked the result.</p>
+<h2 id="before-you-start">Before You Start: Judge the Colours</h2>
+<p>Look at the photo before you open the tool. Are the colours dull, vivid, or garish? The answer tells you which direction to move the slider.</p>
+<p>A dull photo needs a positive boost of 10 to 25 percent. A garish one needs a negative move to mute the colours back toward natural.</p>
+<p>Check whether the photo is also too dark or too flat. A dull, dark photo needs brightness first, because saturation alone cannot fix the level.</p>
+<p>Open the <a href="/image-saturation-editor/">Image Saturation Editor</a> in your browser. Everything runs locally, so your photo is never uploaded to a server.</p>
+<h2 id="step-by-step">Adjust Saturation in Five Steps</h2>
+<p>The process is the same for a photo, a screenshot, or a scanned image. Upload, adjust, check the colours, export, and verify the download.</p>
+<p>Take your time with the slider. Small moves make a big difference, and the preview shows you exactly when the colours look right.</p>
+<ol>
+<li>Upload your image by dragging it into the dropzone, choosing it from your device, or pasting a screenshot with Ctrl+V.</li>
+<li>Drag the Saturation Level slider to the right to boost colours or to the left to mute them, watching the live preview.</li>
+<li>Try a quick preset such as Muted, Grayscale, or Hyper for a one-click test, then fine-tune with the slider.</li>
+<li>Check the skin tones, foliage, and sky at full size to confirm no colour looks artificial.</li>
+<li>Choose the export format and quality, then click Download to save the adjusted image.</li>
+</ol>
+<p>Open the downloaded file once before you use it. Confirm the colours look natural and vivid without turning neon or orange.</p>
+<h2 id="using-the-slider">Using the Saturation Slider</h2>
+<p>The slider runs from minus 100 to plus 100 percent, with zero meaning no change. Moving it right boosts the colours, and moving it left drains them.</p>
+<p>Drag slowly and watch the preview. The live update shows exactly how the colours respond, so you can stop at the point where the photo looks natural.</p>
+<p>Small moves are better than large ones. A change of 10 to 25 percent is often enough, and larger moves quickly make the colours look artificial.</p>
+<p>The tool previews your photo at plus 25 percent right after upload. That starting point gives you an immediate sense of what a moderate saturation boost looks like.</p>
+<h2 id="using-quick-presets">Using the Quick Presets</h2>
+<p>The tool includes one-click presets that apply common saturation values instantly. They are a fast way to test different looks without dragging the slider.</p>
+<p>Muted at minus 40 percent softens the colours for a calm, elegant look. Grayscale at minus 100 percent removes all colour for a black and white image.</p>
+<p>Hyper at plus 90 percent pushes the colours to their limit. It suits posters and stylised graphics, but it rarely suits natural photography.</p>
+<p>Click a preset and look at the preview. If the result is close but not quite right, fine-tune with the slider from that point.</p>
+<h2 id="boosting-a-dull-photo">Boosting a Dull Photo</h2>
+<p>Upload the dull photo and drag the slider to plus 20 percent. Check the preview: the colours should feel richer, with greens deeper and skies bluer, without looking fake.</p>
+<p>If the photo is still dull, increase the slider in small steps of 5 percent. Each step adds a little more vividness, and the preview shows when to stop.</p>
+<p>Watch the foliage as you go. Grass and leaves turn neon first, and a landscape with glowing green fields looks artificial.</p>
+<p>If the photo looks garish after boosting, reduce the slider by 5 percent. A small reduction often restores the natural look without losing the vividness.</p>
+<h2 id="muting-a-harsh-photo">Muting a Harsh, Garish Photo</h2>
+<p>Drag the slider to the left for a photo whose colours are too strong. Negative values like minus 20 or minus 40 percent soften the palette into a calmer look.</p>
+<p>Check the skin as you mute. The face should look natural and soft, not grey and lifeless, so stop before the colours vanish entirely.</p>
+<p>Muting suits weddings, portraits, and fine art, where a gentle palette feels elegant. A muted photo with soft colours looks refined, while a garish one looks loud.</p>
+<p>For a fully desaturated look, use the Grayscale preset at minus 100 percent. The image becomes black and white, which suits dramatic scenes and timeless portraits.</p>
+<h2 id="converting-to-grayscale">Converting to Grayscale in One Click</h2>
+<p>Click the Grayscale preset to remove all colour from the photo in one step. The image becomes black and white, with only brightness and contrast left to carry it.</p>
+<p>Grayscale suits dramatic scenes, architecture, and street photography, where shape and light matter more than colour. It also suits portraits with strong expressions.</p>
+<p>After converting, check the contrast. A grayscale photo often needs a small contrast boost, because the colour was carrying some of the depth that is now gone.</p>
+<p>Export grayscale photos as JPG at a high quality setting, or PNG for the sharpest result. The format matters less than the contrast, which defines the black and white look.</p>
+<h2 id="fixing-skin-tones">Fixing Skin Tones</h2>
+<p>Skin is the hardest thing to saturate correctly. A small boost can make a portrait look healthy, but a large one turns the skin orange, red, or yellow.</p>
+<p>Start with a small increase of 10 to 15 percent for portraits. Check the face: the skin should look warm and natural, not as though the person spent too long in the sun.</p>
+<p>Watch the cheeks and the forehead, which show over-saturation first. A face with orange cheeks and a yellow forehead has been pushed too far.</p>
+<p>If the skin looks orange after boosting, reduce the slider by 5 percent and check again. Small reductions often restore the natural tone without losing the healthy glow.</p>
+<h2 id="previewing">Previewing Before You Download</h2>
+<p>Always preview before downloading. Check that the colours look natural, that no area turned neon, and that the skin tones are warm rather than orange.</p>
+<p>Zoom into the foliage, the sky, and the skin at full size. Those areas show over-saturation first, and a small preview can hide the problem.</p>
+<p>Check the photo on a second screen if you can. Colours look different on different displays, and a second check catches surprises before you share the image.</p>
+<p>If any colour looks artificial, reduce the slider by 5 percent and check again. Small reductions often restore the natural look without losing the vividness.</p>
+<h2 id="choosing-export-format">Choosing the Export Format</h2>
+<p>Choose JPG for photos you plan to share. It keeps file sizes small and works everywhere, and a high quality setting keeps the colours looking clean.</p>
+<p>Choose PNG for graphics and stickers with transparency. PNG is lossless, so the colours stay exact, and it preserves see-through areas.</p>
+<p>Choose WebP when you want small files with good quality. It works well for web images, though a few older systems still reject the format.</p>
+<p>Remember that the quality slider hides for PNG, because PNG is lossless and has no quality setting to adjust. That is normal behaviour, not a problem with the tool.</p>
+<h2 id="adjusting-on-mobile">Adjusting Saturation on a Phone or Tablet</h2>
+<p>The tool works on touchscreens, so you can fix a dull photo on the phone that took it. Upload from your gallery, drag the slider with your finger, and download the result.</p>
+<p>Dragging a slider with a finger is less precise than with a mouse. Use the quick presets for exact values, then fine-tune with small drags.</p>
+<p>Check the preview at full size before downloading. A saturation change that looks fine on a small phone screen may be too strong when viewed on a computer.</p>
+<p>Downloaded files save to your usual downloads folder. From there you can share the edited photo directly to a chat app, an email, or a social post.</p>
+<h2 id="troubleshooting">Troubleshooting Common Saturation Problems</h2>
+<p>If the photo looks garish, the slider is too high. Reduce it in small steps until the grass, sky, and skin look natural again.</p>
+<p>If the photo is still dull after boosting, the original may be too flat to rescue. A photo taken through thick fog cannot gain colour that was never captured.</p>
+<p>If the skin looks orange, reduce the saturation and check the face at full size. A small reduction usually restores the natural tone.</p>
+<p>If the preview looks different from the download, check the export format and quality. A low JPG quality setting can shift the colours slightly, especially in bright areas.</p>
+<h2 id="saturation-plus-contrast">Saturation Plus Contrast: The Common Pair</h2>
+<p>A photo that is both dull and flat needs saturation and contrast together. Boost the colours first, then add contrast to restore the depth.</p>
+<p>Use the <a href="/image-contrast-editor/">Image Contrast Editor</a> after saturating when the image looks vivid but still flat. A small contrast boost brings back the shadows and highlights.</p>
+<p>Do the steps in order: saturation first, then contrast. Reversing them can make the colour change harder to judge, because the image is still flat.</p>
+<p>Check the colours after each step. A contrast boost makes the colours richer too, so the saturation may need a small reduction afterwards.</p>
+<h2 id="saturation-for-social">Saturation for Social Media</h2>
+<p>Social feeds favour vivid, clear photos. A dull photo gets scrolled past, while a well-saturated one stops the thumb and earns a second look.</p>
+<p>Boost social photos a little more than you would for print. Screens vary in colour, and a photo that looks fine on your phone may look dull on someone else's.</p>
+<p>Keep the boost natural. A photo pushed too far looks artificial, and followers can tell when the colours do not match the scene.</p>
+<p>Test the saturated photo at feed size before posting. A photo that looks good at full size may be too dull or too garish in a small preview, so check before you publish.</p>
+<h2 id="saving-settings">Saving Your Settings for Next Time</h2>
+<p>Note down the saturation value that worked for a set of similar photos. A short note, such as landscapes plus 20 percent, saves you from guessing next time.</p>
+<p>For a batch of photos taken in the same light, use the same value for all of them. Consistent colour across a set looks professional, while mixed values look random.</p>
+<p>Keep the original files. A saturation value that works for one photo may not suit another, and the original lets you try a different level without extra damage.</p>
+<p>Review your notes occasionally. As your camera and your lighting improve, the saturation values you need will change, and old notes can mislead you.</p>
+<h2 id="quick-tips">Quick Tips for Better Saturation</h2>
+<p>Adjust in small steps. A change of 5 percent at a time gives you control, while a large jump can overshoot the right value before you notice.</p>
+<p>Check the skin, not just the scenery. A landscape boost that looks fine on the grass can turn the people in the photo orange.</p>
+<p>Use the presets as a starting point. A preset gives you a quick test, and the slider lets you fine-tune from there.</p>
+<p>Save the original photo without edits. Once a saturation change is flattened into an export, it cannot be undone from that file.</p>
+<h2 id="saturation-for-sunset">Adjusting Saturation for a Sunset Photo</h2>
+<p>Sunset photos are already colourful, so they need only a small boost. A saturation increase of 10 to 15 percent deepens the oranges and pinks without making the sky look painted.</p>
+<p>Watch the sky gradient as you boost. A sunset sky should fade smoothly from orange to pink to blue, and a strong boost can turn that gradient into flat blocks of colour.</p>
+<p>Check the foreground after boosting. A dark foreground with boosted colours can look muddy, so brighten it slightly first if the sunset is the main subject.</p>
+<p>For a sunset over water, a moderate boost enhances the reflection without making it garish. The water should mirror the sky, not compete with it.</p>
+<p>For the comparison, read <a href="/blog/saturation-vs-vibrance/">Saturation vs Vibrance: Natural Colour Editing</a>. For the full overview, see <a href="/blog/image-saturation-editor-guide/">Image Saturation Editor: Complete Guide</a>, and to add a consistent look across photos, try the <a href="/image-filters/">Image Filters tool</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I boost colour in a photo on my phone?',
+          answer: 'Open the Image Saturation Editor in your phone browser, upload the photo from your gallery, and drag the slider to the right with your finger. Use a quick preset for an exact value, check the skin tones, and download the result.',
+        },
+        {
+          question: 'What saturation value should I use for a landscape photo?',
+          answer: 'Start at plus 20 percent and check the foliage. Landscapes usually need 20 to 30 percent to feel vivid. Stop before the grass turns neon or the sky looks painted, and reduce the slider if the colours look artificial.',
+        },
+        {
+          question: 'How do I turn a colour photo black and white?',
+          answer: 'Click the Grayscale preset, which sets saturation to minus 100 percent and removes all colour in one step. Check the contrast afterwards, since a grayscale photo often needs a small contrast boost to replace the depth the colour carried.',
+        },
+        {
+          question: 'Why does my food photo look fake after boosting saturation?',
+          answer: 'The slider is too high, which makes reds unnaturally bright and greens neon. Food needs only a small boost of 10 to 20 percent. Reduce the slider until the dish looks fresh and appetising rather than plastic.',
+        },
+        {
+          question: 'Should I adjust saturation before or after contrast?',
+          answer: 'Saturation first, then contrast. Boosting the colours changes how the image feels, and contrast refines the depth afterwards. Check the colours again after the contrast change, since it makes them richer too.',
+        },
+        {
+          question: 'Can I undo a saturation change after downloading?',
+          answer: 'Not from the downloaded file, since the change is flattened into the export. Keep the original photo so you can try a different saturation level. In the tool, use the reset option to return to zero before you download.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-filters', '/image-brightness-editor', '/image-contrast-editor'],
+  },
+  {
+    id: 'saturation-vs-vibrance',
+    toolSlug: '/image-saturation-editor',
+    categoryId: 'crop-edit',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'saturation-vs-vibrance',
+      title: 'Saturation vs Vibrance: Natural Colour Editing',
+      description: 'Saturation or vibrance? How each control treats colour, which one protects skin tones, and how to get natural, vivid colour without neon grass.',
+      body: `
+<p>Saturation and vibrance both make colours stronger, but they do it in different ways. One boosts every colour equally, while the other boosts only the colours that need it.</p>
+<p>The difference matters for natural photos. A saturation boost can turn skin orange and grass neon, while a vibrance boost protects the colours that are already strong.</p>
+<p>This article compares the two controls directly: how they work, how they treat skin tones, when to use each one, and how to combine them for natural, vivid colour.</p>
+<h2 id="what-each-does">What Each Control Does</h2>
+<p>Saturation boosts all colours equally. Every hue in the image gets stronger by the same amount, whether it was already vivid or barely visible.</p>
+<p>Vibrance boosts the muted colours more and the vivid colours less. It lifts the dull tones while leaving the already-strong colours mostly alone.</p>
+<p>The result is that saturation can overdo the colours that were already strong, while vibrance brings up the weak ones without touching the strong ones.</p>
+<p>Think of saturation as a volume knob that turns up every colour, and vibrance as a smart knob that turns up only the quiet ones.</p>
+<h2 id="how-saturation-works">How Saturation Works</h2>
+<p>Saturation moves every colour away from grey by the same amount. A dull blue and a vivid red both get the same boost, so the red can quickly become too strong.</p>
+<p>At plus 100 percent, every colour is as strong as it can be. At minus 100 percent, every colour is gone, and the image is black and white.</p>
+<p>Saturation is simple and predictable, which is why most editors offer it. You know exactly what it will do: make everything more colourful, evenly.</p>
+<p>The weakness is that even boost. A photo with a mix of dull and vivid colours needs different treatment for each, and saturation cannot tell them apart.</p>
+<h2 id="how-vibrance-works">How Vibrance Works</h2>
+<p>Vibrance targets the muted colours first. It looks at each pixel, finds the colours that are weak, and boosts those more than the ones that are already strong.</p>
+<p>Skin tones get special protection under vibrance. The control recognises the orange and red range of human skin and boosts it less, so faces stay natural.</p>
+<p>The result is a photo that feels more vivid without looking artificial. The dull areas gain colour, while the vivid areas stay where they were.</p>
+<p>Vibrance is the smarter control for natural photography. It does the job that most people actually want: make the photo more colourful without making it look fake.</p>
+<h2 id="key-differences">The Key Differences, Side by Side</h2>
+<p>Saturation treats all colours the same, while vibrance treats them differently. That single difference explains almost everything about how the two controls behave.</p>
+<p>Saturation can clip colours that were already strong. A bright red flower boosted by saturation can lose detail and become a flat red patch, while vibrance leaves it alone.</p>
+<p>Vibrance protects skin tones. A portrait boosted with vibrance keeps natural skin, while the same portrait boosted with saturation can turn orange.</p>
+<p>For a photo that is uniformly dull, saturation is fine. For a photo with a mix of dull and vivid areas, vibrance gives a more natural result.</p>
+<h2 id="skin-tones">Skin Tones: Where Vibrance Wins</h2>
+<p>Skin is the hardest thing to colour correctly, and it is where vibrance earns its reputation. A saturation boost turns skin orange, while a vibrance boost leaves it natural.</p>
+<p>The reason is that vibrance recognises the skin-tone range and boosts it less. The face keeps its natural warmth, while the background colours gain vividness.</p>
+<p>For portraits, vibrance is almost always the better choice. It makes the photo more colourful without changing the person, which is exactly what a portrait needs.</p>
+<p>When your editor offers only saturation, use a small boost of 10 to 15 percent for portraits. That limit keeps the skin natural while the rest of the photo gains colour.</p>
+<h2 id="landscapes">Landscapes: Both Controls Work</h2>
+<p>Landscapes have few skin tones, so both controls work well. A saturation boost of 20 to 30 percent makes the greens richer and the skies deeper.</p>
+<p>Vibrance is still the safer choice for a landscape with mixed colours. A scene with a vivid sunset and a dull foreground needs the foreground lifted without the sunset clipping.</p>
+<p>For a uniformly dull landscape, such as an overcast day, saturation is fine. Every colour needs the same lift, and the even boost does the job well.</p>
+<p>Watch the foliage under either control. Grass and leaves turn neon first, and a landscape with glowing green fields looks artificial, whichever control you used.</p>
+<h2 id="when-to-use-saturation">When to Use Saturation</h2>
+<p>Use saturation when the whole photo is uniformly dull. An overcast landscape, a faded scan, or a flat indoor shot all need an even lift across every colour.</p>
+<p>Saturation is also the right choice for a deliberate stylised look. A poster or a graphic that needs bold, even colours benefits from the uniform boost.</p>
+<p>Use saturation for muting as well as boosting. The Muted preset at minus 40 percent softens every colour evenly, which suits a calm, elegant look.</p>
+<p>For grayscale conversion, saturation is the only control you need. Setting it to minus 100 percent removes all colour in one step.</p>
+<h2 id="when-to-use-vibrance">When to Use Vibrance</h2>
+<p>Use vibrance when the photo has people in it. The skin-tone protection keeps faces natural while the rest of the image gains colour, which is the hardest balance to strike.</p>
+<p>Use vibrance when the photo has mixed colours. A scene with a vivid sunset and a dull foreground needs the foreground lifted without the sunset clipping.</p>
+<p>Use vibrance for natural photography in general. It is the control that most closely matches what people mean when they say make the colours pop without making it look fake.</p>
+<p>When your editor offers only saturation, simulate vibrance by using a small boost and checking the skin and the vivid areas after each step.</p>
+<h2 id="combining-both">Combining Saturation and Vibrance</h2>
+<p>When an editor offers both controls, use vibrance first and saturation second. Vibrance lifts the dull colours, and a small saturation boost then adds overall richness.</p>
+<p>Start with a moderate vibrance boost, then add 5 to 10 percent saturation. The combination gives vivid colour without the orange skin or neon grass that saturation alone can cause.</p>
+<p>Check the skin and the vivid areas after each step. The two controls interact, and a combination that looks good at one level can overshoot at the next.</p>
+<p>For a photo that needs only a small lift, vibrance alone is enough. Adding saturation on top of a vibrance boost can push the colours past natural.</p>
+<h2 id="over-saturation-signs">Signs You Have Gone Too Far</h2>
+<p>Neon grass is the clearest sign of over-saturation. Green foliage that glows electric green has been pushed past natural, and the photo looks artificial.</p>
+<p>Orange skin is the second sign. A face that turns orange, red, or yellow has had too much saturation, and the portrait needs the slider reduced.</p>
+<p>Clipped reds are the third sign. A bright red flower or a red shirt that loses detail and becomes a flat red patch has been boosted past the point where detail survives.</p>
+<p>A painted sky is the fourth sign. A blue sky that looks like a solid block of colour, with no gradient or cloud detail, has been over-saturated.</p>
+<h2 id="natural-colour-editing">Natural Colour Editing: A Philosophy</h2>
+<p>Natural colour editing means making the photo look like the scene felt, not like a cartoon of it. The colours should be vivid, but they should still belong to the real world.</p>
+<p>Start with small moves. A 10 to 20 percent boost is usually enough, and larger moves quickly cross the line from vivid to artificial.</p>
+<p>Check the photo against your memory of the scene. If the grass was not neon green in real life, it should not be neon green in the photo.</p>
+<p>Compare the edited photo with the original. The edit should feel like a better version of the same photo, not a different photo entirely.</p>
+<h2 id="muted-looks">Muted Looks: When Less Colour Is More</h2>
+<p>Muted colour is a creative choice, not a failure. A photo with soft, quiet colours feels calm and elegant, which suits weddings, portraits, and fine art.</p>
+<p>Use the Muted preset at minus 40 percent saturation for a gentle desaturation. The colours stay visible but soft, and the photo gains a refined, understated feel.</p>
+<p>Muting also helps when the colours clash. A photo with a bright red object next to a bright green one can feel chaotic, and muting both brings harmony.</p>
+<p>For a fully desaturated look, use Grayscale at minus 100 percent. The image becomes black and white, which suits dramatic scenes and timeless portraits.</p>
+<h2 id="black-and-white">Black and White: The Ultimate Desaturation</h2>
+<p>Grayscale at minus 100 percent removes all colour. The photo becomes black and white, with only brightness and contrast left to carry the image.</p>
+<p>Black and white suits dramatic scenes, architecture, and street photography, where shape and light matter more than colour. It also suits portraits with strong expressions.</p>
+<p>After converting, check the contrast. A grayscale photo often needs a small contrast boost, because the colour was carrying some of the depth that is now gone.</p>
+<p>For a black and white landscape, contrast is your main tool. The mountains, the sky, and the foreground all gain definition from a clear tonal spread.</p>
+<h2 id="product-photos">Product Photos: Accuracy Over Vividness</h2>
+<p>Product photos need accurate colour, because a buyer expects the item to match the photo. A boost that changes the colour of a product is a problem, not an improvement.</p>
+<p>Use vibrance for products when you have it, since it protects the strong brand colours while lifting the dull ones. Saturation alone can shift the product colour.</p>
+<p>Use a small boost of 5 to 15 percent for products, and check the colour against the real item. The photo should match what the buyer will receive.</p>
+<p>Keep the colour consistent across the whole catalogue. A shop with matching colour levels looks tidy and trustworthy, while mixed levels look careless.</p>
+<h2 id="common-mistakes">Common Mistakes with Colour Controls</h2>
+<p>The most common mistake is using saturation when vibrance would be better. A portrait boosted with saturation turns orange, while the same portrait boosted with vibrance stays natural.</p>
+<p>Another mistake is boosting a photo that is already vivid. A colourful sunset or a bright flower needs little or no boost, and adding more only makes it garish.</p>
+<p>People also forget to check the skin. A landscape boost that looks fine on the scenery can turn the people in the photo orange, so always check the faces.</p>
+<p>Finally, do not adjust the same JPG repeatedly. Each save adds damage, so always return to the original file when you want a different colour level.</p>
+<h2 id="cheat-sheet">Choosing a Control: Quick Cheat Sheet</h2>
+<p>Use saturation when the whole photo is uniformly dull, when you want a bold stylised look, or when you need to mute or remove colour entirely.</p>
+<p>Use vibrance when the photo has people, when it has mixed dull and vivid areas, or when you want natural colour that does not look edited.</p>
+<p>Use both when the photo needs a strong lift: vibrance first for the dull colours, then a small saturation boost for overall richness.</p>
+<p>Use neither when the photo is already vivid. A colourful scene needs little or no boost, and adding more only makes it garish.</p>
+<h2 id="vibrance-travel-photos">Vibrance and Saturation for Travel Photos</h2>
+<p>Travel photos mix people, landscapes, food, and architecture in one set, so they need a control that handles variety. Vibrance is usually the better choice, since it protects skin and strong colours while lifting dull ones.</p>
+<p>For a travel set, use the same approach on every photo: a moderate vibrance boost, then a small saturation lift only if the colours still feel dull. Consistency keeps the trip feeling like one journey.</p>
+<p>Check the people in every travel photo after boosting. A landscape boost that looks fine on the scenery can turn the travellers orange, so always check the faces.</p>
+<p>For a travel album, keep the colour natural. A trip remembered in garish, over-saturated colours feels less real than one in vivid but believable tones.</p>
+<p>For the practical steps, see <a href="/blog/how-to-adjust-image-saturation/">How to Adjust Image Saturation</a> and the full overview in <a href="/blog/image-saturation-editor-guide/">Image Saturation Editor: Complete Guide</a>. To add a consistent look across photos, try the <a href="/image-filters/">Image Filters tool</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What is the difference between saturation and vibrance?',
+          answer: 'Saturation boosts all colours equally, while vibrance boosts the muted colours more and the vivid ones less. Vibrance also protects skin tones, so faces stay natural. Saturation is simpler and suits uniformly dull photos, while vibrance gives a more natural result on mixed scenes.',
+        },
+        {
+          question: 'Which is better for portraits, saturation or vibrance?',
+          answer: 'Vibrance, because it protects skin tones while lifting the other colours. A saturation boost can turn skin orange, while vibrance keeps faces natural. When only saturation is available, use a small boost of 10 to 15 percent for portraits.',
+        },
+        {
+          question: 'Can I use both saturation and vibrance on the same photo?',
+          answer: 'Yes, when the editor offers both. Use vibrance first to lift the dull colours, then add a small saturation boost of 5 to 10 percent for overall richness. Check the skin and vivid areas after each step, since the two controls interact.',
+        },
+        {
+          question: 'Why does my landscape look fake after boosting colour?',
+          answer: 'The boost was too strong, which turns grass neon green and skies into flat blue blocks. Reduce the slider until the colours feel vivid but still real. A 20 to 30 percent boost is usually the limit for landscapes.',
+        },
+        {
+          question: 'Does vibrance change the brightness of my photo?',
+          answer: 'No, vibrance targets colour intensity, not brightness. It lifts muted colours without making the image lighter or darker. That makes it easier to judge the colour change on its own, without the brightness shifting underneath it.',
+        },
+        {
+          question: 'Should I use saturation or vibrance for product photos?',
+          answer: 'Vibrance when you have it, since it protects the strong brand colours while lifting the dull ones. With saturation only, use a small boost of 5 to 15 percent and check the colour against the real item, since accuracy matters more than vividness.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-filters', '/image-brightness-editor', '/image-contrast-editor'],
+  },
+  {
+    id: 'image-filters-guide',
+    toolSlug: '/image-filters',
+    categoryId: 'crop-edit',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-filters-guide',
+      title: 'Image Filters: Complete Guide',
+      description: 'Learn how to use photo filters online: Vintage, Sepia, B&W Noir, Warm, Cool, and 6 more styles, intensity control, and choosing a consistent look.',
+      body: `
+<p>A photo filter changes the mood of an image in one click. It shifts the colours, the contrast, and the tone, turning an ordinary snapshot into a stylised picture.</p>
+<p>Filters are the fastest edit in photography. A single tap can make a photo feel vintage, dramatic, warm, or cool, without any manual adjustment.</p>
+<p>This guide explains how filters work, what the 11 styles do, and how to use them well. It covers intensity, comparison, consistency, and the mistakes that make filtered photos look cheap.</p>
+<h2 id="what-filters-do">What Photo Filters Actually Do</h2>
+<p>A filter applies a preset combination of colour, contrast, and tone changes to a photo. Each filter is a recipe: warmer colours, softer contrast, faded blacks, or a cooler palette.</p>
+<p>The changes happen all at once. Instead of adjusting brightness, contrast, and saturation separately, a filter applies a coordinated set of changes in a single step.</p>
+<p>Filters do not add detail to a photo. They change how the existing detail looks, shifting the mood without changing the subject or the composition.</p>
+<p>Think of a filter as a lens tint. The scene stays the same, but the colours and the light feel different, as though the photo were taken in another era or another place.</p>
+<h2 id="eleven-filter-styles">The 11 Filter Styles</h2>
+<p>The tool offers 11 filter styles: Grayscale, Sepia, Vintage, Warm, Cool, High Contrast, Matte Fade, Dramatic, B&W Noir, Golden Hour, and Invert. Each one gives a distinct look.</p>
+<p>Grayscale removes all colour, turning the photo black and white. B&W Noir does the same with stronger contrast, giving a dramatic, film-like black and white.</p>
+<p>Sepia adds a warm brown tint that feels old and nostalgic. Vintage is similar but softer, with faded colours and a gentle film look.</p>
+<p>Warm adds a golden tint, Cool adds a blue tint, and Golden Hour mimics the warm light of sunset. High Contrast adds punch, Matte Fade softens the blacks, Dramatic deepens the shadows, and Invert flips the colours entirely.</p>
+<h2 id="filter-intensity">Filter Intensity: From 0% to 100%</h2>
+<p>Intensity controls how strongly the filter applies. At 100 percent, the full effect shows, while at 0 percent, the photo is unchanged.</p>
+<p>Setting the intensity below 100 percent blends the filtered pixels back toward the original. A Vintage filter at 45 percent gives a gentle film wash without overpowering the natural skin tones.</p>
+<p>Lower intensity is often the better choice. A filter at full strength can overwhelm the photo, while the same filter at 50 percent adds mood without hiding the subject.</p>
+<p>Try the filter at 100 percent first to see its character, then reduce the intensity until the effect feels right. The preview updates live, so you can find the sweet spot quickly.</p>
+<h2 id="vintage-default">Why Vintage Is the Default</h2>
+<p>The tool selects Vintage at 100 percent right when you drop a photo in. That default gives you a finished effect on the main canvas immediately, so you see what a filter can do.</p>
+<p>Vintage is a gentle, flattering filter. Its faded colours and soft contrast suit most photos, and it rarely makes an image look worse, which makes it a safe default.</p>
+<p>Click any other tile in the filter presets to switch, or click Reset to snap back to the original. The default is a starting point, not a commitment.</p>
+<p>If Vintage does not suit your photo, try Warm or Golden Hour for a similar feel with different colours. The three warm filters share a mood but differ in tone.</p>
+<h2 id="grayscale-vs-noir">Grayscale vs B&W Noir</h2>
+<p>Grayscale removes the colour and leaves a straightforward black and white image. It is clean, neutral, and honest, showing the photo exactly as it is without colour.</p>
+<p>B&W Noir removes the colour and adds strong contrast. The blacks get deeper, the whites get brighter, and the image gains a dramatic, film-like quality.</p>
+<p>Use Grayscale when the photo should feel calm and documentary. Use B&W Noir when it should feel dramatic, with strong shadows and bold highlights.</p>
+<p>Both suit architecture, street photography, and portraits with strong expressions. The choice depends on whether you want a quiet or a dramatic black and white.</p>
+<h2 id="sepia-vintage-matte-golden">Sepia, Vintage, Matte Fade, and Golden Hour</h2>
+<p>Sepia adds a warm brown tint that feels old. It suits historical photos, family memories, and any image that should feel like it came from another era.</p>
+<p>Vintage is softer than Sepia, with faded colours and a gentle film look. It suits casual photos and social posts, where the nostalgia should feel light, not heavy.</p>
+<p>Matte Fade softens the blacks, giving the photo a faded, film-like quality. It suits portraits and lifestyle photos, where a soft, dreamy feel works well.</p>
+<p>Golden Hour mimics the warm light of sunset. It adds a golden glow that suits landscapes, portraits, and any photo taken in warm light.</p>
+<h2 id="warm-vs-cool">Warm vs Cool Filters</h2>
+<p>Warm adds a golden, yellow tint that feels sunny and inviting. It suits portraits, food, and landscapes, where a warm glow makes the image feel welcoming.</p>
+<p>Cool adds a blue tint that feels calm and crisp. It suits winter scenes, architecture, and tech products, where a cool palette feels modern and clean.</p>
+<p>The choice depends on the mood you want. A warm filter on a snowy scene feels wrong, while a cool filter on a beach sunset fights the natural warmth.</p>
+<p>Try both on the same photo and compare. The difference is immediately obvious, and the right one usually feels like it belongs to the scene.</p>
+<h2 id="invert-filter">The Invert Filter</h2>
+<p>Invert flips every colour to its opposite: black becomes white, blue becomes orange, and red becomes cyan. The result looks like a photographic negative.</p>
+<p>Invert is the most unusual filter in the set, and it suits a narrow range of uses. It works for artistic effects, for checking an image, and for creating a striking graphic.</p>
+<p>For most photos, Invert is a novelty rather than a practical edit. A portrait inverted looks strange, and a landscape inverted looks alien.</p>
+<p>Use Invert sparingly, for a specific creative purpose. A single inverted image in a series can be striking, while a whole feed of them is confusing.</p>
+<h2 id="hold-to-view-original">Hold to View Original</h2>
+<p>The Hold to View Original button shows you the unfiltered photo while you press it. Release it, and the filtered version returns.</p>
+<p>This is the fastest way to judge a filter. Press and hold to see the original, release to see the edit, and the difference is immediately obvious.</p>
+<p>Use it after every filter change. A filter that looks good on its own may look wrong next to the original, and the hold button makes the comparison instant.</p>
+<p>The button is especially useful for subtle filters. A Vintage filter at 45 percent is hard to judge alone, but the hold comparison shows exactly what it changed.</p>
+<h2 id="side-by-side-compare">Side-by-Side Comparison</h2>
+<p>The tool also offers side-by-side split comparison, showing the original and the filtered version next to each other. It is the best way to judge a filter carefully.</p>
+<p>Split view shows exactly which areas changed and by how much. The skin, the sky, and the shadows are all visible in both versions at once.</p>
+<p>Use split view when choosing between two filters. Apply one, check the split, then apply the other and compare again. The better filter is usually obvious.</p>
+<p>For a final check, use the fullscreen compare. The large view shows details that a small preview hides, including subtle colour shifts in the skin and the sky.</p>
+<h2 id="filters-for-portraits">Filters for Portraits</h2>
+<p>Portraits suit gentle filters. Vintage, Warm, and Matte Fade add mood without changing the face, while strong filters can make the skin look unnatural.</p>
+<p>Avoid High Contrast and Dramatic on portraits unless the mood demands it. The strong shadows can age the face and make the skin look harsh.</p>
+<p>B&W Noir suits portraits with strong expressions. The dramatic black and white emphasises the eyes and the emotion, which is why it is a classic portrait filter.</p>
+<p>Check the skin tones after every filter. A filter that looks good on the background may turn the face orange, green, or grey, so always check the person first.</p>
+<h2 id="filters-for-landscapes">Filters for Landscapes</h2>
+<p>Landscapes suit stronger filters. Golden Hour adds warmth to a sunset, Dramatic deepens a moody sky, and High Contrast adds punch to a flat scene.</p>
+<p>Vintage and Matte Fade suit soft, dreamy landscapes. A misty morning or a quiet field gains a gentle, nostalgic feel from a faded filter.</p>
+<p>Avoid Cool on a warm landscape. A sunset with a blue tint fights the natural warmth, and the result looks like a mistake rather than a style.</p>
+<p>For a landscape with a bright sky, check the clouds after filtering. A strong filter can clip the highlights and turn the sky into a white blank.</p>
+<h2 id="consistent-look">Choosing a Consistent Look</h2>
+<p>A consistent filter across your photos creates a recognisable style. Followers learn to spot your work before they read your name, which builds a visual identity.</p>
+<p>Pick one filter and one intensity, and use them for a whole series. A feed where every photo shares the same Vintage at 50 percent looks curated, while mixed filters look random.</p>
+<p>Test the filter on different kinds of photos before committing. A filter that suits landscapes may not suit portraits, and a consistent look needs a filter that works on both.</p>
+<p>Review your filter choice occasionally. Styles change, and a filter that felt fresh last year may feel dated now, so update it when your work evolves.</p>
+<h2 id="formats-and-export">Formats and Export</h2>
+<p>The tool accepts common image formats, including JPG, PNG, WebP, and HEIC, with files up to 20 MB. You can export as JPG, PNG, or WebP depending on your needs.</p>
+<p>Exporting as PNG or WebP preserves transparency in the base image. If your source is a transparent PNG logo, the filtered export keeps the see-through areas intact, though most filters are meant for photos.</p>
+<p>For photos, JPG at a high quality setting works well. Filters do not add much to the file size, so the export stays close to the original weight.</p>
+<p>The quality slider appears for JPG and WebP exports and hides for PNG, because PNG is lossless and has no quality setting to adjust.</p>
+<h2 id="privacy-local-processing">Privacy: Filtering Without Uploading</h2>
+<p>All filter work happens in your browser. Your photos are never uploaded to a server, which matters when the images are personal, family photos, or client work.</p>
+<p>This is a real advantage over cloud editors. A family photo or a private portrait should not travel to a server you cannot see, just to add a filter.</p>
+<p>The tool also strips EXIF GPS data on export. A filtered photo downloaded from the tool carries no record of where it was taken.</p>
+<p>Keep the original photo without a filter. Once a filter is flattened into an export, it cannot be removed from that file, so the original is your only clean copy.</p>
+<h2 id="common-mistakes">Common Mistakes When Using Filters</h2>
+<p>The most common mistake is using a filter at full intensity when a lower value would be better. A Vintage filter at 100 percent can overwhelm the photo, while the same filter at 50 percent adds mood without hiding the subject.</p>
+<p>Another mistake is using a different filter on every photo. A feed with mixed filters looks random, while a consistent filter builds a recognisable style.</p>
+<p>People also forget to check the skin. A filter that looks good on the background may turn the face orange, green, or grey, so always check the person first.</p>
+<p>Finally, do not stack filters in the tool. The tool applies one filter at a time, and trying to layer them by re-uploading the filtered image adds damage with each round.</p>
+<h2 id="filters-for-travel">Filters for Travel Photos</h2>
+<p>Travel photos mix people, landscapes, food, and architecture, so they need a filter that works on everything. Vintage at 50 percent is a safe choice, since its gentle look suits all four.</p>
+<p>Use one filter for the whole trip to keep the set feeling like one journey. A travel album where every photo shares the same filter looks curated, while mixed filters feel random.</p>
+<p>Check the people in every travel photo after filtering. A landscape filter that looks good on the scenery can turn the travellers orange, so always check the faces.</p>
+<p>For a travel feed, review the filter on a few test photos before committing. A filter that suits a beach may not suit a city street, and the trip needs one that works on both.</p>
+<p>For the step-by-step process, see <a href="/blog/how-to-apply-photo-filters/">How to Apply Photo Filters</a>. For the comparison, read <a href="/blog/photo-filters-compared/">Photo Filters Compared: Choosing a Consistent Look</a>, and to adjust colours precisely instead of using a preset, try the <a href="/image-saturation-editor/">Image Saturation Editor</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Which photo filter is best for portraits?',
+          answer: 'Vintage, Warm, or Matte Fade at a moderate intensity of around 50 percent. These add mood without changing the face. Avoid High Contrast and Dramatic on portraits unless the mood demands it, and always check the skin tones after applying a filter.',
+        },
+        {
+          question: 'What does the Filter Intensity slider do?',
+          answer: 'It controls how strongly the filter applies, from 0 percent (original photo) to 100 percent (full effect). Setting Vintage to 45 percent blends the filtered pixels back toward the original, giving a gentle film wash without overpowering natural skin tones.',
+        },
+        {
+          question: 'Why does the tool start with Vintage selected?',
+          answer: 'Vintage at 100 percent is the default so you see a finished effect on the main canvas immediately after upload. It is a gentle, flattering filter that suits most photos. Click any other tile to switch, or Reset to return to the original.',
+        },
+        {
+          question: 'Can I apply two filters to the same photo?',
+          answer: 'Not in one step: the tool applies one filter at a time. Re-uploading a filtered image to add a second filter is possible but adds damage with each round. Choose the single filter that best matches the look you want, and adjust its intensity instead.',
+        },
+        {
+          question: 'Do filters change the resolution of my photo?',
+          answer: 'No. Filters change the colours, contrast, and tone, but the pixel dimensions stay the same. The preview thumbnails are small, but the downloaded file is processed at full resolution, so the export keeps the original size.',
+        },
+        {
+          question: 'Is it safe to apply filters to a personal photo in a browser tool?',
+          answer: 'Yes, because all processing happens locally in your browser and nothing is uploaded to a server. The tool also strips EXIF GPS data on export. Keep the original file if you want to try a different filter later.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-saturation-editor', '/image-brightness-editor', '/image-contrast-editor'],
+  },
+  {
+    id: 'how-to-apply-photo-filters',
+    toolSlug: '/image-filters',
+    categoryId: 'crop-edit',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-apply-photo-filters',
+      title: 'How to Apply Photo Filters',
+      description: 'Apply photo filters in minutes: upload, browse the 11 styles, set the intensity, compare with the original, and download a styled photo.',
+      body: `
+<p>Applying a photo filter takes only a few minutes. You upload the photo, pick a style, set the intensity, and download the styled version.</p>
+<p>This how-to walks through the whole process step by step. It covers the filter grid, the intensity slider, the comparison tools, and the export settings that keep the result looking clean.</p>
+<p>By the end you will be able to style a portrait, a landscape, or a food photo with a consistent look on any device. Keep the original photo until you have checked the result.</p>
+<h2 id="before-you-start">Before You Start: Choose the Mood</h2>
+<p>Decide what mood you want before you open the tool. A warm, nostalgic feel suits Vintage or Sepia, while a dramatic feel suits B&W Noir or Dramatic.</p>
+<p>Think about where the photo will live. A social feed needs a consistent look, while a single print needs only the filter that suits that one image.</p>
+<p>Use the original photo, not a compressed copy. A filter applied to a sharp original looks clean, while one applied to a soft copy looks rough.</p>
+<p>Open the <a href="/image-filters/">Image Filters tool</a> in your browser. Everything runs locally, so your photo is never uploaded to a server.</p>
+<h2 id="step-by-step">Apply a Photo Filter in Five Steps</h2>
+<p>The process is the same for every filter style. Upload, browse the grid, set the intensity, compare, and download.</p>
+<p>Take your time with the intensity. A lower value often looks better than full strength, and the preview shows you exactly when the effect feels right.</p>
+<ol>
+<li>Upload your image by dragging it into the dropzone, choosing it from your device, or pasting a screenshot with Ctrl+V.</li>
+<li>Browse the filter grid and click a style, such as Vintage, Warm, Sepia, or B&W Noir, to preview it on your photo.</li>
+<li>Drag the Filter Intensity slider to set the strength, from 0% for the original to 100% for the full effect.</li>
+<li>Use Hold to View Original or the split compare to check the filtered version against the original.</li>
+<li>Choose the export format and quality, then click Download to save the filtered image.</li>
+</ol>
+<p>Open the downloaded file once before you share it. Confirm the filter looks good and the subject is still clearly visible.</p>
+<h2 id="browsing-filter-grid">Browsing the Filter Grid</h2>
+<p>The filter grid shows a live thumbnail of your photo under each of the 11 styles. The thumbnails update with your actual image, so you can see what each filter does before you click it.</p>
+<p>Scroll through the grid slowly and look at the thumbnails. The right filter usually stands out immediately, because it matches the mood of the photo.</p>
+<p>Click a tile to apply that filter to the main canvas. The large preview shows the full effect, which is easier to judge than the small thumbnail.</p>
+<p>If no filter stands out, try Vintage first. It is the default for a reason: its gentle, faded look suits most photos and rarely makes an image worse.</p>
+<h2 id="setting-intensity">Setting the Filter Intensity</h2>
+<p>Intensity runs from 0 to 100 percent. At 100 percent, the full filter shows, while at 0 percent, the photo is unchanged.</p>
+<p>Setting the intensity below 100 percent blends the filtered pixels back toward the original. A Vintage filter at 45 percent gives a gentle film wash without overpowering the skin tones.</p>
+<p>Try the filter at 100 percent first to see its character, then reduce the intensity until the effect feels right. The preview updates live, so you can find the sweet spot quickly.</p>
+<p>For portraits, a lower intensity of 40 to 60 percent is usually best. It adds mood without changing the face, which is what a portrait needs.</p>
+<h2 id="comparing-with-original">Comparing with the Original</h2>
+<p>Use Hold to View Original for a quick check. Press and hold to see the unfiltered photo, release to see the filtered version, and the difference is immediately obvious.</p>
+<p>Use the split compare for a careful check. It shows the original and the filtered version side by side, so you can see exactly which areas changed.</p>
+<p>Check the skin, the sky, and the shadows in the comparison. A filter that looks good on the background may turn the face orange or the sky white.</p>
+<p>If the filtered version looks worse than the original, try a different filter or reduce the intensity. A filter should improve the photo, not just change it.</p>
+<h2 id="using-vintage">Using the Vintage Filter</h2>
+<p>Vintage is the default filter, selected at 100 percent when you upload a photo. Its faded colours and soft contrast give a gentle, nostalgic film look.</p>
+<p>Try Vintage at 50 percent for a subtler effect. The faded look stays, but the photo keeps more of its natural colour, which suits portraits and everyday shots.</p>
+<p>Vintage suits casual photos, social posts, and memories. It feels warm and familiar, which is why it is the most popular filter in the set.</p>
+<p>If Vintage feels too faded, try Warm or Golden Hour instead. The three warm filters share a mood but differ in tone, so one of them usually fits.</p>
+<h2 id="using-black-white">Using Grayscale and B&W Noir</h2>
+<p>Grayscale removes the colour and leaves a clean black and white image. It suits architecture, street photography, and any photo where shape matters more than colour.</p>
+<p>B&W Noir removes the colour and adds strong contrast. The blacks get deeper, the whites get brighter, and the image gains a dramatic, film-like quality.</p>
+<p>Use Grayscale when the photo should feel calm and documentary. Use B&W Noir when it should feel dramatic, with strong shadows and bold highlights.</p>
+<p>After converting to black and white, check the contrast. A grayscale photo often needs a small contrast boost, because the colour was carrying some of the depth.</p>
+<h2 id="using-warm-cool">Using Warm and Cool Filters</h2>
+<p>Warm adds a golden tint that feels sunny and inviting. It suits portraits, food, and landscapes, where a warm glow makes the image feel welcoming.</p>
+<p>Cool adds a blue tint that feels calm and crisp. It suits winter scenes, architecture, and tech products, where a cool palette feels modern and clean.</p>
+<p>Try both on the same photo and compare. The difference is immediately obvious, and the right one usually feels like it belongs to the scene.</p>
+<p>For a photo taken in warm light, a Warm filter enhances the natural glow. For a photo taken in cool light, a Cool filter does the same.</p>
+<h2 id="filters-for-portraits">Filters for Portraits</h2>
+<p>Portraits suit gentle filters at moderate intensity. Vintage, Warm, and Matte Fade at 40 to 60 percent add mood without changing the face.</p>
+<p>Avoid High Contrast and Dramatic on portraits unless the mood demands it. The strong shadows can age the face and make the skin look harsh.</p>
+<p>B&W Noir suits portraits with strong expressions. The dramatic black and white emphasises the eyes and the emotion, which is why it is a classic portrait filter.</p>
+<p>Check the skin tones after every filter. A filter that looks good on the background may turn the face orange, green, or grey, so always check the person first.</p>
+<h2 id="filters-for-food">Filters for Food Photos</h2>
+<p>Food photos suit Warm and Golden Hour filters, which enhance the rich, appetising colours. A warm glow makes dishes look fresh and inviting.</p>
+<p>Use a moderate intensity of 40 to 60 percent for food. A full-strength filter can make the colours look artificial, while a gentle one enhances them naturally.</p>
+<p>Avoid Cool on food photos. A blue tint makes dishes look cold and unappetising, which is the opposite of what a food photo should do.</p>
+<p>Check the reds after filtering. Tomatoes, meat, and berries can turn an unnatural bright red under a strong filter, which makes the food look less appetising.</p>
+<h2 id="previewing">Previewing Before You Download</h2>
+<p>Always preview before downloading. Check that the filter looks good, that the subject is still clearly visible, and that the skin tones are natural.</p>
+<p>Use the hold button for a quick comparison with the original. A filter that looks good alone may look wrong next to the original, and the hold comparison shows it instantly.</p>
+<p>Zoom into the skin, the sky, and the shadows at full size. Those areas show filter problems first, and a small preview can hide them.</p>
+<p>If the filter looks too strong, reduce the intensity by 10 percent and check again. Small reductions often restore the natural look without losing the mood.</p>
+<h2 id="choosing-export-format">Choosing the Export Format</h2>
+<p>Choose JPG for photos you plan to share. It keeps file sizes small and works everywhere, and a high quality setting keeps the filtered photo looking clean.</p>
+<p>Choose PNG for graphics and logos with transparency. PNG is lossless, so the colours stay exact, and it preserves see-through areas.</p>
+<p>Choose WebP when you want small files with good quality. It works well for web images, though a few older systems still reject the format.</p>
+<p>Remember that the quality slider hides for PNG, because PNG is lossless and has no quality setting to adjust. That is normal behaviour, not a problem with the tool.</p>
+<h2 id="applying-on-mobile">Applying Filters on a Phone or Tablet</h2>
+<p>The tool works on touchscreens, so you can filter a photo on the phone that took it. Upload from your gallery, tap a filter tile, and download the result.</p>
+<p>The filter grid is easy to browse on a phone. Tap through the thumbnails and watch the main preview update, then set the intensity with the slider.</p>
+<p>Check the preview at full size before downloading. A filter that looks fine on a small phone screen may be too strong when viewed on a computer.</p>
+<p>Downloaded files save to your usual downloads folder. From there you can share the filtered photo directly to a chat app, an email, or a social post.</p>
+<h2 id="troubleshooting">Troubleshooting Common Filter Problems</h2>
+<p>If the filter looks too strong, reduce the intensity. A Vintage filter at 100 percent can overwhelm the photo, while the same filter at 50 percent adds mood without hiding the subject.</p>
+<p>If the skin looks orange or green, the filter does not suit the portrait. Try a gentler filter such as Vintage or Matte Fade, or reduce the intensity.</p>
+<p>If the photo looks worse than the original, click Reset to return to the unfiltered image. A filter should improve the photo, not just change it.</p>
+<p>If the download looks different from the preview, check the export format and quality. A low JPG quality setting can shift the colours slightly, especially in bright areas.</p>
+<h2 id="consistent-feed">Building a Consistent Feed with Filters</h2>
+<p>Pick one filter and one intensity, and use them for a whole series. A feed where every photo shares the same Vintage at 50 percent looks curated, while mixed filters look random.</p>
+<p>Test the filter on different kinds of photos before committing. A filter that suits landscapes may not suit portraits, and a consistent look needs one that works on both.</p>
+<p>Note down your filter and intensity. A short note, such as Vintage 50 percent, lets you reproduce the same look on every photo you publish.</p>
+<p>Review your filter choice occasionally. Styles change, and a filter that felt fresh last year may feel dated now, so update it when your work evolves.</p>
+<h2 id="quick-tips">Quick Tips for Better Filters</h2>
+<p>Start at full intensity to see the filter character, then reduce it until the effect feels right. A lower intensity often looks better than the full effect.</p>
+<p>Check the skin, the sky, and the shadows after every filter. Those areas show problems first, and a small preview can hide them.</p>
+<p>Use one filter per photo. Stacking filters by re-uploading the filtered image adds damage with each round, and a single well-chosen filter is cleaner.</p>
+<p>Save the original photo without a filter. Once a filter is flattened into an export, it cannot be removed from that file.</p>
+<h2 id="filter-for-wedding-photo">Applying a Filter to a Wedding Photo</h2>
+<p>Wedding photos suit gentle filters. Vintage or Matte Fade at 40 to 50 percent adds a soft, romantic feel without changing the faces or the white dress.</p>
+<p>Avoid strong filters on wedding photos. High Contrast and Dramatic can age the couple and make the dress look grey, which is the opposite of what a wedding album needs.</p>
+<p>Check the white dress after filtering. A filter that tints the dress yellow or pink looks wrong in an album, so reduce the intensity if the dress changes colour.</p>
+<p>Use the same filter for the whole wedding set. A album where every photo shares the same gentle filter looks professional, while mixed filters make the day feel disjointed.</p>
+<p>For the comparison, read <a href="/blog/photo-filters-compared/">Photo Filters Compared: Choosing a Consistent Look</a>. For the full overview, see <a href="/blog/image-filters-guide/">Image Filters: Complete Guide</a>, and to adjust colours precisely instead of using a preset, try the <a href="/image-saturation-editor/">Image Saturation Editor</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I apply a filter to a photo on my phone?',
+          answer: 'Open the Image Filters tool in your phone browser, upload the photo from your gallery, and tap a filter tile in the grid. Drag the intensity slider to set the strength, use Hold to View Original to compare, and download the result.',
+        },
+        {
+          question: 'What intensity should I use for a portrait filter?',
+          answer: 'A moderate intensity of 40 to 60 percent usually works best for portraits. It adds mood without changing the face. Full intensity can make the skin look unnatural, so start at 100 percent to see the character, then reduce it until the face looks right.',
+        },
+        {
+          question: 'Which filter is best for a sunset landscape?',
+          answer: 'Golden Hour or Warm, which enhance the natural warm light of the scene. Golden Hour mimics sunset light directly, while Warm adds a golden tint. Use a moderate intensity so the sky keeps its gradient and the clouds do not clip.',
+        },
+        {
+          question: 'Can I preview all filters on my photo before choosing?',
+          answer: 'Yes. The filter grid shows a live thumbnail of your actual photo under each of the 11 styles, so you can see what every filter does before you click it. Tap a tile to apply it to the main canvas for a full-size preview.',
+        },
+        {
+          question: 'Why does my filtered photo look different after downloading?',
+          answer: 'The export format and quality setting can shift the colours slightly, especially at a low JPG quality. Re-export at a higher quality setting, or switch to PNG for the most exact colours. The preview thumbnails are also smaller than the full-resolution download.',
+        },
+        {
+          question: 'Should I use the same filter for all my photos?',
+          answer: 'For a social feed or a series, yes: one filter and one intensity builds a recognisable style. For single photos, choose the filter that suits each image. Test your chosen filter on portraits and landscapes before committing to it.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-saturation-editor', '/image-brightness-editor', '/image-contrast-editor'],
+  },
+  {
+    id: 'photo-filters-compared',
+    toolSlug: '/image-filters',
+    categoryId: 'crop-edit',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'photo-filters-compared',
+      title: 'Photo Filters Compared: Choosing a Consistent Look',
+      description: 'All 11 photo filters compared: Vintage vs Sepia, Grayscale vs Noir, Warm vs Cool, and which style suits portraits, landscapes, food, and products.',
+      body: `
+<p>Eleven filters is a lot of choice. Each one changes the mood of a photo, and the wrong one can make a good image look cheap or strange.</p>
+<p>Comparing the filters side by side is the fastest way to learn them. Once you know what each one does, choosing becomes quick, and your photos gain a consistent look.</p>
+<p>This article compares all 11 styles directly: how they differ, which subjects each one suits, and how to build a consistent filter habit across your work.</p>
+<h2 id="why-compare-filters">Why Compare Filters at All</h2>
+<p>Filters look similar in a small grid, but they behave very differently at full size. A filter that looks warm in a thumbnail can turn a face orange in the main preview.</p>
+<p>Comparing them on the same photo shows the differences clearly. The same portrait under Vintage, Sepia, and B&W Noir looks like three different photographs.</p>
+<p>Comparison also prevents the most common filter mistake: using a different filter on every photo. A feed with mixed filters looks random, while a consistent one builds a style.</p>
+<p>Learn the filters once, on a few test photos, and choosing becomes fast. You will know which filter suits a portrait, a landscape, or a product without trying all eleven.</p>
+<h2 id="vintage-vs-sepia">Vintage vs Sepia</h2>
+<p>Vintage and Sepia both feel nostalgic, but they differ in strength. Sepia adds a strong warm brown tint, while Vintage fades the colours gently with a softer film look.</p>
+<p>Sepia suits historical photos, family memories, and any image that should feel like it came from another era. The brown tint is unmistakable and bold.</p>
+<p>Vintage suits casual photos and social posts, where the nostalgia should feel light. It adds mood without the heavy brown cast that Sepia brings.</p>
+<p>Try both on the same photo and compare. The right one usually feels like it belongs to the scene, while the wrong one feels like a costume.</p>
+<h2 id="grayscale-vs-noir">Grayscale vs B&W Noir</h2>
+<p>Grayscale removes the colour and leaves a clean, neutral black and white image. It is honest and calm, showing the photo exactly as it is without colour.</p>
+<p>B&W Noir removes the colour and adds strong contrast. The blacks get deeper, the whites get brighter, and the image gains a dramatic, film-like quality.</p>
+<p>Use Grayscale when the photo should feel calm and documentary. Use B&W Noir when it should feel dramatic, with strong shadows and bold highlights.</p>
+<p>Both suit architecture, street photography, and portraits with strong expressions. The choice depends on whether you want a quiet or a dramatic black and white.</p>
+<h2 id="warm-vs-cool">Warm vs Cool</h2>
+<p>Warm adds a golden tint that feels sunny and inviting. It suits portraits, food, and landscapes, where a warm glow makes the image feel welcoming.</p>
+<p>Cool adds a blue tint that feels calm and crisp. It suits winter scenes, architecture, and tech products, where a cool palette feels modern and clean.</p>
+<p>The choice depends on the mood you want. A warm filter on a snowy scene feels wrong, while a cool filter on a beach sunset fights the natural warmth.</p>
+<p>Try both on the same photo and compare. The difference is immediately obvious, and the right one usually feels like it belongs to the scene.</p>
+<h2 id="matte-fade-vs-golden-hour">Matte Fade vs Golden Hour</h2>
+<p>Matte Fade softens the blacks, giving the photo a faded, film-like quality. It suits portraits and lifestyle photos, where a soft, dreamy feel works well.</p>
+<p>Golden Hour mimics the warm light of sunset. It adds a golden glow that suits landscapes, portraits, and any photo taken in warm light.</p>
+<p>Matte Fade is about softness, while Golden Hour is about warmth. A photo can be soft without being warm, and warm without being soft, so the two filters serve different moods.</p>
+<p>For a dreamy portrait, Matte Fade is the better choice. For a sunset landscape, Golden Hour is the obvious one, since it enhances the light that is already there.</p>
+<h2 id="high-contrast-filter">High Contrast and Dramatic</h2>
+<p>High Contrast adds punch by deepening the shadows and brightening the highlights. It suits landscapes, architecture, and any photo that feels flat and grey.</p>
+<p>Dramatic goes further, deepening the shadows more aggressively for a moody, cinematic feel. It suits stormy skies, city nights, and bold editorial photos.</p>
+<p>Both filters can be too strong for portraits. The deep shadows age the face and make the skin look harsh, so use them on people only when the mood demands it.</p>
+<p>Check the highlights after applying either filter. Clouds and white surfaces clip first, turning into featureless blanks with no detail.</p>
+<h2 id="invert-filter">Invert: The Outlier</h2>
+<p>Invert flips every colour to its opposite, turning the photo into a negative. It is the most unusual filter in the set, and it suits a narrow range of uses.</p>
+<p>For most photos, Invert is a novelty rather than a practical edit. A portrait inverted looks strange, and a landscape inverted looks alien.</p>
+<p>Use Invert for a specific creative purpose: an artistic effect, a striking graphic, or a check of the image structure. A single inverted image in a series can be striking.</p>
+<p>Do not build a consistent look around Invert. A feed of inverted photos is confusing, while one inverted image among normal ones draws the eye.</p>
+<h2 id="filters-for-portraits">Filters for Portraits, Compared</h2>
+<p>Vintage, Warm, and Matte Fade are the best portrait filters. They add mood at a moderate intensity without changing the face, which is what a portrait needs.</p>
+<p>B&W Noir suits portraits with strong expressions. The dramatic black and white emphasises the eyes and the emotion, which is why it is a classic portrait filter.</p>
+<p>High Contrast and Dramatic are the worst portrait filters for most faces. The deep shadows age the skin and make the portrait feel harsh.</p>
+<p>Cool can work on a portrait taken in cool light, but it can also make the skin look pale and lifeless. Test it on the face before committing.</p>
+<h2 id="filters-for-landscapes">Filters for Landscapes, Compared</h2>
+<p>Golden Hour is the best landscape filter for warm light. It enhances the sunset glow without changing the character of the scene.</p>
+<p>Dramatic suits moody landscapes with stormy skies. The deep shadows add weight to the clouds and the mountains, giving the scene a cinematic feel.</p>
+<p>Vintage and Matte Fade suit soft, dreamy landscapes. A misty morning or a quiet field gains a gentle, nostalgic feel from a faded filter.</p>
+<p>Avoid Cool on a warm landscape. A sunset with a blue tint fights the natural warmth, and the result looks like a mistake rather than a style.</p>
+<h2 id="filters-for-food">Filters for Food, Compared</h2>
+<p>Warm and Golden Hour are the best food filters. They enhance the rich, appetising colours and make dishes look fresh and inviting.</p>
+<p>Vintage at a low intensity can also work for food, especially for a rustic or home-cooked feel. The faded look suits comfort food and family recipes.</p>
+<p>Cool is the worst food filter. A blue tint makes dishes look cold and unappetising, which is the opposite of what a food photo should do.</p>
+<p>Check the reds after filtering. Tomatoes, meat, and berries can turn an unnatural bright red under a strong filter, which makes the food look less appetising.</p>
+<h2 id="filters-for-products">Filters for Products, Compared</h2>
+<p>Products need accurate colour, so most filters are wrong for them. A filter that shifts the colour of a product misleads the buyer and hurts trust.</p>
+<p>High Contrast at a low intensity can work for products, adding definition without changing the colour much. A small boost makes the item stand out from the background.</p>
+<p>Warm at a low intensity suits products photographed in warm light. It enhances the natural glow without shifting the product colour.</p>
+<p>For a catalogue, skip filters entirely or use the same mild filter on every image. Consistency matters more than style, and accurate colour matters most of all.</p>
+<h2 id="choosing-consistent-look">Choosing a Consistent Look</h2>
+<p>A consistent filter across your photos creates a recognisable style. Followers learn to spot your work before they read your name, which builds a visual identity.</p>
+<p>Pick one filter and one intensity, and use them for a whole series. A feed where every photo shares the same Vintage at 50 percent looks curated, while mixed filters look random.</p>
+<p>Test the filter on different kinds of photos before committing. A filter that suits landscapes may not suit portraits, and a consistent look needs one that works on both.</p>
+<p>Review your filter choice occasionally. Styles change, and a filter that felt fresh last year may feel dated now, so update it when your work evolves.</p>
+<h2 id="intensity-choices">Intensity: The Real Decision</h2>
+<p>The filter choice matters less than the intensity. A Vintage filter at 100 percent and the same filter at 50 percent look like different edits, and the lower value usually looks better.</p>
+<p>Start at full intensity to see the filter character, then reduce it until the effect feels right. The preview updates live, so you can find the sweet spot quickly.</p>
+<p>For portraits, a lower intensity of 40 to 60 percent is usually best. It adds mood without changing the face, which is what a portrait needs.</p>
+<p>For landscapes, a higher intensity of 60 to 80 percent can work. The scene can take a stronger effect without looking artificial, since there is no skin to protect.</p>
+<h2 id="mixing-filters">Mixing Filters Across a Feed</h2>
+<p>Mixing filters is the most common consistency mistake. A feed where one photo is Vintage, the next is Dramatic, and the third is Cool looks random and unplanned.</p>
+<p>Use one filter for a whole series, and vary only the intensity. A Vintage feed can have portraits at 40 percent and landscapes at 60 percent, and the look stays consistent.</p>
+<p>When a single photo needs a different filter, use it as an exception, not a habit. One B&W Noir portrait in a Vintage feed can be striking, while five of them break the style.</p>
+<p>Plan the filter before you shoot, when you can. A series shot with one filter in mind looks more coherent than a series filtered afterwards at random.</p>
+<h2 id="trends-vs-timeless">Trends vs Timeless Filters</h2>
+<p>Filter styles trend like anything else. Vintage was popular a decade ago, Dramatic is popular now, and minimal, natural colour never goes out of style.</p>
+<p>For work that must last, choose a timeless filter. A gentle Vintage at a low intensity looks as good in ten years as it does today, while a harsh Dramatic may feel dated quickly.</p>
+<p>For social posts that live for a day, trends are fine. A Dramatic filter that matches the current style can boost engagement, and the post will be forgotten long before the trend fades.</p>
+<p>When in doubt, go gentle. A subtle filter is never wrong, and it lets the photo carry the image instead of the effect.</p>
+<h2 id="cheat-sheet">Choosing a Filter: Quick Cheat Sheet</h2>
+<p>Use Vintage or Matte Fade for portraits and casual photos, at 40 to 60 percent intensity. They add mood without changing the face.</p>
+<p>Use Golden Hour or Dramatic for landscapes, at 60 to 80 percent intensity. They enhance the light and the mood without overwhelming the scene.</p>
+<p>Use Warm for food and products in warm light, at 40 to 60 percent intensity. It enhances the appetising colours without shifting them.</p>
+<p>Use Grayscale or B&W Noir for architecture, street photography, and dramatic portraits. Choose Grayscale for calm and B&W Noir for drama.</p>
+<h2 id="filters-for-weddings">Filters for Wedding Photos, Compared</h2>
+<p>Vintage and Matte Fade are the best wedding filters. They add a soft, romantic feel at a moderate intensity without changing the faces or the white dress.</p>
+<p>Golden Hour can work for outdoor weddings in warm light. It enhances the sunset glow, but it can also tint the dress yellow, so check the whites carefully.</p>
+<p>High Contrast and Dramatic are the worst wedding filters. The deep shadows age the couple and make the dress look grey, which is the opposite of what a wedding album needs.</p>
+<p>Use the same filter for the whole wedding set. An album where every photo shares the same gentle filter looks professional, while mixed filters make the day feel disjointed.</p>
+<p>For the step-by-step process, see <a href="/blog/how-to-apply-photo-filters/">How to Apply Photo Filters</a> and the full overview in <a href="/blog/image-filters-guide/">Image Filters: Complete Guide</a>. To adjust colours precisely instead of using a preset, try the <a href="/image-saturation-editor/">Image Saturation Editor</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Which filter should I use for a consistent Instagram feed?',
+          answer: 'Pick one filter and one intensity and use them for the whole feed, such as Vintage at 50 percent. A consistent filter builds a recognisable style, while mixed filters look random. Test your chosen filter on portraits and landscapes before committing to it.',
+        },
+        {
+          question: 'What is the difference between Vintage and Sepia filters?',
+          answer: 'Sepia adds a strong warm brown tint that feels old and historical, while Vintage fades the colours gently with a softer film look. Sepia suits historical photos and memories, while Vintage suits casual photos and social posts where the nostalgia should feel light.',
+        },
+        {
+          question: 'Should I use Grayscale or B&W Noir for a portrait?',
+          answer: 'Grayscale for a calm, documentary portrait and B&W Noir for a dramatic one with strong expression. Noir adds contrast that emphasises the eyes and emotion, while Grayscale shows the face exactly as it is. Both suit portraits with strong character.',
+        },
+        {
+          question: 'Is it better to use a filter or adjust saturation manually?',
+          answer: 'A filter is faster and gives a coordinated look in one click, which suits social posts and quick edits. Manual saturation gives precise control over a single aspect, which suits product photos and careful work. Use filters for style and manual controls for accuracy.',
+        },
+        {
+          question: 'Why do my filtered photos look different from each other?',
+          answer: 'You are probably using a different filter or intensity on each photo. Pick one filter and one intensity for a series, and vary only the intensity slightly by subject. A consistent choice builds a recognisable style across the feed.',
+        },
+        {
+          question: 'Can a filter make a bad photo good?',
+          answer: 'No. A filter changes the mood and the colours, but it cannot fix a blurry, dark, or badly framed photo. Fix the brightness, focus, and framing first, then choose a filter that enhances the good photo you already have.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-saturation-editor', '/image-brightness-editor', '/image-contrast-editor'],
+  },
   // BATCH3-DEVELOPER (18 articles)
   // BATCH3-CREATE (15 articles)
   // BATCH3-RESIZE (6 articles)
