@@ -13588,7 +13588,2237 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     },
     relatedToolSlugs: ['/image-saturation-editor', '/image-brightness-editor', '/image-contrast-editor'],
   },
-  // BATCH3-DEVELOPER (18 articles)
+  {
+    id: 'image-color-picker-guide',
+    toolSlug: '/image-color-picker',
+    categoryId: 'developer',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-color-picker-guide',
+      title: 'Image Color Picker: Complete Guide',
+      description: 'Pick any color from any image with an eyedropper. Learn HEX, RGB, HSL and CMYK codes, the magnifier loupe, swatches, and CSS export — free, in your browser.',
+      body: `
+<p>Every designer has seen a color on screen and wanted its exact code. A screenshot, a photo, a logo, or a website mockup can hold the perfect shade, but guessing its value never works.</p>
+<p>An image color picker solves that problem in seconds. You open an image, point at any pixel, and read its exact color code in HEX, RGB, HSL, and CMYK.</p>
+<p>This guide explains how the CompressMyPic image color picker works, what each color code means, and how to use picked colors in real design and development work.</p>
+<h2 id="what-is-an-image-color-picker">What Is an Image Color Picker?</h2>
+<p>An image color picker is a browser tool that reads the color of any pixel inside an image you upload. It works like the eyedropper tool in a design program, but without installing anything.</p>
+<p>You drop a photo or screenshot into the tool, move your cursor over the image, and the tool shows the color under that exact point. The value updates live as you move.</p>
+<p>The tool accepts common image formats such as JPG, PNG, WebP, and GIF. Files up to 20 MB are supported, which covers almost every photo, logo, and screenshot you will ever need to sample.</p>
+<p>Everything runs locally in your browser. Your image is never uploaded to a server, so client mockups and unreleased brand work stay private while you sample them.</p>
+<h2 id="how-the-eyedropper-reads-a-pixel">How the Eyedropper Reads a Pixel</h2>
+<p>Every digital image is a grid of tiny squares called pixels. Each pixel stores one color, described by three numbers for red, green, and blue light.</p>
+<p>When you click a point on the image, the tool reads the red, green, and blue values of that single pixel. It then converts those three numbers into every color format you might need.</p>
+<p>The reading is exact, not an estimate. The pixel really is that color, and the code you copy will reproduce it faithfully in a design file, a stylesheet, or a print document.</p>
+<p>One pixel can still surprise you, though. In a photo, neighboring pixels often differ slightly, so moving one step sideways can change the last digit of a HEX code.</p>
+<h2 id="color-codes-explained">Color Codes You Get: HEX, RGB, HSL, CMYK</h2>
+<p>Every picked pixel produces several color codes at once. HEX is the six-digit code web developers use in CSS, such as #2563EB for a strong blue.</p>
+<p>RGB describes the same color as three numbers from 0 to 255, one each for red, green, and blue. It is the format most design tools and image editors understand natively.</p>
+<p>HSL describes color by hue, saturation, and lightness. Designers like it because it matches how people think about color: pick a hue, then make it richer or lighter.</p>
+<p>CMYK describes the color as ink percentages for print. It is an approximation on screen, since screens use light and printers use ink, but it is a useful starting point for print work.</p>
+<h2 id="the-11x11-loupe">The 11x11 Loupe: Why Magnification Matters</h2>
+<p>Picking the right pixel is hard at normal zoom. A thin line, a small icon, or a one-pixel border is easy to miss by a hair, and a miss gives you the wrong color.</p>
+<p>The tool solves this with an 11 by 11 magnified loupe. It shows a zoomed view of the pixels around your cursor, so you can see exactly which pixel you are about to sample.</p>
+<p>The loupe is especially useful for UI screenshots. Buttons, dividers, and text often sit on anti-aliased edges where the color blends across two or three pixels.</p>
+<p>With magnification you can aim for the solid center of a shape instead of its blended edge. That single choice is often the difference between the true brand color and a muddy in-between shade.</p>
+<h2 id="picked-swatches">Picked Swatches: Building a Collection</h2>
+<p>One color is rarely enough. A brand palette, a website theme, or a slide deck needs several colors that work together, and the tool lets you collect them one by one.</p>
+<p>Each click adds the sampled color to your Picked Swatches tray. You can gather the main color, the accent, the background, and the text color from the same image.</p>
+<p>Swatches stay visible while you work, so you can compare them side by side. If two picks look almost identical, you can drop one and keep the cleaner version.</p>
+<p>Clicking the same HEX value twice does not create a duplicate. The tool keeps your collection tidy, which matters when you are sampling a photo with many near-identical shades.</p>
+<h2 id="export-css">Export CSS: From Image to Stylesheet</h2>
+<p>Collected swatches are only useful if you can take them into your project. The Export CSS button downloads your picked colors as ready-to-use CSS custom properties.</p>
+<p>The download gives you variables such as --color-1, --color-2, and so on, each holding a HEX value. You can paste them into a stylesheet and reference them anywhere in your design.</p>
+<p>This beats copying codes one at a time into a text file. The export keeps every color in one place, in the right order, with no transcription errors.</p>
+<p>For a fuller palette workflow, the <a href="/image-color-palette-extractor/">image color palette extractor</a> builds a ranked palette automatically. Use the picker when you want exact pixels and the extractor when you want the dominant colors of a whole photo.</p>
+<h2 id="picking-colors-from-photos">Picking Colors from Photos</h2>
+<p>Photos are the most common source for picked colors. A sunset, a product shot, or a travel photo can supply a whole palette that already feels natural together.</p>
+<p>Start with the largest flat areas of the photo. A clear sky, a painted wall, or a piece of clothing gives a stable color that survives sampling better than a busy texture.</p>
+<p>Avoid the brightest highlights and the deepest shadows. Those areas are often clipped, which means the true color information is lost and the code you get is just white or black.</p>
+<p>Sample the same area a few times and compare the results. If the codes cluster around one value, that value is the real color of the surface. If they scatter, pick the middle of the cluster.</p>
+<h2 id="picking-colors-from-logos-and-screenshots">Picking Colors from Logos and Screenshots</h2>
+<p>Logos and interface screenshots are the precision case. A brand color must match exactly, because a close shade looks wrong next to the real logo.</p>
+<p>For logos, sample the middle of a large flat shape. The center of a letter or a block is solid, while the edges blend into the background and give mixed values.</p>
+<p>For screenshots, paste directly with Ctrl+V when you can. The tool accepts clipboard images, so you can capture a screen and sample it without saving a file first.</p>
+<p>When sampling a screenshot, check the pixel coordinates shown in the Pixel Inspector. Coordinates help you return to the exact same spot if you need to verify a value later.</p>
+<h2 id="color-accuracy-jpeg-transparency">Color Accuracy: JPEG Noise and Transparency</h2>
+<p>JPEG compression changes pixel colors slightly. The format stores colors in small blocks, so two neighboring pixels in a smooth sky can differ by a digit or two.</p>
+<p>This variation is normal and harmless for most work. Pick the value that appears most often in the area, and your result will look right to the eye.</p>
+<p>PNG files behave differently. A PNG stores exact colors, so the code you read is the code the file contains, with no compression noise at all.</p>
+<p>Transparent areas need care. Sampling a transparent part of a PNG logo reads the color underneath the transparency, which may be white or black rather than the color you expect.</p>
+<h2 id="picking-colors-on-mobile">Picking Colors on Mobile and Touchscreens</h2>
+<p>The color picker works on phones and tablets as well as on desktop. You tap the image instead of clicking, and the same loupe and swatch features apply.</p>
+<p>Touch is less precise than a mouse, because a fingertip covers many pixels at once. The magnified loupe matters even more here, since it shows what lies under your finger.</p>
+<p>Zoom the image in your browser before tapping if the target is small. A larger image gives your finger a bigger target and reduces the chance of sampling a neighboring pixel.</p>
+<p>For critical brand colors, verify the pick on a desktop later. A phone tap gets you close, but a mouse click on the exact pixel is the reliable final check.</p>
+<h2 id="common-mistakes">Common Mistakes When Picking Colors</h2>
+<p>The most common mistake is sampling an edge instead of a flat area. Anti-aliased edges blend two colors, and the blended value belongs to neither of them.</p>
+<p>Another mistake is trusting a single click on a noisy photo. One pixel in a grainy image can be an outlier, so always sample the same spot two or three times.</p>
+<p>People also forget that screens differ. The same HEX code can look slightly different on two monitors, so judge a color by its code, not only by how it looks on your display.</p>
+<p>Finally, do not sample from a screenshot of a screenshot. Each capture and re-save can shift colors slightly, so always work from the cleanest original file you have.</p>
+<h2 id="color-picker-vs-palette-extractor">Color Picker vs Palette Extractor</h2>
+<p>The color picker and the palette extractor answer different questions. The picker tells you the exact color of one pixel you choose, while the extractor finds the dominant colors of the whole image.</p>
+<p>Use the picker when you know what you want: the exact blue of a logo, the exact shade of a button, or the exact tone of a wall in a photo.</p>
+<p>Use the extractor when you want ideas: the five or six colors that define a photo, ranked by how much of the image they cover. It is the faster route to a full palette.</p>
+<p>Many designers use both. They extract a palette for the overall scheme, then use the picker to grab one precise accent color the extractor ranked too low to include.</p>
+<h2 id="who-uses-a-color-picker">Who Uses an Image Color Picker?</h2>
+<p>Web developers use it to match a design mockup exactly. When a client sends a screenshot instead of a design file, the picker recovers the real HEX codes.</p>
+<p>Graphic designers use it to build palettes from reference photos. A mood board photo can supply the entire color scheme for a poster or a brand identity.</p>
+<p>Print designers use the CMYK readout as a starting point. It is not a perfect print match, but it tells them whether a bright screen color will survive on paper.</p>
+<p>Content creators use it for thumbnails and social graphics. Matching a thumbnail accent to a brand color keeps a channel looking consistent across dozens of videos.</p>
+<h2 id="privacy-in-your-browser">Privacy: Your Images Stay in Your Browser</h2>
+<p>Privacy matters when the image is a client mockup, an unreleased product shot, or a personal photo. Uploading such files to a random server is a risk you do not need to take.</p>
+<p>This tool processes everything locally. The image is read by your browser, the pixels are sampled on your device, and nothing leaves your computer.</p>
+<p>That also means the tool works offline once the page has loaded. You can sample colors on a plane, in a meeting room, or anywhere without a connection.</p>
+<p>If you handle sensitive brand assets, local processing is the deciding feature. No upload means no copy of the file sitting on a server you do not control.</p>
+<h2 id="sampling-gradients-and-patterns">Sampling Colors from Gradients and Patterns</h2>
+<p>Gradients are a special case, because the color changes smoothly from one end to the other. There is no single correct color in a gradient, only the color at the exact point you sample.</p>
+<p>To capture a gradient, sample several points along its length. Pick the start color, the middle color, and the end color, and you can rebuild the gradient in CSS with those three stops.</p>
+<p>Patterns need the same care. A striped or checkered surface contains at least two colors, and the picker reads only the pixel under your cursor, not the pattern as a whole.</p>
+<p>For a pattern, sample each distinct band separately and save them all as swatches. The set of swatches then describes the pattern, even though no single click could.</p>
+<p>Textured surfaces such as wood, fabric, or stone are the hardest case of all. Their color varies from pixel to pixel, so a single reading is almost meaningless.</p>
+<p>With textures, sample five or six nearby pixels and look for the average. The most common value in the cluster is the best single representative of that surface, and it will look right in your design.</p>
+<h2 id="how-to-use-the-tool">How to Use the Image Color Picker</h2>
+<p>Open the <a href="/image-color-picker/">image color picker</a> in your browser. Drag your image into the upload area, or paste a screenshot straight from the clipboard.</p>
+<p>A default color appears as soon as the image loads, sampled from the center of the picture. Move your cursor to explore, and watch the loupe zoom into the pixels under your pointer.</p>
+<p>Click any pixel to add it to your Picked Swatches. Keep clicking to collect the full set of colors you need for your design.</p>
+<p>When your collection is complete, click Export CSS to download the colors as stylesheet variables. Then read the step-by-step version in <a href="/blog/how-to-pick-color-from-image/">How to Pick a Color from an Image</a>, or learn the code formats in <a href="/blog/hex-vs-rgb-vs-hsl/">HEX vs RGB vs HSL: Colour Codes Explained</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What is the difference between picking a color and extracting a palette?',
+          answer: 'Picking reads one exact pixel that you choose, so you control precisely which color you get. Extracting scans the whole image and ranks its most common colors automatically. Use the picker for exact brand colors and the extractor when you want a ready-made palette from a photo.',
+        },
+        {
+          question: 'Why do two clicks on the same area give slightly different HEX codes?',
+          answer: 'In photos, neighboring pixels are rarely identical because of camera noise and JPEG compression. Each pixel holds its own color, so moving one pixel sideways can change the last digit. Sample the middle of a flat area and pick the value that appears most often.',
+        },
+        {
+          question: 'Can I use picked colors directly in a website stylesheet?',
+          answer: 'Yes. The Export CSS button downloads your swatches as CSS custom properties with HEX values. Paste them into your stylesheet and use the variables anywhere you need that color. The HEX codes also work in any design tool that accepts pasted color values.',
+        },
+        {
+          question: 'Does the color picker change or compress my image?',
+          answer: 'No. The tool only reads pixel values and never modifies, re-saves, or compresses your file. Your original image stays untouched, and you can close the page knowing the file on your device is exactly as it was.',
+        },
+        {
+          question: 'How do I pick a color from a website I cannot download an image from?',
+          answer: 'Take a screenshot of the page, then paste it into the tool with Ctrl+V or upload the screenshot file. The picker reads the screenshot pixels just like any other image, so you can sample buttons, backgrounds, and text colors from any site.',
+        },
+        {
+          question: 'What should I do if the color I pick looks different in my design tool?',
+          answer: 'First check that you copied the full HEX code without missing a digit. Then remember that monitors and color profiles vary, so the same code can look slightly different on two screens. Trust the code itself, and compare it against the original image on the same screen.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-color-palette-extractor', '/image-dimensions-checker', '/favicon-generator'],
+  },
+  {
+    id: 'how-to-pick-color-from-image',
+    toolSlug: '/image-color-picker',
+    categoryId: 'developer',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-pick-color-from-image',
+      title: 'How to Pick a Color from an Image',
+      description: 'Pick an exact color from any photo, logo, or screenshot in four steps. Use the magnifier loupe, build swatches, and export CSS — no install, no upload.',
+      body: `
+<p>You found the perfect color in a photo or a screenshot, and now you need its code. Guessing wastes time, and a near miss looks wrong next to the original.</p>
+<p>This guide walks you through picking a color from an image in four practical steps. You will upload the image, aim with the magnifier, save the color, and export it for your project.</p>
+<p>The whole process takes under a minute once you know it. No software to install, no account to create, and no file uploaded to any server.</p>
+<h2 id="what-you-need">What You Need Before You Start</h2>
+<p>You need the image that contains the color. A photo, a logo file, a screenshot, or a design mockup all work, in JPG, PNG, WebP, or GIF format.</p>
+<p>The file can be up to 20 MB, which covers phone photos and high-resolution screenshots easily. If your file is larger, compress it first or take a fresh screenshot.</p>
+<p>You also need a browser. The tool runs on Chrome, Safari, Firefox, and Edge, on desktop and on mobile, with no extension or plugin required.</p>
+<p>Finally, know where the color lives in the image. A rough idea of its location saves time, especially in a busy photo with many similar shades.</p>
+<h2 id="step-1-upload-or-paste">Step 1: Upload the Image or Paste a Screenshot</h2>
+<p>Open the <a href="/image-color-picker/">image color picker</a> and drag your image into the upload area. You can also click the area to choose a file from your device.</p>
+<p>If the color is on your screen right now, take a screenshot and paste it with Ctrl+V on Windows or Cmd+V on Mac. The tool accepts clipboard images directly.</p>
+<p>The image appears in the picker as soon as it loads. A color is shown immediately, sampled from the center of the picture, so you know the tool is ready.</p>
+<p>If you uploaded the wrong file, switch to a different photo from the tool. Your earlier swatches are kept, so you can keep collecting across images if you need to.</p>
+<h2 id="step-2-aim-with-the-loupe">Step 2: Aim with the Magnifier Loupe</h2>
+<p>Move your cursor over the image and watch the 11 by 11 magnified loupe. It shows a zoomed grid of the pixels around your pointer, with the target pixel in the middle.</p>
+<p>Slow down as you approach the color you want. The loupe lets you see the difference between the solid center of a shape and its blended edge.</p>
+<p>Aim for the middle of a flat area. A button, a wall, or a block of color is solid in the center and mixed at the borders, so the center gives the true value.</p>
+<p>Check the Pixel Inspector as you move. It shows the exact coordinates and the live HEX, RGB, HSL, and CMYK values for the pixel under your cursor.</p>
+<h2 id="step-3-click-to-save-the-swatch">Step 3: Click to Save the Swatch</h2>
+<p>When the loupe shows the right pixel, click it. The color joins your Picked Swatches tray, and its codes are shown for copying.</p>
+<p>Click the HEX code to copy it. HEX is the format most people need, since it pastes straight into CSS, Figma, Canva, and most design tools.</p>
+<p>Collect every color you need before leaving the page. A full set might include the main color, an accent, a background, and a text color from the same image.</p>
+<p>If two swatches look identical, the tool will not save a duplicate. Clicking the same HEX value twice leaves you with one clean entry, not two.</p>
+<h2 id="step-4-export-or-copy">Step 4: Export CSS or Copy the Codes</h2>
+<p>When your swatches are complete, click Export CSS. The tool downloads a file with your colors as CSS custom properties, ready to paste into a stylesheet.</p>
+<p>If you only need one color, copy its HEX code directly from the inspector instead. That is faster than downloading a file for a single value.</p>
+<p>For print work, note the CMYK values shown for each pick. They are a starting approximation, useful for briefing a print designer before a proper conversion.</p>
+<p>Test the color in your project right away. Paste the code, view it next to the original image, and confirm it matches before you build anything on top of it.</p>
+<h2 id="picking-from-a-photo">Picking a Color from a Photo</h2>
+<p>Photos need a slightly different touch than flat graphics. Camera noise and JPEG compression mean neighboring pixels vary, so one click is rarely the full story.</p>
+<p>Sample the same area three or four times, moving a pixel or two each time. If the codes agree on the first five digits, you have found the real color.</p>
+<p>Pick from the largest flat area you can find. A clear sky, a painted door, or a solid shirt gives a far steadier reading than a textured surface.</p>
+<p>Stay away from bright highlights and deep shadows. Those zones lose color information, and the code you read there is often just white, black, or gray.</p>
+<h2 id="picking-from-a-logo">Picking a Color from a Logo</h2>
+<p>Logos demand precision, because a brand color that is one digit off still looks wrong. Start with the highest-quality logo file you have, ideally a PNG.</p>
+<p>PNG files store exact colors, so the reading is trustworthy. JPEG logos carry compression noise, which can shift the last digit of the HEX code.</p>
+<p>Sample the center of the largest flat shape in the logo. The middle of a letter or a block is solid, while the edges blend into the background.</p>
+<p>Verify the result by placing the picked color next to the logo on the same screen. If they match, you have the brand color. If not, try a pixel or two inward.</p>
+<h2 id="picking-from-a-screenshot">Picking a Color from a Screenshot</h2>
+<p>Screenshots are the fastest source for UI colors. Capture the screen, paste it with Ctrl+V, and sample the button, header, or background directly.</p>
+<p>Use the loupe carefully on screenshots. Interface elements have anti-aliased edges, so the border pixels are a blend of the element and the background.</p>
+<p>For text colors, sample the thickest part of a letter, such as the middle of a bold stroke. Thin text is mostly edge pixels, which read as blends.</p>
+<p>Note the pixel coordinates while you work. If a teammate questions a value, the coordinates let you both return to the exact same spot and confirm it.</p>
+<h2 id="picking-on-a-phone">Picking a Color on a Phone or Tablet</h2>
+<p>On a touchscreen you tap instead of clicking, and the same loupe and swatch tools apply. Upload the image from your gallery or paste a screenshot.</p>
+<p>Your fingertip covers many pixels, so zoom the image first. A larger image gives you a bigger target and a better chance of hitting the right pixel.</p>
+<p>Use the loupe to confirm before you tap. It shows what sits under your finger, which you cannot see while your finger is on the screen.</p>
+<p>For a color that must be exact, such as a brand color, do the final check on a desktop. A mouse click on one pixel is more reliable than a fingertip tap.</p>
+<h2 id="troubleshooting-wrong-colors">Troubleshooting: When the Color Looks Wrong</h2>
+<p>If the picked color looks too light or too dark, you probably sampled a highlight or a shadow. Move toward the middle of the shape and try again.</p>
+<p>If the color looks muddy, you likely caught an anti-aliased edge. Move one or two pixels inward, where the color is solid and unmixed.</p>
+<p>If the HEX code changes every time you click, the area is noisy. Sample several nearby pixels and use the value that appears most often.</p>
+<p>If the color looks right in the picker but wrong in your design tool, check the code you pasted. A missing digit or a swapped character is the usual cause, not the picker.</p>
+<h2 id="using-the-color-in-your-project">Using the Picked Color in Your Project</h2>
+<p>In a website, paste the HEX code into your CSS or use the exported custom properties. The variable approach keeps your colors consistent across the whole site.</p>
+<p>In Figma, Canva, or Photoshop, paste the HEX code into the color field. Every major design tool accepts HEX, so the value transfers without conversion.</p>
+<p>For a slide deck or a document, use the RGB values. Office tools often show color as three numbers, and the RGB readout matches that format exactly.</p>
+<p>For print, start from the CMYK approximation and confirm with your printer. Screens and printers reproduce color differently, so a test print is worth doing.</p>
+<h2 id="building-a-full-palette">Building a Full Palette from One Image</h2>
+<p>One image can supply a whole palette. Pick the dominant background color, the main subject color, one accent, and a dark tone for text.</p>
+<p>Keep the count small. Four to six colors are enough for most designs, and more than that usually makes a layout look scattered.</p>
+<p>Check the swatches together before exporting. If two colors are nearly identical, drop one. If the set feels unbalanced, swap one pick for a lighter or darker tone.</p>
+<p>When you want the whole-image view instead, try the <a href="/image-color-palette-extractor/">image color palette extractor</a>. It ranks the dominant colors automatically, which is a fast way to compare against your hand-picked set.</p>
+<h2 id="picking-from-charts">Picking Colors from Charts and Data Visuals</h2>
+<p>Charts and graphs use color to separate data series, and matching those colors matters when you build a report or a dashboard around the same data. The picker can recover every series color from a chart image.</p>
+<p>Sample the middle of each bar, line, or pie slice, well away from the edges where colors blend into the background. A thick bar is easy to sample, while a thin line needs the loupe to hit its center.</p>
+<p>Work through the legend first, because the legend usually shows each series color as a solid block. Those blocks are the cleanest samples in the whole chart.</p>
+<p>If two series colors look almost identical, check their HEX codes before deciding. Colors that look the same on screen can differ by enough to matter when they sit side by side in your own chart.</p>
+<p>Save the series colors in order, matching the order of the legend. That way your new chart keeps the same color-to-series mapping, and readers who saw the original will not get confused.</p>
+<p>For dashboards, also pick the background and gridline colors. A dashboard that reuses the original background and grid tones looks intentional, while one that guesses them looks slightly off.</p>
+<h2 id="saving-and-organizing">Saving and Organizing Picked Colors</h2>
+<p>Picked colors are only useful if you can find them again later. The Export CSS download is the simplest way to save a set, because it stores every swatch in one file with clear variable names.</p>
+<p>Name your export file by project, not by date. A file called homepage-refresh-colors.css is useful months later, while colors-2026-11-17.css tells you nothing about where the colors belong.</p>
+<p>If you use a design tool, paste the HEX codes into its color styles or variables panel as well. Keeping the same values in both the stylesheet and the design file prevents the two from drifting apart.</p>
+<p>For brand colors, record the RGB and CMYK values next to the HEX code in your brand guide. Different teams need different formats, and a guide that lists all of them stops people from converting values on the fly and making mistakes.</p>
+<p>Keep a short note with each palette about where the colors came from. A line such as sampled from the autumn campaign photo tells a future designer why these colors belong together.</p>
+<p>Finally, back up your exported CSS file with the rest of the project. A palette that lives only in a browser tab disappears the moment the tab closes, and re-picking the same pixels twice is a waste of time.</p>
+<h2 id="quick-reference-checklist">Quick Reference Checklist</h2>
+<p>Upload the cleanest original file you have, not a screenshot of a screenshot. Each extra save can shift colors slightly.</p>
+<p>Aim with the loupe, sample the center of flat areas, and click two or three nearby pixels to confirm the value.</p>
+<p>Copy the HEX code for web and design work, the RGB values for documents, and the CMYK approximation for print briefs.</p>
+<p>Export CSS when you have more than one swatch, and verify the color in your project before building on it. For the full background, read the <a href="/blog/image-color-picker-guide/">Image Color Picker: Complete Guide</a> and the code-format comparison in <a href="/blog/hex-vs-rgb-vs-hsl/">HEX vs RGB vs HSL: Colour Codes Explained</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How many colors can I pick from one image?',
+          answer: 'There is no practical limit on how many swatches you can collect in a session. Pick as many as your design needs, though four to six colors are usually enough for a coherent palette. Clicking the same HEX value twice does not create a duplicate entry.',
+        },
+        {
+          question: 'Do I need to install anything to pick a color from an image?',
+          answer: 'No. The picker runs entirely in your browser on Chrome, Safari, Firefox, and Edge. There is no extension, no plugin, and no account. Open the tool page, upload your image, and start clicking.',
+        },
+        {
+          question: 'Can I pick a color from a video frame or a paused video?',
+          answer: 'Yes, indirectly. Pause the video, take a screenshot of the frame, and paste the screenshot into the picker with Ctrl+V. The tool reads screenshot pixels like any other image, so you can sample colors from any frame.',
+        },
+        {
+          question: 'Why does the loupe show a grid instead of the normal image?',
+          answer: 'The loupe magnifies the pixels around your cursor so you can see each one individually. The grid makes it clear which pixel is in the center and which ones sit beside it. That precision is what lets you avoid blended edge pixels.',
+        },
+        {
+          question: 'What image formats work with the color picker?',
+          answer: 'JPG, PNG, WebP, and GIF files work, up to 20 MB each. PNG is the best choice when exactness matters, because it stores colors without compression noise. You can also paste screenshots directly from the clipboard.',
+        },
+        {
+          question: 'Can I pick colors from an image on my phone?',
+          answer: 'Yes. Upload the image from your gallery and tap the color you want. The loupe helps you aim despite the size of a fingertip. For brand-critical colors, verify the final value with a mouse click on a desktop.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-color-palette-extractor', '/image-dimensions-checker', '/favicon-generator'],
+  },
+  {
+    id: 'hex-vs-rgb-vs-hsl',
+    toolSlug: '/image-color-picker',
+    categoryId: 'developer',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'hex-vs-rgb-vs-hsl',
+      title: 'HEX vs RGB vs HSL: Colour Codes Explained',
+      description: 'HEX, RGB, HSL, and CMYK describe the same color in different ways. Learn what each format means, when to use it, and how to convert between them.',
+      body: `
+<p>Every color on your screen has several names. The same blue can be #2563EB, rgb(37, 99, 235), or hsl(221, 83%, 53%), and all three describe exactly the same pixels.</p>
+<p>That overlap confuses beginners. If the codes are interchangeable, why do four formats exist, and which one should you actually use?</p>
+<p>This article explains HEX, RGB, HSL, and CMYK side by side: what each one means, where it is used, and how to choose the right format for your work.</p>
+<h2 id="why-multiple-formats-exist">Why Do Multiple Color Formats Exist?</h2>
+<p>Different jobs need different descriptions of color. A web developer wants a short code to paste into CSS, while a designer wants to describe a color as a hue with a lightness.</p>
+<p>HEX grew out of how computers store color: three bytes, one each for red, green, and blue, written as six hexadecimal digits. It is compact and copy-friendly.</p>
+<p>RGB grew out of how screens produce color: three lamps of red, green, and blue light, each with an intensity from 0 to 255. It is direct and readable.</p>
+<p>HSL grew out of how humans think about color: first the hue, then how rich it is, then how light or dark. It matches the sliders in most design tools.</p>
+<h2 id="hex-explained">HEX Explained</h2>
+<p>A HEX code starts with a hash sign followed by six hexadecimal digits, such as #2563EB. The first two digits are red, the next two are green, and the last two are blue.</p>
+<p>Each pair ranges from 00 to FF in hexadecimal, which equals 0 to 255 in decimal. So #FF0000 is pure red, #00FF00 is pure green, and #000000 is black.</p>
+<p>HEX is the default format for CSS and for most design tools. It is short, it pastes cleanly into a stylesheet, and it is easy to copy from a color picker.</p>
+<p>Some codes can be shortened: #336699 becomes #369, because each pair has two identical digits. The short form means the same color, but most tools show the full six digits.</p>
+<h2 id="rgb-explained">RGB Explained</h2>
+<p>RGB writes the same three values as decimal numbers, such as rgb(37, 99, 235). Each number runs from 0, meaning none of that light, to 255, meaning full strength.</p>
+<p>RGB is the most literal description of what a screen does. It says exactly how much red, green, and blue light to mix, which is why image editors and cameras use it internally.</p>
+<p>RGB also supports transparency through RGBA, which adds a fourth number for opacity. rgba(37, 99, 235, 0.5) is the same blue at half opacity.</p>
+<p>Most office software and document tools ask for RGB values. When a brand guide lists a color as three numbers, it is usually giving you the RGB form.</p>
+<h2 id="hsl-explained">HSL Explained</h2>
+<p>HSL describes color with three different ideas: hue, saturation, and lightness. A typical value looks like hsl(221, 83%, 53%).</p>
+<p>Hue is an angle on a color wheel, from 0 to 360 degrees. Red sits near 0, green near 120, blue near 240, and the wheel wraps back to red at 360.</p>
+<p>Saturation is a percentage: 0 percent is gray, 100 percent is the most vivid version of the hue. Lightness is also a percentage: 0 is black, 50 is the pure hue, and 100 is white.</p>
+<p>HSL shines when you need variations of one color. To make a lighter button hover state, keep the hue and saturation and raise the lightness. That is one small edit, not a new color to invent.</p>
+<h2 id="cmyk-explained">CMYK Explained</h2>
+<p>CMYK describes color as ink on paper: cyan, magenta, yellow, and black, each as a percentage. A typical value is cmyk(84%, 58%, 0%, 8%).</p>
+<p>Printers mix inks subtractively, which is the opposite of screens. Where a screen adds light to reach white, a printer starts with white paper and adds ink to darken it.</p>
+<p>That difference means some screen colors cannot be printed exactly. Very bright blues and greens often fall outside the range of inks, so the printed result looks duller.</p>
+<p>The CMYK values shown by the <a href="/image-color-picker/">image color picker</a> are an approximation computed from the screen color. Treat them as a starting point for a print conversation, not as a guaranteed match.</p>
+<h2 id="hex-vs-rgb">HEX vs RGB: Which Should You Use?</h2>
+<p>HEX and RGB describe the same color with the same three numbers, only written differently. #2563EB and rgb(37, 99, 235) are the same blue in two notations.</p>
+<p>Choose HEX for CSS and for sharing. It is shorter, it is the convention in stylesheets, and it copies cleanly into design tools and chat messages.</p>
+<p>Choose RGB when a tool asks for three numbers, or when you need transparency. RGBA is the standard way to write a semi-transparent color in CSS.</p>
+<p>Converting between them is simple arithmetic. Each HEX pair converts to one decimal number, so #25 becomes 37, #63 becomes 99, and #EB becomes 235.</p>
+<h2 id="hsl-vs-hex-rgb">HSL vs HEX and RGB: When HSL Wins</h2>
+<p>HSL wins when you are designing a color system rather than naming one color. A palette built in HSL stays coherent because the hue stays fixed while lightness varies.</p>
+<p>Consider a button with three states: normal, hover, and disabled. In HSL you keep hue 221 and saturation 83 percent, then set lightness to 53, 45, and 70 percent.</p>
+<p>Doing the same in HEX means inventing three unrelated codes. They might look fine, but nothing in the codes tells you they belong together.</p>
+<p>Many design tools now accept HSL input directly, and CSS supports it natively. If your workflow involves shades and tints, HSL is the format that keeps them organized.</p>
+<h2 id="converting-between-formats">Converting Between Formats</h2>
+<p>You rarely need to convert by hand, because the color picker shows all formats at once. Still, understanding the conversion helps you trust the numbers.</p>
+<p>HEX to RGB is a base conversion: each pair of hex digits becomes a decimal from 0 to 255. FF is 255, 80 is 128, and 00 is 0.</p>
+<p>RGB to HSL is a formula, not a lookup. It finds the largest and smallest of the three values, derives lightness from their average, and computes hue from which channel is largest.</p>
+<p>RGB to CMYK is also a formula. It inverts the RGB values, finds the smallest as the black key, then scales the rest. That is why the CMYK result is an approximation, not a measurement.</p>
+<h2 id="which-format-for-web">Which Format Should You Use on the Web?</h2>
+<p>For most websites, HEX is the safe default. It is short, universally supported, and every developer recognizes it at a glance.</p>
+<p>Use RGBA when you need transparency. A semi-transparent overlay or a soft shadow is simplest as rgba with an opacity value below 1.</p>
+<p>Use HSL when you build a theme with systematic shades. Design systems that generate light and dark variants from one hue are far easier to maintain in HSL.</p>
+<p>Modern CSS also supports newer formats such as OKLCH, which describe color more evenly. They are promising, but HEX, RGB, and HSL remain the formats every tool and browser supports today.</p>
+<h2 id="which-format-for-print">Which Format Should You Use for Print?</h2>
+<p>For print, CMYK is the working language. Printers think in ink percentages, and a file prepared in CMYK avoids surprises at the press.</p>
+<p>Start from the screen color, note the CMYK approximation from the picker, and then confirm with a printed proof. The proof is the only true test.</p>
+<p>Never send a print job with only a HEX code and no CMYK discussion. The printer will convert it, but the conversion may choose ink values you would not have chosen.</p>
+<p>For brand work, ask the printer for their color profile. A profile maps screen colors to inks for a specific press and paper, and it beats any generic formula.</p>
+<h2 id="which-format-for-design-tools">Which Format Should You Use in Design Tools?</h2>
+<p>Figma, Photoshop, and Canva accept HEX pasted into their color fields, so HEX is the fastest way to move a picked color into a design.</p>
+<p>When you adjust a color inside the tool, you will usually drag HSL-style sliders for hue, saturation, and lightness. The tool shows HEX, but you edit in HSL terms.</p>
+<p>Brand guides often list all three: HEX for developers, RGB for documents, and CMYK for print. That is good practice, because each audience uses a different format.</p>
+<p>If you extract a palette with the <a href="/image-color-palette-extractor/">image color palette extractor</a>, the export includes HEX, RGB, and HSL for every swatch, so you never have to convert anything yourself.</p>
+<h2 id="common-mistakes">Common Mistakes with Color Formats</h2>
+<p>The most common mistake is assuming HEX and RGB are different colors. They are two spellings of the same value, so #2563EB and rgb(37, 99, 235) will always match.</p>
+<p>Another mistake is treating a CMYK approximation as exact. The screen-to-print conversion is a formula, and the real printed color depends on the press, the ink, and the paper.</p>
+<p>People also forget that lightness is not brightness. In HSL, raising lightness toward 100 percent washes the color toward white, while lowering it toward 0 pushes it toward black.</p>
+<p>Finally, do not compare colors across different screens by eye alone. Two monitors can show the same HEX code differently, so trust the numbers when exactness matters.</p>
+<h2 id="reading-a-color-picker-output">Reading a Color Picker Output</h2>
+<p>When you sample a pixel, the picker shows every format at once. The HEX code is the one to copy for web work, and the RGB numbers are the ones to copy for documents.</p>
+<p>The HSL values tell you where the color sits on the wheel and how vivid it is. A hue near 0 or 360 is red, near 120 is green, and near 240 is blue.</p>
+<p>The CMYK percentages tell you how much ink the color would need. A color with high cyan and magenta and no yellow is a blue, while high yellow with some magenta is an orange.</p>
+<p>Learning to read all four at a glance takes practice, but it pays off. You will be able to look at a code and picture the color before you ever paste it anywhere.</p>
+<h2 id="building-a-palette-with-formats">Building a Palette Across Formats</h2>
+<p>A good palette keeps one format as its source of truth and derives the rest. Most teams keep HEX as the source, since it is the format developers paste into code.</p>
+<p>From the HEX base, generate lighter and darker variants in HSL by changing only the lightness. That keeps the hue family intact and the palette coherent.</p>
+<p>Record the RGB values for documents and the CMYK approximations for print. A brand guide with all four formats serves every team without anyone converting on the fly.</p>
+<p>Export your picked colors as CSS variables from the picker, then document the variants beside them. The stylesheet becomes the single reference everyone trusts.</p>
+<h2 id="hsl-and-accessibility">HSL and Accessibility: Contrast by Lightness</h2>
+<p>Accessibility rules care about contrast, and HSL makes contrast easy to reason about. Two colors with lightness values far apart will usually pass a contrast check, while two with similar lightness will fail it.</p>
+<p>Consider dark text on a light background. If the text has a lightness near 15 percent and the background sits near 95 percent, the gap is large and the text will be easy to read for almost everyone.</p>
+<p>The same logic applies in reverse for dark mode. Light text at 90 percent lightness on a dark background at 10 percent gives the same large gap, and the same comfortable reading experience.</p>
+<p>HSL also helps you fix a failing combination without changing its character. If a colored button fails a contrast check, lower its lightness by ten points and test again, keeping the hue and saturation untouched.</p>
+<p>This is far easier than guessing a new HEX code. In HEX, a darker version of a color is a new set of digits with no visible relationship to the original, so each attempt is a fresh guess.</p>
+<p>When you audit a design, convert its key colors to HSL and sort them by lightness. The sorted list shows at a glance whether your text, background, and accent colors have enough separation to be readable.</p>
+<p>Remember that hue and saturation barely affect contrast on their own. A vivid red and a vivid green can have nearly identical lightness, which is why color-blind users struggle with red-green pairs even when the hues are far apart.</p>
+<h2 id="quick-reference">Quick Reference: Format Cheat Sheet</h2>
+<p>HEX is six digits after a hash, such as #2563EB. Use it in CSS, in design tools, and whenever you share a color in writing.</p>
+<p>RGB is three numbers from 0 to 255, such as rgb(37, 99, 235). Use it in documents, in office software, and when you need transparency through RGBA.</p>
+<p>HSL is a hue angle plus saturation and lightness percentages, such as hsl(221, 83%, 53%). Use it when building shades, tints, and theme variations.</p>
+<p>CMYK is four ink percentages for print. Use it as a starting approximation for printed work, and always confirm with a proof. For the hands-on side, see the <a href="/blog/image-color-picker-guide/">Image Color Picker: Complete Guide</a> and the practical steps in <a href="/blog/how-to-pick-color-from-image/">How to Pick a Color from an Image</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Is HEX or RGB better for website colors?',
+          answer: 'Neither is better in terms of the color itself, since they describe the same value. HEX is shorter and is the convention in stylesheets, so most developers prefer it. RGB is better when you need transparency, because RGBA adds an opacity value that HEX cannot express as simply.',
+        },
+        {
+          question: 'Why does my brand color look different in print than on screen?',
+          answer: 'Screens create color with light and printers create it with ink, and the two systems cover different ranges. Bright screen blues and greens often fall outside what inks can reproduce. The CMYK value from a picker is an approximation, so always check a printed proof before a large run.',
+        },
+        {
+          question: 'Can I convert a HEX code to HSL without a tool?',
+          answer: 'Yes, but it takes two steps: convert HEX to RGB first, then apply the RGB-to-HSL formula. The picker does both steps instantly and shows every format at once. For one-off conversions, any online converter or the picker itself is faster than doing the math by hand.',
+        },
+        {
+          question: 'What does the hue number in HSL actually mean?',
+          answer: 'Hue is an angle from 0 to 360 degrees on the color wheel. Red is near 0, yellow near 60, green near 120, cyan near 180, blue near 240, and magenta near 300. Two colors with hues 30 degrees apart look related, while hues 180 degrees apart look complementary.',
+        },
+        {
+          question: 'Do I need CMYK values for a website or social media graphic?',
+          answer: 'No. Websites, apps, and social graphics are all screen media, so HEX, RGB, or HSL is enough. CMYK only matters when ink touches paper. Keep the CMYK approximation on file in case the same brand color is ever printed.',
+        },
+        {
+          question: 'Why do some HEX codes have only three digits?',
+          answer: 'A three-digit HEX code is a shorthand for a six-digit code where each pair has two identical digits. #369 means #336699, because 3 doubles to 33, 6 to 66, and 9 to 99. Not every six-digit code can be shortened, only those with matching pairs.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-color-palette-extractor', '/image-dimensions-checker', '/add-background-to-image'],
+  },
+  {
+    id: 'image-dimensions-checker-guide',
+    toolSlug: '/image-dimensions-checker',
+    categoryId: 'developer',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-dimensions-checker-guide',
+      title: 'Image Dimensions Checker: Complete Guide',
+      description: 'Check image dimensions in bulk: width, height, aspect ratio, megapixels, print size, and transparency. Validate minimums and export CSV or JSON — free, in your browser.',
+      body: `
+<p>An image can look perfect on your screen and still fail the moment you upload it. A marketplace rejects it for being too small, a printer crops it unexpectedly, or a website stretches it into a blur.</p>
+<p>The cause is almost always the dimensions: the width and height in pixels. Most people never check them until something breaks, and by then the deadline is already tight.</p>
+<p>This guide explains how the CompressMyPic image dimensions checker works, what every number in its report means, and how to use it to catch size problems before they reach your customers.</p>
+<h2 id="what-is-a-dimensions-checker">What Is an Image Dimensions Checker?</h2>
+<p>An image dimensions checker reads the pixel width and height of your images and shows them in a clear table. It works on single files and on whole batches dropped in at once.</p>
+<p>The tool accepts JPG, PNG, WebP, GIF, BMP, HEIC, and SVG files, up to 20 MB each. It reads the real dimensions stored inside each file, not the size your operating system guesses from the file name.</p>
+<p>Beyond width and height, the report includes aspect ratio, megapixels, file size, and whether the image has transparency. It also calculates the print size at 300 DPI for every image.</p>
+<p>Everything runs locally in your browser. Your images are never uploaded to a server, so unreleased product shots and confidential ad creatives stay private while you check them.</p>
+<h2 id="pixels-width-and-height">Pixels, Width, and Height Explained</h2>
+<p>An image is a grid of pixels, and its dimensions are simply the count of columns and rows in that grid. An image described as 1920 by 1080 has 1,920 pixels across and 1,080 pixels down.</p>
+<p>Width always comes first in the pair. A 1200 by 800 image is landscape, while an 800 by 1200 image is portrait, even though both contain the same number of pixels.</p>
+<p>Pixels are the only size that matters on screen. A screen displays one image pixel per screen pixel at full zoom, so a 400-pixel-wide image can never fill a 1200-pixel-wide space without stretching.</p>
+<p>That stretching is what people mean by a blurry image. The browser invents the missing pixels, and the invention always looks softer than the real thing.</p>
+<h2 id="aspect-ratio-explained">Aspect Ratio Explained</h2>
+<p>Aspect ratio is the relationship between width and height, written as two numbers with a colon between them, such as 16:9 or 4:3. It describes the shape of the image, not its size.</p>
+<p>A 1920 by 1080 image and a 1280 by 720 image share the 16:9 ratio, because both divide down to the same proportions. They are different sizes but the same shape.</p>
+<p>The checker matches each image against common ratios such as 16:9, 4:3, 1:1, 3:2, and 4:5. It also shows the exact ratio when an image falls between the standard shapes.</p>
+<p>Ratio matters because platforms crop to it. An Instagram portrait slot expects 4:5, so a 16:9 photo uploaded there loses its sides. Checking the ratio first tells you what will survive the crop.</p>
+<h2 id="megapixels-explained">Megapixels Explained</h2>
+<p>Megapixels count the total number of pixels in an image, expressed in millions. You get the number by multiplying width by height and dividing by one million.</p>
+<p>A 4000 by 3000 photo is 12 megapixels, because 4,000 times 3,000 equals 12,000,000 pixels. A 1920 by 1080 image is about 2.1 megapixels.</p>
+<p>Camera makers use megapixels as a headline number, but it hides the shape. A 12-megapixel panorama and a 12-megapixel square have the same pixel count and very different dimensions.</p>
+<p>For print, megapixels are a rough guide to how large you can print. A 12-megapixel file prints well at A4 size, while a 2-megapixel file starts to soften beyond a postcard.</p>
+<h2 id="batch-checking">Batch Checking: Many Images at Once</h2>
+<p>Checking images one at a time is slow when you have a product catalog or a photo shoot to verify. The dimensions checker accepts whole batches in a single drop.</p>
+<p>Drag a folder or a group of files into the tool and it builds one table with every image. Each row shows the file name, dimensions, ratio, megapixels, file size, and transparency status.</p>
+<p>You can append more batches to the same table later. If a second folder arrives after the first, drop it in and the new rows join the existing report instead of replacing it.</p>
+<p>If one file in a large batch cannot be read, the tool reports that file as an error and keeps going. The rest of the batch still gets checked, so one bad file never blocks the whole job.</p>
+<h2 id="min-width-min-height-validator">The Min Width and Min Height Validator</h2>
+<p>Many platforms publish minimum pixel sizes. Amazon, Etsy, and Shopify all reject product images below a certain width, and the exact number differs by platform.</p>
+<p>The checker includes a Min Width Check and a Min Height Check. You enter the numbers your platform demands, and the tool flags every image that falls short.</p>
+<p>A flagged image is not necessarily unusable, but it needs attention. You can resize it larger, though that will soften it, or you can go back to the original and export it at a bigger size.</p>
+<p>The validator is also useful inside a team. Agree on a minimum once, enter it in the tool, and every batch gets judged against the same standard instead of by eye.</p>
+<h2 id="print-size-at-300-dpi">Print Size at 300 DPI</h2>
+<p>The report includes a Print at 300 DPI column, which converts pixel dimensions into physical inches at print quality. It answers the question of how large an image can be printed without losing sharpness.</p>
+<p>The math is simple: divide the pixel width by 300 to get the printable width in inches. A 3000-pixel-wide image prints at 10 inches wide at 300 DPI.</p>
+<p>At 150 DPI the same image prints twice as large, but with visibly softer detail. The 300 DPI figure is the safe number for brochures, books, and product packaging.</p>
+<p>This column prevents a common mistake: sending a web-sized image to print. A 1200-pixel image that looks fine on screen only prints at 4 inches wide at 300 DPI, far too small for a poster.</p>
+<h2 id="transparency-detection">Transparency Detection: Alpha Channels</h2>
+<p>Some images carry a transparency channel, called alpha, that lets parts of the image show whatever sits behind it. Logos and icons usually need it, while photos almost never do.</p>
+<p>The checker detects whether a PNG or WebP actually has an alpha channel. That matters because a file can be saved as PNG and still be fully opaque, with no transparency at all.</p>
+<p>Knowing this saves embarrassment. A logo that looks transparent in your editor but is actually opaque will show a white box when placed on a colored background.</p>
+<p>If you need to change transparency, convert the file properly. Saving a JPG as PNG does not add transparency, and the checker will tell you so before you discover it on the live site.</p>
+<h2 id="csv-and-json-export">Exporting the Report: CSV and JSON</h2>
+<p>Checking is only half the job; the other half is sharing the results. The tool exports the full table as CSV or JSON with one click.</p>
+<p>The CSV export includes columns for file name, dimensions, aspect ratio, megapixels, file size, transparency, and print size. It opens directly in a spreadsheet for sorting and filtering.</p>
+<p>The JSON export carries the same data in a structured format for developers. It is the right choice when the report feeds into a script, a content pipeline, or a quality dashboard.</p>
+<p>Export before you close the tab. The table lives only in your browser, and a refresh wipes it. A saved CSV is the record your team can refer back to.</p>
+<h2 id="svg-intrinsic-dimensions">SVG Files and Intrinsic Dimensions</h2>
+<p>SVG graphics are vectors, not pixels, so their size works differently. An SVG has intrinsic dimensions defined by its width, height, and viewBox attributes, and the checker reads those.</p>
+<p>This is useful because an SVG can be scaled to any size without losing sharpness. Its intrinsic dimensions tell you the size the designer intended, not a limit on how large it can go.</p>
+<p>Be careful with SVGs that have a viewBox but no width or height. They have a ratio but no fixed size, and the checker will show the ratio while noting that no absolute dimensions exist.</p>
+<p>For logos and icons, the SVG reading confirms the intended proportions. If the viewBox ratio does not match the ratio your layout expects, the icon will distort or leave gaps.</p>
+<h2 id="platform-requirements">Common Platform Requirements</h2>
+<p>Every platform has its own dimension rules, and they change often. The table below is a starting point, but always confirm the current numbers on the platform itself before a big upload.</p>
+<p>Marketplaces such as Amazon and Etsy want large square or near-square product images, often at least 1000 pixels on the longest side. Smaller images fail their minimum checks and look poor when shoppers zoom in.</p>
+<p>Social platforms each want their own shape. A square works for a feed post, a 4:5 portrait fills a phone screen better, and a 16:9 landscape suits a video thumbnail or a cover image.</p>
+<p>Print services want the most pixels you can give them. A 300 DPI target means a full-page print needs roughly 2500 by 3300 pixels, far more than any web image.</p>
+<h2 id="fixing-images-that-fail">Fixing Images That Fail the Check</h2>
+<p>A failed image usually has one of three problems: it is too small, its ratio is wrong, or its format does not fit the job. Each has a different fix.</p>
+<p>Too small is the hardest to fix. Upscaling adds pixels that were never there, so the result is softer than a true high-resolution original. Go back to the source file whenever you can.</p>
+<p>A wrong ratio is fixed by cropping. Use the <a href="/image-cropper/">image cropper</a> to cut the image to the ratio your platform wants, keeping the subject centered and important details inside the frame.</p>
+<p>A wrong format is fixed by converting. A photo saved as PNG can become a JPG for the web, and a logo saved as JPG should become a PNG so its edges stay sharp and its background stays transparent.</p>
+<h2 id="dimensions-checker-vs-resizer">Dimensions Checker vs Image Resizer</h2>
+<p>The checker and the resizer are companion tools, not competitors. The checker tells you what size an image is, and the resizer changes it when the answer is wrong.</p>
+<p>Use the checker first, as a diagnostic step. It tells you which images in a batch fail, and by how much, so you only resize the ones that need it.</p>
+<p>Use the <a href="/image-resizer/">image resizer</a> next, on the flagged files only. Resizing the whole batch wastes time and can damage images that were already correct.</p>
+<p>Then run the checker again on the resized files. The second pass confirms the fix worked and gives you a final report to file with the project.</p>
+<h2 id="privacy-local-processing">Privacy: Batch Processing in Your Browser</h2>
+<p>A batch of product photos can include unreleased items, and an ad creative can include pricing that is not yet public. Uploading such files to a server is a risk.</p>
+<p>The checker reads every file locally. The browser opens each image, measures it, and builds the table without sending a single byte anywhere.</p>
+<p>That also means there is no daily limit and no fee. You can check a thousand images in a session, and the only cost is the time your own computer takes to read them.</p>
+<p>For teams handling confidential material, local processing is the feature that makes the tool usable at all. No upload means no copy of the files exists outside your own machine.</p>
+<h2 id="how-to-use-the-tool">How to Use the Image Dimensions Checker</h2>
+<p>Open the <a href="/image-dimensions-checker/">image dimensions checker</a> and drop your images into the upload area. You can also paste a clipboard image directly to verify its pixel resolution in seconds.</p>
+<p>The table fills in as each file is read. Check the dimensions, ratio, and megapixel columns first, then look at the print size and transparency columns for the details that matter to your job.</p>
+<p>Set the Min Width and Min Height values if your platform demands them. Flagged rows show up clearly, so you can see exactly which files need work.</p>
+<p>Export the report as CSV or JSON when you are done, and read the practical steps in <a href="/blog/how-to-check-image-dimensions/">How to Check Image Dimensions</a> or the comparison in <a href="/blog/image-dimensions-vs-resolution-vs-file-size/">Dimensions vs Resolution vs File Size Explained</a>. If a file needs changing, the <a href="/image-dpi-changer/">image DPI changer</a> can fix its print metadata next.</p>
+`,
+      faqs: [
+        {
+          question: 'What is the difference between image dimensions and image resolution?',
+          answer: 'Dimensions are the pixel width and height, such as 1920 by 1080. Resolution is the density, usually DPI or PPI, which says how many of those pixels fit into an inch. An image can have large dimensions and low resolution, or small dimensions and high resolution. The full comparison is in our article on dimensions vs resolution vs file size.',
+        },
+        {
+          question: 'How many images can I check in one batch?',
+          answer: 'There is no fixed limit in the tool. You can drop in a whole folder of images and the table builds row by row. Very large batches take longer because the browser reads each file, but there is no daily cap and no fee for large checks.',
+        },
+        {
+          question: 'Why does my image show different dimensions in different apps?',
+          answer: 'Some apps show the pixel dimensions while others show the dimensions after applying a DPI value or a display scaling factor. The checker reads the true pixel dimensions stored in the file, which is the number that matters for uploads and print.',
+        },
+        {
+          question: 'Can the checker tell me if an image will print well?',
+          answer: 'Yes, through the Print at 300 DPI column. It converts the pixel dimensions into physical inches at print quality. If the printed size is smaller than what you need, the image will look soft when printed larger.',
+        },
+        {
+          question: 'Do I need to install anything to check dimensions in bulk?',
+          answer: 'No. The checker runs in your browser on desktop and mobile, with no install and no account. Drop your files in, read the table, and export the report as CSV or JSON.',
+        },
+        {
+          question: 'What happens to my images after I check them?',
+          answer: 'Nothing. The files are read locally in your browser and never uploaded anywhere. Closing the tab removes the table from memory, so export the CSV or JSON report first if you need to keep the results.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-resizer', '/image-dpi-changer', '/image-metadata-viewer'],
+  },
+  {
+    id: 'how-to-check-image-dimensions',
+    toolSlug: '/image-dimensions-checker',
+    categoryId: 'developer',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-check-image-dimensions',
+      title: 'How to Check Image Dimensions',
+      description: 'Check the width, height, aspect ratio, and print size of any image — one file or a whole batch. Five steps, with CSV and JSON export at the end.',
+      body: `
+<p>You need to know how big an image really is, in pixels, before you upload it, print it, or hand it to a client. The file name will not tell you, and the thumbnail lies.</p>
+<p>This guide shows you how to check image dimensions in five steps, for one image or for a whole batch. It takes about a minute, and you will end with a report you can share.</p>
+<p>No software to install, no account to create, and nothing uploaded anywhere. Your images are read locally in your browser from start to finish.</p>
+<h2 id="what-you-need">What You Need Before You Start</h2>
+<p>You need the image files themselves, on your computer or phone. JPG, PNG, WebP, GIF, BMP, HEIC, and SVG files all work, up to 20 MB each.</p>
+<p>If you have a platform requirement, note it down first. A minimum width, a required ratio, or a target print size gives the check a pass-or-fail standard instead of a vague feeling.</p>
+<p>A browser is all the software you need. Chrome, Safari, Firefox, and Edge all run the tool, on desktop and on mobile, with no extension.</p>
+<p>For a batch check, gather the files into one folder before you start. Dropping a folder is faster than hunting for files one by one while the table is half built.</p>
+<h2 id="step-1-upload-a-batch">Step 1: Upload One Image or a Whole Batch</h2>
+<p>Open the <a href="/image-dimensions-checker/">image dimensions checker</a> and drag your files into the upload area. You can drop a single image or a whole folder at once.</p>
+<p>You can also click the upload area to browse for files, or paste a clipboard image with Ctrl+V to check a screenshot you just took.</p>
+<p>The table starts filling in as each file is read. Each row shows the file name, pixel dimensions, aspect ratio, megapixels, file size, and transparency status.</p>
+<p>If you have more files to add later, drop them in and they join the existing table. The tool appends new rows instead of clearing the ones you already have.</p>
+<h2 id="step-2-read-the-table">Step 2: Read the Dimensions Table</h2>
+<p>Start with the dimensions column. It shows width by height in pixels, such as 1920 by 1080, and that pair is the single most important number in the whole report.</p>
+<p>Compare the width and height against your requirement. If your platform wants at least 1000 pixels wide and the image is 800, it fails, no matter how good it looks.</p>
+<p>Next, glance at the megapixels column. It tells you the total pixel count at a glance, which helps when you compare two images that have different shapes but similar size.</p>
+<p>Finally, check the file size column. A very small file with large dimensions may be heavily compressed, which is a warning sign for print work even if the pixels check out.</p>
+<h2 id="step-3-check-the-ratio">Step 3: Check the Aspect Ratio</h2>
+<p>The ratio column shows the shape of each image, such as 16:9, 4:3, or 1:1. It also shows the exact ratio when an image does not match a standard shape.</p>
+<p>Match the ratio to your destination. A 4:5 portrait fills a phone feed better than a square, while a 16:9 landscape suits a video thumbnail or a website hero image.</p>
+<p>Watch for near misses. An image at 1.48:1 looks square-ish but is not 3:2, and a platform that crops to 3:2 will trim its edges in ways you did not plan.</p>
+<p>If the ratio is wrong, crop the image before you do anything else. The <a href="/image-cropper/">image cropper</a> cuts to the exact ratio you need, and the checker confirms the result afterwards.</p>
+<h2 id="step-4-validate-minimums">Step 4: Validate Against Minimum Width and Height</h2>
+<p>Enter your platform minimums in the Min Width Check and Min Height Check fields. The tool flags every image that falls below either number.</p>
+<p>Flagged rows are your to-do list. Each one needs either a larger source file, a resize, or a decision to accept the lower quality.</p>
+<p>Do not upscale a flagged image and assume the problem is solved. Upscaling invents pixels, so the file passes the number check while looking softer than a true high-resolution image.</p>
+<p>When a source file cannot be made larger, talk to the person who supplied it. A photographer or designer with the original can usually export a bigger version in seconds.</p>
+<h2 id="step-5-export-the-report">Step 5: Export the Report as CSV or JSON</h2>
+<p>When the table is complete, click Export CSV for a spreadsheet or Export JSON for a structured data file. Both contain the same columns as the on-screen table.</p>
+<p>The CSV opens in Excel or Google Sheets, where you can sort by width, filter by ratio, or highlight the flagged rows for a teammate to fix.</p>
+<p>The JSON is for developers and automated pipelines. It carries the same data in a format a script can read, which suits content systems and quality dashboards.</p>
+<p>Export before you close the tab, because the table lives only in your browser. A refresh clears it, and re-checking a large batch is a waste of time.</p>
+<h2 id="checking-one-image">Checking a Single Image Quickly</h2>
+<p>For one image, the process is the same but faster. Drop the file in, read the dimensions row, and you are done in under ten seconds.</p>
+<p>Paste is the fastest route of all for screenshots. Copy a screenshot, press Ctrl+V in the tool, and the dimensions appear without saving any file.</p>
+<p>On a phone, upload the image from your gallery. The table works on small screens, and the key numbers are visible without scrolling sideways.</p>
+<p>A single-image check is also the fastest way to settle an argument. When two people disagree about whether an image is big enough, the checker gives a number neither side can dispute.</p>
+<h2 id="reading-the-print-size">Reading the Print Size Column</h2>
+<p>The Print at 300 DPI column converts pixels into inches at print quality. A 3000-pixel-wide image shows as 10 inches, which is its safe printed width.</p>
+<p>Compare that number with the size you actually need. If you need an 8-inch print and the column says 4 inches, the image will look soft when stretched to fit.</p>
+<p>Remember that 300 DPI is a quality standard, not a law. A poster viewed from across a room can print fine at 150 DPI, while a brochure held in the hand needs the full 300.</p>
+<p>For print questions in general, the <a href="/image-dpi-changer/">image DPI changer</a> can set the DPI metadata on your files once you know the pixels are sufficient.</p>
+<h2 id="spotting-misleading-extensions">Spotting Misleading File Extensions</h2>
+<p>A file named .jpg is not always a JPEG. People rename files, and some systems save a WebP with a .jpg extension by mistake.</p>
+<p>The checker reads the actual image data, not the extension. If a supposed JPG turns out to be a WebP, the tool reports what the file really is.</p>
+<p>This matters because some platforms reject files whose contents do not match their extension. Catching the mismatch in the checker saves a failed upload later.</p>
+<p>If you find a misnamed file, convert it properly instead of renaming it again. The <a href="/image-converter/">image converter</a> writes a correct file with the right format and extension.</p>
+<h2 id="checking-svg-files">Checking SVG Files</h2>
+<p>SVG files are vectors, so the checker reads their intrinsic dimensions from the width, height, and viewBox attributes instead of counting pixels.</p>
+<p>The intrinsic size is the size the designer intended. An SVG can scale far beyond it without losing sharpness, but the intended size tells you the proportions to preserve.</p>
+<p>If an SVG has a viewBox but no width or height, the checker shows the ratio without absolute dimensions. That is normal for responsive icons designed to scale.</p>
+<p>For icons, compare the SVG ratio with your layout. A viewBox of 0 0 24 24 is square, and placing it in a wide slot will either stretch it or leave empty space.</p>
+<h2 id="troubleshooting-unreadable-files">Troubleshooting Unreadable Files</h2>
+<p>Sometimes a file will not read at all, and the tool marks it as an error. The usual cause is a corrupted download or a file that is not really an image.</p>
+<p>Try opening the file in an image viewer first. If the viewer also fails, the file is damaged and needs to be re-downloaded or re-exported from its source.</p>
+<p>A file over 20 MB will also be rejected. Compress it or resize it first, then check the smaller version, since the dimensions of the resized file are what you will actually use.</p>
+<p>One bad file never blocks the rest of the batch. The checker reports the error row and keeps reading the remaining files, so you can fix the broken one afterwards.</p>
+<h2 id="fixing-a-failed-image">Fixing an Image That Failed the Check</h2>
+<p>Start with the source. Ask for the original export at a larger size before you try any software fix, because a true high-resolution file beats any upscaled copy.</p>
+<p>If the ratio is wrong, crop it. The image cropper cuts to the exact ratio your platform wants, and a fresh check confirms the new dimensions.</p>
+<p>If the file is too small and no larger source exists, resize it with the <a href="/image-resizer/">image resizer</a> and accept the softness. It is better than failing the upload, but be honest with the client about the quality.</p>
+<p>Re-check after every fix. A second pass through the checker confirms the new dimensions and gives you a clean report to file with the finished work.</p>
+<h2 id="sharing-the-report">Sharing the Report with Your Team</h2>
+<p>A CSV report is the easiest thing to share. Send it to the designer, the developer, or the client, and everyone sees the same numbers instead of arguing from memory.</p>
+<p>Highlight the flagged rows before you send it. A report with the failures marked clearly gets fixed faster than a raw table that makes the reader hunt for problems.</p>
+<p>For recurring work, agree on a minimum size once and write it down. Every future batch gets checked against the same standard, and the reports become comparable over time.</p>
+<p>Keep old reports in the project folder. When a platform changes its requirements, the old report shows which images were compliant before and which ones need re-checking now.</p>
+<h2 id="checking-before-print">Checking Dimensions Before a Print Order</h2>
+<p>Print orders are the most expensive place to discover a dimensions problem, because the mistake is only visible after the job is printed and paid for. A two-minute check beforehand is the cheapest insurance in the whole workflow.</p>
+<p>Start by asking the printer for the finished size in inches and the DPI they want, which is usually 300. Multiply the inches by the DPI to get the pixel dimensions you need, and write that number down.</p>
+<p>Run your images through the checker and compare each one against that target. Any image that falls short will print soft, and the shortfall tells you exactly how much smaller the print must be to stay sharp.</p>
+<p>Pay attention to the ratio as well as the size. A print shop that trims to a fixed ratio will crop your image, so confirm that the important details sit safely inside the crop area.</p>
+<p>Check the file format at the same time. Printers prefer JPG or TIFF for photos and PDF or PNG for graphics, and a file in the wrong format can cause delays even when the dimensions are right.</p>
+<p>Finally, export the report and send it to the printer with the files. A printer who can see the dimensions table will spot a problem before the press runs, which is far better than spotting it on the finished sheets.</p>
+<h2 id="recurring-batch-checks">Making Dimension Checks a Habit</h2>
+<p>One-off checks catch one-off problems, but most dimension failures repeat. The same supplier sends small images every month, or the same template exports at the wrong ratio again and again.</p>
+<p>Build the check into your workflow instead of treating it as an emergency step. Run every new batch of images through the checker the moment it arrives, before anyone starts designing with it.</p>
+<p>Keep a simple log of what failed and why. After a few weeks the pattern becomes obvious, and you can fix the source — a wrong export preset, a careless supplier, or a template that needs updating — instead of fixing each image by hand.</p>
+<p>Share the habit with the team. When everyone checks dimensions before handing files over, the failures stop arriving at the last minute, and the checker becomes a quiet background step rather than a rescue tool.</p>
+<h2 id="quick-reference-checklist">Quick Reference Checklist</h2>
+<p>Drop the files in, read the dimensions column first, then the ratio, then the megapixels and file size for context.</p>
+<p>Enter your minimum width and height, flag the failures, and fix them from the source file whenever possible rather than upscaling.</p>
+<p>Check the print size column before sending anything to print, and export the CSV or JSON report before closing the tab.</p>
+<p>For the full background, read the <a href="/blog/image-dimensions-checker-guide/">Image Dimensions Checker: Complete Guide</a>, and for the theory behind the numbers, see <a href="/blog/image-dimensions-vs-resolution-vs-file-size/">Dimensions vs Resolution vs File Size Explained</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I check the dimensions of an image on my phone?',
+          answer: 'Open the dimensions checker in your mobile browser and upload the image from your gallery. The table shows width, height, ratio, and megapixels. You can also paste a screenshot directly to check its pixel size without saving a file.',
+        },
+        {
+          question: 'Can I check dimensions without downloading any software?',
+          answer: 'Yes. The checker runs entirely in your browser on desktop and mobile. There is nothing to install, no account to create, and your files are never uploaded to a server.',
+        },
+        {
+          question: 'Why does Windows say my image is one size and the checker says another?',
+          answer: 'Windows Explorer sometimes shows dimensions rounded or scaled for display, and some apps show the size after applying DPI settings. The checker reads the true pixel width and height stored inside the file, which is the number platforms actually check.',
+        },
+        {
+          question: 'What is a good minimum width for product photos?',
+          answer: 'It depends on the platform, but most marketplaces want at least 1000 pixels on the longest side so shoppers can zoom in. Always check the current rules for the specific marketplace, then enter that number in the Min Width Check field.',
+        },
+        {
+          question: 'Can the checker read dimensions from a screenshot I paste?',
+          answer: 'Yes. Copy the screenshot and press Ctrl+V in the tool, and it will read the pixel dimensions immediately. This is the fastest way to verify the size of a screen capture before sending it to someone.',
+        },
+        {
+          question: 'What should I do if my image is smaller than the required size?',
+          answer: 'First ask for the original file at a larger size, since upscaling invents pixels and softens the image. If no larger source exists, resize it with the image resizer and accept the quality trade-off, then re-check to confirm the new dimensions.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-resizer', '/image-cropper', '/image-dpi-changer'],
+  },
+  {
+    id: 'image-dimensions-vs-resolution-vs-file-size',
+    toolSlug: '/image-dimensions-checker',
+    categoryId: 'developer',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-dimensions-vs-resolution-vs-file-size',
+      title: 'Dimensions vs Resolution vs File Size Explained',
+      description: 'Dimensions, resolution, and file size are three different numbers. Learn what each one means, how they relate, and which one matters for web, print, and social.',
+      body: `
+<p>Three numbers describe every image, and people mix them up constantly. Dimensions, resolution, and file size sound related, but each one measures something different.</p>
+<p>The confusion causes real mistakes. People buy a high-megapixel camera and wonder why the print looks soft, or compress a file and wonder why it still will not upload.</p>
+<p>This article untangles the three numbers, shows how they relate, and explains which one matters for the web, for print, and for social media.</p>
+<h2 id="three-different-numbers">Three Numbers, Three Meanings</h2>
+<p>Dimensions are the pixel width and height, such as 1920 by 1080. They describe how many pixels the image contains, and nothing else.</p>
+<p>Resolution is the density of those pixels, usually given as DPI or PPI. It says how many pixels fit into one inch when the image is printed or displayed.</p>
+<p>File size is the weight of the image on disk, usually in kilobytes or megabytes. It says how much storage the file needs and how long it takes to download.</p>
+<p>Each number can change without the others moving. You can shrink a file without touching its dimensions, and you can change the DPI without touching a single pixel.</p>
+<h2 id="dimensions-explained">Dimensions: The Pixel Count</h2>
+<p>Dimensions are the most concrete of the three numbers. A 4000 by 3000 image contains 12 million pixels, arranged in 4,000 columns and 3,000 rows.</p>
+<p>Dimensions decide how large an image can appear on screen without stretching. A 400-pixel image shown at 1200 pixels wide must invent two thirds of its pixels, and the invention looks blurry.</p>
+<p>Dimensions also decide the maximum print size. Divide the pixel width by the print DPI to get the printable width in inches, so more pixels mean a larger sharp print.</p>
+<p>When a platform rejects an image for being too small, it is almost always checking dimensions. Minimum width rules are pixel rules, and no amount of compression or DPI editing will satisfy them.</p>
+<h2 id="resolution-explained">Resolution: DPI and PPI</h2>
+<p>Resolution says how tightly the pixels are packed. A 300 DPI image places 300 pixels in every inch, while a 72 DPI image places only 72 in the same inch.</p>
+<p>On screen, DPI is mostly ignored. A browser shows the pixels one by one, so a 1000-pixel image looks the same at 72 DPI and at 300 DPI on a monitor.</p>
+<p>In print, DPI is everything. A 3000-pixel image at 300 DPI prints 10 inches wide, while the same pixels at 150 DPI print 20 inches wide with visibly softer detail.</p>
+<p>DPI is metadata, not pixels. Changing it with the <a href="/image-dpi-changer/">image DPI changer</a> rewrites a small number in the file header and leaves every pixel untouched, which is why the change is lossless.</p>
+<h2 id="file-size-explained">File Size: The Weight on Disk</h2>
+<p>File size is measured in kilobytes or megabytes, and it depends on the dimensions, the format, and the compression. A large image saved as an uncompressed PNG can weigh ten times more than the same image saved as a compressed JPG.</p>
+<p>Compression is the biggest lever on file size. Lowering JPG quality from 90 to 70 can halve the file while changing the dimensions and the DPI not at all.</p>
+<p>Format matters too. PNG stores images without loss, so photos saved as PNG are heavy. JPG and WebP throw away data the eye barely notices, so they are far lighter for photographs.</p>
+<p>File size decides upload success and page speed. Portals cap it in kilobytes, and browsers download it over the network, so a heavy file fails or delays even when its dimensions are perfect.</p>
+<h2 id="how-they-relate">How the Three Numbers Relate</h2>
+<p>Dimensions set the ceiling for everything else. A 4000 by 3000 image can be printed large, shown large, and compressed many ways, while a 400 by 300 image cannot do any of those things well.</p>
+<p>Resolution translates dimensions into physical size. The same 3000-pixel image is a 10-inch print at 300 DPI and a 20-inch print at 150 DPI, because DPI is just the conversion factor between pixels and inches.</p>
+<p>File size is the cost of storing the pixels. More pixels cost more bytes, and less compression costs more bytes too, so a large, lightly compressed image is the heaviest file of all.</p>
+<p>Think of it as a triangle: dimensions are the amount of detail, resolution is how densely it is packed, and file size is what you pay to keep it.</p>
+<h2 id="big-file-small-dimensions">Why a Big File Can Have Small Dimensions</h2>
+<p>A small image saved as an uncompressed PNG can weigh several megabytes. The PNG format stores every pixel exactly, and a noisy photo has a lot of exact information to store.</p>
+<p>Screenshots are the classic case. A 1200 by 800 screenshot saved as PNG can weigh 2 MB, while the same screenshot saved as JPG weighs 200 KB, because JPG discards the noise.</p>
+<p>This surprises people who equate file size with quality. The heavy PNG is not better; it is just less efficient at storing the same pixels.</p>
+<p>When a portal rejects a file for size, check the format first. Converting a PNG photo to JPG often solves the problem without touching the dimensions at all.</p>
+<h2 id="small-file-huge-dimensions">Why a Small File Can Have Huge Dimensions</h2>
+<p>A 6000 by 4000 photo saved as a low-quality JPG can weigh under 1 MB. Heavy compression discards most of the fine detail, leaving a large grid of rough pixels.</p>
+<p>The dimensions look impressive, but the image does not. Zoom in and the detail is gone, replaced by blocky artifacts and smeared edges.</p>
+<p>This is why marketplaces check dimensions and humans check quality. A file can pass the pixel minimum and still look terrible when a shopper zooms in.</p>
+<p>For the web, this combination is actually useful. A large, heavily compressed hero image fills a wide screen and loads fast, because the viewer never zooms close enough to see the damage.</p>
+<h2 id="print-math">Print Math: Pixels Divided by DPI</h2>
+<p>Print size comes from one division: pixels divided by DPI equals inches. A 3000-pixel image at 300 DPI prints 10 inches wide, and at 150 DPI it prints 20 inches wide.</p>
+<p>The standard for quality print is 300 DPI. At that density, individual pixels are too small for the eye to see at reading distance, so the print looks smooth.</p>
+<p>Large-format prints relax the standard. A poster viewed from two meters away looks fine at 150 DPI, and a billboard viewed from the road can drop to 50 DPI or lower.</p>
+<p>Before you send a file to print, do the division. If the result is smaller than the size you need, get a larger file or accept a smaller print, because no DPI setting can invent missing pixels.</p>
+<h2 id="screen-math">Screen Math: Pixels Only, DPI Ignored</h2>
+<p>Screens do not use DPI the way printers do. A browser displays an image pixel for pixel, so a 1000-pixel image occupies 1000 screen pixels regardless of its DPI tag.</p>
+<p>This is why a 72 DPI image and a 300 DPI image look identical on a website. The DPI value is metadata that browsers simply ignore.</p>
+<p>High-density phone screens complicate the picture slightly. A phone with a 2x display uses two physical pixels per CSS pixel, so a 1000-pixel image shown at 500 CSS pixels still looks sharp.</p>
+<p>The practical rule for the web is simple: match the dimensions to the display size, and forget DPI. A hero image shown at 1200 pixels wide should be about 1200 to 2400 pixels wide in the file.</p>
+<h2 id="compression-and-file-size">Compression and File Size</h2>
+<p>Compression changes file size without changing dimensions or DPI. It rewrites the pixel data more efficiently, discarding detail the eye is unlikely to notice.</p>
+<p>JPG and WebP are lossy formats: each save discards a little more detail. PNG is lossless: it shrinks the file without discarding anything, which is why PNG photos stay heavy.</p>
+<p>Quality settings control the trade-off. A JPG at quality 90 keeps nearly all visible detail, while the same image at quality 50 is half the size with visible damage in gradients and fine textures.</p>
+<p>Use the <a href="/">image compressor</a> to find the balance for your images. It lets you preview the result and the file size together, so you can stop at the point where the savings are worth the damage.</p>
+<h2 id="choosing-dimensions-for-web">Choosing Dimensions for the Web</h2>
+<p>For the web, match the dimensions to the largest size the image will ever be shown. An image displayed at 800 pixels wide rarely needs to be more than 1600 pixels in the file, even for retina screens.</p>
+<p>Bigger files load slower and cost mobile users data. A 4000-pixel hero image shown at 1200 pixels wastes two thirds of its pixels on every single page view.</p>
+<p>Thumbnails need far less. A 200-pixel avatar stored as a 2000-pixel file is ten times heavier than it needs to be, and the extra pixels are invisible.</p>
+<p>Responsive images solve this properly: serve a small file to phones and a large one to desktops. But even without that, right-sizing the file to the display is the biggest single speed win.</p>
+<h2 id="choosing-dimensions-for-print">Choosing Dimensions for Print</h2>
+<p>For print, work backwards from the physical size. Multiply the inches you need by 300 to get the pixels you need, so an 8 by 10 inch print needs 2400 by 3000 pixels.</p>
+<p>Always check the DPI metadata too. A file with the right pixels but a 72 DPI tag will be treated as a huge print by some software, and the layout will be wrong even though the pixels are fine.</p>
+<p>Set the DPI correctly with the image DPI changer after confirming the pixel count. The two numbers together tell the printer exactly what you want.</p>
+<p>If the pixels are not enough, do not upscale and hope. A slightly smaller print at full quality looks better than a larger print made from invented pixels.</p>
+<h2 id="choosing-dimensions-for-social">Choosing Dimensions for Social and Marketplaces</h2>
+<p>Social platforms crop aggressively, so the ratio matters as much as the pixel count. A 1080 by 1350 portrait fills a phone feed, while a 1080 by 1080 square is the safe choice across feeds.</p>
+<p>Marketplaces want large, square-ish images with room to zoom. A 2000-pixel product photo on a white background satisfies most minimums and gives shoppers a clear view.</p>
+<p>Video thumbnails are the exception that proves the rule. A 1280 by 720 thumbnail is small in pixels but must be readable at a glance, so bold shapes beat fine detail.</p>
+<p>Check every image with the <a href="/image-dimensions-checker/">image dimensions checker</a> before uploading to a new platform. Its batch table and minimum checks catch the failures before the platform does.</p>
+<h2 id="common-myths">Common Myths About Dimensions, Resolution, and Size</h2>
+<p>The first myth is that a higher DPI makes a web image sharper. It does not, because browsers ignore DPI. Only the pixel dimensions decide sharpness on screen.</p>
+<p>The second myth is that a bigger file is always a better image. A heavy PNG and a light JPG can hold identical pixels, and the JPG is the better file for the web in almost every case.</p>
+<p>The third myth is that megapixels decide print quality. They are only half the story; the print size and the DPI complete it, and a 12-megapixel image printed at poster size is still soft.</p>
+<p>The fourth myth is that changing the DPI changes the image. It changes a number in the header, not a single pixel, and the image looks exactly the same on screen before and after.</p>
+<h2 id="quick-reference">Quick Reference: Which Number Matters Where</h2>
+<p>On the web, dimensions matter most. Match the pixel width to the display size, keep the file size low with compression, and ignore DPI entirely.</p>
+<p>In print, dimensions and DPI matter together. Multiply your inches by 300 to get the pixels you need, then set the DPI tag to match.</p>
+<p>For uploads and portals, file size matters most. A file that passes the pixel minimum can still be rejected for weighing too many kilobytes.</p>
+<p>For a shared vocabulary with your team, remember the three definitions: dimensions are the pixel count, resolution is the packing density, and file size is the storage cost. For the hands-on tools, see the <a href="/blog/image-dimensions-checker-guide/">Image Dimensions Checker: Complete Guide</a> and the steps in <a href="/blog/how-to-check-image-dimensions/">How to Check Image Dimensions</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Does changing the DPI of an image change its dimensions?',
+          answer: 'No. DPI is metadata stored in the file header, and changing it does not add or remove any pixels. A 3000 by 2000 image stays 3000 by 2000 whether its DPI tag says 72 or 300. Only the print size changes, because print size is pixels divided by DPI.',
+        },
+        {
+          question: 'Why is my image file so large even though its dimensions are small?',
+          answer: 'The format and compression decide the weight more than the dimensions do. A small photo saved as an uncompressed PNG can weigh megabytes, while the same pixels saved as a JPG weigh a fraction of that. Convert to JPG or WebP to shrink the file without changing the dimensions.',
+        },
+        {
+          question: 'What dimensions do I need for a sharp A4 print?',
+          answer: 'An A4 page is about 8.3 by 11.7 inches, so at 300 DPI you need roughly 2500 by 3500 pixels. A smaller file can still print on A4, but the detail will soften as the printer stretches the available pixels across the page.',
+        },
+        {
+          question: 'Is a 72 DPI image bad quality?',
+          answer: 'Not necessarily. DPI only matters for print, and a 72 DPI tag says nothing about the pixels themselves. A 4000-pixel image tagged at 72 DPI is a high-quality file with the wrong metadata. Change the DPI tag and the print size is fixed without touching a pixel.',
+        },
+        {
+          question: 'How do dimensions affect page loading speed?',
+          answer: 'Larger dimensions usually mean larger files, and larger files take longer to download. But the relationship is not fixed: a big, heavily compressed image can load faster than a small, uncompressed one. Check both the dimensions and the file size when you optimize for speed.',
+        },
+        {
+          question: 'Can I increase an image dimensions without losing quality?',
+          answer: 'Not really. Upscaling invents pixels that were never captured, so the result is always softer than a true high-resolution original. AI upscalers do a better job than simple resizing, but they still guess at detail. The best fix is always a larger original file.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-dpi-changer', '/image-resizer', '/image-converter'],
+  },
+  {
+    id: 'image-dpi-changer-guide',
+    toolSlug: '/image-dpi-changer',
+    categoryId: 'developer',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-dpi-changer-guide',
+      title: 'Image DPI Changer: Complete Guide',
+      description: 'Change image DPI without losing quality. Presets from 72 to 600 DPI, custom values up to 2400, batch ZIP export, and a Verified DPI badge — free, in your browser.',
+      body: `
+<p>Your photo has the right pixels, the right size, and the right look, but the printer or the publishing platform rejects it. The reason is often a single number buried in the file: the DPI value.</p>
+<p>DPI tells software how densely to pack the pixels when the image is printed. A file tagged at 72 DPI looks like a poster to a print system, while the same pixels tagged at 300 DPI look like a proper page.</p>
+<p>This guide explains how the CompressMyPic image DPI changer works, what each preset means, and how to fix DPI problems without touching a single pixel of your image.</p>
+<h2 id="what-is-dpi">What Is DPI?</h2>
+<p>DPI stands for dots per inch, and it describes how many printed dots fit into one inch of paper. In image files it is usually called the resolution tag, and it sits in the file header as a small piece of metadata.</p>
+<p>A 3000-pixel-wide image tagged at 300 DPI prints 10 inches wide, because 3000 divided by 300 equals 10. The same pixels tagged at 150 DPI print 20 inches wide, with each dot spread further apart.</p>
+<p>DPI does not describe the image itself. It describes the intended physical size of the image when it leaves the screen and meets paper, ink, or a printing press.</p>
+<p>Most cameras and screenshots save a DPI tag, but many save none at all. A file with no DPI tag is not broken; it simply leaves the print size up to whatever software opens it next.</p>
+<h2 id="dpi-is-metadata">DPI Is Metadata, Not Pixels</h2>
+<p>The most important fact about DPI is that changing it does not change the image. The pixel grid stays exactly the same, and the visible picture does not gain or lose any detail.</p>
+<p>The DPI changer rewrites a few bytes in the file header and leaves the pixel data untouched. That is why the change is lossless: there is nothing to lose, because nothing is re-encoded.</p>
+<p>This also means changing DPI cannot make a blurry image sharp. A 400 by 400 thumbnail set to 300 DPI is still a 400 by 400 thumbnail, and it will still look soft when printed large.</p>
+<p>What the change does is tell the next program the correct print size. A print shop, a book platform, or a journal submission system reads the tag and lays the image out at the size you intended.</p>
+<h2 id="dpi-presets-explained">DPI Presets Explained: 72 to 600</h2>
+<p>The tool offers five presets, each matched to a real use case. Choosing the right one is mostly a matter of knowing where the image is going.</p>
+<p>72 DPI is the screen preset. It comes from the early days of monitors, and it marks a file as intended for display rather than print. Many web images carry this tag by default.</p>
+<p>96 DPI is the Windows preset, the standard density of Windows displays. It is the tag most screenshots carry, and it means the same thing as 72 DPI in practice: this image is for screens.</p>
+<p>150 DPI is the draft print preset. It suits internal proofs, large posters viewed from a distance, and any print where speed matters more than fine detail.</p>
+<p>300 DPI is the high print preset and the one you will use most. It is the standard for books, brochures, magazines, and packaging, and it is the value most platforms demand. 600 DPI is the archival preset, used for fine-art reproduction and documents that must survive close inspection under magnification.</p>
+<h2 id="custom-dpi-range">Custom DPI: Any Value from 1 to 2400</h2>
+<p>Sometimes no preset fits. A specific printer, a journal, or a book platform may demand an unusual value, and the tool accepts any custom DPI from 1 to 2400.</p>
+<p>Type the number you need and the tool applies it exactly. The range is wide on purpose, because real publishing workflows occasionally ask for values such as 200, 350, or 1200 DPI.</p>
+<p>Values below 72 are rarely useful for print, but they are valid metadata. The tool does not judge your number; it writes it faithfully and verifies the result.</p>
+<p>If you change your mind after processing, you can re-apply a different DPI to the same files. The tool lets you run the processed images again at 600 DPI after a 300 DPI pass, with no quality loss at either step.</p>
+<h2 id="jpeg-and-png-only">Which Formats Work: JPEG and PNG</h2>
+<p>The DPI changer works with JPEG and PNG files, because those formats store a DPI tag in a standard place. Both are handled losslessly, with no re-encoding of the pixel data.</p>
+<p>Other formats are rejected with a clear message. WebP, HEIC, BMP, GIF, and SVG files do not carry a DPI tag in the same way, so stamping one onto them would be misleading.</p>
+<p>If your file is a WebP, convert it to JPG or PNG first, then set the DPI. The <a href="/image-converter/">image converter</a> handles that step, and the DPI changer takes it from there.</p>
+<p>This limit is a feature, not a gap. A tool that pretends to set DPI on a format that cannot store it would silently produce files that still fail the platform check.</p>
+<h2 id="before-not-set">Why Photos Show Before: Not Set</h2>
+<p>Many uploaded photos show Before: Not set in the tool, which surprises people. The photo is fine; it simply has no DPI tag stored in its header.</p>
+<p>Phone cameras often skip the DPI tag entirely, because the phone does not know whether the photo will be printed or shared on screen. Screenshots behave the same way.</p>
+<p>A missing tag is not an error, but it is a problem for platforms that demand one. Amazon KDP, academic journals, and print shops all check the DPI value, and a missing value counts as a failure.</p>
+<p>Setting the DPI on such a file fills in the missing metadata. The pixels do not change, but the file now answers the platform question instead of leaving it blank.</p>
+<h2 id="verified-dpi-badge">The Verified DPI Badge</h2>
+<p>After processing, each file gets a Verified DPI badge. The badge is not decoration; it means the tool read the file back and confirmed the new DPI value is actually stored in it.</p>
+<p>Verification matters because DPI tags can be tricky. Some formats store the value in dots per centimeter instead of dots per inch, and a careless tool can write one while the reader expects the other.</p>
+<p>The changer handles that conversion correctly and then proves it by reading the result. If the badge appears, the file will report the same DPI in any standards-compliant reader.</p>
+<p>Check for the badge before you submit a file. A processed file without verification is a guess, and publishing platforms do not accept guesses.</p>
+<h2 id="exif-and-icc-preservation">EXIF Tags and ICC Profiles Are Preserved</h2>
+<p>Changing DPI rewrites only the resolution bytes in the header. Your camera EXIF data, including the date, camera model, and exposure settings, stays exactly as it was.</p>
+<p>The ICC color profile is preserved too. That profile tells printers and screens how to interpret the colors, and losing it would shift every color in the image.</p>
+<p>This is why the tool is safe for professional work. A photographer can set the DPI on a client file without worrying that the metadata the client needs has been stripped away.</p>
+<p>If you do want metadata removed, that is a separate job. The <a href="/remove-image-metadata/">remove image metadata tool</a> strips EXIF and location data, while the DPI changer deliberately keeps everything intact.</p>
+<h2 id="png-299-vs-300">Why PNG Sometimes Reads Back as 299 DPI</h2>
+<p>Some users set 300 DPI on a PNG and read it back as 299 DPI in another program. This looks like an error, but it is a rounding artifact of how PNG stores resolution.</p>
+<p>PNG files store resolution in pixels per meter, not per inch. Converting 300 DPI to pixels per meter gives a number that does not divide evenly, so the stored value rounds slightly.</p>
+<p>When a reader converts it back to DPI, the result can be 299 instead of 300. The difference is one dot per inch out of three hundred, which has no visible effect on any print.</p>
+<p>Most platforms accept 299 DPI as equivalent to 300, but if yours is strict, use JPEG for that file. JPEG stores DPI directly in dots per inch, so it reads back as exactly 300.</p>
+<h2 id="batch-zip-workflow">Batch Processing and ZIP Export</h2>
+<p>Print projects rarely involve one image. A book chapter, a product catalog, or a journal article can need dozens of images stamped at 300 DPI, and doing them one by one is tedious.</p>
+<p>The DPI changer processes files in batches. Drop in the whole set, choose the preset once, and every file gets the same DPI value in a single pass.</p>
+<p>When the batch finishes, download all the results as one ZIP file. The ZIP keeps the individual file names, so the images slot straight back into the project folder they came from.</p>
+<p>You can also download files one at a time if you only need a few. The batch workflow is for volume; the single download is for the quick fix on one image.</p>
+<h2 id="dpi-and-file-size">Does Changing DPI Change File Size?</h2>
+<p>No, or almost no. The DPI tag is a few bytes in the header, so changing it adds or removes nothing measurable from the file size.</p>
+<p>A JPEG that weighs 2.4 MB before the change weighs 2.4 MB after it. The pixels are untouched, the compression is untouched, and only the metadata differs.</p>
+<p>This surprises people who expect a 300 DPI file to be bigger than a 72 DPI file. File size comes from pixels and compression, not from the DPI tag, and the tag is nearly free.</p>
+<p>If a file does need to be smaller, compress it separately. The <a href="/">image compressor</a> reduces the weight without changing the dimensions, and then the DPI changer can set the print tag on the smaller file.</p>
+<h2 id="why-platforms-reject-72-dpi">Why Platforms Reject 72 DPI Files</h2>
+<p>Publishing platforms reject 72 DPI files because the tag tells them the image is meant for screens. A book printer that sees 72 DPI assumes the image will print far too large and too soft.</p>
+<p>Amazon KDP, academic journals, and stock photo sites all enforce minimum DPI rules for this reason. They are not being picky; they are protecting the printed result.</p>
+<p>The fix is quick once you understand it. Stamp the file at 300 DPI, verify the badge, and resubmit. The pixels were always good enough; only the metadata was wrong.</p>
+<p>Remember the limit, though. If the pixels are genuinely too few for the print size, no DPI value will save the file. Check the dimensions first with the <a href="/image-dimensions-checker/">image dimensions checker</a>.</p>
+<h2 id="re-applying-dpi">Re-applying a Different DPI Later</h2>
+<p>Workflows change, and a file stamped at 300 DPI may later need 600 DPI for an archival print. The tool lets you re-process files as often as you like.</p>
+<p>Each pass is lossless, so re-stamping costs nothing in quality. The header is rewritten, the pixels stay untouched, and the new value is verified with a fresh badge.</p>
+<p>This is useful for teams that serve both print and archive from the same source files. One set of pixels can carry 300 DPI for the book and 600 DPI for the archive, with no duplication.</p>
+<p>Keep the original files safe regardless. A DPI change is reversible, but having the untouched original means you never have to wonder what was changed and when.</p>
+<h2 id="how-to-use-the-tool">How to Use the Image DPI Changer</h2>
+<p>Open the <a href="/image-dpi-changer/">image DPI changer</a> and drop your JPEG or PNG files into the upload area. You can also paste a clipboard screenshot directly to stamp it at 300 DPI in seconds.</p>
+<p>Pick a preset or type a custom value between 1 and 2400. The tool shows the current DPI for each file, or Not set when the file has no tag at all.</p>
+<p>Process the files and look for the Verified DPI badge on each result. Download them individually or as one ZIP, then confirm the value in your publishing platform.</p>
+<p>For the step-by-step version, read <a href="/blog/how-to-change-image-dpi/">How to Change Image DPI</a>, and for the theory behind the numbers, see <a href="/blog/dpi-vs-ppi-print-web/">DPI vs PPI: What Matters for Print and Web</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Will changing DPI make my image look sharper on screen?',
+          answer: 'No. DPI is print metadata and browsers ignore it, so the image looks exactly the same on screen before and after the change. Sharpness on screen comes from pixel dimensions, not from the DPI tag. If the image looks soft on screen, it needs more pixels, not a higher DPI.',
+        },
+        {
+          question: 'Can I set DPI on a WebP or HEIC file with this tool?',
+          answer: 'No. The tool works with JPEG and PNG only, because those formats store a DPI tag in a standard way. Convert a WebP or HEIC file to JPG or PNG first with the image converter, then set the DPI on the converted file.',
+        },
+        {
+          question: 'What DPI should I use for a book cover or magazine page?',
+          answer: '300 DPI is the standard for books, magazines, brochures, and packaging. Use the 300 DPI preset and confirm the pixel dimensions are large enough for the physical size. For fine-art or archival reproduction, step up to the 600 DPI preset.',
+        },
+        {
+          question: 'Does the DPI changer work on my phone?',
+          answer: 'Yes. The tool runs in mobile browsers on iOS and Android. Upload JPEG or PNG files from your gallery, pick a preset, and download the stamped files. Batch ZIP downloads work on mobile too.',
+        },
+        {
+          question: 'Why does my PNG read 299 DPI after I set 300 DPI?',
+          answer: 'PNG stores resolution in pixels per meter, and converting 300 DPI to that unit rounds slightly. When another program converts it back, it can read 299 DPI. The difference is invisible in print, and most platforms accept it. For an exact 300 reading, use JPEG instead.',
+        },
+        {
+          question: 'Can I change DPI without an account or payment?',
+          answer: 'Yes. The tool is free, needs no account, and processes everything locally in your browser. There is no limit on how many files you stamp, and your images are never uploaded to a server.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-dimensions-checker', '/image-to-pdf', '/image-resizer'],
+  },
+  {
+    id: 'how-to-change-image-dpi',
+    toolSlug: '/image-dpi-changer',
+    categoryId: 'developer',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-change-image-dpi',
+      title: 'How to Change Image DPI',
+      description: 'Change an image DPI to 72, 150, 300, or 600 in four steps — or any custom value up to 2400. Batch support, ZIP download, and a Verified DPI badge included.',
+      body: `
+<p>Your image is ready, but the platform wants 300 DPI and your file says 72, or says nothing at all. The fix takes less than a minute once you know the steps.</p>
+<p>This guide walks you through changing image DPI in four practical steps: upload, choose the value, verify the badge, and download. It also covers batches, screenshots, and the common problems that trip people up.</p>
+<p>No software to install, no account to create, and no pixels harmed. The change is a metadata edit, so your image looks exactly the same when you finish.</p>
+<h2 id="what-you-need">What You Need Before You Start</h2>
+<p>You need the image files in JPEG or PNG format. Those are the only formats that store a DPI tag in a standard way, so the tool accepts only those two.</p>
+<p>Know the DPI value your destination wants. Book printers and journals usually ask for 300, draft prints accept 150, and screens are happy with 72 or 96.</p>
+<p>Check the pixel dimensions before you start. DPI cannot rescue an image with too few pixels, so confirm the dimensions are large enough for the print size you need.</p>
+<p>A browser is all the software you need. The tool runs on Chrome, Safari, Firefox, and Edge, on desktop and on mobile, with no extension.</p>
+<h2 id="step-1-upload">Step 1: Upload Your JPEG or PNG Files</h2>
+<p>Open the <a href="/image-dpi-changer/">image DPI changer</a> and drag your files into the upload area. You can drop one image or a whole batch at once.</p>
+<p>You can also click the upload area to browse for files, or paste a clipboard screenshot with Ctrl+V to stamp it immediately without saving it first.</p>
+<p>Each file appears in a list with its current DPI shown beside it. Many photos will read Before: Not set, which simply means the file has no DPI tag yet.</p>
+<p>If a file is rejected, check its format. WebP, HEIC, BMP, GIF, and SVG files are not supported here, and the tool will tell you so rather than failing silently.</p>
+<h2 id="step-2-choose-the-value">Step 2: Choose a Preset or a Custom DPI</h2>
+<p>Pick one of the five presets: 72 for screen, 96 for Windows, 150 for draft print, 300 for high print, or 600 for archival work. For most publishing jobs, 300 is the right choice.</p>
+<p>If your destination asks for a different number, type it into the custom DPI field. Any whole number from 1 to 2400 is accepted, so values such as 200 or 350 work fine.</p>
+<p>The same value applies to every file in the batch. If different images need different DPI values, process them in separate batches, one value at a time.</p>
+<p>Double-check the number before you process. A typo that turns 300 into 3000 is easy to make and will be written faithfully, so read the field once more.</p>
+<h2 id="step-3-process-and-verify">Step 3: Process and Look for the Verified Badge</h2>
+<p>Click to process the files. The tool rewrites the DPI tag in each file header and then reads the file back to confirm the new value is stored correctly.</p>
+<p>Each successful file shows a Verified DPI badge. That badge is your confirmation that the file will report the same DPI in any standards-compliant reader, including your publishing platform.</p>
+<p>If a file shows an error instead, read the message. A corrupted JPEG or an unsupported format will be flagged clearly, and the rest of the batch will still process normally.</p>
+<p>Do not skip the verification step. A file that was processed but not verified is a guess, and a failed submission costs far more time than a second glance at the badge.</p>
+<h2 id="step-4-download">Step 4: Download the Stamped Files</h2>
+<p>Download each file individually, or click the ZIP download to get the whole batch in one archive. The ZIP keeps the original file names, so the images drop straight back into your project.</p>
+<p>Output files are named clearly so you can tell them apart from the originals. Keep the originals as well, so you always have an untouched copy to return to.</p>
+<p>Open one downloaded file in your platform or in an image viewer and confirm the DPI reads correctly. That final check takes seconds and catches any misunderstanding before submission.</p>
+<p>Submit the stamped files to your platform. If the platform still complains, the problem is usually the pixel dimensions, not the DPI, so check those next.</p>
+<h2 id="batch-changing-dpi">Changing DPI for a Whole Batch</h2>
+<p>Books, catalogs, and journal articles need dozens of images at the same DPI. The batch workflow handles them all in one pass with one preset.</p>
+<p>Drop the entire folder into the tool and choose the value once. Every file gets stamped, verified, and listed with its badge, so you can see at a glance if any file failed.</p>
+<p>Download the batch as a single ZIP. The archive preserves the file names, which matters when the images are referenced by name in a document or a layout file.</p>
+<p>If a few files in the batch are WebP or HEIC, convert them first. The <a href="/image-converter/">image converter</a> turns them into JPG or PNG, and then they can join the next batch.</p>
+<h2 id="dpi-for-print-publishing">DPI for Print Publishing and Journals</h2>
+<p>Book platforms such as Amazon KDP check DPI on every image in the manuscript. A cover or an interior image tagged below their minimum is rejected, and the whole submission stalls.</p>
+<p>Academic journals are stricter still. Many demand 300 DPI for photographs and 600 DPI for line art, and they check the tag before they check the content.</p>
+<p>The workflow is the same in both cases: confirm the pixel dimensions first, stamp the DPI second, verify the badge third, and submit fourth. Skipping the first step is the most common cause of a second rejection.</p>
+<p>For line art, use the 600 DPI preset. Thin lines and small text need the extra density, and a 300 DPI line drawing can look ragged when printed at full size.</p>
+<h2 id="fixing-a-72-dpi-file">Fixing a 72 DPI File That Got Rejected</h2>
+<p>A 72 DPI rejection is the most common DPI problem, and it is also the easiest to fix. The pixels are usually fine; only the metadata tag is wrong.</p>
+<p>Upload the file, choose the 300 DPI preset, and process it. The tool rewrites the tag, verifies it, and the downloaded file passes the platform check.</p>
+<p>Before you resubmit, confirm the dimensions. A 72 DPI file that is also small in pixels will fail again, this time on dimensions, and no DPI value can fix that.</p>
+<p>If the file is a screenshot, the same fix applies. Screenshots usually carry a 72 or 96 DPI tag, and stamping them at 300 DPI makes them acceptable to print workflows, provided the pixels are enough.</p>
+<h2 id="dpi-for-screenshots">DPI for Screenshots</h2>
+<p>Screenshots are the quickest DPI fix of all, because you can paste them straight from the clipboard. Copy the screen, press Ctrl+V in the tool, and the screenshot is ready to stamp.</p>
+<p>Choose 300 DPI for a screenshot that will appear in a printed manual or a book. The pixels are whatever the screen captured, but the tag will satisfy the print workflow.</p>
+<p>Be honest about the limits. A screenshot of a small dialog box has few pixels, and stamping it at 300 DPI makes it a very small print, not a sharp large one.</p>
+<p>For screenshots that must print large, capture them at a higher display scaling first. A screenshot taken on a retina display carries twice the pixels and prints twice as large.</p>
+<h2 id="removing-dpi-tags">Removing or Stripping a DPI Tag</h2>
+<p>Sometimes you want no DPI tag at all, rather than a different one. The tool can strip the DPI metadata from a file, leaving the pixels untouched.</p>
+<p>Stripping is useful when a file carries a wrong tag that confuses your software. A photo tagged at an odd value can make a layout program scale it unexpectedly, and removing the tag resets the behavior.</p>
+<p>To strip the tag, use the remove option in the tool and process the file. The downloaded file has no DPI metadata, and software that opens it will fall back to its own default.</p>
+<p>Only strip a tag when you have a reason. Most publishing workflows want a tag present, and a file with no tag can be rejected just as easily as a file with the wrong one.</p>
+<h2 id="troubleshooting-formats">Troubleshooting Unsupported Formats</h2>
+<p>If the tool rejects your file, the first thing to check is the format. WebP, HEIC, BMP, GIF, and SVG files are not supported, and the tool will say so clearly.</p>
+<p>Convert the file to JPG or PNG and try again. The image converter handles WebP and HEIC, and the conversion preserves the pixels while giving the file a format that can carry a DPI tag.</p>
+<p>Watch out for misnamed files. A WebP file saved with a .jpg extension will be rejected even though its name looks right, because the tool reads the actual file contents.</p>
+<p>When in doubt, open the file in an image viewer and re-save it as JPG or PNG. A clean re-save guarantees the format matches the extension.</p>
+<h2 id="troubleshooting-corrupt-files">Troubleshooting Corrupt Files</h2>
+<p>A corrupted JPEG will fail with an error message, and the rest of the batch will keep processing. The error is specific to that file, not to the tool.</p>
+<p>Try opening the file in an image viewer. If the viewer also fails, the file is damaged and needs to be re-downloaded or re-exported from its source.</p>
+<p>A file that opens in the viewer but fails in the tool may have a damaged header. Re-saving it from the viewer writes a fresh header, and the new file usually processes fine.</p>
+<p>Never submit a file that failed processing. A corrupt file that slips into a print job can stall the whole submission, so fix or replace it before you go further.</p>
+<h2 id="checking-the-result">Checking the Result After Download</h2>
+<p>After downloading, open one file and confirm its DPI. On Windows, right-click the file, choose Properties, and look at the details tab. On Mac, open it in Preview and check the inspector.</p>
+<p>The number should match what you chose. A JPEG stamped at 300 DPI reads back as 300, while a PNG can read back as 299 because of how PNG stores resolution in pixels per meter.</p>
+<p>If the number is wrong, re-process the original rather than the downloaded file. Re-stamping a stamped file works, but starting from the original keeps the chain of changes clean.</p>
+<p>Keep a note of the value you used for each project. When the same images go to a second platform with different rules, the note tells you what to change without re-checking every file.</p>
+<h2 id="dpi-for-ecommerce">DPI for E-commerce and Marketplace Images</h2>
+<p>Marketplace images live on screens, so DPI seems irrelevant to them, but sellers still get tripped up by it. The confusion usually starts when a marketplace help page mentions DPI alongside pixel dimensions.</p>
+<p>For product listings, the pixel dimensions are the rule that matters. A marketplace that wants 1000 pixels on the longest side checks the pixel count, not the DPI tag, and a file stamped at 300 DPI with only 600 pixels still fails.</p>
+<p>That said, stamping marketplace images at 300 DPI does no harm and occasionally helps. Some seller tools and print-on-demand services read the tag, and a correct value keeps those workflows smooth.</p>
+<p>The practical approach is to fix the pixels first and the DPI second. Confirm the dimensions with the dimensions checker, resize if needed, and then stamp 300 DPI as a final step before uploading the listing images.</p>
+<p>For print-on-demand products such as mugs, shirts, and posters, DPI matters a great deal. The product is printed, so the same 300 DPI standard applies, and the pixel math decides how large the design can be printed.</p>
+<p>Check the print-on-demand requirements for each product before you upload. A design that works on a mug may be too small for a poster, and the DPI tag alone will not bridge that gap.</p>
+<h2 id="re-applying-different-dpi">Re-applying a Different DPI Value</h2>
+<p>Projects change, and a file stamped at 300 DPI may later need 600 DPI for an archive or a fine-art print. The tool lets you re-apply a new value to the same files.</p>
+<p>Upload the files again, choose the new preset or custom value, and process them. Each pass is lossless, so the pixels are never degraded by repeated stamping.</p>
+<p>You can also go the other way, from 600 back down to 300, with the same safety. The header is rewritten each time and the pixel data is never touched.</p>
+<p>For the full background on what DPI means, read the <a href="/blog/image-dpi-changer-guide/">Image DPI Changer: Complete Guide</a>, and for the comparison with screen PPI, see <a href="/blog/dpi-vs-ppi-print-web/">DPI vs PPI: What Matters for Print and Web</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How long does it take to change the DPI of an image?',
+          answer: 'Seconds. The tool rewrites a few bytes in the file header and does not re-encode any pixels, so even a large batch finishes quickly. The time you spend is mostly uploading and downloading, not processing.',
+        },
+        {
+          question: 'Can I change the DPI of many images at once?',
+          answer: 'Yes. Drop the whole batch into the tool, choose one DPI value, and every JPEG and PNG in the batch gets stamped in a single pass. Download the results as one ZIP file with the original file names preserved.',
+        },
+        {
+          question: 'What happens if I enter a custom DPI by mistake?',
+          answer: 'The tool writes whatever number you enter, from 1 to 2400, and verifies it with the badge. If you notice the mistake, just re-process the original files with the correct value. Each pass is lossless, so the error costs you a minute, not the image.',
+        },
+        {
+          question: 'Does changing DPI affect the image quality or colors?',
+          answer: 'No. Only the resolution metadata in the header changes. The pixels, the compression, the EXIF data, and the ICC color profile all stay exactly as they were. The image looks identical on screen before and after.',
+        },
+        {
+          question: 'Can I paste a screenshot and change its DPI right away?',
+          answer: 'Yes. Copy the screenshot, press Ctrl+V in the tool, and it appears ready to stamp. Choose 300 DPI for print use, process it, and download the result. This is the fastest route from screen capture to print-ready file.',
+        },
+        {
+          question: 'Why was my file rejected by the DPI changer?',
+          answer: 'The usual reasons are an unsupported format such as WebP or HEIC, a file over the size limit, or a corrupted JPEG. Convert unsupported formats to JPG or PNG first, and re-export any file that will not open in an image viewer.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-dimensions-checker', '/image-to-pdf', '/image-converter'],
+  },
+  {
+    id: 'dpi-vs-ppi-print-web',
+    toolSlug: '/image-dpi-changer',
+    categoryId: 'developer',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'dpi-vs-ppi-print-web',
+      title: 'DPI vs PPI: What Matters for Print and Web',
+      description: 'DPI and PPI sound alike but measure different things. Learn which one matters for print, which one matters for screens, and why 72 vs 300 DPI confuses everyone.',
+      body: `
+<p>DPI and PPI are the most confused pair in all of imaging. People use them interchangeably, tools label them inconsistently, and the result is a mess of wrong advice.</p>
+<p>The confusion has real costs. Designers set 300 DPI on web images that do not need it, and print buyers accept 72 DPI files that will never print well.</p>
+<p>This article separates the two terms cleanly, explains where each one matters, and gives you a simple rule for deciding which number to care about in any situation.</p>
+<h2 id="dpi-defined">DPI Defined: Dots of Ink</h2>
+<p>DPI stands for dots per inch, and it belongs to printers. It counts the tiny dots of ink a printer lays down in one inch of paper, and it decides how fine the printed detail can be.</p>
+<p>A printer rated at 300 DPI can place 300 ink dots per inch. A printer rated at 600 DPI can place twice as many, which is why fine-art prints use the higher value.</p>
+<p>In image files, DPI is a metadata tag that tells software the intended print density. It does not change the pixels; it tells the printer how to space them on the page.</p>
+<p>When a platform asks for 300 DPI, it is asking for this tag. It wants the file to declare that its pixels are meant to be packed 300 to the inch.</p>
+<h2 id="ppi-defined">PPI Defined: Pixels on a Screen</h2>
+<p>PPI stands for pixels per inch, and it belongs to screens. It counts how many physical pixels a display packs into one inch of its surface.</p>
+<p>A phone with a 400 PPI screen squeezes 400 pixels into every inch, which is why text looks razor sharp even at small sizes. An old monitor at 96 PPI shows the same text with visible edges.</p>
+<p>PPI is a property of the display hardware, not of the image file. You cannot change a screen PPI by editing a file, any more than you can change a monitor size by editing a photo.</p>
+<p>Some image editors use PPI as the label for the same metadata tag that others call DPI. That overlap is the main reason the two terms get mixed up.</p>
+<h2 id="why-they-get-confused">Why DPI and PPI Get Confused</h2>
+<p>The confusion has three causes. First, the terms sound alike and both involve inches. Second, some software uses them as synonyms for the same file tag. Third, both relate to how dense an image appears.</p>
+<p>Photoshop, for example, labels the file resolution field as PPI, while a print shop calls the same number DPI. The file holds one number, and two industries give it two names.</p>
+<p>The practical fix is to ask what the number controls. If it controls ink on paper, think DPI. If it controls pixels on a screen, think PPI. The context tells you which meaning applies.</p>
+<p>For the file tag itself, the distinction barely matters. Whether the field is called DPI or PPI, it holds the same value, and the <a href="/image-dpi-changer/">image DPI changer</a> writes it correctly either way.</p>
+<h2 id="print-what-matters">Print: DPI Is What Matters</h2>
+<p>In print, DPI decides everything about sharpness. A 3000-pixel image printed at 300 DPI covers 10 inches, while the same pixels at 150 DPI cover 20 inches with half the density.</p>
+<p>The print standard is 300 DPI for anything held in the hand: books, brochures, magazines, and packaging. At that density the eye cannot pick out individual dots at reading distance.</p>
+<p>Large prints relax the rule. A poster viewed from two meters away looks fine at 150 DPI, and a billboard seen from the road can drop to 50 DPI or lower without anyone noticing.</p>
+<p>Before any print job, divide pixels by DPI to get the physical size. If the result is smaller than the size you need, get more pixels or accept a smaller print.</p>
+<h2 id="web-what-matters">Web: Pixels Matter, DPI Does Not</h2>
+<p>On the web, browsers ignore the DPI tag completely. They display the image pixel for pixel, so a 1000-pixel image occupies 1000 screen pixels whether its tag says 72 or 300.</p>
+<p>What matters on the web is the pixel dimensions relative to the display size. An image shown at 800 pixels wide should be roughly 800 to 1600 pixels in the file, depending on the screen density.</p>
+<p>Setting 300 DPI on a web image changes nothing about how it looks or loads. The file size stays the same, the display stays the same, and the only difference is a number in the header that no browser reads.</p>
+<p>The web rule is therefore simple: match the dimensions to the display, compress the file for speed, and forget DPI entirely until the image goes to print.</p>
+<h2 id="the-72-dpi-myth">The 72 DPI Myth</h2>
+<p>The most persistent myth in imaging is that web images must be 72 DPI. It comes from the early Macintosh, whose screen displayed 72 pixels per inch, and it has been wrong for decades.</p>
+<p>Modern screens range from 100 to over 400 PPI, so no single DPI value describes them all. A 72 DPI tag on a web image is a historical accident, not a requirement.</p>
+<p>The myth survives because software keeps writing 72 into files by default. Cameras, screenshots, and exports all stamp 72 DPI when they have no better value to use.</p>
+<p>Ignore the number on the web. Judge a web image by its pixel dimensions and its file size, and leave the DPI tag alone unless the image is headed for print.</p>
+<h2 id="the-300-dpi-standard">The 300 DPI Standard for Print</h2>
+<p>The 300 DPI standard exists because of the limits of the human eye. At normal reading distance, the eye cannot resolve detail finer than about 300 dots per inch, so more density adds nothing visible.</p>
+<p>That is why book printers, journals, and packaging firms all ask for 300. It is the point where quality stops improving for a handheld print, and asking for more would only inflate file sizes.</p>
+<p>Fine art and archival work go to 600 DPI because those prints are examined closely, sometimes under magnification. The extra density preserves hairline detail that 300 DPI would soften.</p>
+<p>Going beyond 600 DPI is almost never useful for print. The printer cannot place the dots accurately enough, and the file becomes enormous for no visible gain.</p>
+<h2 id="screens-and-retina">Screens, Retina, and PPI</h2>
+<p>Retina and high-density screens changed the web calculation. A phone with a 2x display uses two physical pixels for every CSS pixel, so an image needs twice the pixels to stay sharp.</p>
+<p>This is a PPI effect, not a DPI effect. The screen packs more pixels per inch, so the image file must contain more pixels per inch of display to keep up.</p>
+<p>The practical response is to serve images at 2x the display size. An image shown at 400 CSS pixels wide should be about 800 pixels in the file, which looks sharp on both standard and retina screens.</p>
+<p>None of this involves the DPI tag. The file dimensions do the work, and the tag sits unread in the header while the browser renders the pixels.</p>
+<h2 id="print-size-math">Print Size Math: Pixels Divided by DPI</h2>
+<p>The formula for print size is one division: pixel width divided by DPI equals printed width in inches. A 3000-pixel image at 300 DPI prints 10 inches wide.</p>
+<p>Work backwards from the size you need. An 8 by 10 inch print at 300 DPI needs 2400 by 3000 pixels, so any file smaller than that will print soft at that size.</p>
+<p>PPI never enters this formula. The screen density of the device that captured the image is irrelevant to the printed result; only the pixel count and the DPI tag matter.</p>
+<p>Use the <a href="/image-dimensions-checker/">image dimensions checker</a> to confirm the pixel count, then the DPI changer to set the tag. The two tools together answer the print question completely.</p>
+<h2 id="metadata-vs-pixels">Metadata vs Pixels: The Core Distinction</h2>
+<p>The DPI tag is metadata: a few bytes in the file header that describe the intended print density. Changing it rewrites those bytes and leaves every pixel untouched.</p>
+<p>PPI is hardware: the physical density of a screen. It cannot be changed by editing a file, because it describes the display device rather than the image.</p>
+<p>This distinction explains why DPI changes are lossless and instant, while PPI changes are impossible. One is a label on the file, and the other is a fact about the screen.</p>
+<p>When someone says an image has low resolution, ask which one they mean. If they mean few pixels, the fix is a bigger file. If they mean a low DPI tag, the fix is a metadata edit.</p>
+<h2 id="when-to-change-dpi">When to Change DPI</h2>
+<p>Change DPI when a print workflow demands it. Book platforms, journals, and print shops check the tag, and a file with the wrong value is rejected before anyone looks at the pixels.</p>
+<p>Change DPI when the tag is missing. A photo with no DPI value leaves the print size undefined, and the software that opens it will guess, often badly.</p>
+<p>Change DPI when repurposing a screen image for print. A screenshot stamped at 300 DPI satisfies the print workflow, provided its pixels are enough for the size you need.</p>
+<p>Do not change DPI for the web. It has no effect on display or loading, and the time is better spent matching the dimensions and compressing the file.</p>
+<h2 id="when-dpi-does-not-help">When DPI Does Not Help</h2>
+<p>DPI does not help when the pixels are too few. A 400 by 400 thumbnail stamped at 300 DPI is still a 400 by 400 thumbnail, and it prints at just over an inch wide.</p>
+<p>DPI does not help a blurry image. Blur lives in the pixels, and no metadata edit can sharpen an out-of-focus photo or a shaky screenshot.</p>
+<p>DPI does not help on screens. A browser ignores the tag, so a web image set to 300 DPI looks identical to the same image set to 72 DPI.</p>
+<p>DPI does not help file size either. The tag is a few bytes, so changing it does not shrink a file that a portal rejects for being too heavy.</p>
+<h2 id="workflow-for-print">A Print Workflow That Gets It Right</h2>
+<p>Start with the physical size you need, in inches. Multiply by 300 to get the pixels you need, and confirm your file meets that number with the dimensions checker.</p>
+<p>Set the DPI tag to 300 with the DPI changer, and look for the Verified DPI badge. The badge confirms the tag is stored correctly and will read back the same in any program.</p>
+<p>Send a test print or a proof before the full run. The proof catches problems that numbers cannot, such as colors that shift on paper or details that vanish at print size.</p>
+<p>Keep the stamped file and the original together. If the printer asks for a different DPI later, re-stamp the original rather than the already stamped copy.</p>
+<h2 id="workflow-for-web">A Web Workflow That Ignores DPI</h2>
+<p>Start with the display size in CSS pixels. Double it for retina screens, and that doubled number is the pixel width your file needs.</p>
+<p>Compress the file until the quality loss is just visible, then step back one notch. That is the smallest file that still looks good, and it is the one your visitors will thank you for.</p>
+<p>Check the dimensions with the dimensions checker and the weight with the compressor. Those two numbers, not DPI, decide whether the image is right for the web.</p>
+<p>Leave the DPI tag exactly as it came from the camera or the export. Changing it wastes a step, and no browser will ever read it.</p>
+<h2 id="quick-reference">Quick Reference: DPI vs PPI</h2>
+<p>DPI is dots per inch, a print concept. It lives in the file as a metadata tag, it decides the printed size, and you change it with the DPI changer when a print workflow demands it.</p>
+<p>PPI is pixels per inch, a screen concept. It describes the display hardware, it decides how sharp a screen looks, and you cannot change it by editing a file.</p>
+<p>On the web, care about pixel dimensions and file size. In print, care about pixel dimensions and the DPI tag. The two worlds use different numbers, and mixing them up is how good images get rejected.</p>
+<p>For the hands-on tools, see the <a href="/blog/image-dpi-changer-guide/">Image DPI Changer: Complete Guide</a> and the steps in <a href="/blog/how-to-change-image-dpi/">How to Change Image DPI</a>. For the related numbers, read <a href="/blog/image-dimensions-vs-resolution-vs-file-size/">Dimensions vs Resolution vs File Size Explained</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Is DPI the same as PPI?',
+          answer: 'No, although some software uses the labels interchangeably for the same file tag. DPI counts ink dots per inch on paper, while PPI counts physical pixels per inch on a screen. The file tag is a print instruction, and the screen density is a hardware property you cannot change by editing a file.',
+        },
+        {
+          question: 'Does a 300 DPI image look better on a website than a 72 DPI image?',
+          answer: 'No. Browsers ignore the DPI tag and display the image pixel for pixel, so the two files look identical on screen. Web sharpness comes from pixel dimensions, not from the DPI value. A 300 DPI tag on a web image changes nothing about its appearance or loading speed.',
+        },
+        {
+          question: 'Why do print shops ask for 300 DPI while screens use 72 DPI?',
+          answer: 'Print and screens are different media with different density needs. At reading distance the eye resolves about 300 dots per inch on paper, so print needs that density to look smooth. Screens show pixels directly, and the old 72 figure was just the density of early Macintosh displays.',
+        },
+        {
+          question: 'Can I convert a low PPI screen image into a high DPI print image?',
+          answer: 'Only in the metadata sense. You can stamp a 300 DPI tag onto any image, but the tag does not add pixels. A screenshot with few pixels will still print small at 300 DPI. Real print quality needs enough pixels, which you get from a larger original or a higher-resolution capture.',
+        },
+        {
+          question: 'What PPI should my phone photos have for printing?',
+          answer: 'Phone photos do not have a PPI in the print sense; they have pixel dimensions and usually no DPI tag at all. Divide the pixel width by 300 to find the print width in inches. A 4000-pixel-wide phone photo prints about 13 inches wide at 300 DPI.',
+        },
+        {
+          question: 'Do I need to worry about DPI for social media uploads?',
+          answer: 'No. Social platforms display images on screens, where only pixel dimensions and file size matter. Upload the right dimensions and a reasonably compressed file, and ignore the DPI tag entirely for social media.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-dimensions-checker', '/image-resizer', '/image-to-pdf'],
+  },
+  {
+    id: 'image-to-base64-guide',
+    toolSlug: '/image-to-base64',
+    categoryId: 'developer',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-to-base64-guide',
+      title: 'Image to Base64: Complete Guide',
+      description: 'Convert any image to Base64: Data URLs, raw strings, HTML img snippets, and CSS url() output. Learn the 33% overhead, when to embed, and when to link instead.',
+      body: `
+<p>Developers often need an image as text rather than as a file. An icon inside a stylesheet, a logo inside an HTML email, or a picture inside a JSON payload all need the image converted into characters.</p>
+<p>Base64 is the encoding that makes that possible. It turns the binary bytes of an image into a plain text string that can live inside code, markup, and messages.</p>
+<p>This guide explains how the CompressMyPic image to Base64 converter works, what each output format is for, and when embedding an image is smart and when it is a mistake.</p>
+<h2 id="what-is-base64">What Is Base64?</h2>
+<p>Base64 is a way of representing binary data as text. It takes the raw bytes of a file and rewrites them using 64 safe characters: the letters A to Z, a to z, the digits 0 to 9, plus, and slash, with equals signs as padding.</p>
+<p>The characters are safe because they appear in every text system. An email, a JSON file, a stylesheet, and a database can all hold a Base64 string without corrupting it, which is not true of raw image bytes.</p>
+<p>Base64 is not encryption and not compression. Anyone who receives the string can decode it back into the original image, and the string is always longer than the file it came from.</p>
+<p>Think of it as a translation, not a transformation. The image stays the same image; only the alphabet used to write it down has changed.</p>
+<h2 id="how-encoding-works">How Base64 Encoding Works</h2>
+<p>Encoding reads the image file three bytes at a time. Each group of three bytes, 24 bits in total, is split into four groups of six bits, and each six-bit group becomes one Base64 character.</p>
+<p>When the file length is not a multiple of three, the encoder adds equals signs as padding. One equals sign means the last group held two bytes, and two equals signs mean it held only one.</p>
+<p>The result is a string of text that contains the whole image. Decoding reverses the process exactly, turning the characters back into the original bytes with no loss at all.</p>
+<p>The converter does all of this locally in your browser. The image is read, encoded, and displayed without ever leaving your device, so private diagrams and client assets stay private.</p>
+<h2 id="the-33-percent-overhead">The 33 Percent Overhead</h2>
+<p>Base64 output is about 33 percent larger than the original file. A 90 KB image becomes roughly a 120 KB string, because four text characters carry only three bytes of data.</p>
+<p>The overhead is a fixed property of the encoding, not a flaw in the tool. Every Base64 encoder in every language produces the same size increase for the same input.</p>
+<p>HTML and CSS outputs are slightly larger still, because they add a wrapper around the string. The image tag adds markup, and the CSS function adds its own syntax, on top of the 33 percent.</p>
+<p>This overhead is the first thing to consider before embedding. A small icon grows from 3 KB to 4 KB, which nobody notices, but a 2 MB photo grows to 2.7 MB, which everyone notices.</p>
+<h2 id="four-output-formats">Four Output Formats in One Tool</h2>
+<p>The converter offers four output formats, each matched to a different job. You choose the tab that fits your code, and the tool generates the exact snippet you need.</p>
+<p>The Data URL tab gives you the complete data URI, ready to paste into an image source or a stylesheet. It includes the media type, the encoding marker, and the Base64 string in one piece.</p>
+<p>The Raw Base64 tab gives you only the string itself, with no prefix. That is the form API payloads and databases usually want, because the receiving code adds its own context.</p>
+<p>The HTML image tab gives you a complete image element with the Data URL as the source, plus width and height attributes filled in automatically. The CSS tab gives you a url() function wrapping the Data URL, ready for a background or a mask.</p>
+<h2 id="data-url-explained">Data URLs Explained</h2>
+<p>A Data URL starts with the word data, followed by the media type, the encoding marker, and the Base64 string. A typical one looks like data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA.</p>
+<p>Browsers understand Data URLs anywhere a normal URL would work. You can use one as an image source, a stylesheet background, or a link target, and the browser will decode and render it.</p>
+<p>The advantage is self-containment. A page that uses Data URLs has no separate image files to fetch, so it works offline, in a single file, and in contexts where external requests are blocked.</p>
+<p>The disadvantage is size. The 33 percent overhead applies to every embedded image, and a page with many Data URLs becomes heavy and slow to parse.</p>
+<h2 id="raw-base64-explained">Raw Base64 Explained</h2>
+<p>Raw Base64 is the string without the data prefix. It is what you send when the receiver already knows the image type, or when the type travels in a separate field.</p>
+<p>API payloads are the main use case. A JSON object can carry a field called image with the raw string, plus a field called mimeType with the format, and the server reconstructs the file from the two.</p>
+<p>Databases use raw Base64 the same way. Storing an image as text in a text column avoids binary column types, which some systems handle poorly.</p>
+<p>When you copy raw Base64, keep the padding. The equals signs at the end are part of the encoding, and removing them can break decoders that expect a complete string.</p>
+<h2 id="html-img-snippet">The HTML Image Snippet</h2>
+<p>The HTML tab generates a complete image element with the Data URL as its source. It also fills in the width and height attributes automatically from the image dimensions.</p>
+<p>Those attributes matter more than they look. Without them, the browser does not know the image size until it decodes the string, and the page layout shifts when the image finally appears.</p>
+<p>With width and height present, the browser reserves the right amount of space immediately. The layout stays stable, which is better for readers and for layout shift scores.</p>
+<p>The snippet is ready to paste into any HTML file. Add an alt attribute describing the image before you ship it, since the tool cannot know what the picture shows.</p>
+<h2 id="css-url-snippet">The CSS url() Snippet</h2>
+<p>The CSS tab wraps the Data URL in a url() function, producing a value you can paste into a background-image or similar property. It is the fastest way to put a small image into a stylesheet.</p>
+<p>Embedded CSS images are common for icons, patterns, and decorative backgrounds. They load with the stylesheet, so there is no separate request and no flash of missing decoration.</p>
+<p>The trade-off is stylesheet weight. A stylesheet full of embedded images grows large, and browsers cannot cache the images separately from the CSS that contains them.</p>
+<p>Use the CSS form for small, stable images that rarely change. A logo or a repeating pattern qualifies; a photo gallery does not, because the stylesheet would become enormous.</p>
+<h2 id="quality-preservation">Quality: Encoding Changes Nothing</h2>
+<p>Encoding an image to Base64 does not change a single pixel. The process is fully reversible, and decoding the string returns the exact original bytes.</p>
+<p>Animated GIFs keep their animation, SVG files keep their code, and photographs keep every detail. The encoding is a different representation, not a different image.</p>
+<p>This is an important difference from converting formats. Changing a PNG to a JPG loses data, but encoding a PNG to Base64 loses nothing at all.</p>
+<p>The only thing that changes is the size. The string is about a third larger than the file, and that cost is the price of carrying binary data as text.</p>
+<h2 id="supported-formats">Which Formats and Sizes Are Supported</h2>
+<p>The converter accepts PNG, JPG, WebP, GIF, SVG, BMP, and ICO files, up to 15 MB each. That covers logos, icons, photos, and animated images in a single tool.</p>
+<p>SVG files encode cleanly because they are already text. The tool reads the SVG code and encodes it like any other file, producing a string that decodes back into the same vector graphic.</p>
+<p>Favicon ICO files work too, which is handy when a site needs its icon embedded in a single-file page or an email template. The encoded ICO decodes back into a valid icon file.</p>
+<p>For files near the 15 MB limit, consider shrinking first. A large PNG compressed to a smaller JPG before encoding produces a much shorter string, and the quality loss is often invisible.</p>
+<h2 id="when-to-embed">When to Embed a Base64 Image</h2>
+<p>Embed small images that are essential to the page. Icons, logos, and tiny decorative graphics under a few kilobytes are ideal, because the overhead is negligible and the saved request is real.</p>
+<p>Embed images in single-file documents. An HTML email, a standalone report, or an offline page cannot fetch external files, so embedding is the only way the images appear at all.</p>
+<p>Embed images in API payloads and configuration files. When the image must travel inside JSON or inside a database record, Base64 is the standard way to carry it.</p>
+<p>Embed when the image changes rarely. A logo that stays the same for years costs nothing to embed, while an image that updates weekly forces a code change every time.</p>
+<h2 id="when-not-to-embed">When Not to Embed</h2>
+<p>Do not embed large photos. A 2 MB photograph becomes a 2.7 MB string inside your HTML, and the browser must download and parse all of it before the page can render.</p>
+<p>Do not embed images that appear on many pages. A logo embedded in every page is downloaded every time, while a linked logo is cached once and reused across the whole site.</p>
+<p>Do not embed images in emails without checking the client. Some email clients block inline Base64 images, and your message can arrive with broken pictures for those readers.</p>
+<p>Do not embed images that need to be indexed or shared. A search engine cannot easily discover an embedded image, and a reader cannot right-click and save it the way they can with a normal file.</p>
+<h2 id="email-and-api-use">Base64 in Email and APIs</h2>
+<p>HTML emails are one of the oldest uses of Base64 images. An email is a single message, so an embedded image travels with it and displays even when the reader is offline.</p>
+<p>Not all email clients agree, though. Some block inline Base64 images for security reasons, so test your template in the clients your audience actually uses before you rely on embedding.</p>
+<p>APIs use Base64 for a different reason: JSON cannot carry binary data. An image upload endpoint that accepts JSON expects the image as a Base64 string, often with the media type in a separate field.</p>
+<p>When you build such a payload, use the raw Base64 tab. It gives you the string without the data prefix, which is the form most APIs expect.</p>
+<h2 id="privacy-local-processing">Privacy: Encoding Happens in Your Browser</h2>
+<p>Encoding an image online would mean uploading it to a server, which is a bad idea for proprietary icons, confidential diagrams, or client assets. This tool never does that.</p>
+<p>The file is read by your browser, encoded on your device, and the string is shown to you locally. No copy of the image or the string leaves your computer.</p>
+<p>That also means the tool works offline once the page has loaded. You can encode icons on a plane or in a secure office without any network access at all.</p>
+<p>For teams handling sensitive visual material, local encoding is the deciding feature. The string you copy is yours, and no server ever sees either the image or its encoded form.</p>
+<h2 id="how-to-use-the-tool">How to Use the Image to Base64 Tool</h2>
+<p>Open the <a href="/image-to-base64/">image to Base64 converter</a> and drop your image into the upload area, or paste a screenshot straight from the clipboard. Files up to 15 MB are accepted.</p>
+<p>Choose the output tab that fits your job: Data URL for a complete URI, Raw for API payloads, HTML for a ready image element, or CSS for a stylesheet background.</p>
+<p>Copy the output with the copy button, or download it as a file when the string is long and copying feels risky. The download saves the exact text, with no truncation.</p>
+<p>For the step-by-step version, read <a href="/blog/how-to-convert-image-to-base64/">How to Convert an Image to Base64</a>, and for the decision framework, see <a href="/blog/base64-images-when-to-embed/">Base64 Images: When to Embed and When Not To</a>. To reverse the process, use the <a href="/base64-to-image/">Base64 to image decoder</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Is Base64 encoding the same as compressing an image?',
+          answer: 'No, it is the opposite in terms of size. Compression makes a file smaller, while Base64 makes it about 33 percent larger. Encoding changes the representation from binary to text without changing any pixels. If you need a smaller file, compress the image first and then encode the compressed result.',
+        },
+        {
+          question: 'Can I embed a Base64 image in a Word document or PDF?',
+          answer: 'Not directly as a Base64 string. Word and PDF files store images as binary data inside the document, not as Base64 text. Base64 is for web code, emails, JSON payloads, and other text-based formats. Convert the image to a normal file first for document use.',
+        },
+        {
+          question: 'Why is my Base64 string so long?',
+          answer: 'Because it carries the entire image as text, and text is a less efficient carrier than binary. A 90 KB image becomes about 120 KB of characters, and a 1 MB photo becomes about 1.4 MB of text. The length is normal. For very long strings, use the download button instead of copying.',
+        },
+        {
+          question: 'Does Base64 encoding work for animated GIFs?',
+          answer: 'Yes. Encoding does not touch the pixel data, so an animated GIF encodes into a string that decodes back into the same animated file. The animation, frame count, and timing are all preserved exactly.',
+        },
+        {
+          question: 'What is the largest image I can convert to Base64 here?',
+          answer: 'Files up to 15 MB are accepted. Larger files produce extremely long strings that are awkward to copy and slow to parse in a browser. Shrink or compress large images before encoding, and consider linking instead of embedding for anything over a few hundred kilobytes.',
+        },
+        {
+          question: 'Can search engines see images embedded as Base64?',
+          answer: 'Mostly no. A search engine can technically decode a Data URL, but embedded images are not indexed, ranked, or shown in image search the way linked image files are. If image search traffic matters, link the image as a file instead of embedding it.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/base64-to-image', '/favicon-generator', '/image-dimensions-checker'],
+  },
+  {
+    id: 'how-to-convert-image-to-base64',
+    toolSlug: '/image-to-base64',
+    categoryId: 'developer',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-convert-image-to-base64',
+      title: 'How to Convert an Image to Base64',
+      description: 'Convert an image to Base64 in four steps: upload, pick Data URL, raw, HTML, or CSS output, then copy or download. Works for PNG, JPG, SVG, GIF, and ICO.',
+      body: `
+<p>You need an image as text: a logo for a stylesheet, an icon for an email, or a picture for a JSON payload. The conversion takes about a minute once you know the steps.</p>
+<p>This guide walks you through converting an image to Base64 in four steps: upload the file, choose the output format, copy or download the string, and paste it into your code.</p>
+<p>No software to install, no account to create, and nothing uploaded anywhere. The image is encoded locally in your browser from start to finish.</p>
+<h2 id="what-you-need">What You Need Before You Start</h2>
+<p>You need the image file itself, in PNG, JPG, WebP, GIF, SVG, BMP, or ICO format, up to 15 MB. Logos, icons, and small photos are the usual candidates.</p>
+<p>Know where the string is going. An HTML page wants a Data URL, a stylesheet wants a CSS url() value, and an API usually wants the raw string without any prefix.</p>
+<p>If the image is large, consider shrinking it first. A 2 MB photo becomes a 2.7 MB string, which is unwieldy to copy and slow to parse, while a compressed version may be a tenth of that.</p>
+<p>A browser is all the software you need. The tool runs on Chrome, Safari, Firefox, and Edge, on desktop and on mobile, with no extension.</p>
+<h2 id="step-1-upload-or-paste">Step 1: Upload the Image or Paste a Screenshot</h2>
+<p>Open the <a href="/image-to-base64/">image to Base64 converter</a> and drag your image into the upload area. You can also click the area to choose a file from your device.</p>
+<p>If the image is on your screen right now, copy it and paste it with Ctrl+V. The tool accepts clipboard images directly, so a screenshot can be encoded without saving a file first.</p>
+<p>The tool reads the file and shows a preview with its dimensions and format. Check that the preview is the image you intended, because the string you copy will be this exact file.</p>
+<p>If you uploaded the wrong file, encode another one from the tool. The previous output is replaced, and you can keep working without reloading the page.</p>
+<h2 id="step-2-choose-output-format">Step 2: Choose the Output Format</h2>
+<p>Four tabs sit above the output area: Data URL, Raw, HTML, and CSS. Pick the one that matches where the string is going.</p>
+<p>Choose Data URL when you need a complete URI for an image source or a stylesheet background. It includes the media type and the encoding marker, so it works anywhere a URL works.</p>
+<p>Choose Raw when you are sending the image to an API or storing it in a database. Raw output is the string alone, with no prefix, which is the form most APIs expect.</p>
+<p>Choose HTML when you want a ready image element. The tool generates the tag with the Data URL as the source and fills in the width and height attributes automatically. Choose CSS when you want a url() value for a background or a mask.</p>
+<h2 id="step-3-copy-or-download">Step 3: Copy the Output or Download It</h2>
+<p>Click the Copy Output button to place the string on your clipboard. For short strings such as icons and logos, this is all you need.</p>
+<p>For long strings, use the download button instead. Copying a multi-megabyte string can be slow or unreliable, while a downloaded text file carries the exact output with no truncation.</p>
+<p>If your browser blocks clipboard access, the tool will tell you. Allow clipboard permission for the page, or use the download button as a workaround that needs no permission at all.</p>
+<p>Check the overhead percentage shown beside the output. It tells you how much larger the string is than the original file, which is usually around 33 percent plus a little for the wrapper.</p>
+<h2 id="step-4-paste-into-code">Step 4: Paste the String into Your Code</h2>
+<p>Paste the output where it belongs: the Data URL into an image source or a stylesheet, the raw string into a JSON field, the HTML snippet into a page, or the CSS value into a background property.</p>
+<p>Test the result immediately. Open the page, send the test email, or call the API, and confirm the image appears. A string pasted into the wrong field will fail silently or show a broken image.</p>
+<p>Keep the original image file. If the embedded version ever needs to change, you will re-encode from the original rather than decoding the string and re-encoding it.</p>
+<p>For a logo or icon, consider saving the snippet in your project as a reusable variable or partial. That way the long string lives in one place instead of being pasted into every file that needs it.</p>
+<h2 id="encoding-an-svg-logo">Encoding an SVG Logo</h2>
+<p>SVG logos encode cleanly because they are already text. Upload the SVG file and the tool produces a Base64 string that decodes back into the same vector graphic.</p>
+<p>The Data URL for an SVG starts with data:image/svg+xml;base64, followed by the string. Paste it into an image source and the logo renders sharply at any size.</p>
+<p>Watch the size, though. A complex SVG with many paths can be large, and its Base64 form is a third larger again. A simple logo is fine; a detailed illustration may be better linked as a file.</p>
+<p>For very small SVGs, consider a plain URL-encoded SVG instead of Base64. It is shorter, but it needs careful escaping, so Base64 remains the safer default for most people.</p>
+<h2 id="encoding-a-favicon">Encoding a Favicon</h2>
+<p>Favicon ICO files work in the converter just like any other format. Upload the .ico file and copy the Data URL for use in a single-file page or an email template.</p>
+<p>Most sites should link the favicon as a file instead of embedding it. A linked favicon is cached by the browser, while an embedded one is downloaded with every page that contains it.</p>
+<p>Embedding makes sense for single-file pages, offline documents, and email templates, where no separate file can be fetched. In those contexts the embedded icon is the only way the favicon appears at all.</p>
+<p>If you do not have a favicon yet, the <a href="/favicon-generator/">favicon generator</a> can create one from any image, and then you can encode the result here.</p>
+<h2 id="encoding-for-html-email">Encoding Images for HTML Email</h2>
+<p>HTML emails cannot rely on external image files, because many clients block remote images by default. Embedding the image as a Data URL makes it appear immediately, even offline.</p>
+<p>Keep embedded email images small. A logo or a small banner works well, but a large photograph makes the message heavy and slow to open on a phone.</p>
+<p>Test before you send. Some email clients block inline Base64 images, and your message can arrive with broken pictures for those readers. Send a test to the clients your audience uses.</p>
+<p>When a client blocks Base64, fall back to a hosted image with a normal URL. The hosted image needs the reader to load remote content, but it works in every client that allows it.</p>
+<h2 id="encoding-for-api-json">Encoding Images for an API JSON Payload</h2>
+<p>JSON cannot carry binary data, so image upload endpoints that accept JSON expect the image as a Base64 string. The raw output tab gives you exactly that form.</p>
+<p>Copy the raw string into the JSON field the API documents, and send the media type in a separate field if the API asks for it. The server decodes the string and reconstructs the file.</p>
+<p>Watch the payload size. A 1 MB image becomes a 1.4 MB JSON field, and some APIs reject payloads over a limit. Compress the image before encoding if the API has a size cap.</p>
+<p>Test with a small image first. A successful round trip with a tiny icon proves the field names and the format are right before you send a large production image.</p>
+<h2 id="shrinking-before-encoding">Shrinking an Image Before Encoding</h2>
+<p>Encoding a large image produces a very long string, and long strings are awkward to copy, slow to parse, and heavy to store. Shrinking first is almost always worth it.</p>
+<p>Compress the image with the <a href="/">image compressor</a> before you encode it. A photo reduced from 2 MB to 200 KB produces a string ten times shorter, with quality loss that is usually invisible.</p>
+<p>Resize as well when the display size is small. An icon shown at 64 pixels does not need a 2000-pixel source, and the smaller source encodes into a far shorter string.</p>
+<p>For photos, convert to JPG before encoding if transparency is not needed. JPG files are far smaller than PNG for photographs, and the smaller file means a shorter string.</p>
+<h2 id="troubleshooting-clipboard">Troubleshooting Clipboard Copy Problems</h2>
+<p>If the copy button does nothing, your browser may have blocked clipboard access. The tool will show a message explaining the block, and you can allow the permission for the page.</p>
+<p>Some browsers only allow clipboard writes after a user gesture on a secure page. Clicking the button counts as a gesture, but an old browser or a restrictive setting can still refuse.</p>
+<p>The download button is the reliable fallback. It saves the exact output as a text file with no clipboard involved, and you can open the file and copy from there.</p>
+<p>On mobile, long strings can be slow to copy. Download the output file instead, then share it to the app where you need it, rather than fighting the clipboard.</p>
+<h2 id="troubleshooting-large-strings">Troubleshooting Very Long Strings</h2>
+<p>A long string is normal for a large image, but it can make your editor sluggish. Pasting a 2 MB string into a code file can freeze a lightweight editor for seconds.</p>
+<p>Split the work: store the string in a separate file or variable, and reference it from the code that needs it. That keeps your main files readable and your editor responsive.</p>
+<p>If the string breaks your build, check for line length limits. Some tools wrap or truncate very long lines, which corrupts the string. A downloaded file avoids that problem entirely.</p>
+<p>When a string feels too long to manage, reconsider embedding at all. A linked image file is often the better choice for anything over a few hundred kilobytes.</p>
+<h2 id="encoding-another-image">Encoding Another Image After the First</h2>
+<p>To encode a second image, upload it from the tool without reloading the page. The new image replaces the old one, and the output updates to the new string.</p>
+<p>Copy the first output before you switch, because replacing the image clears the previous string. A downloaded file is the safest record if you need both strings.</p>
+<p>Working through a set of icons is fast this way. Upload, copy, upload the next, copy again, and the whole icon set is encoded in a few minutes.</p>
+<p>Keep the original files organized while you work. A folder of source images and a matching folder of output text files prevents the mix-ups that happen when strings all look alike.</p>
+<h2 id="encoding-for-social-and-messaging">Encoding Images for Social Media and Messaging</h2>
+<p>Social posts and chat messages sometimes accept images only as text, especially in bots, webhooks, and automated workflows. A Base64 string lets an image travel inside a text-only message payload.</p>
+<p>Keep these images tiny. A chat API may cap message size at a few dozen kilobytes, and a photo encoded to Base64 will blow past that limit before it even arrives.</p>
+<p>For chatbots, a small icon or a thumbnail under 10 KB encodes into a string that fits comfortably in a message. Anything larger should be uploaded as a file and referenced by URL instead.</p>
+<p>Some automation tools accept a Data URL where they would otherwise need a hosted image. That is useful when the image is generated on the fly and there is nowhere to host it yet.</p>
+<p>Test the full round trip before you automate it. Send one message with the encoded image, confirm it renders on the receiving side, and only then build the workflow around it.</p>
+<p>Remember that the string is visible to anyone who can see the message payload. Do not encode private photos into messages, logs, or webhooks where the text could be stored or forwarded.</p>
+<h2 id="quick-reference-checklist">Quick Reference Checklist</h2>
+<p>Upload the image, choose the output tab for your destination, and copy or download the string. Test it in place before you ship anything that depends on it.</p>
+<p>Shrink large images before encoding, use raw Base64 for APIs, and prefer a linked file over an embedded string for anything large or shared across pages.</p>
+<p>For the full background, read the <a href="/blog/image-to-base64-guide/">Image to Base64: Complete Guide</a>, and for the decision framework, see <a href="/blog/base64-images-when-to-embed/">Base64 Images: When to Embed and When Not To</a>. To decode a string back into a file, use the <a href="/base64-to-image/">Base64 to image decoder</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Can I convert an image to Base64 on my phone?',
+          answer: 'Yes. The converter runs in mobile browsers on iOS and Android. Upload the image from your gallery, choose the output tab, and copy the string. For very long strings, download the output file instead of copying, since mobile clipboards can struggle with large text.',
+        },
+        {
+          question: 'Why does the HTML tab add width and height to the image tag?',
+          answer: 'The browser needs the dimensions to reserve space before the image decodes. Without them, the page layout shifts when the image appears, which hurts the reading experience and the layout shift score. The tool fills the attributes in automatically from the image dimensions.',
+        },
+        {
+          question: 'Should I use Base64 or a normal image file for my website logo?',
+          answer: 'For a logo that appears on many pages, a normal linked file is usually better because the browser caches it once. Base64 wins when the page must be a single file, when the logo is tiny, or when no separate request is allowed. For most sites, link the logo.',
+        },
+        {
+          question: 'What is the difference between a Data URL and raw Base64?',
+          answer: 'A Data URL is the complete URI with the data prefix, media type, and encoding marker, ready to use as an image source. Raw Base64 is the string alone, with no prefix, which is the form APIs and databases usually expect. The tool generates both from the same image.',
+        },
+        {
+          question: 'Does converting to Base64 strip metadata from my image?',
+          answer: 'Encoding itself does not strip anything, because the string carries the exact original bytes. However, some workflows remove metadata before encoding to keep the string shorter. If privacy matters, strip the metadata first with the remove metadata tool, then encode the clean file.',
+        },
+        {
+          question: 'Can I encode a screenshot directly without saving a file?',
+          answer: 'Yes. Copy the screenshot and press Ctrl+V in the tool, and it will be encoded immediately. This is the fastest way to get a Data URL for a screen capture, a UI element, or a diagram you are looking at right now.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/base64-to-image', '/favicon-generator', '/image-converter'],
+  },
+  {
+    id: 'base64-images-when-to-embed',
+    toolSlug: '/image-to-base64',
+    categoryId: 'developer',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'base64-images-when-to-embed',
+      title: 'Base64 Images: When to Embed and When Not To',
+      description: 'Embedding Base64 images saves requests but costs 33% more bytes and kills caching. Learn the size thresholds, the caching trade-off, and a decision checklist.',
+      body: `
+<p>Embedding an image as Base64 feels like a free win. One less request, no separate file to manage, and the image appears the moment the page loads.</p>
+<p>The win is real, but it is not free. The embedded image costs a third more bytes, cannot be cached separately, and makes your code harder to read and maintain.</p>
+<p>This article gives you the decision framework: the size thresholds, the caching math, and the situations where embedding helps and where it hurts.</p>
+<h2 id="the-embed-decision">The Embed Decision in One Paragraph</h2>
+<p>Embed an image when it is small, essential, and stable. A tiny icon that every page needs, that rarely changes, and that would cost a whole request to fetch separately is the perfect candidate.</p>
+<p>Link an image when it is large, shared, or changing. A photograph, a logo used across fifty pages, or an image that updates weekly should live as a file the browser can cache.</p>
+<p>Most images fall clearly on one side of that line. The trouble cases are the middle ones, and the rest of this article is about judging those.</p>
+<p>When in doubt, measure. The thresholds below give you numbers to decide with, instead of a feeling.</p>
+<h2 id="size-thresholds">Size Thresholds: The Numbers</h2>
+<p>Under 2 KB, embed without thinking. The overhead is under a kilobyte, the saved request is worth far more, and no user will ever notice the cost.</p>
+<p>Between 2 KB and 10 KB, embedding is usually still right. The overhead is a few kilobytes at most, and the image is small enough that caching barely matters.</p>
+<p>Between 10 KB and 50 KB, decide case by case. A critical above-the-fold icon can justify it, but a decorative image on one page probably cannot.</p>
+<p>Above 50 KB, linking is almost always better. The overhead alone is 16 KB or more, and the browser could have cached the file and reused it across pages.</p>
+<h2 id="caching-trade-off">The Caching Trade-off</h2>
+<p>Caching is the hidden cost of embedding. A linked image is downloaded once and reused on every page that references it, while an embedded image is downloaded again with every page that contains it.</p>
+<p>Consider a 10 KB logo on a fifty-page site. Linked, it costs 10 KB once. Embedded, it costs 13 KB on every page, which is 650 KB across a full visit.</p>
+<p>That math reverses for single-page visits. A visitor who reads one page pays the embedded cost once, and the saved request may make the page faster than the linked version.</p>
+<p>Know your traffic pattern before you decide. A blog with deep visits should link shared images, while a landing page with one-page visits can embed freely.</p>
+<h2 id="http-requests-vs-file-size">Requests vs Bytes: What Costs More</h2>
+<p>Every image request costs a round trip to the server, plus the overhead of the connection. On a fast connection that cost is small, but on a slow mobile connection it can dominate the load time.</p>
+<p>Embedding removes the round trip entirely. The image arrives with the HTML, so there is no extra wait, no extra connection, and no risk of the request failing.</p>
+<p>But embedding adds bytes to the HTML itself, and HTML is render-blocking. A page with a megabyte of embedded images cannot render until all of it downloads, while a page with linked images can render the text first.</p>
+<p>The balance has shifted over the years. With HTTP/2 and HTTP/3, requests are cheaper than they used to be, so the case for embedding has weakened for everything except the smallest images.</p>
+<h2 id="icons-and-logos-embed">Icons and Logos: Embed</h2>
+<p>Icons are the best embedding candidates. They are tiny, usually under 2 KB, and a page can need a dozen of them, which would be a dozen requests if linked.</p>
+<p>A sprite sheet or an icon font can replace embedding for icon sets, and both are worth considering. But for one or two icons on a page, a Data URL is simpler and faster to implement.</p>
+<p>Logos are a closer call. A small logo under 10 KB that appears on every page is a caching loss when embedded, but a logo on a single landing page is a fine embed.</p>
+<p>For a logo used site-wide, link it. The browser caches it once, and every page after the first loads faster because the logo is already there.</p>
+<h2 id="photos-do-not-embed">Photos: Do Not Embed</h2>
+<p>Photographs should almost never be embedded. A typical web photo is 100 KB to 500 KB, which becomes 130 KB to 670 KB as a string, and that weight sits inside the HTML.</p>
+<p>The HTML bloat delays rendering, because the browser must download the whole document before it can show anything. A page with linked photos renders its text first and fills the photos in as they arrive.</p>
+<p>Photos also change more often than icons. Every time a photo is replaced, the code containing its string must be edited, which is error-prone and hard to review.</p>
+<p>The one exception is a single-file document that must work offline. A report or an email with one embedded photo is acceptable, because there is no other way for the image to appear.</p>
+<h2 id="css-backgrounds">CSS Backgrounds and Patterns</h2>
+<p>Small repeating patterns and textures are good embedding candidates in CSS. A 2 KB tile that repeats across a background costs little and saves a request on every page that uses the stylesheet.</p>
+<p>Decorative gradients and shapes are even better as pure CSS, with no image at all. A gradient written in CSS costs a few dozen characters and scales perfectly.</p>
+<p>Large background photographs should stay linked. A hero background of 200 KB becomes 270 KB inside the stylesheet, and the stylesheet is render-blocking, so the whole page waits for it.</p>
+<p>When a background image is embedded in CSS, it cannot be cached separately from the stylesheet. Change one line of CSS and the browser must download every embedded image again with it.</p>
+<h2 id="html-email">HTML Email: Embed Small, Link Large</h2>
+<p>Email is the one place where embedding is often necessary rather than optional. Many clients block remote images by default, so a linked image may never appear.</p>
+<p>Embed the logo and the small decorative images that make the message recognizable. Those are the images that must appear for the email to look right.</p>
+<p>Link the large photographs instead, or leave them out entirely. A heavy embedded photo makes the message slow to open on a phone, and some clients reject messages over a size limit.</p>
+<p>Test in the clients your audience uses. Some block inline Base64 images, which reverses the whole calculation and makes hosted images the safer choice for that audience.</p>
+<h2 id="api-payloads">API Payloads: Base64 Is the Standard</h2>
+<p>APIs are a different world from web pages. JSON cannot carry binary data, so an image travelling inside a JSON payload must be Base64, and there is no linking alternative.</p>
+<p>The decision here is not embed versus link, but whether the image belongs in the payload at all. A small avatar or a signature image fits fine, while a multi-megabyte photo probably deserves a dedicated upload endpoint.</p>
+<p>Watch the payload size limit. Many APIs cap requests at a few megabytes, and a 2 MB photo becomes a 2.7 MB string that can exceed the limit on its own.</p>
+<p>Compress before you encode for API use. A photo reduced to 200 KB before encoding produces a 270 KB field, which fits comfortably inside almost any payload limit.</p>
+<h2 id="measuring-performance">Measuring the Real Performance Impact</h2>
+<p>Opinions about embedding are cheap, so measure instead. Load the page with the image linked, note the time, then load it with the image embedded and compare.</p>
+<p>Test on a slow mobile connection, not only on fast office wifi. The request savings matter most on slow networks, while the byte cost matters most on those same networks, so the balance is genuinely unclear without a test.</p>
+<p>Check the total page weight in both versions. An embedded page is heavier by the 33 percent overhead, and that weight shows up in every performance audit.</p>
+<p>Check repeat visits too. The first visit may favor embedding, while the second visit favors linking, because the cached image costs nothing the second time around.</p>
+<h2 id="alternatives-to-base64">Alternatives to Base64 Embedding</h2>
+<p>SVG images have a cheaper option: URL-encoded SVG. A small SVG written directly into a Data URL without Base64 is shorter, because it skips the 33 percent overhead entirely.</p>
+<p>Icon fonts and SVG sprite sheets replace many small embedded images with a single cached file. They cost one request and then serve every icon on the site from the cache.</p>
+<p>HTTP/2 server push and preload hints can make linked images nearly as fast as embedded ones. The browser fetches the image early, so the request cost shrinks toward zero.</p>
+<p>For images that change often, a content delivery network with aggressive caching beats embedding outright. The first visit is fast, and every later visit is nearly free.</p>
+<h2 id="security-and-csp">Security and Content Security Policy</h2>
+<p>Content Security Policy headers can block Data URLs. A strict policy that allows images only from your own domain will reject an embedded image, and the picture will not appear.</p>
+<p>If your site uses a strict policy, either allow data: in the image source directive or link the images as files. The policy decision belongs to your security team, not to the performance discussion.</p>
+<p>Embedded images also hide their content from simple audits. A reviewer scanning your code cannot see what an image shows without decoding the string, which makes security review harder.</p>
+<p>For user-uploaded images, never embed blindly. Decode and validate the image first, because a Base64 string can carry any file, including one that is not an image at all.</p>
+<h2 id="maintenance-cost">The Maintenance Cost Nobody Counts</h2>
+<p>An embedded image is a wall of text in the middle of your code. It makes files harder to read, harder to review, and harder to search, because the string carries no hint of what it depicts.</p>
+<p>Updating an embedded image means finding the string, replacing it, and hoping you replaced the right one. With linked files, the update is a file swap, and the code never changes.</p>
+<p>Version control suffers too. A one-line change to an image becomes a thousand-line diff in the code file, which drowns the real changes in noise.</p>
+<p>Store embedded strings in separate files or variables when you must embed. That keeps the main code readable and makes each image replaceable on its own.</p>
+<h2 id="decision-checklist">The Embed Decision Checklist</h2>
+<p>Ask four questions before embedding. Is the image under 10 KB? Does it appear on one page or a few, rather than site-wide? Does it change rarely? Must the page work as a single file?</p>
+<p>If the answers are yes, yes, yes, and yes, embed it. If three are yes and one is no, think carefully. If two or more are no, link the image as a file.</p>
+<p>For API payloads and emails, the checklist is different, because embedding may be required rather than optional. There, the question is size, not choice: compress first, then embed.</p>
+<p>Revisit the decision when the site changes. An image that was right to embed on a landing page may be wrong to embed once the same page becomes part of a fifty-page site.</p>
+<h2 id="revisiting-old-embeds">Revisiting Old Embeds</h2>
+<p>Embedding decisions age badly. A site that started as a single landing page grows into fifty pages, and the logo embedded on every one of them becomes a caching liability that nobody remembers creating.</p>
+<p>Audit your embeds once a year. Search the codebase for data:image occurrences, list the sizes, and ask whether each one still earns its place under the checklist in this article.</p>
+<p>Moving an embed back to a linked file is easy: save the decoded image, upload it, and replace the string with its URL. The page gets lighter, the image gets cached, and the code gets readable again.</p>
+<p>The reverse move is just as valid. A small image that was linked when the site was large may be worth embedding when the page becomes a standalone document. Let the current use decide, not the original choice.</p>
+<h2 id="quick-reference">Quick Reference: Embed or Link</h2>
+<p>Embed icons under 2 KB, small logos on single pages, and images in single-file documents and emails. The request saved is worth more than the bytes added.</p>
+<p>Link photographs, site-wide logos, and anything over 50 KB. The cache savings and the rendering speed beat the request savings by a wide margin.</p>
+<p>For APIs, Base64 is the standard, so compress first and embed the small result. For everything else, measure the page both ways and let the numbers decide.</p>
+<p>To do the encoding, use the <a href="/image-to-base64/">image to Base64 converter</a>, and to reverse it, use the <a href="/base64-to-image/">Base64 to image decoder</a>. For the full background, read the <a href="/blog/image-to-base64-guide/">Image to Base64: Complete Guide</a> and the steps in <a href="/blog/how-to-convert-image-to-base64/">How to Convert an Image to Base64</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'At what file size should I stop embedding Base64 images?',
+          answer: 'A common rule is 10 KB: below that, embedding usually wins, and above 50 KB, linking almost always wins. Between the two, decide case by case using the caching math. An image on fifty pages should be linked even at 5 KB, while a one-off image on a landing page can be embedded at 30 KB.',
+        },
+        {
+          question: 'Does embedding Base64 images hurt SEO?',
+          answer: 'It can hurt image SEO, because embedded images are not indexed or shown in image search the way linked files are. For page SEO the effect is indirect: heavier HTML loads slower, and slower pages rank worse. Link images that you want search engines to find.',
+        },
+        {
+          question: 'Why do some developers embed all their icons as Base64?',
+          answer: 'Because icons are tiny and numerous, so embedding saves many requests for very few bytes. A dozen 1 KB icons embedded cost about 16 KB total and zero extra requests. The practice is sound for icons, but it does not extend to photographs or large graphics.',
+        },
+        {
+          question: 'Can Base64 embedding break my Content Security Policy?',
+          answer: 'Yes. A strict policy that allows images only from specific domains will block Data URLs unless data: is explicitly allowed in the img-src directive. Check your policy before embedding, or link the images as files to stay within the allowed sources.',
+        },
+        {
+          question: 'Is it better to embed an image or use a CSS sprite?',
+          answer: 'For a set of icons, a sprite or an SVG symbol sheet is usually better, because it is cached once and serves every icon. For one or two icons, embedding is simpler and the difference is negligible. Choose the sprite when the icon count grows past a handful.',
+        },
+        {
+          question: 'Does Base64 encoding affect image quality?',
+          answer: 'No. Encoding is fully reversible and changes no pixels at all. The quality question is separate: if the image looks bad after embedding, the problem is the source file or the compression applied before encoding, not the Base64 itself.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/base64-to-image', '/image-converter', '/favicon-generator'],
+  },
+  {
+    id: 'base64-to-image-guide',
+    toolSlug: '/base64-to-image',
+    categoryId: 'developer',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'base64-to-image-guide',
+      title: 'Base64 to Image: Complete Guide',
+      description: 'Decode any Base64 string back into an image. Auto-decode on paste, URL-safe variants, transparency preview, and PNG, JPG, WebP, or original-format download.',
+      body: `
+<p>A long wall of text arrives in an email, a chat message, or an API response, and somewhere inside it is a picture. The text is a Base64 string, and the picture is waiting to be decoded.</p>
+<p>Decoding turns that string back into the original image file. It is the reverse of encoding, and it is just as lossless: the bytes that come out are the bytes that went in.</p>
+<p>This guide explains how the CompressMyPic Base64 to image decoder works, what it accepts, what it shows you, and how to get a usable image file out of any Base64 string.</p>
+<h2 id="what-is-base64-to-image">What Is a Base64 to Image Decoder?</h2>
+<p>A Base64 to image decoder takes a text string and turns it back into an image file you can view, download, and use. It reverses the encoding process exactly.</p>
+<p>You paste the string into the tool, and the decoded image appears as a preview with its dimensions and file size. You then download it in the original format or convert it to PNG, JPG, or WebP.</p>
+<p>The tool accepts strings with or without the data:image prefix. It also handles URL-safe variants and strings with accidental line breaks, which are common when text is copied from emails or documents.</p>
+<p>Everything runs locally in your browser. The string is decoded on your device, and neither the text nor the image is uploaded to any server.</p>
+<h2 id="how-decoding-works">How Base64 Decoding Works</h2>
+<p>Decoding reads the string four characters at a time. Each group of four characters carries 24 bits of data, which the decoder splits back into three bytes of the original file.</p>
+<p>The equals signs at the end of the string are padding, and they tell the decoder how many bytes the final group holds. One equals sign means two bytes, and two equals signs mean one byte.</p>
+<p>The process is exact. A correctly encoded string decodes into byte-for-byte the same file that was encoded, with no loss of quality, animation, or transparency.</p>
+<p>If the string is damaged, the decoder fails with a clear error instead of producing a broken image. That fail-fast behavior is important, because a silently corrupted image is worse than an honest error.</p>
+<h2 id="with-and-without-prefix">Strings With and Without the data:image Prefix</h2>
+<p>Base64 image strings come in two shapes. A full Data URL starts with data:image/png;base64, followed by the string, while a raw string is the encoded characters alone.</p>
+<p>The decoder accepts both. Paste a full Data URL from a web page, or paste a raw string from a JSON payload, and the tool figures out which form it received.</p>
+<p>This matters because the two forms appear in different places. Web code uses Data URLs, while APIs and databases usually store the raw string with the media type in a separate field.</p>
+<p>When you paste a string, check whether it starts with data:. If it does, the media type is already declared. If it does not, the decoder reads the image header to identify the format itself.</p>
+<h2 id="url-safe-and-line-breaks">URL-Safe Variants and Line Breaks</h2>
+<p>Standard Base64 uses plus and slash characters, which have special meanings inside URLs. The URL-safe variant replaces them with a dash and an underscore so the string can travel safely in a web address.</p>
+<p>The decoder understands both alphabets. A string copied from a URL parameter decodes just as well as one copied from a JSON file, with no manual conversion needed.</p>
+<p>Line breaks are another common accident. Email clients and documents wrap long strings across lines, inserting breaks that are not part of the encoding.</p>
+<p>The decoder tolerates those breaks and ignores them. It also tolerates extra spaces, so a string that was wrapped, quoted, or pasted with surrounding whitespace still decodes correctly.</p>
+<h2 id="auto-decode-on-paste">Auto-Decode on Paste</h2>
+<p>You do not need to click a button to decode. Pasting a Base64 string into the tool triggers the decode automatically, and the preview appears within moments.</p>
+<p>Automatic decoding is a small convenience that matters when you are working through many strings. Paste, check the preview, download, and paste the next one, without an extra click per image.</p>
+<p>If a string is very long, the decode may take a second or two. Multi-megabyte strings carry a lot of text, and the browser needs a moment to turn it back into binary data.</p>
+<p>The tool decodes as fast as the browser allows, and there is no server round trip to slow it down. A large string decodes at the speed of your own device.</p>
+<h2 id="checkerboard-preview">The Checkerboard Preview</h2>
+<p>The decoded image appears on a checkerboard background, which is the standard way to show transparency. Gray and white squares behind the image mark the areas where the image is see-through.</p>
+<p>The checkerboard is especially useful for icons and logos. A PNG with a transparent background looks identical to one with a white background on a plain white page, but the checkerboard reveals the difference instantly.</p>
+<p>If the checkerboard shows through the middle of what should be a solid image, the source image genuinely has transparency there. That is information about the file, not a flaw in the decoder.</p>
+<p>Use the preview to decide the download format. If the image has transparency you need to keep, download it as PNG or in its original format, not as JPG.</p>
+<h2 id="metrics-shown">Metrics: Dimensions, Format, and Size</h2>
+<p>Alongside the preview, the tool shows the decoded image dimensions in pixels, its detected format, and the binary file size in kilobytes or megabytes.</p>
+<p>The binary size is always smaller than the Base64 text you pasted, by about a quarter. That is the 33 percent encoding overhead running in reverse, and the difference is expected.</p>
+<p>The dimensions tell you whether the image is usable for your purpose. A 64 by 64 icon decoded from a string is a favicon, not a hero image, and no download format will change that.</p>
+<p>Check the format as well. A string that claims to be a PNG but decodes as a JPEG tells you something about the source, and the download options adjust to what the file actually is.</p>
+<h2 id="download-formats">Download Formats: Original, PNG, JPG, WebP</h2>
+<p>Once a string decodes, you choose the download format. Original keeps the file exactly as it was encoded, byte for byte, which is the safest choice when you are unsure.</p>
+<p>PNG is the right choice for images with transparency or sharp edges. It preserves the pixels exactly and keeps the alpha channel intact, so logos and icons survive the round trip.</p>
+<p>JPG is the right choice for photographs that need to be small. It compresses the image and drops the transparency, so only use it when the image is fully opaque.</p>
+<p>WebP is the modern middle ground: smaller than PNG for most images, with transparency support included. It is a good default when the destination is a modern website. Every download is named decoded_image with the matching extension, so you can find it easily in your downloads folder.</p>
+<h2 id="transparency-and-jpg">Transparency and the JPG Trap</h2>
+<p>Transparency is the easiest thing to lose when you decode. A PNG with a transparent background downloaded as JPG gets its transparent areas filled, usually with white or black.</p>
+<p>The fill is permanent. Once the image is saved as JPG, the transparency information is gone, and converting it back to PNG will not restore it.</p>
+<p>Always check the checkerboard preview before choosing JPG. If any part of the image shows the checkerboard, the image has transparency, and JPG is the wrong format.</p>
+<p>When in doubt, download as Original. That preserves the file exactly as it was encoded, and you can convert it later once you have inspected it properly.</p>
+<h2 id="animated-gif-and-svg">Animated GIFs and Vector SVGs</h2>
+<p>Animated GIFs survive decoding intact when downloaded as Original. The frames, the timing, and the loop settings are all part of the binary data, and decoding restores them exactly.</p>
+<p>Converting an animated GIF to PNG or JPG destroys the animation, because those formats hold a single still frame. The tool will warn you by showing only the first frame in the preview of the converted result.</p>
+<p>SVG files are vectors, and they decode back into the same SVG code that was encoded. Downloaded as Original, the file is a valid SVG that scales without losing sharpness.</p>
+<p>You can also convert a decoded SVG into a raster PNG. That is useful when the destination needs a fixed-size image rather than a scalable vector, and the tool renders the SVG crisply at its intrinsic size.</p>
+<h2 id="error-handling">What Happens with a Corrupt String</h2>
+<p>A corrupted or non-image Base64 string fails with a clear error message. The tool does not guess, and it does not produce a partial or broken image file.</p>
+<p>Common causes include a string that was truncated when copied, characters that were changed by a chat app or a document editor, or a string that was never an image at all.</p>
+<p>When you see the error, check the string first. Compare its length with the original if you can, and look for missing characters at the start or the end, which is where truncation usually happens.</p>
+<p>If the string came from an API response, check whether the response was cut short. A truncated JSON payload produces a truncated string, and no decoder can repair the missing tail.</p>
+<h2 id="svg-without-base64-marker">The SVG Without the base64 Marker</h2>
+<p>Some SVG Data URLs are not Base64 at all. They carry the SVG code directly as URL-encoded text, and they look like data:image/svg+xml with no semicolon base64 marker.</p>
+<p>Pasting such a string into the decoder produces an encoding error, because the tool expects Base64 characters and finds angle brackets and quotes instead.</p>
+<p>The fix is to recognize the form. If the string contains readable SVG tags such as svg and path, it is a plain SVG Data URL, not a Base64 one, and it needs no decoding.</p>
+<p>Save that text directly as an .svg file instead. Open a text editor, paste the decoded SVG code, and save it with the svg extension for a valid vector file.</p>
+<h2 id="privacy-local-processing">Privacy: Decoding Happens in Your Browser</h2>
+<p>Base64 strings often carry sensitive material: internal API responses, private icons, QR tokens, or confidential diagrams. Pasting such strings into an online tool that uploads them would be a risk.</p>
+<p>This decoder works locally. The string is pasted into your browser, decoded on your device, and the resulting image never leaves your computer.</p>
+<p>That also means the tool works offline once the page has loaded. You can decode strings on a plane, in a secure office, or anywhere without a connection.</p>
+<p>For teams handling internal data, local decoding is the feature that makes the tool safe to use at all. No copy of the string or the image exists anywhere except on your own machine.</p>
+<h2 id="decoding-from-documents-and-qr">Decoding Images Found in Documents</h2>
+<p>Base64 strings hide in places you might not expect. Word documents, PDFs, and design files sometimes store embedded images as Base64 inside their XML or JSON structures, and a copied fragment can be decoded directly.</p>
+<p>When you find such a fragment, copy the string carefully, including its full length. Document formats often split long strings across lines, so check that no characters were lost when the text wrapped.</p>
+<p>QR codes are a different case. A QR code can contain a small image as a Data URL, but most QR codes hold a link instead. If the code decodes to text starting with data:image, paste that text into the decoder.</p>
+<p>Chat applications are another common source. Some chat systems transmit images as Base64 inside their message payloads, and a copied payload can be decoded to recover the original picture.</p>
+<p>In every case, the same checks apply: confirm the string is complete, watch for truncation at the ends, and download as Original first. The original format is the truth, and any conversion can wait until you have seen it.</p>
+<p>Be cautious with strings from untrusted documents. Decoding is safe on its own, but the surrounding document may be a phishing attempt, so treat the image content with the same suspicion as any unexpected attachment.</p>
+<h2 id="how-to-use-the-tool">How to Use the Base64 to Image Decoder</h2>
+<p>Open the <a href="/base64-to-image/">Base64 to image decoder</a> and paste your string into the input area. Decoding starts automatically, and the preview appears with its dimensions and file size.</p>
+<p>Check the checkerboard preview for transparency, then choose the download format: Original to keep the file exact, or PNG, JPG, or WebP to convert it. The file downloads as decoded_image with the matching extension.</p>
+<p>If the string fails, read the error message and check for truncation or a missing prefix. Most failures are a damaged string, not a problem with the tool.</p>
+<p>For the step-by-step version, read <a href="/blog/how-to-convert-base64-to-image/">How to Convert Base64 to an Image</a>, and for the performance comparison, see <a href="/blog/base64-vs-image-files/">Base64 vs Image Files: Performance and Use Cases</a>. To create a string in the first place, use the <a href="/image-to-base64/">image to Base64 encoder</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Can the decoder handle a Base64 string that is missing its padding?',
+          answer: 'It depends on how much is missing. A string missing its final equals signs can sometimes still decode, because the decoder can infer the padding from the length. A string missing characters from the middle cannot be repaired. If the decode fails, get a fresh copy of the complete string from the source.',
+        },
+        {
+          question: 'Why does the decoded image look smaller than I expected?',
+          answer: 'The decoded image has exactly the dimensions of the original file, which may be smaller than the size you imagined. A 64 by 64 icon decoded from a string is a small image, and downloading it as a different format will not add pixels. Check the dimensions shown beside the preview before downloading.',
+        },
+        {
+          question: 'Can I decode multiple Base64 strings at once?',
+          answer: 'The tool decodes one string at a time. Paste a string, download the image, clear the input, and paste the next one. The clear button removes the long string quickly so you can move on to the next image without selecting and deleting thousands of characters by hand.',
+        },
+        {
+          question: 'Is it safe to decode a Base64 string I received from a stranger?',
+          answer: 'Decoding itself is safe, because the tool only turns text into an image file locally in your browser. Do not open or run any file that comes with the string, and do not trust the image content blindly. A decoded image is just pixels, but the message around it may be a phishing attempt.',
+        },
+        {
+          question: 'What should I do if the decoded image has a white background instead of transparency?',
+          answer: 'First check the checkerboard preview. If the preview shows transparency, download as Original or PNG instead of JPG, because JPG fills transparent areas. If the preview also shows white, the original image genuinely had a white background, and no download format can recover transparency that was never there.',
+        },
+        {
+          question: 'Can I decode a Base64 string offline?',
+          answer: 'Yes, once the page has loaded. All decoding happens in your browser with no server involved, so an internet connection is not needed after the initial page load. This makes the tool useful on planes, in secure offices, and anywhere with unreliable connectivity.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-to-base64', '/image-converter', '/image-dimensions-checker'],
+  },
+  {
+    id: 'how-to-convert-base64-to-image',
+    toolSlug: '/base64-to-image',
+    categoryId: 'developer',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-convert-base64-to-image',
+      title: 'How to Convert Base64 to an Image',
+      description: 'Convert a Base64 string to an image in four steps: paste, preview, pick Original, PNG, JPG, or WebP, and download. Handles URL-safe strings and line breaks.',
+      body: `
+<p>A Base64 string sits in your clipboard, your email, or an API response, and you need the picture it contains. The conversion takes about a minute once you know the steps.</p>
+<p>This guide walks you through converting Base64 to an image in four steps: paste the string, review the preview, choose the download format, and save the file.</p>
+<p>No software to install, no account to create, and nothing uploaded anywhere. The string is decoded locally in your browser from start to finish.</p>
+<h2 id="what-you-need">What You Need Before You Start</h2>
+<p>You need the Base64 string itself, copied in full. A truncated string cannot be decoded, so make sure the copy includes the beginning and the end.</p>
+<p>Know what the image is for, because that decides the download format. Original keeps the file exact, PNG keeps transparency, JPG shrinks photographs, and WebP is the modern compact choice.</p>
+<p>A browser is all the software you need. The tool runs on Chrome, Safari, Firefox, and Edge, on desktop and on mobile, with no extension.</p>
+<p>If the string came wrapped in HTML or CSS, you can paste the whole thing. The decoder tolerates quotes and url() wrappers around the string.</p>
+<h2 id="step-1-paste-the-string">Step 1: Paste the Base64 String</h2>
+<p>Open the <a href="/base64-to-image/">Base64 to image decoder</a> and paste the string into the input area. Decoding starts automatically, with no button to click.</p>
+<p>The tool accepts strings with or without the data:image prefix. A full Data URL from a web page and a raw string from a JSON payload both work.</p>
+<p>URL-safe strings work too. If the string uses dashes and underscores instead of plus and slash, the decoder recognizes the variant and decodes it correctly.</p>
+<p>Line breaks and extra spaces are ignored. A string that was wrapped by an email client or pasted with surrounding whitespace still decodes without any cleanup.</p>
+<h2 id="step-2-review-preview">Step 2: Review the Preview and Metrics</h2>
+<p>The decoded image appears on a checkerboard background, with its dimensions and file size shown beside it. Check that the picture is the one you expected.</p>
+<p>Look at the checkerboard carefully. Gray and white squares showing through the image mean transparency, and that decides whether JPG is safe to use.</p>
+<p>Check the dimensions. A small icon decoded from a string is a small image, and no download format will make it larger or sharper than it already is.</p>
+<p>Check the binary file size. It should be about three quarters of the text length you pasted, because decoding removes the 33 percent encoding overhead.</p>
+<h2 id="step-3-choose-format">Step 3: Choose the Download Format</h2>
+<p>Pick Original when you want the file exactly as it was encoded. This is the safest choice, especially for animated GIFs and vector SVGs, which lose their special properties when converted.</p>
+<p>Pick PNG when the image has transparency or sharp edges. PNG preserves the pixels exactly and keeps the alpha channel, so logos and icons survive the round trip.</p>
+<p>Pick JPG when the image is a photograph and you want the smallest file. JPG drops transparency, so only use it when the checkerboard preview shows no see-through areas.</p>
+<p>Pick WebP when the destination is a modern website. It is smaller than PNG for most images and supports transparency, making it a good default for web use.</p>
+<h2 id="step-4-download">Step 4: Download the Image File</h2>
+<p>Click the download button. The file saves as decoded_image with the extension matching your chosen format, such as decoded_image.png or decoded_image.jpg.</p>
+<p>Rename the file to something meaningful right away. A folder full of files called decoded_image is confusing, while a name like company-logo.png tells you what it is months later.</p>
+<p>Open the downloaded file and confirm it looks right. The preview in the tool is reliable, but a final check of the actual file costs seconds and catches any misunderstanding.</p>
+<p>If you need to encode the image again later, the <a href="/image-to-base64/">image to Base64 encoder</a> takes the downloaded file and produces a fresh string from it.</p>
+<h2 id="decoding-without-prefix">Decoding a String Without the Prefix</h2>
+<p>Many strings arrive without the data:image prefix, especially from APIs and databases. The decoder reads the image header to identify the format, so the missing prefix is not a problem.</p>
+<p>Paste the raw string as it is. The tool detects whether the bytes describe a PNG, JPG, GIF, WebP, SVG, BMP, or ICO file, and shows the detected format beside the preview.</p>
+<p>If the format is detected wrong, the file header itself is unusual. Download as Original in that case, and inspect the file with an image viewer before converting it.</p>
+<p>When you share the string onwards, consider adding the prefix yourself. A Data URL is self-describing, and the next person who receives it will know the format without guessing.</p>
+<h2 id="decoding-url-safe-strings">Decoding a URL-Safe String</h2>
+<p>URL-safe Base64 replaces plus with a dash and slash with an underscore, so the string can sit inside a web address without being escaped. It looks almost identical to standard Base64.</p>
+<p>The decoder accepts both alphabets without any setting to change. Paste the string and it decodes, regardless of which variant it uses.</p>
+<p>If a string fails to decode, check for a mix of the two alphabets. A string that was partly converted, with some plus signs and some dashes, is damaged and needs a fresh copy from the source.</p>
+<p>Padding can also be missing in URL-safe strings, because some systems strip the trailing equals signs. The decoder tolerates missing padding in most cases, but a complete string is always safer.</p>
+<h2 id="decoding-from-html-css">Decoding a String Wrapped in HTML or CSS</h2>
+<p>Strings are often copied with their surrounding code attached, such as an image tag with a Data URL source, or a CSS url() function wrapping the value.</p>
+<p>You can paste the whole snippet. The decoder tolerates HTML quotes and CSS url() wrappers around the string, and it extracts the Base64 content from inside them.</p>
+<p>If the paste fails, strip the wrapper yourself. Copy only the part between the comma after base64 and the closing quote, and paste that clean string instead.</p>
+<p>For an HTML image tag, the string sits inside the src attribute after data:image/png;base64,. For CSS, it sits inside the url() parentheses, usually wrapped in quotes.</p>
+<h2 id="converting-old-formats">Converting an Old BMP or ICO String to WebP</h2>
+<p>Old favicon and bitmap strings decode into BMP or ICO files, which are bulky and poorly supported on the modern web. Converting them to WebP fixes both problems at once.</p>
+<p>Paste the string, wait for the preview, and choose WebP as the download format. The tool converts the decoded image into a compact modern file.</p>
+<p>Check the transparency first. An ICO favicon often has transparent areas, and WebP preserves them, so the converted icon looks the same as the original.</p>
+<p>For a favicon specifically, consider downloading as PNG instead. Browsers accept PNG favicons widely, and the file is simpler to reference from your HTML.</p>
+<h2 id="decoding-svg-to-png">Decoding an SVG String into a PNG File</h2>
+<p>An SVG Base64 string decodes into vector code, which is crisp at any size but not accepted everywhere. Some platforms want a raster image instead, and PNG is the usual choice.</p>
+<p>Paste the string, confirm the preview shows the vector graphic correctly, and choose PNG as the download format. The tool renders the SVG into a PNG at its intrinsic dimensions.</p>
+<p>The resulting PNG is a fixed-size image, so it will not scale like the original SVG. If the destination needs a large image, render at a larger size before downloading, or keep the SVG.</p>
+<p>If the string is a plain SVG Data URL without the base64 marker, it will fail with an encoding error. That string is not Base64 at all, so save the SVG code directly as a file instead.</p>
+<h2 id="troubleshooting-corrupt-strings">Troubleshooting Corrupt Strings</h2>
+<p>A string that fails to decode is usually truncated, altered, or never an image at all. The tool reports a clear error instead of producing a broken file.</p>
+<p>Check the beginning and the end of the string first. Truncation usually cuts the tail, so a string that ends mid-word or without its padding is a sign of an incomplete copy.</p>
+<p>Look for characters that do not belong in Base64. Angle brackets, quotes inside the string, or a URL with extra parameters all indicate that the copy picked up surrounding text.</p>
+<p>When the source is an API response, check whether the response itself was cut short. A truncated JSON payload produces a truncated string, and only a fresh request can repair it.</p>
+<h2 id="troubleshooting-svg-error">Troubleshooting the SVG Encoding Error</h2>
+<p>The SVG encoding error appears when the pasted string is a plain SVG Data URL rather than a Base64 one. It contains readable SVG tags instead of encoded characters.</p>
+<p>Recognize it by looking at the string. If you can read words like svg, path, or rect inside it, the string is URL-encoded SVG code, not Base64.</p>
+<p>To get the file, copy the SVG code out of the Data URL, decode any percent escapes, and save the result as an .svg file in a text editor.</p>
+<p>Do not try to force it through the decoder. The tool expects Base64 characters, and no setting will make it accept plain SVG markup as an encoded string.</p>
+<h2 id="clearing-and-next">Clearing the Input for the Next String</h2>
+<p>Long strings are awkward to delete by hand, so the tool provides a clear button that empties the input in one click. Use it between decodes to start fresh.</p>
+<p>Clear before pasting the next string, not after. Pasting over a long string can leave fragments of the old one behind, which corrupts the new decode.</p>
+<p>Download the current image before you clear. Clearing removes the string and the preview together, and the decoded image exists only as the downloaded file after that.</p>
+<p>Working through a batch of strings is fast this way: paste, download, clear, and paste the next one, with no scrolling or manual selection in between.</p>
+<h2 id="re-encoding-the-image">Re-encoding the Downloaded Image</h2>
+<p>Sometimes the decoded image needs to go back into text form, for example after converting an old BMP to a modern WebP. The encoder handles that step.</p>
+<p>Open the <a href="/image-to-base64/">image to Base64 encoder</a>, upload the downloaded file, and copy the fresh string in the output format you need.</p>
+<p>The new string is shorter than the original when the conversion shrank the file. A BMP converted to WebP before re-encoding produces a dramatically shorter string than the original.</p>
+<p>Keep both strings until you are sure the new one works. The original string is the only copy of the original file, and deleting it before testing is a needless risk.</p>
+<h2 id="decoding-from-chat-and-documents">Decoding Images from Chat Messages and Documents</h2>
+<p>Chat apps and collaboration tools sometimes expose images as Base64 strings in their message data, especially in bots, webhooks, and exported conversations. A copied payload can be decoded to recover the picture.</p>
+<p>When you copy from a chat export, watch for the string being split across lines or wrapped in JSON escaping. Backslashes before slashes and quotes are escaping artifacts, not part of the string, and they must be removed before decoding.</p>
+<p>Documents are a similar source. An exported Word or design file can contain an embedded image as a Base64 block inside its XML, and copying that block gives you the image directly.</p>
+<p>The same truncation warning applies everywhere. A string copied from a message that was cut off mid-way will fail to decode, and the only fix is a complete copy from the source.</p>
+<p>For large chat exports, decode one image at a time and rename each download immediately. A batch of files all called decoded_image is confusing, while names like team-photo-decoded.png stay useful.</p>
+<p>Remember that a decoded image from a chat log may be a thumbnail rather than the original. Check the dimensions beside the preview before you assume the file is full resolution.</p>
+<p>When the string comes from a system you control, consider changing the workflow to send files instead of strings. A file transfer is more efficient, and the Base64 round trip exists mainly for systems that cannot carry binary data.</p>
+<p>When the string comes from a system you do not control, decoding is the only option, and this tool handles it locally without uploading the string anywhere.</p>
+<h2 id="quick-reference-checklist">Quick Reference Checklist</h2>
+<p>Paste the full string, check the preview and the checkerboard for transparency, choose Original, PNG, JPG, or WebP, and download as decoded_image with the right extension.</p>
+<p>Clear the input between strings, rename downloads immediately, and keep the original string until the new file is tested.</p>
+<p>For the full background, read the <a href="/blog/base64-to-image-guide/">Base64 to Image: Complete Guide</a>, and for the performance comparison, see <a href="/blog/base64-vs-image-files/">Base64 vs Image Files: Performance and Use Cases</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Can I decode a Base64 string on my phone?',
+          answer: 'Yes. The decoder runs in mobile browsers on iOS and Android. Paste the string, review the preview, and download the image. For very long strings, pasting can be slow, so use a shorter test string first to confirm the workflow.',
+        },
+        {
+          question: 'What is the largest Base64 string I can decode?',
+          answer: 'There is no fixed limit in the tool, but very large strings take longer because the browser must parse all the text and rebuild the binary data. Multi-megabyte strings work, though they can be slow on older phones. If a string is too large to handle, ask the source for the image as a file instead.',
+        },
+        {
+          question: 'Why does the decoded file have a different name than the original?',
+          answer: 'The Base64 string does not carry the original file name, so the tool cannot know it. Every download is named decoded_image with the matching extension. Rename the file right after downloading so your folders stay organized.',
+        },
+        {
+          question: 'Can I decode a Base64 string that came from a PDF or Word document?',
+          answer: 'Only if the string itself is a valid Base64 image. Documents often store images in other forms, such as embedded binary data or compressed streams, which are not Base64. Extract the image from the document first, then encode or decode it as needed.',
+        },
+        {
+          question: 'Does decoding a Base64 string reduce its quality?',
+          answer: 'No. Decoding is the exact reverse of encoding, so the bytes that come out are the bytes that went in. Any quality loss happened before the encoding, when the image was compressed or converted, and decoding cannot add to it or repair it.',
+        },
+        {
+          question: 'What do I do if the string decodes but the image looks wrong?',
+          answer: 'First check whether you downloaded the right format. A transparent PNG downloaded as JPG gets its transparency filled, and an animated GIF converted to PNG loses its animation. Download as Original to see the true file, then decide on the conversion from there.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-to-base64', '/image-converter', '/favicon-generator'],
+  },
+  {
+    id: 'base64-vs-image-files',
+    toolSlug: '/base64-to-image',
+    categoryId: 'developer',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'base64-vs-image-files',
+      title: 'Base64 vs Image Files: Performance and Use Cases',
+      description: 'Base64 strings and image files carry the same picture in different ways. Compare size, speed, caching, and editing, and learn when each one wins.',
+      body: `
+<p>Every image on the web exists in one of two forms: as a file with a name and a URL, or as a Base64 string embedded in code. Both carry the same pixels, but they behave very differently.</p>
+<p>Choosing the wrong form costs performance, wastes bandwidth, or makes a simple update into a painful chore. Choosing the right form is mostly a matter of knowing what each one is good at.</p>
+<p>This article compares Base64 strings and image files head to head: size, speed, caching, editing, and the use cases where each one clearly wins.</p>
+<h2 id="two-ways-to-store-an-image">Two Ways to Store the Same Image</h2>
+<p>An image file is binary data with a name, a format, and a location. A browser fetches it with a request, caches it, and renders it whenever the page references it.</p>
+<p>A Base64 string is the same binary data rewritten as text. It lives inside HTML, CSS, JSON, or a database, and the browser decodes it on the spot without any request.</p>
+<p>The pixels are identical in both forms. A PNG file and its Base64 string decode into the same bytes, the same dimensions, and the same picture.</p>
+<p>Everything else differs: the size, the speed, the caching, the editing, and the tooling. Those differences are what this comparison is about.</p>
+<h2 id="size-comparison">Size: The 33 Percent Gap</h2>
+<p>A Base64 string is about 33 percent larger than the file it encodes. A 90 KB image becomes a 120 KB string, and a 1 MB photo becomes a 1.4 MB string.</p>
+<p>The gap is a fixed property of the encoding. Four text characters carry three bytes of data, so the string always needs a third more characters than the file has bytes.</p>
+<p>For small images the gap is negligible. A 3 KB icon becomes a 4 KB string, and nobody measures a single kilobyte. For large images the gap dominates the decision.</p>
+<p>File size also matters for storage. A database full of Base64 images is a third larger than the same images stored as files, and that cost repeats in every backup.</p>
+<h2 id="performance-loading">Performance: Loading Speed</h2>
+<p>A linked image file costs a request but renders progressively. The browser shows the text first and fills in the image when it arrives, so the page feels fast even on a slow connection.</p>
+<p>An embedded Base64 image costs no request but blocks rendering. The browser must download the whole HTML document, including the string, before it can show anything at all.</p>
+<p>For a page with one small icon, embedding is faster. The saved request outweighs the extra bytes, and the icon appears with the first paint.</p>
+<p>For a page with many or large images, linking is faster. The text renders immediately, the images stream in, and the browser can prioritize what the reader sees first.</p>
+<h2 id="caching">Caching: The Decisive Difference</h2>
+<p>Caching is where image files win decisively. A linked file is downloaded once and reused on every page that references it, for as long as the cache headers allow.</p>
+<p>A Base64 string is downloaded again with every page that contains it. A logo embedded on fifty pages costs fifty downloads, while the same logo linked costs one.</p>
+<p>This is the single biggest reason to prefer files for shared images. The 33 percent overhead is a one-time cost, but the caching loss repeats on every page view.</p>
+<p>For single-page documents, emails, and offline files, caching does not apply, and the argument disappears. That is why embedding is standard practice in exactly those contexts.</p>
+<h2 id="portability">Portability: Moving Images Around</h2>
+<p>Base64 strings travel inside text, which makes them portable in ways files are not. A string can be pasted into a chat message, stored in a database row, or embedded in a JSON payload.</p>
+<p>Image files need a location: a URL, a folder, or an attachment. Moving a file means moving the reference too, and a broken reference produces a broken image.</p>
+<p>APIs are the clearest case for strings. JSON cannot carry binary data, so any image travelling inside a JSON payload must be Base64, and there is no file-based alternative.</p>
+<p>For websites, files are more portable in practice. A file can be referenced from any page, any stylesheet, and any email, while a string must be copied into each place separately.</p>
+<h2 id="editing-and-versioning">Editing and Version Control</h2>
+<p>Updating a linked image is a file swap. Replace the file, keep the name, and every page that references it shows the new version immediately.</p>
+<p>Updating an embedded image means finding the string, replacing a wall of text, and hoping you replaced the right one. The code changes even though the logic did not.</p>
+<p>Version control suffers with strings. A one-line image change becomes a thousand-line diff, which drowns real code changes and makes reviews painful.</p>
+<p>Files version cleanly. A changed image is a changed binary file, the diff is a single line, and the history shows exactly when the picture changed and what it replaced.</p>
+<h2 id="search-and-accessibility">Search, Accessibility, and Sharing</h2>
+<p>Search engines index linked image files and show them in image search. An embedded Base64 image is largely invisible to that system, so it brings no image search traffic.</p>
+<p>Screen readers and accessibility tools work with both forms, but only when the markup is correct. An image element needs an alt attribute whether its source is a file or a string.</p>
+<p>Readers can right-click a linked image and save it, share it, or open it in a new tab. An embedded image offers the same menu in most browsers, but the saved file has a generated name and no context.</p>
+<p>Social sharing previews also prefer files. A page that relies on embedded images may show no preview thumbnail when shared, because the sharing crawler cannot easily extract one.</p>
+<h2 id="api-and-data-transfer">APIs and Data Transfer</h2>
+<p>APIs that accept JSON expect images as Base64 strings, because JSON has no binary type. The string travels in a field, the server decodes it, and the file is reconstructed on the other side.</p>
+<p>Multipart uploads are the file-based alternative, and they are more efficient for large images. A multipart request sends the binary directly, without the 33 percent overhead.</p>
+<p>Choose Base64 for small images in JSON workflows, such as avatars, signatures, and thumbnails. Choose multipart upload for large images, where the overhead would be measured in megabytes.</p>
+<p>Databases follow the same logic. Small images stored as text are convenient, while large images belong in object storage with a reference in the database.</p>
+<h2 id="email-use-cases">Email: Strings Win Small, Files Win Large</h2>
+<p>Emails are single messages, so an embedded image travels with the text and displays even when the reader is offline. That is a genuine advantage over a linked image that may be blocked.</p>
+<p>Small images embed well in email: logos, icons, and small banners under 10 KB. They make the message recognizable the moment it opens.</p>
+<p>Large photographs should stay linked or be left out. A heavy embedded photo makes the message slow to open, and some mail servers reject messages over a size limit.</p>
+<p>Test in the clients your audience uses. Some block inline Base64 images entirely, which makes the whole embedding effort pointless for those readers.</p>
+<h2 id="security-considerations">Security Considerations</h2>
+<p>A Base64 string hides its content from casual inspection. A reviewer scanning code cannot see what the image shows without decoding it, which makes security review harder.</p>
+<p>Content Security Policy headers can block Data URLs. A strict policy that allows images only from your own domain will reject an embedded image unless data: is explicitly permitted.</p>
+<p>Image files are easier to audit. A file can be scanned, hashed, and checked against a list of known content, while a string must be decoded first before any of that is possible.</p>
+<p>Never decode a string from an untrusted source and serve the result blindly. Validate the decoded bytes as a real image before you store or display them.</p>
+<h2 id="when-files-win">When Image Files Clearly Win</h2>
+<p>Image files win for photographs, for site-wide logos, and for anything over 50 KB. The caching savings and the rendering speed beat the request savings by a wide margin.</p>
+<p>Files win for images that change. A file swap updates every reference at once, while a string update means editing every file that contains the embedded copy.</p>
+<p>Files win for images that need to be found. Search engines, social previews, and image search all work better with linked files than with embedded strings.</p>
+<p>Files win for teams. A designer can replace a file without touching code, a developer can review the change cleanly, and the version history stays readable.</p>
+<h2 id="when-strings-win">When Base64 Strings Clearly Win</h2>
+<p>Strings win for single-file documents that must work offline. An HTML report, a saved web page, or an email cannot fetch external files, so embedding is the only option.</p>
+<p>Strings win for tiny icons under 2 KB. The overhead is under a kilobyte, the saved request is real, and the caching loss is negligible for an image that small.</p>
+<p>Strings win for JSON payloads and database fields. Text-based systems cannot carry binary data, so Base64 is the standard way to move an image through them.</p>
+<p>Strings win for generated images with no home. An image created on the fly by a script can be embedded immediately, without first saving it to a server and getting a URL back.</p>
+<h2 id="hybrid-approach">The Hybrid Approach</h2>
+<p>Most real projects use both forms. Small icons are embedded, photographs are linked, and API payloads carry Base64 while the website serves files.</p>
+<p>The hybrid rule is simple: embed what is small and essential, link what is large or shared, and use strings wherever the transport is text-based.</p>
+<p>Document the choice per image type, not per image. A rule such as icons under 5 KB are embedded, everything else is linked, is easy to follow and easy to audit.</p>
+<p>Revisit the rule when the project changes. A landing page that grows into a full site may need its embedded logo converted back to a linked file.</p>
+<h2 id="migration-checklist">Migrating Between the Two Forms</h2>
+<p>Moving from strings to files is straightforward. Decode the string with the <a href="/base64-to-image/">Base64 to image decoder</a>, save the file, upload it, and replace the string with the URL.</p>
+<p>Moving from files to strings is just as easy. Encode the file with the <a href="/image-to-base64/">image to Base64 encoder</a>, copy the output, and paste it where the URL used to be.</p>
+<p>Do the migration one image type at a time, and measure before and after. A migration that makes the site slower is a migration worth reversing.</p>
+<p>Keep the originals during the move. A decoded file and its source string should both exist until the new version is tested and confirmed working.</p>
+<h2 id="cost-bandwidth-storage">Cost: Bandwidth and Storage</h2>
+<p>Bandwidth is the most concrete cost of the Base64 choice. A page with 1 MB of embedded images transfers about 1.33 MB of image data, while the same images linked transfer 1 MB, and that difference repeats on every page view.</p>
+<p>On a metered mobile connection, the extra third is real money for the reader. A site that embeds heavily can cost its mobile visitors noticeably more data than the same site with linked images.</p>
+<p>Storage follows the same ratio. A database that holds 10 GB of images as Base64 holds 13.3 GB of text, and every backup, replication, and migration carries the extra weight.</p>
+<p>Object storage is cheaper than database storage for images, which is another reason large images belong in files. A reference in the database costs a few dozen characters, while the image itself lives where storage is cheap.</p>
+<p>Compute is the smallest cost. Encoding and decoding are fast operations, and the CPU time is negligible next to the network and storage costs, so performance discussions should focus on bytes, not cycles.</p>
+<p>When you estimate the cost of embedding, multiply by the number of page views. A 100 KB overhead that seems trivial on one visit becomes 10 GB of extra transfer across a hundred thousand visits.</p>
+<h2 id="quick-reference">Quick Reference: Strings or Files</h2>
+<p>Use image files for photographs, shared logos, large images, and anything that needs caching, search indexing, or frequent updates.</p>
+<p>Use Base64 strings for tiny icons, single-file documents, emails, and JSON payloads, where the text-based transport makes files impossible or impractical.</p>
+<p>The two forms carry the same pixels, so the choice is about the system around the image, not the image itself. Pick the form that fits the transport, the caching, and the team.</p>
+<p>For the tools, use the <a href="/image-to-base64/">image to Base64 encoder</a> and the <a href="/base64-to-image/">Base64 to image decoder</a>. For the decision framework on embedding, read <a href="/blog/base64-images-when-to-embed/">Base64 Images: When to Embed and When Not To</a> and the steps in <a href="/blog/how-to-convert-base64-to-image/">How to Convert an Image to Base64</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Is a Base64 image slower to load than a normal image file?',
+          answer: 'It depends on the size and the context. A tiny embedded icon loads faster because it saves a request, while a large embedded photo loads slower because it blocks rendering and cannot be cached. For most images over 10 KB, a linked file loads faster, especially on repeat visits where the cache helps.',
+        },
+        {
+          question: 'Can I convert a Base64 string back to a file and host it normally?',
+          answer: 'Yes. Paste the string into the Base64 to image decoder, download it as Original, PNG, JPG, or WebP, and upload the file to your server. Replace the embedded string with the file URL, and the image becomes a normal cached file again.',
+        },
+        {
+          question: 'Do Base64 images work in all browsers?',
+          answer: 'Data URLs work in all modern browsers, including Chrome, Safari, Firefox, and Edge. Very old browsers had size limits on Data URLs, but those limits are gone in current versions. Email clients are the exception, since some still block inline Base64 images.',
+        },
+        {
+          question: 'Why is my web page so slow after embedding several images?',
+          answer: 'Because the embedded strings made the HTML document much larger, and the browser must download all of it before rendering. Each image also costs 33 percent more bytes than the file would. Move the largest images back to linked files and keep only the tiny icons embedded.',
+        },
+        {
+          question: 'Are Base64 strings secure for storing user avatars in a database?',
+          answer: 'They are convenient but not inherently secure. Base64 is encoding, not encryption, so anyone with database access can decode the string into the image. Store avatars as files in object storage with a reference in the database for large-scale use, and treat the database contents as sensitive either way.',
+        },
+        {
+          question: 'When should I use multipart upload instead of Base64 in an API?',
+          answer: 'Use multipart upload for large images, because it sends the binary directly without the 33 percent overhead. Use Base64 when the API accepts only JSON, when the image is small, or when the client cannot easily build a multipart request. Many APIs support both, so check the documentation.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-to-base64', '/image-converter', '/image-resizer'],
+  },
+  {
+    id: 'image-color-palette-extractor-guide',
+    toolSlug: '/image-color-palette-extractor',
+    categoryId: 'developer',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-color-palette-extractor-guide',
+      title: 'Colour Palette Extractor: Complete Guide',
+      description: 'Extract a colour palette from any photo: 3 to 12 swatches, ranked by coverage, with HEX, RGB, HSL, CSS export, JSON, and a palette card download.',
+      body: `
+<p>Every good design starts with a color palette, and every good palette starts somewhere real: a photograph, a brand image, or a scene that already feels right.</p>
+<p>A color palette extractor finds the dominant colors in that image for you. It scans the pixels, groups them into the colors that matter, and hands you a ranked palette in seconds.</p>
+<p>This guide explains how the CompressMyPic image color palette extractor works, what each feature does, and how to turn a photo into a palette you can actually use.</p>
+<h2 id="what-is-a-palette-extractor">What Is a Color Palette Extractor?</h2>
+<p>A color palette extractor analyzes an image and returns its most important colors as a set of swatches. Each swatch shows the color, its HEX, RGB, and HSL values, and the share of the image it covers.</p>
+<p>You upload a photo, choose how many colors you want, and the tool builds the palette. The result is a ready-made color scheme that already works together, because the colors came from the same picture.</p>
+<p>The tool accepts common image formats up to 20 MB, which covers phone photos, product shots, screenshots, and brand imagery. Everything runs locally in your browser, so client mood boards and unreleased concepts stay private.</p>
+<p>Designers use it to start a project, developers use it to theme a website from a hero image, and content creators use it to keep thumbnails and graphics consistent.</p>
+<h2 id="median-cut-quantization">How Median-Cut Quantization Works</h2>
+<p>The extractor builds its palette with an algorithm called Median-Cut quantization. It is a standard technique for reducing thousands of colors down to a small representative set.</p>
+<p>The algorithm starts with all the pixels of the image in one box. It finds the color channel with the widest range, splits the box in half at the median, and repeats the split until it has as many boxes as you asked for.</p>
+<p>Each box then contributes one color: the average of the pixels inside it. The result is a set of colors that represents the whole image fairly, with large areas getting their own swatch and small details sharing one.</p>
+<p>Median-Cut is fast and predictable, which is why it is used in tools everywhere. It does not need a server or a machine learning model, and it runs instantly in your browser.</p>
+<h2 id="how-many-colors">How Many Colors: 3 to 12 Swatches</h2>
+<p>A slider controls how many swatches the palette contains, from 3 to 12, with 6 as the default. The count changes the character of the palette, not just its length.</p>
+<p>Three colors give you a minimal scheme: a dominant, a secondary, and an accent. That is enough for a clean website, a simple poster, or a logo treatment.</p>
+<p>Six colors is the balanced default. It captures the main tones of most photos without splitting similar shades into near-duplicates that are hard to tell apart.</p>
+<p>Twelve colors is the maximum, and it suits complex photos with many distinct areas. The trade-off is that similar shades start appearing twice, so a 12-color palette often needs a little pruning by hand.</p>
+<h2 id="percentage-badges">The Percentage Badge on Each Swatch</h2>
+<p>Every swatch carries a percentage badge showing how much of the image that color covers. A color at 42 percent dominates the photo, while one at 3 percent is a small accent.</p>
+<p>The percentages tell you the hierarchy of the palette. The largest color is usually the background or the main subject, and the smallest ones are the details that give the image its character.</p>
+<p>Use the percentages when you build a design. A common rule is to give the dominant color the most space, the secondary color a supporting role, and the smallest colors only to accents and highlights.</p>
+<p>If two swatches have nearly the same percentage and nearly the same color, they are probably one color split by the algorithm. Keep one, drop the other, and the palette gets cleaner.</p>
+<h2 id="proportional-color-strip">The Proportional Color Strip</h2>
+<p>Below the swatches, the tool shows a proportional color strip: a single bar divided into segments sized by each color share of the image. It is the palette as a picture.</p>
+<p>The strip makes the balance visible at a glance. A photo with one huge segment and several slivers is a photo with a strong dominant color and small accents, while an even strip means a busy, colorful image.</p>
+<p>Designers use the strip to judge whether a palette will work. A palette whose strip is mostly one color will produce calm designs, while a palette with many equal segments will produce busy ones.</p>
+<p>The strip also helps you spot the accent. The smallest segment is often the color that makes the photo memorable, and it is usually the right choice for buttons and highlights.</p>
+<h2 id="copy-css-custom-properties">Copy CSS: Custom Properties in One Click</h2>
+<p>The Copy CSS button copies all the swatches as CSS custom properties in one action. You get variables such as --color-1 through --color-6, each holding a HEX value, ready to paste into a stylesheet.</p>
+<p>This is faster and safer than copying codes one at a time. The export keeps every color in order, with no transcription errors and no missing swatches.</p>
+<p>Change the swatch count and the export updates. You can switch from 6 colors to 4 without re-uploading the image, and the copied CSS reflects the new set immediately.</p>
+<p>For a single exact pixel instead of a whole palette, use the <a href="/image-color-picker/">image color picker</a>. The picker reads one pixel you choose, while the extractor ranks the colors of the whole image.</p>
+<h2 id="copy-json">Copy JSON: Structured Data for Developers</h2>
+<p>The Copy JSON button exports the palette as structured data, with each color listed alongside its HEX, RGB, and HSL values and its percentage share of the image.</p>
+<p>JSON is the right format when the palette feeds into code rather than a stylesheet. A design token pipeline, a theme generator, or a configuration file can all consume the JSON directly.</p>
+<p>The export includes the same data the screen shows, in a form a script can parse. That makes the palette reusable across projects without anyone retyping values.</p>
+<p>Keep the JSON file with the project. When the design system needs the palette again months later, the file is the single source of truth, and nobody has to re-extract it from the photo.</p>
+<h2 id="download-palette-png">Download Palette PNG: A Shareable Card</h2>
+<p>The Download Palette PNG button generates a palette card image: the original photo with the swatch strip and colors laid out beneath it. It is a visual summary of the extraction.</p>
+<p>The card is useful for sharing a palette with a client or a team. A picture of the palette communicates faster than a list of HEX codes, especially to people who do not read code.</p>
+<p>Use the card in mood boards, brand documents, and presentations. It shows where the colors came from, which builds trust in the palette, because the client can see the source photo.</p>
+<p>The card is generated locally in your browser, like everything else in the tool. No image data leaves your device to produce it.</p>
+<h2 id="extractor-vs-eyedropper">Extractor vs Eyedropper: Different Questions</h2>
+<p>The extractor and the eyedropper answer different questions. The extractor asks which colors define the whole image, while the eyedropper asks what color this one pixel is.</p>
+<p>Use the extractor when you want ideas. It shows you the palette a photo already contains, ranked by coverage, and it often surfaces colors you would not have picked by eye.</p>
+<p>Use the eyedropper when you want precision. The exact blue of a logo, the exact shade of a button, or the exact tone of a wall all need a single-pixel reading.</p>
+<p>Many designers use both in one workflow. They extract a palette for the overall scheme, then use the picker to grab one precise accent the extractor ranked too low to include.</p>
+<h2 id="transparent-backgrounds">Transparent Backgrounds in PNGs</h2>
+<p>PNG files can carry transparency, and the extractor handles it by ignoring fully transparent pixels when it builds the palette. A logo on a transparent background contributes only its visible colors.</p>
+<p>This matters because a transparent area has no color of its own. Including it would add a false swatch, usually white or black, that does not represent anything in the design.</p>
+<p>Semi-transparent pixels are a gray area. A pixel that is half transparent blends its color with whatever sits behind it, so the extractor reads the blended result rather than the pure color.</p>
+<p>For logos, the extractor works best on a solid background. If the palette looks wrong, place the logo on a white or brand-colored background first and extract from that version.</p>
+<h2 id="tiny-accents">Why a Tiny Neon Accent May Not Appear</h2>
+<p>A small bright accent can vanish from a palette, even when it is the most memorable part of the photo. The reason is coverage: the extractor ranks colors by how much of the image they fill.</p>
+<p>A neon sign that covers 1 percent of a photo is a small share, so the algorithm may fold it into a neighboring color rather than giving it a swatch of its own.</p>
+<p>Raising the swatch count helps. At 12 colors, small accents get their own boxes more often, because the algorithm splits the image into finer groups.</p>
+<p>If the accent still does not appear, grab it with the eyedropper instead. The <a href="/image-color-picker/">image color picker</a> reads the exact pixel, and you can add that color to the extracted palette by hand.</p>
+<h2 id="similar-shades">Why Two Similar Shades Appear</h2>
+<p>A 12-color palette sometimes shows two swatches that look almost identical. This happens when a large area of the image has a gentle gradient, such as a sky that shifts from light blue to slightly darker blue.</p>
+<p>The algorithm splits that gradient into two boxes, and each box contributes its own average. The two averages are close, but they are genuinely different parts of the image.</p>
+<p>When you see near-duplicates, keep the one that matches your design better and drop the other. A palette with one blue is cleaner than a palette with two blues nobody can distinguish.</p>
+<p>Alternatively, lower the swatch count. At 6 colors, the gradient usually falls into a single box, and the duplicate disappears on its own.</p>
+<h2 id="privacy-local-processing">Privacy: Extraction Happens in Your Browser</h2>
+<p>Palette extraction involves images that are often sensitive: client brand concepts, unreleased mood boards, and personal photos. Uploading those to a server is a risk you do not need to take.</p>
+<p>The extractor reads the image locally. The browser samples the pixels, runs the quantization, and builds the palette without sending a single byte anywhere.</p>
+<p>That also means the tool works offline once the page has loaded. You can extract palettes on a plane, in a meeting room, or in a secure office without any connection.</p>
+<p>For teams handling confidential brand work, local processing is the deciding feature. No copy of the image exists outside your own machine at any point in the workflow.</p>
+<h2 id="weighting-a-design-by-percentage">Using Percentages to Weight a Design</h2>
+<p>The percentage badges are more than labels; they are a recipe for the design. A color at 45 percent of the photo should take roughly 45 percent of the layout, because that proportion is what made the photo feel balanced.</p>
+<p>Start a layout by assigning the largest color to the background. It is the color the eye is most used to seeing in large areas, so a page built on it feels calm and familiar from the first glance.</p>
+<p>Give the second-largest color to the main content areas: cards, panels, and sections. It supports the background without competing with it, and the two together create the structure of the page.</p>
+<p>Reserve the smallest colors for the elements that must be noticed: buttons, links, and highlights. A 3 percent color used at 3 percent of the layout draws the eye exactly where the photo drew it.</p>
+<p>When the percentages do not fit the layout, adjust them deliberately. A dashboard may need more of a secondary color than the photo had, and that is fine, as long as the change is a decision rather than an accident.</p>
+<p>The proportional strip is the fastest way to check the weighting. Compare the strip with your layout side by side, and the mismatch, if there is one, will be obvious.</p>
+<h2 id="how-to-use-the-tool">How to Use the Image Color Palette Extractor</h2>
+<p>Open the <a href="/image-color-palette-extractor/">image color palette extractor</a> and drop your image into the upload area, or paste a screenshot straight from the clipboard. Files up to 20 MB are accepted.</p>
+<p>Move the slider to choose between 3 and 12 swatches, starting from the default of 6. The palette rebuilds instantly, with percentages and the proportional strip updating together.</p>
+<p>Copy the palette as CSS custom properties or JSON, or download the palette card as a PNG to share with your team.</p>
+<p>For the step-by-step version, read <a href="/blog/how-to-extract-color-palette-from-image/">How to Extract a Colour Palette from an Image</a>, and for design workflow tips, see <a href="/blog/color-palettes-from-photos-design/">Colour Palettes from Photos: Design Workflow Tips</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What is the best number of colors for a website palette?',
+          answer: 'Six is a good default, and it is the number the tool starts with. It captures the main tones of most photos without splitting similar shades into duplicates. For a minimal site, drop to 3 or 4 colors. For a rich brand system, go up to 8 or 10 and prune the near-duplicates by hand.',
+        },
+        {
+          question: 'Can I extract a palette from a screenshot of a website?',
+          answer: 'Yes. Paste the screenshot directly with Ctrl+V or upload the screenshot file. The extractor will rank the colors of the interface, which is a fast way to recover the palette of a site you admire. Keep in mind that copying a whole palette from another brand raises originality questions for client work.',
+        },
+        {
+          question: 'Why does the palette change when I upload the same photo again?',
+          answer: 'It should not, as long as the file is identical. If the palette changes, the file was probably re-saved or re-compressed between uploads, which shifts pixel values slightly. Always extract from the original file, not from a screenshot of the photo or a re-exported copy.',
+        },
+        {
+          question: 'How do I use an extracted palette in Figma or Canva?',
+          answer: 'Copy the HEX codes from the swatches, or use the Copy CSS export and read the values from it. Paste each HEX code into the color field in Figma or Canva to recreate the palette as color styles. The JSON export is useful if a developer is automating the same palette into code.',
+        },
+        {
+          question: 'Does the extractor work on black and white photos?',
+          answer: 'Yes, but the palette will be shades of gray, from near-black to near-white, with the percentages showing how much of the photo each shade covers. That is actually useful: the gray scale of a photo reveals its tonal structure, which helps when you design in monochrome.',
+        },
+        {
+          question: 'Can I extract a palette from an image on my phone?',
+          answer: 'Yes. The extractor runs in mobile browsers on iOS and Android. Upload the photo from your gallery, move the slider to choose the swatch count, and copy the CSS or download the palette card. The workflow is the same as on desktop.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-color-picker', '/favicon-generator', '/add-background-to-image'],
+  },
+  {
+    id: 'how-to-extract-color-palette-from-image',
+    toolSlug: '/image-color-palette-extractor',
+    categoryId: 'developer',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-extract-color-palette-from-image',
+      title: 'How to Extract a Colour Palette from an Image',
+      description: 'Extract a colour palette from any photo in five steps: upload, pick 3–12 swatches, read the percentages, and copy CSS or JSON — free, in your browser.',
+      body: `
+<p>You have a photo with colors you love, and you need those colors as a palette for a website, a poster, or a brand. Copying them by eye is slow and inaccurate.</p>
+<p>This guide walks you through extracting a color palette from an image in five steps: upload, choose the swatch count, read the percentages, and copy or download the result.</p>
+<p>The whole process takes under a minute once you know it. No software to install, no account to create, and no file uploaded to any server.</p>
+<h2 id="what-you-need">What You Need Before You Start</h2>
+<p>You need the image that holds the colors, in JPG, PNG, or WebP format, up to 20 MB. A photo, a product shot, a screenshot, or a piece of artwork all work.</p>
+<p>Know what the palette is for. A website theme needs four to six colors, a brand identity needs a few more, and a mood board can use the full twelve.</p>
+<p>A browser is all the software you need. The tool runs on Chrome, Safari, Firefox, and Edge, on desktop and on mobile, with no extension.</p>
+<p>Finally, use the cleanest original file you have. A re-compressed copy or a screenshot of the photo can shift pixel values slightly and change the resulting palette.</p>
+<h2 id="step-1-upload-or-paste">Step 1: Upload the Image or Paste a Screenshot</h2>
+<p>Open the <a href="/image-color-palette-extractor/">image color palette extractor</a> and drag your image into the upload area. You can also click the area to choose a file from your device.</p>
+<p>If the colors are on your screen right now, take a screenshot and paste it with Ctrl+V. The tool accepts clipboard images directly, so you can extract a palette from any website or app you are looking at.</p>
+<p>The palette appears as soon as the image loads, starting with the default of 6 swatches. Each swatch shows its color, its codes, and the percentage of the image it covers.</p>
+<p>If you uploaded the wrong file, switch to a different photo from the tool. The old palette is replaced, and you can keep working without reloading the page.</p>
+<h2 id="step-2-choose-swatch-count">Step 2: Choose How Many Swatches You Want</h2>
+<p>Move the slider to set the swatch count anywhere from 3 to 12. The palette rebuilds instantly each time you move it, so you can compare counts in seconds.</p>
+<p>Start with 6 and look at the result. If two swatches look nearly identical, drop the count to 4 or 5 and watch the duplicates merge into one cleaner color.</p>
+<p>If an accent color you care about is missing, raise the count toward 12. More swatches give small details their own box, so a tiny neon sign or a small flower can appear.</p>
+<p>There is no single right count. A minimal website wants 3 or 4, a rich brand board wants 8 or 10, and the slider exists so you can find the number that fits your project.</p>
+<h2 id="step-3-read-the-percentages">Step 3: Read the Percentages and the Strip</h2>
+<p>Each swatch carries a percentage badge showing how much of the image that color covers. The largest percentage is the dominant color, and the smallest are the accents.</p>
+<p>Read the percentages as a hierarchy for your design. The dominant color should take the most space, the secondary color a supporting role, and the smallest colors only the highlights.</p>
+<p>Look at the proportional color strip below the swatches. It shows the same hierarchy as a bar, with segment widths matching the percentages, which makes the balance easy to judge.</p>
+<p>If the strip is mostly one color, the photo has a strong dominant tone, and your design will feel calm. If the strip is evenly divided, the photo is busy, and your design will need restraint elsewhere.</p>
+<h2 id="step-4-copy-css-or-json">Step 4: Copy the Palette as CSS or JSON</h2>
+<p>Click Copy CSS to copy all the swatches as CSS custom properties. The variables are named in order, each holding a HEX value, and they paste directly into a stylesheet.</p>
+<p>Click Copy JSON when the palette feeds into code rather than a stylesheet. The JSON includes each color HEX, RGB, and HSL values plus its percentage share, in a form a script can parse.</p>
+<p>Change the swatch count and the exports update. You can switch from 6 colors to 4 without re-uploading, and the copied CSS or JSON reflects the new set immediately.</p>
+<p>Save the export with the project. A palette that lives only in a browser tab disappears when the tab closes, while a saved file is there when the project resumes.</p>
+<h2 id="step-5-download-palette-card">Step 5: Download the Palette Card</h2>
+<p>Click Download Palette PNG to generate a palette card: the original photo with the swatch strip and colors laid out beneath it. It is the visual summary of the extraction.</p>
+<p>Share the card with a client or a team. A picture of the palette communicates faster than a list of HEX codes, especially to people who do not read code.</p>
+<p>Use the card in mood boards, brand documents, and presentations. It shows where the colors came from, which builds trust, because the client can see the source photo.</p>
+<p>Keep the card with the project files. When the palette is questioned months later, the card shows the source and the reasoning in one image.</p>
+<h2 id="extracting-from-a-photo">Extracting a Palette from a Photo</h2>
+<p>Photos are the best source for palettes, because their colors already work together in the real world. A sunset, a street scene, or a product shot can supply a whole scheme.</p>
+<p>Start with the largest flat areas of the photo. A clear sky, a painted wall, or a piece of clothing gives a stable color that the extractor ranks highly and reliably.</p>
+<p>Watch out for mixed lighting. A photo with warm sunlight on one side and cool shade on the other can produce two versions of the same color, which look like duplicates in the palette.</p>
+<p>When that happens, pick the version that matches the mood you want. The warm one suits a cozy design, the cool one suits a crisp design, and keeping both usually muddies the palette.</p>
+<h2 id="extracting-from-a-logo">Extracting a Palette from a Logo</h2>
+<p>Logos are a precision case, because a brand palette must match exactly. Start with the highest-quality logo file you have, ideally a PNG on a solid background.</p>
+<p>Transparent backgrounds are handled by the extractor, which ignores fully transparent pixels. But a logo on a transparent background can still produce odd results if the edges are semi-transparent.</p>
+<p>For the cleanest result, place the logo on a white or brand-colored background first and extract from that version. The palette then reflects the logo colors, not the transparency handling.</p>
+<p>Verify the key colors with the <a href="/image-color-picker/">image color picker</a> afterwards. The picker reads the exact pixel, which confirms the brand color when the extractor value looks slightly off.</p>
+<h2 id="extracting-from-a-screenshot">Extracting a Palette from a Screenshot</h2>
+<p>Screenshots are the fastest way to capture the palette of a website or an app you admire. Capture the screen, paste it with Ctrl+V, and the palette appears.</p>
+<p>The extractor ranks the interface colors by coverage, so the background and the main surfaces dominate, while button and link colors appear as small accents.</p>
+<p>Be careful with text. A screenshot full of text produces gray and black swatches from the lettering, which are not part of the design palette and should be ignored.</p>
+<p>Remember the originality question. A palette inspired by another site is fine, but copying a competitor brand palette wholesale is a poor choice for client work.</p>
+<h2 id="when-an-accent-goes-missing">When a Small Accent Goes Missing</h2>
+<p>A tiny accent can vanish from a palette because the extractor ranks colors by coverage. A neon sign covering 1 percent of a photo may be folded into a neighboring color.</p>
+<p>Raise the swatch count toward 12 first. More swatches give small details their own boxes, so the accent has a better chance of appearing.</p>
+<p>If it still does not appear, grab it with the eyedropper. The image color picker reads the exact pixel, and you can add that color to the extracted palette by hand.</p>
+<p>Note the accent percentage when you add it manually. A 1 percent accent is a highlight color, not a main color, and using it for large areas will overwhelm the design.</p>
+<h2 id="fixing-duplicate-shades">Fixing Duplicate Shades in the Palette</h2>
+<p>Two swatches that look almost identical usually come from a gradient, such as a sky that shifts gradually from light blue to darker blue. The algorithm splits the gradient into two boxes.</p>
+<p>Keep the shade that fits your design better and drop the other. A palette with one blue is cleaner than a palette with two blues nobody can distinguish.</p>
+<p>Alternatively, lower the swatch count. At 6 colors the gradient usually falls into a single box, and the duplicate disappears without any manual editing.</p>
+<p>When you drop a duplicate, check the percentages. The kept color should carry the combined share in your design, because the two shades together covered that much of the photo.</p>
+<h2 id="using-the-palette-in-design-tools">Using the Palette in Figma, Canva, and CSS</h2>
+<p>In Figma, paste each HEX code into a color style. Create one style per swatch, named by its role, such as background, primary, and accent, so the team uses them consistently.</p>
+<p>In Canva, paste the HEX codes into the brand kit or into the color picker for each element. The palette then stays available across every design in the account.</p>
+<p>In CSS, paste the copied custom properties into your stylesheet and reference the variables everywhere. A variable-based palette is easy to update, because changing one value updates the whole site.</p>
+<p>For a design system, store the JSON export as the source of truth. A token pipeline can read it and generate the CSS, the Figma variables, and the documentation from the same file.</p>
+<h2 id="switching-count-without-reupload">Switching the Count Without Re-uploading</h2>
+<p>You can change the swatch count at any time without uploading the image again. Move the slider and the palette rebuilds from the same image data instantly.</p>
+<p>This is useful for comparing counts. Try 4, then 6, then 8, and watch how the palette gains detail and then starts duplicating shades. The right count is usually just before the duplicates appear.</p>
+<p>Copy the CSS or JSON after each change if you want to keep several versions. The export always reflects the current count, so a version you liked can be lost if you move the slider again.</p>
+<p>Uploading a new image clears the old palette automatically. That keeps the tool tidy, but it means you should save any palette you want to keep before switching images.</p>
+<h2 id="extracting-from-product-photos">Extracting a Palette from Product Photos</h2>
+<p>Product photos are a special case, because the palette must serve the product, not just the photo. A product shot on a white background gives a palette dominated by white, which tells you little about the product itself.</p>
+<p>For product work, extract from a lifestyle shot instead of a studio shot. A product photographed in use, in a room or outdoors, carries the colors of its context, and those colors make a better palette.</p>
+<p>When only a studio shot exists, crop the product tightly before extracting. Removing the white background forces the extractor to rank the product colors instead of the empty space around them.</p>
+<p>Check the palette against the product colors you know. If the brand color of the product is missing or shifted, verify it with the eyedropper and add it to the palette by hand.</p>
+<p>Product palettes feed into listings, packaging, and advertising, so consistency matters more than usual. Save the CSS or JSON export with the product files, and use the same palette across every channel where the product appears.</p>
+<p>For a product range, extract a palette from each product and compare them. Products that share a palette family look like a range, while products with unrelated palettes look like a random assortment.</p>
+<p>Seasonal products deserve seasonal palettes. A summer product shot gives bright, warm colors, while the winter version of the same product gives deeper tones, and the palette should change with the season.</p>
+<p>Finally, test the palette on the marketplace listing itself. A palette that looks good in a design tool can fail against the white background and the interface colors of the marketplace, so check it in place before launch.</p>
+<h2 id="quick-reference-checklist">Quick Reference Checklist</h2>
+<p>Upload the cleanest original, set the swatch count, read the percentages and the strip, then copy CSS or JSON and download the palette card.</p>
+<p>Prune near-duplicates, rescue missing accents with the eyedropper, and save the export with the project before closing the tab.</p>
+<p>For the full background, read the <a href="/blog/image-color-palette-extractor-guide/">Colour Palette Extractor: Complete Guide</a>, and for design workflow tips, see <a href="/blog/color-palettes-from-photos-design/">Colour Palettes from Photos: Design Workflow Tips</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I pick which extracted colors to actually use?',
+          answer: 'Start with the largest percentage color as your dominant, take the second largest as your secondary, and use the smallest ones as accents. Four to six colors are enough for most designs. Drop near-duplicates and any color that does not fit the mood, even if it ranks highly.',
+        },
+        {
+          question: 'Can I extract a palette from a video still or a movie frame?',
+          answer: 'Yes. Take a screenshot of the frame, paste it into the extractor, and the palette appears. Movie stills are excellent sources because cinematographers design their color schemes carefully. Use the palette as inspiration rather than copying a film look wholesale for client work.',
+        },
+        {
+          question: 'Why do the percentages not add up to 100 percent?',
+          answer: 'They usually do, within rounding. Each swatch percentage is rounded to a whole number, so the displayed values can total 99 or 101 percent. The underlying shares are exact, and the rounding is only in how they are shown.',
+        },
+        {
+          question: 'What is the difference between the palette card and the CSS export?',
+          answer: 'The palette card is a PNG image showing the photo with its swatches, made for sharing with people. The CSS export is text with the color variables, made for pasting into code. Use the card for clients and presentations, and the CSS for developers.',
+        },
+        {
+          question: 'Can I extract a palette from a black and white image?',
+          answer: 'Yes, but the result will be shades of gray. The percentages still show the tonal structure of the photo, which is useful when you design in monochrome. A gray palette from a strong photo can be an elegant base for a minimal design.',
+        },
+        {
+          question: 'How do I share an extracted palette with a client who does not use design tools?',
+          answer: 'Download the palette card PNG and send it. The card shows the source photo with the swatches beneath it, so anyone can see the colors and where they came from. Include the HEX codes in the message as well, so the client can reference them later.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-color-picker', '/favicon-generator', '/image-dimensions-checker'],
+  },
+  {
+    id: 'color-palettes-from-photos-design',
+    toolSlug: '/image-color-palette-extractor',
+    categoryId: 'developer',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'color-palettes-from-photos-design',
+      title: 'Colour Palettes from Photos: Design Workflow Tips',
+      description: 'Turn photos into design palettes that actually work: the 60-30-10 rule, dominant vs accent, contrast, brand use, and the mistakes that make palettes muddy.',
+      body: `
+<p>A photo already contains a color palette that works. The light, the surfaces, and the subject conspired to produce colors that belong together, and a good designer can borrow that harmony wholesale.</p>
+<p>The hard part is not finding the colors. It is choosing which ones to use, how much of each, and what to leave out, so the palette serves the design instead of fighting it.</p>
+<p>This article covers the workflow: from an extracted palette to a working design system, with the rules, the ratios, and the mistakes that make photo palettes go wrong.</p>
+<h2 id="why-photos-make-good-palettes">Why Photos Make Good Palettes</h2>
+<p>Photos capture colors as they appear in the real world, under real light, on real surfaces. Those colors already harmonize, because the light that lit the scene was the same for all of them.</p>
+<p>A palette invented from scratch has no such guarantee. Two colors chosen separately can clash in ways that are hard to predict, while two colors from one photo have already proven they coexist.</p>
+<p>Photos also carry mood. A warm sunset photo gives a warm palette, a cool ocean photo gives a cool one, and the mood transfers into the design without any extra effort.</p>
+<p>The extractor makes this practical. It ranks the photo colors by coverage, so the palette you get is not just harmonious but also honest about which colors actually define the image.</p>
+<h2 id="dominant-vs-accent">Dominant Colors vs Accent Colors</h2>
+<p>Every palette has a hierarchy. The dominant color covers the most area and sets the tone, the secondary color supports it, and the accent colors appear in small amounts to draw the eye.</p>
+<p>The percentage badges from the extractor show you the hierarchy directly. A color at 40 percent is a dominant, one at 15 percent is a secondary, and one at 3 percent is an accent.</p>
+<p>Respect the hierarchy in your design. A palette used in the same proportions as the photo will feel natural, because it repeats the balance the eye already accepted in the image.</p>
+<p>The most common mistake is promoting an accent to a dominant. A vivid red that covers 2 percent of a photo looks striking as a button, but it overwhelms the design when it fills half the page.</p>
+<h2 id="the-60-30-10-rule">The 60-30-10 Rule</h2>
+<p>The 60-30-10 rule is the simplest way to apply a photo palette. Give the dominant color 60 percent of the space, the secondary color 30 percent, and the accent color the remaining 10 percent.</p>
+<p>Start from the extractor percentages and round them to the rule. A photo with colors at 55, 30, and 8 percent is already close to the ideal, and the rule just formalizes what the photo was doing.</p>
+<p>The rule works because it creates a clear hierarchy. The eye knows what is background, what is content, and what is emphasis, without having to work it out from context.</p>
+<p>Break the rule deliberately when the design demands it, not accidentally. A poster that is 90 percent accent color is a bold choice, and it should be a choice, not a mistake.</p>
+<h2 id="warm-vs-cool-harmony">Warm vs Cool Harmony</h2>
+<p>Photos lean warm or cool, and the palette inherits that lean. A desert photo gives warm oranges and browns, while a winter photo gives cool blues and grays.</p>
+<p>A palette that mixes warm and cool colors can work, but it needs a clear leader. A warm palette with one cool accent feels intentional, while a palette split evenly between warm and cool feels undecided.</p>
+<p>Check the hue values in the extractor output. Colors with hues near 0 to 60 degrees are warm, hues near 180 to 260 degrees are cool, and the balance between them tells you the temperature of the palette.</p>
+<p>When a photo is mixed, choose the temperature that fits the message. A brand that wants energy keeps the warm colors and drops the cool ones, while a brand that wants calm does the opposite.</p>
+<h2 id="contrast-and-accessibility">Contrast and Accessibility</h2>
+<p>A beautiful palette can still be unreadable. Text needs enough contrast against its background, and photo palettes do not guarantee that on their own.</p>
+<p>Check every text and background pair from the palette for contrast. The lightest and darkest colors usually pass, while two mid-tone colors from the same photo often fail.</p>
+<p>HSL helps here. Two colors with lightness values far apart will usually pass a contrast check, while two with similar lightness will fail, regardless of their hues.</p>
+<p>When a pair fails, adjust the lightness, not the hue. Darken the text color or lighten the background by ten points, and the palette keeps its character while becoming readable.</p>
+<h2 id="from-palette-to-design-system">From Palette to Design System</h2>
+<p>A palette becomes a design system when each color gets a role. Name the swatches by their job, such as background, surface, primary, secondary, accent, and text, instead of by their color.</p>
+<p>Roles make the palette usable by a team. A developer who sees a variable called accent knows where to use it, while a variable called orange-3 invites guessing.</p>
+<p>Generate shades from the base colors in HSL by changing only the lightness. A primary color at 50 percent lightness can produce a hover state at 42 percent and a disabled state at 70 percent, all clearly related.</p>
+<p>Store the system as design tokens, and export them from the extractor JSON. The JSON gives you the base colors, and the tokens document the roles and the variants built from them.</p>
+<h2 id="mood-boards">Mood Boards from Photos</h2>
+<p>A mood board is a collection of photos that share a feeling, and their palettes should agree with each other. Extract a palette from each photo and compare them side by side.</p>
+<p>When the palettes share a dominant hue or a similar temperature, the board feels coherent. When they pull in different directions, the board feels scattered, and one photo probably does not belong.</p>
+<p>Use the palette cards from the extractor as the board itself. Each card shows the photo with its swatches, so the board communicates both the images and their colors at once.</p>
+<p>A mood board built this way is also a decision record. When a client asks why these colors, the board shows the photos they came from, which is a stronger answer than a list of HEX codes.</p>
+<h2 id="brand-palettes-from-photos">Brand Palettes from Photos</h2>
+<p>Brands often start from a photograph: a founder portrait, a product shot, or a place that matters to the company. The palette extracted from that photo carries the brand story in its colors.</p>
+<p>For brand work, extract from the best version of the source photo, then prune the palette to four or five colors. A brand palette needs to be memorable, and a twelve-color set is too many for anyone to remember.</p>
+<p>Verify the key colors with the <a href="/image-color-picker/">image color picker</a> after extraction. The picker reads the exact pixel, which confirms the brand color when the extractor value is an average of a gradient.</p>
+<p>Document the palette with its source photo, its HEX, RGB, and CMYK values, and its roles. A brand guide that shows the photo alongside the colors tells the story that a bare list cannot.</p>
+<h2 id="seasonal-and-cultural-cues">Seasonal and Cultural Cues</h2>
+<p>Colors carry associations that change with season and culture. An autumn photo gives oranges and browns that feel right in October and heavy in May, while a spring photo gives fresh greens that feel wrong in winter.</p>
+<p>When you choose a photo as a palette source, consider when and where the design will be seen. A campaign palette should match its season, and a global brand palette should avoid colors with strong local meanings that clash with the message.</p>
+<p>The extractor cannot judge these associations; it only reports the colors. The judgment belongs to the designer, who knows the audience and the moment.</p>
+<p>When in doubt, test the palette with people from the audience. A five-minute conversation can reveal an association that hours of design work would have missed.</p>
+<h2 id="avoiding-muddy-palettes">Avoiding Muddy Palettes</h2>
+<p>Photo palettes go muddy when too many mid-tone colors compete. A photo with five similar browns and grays produces a palette where nothing stands out and everything looks dull.</p>
+<p>The fix is subtraction. Drop the mid-tones that are close to each other, keep the lightest and the darkest, and keep one clear accent. A palette with contrast is a palette with life.</p>
+<p>Another cause of muddiness is mixing photos with different lighting. A warm photo and a cool photo each produce a good palette, but merging them gives a palette with no temperature at all.</p>
+<p>When a palette feels muddy, check the HSL values. If the saturation values are all low and the lightness values are all in the middle, the palette needs a vivid accent and a dark anchor to give it shape.</p>
+<h2 id="testing-a-palette">Testing a Palette Before Committing</h2>
+<p>Test a palette in a real layout before you commit to it. A palette that looks good as swatches can fail as a page, because swatches do not show contrast, hierarchy, or readability.</p>
+<p>Build a quick mock with the palette applied: a heading, a paragraph, a button, and a card. If the mock reads well, the palette works. If it feels off, the mock shows exactly which pair is wrong.</p>
+<p>Test in grayscale as well. Convert the mock to black and white and check whether the hierarchy survives. A palette that depends only on hue will collapse, while one with lightness contrast will hold up.</p>
+<p>Test on a phone screen too. Colors look different on small bright displays, and a palette that works on a large monitor can feel harsh or washed out on a phone.</p>
+<h2 id="palette-and-typography">Palette and Typography Together</h2>
+<p>Color and type work as a pair, and a palette choice constrains the typography. A busy, colorful palette needs quiet, simple type, while a restrained palette can carry a more expressive typeface.</p>
+<p>Text color deserves the same care as the palette itself. The darkest color in the palette is usually the text color, and it should be dark enough to read comfortably at small sizes.</p>
+<p>Links and interactive elements need a color that stands apart from the text. The accent color usually fills this role, and it should be distinct enough that a reader can spot a link without thinking.</p>
+<p>When the palette comes from a photo, the photo itself can supply the type color. Sample the darkest shadow of the image with the picker, and that tone will harmonize with the palette by construction.</p>
+<h2 id="iterating-on-a-palette">Iterating on a Palette</h2>
+<p>A palette is rarely right on the first extraction. Treat the first palette as a draft, use it in a mock, notice what fails, and extract again with a different photo or a different swatch count.</p>
+<p>Keep the versions. A palette that was wrong for a website might be right for a poster, and a version you discarded can become the answer to a later brief.</p>
+<p>Iterate in small steps. Change one color at a time, or change the count by one, so you can tell which change improved the result and which one made it worse.</p>
+<p>Stop when the palette does its job. A palette that is good enough and in use beats a palette that is perfect and still being debated, and the extractor makes it cheap to revisit the decision later.</p>
+<h2 id="palettes-for-data-visualization">Palettes for Data Visualization</h2>
+<p>Charts and graphs need palettes with a different logic from layouts. Each data series needs a color that is distinct from the others at a glance, and the palette must stay readable when the series overlap.</p>
+<p>Extract a palette from a photo and use it for a chart only after checking the colors against each other. Two colors that look different as swatches can look identical as thin chart lines, especially for readers with color vision differences.</p>
+<p>For categorical data, choose colors with widely separated hues. A palette built from hues 0, 120, and 240 degrees apart gives series that are easy to tell apart even in a small legend.</p>
+<p>For sequential data, use a single hue with varying lightness instead. A scale from light blue to dark blue reads as a progression, while a rainbow of hues reads as categories and confuses the message.</p>
+<p>Test chart palettes in grayscale and with a color blindness simulator. A palette that survives both tests works for nearly every reader, which is the standard a public chart should meet.</p>
+<h2 id="quick-reference">Quick Reference: Photo Palette Workflow</h2>
+<p>Extract from a photo you love, read the percentages, apply the 60-30-10 rule, check contrast for text, and assign each color a role before you build anything.</p>
+<p>Prune duplicates, rescue missing accents with the eyedropper, and test the palette in a real layout, in grayscale, and on a phone before you commit.</p>
+<p>A photo palette works because the colors already proved they belong together. Your job is to choose, proportion, and name them, not to invent them from nothing.</p>
+<p>To extract the palette, use the <a href="/image-color-palette-extractor/">image color palette extractor</a>, and for exact single pixels, use the <a href="/image-color-picker/">image color picker</a>. For the full background, read the <a href="/blog/image-color-palette-extractor-guide/">Colour Palette Extractor: Complete Guide</a> and the steps in <a href="/blog/how-to-extract-color-palette-from-image/">How to Extract a Colour Palette from an Image</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What is the 60-30-10 rule for color palettes?',
+          answer: 'It is a proportion rule: the dominant color takes about 60 percent of the space, the secondary color 30 percent, and the accent color 10 percent. The rule creates a clear visual hierarchy so the eye knows what is background, content, and emphasis. Start from the extractor percentages and round them toward these numbers.',
+        },
+        {
+          question: 'How many colors should a brand palette have?',
+          answer: 'Four to six is the usual range. That is enough for a background, a primary, a secondary, an accent, and a text color, while still being memorable. More than six becomes hard for a team to use consistently. Extract a larger set first, then prune it to the strongest four to six.',
+        },
+        {
+          question: 'Should I use the exact extracted colors or adjust them?',
+          answer: 'Adjust them. Extraction gives you a starting point, not a final answer. Shift a hue slightly for brand fit, raise the saturation of a dull accent, or darken a text color for contrast. The photo proves the colors harmonize, but your design goals decide the final values.',
+        },
+        {
+          question: 'Can a photo palette work for a dark mode theme?',
+          answer: 'Yes, with inversion. Take the darkest colors from the photo as the dark mode backgrounds, and use the lightest colors for text. The accent colors usually transfer directly. Test the inverted palette for contrast, since pairs that worked on light backgrounds can fail on dark ones.',
+        },
+        {
+          question: 'What do I do when the extracted palette has no good accent color?',
+          answer: 'Borrow one. Use the eyedropper to sample a small vivid detail the extractor missed, or introduce a complementary color from the color wheel opposite the dominant hue. An accent does not have to come from the photo; it has to work with the photo colors.',
+        },
+        {
+          question: 'How do I keep a photo palette consistent across a whole website?',
+          answer: 'Store the palette as CSS custom properties or design tokens, and reference the variables everywhere instead of pasting HEX codes. That way a single change updates the whole site. Document the roles of each color so every page uses the same color for the same job.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-color-picker', '/favicon-generator', '/add-background-to-image'],
+  },
   // BATCH3-CREATE (15 articles)
   // BATCH3-RESIZE (6 articles)
   // BATCH3-PRIVACY (6 articles)
