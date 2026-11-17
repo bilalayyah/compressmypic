@@ -17442,7 +17442,706 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     },
     relatedToolSlugs: ['/image-cropper', '/add-background-to-image', '/image-color-palette-extractor'],
   },
-  // BATCH3-RESIZE (6 articles)
+  {
+    id: 'image-resizer-guide',
+    toolSlug: '/image-resizer',
+    categoryId: 'resize',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-resizer-guide',
+      title: 'What Is an Image Resizer? Complete Guide',
+      description: 'Learn what an image resizer does, how pixel and percentage resizing work, when to lock the aspect ratio, and how to pick the right size for web, social, and print.',
+      body: `
+<p>An image resizer changes the pixel dimensions of a photo or graphic. A photo that starts at 4000 by 3000 pixels can become 1200 by 900, 800 by 600, or any other size you need. The picture keeps its subject and its colours, but it occupies a different amount of space on screen.</p>
+<p>Resizing matters because almost every destination has a size it expects. A website hero wants a wide image, a profile photo wants a square, and a marketplace listing wants a consistent product shot. The <a href="/image-resizer/">image resizer</a> lets you meet those sizes without installing software or opening a heavy editor.</p>
+<p>This guide explains what resizing does, how pixels and percentages work, what the aspect ratio lock protects, and how the fit modes handle images that do not match the target shape. It also covers formats, quality, batch resizing, and the mistakes that make resized images look soft or stretched.</p>
+<h2 id="what-is-an-image-resizer">What Is an Image Resizer?</h2>
+<p>An image resizer is a tool that rebuilds a picture at new pixel dimensions. It reads the original pixels, maps them onto a new grid of the size you choose, and writes a fresh image file. The original file stays untouched, so you can always go back and try a different size.</p>
+<p>Resizing is different from zooming. Zooming only changes how large a picture looks on your screen, while the file itself stays the same size. Resizing changes the file itself, so the new dimensions travel with the image wherever it is uploaded, emailed, or printed.</p>
+<p>It is also different from cropping. Cropping cuts away the edges of a picture to change its shape, while resizing keeps the whole picture and scales everything in it. A resized photo shows the same scene, just at a different resolution, while a cropped photo shows less of the scene.</p>
+<p>The resizer on this site works entirely in your browser. Your photos are drawn onto an HTML5 Canvas on your own device and never uploaded to a server. That keeps private photos private and makes resizing fast, because nothing waits on an upload.</p>
+<h2 id="pixels-dimensions-and-resolution">Pixels, Dimensions, and Resolution</h2>
+<p>Every digital image is a grid of tiny coloured squares called pixels. The dimensions of an image are the count of those squares across and down, written as width by height. A 4000 by 3000 image holds 12 million pixels, which is why cameras describe it as a 12 megapixel photo.</p>
+<p>Resolution is often confused with dimensions, but they are not the same thing. Dimensions describe how many pixels an image contains, while resolution describes how densely those pixels are packed when printed, measured in dots per inch. A web image only needs its pixel dimensions to be right.</p>
+<p>More pixels mean more detail and a larger file. A 4000 pixel wide photo shows fine texture when viewed large, but it is far bigger than a web page needs. Shrinking it to 1200 pixels wide throws away detail nobody can see at that display size, and the file becomes much smaller.</p>
+<p>That trade is the whole point of resizing. You match the pixel count to the place the image will be seen, keeping enough detail for that display and no more. An image shown at 800 pixels wide on a blog gains nothing from being 4000 pixels wide in the file.</p>
+<h2 id="by-pixels-vs-by-percentage">By Pixels vs By Percentage</h2>
+<p>The resizer offers two ways to set the new size. By Pixels lets you type an exact width and height, up to 12,000 pixels on either side. This is the mode to use when a destination gives you an exact number, such as a 1080 by 1080 social post or a 1920 by 1080 banner.</p>
+<p>By Percentage scales the image relative to its own size, from 10 percent to 200 percent. You can drag the slider or tap a quick button for 25, 50, 75, 150, or 200 percent. This mode is ideal when you know the image is too big but you do not have an exact target in mind.</p>
+<p>Percentage mode is also the simplest way to halve a batch of mixed images. Every photo shrinks by the same proportion, so a 4000 pixel photo becomes 2000 and a 1000 pixel photo becomes 500 in the same pass. The relative sizes stay consistent across the set.</p>
+<p>Choose pixels when the destination is exact and percentage when the goal is relative. A marketplace that demands 1000 by 1000 needs pixels, while a folder of camera photos that are simply too large is a job for percentage. Both modes end at the same canvas, just by different routes.</p>
+<h2 id="aspect-ratio-explained">Aspect Ratio Explained</h2>
+<p>The aspect ratio is the relationship between width and height. A 4000 by 3000 photo has a 4 by 3 ratio, while a 1920 by 1080 screen has a 16 by 9 ratio. The ratio decides the shape of the image, and changing it changes how the picture looks.</p>
+<p>When Aspect Ratio Locked is on, typing a new width updates the height automatically in exact proportion. A 4000 by 3000 photo resized to 1200 wide becomes 900 tall on its own, with no maths needed from you. The picture keeps its natural shape and nothing stretches.</p>
+<p>Locking the ratio is the safe default for almost every resize. It protects faces from widening, circles from becoming ovals, and products from looking squashed. Unless you have a reason to change the shape, leave the lock on and let the tool do the proportion work.</p>
+<p>Unlocking the ratio lets you enter width and height independently, which reveals the fit modes. That is useful when a destination demands an exact frame, but it is also where distortion happens. Only unlock the ratio when you know which fit mode you want to handle the mismatch.</p>
+<h2 id="fit-modes-contain-cover-stretch">Fit Modes: Contain, Cover, and Stretch</h2>
+<p>Contain fits the whole image inside the target box without cutting anything. The full subject survives, and any leftover space becomes padding around it. Use Contain when nothing in the photo may be lost, such as a product shot where the edges carry detail.</p>
+<p>Cover fills the target box edge to edge by trimming the overflow from the sides. The frame is filled completely, but the outer edges of the photo are cropped away. Use Cover when the exact frame matters more than the edges, such as a banner or a profile header.</p>
+<p>Stretch Exact forces the image to the exact pixel bounds no matter what shape it started as. Nothing is cropped, but the picture is pulled to fit, so subjects can look wider or taller than they really are. Use it only when matching fixed bounds matters more than keeping proportions true.</p>
+<p>Most everyday resizing never needs a fit mode at all, because the aspect ratio lock handles the shape. Fit modes only appear when you unlock the ratio or pick a preset with a different shape from your photo. When they do appear, Contain is the cautious choice and Cover is the tidy one.</p>
+<h2 id="social-and-screen-presets">Social and Screen Presets</h2>
+<p>Presets are one-click sizes for the places people post most. Clicking a preset switches the tool to By Pixels mode and fills in the exact dimensions, so there is nothing to type and nothing to remember. They turn a fiddly numbers job into a single tap.</p>
+<p>The built-in presets cover Instagram Post at 1080 by 1080, Instagram Story at 1080 by 1920, YouTube Thumb at 1280 by 720, Facebook Cover at 851 by 315, X Header at 1500 by 500, and Full HD at 1920 by 1080. Each one matches a real destination, so the image arrives at the size that destination displays best.</p>
+<p>For a step-by-step walkthrough of using these presets, read <a href="/blog/how-to-resize-image/">How to Resize an Image Online</a>. For resizing a whole folder to the same preset, read <a href="/blog/bulk-image-resizer-guide/">Bulk Image Resizer: Complete Guide</a> and use the <a href="/bulk-image-resizer/">bulk image resizer</a> instead.</p>
+<h2 id="formats-quality-and-transparency">Formats, Quality, and Transparency</h2>
+<p>Resizing and converting can happen in the same pass. The output format can stay Original, or switch to JPG, PNG, or WebP, with a quality slider from 10 percent to 100 percent. That lets you shrink the dimensions and modernise the format together, instead of running two separate tools.</p>
+<p>The default quality of 85 percent balances crisp edges and clean gradients with small files for websites, blogs, and marketplaces. Drop toward 65 to 75 percent when you need stricter savings, or push toward 95 to 100 percent when preparing an image for print. Small quality changes make a large difference to file size.</p>
+<p>Transparency needs care. It stays intact when you keep the Original format for a PNG or WebP, or when you explicitly choose PNG or WebP output. Switching to JPG fills transparent areas with your chosen Matte BG colour, white by default, because JPG has no transparency to keep.</p>
+<p>Watch out for one surprise: converting a compressed JPG into a lossless PNG while resizing can make the file larger in bytes even though the pixels shrank. PNG keeps raw lossless pixel data, so it can outweigh the source JPEG. For small web files, choose WebP or JPG at 80 to 85 percent quality instead.</p>
+<h2 id="batch-resizing">Batch Resizing</h2>
+<p>The resizer handles more than one image at a time. You can drop a whole set of photos into the queue, apply one size to all of them, and download the results individually or as a single ZIP file. The ZIP appears whenever two or more images finish, under the name resized_images_compressmypic.zip.</p>
+<p>With the aspect ratio locked, each photo in a batch keeps its own natural proportions, using the width limit rather than warping portraits into landscape frames. A folder mixing tall and wide photos comes out consistent in width but true to each photo's own shape.</p>
+<p>If you need identical dimensions across the whole batch instead, unlock the ratio and choose Contain or Cover. That is the right call for a product grid or a gallery where every tile must be exactly the same size, even if a little cropping is the price.</p>
+<h2 id="enlarging-images">Enlarging Images</h2>
+<p>You can enlarge a small image by entering larger pixel values or scaling up to 200 percent in By Percentage mode. The canvas stretches the existing pixels to fill the new size, which works, but it cannot invent detail that was never in the original photo.</p>
+<p>Enlarging a low-resolution graphic makes its edges look softer, because the same information is spread across more pixels. A small logo scaled up four times will look blurry, while a sharp photo scaled up by 25 percent may still look fine. The gentler the enlargement, the better the result.</p>
+<p>For that reason, shrinking is almost always safe and enlarging is a compromise. Start from the largest original you have, and resize down to each size you need. If the only copy you have is small, keep the enlargement modest and check the result with the Compare view before downloading.</p>
+<p>The Compare view shows the original and resized dimensions side by side, with a split slider for checking fine detail. Use it after any enlargement, and after any large shrink, to confirm that text stays readable and edges stay clean.</p>
+<h2 id="resizing-vs-cropping">Resizing vs Cropping</h2>
+<p>Resizing and cropping solve different problems, and mixing them up causes most resizing frustration. Resize when the whole picture is right but the size is wrong. Crop when part of the picture should not be there at all, or when the shape must change.</p>
+<p>A photo that is too wide for a square post needs cropping, not resizing, because resizing a wide photo to a square frame would squash it. A photo that is the right shape but too large needs resizing, because cropping it would throw away part of the scene for no reason.</p>
+<p>The two tools work well together. Crop first to get the shape right, then resize to get the dimensions right. The <a href="/image-cropper/">image cropper</a> can prepare the shape, and the resizer then scales the cropped result to the exact pixels the destination needs.</p>
+<h2 id="resizing-vs-compressing">Resizing vs Compressing</h2>
+<p>Resizing changes how many pixels an image has, while compressing changes how efficiently those pixels are stored. A resized image has fewer pixels to store, so its file gets smaller. A compressed image keeps its pixels but encodes them more tightly, so its file gets smaller too.</p>
+<p>Either step alone can shrink a file, but together they shrink it far more. A 4000 pixel photo compressed alone is still a 4000 pixel photo, and a 1200 pixel photo saved at full quality is still heavier than it needs to be. Resize first, then compress, for the smallest useful file.</p>
+<p>The full comparison, including which step to do first and when each one alone is enough, is in <a href="/blog/resize-vs-compress-image/">Resize vs Compress: What Is the Difference?</a>. If your goal is purely a smaller file at the same dimensions, the <a href="/">image compressor</a> is the tool for that job.</p>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<p>The most common mistake is resizing from a small copy instead of the original. Every resize throws away some information, so starting from the largest file you have gives the best result at every size. Keep the original safe and resize copies of it.</p>
+<p>The second mistake is unlocking the aspect ratio without choosing a fit mode on purpose. An unlocked resize with Stretch Exact turns people wider and buildings taller, and the distortion is easy to miss at thumbnail size. Check the lock before every resize, and check the preview after it.</p>
+<p>The third mistake is saving every resized image as PNG. PNG is lossless and excellent for graphics with sharp edges, but it is heavy for photos. A photo resized for the web usually belongs in JPG or WebP at 80 to 85 percent quality, where it looks the same and weighs far less.</p>
+<p>The fourth mistake is resizing once and trusting it blindly. Open the Compare view, look at text and faces, and check the file size before you upload. A ten-second check catches a soft enlargement or a stretched portrait before your visitors ever see it.</p>
+<h2 id="quick-checklist">Quick Checklist</h2>
+<p>Before you resize, know the destination size, keep the aspect ratio locked unless you need a fit mode, and start from the largest original. After resizing, compare the result, confirm the format and quality, and download the file with a clear name.</p>
+<ul>
+<li>Destination size known: exact pixels, or a percentage that fits the purpose.</li>
+<li>Aspect ratio locked, unless a preset or a fit mode needs it unlocked.</li>
+<li>Output format chosen: Original, JPG, PNG, or WebP, with quality near 85 percent.</li>
+<li>Result checked in the Compare view for sharpness and true proportions.</li>
+<li>Batch downloaded as a ZIP when two or more images were resized together.</li>
+</ul>
+<p>For the hands-on steps, read <a href="/blog/how-to-resize-image/">How to Resize an Image Online</a>, and for the resize-or-compress decision, read <a href="/blog/resize-vs-compress-image/">Resize vs Compress: What Is the Difference?</a>. Open the <a href="/image-resizer/">image resizer</a> and try your first resize now.</p>
+`,
+      faqs: [
+        {
+          question: 'What does resizing an image actually change?',
+          answer: 'Resizing changes the pixel dimensions of an image, such as turning a 4000 by 3000 photo into 1200 by 900. The subject, colours, and composition stay the same, but the image contains fewer pixels and usually becomes a smaller file. It does not change what the picture shows, only how many pixels describe it.',
+        },
+        {
+          question: 'Do I need to install software to resize an image?',
+          answer: 'No. The resizer runs entirely in your browser, so there is nothing to download or install. Open the image resizer page, drop in your photo, pick pixels or a percentage, and download the result. It works on desktop browsers and on phones, with touch-friendly sliders and presets.',
+        },
+        {
+          question: 'What size should I resize a photo for a website?',
+          answer: 'Match the size to where the image will appear. A blog content image is usually fine at 1200 pixels wide, a hero image at 1920 pixels wide, and a thumbnail at 600 pixels wide. Resizing to the display size keeps pages fast without visible quality loss, and the Full HD preset covers the widest common case.',
+        },
+        {
+          question: 'Can I resize an image without losing quality?',
+          answer: 'Shrinking an image is generally safe, because the detail you remove would not be visible at the smaller display size anyway. Quality loss becomes visible mainly when you enlarge a small image, since the tool must stretch existing pixels. Start from the largest original you have, shrink rather than enlarge, and keep quality near 85 percent.',
+        },
+        {
+          question: 'Should I resize before or after cropping?',
+          answer: 'Crop first, then resize. Cropping sets the shape and removes the parts you do not want, and resizing then scales the cropped result to the exact pixel dimensions. Resizing first and cropping second works too, but it wastes effort scaling pixels you are about to throw away.',
+        },
+        {
+          question: 'Can I resize a photo for printing?',
+          answer: 'Yes, but printing cares about pixel count at a given print size, not just the dimensions on screen. A photo printed at 300 dots per inch needs 300 pixels per inch of print, so a 6 by 4 inch print needs 1800 by 1200 pixels. Resize to that pixel count, keep quality at 95 to 100 percent, and use PNG or high-quality JPG.',
+        },
+      ],
+      readingMinutes: 12,
+    },
+    relatedToolSlugs: ['/bulk-image-resizer', '/image-cropper', '/compress-image-to-100kb', '/image-dimensions-checker'],
+  },
+  {
+    id: 'how-to-resize-image',
+    toolSlug: '/image-resizer',
+    categoryId: 'resize',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-resize-image',
+      title: 'How to Resize an Image Online',
+      description: 'Resize an image online in minutes: upload, pick pixels or percentage, lock the aspect ratio, choose a preset, set quality, and download — no software to install.',
+      body: `
+<p>Resizing an image online takes about a minute once you know the steps. Upload the photo, choose the size, check the preview, and download the result. No software to install, no account to create, and no waiting for an upload to a server.</p>
+<p>This guide walks through the process on the <a href="/image-resizer/">image resizer</a>, from the first upload to the final download. It covers both sizing modes, the aspect ratio lock, the presets, and the quality settings, so you can resize one photo or a whole batch with confidence.</p>
+<p>By the end you will know how to pick a target size for a website, a social post, or a print, and how to check the result before you use it. If you want the background first, read <a href="/blog/image-resizer-guide/">What Is an Image Resizer? Complete Guide</a>.</p>
+<h2 id="resize-in-six-steps">Resize in Six Steps</h2>
+<p>The whole process follows the same six steps every time. Learn them once and every resize after that is routine, whether the image is a phone photo, a product shot, or a screenshot.</p>
+<ol>
+<li>Upload your image: drag and drop a JPG, PNG, WebP, HEIC, GIF, BMP, or SVG file up to 20 MB, browse from your device, or paste a screenshot with Ctrl+V.</li>
+<li>Pick Pixels or Percentage mode: choose By Pixels for an exact size up to 12,000 px, or By Percentage to scale between 10 percent and 200 percent.</li>
+<li>Set the size: type the width and height, drag the percentage slider, tap a quick button, or click a preset such as Instagram Post or Full HD.</li>
+<li>Check the aspect lock and fit: keep Aspect Ratio Locked on for proportional scaling, or unlock it and pick Contain, Cover, or Stretch Exact.</li>
+<li>Choose format and quality: keep Original, or switch to JPG, PNG, or WebP, set quality from 10 to 100 percent, and pick a Matte BG colour for JPG.</li>
+<li>Resize and download: click Resize All, inspect the result in the Compare view, then download the file or the ZIP for a batch.</li>
+</ol>
+<h2 id="choose-your-target-size">Choose Your Target Size First</h2>
+<p>Decide the size before you open the tool, not while you are staring at the width box. The destination decides the number: a blog image, a social post, and a print all want different dimensions. Guessing in the tool wastes a resize and often produces a second, corrected one.</p>
+<p>Ask where the image will be seen and how large it will appear there. An image displayed at 800 pixels wide needs about 800 pixels in the file, with a little extra for sharp screens. An image that will fill a wide hero needs closer to 1920 pixels wide.</p>
+<p>When no exact size is given, use the common sizes as a guide. Blog content images work well at 1200 pixels wide, thumbnails at 600, and full-screen heroes at 1920. Those three numbers cover most web resizing you will ever do.</p>
+<p>Write the target down before uploading. A note that says 1080 by 1080 for the post and 1200 wide for the blog keeps the job quick and stops you resizing the same photo twice. The tool remembers nothing between visits, so your note is the plan.</p>
+<h2 id="pixels-or-percentage">Pixels or Percentage: Which Mode?</h2>
+<p>Use By Pixels when the destination gives you an exact number. Social platforms, marketplaces, and design tools all publish exact sizes, and typing them in guarantees the image arrives at precisely that size. It is the mode for specifications.</p>
+<p>Use By Percentage when the goal is simply smaller. A folder of camera photos at 4000 pixels wide does not need an exact target, it needs to be half the size. Setting 50 percent scales every photo proportionally in one pass, with no numbers to look up.</p>
+<p>Percentage mode also keeps mixed batches consistent. Every image shrinks by the same proportion, so the relative sizes across the set stay the same. That matters for a gallery where one photo should stay clearly larger than another.</p>
+<h2 id="keep-the-aspect-ratio-locked">Keep the Aspect Ratio Locked</h2>
+<p>The aspect ratio lock is the single most important control in the tool. With it on, changing the width updates the height in exact proportion, so the picture keeps its natural shape. Faces stay natural, circles stay round, and products keep their true proportions.</p>
+<p>When you drop your first photo into an empty queue, the resizer seeds the width at up to 1200 pixels and computes the matching height for you. That seed is a sensible starting point for web use, and you can override it immediately with your own numbers.</p>
+<p>Only unlock the ratio when a destination demands an exact frame with a different shape. Unlocking reveals Contain, Cover, and Stretch Exact, and you must pick one deliberately. Contain keeps the whole subject with padding, Cover fills the frame by trimming edges, and Stretch distorts to fit.</p>
+<h2 id="use-a-preset">Use a Preset When One Fits</h2>
+<p>Presets are the fastest route to a correct size. One click fills in the exact dimensions for a common destination, so you never type a number or look one up. They are ideal when you resize for social media often and the sizes keep slipping your mind.</p>
+<ul>
+<li>Instagram Post: 1080 by 1080, the square feed size.</li>
+<li>Instagram Story: 1080 by 1920, the tall full-screen size.</li>
+<li>YouTube Thumb: 1280 by 720, the wide thumbnail size.</li>
+<li>Facebook Cover: 851 by 315, the wide and short header size.</li>
+<li>X Header: 1500 by 500, the very wide banner size.</li>
+<li>Full HD: 1920 by 1080, the standard wide screen size.</li>
+</ul>
+<p>Clicking a preset switches the tool to By Pixels mode and fills in those dimensions. You can still adjust them afterwards, so a preset is a starting point rather than a locked choice. If a platform changes its size, tweak the numbers and carry on.</p>
+<p>Presets do not change the shape of your photo by themselves. A wide photo resized to a square preset with the ratio locked will keep its wide shape at the preset width, not become square. To force the square frame, unlock the ratio and choose Cover, or crop the photo square first with the <a href="/image-cropper/">image cropper</a>.</p>
+<h2 id="set-format-and-quality">Set Format and Quality</h2>
+<p>Format and quality decide how the resized file is stored, and they matter as much as the dimensions. Keeping the Original format is the cautious choice: the resized image keeps the format it arrived in, and nothing unexpected happens to transparency or colour.</p>
+<p>Switching format in the same pass saves a second job. A PNG screenshot can become a JPG at 85 percent quality for a blog, or a JPG photo can become a WebP for a faster page. The resizer converts while it scales, so one click does both steps.</p>
+<p>Quality near 85 percent is the sweet spot for most web images. It keeps edges crisp and gradients clean while cutting the file size sharply. Lower quality toward 65 to 75 percent only when the file must be very small, and raise it toward 95 to 100 percent for print preparation.</p>
+<p>If you choose JPG output for a transparent PNG, pick the Matte BG colour first. Transparent areas fill with that colour, white by default, because JPG cannot store transparency. For a logo that must stay transparent, keep PNG or WebP output instead.</p>
+<h2 id="check-the-result">Check the Result Before Downloading</h2>
+<p>Always inspect the resized image before you use it. Click Compare on any finished result card, or click its thumbnail, to open the before-and-after comparison. It shows the original and resized dimensions, the byte savings, and a split slider for checking fine detail.</p>
+<p>Look at text first, because text shows softness before anything else. Then look at faces and edges, where stretching or over-shrinking is easiest to spot. If the image looks soft, the cause is usually an enlargement or a very low quality setting, and both are fixable by re-running with different numbers.</p>
+<p>Check the dimensions in the result card as well as the picture itself. A typo in the width box is easy to make and easy to miss, and the card shows the exact output size. Confirming the numbers takes two seconds and saves re-uploading the image to a platform that rejects the wrong size.</p>
+<h2 id="resize-a-batch">Resize a Batch in One Pass</h2>
+<p>One photo is quick, but a folder of photos is where the online resizer earns its keep. Drop several images into the queue, set one size, click Resize All, and every image is processed with the same settings. There is no need to repeat the steps per photo.</p>
+<p>With the aspect ratio locked, each photo keeps its own proportions while sharing the width limit. Portraits stay portrait and landscapes stay landscape, which is what you want for a blog folder or a product shoot with mixed orientations.</p>
+<p>When two or more images finish, a Batch Ready bar appears with a Download All (ZIP) button. One click packages every resized file into resized_images_compressmypic.zip, which is far quicker than downloading each file separately. For larger folders, the <a href="/blog/how-to-resize-multiple-images/">bulk resizing guide</a> and the <a href="/bulk-image-resizer/">bulk image resizer</a> are built for the job.</p>
+<h2 id="resize-on-your-phone">Resize on Your Phone</h2>
+<p>The resizer works on phones as well as desktops, with touch-friendly sliders and presets. Upload from your photo library, tap a preset, and download the resized image back to your phone. It is handy for fixing a photo right before posting it.</p>
+<p>Phone browsers handle moderate sizes well, but very large canvases can use a lot of memory on a mobile device. Staying within 4000 to 6000 pixels keeps processing quick on a phone, and that range covers every social and web size you are likely to need.</p>
+<p>Pasting works on desktop with Ctrl+V, and on mobile you can share a screenshot into the browser or pick it from the library. Either way, the image is processed locally on the phone, so a slow connection does not slow the resize down.</p>
+<h2 id="resize-for-social-media">Resize for Social Media</h2>
+<p>Social platforms crop unpredictably when an image arrives at the wrong size, so resizing before posting is worth the minute it takes. A square post resized to 1080 by 1080 fills the feed cleanly, while a story resized to 1080 by 1920 fills the screen without black bars.</p>
+<p>Keep the subject centred and away from the edges. Platforms overlay buttons, captions, and profile pictures on top of your image, and anything near an edge can end up hidden. A preset gives you the frame, but your composition decides what survives inside it.</p>
+<p>Resize a copy for each platform rather than reusing one size everywhere. A YouTube thumbnail at 1280 by 720 and an X header at 1500 by 500 are different shapes, and one image cannot serve both without cropping or distortion. Two quick resizes beat one awkward compromise.</p>
+<p>If the same image must go to several platforms, resize from the original each time. Resizing a resized copy compounds the softening, while starting fresh from the original keeps each version as sharp as the source allows.</p>
+<h2 id="resize-for-a-website">Resize for a Website</h2>
+<p>Web images should match their display size. A photo shown at 800 pixels wide does not need 4000 pixels in the file, and the extra pixels only slow the page down. Resizing to the display width, with a little extra for sharp screens, is the simplest speed improvement a site can make.</p>
+<p>Blog images at 1200 pixels wide are a good default, because they look sharp on desktop and stay light enough for mobile readers. Hero images can go to 1920 wide, while thumbnails and avatars can drop to 600 or below. Match each image to its slot on the page.</p>
+<p>Pair the resize with a format change for the best result. WebP at 80 to 85 percent quality is usually the smallest file that still looks clean, and the resizer can convert while it scales. For the full picture on image speed, read <a href="/blog/resize-vs-compress-image/">Resize vs Compress: What Is the Difference?</a>.</p>
+<p>After resizing, check the file size as well as the dimensions. A 1200 pixel JPG at 85 percent quality is typically a sensible weight for a web page, while the same image saved as a PNG can be several times heavier. If the file still feels heavy, lower the quality a little or switch to WebP.</p>
+<h2 id="resize-for-print">Resize for Print</h2>
+<p>Print needs more pixels than a screen, because a printer packs them densely. A 6 by 4 inch print at 300 dots per inch needs 1800 by 1200 pixels, and a larger print needs proportionally more. Resize to the pixel count the print size demands, not to a screen size.</p>
+<p>Keep the quality at 95 to 100 percent for print, and prefer PNG or high-quality JPG output. The file will be larger than a web version, but that is correct: print shows every pixel, and the extra data is what keeps the print sharp.</p>
+<p>Never enlarge a small image to meet a print size and expect it to look sharp. A 800 pixel photo stretched to 1800 pixels for print will look soft on paper, because the detail was never there. For print, start from the highest-resolution original you can find.</p>
+<h2 id="troubleshooting">Troubleshooting Common Problems</h2>
+<p>If the resized image looks stretched, the aspect ratio was unlocked with Stretch Exact, or the width and height were typed independently. Re-run the resize with the lock on, or unlock it and choose Contain or Cover instead. The Compare view will show the distortion clearly.</p>
+<p>If the resized image looks blurry, the usual cause is enlarging a small original or setting the quality too low. Check the original dimensions first: if the source is smaller than the target, shrink the target or accept a softer result. Raising quality back toward 85 percent also helps.</p>
+<p>If the file got bigger instead of smaller, the format is the likely cause. Converting a JPG to PNG while resizing produces a lossless file that can outweigh the original JPEG. Switch the output to WebP or JPG at 80 to 85 percent quality and resize again.</p>
+<p>If a GIF lost its animation, that is expected. Canvas renders the first frame of a GIF when resizing and exports a single still image. To keep an animation while reducing its weight, use the dedicated GIF compressor tool instead of the resizer.</p>
+<h2 id="quick-checklist">Quick Checklist</h2>
+<p>Know the target size, keep the ratio locked, choose the format and quality, check the Compare view, and download. That is the whole process, and it works the same for one photo or a full batch.</p>
+<p>Try it now on the <a href="/image-resizer/">image resizer</a>. For the concepts behind each setting, read <a href="/blog/image-resizer-guide/">What Is an Image Resizer? Complete Guide</a>, and for whole folders, read <a href="/blog/how-to-resize-multiple-images/">How to Resize Multiple Images at Once</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I resize an image to an exact size, like 800 by 600?',
+          answer: 'Open the image resizer, upload your photo, and choose By Pixels mode. Type 800 in the width box and 600 in the height box, keep the aspect ratio locked if the photo already matches that shape, or unlock it and pick Contain or Cover if it does not. Click Resize All and download the result.',
+        },
+        {
+          question: 'How do I make an image smaller without cropping anything?',
+          answer: 'Use By Percentage mode and pick a value below 100 percent, such as 50 percent, with the aspect ratio locked. The whole picture shrinks proportionally and nothing is cut away. Alternatively, use By Pixels with a smaller width and the lock on, which scales the height down automatically.',
+        },
+        {
+          question: 'Can I resize a screenshot I just took?',
+          answer: 'Yes. Copy the screenshot to your clipboard, then press Ctrl+V while on the resizer page to drop it straight into the queue. It loads its dimensions immediately and resizes with your current width, height, or percentage settings. On a phone, upload the screenshot from your photo library instead.',
+        },
+        {
+          question: 'What is the best size for an Instagram post?',
+          answer: 'A square Instagram post is 1080 by 1080 pixels. Click the Instagram Post preset in the resizer and it fills in those dimensions for you. If your photo is not square, crop it square first with the image cropper, or unlock the ratio and choose Cover to fill the square frame.',
+        },
+        {
+          question: 'Why does my resized image look blurry?',
+          answer: 'Blur usually comes from enlarging a small original, because the tool must stretch existing pixels to fill the larger size. It can also come from a very low quality setting. Check the original dimensions, resize down rather than up where possible, and keep quality near 85 percent for web images.',
+        },
+        {
+          question: 'Can I resize the same image to several different sizes?',
+          answer: 'Yes. Resize from the original file each time, rather than resizing a resized copy, so each version stays as sharp as the source allows. Upload the original, set the first size, download it, then change the size and click Resize All again to produce the next version.',
+        },
+      ],
+      readingMinutes: 12,
+    },
+    relatedToolSlugs: ['/bulk-image-resizer', '/image-cropper', '/image-converter'],
+  },
+  {
+    id: 'resize-vs-compress-image',
+    toolSlug: '/image-resizer',
+    categoryId: 'resize',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'resize-vs-compress-image',
+      title: 'Resize vs Compress: What Is the Difference?',
+      description: 'Resize changes pixel dimensions; compress changes how efficiently pixels are stored. Learn what each one does, when to use each, and why doing both gives the smallest file.',
+      body: `
+<p>Resize and compress are the two ways to make an image file smaller, and they work in completely different ways. Resizing removes pixels. Compressing keeps the pixels and stores them more efficiently. People mix the two up constantly, and the confusion leads to images that are still too heavy, or smaller than they needed to be.</p>
+<p>This guide explains what each step does, how they affect quality and file size, and when to use one, the other, or both. It uses the <a href="/image-resizer/">image resizer</a> and the <a href="/">image compressor</a> as the examples, because together they cover the whole job.</p>
+<p>The short answer is that resizing controls how big the picture is, while compressing controls how much space each pixel costs. For the smallest useful file, you usually need both, in that order: resize first, then compress.</p>
+<h2 id="what-resizing-does">What Resizing Does</h2>
+<p>Resizing changes the number of pixels in an image. A 4000 by 3000 photo has 12 million pixels; resizing it to 1200 by 900 leaves about 1 million. The picture shows the same scene, but it is described by far fewer pixels, so the file becomes much smaller.</p>
+<p>Resizing is a one-way step. The pixels you remove are gone, and you cannot get them back from the resized copy. That is why you should always resize from the original file and keep the original safe, so you can produce a larger version later if you need one.</p>
+<p>Resizing also changes how the image can be used. A 1200 pixel image looks sharp on a blog but soft as a full-screen hero, and it cannot be printed large. The dimensions you choose are a decision about where the image will live, not just about file size.</p>
+<p>The visible effect of resizing is mostly about scale, not about artefacts. A well-shrunk image looks clean, because the detail removed would not have been visible at the smaller display size anyway. Only enlarging, which stretches pixels, reliably makes an image look soft.</p>
+<h2 id="what-compressing-does">What Compressing Does</h2>
+<p>Compressing changes how the pixel data is encoded, without changing the pixel count. A 4000 by 3000 photo stays 4000 by 3000 after compression, but its file can become far smaller because the encoder stores the same pixels more cleverly.</p>
+<p>Lossy compression, the kind used for JPG and WebP photos, discards fine detail the eye barely notices, such as subtle colour variation in a smooth sky. The picture looks nearly identical, but the file is much lighter. The quality setting controls how much detail is discarded.</p>
+<p>Lossless compression, used for PNG, keeps every pixel exactly and only removes redundancy in how the data is written. It shrinks files modestly and never changes a single pixel, which is why it suits graphics, logos, and screenshots with sharp edges and flat colour.</p>
+<p>Compression is also partly reversible in a practical sense: a compressed image can be opened, edited, and saved again, although saving a lossy file repeatedly discards a little more detail each time. Keep the original, and compress copies for each destination.</p>
+<h2 id="side-by-side">Resize vs Compress Side by Side</h2>
+<p>The two steps differ on every point that matters. Knowing the differences tells you which one solves the problem in front of you, and which one would be wasted effort.</p>
+<ul>
+<li>What changes: resizing changes pixel dimensions; compressing changes file size at the same dimensions.</li>
+<li>What is lost: resizing discards pixels; lossy compression discards fine detail; lossless compression discards nothing.</li>
+<li>Reversible: neither is truly reversible from the output alone, so keep the original file safe.</li>
+<li>Visible effect: resizing changes the display size; compression changes visible quality at the same display size.</li>
+<li>Best for: resizing fits an image to a destination; compressing lightens an image that is already the right size.</li>
+<li>File size impact: resizing a 4000 pixel photo to 1200 pixels cuts the pixel count to roughly a twelfth; compression then shrinks what remains.</li>
+</ul>
+<p>Neither step is better in general. A photo that is the right size but too heavy needs compression. A photo that is far larger than its display slot needs resizing. A photo that is both too large and too heavy needs both, and the order matters.</p>
+<h2 id="a-worked-example">A Worked Example With Real Numbers</h2>
+<p>Take a camera photo at 4000 by 3000 pixels, which is 12 million pixels. Halving each side to 2000 by 1500 leaves 3 million pixels, a quarter of the original count. Halving again to 1000 by 750 leaves 750,000 pixels, one sixteenth of where you started.</p>
+<p>That arithmetic is why resizing is so powerful for file size. Each halving of the dimensions quarters the pixel count, and the file size roughly follows the pixel count down. A photo resized from 4000 to 1000 pixels wide carries one sixteenth of the pixels, before compression even begins.</p>
+<p>Compression then works on what remains. Saving that 1000 pixel image as a JPG at 85 percent quality discards fine detail the eye will not miss at that size, and the file becomes lighter still. The two reductions multiply: fewer pixels, each stored more cheaply.</p>
+<p>This is also why compressing alone disappoints on oversized photos. A 4000 pixel photo compressed hard is still a 4000 pixel photo, carrying detail for a display size nobody will ever see. Resize it to its display size first, and the compression step has far less work to do.</p>
+<h2 id="how-each-affects-file-size">How Each Step Affects File Size</h2>
+<p>Resizing affects file size through the pixel count. Fewer pixels mean less data to store, whatever the format. The effect is large and predictable: halve each side and the file shrinks dramatically, because the image now contains a quarter of the information.</p>
+<p>Compressing affects file size through the encoding. A JPG at 85 percent quality can be a fraction of the size of the same image at 100 percent, with almost no visible difference. The effect depends on the image: smooth skies compress well, while busy textures and fine detail resist compression.</p>
+<p>Format choice sits between the two steps. A photo saved as PNG after resizing can still be heavy, because PNG stores pixels losslessly. The same resized photo saved as WebP or JPG at 80 to 85 percent quality is usually far lighter, with no visible loss at web sizes.</p>
+<p>When a resized file comes out larger than the original, the format is almost always the cause. Converting a compressed JPG into a lossless PNG while resizing replaces efficient lossy encoding with heavy lossless encoding. Switch the output to WebP or JPG and the file behaves as expected.</p>
+<h2 id="how-each-affects-quality">How Each Step Affects Quality</h2>
+<p>Resizing down is gentle on quality. The detail it removes is detail that would not be visible at the smaller size, so a careful shrink looks clean. Resizing up is harsh, because stretching pixels invents nothing and edges go soft.</p>
+<p>Lossy compression is gentle at moderate settings and harsh at extremes. Quality near 85 percent is visually clean for most photos, while quality below 50 percent starts to show blocky artefacts in smooth areas and halos around sharp edges. The damage grows as the setting drops.</p>
+<p>The two kinds of damage look different, which helps you diagnose a bad result. A soft, slightly blurry image was probably enlarged or shrunk too far. A blocky image with banding in skies or ringing around text was probably compressed too hard. Fix the step that caused the damage.</p>
+<p>To judge quality fairly, view the image at the size it will actually be used. An image that looks imperfect at 200 percent zoom may look flawless at its real display size, and judging it zoomed in leads to keeping files far heavier than they need to be.</p>
+<h2 id="when-to-resize-only">When to Resize Only</h2>
+<p>Resize only when the problem is dimensions, not weight. A photo that must be exactly 1080 by 1080 for a social post, or 1920 by 1080 for a hero image, needs resizing regardless of its file size. The destination demands a size, and only resizing supplies it.</p>
+<p>Resize only also fits images that are already light. A small PNG icon resized to a smaller size is already efficient, and compressing it further would save little. Keep the format, change the dimensions, and move on.</p>
+<p>Finally, resize only when quality must stay untouched. A master file for print preparation is resized to the print pixel count and saved at 95 to 100 percent quality, with no aggressive compression. The dimensions change; the pixels that remain are kept faithfully.</p>
+<h2 id="when-to-compress-only">When to Compress Only</h2>
+<p>Compress only when the dimensions are already right. A 1200 pixel blog image that weighs too much does not need new dimensions, it needs tighter encoding. Lower the quality a little, or switch the format to WebP, and the file shrinks while the display size stays the same.</p>
+<p>Compress only also fits images whose size is fixed by someone else. A marketplace may demand exactly 1000 by 1000 pixels, and resizing further would break the requirement. Compression is the only lever left, so use it: quality near 80 to 85 percent usually meets the limit.</p>
+<p>Screenshots and graphics with sharp text are good compress-only candidates too. Their dimensions are often already small, and their flat colours compress efficiently as PNG or WebP. Resizing them smaller would make the text unreadable, while compression keeps every pixel readable.</p>
+<h2 id="when-to-do-both">When to Do Both</h2>
+<p>Do both whenever an image is oversized and heavy, which is the usual case for camera photos going on the web. A 4000 pixel photo at full quality is wrong in both dimensions, and fixing only one leaves the other problem standing.</p>
+<p>The order is resize first, then compress. Resizing first removes the pixels nobody will see, and compressing second encodes the survivors efficiently. Compressing first and resizing second wastes effort compressing pixels you are about to discard, and can even soften the result.</p>
+<p>Both tools on this site can do their half in one pass. The resizer scales the dimensions and can also switch format and quality, so a single resize can include the compression step. For finer control over file size, follow it with the <a href="/">image compressor</a> or a target-size tool such as the <a href="/compress-image-to-100kb/">compress to 100KB</a> tool.</p>
+<p>For whole folders that need both steps, the <a href="/bulk-image-resizer/">bulk image resizer</a> scales every image and converts format and quality in the same pass. Read <a href="/blog/bulk-image-resizer-guide/">Bulk Image Resizer: Complete Guide</a> for the batch workflow, and <a href="/blog/how-to-resize-multiple-images/">How to Resize Multiple Images at Once</a> for the steps.</p>
+<h2 id="which-order">Which Order: Resize First, Compress Second</h2>
+<p>Resize first, because it decides which pixels survive. Everything after that works on the final pixel set, so no effort is spent on data that will be thrown away. It is the same logic as cropping before resizing: remove first, refine second.</p>
+<p>Compress second, because the quality setting should be judged at the final size. A quality level that looks clean at 4000 pixels may look different at 1000, and judging it at the final dimensions tells you the truth. Set quality last, on the image as it will actually appear.</p>
+<p>There is one exception: if you need a compressed master to store or share before knowing the final sizes, compress a copy at high quality and resize from that later. Keep the true original as well, because every generation loses a little, and the original is the only copy that loses nothing.</p>
+<h2 id="resizing-compressing-and-the-web">Resizing, Compressing, and the Web</h2>
+<p>Web performance cares about both steps, but for different reasons. Resizing matters because a browser downloads every pixel in the file, even pixels too small to see. An oversized hero image slows a page before a single word is read, no matter how well it is compressed.</p>
+<p>Compression matters because it decides how much each downloaded pixel costs. A 1200 pixel image at 100 percent quality can weigh several times more than the same image at 85 percent, with no visible difference on screen. The page loads slower for nothing.</p>
+<p>The fastest pages do both: images resized to their display slots, saved as WebP or JPG near 85 percent quality. That combination is the single biggest image optimisation most sites can make, and it needs no code changes, only a pass through the two tools.</p>
+<p>For a deeper look at web image speed, the <a href="/web-image-optimizer/">web image optimizer</a> and the <a href="/blog/how-to-resize-image/">how-to resize guide</a> cover the practical steps. Measure the page after the change, because the improvement is usually visible immediately.</p>
+<h2 id="resizing-compressing-and-print">Resizing, Compressing, and Print</h2>
+<p>Print reverses the web priorities. Dimensions matter more, because a printer needs enough pixels to fill the page sharply, and compression matters less, because a print shows every pixel you keep. Resize to the pixel count the print size demands, and keep quality high.</p>
+<p>A 6 by 4 inch print at 300 dots per inch needs 1800 by 1200 pixels. Resizing a photo to that count and saving it at 95 to 100 percent quality gives a sharp print, while compressing it hard to save disk space would show artefacts on paper that a screen would hide.</p>
+<p>Never resize a small image up to a print size and expect a sharp result. The pixels were never there, and the print will look soft no matter what the compression setting says. For print, the original file is everything, and both steps should be gentle.</p>
+<h2 id="common-myths">Common Myths</h2>
+<p>One myth says resizing and compressing are the same thing. They are not: one changes the pixel count and the other changes the encoding. An image can be resized without being compressed, and compressed without being resized, and each step solves a different problem.</p>
+<p>Another myth says a smaller file always means a worse image. A photo resized to its display size and saved at 85 percent quality is smaller and looks the same as the original at that size. The file shrank because waste was removed, not because visible quality was sacrificed.</p>
+<p>A third myth says PNG is always better quality than JPG. PNG is lossless, which is better for graphics with sharp edges, but for photos it is simply heavier, not visibly better. At web sizes, a JPG or WebP at 85 percent quality looks the same as a PNG and weighs far less.</p>
+<p>A fourth myth says you should compress first to make resizing faster. Resizing is fast either way, and compressing first wastes effort on pixels you are about to discard. Resize first, compress second, and check the result at its real display size.</p>
+<h2 id="decision-checklist">Decision Checklist</h2>
+<p>Ask two questions about every image. Is it the right size for its destination? Is it light enough for its purpose? The answers tell you which steps to take, and in which order.</p>
+<p>Wrong size and too heavy: resize first, then compress. Right size but too heavy: compress only. Wrong size but already light: resize only. Right size and light enough: do nothing, and spend the time on the next image instead.</p>
+<p>Try the decision on your own photos with the <a href="/image-resizer/">image resizer</a> and the <a href="/">image compressor</a>. For the concepts, read <a href="/blog/image-resizer-guide/">What Is an Image Resizer? Complete Guide</a>, and for whole folders, read <a href="/blog/bulk-image-resizer-guide/">Bulk Image Resizer: Complete Guide</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Does resizing always make the file smaller?',
+          answer: 'Almost always, but not literally always. Resizing to fewer pixels reduces the data to store, so the file usually shrinks a lot. It can grow if you also change format to a heavier one, such as converting a JPG to a lossless PNG while resizing. Keep the output as JPG or WebP to make sure the file shrinks.',
+        },
+        {
+          question: 'Does compressing change image dimensions?',
+          answer: 'No. Compression changes how the pixels are encoded, not how many pixels there are. A 4000 by 3000 photo stays 4000 by 3000 after compression, just stored in a smaller file. If you need different dimensions, you need to resize, not compress.',
+        },
+        {
+          question: 'Which should I do first, resize or compress?',
+          answer: 'Resize first, then compress. Resizing removes the pixels nobody will see, and compressing then encodes the pixels that remain. Compressing first wastes effort on pixels you are about to discard, and the quality setting is best judged at the final dimensions anyway.',
+        },
+        {
+          question: 'Can I resize and compress an image at the same time?',
+          answer: 'Yes. The image resizer lets you change dimensions and also switch output format and quality in the same pass, so one click does both steps. For finer control over the final file size, you can follow that with the image compressor or a target-size tool such as compress to 100KB.',
+        },
+        {
+          question: 'Which saves more space, resizing or compressing?',
+          answer: 'Resizing usually saves more when the image is far larger than its display size, because halving each side quarters the pixel count. Compression saves more when the dimensions are already right and the file is simply stored inefficiently. Together they save far more than either one alone.',
+        },
+        {
+          question: 'Is resizing enough to make a website fast?',
+          answer: 'Resizing helps a lot, because the browser downloads fewer pixels, but it is only half the job. Pair it with compression: resize each image to its display size, then save it as WebP or JPG near 85 percent quality. That combination is the biggest image speed improvement most sites can make.',
+        },
+      ],
+      readingMinutes: 12,
+    },
+    relatedToolSlugs: ['/', '/bulk-image-compressor', '/web-image-optimizer'],
+  },
+  {
+    id: 'bulk-image-resizer-guide',
+    toolSlug: '/bulk-image-resizer',
+    categoryId: 'resize',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'bulk-image-resizer-guide',
+      title: 'Bulk Image Resizer: Complete Guide',
+      description: 'Resize dozens of images at once: Fit Max, Uniform Width, Exact pixels, and Percentage modes, no-upscale protection, presets, and one-click ZIP download — all in your browser.',
+      body: `
+<p>A bulk image resizer changes the pixel dimensions of many images in one pass. Instead of opening each photo, typing a size, and downloading it separately, you drop a whole folder into the queue, choose one strategy, and download every result in a single ZIP file.</p>
+<p>That matters because real image work is rarely one photo. A product shoot is forty photos, a blog folder is twenty, and a photo album is a hundred. The <a href="/bulk-image-resizer/">bulk image resizer</a> turns that repetitive job into a single batch, with the same settings applied consistently to every file.</p>
+<p>This guide explains the four resize strategies, the presets, the no-upscale protection, the format and quality controls, and how to handle mixed batches of portraits and landscapes. It also covers privacy, the ZIP workflow, and the difference from bulk compression.</p>
+<h2 id="what-is-a-bulk-image-resizer">What Is a Bulk Image Resizer?</h2>
+<p>A bulk image resizer applies one resize operation to a whole queue of images. You choose the strategy and the size once, and the tool processes every image in the batch with those settings. Each image keeps its own content and proportions, but all of them end up sized for the same purpose.</p>
+<p>The key idea is consistency. A product catalogue looks professional when every image shares the same width or the same bounding box, and a blog looks tidy when every content image is 1200 pixels wide. Doing that by hand, one image at a time, invites typos and drift; a batch applies the same numbers everywhere.</p>
+<p>Bulk resizing is not the same as resizing one image many times. The tool reads each file, draws it onto a canvas at the new size, and writes a fresh file, just as the single resizer does. The difference is only the queue: dozens of images, one set of settings, one download.</p>
+<p>Everything runs locally in your browser, using HTML5 Canvas on your own device. Your photos are never uploaded to a server, which matters for client catalogues, unreleased products, and family albums. The batch is processed on your machine, and the ZIP is built there too.</p>
+<h2 id="the-four-strategies">The Four Resize Strategies</h2>
+<p>The bulk resizer offers four strategies, and choosing the right one is the main decision in the whole job. Each strategy answers a different question about what should stay the same across the batch, and the wrong choice produces a batch that looks inconsistent.</p>
+<p>Fit Max W by H fits every image inside a bounding box, keeping its own aspect ratio. Uniform Width gives every image the same width and lets the height follow. Exact W by H forces every image to identical pixel dimensions. Percentage scales every image by the same proportion of its own size.</p>
+<p>The strategies differ in what they guarantee. Fit Max guarantees nothing is cropped or stretched. Uniform Width guarantees a shared width. Exact guarantees identical dimensions. Percentage guarantees a consistent scale factor. Pick the guarantee your destination needs.</p>
+<h2 id="fit-max-bounding-box">Fit Max W by H: The Bounding Box</h2>
+<p>Fit Max treats your width and height entries as an invisible box, defaulting to 1200 by 1200 pixels. Every photo shrinks to fit inside that box while keeping its natural aspect ratio, with zero cropping and zero stretching. The box is a limit, not a frame.</p>
+<p>A 4000 by 2000 landscape becomes 1200 by 600 inside a 1200 by 1200 box, because the width hits the limit first. A 2000 by 4000 portrait becomes 600 by 1200, because the height hits the limit first. Both fit, both keep their shape, and neither loses any part of the picture.</p>
+<p>Fit Max is the right strategy for mixed folders where the photos have different orientations. Product shoots, blog folders, and photo albums all mix tall and wide images, and Fit Max handles the mix without you sorting the folder first. It is the default for a reason.</p>
+<p>Use Fit Max whenever the destination accepts varying dimensions inside a maximum size. Most websites, blogs, and marketplaces do: they display the image at its natural shape within a maximum width. The bounding box gives you that maximum, and the images do the rest.</p>
+<h2 id="uniform-width">Uniform Width: One Width for Every Image</h2>
+<p>Uniform Width gives every image in the batch the exact same width, while each height scales proportionally. Nothing is stretched or cropped; tall photos stay tall and wide photos stay wide, but they all share one horizontal measurement.</p>
+<p>This is the strategy for vertical layouts where alignment matters. A newsletter column, a CMS article column, or a responsive gallery stream all display images in a column of fixed width, and images of different widths would look ragged. Uniform Width makes the column straight.</p>
+<p>Choose Uniform Width when the display width is fixed and the height is free. A blog where every content image is 1200 pixels wide is the classic case: the images line up, the text column stays tidy, and each photo keeps its own natural height.</p>
+<h2 id="exact-dimensions">Exact W by H: Identical Dimensions</h2>
+<p>Exact W by H forces every image to the same width and height, whatever shape it started as. It is the strictest strategy, and it is the one to use when the destination demands identical dimensions, such as a product grid where every tile must be exactly the same size.</p>
+<p>Because photos rarely share one shape, Exact needs a fit behaviour to handle the mismatch. Contain fits the full image inside the box with clean padding margins, so nothing is lost. Cover fills every pixel edge to edge by centre-cropping the overhanging sides. Stretch forces the image to the exact pixels directly, distorting it if the shapes differ.</p>
+<p>Contain is the cautious choice for product shots where the edges carry detail. Cover is the tidy choice for grids and thumbnails where a filled frame matters more than the edges. Stretch is rarely the right answer, and should only be used when matching fixed bounds matters more than true proportions.</p>
+<h2 id="percentage-scaling">Percentage: Scale Everything by the Same Factor</h2>
+<p>Percentage mode multiplies every image's own width and height by your chosen factor, from 10 percent to 200 percent, with quick buttons for 25, 50, 75, 100, and 150 percent. Each image scales relative to itself, so the batch keeps its internal size relationships.</p>
+<p>Choosing 50 percent turns a 4000 by 3000 photo into 2000 by 1500 and a 1000 by 800 icon into 500 by 400 in the same pass. The large photo stays large relative to the small one, which is what you want when the folder has a natural size hierarchy.</p>
+<p>Percentage mode is the simplest way to halve a folder that is just too big. There are no dimensions to look up and no bounding box to think about: pick 50 percent, run the batch, and every image is half its former size in each direction, a quarter of its former pixel count.</p>
+<h2 id="quick-presets">Quick Presets for Common Sizes</h2>
+<p>Four quick preset buttons fill in common pixel sizes with one tap. They are starting points you can adjust afterwards, since the pixel fields accept any value from 1 to 12,000 pixels. Presets save typing and stop typos in the numbers that matter most.</p>
+<ul>
+<li>Full HD 1920px: fills 1920 by 1080, the standard wide screen size.</li>
+<li>Blog 1200px: sets 1200 by 1200, the bounding box for blog content images.</li>
+<li>E-commerce 1000 by 1000: the square product size many marketplaces expect.</li>
+<li>Thumbnail 600px: sets 600 by 600, the small preview size for lists and grids.</li>
+</ul>
+<p>These presets cover the most common batch jobs: a video still at Full HD, a blog folder at 1200, a product catalogue at 1000 square, and a thumbnail set at 600. For social sizes, type the dimensions yourself: the fields accept any size, including 1080 by 1080 for a square post.</p>
+<p>For a deeper look at choosing sizes per destination, read <a href="/blog/bulk-resize-presets-social-ecommerce-print/">Bulk Resize Presets: Social, E-commerce and Print</a>. It maps each preset to the platform or shop that expects it, and explains when a preset is wrong for the job.</p>
+<h2 id="no-upscale-protection">No-Upscale Protection</h2>
+<p>The Do not enlarge smaller images option protects tiny files in a mixed batch. With it checked, large photos shrink to the target while small ones stay at their original dimensions, instead of being stretched up to the target size.</p>
+<p>This matters because real folders mix resolutions. A shoot with 4000 pixel DSLR shots and 400 pixel badges would blur the badges badly if they were forced up to 1200 pixels. Leaving the protection on downscales the large photos cleanly and keeps the small files sharp.</p>
+<h2 id="formats-quality-and-matte">Formats, Quality, and Matte Background</h2>
+<p>Batch resizing can convert formats at the same time. Switching Output Format from Original to WebP, JPG, or PNG resizes the dimensions and modernises the format in a single canvas pass, so a folder of mixed formats can come out uniform in both size and type.</p>
+<p>The quality slider runs from 10 percent to 100 percent and applies to JPG and WebP output. Near 85 percent is the sweet spot for web images: crisp edges, clean gradients, and small files. Drop toward 65 to 75 percent only when the files must be very small, and raise toward 95 to 100 percent for print preparation.</p>
+<p>Choosing JPG exposes the Matte BG colour picker, white by default. Any transparent background or soft drop shadow renders over your chosen matte colour before JPEG encoding, because JPG cannot store transparency. For logos that must stay transparent, keep PNG or WebP output instead.</p>
+<p>Keeping Original format preserves transparency for PNG and WebP uploads, and exporting as PNG keeps alpha transparency intact across every resized item. That makes PNG the right output for logos, icons, and graphics with transparent backgrounds in a batch.</p>
+<h2 id="mixed-batches">Handling Mixed Batches</h2>
+<p>Mixed batches are the normal case, not the exception. A product folder mixes landscape hero shots and portrait detail shots. A blog folder mixes wide screenshots and tall phone photos. The bulk resizer is built for that mix, and the strategy you choose decides how it is handled.</p>
+<p>Fit Max is the best default for a mixed batch, because it respects every photo's own shape. Uniform Width works when the display is a fixed column. Exact with Cover works when the grid must be uniform and the edges are expendable. Percentage works when the folder just needs to be smaller, shapes and all.</p>
+<p>Check the results card by card before downloading the ZIP. Each card shows the old and new pixel dimensions, so a portrait that came out wrong is visible immediately. Click any thumbnail or the Compare button to open the before-and-after viewer and drag the divider across fine detail.</p>
+<p>If one image in the batch needs different treatment, remove it with the trash icon on its card and process it separately. The rest of the batch is unaffected, and you can add the corrected file back afterwards. The queue is flexible, not a one-shot commitment.</p>
+<h2 id="zip-workflow">The ZIP Workflow</h2>
+<p>Downloading dozens of files one by one is slow and error-prone, so the bulk resizer packages the batch into one archive. Clicking Download All (ZIP) generates bulk_resized_compressmypic.zip locally in your browser, containing every successfully resized file from the queue.</p>
+<p>The ZIP is built on your device, not on a server, so there is no upload and no waiting for a remote job. The file names inside stay clean and recognisable, which matters when the batch goes straight into a CMS or a marketplace upload form.</p>
+<p>While processing runs, the action button shows the live progress as Resizing (X/Y), with spinning thumbnails on the cards still being processed. You always know how far along a large folder is, and a stalled card is visible rather than hidden behind a spinner.</p>
+<h2 id="privacy-and-local-processing">Privacy and Local Processing</h2>
+<p>Every resize calculation, canvas draw, and ZIP bundle executes locally on your device. Confidential client catalogues, unreleased merchandise, and family albums are never sent to cloud servers, because there is no server involved in the resize at all.</p>
+<p>That local processing has a useful side effect: resizing through a canvas redraws the pixel data without copying the raw EXIF headers. Location tags and camera serials are stripped automatically, so the resized files carry less metadata than the originals. For deliberate metadata removal, the <a href="/remove-image-metadata/">remove metadata</a> tool is the dedicated option.</p>
+<h2 id="bulk-resize-vs-bulk-compress">Bulk Resize vs Bulk Compress</h2>
+<p>Bulk resizing and bulk compression sound similar, but they change different things. The bulk resizer actively changes pixel dimensions and bounding boxes, while the bulk compressor keeps the original pixel widths and heights untouched and reduces file size through compression alone.</p>
+<p>Use the resizer when the images are the wrong size for their destination. Use the compressor when the images are the right size but too heavy. Use both, resizer first and compressor second, when a folder is both oversized and heavy, which is the usual case for camera photos.</p>
+<p>The full comparison of the two ideas is in <a href="/blog/resize-vs-compress-image/">Resize vs Compress: What Is the Difference?</a>. For the compressor itself, read <a href="/blog/bulk-image-compressor-guide/">Bulk Image Compressor: Complete Guide</a> or open the <a href="/bulk-image-compressor/">bulk image compressor</a> directly.</p>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<p>The most common mistake is picking Exact dimensions for a mixed batch without thinking about the fit mode. Exact with Stretch distorts every photo whose shape differs from the target, and the distortion is easy to miss at thumbnail size. Use Fit Max for mixed batches, or Exact with Contain or Cover deliberately chosen.</p>
+<p>The second mistake is turning off no-upscale protection in a mixed folder. Small badges and icons stretched up to the batch target go soft, and the damage is visible in the final grid. Leave the protection on unless the grid genuinely demands uniform dimensions.</p>
+<p>The third mistake is converting a whole batch to PNG. PNG is lossless and heavy for photos, so a batch of product photos converted to PNG can end up larger than the originals. For photos, choose WebP or JPG at 80 to 85 percent quality, and reserve PNG for graphics that need transparency.</p>
+<h2 id="quick-checklist">Quick Checklist</h2>
+<p>Choose the strategy for the destination, set the size or preset, keep no-upscale protection on, pick the format and quality, check the first few results, and download the ZIP. That is the whole workflow, and it scales from five images to fifty.</p>
+<ul>
+<li>Strategy chosen: Fit Max for mixed folders, Uniform Width for columns, Exact for grids, Percentage for simple shrinking.</li>
+<li>Size set: a preset, or pixel values from 1 to 12,000, within the 25 MB per-file limit.</li>
+<li>No-upscale protection on, unless the grid demands uniform dimensions.</li>
+<li>Format and quality set: WebP or JPG near 85 percent for photos, PNG for transparency.</li>
+<li>First results checked in the Compare view, then the ZIP downloaded.</li>
+</ul>
+<p>For the step-by-step run, read <a href="/blog/how-to-resize-multiple-images/">How to Resize Multiple Images at Once</a>, and for sizing per destination, read <a href="/blog/bulk-resize-presets-social-ecommerce-print/">Bulk Resize Presets: Social, E-commerce and Print</a>. Open the <a href="/bulk-image-resizer/">bulk image resizer</a> and try your first batch.</p>
+`,
+      faqs: [
+        {
+          question: 'How many images can I resize at once in a batch?',
+          answer: 'There is no fixed count limit in the tool: you can queue dozens of images in one batch, each up to 25 MB. The practical limit is your device memory, because every image is drawn on a canvas in your browser. Very large batches of huge images may slow down on older phones, so process them in smaller groups if the browser feels sluggish.',
+        },
+        {
+          question: 'Do I need an account or sign-up to resize images in bulk?',
+          answer: 'No. The bulk image resizer runs entirely in your browser with no account, no sign-up, and no upload. Open the page, drop your images in, choose a strategy, and download the ZIP. Nothing about your batch is stored on any server.',
+        },
+        {
+          question: 'Can I resize images in bulk on my phone?',
+          answer: 'Yes. The bulk resizer works on mobile browsers with touch-friendly controls, and you can upload from your photo library. Keep batches modest on a phone, since large canvases use more memory, and stay within 4000 to 6000 pixels per side for the smoothest processing.',
+        },
+        {
+          question: 'Will my original files be changed by bulk resizing?',
+          answer: 'No. The tool reads your originals and writes fresh resized files, leaving the originals untouched on your device. You can re-run the same batch with different settings without re-uploading, and you can always go back to the originals if a resize does not look right.',
+        },
+        {
+          question: 'Can I use different settings for different images in one batch?',
+          answer: 'No, one batch uses one strategy and one set of settings for every image in the queue. If some images need different treatment, run them as a separate batch, or remove the odd ones with the trash icon on their cards and process them on their own afterwards.',
+        },
+        {
+          question: 'What should I do if a photo looks blurry after batch resizing?',
+          answer: 'First check whether a small image was enlarged: make sure Do not enlarge smaller images is checked and re-run the batch. Then check the quality setting, since very low quality softens detail. If the source itself is low resolution, resize to a smaller target rather than enlarging it.',
+        },
+      ],
+      readingMinutes: 12,
+    },
+    relatedToolSlugs: ['/image-resizer', '/bulk-image-compressor', '/bulk-image-converter', '/web-image-optimizer'],
+  },
+  {
+    id: 'how-to-resize-multiple-images',
+    toolSlug: '/bulk-image-resizer',
+    categoryId: 'resize',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-resize-multiple-images',
+      title: 'How to Resize Multiple Images at Once',
+      description: 'Resize multiple images at once: drop a batch in, pick Fit Max, Uniform Width, Exact, or Percentage, set a preset, check the results, and download one ZIP.',
+      body: `
+<p>Resizing twenty photos one at a time is a slow, error-prone job. The same size typed twenty times invites typos, and downloading twenty files one by one wastes the afternoon. Resizing them as a batch takes a few minutes and applies the same settings to every image.</p>
+<p>This guide walks through the process on the <a href="/bulk-image-resizer/">bulk image resizer</a>, from preparing the folder to downloading the ZIP. It covers the four strategies, the presets, the quality settings, and the checks that catch a bad batch before you use it.</p>
+<p>By the end you will know how to resize a product shoot, a blog folder, or a social set in one pass. For the concepts behind each strategy, read <a href="/blog/bulk-image-resizer-guide/">Bulk Image Resizer: Complete Guide</a>.</p>
+<h2 id="resize-a-batch-in-six-steps">Resize a Batch in Six Steps</h2>
+<p>The batch process follows the same six steps every time. Learn them once and every folder after that is routine, whether it holds five product shots or fifty holiday photos.</p>
+<ol>
+<li>Drop multiple images into the batch queue: upload any mix of JPG, PNG, WebP, HEIC, GIF, BMP, or SVG files up to 25 MB each.</li>
+<li>Pick a batch resize strategy: choose Fit Max W by H for mixed orientations, Uniform Width for fixed columns, Exact W by H for strict grids, or Percentage for uniform scaling.</li>
+<li>Set target dimensions or a preset: enter pixels from 1 to 12,000 px, or click Full HD 1920px, Blog 1200px, E-commerce 1000 by 1000, or Thumbnail 600px.</li>
+<li>Configure upscale protection and fit: keep Do not enlarge smaller images checked, or pick Contain, Cover, or Stretch when Exact W by H is selected.</li>
+<li>Choose output format, quality, and matte: keep Original or convert to JPG, PNG, or WebP, set quality from 10 to 100 percent, and pick a matte colour for JPG.</li>
+<li>Run the batch and download the ZIP: review each card's old-to-new dimensions and click Download All (ZIP) to save bulk_resized_compressmypic.zip.</li>
+</ol>
+<h2 id="prepare-your-batch">Prepare Your Batch First</h2>
+<p>Good batches start before the tool opens. Gather the images into one folder and check that they all belong to the same job: one product, one blog post, or one social campaign. A batch that mixes jobs ends up with settings that suit none of them.</p>
+<p>Check the originals before you resize them. A blurry source stays blurry at any size, and a batch cannot fix a bad photo. Remove duplicates and test shots from the folder, because every extra file is another card to check and another file in the ZIP.</p>
+<p>Note the target size before uploading. A product grid wants 1000 by 1000, a blog folder wants 1200 wide, and a thumbnail set wants 600. Writing the target down keeps the job quick and stops you re-running the batch because the size was a guess.</p>
+<h2 id="choose-a-strategy">Choose a Strategy for the Batch</h2>
+<p>Strategy is the main decision, and it depends on the destination. Fit Max fits every image inside a bounding box without cropping or stretching, which suits mixed folders. Uniform Width gives every image the same width for a fixed column. Exact forces identical dimensions for a strict grid.</p>
+<p>Percentage is the simplest choice when the folder just needs to be smaller. Pick 50 percent and every image halves in each direction, keeping the relative sizes across the set. It needs no dimensions and no thought about orientation, which is why it suits a quick tidy-up of a camera folder.</p>
+<p>When you are unsure, start with Fit Max at 1200 by 1200. It is the safest strategy for a mixed batch, and it matches the most common web need: images that fit inside a maximum box without distortion. You can re-run the batch with another strategy without re-uploading.</p>
+<p>Remember what each strategy guarantees. Fit Max guarantees no cropping and no stretching. Uniform Width guarantees a shared width. Exact guarantees identical dimensions. Percentage guarantees a consistent scale. Pick the guarantee your destination actually needs.</p>
+<h2 id="set-a-preset-or-type-the-size">Set a Preset or Type the Size</h2>
+<p>The four quick presets cover the most common batch sizes. Full HD 1920px fills 1920 by 1080 for wide screens, Blog 1200px sets a 1200 by 1200 box for content images, E-commerce 1000 by 1000 sets the square product size, and Thumbnail 600px sets 600 by 600 for previews.</p>
+<p>Presets are starting points, not locked choices. After clicking one, you can adjust either pixel field manually up to 12,000 pixels, so a preset that is close can be tuned to the exact size a platform demands. That flexibility matters when a marketplace asks for an unusual dimension.</p>
+<p>For sizes outside the presets, type the numbers directly. Social sizes such as 1080 by 1080 for a square post or 1080 by 1920 for a story are just pixel values to the tool, and the fields accept any size from 1 to 12,000 pixels on each side.</p>
+<h2 id="set-quality-and-format">Set Quality and Format</h2>
+<p>Format and quality decide how the resized files are stored, and they matter as much as the dimensions. Keeping Original format is the cautious choice: the resized images keep the format they arrived in, and transparency behaves exactly as it did before.</p>
+<p>Converting in the same pass saves a second job. A folder of mixed JPG and PNG files can come out uniformly as WebP, which is smaller for the web, or uniformly as JPG at 85 percent quality for a marketplace. The resizer converts while it scales, so one click does both steps.</p>
+<p>Quality near 85 percent is the sweet spot for photos in a batch. It keeps edges crisp and gradients clean while cutting file sizes sharply. Lower it toward 65 to 75 percent only when the files must be very small, and raise it toward 95 to 100 percent for print preparation.</p>
+<p>If you choose JPG output, remember the Matte BG colour. Transparent areas in PNG logos fill with that colour, white by default, because JPG cannot store transparency. For a batch of logos that must stay transparent, keep PNG or WebP output instead of JPG.</p>
+<h2 id="check-the-results">Check the Results Before Downloading</h2>
+<p>One bad setting applied to forty images is forty bad images, so check the batch before you download it. Each card shows the old and new pixel dimensions, so a wrong size is visible immediately, before the ZIP is even built.</p>
+<p>Click any thumbnail or the Compare button to open the before-and-after viewer. Drag the divider across the image to verify sharp edges, readable text, and true proportions. Check the first few cards carefully, then spot-check the rest, especially any portrait in a mostly landscape batch.</p>
+<p>Look for the three common batch problems: a stretched image from Exact with Stretch, a soft image from an enlargement, and a heavy file from a PNG conversion. All three are fixable by changing one setting and clicking Bulk Resize again, with no need to re-upload the files.</p>
+<h2 id="download-the-zip">Download the ZIP</h2>
+<p>When the results look right, click Download All (ZIP) to save bulk_resized_compressmypic.zip. It packages every successfully resized file from the queue into one archive, built locally in your browser, with clean and recognisable file names inside.</p>
+<p>Open the ZIP before you upload its contents anywhere. Check that every expected file is inside, that the names make sense, and that a spot-checked image opens at the right size. A thirty-second check beats discovering a missing file halfway through a marketplace upload.</p>
+<p>Unzip into a clearly named folder, such as product-photos-1000px, rather than mixing the resized files with the originals. Keeping the two sets apart stops the common mistake of uploading an original by accident, or overwriting a resized file with a larger one.</p>
+<h2 id="mixed-orientations-in-a-batch">Mixed Orientations in a Batch</h2>
+<p>Most real batches mix landscape and portrait photos, and the strategy decides how that mix is handled. Fit Max is the best default: a 4000 by 2000 landscape becomes 1200 by 600 and a 2000 by 4000 portrait becomes 600 by 1200 inside the same 1200 by 1200 box, with nothing cropped.</p>
+<p>Uniform Width also handles a mixed batch gracefully, giving every image the same width while each height follows its own proportions. It suits a blog column or a gallery stream where the width is fixed and the height is free to vary.</p>
+<p>Exact dimensions are the hard case for a mixed batch, because one frame cannot fit two shapes without a compromise. Contain keeps the whole image with padding, Cover fills the frame by trimming edges, and Stretch distorts. Choose deliberately, and check a portrait and a landscape card before downloading.</p>
+<p>If one image in the batch needs different treatment, remove it with the trash icon on its card and process it separately. The remaining images are unaffected, and you can add the corrected file to the ZIP afterwards. The queue bends to the exception instead of breaking the batch.</p>
+<h2 id="resize-a-product-shoot">Resize a Product Shoot</h2>
+<p>A product shoot is the classic bulk resize job: dozens of photos of the same items, all needing the same square size for a marketplace. Use Exact W by H at 1000 by 1000 with Cover, so every tile in the listing grid is identical and filled edge to edge.</p>
+<p>Before running the batch, check that the subject is centred in every shot. Cover trims the overflow from the sides, so a product near the edge of the frame can lose a corner. A quick scan of the thumbnails before the run catches the shots that need re-framing.</p>
+<p>Keep no-upscale protection on for the shoot, so small detail shots are not stretched up to the full 1000 pixels. A close-up taken at 600 pixels should stay 600 pixels and sharp, rather than becoming a soft 1000 pixel image in the grid.</p>
+<p>Download the ZIP, unzip it into a folder named for the listing, and upload from there. Consistent 1000 by 1000 images make the listing look professional, and the batch guarantees that consistency in a way hand-resizing never could.</p>
+<h2 id="resize-a-blog-folder">Resize a Blog Folder</h2>
+<p>A blog folder wants a consistent width rather than identical dimensions. Use Fit Max at 1200 by 1200 or Uniform Width at 1200 pixels, so every content image is 1200 wide and each keeps its own natural height. The article column stays tidy and the images stay true.</p>
+<p>Blog images usually include screenshots, photos, and graphics in one folder, so keep the output format on Original or convert the whole batch to WebP. WebP at 80 to 85 percent quality keeps screenshots readable and photos light, which is exactly what a blog needs.</p>
+<p>Check the screenshots in the batch with extra care. Text in a screenshot shows softness before a photo does, so open the Compare view on one screenshot card and read its smallest text. If it is hard to read, raise the quality or increase the target width.</p>
+<p>After downloading, name the ZIP or the folder after the post, so the images are easy to find when the post is updated months later. A folder called blog-post-images-1200px is self-explanatory in a way that a generic downloads folder never is.</p>
+<h2 id="resize-a-social-set">Resize a Social Set</h2>
+<p>A social set is one image resized for several platforms, or several images resized for one platform. Either way, the batch tool handles it: queue the images, set the size for the first platform, download the ZIP, then change the size and re-run the same queue for the next platform.</p>
+<p>Square posts want 1080 by 1080, stories want 1080 by 1920, and thumbnails want 1280 by 720. Type those numbers into the pixel fields, since the bulk presets cover web and shop sizes rather than social ones. Each re-run produces a fresh ZIP for that platform.</p>
+<p>Keep the subject centred and away from the edges in every image. Platforms overlay buttons and captions on top of your picture, and a face near the edge can end up hidden behind an interface element. A preset gives you the frame, but your composition decides what survives in it.</p>
+<h2 id="resize-on-your-phone">Resize a Batch on Your Phone</h2>
+<p>The bulk resizer works on mobile browsers, and a small batch is easy to run from a phone. Upload from the photo library, pick a strategy and a preset, and download the ZIP back to the phone. It suits fixing a set of photos right before posting them.</p>
+<p>Keep phone batches modest in size and count. Large canvases use more browser memory, and a phone has less of it than a desktop. Staying within 4000 to 6000 pixels per side and a dozen images at a time keeps the batch smooth on mobile.</p>
+<p>If a phone batch feels slow, split it in half and run two smaller batches. The settings stay the same, the results are identical, and each half finishes faster than the whole folder would have. The ZIPs can be combined afterwards, or uploaded separately.</p>
+<h2 id="troubleshooting-batches">Troubleshooting Batches</h2>
+<p>If some images look stretched, the batch used Exact dimensions with Stretch, or the aspect ratio was forced. Re-run with Fit Max, or switch Exact to Contain or Cover, and check a portrait card and a landscape card before downloading again.</p>
+<p>If some images look blurry, a small original was probably enlarged. Make sure Do not enlarge smaller images is checked, then re-run. If the source itself is low resolution, resize to a smaller target rather than enlarging it, and accept the size the source supports.</p>
+<p>If the ZIP is missing a file, check whether that card failed or was removed. A file over the 25 MB per-file limit will not process, and a card deleted with the trash icon is gone from the batch. Re-add the missing file and run the batch again.</p>
+<p>If the batch feels slow, the images may be very large. Splitting the folder into two halves usually fixes it, because each half uses less memory at once. Closing other browser tabs also frees memory for the canvas work.</p>
+<h2 id="repeat-batches-and-workflow">Repeat Batches and Workflow</h2>
+<p>Many batch jobs repeat weekly: new products, new posts, new photos. Keep a note of the settings that worked, such as Fit Max 1200 for the blog and Exact 1000 Cover for the shop. A short note turns the next batch into a two-minute job instead of a fresh decision.</p>
+<p>Adjust settings and re-run without re-uploading when a batch needs a tweak. The files stay in the queue in browser memory, so changing the strategy, the size, or the quality and clicking Bulk Resize again reprocesses everything immediately. That makes experimenting cheap.</p>
+<h2 id="quick-checklist">Quick Checklist</h2>
+<p>Prepare the folder, pick the strategy, set the size, keep no-upscale protection on, check the results, and download the ZIP. That is the whole workflow, and it works for five images or fifty.</p>
+<p>Try it on the <a href="/bulk-image-resizer/">bulk image resizer</a>. For the concepts, read <a href="/blog/bulk-image-resizer-guide/">Bulk Image Resizer: Complete Guide</a>, for single images read <a href="/blog/how-to-resize-image/">How to Resize an Image Online</a>, and for sizing per destination read <a href="/blog/bulk-resize-presets-social-ecommerce-print/">Bulk Resize Presets: Social, E-commerce and Print</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How long does a large batch take to resize?',
+          answer: 'It depends on the size and count of the images and the speed of your device, because all processing happens locally in your browser. A batch of twenty ordinary photos usually finishes in well under a minute. Very large images take longer, and the live progress counter shows Resizing (X/Y) so you can see exactly how far along it is.',
+        },
+        {
+          question: 'What happens if one image in my batch fails?',
+          answer: 'The rest of the batch keeps processing, and only the failed file is left out of the ZIP. Check whether that file is over the 25 MB per-file limit or in an unsupported format, then fix it and add it to a new batch. The progress counter and the result cards show which files finished successfully.',
+        },
+        {
+          question: 'Can I add more photos after a batch has finished?',
+          answer: 'Yes. Drag additional files onto the upload dropzone at any time and they process automatically with your active resize strategy, then join the final Download All (ZIP) summary. You do not need to start a new batch for late arrivals.',
+        },
+        {
+          question: 'Is there a limit on how many times I can resize batches?',
+          answer: 'No. There is no usage limit, no account, and no quota on the number of batches you can run. You can resize as many folders as you like, as often as you like, because everything runs locally in your browser and costs the service nothing per batch.',
+        },
+        {
+          question: 'Do resized images keep their original file names?',
+          answer: 'The resized files keep clean, recognisable names based on the originals, packaged together in the ZIP archive. That makes it easy to match each resized file to its original when you upload them to a shop, a blog, or a social account.',
+        },
+        {
+          question: 'What is the best batch size for a first try?',
+          answer: 'Start with five to ten images, so you can learn the strategy and check the results quickly. Once the settings look right, run the full folder with the same settings. A small trial batch catches a wrong strategy or a bad quality setting before it is applied to fifty images.',
+        },
+      ],
+      readingMinutes: 12,
+    },
+    relatedToolSlugs: ['/image-resizer', '/bulk-image-compressor', '/image-converter'],
+  },
+  {
+    id: 'bulk-resize-presets-social-ecommerce-print',
+    toolSlug: '/bulk-image-resizer',
+    categoryId: 'resize',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'bulk-resize-presets-social-ecommerce-print',
+      title: 'Bulk Resize Presets: Social, E-commerce and Print',
+      description: 'Choose the right bulk resize preset for each destination: social sizes, e-commerce squares, blog widths, thumbnails, Full HD, and print — plus when to type a custom size instead.',
+      body: `
+<p>Every destination wants a different image size, and a preset is a shortcut to the right one. Instead of looking up a platform's numbers and typing them in by hand, you click a preset and the dimensions fill themselves in. The batch then applies that size to every image in the queue.</p>
+<p>This guide maps the bulk resizer's presets and the common social sizes to the places that expect them: social feeds, online shops, blogs, thumbnails, screens, and print. It also explains when a preset is the wrong tool, and a custom size typed by hand is the right one.</p>
+<p>Presets save time, but they do not replace judgement. A preset gives you the frame; your photos, your strategy, and your quality setting decide what the frame contains. Read the guide, then open the <a href="/bulk-image-resizer/">bulk image resizer</a> and set up your batch.</p>
+<h2 id="what-presets-are">What Presets Are</h2>
+<p>A preset is a saved size: a width and height pair that matches a common destination. Clicking it fills in the pixel fields, so there is nothing to type and nothing to mistype. Presets exist because the same sizes come up again and again, and remembering them all is a waste of effort.</p>
+<p>The bulk resizer ships with four quick presets: Full HD 1920px, Blog 1200px, E-commerce 1000 by 1000, and Thumbnail 600px. Each one fills in the pixel fields for its size, and you can adjust either field afterwards, up to 12,000 pixels on a side.</p>
+<p>Presets are starting points, not locked choices. If a marketplace asks for 1200 by 1200 instead of 1000 by 1000, click the E-commerce preset and change the fields. The preset gets you close in one tap, and a small edit finishes the job.</p>
+<p>For sizes the bulk tool does not preset, such as social dimensions, type the numbers directly into the pixel fields. The fields accept any size from 1 to 12,000 pixels, so every destination size is reachable, preset or not.</p>
+<h2 id="social-presets">Social Presets: Feeds, Stories, and Headers</h2>
+<p>Social platforms are the strictest destinations for image size, because they crop unpredictably when an image arrives wrong. A square post at 1080 by 1080 fills the feed cleanly, while a story at 1080 by 1920 fills the phone screen without black bars. Type those sizes into the bulk resizer for a social batch.</p>
+<p>YouTube thumbnails want 1280 by 720, a wide frame that reads at small sizes. Facebook covers want 851 by 315, and X headers want 1500 by 500, both very wide and short. Those shapes are unforgiving: a photo composed for a square will lose its edges in a header frame unless you crop or reframe it first.</p>
+<p>For a social batch, use Fit Max when the images share a shape, and Exact with Cover when the frame must be filled. Cover trims the edges to fill the frame, which suits a feed grid, while Fit Max keeps the whole image, which suits a story where nothing may be lost.</p>
+<h2 id="ecommerce-presets">E-commerce Presets: The Square Product Shot</h2>
+<p>Online shops want consistency above all else. A listing grid where every tile is 1000 by 1000 looks professional, while a grid of mixed sizes looks careless, even when the products are identical in quality. The E-commerce preset exists to enforce that consistency across a whole catalogue.</p>
+<p>Use Exact W by H at 1000 by 1000 with Cover for a product grid. Every tile becomes identical and filled edge to edge, and the grid lines up perfectly. Cover trims the overflow, so check that the product is centred in every shot before running the batch.</p>
+<p>For a single product image on its own page, Fit Max at 1000 by 1000 or 1200 by 1200 is often better. The image keeps its whole shape, the customer sees the full product, and the page still loads quickly. The grid wants Exact; the product page wants Fit Max.</p>
+<p>Watch the quality setting on product batches. Near 85 percent keeps edges crisp and colours true while keeping files light for shoppers on mobile connections. Lower quality saves little and risks making a product look worse than it is, which costs sales rather than saving bandwidth.</p>
+<h2 id="blog-and-web-presets">Blog and Web Presets: The 1200 Pixel Column</h2>
+<p>Blog content images live in a column of fixed width, usually around 1200 pixels, and the Blog preset is built for that column. Use Fit Max at 1200 by 1200 or Uniform Width at 1200 pixels, so every image is 1200 wide and each keeps its own natural height.</p>
+<p>Uniform Width suits a blog column best, because it guarantees the shared width that makes the column straight. Fit Max suits a blog with mixed layouts, where some images are wide and some are tall, and each should fit inside the same maximum box.</p>
+<p>Blog folders usually mix screenshots, photos, and graphics, so keep the output format on Original or convert the whole batch to WebP. WebP at 80 to 85 percent quality keeps screenshot text readable and photos light, which is exactly the combination a blog needs.</p>
+<h2 id="thumbnail-presets">Thumbnail Presets: Small Images That Must Read</h2>
+<p>Thumbnails are small images that must still communicate, and the Thumbnail preset sets 600 by 600 for that job. Product lists, search results, and gallery grids all use thumbnails, and a consistent 600 pixel square keeps the grid tidy.</p>
+<p>A thumbnail has different quality needs from a full image. Fine detail disappears at 600 pixels, so the subject must be large, centred, and high contrast in the frame. A wide landscape shrunk to a 600 square becomes a thin strip of unreadable detail, so crop the subject square before resizing.</p>
+<p>Use Exact with Cover for thumbnail grids, so every tile is filled and identical. Contain leaves padding that makes some thumbnails look smaller than their neighbours, which breaks the grid. Cover trims the edges, but for a thumbnail the edges are rarely where the subject lives.</p>
+<h2 id="full-hd-presets">Full HD: The Wide Screen Size</h2>
+<p>Full HD at 1920 by 1080 is the standard wide screen size, and the preset fills it in with one tap. It suits hero images, video stills, presentation slides, and any image that must fill a desktop screen without softening.</p>
+<p>A 1920 wide image is larger than a blog image needs, so do not use Full HD for content images inside an article. The extra pixels slow the page down for no visible benefit, because the display slot is only 1200 pixels wide. Match the preset to the slot, not to the largest size available.</p>
+<p>For a batch of video stills or screenshots destined for a wide display, Full HD with Fit Max is the right combination. The images keep their wide shape, fit inside the 1920 by 1080 box, and stay sharp on a full screen. Check one still in the Compare view before downloading the ZIP.</p>
+<h2 id="print-sizes">Print Sizes: When Presets Do Not Apply</h2>
+<p>Print has no presets in the bulk resizer, because print sizes are set by inches and dots per inch rather than by screen conventions. A 6 by 4 inch print at 300 dots per inch needs 1800 by 1200 pixels, and a larger print needs proportionally more. Type those numbers into the pixel fields by hand.</p>
+<p>Keep the quality at 95 to 100 percent for print batches, and prefer PNG or high-quality JPG output. Print shows every pixel, and the extra data is what keeps the print sharp. A web preset applied to a print job produces a soft print, because the pixel count is too low.</p>
+<p>Never enlarge a small image to meet a print size. A 800 pixel photo stretched to 1800 pixels for print will look soft on paper, because the detail was never in the file. For print, start from the highest-resolution originals you have, and keep no-upscale protection on.</p>
+<p>If a batch mixes print and web destinations, run two batches with different settings. One batch at 1800 pixels and high quality for print, and another at 1200 pixels and 85 percent quality for the web. Two quick batches beat one compromise that serves neither destination.</p>
+<h2 id="custom-sizes">Custom Sizes: When to Type the Numbers</h2>
+<p>Presets cover the common cases, but many destinations publish their own exact sizes. A marketplace may demand 1200 by 1200, a newsletter may want 600 pixels wide, and a client may specify 2048 by 1152 for a banner. Those are custom sizes, and the pixel fields accept all of them.</p>
+<p>Type a custom size when the destination gives you an exact number. Guessing with the nearest preset risks a rejection or an awkward crop on upload, while typing the published size guarantees the image arrives exactly as specified. The fields accept any value from 1 to 12,000 pixels.</p>
+<p>Custom sizes also suit unusual shapes. A panoramic banner, a tall infographic, or a square avatar all have dimensions no preset covers, and the only way to reach them is to type the numbers. Keep the aspect ratio locked while typing, unless the shape itself must change.</p>
+<h2 id="mixed-orientations-and-presets">Mixed Orientations and Presets</h2>
+<p>Presets set a size, but they do not solve the shape problem in a mixed batch. A 1000 by 1000 preset applied to a folder of landscapes and portraits produces different results depending on the strategy, and choosing the strategy is as important as choosing the preset.</p>
+<p>Fit Max with a square preset is the safe combination for a mixed folder. Every image fits inside the 1000 by 1000 box, keeps its own shape, and nothing is cropped. The batch is consistent in its maximum size, even though the individual dimensions vary.</p>
+<p>Exact with Cover and a square preset is the strict combination for a grid. Every image becomes exactly 1000 by 1000, filled edge to edge, with the overflow trimmed. It looks uniform, but it costs the edges of any photo whose shape differs from square.</p>
+<p>Check one portrait and one landscape card before downloading the ZIP. The two orientations show the strategy's effect most clearly, and a problem visible in those two cards is a problem across the whole batch. Fix the strategy, not the preset, when the shapes look wrong.</p>
+<h2 id="quality-and-format-per-preset">Quality and Format per Preset</h2>
+<p>Each preset has a natural quality and format to pair with it. Social and web presets suit WebP or JPG near 85 percent quality, which keeps files light for fast loading. E-commerce presets suit JPG at 85 percent, which keeps product colours true and files small for shoppers.</p>
+<p>Thumbnail presets can use slightly lower quality, near 80 percent, because fine detail is invisible at 600 pixels anyway. The savings are small per file but add up across a catalogue of hundreds of thumbnails, and the visible difference is nil.</p>
+<p>Print sizes need the opposite treatment: quality at 95 to 100 percent and PNG or high-quality JPG output. The file will be larger, but that is correct for print, where every pixel is visible and compression artefacts show on paper.</p>
+<p>Transparency follows the format, not the preset. A logo batch resized to any preset keeps its transparency only with PNG or WebP output, or with Original format for PNG and WebP sources. Choosing JPG for a logo batch fills the transparent areas with the matte colour, whatever the preset says.</p>
+<h2 id="when-not-to-use-a-preset">When Not to Use a Preset</h2>
+<p>Do not use a preset when the destination gives you an exact size that differs from it. A preset that is close is still wrong if the platform rejects the image or crops it badly. Type the published size instead, and treat the preset as a starting point you have outgrown.</p>
+<p>Do not use a square preset for a batch of wide images that must stay wide. Forcing a wide photo into a square frame with Exact and Cover throws away a third of the picture, and with Stretch it distorts the subject. Use Fit Max with a width limit instead, and let the images keep their shape.</p>
+<p>Do not use the Full HD preset for images that will be displayed small. A 1920 pixel image in a 600 pixel slot wastes bandwidth and slows the page, with no visible benefit. Match the preset to the display slot, and save Full HD for heroes and full-screen images.</p>
+<h2 id="preset-mistakes">Preset Mistakes to Avoid</h2>
+<p>The most common preset mistake is applying one preset to every destination. A single image resized to 1080 by 1080 cannot serve a square post, a tall story, and a wide thumbnail at once. Resize from the original for each destination, with the preset that matches it.</p>
+<p>The second mistake is forgetting that presets set dimensions, not quality. A 1000 by 1000 product image saved as PNG is still heavy, and a 1200 pixel blog image saved at 50 percent quality is still soft. Set the format and quality alongside the preset, every time.</p>
+<p>The third mistake is using a preset as a substitute for checking the result. Presets fill in numbers, but they cannot see your photos. Open the Compare view on a portrait and a landscape card, confirm the shapes and the sharpness, and only then download the ZIP.</p>
+<p>The fourth mistake is resizing a resized copy to a new preset. Each generation loses a little quality, and the loss compounds across presets. Always go back to the original file for each new size, so every preset version is as sharp as the source allows.</p>
+<h2 id="preset-cheat-sheet">Preset Cheat Sheet</h2>
+<p>Keep this list near your workspace. It covers the sizes this guide recommends for each destination, and the strategy that pairs with each one.</p>
+<ul>
+<li>Instagram Post: 1080 by 1080, Exact with Cover for a filled square feed tile.</li>
+<li>Instagram Story: 1080 by 1920, Fit Max so nothing in the tall frame is lost.</li>
+<li>YouTube Thumb: 1280 by 720, Fit Max for a wide thumbnail that reads small.</li>
+<li>Facebook Cover: 851 by 315, Exact with Cover for the wide header frame.</li>
+<li>X Header: 1500 by 500, Exact with Cover for the very wide banner frame.</li>
+<li>E-commerce product: 1000 by 1000, Exact with Cover for a uniform grid.</li>
+<li>Blog content: 1200 wide, Uniform Width or Fit Max for a tidy column.</li>
+<li>Thumbnail: 600 by 600, Exact with Cover for identical small tiles.</li>
+<li>Full HD hero: 1920 by 1080, Fit Max for a sharp wide screen image.</li>
+<li>Print 6 by 4 inch: 1800 by 1200 at 300 dots per inch, typed by hand.</li>
+</ul>
+<p>For the hands-on batch steps, read <a href="/blog/how-to-resize-multiple-images/">How to Resize Multiple Images at Once</a>, and for the full tool guide, read <a href="/blog/bulk-image-resizer-guide/">Bulk Image Resizer: Complete Guide</a>. For single images, read <a href="/blog/how-to-resize-image/">How to Resize an Image Online</a> and use the <a href="/image-resizer/">image resizer</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Which preset should I use for a product listing?',
+          answer: 'Use the E-commerce preset at 1000 by 1000 with Exact dimensions and Cover, so every tile in the listing grid is identical and filled edge to edge. That consistency makes the shop look professional. For a single product page rather than a grid, Fit Max at 1000 or 1200 pixels is often better, because it keeps the whole product visible.',
+        },
+        {
+          question: 'Can I use a social preset for a whole batch at once?',
+          answer: 'Yes. Type the social size, such as 1080 by 1080 for a square post, into the pixel fields and run the batch. The bulk resizer presets cover web and shop sizes, but the fields accept any size from 1 to 12,000 pixels, so every social size is reachable. Resize from the originals for each platform separately.',
+        },
+        {
+          question: 'What preset is best for blog images?',
+          answer: 'The Blog preset at 1200 pixels, using Fit Max or Uniform Width, is the best default for blog content images. It makes every image 1200 pixels wide while each keeps its own natural height, so the article column stays tidy. Hero images are the exception: use Full HD at 1920 pixels wide for those.',
+        },
+        {
+          question: 'Should thumbnails use the same preset as full images?',
+          answer: 'No. Thumbnails need their own size, usually 600 by 600 with Exact dimensions and Cover, so every tile in a list or grid is identical. A full image resized to 1200 pixels is too large for a thumbnail slot and slows the page down. Run a separate thumbnail batch from the originals.',
+        },
+        {
+          question: 'Do presets change the image quality or format?',
+          answer: 'No. A preset only fills in the width and height fields; it does not touch format or quality. You still need to choose the output format and the quality slider yourself. For web presets, WebP or JPG near 85 percent quality is the usual pairing, and for print sizes, quality near 95 to 100 percent.',
+        },
+        {
+          question: 'What size should I use for a printed photo?',
+          answer: 'Print sizes are typed by hand, not chosen from a preset. A 6 by 4 inch print at 300 dots per inch needs 1800 by 1200 pixels, and a larger print needs proportionally more. Keep quality at 95 to 100 percent, use PNG or high-quality JPG, and never enlarge a small image to reach a print size.',
+        },
+      ],
+      readingMinutes: 12,
+    },
+    relatedToolSlugs: ['/image-resizer', '/bulk-image-converter', '/web-image-optimizer', '/image-cropper'],
+  },
   // BATCH3-PRIVACY (6 articles)
   // BATCH3-AI-TOOLS (3 articles)
 ];

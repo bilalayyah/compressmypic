@@ -14083,5 +14083,53 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://compressmypic.online/blog/image-resizer-guide/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blog/image-resizer-guide/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blog/image-resizer-guide/" />
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/blog/how-to-resize-image/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blog/how-to-resize-image/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blog/how-to-resize-image/" />
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/blog/resize-vs-compress-image/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blog/resize-vs-compress-image/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blog/resize-vs-compress-image/" />
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/blog/bulk-image-resizer-guide/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blog/bulk-image-resizer-guide/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blog/bulk-image-resizer-guide/" />
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/blog/how-to-resize-multiple-images/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blog/how-to-resize-multiple-images/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blog/how-to-resize-multiple-images/" />
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/blog/bulk-resize-presets-social-ecommerce-print/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blog/bulk-resize-presets-social-ecommerce-print/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blog/bulk-resize-presets-social-ecommerce-print/" />
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <!-- /Blog (Batch 2) -->
 </urlset>
