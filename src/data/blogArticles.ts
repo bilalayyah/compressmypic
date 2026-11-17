@@ -15819,7 +15819,1629 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     },
     relatedToolSlugs: ['/image-color-picker', '/favicon-generator', '/add-background-to-image'],
   },
-  // BATCH3-CREATE (15 articles)
+  {
+    id: 'favicon-generator-guide',
+    toolSlug: '/favicon-generator',
+    categoryId: 'create',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'favicon-generator-guide',
+      title: 'Favicon Generator: Complete Guide',
+      description: 'Everything about favicons: what they are, which files a complete pack needs, how to build one from your logo, and how to install it on any website.',
+      body: `
+<p>A favicon is the small icon that appears in a browser tab next to your page title. It is often the first visual detail a visitor notices, and it follows your site into bookmarks, history lists, and mobile home screens.</p>
+<p>Most visitors never think about favicons consciously, yet a missing or blurry one makes a site feel unfinished. A crisp icon signals care and professionalism before anyone reads a single word of your content.</p>
+<p>This guide explains what a favicon generator does, which files a complete icon pack contains, and how to turn a logo into a finished pack with the free tool on CompressMyPic. Every step happens in your browser, with no account and no upload to a server.</p>
+<h2 id="what-is-a-favicon">What Is a Favicon?</h2>
+<p>A favicon is a small image file that represents a website in the browser interface. It shows up in the tab bar, in bookmark lists, in the history page, and in search results on some browsers. The name comes from "favorite icon", because early browsers showed it next to bookmarked pages.</p>
+<p>The classic favicon file is favicon.ico, a special container format that can hold several icon sizes inside one file. Modern browsers also accept PNG icons, and Apple and Android devices use their own larger icon files. A complete setup therefore includes several files rather than a single image.</p>
+<p>At 16 by 16 pixels, a favicon is tiny. That size shapes every design decision. Fine detail disappears, thin lines vanish, and small text becomes unreadable. A good favicon is a bold, simple mark that survives being shrunk to the size of a grain of rice.</p>
+<p>Many sites use a simplified version of their logo for the favicon. A wordmark with a long name becomes a single letter or a compact symbol. A detailed illustration becomes a flat shape with strong contrast. The goal is recognition, not decoration.</p>
+<h2 id="why-every-website-needs-a-favicon">Why Every Website Needs a Favicon</h2>
+<p>A website without a favicon shows a generic globe or blank document icon in the tab. Visitors who keep many tabs open navigate by icons, and a blank tab is harder to find again. Your site becomes invisible in a crowded tab bar.</p>
+<p>Favicons also appear in bookmarks and in the browser history. When a reader saves your page and returns days later, the icon is the visual cue that identifies your site among dozens of saved links. A recognizable icon brings people back.</p>
+<p>On mobile devices, the favicon feeds the icon used when someone adds your site to their home screen. Apple devices use the Apple Touch Icon, and Android devices use the icons listed in the web manifest. Without those files, the home screen shortcut gets an ugly screenshot or a generic letter.</p>
+<p>Search engines sometimes show a favicon beside your pages in results. It is a small branding surface that costs nothing once it is set up. A missing favicon is not a ranking penalty, but a present one makes your listing easier to spot.</p>
+<h2 id="what-the-favicon-generator-creates">What the Favicon Generator Creates</h2>
+<p>The <a href="/favicon-generator/">favicon generator</a> turns one uploaded logo or graphic into a complete icon pack. It builds a multi-size favicon.ico file, Apple Touch icons, Android Chrome icons at 192 by 192 and 512 by 512 pixels, a site.webmanifest file, and a ready-to-paste HTML snippet.</p>
+<p>Everything is packaged into a single ZIP download, so you get all the files at once. You can also download individual files such as favicon.ico or apple-touch-icon.png on their own if you only need one of them. There is no watermark, no account, and no cost.</p>
+<p>The favicon.ico file it produces is a genuine multi-frame ICO binary, not a renamed PNG. That matters because older browsers and some tools expect a real ICO container. Inside the file are several sizes, so the browser picks the sharpest one for each context.</p>
+<p>The generator works entirely in your browser. Your logo never leaves your device, which matters when the artwork is an unreleased brand mark or a client logo under embargo. There is nothing to upload and nothing stored on a server.</p>
+<h2 id="choosing-a-source-image">Choosing a Source Image</h2>
+<p>A square PNG or SVG logo gives the sharpest results. SVG is ideal because it scales cleanly to every size without losing edges, while a high-resolution PNG works well as long as it starts large. The tool accepts PNG, SVG, JPG, WebP, and HEIC files up to 20 MB.</p>
+<p>Start with the largest version of your logo you can find. A 1024 by 1024 pixel source shrinks cleanly to 16 pixels, while a 64 pixel source stretched upward turns soft and blurry. Large sources give the generator more pixels to work with at every size.</p>
+<p>Logos with transparent backgrounds usually look best in browser tabs, because the tab color shows through around the mark. A solid background can work too, especially for app icons, but transparency keeps the icon flexible across light and dark browser themes.</p>
+<p>If your logo is rectangular, the generator fits it into a square canvas rather than stretching it. That keeps proportions honest, but it can leave empty space on the sides. A square version of your mark, or a cropped detail, usually fills the tiny canvas better.</p>
+<h2 id="padding-corner-radius-and-background-fill">Padding, Corner Radius and Background Fill</h2>
+<p>Padding controls the breathing room between your logo and the edge of the icon canvas. A logo that touches the edges looks cramped at 16 pixels, so a little padding keeps the mark readable. Too much padding shrinks the logo into a dot, so the balance matters.</p>
+<p>Corner radius rounds the corners of the icon background. A small radius softens the shape, while a large radius turns the icon into a circle. Rounded icons suit app-style marks, while square icons suit formal or technical brands.</p>
+<p>Background fill sets the color behind a transparent logo. A solid fill makes an icon stand out on any tab color, which is useful when the logo itself is thin or pale. A transparent fill keeps the icon light and lets the browser theme show through.</p>
+<p>These three controls update every size in the pack at once. Change the padding once and the 16 pixel tab icon, the 180 pixel Apple icon, and the 512 pixel Android icon all follow. That consistency is what makes the pack feel like one design instead of many separate files.</p>
+<h2 id="light-and-dark-tab-previews">Light and Dark Tab Previews</h2>
+<p>The generator shows your icon on both light and dark browser tab backgrounds. This preview matters because a dark logo disappears on a dark tab, and a light logo washes out on a light tab. Many favicons look fine in one theme and invisible in the other.</p>
+<p>Check both previews before you download. If your logo is dark, add a light background fill or a pale outline so it survives dark mode. If your logo is light, a dark fill or a stronger color keeps it visible on light tabs.</p>
+<p>Some designers add a subtle background shape behind the mark specifically to solve this problem. A filled rounded square in a brand color gives the icon a consistent backdrop in every theme, and it doubles as a recognizable app icon shape.</p>
+<p>The preview is not decoration. It catches the most common favicon failure, which is an icon that looks perfect in the design tool and vanishes in a real browser. A thirty-second check saves a round of re-uploading later.</p>
+<h2 id="the-html-snippet-and-file-placement">The HTML Snippet and File Placement</h2>
+<p>After generating the pack, you upload the files to your website and add a short snippet of HTML to the head section of your pages. The snippet tells the browser where each icon lives, including the Apple Touch Icon and the web manifest. The generator provides this snippet ready to paste.</p>
+<p>The usual place for the files is the root folder of your website, the same folder as your homepage. Browsers look for favicon.ico at the root by default, so placing it there covers even pages that forget the snippet. The other files go in the same folder unless your snippet points elsewhere.</p>
+<p>The snippet works with plain HTML sites and with frameworks such as React and Next.js. In a framework, the head section lives in a template or layout file rather than in each page. Add the links once in that shared file and every page inherits them.</p>
+<p>Keep the filenames exactly as generated. Renaming a file without updating the snippet breaks the link, and the browser falls back to the default icon. If you move the files into a subfolder, update every path in the snippet to match.</p>
+<h2 id="apple-touch-icons-and-android-icons">Apple Touch Icons and Android Icons</h2>
+<p>Apple devices use a 180 by 180 pixel Apple Touch Icon when a visitor adds your site to their home screen. Apple ignores transparency in this icon and fills transparent areas with black, so a solid background works better here than a transparent one. A logo on a brand-colored square is the safe choice.</p>
+<p>Android devices read the icons from the web manifest, using 192 by 192 for the home screen and 512 by 512 for the splash screen and install prompt. Both sizes are included in the pack, so Android users get a crisp icon at every step.</p>
+<p>These larger icons matter because they are displayed much bigger than a tab favicon. A mark that reads well at 16 pixels may look empty at 512 pixels, and a detailed logo may look great large but muddy small. The generator renders the same design at every size so you can judge both extremes.</p>
+<p>Test the home screen icon on a real phone after installing the pack. Add the site to the home screen, look at the icon beside your other apps, and check that it does not look washed out or cropped. A quick phone test catches problems the desktop preview cannot show.</p>
+<h2 id="the-site-webmanifest-file">The site.webmanifest File</h2>
+<p>The site.webmanifest is a small JSON file that describes your site as an installable web app. It lists the site name, the theme color, and the icon files with their sizes and purposes. Browsers read it to build home screen shortcuts and install prompts.</p>
+<p>The generator writes this file for you, including the 192 and 512 pixel icons and the correct size labels. You do not need to hand-write JSON or remember the manifest format. Upload the file beside your icons and link it in the HTML snippet.</p>
+<p>The theme color in the manifest tints the browser toolbar on Android when your site is open. Pick a color that matches your brand, and the browser chrome blends with your design. It is a small detail that makes a site feel polished on mobile.</p>
+<p>If you change your site name or brand colors later, update the manifest and regenerate the pack. The manifest is plain text, so a small edit is enough for a name change, but regenerating keeps the icons and the manifest in sync.</p>
+<h2 id="common-favicon-mistakes">Common Favicon Mistakes</h2>
+<p>The most common mistake is uploading a detailed logo with small text. At 16 pixels, a tagline becomes gray noise and a thin wordmark becomes a smudge. Simplify the mark first, then generate the pack. If the logo cannot be simplified, use a single initial or a symbol from it.</p>
+<p>Another mistake is using a low-resolution source. A 32 pixel image stretched to 512 pixels for the Android icon looks soft and amateur. Always start from the largest logo file you have, ideally a vector SVG or a PNG of at least 512 pixels.</p>
+<p>A third mistake is forgetting the Apple Touch Icon background. A transparent logo on an iPhone home screen gets black corners that look like a rendering bug. Give the Apple icon a solid fill, even if the tab favicon stays transparent.</p>
+<p>Finally, many sites skip the manifest entirely and wonder why Android shows a screenshot instead of an icon. The manifest is the file Android reads, so without it there is no proper home screen icon. Include it in the pack upload.</p>
+<h2 id="updating-a-favicon-without-cache-trouble">Updating a Favicon Without Cache Trouble</h2>
+<p>Browsers cache favicons aggressively, sometimes for weeks. After uploading a new pack, your own browser may keep showing the old icon even though the files changed. This is normal caching, not a broken upload.</p>
+<p>The simplest fix is a hard refresh of the page, or clearing the browser cache for the site. In Chrome, a hard refresh with Ctrl and Shift and R often forces the new icon. If that fails, open the favicon URL directly and refresh that page.</p>
+<p>For visitors, the new icon appears when their cache expires or when they visit on a fresh device. You can speed this up by adding a version query to the icon links, such as favicon.ico with a version number appended. The browser treats it as a new file and fetches it immediately.</p>
+<p>When you rebrand, regenerate the whole pack rather than replacing one file. A partial update leaves mismatched sizes, with the new mark in the tab and the old mark on the home screen. A full regeneration keeps every size consistent.</p>
+<h2 id="quick-reference">Quick Reference: Favicon Pack Checklist</h2>
+<p>Start from a square PNG or SVG logo of at least 512 pixels. Set padding so the mark breathes, choose a background fill that survives both light and dark tabs, and check both previews before downloading.</p>
+<p>Upload the ZIP contents to your site root, paste the HTML snippet into your shared head template, and include the manifest for Android. Then test the tab icon, the bookmark icon, and the home screen icon on a real phone.</p>
+<p>For the step-by-step walkthrough, read <a href="/blog/how-to-create-favicon/">How to Create a Favicon</a>, and for every size explained, read <a href="/blog/favicon-sizes-explained/">Favicon Sizes Explained: 16×16 to 512×512</a>. To build your pack now, open the <a href="/favicon-generator/">favicon generator</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What is a favicon?',
+          answer: 'A favicon is a small icon that represents a website in browser tabs, bookmarks, history, and home screen shortcuts. The classic file is favicon.ico, but a complete setup also includes PNG icons, an Apple Touch Icon, and a web manifest for Android.',
+        },
+        {
+          question: 'Do I need a favicon if my site is small?',
+          answer: 'Yes. Even a one-page site shows a blank or generic icon in the tab without one, which looks unfinished. A favicon costs nothing to add, helps visitors find your tab again, and makes bookmarks and home screen shortcuts recognizable.',
+        },
+        {
+          question: 'Can I use a photo as a favicon?',
+          answer: 'You can, but photos rarely work well. A photo shrunk to 16 by 16 pixels becomes an unrecognizable blur. A simple logo, symbol, or single letter with strong contrast reads far better at favicon size than any photograph.',
+        },
+        {
+          question: 'What is the difference between favicon.ico and a PNG favicon?',
+          answer: 'The ICO format is a container that can hold several icon sizes in one file, and browsers have supported it for decades. A PNG favicon holds one size only, so it needs separate files for each size. A complete pack uses ICO for the tab and PNG files for larger contexts.',
+        },
+        {
+          question: 'How long does it take to create a favicon pack?',
+          answer: 'A few minutes. Upload your logo, adjust padding, corner radius, and background fill, check the light and dark previews, and download the ZIP. Installing the files on your site takes a few more minutes of uploading and pasting the HTML snippet.',
+        },
+        {
+          question: 'Will a favicon help my site rank in search results?',
+          answer: 'Not directly. A favicon is not a ranking factor, but some search results display it next to your listing, which can make your result easier to spot and click. The real value is branding and usability, not search position.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-color-palette-extractor', '/image-resizer', '/image-converter'],
+  },
+  {
+    id: 'how-to-create-favicon',
+    toolSlug: '/favicon-generator',
+    categoryId: 'create',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-create-favicon',
+      title: 'How to Create a Favicon',
+      description: 'Make a favicon from your logo in minutes: prepare the source image, set padding and background, preview light and dark tabs, and install the pack on your site.',
+      body: `
+<p>Creating a favicon sounds technical, but it takes only a few minutes with the right tool. You upload a logo, adjust a handful of settings, download a pack of files, and add a short snippet to your website. This guide walks through each step in order.</p>
+<p>You need just two things before you start: a logo file and access to your website files. A square PNG or SVG logo works best, and the largest version you have gives the sharpest result. If you only have a JPG, that works too.</p>
+<p>The <a href="/favicon-generator/">favicon generator</a> does the whole job in your browser. Your logo never leaves your device, there is no account to create, and the finished pack downloads as a ZIP. Follow the steps below and your site will have a complete icon set.</p>
+<h2 id="step-1-prepare-your-logo">Step 1: Prepare Your Logo</h2>
+<p>Open your logo file and check that it is square, or close to it. A square canvas uses the tiny favicon space best, while a wide rectangular logo leaves empty bands above and below the mark. If your logo is wide, crop a square detail or use a single-letter version.</p>
+<p>Check the resolution. A source of 512 by 512 pixels or larger shrinks cleanly to every favicon size. A 64 pixel source stretched to 512 pixels for Android looks soft, so always use the biggest file you have. An SVG file is ideal because it has no fixed resolution at all.</p>
+<p>Simplify the artwork if it has small text or fine detail. A tagline under a wordmark will not survive at 16 pixels, so remove it for the favicon version. Keep the boldest element: the symbol, the initial, or the strongest shape.</p>
+<p>If your logo has a transparent background, keep it that way for now. Transparency gives you the most options in the generator, because you can add a background fill later if the previews show you need one. A JPG has no transparency, so a PNG or SVG is the better starting point.</p>
+<h2 id="step-2-upload-to-the-generator">Step 2: Upload to the Generator</h2>
+<p>Open the favicon generator and drop your logo onto the upload zone, or click to choose the file from your device. You can also paste a copied image straight from your clipboard with Ctrl and V, which is handy when the logo is open in another app.</p>
+<p>The tool accepts PNG, SVG, JPG, WebP, and HEIC files up to 20 MB. Most logos are far smaller than that limit, so size is rarely a problem. If your file is a phone photo in HEIC format, it uploads and converts without any extra step.</p>
+<p>As soon as the file loads, the generator builds a preview of the icon pack. You will see the mark rendered at several sizes, so you can judge how it reads small and large. If the logo looks wrong at 16 pixels, fix the source image now rather than later.</p>
+<p>If you uploaded a rectangular logo, the tool fits it inside the square canvas without stretching. Check whether the result looks too small. If it does, go back and prepare a squarer version of the mark before continuing.</p>
+<h2 id="step-3-set-padding-and-shape">Step 3: Set Padding and Shape</h2>
+<p>Padding is the space between your logo and the edge of the icon. Start with a small amount, enough that the mark does not touch the canvas edge. A logo pressed against the border looks cramped, especially at tab size where every pixel counts.</p>
+<p>Increase the padding if the logo has fine edges or thin strokes. Thin details need breathing room or they merge with the edge at small sizes. Decrease it if the mark is bold and simple, since a bold shape can fill more of the canvas safely.</p>
+<p>Corner radius rounds the corners of the icon background. A slight rounding softens the look without changing the character of the mark. A full rounding turns the icon into a circle, which suits avatars and app-style icons but can crop a square logo awkwardly.</p>
+<p>Watch the previews as you adjust these controls. The changes apply to every size in the pack at once, so one adjustment updates the tab icon, the Apple icon, and the Android icons together. Stop when the smallest preview still reads clearly.</p>
+<h2 id="step-4-choose-a-background-fill">Step 4: Choose a Background Fill</h2>
+<p>Background fill is the color behind a transparent logo. Leaving it transparent keeps the icon light and lets the browser tab color show through. That works well for dark, bold logos on light tabs.</p>
+<p>Add a solid fill when the logo is pale, thin, or light-colored. A white or brand-colored square behind the mark gives it contrast on any tab. Pick a fill that matches your brand, since this color becomes part of the icon identity.</p>
+<p>Apple Touch Icons ignore transparency and fill empty areas with black, so a solid fill is the safe choice for the home screen icon. If your tab favicon stays transparent but the Apple icon needs a fill, the generator handles both from the same settings.</p>
+<p>Check the fill against both the light and dark tab previews. A fill that looks great on a light tab can look heavy on a dark tab, and the reverse. The right fill keeps the mark visible in both themes without overpowering it.</p>
+<h2 id="step-5-check-the-previews">Step 5: Check the Previews</h2>
+<p>The generator shows your icon on light and dark browser tabs. Look at the dark preview first if your logo is dark, and at the light preview first if your logo is light. The preview where your logo color matches the tab color is where problems appear.</p>
+<p>Zoom your attention to the smallest preview, the 16 pixel tab icon. That is the size visitors see most often, and it is where detail dies. If you can still recognize the mark at that size, the favicon works. If it becomes a blob, simplify the source or increase the padding.</p>
+<p>Also glance at the largest preview, the 512 pixel Android icon. A mark that reads well small can look empty or lost at large size, especially if it is a single thin letter. The large preview shows whether the design holds up on a home screen.</p>
+<p>Do not skip this step. The preview catches the two most common failures: an icon that vanishes in dark mode and a mark that turns to mush at tab size. Fixing them now takes seconds, while fixing them after upload takes a full round of cache clearing.</p>
+<h2 id="step-6-download-the-pack">Step 6: Download the Pack</h2>
+<p>When the previews look right, download the ZIP. Inside you will find favicon.ico, the Apple Touch Icon, the Android icons at 192 and 512 pixels, the site.webmanifest file, and the HTML snippet. Everything is named and ready to upload.</p>
+<p>You can also download single files if you only need one of them. Grabbing just favicon.ico is enough for a quick fix on an old site, while the full ZIP is the right choice for a new site that needs the complete set.</p>
+<p>Unzip the pack on your computer and look at the files before uploading. Check that the icon sizes are present and that the manifest file is included. A quick glance now prevents a missing-file surprise after you have edited your site.</p>
+<p>Keep a copy of the ZIP somewhere safe. If you rebrand or lose the site files later, the ZIP is the fastest way to restore the icon set. It is also the source for regenerating the pack with a tweak instead of starting from scratch.</p>
+<h2 id="step-7-upload-the-files">Step 7: Upload the Files</h2>
+<p>Upload the icon files to the root folder of your website, the same folder that holds your homepage. Browsers look for favicon.ico at the root by default, so placing it there covers pages that do not include the snippet.</p>
+<p>Use your hosting file manager, FTP client, or deployment tool to copy the files. The files are small, so the upload takes seconds. Confirm that each file landed in the root and not inside a subfolder by mistake.</p>
+<p>If your site builder does not expose the root folder, look for a favicon or site icon setting in its dashboard. Many builders accept an uploaded icon and handle the file placement themselves. Upload the 512 pixel PNG in that case, since builders usually resize from a large source.</p>
+<p>Do not rename the files unless you also update the HTML snippet to match. A renamed file with an old snippet path is the same as a missing file, and the browser will show the default icon instead.</p>
+<h2 id="step-8-add-the-html-snippet">Step 8: Add the HTML Snippet</h2>
+<p>Open the HTML snippet that came with the pack. It contains link tags for the favicon, the Apple Touch Icon, and the web manifest. Copy the whole block exactly as provided, without editing the paths.</p>
+<p>Paste the snippet inside the head section of your pages, near the other meta and link tags. On a plain HTML site, add it to every page or to a shared header template. In React or Next.js, add it once to the layout or document file that every page shares.</p>
+<p>Save the file and reload your site in the browser. The tab icon should change to your new favicon. If it does not, the old icon may be cached, which is normal and covered in the next step.</p>
+<p>Check the snippet paths if the icon still does not appear after a cache clear. A path pointing to a subfolder that does not exist is the usual cause. The snippet assumes the files sit in the site root, so a different location needs updated paths.</p>
+<h2 id="step-9-clear-the-cache-and-test">Step 9: Clear the Cache and Test</h2>
+<p>Browsers cache favicons for a long time, so your own browser may keep showing the old icon after the upload. Do a hard refresh with Ctrl, Shift, and R, or open the favicon URL directly and refresh that page to force a fresh fetch.</p>
+<p>Test the icon in a second browser or a private window, where the cache is empty. A private window shows what a new visitor sees, which is the honest test. If the icon appears there, the upload worked and only your main browser cache is stale.</p>
+<p>Add the site to your phone home screen and check the Apple or Android icon. The home screen icon is the largest version, so it shows flaws the tab preview hides. If it looks right on the phone, the pack is complete.</p>
+<p>Bookmark the page and look at the bookmark list. The favicon should appear beside the saved title. A missing icon in bookmarks usually means the snippet path is wrong or the file did not upload.</p>
+<h2 id="step-10-when-to-regenerate">Step 10: When to Regenerate</h2>
+<p>Regenerate the pack whenever your logo changes, even slightly. A new wordmark, a new brand color, or a refined symbol all deserve a fresh pack, because a stale favicon quietly contradicts the new branding everywhere it appears.</p>
+<p>Regenerate the whole pack rather than replacing a single file. Swapping only favicon.ico leaves the old mark on home screens and in the manifest, which creates a confusing mix of old and new icons across devices.</p>
+<p>If you change your site name or theme color, update the manifest too. The generator writes a fresh manifest with each pack, so regenerating keeps the name, colors, and icons in sync without hand-editing JSON.</p>
+<p>Keep the old ZIP until the new pack is verified live. If the new upload has a problem, the old files restore the previous icon in seconds. Once the new icon is confirmed in the tab, on the phone, and in bookmarks, the old pack can go.</p>
+<h2 id="quick-reference">Quick Reference: Favicon Creation Checklist</h2>
+<p>Prepare a square PNG or SVG logo of at least 512 pixels, with small text removed. Upload it to the generator, set padding and corner radius, choose a background fill, and check the light and dark previews at the smallest size.</p>
+<p>Download the ZIP, upload the files to your site root, paste the snippet into the shared head template, and test in a private window and on your phone. Clear the cache if the old icon lingers.</p>
+<p>For the full background on every file in the pack, read the <a href="/blog/favicon-generator-guide/">Favicon Generator: Complete Guide</a>, and for the size-by-size breakdown, read <a href="/blog/favicon-sizes-explained/">Favicon Sizes Explained: 16×16 to 512×512</a>. Start now with the <a href="/favicon-generator/">favicon generator</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What logo file should I use to create a favicon?',
+          answer: 'A square PNG or SVG logo of at least 512 pixels works best. SVG is ideal because it scales cleanly to every size. A JPG also works, but it has no transparency, so a PNG or SVG gives you more control over the background.',
+        },
+        {
+          question: 'Why does my new favicon not show up right away?',
+          answer: 'Browsers cache favicons aggressively, sometimes for weeks. Do a hard refresh, open the favicon URL directly and refresh it, or test in a private window. The new icon appears for other visitors when their cache expires, or immediately if you add a version number to the icon links.',
+        },
+        {
+          question: 'Where do I put the favicon files on my website?',
+          answer: 'Upload them to the root folder of your website, the same folder as your homepage. Browsers look for favicon.ico at the root by default. Then paste the HTML snippet into the head section of your pages so the browser can find the Apple icon and the manifest too.',
+        },
+        {
+          question: 'Do I need to add the HTML snippet to every page?',
+          answer: 'Add it once to the shared head template or layout file that every page uses. On a plain HTML site that means the header include; in React or Next.js it means the layout or document file. You do not need to paste it into each page by hand.',
+        },
+        {
+          question: 'Can I create a favicon from a photo on my phone?',
+          answer: 'Yes, the generator accepts HEIC photos from iPhones as well as JPG and PNG files. A photo rarely makes a good favicon at 16 pixels, though, so crop to a bold detail or a single strong shape first for the best result.',
+        },
+        {
+          question: 'What if my logo is not square?',
+          answer: 'The generator fits a rectangular logo inside the square canvas without stretching it, but the result can look small with empty space on the sides. For the best result, prepare a square version of your mark, or crop to the most recognizable detail before uploading.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-cropper', '/image-resizer', '/image-color-palette-extractor'],
+  },
+  {
+    id: 'favicon-sizes-explained',
+    toolSlug: '/favicon-generator',
+    categoryId: 'create',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'favicon-sizes-explained',
+      title: 'Favicon Sizes Explained: 16×16 to 512×512',
+      description: 'Every favicon size and what it is for: 16×16 tab icons, 32×32 retina, 180×180 Apple Touch, 192×192 and 512×512 Android, and how the ICO container ties them together.',
+      body: `
+<p>A favicon is not one image. It is a family of images at different sizes, each serving a different place in the browser or on a device. The smallest is 16 by 16 pixels for the tab, and the largest is 512 by 512 pixels for Android install screens.</p>
+<p>Understanding which size goes where saves you from the two classic failures: a blurry tab icon and a pixelated home screen icon. This guide walks through every size in a complete pack, from 16 pixels to 512 pixels, and explains what each one does.</p>
+<p>All of these sizes come from a single upload in the <a href="/favicon-generator/">favicon generator</a>. You never need to export each size by hand. Knowing what the pack contains, though, helps you check that nothing is missing and design a mark that works at every scale.</p>
+<h2 id="the-16-pixel-tab-icon">The 16 Pixel Tab Icon</h2>
+<p>Sixteen by sixteen pixels is the size a favicon was born at, and it is still the size most people see most often. It sits in the browser tab next to the page title, a square about the width of a capital letter.</p>
+<p>At this size, only the boldest shapes survive. A single letter, a solid symbol, or a high-contrast shape reads clearly. Thin lines disappear, gradients flatten into a single tone, and small text becomes noise. Design for this size first and everything else follows.</p>
+<p>Every browser uses the 16 pixel icon in the tab bar, and most also use it in bookmark menus and history lists. It is the hardest working size in the pack, seen hundreds of times a day by a regular visitor.</p>
+<p>When you check your icon, look at the 16 pixel preview before anything else. If the mark is recognizable there, it will be recognizable everywhere. If it is a blur there, no larger size can save it.</p>
+<h2 id="the-32-pixel-retina-tab-icon">The 32 Pixel Retina Tab Icon</h2>
+<p>Thirty-two by thirty-two pixels is the retina version of the tab icon. High-density screens pack twice as many physical pixels into the same space, so browsers request the 32 pixel icon to keep the tab mark sharp on modern laptops and desktops.</p>
+<p>On a standard screen, the 32 pixel icon is downscaled to 16 and looks the same as the smaller file. On a retina screen, it renders at full sharpness, with edges that look crisp instead of soft. The difference is subtle but visible side by side.</p>
+<p>The ICO container holds both the 16 and 32 pixel versions, so the browser picks the right one for the screen it is running on. You do not need to choose between them or serve them separately.</p>
+<p>A mark designed for 16 pixels works fine at 32, because the larger size only adds sharpness. The reverse is not true: a mark that needs 32 pixels of detail to be understood will fall apart when it is squeezed to 16.</p>
+<h2 id="the-48-pixel-shortcut-icon">The 48 Pixel Shortcut Icon</h2>
+<p>Forty-eight by forty-eight pixels is the size Windows uses for desktop shortcuts and taskbar pins. When someone drags your site to the desktop or pins it to the taskbar, the 48 pixel icon is the one that appears.</p>
+<p>It also appears in some browser bookmark managers and in the address bar on older browsers. It is a middle size: large enough to show a little more detail than the tab icon, but still small enough that simplicity wins.</p>
+<p>The ICO file includes the 48 pixel size alongside the smaller ones, so desktop shortcuts get a proper icon instead of a stretched 16 pixel file. A stretched icon at this size looks soft and unprofessional, which is why the dedicated size exists.</p>
+<p>Most sites never think about this size, and most visitors never notice it consciously. It matters on the day someone pins your site to their taskbar and sees it every morning beside their other apps.</p>
+<h2 id="the-64-and-96-pixel-sizes">The 64 and 96 Pixel Sizes</h2>
+<p>Sixty-four and 96 pixel icons serve the in-between contexts: larger bookmark tiles, browser new-tab pages, and some extension interfaces. They are the sizes that appear when the browser has more room than a tab but less than a home screen.</p>
+<p>At 64 pixels, a logo can carry a little more character than at 16. A two-tone mark or a simple symbol with a background shape reads well. At 96 pixels, the icon starts to look like a small app tile rather than a tab mark.</p>
+<p>These sizes live inside the ICO container too, so they cost nothing extra to ship. The browser selects the closest size to what it needs and scales the rest of the way, which keeps edges clean.</p>
+<p>You rarely need to think about these sizes when designing, because anything that works at 16 and at 180 will work at 64 and 96. They exist to fill the gaps so no context ever gets a badly scaled icon.</p>
+<h2 id="the-180-pixel-apple-touch-icon">The 180 Pixel Apple Touch Icon</h2>
+<p>One hundred eighty by 180 pixels is the Apple Touch Icon, used when an iPhone or iPad user adds your site to the home screen. It is the first size where your icon is displayed large enough to be judged as a design rather than a tab marker.</p>
+<p>Apple ignores transparency in this icon and fills transparent areas with black. A logo with a transparent background gets black corners that look like a mistake, so a solid background fill is the standard choice here. A brand-colored square behind the mark is the safe and attractive option.</p>
+<p>Apple also adds its own rounded-corner mask to home screen icons, so the corners of your 180 pixel image are hidden behind the system shape. Design with that in mind: keep important detail away from the corners, since the mask will clip them.</p>
+<p>The Apple Touch Icon is a PNG file, separate from the ICO container. It is linked from the HTML snippet with a dedicated link tag, and the browser fetches it only when the user adds the site to the home screen.</p>
+<h2 id="the-192-pixel-android-icon">The 192 Pixel Android Icon</h2>
+<p>One hundred ninety-two by 192 pixels is the Android home screen icon, listed in the web manifest. When an Android user adds your site to the home screen, this is the icon that appears beside their apps.</p>
+<p>Android applies a mask to the icon depending on the device and launcher, so the safe area matters. Keep the mark centered with padding around it, because a launcher may crop the edges into a circle, a squircle, or a rounded square.</p>
+<p>The 192 pixel icon is also used for the install prompt and for the site in the app drawer on some devices. It needs to look like an app icon, not a shrunken logo: bold, centered, and readable at a glance.</p>
+<p>Unlike the Apple icon, the Android icon can use transparency, but a solid background is still the safer choice. A solid fill guarantees the icon looks the same on every launcher and wallpaper, while a transparent mark can clash with a busy background.</p>
+<h2 id="the-512-pixel-android-icon">The 512 Pixel Android Icon</h2>
+<p>Five hundred twelve by 512 pixels is the largest size in the pack, used for the Android splash screen and the install prompt. When a user opens your installed web app, this icon appears on the splash screen while the page loads.</p>
+<p>At this size, every flaw in the source image is visible. A low-resolution logo stretched to 512 pixels looks soft, and a JPEG with compression artifacts shows them plainly. This is the size that punishes a small source file most severely.</p>
+<p>Start from a source of at least 512 pixels, or an SVG, so the largest icon renders as sharply as the smallest. A vector source is ideal here because it scales to 512 without any loss at all.</p>
+<p>The 512 pixel icon is also the file many site builders ask for when you set a site icon in a dashboard. Uploading this PNG gives the builder a large, clean source to resize for its own needs.</p>
+<h2 id="how-the-ico-container-works">How the ICO Container Works</h2>
+<p>The ICO format is a container that holds several images of different sizes in a single file. A typical favicon.ico contains the 16, 32, 48, and sometimes 64 pixel versions, each stored as its own image inside the container.</p>
+<p>When a browser needs an icon, it opens the ICO file, looks at the sizes available, and picks the one closest to what it needs. This is why one file can serve the tab, the bookmark menu, and the desktop shortcut without separate downloads.</p>
+<p>The ICO file the generator produces is a genuine multi-frame ICO binary. That distinction matters because a renamed PNG with an ICO extension fools some browsers but fails in others, and fails entirely in tools that validate the format.</p>
+<p>Modern browsers can also use a PNG favicon directly, which is why the pack includes PNG files too. The ICO file remains the default because of its long history: browsers request favicon.ico at the site root even when no snippet is present.</p>
+<h2 id="which-size-does-what">Which Size Does What: A Quick Map</h2>
+<p>The tab icon is 16 pixels, with 32 pixels for retina screens. Desktop shortcuts and taskbar pins use 48 pixels. Larger bookmark tiles and new-tab pages use 64 and 96 pixels. The Apple home screen uses 180 pixels, Android uses 192 for the home screen and 512 for the splash screen and install prompt.</p>
+<p>Each size is a different viewing distance. The tab icon is seen at a glance among many tabs, the home screen icon is seen deliberately among apps, and the splash screen icon is seen alone while a page loads. The design must work at all three distances.</p>
+<p>The pack covers every context with five files: the ICO container, the Apple Touch PNG, the two Android PNGs, and the manifest that points to them. Nothing else is needed for a complete setup.</p>
+<p>If you ever find a size missing from a pack, regenerate rather than patching it in by hand. A hand-added file can carry the wrong dimensions or the wrong format, while a regenerated pack keeps every size consistent with the same source.</p>
+<h2 id="designing-for-every-size">Designing for Every Size</h2>
+<p>Design for the smallest size first. If the mark reads at 16 pixels, it will read at every larger size, because larger sizes only add room and sharpness. If the mark needs 180 pixels to be understood, it will fail in the tab where it is seen most.</p>
+<p>Use one bold shape, one or two colors, and strong contrast. A single initial in a brand color on a solid background is the most reliable favicon design there is. A detailed illustration with five colors is the least reliable.</p>
+<p>Test the mark at 16, 180, and 512 pixels before you ship it. Those three sizes represent the tab, the home screen, and the splash screen. If the design survives all three, the sizes in between will take care of themselves.</p>
+<p>When a logo cannot be simplified enough, use a detail of it rather than the whole thing. A symbol from the logo, a single letter, or the most recognizable shape often makes a better favicon than the full wordmark squeezed into a square.</p>
+<h2 id="checking-your-pack">Checking Your Pack</h2>
+<p>After generating, open the ZIP and confirm the ICO file, the Apple Touch PNG, the 192 and 512 pixel Android PNGs, and the manifest are all present. A missing file usually means an interrupted download, so regenerate if anything is absent.</p>
+<p>Install the pack on your site, then check the tab icon, the bookmark icon, and the home screen icon on a real phone. Each check tests a different size, and together they cover the whole range from 16 to 512 pixels.</p>
+<p>Clear the browser cache if the old icon lingers, and test in a private window to see what a new visitor sees. A private window has an empty cache, so it shows the current files rather than a stored copy.</p>
+<p>If one size looks wrong while the others look right, the source image is usually the cause. A low-resolution source fails at 512 pixels, and a detailed source fails at 16. Regenerate from a better source rather than editing a single output file.</p>
+<h2 id="quick-reference">Quick Reference: Favicon Sizes at a Glance</h2>
+<p>Tab: 16 pixels, retina 32. Desktop shortcut: 48. Bookmark tiles: 64 and 96. Apple home screen: 180. Android home screen: 192. Android splash and install: 512. The ICO file holds the small sizes, PNG files hold the large ones, and the manifest lists the Android icons.</p>
+<p>Design for 16 pixels first, start from a source of at least 512 pixels or an SVG, and give the Apple icon a solid background. Test the tab, the bookmark, and the home screen before you call the job done.</p>
+<p>For the full guide, read the <a href="/blog/favicon-generator-guide/">Favicon Generator: Complete Guide</a>, and for the step-by-step build, read <a href="/blog/how-to-create-favicon/">How to Create a Favicon</a>. Generate your pack with the <a href="/favicon-generator/">favicon generator</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What is the smallest favicon size I need?',
+          answer: 'Sixteen by sixteen pixels is the smallest size, used for the browser tab. It is also the hardest to design for, because only the boldest shapes survive at that size. Always check the 16 pixel preview before downloading a pack.',
+        },
+        {
+          question: 'Why do I need a 512 by 512 icon for a tiny tab favicon?',
+          answer: 'The 512 pixel icon is not for the tab. Android uses it for the splash screen and the install prompt, where the icon is displayed large. A pack without it shows a stretched or missing icon on Android, even though the tab icon works fine.',
+        },
+        {
+          question: 'Is a PNG favicon enough, or do I need an ICO file?',
+          answer: 'A PNG works in modern browsers, but the ICO file is still the default: browsers request favicon.ico at the site root even without a snippet, and the ICO container holds several sizes in one file. A complete pack includes both, so every browser and context is covered.',
+        },
+        {
+          question: 'What size should my source logo be for a favicon?',
+          answer: 'At least 512 by 512 pixels, or an SVG with no fixed resolution. The largest icon in the pack is 512 pixels, so a smaller source gets stretched and looks soft. A large source or a vector file keeps every size sharp.',
+        },
+        {
+          question: 'Why does the Apple Touch Icon need a solid background?',
+          answer: 'Apple fills transparent areas of the home screen icon with black, which looks like a rendering error. A solid brand-colored background avoids the black corners entirely and makes the icon look like a deliberate app icon.',
+        },
+        {
+          question: 'Do all browsers use the same favicon sizes?',
+          answer: 'Mostly, but not exactly. All browsers use 16 and 32 pixels for tabs, while Apple and Android each have their own home screen sizes. A complete pack covers the shared sizes plus the platform-specific ones, so you do not need to track each browser separately.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-resizer', '/image-dimensions-checker', '/image-converter'],
+  },
+  {
+    id: 'add-background-to-image-guide',
+    toolSlug: '/add-background-to-image',
+    categoryId: 'create',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'add-background-to-image-guide',
+      title: 'Add Background to Images: Complete Guide',
+      description: 'Put any photo or transparent cutout on a solid, gradient, or blurred background: how the tool works, which mode to choose, and how to frame images for social and shops.',
+      body: `
+<p>A photo with its background removed is only half finished. A transparent cutout needs something behind it before it can be used, and a plain photo often needs a frame that fits the place it will be published. Adding a background is the step that turns a cutout into a finished image.</p>
+<p>The <a href="/add-background-to-image/">Add Background to Image</a> tool places any photo or transparent PNG on a solid color, a two-tone gradient, or a blurred version of itself. It runs entirely in your browser, so your images never leave your device.</p>
+<p>This guide explains the three background modes, the framing controls, and the export options, and shows when each choice is the right one. Whether you sell products, post on social media, or design logos, the background is part of the image.</p>
+<h2 id="what-adding-a-background-means">What Adding a Background Means</h2>
+<p>Adding a background means placing a foreground image onto a new backdrop. The foreground can be a transparent PNG cutout, a product photo, a logo, or a screenshot. The backdrop can be a flat color, a gradient, or a blurred copy of the photo itself.</p>
+<p>The result is a single finished image with the foreground and the backdrop baked together. It can be saved as a JPG or PNG and used anywhere a normal image works: a shop listing, a social post, a presentation slide, or a website banner.</p>
+<p>This is different from removing a background, which takes something away. Adding a background builds the scene the foreground sits in. The two steps often work as a pair: remove the messy original background first, then add a clean one that suits the purpose.</p>
+<p>The tool does not remove backgrounds itself. If your photo still has its original background, use the background remover first to create a transparent cutout, then bring that cutout here to place it on a new backdrop.</p>
+<h2 id="the-three-background-modes">The Three Background Modes</h2>
+<p>Solid Color mode fills the canvas with a single flat color. It is the cleanest choice for product photos, logos, and app screenshots, because nothing competes with the foreground. White is the standard for online shops, while a brand color turns a plain cutout into a branded image.</p>
+<p>Gradient mode blends two colors across the canvas at an angle you choose. It adds depth without adding clutter, which suits social posts, story frames, and promotional graphics. A subtle gradient feels designed, while a strong one can overpower a quiet foreground.</p>
+<p>Blurred Photo mode fills the canvas with a blurred copy of the foreground image itself. It is the classic fix for a photo that does not match the frame shape: the blurred edges fill the empty space while the sharp original sits in the middle. It looks natural because the colors come from the photo.</p>
+<p>Each mode has its own controls. Solid Color offers quick swatches and a custom picker, Gradient offers two colors and an angle, and Blurred Photo offers a blur radius. Switching modes keeps your foreground and framing, so you can compare looks quickly.</p>
+<h2 id="solid-color-backgrounds">Solid Color Backgrounds</h2>
+<p>A solid background is the safest choice when the foreground must be the only thing the eye notices. Product listings, profile pictures, and logo sheets all benefit from a flat backdrop that adds no distraction.</p>
+<p>White is the default for e-commerce because marketplaces expect it and because it makes products look clean and honest. A white backdrop also photographs well in thumbnails, where a busy background would turn to noise at small size.</p>
+<p>Brand colors work when the image is part of a campaign rather than a listing. A cutout on a brand-colored square reads as a designed graphic, and a set of them in the same color forms a consistent feed. Keep the color consistent across the set or the effect falls apart.</p>
+<p>Dark backgrounds suit premium products and dramatic photos. A dark backdrop makes light products glow and gives the image a studio feel. Watch the edges, though: a dark background can swallow a dark product if the contrast is too low.</p>
+<h2 id="gradient-backgrounds">Gradient Backgrounds</h2>
+<p>A gradient runs from one color to another across the canvas, and the angle control decides the direction of the blend. A diagonal gradient feels dynamic, a vertical gradient feels calm, and a horizontal gradient feels wide and open.</p>
+<p>Gradients work best when the two colors are close relatives, such as two blues or a blue and a teal. Close colors blend smoothly and feel intentional. Colors from opposite sides of the wheel can clash, so use a strong contrast only when the design calls for drama.</p>
+<p>Social graphics are the natural home for gradients. A story frame, a quote card, or a promotional post gains energy from a gradient that a flat color cannot give. The foreground stays sharp while the backdrop adds movement.</p>
+<p>Keep the gradient subtle when the foreground is detailed. A busy product photo on a loud gradient fights for attention, and the product loses. Let the gradient sit quietly behind a detailed foreground and speak up only behind a simple one.</p>
+<h2 id="blurred-photo-backgrounds">Blurred Photo Backgrounds</h2>
+<p>Blurred Photo mode solves the aspect ratio problem. A portrait photo posted as a square leaves empty bands on the sides, and a landscape photo posted as a story leaves bands above and below. Filling those bands with a blurred copy of the photo looks deliberate instead of empty.</p>
+<p>The blur radius control sets how soft the backdrop is. A light blur keeps the shapes of the original visible, which suits travel and lifestyle photos. A heavy blur melts the backdrop into pure color and texture, which suits portraits where the face must dominate.</p>
+<p>The mode adds a subtle tint over the blurred background, which helps the sharp foreground stand out from its own blurred copy. Without the tint, the edges of the foreground can blend into the backdrop and the image loses definition.</p>
+<p>This mode works on any photo, not just cutouts. A full photo with its own background can be framed this way too, with the blurred copy filling the frame around the sharp original. It is the fastest way to reformat a photo for a different shape.</p>
+<h2 id="canvas-aspect-ratios">Canvas Aspect Ratios</h2>
+<p>The canvas aspect ratio decides the final shape of the image. The tool offers presets for the common shapes: square for feeds and listings, 16:9 for widescreen, and 4:5 for portrait posts. Each preset matches a place the image will be published.</p>
+<p>Square is the most versatile shape. It works in feeds, listings, and thumbnails, and it crops predictably everywhere. A square canvas with a centered foreground is the safe default when you are not sure where the image will end up.</p>
+<p>The 16:9 widescreen shape suits banners, video thumbnails, and website headers. A foreground centered on a wide canvas reads as a hero image, with room for text on either side. It is a poor choice for a feed post, where it shrinks to a thin strip.</p>
+<p>The 4:5 portrait shape suits social feeds that reward tall images, because a tall image takes up more screen space as someone scrolls. A product on a 4:5 canvas with a clean background gets more attention than the same product on a square.</p>
+<h2 id="image-scale-and-margins">Image Scale and Margins</h2>
+<p>Image Scale controls how large the foreground appears inside the canvas. A large scale fills the frame and makes the product the hero. A small scale leaves generous margins, which feels calm and premium, like a gallery print.</p>
+<p>Margins matter because a foreground pressed against the edge looks cramped, while one floating in a sea of background looks lost. The right scale depends on the foreground: a detailed product needs room to breathe, while a bold logo can fill the frame.</p>
+<p>When the canvas shape differs from the photo shape, scale becomes the framing tool. A tall photo on a square canvas needs a smaller scale so it fits, while a wide photo on a portrait canvas needs the same treatment. Scale and ratio work together.</p>
+<p>Check the result at the size it will be seen. A thumbnail in a shop listing shows the image at a fraction of its full size, so margins that look generous at full size can look empty in a thumbnail. Preview small before you export.</p>
+<h2 id="roundness-and-drop-shadow">Roundness and Drop Shadow</h2>
+<p>Roundness softens the corners of the foreground image. On a rectangular photo, rounded corners give a card-like feel that suits social posts and app screenshots. On a transparent PNG cutout, the corners are already defined by the artwork, so roundness has less to do.</p>
+<p>A drop shadow lifts the foreground off the backdrop. It adds depth and makes a cutout look placed rather than pasted. The effect works best with transparent logos and product cutouts, where the shadow follows the shape of the object.</p>
+<p>With a solid rectangular photo, a drop shadow behaves like a frame shadow: it outlines the rectangle rather than the subject. That can look fine on a light backdrop, but it can look like a floating card on a dark one. Judge the effect on the actual background color.</p>
+<p>Both controls are subtle by design. A heavy shadow or an extreme corner radius draws attention to the effect instead of the image. Use enough to add depth and polish, then stop before the treatment becomes the subject.</p>
+<h2 id="output-formats-and-quality">Output Formats and Quality</h2>
+<p>The tool exports the finished image as a JPG or PNG. JPG is the right choice for photos and for any image where a small file matters, such as a website banner or a social post. It compresses well and loads fast.</p>
+<p>PNG is the right choice when the foreground has transparency that must survive, or when the image has sharp text and flat colors that JPG would blur. A PNG file is larger, but it keeps every edge crisp.</p>
+<p>Export quality for JPG is high by default, which preserves the detail of the foreground and the smoothness of the gradient. A gradient exported at low quality can show banding, which is the visible steps between color shades. Keep the quality high for gradient backgrounds.</p>
+<p>The downloaded file is named to reflect the backdrop settings, so you can tell exports apart when you make several versions. A clear filename saves you from opening five near-identical files to find the right one.</p>
+<h2 id="backgrounds-for-product-photos">Backgrounds for Product Photos</h2>
+<p>Product photos live or die by their background. A clean white backdrop is the marketplace standard because it removes distraction and lets buyers compare products fairly. It also matches the thumbnail grid, where a consistent background makes a shop look professional.</p>
+<p>Colored backgrounds work for brand stores and social shops, where the image is an advertisement as much as a listing. A single brand color across all product images turns a feed into a recognizable storefront. The product must still contrast with the background, or it disappears.</p>
+<p>Lifestyle context is the third option, and it means showing the product in a scene rather than on a flat color. A blurred photo background can suggest a scene without building one, since the blurred colors hint at a real place while the product stays sharp.</p>
+<p>Whatever you choose, keep it consistent across a product range. A shop where every listing has a different background looks disorganized, while a shop with one background system looks like a brand. Consistency is the cheapest form of polish.</p>
+<h2 id="backgrounds-for-social-media">Backgrounds for Social Media</h2>
+<p>Social feeds reward images that stop the scroll, and the background is half of that job. A bold gradient or a strong brand color catches the eye faster than a plain white square, which is why promotional posts use color while listings use white.</p>
+<p>Match the canvas shape to the platform. A square suits the feed grid, a portrait 4:5 suits the scrolling feed, and a wide 16:9 suits a story link or a video thumbnail. The wrong shape gets cropped by the platform, and the crop rarely respects your framing.</p>
+<p>Leave room for the platform interface. Captions, buttons, and profile pictures overlap the edges of the image on most apps, so keep the foreground centered and away from the borders. A product touching the edge can be hidden behind a button.</p>
+<p>Test the image on your phone before posting. A background that looks subtle on a desktop monitor can look loud on a phone screen, and a gradient that looks smooth on a large display can band on a small one. The phone is where the audience sees it.</p>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<p>The most common mistake is a background that fights the foreground. A loud gradient behind a detailed product, or a busy blurred backdrop behind a thin logo, splits attention and weakens the image. The background should support the subject, never compete with it.</p>
+<p>Another mistake is forgetting the export format. A transparent cutout on a new background exported as a JPG is fine, because the backdrop fills the transparency. But a cutout exported as a PNG when a JPG would do wastes file size for no visible gain.</p>
+<p>A third mistake is ignoring the final viewing size. Margins that look generous at full size look empty in a thumbnail, and text-sized details vanish when the image shrinks. Always preview the export at the size it will actually be seen.</p>
+<p>Finally, many people add a background to a photo that still has its original messy background. The tool places the whole photo on the new backdrop, so the old background stays visible inside the frame. Remove the old background first, then add the new one.</p>
+<h2 id="quick-reference">Quick Reference: Choosing a Background</h2>
+<p>Use a solid color for listings, logos, and anything where the foreground must dominate. Use a gradient for social graphics and promotions where energy helps. Use a blurred photo when the frame shape differs from the photo shape and you need to fill the gaps.</p>
+<p>Set the canvas ratio for the destination, scale the foreground with breathing room, and export JPG for photos and PNG for transparency or sharp text. Preview at the size your audience will see.</p>
+<p>For the step-by-step version, read <a href="/blog/how-to-add-background-to-image/">How to Add a Background to an Image</a>, and for product-specific advice, read <a href="/blog/product-photo-backgrounds/">Product Photo Backgrounds: Colours and Context</a>. Try it now with the <a href="/add-background-to-image/">Add Background to Image</a> tool, or start from a clean cutout with the <a href="/remove-background/">background remover</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What is the difference between adding a background and removing one?',
+          answer: 'Removing a background takes the old backdrop away and leaves a transparent cutout. Adding a background places that cutout, or any photo, onto a new backdrop such as a solid color, a gradient, or a blurred photo. The two steps often work as a pair.',
+        },
+        {
+          question: 'Which background mode should I choose for a product photo?',
+          answer: 'A solid white background is the standard for marketplaces, because it keeps the product as the only focus. A brand color works for your own store or social feed, and a blurred photo background suits lifestyle shots where a scene adds context.',
+        },
+        {
+          question: 'Can I add a background to a photo that still has its original background?',
+          answer: 'Yes, the tool places the whole photo onto the new backdrop, but the original background stays visible inside the frame. For a clean result, remove the old background first with a background remover, then add the new one here.',
+        },
+        {
+          question: 'Should I export as JPG or PNG after adding a background?',
+          answer: 'Use JPG for photos and for any image where a small file matters, such as social posts and website banners. Use PNG when the image has sharp text or flat colors that need crisp edges, or when you want to keep transparency.',
+        },
+        {
+          question: 'Why does my gradient background show visible bands?',
+          answer: 'Banding appears when a smooth gradient is saved at low quality, because JPG compression groups similar shades into visible steps. Export at high quality to keep the gradient smooth, and prefer PNG for graphics with large flat gradient areas.',
+        },
+        {
+          question: 'Does adding a background change my original photo file?',
+          answer: 'No. The tool creates a new image with the foreground and the backdrop combined, and your original file stays untouched on your device. You can export several versions with different backgrounds from the same upload.',
+        },
+      ],
+      readingMinutes: 12,
+    },
+    relatedToolSlugs: ['/remove-background', '/image-cropper', '/add-text-to-image'],
+  },
+  {
+    id: 'how-to-add-background-to-image',
+    toolSlug: '/add-background-to-image',
+    categoryId: 'create',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-add-background-to-image',
+      title: 'How to Add a Background to an Image',
+      description: 'Add a background to any photo or transparent cutout in minutes: pick a solid, gradient, or blurred backdrop, frame it for the right shape, and export.',
+      body: `
+<p>Adding a background to an image is a short job once you know the steps. You upload a photo or a transparent cutout, choose a backdrop, set the frame shape, and download the finished image. This guide walks through each step in order.</p>
+<p>You need one thing before you start: the foreground image. That can be a normal photo, a transparent PNG cutout, a logo, or a screenshot. If your photo still has a messy original background, remove it first so the new backdrop has a clean cutout to work with.</p>
+<p>The <a href="/add-background-to-image/">Add Background to Image</a> tool does the work in your browser. Nothing uploads to a server, there is no account, and the export is free. Follow the steps below and you will have a finished image in a few minutes.</p>
+<h2 id="step-1-upload-your-image">Step 1: Upload Your Image</h2>
+<p>Open the tool and drop your image onto the upload zone, or click to choose a file from your device. You can also paste an image straight from your clipboard with Ctrl and V, which is useful when the image is open in another app or copied from a screenshot.</p>
+<p>The tool accepts JPG, PNG, WebP, HEIC, GIF, BMP, and SVG files up to 20 MB. Most photos and cutouts are well under that limit. If your file is an iPhone HEIC photo, it uploads and converts without any extra step on your part.</p>
+<p>As soon as the image loads, it appears on the default backdrop with the framing controls beside it. Take a moment to look at how the foreground sits in the frame before changing anything. The default is often close to what you need.</p>
+<p>If you uploaded the wrong file, replace it without losing your settings. The tool lets you swap the foreground image while keeping the backdrop and framing choices you already made, so a mistake costs seconds rather than a restart.</p>
+<h2 id="step-2-pick-a-background-mode">Step 2: Pick a Background Mode</h2>
+<p>Choose one of the three modes: Solid Color, Gradient, or Blurred Photo. Solid Color fills the canvas with a single flat color and suits product photos, logos, and anything where the foreground must dominate without distraction.</p>
+<p>Gradient blends two colors across the canvas at an angle. It suits social posts, story frames, and promotional graphics, where the backdrop should add energy. Pick two colors that sit near each other for a smooth blend, or opposite colors for drama.</p>
+<p>Blurred Photo fills the canvas with a blurred copy of your own image. It suits photos whose shape does not match the frame, because the blurred edges fill the empty space naturally. The colors come from the photo, so the backdrop always harmonizes.</p>
+<p>Switching modes keeps your foreground and framing, so try each one before deciding. A product that looks plain on white can look striking on a gradient, and a portrait that looks cramped on a solid color can breathe on a blurred backdrop.</p>
+<h2 id="step-3-choose-a-color-or-colors">Step 3: Choose a Color or Colors</h2>
+<p>In Solid Color mode, pick from the quick swatches or open the color picker for an exact shade. White is the standard for listings, a brand color suits a campaign, and a dark shade suits premium products. Match the color to the purpose, not to your mood.</p>
+<p>In Gradient mode, choose two colors and an angle. A diagonal angle feels dynamic, a vertical angle feels calm, and a horizontal angle feels wide. Start with close colors for a gentle blend and increase the contrast only if the design needs more energy.</p>
+<p>In Blurred Photo mode, there is no color to pick, because the backdrop comes from the image itself. Instead, set the blur radius. A light blur keeps the shapes of the original visible, while a heavy blur melts the backdrop into soft color and texture.</p>
+<p>Check the color against the foreground before moving on. A dark product on a dark background disappears, and a pale logo on a pale background washes out. Contrast between foreground and backdrop is what makes the image readable.</p>
+<h2 id="step-4-set-the-canvas-ratio">Step 4: Set the Canvas Ratio</h2>
+<p>Pick the canvas shape for the place the image will be published. Square suits feeds, listings, and thumbnails. The 16:9 widescreen shape suits banners and video thumbnails. The 4:5 portrait shape suits social feeds that reward tall images.</p>
+<p>The output dimensions follow from the ratio and the size of your source image. A large source gives a large export, while a small source gives a smaller one. The tool keeps the proportions honest, so the image never stretches.</p>
+<p>Think about where the image will be cropped by the platform. Social apps crop previews to their own shapes, and a foreground near the edge can be cut off. Keep the important part centered, especially on a wide or tall canvas.</p>
+<p>If you are not sure where the image will be used, choose square. It is the most forgiving shape, it crops predictably everywhere, and it works as a thumbnail, a listing image, and a feed post without further edits.</p>
+<h2 id="step-5-scale-the-foreground">Step 5: Scale the Foreground</h2>
+<p>Use the Image Scale control to set how large the foreground appears in the frame. A large scale fills the canvas and makes the subject the hero. A small scale leaves generous margins, which feels calm and premium.</p>
+<p>Leave breathing room around the subject. A product pressed against the edge of the frame looks cramped, while one floating in a large empty canvas looks lost. The right scale depends on the subject: detailed products need more room, bold logos can fill the frame.</p>
+<p>When the canvas shape differs from the photo shape, scale does the framing work. A tall photo on a square canvas needs a smaller scale to fit, and the blurred or colored backdrop fills the space around it. Adjust the scale until the composition feels balanced.</p>
+<p>Preview the result at the size it will be seen. A thumbnail shows the image much smaller than the editor does, so margins that look generous in the editor can look empty in a listing. Shrink your view before you decide the scale is right.</p>
+<h2 id="step-6-add-roundness-and-shadow">Step 6: Add Roundness and Shadow</h2>
+<p>Roundness softens the corners of a rectangular foreground image. A slight rounding gives a card-like feel that suits social posts and app screenshots. A strong rounding turns the image into a pill or a circle, which suits avatars and badges.</p>
+<p>For a transparent PNG cutout, roundness has little effect, because the corners are already defined by the artwork itself. The control matters most for rectangular photos and screenshots placed on a backdrop.</p>
+<p>The drop shadow lifts the foreground off the backdrop and adds depth. It works best with transparent cutouts and logos, where the shadow follows the shape of the object. With a solid photo, the shadow outlines the rectangle instead of the subject.</p>
+<p>Keep both effects subtle. A heavy shadow or an extreme radius draws attention to the treatment rather than the image. Add just enough depth and polish to make the image feel placed, then stop.</p>
+<h2 id="step-7-check-the-preview">Step 7: Check the Preview</h2>
+<p>Look at the full preview before exporting. Check that the foreground is centered, the margins are even, and the background color or gradient looks the way you intended. A preview at full size shows details that a small thumbnail hides.</p>
+<p>Check the edges of the foreground. A cutout with a rough edge or a leftover halo from the old background shows up clearly against a solid color. If the edge looks ragged, go back and clean the cutout before exporting.</p>
+<p>Look at the image on your phone if you can. A background that looks subtle on a desktop monitor can look loud on a phone screen, and a gradient that looks smooth on a large display can band on a small one. The phone is where most viewers will see it.</p>
+<p>Compare the three background modes one last time if you are unsure. Switching is free and keeps your framing, so a final comparison costs seconds and often changes the choice. Trust the version that reads best at a glance, not the one that looked best in the editor.</p>
+<h2 id="step-8-export-and-download">Step 8: Export and Download</h2>
+<p>Choose the export format. JPG suits photos and any image where a small file matters, such as a social post or a website banner. PNG suits images with sharp text, flat colors, or transparency that must survive the export.</p>
+<p>Click download and the finished image saves to your device. The filename reflects the backdrop settings, so you can tell different versions apart when you export several. Save the file where you can find it again, and keep the original foreground file too.</p>
+<p>Open the downloaded file and look at it once more. Check the size, the format, and the appearance at the size it will be published. A quick check now catches a wrong format or a bad crop before the image goes live.</p>
+<p>If the result is not right, change one setting and export again. The tool does not limit how many versions you make, so iterate freely. A second export with a different background or scale takes seconds.</p>
+<h2 id="step-9-use-the-image">Step 9: Use the Image</h2>
+<p>Upload the finished image to its destination: a shop listing, a social post, a slide deck, or a website banner. Use the file as it is, since the background, framing, and format are already baked in.</p>
+<p>For a shop listing, pair the image with the product title and description that match it. A clean background image with a clear title converts better than a busy image with the same text, because the buyer sees the product first.</p>
+<p>For social media, post the image in the ratio the platform prefers and add the caption separately. The image carries the visual message, and the caption carries the words. Do not bake text into the image unless the design calls for it.</p>
+<p>Keep the exported file as your master copy for that destination. If you need a different ratio later, return to the tool with the original foreground and export a new version rather than cropping the finished image, which loses quality.</p>
+<h2 id="backgrounds-for-different-photo-types">Backgrounds for Different Photo Types</h2>
+<p>Portraits need a background that keeps the face as the focus. A soft solid color or a gentle blurred backdrop works well, because both sit quietly behind the person. Avoid a loud gradient behind a portrait, since the colors compete with skin tones and the face loses the attention it deserves.</p>
+<p>Product shots need the opposite treatment: the background should be as neutral as possible so buyers judge the product, not the scene. White is the standard, and a light gray is the usual alternative when white feels too stark. Save color for the campaign version of the same shot.</p>
+<p>Food photography benefits from warm, natural backgrounds. A soft cream, a pale wood tone, or a blurred kitchen scene makes the dish look appetizing. A cold blue or a harsh gradient makes food look artificial, so keep the palette warm and the backdrop simple.</p>
+<p>Screenshots and app mockups look best on a solid brand color or a subtle gradient. The clean backdrop frames the interface like a presentation slide, and the screen content stays readable. A blurred photo behind a screenshot usually adds noise without adding meaning.</p>
+<p>Logos and badges need a background that matches where they will appear. A logo destined for a website header needs transparency or a fill that matches the header color. A logo for a social avatar needs a solid fill, because avatars are cropped into circles and transparency shows the platform color behind them.</p>
+<p>Pet and wildlife photos suit a blurred photo background, because the blurred colors suggest the real environment while the animal stays sharp. A solid color behind a pet can look like a studio portrait, which suits a formal shot but feels stiff for a candid one.</p>
+<h2 id="quick-reference">Quick Reference: Background Checklist</h2>
+<p>Upload the foreground, pick Solid, Gradient, or Blurred Photo, choose the color or blur, set the canvas ratio for the destination, scale the foreground with breathing room, and add a subtle shadow if it suits the image.</p>
+<p>Export JPG for photos and PNG for sharp text or transparency, then check the download at the size it will be seen. If the edge of a cutout looks rough, clean the cutout first and export again.</p>
+<p>For the full guide to every mode, read the <a href="/blog/add-background-to-image-guide/">Add Background to Images: Complete Guide</a>, and for product-specific advice, read <a href="/blog/product-photo-backgrounds/">Product Photo Backgrounds: Colours and Context</a>. Start now with the <a href="/add-background-to-image/">Add Background to Image</a> tool.</p>
+`,
+      faqs: [
+        {
+          question: 'Do I need to remove the old background before adding a new one?',
+          answer: 'For the cleanest result, yes. If you add a backdrop to a photo that still has its original background, the old background stays visible inside the frame. Remove it first with a background remover, then place the transparent cutout on the new backdrop.',
+        },
+        {
+          question: 'What is the best background for an online shop listing?',
+          answer: 'A solid white background is the standard for marketplaces, because it keeps the product as the only focus and matches the thumbnail grid. For your own store or social feed, a consistent brand color works well, as long as the product still contrasts with it.',
+        },
+        {
+          question: 'Can I use a photo I took on my phone?',
+          answer: 'Yes. The tool accepts JPG, PNG, WebP, and HEIC files from phones, up to 20 MB each. You can also paste a screenshot from your clipboard. For the best result, use the highest resolution version of the photo you have.',
+        },
+        {
+          question: 'How do I stop my product from touching the edges of the frame?',
+          answer: 'Use the Image Scale control to shrink the foreground until there is an even margin on all sides. A small amount of breathing room makes the image look intentional and premium, while a product pressed against the edge looks cramped.',
+        },
+        {
+          question: 'Will the background I add work on every social platform?',
+          answer: 'The background itself works anywhere, but the canvas shape matters. A square suits feed grids, 4:5 suits scrolling feeds, and 16:9 suits banners and thumbnails. Export the ratio each platform prefers rather than reusing one shape everywhere.',
+        },
+        {
+          question: 'Can I change the background again after downloading?',
+          answer: 'Yes. Your original foreground file is untouched, so return to the tool, upload it again, and pick a different backdrop. It is better to re-export from the original than to edit the finished image, which loses quality with each round.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/remove-background', '/image-cropper', '/add-text-to-image'],
+  },
+  {
+    id: 'product-photo-backgrounds',
+    toolSlug: '/add-background-to-image',
+    categoryId: 'create',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'product-photo-backgrounds',
+      title: 'Product Photo Backgrounds: Colours and Context',
+      description: 'Choose the right background for product photos: white, brand colours, lifestyle context, marketplace rules, and the consistency that makes a shop look like a brand.',
+      body: `
+<p>The background of a product photo is not decoration. It decides whether the buyer sees the product first, whether the listing looks trustworthy, and whether a shop feels like a brand or a random collection of images. A good background is invisible; a bad one is all anyone notices.</p>
+<p>This guide covers the background choices that matter for selling: plain white, brand colors, lifestyle context, and the rules that marketplaces impose. It also covers consistency, because a shop where every product sits on a different background looks disorganized no matter how good each photo is.</p>
+<p>All of the backgrounds described here can be built with the <a href="/add-background-to-image/">Add Background to Image</a> tool. Upload a cutout from the <a href="/remove-background/">background remover</a>, pick a backdrop, and export the finished listing image in minutes.</p>
+<h2 id="what-makes-a-product-background-work">What Makes a Product Background Work</h2>
+<p>A product background has one job: make the product easy to see and easy to judge. The buyer must be able to tell the shape, the color, the size, and the condition of the item at a glance. Anything that slows that judgment down costs sales.</p>
+<p>Contrast is the first test. A dark product needs a light background and a light product needs a background with enough tone to separate it from the page. A white mug on a white background is invisible in a thumbnail, and a black watch on a black background is a silhouette.</p>
+<p>Neutrality is the second test. The background should not add a mood the product does not have. A neon gradient behind a plain kitchen tool looks like a joke, while a calm gray behind a bright toy looks dull. The background should match the product, not fight it.</p>
+<p>Consistency is the third test. One product on white, one on blue, and one on a beach scene make a shop look like three different sellers. A buyer who cannot tell the listings belong together trusts the shop less, even if each photo is fine on its own.</p>
+<h2 id="white-backgrounds">White Backgrounds</h2>
+<p>White is the default product background for a reason. Marketplaces require it or strongly prefer it, because a white backdrop lets buyers compare products fairly and keeps the search grid clean. Amazon, eBay, and most other platforms expect product images on pure white.</p>
+<p>White also photographs honestly. It hides nothing, adds no color cast, and shows the true color of the product. A buyer who sees a red bag on white knows the bag is red; the same bag on a pink backdrop might look like a different shade entirely.</p>
+<p>White works best for products with clear edges and strong shapes. Electronics, tools, shoes, and packaged goods all read well on white. The product becomes a clean silhouette, and the thumbnail stays readable even at the tiny size of a search grid.</p>
+<p>White has limits. A white product vanishes against it, and a product with fine white details loses them. In those cases, a very light gray or a pale tint keeps the clean feel while giving the product an edge to stand against.</p>
+<h2 id="brand-color-backgrounds">Brand Color Backgrounds</h2>
+<p>A brand color background turns a product photo into a piece of branding. A cutout on a solid brand color reads as a designed graphic, and a set of them in the same color forms a feed or a storefront that is recognizable at a glance.</p>
+<p>Brand colors work best on your own store and social channels, where you set the rules. They are a poor choice for a marketplace listing, where the platform expects white and where a colored background can make the listing look non-compliant.</p>
+<p>Pick one color and use it everywhere. A shop that uses three different brand colors across its listings has no brand color at all. One consistent backdrop color becomes part of the identity, like a logo or a font.</p>
+<p>Check the contrast before committing. A dark product on a dark brand color disappears, and a pale product on a pale brand color washes out. If the contrast fails, lighten or darken the brand color for the background version, or add a white card behind the product.</p>
+<h2 id="lifestyle-context">Lifestyle Context</h2>
+<p>Lifestyle context means showing the product in a scene rather than on a flat color. A mug on a kitchen table, a jacket on a person walking, or a lamp lit in a living room tells the buyer how the product fits into a real life.</p>
+<p>Context sells the feeling of the product, not just the object. A tent photographed on a mountain ridge promises adventure, while the same tent on white promises a tent. The scene answers the question the buyer is really asking, which is what life with this product looks like.</p>
+<p>Context is expensive to produce well, because it needs a location, props, and styling. A blurred photo background is a cheap shortcut: it hints at a scene with soft colors while the sharp product stays in focus. It suggests a place without building one.</p>
+<p>Use context for the second or third image in a listing, not the first. The first image should be the clean product shot that the marketplace expects and that thumbnails well. The lifestyle shot belongs further down the gallery, where it can persuade after the product is understood.</p>
+<h2 id="backgrounds-by-product-type">Backgrounds by Product Type</h2>
+<p>Electronics suit white or very light gray. The clean backdrop matches the precision of the product, and the thumbnail stays readable. A gradient or a busy scene makes a gadget look like a toy rather than a tool.</p>
+<p>Clothing suits a light neutral background or a lifestyle shot on a model. Flat clothing on white shows the cut and the color clearly, while a model shot shows the fit. Most clothing sellers use both, with the flat shot first and the model shot second.</p>
+<p>Jewelry needs contrast and control. A dark background makes gold and silver glow, while a white background suits bright gemstones. Jewelry is small and reflective, so the background must be flawless: any dust or texture in the backdrop shows up in the photo.</p>
+<p>Food suits warm, natural backgrounds. Cream, pale wood, or a soft blurred kitchen scene makes food look appetizing. Cold blues and harsh gradients make food look artificial, so keep the palette warm and the backdrop simple.</p>
+<h2 id="lighting-and-background-interaction">Lighting and Background Interaction</h2>
+<p>The background and the lighting are one decision, not two. A white background with flat lighting looks clean and honest, while the same white background with hard directional light throws a shadow that can look either professional or sloppy depending on its shape.</p>
+<p>Soft, even light suits white backgrounds best. It keeps the backdrop uniformly bright, so the product edge stays crisp and the background does not shade into gray at the corners. A light tent or a cloudy day gives this light for free.</p>
+<p>Colored backgrounds react to light more visibly. A brand color lit unevenly shows a gradient from bright to dark, which can look intentional or accidental. Check the backdrop at full size and even out the light before you commit to a color.</p>
+<p>When you add a background digitally instead of photographing one, lighting is simpler: the backdrop is perfectly even by construction. The job then is matching the light on the product to the backdrop, so the cutout does not look pasted on. A soft drop shadow helps the product sit into the scene.</p>
+<h2 id="backgrounds-for-marketplaces">Backgrounds for Marketplaces</h2>
+<p>Marketplaces have rules, and the first rule is usually white. Amazon requires a pure white background for the main product image, with the product filling most of the frame. eBay and Etsy are more flexible, but white still performs best in their search grids.</p>
+<p>The reason is the grid. A search results page shows dozens of thumbnails side by side, and a consistent white grid is easier to scan than a mix of colors and scenes. Listings that match the grid get compared fairly; listings that break it stand out for the wrong reasons.</p>
+<p>Follow the platform rule for the main image, then use the extra image slots for color and context. The first image wins the click, and the later images close the sale. A lifestyle shot in slot three does the persuading that a white shot in slot one cannot.</p>
+<p>Read the image rules for each platform before you upload. The requirements for background, file size, and image dimensions differ, and a listing rejected for a background violation loses selling days. The rules change occasionally, so check them rather than relying on memory.</p>
+<h2 id="backgrounds-for-your-own-store">Backgrounds for Your Own Store</h2>
+<p>Your own store is where brand colors earn their keep. Without marketplace rules, the background becomes part of the store design, and a consistent color across every product image turns the catalog into a coherent visual system.</p>
+<p>Match the product background to the store theme. If the store uses a deep green header and cream sections, a cream product background ties the catalog to the design. If the store is minimal and white, a white product background keeps the same calm.</p>
+<p>Use the background to separate product ranges. A store with two lines can give each line its own backdrop color, so shoppers learn the code: blue means the everyday range, gold means the premium range. The color becomes a navigation aid.</p>
+<p>Keep the checkout and cart thumbnails in mind. A product image that looks great on a product page can look lost in a tiny cart thumbnail if the background is too close to the page color. Test the image at thumbnail size before launch.</p>
+<h2 id="backgrounds-for-social-selling">Backgrounds for Social Selling</h2>
+<p>Social feeds reward images that stop the scroll, and the background does half of that work. A bold brand color or a strong gradient catches the eye faster than a plain white square, which is why promotional posts use color while marketplace listings use white.</p>
+<p>Match the canvas shape to the platform. A square suits the feed grid, a portrait 4:5 suits the scrolling feed, and a wide shape suits a story link. The wrong shape gets cropped by the platform, and the crop rarely respects your framing.</p>
+<p>Keep the product centered and away from the edges. Captions, buttons, and profile pictures overlap the borders of the image on most apps, so a product touching the edge can be hidden behind an interface element. Centered products survive every overlay.</p>
+<p>Post a consistent background across a campaign. A week of posts on the same color reads as a collection, and followers learn to recognize your posts before they read the caption. Consistency builds the recognition that a single colorful post cannot.</p>
+<h2 id="consistency-across-a-catalogue">Consistency Across a Catalogue</h2>
+<p>Consistency is the cheapest form of polish a shop can buy. One background system across every listing makes a shop look like a brand, while a mix of backgrounds makes it look like a clearance table. The system matters more than the choice.</p>
+<p>Write the system down: the background color, the canvas ratio, the scale of the product in the frame, and the export format. A written spec lets anyone on the team produce a matching image, and it lets you spot a listing that breaks the pattern.</p>
+<p>Photograph or build new listings against the same spec. If the old listings used a white background and a square canvas, the new ones should too, even if a gradient looks tempting today. A catalog that changes style every month never settles into an identity.</p>
+<p>When you do change the system, change it everywhere at once. A rebrand that updates half the listings leaves the shop in a worse state than before, with two competing styles side by side. Regenerate the whole catalog in one pass, or leave the old system alone.</p>
+<h2 id="backgrounds-and-perceived-value">Backgrounds and Perceived Value</h2>
+<p>The background changes how much a product seems to be worth. A product on a clean white background looks like a standard listing. The same product on a deep, rich color with generous margins looks like a premium item, even though the product has not changed.</p>
+<p>Generous margins signal luxury. A small product centered in a large canvas with plenty of empty space feels like a gallery piece, while a product filling the whole frame feels like a bargain listing. The empty space is doing the work of suggesting quality.</p>
+<p>Dark backgrounds suggest premium and drama, which suits watches, perfume, and high-end electronics. Light backgrounds suggest honesty and everyday value, which suits household goods and basics. Match the mood of the background to the price of the product.</p>
+<p>Do not overdo it. A background that tries too hard to look expensive can make a cheap product look dishonest, and a buyer who feels tricked does not come back. The background should support the price, not invent it.</p>
+<h2 id="common-product-background-mistakes">Common Product Background Mistakes</h2>
+<p>The most common mistake is a background that fights the product. A loud gradient behind a detailed product, or a busy scene behind a thin logo, splits attention and weakens the image. The background should support the subject, never compete with it.</p>
+<p>Another mistake is mixing backgrounds across a catalog. One listing on white, one on blue, and one on a beach makes the shop look disorganized, even if each photo is good. Pick one system and hold it across every product.</p>
+<p>A third mistake is using a lifestyle background for the main marketplace image. The platform expects white, the grid expects white, and a scene in the first slot can get the listing flagged or simply overlooked among the clean thumbnails. Save the scene for the later images.</p>
+<p>Finally, many sellers add a background to a photo that still has its original messy background. The tool places the whole photo on the new backdrop, so the old background stays visible inside the frame. Remove the old background first, then add the new one.</p>
+<h2 id="quick-reference">Quick Reference: Product Background Choices</h2>
+<p>Marketplace main image: pure white, product filling the frame. Your own store: one brand color, used everywhere. Social selling: bold color or gradient, square or 4:5, product centered. Lifestyle shots belong in the later gallery slots, not the first.</p>
+<p>Keep contrast between product and backdrop, keep margins generous for premium items, and keep the system consistent across the whole catalog. Change the system everywhere at once or not at all.</p>
+<p>For the tool walkthrough, read <a href="/blog/how-to-add-background-to-image/">How to Add a Background to an Image</a> and the <a href="/blog/add-background-to-image-guide/">Add Background to Images: Complete Guide</a>. Build your listing images with the <a href="/add-background-to-image/">Add Background to Image</a> tool.</p>
+`,
+      faqs: [
+        {
+          question: 'What background color sells best for product photos?',
+          answer: 'There is no single best color. Pure white is the standard for marketplaces and the safest choice for the main listing image. A consistent brand color works better on your own store and social channels, where the background is part of your identity.',
+        },
+        {
+          question: 'Should all products in my shop use the same background?',
+          answer: 'Yes. One background system across every listing makes a shop look like a brand, while a mix of backgrounds looks disorganized. Write down the color, ratio, and framing you use, and apply the same spec to every new listing.',
+        },
+        {
+          question: 'Can I use a lifestyle photo as a product background?',
+          answer: 'A lifestyle scene works well as a second or third gallery image, where it shows the product in use. It is a poor choice for the main marketplace image, which should be a clean product shot on white. A blurred photo background is a simpler way to suggest a scene.',
+        },
+        {
+          question: 'What background works best for jewelry photos?',
+          answer: 'Jewelry needs strong contrast: a dark background makes gold and silver glow, while white suits bright gemstones. The background must be flawless, because any dust or texture shows up in a close photo of a small reflective object.',
+        },
+        {
+          question: 'Do I need a professional studio to get a clean product background?',
+          answer: 'No. You can photograph a product against any plain surface, remove the background with a background remover, and place the cutout on a clean digital backdrop. The result matches a studio shot for most listings, at no cost.',
+        },
+        {
+          question: 'How do I keep product backgrounds consistent across photos taken on different days?',
+          answer: 'Use a written spec: one background color, one canvas ratio, one product scale, and one export format. Building the background digitally from a cutout guarantees the same backdrop every time, whatever the light was like on the day of the shoot.',
+        },
+      ],
+      readingMinutes: 12,
+    },
+    relatedToolSlugs: ['/remove-background', '/image-cropper', '/bulk-image-compressor'],
+  },
+  {
+    id: 'image-splitter-guide',
+    toolSlug: '/image-splitter',
+    categoryId: 'create',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-splitter-guide',
+      title: 'Image Splitter: Complete Guide',
+      description: 'Split any image into grid tiles or strips: how grid, horizontal, and vertical modes work, presets, full-resolution exports, and the best uses for each split.',
+      body: `
+<p>An image splitter cuts one picture into several smaller pieces. The pieces can form a grid for a social profile, strips for a carousel, or slices for printing a large image across many pages. The original image stays intact; the splitter simply gives you its parts.</p>
+<p>The <a href="/image-splitter/">image splitter</a> divides photos into N by M grid tiles, horizontal rows, or vertical strips, and downloads the pieces individually or as one ZIP. It runs entirely in your browser, so your photos never leave your device.</p>
+<p>This guide explains the three split modes, the presets, the export options, and the jobs each mode suits best. Whether you plan an Instagram grid, slice a panorama, or cut a long screenshot for printing, the split is the same simple idea.</p>
+<h2 id="what-is-an-image-splitter">What Is an Image Splitter?</h2>
+<p>An image splitter divides a single image into a set of smaller images along straight cut lines. A 3 by 3 grid split turns one square photo into nine square tiles. A horizontal strip split turns a tall image into stacked rows, and a vertical strip split turns a wide image into side-by-side columns.</p>
+<p>Each tile is a real image file, not a crop preview. You can download the tiles one by one or all at once in a ZIP, then use them wherever separate images are needed: social posts, print pages, game tiles, or design mockups.</p>
+<p>The split is non-destructive. The original file is never changed, and you can split the same image again with different settings as many times as you like. A 3 by 3 grid today and a 2 by 4 grid tomorrow both come from the same untouched source.</p>
+<p>Splitting is different from cropping. Cropping throws part of the image away to keep one piece, while splitting keeps every part and gives you all of them. The tiles together contain the whole original, just in separate files.</p>
+<h2 id="grid-mode">Grid Mode: N by M Tiles</h2>
+<p>Grid mode is the main mode. You set a number of rows and columns, and the tool divides the image into that many equal tiles. A 3 by 3 grid gives nine tiles, a 2 by 4 grid gives eight, and the maximum grid is 10 by 10, which gives one hundred tiles from one image.</p>
+<p>The grid is the mode for Instagram profile grids, where nine square tiles form one large picture across the profile page. It is also the mode for puzzles, mosaics, and any layout where the tiles sit side by side to rebuild the original.</p>
+<p>Each tile is cut at full original pixel dimensions, so a 3000 pixel photo split 3 by 3 gives nine 1000 pixel tiles. Nothing is scaled down or resampled, which means the tiles stay sharp enough to print or post at full quality.</p>
+<p>Numbered cut lines appear on the preview, so you can see exactly where each tile begins and ends before you download. If a cut line passes through a face or an important detail, change the grid or reposition the image rather than accepting a bad cut.</p>
+<h2 id="horizontal-strips">Horizontal Strips</h2>
+<p>Horizontal strips cut the image into stacked rows. A tall image split into four horizontal strips gives four wide, short images that read top to bottom, like the pages of a long document.</p>
+<p>This mode suits long screenshots that need printing. A full-page screenshot is too tall for one sheet of paper, but four horizontal strips print cleanly across four pages. The same idea works for tall infographics that need to be shared as separate slides.</p>
+<p>Horizontal strips also suit social carousels where each slide continues the image downward. The viewer swipes through the strips and the picture reveals itself in order, which creates a simple storytelling effect.</p>
+<p>Choose the number of strips to match the destination. Four strips for four printed pages, three for a three-slide carousel, and two for a simple top-and-bottom split. The strips are equal height, so the content divides evenly.</p>
+<h2 id="vertical-strips">Vertical Strips</h2>
+<p>Vertical strips cut the image into side-by-side columns. A wide panorama split into three vertical strips gives three tall images that read left to right, like the panels of a triptych.</p>
+<p>This mode suits wide panoramas and banners that are too wide for one post or one page. A panorama split into vertical strips can be posted as a carousel where each swipe reveals the next part of the scene, which suits travel and landscape photography.</p>
+<p>Vertical strips also suit website banners and headers that need to be rebuilt across columns. A designer can place each strip in its own column and reassemble the panorama in a layout where a single wide image would not fit.</p>
+<p>As with horizontal strips, the strips are equal width, so the content divides evenly. A panorama with its subject in the center may need an odd number of strips so the subject lands in the middle strip rather than on a cut line.</p>
+<h2 id="split-presets">Split Presets</h2>
+<p>Presets are one-click split settings for the common jobs. The 3 by 3 Instagram grid is the best-known preset, but the tool includes others for common grid sizes and strip counts, so you can skip the manual row and column settings.</p>
+<p>A preset is a starting point, not a rule. Tap the 3 by 3 preset for an Instagram grid, then adjust the rows or columns if your image or your plan needs a different shape. The preset fills in the numbers, and you stay free to change them.</p>
+<p>Presets help when you split images often. A social media manager who builds a grid every week can tap the same preset each time and get the same tile sizes, which keeps the profile grid consistent from one puzzle to the next.</p>
+<p>If no preset matches your job, set the rows and columns by hand. A 4 by 5 grid for a poster, a 1 by 6 strip for a banner, or a 5 by 5 grid for a mosaic are all valid splits, and the manual controls cover every combination up to 10 by 10.</p>
+<h2 id="full-resolution-tiles">Full-Resolution Tiles</h2>
+<p>Tiles are cut at full original pixel dimensions, which means a split never reduces quality. A 3000 by 3000 pixel photo split into nine tiles gives nine 1000 by 1000 pixel images, each as sharp as the corresponding part of the original.</p>
+<p>This matters for printing and for large displays. A tile that was scaled down would look soft when printed or viewed at full size, while a full-resolution tile holds the same detail as the source. The splitter is a cutting tool, not a resizing tool.</p>
+<p>The trade-off is file size. Nine full-resolution tiles together are roughly the same total size as the original image, and a 10 by 10 split gives one hundred files to manage. Download the ZIP to keep them together rather than saving each tile by hand.</p>
+<p>Start from the highest resolution source you have. A 600 pixel photo split 3 by 3 gives nine 200 pixel tiles, which look fine as thumbnails but poor as posts. A large source gives large tiles, and large tiles survive every use.</p>
+<h2 id="numbered-tiles-and-zip-download">Numbered Tiles and ZIP Download</h2>
+<p>Every tile is numbered so you know where it belongs. The numbering follows the reading order: left to right, top to bottom, starting at the top-left corner. Tile one is the top-left piece, and the last tile is the bottom-right piece.</p>
+<p>Numbering matters most for Instagram grids, where the tiles must be posted in reverse order so they land in the right places. The numbers tell you the grid position of each tile, so the posting order is never a guess.</p>
+<p>The ZIP download contains all the tiles in one file, named in order. Downloading the ZIP is faster than saving each tile individually, and it keeps the set together on your device. Unzip it and the numbered files are ready to use.</p>
+<p>You can also download tiles individually if you only need one or two of them. A single tile for a profile picture or a single strip for a banner does not need the whole set, and the individual download saves the trouble of unzipping.</p>
+<h2 id="input-formats">Input Formats</h2>
+<p>The splitter accepts JPG, PNG, WebP, HEIC, GIF, BMP, and SVG files up to 20 MB. Photos from phones, screenshots, and graphics from design tools all work without conversion. An iPhone HEIC photo uploads and splits like any other file.</p>
+<p>The tile format follows your choice, not the input. A JPG source can produce PNG tiles, and a PNG source can produce JPG tiles. Choose the format for the destination: JPG for photos and small files, PNG for transparency and sharp graphics.</p>
+<p>Note that the Tile Quality slider appears for JPG tiles only. PNG tiles are lossless, so there is no quality setting to adjust. If you need the smallest files, choose JPG and set the quality; if you need exact pixels, choose PNG.</p>
+<p>Animated GIFs do not split as animations. Uploading an animated GIF gives you the tiles of one frame, not a set of animated tiles. Split a still image for grids and strips, and keep animations whole.</p>
+<h2 id="transparency-and-sprite-sheets">Transparency and Sprite Sheets</h2>
+<p>Splitting a transparent PNG preserves the transparency in each tile. A sprite sheet with transparent cells splits into transparent tiles, which is exactly what game developers need when they cut an icon sheet or a tileset into individual sprites.</p>
+<p>Choose PNG as the tile format for transparent work. JPG has no transparency, so a transparent tile exported as JPG gains a solid background, usually white or black. The transparency survives only when the format supports it.</p>
+<p>Sprite sheets need exact cuts. A sheet of 32 by 32 pixel icons split into a grid gives tiles of exactly 32 pixels each, as long as the sheet dimensions divide evenly. Check the tile dimensions after the split before using them in a game engine.</p>
+<p>When the sheet does not divide evenly, the edge tiles may differ slightly in size. That is normal for a grid split, and it means the sheet has a margin or a gap the grid did not account for. Trim the source to an exact multiple first for pixel-perfect tiles.</p>
+<h2 id="splitting-for-print">Splitting for Print</h2>
+<p>A large image printed across several pages is the classic print use for a splitter. A poster split into a grid of tiles prints on many sheets of paper, which you trim and join into a large poster. The tile numbers tell you the order.</p>
+<p>Horizontal strips suit long documents and banners that need to print across pages. A tall infographic split into four strips prints on four pages, each one a clean section of the original. The strips are equal height, so the pages match.</p>
+<p>Check the tile dimensions against the paper size before printing. A tile that is wider than the printable area gets cropped by the printer, while a tile that is much smaller wastes paper. Set the grid so each tile matches a sheet.</p>
+<p>Print at full resolution and do not let the printer scale the tiles. A scaled tile loses the sharpness that the full-resolution split preserved. Set the printer to actual size and the tiles will join cleanly.</p>
+<h2 id="splitting-screenshots">Splitting Screenshots</h2>
+<p>Long screenshots are the most common thing people split. A full-page screenshot of a website or a chat is too tall to read comfortably and too tall to print, but horizontal strips turn it into readable sections.</p>
+<p>Paste a screenshot straight from the clipboard with Ctrl and V. The splitter accepts pasted images, so a screenshot never needs to be saved as a file first. Paste, choose the strip count, and download the sections.</p>
+<p>Choose the strip count to match the content. A screenshot with four natural sections splits into four strips, while a very long page may need six or eight. More strips mean shorter, more readable sections, but also more files to manage.</p>
+<p>Watch for cut lines through text. A strip boundary that passes through a line of text makes both strips hard to read. Adjust the strip count until the boundaries fall in the gaps between paragraphs or sections.</p>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<p>The most common mistake is splitting a low-resolution image into too many tiles. A 600 pixel photo split 3 by 3 gives nine 200 pixel tiles, which look poor as posts. Start from a large source, or use fewer tiles.</p>
+<p>Another mistake is a cut line through a face or a key detail. The preview shows the cut lines before you download, so check them and adjust the grid or the image position. A face split across two tiles looks like an error, not a design.</p>
+<p>A third mistake is choosing the wrong tile format. Transparent tiles exported as JPG lose their transparency and gain a solid background. Choose PNG whenever transparency matters, and JPG when file size matters.</p>
+<p>Finally, many people forget the posting order for grids. Instagram displays the most recent post first, so grid tiles must be posted in reverse order to land correctly. The tile numbers give the grid position; post from the last tile to the first.</p>
+<h2 id="quick-reference">Quick Reference: Splitting Checklist</h2>
+<p>Start from a large source, choose Grid, Horizontal, or Vertical mode, and set the rows and columns or tap a preset. Check the numbered cut lines in the preview, especially around faces and text.</p>
+<p>Choose JPG for photos and PNG for transparency, download the ZIP, and post grid tiles in reverse order. If a cut lands badly, change the grid and split again rather than accepting it.</p>
+<p>For the step-by-step version, read <a href="/blog/how-to-split-image/">How to Split an Image</a>, and for the Instagram grid in detail, read <a href="/blog/split-images-instagram-grid/">Split Images for Instagram Grids and Puzzles</a>. Split your image with the <a href="/image-splitter/">image splitter</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What is the difference between splitting and cropping an image?',
+          answer: 'Cropping keeps one piece of an image and throws the rest away. Splitting keeps every piece and gives you all of them as separate files. The tiles together contain the whole original, just divided along straight cut lines.',
+        },
+        {
+          question: 'Will splitting reduce the quality of my photo?',
+          answer: 'No. Tiles are cut at full original pixel dimensions, so each tile is as sharp as the corresponding part of the source. Quality only drops if you start from a low-resolution source, because the tiles are then small as well.',
+        },
+        {
+          question: 'What is the largest grid I can split an image into?',
+          answer: 'The maximum grid is 10 by 10, which gives 100 tiles from one image. Most jobs need far fewer: 3 by 3 for an Instagram grid, 2 by 2 for a simple split, or a handful of strips for a long screenshot.',
+        },
+        {
+          question: 'Can I split an image into uneven pieces?',
+          answer: 'No, the splitter divides the image into equal tiles or strips. If the image dimensions do not divide evenly, the edge tiles may differ by a pixel or two. For exact uneven pieces, crop each section separately with an image cropper instead.',
+        },
+        {
+          question: 'Do split tiles keep the original file format?',
+          answer: 'You choose the tile format yourself. A JPG source can produce PNG tiles and a PNG source can produce JPG tiles. Choose JPG for photos and small files, and PNG when you need transparency or exact pixels.',
+        },
+        {
+          question: 'Why would I split an image instead of just posting the whole photo?',
+          answer: 'Splitting serves jobs a single image cannot: a grid puzzle across a profile page, a carousel that reveals a panorama swipe by swipe, a poster printed across many pages, or a long screenshot divided into readable sections.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-cropper', '/image-resizer', '/image-dimensions-checker'],
+  },
+  {
+    id: 'how-to-split-image',
+    toolSlug: '/image-splitter',
+    categoryId: 'create',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-split-image',
+      title: 'How to Split an Image',
+      description: 'Split any image into grid tiles or strips in minutes: upload, pick a mode, set rows and columns, check the cut lines, and download the tiles or a ZIP.',
+      body: `
+<p>Splitting an image is a short job: upload a photo, choose how to divide it, check the cut lines, and download the pieces. This guide walks through each step in order, from the first upload to the finished tiles.</p>
+<p>You need just one thing before you start: the image you want to split. A large, high-resolution source gives the best tiles, because each tile is cut at full original size. A small source gives small tiles, so use the biggest file you have.</p>
+<p>The <a href="/image-splitter/">image splitter</a> does the work in your browser. Nothing uploads to a server, there is no account, and the tiles download free. Follow the steps below and you will have a split image in a few minutes.</p>
+<h2 id="step-1-upload-your-image">Step 1: Upload Your Image</h2>
+<p>Open the splitter and drop your image onto the upload zone, or click to choose a file from your device. You can also paste an image straight from your clipboard with Ctrl and V, which is handy for screenshots that you have not saved as files.</p>
+<p>The tool accepts JPG, PNG, WebP, HEIC, GIF, BMP, and SVG files up to 20 MB. Most photos and screenshots are well under that limit. An iPhone HEIC photo uploads and splits like any other file.</p>
+<p>As soon as the image loads, an initial 3 by 3 split generates automatically. You will see the grid and the numbered cut lines on the preview right away, which gives you a starting point to adjust from.</p>
+<p>If you uploaded the wrong file, replace it without losing your settings. The tool lets you swap the image while keeping the split mode and grid size, so a mistake costs seconds rather than a restart.</p>
+<h2 id="step-2-choose-a-split-mode">Step 2: Choose a Split Mode</h2>
+<p>Pick one of the three modes: Grid, Horizontal Strips, or Vertical Strips. Grid divides the image into rows and columns, and it is the mode for Instagram grids, puzzles, and posters. Choose it when the tiles will sit side by side to rebuild the picture.</p>
+<p>Horizontal Strips cut the image into stacked rows. Choose this mode for long screenshots, tall infographics, and anything that reads top to bottom. Each strip is a wide, short image that prints or posts cleanly on its own.</p>
+<p>Vertical Strips cut the image into side-by-side columns. Choose this mode for wide panoramas and banners, where each strip continues the scene to the right. A panorama split into vertical strips works as a swipeable carousel.</p>
+<p>If you are not sure which mode fits, start with Grid. It is the most flexible mode, and you can switch to a strip mode at any time without losing the image. The preview updates as you switch, so the difference is visible immediately.</p>
+<h2 id="step-3-set-rows-and-columns">Step 3: Set Rows and Columns</h2>
+<p>In Grid mode, set the number of rows and columns. Three rows and three columns give the classic nine-tile Instagram grid. Two by two gives a simple four-tile split, and four by four gives sixteen tiles for a larger puzzle.</p>
+<p>Think about the tile size before you choose. A 3000 pixel photo split 3 by 3 gives 1000 pixel tiles, which are large enough to post anywhere. The same photo split 10 by 10 gives 300 pixel tiles, which are small and suited only to thumbnails or mosaics.</p>
+<p>In strip modes, set the number of strips instead. Four horizontal strips for a long screenshot, three vertical strips for a panorama, and two strips for a simple split. The strips divide the image equally, so the count decides the size of each piece.</p>
+<p>Change the numbers freely and watch the preview. The cut lines move as you adjust, and the tile count updates. There is no cost to experimenting, since nothing downloads until you ask for it.</p>
+<h2 id="step-4-use-a-preset">Step 4: Use a Preset</h2>
+<p>Presets are one-click settings for the common splits. The 3 by 3 Instagram grid preset is the one most people need, and the tool includes others for common grid sizes and strip counts. Tap a preset and the rows and columns fill in automatically.</p>
+<p>A preset is a starting point. After tapping it, adjust the numbers if your image or your plan needs a different shape. The preset saves the typing, and you keep full control over the final split.</p>
+<p>Use presets when you split images often. A social media manager building a grid every week can tap the same preset each time and get the same tile sizes, which keeps the profile grid consistent from one puzzle to the next.</p>
+<p>If no preset matches your job, set the rows and columns by hand. A 4 by 5 grid for a poster or a 1 by 6 strip for a banner are both valid splits, and the manual controls cover every combination up to 10 by 10.</p>
+<h2 id="step-5-inspect-the-cut-lines">Step 5: Inspect the Cut Lines</h2>
+<p>Look at the preview and find the numbered cut lines. They show exactly where each tile begins and ends, and the numbers tell you the position of each tile in the grid, reading left to right and top to bottom.</p>
+<p>Check whether any cut line passes through a face, a line of text, or an important detail. A face split across two tiles looks like an error, and text cut in half is unreadable in both tiles. If a cut lands badly, change the grid or reposition the image.</p>
+<p>For a non-square source, check the tile shapes. A wide photo split 3 by 3 gives wide tiles, not squares, and those tiles may not suit a square grid. Adjust the rows and columns, or crop the source to a square first, so the tiles come out the shape you need.</p>
+<p>Zoom into the preview if the image is detailed. Cut lines that look fine at a small size can hide a problem in a busy area of the photo. A few seconds of inspection saves a download and a re-split.</p>
+<h2 id="step-6-choose-the-tile-format">Step 6: Choose the Tile Format</h2>
+<p>Pick the format for the tiles. JPG suits photos and gives small files, which is what you want for social posts and web use. PNG suits graphics, text, and anything with transparency, because it keeps every pixel exact.</p>
+<p>The Tile Quality slider appears for JPG tiles. It controls the compression of the JPG output, so a higher setting keeps more detail and a lower setting makes smaller files. PNG tiles are lossless and have no quality slider.</p>
+<p>For transparent PNG sources, choose PNG as the tile format. JPG has no transparency, so a transparent tile exported as JPG gains a solid background. The transparency survives only in a format that supports it.</p>
+<p>Match the format to the destination. Social posts and print work well with JPG, while sprite sheets, icons, and design assets need PNG. When in doubt, export PNG for graphics and JPG for photographs.</p>
+<h2 id="step-7-download-the-tiles">Step 7: Download the Tiles</h2>
+<p>Download the tiles as a ZIP to get them all at once. The ZIP contains every tile as a numbered file, in reading order from the top-left corner. Unzip it and the set is ready to use, with the numbers showing where each tile belongs.</p>
+<p>You can also download tiles one by one if you only need a few of them. A single tile for a profile picture or a single strip for a banner does not need the whole set, and the individual download skips the unzipping step.</p>
+<p>Check the tile dimensions after downloading. Open one tile and confirm it is the size you expected, especially for print work or sprite sheets where exact pixels matter. A quick check now catches a wrong grid setting before you use the tiles.</p>
+<p>Keep the ZIP as a backup until the tiles are used. If a tile gets lost or a post fails, the ZIP restores the set without another round of splitting. Delete it only after the job is done.</p>
+<h2 id="step-8-name-and-organize">Step 8: Name and Organize</h2>
+<p>The downloaded tiles are numbered, but the filenames are generic. Rename them if the job needs meaningful names, such as puzzle-row-1 or poster-tile-a1. Clear names prevent mix-ups when several splits live in one folder.</p>
+<p>Keep each split in its own folder. A folder named for the job, with the tiles inside in order, is easier to work with than a downloads folder full of numbered files from different projects. Organization matters most when a grid has nine or more tiles.</p>
+<p>For Instagram grids, keep the tiles in posting order, not grid order. The platform shows the newest post first, so the tiles must be posted from the last grid position to the first. A folder sorted by posting order removes the guesswork.</p>
+<p>Note the split settings somewhere if you will repeat the job. A grid of 3 by 3 from a square source is easy to remember, but a custom split of 4 by 5 with JPG quality 85 is not. A short note saves you from rediscovering the settings next time.</p>
+<h2 id="step-9-check-the-tiles">Step 9: Check the Tiles</h2>
+<p>Open a few tiles at full size and look at the edges. Each tile should show a clean cut with no sliver of the neighboring tile and no missing strip along the boundary. A clean split is invisible when the tiles sit together.</p>
+<p>Check the first and last tiles especially. The edge tiles reveal problems with uneven division, where the image dimensions did not split evenly and the edge tiles came out a pixel or two different in size. A small difference is normal and rarely visible.</p>
+<p>View the tiles together if the job is a grid or a puzzle. Lay them out in order on screen, or assemble them in a collage, and confirm the picture rebuilds correctly. A misplaced tile is obvious when the set is viewed as a whole.</p>
+<p>If a tile looks wrong, do not fix the tile by hand. Go back to the splitter, adjust the grid or the source image, and split again. A fresh split keeps every tile consistent, while a hand-edited tile can drift from the rest.</p>
+<h2 id="step-10-reuse-the-setup">Step 10: Reuse the Setup</h2>
+<p>Save the settings that worked. The grid size, the mode, and the tile format are the three numbers that define a split, and reusing them keeps a series of splits consistent. A weekly grid puzzle built with the same settings looks like a series, not a set of accidents.</p>
+<p>Split a new image with the same settings by uploading it and applying the same numbers. The tool remembers nothing between visits, so the note you made in step 8 is the record. Keep it with the project files.</p>
+<p>When the source changes shape, the settings may need adjusting. A square source and a wide source split 3 by 3 give different tile shapes, so check the preview each time even when the numbers are the same.</p>
+<p>Build a small library of split presets in your notes: the Instagram 3 by 3, the poster 4 by 5, the screenshot 4-strip, and any other split you use often. A written list turns a five-minute job into a one-minute job.</p>
+<h2 id="fixing-uneven-splits">Fixing Uneven Splits</h2>
+<p>An uneven split happens when the image dimensions do not divide evenly by the rows or columns. A 1000 pixel image split into 3 columns gives tiles of 333, 333, and 334 pixels, because the extra pixels have to go somewhere. The edge tiles end up a pixel larger.</p>
+<p>A one-pixel difference is invisible in almost every use. Social posts, carousels, and print layouts tolerate it without any visible seam. Do not chase a perfect division when a pixel-level difference has no visible effect.</p>
+<p>For pixel-perfect work such as sprite sheets, trim the source first. Crop the image to dimensions that divide evenly by the grid, then split. A 960 pixel sheet split 3 by 3 gives exact 320 pixel tiles with no remainder at all.</p>
+<p>Check the tile dimensions in the download if exactness matters. Open the tiles and confirm the sizes before using them in a game engine or a print layout, where a one-pixel difference can shift alignment.</p>
+<h2 id="splitting-for-a-specific-platform">Splitting for a Specific Platform</h2>
+<p>Each platform has its own tile expectations. Instagram grids need square tiles, so the source should be square and the grid should be 3 by 3. A non-square source gives non-square tiles that break the profile grid.</p>
+<p>Print needs tiles that match the paper size. A poster split for A4 pages needs tiles sized to A4 proportions, so set the grid from the paper dimensions rather than from a round number. The tile count follows the poster size divided by the page size.</p>
+<p>Carousels need tiles that read on their own. A panorama split into vertical strips gives strips that each show a slice of the scene, and each slice should be interesting enough to hold a swipe. A strip that is all sky or all empty ground wastes a swipe.</p>
+<p>When the platform changes its layout, the split may need to change too. Instagram has changed its profile grid shape before, and a grid built for the old shape can look wrong on the new one. Check the current grid before building a puzzle.</p>
+<h2 id="quick-reference">Quick Reference: Split Checklist</h2>
+<p>Upload a large source, pick Grid or a strip mode, set the rows and columns or tap a preset, and inspect the numbered cut lines for faces and text. Choose JPG for photos and PNG for transparency.</p>
+<p>Download the ZIP, keep the tiles in order, and post grid tiles in reverse order. If a cut lands badly or the tiles come out uneven, adjust the grid or trim the source and split again.</p>
+<p>For the full guide, read the <a href="/blog/image-splitter-guide/">Image Splitter: Complete Guide</a>, and for the Instagram grid in detail, read <a href="/blog/split-images-instagram-grid/">Split Images for Instagram Grids and Puzzles</a>. Split your image with the <a href="/image-splitter/">image splitter</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I know how many rows and columns to choose?',
+          answer: 'Match the count to the job: 3 by 3 for an Instagram grid, 2 by 2 for a simple split, and as many strips as you have pages or slides for a long screenshot. Fewer tiles mean larger tiles, so use the smallest count that does the job.',
+        },
+        {
+          question: 'What happens if my image is not evenly divisible?',
+          answer: 'The edge tiles come out a pixel or two larger than the rest, because the leftover pixels have to go somewhere. A one-pixel difference is invisible in normal use. For pixel-perfect work, crop the source to dimensions that divide evenly first.',
+        },
+        {
+          question: 'Can I split a screenshot into printable pages?',
+          answer: 'Yes. Use Horizontal Strips and set the strip count to the number of pages you want. Each strip prints on its own page, and the strips together contain the whole screenshot. Choose the count so each strip matches the paper size.',
+        },
+        {
+          question: 'How do I put the tiles back together?',
+          answer: 'Lay them out in numbered order, left to right and top to bottom, starting from tile one at the top-left corner. For an Instagram grid, post them in reverse order, from the last tile to the first, so they land in the right positions.',
+        },
+        {
+          question: 'Which format should I choose for the tiles?',
+          answer: 'Choose JPG for photographs and for any use where small files matter, such as social posts. Choose PNG for graphics, text, and transparent images, because PNG keeps every pixel exact and preserves transparency.',
+        },
+        {
+          question: 'Can I split an image on my phone?',
+          answer: 'Yes, the splitter runs in the browser on phones and tablets as well as on desktop. Upload from your photo library, set the grid, and download the ZIP. A large source image works best, so use the original photo rather than a compressed copy.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-cropper', '/image-resizer', '/image-to-pdf'],
+  },
+  {
+    id: 'split-images-instagram-grid',
+    toolSlug: '/image-splitter',
+    categoryId: 'create',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'split-images-instagram-grid',
+      title: 'Split Images for Instagram Grids and Puzzles',
+      description: 'Turn one photo into an Instagram grid puzzle: the 3×3 split, preparing a square source, posting order, puzzle styles, and how to keep the grid looking good over time.',
+      body: `
+<p>An Instagram grid puzzle turns one photo into nine tiles that form a single large image across your profile page. Visitors who open your profile see the full picture, while each tile also works as a normal post in the feed. It is the most visible way to use a split image.</p>
+<p>This guide covers the whole job: preparing a square source photo, splitting it 3 by 3, posting the tiles in the right order, and keeping the grid intact as you publish new content. The split itself takes minutes with the <a href="/image-splitter/">image splitter</a>; the planning is what makes it look good.</p>
+<p>A grid puzzle is a commitment. It takes over the top of your profile, and every new post shifts it. Read the whole guide before you post the first tile, so the puzzle survives past the first week.</p>
+<h2 id="what-is-an-instagram-grid-split">What Is an Instagram Grid Split?</h2>
+<p>An Instagram grid split divides one square photo into nine square tiles in a 3 by 3 grid. The nine tiles are posted as nine separate posts, and on the profile page they sit side by side to rebuild the original photo at three times the size.</p>
+<p>Each tile is a normal post. It appears in the feed on its own, it can have its own caption, and it can collect its own likes and comments. The puzzle only exists on the profile page, where the nine posts sit together in a grid.</p>
+<p>The effect works because Instagram shows profile posts in a strict grid, three across, newest first. Nine posts in the right order fill exactly three rows, and the three rows form the complete picture. Any other count leaves a partial picture or a broken edge.</p>
+<p>Grid splits are used for announcements, portfolio showcases, product launches, and art. A photographer can show a panorama across nine tiles, and a brand can reveal a new product as a single large image that visitors discover on the profile.</p>
+<h2 id="why-split-a-photo-across-tiles">Why Split a Photo Across Tiles</h2>
+<p>A grid puzzle makes a profile page memorable. A visitor who opens a profile full of single images sees a feed; a visitor who opens a profile with a giant image sees a statement. The puzzle is the first thing they notice, and it sets the tone for the account.</p>
+<p>The puzzle also gives a single image nine times the space. A panorama that would be a thin strip in a single post becomes a large, detailed picture across nine tiles. A product launch gains a billboard instead of a postcard.</p>
+<p>Each tile can carry its own message. The nine captions can tell a story in sequence, link to different pages, or repeat the announcement with different angles. The puzzle is nine posts, not one, and each one can work independently.</p>
+<p>The cost is the profile itself. Nine tiles take over the top three rows, and they stay there until newer posts push them down. A grid puzzle is a trade: a striking profile now for a disrupted grid later.</p>
+<h2 id="the-3x3-grid">The 3 by 3 Grid</h2>
+<p>Three by three is the standard grid split because it matches the profile layout exactly. Three tiles across and three rows down fill the screen with a single image, and the tiles are large enough to show detail without becoming small.</p>
+<p>Larger grids exist, such as 3 by 4 or 3 by 5, but they take over more of the profile and are harder to keep intact. A 3 by 3 puzzle is nine posts, which is already a large commitment; a 3 by 5 puzzle is fifteen, which dominates the profile for weeks.</p>
+<p>Smaller splits, such as 3 by 1 or 3 by 2, make a banner rather than a puzzle. A single row of three tiles forms a wide strip across the profile, which suits a headline or a logo. It is less dramatic than a full puzzle but easier to maintain.</p>
+<p>Stick with 3 by 3 for a first puzzle. It is the size every grid tool supports, the size followers recognize, and the size that is easiest to post correctly. A bigger puzzle can wait until you know the process works.</p>
+<h2 id="preparing-your-source-photo">Preparing Your Source Photo</h2>
+<p>The source photo must be square, because the nine tiles are square and the grid is square. A square source split 3 by 3 gives nine square tiles. A non-square source gives tiles of the wrong shape, and the profile grid will not rebuild the picture correctly.</p>
+<p>Use a large source, at least 3000 by 3000 pixels if you can. Each tile is one third of the source, so a 3000 pixel source gives 1000 pixel tiles, which post sharply. A 1080 pixel source gives 360 pixel tiles, which look soft at full size.</p>
+<p>Choose a photo with a clear subject and strong shapes. A panorama with a horizon, a portrait with a face, or a product with a bold outline all read well across nine tiles. A photo with fine detail everywhere turns into noise when it is divided.</p>
+<p>Check the cut lines before you split. The grid divides the image at one third and two thirds in each direction, so a face, a logo, or a line of text sitting on a cut line gets divided between tiles. Shift the crop so important details sit inside tiles, not on their edges.</p>
+<h2 id="square-vs-non-square-sources">Square vs Non-Square Sources</h2>
+<p>A square source is the only shape that gives square tiles from a 3 by 3 split. If your photo is rectangular, crop it to a square first, or the tiles will come out rectangular and the profile grid will show them with gaps or crops.</p>
+<p>Cropping to a square loses part of the photo. A wide panorama cropped to a square keeps only the middle third, which may cut off the edges that made the photo interesting. In that case, consider a vertical strip split instead, or a 3 by 1 banner rather than a full puzzle.</p>
+<p>Some tools pad a rectangular photo into a square with a background color, but padding adds bands that show in the tiles. A padded source gives tiles with colored edges, which breaks the illusion of a single picture. Cropping is the cleaner choice.</p>
+<p>When the photo cannot be cropped to a square without losing its subject, the puzzle is the wrong format for it. Use the photo as a single post or a carousel instead, and save the grid puzzle for a photo that fits the square.</p>
+<h2 id="ordering-and-uploading-tiles">Ordering and Uploading Tiles</h2>
+<p>Instagram shows the newest post first, in the top-left position of the profile grid. That means the tile that belongs in the bottom-right corner of the puzzle must be posted first, and the tile that belongs in the top-left corner must be posted last.</p>
+<p>The tiles are numbered in reading order: tile one is the top-left, tile three is the top-right, tile seven is the bottom-left, and tile nine is the bottom-right. The posting order is the reverse: nine, eight, seven, six, five, four, three, two, one.</p>
+<p>Post the tiles one after another without posting anything else in between. A single unrelated post in the middle of the sequence breaks the grid, and the puzzle will have a hole in it. Finish all nine posts in one session.</p>
+<p>Do not delete or archive a tile after posting. Removing one tile leaves a gap in the puzzle, and the picture breaks. If a tile has a mistake, delete the whole set and repost it, or accept the flaw rather than leaving a hole.</p>
+<h2 id="puzzles-vs-clean-grids">Puzzles vs Clean Grids</h2>
+<p>A puzzle is one image split across nine tiles, so the profile shows a single large picture. A clean grid is a different style: each post is a complete image on its own, but all nine share a color scheme, a border, or a layout so the profile looks coordinated.</p>
+<p>Puzzles are dramatic but fragile. One new post breaks the picture, and the puzzle only survives until the next post. Clean grids are durable: new posts fit the pattern instead of breaking it, so the profile stays coordinated for months.</p>
+<p>Many accounts mix the two. They run a puzzle for a launch or an announcement, then return to a clean grid for everyday posting. The puzzle is the event, and the clean grid is the everyday look.</p>
+<p>Choose the puzzle when the image deserves the drama: a launch, a milestone, or a piece of art. Choose the clean grid when the account posts often and the profile must stay tidy. The puzzle is a sprint, and the clean grid is a marathon.</p>
+<h2 id="carousel-strips">Carousel Strips</h2>
+<p>A vertical strip split turns a wide panorama into three tall images that work as a carousel. The viewer swipes through the strips and the scene reveals itself from left to right, which suits travel photos and landscapes.</p>
+<p>Carousel strips are more forgiving than grid puzzles. Each strip is a complete image on its own, so the post works in the feed even if the viewer never swipes. The puzzle only works when all nine tiles are seen together on the profile.</p>
+<p>Use three vertical strips for a panorama, so the carousel has three slides. More strips make a longer carousel, but each strip becomes narrower and less interesting on its own. Three is the balance between the panorama and the individual slide.</p>
+<p>Post the strips as a single carousel post, in left-to-right order. The carousel keeps the strips together in one post, so there is no risk of another post breaking the sequence, which is the main weakness of a grid puzzle.</p>
+<h2 id="captions-and-posting-order">Captions and Posting Order</h2>
+<p>Each tile can have its own caption, and the nine captions can work together. Some accounts write one caption split across the nine tiles, so the story reads in posting order. Others repeat the same announcement on each tile with a different detail.</p>
+<p>Keep the captions short on the middle tiles. A visitor scrolling the feed sees each tile on its own, and a long caption on a tile that shows only a fragment of the image feels confusing. Save the full message for the first tile posted or the last one, which are the corners of the puzzle.</p>
+<p>Hashtags belong on the tiles like any other post, but avoid repeating the same long hashtag list nine times. It looks like spam in the feed, and it adds nothing to the puzzle. Put the full tag list on one tile and keep the others clean.</p>
+<p>Post the tiles quickly, one after another, so the puzzle appears complete as soon as possible. A half-posted puzzle looks broken to anyone who visits the profile mid-sequence, so finish all nine before doing anything else.</p>
+<h2 id="grid-planning-apps-vs-manual">Grid Planning Apps vs Manual Posting</h2>
+<p>Grid planning apps show a preview of the profile before you post, so you can see the puzzle assembled on screen. That preview catches ordering mistakes and bad cuts before they go live, which is the main value of the app.</p>
+<p>Manual posting works fine if you follow the numbering. The tiles are numbered in reading order, and the posting order is the reverse, so a careful manual post gives the same result as an app. The app adds a preview; it does not change the split.</p>
+<p>Some planning apps schedule the posts for you, which helps when the nine posts need to go out at a specific time. Scheduling is the one feature manual posting cannot match, since posting nine tiles by hand takes several minutes of undivided attention.</p>
+<p>Whatever method you use, the split is the same. The <a href="/image-splitter/">image splitter</a> produces the tiles, and the app or the manual process only decides the order and the timing. Do not pay for a splitter inside an app when a free one does the same job.</p>
+<h2 id="when-grids-hurt-your-feed">When Grids Hurt Your Feed</h2>
+<p>A grid puzzle can hurt the feed experience. Followers scrolling their feed see nine separate posts of fragments, and a tile that shows only sky or only a wall looks like a mistake rather than part of a puzzle. The profile gains, and the feed loses.</p>
+<p>The puzzle also floods the feed. Nine posts in a row from one account can annoy followers, especially if they follow many accounts. Some followers mute the account during a puzzle, and some unfollow, which costs more than the profile gains.</p>
+<p>Puzzles with weak tiles are the worst case. A tile that shows nothing recognizable on its own is a wasted post in the feed, even if it completes the picture on the profile. Design the puzzle so each tile has something worth seeing alone.</p>
+<p>Use puzzles sparingly. One puzzle for a launch is an event; a puzzle every week is a habit that trains followers to ignore the account. Save the format for the images that truly deserve nine posts.</p>
+<h2 id="maintaining-the-grid-over-time">Maintaining the Grid Over Time</h2>
+<p>A puzzle survives only until the next post. The moment you publish a tenth post, the top row of the profile changes and the puzzle shifts down, then breaks apart as more posts arrive. Plan for that from the start.</p>
+<p>Some accounts post the puzzle and then stop posting for a while, keeping the profile intact as a landing page. That works for a launch or a portfolio, but it starves the account of new content, which is a poor trade for most accounts.</p>
+<p>A common pattern is to post the puzzle in threes: three tiles, then three normal posts, then three more tiles, so the profile always shows complete rows. The puzzle never forms a full picture, but the profile never looks broken either.</p>
+<p>Another pattern is to accept the break. Post the puzzle, enjoy the profile for a few days, then return to normal posting and let the puzzle dissolve into the feed. The puzzle was the event, and the feed is the everyday account.</p>
+<h2 id="quick-reference">Quick Reference: Instagram Grid Checklist</h2>
+<p>Start from a square photo of at least 3000 pixels, check the cut lines for faces and text, and split 3 by 3. Post the tiles in reverse order, nine down to one, in a single session with nothing else in between.</p>
+<p>Keep each tile interesting on its own, keep captions short on the middle tiles, and plan for the puzzle to break when the next post arrives. Use puzzles for launches and milestones, not for everyday posting.</p>
+<p>For the step-by-step split, read <a href="/blog/how-to-split-image/">How to Split an Image</a>, and for the full splitter guide, read <a href="/blog/image-splitter-guide/">Image Splitter: Complete Guide</a>. Split your photo with the <a href="/image-splitter/">image splitter</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How many tiles should an Instagram grid puzzle have?',
+          answer: 'Nine tiles in a 3 by 3 grid is the standard, because it matches the profile layout exactly and fills three rows. Larger puzzles take over more of the profile and are harder to keep intact, while a 3 by 1 row makes a banner rather than a puzzle.',
+        },
+        {
+          question: 'Will splitting hurt my image quality on Instagram?',
+          answer: 'No, as long as the source is large. Tiles are cut at full original size, so a 3000 pixel source gives 1000 pixel tiles, which post sharply. A small source gives small tiles, so start from the largest photo you have.',
+        },
+        {
+          question: 'In what order do I post the grid tiles?',
+          answer: 'Post them in reverse order, from tile nine to tile one. Instagram shows the newest post first in the top-left position, so the bottom-right tile must go first and the top-left tile must go last. Post all nine in one session.',
+        },
+        {
+          question: 'Can I use a grid split for a business account?',
+          answer: 'Yes, grid puzzles work on any account type, and brands use them for launches and announcements. Keep in mind that the puzzle takes over the top of the profile and that each tile appears separately in followers feeds, so use the format sparingly.',
+        },
+        {
+          question: 'What happens to my grid when I post a new photo?',
+          answer: 'The next post pushes the puzzle down and breaks it apart, because the profile grid always shows the newest posts first. Plan for that: either pause posting while the puzzle is live, or accept that the puzzle is a short-lived event.',
+        },
+        {
+          question: 'Should each grid tile make sense on its own?',
+          answer: 'Yes. Followers see each tile separately in their feed, so a tile that shows only sky or a blank wall looks like a mistake. Design the puzzle so every tile has something recognizable, even though the full picture only appears on the profile.',
+        },
+      ],
+      readingMinutes: 12,
+    },
+    relatedToolSlugs: ['/image-cropper', '/image-resizer', '/gif-maker'],
+  },
+  {
+    id: 'gif-maker-guide',
+    toolSlug: '/gif-maker',
+    categoryId: 'create',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'gif-maker-guide',
+      title: 'GIF Maker: Complete Guide',
+      description: 'Make animated GIFs from your photos: how the GIF maker works, choosing frames, timing, loop options, frame fit, colour quality, and keeping file size under control.',
+      body: `
+<p>A GIF is a short looping animation made from a series of still images. It plays without sound, repeats forever or for a set number of loops, and works in almost every chat app, social feed, and website. A well-made GIF says in two seconds what a paragraph cannot.</p>
+<p>The <a href="/gif-maker/">GIF maker</a> turns your photos into an animated GIF in the browser. Upload two or more frame images, set the timing for each frame, choose the loop count, and download a watermark-free GIF89a file. Nothing uploads to a server.</p>
+<p>This guide explains how GIFs work, how to choose and time frames, and how to keep the file size small enough to share. Whether you make a reaction GIF, a product demo, or a tutorial clip, the same principles apply.</p>
+<h2 id="what-is-a-gif">What Is a GIF?</h2>
+<p>GIF stands for Graphics Interchange Format, and it has been around since the late 1980s. It is one of the oldest image formats still in everyday use, and its staying power comes from one feature: animation without video.</p>
+<p>A GIF stores a series of frames, each shown for a short time, one after another. The player loops through the frames, and the result looks like a short video clip. There is no sound, no player controls, and no need for a video codec.</p>
+<p>GIFs are limited to 256 colors per frame, which is why they suit illustrations, screenshots, and simple animations better than full-color photographs. A photo GIF works, but the limited palette can make gradients look banded and skin tones look flat.</p>
+<p>The format is universal. Chat apps, social feeds, forums, email, and websites all display GIFs without any special player. That universality is why a GIF is still the easiest way to share a short animation with anyone.</p>
+<h2 id="how-the-gif-maker-works">How the GIF Maker Works</h2>
+<p>The GIF maker encodes your photos into an animated GIF entirely in your browser. Your frames never leave your device, which matters when the images are unreleased product shots or personal photos. There is no upload, no queue, and no waiting for a server.</p>
+<p>You upload two or more frame images, and the tool arranges them in order. You can reorder frames by dragging, duplicate a frame to hold it longer, and remove a frame that does not belong. The frame list is the timeline of your animation.</p>
+<p>Each frame gets its own delay, measured in fractions of a second. A short delay makes the animation fast, and a long delay makes it slow. You can also set a single delay for all frames, then adjust individual frames that need to linger.</p>
+<p>The Live Timing Preview shows the animation playing with your current settings before you generate the file. What you see in the preview is what the finished GIF will look like, so check it before you download. The generated file is a standard GIF89a, which plays everywhere GIFs are supported.</p>
+<h2 id="choosing-frames">Choosing Frames</h2>
+<p>Frames are the still images that make up the animation, and the choice of frames decides whether the GIF works. A good GIF tells a small story: a before and after, a product turning, a step-by-step action, or a reaction that builds and releases.</p>
+<p>Use frames that are similar in size and shape. The tool handles images with different aspect ratios, but a set of frames with matching dimensions gives a smooth animation without jumps or black bars. Resize or crop the frames first if they differ wildly.</p>
+<p>Keep the frame count modest. A GIF with five to fifteen frames is usually enough for a reaction, a demo, or a short tutorial step. More frames mean a longer animation and a larger file, and a very long GIF loses the punch that makes the format work.</p>
+<p>Order matters more than count. A product rotation reads clockwise or counter-clockwise, a tutorial reads in step order, and a reaction reads as a build and a payoff. Arrange the frames so the motion feels natural, then check the preview.</p>
+<h2 id="frame-delays-and-timing">Frame Delays and Timing</h2>
+<p>Frame delay is how long each frame stays on screen, and it is the main control over how the animation feels. A delay of 0.1 seconds per frame gives a fast, energetic motion, while a delay of 0.5 seconds gives a slow, deliberate one.</p>
+<p>Use a consistent delay for the body of the animation and a longer delay for the frames that need emphasis. A title slide at the start deserves a longer hold so viewers can read it, and the final frame deserves a longer hold so the message lands before the loop restarts.</p>
+<p>The quick presets of 1, 2, 5, and 10 frames per second give you starting points. One frame per second is a slow slideshow, five frames per second is a brisk demo, and ten frames per second is smooth enough for simple motion. Start from a preset, then fine-tune individual frames.</p>
+<p>Test the timing in the Live Timing Preview. A delay that looks right as a number can feel wrong in motion, and the preview shows the real feel. If the animation rushes past the important frame, lengthen that frame rather than slowing the whole GIF.</p>
+<h2 id="frame-rate-presets">Frame Rate Presets</h2>
+<p>The presets translate frames per second into delays. One FPS means each frame shows for one second, which suits a slideshow of stills where each image deserves a full look. Two FPS means half a second per frame, which suits a slow demo.</p>
+<p>Five FPS means a fifth of a second per frame, which is the sweet spot for most GIFs. It is fast enough to feel like motion and slow enough that each frame registers. Product demos, tutorials, and simple animations usually live at this rate.</p>
+<p>Ten FPS means a tenth of a second per frame, which is the smoothest the tool offers. It suits motion that needs to look fluid, such as a rotation or a walk cycle, but it also means more frames per second of animation and a larger file.</p>
+<p>Higher is not always better. A GIF at ten frames per second with thirty frames is three seconds long and heavy, while the same idea at five frames per second with fifteen frames is three seconds long and half the size. Match the rate to the motion, not to the maximum.</p>
+<h2 id="loop-options">Loop Options</h2>
+<p>Looping decides how many times the GIF plays. An infinite loop plays forever, which is the classic GIF behavior and the right choice for reactions, decorations, and anything meant to catch the eye repeatedly.</p>
+<p>A finite loop plays a set number of times and then stops on the final frame. That suits a tutorial or a demo where the viewer should end on the finished state, not on a mid-animation frame. A loop count of two or three gives the viewer a second look without looping forever.</p>
+<p>A single play, or loop count of one, shows the animation once and stops. That suits a message where the animation is a one-time reveal, such as a before-and-after that should end on the after. The viewer sees the change, then the result stays.</p>
+<p>Choose the loop for the context. A chat reaction wants an infinite loop, a product demo wants a few loops, and a tutorial step wants to end on the result. The wrong loop makes a good GIF feel broken.</p>
+<h2 id="frame-fit-contain-vs-cover">Frame Fit: Contain vs Cover</h2>
+<p>Frame Fit decides what happens when the frames have different aspect ratios. Contain fits each frame inside the output size without cropping, so the whole frame is visible and any empty space becomes a border. It preserves the full image at the cost of empty bands.</p>
+<p>Cover fills the output size completely by cropping the frame, so there are no empty bands but the edges of the frame may be cut off. It gives a clean, full-bleed animation at the cost of losing the edges of some frames.</p>
+<p>Choose Contain when every part of every frame matters, such as a tutorial where a cropped button would hide the step. Choose Cover when the animation must fill the frame cleanly, such as a social post where empty bands would look unfinished.</p>
+<p>The aspect ratio stays fixed when you edit the output width, so changing the width scales the whole GIF rather than stretching it. Set the output dimensions once, choose the fit, and the frames follow consistently.</p>
+<h2 id="output-size-and-dimensions">Output Size and Dimensions</h2>
+<p>The output width sets the pixel width of the finished GIF, and the height follows from the aspect ratio of the frames. A width of 480 pixels is a common choice for chat and social sharing, while a larger width suits a website or a presentation.</p>
+<p>Smaller is usually better for GIFs. A GIF at 480 pixels wide is small enough to share quickly and large enough to see clearly on a phone. A GIF at 1000 pixels wide is four times the pixels and several times the file size, for a difference most viewers will not notice.</p>
+<p>The tool sets a minimum and maximum for the output dimensions, so extreme sizes are not possible. Very small outputs lose detail, and very large outputs create files too big to share. Stay near the middle of the range for the best balance.</p>
+<p>Check the dimensions against the destination. A chat app may downscale a large GIF anyway, so sending a huge file wastes bandwidth for no visible gain. A website banner needs a larger width than a chat sticker, so match the size to the place.</p>
+<h2 id="color-palette-quality">Color Palette Quality</h2>
+<p>GIFs store at most 256 colors per frame, so the encoder must choose which colors to keep. The Color Palette Quality slider controls how carefully that choice is made. A higher setting analyzes the frames more thoroughly and keeps the colors that matter most.</p>
+<p>Higher quality gives smoother gradients and more accurate skin tones, but it takes longer to encode and can produce a slightly larger file. Lower quality encodes faster and makes smaller files, but gradients may band and subtle colors may shift.</p>
+<p>For photographs, use a higher palette quality. Photos have thousands of colors, and a careful palette keeps the image recognizable. For illustrations and screenshots with few colors, a lower setting is enough, because the palette can hold all the colors anyway.</p>
+<p>Test the palette on a frame with a gradient or a face. Those are the places where a poor palette shows first, as banding in the sky or blotches in the skin. If the test frame looks clean, the rest of the GIF will too.</p>
+<h2 id="large-gif-warning">Large GIF Warning</h2>
+<p>The tool shows a Large GIF Warning when the estimated file passes 5 MB or 15 MB. Those thresholds exist because large GIFs are hard to share: they load slowly in chats, they may be rejected by upload limits, and they eat mobile data.</p>
+<p>A GIF gets large for three reasons: many frames, large dimensions, or a high frame rate. Cutting any one of the three shrinks the file. Fewer frames is usually the best cut, because a shorter GIF is also a better GIF.</p>
+<p>When the warning appears, reduce the output width first. Halving the width cuts the pixel count to a quarter, which is the biggest single saving available. Then reduce the frame count or the frame rate until the warning clears.</p>
+<p>If the GIF must stay large, consider whether a GIF is the right format. A short video in MP4 form is far smaller than the same animation as a GIF, and most platforms accept video. The <a href="/gif-compressor/">GIF compressor</a> can shrink a finished GIF, but a video is the better choice when size is the main problem.</p>
+<h2 id="transparency-in-gifs">Transparency in GIFs</h2>
+<p>GIFs support transparency, but only as a single transparent color, not as a smooth alpha channel. A pixel is either fully transparent or fully opaque, so soft edges and shadows become hard-edged against a transparent background.</p>
+<p>The GIF maker preserves transparent backgrounds from PNG frames when the output is set up for it. A logo or a sticker with transparency keeps its see-through areas, which suits overlays and chat stickers that must sit on any background.</p>
+<p>Soft edges need care. A logo with a drop shadow or a feathered edge will show a halo when the transparency is reduced to a single color, because the semi-transparent pixels must become either solid or clear. A hard-edged graphic works better than a soft one.</p>
+<p>Test a transparent GIF on both a light and a dark background. A halo that is invisible on white can be obvious on black, and the reverse. If the halo shows, flatten the graphic onto a solid color instead of using transparency.</p>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<p>The most common mistake is too many frames. A GIF with fifty frames is a video in disguise, and it will be heavy, slow, and dull. Cut the frame list to the essential moments and the GIF becomes sharper and smaller at once.</p>
+<p>Another mistake is a uniform delay for every frame. A title slide shown for a tenth of a second cannot be read, and a final frame shown for a tenth of a second cannot land. Give the important frames longer delays and the motion frames shorter ones.</p>
+<p>A third mistake is a huge output size. A GIF exported at 1000 pixels wide for a chat message is four times the pixels of a 500 pixel version, and the chat app will downscale it anyway. Match the size to the destination.</p>
+<p>Finally, many people ignore the palette quality on photo GIFs. A low palette setting turns a photo into a posterized mess, with banded skies and blotchy skin. Raise the palette quality for photographs, and keep it low only for simple graphics.</p>
+<h2 id="quick-reference">Quick Reference: GIF Maker Checklist</h2>
+<p>Choose five to fifteen frames with matching dimensions, arrange them in story order, and set a base delay of around five frames per second. Give the title and final frames longer holds, and pick a loop count for the context.</p>
+<p>Set the output width for the destination, use Contain when every detail matters and Cover when the frame must fill cleanly, and raise the palette quality for photographs. Heed the Large GIF Warning and shrink the width first.</p>
+<p>For the step-by-step build, read <a href="/blog/how-to-make-gif-from-images/">How to Make a GIF from Images</a>, and for the size trade-off in detail, read <a href="/blog/gif-frame-rate-file-size/">GIF Frame Rate and File Size: Smooth vs Small</a>. Make your GIF with the <a href="/gif-maker/">GIF maker</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What is a GIF and how is it different from a video?',
+          answer: 'A GIF is a series of still images that play in a loop, with no sound and no player controls. A video uses a codec to compress motion and sound into a much smaller file. GIFs are larger but play everywhere without a player, which is why they dominate chats and social feeds.',
+        },
+        {
+          question: 'How many frames should a GIF have?',
+          answer: 'Five to fifteen frames is enough for most GIFs: a reaction, a product demo, or a short tutorial step. More frames mean a longer animation and a larger file. If your GIF needs fifty frames, it is probably a video, and a video format will serve it better.',
+        },
+        {
+          question: 'Why are GIF files so large?',
+          answer: 'GIFs store every frame as a full image with a 256-color palette, and they compress poorly compared to video. Many frames, large dimensions, and a high frame rate all add size. Reduce the width first, then the frame count, to shrink a GIF quickly.',
+        },
+        {
+          question: 'Can I make a GIF from a video?',
+          answer: 'The GIF maker builds GIFs from still images, not from video files. To turn a video into a GIF, extract a series of still frames from the video first, then upload those frames as the GIF frames. Choose the frames that carry the motion you want.',
+        },
+        {
+          question: 'Do GIFs work on all social platforms?',
+          answer: 'Almost all of them. Chat apps, social feeds, forums, and email all display GIFs without a special player. A few platforms convert uploaded GIFs to video automatically, but the animation still plays, so the result is the same for the viewer.',
+        },
+        {
+          question: 'What is the best size for a GIF?',
+          answer: 'Around 480 pixels wide is a good default for chat and social sharing: small enough to send quickly and large enough to see clearly on a phone. Use a larger width only for a website or a presentation, where the GIF is displayed bigger.',
+        },
+      ],
+      readingMinutes: 12,
+    },
+    relatedToolSlugs: ['/gif-compressor', '/image-splitter', '/image-collage-maker'],
+  },
+  {
+    id: 'how-to-make-gif-from-images',
+    toolSlug: '/gif-maker',
+    categoryId: 'create',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-make-gif-from-images',
+      title: 'How to Make a GIF from Images',
+      description: 'Turn your photos into an animated GIF in minutes: gather frames, upload, order and time them, set the loop, preview, and download a share-ready GIF.',
+      body: `
+<p>Making a GIF from images is a short job: gather a few photos, upload them as frames, set the timing, and download the animation. This guide walks through each step in order, from choosing frames to sharing the finished GIF.</p>
+<p>You need just one thing before you start: two or more images to animate. They can be photos, screenshots, product shots, or illustrations. Similar sizes and shapes give the smoothest result, but the tool handles mixed sizes too.</p>
+<p>The <a href="/gif-maker/">GIF maker</a> does the work in your browser. Nothing uploads to a server, there is no account, and the finished GIF downloads free. Follow the steps below and you will have an animation in a few minutes.</p>
+<h2 id="step-1-gather-your-frames">Step 1: Gather Your Frames</h2>
+<p>Collect the images that will become the frames of your GIF. A reaction GIF needs a few photos that show a change of expression. A product demo needs shots from different angles. A tutorial needs one image per step.</p>
+<p>Five to fifteen frames is the right range for most GIFs. Fewer frames make a short, punchy animation, while more frames make a longer, smoother one. More than twenty frames usually means the GIF is trying to be a video.</p>
+<p>Use images with similar dimensions where you can. Frames of the same size and shape animate smoothly, while wildly different sizes cause jumps and black bars. Crop or resize the frames first if they differ a lot.</p>
+<p>Order the frames in your head before you upload. A product rotation reads clockwise, a tutorial reads in step order, and a reaction reads as a build and a payoff. A clear order before you start saves rearranging later.</p>
+<h2 id="step-2-upload-the-frames">Step 2: Upload the Frames</h2>
+<p>Open the GIF maker and drop your frame images onto the dropzone, or click to choose them from your device. You can upload everything at once, or add frames later with the Add Frames control if you find more images mid-way.</p>
+<p>The tool accepts JPG, PNG, WebP, HEIC, GIF, BMP, and SVG files up to 20 MB each. Phone photos, screenshots, and graphics all work. An iPhone HEIC photo uploads and converts without any extra step.</p>
+<p>The frames appear in the order you uploaded them, as a list you can rearrange. Check that all the images you need are there before moving on. A missing frame is easier to add now than after the timing is set.</p>
+<p>If you upload an existing GIF as a frame, the tool can extract a single frame from it. That is useful when you want to reuse one moment from an old animation as part of a new one.</p>
+<h2 id="step-3-reorder-the-frames">Step 3: Reorder the Frames</h2>
+<p>Drag the frames into the order that tells the story. The first frame is what viewers see before the animation starts, and the last frame is what they see before the loop restarts, so both ends deserve attention.</p>
+<p>Put the strongest frame first. In a chat or a feed, the first frame is the thumbnail, and it decides whether anyone watches the animation at all. A dull first frame means the GIF gets skipped.</p>
+<p>Check the sequence for jumps. A frame that belongs later in the motion but sits early in the list creates a visible jump in the animation. Read the frame list like a storyboard and move any frame that breaks the flow.</p>
+<p>Remove any frame that does not earn its place. A blurry shot, a duplicate angle, or a frame that adds nothing to the story only makes the GIF longer and heavier. Fewer, better frames beat many mediocre ones.</p>
+<h2 id="step-4-duplicate-or-remove-frames">Step 4: Duplicate or Remove Frames</h2>
+<p>Duplicate a frame when you want to hold it longer without changing the timing settings. A duplicated title slide shows for twice as long, and a duplicated final frame lets the message land before the loop restarts. Duplicating is the simplest way to emphasize a moment.</p>
+<p>Duplicating is also the way to repeat a moment inside the animation. A product angle shown twice reads as a pause, and a reaction frame shown twice reads as emphasis. Use it sparingly, or the animation feels like it stutters.</p>
+<p>Remove frames that slow the GIF down without adding meaning. A near-duplicate of the previous frame, a blurry shot, or a frame that only repeats the last one can go. Each removed frame makes the file smaller and the animation tighter.</p>
+<p>You do not need to upload the same file twice to repeat a frame. The duplicate control copies the frame inside the tool, so the repeated moment costs no extra upload and no extra file management.</p>
+<h2 id="step-5-set-frame-delays">Step 5: Set Frame Delays</h2>
+<p>Frame delay is how long each frame stays on screen, and it decides how the animation feels. Start with one of the quick presets: 1, 2, 5, or 10 frames per second. Five frames per second is the usual starting point for a demo or a reaction.</p>
+<p>Set a single delay for all frames first, then adjust the individual frames that need more time. A title slide needs a longer hold so viewers can read it, and the final frame needs a longer hold so the message lands before the loop restarts.</p>
+<p>A uniform delay for every frame is the most common mistake in GIF timing. The important frames rush past unread, while the motion frames drag. Give the important frames more time and the motion frames less, and the GIF feels considered rather than mechanical.</p>
+<p>Watch the Live Timing Preview as you adjust. A delay that looks right as a number can feel wrong in motion, and the preview shows the real feel. If the animation rushes past the key frame, lengthen that frame rather than slowing the whole GIF.</p>
+<h2 id="step-6-set-the-loop-count">Step 6: Set the Loop Count</h2>
+<p>Choose how many times the GIF plays. An infinite loop plays forever, which suits reactions, decorations, and anything meant to catch the eye repeatedly. It is the classic GIF behavior and the default choice.</p>
+<p>A finite loop plays a set number of times and then stops on the final frame. That suits a tutorial or a demo where the viewer should end on the finished state. A loop count of two or three gives a second look without looping forever.</p>
+<p>A single play shows the animation once and stops. That suits a reveal, such as a before-and-after that should end on the after. The viewer sees the change, then the result stays on screen.</p>
+<p>Match the loop to the destination. A chat reaction wants an infinite loop, a product demo wants a few loops, and a tutorial step wants to end on the result. The wrong loop makes a good GIF feel broken.</p>
+<h2 id="step-7-choose-frame-fit">Step 7: Choose Frame Fit</h2>
+<p>Frame Fit decides what happens when your frames have different aspect ratios. Contain fits each frame inside the output size without cropping, so the whole frame stays visible and any empty space becomes a border.</p>
+<p>Cover fills the output size completely by cropping the frame, so there are no empty bands but the edges of some frames may be cut off. It gives a clean, full-bleed animation at the cost of losing edge detail.</p>
+<p>Choose Contain when every part of every frame matters, such as a tutorial where a cropped button would hide the step. Choose Cover when the animation must fill the frame cleanly, such as a social post where empty bands would look unfinished.</p>
+<p>If your frames all share the same dimensions, the fit setting does not matter, because there is nothing to crop or pad. The setting only matters for mixed-size frame sets, so check it when your frames come from different sources.</p>
+<h2 id="step-8-set-the-output-size">Step 8: Set the Output Size</h2>
+<p>Set the output width for the place the GIF will be shared. A width of around 480 pixels suits chat and social feeds, where the GIF is viewed on a phone. A larger width suits a website or a presentation, where the GIF is displayed bigger.</p>
+<p>The aspect ratio stays fixed when you edit the output width, so changing the width scales the whole GIF rather than stretching it. Set the width once and the height follows from the frames.</p>
+<p>Smaller is usually better for GIFs. A GIF at 480 pixels wide is small enough to share quickly and large enough to see clearly. A GIF at 1000 pixels wide is several times the file size, for a difference most viewers will not notice.</p>
+<p>Check the destination limits before you generate. Some chat apps and platforms downscale large GIFs or reject files over a size limit, so a huge GIF wastes bandwidth for no visible gain. Match the size to the place.</p>
+<h2 id="step-9-check-the-live-preview">Step 9: Check the Live Preview</h2>
+<p>Open the Live Timing Preview and watch the animation play with your current settings. This is the honest test: the preview shows the finished timing, the loop, and the frame order exactly as the downloaded file will play them.</p>
+<p>Watch for three problems: a frame that flashes past too fast, a jump where the order breaks, and a loop restart that feels abrupt. The first frame and the last frame decide how smooth the loop feels, so watch the restart point closely.</p>
+<p>Fix problems in the preview rather than after downloading. Adjust a delay, reorder a frame, or change the loop count, then watch the preview again. Each fix takes seconds here and a full regeneration later.</p>
+<p>Check the preview on your phone if the GIF is destined for a chat or a feed. A GIF that looks smooth on a desktop monitor can feel fast on a phone, and the phone is where the audience will see it.</p>
+<h2 id="step-10-generate-and-download">Step 10: Generate and Download</h2>
+<p>When the preview looks right, generate the GIF. The tool encodes the frames into a standard GIF89a file in your browser, which takes a few seconds for a short GIF and longer for one with many frames or a high palette quality.</p>
+<p>Watch for the Large GIF Warning. If the estimated file passes 5 MB or 15 MB, the tool will tell you. Reduce the output width first, since halving the width cuts the pixels to a quarter, then reduce the frame count or the frame rate.</p>
+<p>Download the finished file, which saves as animated_compressmypic.gif. Rename it to something meaningful before you share it, such as product-demo.gif or birthday-reaction.gif, so it is easy to find later.</p>
+<p>Open the downloaded GIF and play it once to confirm it works. Check the timing, the loop, and the size. If anything is wrong, change the setting in the tool and generate again rather than trying to fix the finished file.</p>
+<h2 id="fixing-a-gif-that-is-too-large">Fixing a GIF That Is Too Large</h2>
+<p>A GIF that is too large usually has one of three causes: too many frames, too large dimensions, or too high a frame rate. Fix them in that order of impact, starting with the dimensions, which give the biggest saving.</p>
+<p>Halve the output width and the file shrinks dramatically, because the pixel count falls to a quarter. A GIF at 480 pixels wide is a quarter of the size of the same GIF at 960 pixels, and the visible difference on a phone is small.</p>
+<p>Next, cut the frame count. Remove frames that repeat the previous one or add little to the story. Each frame removed is a direct saving in file size, and a shorter GIF is usually a better GIF as well.</p>
+<p>Finally, lower the frame rate. Dropping from ten frames per second to five halves the frames per second of animation. If the GIF still needs to be smaller after all three cuts, the <a href="/gif-compressor/">GIF compressor</a> can shrink the finished file further.</p>
+<h2 id="sharing-your-gif">Sharing Your GIF</h2>
+<p>Share the GIF file directly in chat apps such as WhatsApp, Telegram, Slack, and Discord, which all play GIFs inline. Upload the file as an attachment or paste it into the message, and it animates for the recipient without any extra step.</p>
+<p>On social platforms, upload the GIF as a media file. Most feeds accept GIF uploads and play them automatically, though some convert the GIF to a video behind the scenes. The animation still plays, so the result is the same for the viewer.</p>
+<p>On a website, embed the GIF with a normal image tag. It plays automatically when the page loads, so place it where the motion adds value rather than distraction. A GIF in a tutorial draws the eye to the step it demonstrates.</p>
+<p>Keep a copy of the frame images as well as the finished GIF. If you need a different size, a different loop, or a corrected frame later, the frames let you regenerate in minutes. A GIF alone cannot be edited back into its frames easily.</p>
+<h2 id="quick-reference">Quick Reference: GIF Checklist</h2>
+<p>Gather five to fifteen frames with matching dimensions, upload them, arrange them in story order, and duplicate the frames that need emphasis. Set a base delay near five frames per second, lengthen the title and final frames, and pick a loop for the context.</p>
+<p>Set the output width for the destination, choose Contain or Cover for mixed-size frames, and check the Live Timing Preview before generating. Heed the Large GIF Warning and shrink the width first.</p>
+<p>For the full guide, read the <a href="/blog/gif-maker-guide/">GIF Maker: Complete Guide</a>, and for the size trade-off in detail, read <a href="/blog/gif-frame-rate-file-size/">GIF Frame Rate and File Size: Smooth vs Small</a>. Make your GIF with the <a href="/gif-maker/">GIF maker</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How many images do I need to make a GIF?',
+          answer: 'You need at least two images, since a GIF is a series of frames played in sequence. Five to fifteen frames is the right range for most GIFs. Fewer frames make a short, punchy animation, while more frames make a longer and heavier one.',
+        },
+        {
+          question: 'Can I add more frames after I start?',
+          answer: 'Yes. The Add Frames control lets you append more images at any point, even after you have set the timing. The new frames join the end of the list, and you can drag them into the right position.',
+        },
+        {
+          question: 'How do I make one frame stay on screen longer?',
+          answer: 'Give that frame a longer delay, or duplicate it so it appears twice in a row. Both methods work; a longer delay is cleaner for a title slide, while duplicating is quicker for a short emphasis. Check the result in the Live Timing Preview.',
+        },
+        {
+          question: 'What image formats can I use as GIF frames?',
+          answer: 'The tool accepts JPG, PNG, WebP, HEIC, GIF, BMP, and SVG files up to 20 MB each. Photos, screenshots, and graphics all work as frames. If you upload an existing GIF, the tool can extract a single frame from it.',
+        },
+        {
+          question: 'Why is my GIF file so big?',
+          answer: 'GIFs store every frame as a full image, so many frames, large dimensions, and a high frame rate all add size. Reduce the output width first, since halving it cuts the pixels to a quarter, then cut the frame count or the frame rate.',
+        },
+        {
+          question: 'Can I use the GIF I made on WhatsApp and Instagram?',
+          answer: 'Yes. WhatsApp, Telegram, Slack, Discord, and Instagram all play GIFs. Upload the file as a media attachment and it animates inline. Some platforms convert the GIF to video behind the scenes, but the animation still plays for the viewer.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/gif-compressor', '/image-collage-maker', '/image-splitter'],
+  },
+  {
+    id: 'gif-frame-rate-file-size',
+    toolSlug: '/gif-maker',
+    categoryId: 'create',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'gif-frame-rate-file-size',
+      title: 'GIF Frame Rate and File Size: Smooth vs Small',
+      description: 'The trade-off at the heart of every GIF: how frame rate, frame count, dimensions, and colour palette decide whether your animation is smooth, small, or both.',
+      body: `
+<p>Every GIF is a compromise between smoothness and size. A higher frame rate makes the motion fluid, but it also makes the file bigger. A smaller file shares faster, but it can look choppy. The skill of making GIFs is finding the balance for each animation.</p>
+<p>This guide explains the four things that decide a GIF file size: frame rate, frame count, dimensions, and color palette. It shows how each one trades against smoothness, and how to shrink a GIF without ruining it.</p>
+<p>All of the controls described here live in the <a href="/gif-maker/">GIF maker</a>. You set the frame rate, the frame count, and the output size before generating, and the tool warns you when the estimated file passes 5 MB or 15 MB.</p>
+<h2 id="frame-rate-vs-file-size">Frame Rate vs File Size</h2>
+<p>Frame rate is how many frames play per second, and it is the most direct trade in GIF making. More frames per second means smoother motion, because the eye sees smaller steps between positions. It also means more frames in the file, and more frames mean a bigger file.</p>
+<p>A GIF at one frame per second is a slideshow: each image holds for a full second, and the motion is a series of jumps. A GIF at ten frames per second is smooth enough for simple motion, but it carries ten images for every second of animation.</p>
+<p>The relationship is roughly linear. Doubling the frame rate doubles the number of frames per second, and the file size grows by a similar factor. A three-second GIF at five frames per second has fifteen frames; the same GIF at ten frames per second has thirty.</p>
+<p>The eye stops noticing improvements quickly. The jump from one to five frames per second is dramatic, while the jump from five to ten is subtle for most subjects. Past ten frames per second, a GIF gains little smoothness and a lot of size.</p>
+<h2 id="how-gif-compression-works">How GIF Compression Works</h2>
+<p>GIF compression works by storing only the pixels that change between frames. If two frames are identical except for a small moving object, the encoder stores the full first frame and then only the changed pixels for the rest. That is why a GIF of a still scene with a small moving element stays small.</p>
+<p>A GIF of a scene where everything moves compresses poorly, because nearly every pixel changes in every frame. A camera pan across a landscape, or a full-screen color change, defeats the compression and the file grows fast.</p>
+<p>The 256-color palette is the other limit. Each frame can use at most 256 colors, so the encoder picks the colors that matter most and maps the rest to the nearest match. A photo with thousands of colors loses subtlety, while a graphic with few colors loses nothing.</p>
+<p>Understanding this helps you design smaller GIFs. Keep the background still, move only the subject, and use flat colors where you can. A GIF built for the format compresses well; a GIF that fights the format does not.</p>
+<h2 id="frames-per-second-choices">Frames per Second Choices</h2>
+<p>One frame per second suits a slideshow where each image deserves a full look. A set of photos shown one per second reads as a deliberate sequence, and the file stays tiny because there are so few frames.</p>
+<p>Two frames per second suits a slow demo, such as a step-by-step process where each step needs half a second to register. The motion is visibly stepped, but the steps are the point, so the choppiness reads as clarity.</p>
+<p>Five frames per second is the sweet spot for most GIFs. It is fast enough to feel like motion and slow enough that each frame registers. Product demos, tutorials, and simple animations usually live at this rate, and the file size stays manageable.</p>
+<p>Ten frames per second is the smoothest the tool offers, and it suits motion that must look fluid, such as a rotation or a walk cycle. It doubles the frames of a five FPS GIF, so use it only when the motion genuinely needs the smoothness.</p>
+<h2 id="frame-count">Frame Count</h2>
+<p>Frame count is the total number of images in the GIF, and it multiplies with the frame rate to decide the length. A GIF with fifteen frames at five frames per second is three seconds long. The same fifteen frames at ten frames per second is one and a half seconds.</p>
+<p>Short GIFs are better GIFs. A three-second animation that makes its point is more effective than a ten-second one that repeats itself. Cut the frame list to the essential moments and the GIF becomes sharper, smaller, and more shareable at once.</p>
+<p>Every frame you remove is a direct saving. Unlike the frame rate, which is a trade against smoothness, cutting a redundant frame costs nothing in quality. A near-duplicate of the previous frame, a blurry shot, or a frame that adds no information can go.</p>
+<p>Count the frames before you generate. If the list is longer than twenty, ask whether each frame earns its place. A long frame list is the most common reason a GIF ends up too large to share.</p>
+<h2 id="output-dimensions">Output Dimensions</h2>
+<p>Dimensions are the biggest lever on file size. Halving the output width cuts the pixel count to a quarter, because both the width and the height shrink. No other single change saves as much as a smaller output size.</p>
+<p>A GIF at 480 pixels wide is the standard for chat and social sharing. It is large enough to see clearly on a phone and small enough to send quickly. A GIF at 960 pixels wide has four times the pixels and several times the file size, for a difference most viewers will not notice.</p>
+<p>The destination decides the size. A chat message needs 480 pixels, a website banner needs more, and a presentation slide needs the most. Match the width to the place, and do not export larger than the display size.</p>
+<p>Remember that many platforms downscale large GIFs anyway. A GIF uploaded at 1000 pixels wide to a chat app may be displayed at 480, so the extra pixels were wasted bandwidth. Export at the display size and the file is as small as it can be.</p>
+<h2 id="color-palette-and-size">Color Palette and Size</h2>
+<p>The color palette affects both quality and size. A GIF can hold at most 256 colors per frame, and the encoder chooses which colors to keep. The Color Palette Quality slider controls how carefully that choice is made.</p>
+<p>A higher palette quality analyzes the frames more thoroughly and keeps the colors that matter most. It gives smoother gradients and more accurate skin tones, but it takes longer to encode and can produce a slightly larger file.</p>
+<p>A lower palette quality encodes faster and makes smaller files, but gradients may band and subtle colors may shift. For illustrations and screenshots with few colors, a low setting is enough, because the palette can hold all the colors anyway.</p>
+<p>For photographs, use a higher palette quality. Photos have thousands of colors, and a careful palette keeps the image recognizable. A low palette setting turns a photo into a posterized mess, with banded skies and blotchy skin.</p>
+<h2 id="transparency-cost">Transparency Cost</h2>
+<p>Transparency in a GIF is a single transparent color, not a smooth alpha channel. A pixel is either fully transparent or fully opaque, so soft edges become hard-edged and shadows become solid shapes against the transparent background.</p>
+<p>A transparent GIF can be larger than an opaque one, because the transparent areas still need encoding and the hard edges compress less efficiently than smooth gradients. The cost is small for a simple sticker, but it grows for a detailed graphic.</p>
+<p>Soft edges are the main problem. A logo with a feathered edge or a drop shadow shows a halo when the semi-transparent pixels are forced to become either solid or clear. A hard-edged graphic avoids the halo and compresses better.</p>
+<p>Use transparency only when the GIF must sit on different backgrounds, such as a chat sticker. If the GIF will always appear on one background color, flatten it onto that color instead. The file will be smaller and the edges will be cleaner.</p>
+<h2 id="loop-count-and-size">Loop Count and Size</h2>
+<p>Loop count does not change the file size. A GIF that loops forever and a GIF that plays once contain the same frames, so the file is the same size either way. The loop setting only changes how the player behaves, not what is stored.</p>
+<p>That makes the loop a free choice. An infinite loop costs nothing in file size, and a single play saves nothing. Choose the loop for the context and the viewer, not for the size.</p>
+<p>The loop does affect the experience of size, though. A large GIF that loops forever keeps the viewer waiting while it downloads and then replays, which feels heavy. A large GIF that plays once and stops feels like a single download.</p>
+<p>If the file is too large, the loop is not the fix. Cut the frames, shrink the dimensions, or lower the frame rate instead. The loop setting is the wrong place to look for savings.</p>
+<h2 id="when-a-gif-beats-a-video">When a GIF Beats a Video</h2>
+<p>A GIF beats a video when the animation is short, silent, and needs to play without a player. A reaction, a two-second product turn, or a tutorial step plays instantly as a GIF, while a video needs a player, a tap, and sometimes sound permission.</p>
+<p>GIFs also beat video in chats and comments, where the format is native. A GIF pasted into a chat animates inline, while a video may show as a link or a thumbnail that needs a tap. The frictionless play is the GIF advantage.</p>
+<p>Short loops are the GIF home territory. An animation under five seconds, with simple motion and a small frame count, is a GIF. The format was built for exactly that, and it does it with no dependencies.</p>
+<p>Use a GIF when the audience is unknown and the context is casual. Anyone can view a GIF, on any device, in any app, without installing anything. That universality is worth the larger file size for a short animation.</p>
+<h2 id="when-a-video-beats-a-gif">When a Video Beats a GIF</h2>
+<p>A video beats a GIF when the animation is long, detailed, or colorful. A ten-second clip with full-color motion is a fraction of the size as an MP4 than as a GIF, because video compression is designed for exactly that job.</p>
+<p>Video also beats GIF for smooth motion. A GIF tops out at ten frames per second in this tool, while a video plays at thirty or sixty. A smooth camera move or a fast action looks fluid as a video and choppy as a GIF.</p>
+<p>Sound is the obvious video advantage. A GIF is silent by definition, so any animation that needs narration, music, or sound effects must be a video. A tutorial with a voiceover cannot be a GIF.</p>
+<p>If your GIF is over 15 MB, or if the warning appears and no cut makes it small enough, switch to video. The <a href="/gif-compressor/">GIF compressor</a> can shrink a finished GIF, but a video is the better format when size is the main problem.</p>
+<h2 id="shrinking-a-finished-gif">Shrinking a Finished GIF</h2>
+<p>A finished GIF that is too large can be shrunk after the fact. The GIF compressor reduces the file by optimizing the frames and the palette, which can cut the size significantly without changing the animation itself.</p>
+<p>Compression works best on GIFs with redundant frames and simple colors. A GIF with many near-identical frames compresses well, because the encoder can drop the duplicates. A GIF with complex motion and many colors compresses less.</p>
+<p>Regenerating from the frames is usually better than compressing the finished file. The frames let you cut the count, shrink the dimensions, and lower the frame rate, which are bigger savings than any post-compression. Keep the frames for this reason.</p>
+<p>When you must shrink a GIF you did not make, compression is the only option. Upload the finished GIF to the compressor, choose the settings, and download the smaller file. Check the result, since heavy compression can make the animation choppy.</p>
+<h2 id="the-smooth-vs-small-decision">The Smooth vs Small Decision</h2>
+<p>The decision is a question of audience and context. A GIF for a chat message must be small, because it shares over mobile data and plays on a phone. Smoothness matters less than speed when the viewer is on the move.</p>
+<p>A GIF for a website or a presentation can be larger, because the viewer is on a stable connection and a bigger screen. Smoothness matters more there, since the animation is part of the design and the viewer watches it deliberately.</p>
+<p>Start at five frames per second and 480 pixels wide, then adjust. If the motion looks choppy, raise the frame rate to ten. If the file is too large, lower the width first, then the frame count, then the frame rate. That order gives the most smoothness per megabyte.</p>
+<p>There is no perfect GIF, only a GIF that fits its job. A reaction GIF that is small and slightly choppy beats a smooth one that never finishes downloading. Judge the GIF by whether it plays quickly and makes its point, not by its technical perfection.</p>
+<h2 id="quick-reference">Quick Reference: Smooth vs Small</h2>
+<p>Five frames per second and 480 pixels wide is the balanced default. Ten frames per second buys smoothness at double the frames, and halving the width quarters the pixels. Cutting redundant frames costs nothing in quality.</p>
+<p>Loop count does not affect file size. Transparency costs a little and needs hard edges. When a GIF passes 15 MB and no cut helps, use a video instead.</p>
+<p>For the step-by-step build, read <a href="/blog/how-to-make-gif-from-images/">How to Make a GIF from Images</a>, and for the full guide, read <a href="/blog/gif-maker-guide/">GIF Maker: Complete Guide</a>. Make your GIF with the <a href="/gif-maker/">GIF maker</a>, and shrink a finished one with the <a href="/gif-compressor/">GIF compressor</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What frame rate should I use for a GIF?',
+          answer: 'Five frames per second is the best default for most GIFs: fast enough to feel like motion and slow enough to keep the file small. Use one or two frames per second for a slideshow, and ten frames per second only when the motion genuinely needs the smoothness.',
+        },
+        {
+          question: 'Does a higher frame rate always look better?',
+          answer: 'No. The jump from one to five frames per second is dramatic, but the jump from five to ten is subtle for most subjects, while the file size doubles. Past ten frames per second, a GIF gains little smoothness and a lot of size.',
+        },
+        {
+          question: 'How much does doubling the frame rate increase file size?',
+          answer: 'Roughly double, because doubling the frame rate doubles the number of frames per second. A three-second GIF at five frames per second has fifteen frames; the same GIF at ten frames per second has thirty, and the file grows by a similar factor.',
+        },
+        {
+          question: 'What is the smallest file size I can expect for a GIF?',
+          answer: 'There is no fixed minimum, because size depends on the frames, the dimensions, and the colors. A short GIF with few frames, a 480 pixel width, and flat colors can be well under one megabyte. A long photographic GIF can pass 15 MB no matter what you do.',
+        },
+        {
+          question: 'Does loop count affect GIF file size?',
+          answer: 'No. A GIF that loops forever and a GIF that plays once contain the same frames, so the file is the same size either way. The loop setting only changes how the player behaves. To shrink a GIF, cut frames, shrink the width, or lower the frame rate.',
+        },
+        {
+          question: 'Is it better to reduce frames or reduce dimensions to shrink a GIF?',
+          answer: 'Reduce the dimensions first, because halving the width cuts the pixels to a quarter, which is the biggest single saving. Then cut redundant frames, which costs nothing in quality. Lower the frame rate last, since it trades directly against smoothness.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/gif-compressor', '/image-converter', '/image-resizer'],
+  },
+  {
+    id: 'image-collage-maker-guide',
+    toolSlug: '/image-collage-maker',
+    categoryId: 'create',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-collage-maker-guide',
+      title: 'Photo Collage Maker: Complete Guide',
+      description: 'Build photo collages in minutes: grids and strips, drag-to-swap, adjustable splits, gaps, rounded corners, background colours, and JPG or PNG export up to 4000 px.',
+      body: `
+<p>A photo collage turns several pictures into one image. It shows a set of moments together: a trip, a product range, a before and after, or a family gathering. One collage says more than a row of separate photos, and it fits anywhere a single image fits.</p>
+<p>The <a href="/image-collage-maker/">image collage maker</a> arranges your photos in 2 by 2 and 3 by 3 grids or in vertical and horizontal strips, with drag-to-swap, adjustable splits, gaps, rounded corners, and export up to 4000 pixels. It runs entirely in your browser.</p>
+<p>This guide explains the layouts, the arrangement controls, the framing options, and the export choices, and shows which layout suits which job. Whether you make a social post, a print, or a gift, the collage is the same simple idea.</p>
+<h2 id="what-is-a-collage-maker">What Is a Collage Maker?</h2>
+<p>A collage maker arranges several photos into a single image on a shared canvas. Each photo sits in a cell, and the cells together form a grid or a strip. The result is one image file that contains all of the photos at once.</p>
+<p>The tool is different from a photo editor. It does not change the photos themselves; it arranges them. You choose the layout, place the photos, adjust the spacing, and export the combined image as a JPG or PNG.</p>
+<p>Collages are used for social posts, where one image carries several moments; for product listings, where one image shows a range; for before-and-after comparisons, where two images sit side by side; and for prints and gifts, where several memories share one frame.</p>
+<p>The collage maker works in the browser, so your photos never leave your device. That matters for family photos and customer before-and-after shots, which are private by nature. There is no upload, no account, and no cost.</p>
+<h2 id="layouts-grids-and-strips">Layouts: Grids and Strips</h2>
+<p>The tool offers two grid layouts and two strip layouts. The 2 by 2 grid holds four photos in a square, and the 3 by 3 grid holds nine. The vertical strip stacks photos in a tall column, and the horizontal strip lines them up in a wide row.</p>
+<p>The layout is chosen automatically from the number of photos you upload. Dropping five or more photos picks the 3 by 3 grid, while four or fewer picks the 2 by 2 grid. You can change the layout at any time after uploading.</p>
+<p>Grids suit sets of photos that belong together: a trip, an event, or a product range. The square shape fits feeds, listings, and thumbnails, and the equal cells give every photo the same weight.</p>
+<p>Strips suit sequences and comparisons. A vertical strip reads top to bottom like a story, which suits a day in order or a step-by-step process. A horizontal strip reads left to right like a timeline, which suits a before-and-after or a panorama of moments.</p>
+<h2 id="uploading-photos">Uploading Photos</h2>
+<p>Drop your photos onto the upload zone, or click to choose them from your device. The tool accepts JPG, PNG, WebP, HEIC, GIF, BMP, and SVG files up to 20 MB each, so phone photos, screenshots, and graphics all work without conversion.</p>
+<p>Uploading a mix of formats works fine. An iPhone HEIC photo, a PNG screenshot, and a JPG from a camera can sit in the same collage, because the tool converts each one for display and export. The formats only matter for the final export choice.</p>
+<p>The number of photos decides the starting layout. Five or more photos auto-pick the 3 by 3 grid, and four or fewer auto-pick the 2 by 2 grid. If you upload fewer photos than the grid has cells, the empty cells wait for more photos or stay blank until you add them.</p>
+<p>Choose photos with similar quality and lighting where you can. A collage of nine photos where one is dark and blurry draws the eye to the weak photo, while a set with consistent light looks like a deliberate collection.</p>
+<h2 id="drag-swap-and-tap-swap">Drag Swap and Tap Swap</h2>
+<p>Arranging photos is a drag-and-drop job on desktop: pick up a photo and drop it onto another cell, and the two photos swap places. The swap is instant, and you can rearrange as many times as you like before exporting.</p>
+<p>On a phone or tablet, tap-to-swap does the same job. Tap a photo to select it, then tap the cell you want it to move to, and the two photos swap. Touch dragging is unreliable on small screens, so the tap method is the reliable one for mobile.</p>
+<p>Arrangement matters because the eye reads a collage in order. The top-left cell is seen first, the center cell draws the eye in a 3 by 3 grid, and the bottom-right cell is seen last. Put the strongest photo in the most prominent cell for the layout you chose.</p>
+<p>Try several arrangements before you commit. A photo that looks lost in one cell can anchor the collage in another, and a swap that takes a second can change the whole balance. The preview updates instantly, so experimenting costs nothing.</p>
+<h2 id="adjusting-splits">Adjusting Splits</h2>
+<p>The splits are the dividers between cells, and they can be adjusted. Drag a split line to make one cell larger and its neighbor smaller, which lets a feature photo take more space than the rest. The layout stays a grid, but the proportions change.</p>
+<p>A feature photo is the reason to adjust a split. A hero shot of the main subject deserves a larger cell, while the supporting photos can be smaller. A 3 by 3 grid with an enlarged center cell reads as a showcase rather than a set of equals.</p>
+<p>If the splits become uneven and you want to start over, return them to a uniform grid. The tool resets the splits to equal cells, so you can try a different arrangement without rebuilding the collage from scratch.</p>
+<p>Keep the splits sensible. A cell squeezed to a thin strip crops its photo heavily, and a cell enlarged too far unbalances the grid. Small adjustments improve a collage; extreme ones break it.</p>
+<h2 id="gaps-and-rounded-corners">Gaps and Rounded Corners</h2>
+<p>Gap is the space between cells, and it sets the feel of the collage. A zero gap makes a seamless borderless collage, where the photos touch and form one continuous image. A visible gap separates the photos into distinct frames, which suits a scrapbook or a gallery look.</p>
+<p>Cell spacing and corner radius are independent controls, so you can set a wide gap with square corners, or a narrow gap with rounded corners. The combination decides whether the collage feels modern, classic, or playful.</p>
+<p>Rounded corners soften the collage and suit social posts and app-style graphics. Square corners feel formal and suit prints and product listings. A small radius is the safe default, while a large radius turns each cell into a rounded tile.</p>
+<p>The background color shows through the gaps, so the gap and the background work together. A white gap on a white background looks like a clean border, while a brand color in the gaps ties the collage to a campaign. Choose them as a pair.</p>
+<h2 id="image-fit-cover-vs-contain">Image Fit: Cover vs Contain</h2>
+<p>Image Fit decides what happens when a photo does not match its cell shape. Cover fills the cell completely by cropping the photo, so there are no empty areas but the edges may be cut off. It is the default, because a full cell looks finished.</p>
+<p>Contain fits the whole photo inside the cell without cropping, so nothing is lost but empty space appears around the photo. It suits photos where every detail matters, such as a document or a product shot with text at the edges.</p>
+<p>Switch to Contain when Cover crops something important. A face at the edge of a photo, a product label, or a line of text can be cut by Cover, and Contain saves it at the cost of a border. Switch back to Cover when the border looks worse than the crop.</p>
+<p>Check each cell after choosing the fit. A collage mixes portrait and landscape photos, and the fit that suits one cell may not suit another. The setting applies per cell, so adjust the ones that need it and leave the rest.</p>
+<h2 id="background-colors">Background Colors</h2>
+<p>The background color fills the canvas behind the photos and shows through the gaps. The tool offers quick preset colors, so you can pick a clean white, a soft neutral, or a brand color without opening a color picker.</p>
+<p>White is the default and the safest choice. It keeps the collage clean, it matches any feed or page, and it makes the photos the only color in the image. A white background never fights the photos.</p>
+<p>A brand color turns the collage into a designed graphic. The color in the gaps ties the collage to a campaign, and a set of collages in the same color forms a recognizable series. Use it when the collage is an advertisement as much as a collection.</p>
+<p>Transparent PNG stickers placed in cells show the background color behind them. A sticker on a white background reads as a clean cutout, while a sticker on a colored background gains a tint from the color behind it. Check stickers against the chosen background before exporting.</p>
+<h2 id="canvas-sizes-and-ratios">Canvas Sizes and Ratios</h2>
+<p>The canvas size and ratio decide the final shape of the collage. The tool offers quick canvas dimensions and preset ratios, so you can build a square for the feed, a portrait for a story, or a wide image for a banner without calculating pixels.</p>
+<p>Square is the most versatile shape. It works in feeds, listings, and thumbnails, and it crops predictably everywhere. A square collage with a 2 by 2 or 3 by 3 grid is the safe default when you are not sure where the image will be used.</p>
+<p>Portrait ratios suit stories and phone wallpapers, where the image is viewed tall. A vertical strip on a portrait canvas reads like a story told top to bottom, which suits a day in order or a step-by-step process.</p>
+<p>Wide ratios suit banners and headers, where the collage sits across the top of a page. A horizontal strip on a wide canvas reads left to right like a timeline, which suits a product range or a team photo.</p>
+<h2 id="feature-photos">Feature Photos</h2>
+<p>A feature photo is one image made larger than the rest, and it is the simplest way to give a collage a focal point. The eye lands on the large photo first, then explores the smaller ones, which gives the collage a hierarchy instead of a flat grid.</p>
+<p>Make the strongest photo the feature. The hero shot of a trip, the best product angle, or the main portrait deserves the large cell. A weak photo enlarged only draws attention to its flaws, so choose the feature by quality as well as by subject.</p>
+<p>Adjust the splits to enlarge the feature cell, or choose a layout that already favors one cell. A 2 by 2 grid with one enlarged cell reads as a showcase, while a 3 by 3 grid with an enlarged center reads as a gallery with a centerpiece.</p>
+<p>Keep the feature to one photo. Two large cells compete with each other and the hierarchy collapses. One feature, clearly larger than the rest, is the rule that makes the collage read at a glance.</p>
+<h2 id="export-jpg-vs-png">Export JPG vs PNG</h2>
+<p>The tool exports the finished collage as a JPG or a PNG. JPG suits photographs and any collage where a small file matters, such as a social post or a website image. It compresses well and loads fast.</p>
+<p>PNG suits collages with sharp text, flat colors, or transparency that must survive. A PNG file is larger, but it keeps every edge crisp and preserves transparent areas exactly. Choose PNG for graphics-heavy collages and JPG for photo-heavy ones.</p>
+<p>The export resolution goes up to 4000 pixels, which is large enough for printing. A collage exported at 4000 pixels prints cleanly at a large size, while a small export prints soft. Choose the export size for the destination: social posts need less, prints need more.</p>
+<p>The exported filename reflects the collage settings, so you can tell versions apart when you export several. A clear filename saves you from opening five near-identical files to find the right one.</p>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<p>The most common mistake is too many photos. A 3 by 3 grid with nine busy photos is hard to read, because no single photo gets enough space. Fewer, stronger photos make a better collage than a grid stuffed with everything from the trip.</p>
+<p>Another mistake is ignoring the fit. A portrait photo in a landscape cell under Cover loses its top and bottom, which can cut off a face or a subject. Check each cell after placing the photos, and switch the fit where the crop hurts.</p>
+<p>A third mistake is a gap color that fights the photos. A bright gap color between muted photos draws the eye to the gaps instead of the images, and a dark gap color can make the collage feel heavy. White or a soft neutral is the safe gap color.</p>
+<p>Finally, many people export at a small size and then try to print the collage. A collage exported for social media prints poorly at a large size, because the pixels are not there. Export at the largest size you might need, and downscale later if you must.</p>
+<h2 id="quick-reference">Quick Reference: Collage Checklist</h2>
+<p>Choose four to nine strong photos with similar light, upload them, and let the layout auto-pick the grid. Arrange the photos by dragging or tapping to swap, enlarge the feature photo, and set the gaps and corners.</p>
+<p>Pick a canvas ratio for the destination, choose JPG for photos and PNG for graphics, and export at up to 4000 pixels for print. Check each cell for bad crops before you download.</p>
+<p>For the step-by-step build, read <a href="/blog/how-to-make-photo-collage/">How to Make a Photo Collage</a>, and for layout ideas, read <a href="/blog/collage-layouts-grids-mood-boards/">Collage Layouts: Grids, Mood Boards and Stories</a>. Build your collage with the <a href="/image-collage-maker/">image collage maker</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'What is the difference between a collage and a grid split?',
+          answer: 'A grid split divides one photo into tiles that rebuild the original when placed together. A collage combines several different photos into one image. Splitting cuts one picture apart; a collage brings many pictures together.',
+        },
+        {
+          question: 'How many photos can I put in one collage?',
+          answer: 'The grids hold four photos in a 2 by 2 layout or nine in a 3 by 3 layout, and the strips can hold many more in a single row or column. Four to nine photos is the practical range; more than that makes each photo too small to enjoy.',
+        },
+        {
+          question: 'Can I mix portrait and landscape photos in one collage?',
+          answer: 'Yes. The Image Fit setting handles the mix: Cover fills each cell by cropping, while Contain shows the whole photo with a border. Check each cell after placing the photos, since the fit that suits one orientation may not suit the other.',
+        },
+        {
+          question: 'What export size should I choose for a collage?',
+          answer: 'Match the size to the destination. Social posts need only a moderate size, while prints need the largest export, up to 4000 pixels. Export at the largest size you might need, since you can always downscale later but cannot add pixels back.',
+        },
+        {
+          question: 'Do collages work for printing?',
+          answer: 'Yes, as long as you export at a high resolution. A collage exported at up to 4000 pixels prints cleanly at a large size. Export as PNG for the sharpest print, or as a high-quality JPG for a photographic print.',
+        },
+        {
+          question: 'Can I edit a collage after exporting it?',
+          answer: 'Not easily, because the export is a single flat image. Keep the collage open in the tool while you work, or save the source photos so you can rebuild it. Rebuilding from the originals is faster and cleaner than editing the exported file.',
+        },
+      ],
+      readingMinutes: 12,
+    },
+    relatedToolSlugs: ['/image-cropper', '/add-background-to-image', '/gif-maker'],
+  },
+  {
+    id: 'how-to-make-photo-collage',
+    toolSlug: '/image-collage-maker',
+    categoryId: 'create',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-make-photo-collage',
+      title: 'How to Make a Photo Collage',
+      description: 'Make a photo collage in minutes: pick your photos, choose a grid or strip layout, arrange them, set gaps and background, and export a share-ready image.',
+      body: `
+<p>Making a photo collage is a short job: pick a few photos, choose a layout, arrange them, and export one image. This guide walks through each step in order, from choosing photos to sharing the finished collage.</p>
+<p>You need just one thing before you start: the photos you want to combine. Four to nine strong photos with similar light make the best collage. A set of photos from one trip, one event, or one product range works better than a random mix.</p>
+<p>The <a href="/image-collage-maker/">image collage maker</a> does the work in your browser. Nothing uploads to a server, there is no account, and the export is free. Follow the steps below and you will have a finished collage in a few minutes.</p>
+<h2 id="step-1-choose-your-photos">Step 1: Choose Your Photos</h2>
+<p>Pick the photos that belong together. A collage tells a small story, so the photos should share a subject: a trip, a birthday, a product range, or a family gathering. Photos from one event feel like a collection; photos from five events feel like a random pile.</p>
+<p>Choose four to nine photos. Four fill a 2 by 2 grid cleanly, and nine fill a 3 by 3 grid. Fewer than four leaves empty cells, and more than nine makes each photo too small to enjoy. Quality beats quantity in a collage.</p>
+<p>Pick photos with similar light and color. A set where one photo is dark and blurry draws the eye to the weak photo, while a set with consistent light looks like a deliberate collection. If one photo is much darker than the rest, brighten it before you start or leave it out.</p>
+<p>Choose a hero photo. One strong image will become the feature photo, enlarged above the rest, so pick the shot that best represents the set. The hero is usually the clearest, brightest, or most emotional photo of the group.</p>
+<h2 id="step-2-upload-the-photos">Step 2: Upload the Photos</h2>
+<p>Open the collage maker and drop your photos onto the upload zone, or click to choose them from your device. You can upload them all at once, and the tool will place them into the grid in the order you chose them.</p>
+<p>The tool accepts JPG, PNG, WebP, HEIC, GIF, BMP, and SVG files up to 20 MB each. Phone photos, screenshots, and graphics all work, and a mix of formats in one collage is fine. An iPhone HEIC photo uploads like any other file.</p>
+<p>Dropping five or more photos auto-picks the 3 by 3 grid, while four or fewer auto-picks the 2 by 2 grid. If you upload fewer photos than the grid has cells, the empty cells wait for more photos, and you can add them later.</p>
+<p>If you uploaded the wrong photo, remove it without starting over. The tool lets you remove a single photo from a cell and replace it, so a mistake costs seconds rather than a rebuild of the whole collage.</p>
+<h2 id="step-3-pick-a-layout">Step 3: Pick a Layout</h2>
+<p>Choose a grid or a strip layout. The 2 by 2 grid suits four photos, the 3 by 3 grid suits nine, the vertical strip suits a sequence read top to bottom, and the horizontal strip suits a sequence read left to right.</p>
+<p>Grids suit sets where every photo matters equally: a trip, an event, or a product range. The square shape fits feeds and listings, and the equal cells give every photo the same weight.</p>
+<p>Strips suit sequences and comparisons. A vertical strip reads like a story, which suits a day in order. A horizontal strip reads like a timeline, which suits a before-and-after or a panorama of moments.</p>
+<p>Change the layout freely after uploading. The photos stay in place and the cells rearrange, so you can compare a grid and a strip in seconds. The layout that reads best at a glance is usually the right one.</p>
+<h2 id="step-4-arrange-the-photos">Step 4: Arrange the Photos</h2>
+<p>Drag a photo onto another cell to swap them on desktop, or tap to select and tap again to swap on a phone. The swap is instant, and you can rearrange as many times as you like before exporting.</p>
+<p>Put the hero photo in the most prominent cell. In a 2 by 2 grid, that is the top-left cell, which the eye sees first. In a 3 by 3 grid, the center cell draws the eye, so the hero belongs there or in the top-left.</p>
+<p>Balance light and dark across the grid. A dark photo beside another dark photo creates a heavy corner, while a dark photo beside a light one balances the collage. Spread the bright and dark photos evenly rather than clustering them.</p>
+<p>Try several arrangements before you commit. A photo that looks lost in one cell can anchor the collage in another, and a swap that takes a second can change the whole balance. Trust the arrangement that reads best at a glance.</p>
+<h2 id="step-5-feature-a-photo">Step 5: Feature a Photo</h2>
+<p>Make the hero photo larger than the rest by adjusting the splits. Drag a split line to enlarge the hero cell and shrink its neighbors, which gives the collage a focal point and a hierarchy instead of a flat grid.</p>
+<p>Choose the feature by quality as well as by subject. The hero should be the sharpest, brightest photo of the set, because enlarging a weak photo only draws attention to its flaws. A strong photo enlarged looks deliberate; a weak one enlarged looks like a mistake.</p>
+<p>Keep the feature to one photo. Two large cells compete with each other and the hierarchy collapses, so enlarge one cell clearly above the rest and leave the others equal. One feature is the rule that makes the collage read at a glance.</p>
+<p>If the splits become uneven and you want to start over, return them to a uniform grid. The tool resets the splits to equal cells, so you can try a different feature arrangement without rebuilding the collage.</p>
+<h2 id="step-6-adjust-gaps-and-corners">Step 6: Adjust Gaps and Corners</h2>
+<p>Set the gap between cells. A zero gap makes a seamless borderless collage, where the photos touch and form one continuous image. A visible gap separates the photos into distinct frames, which suits a scrapbook or a gallery look.</p>
+<p>Set the corner radius for the cells. A small radius softens the collage and suits social posts, while square corners feel formal and suit prints and listings. A large radius turns each cell into a rounded tile, which suits playful designs.</p>
+<p>Gap and corner radius are independent, so you can combine them freely. A wide gap with square corners feels like a gallery wall, while a narrow gap with rounded corners feels like an app. The combination sets the mood of the collage.</p>
+<p>The background color shows through the gaps, so choose the gap and the background as a pair. A white gap on a white background looks like a clean border, while a brand color in the gaps ties the collage to a campaign.</p>
+<h2 id="step-7-set-the-background">Step 7: Set the Background</h2>
+<p>Choose the background color from the quick presets. White is the default and the safest choice: it keeps the collage clean, it matches any feed or page, and it makes the photos the only color in the image.</p>
+<p>A brand color turns the collage into a designed graphic. The color in the gaps ties the collage to a campaign, and a set of collages in the same color forms a recognizable series. Use it when the collage is an advertisement as much as a collection.</p>
+<p>Transparent PNG stickers placed in cells show the background color behind them. A sticker on a white background reads as a clean cutout, while a sticker on a colored background gains a tint from the color behind it. Check stickers against the background before exporting.</p>
+<p>Keep the background simple. A background that fights the photos draws the eye to the gaps instead of the images, and a bright gap color between muted photos makes the collage feel busy. White or a soft neutral is the safe choice.</p>
+<h2 id="step-8-choose-the-canvas-size">Step 8: Choose the Canvas Size</h2>
+<p>Pick a canvas size and ratio for the destination. Square suits feeds, listings, and thumbnails. Portrait suits stories and phone wallpapers. Wide suits banners and headers. The tool offers quick presets for each shape.</p>
+<p>The export resolution goes up to 4000 pixels, which is large enough for printing. Choose a large export when the collage might be printed, and a moderate one when it will only be posted online. You can always downscale later, but you cannot add pixels back.</p>
+<p>Check the preview at the chosen ratio. A collage that looks balanced as a square can look stretched as a portrait, because the cells change shape. Adjust the arrangement after changing the ratio, since the best layout for one shape may not suit another.</p>
+<p>If you are not sure where the collage will be used, choose square. It is the most forgiving shape, it crops predictably everywhere, and it works as a thumbnail, a listing image, and a feed post without further edits.</p>
+<h2 id="step-9-preview-the-collage">Step 9: Preview the Collage</h2>
+<p>Look at the full preview before exporting. Check that every photo is in the right cell, the hero photo is prominent, the gaps are even, and the background color looks the way you intended. A preview at full size shows details a thumbnail hides.</p>
+<p>Check each cell for bad crops. The Cover fit can cut off a face, a product label, or a line of text at the edge of a photo. Switch the fit to Contain for any cell where the crop hurts, and accept the border that comes with it.</p>
+<p>Look at the collage on your phone if it is destined for social media. A gap color that looks subtle on a desktop monitor can look loud on a phone screen, and a collage that looks balanced large can look busy small. The phone is where the audience sees it.</p>
+<p>Compare the collage at a small size too. Shrink your view to thumbnail size and check that the collage still reads. A collage that only works at full size fails as a feed post, where it is seen small among many others.</p>
+<h2 id="step-10-export-and-share">Step 10: Export and Share</h2>
+<p>Choose the export format. JPG suits photographs and any collage where a small file matters, such as a social post. PNG suits collages with sharp text, flat colors, or transparency that must survive the export.</p>
+<p>Click download and the finished collage saves to your device. The filename reflects the collage settings, so you can tell versions apart when you export several. Open the file and look at it once more before sharing.</p>
+<p>Share the collage as a single image: upload it to a social feed, attach it to a message, or add it to a listing. The collage is one file, so it posts like any other image, and the photos inside it travel together wherever the file goes.</p>
+<p>Keep the source photos as well as the finished collage. If you need a different ratio, a different layout, or a corrected photo later, the sources let you rebuild in minutes. A flat exported collage cannot be edited back into its parts easily.</p>
+<h2 id="collages-for-print">Collages for Print</h2>
+<p>A collage for print needs a large export. Choose the maximum resolution, up to 4000 pixels, so the print stays sharp at the size you want. A collage exported for social media prints poorly at a large size, because the pixels are not there.</p>
+<p>Choose PNG for the sharpest print, or a high-quality JPG for a photographic print. PNG keeps edges and text crisp, while JPG compresses photos efficiently. Either works at a large export size; the choice depends on whether the collage is graphic or photographic.</p>
+<p>Check the aspect ratio against the paper or frame size. A square collage fits a square frame, while a portrait collage fits a standard photo print. A mismatch means cropping the print or living with white borders, so match the ratio before you export.</p>
+<p>Print a small test first when the collage matters, such as a gift or a framed print. A test print reveals color shifts and sharpness problems that the screen hides, and it costs far less than reprinting a large frame.</p>
+<h2 id="fixing-a-collage-that-looks-off">Fixing a Collage That Looks Off</h2>
+<p>A collage that looks off usually has one of four problems: a weak photo, a bad crop, an unbalanced arrangement, or a gap color that fights the photos. Fix them in that order, starting with the photos themselves.</p>
+<p>Replace the weakest photo first. A dark, blurry, or off-topic photo draws the eye no matter where it sits, and no arrangement can hide it. Swap it for a stronger photo from the same set, or drop to a smaller grid without it.</p>
+<p>Next, check the crops. A face cut off at the edge of a cell or a subject squeezed by the fit ruins the cell. Switch the fit to Contain for that cell, or choose a different photo for it, and the collage improves immediately.</p>
+<p>Then rebalance the arrangement. Move the bright photos apart, move the hero to the prominent cell, and spread the dark photos evenly. A single swap often fixes a collage that felt wrong without an obvious cause.</p>
+<p>Finally, simplify the gaps and background. A bright gap color or a busy background can make a good collage look noisy. Set the gaps to white and the corners to a small radius, and the photos will carry the collage on their own.</p>
+<h2 id="quick-reference">Quick Reference: Collage Checklist</h2>
+<p>Pick four to nine strong photos with similar light, upload them, and choose a grid or a strip. Arrange by dragging or tapping to swap, enlarge the hero photo, and set the gaps, corners, and background.</p>
+<p>Choose a canvas ratio for the destination, export JPG for photos and PNG for graphics, and check every cell for bad crops at full size and at thumbnail size. Keep the source photos for rebuilding later.</p>
+<p>For the full guide, read the <a href="/blog/image-collage-maker-guide/">Photo Collage Maker: Complete Guide</a>, and for layout ideas, read <a href="/blog/collage-layouts-grids-mood-boards/">Collage Layouts: Grids, Mood Boards and Stories</a>. Build your collage with the <a href="/image-collage-maker/">image collage maker</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I choose which photos go in a collage?',
+          answer: 'Pick photos that share a subject, such as one trip, one event, or one product range, and choose four to nine of the strongest. Photos with similar light and color look like a collection, while a random mix looks like a pile. Leave out any photo that is dark, blurry, or off-topic.',
+        },
+        {
+          question: 'What if I upload fewer photos than the layout has cells?',
+          answer: 'The empty cells wait for more photos, and you can add them later. You can also switch to a smaller layout, such as a 2 by 2 grid for four photos, so there are no empty cells. Do not export with blank cells unless the empty space is deliberate.',
+        },
+        {
+          question: 'Can I move a photo to a different cell?',
+          answer: 'Yes. Drag a photo onto another cell to swap them on desktop, or tap to select and tap again to swap on a phone or tablet. You can rearrange as many times as you like before exporting, and the preview updates instantly.',
+        },
+        {
+          question: 'Should I save my collage as JPG or PNG?',
+          answer: 'Use JPG for photo collages and for any image where a small file matters, such as a social post. Use PNG for collages with sharp text, flat colors, or transparency, because PNG keeps every edge crisp and preserves transparent areas.',
+        },
+        {
+          question: 'How do I print my collage?',
+          answer: 'Export at the largest resolution, up to 4000 pixels, and match the canvas ratio to the paper or frame size. Choose PNG for the sharpest print or a high-quality JPG for a photographic print, and run a small test print first for an important piece.',
+        },
+        {
+          question: 'Can I make a collage on my phone?',
+          answer: 'Yes, the collage maker runs in the browser on phones and tablets. Upload from your photo library, tap to swap photos between cells, and download the finished collage. Tap-to-swap replaces dragging on touch screens, so arranging works reliably on mobile.',
+        },
+      ],
+      readingMinutes: 12,
+    },
+    relatedToolSlugs: ['/image-cropper', '/image-resizer', '/add-text-to-image'],
+  },
+  {
+    id: 'collage-layouts-grids-mood-boards',
+    toolSlug: '/image-collage-maker',
+    categoryId: 'create',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'collage-layouts-grids-mood-boards',
+      title: 'Collage Layouts: Grids, Mood Boards and Stories',
+      description: 'Choose the right collage layout: 2×2 and 3×3 grids, vertical and horizontal strips, mood boards, story layouts, before-and-after, and borderless collages.',
+      body: `
+<p>The layout is the first decision in a collage, and it shapes everything that follows. A grid says the photos are equals. A strip says they are a sequence. A mood board says they are a feeling. The same photos in a different layout tell a different story.</p>
+<p>This guide compares the layouts the <a href="/image-collage-maker/">image collage maker</a> offers: the 2 by 2 and 3 by 3 grids, the vertical and horizontal strips, and the free-form styles built from them, including mood boards, story layouts, and before-and-after comparisons.</p>
+<p>Read it before you build your next collage. A layout chosen for the purpose makes the collage read instantly, while a layout chosen at random makes the viewer work to understand what they are seeing.</p>
+<h2 id="why-layout-matters">Why Layout Matters</h2>
+<p>A layout is a reading order. The eye enters a collage at the top-left, moves across the top row, and works down, just as it reads a page. The layout decides which photo is seen first, which is seen last, and which ones are skipped.</p>
+<p>A grid gives every photo equal weight, so the viewer scans the whole set before settling. A strip gives the photos a sequence, so the viewer follows them in order. A feature layout gives one photo the lead, so the viewer starts there and then explores.</p>
+<p>The layout also decides the shape of the finished image. A grid makes a square, a vertical strip makes a portrait, and a horizontal strip makes a wide banner. The shape decides where the collage can be posted, so the layout and the destination are one decision.</p>
+<p>Choose the layout for the story, not for the number of photos. A trip with a clear hero deserves a feature layout, a set of equal moments deserves a grid, and a day in order deserves a strip. The photos tell you the layout if you let them.</p>
+<h2 id="the-2x2-grid">The 2 by 2 Grid</h2>
+<p>The 2 by 2 grid holds four photos in a square, and it is the simplest collage there is. Four equal cells, one square image, and no hierarchy to manage. It is the layout to choose when four photos belong together and none deserves to lead.</p>
+<p>Four photos are enough to show a set without overwhelming the viewer. A product with four angles, a room with four details, or a day with four moments all fit the 2 by 2 grid. The viewer takes in all four at a glance.</p>
+<p>The 2 by 2 grid is the most forgiving layout for mixed orientations. A portrait and a landscape photo can share the grid without awkward crops, because each cell is square and the Cover fit handles the difference cleanly.</p>
+<p>Use the 2 by 2 grid for a first collage. It is easy to arrange, easy to balance, and hard to get wrong. A 3 by 3 grid adds five more decisions, while a 2 by 2 grid asks only which photo goes where.</p>
+<h2 id="the-3x3-grid">The 3 by 3 Grid</h2>
+<p>The 3 by 3 grid holds nine photos in a square, and it is the layout for a full set. A trip, an event, or a product range with nine strong photos fills the grid with a rich overview that a smaller layout cannot match.</p>
+<p>Nine photos need nine strong photos. A grid with three great images and six fillers looks worse than a 2 by 2 grid with four great ones, because the weak photos are visible at full size. Do not force nine photos when four would do.</p>
+<p>The center cell is the natural focal point of a 3 by 3 grid. The eye lands there after scanning the edges, so the hero photo belongs in the center or in the top-left. Enlarge the center cell with the split controls to make the focus explicit.</p>
+<p>Balance the grid by spreading light and dark photos evenly. Three dark photos clustered in one corner make the grid feel heavy there, while the same three spread across the grid balance it. Check the grid as a whole, not cell by cell.</p>
+<h2 id="vertical-strips">Vertical Strips</h2>
+<p>A vertical strip stacks photos in a tall column, read top to bottom. It suits a sequence: a morning, an afternoon, and an evening; a step one, two, and three; or a journey from start to finish. The strip is a story told downward.</p>
+<p>Vertical strips suit portrait canvases, which suit stories and phone screens. A tall collage fills a phone screen naturally, and the viewer scrolls through it the way they scroll through a feed. It is the most native collage shape for mobile.</p>
+<p>The strip can hold many photos, but each one gets narrower as the count grows. Three to five photos is the practical range: enough for a sequence, few enough that each photo stays large. More than that, and the strip becomes a filmstrip of thumbnails.</p>
+<p>Order the strip carefully, because the sequence is the point. A strip read out of order confuses the story, while a strip in order reads effortlessly. Put the beginning at the top and the end at the bottom, and the viewer follows without thinking.</p>
+<h2 id="horizontal-strips">Horizontal Strips</h2>
+<p>A horizontal strip lines photos up in a wide row, read left to right. It suits a timeline, a panorama of moments, or a comparison where the viewer scans across. The strip is a story told sideways.</p>
+<p>Horizontal strips suit wide canvases, which suit banners, headers, and website features. A wide collage across the top of a page introduces a product range or a team without taking over the page. It is the most native collage shape for the web.</p>
+<p>The strip works well for before-and-after comparisons, where two or three images sit side by side and the change is visible at a glance. A renovation, a makeover, or a product update reads instantly in a horizontal strip.</p>
+<p>Keep the strip short. Two to four photos is the practical range, because each photo gets narrower as the count grows. A strip of eight photos is a row of thumbnails, not a collage, and the viewer skips it.</p>
+<h2 id="mood-boards">Mood Boards</h2>
+<p>A mood board is a collage built around a feeling rather than an event. It gathers colors, textures, and images that share a mood: a calm bedroom, a bold brand, a summer trip. The photos do not need to share a subject, only a feeling.</p>
+<p>Build a mood board from a grid, usually 3 by 3, with a mix of photos, color swatches, and textures. The variety is the point: a fabric close-up, a landscape, a color block, and a detail shot together suggest a world rather than documenting one.</p>
+<p>Use a consistent gap and background color to hold the board together. A mood board with mixed photos needs a steady frame, or it falls apart into random images. A uniform white gap and a calm background let the variety feel intentional.</p>
+<p>Mood boards are working tools for designers, stylists, and planners. A client who sees a mood board understands the direction before a single finished piece exists, which makes the board a communication tool as much as a collage.</p>
+<h2 id="story-layouts">Story Layouts</h2>
+<p>A story layout is a collage arranged as a narrative: a beginning, a middle, and an end. It uses a strip or a grid with a clear reading order, so the viewer follows the story without instructions. The layout is the plot.</p>
+<p>Use a vertical strip for a story told in time, with the beginning at the top and the end at the bottom. A day trip, a recipe, or a project build all read naturally downward, and the viewer scrolls through the story as it unfolds.</p>
+<p>Use a grid with a feature photo for a story told around a moment. The feature photo is the climax, and the smaller photos are the context: the place, the people, and the details that led to it. The viewer starts at the feature and then explores the story around it.</p>
+<p>Keep the story short. Three to five photos is enough for a story; more than that, and the viewer loses the thread. A story collage is a highlight reel, not an archive, so cut ruthlessly to the moments that carry the narrative.</p>
+<h2 id="before-and-after-layouts">Before-and-After Layouts</h2>
+<p>A before-and-after collage shows a change, and the layout must make the change obvious. The horizontal strip is the natural choice: before on the left, after on the right, with the viewer scanning across the transformation.</p>
+<p>Use two photos only, or three with a middle step. A before-and-after with nine photos buries the change in a grid, while two photos side by side make it impossible to miss. The power of the layout is its simplicity.</p>
+<p>Match the framing of the two photos. The same angle, the same crop, and the same light make the change stand out, while different angles make the viewer compare the photography instead of the subject. Consistency is what makes the comparison honest.</p>
+<p>Label the photos when the change is subtle. A small caption or a text overlay that says before and after removes all doubt, especially for a product or a renovation where the viewer may not know what changed. The <a href="/add-text-to-image/">add text to image</a> tool can add those labels after the collage is exported.</p>
+<h2 id="feature-photo-layouts">Feature-Photo Layouts</h2>
+<p>A feature-photo layout enlarges one cell above the rest, giving the collage a clear focal point. The eye lands on the large photo first, then explores the smaller ones, which gives the collage a hierarchy that a flat grid lacks.</p>
+<p>Build it by adjusting the splits in a grid, enlarging the hero cell and shrinking its neighbors. A 2 by 2 grid with one large cell reads as a showcase, while a 3 by 3 grid with an enlarged center reads as a gallery with a centerpiece.</p>
+<p>Choose the feature by quality as well as by subject. The hero should be the sharpest, brightest photo of the set, because enlarging a weak photo only draws attention to its flaws. A strong photo enlarged looks deliberate; a weak one enlarged looks like a mistake.</p>
+<p>Keep the feature to one photo. Two large cells compete with each other and the hierarchy collapses, so enlarge one cell clearly above the rest and leave the others equal. One feature is the rule that makes the layout read at a glance.</p>
+<h2 id="borderless-collages">Borderless Collages</h2>
+<p>A borderless collage sets the gap to zero, so the photos touch and form one continuous image. It suits sets where the photos share a scene or a color palette, because the boundaries disappear and the collage reads as a single picture.</p>
+<p>Borderless works best when the photos are similar in tone. A set of beach photos with the same light merges into a panorama of moments, while a set of mixed photos with a zero gap looks like a printing error, with hard edges where the images meet.</p>
+<p>Use a borderless layout for a photo wall effect, where the collage is meant to feel like one large image made of pieces. It is the closest a collage comes to a grid split, except the pieces are different photos rather than parts of one.</p>
+<p>Check the seams before exporting. A borderless collage has no gap to hide a mismatch, so a photo that is much darker or warmer than its neighbor shows a visible line. Match the tones or add a small gap to separate them.</p>
+<h2 id="mixing-orientations">Mixing Orientations</h2>
+<p>A collage often mixes portrait and landscape photos, and the layout must handle the mix. Grids handle it best, because each cell is square and the Cover fit crops each photo to fit. A portrait and a landscape photo can share a grid without awkward gaps.</p>
+<p>Strips handle mixed orientations less well. A portrait photo in a horizontal strip becomes a tall cell in a wide row, which unbalances the strip. A landscape photo in a vertical strip becomes a wide cell in a tall column, with the same problem.</p>
+<p>When the mix is strong, use a grid and let the fit do the work. Check each cell for bad crops, since a portrait photo in a square cell loses its top and bottom. Switch the fit to Contain for the cells where the crop hurts.</p>
+<p>Alternatively, crop the photos to a consistent orientation before building the collage. A set of square crops from portrait and landscape sources gives a perfectly even grid, at the cost of losing some of each photo. The <a href="/image-cropper/">image cropper</a> can prepare the set first.</p>
+<h2 id="choosing-a-layout-for-the-purpose">Choosing a Layout for the Purpose</h2>
+<p>Match the layout to the destination first. A feed post wants a square grid, a story wants a vertical strip, and a banner wants a horizontal strip. The shape the destination needs narrows the choice before the photos do.</p>
+<p>Then match the layout to the story. Equal moments want a grid, a sequence wants a strip, a hero moment wants a feature layout, and a feeling wants a mood board. The story is the second filter, and it usually leaves one layout standing.</p>
+<p>Finally, match the layout to the photo count. Four photos want a 2 by 2 grid, nine want a 3 by 3 grid, and two want a strip. A layout that fights the count forces empty cells or tiny photos, so let the count have a vote too.</p>
+<p>When two layouts both fit, build both and compare. The collage maker lets you switch layouts without losing the photos, so a comparison takes seconds. The layout that reads best at thumbnail size is usually the right one.</p>
+<h2 id="quick-reference">Quick Reference: Layout Choices</h2>
+<p>Equal moments: 2 by 2 or 3 by 3 grid. A sequence: vertical strip for time, horizontal strip for comparison. A hero moment: feature-photo layout. A feeling: mood board on a 3 by 3 grid. A seamless set: borderless with a zero gap.</p>
+<p>Match the shape to the destination, the layout to the story, and the layout to the photo count. Build two layouts and compare them at thumbnail size when you are unsure.</p>
+<p>For the step-by-step build, read <a href="/blog/how-to-make-photo-collage/">How to Make a Photo Collage</a>, and for the full guide, read <a href="/blog/image-collage-maker-guide/">Photo Collage Maker: Complete Guide</a>. Build your collage with the <a href="/image-collage-maker/">image collage maker</a>.</p>
+`,
+      faqs: [
+        {
+          question: 'Which collage layout is best for social media?',
+          answer: 'A square grid, 2 by 2 or 3 by 3, is the safest choice for a feed post, because it fits the grid and reads at thumbnail size. A vertical strip suits stories, where the image is viewed tall. Match the layout shape to the place it will be posted.',
+        },
+        {
+          question: 'What is a mood board collage?',
+          answer: 'A mood board is a collage built around a feeling rather than an event. It gathers colors, textures, and images that share a mood, usually on a 3 by 3 grid with a consistent gap and background. Designers use mood boards to show a direction before any finished work exists.',
+        },
+        {
+          question: 'How do I make one photo stand out in a collage?',
+          answer: 'Enlarge its cell by adjusting the splits, so it is clearly larger than the rest. Choose the sharpest, brightest photo as the feature, and keep it to one photo: two large cells compete and the hierarchy collapses.',
+        },
+        {
+          question: 'Are borderless collages better than collages with gaps?',
+          answer: 'Neither is better in general. A zero gap suits photos that share a scene or a color palette, because the collage reads as one continuous image. A visible gap suits mixed photos, because it separates them into distinct frames and hides tone mismatches.',
+        },
+        {
+          question: 'What layout works best for before-and-after photos?',
+          answer: 'A horizontal strip with two photos: before on the left, after on the right. The viewer scans across the change and sees it instantly. Match the framing, angle, and light of the two photos so the comparison is honest, and label them when the change is subtle.',
+        },
+        {
+          question: 'Can I use a collage layout for a story or a reel cover?',
+          answer: 'Yes. A vertical strip on a portrait canvas suits a story, and a square grid suits a reel cover. Build the collage in the ratio the destination needs, keep the subject centered and away from the edges, and check it on your phone before posting.',
+        },
+      ],
+      readingMinutes: 12,
+    },
+    relatedToolSlugs: ['/image-cropper', '/add-background-to-image', '/image-color-palette-extractor'],
+  },
   // BATCH3-RESIZE (6 articles)
   // BATCH3-PRIVACY (6 articles)
   // BATCH3-AI-TOOLS (3 articles)
