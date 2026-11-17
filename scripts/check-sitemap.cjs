@@ -11,10 +11,13 @@
 //  5. Reciprocity: every blog home/hub entry's 12 hreflang alternates are
 //     exactly the expected localized set, and every alternate href is itself
 //     a <loc> in the sitemap.
-//  6. Blog article URLs: none may exist in Batch 2 (registry empty). Batch 3
-//     extends this to the published-article set (parse the registry +
-//     slugs.ts) and per-article lastmod.
-//  7. Total URL count == 725 (626 pre-blog baseline + 99 blog URLs).
+//  6. Blog article URLs: exactly the published-article set from the registry
+//     (BLOG_ARTICLES, status 'published'), each once, alternates exactly
+//     {en, x-default} pointing at the EN URL, lastmod == publishedAt; no
+//     other article URLs.
+//  7. Total URL count == 626 + 99 + <published articles> (869 when Batch 3
+//     is complete). The article count is read from the registry, so the
+//     expectation follows each Batch 3 category automatically.
 // Exit 0 on pass, 1 on any failure (prints every failure, not just the first).
 
 const fs = require('fs');
@@ -26,7 +29,8 @@ const REGISTRY_PATH = path.join(REPO_ROOT, 'src', 'data', 'blogArticles.ts');
 const BASE = 'https://compressmypic.online';
 const LANGS = ['en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh'];
 const PRE_BLOG_BASELINE = 626; // <url> count before Batch 2 (b0afe1b)
-const EXPECTED_BLOG_URLS = 11 + 88; // homes + category hubs (0 articles in Batch 2)
+// EXPECTED_BLOG_URLS is computed in main() from the registry:
+// 11 homes + 88 hubs + <published articles>.
 
 const failures = [];
 const fail = (msg) => failures.push(msg);
@@ -46,6 +50,48 @@ function parseCategorySlugs() {
   return out;
 }
 
+/** Published articles from the registry, in registry order (same parser as
+ *  the generator — see generate-blog-sitemap.cjs for the details). */
+function parseArticles() {
+  const src = fs.readFileSync(REGISTRY_PATH, 'utf8');
+  const arrStart = src.indexOf('export const BLOG_ARTICLES');
+  if (arrStart === -1) throw new Error('BLOG_ARTICLES not found in src/data/blogArticles.ts');
+  const bracket = src.indexOf('[', arrStart);
+  if (bracket === -1) throw new Error('BLOG_ARTICLES array not found');
+  const rest = src.slice(bracket + 1);
+  let body;
+  if (/^\s*\]/.test(rest)) {
+    body = ''; // empty registry (Batch 2 state)
+  } else {
+    const arrEnd = src.indexOf('\n];', bracket);
+    if (arrEnd === -1) throw new Error('BLOG_ARTICLES array not found');
+    body = src.slice(bracket, arrEnd);
+  }
+  const articles = [];
+  const seenIds = new Set();
+  const seenSlugs = new Set();
+  const starts = [...body.matchAll(/id:\s*'([^']+)'/g)];
+  for (let i = 0; i < starts.length; i++) {
+    const start = starts[i].index;
+    const end = i + 1 < starts.length ? starts[i + 1].index : body.length;
+    const chunk = body.slice(start, end);
+    const id = starts[i][1];
+    const status = (chunk.match(/status:\s*'([^']+)'/) || [])[1];
+    if (status !== 'published') continue;
+    const publishedAt = (chunk.match(/publishedAt:\s*'([^']+)'/) || [])[1];
+    const slug = (chunk.match(/en:\s*\{\s*slug:\s*'([^']+)'/) || [])[1];
+    if (!publishedAt || !slug) {
+      throw new Error(`article ${id}: missing publishedAt or en.slug`);
+    }
+    if (seenIds.has(id)) throw new Error(`duplicate article id: ${id}`);
+    if (seenSlugs.has(slug)) throw new Error(`duplicate article slug: ${slug}`);
+    seenIds.add(id);
+    seenSlugs.add(slug);
+    articles.push({ id, slug, publishedAt });
+  }
+  return articles;
+}
+
 function blogHomePath(lang) {
   return lang === 'en' ? '/blog/' : `/${lang}/blog/`;
 }
@@ -57,6 +103,7 @@ function blogCategoryPath(categoryId, lang, slugs) {
 
 function main() {
   const slugs = parseCategorySlugs();
+  const articles = parseArticles();
   const xml = fs.readFileSync(SITEMAP_PATH, 'utf8');
 
   const urlBlocks = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((m) => m[1]);
@@ -130,18 +177,43 @@ function main() {
   for (const loc of expectedHomes) checkAlternates(loc, expectedHomeAlternates);
   for (const [loc, expected] of expectedHubs) checkAlternates(loc, expected);
 
-  // 6. No blog article URLs in Batch 2.
+  // 6. Blog article URLs: exactly the published-article set from the
+  // registry — each once, alternates exactly {en, x-default}, lastmod ==
+  // publishedAt; no other article URLs.
   const articleLocs = locs.filter((loc) => {
     if (!loc) return false;
     const p = loc.slice(BASE.length);
     return p.startsWith('/blog/') && !p.startsWith('/blog/category/') && p !== '/blog/' &&
       !LANGS.some((l) => p === `/${l}/blog/`);
   });
-  if (articleLocs.length > 0) {
-    fail(`unexpected blog article URLs in sitemap (Batch 2 has 0 articles): ${articleLocs.join(', ')}`);
+  const expectedArticles = new Map(); // loc -> { alternates, lastmod }
+  for (const a of articles) {
+    const loc = `${BASE}/blog/${a.slug}/`;
+    expectedArticles.set(loc, {
+      alternates: { en: loc, 'x-default': loc },
+      lastmod: a.publishedAt,
+    });
+  }
+  for (const [loc, expected] of expectedArticles) {
+    const count = locs.filter((x) => x === loc).length;
+    if (count !== 1) fail(`blog article ${loc}: found ${count} time(s), expected 1`);
+    checkAlternates(loc, expected.alternates);
+    const block = urlBlocks.find((b) => b.includes(`<loc>${loc}</loc>`));
+    if (block) {
+      const lm = (block.match(/<lastmod>([^<]+)<\/lastmod>/) || [])[1];
+      if (lm !== expected.lastmod) {
+        fail(`${loc}: lastmod is ${lm ?? '(missing)'}, expected ${expected.lastmod}`);
+      }
+    }
+  }
+  for (const loc of articleLocs) {
+    if (!expectedArticles.has(loc)) {
+      fail(`unexpected blog article URL in sitemap (not a published registry article): ${loc}`);
+    }
   }
 
   // 7. Total count.
+  const EXPECTED_BLOG_URLS = 11 + 88 + articles.length;
   const expectedTotal = PRE_BLOG_BASELINE + EXPECTED_BLOG_URLS;
   if (urlBlocks.length !== expectedTotal) {
     fail(`total <url> count ${urlBlocks.length}, expected ${expectedTotal} (${PRE_BLOG_BASELINE} baseline + ${EXPECTED_BLOG_URLS} blog)`);
@@ -149,7 +221,8 @@ function main() {
 
   const blogCount = [...locs].filter((loc) => {
     const p = loc ? loc.slice(BASE.length) : '';
-    return p === '/blog/' || p.startsWith('/blog/category/') || LANGS.some((l) => p === `/${l}/blog/` || p.startsWith(`/${l}/blog/category/`));
+    return p === '/blog/' || p.startsWith('/blog/') ||
+      LANGS.some((l) => p === `/${l}/blog/` || p.startsWith(`/${l}/blog/`));
   }).length;
 
   if (failures.length > 0) {
@@ -158,7 +231,7 @@ function main() {
     process.exit(1);
   }
   console.log(
-    `sitemap OK: ${urlBlocks.length} URLs total (${blogCount} blog: 11 homes + 88 hubs + 0 articles), no duplicates, all trailing-slash, hreflang reciprocal.`
+    `sitemap OK: ${urlBlocks.length} URLs total (${blogCount} blog: 11 homes + 88 hubs + ${articles.length} articles), no duplicates, all trailing-slash, hreflang reciprocal.`
   );
 }
 

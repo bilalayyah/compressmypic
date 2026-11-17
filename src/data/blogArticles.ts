@@ -185,8 +185,19 @@ export function getBlogCategoryLabel(
   return labels.find((c) => c.id === categoryId)?.label ?? categoryId;
 }
 
-// --- Registry (Batch 2: EMPTY — Batch 3 adds the 144 English articles) ---
-export const BLOG_ARTICLES: BlogArticle[] = [];
+// --- Registry (Batch 3: 144 English articles, one section per category,
+// in write order. Each category subagent replaces its own marker line
+// with its articles; every article object ends with a trailing comma.) ---
+export const BLOG_ARTICLES: BlogArticle[] = [
+  // BATCH3-COMPRESS (24 articles)
+  // BATCH3-CONVERT (39 articles)
+  // BATCH3-CROP-EDIT (33 articles)
+  // BATCH3-DEVELOPER (18 articles)
+  // BATCH3-CREATE (15 articles)
+  // BATCH3-RESIZE (6 articles)
+  // BATCH3-PRIVACY (6 articles)
+  // BATCH3-AI-TOOLS (3 articles)
+];
 
 // --- Route resolution (EN paths only; parsePath normalizes first) ---
 
