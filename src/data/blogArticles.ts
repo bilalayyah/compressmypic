@@ -18142,7 +18142,801 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     },
     relatedToolSlugs: ['/image-resizer', '/bulk-image-converter', '/web-image-optimizer', '/image-cropper'],
   },
-  // BATCH3-PRIVACY (6 articles)
+  {
+    id: 'image-metadata-viewer-guide',
+    toolSlug: '/image-metadata-viewer',
+    categoryId: 'privacy',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'image-metadata-viewer-guide',
+      title: 'Image Metadata Viewer: Complete Guide',
+      description:
+        'Learn what an image metadata viewer shows, from EXIF camera settings and GPS coordinates to PNG and WebP chunks, and how to inspect any photo privately in your browser.',
+      body: `
+<p>Every photo you take carries a hidden layer of information. Camera settings, capture time, device model, and sometimes your exact location travel inside the file, invisible in the image itself.</p>
+<p>An image metadata viewer reads that hidden layer and shows it to you in plain language. It turns raw binary headers into a readable report you can actually use.</p>
+<p>This guide explains what image metadata is, what the viewer reveals, and how to use it before you share a photo. It also covers privacy risks, JSON export, and how to verify a cleaned file.</p>
+<p>The <a href="/image-metadata-viewer/">Image Metadata Viewer</a> runs entirely in your browser. Your photos never leave your device, which matters because the whole point is privacy.</p>
+<h2 id="what-is-image-metadata">What Is Image Metadata?</h2>
+<p>Image metadata is data stored inside an image file alongside the pixels. It describes the photo rather than showing it, like a label stuck to the back of a printed picture.</p>
+<p>The most common kind is EXIF, short for Exchangeable Image File Format. Cameras and phones write EXIF data automatically every time you press the shutter button.</p>
+<p>EXIF can include the camera make and model, lens details, aperture, shutter speed, ISO, focal length, flash state, and the exact date and time the photo was taken.</p>
+<p>Other metadata lives in different places. PNG files carry text chunks for author, software, and creation time. WebP files can hold EXIF blocks and animation flags. JPEG files can also carry XMP packets and comments.</p>
+<p>None of this is visible when you look at the picture. You need a viewer to see it, and most people never check. That is why photos shared online often leak more than their owners realise.</p>
+<h2 id="what-the-viewer-shows">What the Viewer Shows You</h2>
+<p>Drop an image into the viewer and it parses the raw file bytes on your device. Within a moment you get a summary, a privacy risk banner, and a grouped table of every field it found.</p>
+<p>The summary shows the detected container format, the pixel dimensions, and the file size. It also tells you whether any sensitive embedded metadata tag types were found.</p>
+<p>The table groups entries so you can scan them quickly. Camera fields sit together, EXIF exposure fields sit together, GPS fields sit together, and PNG or WebP chunks get their own group.</p>
+<p>Sensitive fields carry an amber Privacy Tag label. Typical examples include GPS coordinates, exact capture timestamps, photographer names, camera serial numbers, and device model strings.</p>
+<p>If GPS data exists, a warning box highlights the exact decoded latitude and longitude. It also offers a one-click jump to the <a href="/remove-image-metadata/">Remove Image Metadata</a> tool, so you can clean the file right away.</p>
+<h2 id="exif-fields-explained">EXIF Fields Explained</h2>
+<p>EXIF is organised into directories called IFDs. The viewer reads TIFF IFD0, ExifIFD, and GPSIFD tables from JPEG files, plus PNG eXIf blocks and WebP EXIF chunks.</p>
+<p>IFD0 holds basic facts about the image and the device. Camera make and model live here, along with the software that last edited the file and any copyright note.</p>
+<p>ExifIFD holds the exposure telemetry recorded when the photo was taken. Shutter speed, aperture, ISO, focal length, metering mode, and flash state all live in this directory.</p>
+<p>GPSIFD holds location data as rational numbers. The viewer converts degrees, minutes, and seconds into decimal latitude and longitude automatically, so you can read the coordinates directly.</p>
+<p>Not every field appears in every photo. A screenshot has no camera data, and a photo downloaded from a messaging app usually has no EXIF at all, because the app stripped it during upload.</p>
+<p>When a field is missing, that is useful information too. It tells you the file has already been processed, or that it was never a camera original in the first place.</p>
+<h2 id="gps-and-privacy">GPS Data and Privacy</h2>
+<p>GPS coordinates are the most sensitive thing a photo can carry. A single pair of numbers can point to your home, your workplace, your child's school, or the exact spot where a photo was taken.</p>
+<p>Phones record GPS data by default in most camera apps. The coordinates are stored silently, and nothing in the photo itself hints that they are there.</p>
+<p>Sharing an unstripped photo online can therefore reveal your location to anyone who downloads it and opens it in a metadata viewer. That includes strangers on marketplaces, forums, and social platforms.</p>
+<p>The viewer makes this risk visible. When GPSIFD tags exist, the amber GPS Location Coordinates Detected banner appears right above the properties table, showing the decoded coordinates.</p>
+<p>Checking before you post takes seconds. If coordinates appear, strip them with the <a href="/remove-image-metadata/">Remove Image Metadata</a> tool before the photo goes anywhere public.</p>
+<h2 id="png-and-webp-chunks">PNG and WebP Technical Headers</h2>
+<p>JPEG gets most of the attention, but PNG and WebP files carry their own metadata. The viewer reads these technical chunks so nothing stays hidden.</p>
+<p>For PNG files it reads the IHDR chunk, which holds bit depth and colour type. It also reads pHYs, the chunk that stores physical pixel density for print or layout scaling.</p>
+<p>PNG text chunks matter for privacy too. tEXt and iTXt chunks can hold software names, author names, comments, and creation times. The tIME chunk records when the file was last changed.</p>
+<p>For WebP files the viewer reads VP8X flags, which show whether the image has an alpha channel or animation. WebP EXIF chunks are decoded alongside them, so camera data in a WebP file is not missed.</p>
+<p>The viewer also reports the true container format by inspecting binary magic bytes, not the filename. A PNG renamed with a .jpg extension is still reported as a PNG.</p>
+<h2 id="how-to-use-the-viewer">How to Use the Viewer</h2>
+<p>Using the viewer takes five steps, and none of them needs an account or an upload. Everything happens on your own device.</p>
+<ol>
+<li>Drop or select an image to inspect. JPG, PNG, WebP, HEIC, GIF, BMP, and SVG files up to 20 MB are accepted, or paste with Ctrl+V.</li>
+<li>Check the summary and privacy risk banner at the top. It shows the format, dimensions, file size, and whether sensitive tags were found.</li>
+<li>Review any GPS location alert. If coordinates exist, the warning box shows the exact latitude and longitude.</li>
+<li>Browse the extracted metadata table. Entries are grouped by Camera, EXIF, GPS, PNG or WebP chunks, and File info, with amber Privacy Tag labels on sensitive fields.</li>
+<li>Copy or export JSON, or strip the tags. Click Copy JSON for the full report, Export JSON to save a .json file, or Strip Metadata to clean the file.</li>
+</ol>
+<p>The viewer is strictly read-only. It reads headers from browser memory to show you what is inside, without changing, compressing, or deleting anything in your original file.</p>
+<p>You can inspect files back to back without refreshing. Click the red trash icon in the summary bar to reset to the upload zone, then drop the next image.</p>
+<h2 id="json-export">Copying and Exporting JSON Reports</h2>
+<p>Sometimes you need the metadata in a form you can keep, share, or paste into a bug report. The viewer exports the full parsed report as structured JSON.</p>
+<p>Click Copy JSON in the summary bar to place the whole ImageMetadataReport on your clipboard. It is ready to paste into a document, a ticket, or a chat message.</p>
+<p>Click Export JSON to download a file named after your image with a _metadata suffix. Developers use these reports for debugging image pipelines and documenting file behaviour.</p>
+<p>The JSON includes every field the viewer decoded, grouped the same way as the on-screen table. That makes it easy to compare two files, or to keep a record of what a file contained before cleaning.</p>
+<p>For a hands-on walkthrough of the inspection steps, read <a href="/blog/how-to-view-image-metadata/">How to View Image Metadata</a>. For what the fields actually reveal about you, read <a href="/blog/exif-data-explained/">EXIF Data Explained: What Your Photos Reveal</a>.</p>
+<h2 id="verifying-clean-files">Verifying a Cleaned File</h2>
+<p>One of the most useful jobs for a metadata viewer is checking someone else's work. After you strip a photo, drop the cleaned output back into the viewer to confirm the tags are really gone.</p>
+<p>If scrubbing succeeded, the green status banner confirms that no EXIF, GPS, or hidden camera tags were detected, and no GPS alert appears. That is a real check of the file bytes, not a guess.</p>
+<p>This matters because some tools claim to strip metadata but leave chunks behind. A PNG tEXt block or a JPEG comment can survive a careless cleaner. The viewer catches those leftovers.</p>
+<p>Make verification a habit for sensitive photos. Inspect, strip, then inspect again. The second inspection takes seconds and proves the first step worked.</p>
+<p>If the cleaned file still shows tags, try the Full Canvas Re-encode option in the <a href="/remove-image-metadata/">Remove Image Metadata</a> tool. It rebuilds the pixels from scratch, which drops every inherited binary segment.</p>
+<h2 id="when-to-check-metadata">When to Check Image Metadata</h2>
+<p>Check metadata any time a photo leaves your private storage. The risk is not the photo itself, but who can download it and what they can read from it.</p>
+<ul>
+<li>Before posting to a marketplace listing, where buyers download full-resolution images.</li>
+<li>Before sharing family photos on social media, especially pictures taken at home or school.</li>
+<li>Before sending photos to a journalist, client, or stranger who may forward them further.</li>
+<li>Before publishing photos on a blog or website, where files stay downloadable for years.</li>
+<li>After receiving a photo, to learn when and where it was taken and with what camera.</li>
+<li>When debugging an image pipeline, to see which fields survive each processing step.</li>
+</ul>
+<p>Photographers check metadata for a different reason. Exposure settings from a great shot are a recipe worth keeping, and the viewer reads ISO, aperture, and shutter speed in seconds.</p>
+<p>Developers check it when images behave oddly. A wrong orientation flag, an unexpected DPI value, or a hidden colour profile often explains a rendering bug.</p>
+<h2 id="viewer-limits">What the Viewer Cannot Do</h2>
+<p>The viewer is honest about its limits. Its deep binary chunk parser targets JPEG, PNG, and WebP containers natively in JavaScript, and those three formats get the fullest reports.</p>
+<p>For HEIC, GIF, BMP, and SVG files, the viewer reports reliable container info, file size, and pixel dimensions. Full binary EXIF chunks are not extracted for those formats, so a HEIC file may show less detail than the same photo as a JPEG.</p>
+<p>Pasted screenshots usually show no camera tags. Operating system clipboards pass raw raster bitmaps rather than original camera files, so clipboard images lack camera headers entirely.</p>
+<p>Photos downloaded from WhatsApp or Instagram show zero EXIF tags for a similar reason. Social networks and messaging apps strip EXIF, camera, and GPS headers automatically when you upload through their servers.</p>
+<p>The 20 MB per-file limit covers full-resolution DSLR JPEGs, detailed PNG exports, and uncompressed BMP files. Larger files need to be compressed first, for example with the <a href="/">image compressor</a>.</p>
+<h2 id="metadata-on-mobile">Checking Metadata on Mobile</h2>
+<p>Most photos are taken on phones, so the viewer works in mobile browsers too. Open the page in mobile Safari or Chrome and pick a photo directly from your camera roll.</p>
+<p>You can check hidden GPS coordinates and camera details on your phone before posting pictures online. That is the moment the check matters most, because posting usually happens from the phone.</p>
+<p>The interface is the same as on desktop. The summary banner, the GPS alert, and the grouped table all appear, and the Copy JSON and Strip Metadata actions work the same way.</p>
+<p>If you find GPS data on a phone photo, strip it before sharing. The <a href="/remove-image-metadata/">Remove Image Metadata</a> tool also works on mobile, so the whole inspect-and-clean workflow fits in your pocket.</p>
+<h2 id="metadata-viewer-summary">The Short Version</h2>
+<p>Image metadata is the hidden data inside every photo: camera settings, timestamps, software notes, and sometimes GPS coordinates. A viewer makes it visible.</p>
+<p>Check any photo before it goes public, especially pictures taken at home, at school, or at work. Look for the GPS alert first, then scan the amber Privacy Tag labels.</p>
+<p>Export JSON when you need a record, and verify cleaned files by inspecting them again. The viewer is free, needs no signup, and never uploads your photos anywhere.</p>
+<p>Start with the <a href="/image-metadata-viewer/">Image Metadata Viewer</a>, and when a file needs cleaning, move straight to the <a href="/remove-image-metadata/">Remove Image Metadata</a> tool. Your photos should show the world what you chose to share, and nothing else.</p>
+`,
+      faqs: [
+        {
+          question: 'What is the difference between EXIF, XMP, and IPTC metadata?',
+          answer: 'EXIF is camera-written data such as exposure settings, timestamps, and GPS coordinates. XMP is an Adobe XML packet that can hold editing history, ratings, and descriptions. IPTC is a press and publishing standard for captions, credits, and keywords. A photo can carry all three at once, and the viewer shows EXIF and XMP-style fields plus PNG text chunks in one grouped table.',
+        },
+        {
+          question: 'Can a metadata viewer tell me where a photo was taken?',
+          answer: 'Yes, if the photo contains GPS coordinates. The viewer decodes the GPSIFD tags into decimal latitude and longitude and shows them in a warning banner. Without GPS tags, the viewer cannot guess a location — it can only show the capture time and camera details, which may hint at a place but never prove one.',
+        },
+        {
+          question: 'Does the viewer work with photos taken on a DSLR or mirrorless camera?',
+          answer: 'Yes. DSLR and mirrorless cameras write rich EXIF data, including lens model, focal length, aperture, shutter speed, ISO, and metering mode. The viewer decodes all of these from the ExifIFD directory. Full-resolution JPEGs up to 20 MB are supported, which covers most camera exports.',
+        },
+        {
+          question: 'Why do some of my photos show metadata and others show none?',
+          answer: 'Original files from your camera roll keep full metadata. Photos that passed through WhatsApp, Instagram, Facebook, or email usually arrive stripped, because those services remove EXIF and GPS headers on upload. Screenshots also show no camera tags, since the clipboard passes raw pixels rather than the original camera file.',
+        },
+        {
+          question: 'Is it safe to inspect a private photo in an online metadata viewer?',
+          answer: 'It depends on the tool. This viewer parses file bytes locally in your browser, so zero bytes leave your device — nothing is uploaded to a server. Avoid viewers that require an upload, because sending an unstripped photo to a server hands your GPS data and camera details to a third party.',
+        },
+        {
+          question: 'Can I use the viewer to check a photo someone else sent me?',
+          answer: 'Yes. Save the photo, drop it into the viewer, and read the grouped table. You can see when it was taken, with what camera, and whether it carries GPS coordinates. Keep in mind that a stripped file shows nothing — that only proves the metadata was removed, not that the photo is original.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/remove-image-metadata', '/image-dimensions-checker', '/image-to-base64', '/image-converter'],
+  },
+  {
+    id: 'how-to-view-image-metadata',
+    toolSlug: '/image-metadata-viewer',
+    categoryId: 'privacy',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-view-image-metadata',
+      title: 'How to View Image Metadata',
+      description:
+        'Step-by-step guide to viewing image metadata: open a photo in the viewer, read EXIF and GPS fields, export a JSON report, and verify a cleaned file.',
+      body: `
+<p>Viewing image metadata sounds technical, but it takes less than a minute. You open a photo in a viewer, read the report, and decide whether anything in it should stay private.</p>
+<p>This guide walks through each step with the free <a href="/image-metadata-viewer/">Image Metadata Viewer</a>. It works in your browser, needs no account, and never uploads your photos.</p>
+<p>By the end you will know how to find GPS coordinates, read camera settings, export a JSON report, and check that a cleaned file is truly clean.</p>
+<h2 id="what-you-need">What You Need Before You Start</h2>
+<p>You need the image file itself, saved on your device. The original file from your camera roll or camera card carries the most metadata.</p>
+<p>A photo downloaded from WhatsApp, Instagram, or Facebook is a poor test subject. Those services strip EXIF and GPS headers on upload, so the viewer will find little or nothing.</p>
+<p>Screenshots are also poor test subjects. Your operating system clipboard passes raw pixels, not the original camera file, so pasted screenshots show dimensions and format only.</p>
+<p>Use a JPG, PNG, WebP, HEIC, GIF, BMP, or SVG file up to 20 MB. That covers full-resolution phone photos, DSLR JPEGs, and detailed PNG exports.</p>
+<p>Open the viewer in any modern browser. Chrome, Firefox, Safari, and Edge all work, on desktop and on mobile.</p>
+<h2 id="step-1-open-the-viewer">Step 1: Open the Viewer</h2>
+<p>Go to the <a href="/image-metadata-viewer/">Image Metadata Viewer</a> page. You will see an upload zone and a short explanation of what the tool does.</p>
+<p>There is no sign-in screen and no paywall. The tool is free, and you can inspect as many photos as you like, one at a time.</p>
+<p>If you are on a phone, open the page in mobile Safari or Chrome. The layout adapts, and you can pick a photo straight from your camera roll.</p>
+<p>Bookmark the page if you check photos often. Photographers, sellers, and parents tend to use it before every public post, so quick access helps.</p>
+<h2 id="step-2-upload-your-image">Step 2: Upload Your Image</h2>
+<p>Drag your image onto the upload zone, or click it to pick a file from your device. The file parses immediately, right in your browser.</p>
+<p>You can also paste an image with Ctrl+V on Windows or Cmd+V on Mac. Pasting is handy for a photo already on your clipboard, but remember that clipboard images carry no camera headers.</p>
+<p>Parsing happens locally using File ArrayBuffer byte parsing. Zero bytes leave your computer or phone, which is the whole point of a privacy tool.</p>
+<p>If the file is larger than 20 MB, the upload will not work. Compress it first with the <a href="/">image compressor</a>, then inspect the smaller copy.</p>
+<p>Within a moment the summary bar appears. That is your first result, and it already answers the most important question: does this file carry sensitive data?</p>
+<h2 id="step-3-read-the-summary">Step 3: Read the Summary and Privacy Banner</h2>
+<p>The summary bar shows the detected container format, the pixel dimensions, and the file size. It also states whether sensitive embedded metadata tag types were found.</p>
+<p>Read the format first. The viewer inspects actual binary magic bytes rather than trusting the filename, so a PNG renamed with a .jpg extension is still reported as a PNG.</p>
+<p>Next, read the privacy risk banner. If sensitive tags were found, the banner says so plainly. If nothing sensitive was found, the banner says that too.</p>
+<p>A clean summary does not always mean the file is original. A stripped photo from a messaging app also shows a clean summary, because its metadata was already removed upstream.</p>
+<p>Compare the summary with what you expect. A DSLR JPEG should show camera data. A screenshot should show almost nothing. A mismatch tells you the file was processed somewhere along the way.</p>
+<h2 id="step-4-check-gps">Step 4: Check for a GPS Location Alert</h2>
+<p>GPS coordinates are the first thing to check, because they are the most sensitive field a photo can carry. Scroll to the warning area just above the properties table.</p>
+<p>If GPSIFD tags exist, an amber banner reads GPS Location Coordinates Detected. It shows the exact decoded latitude and longitude in decimal form.</p>
+<p>Those two numbers can point to a home, a school, a workplace, or the precise spot where the photo was taken. Treat them as private until you decide otherwise.</p>
+<p>The warning box also offers a one-click jump to <a href="/remove-image-metadata/">Remove Image Metadata</a>. If you plan to share the photo, follow that link and strip the tags first.</p>
+<p>If no GPS alert appears, the photo carries no location data. That is the result you want before posting anything taken at home or near your children.</p>
+<h2 id="step-5-read-the-table">Step 5: Read the Metadata Table</h2>
+<p>Below the banner sits the extracted metadata table. Entries are grouped so you can scan them without reading every line.</p>
+<p>The Camera group holds make, model, lens, and software. The EXIF group holds shutter speed, aperture, ISO, focal length, flash, and metering mode.</p>
+<p>The GPS group holds latitude, longitude, and altitude when present. The PNG or WebP chunks group holds IHDR, pHYs, text chunks, and VP8X flags.</p>
+<p>The File info group holds the container format, dimensions, and size. These are facts about the file itself, not about the camera.</p>
+<p>Sensitive entries carry an amber Privacy Tag label. Look for GPS coordinates, exact capture timestamps, photographer or artist names, camera serial numbers, and device model strings.</p>
+<p>Take your time with the timestamp. The exact date and time a photo was taken can reveal routines, such as when a house is empty or when a child leaves school.</p>
+<h2 id="step-6-export-json">Step 6: Copy or Export the JSON Report</h2>
+<p>If you need a record of what the file contained, export it. Click Copy JSON in the summary bar to place the full structured report on your clipboard.</p>
+<p>Click Export JSON to download a file named after your image with a _metadata suffix. The file is a clean JSON report you can keep, attach to a ticket, or compare later.</p>
+<p>Developers use these reports to debug image pipelines. If a field disappears between two processing steps, the JSON reports show exactly where it went.</p>
+<p>Photographers use them to keep exposure recipes. The JSON preserves ISO, aperture, and shutter speed from a shot worth repeating.</p>
+<p>For a deeper explanation of what each field means, read <a href="/blog/exif-data-explained/">EXIF Data Explained: What Your Photos Reveal</a>. For the full tool overview, read <a href="/blog/image-metadata-viewer-guide/">Image Metadata Viewer: Complete Guide</a>.</p>
+<h2 id="step-7-verify-clean">Step 7: Verify a Cleaned File</h2>
+<p>After stripping metadata from a photo, drop the cleaned output back into the viewer. This second inspection proves the cleaning worked.</p>
+<p>If scrubbing succeeded, a green banner confirms that no EXIF, GPS, or hidden camera tags were detected. No GPS alert appears.</p>
+<p>If tags remain, the table shows exactly which ones survived. Common survivors are PNG text chunks and JPEG comments, which some cleaners miss.</p>
+<p>When leftovers appear, clean the file again with Full Canvas Re-encode in the <a href="/remove-image-metadata/">Remove Image Metadata</a> tool. It rebuilds the pixels from scratch and drops every inherited segment.</p>
+<p>Make this a two-pass habit for sensitive photos. Inspect, strip, inspect again. The second pass takes seconds and removes all doubt.</p>
+<h2 id="viewing-on-mobile">Viewing Metadata on a Phone</h2>
+<p>Most photos live on phones, and the check matters most right before posting. Open the viewer in mobile Safari or Chrome and pick a photo from your camera roll.</p>
+<p>The summary, GPS alert, and grouped table all appear the same way as on desktop. Copy JSON and Strip Metadata work the same way too.</p>
+<p>Check the photo before you open the social app, not after. Once a photo is posted, anyone can download it and read whatever it still carries.</p>
+<p>If you find GPS data, strip it on the phone before sharing. The <a href="/remove-image-metadata/">Remove Image Metadata</a> tool runs in the mobile browser, so the whole workflow fits in your pocket.</p>
+<h2 id="reading-camera-settings">How to Read Camera Settings in the Report</h2>
+<p>Camera settings tell the story of how a photo was made. Each field has a plain meaning once you know what to look for.</p>
+<p>ISO is the sensor sensitivity. Low ISO means a bright scene or a tripod; high ISO means a dark scene and usually more grain.</p>
+<p>Aperture, shown as an F-number, is how wide the lens opened. A small F-number means a wide opening and a blurred background; a large one means a deep, sharp scene.</p>
+<p>Shutter speed is how long the sensor was exposed. Fast speeds freeze motion, slow speeds blur it. The viewer shows it as a fraction of a second or as whole seconds.</p>
+<p>Focal length is the lens zoom at the moment of capture. Short lengths mean a wide view; long lengths mean a zoomed-in view.</p>
+<p>Flash state tells you whether the flash fired. Metering mode tells you how the camera measured the light. Together these fields let another photographer recreate the shot.</p>
+<h2 id="troubleshooting">Troubleshooting: When the Report Looks Empty</h2>
+<p>An empty report usually has a simple cause. Work through the list below before assuming the viewer is broken.</p>
+<ul>
+<li>The photo came from WhatsApp, Instagram, or Facebook. These services strip EXIF and GPS on upload, so the file arrives clean.</li>
+<li>You pasted a screenshot. Clipboards pass raw pixels, so pasted images carry no camera headers at all.</li>
+<li>The file is a HEIC, GIF, BMP, or SVG. The viewer reports container info and dimensions for these, but full binary EXIF chunks are only extracted for JPEG, PNG, and WebP.</li>
+<li>The photo was edited and re-exported. Many editors drop EXIF on export unless you ask them to keep it.</li>
+<li>The file was already cleaned. A photo stripped by the Remove Image Metadata tool will show the green no-tags banner, which is the correct result.</li>
+</ul>
+<p>If you expected camera data and got none, test with a fresh original straight from the camera roll. That tells you whether the file or the viewer is the cause.</p>
+<p>If the original also shows nothing, check your camera app settings. Some phones let you turn off location recording, which removes GPS tags at the source.</p>
+<h2 id="common-mistakes">Common Mistakes to Avoid</h2>
+<p>The most common mistake is checking the wrong file. People inspect a copy they already posted, see nothing, and assume the original is clean too. Always inspect the file you are about to share.</p>
+<p>Another mistake is trusting the filename. A .jpg file can really be a PNG, and the viewer reports the true format from magic bytes. Read the summary, not the extension.</p>
+<p>A third mistake is skipping the second inspection. Stripping feels complete when the download appears, but only a re-inspection proves the tags are gone.</p>
+<p>A fourth mistake is forgetting the timestamp. People look for GPS and ignore the capture time, yet an exact timestamp can reveal routines just as clearly as a location.</p>
+<p>Finally, do not assume a clean report means a safe photo. The image itself can still show a street number, a school uniform, or a car plate. Metadata is only half the privacy check.</p>
+<h2 id="comparing-photos">Comparing Two Photos Side by Side</h2>
+<p>Sometimes one report is not enough. Comparing two photos shows what changed between them, which is useful when a file passes through several apps.</p>
+<p>Open the first photo, export its JSON report, and save the file. Then clear the viewer with the red trash icon and open the second photo the same way.</p>
+<p>Put the two JSON reports side by side. Any field present in one and missing in the other was added or removed by whatever processed the file in between.</p>
+<p>This comparison is how developers find which step in a pipeline drops a field. It is also how photographers learn which editor keeps their camera data and which one discards it.</p>
+<p>A common test is the original against the social media copy. The original shows full EXIF and GPS, while the downloaded social copy shows almost nothing. The gap proves the platform stripped the data.</p>
+<p>Another useful test is the original against the cleaned copy. The cleaned copy should show the green no-tags banner, while the original shows the full table. That contrast is your proof that stripping worked.</p>
+<h2 id="saving-reports">Saving Reports for Later</h2>
+<p>Exported JSON reports are worth keeping when the photo matters. A report is a small text file, easy to store alongside the image or in a project folder.</p>
+<p>Keep reports for client work, where a client may ask when and where a photo was taken. The JSON answers that question without sharing the original file.</p>
+<p>Keep them for debugging too. When an image behaves oddly months later, the saved report shows what the file contained before any further processing.</p>
+<p>Name the report clearly, such as wedding-photo-metadata.json, so you can find it later. The default name already includes the image file name with a _metadata suffix, which is a good start.</p>
+<h2 id="how-to-view-summary">Quick Recap</h2>
+<p>Open the <a href="/image-metadata-viewer/">Image Metadata Viewer</a>, drop in the original file, and read the summary banner first. Then check the GPS alert, scan the grouped table, and note any amber Privacy Tag labels.</p>
+<p>Export JSON if you need a record. Strip the file with <a href="/remove-image-metadata/">Remove Image Metadata</a> if anything sensitive appears, then inspect the cleaned copy again to confirm.</p>
+<p>The whole routine takes under a minute. Make it a habit before every public post, and your photos will show only what you chose to share.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I view metadata on a photo I already posted online?',
+          answer: 'Download the posted photo first, then drop the downloaded file into the viewer. Most social platforms strip metadata on upload, so the downloaded copy usually shows nothing — but if the platform kept the tags, the viewer will find them. Note that downloading from the platform may itself strip data, so this checks the public copy, not your original.',
+        },
+        {
+          question: 'Can I view metadata without installing any software?',
+          answer: 'Yes. The Image Metadata Viewer runs entirely in your browser — no install, no account, and no upload. Drop the file in, read the report, and close the tab. Your photos never leave your device.',
+        },
+        {
+          question: 'What should I do if the viewer finds GPS coordinates in my photo?',
+          answer: 'Do not share that file as it is. Open the Remove Image Metadata tool, drop the photo in, and download the cleaned copy. Then drop the cleaned copy back into the viewer to confirm the GPS alert is gone before you post it.',
+        },
+        {
+          question: 'Why does the viewer show different fields for the same photo in different formats?',
+          answer: 'Each format stores metadata differently. A JPEG holds EXIF directories, a PNG holds text and eXIf chunks, and a WebP holds EXIF chunks plus VP8X flags. Converting a photo between formats can drop fields, so the same picture as a JPG and as a PNG will show different tables.',
+        },
+        {
+          question: 'Can I view metadata for many photos at once?',
+          answer: 'The viewer inspects one file at a time. To check a batch, inspect each file in turn — click the red trash icon in the summary bar to reset, then drop the next photo. Each inspection takes seconds, so a small batch goes quickly.',
+        },
+        {
+          question: 'Does viewing metadata change my photo in any way?',
+          answer: 'No. The viewer is strictly read-only. It reads headers from browser memory and displays them, without modifying, compressing, or deleting anything in your original file. Your file on disk stays exactly as it was.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/remove-image-metadata', '/image-dimensions-checker', '/image-to-base64', '/image-converter'],
+  },
+  {
+    id: 'exif-data-explained',
+    toolSlug: '/image-metadata-viewer',
+    categoryId: 'privacy',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'exif-data-explained',
+      title: 'EXIF Data Explained: What Your Photos Reveal',
+      description:
+        'A deep look at EXIF data: how cameras write it, which fields reveal your location and habits, how apps strip it, and how to read and remove it safely.',
+      body: `
+<p>A photo shows a moment. Its EXIF data tells the story around that moment: which camera took it, when, where, and with what settings.</p>
+<p>Most people never see this layer. It travels silently inside the file, surviving copies, forwards, and downloads until something strips it away.</p>
+<p>This article explains EXIF in depth: how it is structured, what each field reveals, how it leaks, and how to read it and remove it. No filler, just what the data actually contains.</p>
+<h2 id="what-is-exif">What EXIF Actually Is</h2>
+<p>EXIF stands for Exchangeable Image File Format. It is a standard for storing metadata inside image files, written by cameras and phones at the moment of capture.</p>
+<p>Technically, EXIF data lives in a TIFF-based structure embedded in the file. In a JPEG it sits in an APP1 segment; in a PNG it can sit in an eXIf chunk; in a WebP file it sits in an EXIF chunk.</p>
+<p>The structure is a set of directories called IFDs, short for Image File Directories. Each IFD holds numbered tags, and each tag holds a value: a number, a string, or a set of rational fractions.</p>
+<p>The viewer reads three IFDs in JPEG files: IFD0 for basic device facts, ExifIFD for exposure telemetry, and GPSIFD for location. That is where nearly everything interesting lives.</p>
+<p>EXIF is not the only metadata in a photo. XMP packets, IPTC fields, JPEG comments, and PNG text chunks can sit alongside it, but EXIF is the richest and most standardised of them all.</p>
+<h2 id="ifd0-device-identity">IFD0: Your Device Identity</h2>
+<p>IFD0 is the first directory, and it identifies the device. Camera make and model are the headline fields, but there is more.</p>
+<p>The software field records the program that last wrote the file. That can be a camera firmware version, a phone operating system, or an editing app such as Lightroom.</p>
+<p>Some cameras record a serial number or an owner name here. Those fields turn an anonymous photo into a photo tied to one specific device and, sometimes, one specific person.</p>
+<p>The artist field can hold a photographer name, and the copyright field can hold a rights notice. Both are legitimate for professionals, and both are identifying.</p>
+<p>Even the image dimensions and orientation flag live near here. The orientation tag is what tells viewers to rotate a photo upright, and it is also the field that causes sideways photos when it is stripped badly.</p>
+<h2 id="exififd-exposure-telemetry">ExifIFD: Exposure Telemetry</h2>
+<p>ExifIFD is the technical heart of EXIF. It records the exposure decisions the camera made, or that you made, at the moment of capture.</p>
+<p>ISO, aperture, shutter speed, and focal length are the four fields photographers care about most. Together they describe the light, the depth of field, and the motion in the shot.</p>
+<p>Exposure time is stored as a rational fraction, such as 1/250 of a second. Aperture is stored as an F-number. Focal length is stored in millimetres, sometimes with a 35mm equivalent alongside it.</p>
+<p>Flash state records whether the flash fired, and in what mode. Metering mode records how the camera measured the scene: average, centre-weighted, spot, or multi-pattern.</p>
+<p>White balance, exposure program, and exposure compensation add further detail. A trained reader can reconstruct the shooting conditions from these fields alone, which is why photographers value them and why they are harmless on their own.</p>
+<h2 id="gpsifd-location">GPSIFD: The Location Directory</h2>
+<p>GPSIFD is the smallest directory and the most dangerous one. It holds latitude, longitude, and altitude as rational numbers in degrees, minutes, and seconds.</p>
+<p>The viewer converts those rationals into decimal coordinates automatically. A pair like 25.2048, 55.2708 is a precise point on a map, accurate enough to identify a building.</p>
+<p>GPS tags also carry a timestamp and a reference for north or south, east or west. The datestamp records when the position was fixed, which usually matches the capture time.</p>
+<p>Altitude is often present too, though it is less precise than the horizontal coordinates. On a phone it can still tell whether a photo was taken at ground level or on a high floor.</p>
+<p>Phones record GPS by default in most camera apps. The coordinates are written silently, with no visible mark on the photo, and most owners never know they are there.</p>
+<h2 id="what-photos-reveal">What Your Photos Reveal About You</h2>
+<p>One photo reveals a little. A set of photos reveals a lot. EXIF turns a photo collection into a timeline of places, routines, and devices.</p>
+<p>Capture timestamps across many photos show when you are home, when you travel, and when you are usually away. That is a routine, and routines are valuable to the wrong reader.</p>
+<p>GPS coordinates across many photos map your home, your workplace, your gym, and your children's school. Even without names, the pattern is obvious on a map.</p>
+<p>Camera serial numbers link photos to one device. If the same serial appears in photos under different names, the link between those identities becomes visible.</p>
+<p>Software fields reveal your editing tools and your operating system. That is minor on its own, but combined with timestamps and locations it adds to a detailed profile.</p>
+<p>The point is not that any single field is secret. The point is that the fields combine into a picture of your life that you never chose to publish.</p>
+<h2 id="how-exif-survives">How EXIF Survives, and How It Dies</h2>
+<p>EXIF survives copying, emailing, and moving files between folders. It is part of the file, so it travels wherever the file travels, unless something actively removes it.</p>
+<p>Social networks and messaging apps are the great strippers. WhatsApp, Instagram, and Facebook remove EXIF, camera, and GPS headers automatically when you upload through their servers.</p>
+<p>That is why a photo downloaded from Instagram shows zero EXIF tags in the <a href="/image-metadata-viewer/">Image Metadata Viewer</a>. The platform cleaned it, not you.</p>
+<p>Editing apps vary. Some keep EXIF on export, some drop it, and some offer a choice. A photo edited and re-exported may lose its camera data while keeping its pixels.</p>
+<p>Screenshots never have EXIF in the first place. The clipboard passes raw pixels, so a screenshot carries dimensions and format only, with no camera or GPS blocks.</p>
+<p>Marketplaces, forums, and email attachments are different. Many of them keep the original file untouched, so EXIF and GPS survive the journey to a stranger's downloads folder.</p>
+<h2 id="reading-exif">How to Read EXIF Data</h2>
+<p>Reading EXIF takes a viewer, because no operating system shows the full picture by default. The <a href="/image-metadata-viewer/">Image Metadata Viewer</a> parses the raw bytes locally and groups the fields for you.</p>
+<p>Start with the summary banner. It tells you the format, the dimensions, and whether sensitive tag types were found. Then check the GPS alert, which shows decoded coordinates when they exist.</p>
+<p>Read the grouped table next. Camera fields identify the device, EXIF fields describe the exposure, and GPS fields give the location. Amber Privacy Tag labels mark the sensitive entries.</p>
+<p>Export JSON when you need a record. Copy JSON puts the full structured report on your clipboard, and Export JSON downloads a file you can keep or attach to a bug report.</p>
+<p>For the step-by-step process, read <a href="/blog/how-to-view-image-metadata/">How to View Image Metadata</a>. For the full tool overview, read <a href="/blog/image-metadata-viewer-guide/">Image Metadata Viewer: Complete Guide</a>.</p>
+<h2 id="exif-vs-xmp-iptc">EXIF vs XMP vs IPTC</h2>
+<p>EXIF is not alone. Two other standards often share the file, and each reveals different things.</p>
+<p>XMP is an Adobe XML packet embedded in the file. It can hold editing history, ratings, labels, and descriptions. A photo edited in Lightroom or Photoshop often carries a long XMP trail of every adjustment made.</p>
+<p>IPTC is a press and publishing standard. It holds captions, headlines, keywords, credits, and copyright information. News photos and stock photos are rich in IPTC fields.</p>
+<p>EXIF is written by the camera. XMP is written by editing software. IPTC is written by people and publishers. A single photo can carry all three, each telling a different part of the story.</p>
+<p>Stripping only EXIF is not always enough. A thorough clean removes XMP packets, IPTC fields, JPEG comments, and PNG text chunks as well, which is what the <a href="/remove-image-metadata/">Remove Image Metadata</a> tool does.</p>
+<h2 id="exif-and-orientation">EXIF Orientation: The Sideways Photo Problem</h2>
+<p>The orientation tag is a small EXIF field with an outsized effect. It tells viewers how to rotate a photo upright, because cameras often store pixels in one orientation and record the correct one in metadata.</p>
+<p>When the tag is stripped without rotating the pixels, a vertical photo can appear sideways. The image data is unchanged, but the instruction that made it upright is gone.</p>
+<p>This is why the Remove Image Metadata tool offers two methods. Lossless Binary Strip removes the APP1 block, including the orientation flag, without touching pixels.</p>
+<p>Full Canvas Re-encode takes a different path. It draws the pixels onto a fresh canvas, baking the upright orientation directly into the exported image, so the photo stays upright without the tag.</p>
+<p>If a vertical JPEG looks sideways after lossless stripping, switch to Full Canvas Re-encode and click Re-clean All. The pixels themselves are corrected, and no orientation tag is needed.</p>
+<h2 id="exif-for-photographers">EXIF for Photographers and Developers</h2>
+<p>EXIF is not only a privacy risk. For photographers it is a learning tool, and for developers it is a debugging aid.</p>
+<p>A photographer can read the exposure settings of a great shot and repeat them. ISO, aperture, shutter speed, and focal length together form a recipe for the same look in similar light.</p>
+<p>A developer can read EXIF to explain strange behaviour. A wrong orientation flag, an unexpected DPI value from a PNG pHYs chunk, or a hidden colour profile often explains a rendering bug.</p>
+<p>Comparing two files is a common debugging move. Export JSON from each, and the difference shows which processing step dropped or changed a field.</p>
+<p>The <a href="/image-dimensions-checker/">Image Dimensions Checker</a> pairs well with EXIF reading when size is the question. Dimensions and DPI together decide whether a photo is fit for print or only for screen.</p>
+<h2 id="removing-exif">Removing EXIF Safely</h2>
+<p>Reading EXIF is only half the job. The other half is removing it before a photo goes somewhere public.</p>
+<p>The <a href="/remove-image-metadata/">Remove Image Metadata</a> tool strips EXIF, GPS, XMP, IPTC, comments, and PNG text chunks locally in your browser. Nothing is uploaded.</p>
+<p>Lossless Binary Strip works on JPG and PNG files, removing metadata segments without decoding or recompressing a single pixel. Image quality is untouched.</p>
+<p>Full Canvas Re-encode rebuilds the image from its pixels, which guarantees every inherited binary segment is dropped. It is used automatically for WebP and HEIC inputs, and whenever you change the output format.</p>
+<p>After cleaning, verify the result. Drop the cleaned file back into the <a href="/image-metadata-viewer/">Image Metadata Viewer</a> and confirm the green banner: no EXIF, GPS, or hidden camera tags detected.</p>
+<p>For the full removal guide, read <a href="/blog/remove-image-metadata-guide/">Remove Image Metadata: Complete Guide</a>, and for the privacy risks behind the data, read <a href="/blog/photo-privacy-gps-exif-risks/">Photo Privacy: GPS, EXIF and Metadata Risks</a>.</p>
+<h2 id="exif-myths">Common EXIF Myths</h2>
+<p>Several myths about EXIF persist, and each one leads to a false sense of safety. They are worth correcting directly.</p>
+<p>Myth one: resizing a photo removes its metadata. Resizing usually keeps EXIF unless the tool explicitly strips it. A smaller photo can carry the same GPS coordinates as the original.</p>
+<p>Myth two: converting formats removes metadata. Converting JPG to PNG can drop EXIF, but it can also carry it across in an eXIf chunk. Never assume a conversion cleaned anything.</p>
+<p>Myth three: cropping removes location data. Cropping changes pixels, not headers. The GPS tags survive a crop unless the tool strips them.</p>
+<p>Myth four: a photo with no visible location is safe. The location is in the header, not in the picture. A photo of a blank wall can still carry exact coordinates.</p>
+<p>Myth five: only professionals need to worry. Phone cameras write the same EXIF as professional cameras, including GPS. Everyone who shares photos is affected.</p>
+<h2 id="exif-explained-summary">The Short Version</h2>
+<p>EXIF is the hidden data your camera writes into every photo: device identity, exposure settings, timestamps, and GPS coordinates. It is organised into IFD directories, and it travels with the file until something strips it.</p>
+<p>Social apps strip it automatically, but marketplaces, forums, and email often do not. A set of photos can reveal your routines, your places, and your devices.</p>
+<p>Read EXIF with the <a href="/image-metadata-viewer/">Image Metadata Viewer</a>, remove it with the <a href="/remove-image-metadata/">Remove Image Metadata</a> tool, and verify the cleaned file by inspecting it again. Your photos should show the world what you chose to share, and nothing else.</p>
+`,
+      faqs: [
+        {
+          question: 'Can EXIF data be recovered after it has been stripped?',
+          answer: 'No. Once metadata segments are removed from a file, the information is gone from that copy — there is nothing left to recover. That is why you should keep an original copy for yourself before stripping, if you want the camera settings or location for your own records. The cleaned copy cannot be restored to its original state.',
+        },
+        {
+          question: 'Does EXIF data affect image quality or file size?',
+          answer: 'EXIF does not change how the pixels look, but it does add to file size. Camera photos often carry embedded preview thumbnails, XMP blocks, and comment segments, which can add tens of kilobytes. Stripping them trims the file with zero change in sharpness, which is a small bonus on top of the privacy benefit.',
+        },
+        {
+          question: 'Do all cameras and phones write EXIF data?',
+          answer: 'Almost all digital cameras and smartphones write EXIF data by default, including make, model, exposure settings, and timestamps. GPS coordinates depend on location services being enabled. Some camera apps let you turn off location recording, which removes GPS tags at the source while keeping the other fields.',
+        },
+        {
+          question: 'Can EXIF data prove when and where a photo was taken?',
+          answer: 'EXIF timestamps and GPS coordinates are evidence, but not proof. Timestamps can be edited, GPS data can be faked, and a stripped file carries nothing at all. For legal or journalistic purposes, EXIF supports a claim but should be checked against other evidence. For privacy purposes, assume it is accurate — strangers will.',
+        },
+        {
+          question: 'Why do two copies of the same photo show different EXIF data?',
+          answer: 'Each copy passed through different processing. One may have gone through a social app that stripped everything, while the other stayed original. Editing, converting, and re-exporting can each add, change, or remove fields. The EXIF in a file describes that file, not the original scene — so copies diverge as soon as they are processed differently.',
+        },
+        {
+          question: 'Is EXIF data the same as a photo watermark?',
+          answer: 'No. A watermark is visible in the pixels — a logo or text overlaid on the image. EXIF is invisible header data that describes the photo. A watermark survives screenshots and re-saving; EXIF does not survive stripping. They serve different purposes: watermarks claim ownership visibly, EXIF records facts invisibly.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/remove-image-metadata', '/image-dimensions-checker', '/image-to-base64', '/image-converter'],
+  },
+  {
+    id: 'remove-image-metadata-guide',
+    toolSlug: '/remove-image-metadata',
+    categoryId: 'privacy',
+    type: 'guide',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'remove-image-metadata-guide',
+      title: 'Remove Image Metadata: Complete Guide',
+      description:
+        'Learn how to remove image metadata safely: what gets stripped, lossless vs canvas re-encode, batch cleaning, ZIP export, and how to verify a clean file.',
+      body: `
+<p>Every photo you share can carry hidden data: your location, your camera, the exact time you took it. Removing image metadata takes that data out before anyone else can read it.</p>
+<p>This guide explains what metadata removal does, which method to choose, how to clean a whole batch, and how to verify the result. It is written for the free <a href="/remove-image-metadata/">Remove Image Metadata</a> tool, which works entirely in your browser.</p>
+<p>No account, no upload, no watermarks. Your photos never leave your device, which is the only way a privacy tool makes sense.</p>
+<h2 id="what-is-metadata-removal">What Is Metadata Removal?</h2>
+<p>Metadata removal deletes the hidden data stored inside an image file, while leaving the pixels untouched. The photo looks exactly the same; it simply carries less information.</p>
+<p>The cleaner targets EXIF camera details, GPS latitude and longitude, capture timestamps, Adobe XMP packets, IPTC fields, JPEG comments, and PNG text and time chunks.</p>
+<p>It also removes embedded EXIF preview thumbnails. Camera photos often carry a small preview image inside the metadata, and that preview can itself reveal details about the shot.</p>
+<p>Removal is permanent for the cleaned copy. Once the segments are gone, the information cannot be recovered from that file, so keep an original copy if you want the data for yourself.</p>
+<p>Your original files on disk are never altered. Browsers cannot overwrite files in your local folders, so cleaning always produces a separate download while your originals stay untouched.</p>
+<h2 id="why-remove-metadata">Why Remove Metadata Before Sharing?</h2>
+<p>The reason is simple: you do not know who will download the photo, or what they will do with the data inside it. A marketplace buyer, a forum reader, or a stranger can open any image in a metadata viewer.</p>
+<p>GPS coordinates are the sharpest risk. A single photo taken at home can reveal your address to anyone who downloads it. A set of photos can reveal your daily routine.</p>
+<p>Camera serial numbers are a quieter risk. They link photos to one device, and if the same serial appears under different names, the link between those identities becomes visible.</p>
+<p>Timestamps reveal routines too. A pattern of capture times shows when you are home, when you travel, and when a house is likely empty.</p>
+<p>For sellers, journalists, parents, and anyone posting publicly, stripping metadata is basic hygiene. It costs seconds and removes a whole category of risk.</p>
+<h2 id="stripping-methods">The Two Stripping Methods</h2>
+<p>The tool offers two ways to clean a photo, and choosing the right one matters. Both remove metadata, but they work differently.</p>
+<p>Lossless Binary Strip is the default for JPG and PNG files. It parses the container structure directly and removes metadata segments, such as JPEG APP1 to APP15 and COM segments, and PNG eXIf, tEXt, iTXt, and tIME chunks, without decoding or recompressing a single pixel.</p>
+<p>Because no pixel is re-encoded, image quality is untouched. The file gets smaller, often by tens of kilobytes, with zero change in sharpness. Transparent PNG backgrounds survive byte-for-byte, because only ancillary chunks are removed.</p>
+<p>Full Canvas Re-encode takes a different path. It draws the pixels onto a fresh HTML5 Canvas, producing a brand-new compressed bitmap with zero inherited binary segments whatsoever.</p>
+<p>Re-encoding is used automatically for WebP and HEIC inputs, and whenever you change the output format. It is also the right choice when you want absolute certainty that nothing survived, or when a lossless strip leaves a photo sideways.</p>
+<h2 id="lossless-vs-reencode">Lossless Strip vs Canvas Re-encode</h2>
+<p>Choose Lossless Binary Strip when you want the cleanest result with no quality change. It is the best default for JPG and PNG photos that stay in their original format.</p>
+<p>Choose Full Canvas Re-encode when you change the output format, when the input is WebP or HEIC, or when you want a fresh bitmap with no inherited segments at all.</p>
+<p>Re-encoding has one trade-off: it recompresses the pixels, so quality depends on the Re-encode Quality slider, which runs from 50 percent to 100 percent. Lossless stripping has no such trade-off, because it never touches pixels.</p>
+<p>The quality slider only applies to WebP and HEIC inputs, or to Full Canvas Re-encode exports. It has no effect on Lossless Binary Strip files, whatever value you set.</p>
+<p>Orientation is the other difference. Lossless stripping deletes the EXIF orientation flag, which can leave a vertical JPEG looking sideways. Canvas re-encode bakes the upright orientation into the pixels themselves.</p>
+<p>If a vertical photo looks sideways after a lossless strip, switch to Full Canvas Re-encode and click Re-clean All. The exported image will be upright without needing any orientation tag.</p>
+<h2 id="how-to-remove-metadata">How to Remove Metadata, Step by Step</h2>
+<p>Cleaning a photo takes five steps, and the first ones happen automatically the moment you upload.</p>
+<ol>
+<li>Drop photos into the upload box. JPG, PNG, WebP, and HEIC files up to 20 MB each are accepted, or paste with Ctrl+V.</li>
+<li>Review the automatic stripping and verification badges. Files scrub immediately on upload and re-scan automatically, showing how many tags were stripped, for example Stripped X tags to 0 remaining.</li>
+<li>Choose the stripping method if you want to adjust settings. Keep Lossless Binary Strip for JPG and PNG, or pick Full Canvas Re-encode for a fresh bitmap.</li>
+<li>Optionally set the output format and quality. Select Original, JPG, PNG, or WebP output, adjust Re-encode Quality from 50 to 100 percent, and click Re-clean All.</li>
+<li>Download clean files or a batch ZIP. Click Download Clean on individual verified cards, or Download All Clean (ZIP) to save clean_images_no_metadata.zip.</li>
+</ol>
+<p>Every output file is re-scanned automatically by the built-in metadata parser. The verification badge confirms that zero sensitive EXIF or GPS tags remain, so nothing is guessed.</p>
+<p>For a detailed walkthrough with screenshots in mind, read <a href="/blog/how-to-remove-metadata-from-image/">How to Remove Metadata from an Image</a>.</p>
+<h2 id="batch-cleaning">Cleaning a Whole Batch at Once</h2>
+<p>One photo is quick, but sellers and photographers often need to clean dozens. The tool handles batches without any extra setup.</p>
+<p>Drop multiple photos together and wait a moment for the verification badges to turn green across all cards. Each file is stripped and re-scanned independently.</p>
+<p>Click Download All Clean (ZIP) to save the whole batch as clean_images_no_metadata.zip. That single file holds every cleaned photo, ready to upload to a marketplace or listing.</p>
+<p>Batch cleaning is ideal before posting to marketplaces, forums, or listings. A seller who photographs products at home can clean an entire shoot in one pass, with no GPS data reaching any buyer.</p>
+<p>There is no limit on file count beyond the 20 MB cap per file. You can remove metadata from unlimited photos with zero watermarks, signups, or fees.</p>
+<h2 id="output-formats">Output Formats and Quality</h2>
+<p>By default the tool keeps the original format, so a JPG stays a JPG and a PNG stays a PNG. That is the safest choice when you only want metadata gone and nothing else changed.</p>
+<p>You can also convert while cleaning. Pick JPG, PNG, or WebP under Output Format, set the Re-encode Quality, and click Re-clean All. Each file re-encodes cleanly through Canvas with all metadata stripped and the chosen format applied.</p>
+<p>Converting a clean PNG directly to WebP or JPG is useful when a listing needs a smaller file. The conversion and the cleaning happen in one step, so no second pass is needed.</p>
+<p>Remember that PNG transparency survives lossless stripping but not every conversion. If you need a transparent background, keep the PNG format and use Lossless Binary Strip.</p>
+<p>Quality near 85 percent is a good default for WebP and JPG exports. Higher values keep more detail; lower values make smaller files. The slider only affects re-encoded exports.</p>
+<h2 id="verifying-clean">Verifying the Cleaned File</h2>
+<p>Trust, but verify. After cleaning, drop the downloaded file into the <a href="/image-metadata-viewer/">Image Metadata Viewer</a> to confirm the tags are really gone.</p>
+<p>The viewer parses the raw binary headers independently. If scrubbing succeeded, the green banner confirms that no EXIF, GPS, or hidden camera tags were detected, and no GPS alert appears.</p>
+<p>The tool also verifies its own output. After cleaning each image, it runs the metadata parser a second time on the output and displays an emerald badge, for example Stripped X metadata tags to 0 remaining, or Verified clean.</p>
+<p>If a file shows Verified clean right after upload, that means the source already contained zero EXIF, GPS, or text chunks. Screenshots and photos downloaded from messaging apps commonly arrive this way.</p>
+<p>Make verification a habit for sensitive photos. Inspect the original, strip it, then inspect the cleaned copy. The full loop takes under a minute.</p>
+<h2 id="metadata-on-mobile">Removing Metadata on Mobile</h2>
+<p>Most photos are shared from phones, so the tool works in mobile browsers. Open the page in iOS Safari or Android Chrome and pick photos directly from your camera roll.</p>
+<p>Once the green verified badges appear, download the clean copies straight to your device. Then share the cleaned files, not the originals.</p>
+<p>Check before you post, not after. Once a photo is uploaded to a marketplace or social platform, anyone may have already downloaded the original with its metadata intact.</p>
+<p>Pasting works on mobile too, where supported. On desktop, Ctrl+V or Cmd+V drops a copied image or screenshot straight into the upload queue.</p>
+<h2 id="what-removal-does-not-do">What Removal Does Not Do</h2>
+<p>Removing metadata does not change what the photo shows. A street number, a school uniform, a car plate, or a recognisable background is still visible in the pixels.</p>
+<p>It does not remove visible watermarks, and it does not blur faces or text. For those jobs, use the <a href="/image-cropper/">image cropper</a> to cut sensitive areas out, or a blur tool to hide them.</p>
+<p>It does not make a photo anonymous if the image itself identifies you. Metadata removal is one layer of privacy, not a complete disguise.</p>
+<p>It also does not reduce the pixel dimensions. A 4000-pixel photo stays 4000 pixels wide after cleaning. If you need a smaller image, resize it with the <a href="/image-resizer/">image resizer</a> after cleaning, or before.</p>
+<p>Finally, it does not protect photos you already shared. Once an unstripped photo is public, copies may exist elsewhere. Cleaning helps the next photo, not the last one.</p>
+<h2 id="cleaning-by-source">Cleaning Photos from Different Sources</h2>
+<p>Not every photo arrives the same way, and the source affects what needs cleaning. A photo straight from the camera roll carries the most metadata, including GPS and full EXIF.</p>
+<p>A photo received by email usually arrives untouched, with its original metadata intact. Clean it before forwarding or posting, because the sender may not have realised what it carried.</p>
+<p>A photo downloaded from a messaging app is often already clean. WhatsApp and similar apps strip EXIF and GPS on upload, so the file you receive has little left to remove.</p>
+<p>A screenshot needs no cleaning at all in most cases. The clipboard passes raw pixels, so screenshots carry no camera headers. The tool will simply confirm the file is already clean.</p>
+<p>An edited photo is unpredictable. Some editors preserve EXIF, some discard it, and some add their own software tags. Always inspect an edited export before sharing it, even if the original was clean.</p>
+<p>When in doubt, run every file through the cleaner. The cost is seconds, and a file that was already clean simply shows a Verified clean badge with nothing to lose.</p>
+<h2 id="file-size-after-stripping">File Size After Stripping</h2>
+<p>Stripping metadata usually makes a file smaller, and the saving is larger than most people expect. The hidden data is not just a few numbers.</p>
+<p>Camera photos often carry an embedded preview thumbnail inside the EXIF block. That thumbnail is a small JPEG in its own right, and removing it frees real space.</p>
+<p>Adobe XMP packets add more weight. An edited photo can carry a long XML history of every adjustment, and that text can run to tens of kilobytes.</p>
+<p>PNG files carry text and time chunks that add up too. Author names, comments, and creation times are small individually, but a file with many chunks sheds noticeable weight when they are removed.</p>
+<p>The saving comes with zero quality loss in Lossless Binary Strip mode, because no pixel is re-encoded. Smaller files also upload faster, which is a practical bonus for listings with many photos.</p>
+<p>If file size is your main goal rather than privacy, pair stripping with compression. Clean the photo first, then compress it with the <a href="/">image compressor</a> for the smallest safe file.</p>
+<h2 id="metadata-removal-summary">The Short Version</h2>
+<p>Removing image metadata deletes the hidden EXIF, GPS, XMP, IPTC, and text data inside a photo, while the pixels stay the same. It is the simplest privacy step before sharing any picture publicly.</p>
+<p>Use Lossless Binary Strip for JPG and PNG files when you want zero quality change. Use Full Canvas Re-encode for WebP, HEIC, format changes, or a guaranteed fresh bitmap.</p>
+<p>Clean in batches, download the ZIP, and verify each cleaned file in the <a href="/image-metadata-viewer/">Image Metadata Viewer</a>. Then share with confidence, knowing your photos show only what you chose to share.</p>
+`,
+      faqs: [
+        {
+          question: 'Will removing metadata change how my photo looks?',
+          answer: 'No. Lossless Binary Strip removes only metadata segments and never touches a pixel, so the image looks byte-for-byte identical. Full Canvas Re-encode rebuilds the pixels, so quality depends on the Re-encode Quality slider — at 90 to 100 percent the difference is invisible, and at lower values you may see mild compression softness.',
+        },
+        {
+          question: 'Should I keep a copy of the original photo before stripping metadata?',
+          answer: 'Yes, if the metadata matters to you. Stripping is permanent for the cleaned copy — camera settings, GPS coordinates, and timestamps cannot be recovered from it. Keep the original in a private folder for your own records, and share only the cleaned copy.',
+        },
+        {
+          question: 'Does removing metadata also remove the photo orientation?',
+          answer: 'Lossless stripping removes the EXIF orientation flag, which can leave a vertical JPEG looking sideways in some viewers. Full Canvas Re-encode bakes the upright orientation into the pixels, so the photo stays upright. If a photo turns sideways after stripping, switch to Full Canvas Re-encode and click Re-clean All.',
+        },
+        {
+          question: 'Can I remove metadata from a photo that is already posted online?',
+          answer: 'You can clean your own copy, but you cannot clean copies other people already downloaded. Once an unstripped photo is public, it may exist on other devices. Delete or replace the posted photo with a cleaned version, and strip metadata before every future upload.',
+        },
+        {
+          question: 'Is it legal to remove metadata from my own photos?',
+          answer: 'Yes. Removing metadata from photos you own is entirely legal — it is your data, and you are choosing not to publish it. The only caution is with photos you do not own: stripping a copyright notice or credit field from someone else’s work can breach licence terms, so leave attribution fields intact on photos you did not take.',
+        },
+        {
+          question: 'Does stripping metadata protect me if the photo itself shows my house or street?',
+          answer: 'No. Metadata removal only deletes hidden header data. Anything visible in the pixels — a house number, a street sign, a school uniform, a car plate — stays visible. For visible identifiers, crop them out or blur them before sharing, and strip the metadata as well.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-metadata-viewer', '/image-converter', '/image-to-pdf', '/image-cropper'],
+  },
+  {
+    id: 'how-to-remove-metadata-from-image',
+    toolSlug: '/remove-image-metadata',
+    categoryId: 'privacy',
+    type: 'howto',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'how-to-remove-metadata-from-image',
+      title: 'How to Remove Metadata from an Image',
+      description:
+        'Step-by-step guide to removing metadata from an image: upload, strip EXIF and GPS, choose the right method, download clean files, and verify the result.',
+      body: `
+<p>Removing metadata from an image takes less than a minute. You upload the photo, the tool strips the hidden data, and you download a clean copy.</p>
+<p>This guide walks through each step with the free <a href="/remove-image-metadata/">Remove Image Metadata</a> tool. It works in your browser, needs no account, and never uploads your photos anywhere.</p>
+<p>By the end you will know how to clean one photo, clean a whole batch, pick the right stripping method, and prove the result is clean.</p>
+<h2 id="what-you-need">What You Need Before You Start</h2>
+<p>You need the image file you plan to share, saved on your device. Work from the original file, not from a copy you already posted somewhere.</p>
+<p>The tool accepts JPG, PNG, WebP, and HEIC files up to 20 MB each. That covers phone photos, DSLR JPEGs, PNG exports, and iPhone HEIC files.</p>
+<p>Keep a private copy of the original if the metadata matters to you. Stripping is permanent for the cleaned copy, and camera settings or GPS data cannot be recovered from it later.</p>
+<p>Open the tool in any modern browser. Chrome, Firefox, Safari, and Edge all work, on desktop and on mobile.</p>
+<p>If you are unsure what your photo contains, check it first in the <a href="/image-metadata-viewer/">Image Metadata Viewer</a>. It shows every tag before you decide what to remove.</p>
+<h2 id="step-1-open-the-tool">Step 1: Open the Tool</h2>
+<p>Go to the <a href="/remove-image-metadata/">Remove Image Metadata</a> page. You will see an upload box and a short explanation of what the tool does.</p>
+<p>There is no sign-in screen and no paywall. The tool is free, and you can clean unlimited photos with zero watermarks or fees.</p>
+<p>On a phone, open the page in mobile Safari or Chrome. The layout adapts, and you can pick photos directly from your camera roll.</p>
+<p>Bookmark the page if you clean photos often. Sellers, journalists, and parents tend to use it before every public post, so quick access helps.</p>
+<h2 id="step-2-upload-photos">Step 2: Upload Your Photos</h2>
+<p>Drag photos into the upload box, or click it to pick files from your device. You can drop one photo or a whole batch at once.</p>
+<p>You can also paste with Ctrl+V on Windows or Cmd+V on Mac. A copied image or screenshot drops straight into the upload queue and is scrubbed automatically.</p>
+<p>Cleaning starts immediately upon upload. There is no start button to press, and no waiting for a server, because all the work happens inside your browser memory.</p>
+<p>Each file can be up to 20 MB. If a file is larger, compress it first with the <a href="/">image compressor</a>, then clean the smaller copy.</p>
+<p>Within a moment, a card appears for each photo. That card shows the file name, the stripping result, and the verification badge.</p>
+<h2 id="step-3-check-badges">Step 3: Check the Verification Badges</h2>
+<p>After upload, each card re-scans automatically and shows how many metadata tags were stripped, for example Stripped X metadata tags to 0 remaining.</p>
+<p>A green or emerald badge means the output was verified clean. The tool runs its metadata parser a second time on the output file, so the badge is a real check, not a guess.</p>
+<p>If a photo shows Verified clean right after upload, the source already contained zero EXIF, GPS, or text chunks. Screenshots and photos downloaded from messaging apps commonly arrive this way.</p>
+<p>Wait for the badges to turn green across all cards before downloading. A batch is only finished when every card is verified.</p>
+<p>If a card shows tags remaining, the file needs another pass. Change the stripping method and click Re-clean All, as explained in step 5.</p>
+<h2 id="step-4-choose-method">Step 4: Choose the Stripping Method</h2>
+<p>The default method is Lossless Binary Strip, and it is the right choice for most JPG and PNG photos. It removes metadata segments without decoding or recompressing a single pixel.</p>
+<p>Keep this method when you want zero quality change. Your JPG stays a JPG, your PNG stays a PNG, and transparent PNG backgrounds survive byte-for-byte.</p>
+<p>Pick Full Canvas Re-encode when you want a brand-new bitmap with zero inherited segments. It is also used automatically for WebP and HEIC inputs, and whenever you change the output format.</p>
+<p>Re-encoding also fixes orientation. If a vertical JPEG looks sideways after a lossless strip, the orientation flag was deleted without rotating the pixels. Canvas re-encode bakes the upright orientation into the exported image.</p>
+<p>The choice is reversible before you download. Change the method, click Re-clean All, and the batch is processed again with the new setting.</p>
+<h2 id="step-5-format-quality">Step 5: Set Output Format and Quality</h2>
+<p>By default the tool keeps the original format, so a JPG stays a JPG and a PNG stays a PNG. That is the safest choice when you only want metadata gone.</p>
+<p>To convert while cleaning, pick JPG, PNG, or WebP under Output Format. Each file re-encodes cleanly through Canvas with all metadata stripped and the chosen format applied.</p>
+<p>Set the Re-encode Quality slider between 50 and 100 percent when you re-encode. Quality near 85 percent is a good default for WebP and JPG exports, balancing size and detail.</p>
+<p>The slider does nothing for Lossless Binary Strip files, because no pixels are re-encoded. It only applies to WebP and HEIC inputs, or to Full Canvas Re-encode exports.</p>
+<p>After changing any setting, click Re-clean All. Files scrub immediately on drop using your active settings, so the button applies your updated options across the entire batch.</p>
+<p>For the full comparison of the two methods, read <a href="/blog/remove-image-metadata-guide/">Remove Image Metadata: Complete Guide</a>.</p>
+<h2 id="step-6-download">Step 6: Download the Clean Files</h2>
+<p>When the badges are green, download your files. Click Download Clean on an individual card to save that photo, or click Download All Clean (ZIP) for the whole batch.</p>
+<p>The ZIP file is named clean_images_no_metadata.zip. It holds every cleaned photo from the batch, ready to upload to a marketplace, forum, or listing.</p>
+<p>Downloads are separate files. Your originals on disk are untouched, because browsers cannot overwrite files in your local folders.</p>
+<p>Save the clean files somewhere you can tell them apart from the originals, such as a folder named clean or ready-to-post. Mixing them up defeats the purpose.</p>
+<p>Share the cleaned copies, not the originals. If you upload the original by mistake, the metadata goes with it.</p>
+<h2 id="step-7-verify">Step 7: Verify the Cleaned File</h2>
+<p>Verification is the step most people skip, and it is the step that proves the job is done. Drop a downloaded clean file into the <a href="/image-metadata-viewer/">Image Metadata Viewer</a>.</p>
+<p>If scrubbing succeeded, the green banner confirms that no EXIF, GPS, or hidden camera tags were detected, and no GPS alert appears. That is an independent check of the file bytes.</p>
+<p>If tags remain, the viewer table shows exactly which ones survived. Common survivors are PNG text chunks and JPEG comments, which some cleaners miss.</p>
+<p>When leftovers appear, return to the removal tool, switch to Full Canvas Re-encode, click Re-clean All, and download again. Then verify the new file the same way.</p>
+<p>Make this a two-pass habit for sensitive photos: inspect, strip, inspect again. The second inspection takes seconds and removes all doubt.</p>
+<h2 id="cleaning-on-mobile">Removing Metadata on a Phone</h2>
+<p>Most photos are shared from phones, so the workflow works in mobile browsers. Open the tool in iOS Safari or Android Chrome and pick photos from your camera roll.</p>
+<p>Files scrub on upload, the badges turn green, and you download clean copies straight to your device. Then share the cleaned files from your gallery.</p>
+<p>Clean before you open the social or marketplace app, not after. Once a photo is posted, anyone may have already downloaded the original with its metadata intact.</p>
+<p>If your phone camera records location by default, consider turning off location for the camera app. That stops GPS tags at the source, so future photos need no cleaning for location.</p>
+<h2 id="cleaning-batches">Cleaning Batches for Marketplaces</h2>
+<p>Sellers photograph products at home, and those photos can carry GPS coordinates pointing straight to the seller's address. Batch cleaning removes that risk for a whole shoot at once.</p>
+<p>Drop the full set of listing photos together and wait for the badges to turn green across all cards. Then click Download All Clean (ZIP) and upload the cleaned files to the listing.</p>
+<p>Use the same routine for forum posts, rental listings, and classified ads. Anywhere strangers download full-resolution images, metadata is a risk worth removing.</p>
+<p>There is no limit on file count beyond the 20 MB cap per file. A hundred listing photos clean just as easily as one, with no watermarks, signups, or fees.</p>
+<p>For the privacy risks behind this routine, read <a href="/blog/photo-privacy-gps-exif-risks/">Photo Privacy: GPS, EXIF and Metadata Risks</a>.</p>
+<h2 id="troubleshooting-removal">Troubleshooting: When Cleaning Does Not Work as Expected</h2>
+<p>Most problems have a simple cause. Work through the list below before assuming the tool is broken.</p>
+<ul>
+<li>A photo looks sideways after cleaning. The lossless strip deleted the EXIF orientation flag. Switch to Full Canvas Re-encode and click Re-clean All to bake the upright orientation into the pixels.</li>
+<li>A file still shows tags after cleaning. Some PNG text chunks or JPEG comments can survive a first pass. Try Full Canvas Re-encode, which rebuilds the image from scratch.</li>
+<li>The quality slider seems to do nothing. It only applies to WebP and HEIC inputs, or to Full Canvas Re-encode exports. Lossless Binary Strip never re-encodes pixels, so the slider has no effect there.</li>
+<li>A file will not upload. Check the size: the cap is 20 MB per file. Compress the image first, then clean the smaller copy.</li>
+<li>The downloaded file looks identical to the original. That is correct. Cleaning removes hidden data, not pixels, so a successful clean looks exactly the same as the original.</li>
+<li>The badge says Verified clean immediately. The source already had no metadata, which is common for screenshots and photos from messaging apps. Nothing was wrong.</li>
+</ul>
+<p>If a problem persists, test with a fresh original straight from the camera roll. That tells you whether the file or the settings are the cause.</p>
+<h2 id="heic-photos">Removing Metadata from HEIC Photos</h2>
+<p>iPhone photos often arrive as HEIC files, and they need slightly different handling. The tool accepts HEIC uploads up to 20 MB, just like JPG and PNG.</p>
+<p>HEIC files are not stripped with Lossless Binary Strip. Instead, the tool draws the pixels onto a fresh Canvas, which guarantees all metadata headers are dropped.</p>
+<p>That means an HEIC clean is always a re-encode. Set the Re-encode Quality slider before you download: near 85 percent is a good default, and 90 to 100 percent keeps the most detail.</p>
+<p>You can also convert an HEIC photo while cleaning it. Pick JPG, PNG, or WebP under Output Format, and the tool exports a clean copy in the format you chose.</p>
+<p>Converting HEIC to JPG is a common move before sharing, because JPG opens everywhere. The conversion and the cleaning happen in one step, so no second pass is needed.</p>
+<p>After downloading, verify the result the same way as any other file. Drop the cleaned copy into the <a href="/image-metadata-viewer/">Image Metadata Viewer</a> and confirm the green banner.</p>
+<h2 id="after-downloading">What to Do After Downloading</h2>
+<p>Downloading the clean file is not the last step. A few small habits after downloading make sure the clean copy is the one that actually gets shared.</p>
+<p>First, check the file name. The cleaned download may share a name with the original, so keep it in a separate folder to avoid mixing the two up.</p>
+<p>Second, verify at least one file from each batch. Open the cleaned copy in the viewer and confirm the green no-tags banner before you upload it anywhere.</p>
+<p>Third, delete the clean copies from your downloads folder once they are posted, if the originals live elsewhere. Old clean copies mixed with originals cause confusion later.</p>
+<p>Fourth, if you share from a phone, confirm the share sheet picked the cleaned file. Gallery apps can look identical for originals and cleaned copies, so check the file name or the folder.</p>
+<h2 id="how-to-remove-summary">Quick Recap</h2>
+<p>Open the <a href="/remove-image-metadata/">Remove Image Metadata</a> tool, drop in your photos, and wait for the green verification badges. Choose Lossless Binary Strip for JPG and PNG, or Full Canvas Re-encode for WebP, HEIC, format changes, or sideways photos.</p>
+<p>Download the clean files or the ZIP, then verify one in the <a href="/image-metadata-viewer/">Image Metadata Viewer</a>. When the green banner appears, the photo is safe to share.</p>
+<p>The whole routine takes under a minute. Make it a habit before every public post, and your photos will carry only what you chose to share.</p>
+`,
+      faqs: [
+        {
+          question: 'How do I remove metadata from a photo on my iPhone?',
+          answer: 'Open the Remove Image Metadata tool in mobile Safari, pick the photo from your camera roll, and wait for the green verification badge. Then tap Download Clean to save the cleaned copy to your device. Share the cleaned copy, not the original from your camera roll.',
+        },
+        {
+          question: 'Can I remove metadata from a screenshot?',
+          answer: 'Screenshots usually carry no camera metadata in the first place, because the clipboard passes raw pixels rather than the original camera file. Dropping a screenshot into the tool will typically show Verified clean immediately. The tool still checks it, so you lose nothing by running it through.',
+        },
+        {
+          question: 'What is the fastest way to clean many photos before a listing goes live?',
+          answer: 'Drop the whole set into the tool at once, wait for the green badges across all cards, and click Download All Clean (ZIP). The ZIP holds every cleaned photo in one file. Upload the cleaned files to your listing — never the originals.',
+        },
+        {
+          question: 'Do I need to clean a photo if I am only sending it to one friend?',
+          answer: 'It depends on the channel. Messaging apps such as WhatsApp strip metadata automatically, so a photo sent that way usually arrives clean. Email attachments and direct file transfers often keep the original intact, so clean the photo first if you are sending it as a file.',
+        },
+        {
+          question: 'Why does my cleaned photo have a smaller file size than the original?',
+          answer: 'Camera photos often carry embedded EXIF preview thumbnails, XMP blocks, and comment segments. Stripping those in Lossless Binary Strip mode frequently trims tens of kilobytes with zero change in image sharpness. The smaller size is a bonus, not a sign of quality loss.',
+        },
+        {
+          question: 'Can I undo metadata removal after downloading the clean file?',
+          answer: 'No. The cleaned copy has no metadata left to restore. That is why you should keep your original file in a private folder before cleaning. The original keeps its camera settings and GPS data for your own records, while the cleaned copy is the one you share.',
+        },
+      ],
+      readingMinutes: 10,
+    },
+    relatedToolSlugs: ['/image-metadata-viewer', '/image-converter', '/image-to-pdf', '/image-cropper'],
+  },
+  {
+    id: 'photo-privacy-gps-exif-risks',
+    toolSlug: '/remove-image-metadata',
+    categoryId: 'privacy',
+    type: 'advanced',
+    status: 'published',
+    publishedAt: '2026-11-17',
+    en: {
+      slug: 'photo-privacy-gps-exif-risks',
+      title: 'Photo Privacy: GPS, EXIF and Metadata Risks',
+      description:
+        'What GPS coordinates, EXIF data, and hidden metadata in your photos can reveal — and the practical steps that stop your pictures leaking your location and routine.',
+      body: `
+<p>A photo shows a moment. Its metadata can show where you live, where your children go to school, and when your house is empty.</p>
+<p>Most people share photos without ever checking what travels inside the file. The risk is invisible, which is exactly why it is so easy to ignore.</p>
+<p>This article explains the real privacy risks in GPS coordinates, EXIF data, and hidden metadata, who can exploit them, and the practical steps that stop the leak.</p>
+<h2 id="the-hidden-layer">The Hidden Layer in Every Photo</h2>
+<p>Every photo from a phone or camera carries a hidden layer of data. Camera make and model, exposure settings, capture time, and often GPS coordinates are written into the file automatically.</p>
+<p>You cannot see this data by looking at the picture. It lives in the file header, and only a viewer can read it. That invisibility is the core of the risk.</p>
+<p>The <a href="/image-metadata-viewer/">Image Metadata Viewer</a> makes the layer visible. It parses the raw bytes locally and shows every field, with amber Privacy Tag labels on the sensitive ones.</p>
+<p>Most owners are surprised by what they find. A casual snapshot from the garden can carry exact coordinates, a precise timestamp, and the serial number of the phone that took it.</p>
+<p>The data is not malicious. Cameras write it for legitimate reasons, such as organising photos and recording settings. The risk begins when the photo leaves your private storage.</p>
+<h2 id="gps-risk">GPS Coordinates: The Sharpest Risk</h2>
+<p>GPS coordinates are the most sensitive thing a photo can carry. A single pair of numbers can point to a home, a school, a workplace, or the exact spot where a photo was taken.</p>
+<p>Phones record GPS by default in most camera apps. The coordinates are stored silently in the GPSIFD directory, as degrees, minutes, and seconds, with no visible mark on the photo.</p>
+<p>Anyone who downloads the photo can read those coordinates with a free viewer and drop them into a map. The result is a precise point, accurate enough to identify a building.</p>
+<p>One photo reveals one place. Many photos reveal a pattern: home, work, gym, school, and the routes between them. That pattern is a map of your life.</p>
+<p>Altitude is often recorded too. It can tell whether a photo was taken at ground level or on a high floor, which narrows a location further.</p>
+<p>Check every photo for a GPS alert before sharing. If coordinates exist, strip them with the <a href="/remove-image-metadata/">Remove Image Metadata</a> tool before the photo goes anywhere public.</p>
+<h2 id="exif-risk">EXIF Data: Timestamps and Device Identity</h2>
+<p>GPS gets the attention, but EXIF carries quieter risks. The capture timestamp is one of them, because a pattern of timestamps reveals a routine.</p>
+<p>Photos taken at the same time each day show when you leave home, when you return, and when you travel. A routine tells an observer when a house is likely empty.</p>
+<p>Camera serial numbers are another quiet risk. They link photos to one specific device, and if the same serial appears under different names, the link between those identities becomes visible.</p>
+<p>Software fields reveal your editing tools and operating system. That is minor on its own, but combined with timestamps and locations it adds to a detailed profile.</p>
+<p>Artist and copyright fields can hold a real name. Professionals add them deliberately, but a phone that inherits an owner name can write it into every photo automatically.</p>
+<p>For a deeper look at each field, read <a href="/blog/exif-data-explained/">EXIF Data Explained: What Your Photos Reveal</a>.</p>
+<h2 id="who-can-read">Who Can Read Your Photo Metadata?</h2>
+<p>Anyone who can download the photo can read its metadata. That is the whole risk in one sentence, and it is worth understanding who that includes.</p>
+<p>Marketplace buyers download full-resolution listing photos. If a seller photographed a product at home, the buyer can read the GPS coordinates of the seller's house.</p>
+<p>Forum readers and classified-ad viewers do the same. Many forums and ad sites keep the original file untouched, so EXIF and GPS survive the journey.</p>
+<p>Email recipients receive the original file as an attachment. Unlike messaging apps, email usually preserves the file exactly, metadata included.</p>
+<p>Social platforms are the exception. WhatsApp, Instagram, and Facebook strip EXIF and GPS headers automatically on upload, so photos shared there usually arrive clean.</p>
+<p>But the exception has limits. If you share the original file by another route, such as a cloud link, a direct download, or a website upload, the metadata travels with it.</p>
+<h2 id="children-risk">Photos of Children: The Highest Stakes</h2>
+<p>Photos of children carry the highest stakes, because children cannot judge the risk for themselves. A photo taken at home, at school, or at a playground can carry the coordinates of that place.</p>
+<p>A single school photo with GPS data can reveal the school's location. A series of photos can reveal the child's routine: drop-off time, pick-up time, and regular activities.</p>
+<p>Timestamps add to the picture. Photos taken every weekday at the same time show a schedule, and schedules are useful to the wrong reader.</p>
+<p>Parents should check every photo of a child before posting. Open the <a href="/image-metadata-viewer/">Image Metadata Viewer</a>, look for the GPS alert, and strip anything sensitive before sharing.</p>
+<p>Consider turning off location for the camera app entirely. That stops GPS tags at the source, so future photos need no cleaning for location at all.</p>
+<p>Also check the image itself, not just the metadata. A school uniform, a street sign, or a house number in the pixels is visible to everyone, and no metadata tool can remove it.</p>
+<h2 id="sellers-journalists">Sellers, Journalists, and Public Figures</h2>
+<p>Marketplace sellers photograph products at home, in the garage, or in the garden. Those photos can carry GPS coordinates pointing straight to the seller's address.</p>
+<p>Batch cleaning solves this. Drop the whole set of listing photos into the <a href="/remove-image-metadata/">Remove Image Metadata</a> tool, wait for the green badges, and download the ZIP of clean files.</p>
+<p>Journalists face a different risk. A photo from a sensitive location can reveal a source, a meeting place, or a safe house. Stripping metadata before publication is basic source protection.</p>
+<p>Public figures and creators face a volume risk. Hundreds of photos across months and years build a detailed map of movements, homes, and habits, even if each photo seems harmless alone.</p>
+<p>For all three groups, the rule is the same: inspect, strip, verify. Check the original, clean it, then inspect the cleaned copy to confirm the tags are gone.</p>
+<h2 id="metadata-myths-risks">Myths That Leave You Exposed</h2>
+<p>Several myths about photo privacy persist, and each one leaves people exposed. They are worth correcting directly.</p>
+<p>Myth one: resizing removes metadata. It usually does not. A resized photo can carry the same GPS coordinates as the original, unless the resizing tool explicitly strips them.</p>
+<p>Myth two: converting formats removes metadata. Converting JPG to PNG can drop EXIF, but it can also carry it across in an eXIf chunk. Never assume a conversion cleaned anything.</p>
+<p>Myth three: cropping removes location data. Cropping changes pixels, not headers. The GPS tags survive a crop unless the tool strips them.</p>
+<p>Myth four: a photo with no visible location is safe. The location is in the header, not in the picture. A photo of a blank wall can still carry exact coordinates.</p>
+<p>Myth five: only photos posted publicly matter. A photo sent to one person can be forwarded, and an email attachment can be saved and shared again. Once a file leaves your device, you lose control of it.</p>
+<h2 id="what-survives-where">Where Metadata Survives, and Where It Dies</h2>
+<p>Knowing where metadata survives helps you judge each sharing route. The rules are simple, but they are not obvious.</p>
+<p>Messaging apps strip it. WhatsApp, Instagram, and Facebook remove EXIF, camera, and GPS headers automatically when you upload through their servers.</p>
+<p>Email keeps it. Attachments usually travel untouched, so the recipient receives the full original, metadata included.</p>
+<p>Marketplaces and forums usually keep it. Many of them store the uploaded file as received, so buyers and readers can download the original with its tags intact.</p>
+<p>Cloud links keep it. Sharing a file through a drive link gives the recipient the original file, and the metadata travels with it.</p>
+<p>Editing and re-exporting varies. Some editors keep EXIF, some drop it, and some offer a choice. Never assume an edited photo is clean without checking.</p>
+<p>Screenshots never have it. The clipboard passes raw pixels, so a screenshot carries dimensions and format only, with no camera or GPS blocks.</p>
+<h2 id="practical-routine">A Practical Privacy Routine</h2>
+<p>Good photo privacy is a routine, not a one-time fix. Five habits cover nearly every risk, and each one takes seconds.</p>
+<p>First, check before you share. Drop the original file into the <a href="/image-metadata-viewer/">Image Metadata Viewer</a> and read the summary banner and GPS alert.</p>
+<p>Second, strip what is sensitive. Use the <a href="/remove-image-metadata/">Remove Image Metadata</a> tool, keep Lossless Binary Strip for JPG and PNG, and use Full Canvas Re-encode for WebP, HEIC, or format changes.</p>
+<p>Third, verify the cleaned file. Inspect the downloaded copy again and confirm the green banner: no EXIF, GPS, or hidden camera tags detected.</p>
+<p>Fourth, check the pixels themselves. Crop out street numbers, school uniforms, car plates, and recognisable backgrounds, or blur them before sharing.</p>
+<p>Fifth, turn off camera location where you do not need it. Disabling location for the camera app stops GPS tags at the source, which is the most reliable protection of all.</p>
+<p>For the step-by-step cleaning process, read <a href="/blog/how-to-remove-metadata-from-image/">How to Remove Metadata from an Image</a>. For the full tool guide, read <a href="/blog/remove-image-metadata-guide/">Remove Image Metadata: Complete Guide</a>.</p>
+<h2 id="beyond-metadata">Beyond Metadata: What Else Leaks?</h2>
+<p>Metadata is one leak, but photos leak in other ways too. A complete privacy check looks at the whole picture.</p>
+<p>Visible identifiers are the most obvious. House numbers, street signs, school logos, car plates, and mail with your name on it are all visible in the pixels.</p>
+<p>Reflections can reveal what is behind the camera. A mirror, a window, or a polished surface can show a face, a room, or a location the photographer never intended to share.</p>
+<p>Backgrounds reveal context. A distinctive building, a mountain, or a street layout can identify a place even without GPS data, especially when combined with a timestamp.</p>
+<p>File names can leak too. A photo named with a date, a place, or a person's name carries that information in the name itself, even after metadata is stripped.</p>
+<p>Metadata removal is essential, but it is one layer. Pair it with a quick look at the image itself before every public post.</p>
+<h2 id="law-and-photos">The Law, Consent, and Your Photos</h2>
+<p>Privacy law varies by country, but the practical rule is consistent: you are responsible for what you publish, including the hidden data inside your files.</p>
+<p>Posting a photo with GPS coordinates is, in most places, your own choice to publish that location. The law rarely protects information you shared yourself, even unknowingly.</p>
+<p>Photos of other people add consent to the picture. An adult who agrees to be photographed has not necessarily agreed to publish their location or their daily routine.</p>
+<p>Photos of children carry stricter expectations almost everywhere. Schools, clubs, and parents increasingly treat location data in children's photos as a safeguarding issue, not a technical detail.</p>
+<p>For businesses, the stakes include staff safety. A product photo taken inside a warehouse can reveal the warehouse location, and a team photo can reveal where employees work.</p>
+<p>None of this requires a lawyer to fix. Inspect, strip, and verify before sharing, and get consent before posting photos of other people, especially children.</p>
+<h2 id="building-habit">Building the Habit</h2>
+<p>Privacy habits fail when they feel like extra work. The trick is to attach the check to a step you already take, so it happens automatically.</p>
+<p>Attach it to the export step. When you export a photo for posting, run it through the viewer and the cleaner before it reaches the social app.</p>
+<p>Attach it to the listing step. When you prepare listing photos, clean the whole batch and download the ZIP as part of the same routine.</p>
+<p>Attach it to the sharing step. Before you send a photo as an email attachment or a file transfer, strip it first, because those routes preserve metadata.</p>
+<p>After a week, the routine takes seconds and feels automatic. The cost is tiny, and the protection covers every photo you share from then on.</p>
+<h2 id="photo-privacy-summary">The Short Version</h2>
+<p>Your photos carry GPS coordinates, timestamps, camera identity, and editing history in their hidden metadata. Anyone who downloads the file can read it with a free viewer.</p>
+<p>Social apps strip this data automatically, but email, marketplaces, forums, and cloud links usually do not. The risk is highest for photos of children, photos taken at home, and photos from sensitive locations.</p>
+<p>Check every photo in the <a href="/image-metadata-viewer/">Image Metadata Viewer</a>, strip it with the <a href="/remove-image-metadata/">Remove Image Metadata</a> tool, and verify the cleaned copy before sharing. Your photos should show the world what you chose to share, and nothing else.</p>
+`,
+      faqs: [
+        {
+          question: 'Can someone find my home address from a photo I posted?',
+          answer: 'Yes, if the photo still carries GPS coordinates. A viewer decodes them into latitude and longitude, which map to a precise point — often your house. This is most likely with marketplace listings, forum posts, and email attachments, which usually keep the original file. Photos posted through WhatsApp, Instagram, or Facebook are usually stripped automatically, so they carry less risk.',
+        },
+        {
+          question: 'Is it enough to turn off location services for my camera?',
+          answer: 'Turning off camera location stops GPS tags at the source, which is the most reliable protection against location leaks. It does not remove other EXIF fields, such as timestamps, camera model, and serial numbers. For full protection, disable camera location and still strip metadata before sharing sensitive photos.',
+        },
+        {
+          question: 'Do photos I receive from others put my privacy at risk?',
+          answer: 'Not directly — their metadata describes their photo, not you. But if you forward that photo, you pass its metadata along too. A photo someone sent you may carry their home coordinates, and forwarding it spreads that data further. Check and strip photos before forwarding them, just as you would your own.',
+        },
+        {
+          question: 'Can metadata in a photo reveal my identity even without GPS?',
+          answer: 'Yes, in combination. A camera serial number links photos to one device. Timestamps reveal routines. Software fields reveal your tools. An artist or owner name can be your real name. No single field identifies you on its own, but together they build a profile that can be matched against other information about you.',
+        },
+        {
+          question: 'Should businesses strip metadata from product photos?',
+          answer: 'Yes. Product photos taken at a home, warehouse, or office can carry GPS coordinates pointing to that address. They can also carry timestamps showing business hours and camera details showing equipment. Stripping metadata from every listing photo is cheap insurance, and batch cleaning with a ZIP download makes it fast.',
+        },
+        {
+          question: 'Does deleting a posted photo remove the risk?',
+          answer: 'Not fully. Once a photo is public, anyone may have downloaded the original with its metadata intact. Deleting the post stops new downloads, but copies already saved elsewhere are out of your control. Replace the post with a cleaned version and strip metadata before every future upload — prevention is the only reliable protection.',
+        },
+      ],
+      readingMinutes: 11,
+    },
+    relatedToolSlugs: ['/image-metadata-viewer', '/image-converter', '/image-cropper', '/image-to-base64'],
+  }
   // BATCH3-AI-TOOLS (3 articles)
 ];
 

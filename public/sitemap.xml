@@ -14131,5 +14131,53 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://compressmypic.online/blog/image-metadata-viewer-guide/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blog/image-metadata-viewer-guide/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blog/image-metadata-viewer-guide/" />
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/blog/how-to-view-image-metadata/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blog/how-to-view-image-metadata/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blog/how-to-view-image-metadata/" />
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/blog/exif-data-explained/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blog/exif-data-explained/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blog/exif-data-explained/" />
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/blog/remove-image-metadata-guide/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blog/remove-image-metadata-guide/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blog/remove-image-metadata-guide/" />
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/blog/how-to-remove-metadata-from-image/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blog/how-to-remove-metadata-from-image/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blog/how-to-remove-metadata-from-image/" />
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://compressmypic.online/blog/photo-privacy-gps-exif-risks/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blog/photo-privacy-gps-exif-risks/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/blog/photo-privacy-gps-exif-risks/" />
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <!-- /Blog (Batch 2) -->
 </urlset>
