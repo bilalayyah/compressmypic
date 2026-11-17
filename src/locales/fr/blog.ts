@@ -48,7 +48,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Certains portails d’emploi et systèmes d’admission universitaire plafonnent aussi les photos de profil à 50 Ko. Un portrait propre à cette taille se charge instantanément, quelle que soit la connexion.</p>
 <p>Les avatars et les photos de profil des forums tournent aussi souvent autour de 50 Ko. La limite garde les pages légères quand des centaines d’avatars s’affichent ensemble.</p>
 <h2 id="how-to-use-the-tool">Comment utiliser l’outil de compression à 50 Ko</h2>
-<p>Ouvrez l’<a href="/fr/compresser-image-a-50-ko">outil Compresser une image à 50 Ko</a> dans votre navigateur. Tout se passe sur votre appareil, donc votre photo n’est jamais envoyée sur un serveur.</p>
+<p>Ouvrez l’<a href="/fr/compresser-image-a-50-ko/">outil Compresser une image à 50 Ko</a> dans votre navigateur. Tout se passe sur votre appareil, donc votre photo n’est jamais envoyée sur un serveur.</p>
 <p>Déposez votre image dans la zone d’envoi. Les fichiers JPG, PNG, WebP et HEIC sont acceptés, jusqu’à 25 Mo par fichier.</p>
 <p>L’outil lance sa recherche de qualité automatiquement et vous montre le résultat. Cherchez le badge « Moins de 50 Ko », qui confirme que le fichier a passé la limite.</p>
 <p>Prévisualisez l’image avant de la télécharger. Zoomez sur le visage ou sur le texte et vérifiez que rien d’important n’est devenu flou.</p>
@@ -67,7 +67,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>À 100 Ko, un portrait garde nettement plus de détails qu’à 50 Ko. Les cheveux, les lunettes et les bords des tissus paraissent tous plus propres.</p>
 <p>À 200 Ko, la plupart des photos semblent presque identiques à l’original à une taille d’affichage normale. C’est pour cela que les blogs et les boutiques le préfèrent.</p>
 <p>Le compromis est simple : les fichiers plus petits passent les portails plus stricts, tandis que les fichiers plus gros ont meilleure allure. Choisissez la plus grande taille que votre portail autorise.</p>
-<p>Si votre portail accepte 100 Ko, ne serrez pas à 50 Ko sans raison. Lisez notre comparaison <a href="/fr/blog/50-ko-100-ko-200-ko-quelle-taille-choisir">50 Ko, 100 Ko ou 200 Ko : quelle taille choisir ?</a> avant de décider.</p>
+<p>Si votre portail accepte 100 Ko, ne serrez pas à 50 Ko sans raison. Lisez notre comparaison <a href="/fr/blog/50-ko-100-ko-200-ko-quelle-taille-choisir/">50 Ko, 100 Ko ou 200 Ko : quelle taille choisir ?</a> avant de décider.</p>
 <h2 id="privacy-and-safety">Confidentialité : qu’advient-il de votre photo ?</h2>
 <p>La compression se fait entièrement dans votre navigateur. Votre photo d’identité ne voyage jamais vers un serveur, ce qui compte quand le fichier est une photo de passeport.</p>
 <p>L’outil supprime aussi les données de localisation cachées de votre photo. Les balises GPS de l’appareil sont retirées pendant la compression, donc le fichier téléchargé ne garde aucune trace du lieu où il a été pris.</p>
@@ -121,7 +121,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Reprenez-la quand l’éclairage est mauvais. Un visage à moitié dans l’ombre se compresse mal, parce que l’ombre cache des détails que l’outil ne peut pas récupérer.</p>
 <p>Reprenez-la quand le cadrage gaspille l’espace. Un tout petit visage dans un plan large donne presque rien à exploiter au compresseur à 50 Ko.</p>
 <p>Une reprise de deux minutes vaut mieux que vingt minutes de réglages. Gardez la première tentative, prenez-en une meilleure, et compressez la meilleure.</p>
-<p>Si vous avez besoin d’une autre limite pour un autre formulaire, essayez le <a href="/fr/compresser-image-a-100-ko">compresseur 100 Ko</a>, le <a href="/fr/compresser-image-a-200-ko">compresseur 200 Ko</a>, ou le <a href="/fr/compresser-image-a-taille-cible">compresseur à taille de fichier cible</a> pour une taille personnalisée exacte. Pour la version pas à pas de ce processus, consultez <a href="/fr/blog/comment-compresser-une-image-a-50-ko">Comment compresser une image à 50 Ko</a>.</p>
+<p>Si vous avez besoin d’une autre limite pour un autre formulaire, essayez le <a href="/fr/compresser-image-a-100-ko/">compresseur 100 Ko</a>, le <a href="/fr/compresser-image-a-200-ko/">compresseur 200 Ko</a>, ou le <a href="/fr/compresser-image-a-taille-cible/">compresseur à taille de fichier cible</a> pour une taille personnalisée exacte. Pour la version pas à pas de ce processus, consultez <a href="/fr/blog/comment-compresser-une-image-a-50-ko/">Comment compresser une image à 50 Ko</a>.</p>
 `,
     faqs: [
       { question: 'Une photo de 50 Ko suffit-elle pour une demande de passeport ?', answer: 'Oui, quand le portail lui-même fixe le plafond à 50 Ko. Les portails qui exigent 50 Ko sont conçus pour lire les photos à cette taille, et un JPG bien compressé garde le visage net. Vérifiez aussi que les dimensions en pixels correspondent aux règles du portail, car la taille et les dimensions sont contrôlées séparément.' },
@@ -146,7 +146,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Vérifiez les règles du portail avant de compresser. Notez la taille maximale du fichier, les dimensions en pixels exigées et les formats acceptés.</p>
 <p>Notez ces trois chiffres. Compresser à l’aveugle fait perdre du temps, car un fichier parfait de 50 Ko échoue quand même si le portail refuse son format.</p>
 <h2 id="step-1-open-the-tool">Étape 1 : ouvrez le compresseur 50 Ko</h2>
-<p>Ouvrez l’<a href="/fr/compresser-image-a-50-ko">outil Compresser une image à 50 Ko</a> dans votre navigateur. La page charge le compresseur, et vos fichiers restent sur votre appareil.</p>
+<p>Ouvrez l’<a href="/fr/compresser-image-a-50-ko/">outil Compresser une image à 50 Ko</a> dans votre navigateur. La page charge le compresseur, et vos fichiers restent sur votre appareil.</p>
 <p>Vous n’avez pas besoin de compte. Il n’y a ni inscription ni file d’attente, donc vous pouvez commencer tout de suite.</p>
 <p>Si vous êtes sur un téléphone, utilisez le navigateur habituel. Le bouton d’envoi ouvre directement votre galerie de photos.</p>
 <p>Gardez la page du portail ouverte dans un autre onglet. Vous voudrez garder ses règles sous les yeux pendant que vous travaillez.</p>
@@ -243,8 +243,8 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Vérifiez que le visage est centré et entièrement visible. Un aperçu qui rogne les bords peut couper un menton ou un front.</p>
 <p>Vérifiez que l’image n’est pas étirée. Certains portails forcent les images envoyées dans un cadre fixe, et un visage étiré se repère facilement dans l’aperçu.</p>
 <p>Si quelque chose ne va pas, revenez corriger le fichier source. N’envoyez pas en espérant que le contrôleur ne remarquera rien.</p>
-<p>Pour tout le contexte sur les raisons de la limite de 50 Ko et le fonctionnement de la compression, lisez <a href="/fr/blog/compresser-image-a-50-ko-guide">Compresser une image à 50 Ko : guide complet</a>.</p>
-<p>Pour comparer les tailles avant de vous engager, consultez <a href="/fr/blog/50-ko-100-ko-200-ko-quelle-taille-choisir">50 Ko, 100 Ko ou 200 Ko : quelle taille choisir ?</a>. Si votre portail autorise un fichier plus gros, le <a href="/fr/compresser-image-a-100-ko">compresseur 100 Ko</a> garde nettement plus de détails.</p>
+<p>Pour tout le contexte sur les raisons de la limite de 50 Ko et le fonctionnement de la compression, lisez <a href="/fr/blog/compresser-image-a-50-ko-guide/">Compresser une image à 50 Ko : guide complet</a>.</p>
+<p>Pour comparer les tailles avant de vous engager, consultez <a href="/fr/blog/50-ko-100-ko-200-ko-quelle-taille-choisir/">50 Ko, 100 Ko ou 200 Ko : quelle taille choisir ?</a>. Si votre portail autorise un fichier plus gros, le <a href="/fr/compresser-image-a-100-ko/">compresseur 100 Ko</a> garde nettement plus de détails.</p>
 `,
     faqs: [
       { question: 'Combien de temps faut-il pour compresser une image à 50 Ko ?', answer: 'Généralement moins d’une minute. La recherche binaire de qualité prend quelques secondes sur un téléphone ou un ordinateur portable normal, et la seule partie lente est l’envoi d’un original très volumineux. Une photo de 10 Mo peut prendre un peu plus de temps à traiter qu’une photo de 2 Mo.' },
@@ -294,10 +294,10 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>C’est pour cela que le compresseur réduit les dimensions quand la qualité seule ne peut pas atteindre la cible. Une image plus petite et plus nette vaut mieux qu’une image plus grande et floue.</p>
 <p>Quand un portail fixe les dimensions, cette porte de sortie se ferme. Le choix du format devient alors le levier principal, et le WebP aide souvent.</p>
 <h2 id="which-size-for-which-job">Quelle taille pour quel usage ?</h2>
-<p>Passeport, visa et formulaires d’examen : 50 Ko, parce que le portail l’exige. Utilisez le <a href="/fr/compresser-image-a-50-ko">compresseur 50 Ko</a> et respectez les dimensions demandées.</p>
-<p>CV, portails d’emploi et photos de profil : 100 Ko. Utilisez le <a href="/fr/compresser-image-a-100-ko">compresseur 100 Ko</a> pour le meilleur équilibre entre qualité et compatibilité.</p>
-<p>Images de blog, photos de produits et photos de portfolio : 200 Ko. Utilisez le <a href="/fr/compresser-image-a-200-ko">compresseur 200 Ko</a> pour garder les détails qui vendent.</p>
-<p>Pour toute limite personnalisée : utilisez le <a href="/fr/compresser-image-a-taille-cible">compresseur à taille de fichier cible</a> et tapez le chiffre exact demandé par le formulaire.</p>
+<p>Passeport, visa et formulaires d’examen : 50 Ko, parce que le portail l’exige. Utilisez le <a href="/fr/compresser-image-a-50-ko/">compresseur 50 Ko</a> et respectez les dimensions demandées.</p>
+<p>CV, portails d’emploi et photos de profil : 100 Ko. Utilisez le <a href="/fr/compresser-image-a-100-ko/">compresseur 100 Ko</a> pour le meilleur équilibre entre qualité et compatibilité.</p>
+<p>Images de blog, photos de produits et photos de portfolio : 200 Ko. Utilisez le <a href="/fr/compresser-image-a-200-ko/">compresseur 200 Ko</a> pour garder les détails qui vendent.</p>
+<p>Pour toute limite personnalisée : utilisez le <a href="/fr/compresser-image-a-taille-cible/">compresseur à taille de fichier cible</a> et tapez le chiffre exact demandé par le formulaire.</p>
 <h2 id="format-effects">Comment le format change la comparaison</h2>
 <p>Le JPG est le format le plus sûr aux trois tailles. Tous les portails l’acceptent, et il gère bien les photos de 50 Ko à 200 Ko.</p>
 <p>Le WebP gagne généralement en qualité par kilooctet. À 50 Ko, il peut paraître nettement plus propre que le JPG, mais certains portails anciens le refusent.</p>
@@ -325,7 +325,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Un portrait à 100 Ko garde la texture des cheveux et les détails des vêtements que 50 Ko perd. Pour un profil professionnel, cette différence est visible.</p>
 <p>Les captures d’écran en profitent encore plus. Le petit texte qui se brouille à 50 Ko reste lisible à 100 Ko, ce qui compte pour les certificats et les formulaires.</p>
 <p>La règle est simple : utilisez toujours la plus grande taille autorisée par le formulaire. Plus petit n’est pas mieux, sauf si le formulaire l’exige.</p>
-<p>Si votre formulaire indique 100 Ko comme plafond, utilisez le <a href="/fr/compresser-image-a-100-ko">compresseur 100 Ko</a> et laissez-le maximiser la qualité dans ce budget.</p>
+<p>Si votre formulaire indique 100 Ko comme plafond, utilisez le <a href="/fr/compresser-image-a-100-ko/">compresseur 100 Ko</a> et laissez-le maximiser la qualité dans ce budget.</p>
 <h2 id="quality-vs-dimensions">Qualité ou dimensions : le vrai compromis</h2>
 <p>La compression a deux leviers : la qualité et les dimensions. La qualité contrôle la quantité de détails jetés par pixel, tandis que les dimensions contrôlent le nombre de pixels.</p>
 <p>Baisser la qualité garde l’image grande mais douce. Réduire les dimensions la garde nette mais petite. Le meilleur résultat équilibre les deux.</p>
@@ -369,7 +369,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Pour les images web, ajoutez toujours un texte alternatif descriptif. Une image de 100 Ko avec un bon texte alternatif sert plus de gens qu’une image parfaite sans texte alternatif.</p>
 <p>La compression et l’accessibilité vont ensemble. Une source claire et contrastée se compresse mieux et est plus facile à lire pour chaque spectateur.</p>
 <p>Si vous hésitez encore, commencez à 100 Ko. C’est la taille intermédiaire la plus indulgente, et vous pourrez monter ou descendre après avoir aperçu le résultat.</p>
-<p>Pour le guide complet de la plus petite taille, lisez <a href="/fr/blog/compresser-image-a-50-ko-guide">Compresser une image à 50 Ko : guide complet</a>. Pour les étapes pratiques, consultez <a href="/fr/blog/comment-compresser-une-image-a-50-ko">Comment compresser une image à 50 Ko</a>. Les guides 100 Ko et 200 Ko couvrent les tailles plus grandes avec le même niveau de détail.</p>
+<p>Pour le guide complet de la plus petite taille, lisez <a href="/fr/blog/compresser-image-a-50-ko-guide/">Compresser une image à 50 Ko : guide complet</a>. Pour les étapes pratiques, consultez <a href="/fr/blog/comment-compresser-une-image-a-50-ko/">Comment compresser une image à 50 Ko</a>. Les guides 100 Ko et 200 Ko couvrent les tailles plus grandes avec le même niveau de détail.</p>
 `,
     faqs: [
       { question: '100 Ko, est-ce deux fois mieux que 50 Ko ?', answer: 'Pas exactement deux fois, mais l’amélioration est facile à voir. Un portrait de 100 Ko garde nettement plus de détails dans les cheveux et les tissus, et le texte reste plus net. Le gain de 100 Ko à 200 Ko est plus faible, car la plupart des photos paraissent déjà propres à 100 Ko.' },
@@ -399,7 +399,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Les captures d’écran sont confortables à 100 Ko également. Le texte de l’interface reste lisible, et c’est la première chose qui lâche aux tailles plus petites.</p>
 <p>Seules les images très détaillées peinent. Une infographie dense ou un large paysage aux feuilles fines peut avoir besoin de 200 Ko pour rester nette.</p>
 <h2 id="how-the-100kb-tool-works">Comment fonctionne l’outil 100 Ko</h2>
-<p>L’<a href="/fr/compresser-image-a-100-ko">outil Compresser une image à 100 Ko</a> fonctionne entièrement dans votre navigateur. Votre image n’est jamais envoyée sur un serveur.</p>
+<p>L’<a href="/fr/compresser-image-a-100-ko/">outil Compresser une image à 100 Ko</a> fonctionne entièrement dans votre navigateur. Votre image n’est jamais envoyée sur un serveur.</p>
 <p>Il utilise une recherche binaire de qualité. L’outil teste des niveaux de qualité et se rapproche du réglage le plus élevé qui tient encore sous 100 Ko.</p>
 <p>La qualité passe d’abord. L’outil ne réduit les dimensions en pixels que lorsque la baisse de qualité seule ne peut pas atteindre la cible.</p>
 <p>Les fichiers jusqu’à 25 Mo sont acceptés, y compris les JPG, PNG, WebP et HEIC. Une photo de téléphone directement sortie de l’appareil photo convient très bien.</p>
@@ -422,7 +422,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Les miniatures de blog à 100 Ko se chargent vite et paraissent nettes. Une page avec dix miniatures pèse environ 1 Mo, ce que la plupart des connexions gèrent facilement.</p>
 <p>Les moteurs de recherche récompensent les pages rapides. Les images sont généralement la partie la plus lourde d’une page, donc les garder près de 100 Ko aide directement les temps de chargement.</p>
 <p>Les images principales peuvent être plus grosses, mais les images secondaires en ont rarement besoin. Une image secondaire de 100 Ko est invisible en termes de qualité pour la plupart des lecteurs.</p>
-<p>Pour une optimisation complète de la page, associez l’outil 100 Ko à l’<a href="/fr/optimiser-images-pour-le-web">outil d’optimisation des images pour le web</a>, qui ajoute des préréglages et du HTML prêt à coller.</p>
+<p>Pour une optimisation complète de la page, associez l’outil 100 Ko à l’<a href="/fr/optimiser-images-pour-le-web/">outil d’optimisation des images pour le web</a>, qui ajoute des préréglages et du HTML prêt à coller.</p>
 <h2 id="email-and-newsletters">E-mails et lettres d’information</h2>
 <p>Les clients de messagerie sont lents à afficher les images lourdes. Un visuel de 100 Ko apparaît presque instantanément dans la boîte de réception, tandis qu’un visuel de 2 Mo peut bloquer.</p>
 <p>Les lettres d’information avec plusieurs images en profitent le plus. Cinq images à 100 Ko totalisent 500 Ko, ce qui garde tout l’e-mail léger.</p>
@@ -441,7 +441,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <h2 id="when-100kb-is-not-enough">Quand 100 Ko ne suffit pas</h2>
 <p>Les grandes images détaillées ont parfois besoin de plus de place. Une large infographie aux petites étiquettes peut rester floue à 100 Ko.</p>
 <p>Le travail d’impression en a besoin aussi. Une photo destinée au papier doit rester en haute résolution, et 100 Ko est une taille web, pas une taille d’impression.</p>
-<p>Dans ces cas-là, passez au <a href="/fr/compresser-image-a-200-ko">compresseur 200 Ko</a> ou au <a href="/fr/compresser-image-a-500-ko">compresseur 500 Ko</a>.</p>
+<p>Dans ces cas-là, passez au <a href="/fr/compresser-image-a-200-ko/">compresseur 200 Ko</a> ou au <a href="/fr/compresser-image-a-500-ko/">compresseur 500 Ko</a>.</p>
 <p>La règle reste la même : utilisez la plus grande taille que votre situation permet. La qualité vaut les kilooctets supplémentaires quand ils sont disponibles.</p>
 <h2 id="under-100kb-badge">Le badge « Moins de 100 Ko » et ce qu’il garantit</h2>
 <p>Quand la compression réussit, l’outil affiche un badge « Moins de 100 Ko ». Ce badge signifie que le fichier final mesure moins de 100 Ko en octets exacts.</p>
@@ -471,7 +471,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Certaines images ont besoin de plus que 100 Ko. Les larges paysages, les infographies denses et les photos de produits détaillées profitent tous de la place supplémentaire.</p>
 <p>Le signe, c’est une douceur visible. Si le texte se brouille ou si la texture fine disparaît à 100 Ko, l’image demande un budget plus grand.</p>
 <p>L’impression est une autre raison de monter. Un fichier de 100 Ko est une taille web ; tout ce qui est destiné au papier doit rester bien plus grand.</p>
-<p>Vérifiez d’abord la destination. Si le portail ou la plateforme autorise 200 Ko, utilisez le <a href="/fr/compresser-image-a-200-ko">compresseur 200 Ko</a> au lieu de lutter contre la limite de 100 Ko.</p>
+<p>Vérifiez d’abord la destination. Si le portail ou la plateforme autorise 200 Ko, utilisez le <a href="/fr/compresser-image-a-200-ko/">compresseur 200 Ko</a> au lieu de lutter contre la limite de 100 Ko.</p>
 <p>L’objectif est toujours le même : la plus grande taille permise par votre situation, avec la meilleure qualité que cette taille peut contenir.</p>
 <h2 id="image-weight-budgets">Les budgets de poids d’image pour des pages entières</h2>
 <p>Une seule image de 100 Ko est légère, mais les pages portent beaucoup d’images. Dix miniatures à 100 Ko pèsent 1 Mo ensemble, ce qui est un budget raisonnable pour une page.</p>
@@ -491,7 +491,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Vérifiez l’image avant chaque réutilisation. Une miniature qui avait bonne allure l’an dernier peut ne pas convenir à la mise en page ou au recadrage de cette année.</p>
 <p>Ne recompressez jamais un fichier réutilisé. Si une nouvelle taille est nécessaire, repartez de l’original et compressez à neuf.</p>
 <p>Une bonne organisation transforme les images de 100 Ko en ressources réutilisables. Un peu de discipline dans les noms aujourd’hui fait gagner des heures de retravail plus tard.</p>
-<p>Pour les étapes pratiques, lisez <a href="/fr/blog/comment-reduire-une-image-a-100-ko">Comment réduire une image à 100 Ko</a>. Pour une comparaison de qualité format par format, consultez <a href="/fr/blog/jpg-png-webp-100-ko-quel-format-choisir">JPG, PNG ou WebP : quel format pour une image de 100 Ko ?</a>.</p>
+<p>Pour les étapes pratiques, lisez <a href="/fr/blog/comment-reduire-une-image-a-100-ko/">Comment réduire une image à 100 Ko</a>. Pour une comparaison de qualité format par format, consultez <a href="/fr/blog/jpg-png-webp-100-ko-quel-format-choisir/">JPG, PNG ou WebP : quel format pour une image de 100 Ko ?</a>.</p>
 `,
     faqs: [
       { question: '100 Ko suffisent-ils pour une photo de profil professionnelle ?', answer: 'Oui. Un portrait à 100 Ko paraît propre et professionnel sur LinkedIn, les portails d’emploi et les sites d’entreprise. Les visages, les cheveux et les vêtements gardent tous leurs détails à cette taille, et le fichier passe presque toutes les limites d’envoi.' },
@@ -516,7 +516,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Notez les dimensions exigées si elles sont indiquées. Certains formulaires demandent à la fois une taille de fichier et une taille en pixels, et les deux doivent être respectées.</p>
 <p>Enfin, gardez l’original en sécurité. Ne l’écrasez jamais avec la copie compressée, au cas où vous devriez réessayer.</p>
 <h2 id="step-1-open-the-tool">Étape 1 : ouvrez l’outil 100 Ko</h2>
-<p>Ouvrez l’<a href="/fr/compresser-image-a-100-ko">outil Compresser une image à 100 Ko</a> dans votre navigateur. Aucun compte ni installation n’est nécessaire.</p>
+<p>Ouvrez l’<a href="/fr/compresser-image-a-100-ko/">outil Compresser une image à 100 Ko</a> dans votre navigateur. Aucun compte ni installation n’est nécessaire.</p>
 <p>L’outil fonctionne entièrement sur votre appareil. Votre photo est traitée localement et n’est jamais envoyée sur un serveur.</p>
 <p>Si vous êtes sur un téléphone, la page fonctionne de la même façon. Touchez la zone d’envoi et choisissez la photo dans votre galerie.</p>
 <p>Mettez la page en favori si vous compressez souvent des images. La taille de 100 Ko est une taille à laquelle vous reviendrez sans cesse.</p>
@@ -616,8 +616,8 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <h2 id="rounding-note">Une note sur les tailles de fichiers et l’arrondi</h2>
 <p>Les tailles de fichiers sont mesurées en octets, mais les appareils les affichent arrondies. Un fichier qui s’affiche comme 100 Ko sur votre téléphone peut en réalité faire 100,4 Ko, ce qu’un portail strict refuserait.</p>
 <p>L’outil mesure le nombre exact d’octets et vise juste sous la limite. Faites confiance à son badge plutôt qu’au chiffre arrondi affiché par votre appareil.</p>
-<p>Pour le contexte sur les raisons pour lesquelles 100 Ko fonctionne si bien, lisez <a href="/fr/blog/compresser-image-a-100-ko-guide">Compresser une image à 100 Ko : guide complet</a>.</p>
-<p>Pour une comparaison détaillée des formats, consultez <a href="/fr/blog/jpg-png-webp-100-ko-quel-format-choisir">JPG, PNG ou WebP : quel format pour une image de 100 Ko ?</a>. Si vous avez besoin d’un fichier plus petit pour un formulaire strict, essayez le <a href="/fr/compresser-image-a-50-ko">compresseur 50 Ko</a>.</p>
+<p>Pour le contexte sur les raisons pour lesquelles 100 Ko fonctionne si bien, lisez <a href="/fr/blog/compresser-image-a-100-ko-guide/">Compresser une image à 100 Ko : guide complet</a>.</p>
+<p>Pour une comparaison détaillée des formats, consultez <a href="/fr/blog/jpg-png-webp-100-ko-quel-format-choisir/">JPG, PNG ou WebP : quel format pour une image de 100 Ko ?</a>. Si vous avez besoin d’un fichier plus petit pour un formulaire strict, essayez le <a href="/fr/compresser-image-a-50-ko/">compresseur 50 Ko</a>.</p>
 `,
     faqs: [
       { question: 'Puis-je réduire une image à exactement 100 Ko ?', answer: 'L’outil vise juste sous 100 Ko, généralement entre 98 et 99,9 Ko, plutôt qu’exactement 100 Ko. Cette marge de sécurité vous protège des différences d’arrondi en octets entre les systèmes. Si vous avez besoin d’un chiffre personnalisé exact, utilisez plutôt le compresseur à taille de fichier cible.' },
@@ -683,7 +683,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>En cas de doute, testez le JPG et le WebP. Compressez la même image deux fois et prévisualisez-les côte à côte avant de décider.</p>
 <h2 id="testing-method">Comment tester les formats vous-même</h2>
 <p>Choisissez une image représentative, pas la plus facile. Une photo détaillée avec du texte montrera clairement les différences de format.</p>
-<p>Compressez-la à 100 Ko dans chaque format avec le <a href="/fr/compresser-image-a-100-ko">compresseur 100 Ko</a>. Gardez les dimensions identiques pour que le test soit équitable.</p>
+<p>Compressez-la à 100 Ko dans chaque format avec le <a href="/fr/compresser-image-a-100-ko/">compresseur 100 Ko</a>. Gardez les dimensions identiques pour que le test soit équitable.</p>
 <p>Regardez les trois en taille réelle. Zoomez sur la même zone dans chaque version et comparez les mêmes détails.</p>
 <p>Vérifiez aussi les tailles de fichiers. Si le WebP atterrit bien sous 100 Ko, sa tâche était plus facile, et l’écart de qualité peut être plus grand qu’il n’y paraît.</p>
 <ul>
@@ -748,7 +748,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Pour un graphique, la recherche se comporte différemment. Un graphique PNG peut n’atteindre 100 Ko qu’après de fortes réductions de dimensions, tandis que le même graphique en WebP tient facilement.</p>
 <p>L’outil n’impose pas un seul chiffre de qualité à chaque image. Il cherche à neuf pour chaque fichier, parce que chaque image a son propre meilleur réglage.</p>
 <p>Cette recherche par image est la raison pour laquelle l’outil bat les devinettes manuelles. Une qualité fixe de 70 % serait trop dure pour certaines images et trop généreuse pour d’autres.</p>
-<p>Pour le guide général, lisez <a href="/fr/blog/compresser-image-a-100-ko-guide">Compresser une image à 100 Ko : guide complet</a>. Pour les étapes, consultez <a href="/fr/blog/comment-reduire-une-image-a-100-ko">Comment réduire une image à 100 Ko</a>. Si vous devez d’abord convertir entre les formats, le <a href="/fr/convertir-images">convertisseur d’images</a> gère cette étape.</p>
+<p>Pour le guide général, lisez <a href="/fr/blog/compresser-image-a-100-ko-guide/">Compresser une image à 100 Ko : guide complet</a>. Pour les étapes, consultez <a href="/fr/blog/comment-reduire-une-image-a-100-ko/">Comment réduire une image à 100 Ko</a>. Si vous devez d’abord convertir entre les formats, le <a href="/fr/convertir-images/">convertisseur d’images</a> gère cette étape.</p>
 `,
     faqs: [
       { question: 'Le WebP est-il toujours meilleur que le JPG à 100 Ko ?', answer: 'Pour la qualité, généralement oui, mais seulement légèrement. Le WebP garde les contours plus propres à taille de fichier égale. Pour la compatibilité, le JPG gagne encore, car certains portails et systèmes anciens refusent le WebP. Utilisez le WebP là où il est accepté et le JPG là où il pourrait ne pas l’être.' },
@@ -774,7 +774,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Ce chiffre s’insère aussi bien dans les budgets de page. Dix images à 200 Ko totalisent 2 Mo, ce qui est un poids raisonnable pour une page riche en contenu.</p>
 <p>Pour la plupart des travaux web, 200 Ko est le bon choix par défaut. Il équilibre la qualité, la vitesse et la compatibilité mieux que n’importe quel autre chiffre.</p>
 <h2 id="how-the-tool-works">Comment fonctionne le compresseur 200 Ko</h2>
-<p>L’<a href="/fr/compresser-image-a-200-ko">outil Compresser une image à 200 Ko</a> fonctionne entièrement dans votre navigateur. Vos photos sont traitées localement et ne sont jamais envoyées sur un serveur.</p>
+<p>L’<a href="/fr/compresser-image-a-200-ko/">outil Compresser une image à 200 Ko</a> fonctionne entièrement dans votre navigateur. Vos photos sont traitées localement et ne sont jamais envoyées sur un serveur.</p>
 <p>Il utilise une recherche binaire de qualité pour trouver le réglage de qualité le plus élevé qui tient encore sous 200 Ko. La recherche teste des niveaux de qualité et resserre la plage jusqu’à trouver le meilleur ajustement.</p>
 <p>La qualité passe d’abord, les dimensions ensuite. L’outil ne réduit les dimensions en pixels que lorsque la baisse de qualité seule ne peut pas atteindre la cible.</p>
 <p>Les fichiers jusqu’à 25 Mo sont acceptés, y compris les JPG, PNG, WebP et HEIC. Une photo d’appareil de 24 mégapixels ou un cliché de téléphone de 12 mégapixels fonctionnent tous les deux très bien.</p>
@@ -796,7 +796,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Les systèmes de gestion de contenu redimensionnent souvent les envois automatiquement, mais ils les compressent rarement bien. Compresser à 200 Ko avant l’envoi donne un meilleur résultat.</p>
 <p>Les images secondaires peuvent être plus petites. Une image principale de 200 Ko avec des images secondaires de 100 Ko garde la page rapide sans nuire visiblement à aucune photo.</p>
 <p>Les moteurs de recherche récompensent les pages rapides. Les images sont généralement la partie la plus lourde d’un article de blog, donc les garder près de 200 Ko aide directement les temps de chargement.</p>
-<p>Pour une optimisation complète de la page, associez l’outil 200 Ko à l’<a href="/fr/optimiser-images-pour-le-web">outil d’optimisation des images pour le web</a>, qui ajoute des préréglages et des balises HTML prêtes à coller.</p>
+<p>Pour une optimisation complète de la page, associez l’outil 200 Ko à l’<a href="/fr/optimiser-images-pour-le-web/">outil d’optimisation des images pour le web</a>, qui ajoute des préréglages et des balises HTML prêtes à coller.</p>
 <h2 id="formats-at-200kb">JPG, PNG ou WebP à 200 Ko</h2>
 <p>Le JPG est le format le plus sûr à 200 Ko. Il est accepté partout, et à cette taille sa qualité est excellente pour les photos.</p>
 <p>Le WebP dépasse souvent le JPG en netteté. À 200 Ko, la différence est faible, mais le WebP garde les contours légèrement plus propres et les dégradés légèrement plus lisses.</p>
@@ -831,7 +831,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Les portails stricts peuvent exiger 50 Ko ou 100 Ko. Dans ces cas-là, 200 Ko échoue à l’envoi, aussi belle que soit l’image.</p>
 <p>Le travail d’impression a besoin de bien plus que 200 Ko. Une photo destinée au papier doit rester en haute résolution, et 200 Ko est une taille web, pas une taille d’impression.</p>
 <p>Les pages avec des dizaines d’images peuvent avoir besoin de fichiers plus petits. Vingt images à 200 Ko pèsent 4 Mo ensemble, ce qui est lourd pour une seule page.</p>
-<p>Dans ces situations, descendez au <a href="/fr/compresser-image-a-100-ko">compresseur 100 Ko</a> ou au <a href="/fr/compresser-image-a-50-ko">compresseur 50 Ko</a> selon les règles.</p>
+<p>Dans ces situations, descendez au <a href="/fr/compresser-image-a-100-ko/">compresseur 100 Ko</a> ou au <a href="/fr/compresser-image-a-50-ko/">compresseur 50 Ko</a> selon les règles.</p>
 <p>La règle ne change jamais : utilisez la plus grande taille permise par votre situation. La qualité vaut les kilooctets supplémentaires quand ils sont disponibles.</p>
 <h2 id="colour-accuracy">La fidélité des couleurs à 200 Ko</h2>
 <p>La fidélité des couleurs compte pour les photos de produits. Un acheteur qui reçoit une chemise d’une teinte différente de celle de la photo la retournera.</p>
@@ -863,7 +863,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Vérifiez la vitesse de la page après publication. Un article de blog qui se chargeait en huit secondes peut n’en prendre que deux une fois ses images compressées.</p>
 <p>Demandez à un collègue de regarder l’image compressée. Un regard neuf repère la douceur que vous avez cessé de remarquer.</p>
 <p>Gardez un simple relevé de ce qui a fonctionné. Quand quelqu’un demande pourquoi les images doivent être compressées, les chiffres répondent mieux que n’importe quel argument.</p>
-<p>Pour les étapes pratiques, lisez <a href="/fr/blog/comment-compresser-une-image-a-200-ko">Comment compresser une image à 200 Ko</a>. Pour les réglages propres aux portails, consultez <a href="/fr/blog/image-200-ko-site-emploi-photo-formulaire">Image de 200 Ko pour un site d’emploi : photo, formulaire et réglages</a>. Si vous avez besoin d’une taille personnalisée, le <a href="/fr/compresser-image-a-taille-cible">compresseur à taille de fichier cible</a> accepte n’importe quel chiffre tapé.</p>
+<p>Pour les étapes pratiques, lisez <a href="/fr/blog/comment-compresser-une-image-a-200-ko/">Comment compresser une image à 200 Ko</a>. Pour les réglages propres aux portails, consultez <a href="/fr/blog/image-200-ko-site-emploi-photo-formulaire/">Image de 200 Ko pour un site d’emploi : photo, formulaire et réglages</a>. Si vous avez besoin d’une taille personnalisée, le <a href="/fr/compresser-image-a-taille-cible/">compresseur à taille de fichier cible</a> accepte n’importe quel chiffre tapé.</p>
 `,
     faqs: [
       { question: '200 Ko, est-ce une bonne qualité pour une image de site web ?', answer: 'Oui, 200 Ko est la taille de qualité standard pour les photos web. La plupart des visiteurs ne peuvent pas distinguer une image de 200 Ko de l’original, et elle se charge vite. Les blogs, les boutiques et les portfolios utilisent tous 200 Ko par défaut pour les images vedettes et de produits.' },
@@ -888,7 +888,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Décidez à quoi sert l’image. Une photo de produit a besoin de détails nets, tandis qu’une miniature de blog peut tolérer plus de douceur.</p>
 <p>Gardez l’original en sécurité dans un dossier séparé. Ne l’écrasez jamais avec la copie compressée, au cas où vous devriez réessayer avec d’autres réglages.</p>
 <h2 id="step-1-open">Étape 1 : ouvrez l’outil 200 Ko</h2>
-<p>Ouvrez l’<a href="/fr/compresser-image-a-200-ko">outil Compresser une image à 200 Ko</a> dans votre navigateur. Aucun compte ni installation n’est nécessaire, et la page se charge vite.</p>
+<p>Ouvrez l’<a href="/fr/compresser-image-a-200-ko/">outil Compresser une image à 200 Ko</a> dans votre navigateur. Aucun compte ni installation n’est nécessaire, et la page se charge vite.</p>
 <p>L’outil fonctionne entièrement sur votre appareil. Vos photos sont traitées localement et ne sont jamais envoyées sur un serveur, ce qui compte pour les produits non encore lancés.</p>
 <p>Si vous êtes sur un téléphone, la page fonctionne de la même façon. Touchez la zone d’envoi et choisissez la photo dans votre galerie.</p>
 <p>Mettez la page en favori si vous compressez souvent des images. La taille de 200 Ko est une taille à laquelle vous reviendrez pour les blogs, les boutiques et les portfolios.</p>
@@ -984,7 +984,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <h2 id="final-check-200kb">Une dernière vérification avant l’envoi</h2>
 <p>Ouvrez l’image terminée en taille réelle une dernière fois. Vérifiez les détails, le texte et les couleurs avant sa mise en ligne.</p>
 <p>Confirmez que la taille du fichier affiche juste sous 200 Ko sur votre appareil. Un chiffre entre 198 Ko et 199,9 Ko est exactement ce qu’il faut.</p>
-<p>Pour le contexte sur les raisons pour lesquelles 200 Ko fonctionne si bien, lisez <a href="/fr/blog/compresser-image-a-200-ko-guide">Compresser une image à 200 Ko : guide complet</a>. Pour les réglages propres aux portails, consultez <a href="/fr/blog/image-200-ko-site-emploi-photo-formulaire">Image de 200 Ko pour un site d’emploi : photo, formulaire et réglages</a>. Si vous avez besoin d’un fichier plus gros, le <a href="/fr/compresser-image-a-500-ko">compresseur 500 Ko</a> garde encore plus de détails.</p>
+<p>Pour le contexte sur les raisons pour lesquelles 200 Ko fonctionne si bien, lisez <a href="/fr/blog/compresser-image-a-200-ko-guide/">Compresser une image à 200 Ko : guide complet</a>. Pour les réglages propres aux portails, consultez <a href="/fr/blog/image-200-ko-site-emploi-photo-formulaire/">Image de 200 Ko pour un site d’emploi : photo, formulaire et réglages</a>. Si vous avez besoin d’un fichier plus gros, le <a href="/fr/compresser-image-a-500-ko/">compresseur 500 Ko</a> garde encore plus de détails.</p>
 `,
     faqs: [
       { question: 'Comment compresser une photo à 200 Ko sur mon téléphone ?', answer: 'Ouvrez l’outil 200 Ko dans votre navigateur mobile, touchez la zone d’envoi, et choisissez la photo originale dans votre galerie. L’outil la compresse localement sur votre téléphone. Prévisualisez le résultat, téléchargez-le, et vérifiez la taille du fichier dans votre application Fichiers avant de l’utiliser.' },
@@ -1035,7 +1035,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Quand les règles ne sont pas claires, envoyez du JPG. C’est le format autour duquel les portails ont été construits, et il ne cause jamais de problème de compatibilité.</p>
 <h2 id="step-by-step-portal">Étape par étape : préparer une photo de portail</h2>
 <p>Prenez un portrait frais avec une bonne lumière et un fond uni. Une photo prise aujourd’hui bat une photo de cinq ans à tous les égards.</p>
-<p>Ouvrez le <a href="/fr/compresser-image-a-200-ko">compresseur 200 Ko</a> et envoyez l’original. Gardez le JPG comme format de sortie.</p>
+<p>Ouvrez le <a href="/fr/compresser-image-a-200-ko/">compresseur 200 Ko</a> et envoyez l’original. Gardez le JPG comme format de sortie.</p>
 <p>Laissez la recherche binaire trouver la meilleure qualité qui tient sous 200 Ko. Prévisualisez le visage en taille réelle et vérifiez les yeux et les bords.</p>
 <p>Téléchargez le fichier et vérifiez sa taille. Elle devrait afficher juste sous 200 Ko, généralement entre 198 Ko et 199,9 Ko.</p>
 <p>Envoyez-le sur le portail et vérifiez l’aperçu. Confirmez que le visage est centré, que l’image est dans le bon sens et que rien n’est coupé.</p>
@@ -1064,9 +1064,9 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Notez les réglages qui ont fonctionné. Une courte note comme « le portail X accepte le JPG à 200 Ko » fait gagner du temps lors de la prochaine candidature.</p>
 <p>De bons dossiers transforment un processus stressant en routine. La prochaine candidature prend des minutes au lieu d’heures.</p>
 <h2 id="beyond-200kb">Quand le portail veut une autre taille</h2>
-<p>Certains portails plafonnent à 50 Ko ou 100 Ko au lieu de 200 Ko. Dans ces cas-là, utilisez le <a href="/fr/compresser-image-a-50-ko">compresseur 50 Ko</a> ou le <a href="/fr/compresser-image-a-100-ko">compresseur 100 Ko</a> selon les besoins.</p>
-<p>D’autres autorisent 500 Ko ou plus. Quand le plafond est généreux, utilisez le <a href="/fr/compresser-image-a-500-ko">compresseur 500 Ko</a> pour la meilleure qualité.</p>
-<p>Les limites personnalisées appellent le <a href="/fr/compresser-image-a-taille-cible">compresseur à taille de fichier cible</a>. Tapez le chiffre exact demandé par le portail et laissez-le chercher la meilleure qualité.</p>
+<p>Certains portails plafonnent à 50 Ko ou 100 Ko au lieu de 200 Ko. Dans ces cas-là, utilisez le <a href="/fr/compresser-image-a-50-ko/">compresseur 50 Ko</a> ou le <a href="/fr/compresser-image-a-100-ko/">compresseur 100 Ko</a> selon les besoins.</p>
+<p>D’autres autorisent 500 Ko ou plus. Quand le plafond est généreux, utilisez le <a href="/fr/compresser-image-a-500-ko/">compresseur 500 Ko</a> pour la meilleure qualité.</p>
+<p>Les limites personnalisées appellent le <a href="/fr/compresser-image-a-taille-cible/">compresseur à taille de fichier cible</a>. Tapez le chiffre exact demandé par le portail et laissez-le chercher la meilleure qualité.</p>
 <p>Le principe ne change jamais : utilisez la plus grande taille autorisée par le portail. La qualité vaut les kilooctets supplémentaires quand ils sont disponibles.</p>
 <h2 id="photo-day">Se préparer le jour de la photo</h2>
 <p>La meilleure photo de portail commence avant même que l’appareil photo sorte. Choisissez un mur uni de couleur claire et tenez-vous à un pas de distance pour éviter les ombres dures.</p>
@@ -1104,7 +1104,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Rangez l’original à côté de la copie compressée. L’original est la référence, et chaque version compressée devrait en venir.</p>
 <p>Notez les règles des portails que vous utilisez souvent. Une courte liste de plafonds et de formats vous évite de relire les petits caractères à chaque fois.</p>
 <p>Les bonnes habitudes s’accumulent. Chaque candidature devient plus facile, et le stress des délais s’estompe quand les fichiers sont déjà préparés.</p>
-<p>Pour le guide général 200 Ko, lisez <a href="/fr/blog/compresser-image-a-200-ko-guide">Compresser une image à 200 Ko : guide complet</a>. Pour les étapes pratiques, consultez <a href="/fr/blog/comment-compresser-une-image-a-200-ko">Comment compresser une image à 200 Ko</a>.</p>
+<p>Pour le guide général 200 Ko, lisez <a href="/fr/blog/compresser-image-a-200-ko-guide/">Compresser une image à 200 Ko : guide complet</a>. Pour les étapes pratiques, consultez <a href="/fr/blog/comment-compresser-une-image-a-200-ko/">Comment compresser une image à 200 Ko</a>.</p>
 `,
     faqs: [
       { question: 'Quelle taille ma photo de profil de site d’emploi devrait-elle faire ?', answer: 'La plupart des portails d’emploi acceptent une photo de moins de 200 Ko, souvent avec une taille recommandée autour de 600 × 600 pixels au format JPG. Vérifiez les règles du portail précis, car certains plafonnent à 100 Ko ou 50 Ko. Utilisez toujours le JPG sauf si le portail mentionne explicitement un autre format.' },
@@ -1130,7 +1130,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Les dégradés restent lisses aussi. Un ciel qui présente des bandes à 50 Ko s’écoule proprement à 500 Ko, parce que le compresseur a assez de données pour décrire la transition.</p>
 <p>Pour le travail où l’image doit impressionner, 500 Ko est le juste milieu idéal. C’est assez léger pour partager facilement et assez lourd pour avoir sa meilleure allure.</p>
 <h2 id="how-the-tool-works">Comment fonctionne le compresseur 500 Ko</h2>
-<p>L’<a href="/fr/compresser-image-a-500-ko">outil Compresser une image à 500 Ko</a> fonctionne entièrement dans votre navigateur. Vos photos sont traitées localement et ne sont jamais envoyées sur un serveur, ce qui compte pour le travail client et les projets non encore lancés.</p>
+<p>L’<a href="/fr/compresser-image-a-500-ko/">outil Compresser une image à 500 Ko</a> fonctionne entièrement dans votre navigateur. Vos photos sont traitées localement et ne sont jamais envoyées sur un serveur, ce qui compte pour le travail client et les projets non encore lancés.</p>
 <p>Il utilise une recherche binaire de qualité pour trouver le réglage de qualité le plus élevé qui tient encore sous 500 Ko. La recherche teste des niveaux de qualité et resserre la plage jusqu’à trouver le meilleur ajustement pour votre image précise.</p>
 <p>La qualité passe d’abord, les dimensions ensuite. L’outil ne réduit les dimensions en pixels que lorsque la baisse de qualité seule ne peut pas atteindre la cible, ce qui est rare à 500 Ko.</p>
 <p>Les fichiers jusqu’à 25 Mo sont acceptés, y compris les JPG, PNG, WebP et HEIC. Une photo de reflex de 24 mégapixels ou un cliché de téléphone de 10 Mo fonctionnent tous les deux très bien.</p>
@@ -1176,7 +1176,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Les pages avec des dizaines d’images peuvent avoir besoin de fichiers plus petits. Vingt images à 500 Ko pèsent 10 Mo ensemble, ce qui est lourd pour une seule page.</p>
 <p>Le travail d’impression a besoin de bien plus que 500 Ko. Une photo destinée au papier doit rester en haute résolution, et 500 Ko est une taille de partage, pas une taille d’impression.</p>
 <p>Les utilisateurs mobiles aux connexions lentes souffrent aussi. Une galerie d’images de 500 Ko se charge lentement sur un signal faible, là où des images de 100 Ko voleraient.</p>
-<p>Dans ces situations, descendez au <a href="/fr/compresser-image-a-200-ko">compresseur 200 Ko</a>, au <a href="/fr/compresser-image-a-100-ko">compresseur 100 Ko</a>, ou au <a href="/fr/compresser-image-a-50-ko">compresseur 50 Ko</a> selon les règles.</p>
+<p>Dans ces situations, descendez au <a href="/fr/compresser-image-a-200-ko/">compresseur 200 Ko</a>, au <a href="/fr/compresser-image-a-100-ko/">compresseur 100 Ko</a>, ou au <a href="/fr/compresser-image-a-50-ko/">compresseur 50 Ko</a> selon les règles.</p>
 <h2 id="common-mistakes">Les erreurs courantes à 500 Ko</h2>
 <p>Partir d’un fichier déjà compressé est la plus grosse erreur. Chaque cycle de compression ajoute des dégâts, alors utilisez toujours l’original.</p>
 <p>Verrouiller le format en PNG pour une photo en est une autre. Le PNG ne peut pas atteindre 500 Ko proprement pour les photos détaillées, et l’outil vous avertira que la cible a été manquée.</p>
@@ -1219,7 +1219,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Partagez le lien de l’outil avec les nouveaux arrivants. Un favori vers le compresseur 500 Ko est plus utile qu’une longue explication de la théorie de la compression.</p>
 <p>Examinez un échantillon de chaque lot avant publication. Une seule mauvaise image dans un ensemble de cinquante est facile à manquer et embarrassante à publier.</p>
 <p>Gardez les originaux dans un lecteur partagé. Quand la norme change, l’équipe peut recompresser à partir des originaux au lieu de chercher les fichiers.</p>
-<p>Pour les étapes pratiques, lisez <a href="/fr/blog/comment-compresser-une-image-a-500-ko">Comment compresser une image à 500 Ko</a>. Pour la comparaison avec 1 Mo, consultez <a href="/fr/blog/500-ko-vs-1-mo-qualite-image">500 Ko ou 1 Mo : qualité d’image pour le web et l’impression</a>. Si vous avez besoin d’une taille personnalisée, le <a href="/fr/compresser-image-a-taille-cible">compresseur à taille de fichier cible</a> accepte n’importe quel chiffre tapé.</p>
+<p>Pour les étapes pratiques, lisez <a href="/fr/blog/comment-compresser-une-image-a-500-ko/">Comment compresser une image à 500 Ko</a>. Pour la comparaison avec 1 Mo, consultez <a href="/fr/blog/500-ko-vs-1-mo-qualite-image/">500 Ko ou 1 Mo : qualité d’image pour le web et l’impression</a>. Si vous avez besoin d’une taille personnalisée, le <a href="/fr/compresser-image-a-taille-cible/">compresseur à taille de fichier cible</a> accepte n’importe quel chiffre tapé.</p>
 `,
     faqs: [
       { question: '500 Ko suffisent-ils pour un portfolio de photographie ?', answer: 'Oui. À 500 Ko, les photos paraissent presque identiques à l’original à l’écran, avec les détails fins, les dégradés lisses et le texte net tous préservés. Les portfolios sur Behance, les sites personnels et les présentations d’agence fonctionnent tous bien à 500 Ko. Gardez les originaux pour l’impression.' },
@@ -1244,7 +1244,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Décidez à quoi sert l’image. Une photo de portfolio a besoin d’un maximum de détails, tandis qu’un fond de diapositive peut tolérer plus de douceur.</p>
 <p>Gardez l’original en sécurité dans un dossier séparé. Ne l’écrasez jamais avec la copie compressée, au cas où vous devriez réessayer avec d’autres réglages.</p>
 <h2 id="step-1-open">Étape 1 : ouvrez l’outil 500 Ko</h2>
-<p>Ouvrez l’<a href="/fr/compresser-image-a-500-ko">outil Compresser une image à 500 Ko</a> dans votre navigateur. Aucun compte ni installation n’est nécessaire, et la page se charge vite.</p>
+<p>Ouvrez l’<a href="/fr/compresser-image-a-500-ko/">outil Compresser une image à 500 Ko</a> dans votre navigateur. Aucun compte ni installation n’est nécessaire, et la page se charge vite.</p>
 <p>L’outil fonctionne entièrement sur votre appareil. Vos photos sont traitées localement et ne sont jamais envoyées sur un serveur, ce qui compte pour le travail client.</p>
 <p>Si vous êtes sur un téléphone, la page fonctionne de la même façon. Touchez la zone d’envoi et choisissez la photo dans votre galerie.</p>
 <p>Mettez la page en favori si vous compressez souvent des images. La taille de 500 Ko est une taille à laquelle vous reviendrez pour les portfolios, les présentations et les galeries.</p>
@@ -1349,7 +1349,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Vérifiez la page ou la présentation après publication. Les images devraient se charger vite et paraître nettes, sans bandes ni douceur visibles.</p>
 <p>Demandez à un collègue de regarder l’image compressée. Un regard neuf repère la douceur que vous avez cessé de remarquer.</p>
 <p>Gardez un simple relevé de ce qui a fonctionné. Quand quelqu’un demande pourquoi les images doivent être compressées, les chiffres répondent mieux que n’importe quel argument.</p>
-<p>Pour le contexte sur la qualité à 500 Ko, lisez <a href="/fr/blog/compresser-image-a-500-ko-guide">Compresser une image à 500 Ko : guide complet</a>. Pour la comparaison avec 1 Mo, consultez <a href="/fr/blog/500-ko-vs-1-mo-qualite-image">500 Ko ou 1 Mo : qualité d’image pour le web et l’impression</a>. Si vous avez besoin d’un fichier plus petit, le <a href="/fr/compresser-image-a-200-ko">compresseur 200 Ko</a> est l’étape suivante vers le bas.</p>
+<p>Pour le contexte sur la qualité à 500 Ko, lisez <a href="/fr/blog/compresser-image-a-500-ko-guide/">Compresser une image à 500 Ko : guide complet</a>. Pour la comparaison avec 1 Mo, consultez <a href="/fr/blog/500-ko-vs-1-mo-qualite-image/">500 Ko ou 1 Mo : qualité d’image pour le web et l’impression</a>. Si vous avez besoin d’un fichier plus petit, le <a href="/fr/compresser-image-a-200-ko/">compresseur 200 Ko</a> est l’étape suivante vers le bas.</p>
 `,
     faqs: [
       { question: 'Comment compresser une photo à 500 Ko sans perdre de qualité ?', answer: 'Utilisez la photo originale de haute qualité et laissez la recherche binaire trouver la meilleure qualité qui tient sous 500 Ko. À cette taille généreuse, la plupart des photos gardent la pleine résolution et paraissent presque identiques à l’original. Prévisualisez le résultat en taille réelle avant de télécharger.' },
@@ -1420,7 +1420,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>En cas de doute, utilisez 500 Ko. C’est le choix par défaut le plus sûr, et vous pourrez toujours monter pour une image précise qui en a besoin.</p>
 <h2 id="testing-yourself">Comment tester la différence vous-même</h2>
 <p>Choisissez votre image la plus détaillée, pas la plus facile. Un paysage chargé montrera des différences qu’un portrait simple cache.</p>
-<p>Compressez-la à 500 Ko avec le <a href="/fr/compresser-image-a-500-ko">compresseur 500 Ko</a>. Puis compressez la même image à 1 Mo avec le <a href="/fr/compresser-image-a-taille-cible">compresseur à taille de fichier cible</a> réglé sur 1024 Ko.</p>
+<p>Compressez-la à 500 Ko avec le <a href="/fr/compresser-image-a-500-ko/">compresseur 500 Ko</a>. Puis compressez la même image à 1 Mo avec le <a href="/fr/compresser-image-a-taille-cible/">compresseur à taille de fichier cible</a> réglé sur 1024 Ko.</p>
 <p>Regardez les deux en taille réelle sur l’écran où l’image sera affichée. Comparez les mêmes zones dans chaque version.</p>
 <p>Zoomez à 200 % et regardez à nouveau. C’est là qu’apparaît l’avantage de 1 Mo, s’il apparaît du tout.</p>
 <p>Puis regardez les deux à taille normale une dernière fois. Si vous ne pouvez pas les distinguer, le choix est fait : utilisez 500 Ko.</p>
@@ -1473,7 +1473,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Pour les cas particuliers comme les forts recadrages ou les images principales plein écran, 1 Mo gagne sa place. Utilisez-le là, et utilisez 500 Ko partout ailleurs.</p>
 <p>L’approche la plus intelligente est de garder l’original et de faire la bonne taille pour chaque travail. Un flux de travail flexible bat une seule taille fixe à chaque fois.</p>
 <p>Commencez à 500 Ko, testez le résultat, et montez seulement quand vos yeux vous disent que c’est nécessaire. La plupart du temps, ils ne le diront pas.</p>
-<p>Pour le guide complet 500 Ko, lisez <a href="/fr/blog/compresser-image-a-500-ko-guide">Compresser une image à 500 Ko : guide complet</a>. Pour les étapes pratiques, consultez <a href="/fr/blog/comment-compresser-une-image-a-500-ko">Comment compresser une image à 500 Ko</a>. Pour les tailles plus petites, le <a href="/fr/compresser-image-a-200-ko">compresseur 200 Ko</a> couvre les blogs et les boutiques.</p>
+<p>Pour le guide complet 500 Ko, lisez <a href="/fr/blog/compresser-image-a-500-ko-guide/">Compresser une image à 500 Ko : guide complet</a>. Pour les étapes pratiques, consultez <a href="/fr/blog/comment-compresser-une-image-a-500-ko/">Comment compresser une image à 500 Ko</a>. Pour les tailles plus petites, le <a href="/fr/compresser-image-a-200-ko/">compresseur 200 Ko</a> couvre les blogs et les boutiques.</p>
 `,
     faqs: [
       { question: 'Peut-on voir la différence entre une image de 500 Ko et une image de 1 Mo ?', answer: 'À des tailles d’affichage normales, presque jamais. Les données supplémentaires d’un fichier de 1 Mo préservent des détails fins qui ne se voient qu’en zoomant de près. Sur un écran de téléphone ou d’ordinateur portable à taille normale, les deux paraissent identiques pour la plupart des spectateurs.' },
@@ -1491,7 +1491,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Compresser une image est facile. En compresser cinquante est un autre travail, et les faire une par une gaspille un après-midi.</p>
 <p>La compression en lot résout cela. Vous déposez tout un dossier, vous choisissez un préréglage, et vous téléchargez toutes les images compressées ensemble dans un seul fichier ZIP.</p>
-<p>Ce guide explique comment fonctionne le <a href="/fr/compresser-images-en-lot">compresseur d’images en lot</a>, quand l’utiliser, et comment obtenir des résultats cohérents sur tout un lot.</p>
+<p>Ce guide explique comment fonctionne le <a href="/fr/compresser-images-en-lot/">compresseur d’images en lot</a>, quand l’utiliser, et comment obtenir des résultats cohérents sur tout un lot.</p>
 <h2 id="what-is-bulk-compression">Qu’est-ce que la compression d’images en lot ?</h2>
 <p>La compression en lot applique les mêmes réglages à beaucoup d’images en une fois. Au lieu d’ouvrir chaque fichier séparément, vous traitez tout l’ensemble en un seul passage.</p>
 <p>L’outil parcourt la file image par image, en affichant une barre de progression en direct. Vous pouvez regarder chaque fichier se terminer et repérer les problèmes au fur et à mesure.</p>
@@ -1520,8 +1520,8 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Le compresseur en lot fonctionne par préréglage de qualité, pas par taille de fichier exacte. Il rend les images plus petites sans promettre un nombre précis de kilooctets.</p>
 <p>Les outils à taille cible en Ko fonctionnent dans l’autre sens. Ils garantissent qu’un fichier atterrit sous 50 Ko, 100 Ko, 200 Ko ou 500 Ko, grâce à une recherche binaire de qualité.</p>
 <p>Utilisez le mode en lot quand l’objectif est des fichiers généralement plus petits. Utilisez un outil à taille cible en Ko quand un portail ou une plateforme exige une limite exacte.</p>
-<p>Le <a href="/fr/compresser-image-a-taille-cible">compresseur à taille de fichier cible</a> fait le pont entre les deux. Il compresse les lots vers une taille personnalisée exacte, combinant la commodité du lot et des limites précises.</p>
-<p>Pour l’optimisation web avec préréglages et sortie HTML, l’<a href="/fr/optimiser-images-pour-le-web">outil d’optimisation des images pour le web</a> est le meilleur outil.</p>
+<p>Le <a href="/fr/compresser-image-a-taille-cible/">compresseur à taille de fichier cible</a> fait le pont entre les deux. Il compresse les lots vers une taille personnalisée exacte, combinant la commodité du lot et des limites précises.</p>
+<p>Pour l’optimisation web avec préréglages et sortie HTML, l’<a href="/fr/optimiser-images-pour-le-web/">outil d’optimisation des images pour le web</a> est le meilleur outil.</p>
 <h2 id="quality-in-batches">La qualité dans un lot</h2>
 <p>Toutes les images d’un lot n’ont pas besoin du même traitement. Un portrait se compresse facilement, tandis qu’un paysage détaillé demande plus d’attention.</p>
 <p>L’outil gère cela automatiquement. Chaque image reçoit sa propre optimisation, donc le lot reste cohérent sans réglages manuels.</p>
@@ -1533,7 +1533,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Les PNG transparents demandent de l’attention. Les convertir en JPG remplit l’arrière-plan, généralement en blanc, ce qui peut ne pas convenir aux icônes et aux logos.</p>
 <p>L’outil peut convertir automatiquement les gros PNG en JPG ou WebP. Cette simple option transforme souvent un lot gonflé en un lot propre et léger.</p>
 <p>Les fichiers HEIC des iPhones fonctionnent directement. Envoyez-les tels quels au lieu de les convertir d’abord dans une autre application.</p>
-<p>Les GIF animés n’ont pas leur place dans un lot en vrac. Ils ont besoin du <a href="/fr/compresser-gif">compresseur GIF</a> dédié, qui gère les images et les palettes.</p>
+<p>Les GIF animés n’ont pas leur place dans un lot en vrac. Ils ont besoin du <a href="/fr/compresser-gif/">compresseur GIF</a> dédié, qui gère les images et les palettes.</p>
 <h2 id="zip-workflow">Le téléchargement ZIP, étape par étape</h2>
 <p>Le fichier ZIP contient toutes les images compressées du lot, avec des noms de fichiers qui les identifient comme des copies compressées.</p>
 <p>Extrayez le ZIP dans son propre dossier. Cela garde l’ensemble compressé séparé des originaux et facile à retrouver plus tard.</p>
@@ -1597,7 +1597,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <h2 id="final-check">Une dernière vérification avant l’envoi</h2>
 <p>Ouvrez trois images au hasard du lot terminé en taille réelle. Si elles paraissent propres, le lot est bon ; si l’une paraît douce, vérifiez le reste avant l’envoi.</p>
 <p>Confirmez que le ZIP s’est extrait correctement et que le nombre de fichiers correspond au lot d’origine. Un fichier manquant maintenant est plus facile à corriger qu’une image manquante sur une page en direct.</p>
-<p>Pour les étapes pratiques, lisez <a href="/fr/blog/comment-compresser-plusieurs-images-a-la-fois">Comment compresser plusieurs images à la fois</a>. Pour les bonnes pratiques de lot, consultez <a href="/fr/blog/compression-images-par-lots-bonnes-pratiques">Compression d’images par lots : export ZIP et bonnes pratiques</a>.</p>
+<p>Pour les étapes pratiques, lisez <a href="/fr/blog/comment-compresser-plusieurs-images-a-la-fois/">Comment compresser plusieurs images à la fois</a>. Pour les bonnes pratiques de lot, consultez <a href="/fr/blog/compression-images-par-lots-bonnes-pratiques/">Compression d’images par lots : export ZIP et bonnes pratiques</a>.</p>
 `,
     faqs: [
       { question: 'Combien d’images puis-je compresser dans un seul lot ?', answer: 'Il n’y a pas de limite fixe de nombre de fichiers ni de quota quotidien. Les lots de dizaines d’images fonctionnent bien sur un ordinateur portable. Sur un téléphone à mémoire limitée, les très gros lots de fichiers énormes peuvent être plus lents, alors divisez-les en groupes plus petits si besoin.' },
@@ -1622,7 +1622,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Vérifiez combien d’images vous avez. Un lot de vingt s’exécute vite partout, tandis qu’un lot de deux cents peut avoir besoin d’être divisé sur un téléphone.</p>
 <p>Assurez-vous d’avoir assez d’espace libre. Le téléchargement du ZIP a besoin de place sur votre appareil, à peu près la taille du lot compressé.</p>
 <h2 id="step-1-open">Étape 1 : ouvrez le compresseur en lot</h2>
-<p>Ouvrez le <a href="/fr/compresser-images-en-lot">compresseur d’images en lot</a> dans votre navigateur. Aucun compte ni installation n’est nécessaire.</p>
+<p>Ouvrez le <a href="/fr/compresser-images-en-lot/">compresseur d’images en lot</a> dans votre navigateur. Aucun compte ni installation n’est nécessaire.</p>
 <p>L’outil fonctionne entièrement sur votre appareil. Vos photos sont traitées localement et ne sont jamais envoyées sur un serveur.</p>
 <p>Si vous êtes sur un ordinateur portable, la page fonctionne le mieux avec le glisser-déposer. Sur un téléphone, le bouton d’envoi ouvre votre galerie.</p>
 <p>Mettez la page en favori si vous compressez souvent des lots. C’est le chemin le plus rapide vers une photothèque plus petite.</p>
@@ -1722,7 +1722,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <h2 id="final-check">Une dernière vérification avant l’envoi</h2>
 <p>Ouvrez trois images au hasard du lot terminé en taille réelle. Si elles paraissent propres, le lot est bon ; si l’une paraît douce, vérifiez le reste avant l’envoi.</p>
 <p>Confirmez que le ZIP s’est extrait correctement et que le nombre de fichiers correspond au lot d’origine. Un fichier manquant maintenant est plus facile à corriger qu’une image manquante sur une page en direct.</p>
-<p>Pour le guide complet de la compression en lot, lisez <a href="/fr/blog/compresseur-images-en-lot-guide">Compresseur d’images en lot : guide complet</a>. Pour les bonnes pratiques de lot, consultez <a href="/fr/blog/compression-images-par-lots-bonnes-pratiques">Compression d’images par lots : export ZIP et bonnes pratiques</a>. Si vous avez besoin de tailles de fichier exactes, le <a href="/fr/compresser-image-a-taille-cible">compresseur à taille de fichier cible</a> accepte n’importe quel chiffre tapé.</p>
+<p>Pour le guide complet de la compression en lot, lisez <a href="/fr/blog/compresseur-images-en-lot-guide/">Compresseur d’images en lot : guide complet</a>. Pour les bonnes pratiques de lot, consultez <a href="/fr/blog/compression-images-par-lots-bonnes-pratiques/">Compression d’images par lots : export ZIP et bonnes pratiques</a>. Si vous avez besoin de tailles de fichier exactes, le <a href="/fr/compresser-image-a-taille-cible/">compresseur à taille de fichier cible</a> accepte n’importe quel chiffre tapé.</p>
 `,
     faqs: [
       { question: 'Comment compresser tout un dossier d’images en une fois ?', answer: 'Ouvrez le compresseur en lot et glissez le dossier sur la zone d’envoi, ou sélectionnez tous les fichiers en une fois. Choisissez un préréglage, lancez le lot, et téléchargez les résultats sous forme d’un seul ZIP. Chaque image est compressée individuellement pour la meilleure qualité.' },
@@ -1740,7 +1740,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>La compression par lots est simple à lancer et facile à rater. Un lot négligent peut produire cinquante images douces, un ZIP embrouillé, et une matinée passée à corriger.</p>
 <p>Un lot soigné fait l’inverse. Il produit des images cohérentes et nettes, organisées dans un paquet propre, prêtes à envoyer en une seule fois.</p>
-<p>Cet article couvre les bonnes pratiques qui séparent les deux résultats, des préréglages au nommage en passant par les contrôles de qualité.</p>
+<p>Cet article couvre les bonnes pratiques qui séparent les deux résultats, des préréglages au nommage en passant par les contrôles de qualité. Pour mettre ces conseils en pratique, le <a href="/fr/compresser-images-en-lot/">Compresseur d’images en lot</a> traite des dizaines de fichiers en une seule fois et les regroupe dans un seul ZIP.</p>
 <h2 id="start-with-originals">Commencez par les originaux, toujours</h2>
 <p>Chaque lot devrait partir des originaux de la meilleure qualité possible. Un lot construit à partir de copies compressées hérite de tous leurs dégâts.</p>
 <p>Les applications de messagerie, les plateformes sociales et les e-mails réduisent tous les photos avant que vous les voyiez. Une photo transférée par une application de messagerie est déjà une mauvaise source.</p>
@@ -1781,7 +1781,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Les vrais lots mélangent le contenu. Photos, captures d’écran, logos et graphiques arrivent souvent ensemble, et chaque type a besoin d’une attention différente.</p>
 <p>Triez le lot par type quand les types diffèrent beaucoup. Les photos dans un lot et les graphiques dans un autre permettent de choisir le bon préréglage pour chacun.</p>
 <p>Surveillez de près les PNG transparents. Les convertir en JPG remplit l’arrière-plan, ce qui convient aux photos mais ruine les icônes et les logos.</p>
-<p>Gardez les GIF animés entièrement hors des lots de photos. Ils ont besoin du <a href="/fr/compresser-gif">compresseur GIF</a> dédié et de ses contrôles d’images et de palettes.</p>
+<p>Gardez les GIF animés entièrement hors des lots de photos. Ils ont besoin du <a href="/fr/compresser-gif/">compresseur GIF</a> dédié et de ses contrôles d’images et de palettes.</p>
 <p>En cas de doute, divisez le lot. Deux lots ciblés valent mieux qu’un lot confus à chaque fois.</p>
 <h2 id="team-batches">Les méthodes de lot pour les équipes</h2>
 <p>Les équipes qui publient ensemble ont besoin d’une norme de lot partagée. Mettez-vous d’accord sur le préréglage, le schéma de nommage et la structure des dossiers avant le premier lot.</p>
@@ -1846,7 +1846,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <h2 id="final-check">Une dernière vérification avant la publication</h2>
 <p>Ouvrez trois images au hasard du lot terminé en taille réelle. Si elles paraissent propres, le lot est bon ; si l’une paraît douce, vérifiez le reste avant la publication.</p>
 <p>Confirmez que le ZIP s’est extrait correctement et que le nombre de fichiers correspond au lot d’origine. Un fichier manquant maintenant est plus facile à corriger qu’une image manquante sur une page en direct.</p>
-<p>Pour le guide complet en lot, lisez <a href="/fr/blog/compresseur-images-en-lot-guide">Compresseur d’images en lot : guide complet</a>. Pour les étapes pratiques, consultez <a href="/fr/blog/comment-compresser-plusieurs-images-a-la-fois">Comment compresser plusieurs images à la fois</a>. Si vous avez besoin de tailles de fichier exactes, le <a href="/fr/compresser-image-a-taille-cible">compresseur à taille de fichier cible</a> accepte n’importe quel chiffre tapé.</p>
+<p>Pour le guide complet en lot, lisez <a href="/fr/blog/compresseur-images-en-lot-guide/">Compresseur d’images en lot : guide complet</a>. Pour les étapes pratiques, consultez <a href="/fr/blog/comment-compresser-plusieurs-images-a-la-fois/">Comment compresser plusieurs images à la fois</a>. Si vous avez besoin de tailles de fichier exactes, le <a href="/fr/compresser-image-a-taille-cible/">compresseur à taille de fichier cible</a> accepte n’importe quel chiffre tapé.</p>
 `,
     faqs: [
       { question: 'Quel est le meilleur préréglage pour un grand lot d’images de blog ?', answer: 'Équilibré est le meilleur point de départ pour la plupart des lots de blog, en commençant à 70 % de qualité. Testez-le d’abord sur cinq images, y compris les plus détaillées. Passez à Fichier plus petit pour les petites miniatures ou à Haute qualité pour les grandes images vedettes.' },
@@ -1863,7 +1863,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     description: 'Le guide complet pour compresser les images à une taille exacte en Ko ou en Mo : cibles personnalisées, recherche binaire, mise à l’échelle, et quand l’utiliser.',
     body: `
 <p>La plupart des compresseurs proposent des tailles fixes : 50 Ko, 100 Ko, 200 Ko ou 500 Ko. Mais que faire si votre portail exige 80 Ko, ou 150 Ko, ou 1,5 Mo ?</p>
-<p>C’est le travail du <a href="/fr/compresser-image-a-taille-cible">compresseur à taille de fichier cible</a>. Vous tapez la taille dont vous avez besoin, et l’outil compresse votre image pour atteindre exactement ce chiffre.</p>
+<p>C’est le travail du <a href="/fr/compresser-image-a-taille-cible/">compresseur à taille de fichier cible</a>. Vous tapez la taille dont vous avez besoin, et l’outil compresse votre image pour atteindre exactement ce chiffre.</p>
 <p>Ce guide explique comment fonctionnent les cibles personnalisées, quand les utiliser, et comment obtenir la meilleure qualité à n’importe quelle taille choisie.</p>
 <h2 id="what-is-target-compression">Qu’est-ce que la compression à taille de fichier cible ?</h2>
 <p>La compression cible vous permet de nommer la taille exacte de fichier voulue, en kilooctets ou en mégaoctets. L’outil travaille ensuite à rebours pour produire un fichier de cette taille.</p>
@@ -1967,7 +1967,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Ajoutez toujours du texte alternatif aux images compressées pour le web. Un petit fichier avec un bon texte alternatif sert plus de gens qu’un fichier parfait sans texte alternatif.</p>
 <p>Quand le texte compte, préférez une cible plus grande. Les kilooctets supplémentaires protègent la lisibilité, ce qui vaut plus qu’un fichier plus petit.</p>
 <p>La compression et l’accessibilité vont ensemble. Une source claire et contrastée se compresse mieux et est plus facile à lire pour chaque spectateur.</p>
-<p>Pour les étapes pratiques, lisez <a href="/fr/blog/comment-compresser-une-image-a-une-taille-exacte-en-ko">Comment compresser une image à une taille exacte en Ko</a>. Pour l’analyse approfondie de la recherche elle-même, consultez <a href="/fr/blog/taille-exacte-en-ko-meilleure-qualite">Taille exacte en Ko : comment trouver la meilleure qualité possible</a>. Si une taille fixe vous convient, le <a href="/fr/compresser-image-a-100-ko">compresseur 100 Ko</a> et le <a href="/fr/compresser-image-a-200-ko">compresseur 200 Ko</a> couvrent les plafonds courants.</p>
+<p>Pour les étapes pratiques, lisez <a href="/fr/blog/comment-compresser-une-image-a-une-taille-exacte-en-ko/">Comment compresser une image à une taille exacte en Ko</a>. Pour l’analyse approfondie de la recherche elle-même, consultez <a href="/fr/blog/taille-exacte-en-ko-meilleure-qualite/">Taille exacte en Ko : comment trouver la meilleure qualité possible</a>. Si une taille fixe vous convient, le <a href="/fr/compresser-image-a-100-ko/">compresseur 100 Ko</a> et le <a href="/fr/compresser-image-a-200-ko/">compresseur 200 Ko</a> couvrent les plafonds courants.</p>
 `,
     faqs: [
       { question: 'Quelle plage de tailles puis-je taper dans le compresseur cible ?', answer: 'Vous pouvez taper n’importe quelle taille personnalisée en Ko ou en Mo, de quelques kilooctets à plusieurs mégaoctets. Les très petites cibles comme 2 Ko ou 3 Ko manqueront généralement pour les photos détaillées, et l’outil vous dira honnêtement quand une cible ne peut pas être atteinte.' },
@@ -1992,7 +1992,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Vérifiez si la limite est un maximum ou une taille exacte. La plupart des portails indiquent un maximum, ce qui signifie que tout fichier sous ce chiffre passe.</p>
 <p>Gardez l’original en sécurité dans un dossier séparé. Ne l’écrasez jamais avec la copie compressée, au cas où vous devriez réessayer.</p>
 <h2 id="step-1-open">Étape 1 : ouvrez le compresseur cible</h2>
-<p>Ouvrez le <a href="/fr/compresser-image-a-taille-cible">compresseur à taille de fichier cible</a> dans votre navigateur. Aucun compte ni installation n’est nécessaire.</p>
+<p>Ouvrez le <a href="/fr/compresser-image-a-taille-cible/">compresseur à taille de fichier cible</a> dans votre navigateur. Aucun compte ni installation n’est nécessaire.</p>
 <p>L’outil fonctionne entièrement sur votre appareil. Vos photos sont traitées localement et ne sont jamais envoyées sur un serveur.</p>
 <p>Si vous êtes sur un téléphone, la page fonctionne de la même façon. Touchez la zone d’envoi et choisissez la photo dans votre galerie.</p>
 <p>Mettez la page en favori si vous compressez souvent vers des tailles inhabituelles. C’est l’outil pour chaque limite que les outils à taille fixe ne peuvent pas servir.</p>
@@ -2093,7 +2093,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <h2 id="final-check-exact">Une dernière vérification avant l’envoi</h2>
 <p>Confirmez que la taille du fichier affiche juste sous votre cible sur votre appareil. Cherchez la petite marge de sécurité que l’outil laisse sous la limite.</p>
 <p>Confirmez que le format et les dimensions correspondent aux règles du portail. Une taille parfaite dans le mauvais format échoue quand même à l’envoi, alors vérifiez les trois chiffres ensemble.</p>
-<p>Pour le guide complet des cibles personnalisées, lisez <a href="/fr/blog/compresser-image-taille-exacte-guide">Compresser une image à une taille exacte : guide complet</a>. Pour l’analyse approfondie de la recherche elle-même, consultez <a href="/fr/blog/taille-exacte-en-ko-meilleure-qualite">Taille exacte en Ko : comment trouver la meilleure qualité possible</a>. Si une taille fixe vous convient, le <a href="/fr/compresser-image-a-100-ko">compresseur 100 Ko</a> couvre le plafond le plus courant.</p>
+<p>Pour le guide complet des cibles personnalisées, lisez <a href="/fr/blog/compresser-image-taille-exacte-guide/">Compresser une image à une taille exacte : guide complet</a>. Pour l’analyse approfondie de la recherche elle-même, consultez <a href="/fr/blog/taille-exacte-en-ko-meilleure-qualite/">Taille exacte en Ko : comment trouver la meilleure qualité possible</a>. Si une taille fixe vous convient, le <a href="/fr/compresser-image-a-100-ko/">compresseur 100 Ko</a> couvre le plafond le plus courant.</p>
 `,
     faqs: [
       { question: 'Comment compresser une image à exactement 80 Ko ?', answer: 'Ouvrez le compresseur à taille de fichier cible, tapez 80, choisissez Ko, et envoyez votre image. L’outil lance une recherche binaire de qualité pour trouver la meilleure qualité qui tient sous 80 Ko. Téléchargez le résultat et vérifiez qu’il affiche juste sous 80 Ko sur votre appareil.' },
@@ -2209,7 +2209,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Pour l’instant, la simple recherche binaire est assez rapide. Sept tests prennent quelques secondes, et le résultat est déjà la meilleure qualité qui tient.</p>
 <p>Le principe ne changera pas. Indiquez la cible, cherchez systématiquement, et livrez le fichier le plus net qui y tient.</p>
 <p>Ce principe est ce qui rend le compresseur cible si simple. La complexité vit dans l’algorithme, et l’utilisateur ne voit qu’un résultat propre.</p>
-<p>Pour le guide complet des cibles personnalisées, lisez <a href="/fr/blog/compresser-image-taille-exacte-guide">Compresser une image à une taille exacte : guide complet</a>. Pour les étapes pratiques, consultez <a href="/fr/blog/comment-compresser-une-image-a-une-taille-exacte-en-ko">Comment compresser une image à une taille exacte en Ko</a>. Pour l’essayer vous-même, ouvrez le <a href="/fr/compresser-image-a-taille-cible">compresseur à taille de fichier cible</a> et tapez la taille dont vous avez besoin.</p>
+<p>Pour le guide complet des cibles personnalisées, lisez <a href="/fr/blog/compresser-image-taille-exacte-guide/">Compresser une image à une taille exacte : guide complet</a>. Pour les étapes pratiques, consultez <a href="/fr/blog/comment-compresser-une-image-a-une-taille-exacte-en-ko/">Comment compresser une image à une taille exacte en Ko</a>. Pour l’essayer vous-même, ouvrez le <a href="/fr/compresser-image-a-taille-cible/">compresseur à taille de fichier cible</a> et tapez la taille dont vous avez besoin.</p>
 `,
     faqs: [
       { question: 'Qu’est-ce qu’une recherche binaire de qualité ?', answer: 'C’est une méthode pour trouver le réglage de qualité le plus élevé qui tient encore dans une cible de taille de fichier. L’outil teste un niveau de qualité, vérifie la taille du résultat, puis divise par deux la plage restante et teste à nouveau. Après environ sept tests, il a resserré la meilleure qualité jusqu’à un seul chiffre.' },
@@ -2226,7 +2226,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     description: 'Le guide complet pour optimiser les images de votre site : préréglages pour les images principales, de produits et de cartes, Core Web Vitals, et HTML à copier-coller.',
     body: `
 <p>Un site web n’est rapide que dans la mesure où ses images le sont. Le texte se charge en millisecondes, mais une seule photo non optimisée peut bloquer une page pendant des secondes.</p>
-<p>L’<a href="/fr/optimiser-images-pour-le-web">outil d’optimisation des images pour le web</a> est conçu pour ce problème. Il compresse les images pour des emplacements précis du site web, puis vous remet le HTML à coller directement dans votre page.</p>
+<p>L’<a href="/fr/optimiser-images-pour-le-web/">outil d’optimisation des images pour le web</a> est conçu pour ce problème. Il compresse les images pour des emplacements précis du site web, puis vous remet le HTML à coller directement dans votre page.</p>
 <p>Ce guide explique les préréglages, les réglages, et comment utiliser l’outil pour rendre tout un site plus rapide.</p>
 <h2 id="what-is-web-optimisation">Qu’est-ce que l’optimisation d’images web ?</h2>
 <p>L’optimisation web consiste à préparer une image pour un travail précis sur une page. Une image principale, une photo de produit et une miniature ont chacune besoin de tailles et de formats différents.</p>
@@ -2293,7 +2293,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Le mode par lots est idéal pour les migrations de site. Déplacer un blog vers un nouveau thème signifie réoptimiser chaque image, et un lot le gère en quelques minutes.</p>
 <p>Vérifiez quelques résultats avant de télécharger tout le lot. Une seule image douce peut se cacher parmi de bonnes.</p>
 <p>Gardez le préréglage cohérent dans tout le lot. Des réglages mixtes produisent des résultats mixtes, qui paraissent désordonnés sur le site en direct.</p>
-<p>Pour des cibles exactes de taille de fichier au lieu de préréglages, le <a href="/fr/compresser-image-a-taille-cible">compresseur à taille de fichier cible</a> accepte n’importe quel chiffre tapé.</p>
+<p>Pour des cibles exactes de taille de fichier au lieu de préréglages, le <a href="/fr/compresser-image-a-taille-cible/">compresseur à taille de fichier cible</a> accepte n’importe quel chiffre tapé.</p>
 <h2 id="og-images">Le partage social et les images Open Graph</h2>
 <p>Quand quelqu’un partage votre page, la plateforme montre une image d’aperçu. Cette image est souvent la première chose qu’un nouveau visiteur voit.</p>
 <p>Les images Open Graph ont besoin de dimensions précises, généralement 1 200 × 630 pixels. Le préréglage Social OG les dimensionne correctement et bascule en JPG.</p>
@@ -2330,7 +2330,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Vérifiez les Core Web Vitals après optimisation. Le LCP devrait s’améliorer le plus, car l’image principale est généralement le plus grand affichage.</p>
 <p>Demandez à un collègue de charger la page sur son téléphone. Un appareil neuf sur une vraie connexion est le test honnête de votre travail.</p>
 <p>Gardez un simple relevé des économies. Quand quelqu’un demande pourquoi les images doivent être optimisées, les chiffres répondent mieux que n’importe quel argument.</p>
-<p>Pour les étapes pratiques, lisez <a href="/fr/blog/comment-optimiser-les-images-pour-la-vitesse-d-un-site-web">Comment optimiser les images pour la vitesse d’un site web</a>. Pour l’analyse approfondie des Core Web Vitals, consultez <a href="/fr/blog/optimisation-des-images-core-web-vitals">Optimisation des images pour les Core Web Vitals : LCP et taille de fichier</a>. Pour des cibles simples de taille, le <a href="/fr/compresser-image-a-200-ko">compresseur 200 Ko</a> couvre la plupart des images web.</p>
+<p>Pour les étapes pratiques, lisez <a href="/fr/blog/comment-optimiser-les-images-pour-la-vitesse-d-un-site-web/">Comment optimiser les images pour la vitesse d’un site web</a>. Pour l’analyse approfondie des Core Web Vitals, consultez <a href="/fr/blog/optimisation-des-images-core-web-vitals/">Optimisation des images pour les Core Web Vitals : LCP et taille de fichier</a>. Pour des cibles simples de taille, le <a href="/fr/compresser-image-a-200-ko/">compresseur 200 Ko</a> couvre la plupart des images web.</p>
 `,
     faqs: [
       { question: 'Quel préréglage utiliser pour une image principale ?', answer: 'Utilisez le préréglage d’image principale, qui dimensionne l’image pour une bannière pleine largeur et garde la qualité élevée. Ne chargez jamais une image principale en différé, car elle est au-dessus de la ligne de flottaison et influe sur le Largest Contentful Paint. Utilisez le WebP quand le site le prend en charge pour le plus petit fichier à cette qualité.' },
@@ -2355,7 +2355,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Notez le poids total des images de la page. Une page avec 5 Mo d’images a un problème évident, tandis qu’une page avec 500 Ko est déjà en bonne forme.</p>
 <p>Notez les trois pires images. Corriger celles-là d’abord donne le plus grand gain de vitesse pour le moins d’effort.</p>
 <h2 id="step-2-open">Étape 2 : ouvrez l’outil d’optimisation des images</h2>
-<p>Ouvrez l’<a href="/fr/optimiser-images-pour-le-web">outil d’optimisation des images pour le web</a> dans votre navigateur. Aucun compte ni installation n’est nécessaire.</p>
+<p>Ouvrez l’<a href="/fr/optimiser-images-pour-le-web/">outil d’optimisation des images pour le web</a> dans votre navigateur. Aucun compte ni installation n’est nécessaire.</p>
 <p>L’outil fonctionne entièrement sur votre appareil. Vos images sont traitées localement et ne sont jamais envoyées sur un serveur.</p>
 <p>Si vous optimisez tout un site, travaillez par lots. Trente images à la fois est une taille de lot confortable pour la plupart des navigateurs.</p>
 <p>Mettez la page en favori. L’optimisation des images est un travail récurrent, et c’est un outil auquel vous reviendrez souvent.</p>
@@ -2453,7 +2453,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <h2 id="keep-learning">Continuez d’apprendre de chaque page</h2>
 <p>Chaque page que vous optimisez enseigne quelque chose. Notez quel préréglage a fonctionné, quelle image a été la plus difficile, et ce qu’ont fait les chiffres de vitesse, car ces leçons s’accumulent avec chaque page corrigée et chaque site amélioré.</p>
 <p>Ces notes deviennent votre guide. La page suivante prend moins de temps parce que la dernière page a déjà répondu aux questions.</p>
-<p>Pour le guide complet de l’optimiseur, lisez <a href="/fr/blog/optimiser-images-pour-le-web-guide">Optimiser les images pour le web : guide complet</a>. Pour l’analyse approfondie des Core Web Vitals, consultez <a href="/fr/blog/optimisation-des-images-core-web-vitals">Optimisation des images pour les Core Web Vitals : LCP et taille de fichier</a>. Pour des cibles simples de taille, le <a href="/fr/compresser-image-a-200-ko">compresseur 200 Ko</a> couvre la plupart des images web.</p>
+<p>Pour le guide complet de l’optimiseur, lisez <a href="/fr/blog/optimiser-images-pour-le-web-guide/">Optimiser les images pour le web : guide complet</a>. Pour l’analyse approfondie des Core Web Vitals, consultez <a href="/fr/blog/optimisation-des-images-core-web-vitals/">Optimisation des images pour les Core Web Vitals : LCP et taille de fichier</a>. Pour des cibles simples de taille, le <a href="/fr/compresser-image-a-200-ko/">compresseur 200 Ko</a> couvre la plupart des images web.</p>
 `,
     faqs: [
       { question: 'De combien mon site sera-t-il plus rapide après l’optimisation des images ?', answer: 'Cela dépend de la lourdeur des images. Une page avec 5 Mo d’images qui tombe à 500 Ko peut se charger plusieurs secondes plus vite, surtout sur mobile. Lancez un test de vitesse avant et après pour voir l’amélioration exacte de votre page.' },
@@ -2486,7 +2486,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Précharger l’image principale aide aussi. Informer tôt le navigateur de l’image la plus importante lui permet de commencer le téléchargement avant tout le reste.</p>
 <h2 id="fixing-lcp">Corriger un LCP lent étape par étape</h2>
 <p>D’abord, trouvez l’élément LCP. Les outils de vitesse le nomment directement, et c’est généralement l’image principale ou une grande bannière.</p>
-<p>Ensuite, optimisez cette image avec l’<a href="/fr/optimiser-images-pour-le-web">outil d’optimisation des images pour le web</a>. Utilisez le préréglage d’image principale, qui la dimensionne correctement et garde la qualité élevée.</p>
+<p>Ensuite, optimisez cette image avec l’<a href="/fr/optimiser-images-pour-le-web/">outil d’optimisation des images pour le web</a>. Utilisez le préréglage d’image principale, qui la dimensionne correctement et garde la qualité élevée.</p>
 <p>Troisièmement, assurez-vous que le chargement différé est désactivé pour l’image principale. Retarder l’image la plus importante est l’erreur de LCP la plus courante.</p>
 <p>Quatrièmement, préchargez l’image principale dans l’en-tête de la page. Le navigateur la récupère alors en premier, avant que les feuilles de style et les scripts se disputent la bande passante.</p>
 <p>Cinquièmement, testez à nouveau la page. Le temps de LCP devrait avoir chuté nettement, souvent de plusieurs secondes sur mobile.</p>
@@ -2577,7 +2577,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <h2 id="final-check-cwv">Une dernière vérification avant la publication</h2>
 <p>Lancez l’outil de vitesse une dernière fois après toutes les corrections. Confirmez que le LCP, le CLS et l’INP sont tous dans la zone verte avant de passer à autre chose.</p>
 <p>Chargez la page sur un vrai téléphone avec une connexion mobile. Les chiffres d’un test en laboratoire sont utiles, mais la sensation sur un téléphone est la vérité.</p>
-<p>Pour le guide complet de l’optimiseur, lisez <a href="/fr/blog/optimiser-images-pour-le-web-guide">Optimiser les images pour le web : guide complet</a>. Pour les étapes pratiques, consultez <a href="/fr/blog/comment-optimiser-les-images-pour-la-vitesse-d-un-site-web">Comment optimiser les images pour la vitesse d’un site web</a>. Pour des cibles simples de taille, le <a href="/fr/compresser-image-a-200-ko">compresseur 200 Ko</a> et le <a href="/fr/compresser-images-en-lot">compresseur d’images en lot</a> gèrent le gros du travail.</p>
+<p>Pour le guide complet de l’optimiseur, lisez <a href="/fr/blog/optimiser-images-pour-le-web-guide/">Optimiser les images pour le web : guide complet</a>. Pour les étapes pratiques, consultez <a href="/fr/blog/comment-optimiser-les-images-pour-la-vitesse-d-un-site-web/">Comment optimiser les images pour la vitesse d’un site web</a>. Pour des cibles simples de taille, le <a href="/fr/compresser-image-a-200-ko/">compresseur 200 Ko</a> et le <a href="/fr/compresser-images-en-lot/">compresseur d’images en lot</a> gèrent le gros du travail.</p>
 `,
     faqs: [
       { question: 'Qu’est-ce qu’un bon score LCP ?', answer: 'Google considère un LCP de moins de 2,5 secondes comme bon. La plupart des pages manquent cette cible à cause d’une image principale lourde. Compresser l’image principale, la servir à la bonne taille et la précharger sont les moyens les plus rapides de passer sous le seuil.' },
@@ -2595,7 +2595,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Les GIF animés sont les images les plus lourdes du web. Un clip de dix secondes peut peser 20 Mo, soit plus lourd que toute une page de photos.</p>
 <p>Compresser un GIF est différent de compresser une photo. Les GIF ont des images, des palettes et une synchronisation, et chacun offre un moyen de réduire le fichier.</p>
-<p>Ce guide explique comment fonctionne le <a href="/fr/compresser-gif">compresseur GIF</a>, ce que fait chaque réglage, et comment rendre un GIF petit sans le rendre laid.</p>
+<p>Ce guide explique comment fonctionne le <a href="/fr/compresser-gif/">compresseur GIF</a>, ce que fait chaque réglage, et comment rendre un GIF petit sans le rendre laid.</p>
 <h2 id="why-gifs-are-big">Pourquoi les GIF sont-ils si gros ?</h2>
 <p>Un GIF est un folioscope. Il stocke des dizaines ou des centaines d’images, et chaque image est une image complète à part entière.</p>
 <p>Un GIF de dix secondes à 15 images par seconde contient 150 images. Même de petites images s’additionnent vite quand elles sont si nombreuses.</p>
@@ -2655,7 +2655,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Les fichiers vidéo sont bien plus petits pour le même clip. Une animation de dix secondes peut faire 15 Mo en GIF et 1,5 Mo en MP4.</p>
 <p>Utilisez les GIF pour les courtes boucles, les réactions et les animations simples. Ils sont parfaits pour une blague de deux secondes ou un indicateur de chargement.</p>
 <p>Utilisez la vidéo pour tout ce qui dure plus de quelques secondes. Un long clip a sa place en MP4 ou WebM, pas dans un GIF qui écrasera la page.</p>
-<p>Pour la comparaison complète, lisez <a href="/fr/blog/gif-vs-webp-vs-mp4-anime">GIF, WebP ou MP4 : les images animées comparées</a>.</p>
+<p>Pour la comparaison complète, lisez <a href="/fr/blog/gif-vs-webp-vs-mp4-anime/">GIF, WebP ou MP4 : les images animées comparées</a>.</p>
 <h2 id="common-mistakes">Les erreurs courantes avec la compression GIF</h2>
 <p>Partir d’un GIF déjà compressé est la plus grosse erreur. Chaque passage ajoute des dégâts, alors utilisez toujours l’animation originale.</p>
 <p>Choisir Réduction maximale pour un beau GIF gaspille sa qualité. Le préréglage le plus fort sert aux limites strictes, pas à l’usage quotidien.</p>
@@ -2701,7 +2701,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <h2 id="keep-practising">Continuez de vous entraîner avec de vrais GIF</h2>
 <p>Chaque GIF que vous compressez enseigne quelque chose. Notez quel préréglage a fonctionné, quelle palette convenait au contenu, et ce qu’a fait la taille du fichier.</p>
 <p>Ces notes deviennent votre guide. Le prochain GIF prend moins de temps parce que le dernier a déjà répondu aux questions.</p>
-<p>Pour les étapes pratiques, lisez <a href="/fr/blog/comment-compresser-un-gif">Comment compresser un GIF</a>. Pour la comparaison des formats, consultez <a href="/fr/blog/gif-vs-webp-vs-mp4-anime">GIF, WebP ou MP4 : les images animées comparées</a>. Si vous créez des GIF à partir de photos, le <a href="/fr/creer-gif">créateur de GIF</a> les construit d’abord.</p>
+<p>Pour les étapes pratiques, lisez <a href="/fr/blog/comment-compresser-un-gif/">Comment compresser un GIF</a>. Pour la comparaison des formats, consultez <a href="/fr/blog/gif-vs-webp-vs-mp4-anime/">GIF, WebP ou MP4 : les images animées comparées</a>. Si vous créez des GIF à partir de photos, le <a href="/fr/creer-gif/">créateur de GIF</a> les construit d’abord.</p>
 `,
     faqs: [
       { question: 'La compression de mon GIF changera-t-elle sa vitesse de lecture ?', answer: 'Non. Le compresseur préserve la synchronisation des images et les réglages de boucle d’origine, donc le GIF compressé se lit à la même vitesse et boucle de la même façon. Les images supprimées sont compensées par des temps d’affichage plus longs, gardant la durée totale inchangée.' },
@@ -2726,7 +2726,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Sachez où le GIF sera montré. Un autocollant affiché en petit a besoin de moins de données qu’un GIF remplissant un article de blog.</p>
 <p>Gardez l’original en sécurité. Ne l’écrasez jamais avec la copie compressée, au cas où vous devriez réessayer avec d’autres réglages.</p>
 <h2 id="step-1-open">Étape 1 : ouvrez le compresseur GIF</h2>
-<p>Ouvrez le <a href="/fr/compresser-gif">compresseur GIF</a> dans votre navigateur. Aucun compte ni installation n’est nécessaire.</p>
+<p>Ouvrez le <a href="/fr/compresser-gif/">compresseur GIF</a> dans votre navigateur. Aucun compte ni installation n’est nécessaire.</p>
 <p>L’outil fonctionne entièrement sur votre appareil. Votre animation est traitée localement et n’est jamais envoyée sur un serveur.</p>
 <p>Si vous êtes sur un téléphone, la page fonctionne de la même façon. Touchez la zone d’envoi et choisissez le GIF dans vos fichiers.</p>
 <p>Mettez la page en favori si vous compressez souvent des GIF. Les GIF de réaction et les clips sont un besoin récurrent pour la plupart des gens.</p>
@@ -2804,7 +2804,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Le compresseur GIF gère une animation à la fois. Pour un ensemble de GIF, compressez-les un par un avec le même préréglage.</p>
 <p>Gardez les réglages cohérents dans tout l’ensemble. Un pack de réactions aux palettes et échelles mixtes paraît désordonné quand il est partagé ensemble.</p>
 <p>Notez les réglages qui ont fonctionné pour le premier GIF. Les réutiliser sur les autres garde l’ensemble uniforme sans redécider à chaque fois.</p>
-<p>Pour les images fixes en lot, utilisez le <a href="/fr/compresser-images-en-lot">compresseur d’images en lot</a>. Il gère les photos par lots, tandis que les GIF ont besoin d’une attention individuelle.</p>
+<p>Pour les images fixes en lot, utilisez le <a href="/fr/compresser-images-en-lot/">compresseur d’images en lot</a>. Il gère les photos par lots, tandis que les GIF ont besoin d’une attention individuelle.</p>
 <p>Traiter les GIF par lots est plus lent que traiter les photos par lots, mais les résultats sont meilleurs. Chaque animation mérite son propre aperçu et ses propres réglages.</p>
 <h2 id="gif-quality-scale">Juger la qualité d’un GIF : quoi regarder</h2>
 <p>Jugez un GIF compressé selon trois choses : la fluidité, la couleur et la netteté. Chacune échoue à sa façon, et chacune a sa propre solution.</p>
@@ -2827,7 +2827,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <h2 id="keep-practising-gif">Continuez de vous entraîner avec de vrais GIF</h2>
 <p>Chaque GIF que vous compressez enseigne quelque chose. Notez quel préréglage a fonctionné, quelle échelle convenait à la taille d’affichage, et ce qu’a fait la taille du fichier.</p>
 <p>Ces notes deviennent votre guide. Le prochain GIF prend moins de temps parce que le dernier a déjà répondu aux questions.</p>
-<p>Pour le guide complet de la compression GIF, lisez <a href="/fr/blog/compresseur-gif-guide">Compresseur GIF : guide complet</a>. Pour la comparaison des formats, consultez <a href="/fr/blog/gif-vs-webp-vs-mp4-anime">GIF, WebP ou MP4 : les images animées comparées</a>. Si vous créez des GIF à partir de photos, le <a href="/fr/creer-gif">créateur de GIF</a> les construit d’abord.</p>
+<p>Pour le guide complet de la compression GIF, lisez <a href="/fr/blog/compresseur-gif-guide/">Compresseur GIF : guide complet</a>. Pour la comparaison des formats, consultez <a href="/fr/blog/gif-vs-webp-vs-mp4-anime/">GIF, WebP ou MP4 : les images animées comparées</a>. Si vous créez des GIF à partir de photos, le <a href="/fr/creer-gif/">créateur de GIF</a> les construit d’abord.</p>
 `,
     faqs: [
       { question: 'Comment compresser un GIF pour Discord ?', answer: 'Ouvrez le compresseur GIF, envoyez le GIF, et choisissez Réduction maximale s’il dépasse largement la limite gratuite de 8 Mo. Réduisez l’échelle selon la taille d’affichage et prévisualisez l’animation. Téléchargez le fichier, vérifiez qu’il tient dans la limite, et envoyez-le vous-même d’abord pour confirmer qu’il se lit correctement.' },
@@ -2893,7 +2893,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Utilisez le MP4 avec les attributs lecture automatique, muet et boucle pour imiter le comportement du GIF sur un site web. Les visiteurs ne remarqueront pas la différence, sauf en vitesse de chargement.</p>
 <p>Gardez le GIF original quand vous convertissez. Une conversion est à sens unique, et le GIF reste la solution de repli universelle.</p>
 <h2 id="converting-between">Convertir entre les formats</h2>
-<p>Convertir un GIF en WebP est facile et divise généralement la taille du fichier par deux. Les convertisseurs en ligne et le flux de travail du <a href="/fr/compresser-gif">compresseur GIF</a> gèrent la première étape.</p>
+<p>Convertir un GIF en WebP est facile et divise généralement la taille du fichier par deux. Les convertisseurs en ligne et le flux de travail du <a href="/fr/compresser-gif/">compresseur GIF</a> gèrent la première étape.</p>
 <p>Convertir un GIF en MP4 a besoin d’un outil vidéo. Le résultat est bien plus petit, mais le fichier n’est plus une image et a besoin d’un lecteur vidéo.</p>
 <p>Convertir un MP4 en GIF est possible mais gaspilleur. Le GIF sera bien plus gros et de moins bonne qualité que la vidéo dont il vient.</p>
 <p>Convertissez seulement quand la destination l’exige. Un GIF qui doit se lire en messagerie devrait rester un GIF, quelle que soit sa taille.</p>
@@ -2949,7 +2949,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <h2 id="keep-testing-formats">Continuez de tester les formats vous-même</h2>
 <p>Chaque animation que vous créez est une occasion de tester. Exportez-la en deux formats, comparez les tailles, et regardez les deux se lire, car la comparaison pratique construit un meilleur jugement que n’importe quel guide pour le vrai travail.</p>
 <p>Ces comparaisons construisent votre jugement. Bientôt, vous connaîtrez le bon format avant même d’ouvrir le convertisseur.</p>
-<p>Pour le guide complet du GIF, lisez <a href="/fr/blog/compresseur-gif-guide">Compresseur GIF : guide complet</a>. Pour les étapes pratiques, consultez <a href="/fr/blog/comment-compresser-un-gif">Comment compresser un GIF</a>. Pour réduire un GIF qui doit rester un GIF, ouvrez le <a href="/fr/compresser-gif">compresseur GIF</a> et choisissez le préréglage Équilibré.</p>
+<p>Pour le guide complet du GIF, lisez <a href="/fr/blog/compresseur-gif-guide/">Compresseur GIF : guide complet</a>. Pour les étapes pratiques, consultez <a href="/fr/blog/comment-compresser-un-gif/">Comment compresser un GIF</a>. Pour réduire un GIF qui doit rester un GIF, ouvrez le <a href="/fr/compresser-gif/">compresseur GIF</a> et choisissez le préréglage Équilibré.</p>
 `,
     faqs: [
       { question: 'Le WebP est-il meilleur que le GIF pour les animations ?', answer: 'Pour la qualité et la taille du fichier, oui. Le WebP animé fait environ la moitié de la taille du même GIF avec de meilleures couleurs, car il prend en charge les couleurs 24 bits au lieu de la palette de 256 couleurs du GIF. Pour la compatibilité, le GIF gagne encore, car chaque application de messagerie et chaque client e-mail lit les GIF.' },
@@ -3168,7 +3168,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Chaque conversion de format change la façon dont votre image est stockée, et certains de ces changements sont définitifs. Comprendre quelles conversions font perdre en qualité — et lesquelles n’en font pas perdre — vous évite d’abîmer vos photos petit à petit.</p>
 <p>La règle est simple à énoncer et facile à oublier : les formats destructifs jettent des détails, les formats sans perte conservent tout. Chaque décision de conversion découle de ce seul fait.</p>
-<p>Cet article explique la perte de qualité en termes simples. Vous apprendrez ce qui se passe dans chaque format, pourquoi les conversions répétées font mal, et quand convertir est parfaitement sans risque.</p>
+<p>Cet article explique la perte de qualité en termes simples. Vous apprendrez ce qui se passe dans chaque format, pourquoi les conversions répétées font mal, et quand convertir est parfaitement sans risque. Pour convertir vos images sans mauvaise surprise, le <a href="/fr/convertir-images/">Convertisseur d’image</a> travaille entièrement dans votre navigateur, avec un réglage de qualité et un export en lot.</p>
 <h2 id="what-quality-loss-means">Ce que signifie vraiment la perte de qualité</h2>
 <p>La perte de qualité, c’est un détail qui existait dans le fichier d’origine et qui a disparu du fichier converti — et aucun outil ne peut le ramener. Les pixels sont toujours là, mais les fines informations qu’ils contenaient ont été simplifiées.</p>
 <p>Les dégâts ne sont pas toujours visibles. Une photo convertie à 90 % de qualité a l’air identique à l’originale en taille normale, et pourtant une comparaison pixel par pixel révèle de minuscules différences dans les zones texturées.</p>
@@ -3498,7 +3498,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Quand vous construisez un PDF à partir d’images, le format de ces images compte plus qu’on ne le croit. Une page JPG et une page PNG peuvent sembler identiques à l’écran tout en se comportant très différemment.</p>
 <p>Ce choix affecte la taille du fichier, la netteté du texte et la façon dont le PDF s’imprime. Pour un album photo, un format gagne ; pour un contrat scanné, c’est l’autre.</p>
-<p>Cet article compare le JPG et le PNG dans les PDF, pour que vous puissiez choisir le bon format avant de générer, et non après.</p>
+<p>Cet article compare le JPG et le PNG dans les PDF, pour que vous puissiez choisir le bon format avant de générer, et non après. Une fois votre choix fait, l’outil <a href="/fr/convertir-images-en-pdf/">Image en PDF</a> assemble vos photos en un seul document, avec l’ordre des pages, les marges et la taille de page que vous voulez.</p>
 <h2 id="jpg-inside-pdf">Les images JPG dans un PDF</h2>
 <p>Le JPG est un format destructif : il rejette des détails pour réduire le fichier. Dans un PDF, une page JPG stocke la photo avec cette même compression, en gardant le document léger.</p>
 <p>Les photos se compressent magnifiquement en JPG. Une photographie pleine page à 85 % de qualité a l’air nette et garde le PDF assez léger pour être envoyé par e-mail.</p>
@@ -4830,7 +4830,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>La conversion PNG en JPG est célèbre pour réduire les fichiers, mais les gains ne sont pas les mêmes pour chaque image. Une capture d’écran peut baisser de 90 pour cent, tandis qu’une icône simple peut grossir à la place.</p>
 <p>Comprendre ce qui détermine les gains aide à prévoir le résultat avant de convertir, et à choisir le réglage de qualité qui protège ce qui compte.</p>
-<p>Cet article examine les chiffres honnêtement, par type d’image, et explique les compromis en termes simples.</p>
+<p>Cet article examine les chiffres honnêtement, par type d’image, et explique les compromis en termes simples. Pour passer à l’action, l’outil <a href="/fr/convertir-png-en-jpg/">PNG vers JPG</a> convertit vos fichiers par lots dans le navigateur, avec un curseur de qualité et une comparaison avant/après.</p>
 <h2 id="why-png-is-big">Pourquoi les fichiers PNG sont-ils si lourds ?</h2>
 <p>Le PNG est sans perte, ce qui signifie qu’il stocke chaque pixel exactement. Cette précision coûte des octets, surtout pour les images détaillées avec une texture et une variation de couleur sans fin.</p>
 <p>Une photographie comporte des millions de couleurs subtilement différentes. Le PNG doit décrire chacune d’elles, tandis que le JPG peut les simplifier en dégradés lisses que l’œil distingue à peine.</p>
@@ -7633,7 +7633,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Une photo de travers, c’est l’un des problèmes d’image les plus fréquents. Vous ouvrez une photo prise avec votre téléphone et vous découvrez un horizon vertical, ou un document scanné qui se lit de bas en haut.</p>
 <p>La rotation et le retournement sont les deux gestes qui règlent ça. La rotation fait tourner toute l’image d’un angle donné, tandis que le retournement la reflète de gauche à droite ou de haut en bas.</p>
-<p>Ce guide explique ces deux gestes en langage simple. Vous y apprendrez quels angles utiliser, comment corriger un selfie inversé, pourquoi certaines photos pivotent toutes seules et comment redresser une photo penchée sans perdre aucun coin.</p>
+<p>Ce guide explique ces deux gestes en langage simple. Vous y apprendrez quels angles utiliser, comment corriger un selfie inversé, pourquoi certaines photos pivotent toutes seules et comment redresser une photo penchée sans perdre aucun coin. Pour redresser vos photos, l’outil <a href="/fr/pivoter-et-retourner-image/">Pivoter et retourner une image</a> propose des rotations rapides de 90°, un angle personnalisé au degré près et un retournement en un clic.</p>
 <h2 id="what-rotation-and-flipping-do">Ce que font vraiment la rotation et le retournement</h2>
 <p>La rotation fait tourner l’image autour de son centre. Un quart de tour échange la largeur et la hauteur : une photo paysage devient un portrait, et une rotation de 180 degrés met l’image sens dessus dessous.</p>
 <p>Le retournement, lui, est différent. Un retournement horizontal reflète l’image de gauche à droite, comme dans un miroir, tandis qu’un retournement vertical la reflète de haut en bas.</p>
@@ -7950,7 +7950,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Le recadrage est le moyen le plus rapide d’améliorer une photo. Il enlève les distractions, resserre le cadrage et redonne à une image la forme qu’il faut pour l’endroit où elle va vivre.</p>
 <p>Chaque photo cache une meilleure version d’elle-même. Un plan large avec un ciel vide devient un portrait fort une fois l’espace superflu coupé, et une capture d’écran chargée devient lisible une fois les bords rognés.</p>
-<p>Ce guide explique comment fonctionne le recadrage, quels ratios utiliser, et comment obtenir des résultats propres à chaque fois. Il couvre l’outil, la technique et les erreurs qui gâchent un recadrage par ailleurs réussi.</p>
+<p>Ce guide explique comment fonctionne le recadrage, quels ratios utiliser, et comment obtenir des résultats propres à chaque fois. Il couvre l’outil, la technique et les erreurs qui gâchent un recadrage par ailleurs réussi. Vous pouvez tester tout de suite avec le <a href="/fr/recadrer-images/">Recadreur d’image</a>, qui recadre par glisser-déposer dans le navigateur, avec des ratios prêts à l’emploi et un aperçu en direct.</p>
 <h2 id="what-cropping-does">Ce que fait vraiment le recadrage</h2>
 <p>Recadrer, c’est couper les parties extérieures d’une image et ne garder que le rectangle sélectionné. Rien ne change à l’intérieur de ce rectangle : les pixels gardés sont exactement ceux du départ.</p>
 <p>C’est une distinction importante. Le recadrage n’étire, ne comprime ni ne rééchantillonne la zone gardée : la qualité à l’intérieur de la sélection reste donc la même que celle de l’original.</p>
@@ -8156,7 +8156,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Chaque recadrage a un ratio, que vous l’ayez choisi ou non. Le ratio est la forme du rectangle que vous gardez, et il décide où l’image tient et à quoi elle ressemble.</p>
 <p>Un recadrage carré et un recadrage large ne sont pas interchangeables. L’un convient à une photo de profil, l’autre à une bannière, et utiliser le mauvais veut dire que la plateforme recadrera votre travail à votre place.</p>
-<p>Cet article explique les ratios courants, à quoi sert chacun, et comment choisir. Il couvre aussi les ratios personnalisés, le calcul derrière eux et les erreurs qui viennent quand on les ignore.</p>
+<p>Cet article explique les ratios courants, à quoi sert chacun, et comment choisir. Il couvre aussi les ratios personnalisés, le calcul derrière eux et les erreurs qui viennent quand on les ignore. Pour appliquer le bon ratio à vos photos, le <a href="/fr/recadrer-images/">Recadreur d’image</a> propose les formats classiques en un clic, ainsi qu’un ratio personnalisé quand aucune norme ne convient.</p>
 <h2 id="what-is-an-aspect-ratio">Qu’est-ce qu’un ratio ?</h2>
 <p>Un ratio est le rapport entre la largeur et la hauteur d’une image, écrit sous forme de deux chiffres séparés par deux-points, comme 16:9.</p>
 <p>Ces chiffres décrivent une proportion, pas un nombre de pixels. Une image 16:9 peut faire 1920 par 1080 pixels ou 1280 par 720 pixels, et les deux ont la même forme.</p>
@@ -8469,7 +8469,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Un filigrane doit protéger votre travail sans le gâcher. Cet équilibre est plus difficile qu’il n’y paraît, parce qu’une marque trop discrète ne protège rien et qu’une marque trop forte gâche la photo.</p>
 <p>Les meilleurs filigranes suivent quelques règles simples sur le placement, l’opacité, la taille et la couleur. Ils sont cohérents dans tout votre travail, lisibles sur n’importe quel fond, et difficiles à enlever sans abîmer l’image.</p>
-<p>Cet article rassemble ces règles en un seul endroit. Il couvre où mettre la marque, quelle force lui donner, quel style choisir, et comment construire une habitude de filigrane qui protège chaque image que vous publiez.</p>
+<p>Cet article rassemble ces règles en un seul endroit. Il couvre où mettre la marque, quelle force lui donner, quel style choisir, et comment construire une habitude de filigrane qui protège chaque image que vous publiez. Pour poser votre marque en quelques secondes, l’outil <a href="/fr/ajouter-filigrane/">Filigrane d’image</a> règle le texte, la position, la taille et l’opacité, puis traite tout un lot d’images à la fois.</p>
 <h2 id="why-watermarks-fail">Pourquoi la plupart des filigranes échouent</h2>
 <p>La plupart des filigranes échouent parce qu’ils sont trop timides. Une marque à 10 pour cent d’opacité dans un coin éloigné est invisible sur la plupart des écrans, et elle ne protège rien du tout.</p>
 <p>D’autres échouent parce qu’ils sont trop agressifs. Une solide barre noire au milieu d’une photo gâche l’image pour le client qui a besoin de la juger, et elle agace tous les spectateurs.</p>
@@ -8569,7 +8569,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Certaines parties d’une photo ne devraient pas être partagées. Un visage en arrière-plan, une adresse sur une lettre ou un mot de passe sur un écran peuvent tous causer de vrais torts s’ils tombent sous de mauvais yeux.</p>
 <p>Le floutage et la pixelisation sont les deux façons de cacher ces détails. Les deux rendent une zone illisible, mais ils ont une allure différente et ils ne protègent pas de la même façon.</p>
-<p>Ce guide explique les deux méthodes, quand utiliser chacune, et comment les appliquer proprement. Il couvre les modes pinceau et image entière, les réglages de force, et les erreurs qui laissent des détails sensibles lisibles.</p>
+<p>Ce guide explique les deux méthodes, quand utiliser chacune, et comment les appliquer proprement. Il couvre les modes pinceau et image entière, les réglages de force, et les erreurs qui laissent des détails sensibles lisibles. Pour cacher un détail sans attendre, l’outil <a href="/fr/flouter-et-pixeliser-image/">Flouter et pixeliser une image</a> masque une zone au pinceau ou l’image entière, avec une force réglable et un aperçu immédiat.</p>
 <h2 id="what-blur-does">Ce que le flou fait à une image</h2>
 <p>Le flou adoucit une zone en moyennant les couleurs des pixels voisins. Les bords nets fondent, le texte devient illisible, et les visages perdent leurs traits.</p>
 <p>Un léger flou adoucit seulement un peu le détail, tandis qu’un fort flou transforme la zone en une zone de couleur unie. Le réglage de force décide combien d’informations survivent.</p>
@@ -8775,7 +8775,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Le flou et la pixelisation cachent tous les deux des choses, mais ce n’est pas le même outil. L’un adoucit une zone en une zone de couleur unie, tandis que l’autre la remplace par de gros blocs.</p>
 <p>La différence compte quand la vie privée est en jeu. Une méthode qui a l’air censurée peut quand même laisser un visage reconnaissable ou un mot lisible, et le mauvais choix peut exposer exactement ce qu’on voulait cacher.</p>
-<p>Cet article compare les deux méthodes directement : comment elles marchent, à quoi elles ressemblent, laquelle est plus sûre pour les visages et le texte, et quand les combiner pour une vraie expurgation.</p>
+<p>Cet article compare les deux méthodes directement : comment elles marchent, à quoi elles ressemblent, laquelle est plus sûre pour les visages et le texte, et quand les combiner pour une vraie expurgation. Essayez les deux méthodes avec l’outil <a href="/fr/flouter-et-pixeliser-image/">Flouter et pixeliser une image</a> sur vos propres photos.</p>
 <h2 id="how-each-method-works">Comment marche chaque méthode</h2>
 <p>Le floutage moyenne les couleurs des pixels voisins. Les bords nets fondent, le texte devient illisible, et les visages perdent leurs traits à mesure que la force augmente.</p>
 <p>La pixelisation remplace une zone par des blocs de couleur unie. Chaque bloc est la moyenne des pixels en dessous : tous les fins détails disparaissent et il ne reste qu’une grossière mosaïque.</p>
@@ -9082,7 +9082,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Le texte sur une photo n’est utile que si les gens peuvent le lire. Une belle légende qui disparaît dans un arrière-plan chargé vaut pire que pas de légende du tout, parce qu’elle frustre le spectateur.</p>
 <p>La lisibilité n’est pas une question de goût. Elle vient du contraste, de la taille, du choix de police et du placement, et chacun de ces éléments peut être testé avant de publier.</p>
-<p>Cet article explique les règles qui rendent le texte sur les images lisible. Il couvre les polices, le contraste, les contours, les fonds semi-transparents, et les habitudes de test qui repèrent les problèmes tôt.</p>
+<p>Cet article explique les règles qui rendent le texte sur les images lisible. Il couvre les polices, le contraste, les contours, les fonds semi-transparents, et les habitudes de test qui repèrent les problèmes tôt. Pour appliquer ces règles à vos propres visuels, l’outil <a href="/fr/ajouter-texte-a-image/">Ajouter du texte à une image</a> propose des polices, des couleurs, des contours et des fonds pour composer un texte lisible en quelques clics.</p>
 <h2 id="why-readability-matters">Pourquoi la lisibilité compte plus que le style</h2>
 <p>Une police élégante que personne ne peut lire est un design raté. Le premier travail du texte sur une image est d’être lu, et le style ne compte qu’après que ce travail est fait.</p>
 <p>La plupart des images sont vues sur des téléphones, dans des fils, en petit. Un texte clair en taille réelle sur un ordinateur peut être illisible dans un aperçu de fil, où l’image ne fait que quelques centimètres de large.</p>
@@ -9394,7 +9394,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Un cadre change la façon dont on voit une photo. La même image dans une fine bordure blanche, un cadre Polaroid ou un bord en dégradé lumineux a l’air de trois images différentes.</p>
 <p>Choisir un style n’est pas que de la décoration. Le cadre donne l’ambiance, signale le contexte, et dit au spectateur si la photo est un souvenir, un produit ou une œuvre d’art.</p>
-<p>Cet article compare les principaux styles de cadres et l’endroit où chacun marche le mieux. Il couvre les réseaux sociaux, l’impression, les photos de produits, les portraits, et les choix de couleur et d’ombre qui donnent à un cadre un air délibéré.</p>
+<p>Cet article compare les principaux styles de cadres et l’endroit où chacun marche le mieux. Il couvre les réseaux sociaux, l’impression, les photos de produits, les portraits, et les choix de couleur et d’ombre qui donnent à un cadre un air délibéré. Pour essayer chaque style sur vos photos, le <a href="/fr/ajouter-bordure-a-image/">Générateur de bordure d’image</a> ajoute bordures, cadres Polaroid et coins arrondis, avec la couleur, l’épaisseur et l’ombre de votre choix.</p>
 <h2 id="why-frames-matter">Pourquoi les cadres comptent</h2>
 <p>Un cadre sépare l’image de ce qui l’entoure. Sur une page chargée ou un fil bondé, une photo encadrée ressort, tandis qu’une photo sans bordure peut se fondre dans l’arrière-plan.</p>
 <p>Les cadres ajoutent aussi une impression d’achèvement. Une photo avec une bordure a l’air finie, comme un tirage monté, tandis qu’une photo sans bordure peut avoir l’air d’un fichier brut.</p>
@@ -9498,7 +9498,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Des coins arrondis adoucissent une photo. Ils transforment un rectangle aux angles vifs en une forme accueillante, bien adaptée aux écrans modernes, aux cartes et aux avatars.</p>
 <p>Aujourd’hui, toutes les applications et tous les sites utilisent des coins arrondis. Les photos de profil sont rondes, les cartes ont des bords doux et les boutons sont en forme de pilule : une photo aux coins arrondis y trouve donc naturellement sa place.</p>
-<p>Ce guide explique comment fonctionne l’arrondi, quelles formes choisir et comment exporter le résultat correctement. Il traite du rayon, du réglage coin par coin, de la transparence et des formats.</p>
+<p>Ce guide explique comment fonctionne l’arrondi, quelles formes choisir et comment exporter le résultat correctement. Il traite du rayon, du réglage coin par coin, de la transparence et des formats. Pour arrondir vos propres images, l’outil <a href="/fr/arrondir-coins-image/">Arrondir les coins d’une image</a> règle le rayon au pixel près, coin par coin, et exporte en PNG avec transparence ou en JPG sur fond uni.</p>
 <h2 id="what-rounding-does">Ce que fait vraiment l’arrondi des coins</h2>
 <p>Arrondir, c’est découper les coins d’une image le long d’une courbe. Les bords droits restent en place, mais les angles à 90 degrés deviennent des arcs lisses.</p>
 <p>La courbe est définie par un rayon. Un petit rayon adoucit à peine les coins, tandis qu’un grand rayon les transforme en courbes profondes qui changent toute la forme.</p>
@@ -9750,7 +9750,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Les coins arrondis et le recadrage circulaire adoucissent tous les deux une photo, mais ce n’est pas la même chose. L’un garde le rectangle et courbe ses coins, alors que l’autre transforme l’image en forme ronde.</p>
 <p>La différence compte pour les avatars, les cartes et les profils sociaux, où la forme décide de la façon dont la photo s’insère et dont on la voit. Une mauvaise forme peut couper un visage ou sembler déplacée.</p>
-<p>Cet article compare les deux formes directement : comment elles fonctionnent, ce qu’elles donnent visuellement, où chacune s’adapte, et quand les combiner pour obtenir le meilleur résultat.</p>
+<p>Cet article compare les deux formes directement : comment elles fonctionnent, ce qu’elles donnent visuellement, où chacune s’adapte, et quand les combiner pour obtenir le meilleur résultat. Pour tester les deux formes sur la même photo, l’outil <a href="/fr/arrondir-coins-image/">Arrondir les coins d’une image</a> passe du rayon doux au cercle complet en déplaçant un seul curseur.</p>
 <h2 id="what-each-shape-does">Ce que fait chaque forme</h2>
 <p>Les coins arrondis gardent l’image sous forme de rectangle et courbent les quatre coins le long d’un arc. Les bords droits restent, mais les pointes vives deviennent des courbes lisses.</p>
 <p>Un recadrage circulaire découpe l’image en forme ronde. Tout ce qui se trouve hors du cercle est retiré, donc la photo devient un disque sans aucun bord droit.</p>
@@ -9873,7 +9873,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>La luminosité est la retouche la plus simple, et la première à laquelle on pense. Une photo sombre devient visible, une photo délavée retrouve de la profondeur, et une image terne reprend vie.</p>
 <p>Mais il est facile d’en faire trop. Poussez-la trop loin et la photo devient plate et grise, avec des hautes lumières cramées et plus aucun détail dans les zones claires.</p>
-<p>Ce guide explique comment fonctionne la luminosité, comment bien utiliser le curseur et les préréglages, et comment éclaircir une photo sombre sans la détruire. Il traite des portraits, des paysages, des captures d’écran et des erreurs qui gâchent une bonne image.</p>
+<p>Ce guide explique comment fonctionne la luminosité, comment bien utiliser le curseur et les préréglages, et comment éclaircir une photo sombre sans la détruire. Il traite des portraits, des paysages, des captures d’écran et des erreurs qui gâchent une bonne image. Pour éclaircir vos photos sans les abîmer, l’<a href="/fr/ajuster-luminosite-image/">Éditeur de luminosité d’image</a> règle la luminosité au curseur, avec des préréglages et une comparaison avant/après en direct.</p>
 <h2 id="what-brightness-does">Ce que fait vraiment la luminosité</h2>
 <p>La luminosité déplace chaque pixel de l’image vers le blanc ou vers le noir. L’augmenter rend les zones sombres plus claires et les zones claires encore plus claires, alors que la diminuer assombrit tout.</p>
 <p>Le changement est uniforme sur toute l’image. Un réglage de luminosité ne cible ni les ombres ni les hautes lumières : il déplace toute la gamme des tons vers le haut ou vers le bas, ensemble.</p>
@@ -10125,7 +10125,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>La luminosité, l’exposition et le contraste sont les trois réglages que propose chaque éditeur photo, et il est facile de les confondre. Tous les trois rendent une photo plus claire ou plus sombre, mais ils le font de manières différentes.</p>
 <p>Utiliser le mauvais donne un moins bon résultat. Une photo qui a besoin de contraste aura l’air délavée si vous l’éclaircissez seulement, et une photo qui a besoin de luminosité aura l’air dure si vous ajoutez seulement du contraste.</p>
-<p>Cet article explique chaque réglage, en quoi ils diffèrent, comment ils interagissent, et lequel choisir dans chaque situation. C’est la base de toutes les autres retouches photo que vous ferez.</p>
+<p>Cet article explique chaque réglage, en quoi ils diffèrent, comment ils interagissent, et lequel choisir dans chaque situation. C’est la base de toutes les autres retouches photo que vous ferez. Pour sentir la différence par vous-même, l’<a href="/fr/ajuster-luminosite-image/">Éditeur de luminosité d’image</a> vous laisse déplacer le curseur sur votre propre photo et voir le résultat avant/après en temps réel.</p>
 <h2 id="what-each-does">Ce que fait chaque réglage</h2>
 <p>La luminosité déplace chaque pixel vers le blanc ou vers le noir, uniformément sur toute l’image. C’est le réglage le plus simple, et il corrige une photo globalement sombre ou claire.</p>
 <p>L’exposition change la quantité de lumière que l’image semble avoir captée. Elle agit différemment sur les hautes lumières et sur les ombres, en préservant davantage de détails aux extrêmes que la luminosité.</p>
@@ -10248,7 +10248,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Le contraste est la différence entre les parties les plus sombres et les plus claires d’une photo. C’est ce qui donne à une image son côté percutant et solide, ou plat et gris.</p>
 <p>Une photo avec un bon contraste a des ombres profondes, des hautes lumières lumineuses et un vrai sens de la profondeur. Une photo à faible contraste a l’air brumeuse, comme prise à travers du brouillard.</p>
-<p>Ce guide explique comment fonctionne le contraste, comment bien utiliser le curseur et les préréglages, et comment donner du peps sans couper les hautes lumières ni écraser les ombres. Il traite des portraits, des paysages, des captures d’écran et des erreurs qui gâchent une bonne image.</p>
+<p>Ce guide explique comment fonctionne le contraste, comment bien utiliser le curseur et les préréglages, et comment donner du peps sans couper les hautes lumières ni écraser les ombres. Il traite des portraits, des paysages, des captures d’écran et des erreurs qui gâchent une bonne image. Pour donner du peps à vos photos, l’<a href="/fr/ajuster-contraste-image/">Éditeur de contraste d’image</a> règle le contraste au curseur, avec des préréglages et un aperçu avant/après pour ne jamais aller trop loin.</p>
 <h2 id="what-contrast-does">Ce que fait vraiment le contraste</h2>
 <p>Le contraste étire ou resserre la gamme des tons d’une image. L’augmenter rend les pixels sombres plus sombres et les pixels clairs plus clairs, en élargissant l’écart entre eux.</p>
 <p>Diminuer le contraste fait l’inverse. Il rapproche les sombres et les clairs, adoucit l’image et réduit la différence entre ses parties les plus lumineuses et les plus sombres.</p>
@@ -10500,7 +10500,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Du texte sur une photo n’est utile que si on peut le lire. Un titre qui disparaît dans un ciel lumineux ou une légende qui se fond dans une ombre sombre échoue dans sa seule mission.</p>
 <p>Le contraste rend le texte lisible. C’est la différence de luminosité entre les lettres et l’arrière-plan derrière elles, et on peut la corriger dans la photo, dans le texte, ou dans les deux.</p>
-<p>Cet article explique comment construire ce contraste. Il traite de l’assombrissement, des voiles, des panneaux, des choix de couleurs et des habitudes de test qui repèrent le texte illisible avant la publication.</p>
+<p>Cet article explique comment construire ce contraste. Il traite de l’assombrissement, des voiles, des panneaux, des choix de couleurs et des habitudes de test qui repèrent le texte illisible avant la publication. Avant d’ajouter votre texte, passez la photo dans l’<a href="/fr/ajuster-contraste-image/">Éditeur de contraste d’image</a> : un contraste bien réglé rend les lettres lisibles sans toucher au reste de l’image.</p>
 <h2 id="why-contrast-matters">Pourquoi le contraste compte plus que la police</h2>
 <p>Une belle police que personne ne peut lire est un design raté. La première mission du texte sur une image est d’être lu, et le contraste décide si cette mission est remplie.</p>
 <p>La plupart des images sont vues sur téléphone, dans des fils, en petit format. Un texte net en taille réelle sur un ordinateur peut être illisible dans un aperçu de fil, où l’image ne fait que quelques centimètres de large.</p>
@@ -10618,7 +10618,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>La saturation est l’intensité des couleurs d’une photo. Une image très saturée a des couleurs vives et percutantes, alors qu’une image désaturée a l’air atténuée, douce, ou complètement grise.</p>
 <p>Bien régler la saturation, c’est ce qui rend une photo naturelle. Trop peu, et l’image a l’air délavée et sans vie ; trop, et l’herbe devient fluo et la peau orange.</p>
-<p>Ce guide explique comment fonctionne la saturation, comment bien utiliser le curseur et les préréglages, et comment garder les couleurs naturelles. Il traite des portraits, des paysages, de la nourriture, des produits et des erreurs qui rendent les photos artificielles.</p>
+<p>Ce guide explique comment fonctionne la saturation, comment bien utiliser le curseur et les préréglages, et comment garder les couleurs naturelles. Il traite des portraits, des paysages, de la nourriture, des produits et des erreurs qui rendent les photos artificielles. Pour trouver le bon dosage sur vos photos, l’<a href="/fr/ajuster-saturation-image/">Éditeur de saturation d’image</a> règle l’intensité des couleurs au curseur, du noir et blanc au rendu vif, avec un aperçu en direct.</p>
 <h2 id="what-saturation-does">Ce que fait vraiment la saturation</h2>
 <p>La saturation contrôle à quel point les couleurs d’une image sont pures ou grises. L’augmenter rend chaque couleur plus forte et plus vive, alors que la diminuer draine la couleur vers le gris.</p>
 <p>À zéro, l’image a l’air normale. À plus 100 pour cent, les couleurs sont aussi fortes que possible, et à moins 100 pour cent, l’image devient complètement noir et blanc.</p>
@@ -10870,7 +10870,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>La saturation et la vibrance rendent toutes les deux les couleurs plus fortes, mais elles le font de manières différentes. L’une renforce chaque couleur de la même façon, alors que l’autre renforce seulement les couleurs qui en ont besoin.</p>
 <p>La différence compte pour les photos naturelles. Un coup de saturation peut rendre la peau orange et l’herbe fluo, alors qu’un coup de vibrance protège les couleurs déjà fortes.</p>
-<p>Cet article compare les deux réglages directement : comment ils fonctionnent, comment ils traitent les tons de peau, quand utiliser chacun, et comment les combiner pour des couleurs naturelles et vives.</p>
+<p>Cet article compare les deux réglages directement : comment ils fonctionnent, comment ils traitent les tons de peau, quand utiliser chacun, et comment les combiner pour des couleurs naturelles et vives. Pour comparer les deux effets sur la même photo, l’<a href="/fr/ajuster-saturation-image/">Éditeur de saturation d’image</a> vous laisse monter le curseur et juger le résultat sur vos tons de peau et vos paysages.</p>
 <h2 id="what-each-does">Ce que fait chaque réglage</h2>
 <p>La saturation renforce toutes les couleurs de la même façon. Chaque teinte de l’image devient plus forte du même montant, qu’elle ait été déjà vive ou à peine visible.</p>
 <p>La vibrance renforce davantage les couleurs atténuées et moins les couleurs vives. Elle relève les tons ternes tout en laissant les couleurs déjà fortes presque intactes.</p>
@@ -10993,7 +10993,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Un filtre photo change l’ambiance d’une image en un clic. Il déplace les couleurs, le contraste et les tons, transformant un instantané ordinaire en image stylisée.</p>
 <p>Les filtres sont la retouche la plus rapide en photographie. Un seul geste peut rendre une photo vintage, dramatique, chaude ou froide, sans aucun réglage manuel.</p>
-<p>Ce guide explique comment fonctionnent les filtres, ce que font les 11 styles, et comment bien les utiliser. Il traite de l’intensité, de la comparaison, de la cohérence et des erreurs qui rendent les photos filtrées bon marché.</p>
+<p>Ce guide explique comment fonctionnent les filtres, ce que font les 11 styles, et comment bien les utiliser. Il traite de l’intensité, de la comparaison, de la cohérence et des erreurs qui rendent les photos filtrées bon marché. Pour essayer les 11 styles sur vos photos, l’outil <a href="/fr/filtres-image/">Filtres d’image</a> applique chaque filtre en un clic, avec une intensité réglable et une comparaison avant/après.</p>
 <h2 id="what-filters-do">Ce que font vraiment les filtres photo</h2>
 <p>Un filtre applique à une photo une combinaison prédéfinie de changements de couleur, de contraste et de tons. Chaque filtre est une recette : des couleurs plus chaudes, un contraste plus doux, des noirs délavés, ou une palette plus froide.</p>
 <p>Les changements se produisent tous en même temps. Au lieu de régler la luminosité, le contraste et la saturation séparément, un filtre applique un ensemble coordonné de changements en une seule étape.</p>
@@ -11245,7 +11245,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Onze filtres, c’est beaucoup de choix. Chacun change l’ambiance d’une photo, et le mauvais peut rendre une bonne image bon marché ou étrange.</p>
 <p>Comparer les filtres côte à côte est le moyen le plus rapide de les apprendre. Une fois que vous savez ce que chacun fait, choisir devient rapide, et vos photos gagnent un rendu cohérent.</p>
-<p>Cet article compare les 11 styles directement : en quoi ils diffèrent, à quels sujets chacun convient, et comment construire une habitude de filtre cohérente dans votre travail.</p>
+<p>Cet article compare les 11 styles directement : en quoi ils diffèrent, à quels sujets chacun convient, et comment construire une habitude de filtre cohérente dans votre travail. Pour comparer les styles sur vos propres photos, l’outil <a href="/fr/filtres-image/">Filtres d’image</a> applique les 11 filtres en un clic, avec une intensité réglable.</p>
 <h2 id="why-compare-filters">Pourquoi comparer les filtres</h2>
 <p>Les filtres se ressemblent dans une petite grille, mais ils se comportent très différemment en taille réelle. Un filtre qui a l’air chaud en miniature peut rendre un visage orange dans l’aperçu principal.</p>
 <p>Les comparer sur la même photo montre les différences clairement. Le même portrait sous Vintage, Sepia et Noir et blanc Noir ressemble à trois photographies différentes.</p>

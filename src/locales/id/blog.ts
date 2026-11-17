@@ -2044,7 +2044,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Kompresi batch mudah dimulai dan mudah dilakukan dengan salah. Batch yang ceroboh bisa menghasilkan lima puluh gambar yang lembut, ZIP yang berantakan, dan pagi yang dihabiskan untuk memperbaikinya.</p>
 <p>Batch yang hati-hati melakukan sebaliknya. Ia menghasilkan gambar yang konsisten dan tajam, tertata dalam paket yang bersih, dan siap diunggah dalam satu langkah.</p>
-<p>Artikel ini membahas praktik terbaik yang membedakan kedua hasil itu, dari preset sampai penamaan sampai pemeriksaan kualitas.</p>
+<p>Artikel ini membahas praktik terbaik yang membedakan kedua hasil itu, dari preset sampai penamaan sampai pemeriksaan kualitas. Semua praktik ini bisa langsung Anda coba di <a href="/id/kompres-gambar-secara-massal/">Kompresor Gambar Massal</a>, yang mengompres puluhan gambar sekaligus tanpa mengunggahnya ke server.</p>
 <h2 id="start-with-originals">Mulailah dengan Original, Selalu</h2>
 <p>Setiap batch harus dimulai dari original berkualitas tertinggi yang Anda punya. Batch yang dibangun dari salinan hasil kompres mewarisi semua kerusakan mereka.</p>
 <p>Aplikasi chat, platform sosial, dan email semuanya mengecilkan foto sebelum Anda melihatnya. Foto yang diteruskan lewat aplikasi chat sudah menjadi sumber yang buruk.</p>
@@ -3736,7 +3736,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Setiap konversi format mengubah cara gambar Anda disimpan, dan sebagian perubahan itu bersifat permanen. Memahami konversi mana yang menghilangkan kualitas, dan mana yang tidak, menyelamatkan Anda dari kerusakan foto secara perlahan.</p>
 <p>Aturannya mudah diucapkan dan mudah dilupakan: format lossy membuang detail, format lossless mempertahankan semuanya. Setiap keputusan konversi berasal dari satu fakta itu.</p>
-<p>Artikel ini menjelaskan kehilangan kualitas dengan bahasa yang sederhana. Anda akan belajar apa yang terjadi di dalam setiap format, mengapa konversi berulang merusak, dan kapan mengonversi sepenuhnya aman.</p>
+<p>Artikel ini menjelaskan kehilangan kualitas dengan bahasa yang sederhana. Anda akan belajar apa yang terjadi di dalam setiap format, mengapa konversi berulang merusak, dan kapan mengonversi sepenuhnya aman. Kalau Anda ingin mempraktikkannya, <a href="/id/konversi-gambar/">Konverter Gambar</a> mengubah format file langsung di browser, jadi tidak ada foto yang perlu diunggah ke mana pun.</p>
 <h2 id="what-quality-loss-means">Apa Sebenarnya Arti Kehilangan Kualitas</h2>
 <p>Kehilangan kualitas berarti detail yang ada di file asli hilang dari file hasil konversi, dan tidak ada alat yang bisa mengembalikannya. Pikselnya masih ada, tetapi informasi halus di dalamnya sudah disederhanakan.</p>
 <p>Kerusakan itu tidak selalu terlihat. Foto yang dikonversi pada kualitas 90 persen tampak identik dengan aslinya pada ukuran normal, tetapi perbandingan tingkat piksel menunjukkan perbedaan kecil di area bertekstur.</p>
@@ -4126,7 +4126,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Ketika Anda membuat PDF dari gambar, format gambar itu jauh lebih penting daripada yang diduga kebanyakan orang. Halaman JPG dan halaman PNG bisa tampak identik di layar, tetapi berperilaku sangat berbeda.</p>
 <p>Pilihan itu memengaruhi ukuran file, ketajaman teks, dan cara PDF tercetak. Untuk album foto, satu format menang; untuk kontrak hasil scan, format lainnya menang.</p>
-<p>Artikel ini membandingkan JPG dan PNG di dalam PDF, agar Anda bisa memilih format yang tepat sebelum membuat PDF, bukan setelahnya.</p>
+<p>Artikel ini membandingkan JPG dan PNG di dalam PDF, agar Anda bisa memilih format yang tepat sebelum membuat PDF, bukan setelahnya. Setelah memilih, Anda bisa langsung menggabungkan gambar-gambar itu menjadi satu dokumen dengan <a href="/id/gambar-ke-pdf/">Gambar ke PDF</a>.</p>
 <h2 id="jpg-inside-pdf">Gambar JPG di Dalam PDF</h2>
 <p>JPG adalah format lossy, yang berarti ia membuang detail untuk memperkecil file. Di dalam PDF, halaman JPG menyimpan foto dengan kompresi yang sama itu, menjaga dokumen tetap kecil.</p>
 <p>Foto terkompres dengan indah sebagai JPG. Foto satu halaman penuh pada kualitas 85 persen tampak bersih dan menjaga PDF cukup ringan untuk dikirim lewat email.</p>
@@ -5712,7 +5712,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Konversi PNG ke JPG terkenal karena memperkecil file, tetapi penghematannya tidak sama untuk setiap gambar. Screenshot bisa turun 90 persen, sementara ikon sederhana bisa justru membesar.</p>
 <p>Memahami apa yang mendorong penghematan itu membantu Anda memprediksi hasilnya sebelum mengonversi, dan memilih pengaturan kualitas yang melindungi hal yang penting.</p>
-<p>Artikel ini melihat angkanya secara jujur, berdasarkan jenis gambar, dan menjelaskan pertukarannya dengan bahasa yang sederhana.</p>
+<p>Artikel ini melihat angkanya secara jujur, berdasarkan jenis gambar, dan menjelaskan pertukarannya dengan bahasa yang sederhana. Untuk mencobanya sendiri, <a href="/id/konversi-png-ke-jpg/">PNG ke JPG</a> mengubah file Anda dalam hitungan detik, lengkap dengan pengatur kualitas yang bisa Anda sesuaikan.</p>
 <h2 id="why-png-is-big">Mengapa File PNG Begitu Besar</h2>
 <p>PNG bersifat lossless, yang berarti menyimpan setiap piksel secara persis. Ketepatan itu membutuhkan byte, terutama untuk gambar detail dengan tekstur dan variasi warna tanpa akhir.</p>
 <p>Foto memiliki jutaan warna yang sedikit berbeda. PNG harus mendeskripsikan masing-masing, sementara JPG bisa menyederhanakannya menjadi gradasi halus yang hampir tidak dibedakan mata.</p>
@@ -8638,7 +8638,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 
 <p>Memutar dan membalik adalah dua langkah yang memperbaikinya. Memutar mengubah seluruh gambar pada sudut tertentu, sedangkan membalik mencerminkannya dari kiri ke kanan atau dari atas ke bawah.</p>
 
-<p>Panduan ini menjelaskan kedua langkah tersebut dengan bahasa yang mudah dipahami. Anda akan belajar sudut mana yang dipakai, cara memperbaiki selfie yang terbalik, alasan foto bisa berputar sendiri, dan cara meluruskan foto miring tanpa memotong sudutnya.</p>
+<p>Panduan ini menjelaskan kedua langkah tersebut dengan bahasa yang mudah dipahami. Anda akan belajar sudut mana yang dipakai, cara memperbaiki selfie yang terbalik, alasan foto bisa berputar sendiri, dan cara meluruskan foto miring tanpa memotong sudutnya. Semua langkah di panduan ini bisa Anda lakukan langsung di <a href="/id/putar-balik-gambar/">Putar &amp; Balik Gambar</a>, tanpa memasang aplikasi apa pun.</p>
 
 <h2 id="what-rotation-and-flipping-do">Apa yang Dilakukan Rotasi dan Pembalikan Gambar</h2>
 
@@ -9249,7 +9249,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 
 <p>Setiap foto menyimpan versi terbaiknya di dalam. Foto lebar dengan langit kosong menjadi potret yang kuat begitu ruang tambahannya dipotong, dan tangkapan layar yang ramai menjadi mudah dibaca begitu tepinya dipangkas.</p>
 
-<p>Panduan ini menjelaskan cara kerja pemotongan, rasio aspek mana yang dipakai, dan cara mendapatkan hasil bersih setiap kali. Panduan ini membahas tool, teknik, dan kesalahan yang merusak potongan yang sebenarnya bagus.</p>
+<p>Panduan ini menjelaskan cara kerja pemotongan, rasio aspek mana yang dipakai, dan cara mendapatkan hasil bersih setiap kali. Panduan ini membahas tool, teknik, dan kesalahan yang merusak potongan yang sebenarnya bagus. Coba langsung di <a href="/id/potong-gambar/">Pemotong Gambar</a>, gratis dan tanpa unggah file.</p>
 
 <h2 id="what-cropping-does">Apa yang Sebenarnya Dilakukan Pemotongan</h2>
 
@@ -9655,7 +9655,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 
 <p>Potongan kotak dan potongan lebar tidak bisa saling menggantikan. Satu cocok untuk foto profil, satu lagi cocok untuk spanduk, dan memakai yang salah berarti platform akan memotong ulang hasil kerja Anda.</p>
 
-<p>Artikel ini menjelaskan rasio umum, fungsi masing-masing, dan cara memilih. Artikel ini juga membahas rasio khusus, matematika di baliknya, dan kesalahan yang timbul karena mengabaikannya.</p>
+<p>Artikel ini menjelaskan rasio umum, fungsi masing-masing, dan cara memilih. Artikel ini juga membahas rasio khusus, matematika di baliknya, dan kesalahan yang timbul karena mengabaikannya. Begitu Anda tahu rasio yang dibutuhkan, <a href="/id/potong-gambar/">Pemotong Gambar</a> menyediakan preset 1:1, 4:3, dan 16:9 yang tinggal dipilih.</p>
 
 <h2 id="what-is-an-aspect-ratio">Apa Itu Rasio Aspek?</h2>
 
@@ -10264,7 +10264,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 
 <p>Watermark terbaik mengikuti beberapa aturan sederhana tentang penempatan, opacity, ukuran, dan warna. Watermark itu konsisten di seluruh karya Anda, terbaca pada latar apa pun, dan sulit dihapus tanpa merusak gambar.</p>
 
-<p>Artikel ini mengumpulkan aturan-aturan itu dalam satu tempat. Artikel ini membahas tempat menaruh tanda, seberapa kuat membuatnya, gaya mana yang dipilih, dan cara membangun kebiasaan watermark yang melindungi setiap gambar yang Anda terbitkan.</p>
+<p>Artikel ini mengumpulkan aturan-aturan itu dalam satu tempat. Artikel ini membahas tempat menaruh tanda, seberapa kuat membuatnya, gaya mana yang dipilih, dan cara membangun kebiasaan watermark yang melindungi setiap gambar yang Anda terbitkan. Untuk menerapkan aturan-aturan ini, <a href="/id/tambah-watermark-gambar/">Watermark Gambar</a> memungkinkan Anda mengatur teks, logo, opacity, dan posisi watermark dalam satu tempat.</p>
 
 <h2 id="why-watermarks-fail">Mengapa Sebagian Besar Watermark Gagal</h2>
 
@@ -10460,7 +10460,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 
 <p>Blur dan pixelasi adalah dua cara menyembunyikan detail itu. Keduanya membuat area tidak bisa dibaca, tetapi tampilannya berbeda dan perlindungannya berbeda.</p>
 
-<p>Panduan ini menjelaskan kedua metode, kapan memakai masing-masing, dan cara menerapkannya dengan bersih. Panduan ini membahas mode kuas dan seluruh gambar, pengaturan kekuatan, dan kesalahan yang membuat detail sensitif tetap terbaca.</p>
+<p>Panduan ini menjelaskan kedua metode, kapan memakai masing-masing, dan cara menerapkannya dengan bersih. Panduan ini membahas mode kuas dan seluruh gambar, pengaturan kekuatan, dan kesalahan yang membuat detail sensitif tetap terbaca. Kalau ada foto yang perlu segera disensor, <a href="/id/buram-dan-pixelasi-gambar/">Buram &amp; Pixelasi Gambar</a> menyembunyikan wajah atau teks langsung di browser, tanpa file Anda diunggah ke server.</p>
 
 <h2 id="what-blur-does">Apa yang Dilakukan Blur pada Gambar</h2>
 
@@ -10867,7 +10867,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 
 <p>Perbedaan itu penting saat privasi dipertaruhkan. Metode yang terlihat tersensor masih bisa membiarkan wajah dikenali atau kata terbaca, dan pilihan yang salah bisa mengungkap persis apa yang ingin Anda sembunyikan.</p>
 
-<p>Artikel ini membandingkan kedua metode secara langsung: cara kerjanya, tampilannya, mana yang lebih aman untuk wajah dan teks, dan kapan menggabungkannya untuk sensor yang benar.</p>
+<p>Artikel ini membandingkan kedua metode secara langsung: cara kerjanya, tampilannya, mana yang lebih aman untuk wajah dan teks, dan kapan menggabungkannya untuk sensor yang benar. Setelah menentukan metode yang tepat, Anda bisa langsung mencobanya di <a href="/id/buram-dan-pixelasi-gambar/">Buram &amp; Pixelasi Gambar</a> dan membandingkan sendiri hasil keduanya.</p>
 
 <h2 id="how-each-method-works">Cara Kerja Setiap Metode</h2>
 
@@ -11474,7 +11474,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 
 <p>Keterbacaan bukan soal selera. Keterbacaan berasal dari kontras, ukuran, pilihan font, dan penempatan, dan masing-masing bisa diuji sebelum Anda menerbitkan.</p>
 
-<p>Artikel ini menjelaskan aturan yang membuat teks pada gambar mudah dibaca. Artikel ini membahas font, kontras, garis tepi, panel latar, dan kebiasaan pengujian yang menangkap masalah lebih awal.</p>
+<p>Artikel ini menjelaskan aturan yang membuat teks pada gambar mudah dibaca. Artikel ini membahas font, kontras, garis tepi, panel latar, dan kebiasaan pengujian yang menangkap masalah lebih awal. Semua aturan ini bisa langsung Anda uji di <a href="/id/tambah-teks-ke-gambar/">Tambah Teks ke Gambar</a>, yang menyediakan pilihan font, warna, dan bayangan teks dalam satu tempat.</p>
 
 <h2 id="why-readability-matters">Mengapa Keterbacaan Lebih Penting daripada Gaya</h2>
 
@@ -12083,7 +12083,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 
 <p>Memilih gaya bukan hanya dekorasi. Bingkai mengatur suasana, memberi sinyal konteks, dan memberi tahu penonton apakah foto itu kenangan, produk, atau karya seni.</p>
 
-<p>Artikel ini membandingkan gaya bingkai utama dan tempat masing-masing bekerja paling baik. Artikel ini membahas media sosial, cetak, foto produk, potret, serta pilihan warna dan bayangan yang membuat bingkai terasa disengaja.</p>
+<p>Artikel ini membandingkan gaya bingkai utama dan tempat masing-masing bekerja paling baik. Artikel ini membahas media sosial, cetak, foto produk, potret, serta pilihan warna dan bayangan yang membuat bingkai terasa disengaja. Kalau Anda ingin mencoba gayanya satu per satu, <a href="/id/generator-bingkai-gambar/">Generator Bingkai Gambar</a> menyediakan semua gaya bingkai yang dibahas di artikel ini.</p>
 
 <h2 id="why-frames-matter">Mengapa Bingkai Penting</h2>
 
@@ -12287,7 +12287,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   body: `
 <p>Sudut yang membulat membuat foto terasa lebih lembut. Bentuk persegi yang tajam berubah menjadi bentuk yang ramah dan pas untuk layar, kartu, dan foto profil masa kini.</p>
 <p>Hampir semua aplikasi dan situs web kini memakai sudut membulat. Foto profil berbentuk lingkaran, kartu punya tepi yang lembut, dan tombol berbentuk pil, jadi foto dengan sudut membulat terasa menyatu dengan tampilannya.</p>
-<p>Panduan ini menjelaskan cara kerja pembulatan sudut, bentuk apa yang sebaiknya dipilih, dan cara mengekspor hasilnya dengan benar. Anda akan mempelajari radius, kontrol per sudut, transparansi, dan format file.</p>
+<p>Panduan ini menjelaskan cara kerja pembulatan sudut, bentuk apa yang sebaiknya dipilih, dan cara mengekspor hasilnya dengan benar. Anda akan mempelajari radius, kontrol per sudut, transparansi, dan format file. Semua pengaturan itu tersedia di <a href="/id/bulatkan-sudut-gambar/">Bulatkan Sudut Gambar</a>, tempat Anda bisa mengatur radius tiap sudut lalu mengunduh hasilnya dengan latar transparan.</p>
 <h2 id="what-rounding-does">Apa yang Sebenarnya Dilakukan Pembulatan Sudut</h2>
 <p>Membulatkan sudut berarti memotong sudut gambar mengikuti sebuah lengkungan. Tepi yang lurus tetap utuh, tetapi sudut 90 derajat yang tajam berubah menjadi lengkungan yang halus.</p>
 <p>Lengkungan ini ditentukan oleh nilai radius. Radius kecil memberi kelembutan tipis, sedangkan radius besar mengubah sudut menjadi lengkungan dalam yang mengubah keseluruhan bentuk gambar.</p>
@@ -12545,7 +12545,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   body: `
 <p>Sudut membulat dan crop lingkaran sama-sama melembutkan foto, tetapi keduanya bukan hal yang sama. Yang satu mempertahankan persegi dan melengkungkan sudutnya, sedangkan yang lain mengubah gambar menjadi bentuk bulat.</p>
 <p>Perbedaan ini penting untuk avatar, kartu, dan profil media sosial, yang bentuknya menentukan cara foto menyesuaikan diri dan cara foto itu dilihat. Bentuk yang salah bisa memotong wajah atau terlihat tidak pada tempatnya.</p>
-<p>Artikel ini membandingkan kedua bentuk secara langsung: cara kerjanya, tampilannya, tempat masing-masing cocok, dan kapan menggabungkannya untuk hasil terbaik.</p>
+<p>Artikel ini membandingkan kedua bentuk secara langsung: cara kerjanya, tampilannya, tempat masing-masing cocok, dan kapan menggabungkannya untuk hasil terbaik. Kedua bentuk itu bisa Anda buat dengan <a href="/id/bulatkan-sudut-gambar/">Bulatkan Sudut Gambar</a>, jadi Anda tinggal memilih mana yang paling cocok untuk foto Anda.</p>
 <h2 id="what-each-shape-does">Apa yang Dilakukan Masing-Masing Bentuk</h2>
 <p>Sudut membulat mempertahankan gambar sebagai persegi dan melengkungkan keempat sudutnya mengikuti busur. Tepi yang lurus tetap ada, tetapi titik-titik tajam berubah menjadi lengkungan halus.</p>
 <p>Crop lingkaran memotong gambar menjadi bentuk bulat. Semua yang berada di luar lingkaran dihapus, sehingga foto menjadi cakram tanpa tepi lurus sama sekali.</p>
@@ -12673,7 +12673,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   body: `
 <p>Kecerahan adalah perbaikan foto yang paling sederhana, dan yang pertama kali dicari orang. Foto gelap menjadi terlihat, foto yang pudar mendapat kedalaman, dan foto yang kusam kembali hidup.</p>
 <p>Tetapi kecerahan mudah dilakukan berlebihan. Dorong terlalu jauh dan foto berubah datar dan abu-abu, dengan highlight yang pecah dan tidak ada detail tersisa di area terang.</p>
-<p>Panduan ini menjelaskan cara kerja kecerahan, cara memakai slider dan preset dengan baik, dan cara memperbaiki foto gelap tanpa merusaknya. Di dalamnya ada potret, lanskap, tangkapan layar, dan kesalahan yang merusak gambar yang bagus.</p>
+<p>Panduan ini menjelaskan cara kerja kecerahan, cara memakai slider dan preset dengan baik, dan cara memperbaiki foto gelap tanpa merusaknya. Di dalamnya ada potret, lanskap, tangkapan layar, dan kesalahan yang merusak gambar yang bagus. Untuk mempraktikkannya, buka <a href="/id/editor-kecerahan-gambar/">Editor Kecerahan Gambar</a> dan geser slidernya sambil memperhatikan histogram foto Anda.</p>
 <h2 id="what-brightness-does">Apa yang Sebenarnya Dilakukan Kecerahan</h2>
 <p>Kecerahan menggeser setiap piksel dalam gambar ke arah putih atau ke arah hitam. Menaikkannya membuat area gelap lebih terang dan area terang makin terang, sedangkan menurunkannya menggelapkan semuanya.</p>
 <p>Perubahan ini merata di seluruh gambar. Penyesuaian kecerahan tidak memilih bayangan atau highlight, melainkan menggerakkan seluruh rentang nada naik atau turun bersama-sama.</p>
@@ -12934,7 +12934,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   body: `
 <p>Kecerahan, eksposur, dan kontras adalah tiga kontrol yang ditawarkan setiap editor foto, dan ketiganya mudah tertukar. Ketiganya membuat foto lebih terang atau lebih gelap, tetapi dengan cara yang berbeda.</p>
 <p>Memakai kontrol yang salah memberi hasil yang lebih buruk. Foto yang butuh kontras akan terlihat pudar jika hanya dicerahkan, dan foto yang butuh kecerahan akan terlihat kasar jika hanya ditambah kontras.</p>
-<p>Artikel ini menjelaskan setiap kontrol, perbedaannya, cara ketiganya berinteraksi, dan mana yang sebaiknya dipakai di tiap situasi. Ini adalah dasar untuk setiap edit foto lain yang akan Anda lakukan.</p>
+<p>Artikel ini menjelaskan setiap kontrol, perbedaannya, cara ketiganya berinteraksi, dan mana yang sebaiknya dipakai di tiap situasi. Ini adalah dasar untuk setiap edit foto lain yang akan Anda lakukan. Kontrol kecerahan yang dibahas di sini bisa Anda coba langsung di <a href="/id/editor-kecerahan-gambar/">Editor Kecerahan Gambar</a>, lengkap dengan pratinjau sebelum dan sesudah.</p>
 <h2 id="what-each-does">Apa yang Dilakukan Masing-Masing Kontrol</h2>
 <p>Kecerahan menggeser setiap piksel ke arah putih atau ke arah hitam, secara merata di seluruh gambar. Kontrol ini paling sederhana, dan memperbaiki foto yang gelap atau terang secara keseluruhan.</p>
 <p>Eksposur mengubah seberapa banyak cahaya yang seolah-olah ditangkap gambar. Kontrol ini memengaruhi highlight dan bayangan secara berbeda, sehingga detail di ujung-ujungnya lebih terjaga daripada kecerahan.</p>
@@ -13059,7 +13059,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   body: `
 <p>Kontras adalah perbedaan antara bagian paling gelap dan paling terang pada foto. Kontras inilah yang membuat gambar terasa tegas dan kokoh, atau datar dan abu-abu.</p>
 <p>Foto dengan kontras yang bagus punya bayangan yang dalam, highlight yang terang, dan rasa kedalaman yang jelas. Foto dengan kontras rendah terlihat berkabut, seolah-olah diambil menembus kabut.</p>
-<p>Panduan ini menjelaskan cara kerja kontras, cara memakai slider dan preset dengan baik, dan cara menambah ketegasan tanpa memotong highlight atau menghancurkan bayangan. Di dalamnya ada potret, lanskap, tangkapan layar, dan kesalahan yang merusak gambar yang bagus.</p>
+<p>Panduan ini menjelaskan cara kerja kontras, cara memakai slider dan preset dengan baik, dan cara menambah ketegasan tanpa memotong highlight atau menghancurkan bayangan. Di dalamnya ada potret, lanskap, tangkapan layar, dan kesalahan yang merusak gambar yang bagus. Buka <a href="/id/sesuaikan-kontras-gambar/">Editor Kontras Gambar</a> untuk mencoba slidernya pada foto Anda sendiri dan melihat langsung bedanya pada bayangan dan highlight.</p>
 <h2 id="what-contrast-does">Apa yang Sebenarnya Dilakukan Kontras</h2>
 <p>Kontras meregangkan atau menekan rentang nada sebuah gambar. Menaikkannya membuat piksel gelap makin gelap dan piksel terang makin terang, sehingga jarak di antaranya melebar.</p>
 <p>Menurunkan kontras melakukan kebalikannya. Kontrol ini mendekatkan area gelap dan terang, melembutkan gambar dan mengurangi perbedaan antara bagian paling terang dan paling gelap.</p>
@@ -13321,7 +13321,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   body: `
 <p>Teks di atas foto hanya berguna jika orang bisa membacanya. Judul yang menghilang ke langit terang atau keterangan yang menyatu dengan bayangan gelap gagal menjalankan satu-satunya tugasnya.</p>
 <p>Kontras inilah yang membuat teks bisa dibaca. Kontras adalah perbedaan kecerahan antara huruf dan latar di belakangnya, dan bisa diperbaiki pada fotonya, pada teksnya, atau pada keduanya.</p>
-<p>Artikel ini menjelaskan cara membangun kontras itu. Di dalamnya ada penggelapan, overlay, panel, pilihan warna, dan kebiasaan pengujian yang menangkap teks yang tidak bisa dibaca sebelum Anda menerbitkannya.</p>
+<p>Artikel ini menjelaskan cara membangun kontras itu. Di dalamnya ada penggelapan, overlay, panel, pilihan warna, dan kebiasaan pengujian yang menangkap teks yang tidak bisa dibaca sebelum Anda menerbitkannya. Sebelum menambahkan teks, perbaiki dulu foto latarnya dengan <a href="/id/sesuaikan-kontras-gambar/">Editor Kontras Gambar</a> agar huruf Anda berdiri jelas di atas gambar.</p>
 <h2 id="why-contrast-matters">Kenapa Kontras Lebih Penting daripada Font</h2>
 <p>Font yang indah tetapi tidak bisa dibaca adalah desain yang gagal. Tugas pertama teks pada gambar adalah dibaca, dan kontraslah yang menentukan apakah tugas itu selesai.</p>
 <p>Kebanyakan gambar dilihat di ponsel, di feed, pada ukuran kecil. Teks yang jelas pada ukuran penuh di komputer bisa tidak terbaca di pratinjau feed, yang gambarnya hanya selebar beberapa sentimeter.</p>
@@ -13443,7 +13443,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   body: `
 <p>Saturasi adalah intensitas warna pada foto. Gambar dengan saturasi tinggi punya warna yang hidup dan kuat, sedangkan yang saturasinya rendah terlihat redup, lembut, atau sepenuhnya abu-abu.</p>
 <p>Mengatur saturasi dengan tepat inilah yang membuat foto terasa natural. Terlalu sedikit dan gambar terlihat pudar serta tidak bernyawa, sedangkan terlalu banyak membuat rumput menyala neon dan kulit berubah oranye.</p>
-<p>Panduan ini menjelaskan cara kerja saturasi, cara memakai slider dan preset dengan baik, dan cara menjaga warna tetap natural. Di dalamnya ada potret, lanskap, makanan, produk, dan kesalahan yang membuat foto terlihat palsu.</p>
+<p>Panduan ini menjelaskan cara kerja saturasi, cara memakai slider dan preset dengan baik, dan cara menjaga warna tetap natural. Di dalamnya ada potret, lanskap, makanan, produk, dan kesalahan yang membuat foto terlihat palsu. Anda bisa melatih kepekaan ini di <a href="/id/sesuaikan-saturasi-gambar/">Editor Saturasi Gambar</a>, yang memperlihatkan perubahan warna secara langsung saat Anda menggeser slider.</p>
 <h2 id="what-saturation-does">Apa yang Sebenarnya Dilakukan Saturasi</h2>
 <p>Saturasi mengendalikan seberapa murni atau seberapa abu-abu warna dalam gambar. Menaikkannya membuat setiap warna makin kuat dan makin hidup, sedangkan menurunkannya menguras warna ke arah abu-abu.</p>
 <p>Pada nol, gambar terlihat normal. Pada plus 100 persen, warnanya sekuat mungkin, dan pada minus 100 persen, gambar menjadi sepenuhnya hitam putih.</p>
@@ -13704,7 +13704,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   body: `
 <p>Saturasi dan vibrance sama-sama membuat warna makin kuat, tetapi dengan cara yang berbeda. Yang satu mendorong setiap warna secara merata, sedangkan yang lain hanya mendorong warna yang membutuhkannya.</p>
 <p>Perbedaan ini penting untuk foto yang natural. Dorongan saturasi bisa mengubah kulit menjadi oranye dan rumput menjadi neon, sedangkan dorongan vibrance melindungi warna yang sudah kuat.</p>
-<p>Artikel ini membandingkan kedua kontrol secara langsung: cara kerjanya, perlakuannya terhadap warna kulit, kapan memakai masing-masing, dan cara menggabungkannya untuk warna natural yang hidup.</p>
+<p>Artikel ini membandingkan kedua kontrol secara langsung: cara kerjanya, perlakuannya terhadap warna kulit, kapan memakai masing-masing, dan cara menggabungkannya untuk warna natural yang hidup. Untuk merasakan bedanya, coba naikkan saturasi pada satu salinan foto di <a href="/id/sesuaikan-saturasi-gambar/">Editor Saturasi Gambar</a> dan bandingkan dengan hasil vibrance pada foto yang sama.</p>
 <h2 id="what-each-does">Apa yang Dilakukan Masing-Masing Kontrol</h2>
 <p>Saturasi mendorong semua warna secara merata. Setiap rona dalam gambar menjadi lebih kuat dengan jumlah yang sama, baik yang tadinya sudah hidup maupun yang hampir tidak terlihat.</p>
 <p>Vibrance lebih banyak mendorong warna yang redup dan lebih sedikit mendorong warna yang hidup. Kontrol ini mengangkat nada yang kusam sambil membiarkan warna yang sudah kuat sebagian besar tetap seperti semula.</p>
@@ -13830,7 +13830,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   body: `
 <p>Filter foto mengubah suasana gambar dalam satu klik. Filter menggeser warna, kontras, dan nadanya, mengubah jepretan biasa menjadi gambar yang bergaya.</p>
 <p>Filter adalah edit tercepat dalam fotografi. Satu ketukan bisa membuat foto terasa vintage, dramatis, hangat, atau sejuk, tanpa penyesuaian manual apa pun.</p>
-<p>Panduan ini menjelaskan cara kerja filter, apa yang dilakukan 11 gaya itu, dan cara memakainya dengan baik. Di dalamnya ada intensitas, perbandingan, konsistensi, dan kesalahan yang membuat foto berfilter terlihat murahan.</p>
+<p>Panduan ini menjelaskan cara kerja filter, apa yang dilakukan 11 gaya itu, dan cara memakainya dengan baik. Di dalamnya ada intensitas, perbandingan, konsistensi, dan kesalahan yang membuat foto berfilter terlihat murahan. Kesebelas gaya yang dibahas di sini bisa Anda coba satu per satu di <a href="/id/filter-gambar/">Filter Gambar</a>, lengkap dengan pengatur intensitas untuk masing-masing.</p>
 <h2 id="what-filters-do">Apa yang Sebenarnya Dilakukan Filter Foto</h2>
 <p>Filter menerapkan kombinasi preset perubahan warna, kontras, dan nada pada foto. Setiap filter adalah resep: warna yang lebih hangat, kontras yang lebih lembut, hitam yang memudar, atau palet yang lebih sejuk.</p>
 <p>Perubahan itu terjadi sekaligus. Alih-alih menyesuaikan kecerahan, kontras, dan saturasi secara terpisah, filter menerapkan serangkaian perubahan yang terkoordinasi dalam satu langkah.</p>
@@ -14087,7 +14087,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   body: `
 <p>Sebelas filter adalah banyak pilihan. Masing-masing mengubah suasana foto, dan filter yang salah bisa membuat gambar yang bagus terlihat murahan atau aneh.</p>
 <p>Membandingkan filter berdampingan adalah cara tercepat mempelajarinya. Setelah Anda tahu apa yang dilakukan masing-masing, memilih menjadi cepat, dan foto Anda mendapat tampilan yang konsisten.</p>
-<p>Artikel ini membandingkan kesebelas gaya secara langsung: perbedaannya, subjek apa yang cocok untuk masing-masing, dan cara membangun kebiasaan filter yang konsisten di seluruh karya Anda.</p>
+<p>Artikel ini membandingkan kesebelas gaya secara langsung: perbedaannya, subjek apa yang cocok untuk masing-masing, dan cara membangun kebiasaan filter yang konsisten di seluruh karya Anda. Cara tercepat membandingkannya adalah membuka foto Anda sendiri di <a href="/id/filter-gambar/">Filter Gambar</a> dan beralih dari satu gaya ke gaya lain.</p>
 <h2 id="why-compare-filters">Kenapa Membandingkan Filter Sama Sekali</h2>
 <p>Filter terlihat mirip di grid kecil, tetapi berperilaku sangat berbeda pada ukuran penuh. Filter yang terlihat hangat di thumbnail bisa mengubah wajah menjadi oranye di pratinjau utama.</p>
 <p>Membandingkannya pada foto yang sama menunjukkan perbedaannya dengan jelas. Potret yang sama di bawah Vintage, Sepia, dan B&amp;W Noir terlihat seperti tiga foto yang berbeda.</p>

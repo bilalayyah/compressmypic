@@ -1738,7 +1738,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Stapelkomprimierung ist leicht zu starten und leicht falsch zu machen. Ein nachlässiger Stapel kann fünfzig weiche Bilder, eine verhedderte ZIP-Datei und einen Morgen voller Reparaturen erzeugen.</p>
 <p>Ein sorgfältiger Stapel macht das Gegenteil. Er erzeugt konsistente, scharfe Bilder, organisiert in einem sauberen Paket, bereit zum Hochladen in einem Zug.</p>
-<p>Dieser Artikel behandelt die bewährten Vorgehensweisen, die die beiden Ergebnisse voneinander trennen – von Voreinstellungen über Benennung bis zu Qualitätsprüfungen.</p>
+<p>Dieser Artikel behandelt die bewährten Vorgehensweisen, die die beiden Ergebnisse voneinander trennen – von Voreinstellungen über Benennung bis zu Qualitätsprüfungen. Wer die Tipps gleich ausprobieren will, findet im <a href="/de/bilder-stapelweise-komprimieren/">Stapel-Bildkomprimierer</a> Voreinstellungen, Vorschau und ZIP-Export für den ganzen Stapel an einem Ort.</p>
 <h2 id="start-with-originals">Immer mit Originalen beginnen</h2>
 <p>Jeder Stapel sollte mit den Originalen in höchster Qualität beginnen, die Sie haben. Ein Stapel aus komprimierten Kopien übernimmt all ihre Schäden.</p>
 <p>Chat-Apps, soziale Plattformen und E-Mails verkleinern Fotos, bevor Sie sie sehen. Ein Foto, das über eine Chat-App weitergeleitet wurde, ist bereits eine schlechte Quelle.</p>
@@ -3165,7 +3165,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Jede Formatkonvertierung verändert, wie Ihr Bild gespeichert wird – und manche dieser Veränderungen sind dauerhaft. Wer versteht, welche Konvertierungen Qualität kosten und welche nicht, schützt seine Fotos davor, langsam Schaden zu nehmen.</p>
 <p>Die Regel ist leicht auszusprechen und leicht zu vergessen: Verlustbehaftete Formate werfen Details weg, verlustfreie Formate behalten alles. Jede Konvertierungsentscheidung folgt aus dieser einen Tatsache.</p>
-<p>Dieser Artikel erklärt Qualitätsverlust in einfachen Worten. Sie erfahren, was in jedem Format passiert, warum wiederholte Konvertierungen schaden und wann Konvertieren völlig unbedenklich ist.</p>
+<p>Dieser Artikel erklärt Qualitätsverlust in einfachen Worten. Sie erfahren, was in jedem Format passiert, warum wiederholte Konvertierungen schaden und wann Konvertieren völlig unbedenklich ist. Wer ein Bild gleich umwandeln will, nutzt den <a href="/de/bilder-konvertieren/">Bild-Konverter</a> und stellt Format und Qualität dort direkt vor dem Export ein.</p>
 <h2 id="what-quality-loss-means">Was Qualitätsverlust wirklich bedeutet</h2>
 <p>Qualitätsverlust heißt: Details, die in der Originaldatei vorhanden waren, sind in der konvertierten Datei weg – und kein Tool kann sie zurückholen. Die Pixel sind noch da, aber die feinen Informationen darin wurden vereinfacht.</p>
 <p>Der Schaden ist nicht immer sichtbar. Ein Foto, das mit 90 Prozent Qualität konvertiert wurde, sieht bei normaler Größe genauso aus wie das Original, doch ein Vergleich auf Pixelebene zeigt winzige Unterschiede in texturierten Bereichen.</p>
@@ -3493,7 +3493,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Wenn Sie ein PDF aus Bildern bauen, spielt das Format dieser Bilder eine größere Rolle, als die meisten erwarten. Eine JPG-Seite und eine PNG-Seite können auf dem Bildschirm identisch aussehen und sich trotzdem sehr unterschiedlich verhalten.</p>
 <p>Die Wahl beeinflusst Dateigröße, Textschärfe und wie das PDF druckt. Für ein Fotoalbum gewinnt ein Format, für einen gescannten Vertrag das andere.</p>
-<p>Dieser Artikel vergleicht JPG und PNG innerhalb von PDFs, damit Sie das richtige Format wählen, bevor Sie erzeugen – nicht danach.</p>
+<p>Dieser Artikel vergleicht JPG und PNG innerhalb von PDFs, damit Sie das richtige Format wählen, bevor Sie erzeugen – nicht danach. Wenn die Wahl steht, führt der <a href="/de/bild-zu-pdf/">Bild zu PDF</a>-Konverter Ihre Bilder – JPG oder PNG – direkt im Browser zu einem mehrseitigen PDF zusammen.</p>
 <h2 id="jpg-inside-pdf">JPG-Bilder innerhalb eines PDF</h2>
 <p>JPG ist ein verlustbehaftetes Format, das heißt, es verwirft Details, um die Datei zu verkleinern. Innerhalb eines PDF speichert eine JPG-Seite das Foto mit derselben Komprimierung und hält das Dokument klein.</p>
 <p>Fotos komprimieren sich als JPG wunderbar. Ein ganzseitiges Foto mit 85 Prozent Qualität sieht sauber aus und hält das PDF leicht genug für E-Mails.</p>
@@ -4816,7 +4816,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>PNG-zu-JPG-Konvertierung ist berühmt dafür, Dateien zu verkleinern, doch die Ersparnisse sind nicht bei jedem Bild gleich. Ein Screenshot kann um 90 Prozent fallen, während ein einfaches Icon stattdessen wachsen kann.</p>
 <p>Zu verstehen, was die Ersparnisse antreibt, hilft Ihnen, das Ergebnis vor der Konvertierung vorherzusagen und die Qualitätseinstellung zu wählen, die schützt, was zählt.</p>
-<p>Dieser Artikel betrachtet die Zahlen ehrlich, nach Bildtyp, und erklärt die Abwägungen in einfachen Worten.</p>
+<p>Dieser Artikel betrachtet die Zahlen ehrlich, nach Bildtyp, und erklärt die Abwägungen in einfachen Worten. Wer es selbst ausprobieren will, wandelt seine Dateien mit dem <a href="/de/png-in-jpg-umwandeln/">PNG zu JPG</a>-Konverter um und stellt die Qualität dort per Regler ein.</p>
 <h2 id="why-png-is-big">Warum PNG-Dateien so groß sind</h2>
 <p>PNG ist verlustfrei, das heißt, es speichert jeden Pixel exakt. Diese Präzision kostet Bytes, besonders bei detailreichen Bildern mit endloser Textur und Farbvariation.</p>
 <p>Ein Foto hat Millionen fein unterschiedlicher Farben. PNG muss jede einzelne beschreiben, während JPG sie zu glatten Verläufen vereinfachen kann, die das Auge kaum unterscheidet.</p>
@@ -7617,7 +7617,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Ein Foto, das auf der Seite liegt, gehört zu den häufigsten Bildproblemen überhaupt. Man öffnet ein Bild, das man mit dem Handy aufgenommen hat, und stellt fest: Der Horizont verläuft senkrecht, oder ein eingescanntes Dokument lässt sich nur von unten nach oben lesen.</p>
 <p>Drehen und Spiegeln sind die beiden Handgriffe, die das beheben. Beim Drehen wird das gesamte Bild um einen festen Winkel gedreht, beim Spiegeln wird es von links nach rechts oder von oben nach unten vertauscht.</p>
-<p>Diese Anleitung erklärt beide Handgriffe in einfachen Worten. Sie erfahren, welche Winkel Sie brauchen, wie Sie gespiegelte Selfies korrigieren, warum manche Fotos sich von allein drehen und wie Sie ein schiefes Bild gerade rücken, ohne Ecken zu verlieren.</p>
+<p>Diese Anleitung erklärt beide Handgriffe in einfachen Worten. Sie erfahren, welche Winkel Sie brauchen, wie Sie gespiegelte Selfies korrigieren, warum manche Fotos sich von allein drehen und wie Sie ein schiefes Bild gerade rücken, ohne Ecken zu verlieren. Wer ein schiefes Foto gleich gerade rücken will, dreht und spiegelt es im <a href="/de/bild-drehen-spiegeln/">Bild drehen & spiegeln</a>-Tool – mit 90-Grad-Schritten, Feinwinkel und Stapelverarbeitung.</p>
 <h2 id="what-rotation-and-flipping-do">Was Drehen und Spiegeln wirklich tun</h2>
 <p>Beim Drehen rotiert das Bild um seinen Mittelpunkt. Eine Drehung um 90 Grad vertauscht Breite und Höhe – aus einem Querformat wird ein Hochformat –, eine Drehung um 180 Grad stellt das Bild auf den Kopf.</p>
 <p>Spiegeln ist etwas anderes als Drehen. Beim horizontalen Spiegeln werden linke und rechte Seite vertauscht, wie beim Blick in einen Spiegel, beim vertikalen Spiegeln werden oben und unten vertauscht.</p>
@@ -7931,7 +7931,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Zuschneiden ist der schnellste Weg, ein Foto zu verbessern. Es entfernt Ablenkungen, strafft den Bildausschnitt und bringt ein Bild in die Form, die es an seinem Verwendungszweck braucht.</p>
 <p>Aus fast jedem Foto lässt sich noch mehr herausholen. Aus einer weiten Aufnahme mit leerem Himmel wird ein starkes Porträt, sobald der überschüssige Raum weggeschnitten ist, und aus einem überladenen Screenshot wird eine lesbare Abbildung, sobald die Ränder beschnitten sind.</p>
-<p>Diese Anleitung erklärt, wie Zuschneiden funktioniert, welche Seitenverhältnisse Sie nutzen sollten und wie Sie jedes Mal saubere Ergebnisse erzielen. Sie behandelt das Tool, die Technik und die Fehler, die einen sonst guten Zuschnitt ruinieren.</p>
+<p>Diese Anleitung erklärt, wie Zuschneiden funktioniert, welche Seitenverhältnisse Sie nutzen sollten und wie Sie jedes Mal saubere Ergebnisse erzielen. Sie behandelt das Tool, die Technik und die Fehler, die einen sonst guten Zuschnitt ruinieren. Zuschneiden lässt sich direkt im <a href="/de/bild-zuschneiden/">Bild-Zuschneider</a> ausprobieren – mit Voreinstellungen für die gängigen Seitenverhältnisse und freiem Zuschnitt.</p>
 <h2 id="what-cropping-does">Was Zuschneiden wirklich tut</h2>
 <p>Zuschneiden schneidet die äußeren Teile eines Bildes weg und behält nur das Rechteck, das Sie auswählen. Innerhalb dieses Rechtecks ändert sich nichts – die Pixel, die Sie behalten, sind exakt die Pixel, mit denen Sie begonnen haben.</p>
 <p>Das ist eine wichtige Unterscheidung. Zuschneiden dehnt, staucht oder berechnet den behaltenen Bereich nicht neu, sodass die Qualität innerhalb der Auswahl dieselbe bleibt wie im Original.</p>
@@ -8135,7 +8135,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Jeder Zuschnitt hat ein Verhältnis – ob Sie es gewählt haben oder nicht. Das Verhältnis ist die Form des Rechtecks, das Sie behalten, und es entscheidet, wohin das Bild passt und wie es aussieht.</p>
 <p>Ein quadratischer Zuschnitt und ein breiter Zuschnitt sind nicht austauschbar. Der eine passt zu einem Profilbild, der andere zu einem Banner – und wer das falsche nimmt, dessen Arbeit wird von der Plattform selbst neu zugeschnitten.</p>
-<p>Dieser Artikel erklärt die gängigen Verhältnisse, wofür jedes einzelne da ist und wie Sie wählen. Er behandelt außerdem eigene Verhältnisse, die Mathematik dahinter und die Fehler, die daraus entstehen, sie zu ignorieren.</p>
+<p>Dieser Artikel erklärt die gängigen Verhältnisse, wofür jedes einzelne da ist und wie Sie wählen. Er behandelt außerdem eigene Verhältnisse, die Mathematik dahinter und die Fehler, die daraus entstehen, sie zu ignorieren. Wer ein Verhältnis gleich anwenden will, wählt es im <a href="/de/bild-zuschneiden/">Bild-Zuschneider</a> als Voreinstellung und zieht den Rahmen direkt auf dem Foto zurecht.</p>
 <h2 id="what-is-an-aspect-ratio">Was ist ein Seitenverhältnis?</h2>
 <p>Ein Seitenverhältnis ist die Beziehung zwischen Breite und Höhe eines Bildes, geschrieben als zwei Zahlen mit einem Doppelpunkt dazwischen – etwa 16:9.</p>
 <p>Die Zahlen beschreiben ein Verhältnis, keine Pixelzahl. Ein Bild im Format 16:9 kann 1920 mal 1080 Pixel oder 1280 mal 720 Pixel groß sein – beide haben dieselbe Form.</p>
@@ -8444,7 +8444,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Ein Wasserzeichen sollte Ihre Arbeit schützen, ohne sie zu ruinieren. Diese Balance ist schwieriger, als sie aussieht – denn eine Markierung, die zu schwach ist, schützt nichts, und eine Markierung, die zu stark ist, ruiniert das Foto.</p>
 <p>Die besten Wasserzeichen folgen ein paar einfachen Regeln zu Platzierung, Deckkraft, Größe und Farbe. Sie sind in Ihrer gesamten Arbeit konsistent, auf jedem Hintergrund lesbar und schwer zu entfernen, ohne das Bild zu beschädigen.</p>
-<p>Dieser Artikel versammelt diese Regeln an einem Ort. Er behandelt, wohin die Markierung gehört, wie stark sie sein sollte, welchen Stil Sie wählen und wie Sie eine Wasserzeichen-Gewohnheit aufbauen, die jedes Bild schützt, das Sie veröffentlichen.</p>
+<p>Dieser Artikel versammelt diese Regeln an einem Ort. Er behandelt, wohin die Markierung gehört, wie stark sie sein sollte, welchen Stil Sie wählen und wie Sie eine Wasserzeichen-Gewohnheit aufbauen, die jedes Bild schützt, das Sie veröffentlichen. Die Regeln lassen sich direkt umsetzen: Im <a href="/de/bild-wasserzeichen-hinzufuegen/">Bild-Wasserzeichen</a>-Tool stellen Sie Platzierung, Deckkraft und Größe ein, bevor Sie das Bild veröffentlichen.</p>
 <h2 id="why-watermarks-fail">Warum die meisten Wasserzeichen versagen</h2>
 <p>Die meisten Wasserzeichen versagen, weil sie zu zaghaft sind. Eine Markierung mit 10 Prozent Deckkraft in einer fernen Ecke ist auf den meisten Bildschirmen unsichtbar und schützt überhaupt nichts.</p>
 <p>Andere versagen, weil sie zu aggressiv sind. Ein deckender schwarzer Balken über der Mitte eines Fotos ruiniert das Bild für den Kunden, der es beurteilen muss, und ärgert jeden Betrachter.</p>
@@ -8543,7 +8543,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Manche Teile eines Fotos sollten nicht geteilt werden. Ein Gesicht im Hintergrund, eine Adresse auf einem Brief oder ein Passwort auf einem Bildschirm können echten Schaden anrichten, wenn sie in die falschen Augen geraten.</p>
 <p>Weichzeichnen und Pixelieren sind die beiden Wege, diese Details zu verbergen. Beide machen einen Bereich unlesbar, sehen aber anders aus und schützen unterschiedlich.</p>
-<p>Diese Anleitung erklärt beide Methoden, wann man jede nutzt und wie man sie sauber anwendet. Sie behandelt Pinsel- und Gesamtbildmodus, Stärkeeinstellungen und die Fehler, die sensible Details lesbar lassen.</p>
+<p>Diese Anleitung erklärt beide Methoden, wann man jede nutzt und wie man sie sauber anwendet. Sie behandelt Pinsel- und Gesamtbildmodus, Stärkeeinstellungen und die Fehler, die sensible Details lesbar lassen. Beide Methoden stehen im <a href="/de/bild-weichzeichnen-pixelieren/">Bild weichzeichnen & pixelieren</a>-Tool bereit – mit Pinselmodus, Stärkeeinstellung und Vorschau vor dem Export.</p>
 <h2 id="what-blur-does">Was Weichzeichnen mit einem Bild macht</h2>
 <p>Weichzeichnen glättet einen Bereich, indem es die Farben benachbarter Pixel mittelt. Scharfe Kanten schmelzen dahin, Text wird unlesbar und Gesichter verlieren ihre Merkmale.</p>
 <p>Ein leichtes Weichzeichnen glättet Details nur wenig, während ein starkes Weichzeichnen den Bereich in einen glatten Farbverlauf verwandelt. Die Stärkeeinstellung entscheidet, wie viele Informationen überleben.</p>
@@ -8748,7 +8748,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Weichzeichnen und Pixelierung verbergen beide Dinge, sind aber nicht dasselbe Werkzeug. Das eine glättet einen Bereich zu einem sanften Farbverlauf, während das andere ihn durch große Blöcke ersetzt.</p>
 <p>Der Unterschied zählt, wenn Datenschutz auf dem Spiel steht. Eine Methode, die zensiert aussieht, kann ein Gesicht erkennbar oder ein Wort lesbar lassen – und die falsche Wahl kann genau das preisgeben, was Sie verbergen wollten.</p>
-<p>Dieser Artikel vergleicht die beiden Methoden direkt: wie sie funktionieren, wie sie aussehen, welche für Gesichter und Text sicherer ist und wann man sie für eine ordentliche Redaktion kombiniert.</p>
+<p>Dieser Artikel vergleicht die beiden Methoden direkt: wie sie funktionieren, wie sie aussehen, welche für Gesichter und Text sicherer ist und wann man sie für eine ordentliche Redaktion kombiniert. Wer nach dem Vergleich gleich loslegen will, findet beide Methoden im <a href="/de/bild-weichzeichnen-pixelieren/">Bild weichzeichnen & pixelieren</a>-Tool und kann Stärke und Blockgröße dort direkt einstellen.</p>
 <h2 id="how-each-method-works">Wie jede Methode funktioniert</h2>
 <p>Weichzeichnen mittelt die Farben benachbarter Pixel. Scharfe Kanten schmelzen dahin, Text wird unlesbar und Gesichter verlieren ihre Merkmale, je stärker die Einstellung ist.</p>
 <p>Pixelieren ersetzt einen Bereich durch Blöcke aus einheitlicher Farbe. Jeder Block ist der Durchschnitt der Pixel darunter, sodass alle feinen Details verschwinden und nur ein grobes Mosaik übrig bleibt.</p>
@@ -9052,7 +9052,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Text auf einem Foto ist nur nützlich, wenn Menschen ihn lesen können. Eine schöne Bildunterschrift, die in einem belebten Hintergrund verschwindet, ist schlimmer als gar keine Bildunterschrift – weil sie den Betrachter frustriert.</p>
 <p>Lesbarkeit ist keine Geschmacksfrage. Sie entsteht aus Kontrast, Größe, Schriftartwahl und Platzierung, und jedes davon lässt sich vor der Veröffentlichung testen.</p>
-<p>Dieser Artikel erklärt die Regeln, die Text auf Bildern lesbar machen. Er behandelt Schriftarten, Kontrast, Konturen, Hintergrundflächen und die Testgewohnheiten, die Probleme früh erkennen.</p>
+<p>Dieser Artikel erklärt die Regeln, die Text auf Bildern lesbar machen. Er behandelt Schriftarten, Kontrast, Konturen, Hintergrundflächen und die Testgewohnheiten, die Probleme früh erkennen. Die Regeln lassen sich direkt anwenden: Mit <a href="/de/text-zu-bild-hinzufuegen/">Text zu Bild hinzufügen</a> setzen Sie Schrift, Farbe und Position und prüfen die Lesbarkeit sofort in der Vorschau.</p>
 <h2 id="why-readability-matters">Warum Lesbarkeit wichtiger ist als Stil</h2>
 <p>Eine stilvolle Schrift, die niemand lesen kann, ist ein gescheitertes Design. Die erste Aufgabe von Text auf einem Bild ist es, gelesen zu werden – und Stil zählt erst, nachdem diese Aufgabe erledigt ist.</p>
 <p>Die meisten Bilder werden auf Handys, in Feeds, in kleinen Größen betrachtet. Text, der in voller Größe auf einem Computer klar ist, kann in einer Feed-Vorschau unlesbar sein, wo das Bild nur wenige Zentimeter breit ist.</p>
@@ -9143,7 +9143,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
       { question: 'Wie viele Schriftarten sollte ich auf einem Bild nutzen?', answer: 'Höchstens eine oder zwei: eine Schrift für Schlagzeilen und eine für Bildunterschriften. Viele Schriftarten zu mischen, wirkt chaotisch und schadet der Lesbarkeit. Eine einzige konsistente Schrift hält das Design sauber, und eine zweite Schrift fügt Hierarchie nur hinzu, wenn die beiden sich in Stärke oder Stil klar unterscheiden.' },
       { question: 'Spielt die Textfarbe für farbenblinde Betrachter eine Rolle?', answer: 'Ja. Vermeiden Sie es, sich allein auf Farbe zu verlassen, um Bedeutung zu vermitteln, da Rot und Grün für manche Betrachter identisch aussehen können. Nutzen Sie auch Größe, Stärke und Kontrast und halten Sie den Text selbst kontrastreich gegenüber seinem Hintergrund.' },
     ],
-    readingMinutes: 10,
+    readingMinutes: 11,
   },
   'image-border-generator-guide': {
     title: 'Bildrahmen: Die komplette Anleitung',
@@ -9361,7 +9361,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Ein Rahmen verändert, wie ein Foto gesehen wird. Dasselbe Bild in einem dünnen weißen Rahmen, einem Polaroid-Rahmen oder einer leuchtenden Verlaufskante wirkt wie drei verschiedene Bilder.</p>
 <p>Die Wahl eines Stils ist nicht nur Dekoration. Der Rahmen bestimmt die Stimmung, signalisiert den Kontext und sagt dem Betrachter, ob das Foto eine Erinnerung, ein Produkt oder ein Kunstwerk ist.</p>
-<p>Dieser Artikel vergleicht die wichtigsten Rahmenstile und wo jeder am besten funktioniert. Er behandelt soziale Medien, Druck, Produktfotos, Porträts sowie die Farb- und Schattenwahl, die einen Rahmen beabsichtigt wirken lässt.</p>
+<p>Dieser Artikel vergleicht die wichtigsten Rahmenstile und wo jeder am besten funktioniert. Er behandelt soziale Medien, Druck, Produktfotos, Porträts sowie die Farb- und Schattenwahl, die einen Rahmen beabsichtigt wirken lässt. Wer einen Stil gleich ausprobieren will, legt ihn im <a href="/de/bildrahmen-generator/">Bildrahmen-Generator</a> an – mit Rahmenbreite, Farbe und Schatten nach Wahl.</p>
 <h2 id="why-frames-matter">Warum Rahmen zählen</h2>
 <p>Ein Rahmen trennt das Bild von seiner Umgebung. Auf einer belebten Seite oder in einem überfüllten Feed sticht ein gerahmtes Foto hervor, während ein ungerahmtes in den Hintergrund übergehen kann.</p>
 <p>Rahmen verleihen auch ein Gefühl der Vollendung. Ein Foto mit Rahmen wirkt fertig, wie ein Abzug, der montiert wurde, während ein Foto ohne Rahmen wie eine Rohdatei wirken kann.</p>
@@ -9465,7 +9465,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Abgerundete Ecken machen ein Foto weicher. Aus einem scharfen Rechteck wird eine freundliche Form, die zu modernen Bildschirmen, Karten und Profilbildern passt.</p>
 <p>Heute nutzen fast alle Apps und Websites abgerundete Ecken. Profilbilder sind rund, Karten haben weiche Kanten und Schaltflächen sind pillenförmig – Fotos mit runden Ecken fügen sich da ganz natürlich ein.</p>
-<p>Diese Anleitung erklärt, wie das Abrunden funktioniert, welche Form sich wofür eignet und wie Sie das Ergebnis richtig exportieren. Es geht um den Radius, einzelne Ecken, Transparenz und Formate.</p>
+<p>Diese Anleitung erklärt, wie das Abrunden funktioniert, welche Form sich wofür eignet und wie Sie das Ergebnis richtig exportieren. Es geht um den Radius, einzelne Ecken, Transparenz und Formate. Den Radius stellen Sie direkt im <a href="/de/bildecken-abrunden/">Bildecken abrunden</a>-Tool ein – mit Live-Vorschau, einzelnen Ecken und transparentem oder gefülltem Hintergrund.</p>
 <h2 id="what-rounding-does">Was beim Abrunden von Ecken eigentlich passiert</h2>
 <p>Beim Abrunden werden die Ecken eines Bildes entlang einer Kurve abgeschnitten. Die geraden Kanten bleiben, nur die spitzen 90-Grad-Ecken werden zu weichen Bögen.</p>
 <p>Die Kurve bestimmt der Radius. Ein kleiner Radius rundet die Ecken nur sanft ab, ein großer verwandelt sie in tiefe Kurven, die die ganze Form verändern.</p>
@@ -9715,7 +9715,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Abgerundete Ecken und Kreiszuschnitt machen ein Foto beide weicher, doch sie sind nicht dasselbe. Die eine behält das Rechteck und wölbt seine Ecken, die andere verwandelt das Bild in eine runde Form.</p>
 <p>Der Unterschied zählt bei Profilbildern, Karten und Social-Media-Profilen, wo die Form entscheidet, wie das Foto passt und wie es gesehen wird. Die falsche Form kann ein Gesicht abschneiden oder deplatziert wirken.</p>
-<p>Dieser Artikel vergleicht die beiden Formen direkt: wie sie funktionieren, wie sie aussehen, wo jede hingehört und wann man sie für das beste Ergebnis kombiniert.</p>
+<p>Dieser Artikel vergleicht die beiden Formen direkt: wie sie funktionieren, wie sie aussehen, wo jede hingehört und wann man sie für das beste Ergebnis kombiniert. Wer sich nach dem Vergleich für eine Form entschieden hat, rundet die Ecken im <a href="/de/bildecken-abrunden/">Bildecken abrunden</a>-Tool ab oder schneidet das Bild dort zum Kreis zu.</p>
 <h2 id="what-each-shape-does">Was jede Form macht</h2>
 <p>Abgerundete Ecken behalten das Bild als Rechteck und wölben die vier Ecken entlang eines Bogens. Die geraden Kanten bleiben, nur die spitzen Punkte werden zu weichen Kurven.</p>
 <p>Ein Kreiszuschnitt schneidet das Bild in eine runde Form. Alles außerhalb des Kreises wird entfernt, sodass das Foto zu einer Scheibe ohne gerade Kanten wird.</p>
@@ -9837,7 +9837,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Helligkeit ist die einfachste Fotokorrektur – und die, zu der man zuerst greift. Ein dunkles Foto wird sichtbar, ein ausgewaschenes gewinnt Tiefe und eine matte Aufnahme lebt wieder auf.</p>
 <p>Doch Helligkeit lässt sich leicht übertreiben. Schiebt man sie zu weit, wird das Foto flach und grau, mit ausgebrannten Lichtern und ohne Details in den hellen Bereichen.</p>
-<p>Diese Anleitung erklärt, wie Helligkeit funktioniert, wie man Regler und Voreinstellungen gut nutzt und wie man dunkle Fotos rettet, ohne sie zu zerstören. Es geht um Porträts, Landschaften, Screenshots und die Fehler, die ein gutes Bild ruinieren.</p>
+<p>Diese Anleitung erklärt, wie Helligkeit funktioniert, wie man Regler und Voreinstellungen gut nutzt und wie man dunkle Fotos rettet, ohne sie zu zerstören. Es geht um Porträts, Landschaften, Screenshots und die Fehler, die ein gutes Bild ruinieren. Helligkeit lässt sich direkt im <a href="/de/bildhelligkeit-anpassen/">Bildhelligkeits-Editor</a> korrigieren – mit Regler, Voreinstellungen und Vorher-Nachher-Vergleich.</p>
 <h2 id="what-brightness-does">Was Helligkeit eigentlich macht</h2>
 <p>Helligkeit verschiebt jedes Pixel im Bild in Richtung Weiß oder in Richtung Schwarz. Erhöht man sie, werden dunkle Bereiche heller und helle noch heller, senkt man sie, wird alles dunkler.</p>
 <p>Die Änderung gilt gleichmäßig für das ganze Bild. Eine Helligkeitsanpassung greift nicht gezielt Schatten oder Lichter heraus, sie bewegt den gesamten Tonwertbereich gemeinsam nach oben oder unten.</p>
@@ -9951,7 +9951,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
         answer: 'Ja, denn die gesamte Verarbeitung passiert lokal in Ihrem Browser und nichts wird auf einen Server hochgeladen. Das Tool entfernt außerdem die EXIF-GPS-Daten beim Export. Behalten Sie die Originaldatei, wenn Sie die Standortdaten erhalten oder später eine andere Helligkeitsstufe ausprobieren möchten.',
       },
     ],
-    readingMinutes: 10,
+    readingMinutes: 11,
   },
   'how-to-adjust-image-brightness': {
     title: 'Bildhelligkeit anpassen: So geht’s',
@@ -10087,7 +10087,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Helligkeit, Belichtung und Kontrast sind die drei Regler, die jeder Fotoeditor anbietet – und sie lassen sich leicht verwechseln. Alle drei machen ein Foto heller oder dunkler, doch sie tun es auf verschiedene Weise.</p>
 <p>Wer den falschen nimmt, bekommt ein schlechteres Ergebnis. Ein Foto, das Kontrast braucht, sieht ausgewaschen aus, wenn man es nur aufhellt, und ein Foto, das Helligkeit braucht, wirkt hart, wenn man nur Kontrast hinzufügt.</p>
-<p>Dieser Artikel erklärt jeden Regler, worin sie sich unterscheiden, wie sie zusammenwirken und zu welchem man in jeder Situation greifen sollte. Er ist die Grundlage für jede weitere Fotobearbeitung, die Sie machen werden.</p>
+<p>Dieser Artikel erklärt jeden Regler, worin sie sich unterscheiden, wie sie zusammenwirken und zu welchem man in jeder Situation greifen sollte. Er ist die Grundlage für jede weitere Fotobearbeitung, die Sie machen werden. Wer die Helligkeit nach dem Lesen gleich anpassen will, stellt sie im <a href="/de/bildhelligkeit-anpassen/">Bildhelligkeits-Editor</a> per Regler ein und sieht das Ergebnis sofort in der Vorschau.</p>
 <h2 id="what-each-does">Was jeder Regler macht</h2>
 <p>Helligkeit verschiebt jedes Pixel gleichmäßig in Richtung Weiß oder Schwarz, über das ganze Bild hinweg. Sie ist der einfachste Regler und korrigiert ein insgesamt dunkles oder helles Foto.</p>
 <p>Belichtung verändert, wie viel Licht das Bild scheinbar eingefangen hat. Sie wirkt auf Lichter und Schatten unterschiedlich und erhält an den Extremen mehr Details als Helligkeit.</p>
@@ -10209,7 +10209,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Kontrast ist der Unterschied zwischen den dunkelsten und hellsten Teilen eines Fotos. Er ist es, was ein Bild druckvoll und solide wirken lässt – oder flach und grau.</p>
 <p>Ein Foto mit gutem Kontrast hat tiefe Schatten, helle Lichter und ein klares Gefühl von Tiefe. Ein Foto mit niedrigem Kontrast wirkt dunstig, als wäre es durch Nebel aufgenommen worden.</p>
-<p>Diese Anleitung erklärt, wie Kontrast funktioniert, wie man Regler und Voreinstellungen gut nutzt und wie man Druck hinzufügt, ohne die Lichter abzuschneiden oder die Schatten zu zerdrücken. Es geht um Porträts, Landschaften, Screenshots und die Fehler, die ein gutes Bild ruinieren.</p>
+<p>Diese Anleitung erklärt, wie Kontrast funktioniert, wie man Regler und Voreinstellungen gut nutzt und wie man Druck hinzufügt, ohne die Lichter abzuschneiden oder die Schatten zu zerdrücken. Es geht um Porträts, Landschaften, Screenshots und die Fehler, die ein gutes Bild ruinieren. Kontrast lässt sich direkt im <a href="/de/bildkontrast-anpassen/">Bildkontrast-Editor</a> anpassen – mit Regler, Voreinstellungen und Vorher-Nachher-Vergleich.</p>
 <h2 id="what-contrast-does">Was Kontrast eigentlich macht</h2>
 <p>Kontrast streckt oder staucht den Tonwertbereich eines Bildes. Erhöht man ihn, werden dunkle Pixel dunkler und helle Pixel heller, der Abstand zwischen ihnen wird größer.</p>
 <p>Weniger Kontrast bewirkt das Gegenteil. Er bringt dunkle und helle Bereiche näher zusammen, macht das Bild weicher und verringert den Unterschied zwischen seinen hellsten und dunkelsten Teilen.</p>
@@ -10459,7 +10459,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Text auf einem Foto nützt nur etwas, wenn man ihn lesen kann. Eine Überschrift, die in einem hellen Himmel verschwindet, oder eine Bildunterschrift, die in einem dunklen Schatten untergeht, versagt bei ihrer einzigen Aufgabe.</p>
 <p>Kontrast ist es, was Text lesbar macht. Er ist der Helligkeitsunterschied zwischen den Buchstaben und dem Hintergrund dahinter, und man kann ihn im Foto, im Text oder in beiden korrigieren.</p>
-<p>Dieser Artikel erklärt, wie man diesen Kontrast aufbaut. Es geht um Abdunkeln, Overlays, Panels, Farbwahl und die Testgewohnheiten, die unlesbaren Text vor der Veröffentlichung aufdecken.</p>
+<p>Dieser Artikel erklärt, wie man diesen Kontrast aufbaut. Es geht um Abdunkeln, Overlays, Panels, Farbwahl und die Testgewohnheiten, die unlesbaren Text vor der Veröffentlichung aufdecken. Wer den Kontrast nach dem Lesen gleich prüfen will, stellt ihn im <a href="/de/bildkontrast-anpassen/">Bildkontrast-Editor</a> ein und sieht sofort, wie das Foto auf Text reagiert.</p>
 <h2 id="why-contrast-matters">Warum Kontrast wichtiger ist als die Schriftart</h2>
 <p>Eine schöne Schrift, die niemand lesen kann, ist ein gescheitertes Design. Die erste Aufgabe von Text auf einem Bild ist es, gelesen zu werden, und der Kontrast entscheidet, ob diese Aufgabe erfüllt wird.</p>
 <p>Die meisten Bilder werden auf Handys betrachtet, in Feeds, in kleinen Größen. Text, der in voller Größe auf einem Computer klar ist, kann in einer Feed-Vorschau unlesbar sein, wo das Bild nur wenige Zentimeter breit ist.</p>
@@ -10576,7 +10576,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Sättigung ist die Intensität der Farben in einem Foto. Ein stark gesättigtes Bild hat lebhafte, druckvolle Farben, während ein entsättigtes matt, weich oder komplett grau wirkt.</p>
 <p>Die Sättigung richtig zu treffen, macht ein Foto natürlich. Zu wenig, und das Bild wirkt ausgewaschen und leblos, zu viel, und das Gras leuchtet neon und die Haut wird orange.</p>
-<p>Diese Anleitung erklärt, wie Sättigung funktioniert, wie man Regler und Voreinstellungen gut nutzt und wie man Farben natürlich hält. Es geht um Porträts, Landschaften, Essen, Produkte und die Fehler, die Fotos künstlich aussehen lassen.</p>
+<p>Diese Anleitung erklärt, wie Sättigung funktioniert, wie man Regler und Voreinstellungen gut nutzt und wie man Farben natürlich hält. Es geht um Porträts, Landschaften, Essen, Produkte und die Fehler, die Fotos künstlich aussehen lassen. Sättigung lässt sich direkt im <a href="/de/bildsaettigung-anpassen/">Bildsättigungs-Editor</a> anpassen – mit Regler von −100 bis +100 Prozent und Vorher-Nachher-Vergleich.</p>
 <h2 id="what-saturation-does">Was Sättigung eigentlich macht</h2>
 <p>Sättigung steuert, wie rein oder wie grau die Farben in einem Bild sind. Erhöht man sie, werden alle Farben stärker und lebhafter, senkt man sie, verblasst die Farbe in Richtung Grau.</p>
 <p>Bei null sieht das Bild normal aus. Bei plus 100 Prozent sind die Farben so stark, wie sie sein können, und bei minus 100 Prozent wird das Bild komplett schwarz-weiß.</p>
@@ -10826,7 +10826,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Sättigung und Vibranz machen Farben beide stärker, doch sie tun es auf verschiedene Weise. Die eine verstärkt jede Farbe gleich stark, die andere nur die Farben, die es brauchen.</p>
 <p>Der Unterschied zählt bei natürlichen Fotos. Eine Sättigungsverstärkung kann Haut orange und Gras neon machen, während eine Vibranzverstärkung die Farben schützt, die bereits stark sind.</p>
-<p>Dieser Artikel vergleicht die beiden Regler direkt: wie sie funktionieren, wie sie Hauttöne behandeln, wann man welchen nutzt und wie man sie für natürliche, lebhafte Farben kombiniert.</p>
+<p>Dieser Artikel vergleicht die beiden Regler direkt: wie sie funktionieren, wie sie Hauttöne behandeln, wann man welchen nutzt und wie man sie für natürliche, lebhafte Farben kombiniert. Wer die Sättigung nach dem Vergleich gleich einstellen will, findet den Regler im <a href="/de/bildsaettigung-anpassen/">Bildsättigungs-Editor</a> und kann die Farben dort in der Vorschau prüfen.</p>
 <h2 id="what-each-does">Was jeder Regler macht</h2>
 <p>Sättigung verstärkt alle Farben gleich stark. Jeder Farbton im Bild wird um denselben Betrag kräftiger, ob er bereits lebhaft war oder kaum sichtbar.</p>
 <p>Vibranz verstärkt die matten Farben stärker und die lebhaften weniger. Sie hebt die matten Töne an, während sie die bereits starken Farben weitgehend in Ruhe lässt.</p>
@@ -10948,7 +10948,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Ein Fotofilter verändert die Stimmung eines Bildes mit einem Klick. Er verschiebt Farben, Kontrast und Ton und verwandelt einen gewöhnlichen Schnappschuss in ein stilisiertes Bild.</p>
 <p>Filter sind die schnellste Bearbeitung in der Fotografie. Ein einziger Fingertipp kann ein Foto vintage, dramatisch, warm oder kalt wirken lassen, ohne jegliche manuelle Anpassung.</p>
-<p>Diese Anleitung erklärt, wie Filter funktionieren, was die 11 Stile bewirken und wie man sie gut nutzt. Es geht um Intensität, Vergleich, Konsistenz und die Fehler, die gefilterte Fotos billig aussehen lassen.</p>
+<p>Diese Anleitung erklärt, wie Filter funktionieren, was die 11 Stile bewirken und wie man sie gut nutzt. Es geht um Intensität, Vergleich, Konsistenz und die Fehler, die gefilterte Fotos billig aussehen lassen. Alle 11 Stile stehen im <a href="/de/bildfilter/">Bildfilter</a>-Tool bereit – mit Intensitätsregler und Vergleichsansicht, um den passenden Look zu finden.</p>
 <h2 id="what-filters-do">Was Fotofilter eigentlich machen</h2>
 <p>Ein Filter wendet eine voreingestellte Kombination aus Farb-, Kontrast- und Tonänderungen auf ein Foto an. Jeder Filter ist ein Rezept: wärmere Farben, weicherer Kontrast, verblasste Schwarztöne oder eine kühlere Palette.</p>
 <p>Die Änderungen passieren alle auf einmal. Statt Helligkeit, Kontrast und Sättigung einzeln anzupassen, wendet ein Filter einen abgestimmten Satz von Änderungen in einem einzigen Schritt an.</p>
@@ -11198,7 +11198,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Elf Filter sind eine Menge Auswahl. Jeder verändert die Stimmung eines Fotos, und der falsche kann ein gutes Bild billig oder seltsam aussehen lassen.</p>
 <p>Die Filter nebeneinander zu vergleichen, ist der schnellste Weg, sie zu lernen. Sobald Sie wissen, was jeder bewirkt, geht das Wählen schnell, und Ihre Fotos gewinnen einen einheitlichen Look.</p>
-<p>Dieser Artikel vergleicht alle 11 Stile direkt: worin sie sich unterscheiden, zu welchen Motiven jeder passt und wie man sich eine einheitliche Filtergewohnheit über seine Arbeit hinweg aufbaut.</p>
+<p>Dieser Artikel vergleicht alle 11 Stile direkt: worin sie sich unterscheiden, zu welchen Motiven jeder passt und wie man sich eine einheitliche Filtergewohnheit über seine Arbeit hinweg aufbaut. Wer nach dem Vergleich seinen Lieblingsfilter gefunden hat, wendet ihn direkt im <a href="/de/bildfilter/">Bildfilter</a>-Tool an und stellt die Intensität dort nach Geschmack ein.</p>
 <h2 id="why-compare-filters">Warum man Filter überhaupt vergleichen sollte</h2>
 <p>Filter sehen in einem kleinen Raster ähnlich aus, verhalten sich aber in voller Größe sehr unterschiedlich. Ein Filter, der in einem Vorschaubild warm aussieht, kann in der Hauptvorschau ein Gesicht orange machen.</p>
 <p>Sie am selben Foto zu vergleichen, zeigt die Unterschiede klar. Dasselbe Porträt unter Vintage, Sepia und Schwarz-Weiß-Noir sieht aus wie drei verschiedene Fotografien.</p>

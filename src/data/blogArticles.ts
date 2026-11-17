@@ -2322,7 +2322,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>Batch compression is simple to start and easy to get wrong. A careless batch can produce fifty soft images, a tangled ZIP, and a morning spent fixing it.</p>
 <p>A careful batch does the opposite. It produces consistent, sharp images, organised in a clean package, ready to upload in one move.</p>
-<p>This article covers the best practices that separate the two outcomes, from presets to naming to quality checks.</p>
+<p>This article covers the best practices that separate the two outcomes, from presets to naming to quality checks. You can put them into practice right away with the <a href="/bulk-image-compressor/">Bulk Image Compressor</a>, which runs whole batches in your browser and hands you a single ZIP.</p>
 <h2 id="start-with-originals">Start With Originals, Always</h2>
 <p>Every batch should start from the highest-quality originals you have. A batch built from compressed copies inherits all their damage.</p>
 <p>Chat apps, social platforms, and email all shrink photos before you see them. A photo forwarded through a chat app is already a poor source.</p>
@@ -4086,7 +4086,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>Every format conversion changes how your image is stored, and some of those changes are permanent. Understanding which conversions lose quality, and which do not, saves you from slowly damaging your photos.</p>
 <p>The rule is simple to state and easy to forget: lossy formats throw away detail, lossless formats keep everything. Every conversion decision follows from that one fact.</p>
-<p>This article explains quality loss in plain terms. You will learn what happens inside each format, why repeated conversions hurt, and when converting is completely safe.</p>
+<p>This article explains quality loss in plain terms. You will learn what happens inside each format, why repeated conversions hurt, and when converting is completely safe. When you are ready to convert, the free <a href="/image-converter/">Image Converter</a> handles JPG, PNG, WebP, and HEIC in your browser, with a quality slider so you control exactly how much detail to keep.</p>
 <h2 id="what-quality-loss-means">What Quality Loss Actually Means</h2>
 <p>Quality loss means detail that existed in the original file is gone from the converted file, and no tool can bring it back. The pixels are still there, but the fine information inside them has been simplified.</p>
 <p>The damage is not always visible. A photo converted at 90 percent quality looks identical to the original at normal size, yet a pixel-level comparison shows tiny differences in textured areas.</p>
@@ -4497,7 +4497,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>When you build a PDF from images, the format of those images matters more than most people expect. A JPG page and a PNG page can look identical on screen yet behave very differently.</p>
 <p>The choice affects file size, text sharpness, and how the PDF prints. For a photo album, one format wins; for a scanned contract, the other does.</p>
-<p>This article compares JPG and PNG inside PDFs, so you can pick the right format before you generate, not after.</p>
+<p>This article compares JPG and PNG inside PDFs, so you can pick the right format before you generate, not after. Once you have chosen, the <a href="/image-to-pdf/">Image to PDF</a> tool turns your images into a clean multi-page PDF in your browser, with page size, margins, and quality settings you control.</p>
 <h2 id="jpg-inside-pdf">JPG Images Inside a PDF</h2>
 <p>JPG is a lossy format, which means it discards detail to shrink the file. Inside a PDF, a JPG page stores the photo with that same compression, keeping the document small.</p>
 <p>Photos compress beautifully as JPG. A full-page photograph at 85 percent quality looks clean and keeps the PDF light enough to email.</p>
@@ -6155,7 +6155,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>PNG to JPG conversion is famous for shrinking files, but the savings are not the same for every image. A screenshot may drop by 90 percent, while a simple icon may grow instead.</p>
 <p>Understanding what drives the savings helps you predict the result before you convert, and pick the quality setting that protects what matters.</p>
-<p>This article looks at the numbers honestly, by image type, and explains the trade-offs in plain terms.</p>
+<p>This article looks at the numbers honestly, by image type, and explains the trade-offs in plain terms. To see the savings on your own files, try the free <a href="/png-to-jpg/">PNG to JPG</a> converter, which converts in your browser and shows the size difference before you download.</p>
 <h2 id="why-png-is-big">Why PNG Files Are So Big</h2>
 <p>PNG is lossless, which means it stores every pixel exactly. That precision costs bytes, especially for detailed images with endless texture and colour variation.</p>
 <p>A photograph has millions of subtly different colours. PNG must describe each one, while JPG can simplify them into smooth gradients that the eye barely distinguishes.</p>
@@ -9245,7 +9245,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>A sideways photo is one of the most common image problems. You open a picture you took on your phone and find the horizon running vertically, or a document scan that reads bottom to top.</p>
 <p>Rotation and flipping are the two moves that fix it. Rotation turns the whole image by a set angle, while flipping mirrors it left to right or top to bottom.</p>
-<p>This guide explains both moves in plain language. You will learn which angles to use, how to fix mirrored selfies, why some photos rotate on their own, and how to straighten a tilted shot without losing any corners.</p>
+<p>This guide explains both moves in plain language. You will learn which angles to use, how to fix mirrored selfies, why some photos rotate on their own, and how to straighten a tilted shot without losing any corners. You can try every move in this guide with the free <a href="/rotate-flip-image/">Rotate and Flip Image</a> tool, which rotates, flips, and straightens photos right in your browser.</p>
 <h2 id="what-rotation-and-flipping-do">What Rotation and Flipping Actually Do</h2>
 <p>Rotation spins the image around its centre. A 90 degree turn swaps width and height, so a landscape photo becomes a portrait one, and a 180 degree turn puts the image upside down.</p>
 <p>Flipping is different from rotation. A horizontal flip mirrors the image left to right, like looking at it in a mirror, while a vertical flip mirrors it top to bottom.</p>
@@ -9643,7 +9643,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>Cropping is the fastest way to improve a photo. It removes distractions, tightens the framing, and reshapes an image to fit the place it will live.</p>
 <p>Every photo has a best version hiding inside it. A wide shot with empty sky becomes a strong portrait once the extra space is cut away, and a busy screenshot becomes readable once the edges are trimmed.</p>
-<p>This guide explains how cropping works, which aspect ratios to use, and how to get clean results every time. It covers the tool, the technique, and the mistakes that ruin an otherwise good crop.</p>
+<p>This guide explains how cropping works, which aspect ratios to use, and how to get clean results every time. It covers the tool, the technique, and the mistakes that ruin an otherwise good crop. The free <a href="/image-cropper/">Image Cropper</a> is the easiest way to practise: drag in a photo, pick a ratio, and download the cropped result without uploading anything.</p>
 <h2 id="what-cropping-does">What Cropping Actually Does</h2>
 <p>Cropping cuts away the outer parts of an image and keeps only the rectangle you select. Nothing inside that rectangle changes; the pixels you keep are exactly the pixels you started with.</p>
 <p>That is an important distinction. Cropping does not stretch, squeeze, or resample the kept area, so the quality inside the selection stays the same as the original.</p>
@@ -9903,7 +9903,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>Every crop has a ratio, whether you chose it or not. The ratio is the shape of the rectangle you keep, and it decides where the image fits and how it looks.</p>
 <p>A square crop and a wide crop are not interchangeable. One suits a profile picture, the other suits a banner, and using the wrong one means the platform will re-crop your work for you.</p>
-<p>This article explains the common ratios, what each one is for, and how to choose. It also covers custom ratios, the math behind them, and the mistakes that come from ignoring them.</p>
+<p>This article explains the common ratios, what each one is for, and how to choose. It also covers custom ratios, the math behind them, and the mistakes that come from ignoring them. Once you know your ratio, the <a href="/image-cropper/">Image Cropper</a> lets you apply it in seconds, with presets for square, widescreen, and social profiles built in.</p>
 <h2 id="what-is-an-aspect-ratio">What Is an Aspect Ratio?</h2>
 <p>An aspect ratio is the relationship between the width and the height of an image, written as two numbers with a colon between them, such as 16:9.</p>
 <p>The numbers describe a proportion, not a pixel count. A 16:9 image can be 1920 by 1080 pixels or 1280 by 720 pixels, and both have the same shape.</p>
@@ -10296,7 +10296,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>A watermark should protect your work without ruining it. That balance is harder than it looks, because a mark that is too faint protects nothing and a mark that is too strong ruins the photo.</p>
 <p>The best watermarks follow a few simple rules about placement, opacity, size, and colour. They are consistent across your work, readable on any background, and hard to remove without damaging the image.</p>
-<p>This article collects those rules into one place. It covers where to put the mark, how strong to make it, which style to choose, and how to build a watermark habit that protects every image you publish.</p>
+<p>This article collects those rules into one place. It covers where to put the mark, how strong to make it, which style to choose, and how to build a watermark habit that protects every image you publish. You can apply all of them with the free <a href="/image-watermark/">Image Watermark</a> tool, which adds text or logo marks in your browser with full control over placement and opacity.</p>
 <h2 id="why-watermarks-fail">Why Most Watermarks Fail</h2>
 <p>Most watermarks fail because they are too timid. A mark at 10 percent opacity in a far corner is invisible on most screens, and it protects nothing at all.</p>
 <p>Others fail because they are too aggressive. A solid black bar across the middle of a photo ruins the image for the client who needs to judge it, and it annoys every viewer.</p>
@@ -10405,7 +10405,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
           answer: 'Usually not. A heavy mark on a free resource discourages sharing, which defeats the purpose of giving it away. If you want credit, put your name in the caption or the file description instead of marking the image itself.',
         },
       ],
-      readingMinutes: 10,
+      readingMinutes: 11,
     },
     relatedToolSlugs: ['/add-text-to-image', '/image-border-generator', '/remove-image-metadata'],
   },
@@ -10423,7 +10423,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>Some parts of a photo should not be shared. A face in the background, an address on a letter, or a password on a screen can all cause real harm if they reach the wrong eyes.</p>
 <p>Blurring and pixelating are the two ways to hide those details. Both make a region unreadable, but they look different and they protect differently.</p>
-<p>This guide explains both methods, when to use each one, and how to apply them cleanly. It covers brush and whole-image modes, strength settings, and the mistakes that leave sensitive details readable.</p>
+<p>This guide explains both methods, when to use each one, and how to apply them cleanly. It covers brush and whole-image modes, strength settings, and the mistakes that leave sensitive details readable. The free <a href="/blur-pixelate-image/">Blur and Pixelate Image</a> tool puts both methods in one place, so you can hide a face or a line of text in seconds without uploading the photo anywhere.</p>
 <h2 id="what-blur-does">What Blurring Does to an Image</h2>
 <p>Blurring softens a region by averaging the colours of neighbouring pixels. Sharp edges melt away, text becomes unreadable, and faces lose their features.</p>
 <p>A light blur only softens the detail slightly, while a strong blur turns the region into a smooth wash of colour. The strength setting decides how much information survives.</p>
@@ -10684,7 +10684,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>Blur and pixelation both hide things, but they are not the same tool. One softens a region into a smooth wash of colour, while the other replaces it with large blocks.</p>
 <p>The difference matters when privacy is at stake. A method that looks censored can still leave a face recognisable or a word readable, and the wrong choice can expose exactly what you meant to hide.</p>
-<p>This article compares the two methods directly: how they work, how they look, which one is safer for faces and text, and when to combine them for proper redaction.</p>
+<p>This article compares the two methods directly: how they work, how they look, which one is safer for faces and text, and when to combine them for proper redaction. When you have picked a method, the <a href="/blur-pixelate-image/">Blur and Pixelate Image</a> tool lets you test both on your own photo and compare the result before you save it.</p>
 <h2 id="how-each-method-works">How Each Method Works</h2>
 <p>Blurring averages the colours of neighbouring pixels. Sharp edges melt away, text becomes unreadable, and faces lose their features as the strength increases.</p>
 <p>Pixelating replaces a region with blocks of solid colour. Each block is the average of the pixels beneath it, so all fine detail disappears and only a coarse mosaic remains.</p>
@@ -11072,7 +11072,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>Text on a photo is only useful if people can read it. A beautiful caption that vanishes into a busy background is worse than no caption at all, because it frustrates the viewer.</p>
 <p>Readability is not a matter of taste. It comes from contrast, size, font choice, and placement, and each of those can be tested before you publish.</p>
-<p>This article explains the rules that make text on images readable. It covers fonts, contrast, outlines, background panels, and the testing habits that catch problems early.</p>
+<p>This article explains the rules that make text on images readable. It covers fonts, contrast, outlines, background panels, and the testing habits that catch problems early. You can test every rule here with the free <a href="/add-text-to-image/">Add Text to Image</a> tool, which lets you place text, pick fonts, and adjust contrast right on top of your photo.</p>
 <h2 id="why-readability-matters">Why Readability Matters More Than Style</h2>
 <p>A stylish font that nobody can read is a failed design. The first job of text on an image is to be read, and style only matters after that job is done.</p>
 <p>Most images are viewed on phones, in feeds, at small sizes. Text that is clear at full size on a computer can be unreadable in a feed preview, where the image is only a few centimetres wide.</p>
@@ -11181,7 +11181,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
           answer: 'Yes. Avoid relying on colour alone to convey meaning, since red and green can look identical to some viewers. Use size, weight, and contrast as well, and keep the text itself high contrast against its background.',
         },
       ],
-      readingMinutes: 10,
+      readingMinutes: 11,
     },
     relatedToolSlugs: ['/image-watermark', '/image-border-generator', '/image-filters'],
   },
@@ -11465,7 +11465,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>A frame changes how a photo is seen. The same image in a thin white border, a Polaroid frame, or a glowing gradient edge feels like three different pictures.</p>
 <p>Choosing a style is not just decoration. The frame sets the mood, signals the context, and tells the viewer whether the photo is a memory, a product, or a piece of art.</p>
-<p>This article compares the main frame styles and where each one works best. It covers social media, print, product photos, portraits, and the colour and shadow choices that make a frame feel intentional.</p>
+<p>This article compares the main frame styles and where each one works best. It covers social media, print, product photos, portraits, and the colour and shadow choices that make a frame feel intentional. To try the styles on your own photos, the <a href="/image-border-generator/">Image Border Generator</a> adds frames, colours, and shadows in your browser, with a live preview as you adjust them.</p>
 <h2 id="why-frames-matter">Why Frames Matter</h2>
 <p>A frame separates the image from its surroundings. On a busy page or a crowded feed, a bordered photo stands out, while an unbordered one can blend into the background.</p>
 <p>Frames also add a sense of completion. A photo with a border feels finished, like a print that has been mounted, while a photo without one can feel like a raw file.</p>
@@ -11597,7 +11597,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>Rounded corners soften a photo. They turn a sharp rectangle into a friendly shape that fits modern screens, cards, and avatars.</p>
 <p>Every app and website uses rounded corners now. Profile pictures are circles, cards have soft edges, and buttons are pill-shaped, so photos with rounded corners feel at home.</p>
-<p>This guide explains how corner rounding works, which shapes to choose, and how to export the result correctly. It covers radius, per-corner control, transparency, and formats.</p>
+<p>This guide explains how corner rounding works, which shapes to choose, and how to export the result correctly. It covers radius, per-corner control, transparency, and formats. The free <a href="/round-image-corners/">Round Image Corners</a> tool does the rounding for you: set a radius, preview the curve, and export with transparent corners.</p>
 <h2 id="what-rounding-does">What Rounding Corners Actually Does</h2>
 <p>Rounding cuts away the corners of an image along a curve. The straight edges stay, but the sharp 90 degree corners become smooth arcs.</p>
 <p>The curve is set by a radius value. A small radius gives a gentle softening, while a large radius turns the corners into deep curves that change the whole shape.</p>
@@ -11867,7 +11867,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>Rounded corners and circle crops both soften a photo, but they are not the same thing. One keeps the rectangle and curves its corners, while the other turns the image into a round shape.</p>
 <p>The difference matters for avatars, cards, and social profiles, where the shape decides how the photo fits and how it is seen. The wrong shape can cut off a face or look out of place.</p>
-<p>This article compares the two shapes directly: how they work, how they look, where each one fits, and when to combine them for the best result.</p>
+<p>This article compares the two shapes directly: how they work, how they look, where each one fits, and when to combine them for the best result. If rounded corners win for your photo, the <a href="/round-image-corners/">Round Image Corners</a> tool applies them in your browser, with per-corner control and a transparent-background export.</p>
 <h2 id="what-each-shape-does">What Each Shape Does</h2>
 <p>Rounded corners keep the image as a rectangle and curve the four corners along an arc. The straight edges stay, but the sharp points become smooth curves.</p>
 <p>A circle crop cuts the image into a round shape. Everything outside the circle is removed, so the photo becomes a disc with no straight edges at all.</p>
@@ -11999,7 +11999,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>Brightness is the simplest photo fix, and the one people reach for first. A dark photo becomes visible, a washed-out photo gains depth, and a dull shot comes back to life.</p>
 <p>But brightness is easy to overdo. Push it too far and the photo turns flat and grey, with blown-out highlights and no detail left in the bright areas.</p>
-<p>This guide explains how brightness works, how to use the slider and presets well, and how to fix dark photos without destroying them. It covers portraits, landscapes, screenshots, and the mistakes that ruin a good image.</p>
+<p>This guide explains how brightness works, how to use the slider and presets well, and how to fix dark photos without destroying them. It covers portraits, landscapes, screenshots, and the mistakes that ruin a good image. The free <a href="/image-brightness-editor/">Image Brightness Editor</a> gives you that slider and those presets in your browser, so you can rescue a dark photo in seconds.</p>
 <h2 id="what-brightness-does">What Brightness Actually Does</h2>
 <p>Brightness shifts every pixel in the image toward white or toward black. Raising it makes dark areas lighter and light areas even lighter, while lowering it darkens everything.</p>
 <p>The change is uniform across the whole image. A brightness adjustment does not pick out the shadows or the highlights; it moves the entire tonal range up or down together.</p>
@@ -12269,7 +12269,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>Brightness, exposure, and contrast are the three controls every photo editor offers, and they are easy to confuse. All three make a photo lighter or darker, but they do it in different ways.</p>
 <p>Using the wrong one gives a worse result. A photo that needs contrast will look washed out if you only brighten it, and a photo that needs brightness will look harsh if you only add contrast.</p>
-<p>This article explains each control, how they differ, how they interact, and which one to reach for in each situation. It is the foundation for every other photo edit you will make.</p>
+<p>This article explains each control, how they differ, how they interact, and which one to reach for in each situation. It is the foundation for every other photo edit you will make. To feel the difference yourself, open the <a href="/image-brightness-editor/">Image Brightness Editor</a> and move the brightness slider on your own photo — the effect is obvious in seconds.</p>
 <h2 id="what-each-does">What Each Control Does</h2>
 <p>Brightness shifts every pixel toward white or toward black, evenly across the whole image. It is the simplest control, and it fixes an overall dark or light photo.</p>
 <p>Exposure changes how much light the image appears to have captured. It affects the highlights and shadows differently, preserving more detail at the extremes than brightness does.</p>
@@ -12383,7 +12383,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
           answer: 'Contrast, usually with a small brightness lift first. Haze flattens the tonal range, so a contrast boost restores the depth. Start with 10 percent brightness if the photo is dark, then add 10 to 20 percent contrast and check the sky.',
         },
       ],
-      readingMinutes: 10,
+      readingMinutes: 11,
     },
     relatedToolSlugs: ['/image-contrast-editor', '/image-saturation-editor', '/image-filters'],
   },
@@ -12401,7 +12401,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>Contrast is the difference between the darkest and lightest parts of a photo. It is what makes an image feel punchy and solid, or flat and grey.</p>
 <p>A photo with good contrast has deep shadows, bright highlights, and a clear sense of depth. A photo with low contrast looks hazy, as though it were taken through fog.</p>
-<p>This guide explains how contrast works, how to use the slider and presets well, and how to add punch without clipping the highlights or crushing the shadows. It covers portraits, landscapes, screenshots, and the mistakes that ruin a good image.</p>
+<p>This guide explains how contrast works, how to use the slider and presets well, and how to add punch without clipping the highlights or crushing the shadows. It covers portraits, landscapes, screenshots, and the mistakes that ruin a good image. The free <a href="/image-contrast-editor/">Image Contrast Editor</a> is the place to practise: drag in a photo, move the slider, and watch the punch appear without losing detail.</p>
 <h2 id="what-contrast-does">What Contrast Actually Does</h2>
 <p>Contrast stretches or squeezes the tonal range of an image. Raising it makes dark pixels darker and light pixels lighter, widening the gap between them.</p>
 <p>Lowering contrast does the opposite. It brings the darks and lights closer together, softening the image and reducing the difference between its brightest and darkest parts.</p>
@@ -12515,7 +12515,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
           answer: 'Yes, because all processing happens locally in your browser and nothing is uploaded to a server. The tool also strips EXIF GPS data on export. Keep the original file if you want to try a different contrast level later.',
         },
       ],
-      readingMinutes: 10,
+      readingMinutes: 11,
     },
     relatedToolSlugs: ['/image-brightness-editor', '/image-saturation-editor', '/image-filters'],
   },
@@ -12671,7 +12671,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>Text over a photo is only useful if people can read it. A headline that vanishes into a bright sky or a caption that blends into a dark shadow fails at its only job.</p>
 <p>Contrast is what makes text readable. It is the difference in brightness between the letters and the background behind them, and it can be fixed in the photo, in the text, or in both.</p>
-<p>This article explains how to build that contrast. It covers darkening, overlays, panels, colour choices, and the testing habits that catch unreadable text before you publish.</p>
+<p>This article explains how to build that contrast. It covers darkening, overlays, panels, colour choices, and the testing habits that catch unreadable text before you publish. Before adding any text, you can fix the photo itself with the <a href="/image-contrast-editor/">Image Contrast Editor</a>, which darkens or lifts the background so your words stand out.</p>
 <h2 id="why-contrast-matters">Why Contrast Matters More Than Font</h2>
 <p>A beautiful font that nobody can read is a failed design. The first job of text on an image is to be read, and contrast decides whether that job gets done.</p>
 <p>Most images are viewed on phones, in feeds, at small sizes. Text that is clear at full size on a computer can be unreadable in a feed preview, where the image is only a few centimetres wide.</p>
@@ -12798,7 +12798,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>Saturation is the intensity of colour in a photo. A highly saturated image has vivid, punchy colours, while a desaturated one looks muted, soft, or completely grey.</p>
 <p>Getting saturation right is what makes a photo feel natural. Too little and the image looks washed out and lifeless, while too much makes grass glow neon and skin turn orange.</p>
-<p>This guide explains how saturation works, how to use the slider and presets well, and how to keep colours natural. It covers portraits, landscapes, food, products, and the mistakes that make photos look fake.</p>
+<p>This guide explains how saturation works, how to use the slider and presets well, and how to keep colours natural. It covers portraits, landscapes, food, products, and the mistakes that make photos look fake. The free <a href="/image-saturation-editor/">Image Saturation Editor</a> lets you practise safely in your browser, with a slider and presets that keep colours vivid without turning them fake.</p>
 <h2 id="what-saturation-does">What Saturation Actually Does</h2>
 <p>Saturation controls how pure or how grey the colours in an image are. Raising it makes every colour stronger and more vivid, while lowering it drains the colour toward grey.</p>
 <p>At zero, the image looks normal. At plus 100 percent, the colours are as strong as they can be, and at minus 100 percent, the image becomes completely black and white.</p>
@@ -12912,7 +12912,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
           answer: 'Yes, because all processing happens locally in your browser and nothing is uploaded to a server. The tool also strips EXIF GPS data on export. Keep the original file if you want to try a different saturation level later.',
         },
       ],
-      readingMinutes: 10,
+      readingMinutes: 11,
     },
     relatedToolSlugs: ['/image-filters', '/image-brightness-editor', '/image-contrast-editor'],
   },
@@ -13068,7 +13068,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>Saturation and vibrance both make colours stronger, but they do it in different ways. One boosts every colour equally, while the other boosts only the colours that need it.</p>
 <p>The difference matters for natural photos. A saturation boost can turn skin orange and grass neon, while a vibrance boost protects the colours that are already strong.</p>
-<p>This article compares the two controls directly: how they work, how they treat skin tones, when to use each one, and how to combine them for natural, vivid colour.</p>
+<p>This article compares the two controls directly: how they work, how they treat skin tones, when to use each one, and how to combine them for natural, vivid colour. You can compare the effect on your own photos with the <a href="/image-saturation-editor/">Image Saturation Editor</a>, which applies the saturation side of the pair right in your browser.</p>
 <h2 id="what-each-does">What Each Control Does</h2>
 <p>Saturation boosts all colours equally. Every hue in the image gets stronger by the same amount, whether it was already vivid or barely visible.</p>
 <p>Vibrance boosts the muted colours more and the vivid colours less. It lifts the dull tones while leaving the already-strong colours mostly alone.</p>
@@ -13200,7 +13200,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>A photo filter changes the mood of an image in one click. It shifts the colours, the contrast, and the tone, turning an ordinary snapshot into a stylised picture.</p>
 <p>Filters are the fastest edit in photography. A single tap can make a photo feel vintage, dramatic, warm, or cool, without any manual adjustment.</p>
-<p>This guide explains how filters work, what the 11 styles do, and how to use them well. It covers intensity, comparison, consistency, and the mistakes that make filtered photos look cheap.</p>
+<p>This guide explains how filters work, what the 11 styles do, and how to use them well. It covers intensity, comparison, consistency, and the mistakes that make filtered photos look cheap. All 11 styles are ready to try in the free <a href="/image-filters/">Image Filters</a> tool, which previews each look on your photo before you download anything.</p>
 <h2 id="what-filters-do">What Photo Filters Actually Do</h2>
 <p>A filter applies a preset combination of colour, contrast, and tone changes to a photo. Each filter is a recipe: warmer colours, softer contrast, faded blacks, or a cooler palette.</p>
 <p>The changes happen all at once. Instead of adjusting brightness, contrast, and saturation separately, a filter applies a coordinated set of changes in a single step.</p>
@@ -13314,7 +13314,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
           answer: 'Yes, because all processing happens locally in your browser and nothing is uploaded to a server. The tool also strips EXIF GPS data on export. Keep the original file if you want to try a different filter later.',
         },
       ],
-      readingMinutes: 10,
+      readingMinutes: 11,
     },
     relatedToolSlugs: ['/image-saturation-editor', '/image-brightness-editor', '/image-contrast-editor'],
   },
@@ -13470,7 +13470,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       body: `
 <p>Eleven filters is a lot of choice. Each one changes the mood of a photo, and the wrong one can make a good image look cheap or strange.</p>
 <p>Comparing the filters side by side is the fastest way to learn them. Once you know what each one does, choosing becomes quick, and your photos gain a consistent look.</p>
-<p>This article compares all 11 styles directly: how they differ, which subjects each one suits, and how to build a consistent filter habit across your work.</p>
+<p>This article compares all 11 styles directly: how they differ, which subjects each one suits, and how to build a consistent filter habit across your work. The fastest way to run the comparison is the <a href="/image-filters/">Image Filters</a> tool, where you can switch between all 11 styles on the same photo and see the differences instantly.</p>
 <h2 id="why-compare-filters">Why Compare Filters at All</h2>
 <p>Filters look similar in a small grid, but they behave very differently at full size. A filter that looks warm in a thumbnail can turn a face orange in the main preview.</p>
 <p>Comparing them on the same photo shows the differences clearly. The same portrait under Vintage, Sepia, and B&W Noir looks like three different photographs.</p>

@@ -1740,7 +1740,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>A compressão em lote é simples de começar e fácil de errar. Um lote descuidado pode produzir cinquenta imagens suaves, um ZIP bagunçado e uma manhã gasta consertando.</p>
 <p>Um lote cuidadoso faz o oposto. Ele produz imagens consistentes e nítidas, organizadas num pacote limpo, prontas para enviar de uma vez.</p>
-<p>Este artigo cobre as melhores práticas que separam os dois resultados, das predefinições à nomeação, passando pelas conferências de qualidade.</p>
+<p>Este artigo cobre as melhores práticas que separam os dois resultados, das predefinições à nomeação, passando pelas conferências de qualidade. E para colocar tudo em prática, o <a href="/pt/comprimir-imagens-em-lote/">Compressor de imagens em lote</a> processa dezenas de fotos de uma só vez e entrega tudo num único ZIP organizado.</p>
 <h2 id="start-with-originals">Comece sempre dos originais</h2>
 <p>Todo lote deve começar dos originais de melhor qualidade que você tiver. Um lote feito de cópias comprimidas herda todo o dano delas.</p>
 <p>Os aplicativos de chat, as redes sociais e o e-mail encolhem as fotos antes de você vê-las. Uma foto encaminhada por um aplicativo de mensagens já é uma fonte ruim.</p>
@@ -3170,7 +3170,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
   <p>Cada conversão de formato muda a forma como a sua imagem é guardada, e algumas dessas mudanças são permanentes. Entender quais conversões perdem qualidade, e quais não perdem, evita que você danifique as suas fotos aos poucos.</p>
   <p>A regra é simples de dizer e fácil de esquecer: formatos com perda descartam detalhe, formatos sem perda mantêm tudo. Cada decisão de conversão nasce desse único fato.</p>
-  <p>Este artigo explica a perda de qualidade em termos simples. Você vai aprender o que acontece dentro de cada formato, por que conversões repetidas fazem mal e quando converter é totalmente seguro.</p>
+  <p>Este artigo explica a perda de qualidade em termos simples. Você vai aprender o que acontece dentro de cada formato, por que conversões repetidas fazem mal e quando converter é totalmente seguro. Na hora de converter, o <a href="/pt/converter-imagens/">Conversor de imagens</a> deixa você escolher o formato e a qualidade, e tudo acontece no navegador, sem enviar a foto para lugar nenhum.</p>
   <h2 id="what-quality-loss-means">O que a perda de qualidade realmente significa</h2>
   <p>Perda de qualidade significa que um detalhe que existia no arquivo original sumiu do arquivo convertido, e nenhuma ferramenta consegue trazer ele de volta. Os pixels continuam lá, mas a informação fina dentro deles foi simplificada.</p>
   <p>O dano nem sempre é visível. Uma foto convertida com 90 por cento de qualidade parece idêntica à original em tamanho normal, mas uma comparação pixel a pixel mostra diferenças minúsculas em áreas com textura.</p>
@@ -3500,7 +3500,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
   <p>Quando você cria um PDF a partir de imagens, o formato dessas imagens importa mais do que a maioria espera. Uma página JPG e uma página PNG podem parecer idênticas na tela e se comportar de forma bem diferente.</p>
   <p>A escolha afeta o tamanho do arquivo, a nitidez do texto e a forma como o PDF imprime. Para um álbum de fotos, um formato ganha; para um contrato digitalizado, o outro ganha.</p>
-  <p>Este artigo compara JPG e PNG dentro de PDFs, para você escolher o formato certo antes de gerar, não depois.</p>
+  <p>Este artigo compara JPG e PNG dentro de PDFs, para você escolher o formato certo antes de gerar, não depois. Depois de decidir, o <a href="/pt/converter-imagens-para-pdf/">Imagem para PDF</a> junta as suas imagens num só documento, na ordem que você quiser, direto no navegador.</p>
   <h2 id="jpg-inside-pdf">Imagens JPG dentro de um PDF</h2>
   <p>O JPG é um formato com perda, o que significa que ele descarta detalhe para encolher o arquivo. Dentro de um PDF, uma página JPG guarda a foto com essa mesma compressão, mantendo o documento pequeno.</p>
   <p>As fotos comprimem muito bem como JPG. Uma fotografia de página inteira com 85 por cento de qualidade parece limpa e mantém o PDF leve o bastante para enviar por e-mail.</p>
@@ -3602,7 +3602,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
       { question: 'Qual é o melhor formato para uma assinatura digitalizada em um PDF?', answer: 'O PNG é o melhor para assinaturas, porque as linhas finas da caligrafia continuam nítidas. Uma assinatura em JPG pode parecer difusa nas bordas, principalmente depois de imprimir. Digitalize a assinatura em PNG, mantenha uma boa resolução e coloque com Ajustar para não cortar nada.' },
       { question: 'Dá para reduzir o tamanho de um PDF feito com imagens PNG?', answer: 'Sim. Baixe o controle de qualidade ao gerar, ou converta as páginas de foto para JPG antes de criar. As páginas de texto devem continuar em PNG, mas as páginas de foto podem passar para JPG com 85 por cento de qualidade com pouca mudança visível. Essa combinação muitas vezes reduz o tamanho do arquivo pela metade.' },
     ],
-    readingMinutes: 12,
+    readingMinutes: 13,
   },
   'bulk-image-converter-guide': {
     title: 'Conversor de imagens em lote: guia completo',
@@ -4830,7 +4830,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
   <p>A conversão de PNG para JPG é famosa por encolher arquivos, mas a economia não é a mesma para cada imagem. Uma captura pode cair 90 por cento, enquanto um ícone simples pode crescer.</p>
   <p>Entender o que move a economia ajuda você a prever o resultado antes de converter, e a escolher o ajuste de qualidade que protege o que importa.</p>
-  <p>Este artigo olha os números com honestidade, por tipo de imagem, e explica as trocas em termos simples.</p>
+  <p>Este artigo olha os números com honestidade, por tipo de imagem, e explica as trocas em termos simples. Para testar na sua própria imagem, o <a href="/pt/converter-png-para-jpg/">PNG para JPG</a> mostra o tamanho antes e depois, com o controle de qualidade na sua mão.</p>
   <h2 id="why-png-is-big">Por que os arquivos PNG são tão grandes</h2>
   <p>O PNG não tem perda, o que significa que guarda cada pixel exatamente. Essa precisão custa bytes, principalmente para imagens detalhadas com textura e variação de cor sem fim.</p>
   <p>Uma fotografia tem milhões de cores sutilmente diferentes. O PNG precisa descrever cada uma, enquanto o JPG pode simplificar elas em degradês lisos que o olho mal distingue.</p>
@@ -7319,7 +7319,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Uma foto torta é um dos problemas mais comuns com imagens. Você abre uma foto tirada no celular e vê o horizonte na vertical, ou um documento escaneado que só dá para ler de cabeça para baixo.</p>
 <p>Girar e inverter são os dois movimentos que resolvem isso. Girar vira a imagem inteira em um ângulo definido, enquanto inverter espelha a imagem da esquerda para a direita ou de cima para baixo.</p>
-<p>Este guia explica os dois movimentos com uma linguagem simples. Você vai aprender quais ângulos usar, como corrigir selfies espelhadas, por que algumas fotos giram sozinhas e como endireitar uma foto inclinada sem perder nenhum canto.</p>
+<p>Este guia explica os dois movimentos com uma linguagem simples. Você vai aprender quais ângulos usar, como corrigir selfies espelhadas, por que algumas fotos giram sozinhas e como endireitar uma foto inclinada sem perder nenhum canto. Tudo isso dá para fazer direto no <a href="/pt/girar-e-inverter-imagem/">Girar e inverter imagem</a>, que gira em ângulos exatos e corrige a orientação sem precisar instalar nada.</p>
 <h2 id="what-rotation-and-flipping-do">O que Girar e Inverter Realmente Fazem</h2>
 <p>Girar é rodar a imagem em torno do centro. Um giro de 90 graus troca largura por altura, então uma foto em paisagem vira retrato, e um giro de 180 graus deixa a imagem de cabeça para baixo.</p>
 <p>Inverter é diferente de girar. A inversão horizontal espelha a imagem da esquerda para a direita, como olhar no espelho, enquanto a inversão vertical espelha de cima para baixo.</p>
@@ -7633,7 +7633,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Cortar é a forma mais rápida de melhorar uma foto. Remove distrações, aperta o enquadramento e remodela a imagem para caber no lugar onde ela vai viver.</p>
 <p>Toda foto tem uma versão melhor escondida dentro dela. Uma foto ampla com céu vazio vira um retrato forte quando o espaço extra é cortado, e uma captura de tela cheia vira legível quando as bordas são aparadas.</p>
-<p>Este guia explica como o corte funciona, quais proporções usar e como ter resultados limpos sempre. Ele cobre a ferramenta, a técnica e os erros que estragam um corte que seria bom.</p>
+<p>Este guia explica como o corte funciona, quais proporções usar e como ter resultados limpos sempre. Ele cobre a ferramenta, a técnica e os erros que estragam um corte que seria bom. Quando for a hora de cortar, o <a href="/pt/cortar-imagens/">Cortador de imagens</a> deixa você arrastar o quadro, escolher a proporção e dar zoom, tudo com prévia ao vivo.</p>
 <h2 id="what-cropping-does">O que Cortar Realmente Faz</h2>
 <p>Cortar tira as partes externas de uma imagem e mantém só o retângulo que você seleciona. Nada dentro desse retângulo muda; os pixels que você mantém são exatamente os pixels de antes.</p>
 <p>Essa é uma diferença importante. Cortar não estica, não aperta nem reamostra a área mantida, então a qualidade dentro da seleção continua igual à original.</p>
@@ -7837,7 +7837,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Todo corte tem uma proporção, você tenha escolhido ou não. A proporção é o formato do retângulo que você mantém, e ela decide onde a imagem cabe e como ela fica.</p>
 <p>Um corte quadrado e um corte largo não são intercambiáveis. Um combina com foto de perfil, o outro com banner, e usar o errado significa que a plataforma vai recortar o seu trabalho por você.</p>
-<p>Este artigo explica as proporções comuns, para que serve cada uma e como escolher. Ele também cobre proporções personalizadas, a matemática por trás delas e os erros que vêm de ignorá-las.</p>
+<p>Este artigo explica as proporções comuns, para que serve cada uma e como escolher. Ele também cobre proporções personalizadas, a matemática por trás delas e os erros que vêm de ignorá-las. Na prática, o <a href="/pt/cortar-imagens/">Cortador de imagens</a> já traz essas proporções prontas, então é só escolher 1:1, 16:9 ou outra e ajustar o quadro.</p>
 <h2 id="what-is-an-aspect-ratio">O que É uma Proporção?</h2>
 <p>Uma proporção é a relação entre a largura e a altura de uma imagem, escrita como dois números com dois-pontos entre eles, como 16:9.</p>
 <p>Os números descrevem uma proporção, não uma contagem de pixels. Uma imagem 16:9 pode ter 1920 por 1080 pixels ou 1280 por 720 pixels, e as duas têm o mesmo formato.</p>
@@ -8147,6 +8147,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Uma marca d’água deve proteger o seu trabalho sem estragá-lo. Esse equilíbrio é mais difícil do que parece, porque uma marca fraca demais não protege nada e uma marca forte demais estraga a foto.</p>
 <p>As melhores marcas seguem algumas regras simples sobre posicionamento, opacidade, tamanho e cor. São consistentes em todo o seu trabalho, legíveis em qualquer fundo e difíceis de remover sem danificar a imagem.</p>
 <p>Este artigo reúne essas regras em um só lugar. Ele cobre onde colocar a marca, o quanto deixá-la forte, qual estilo escolher e como criar um hábito de marca d’água que proteja cada imagem que você publicar.</p>
+<p>Para aplicar as regras na prática, o <a href="/pt/adicionar-marca-dagua/">Marca d'água em imagem</a> permite posicionar a marca, ajustar a opacidade e repetir em mosaico, tudo no navegador.</p>
 <h2 id="why-watermarks-fail">Por que a Maioria das Marcas d’água Falha</h2>
 <p>A maioria das marcas falha porque é tímida demais. Uma marca com 10 por cento de opacidade em um canto distante é invisível na maioria das telas, e não protege absolutamente nada.</p>
 <p>Outras falham porque são agressivas demais. Uma barra preta sólida no meio de uma foto estraga a imagem para o cliente que precisa julgá-la, e irrita qualquer espectador.</p>
@@ -8245,7 +8246,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Algumas partes de uma foto não deveriam ser compartilhadas. Um rosto ao fundo, um endereço em uma carta ou uma senha em uma tela podem causar dano real se chegarem aos olhos errados.</p>
 <p>Desfocar e pixelar são as duas formas de esconder esses detalhes. As duas tornam uma região ilegível, mas têm aparência diferente e protegem de jeitos diferentes.</p>
-<p>Este guia explica os dois métodos, quando usar cada um e como aplicá-los com capricho. Ele cobre os modos pincel e imagem inteira, configurações de intensidade e os erros que deixam detalhes sensíveis legíveis.</p>
+<p>Este guia explica os dois métodos, quando usar cada um e como aplicá-los com capricho. Ele cobre os modos pincel e imagem inteira, configurações de intensidade e os erros que deixam detalhes sensíveis legíveis. Os dois métodos estão no <a href="/pt/desfocar-e-pixelar-imagem/">Desfocar e pixelar imagem</a>, onde dá para pintar só a área sensível com o pincel ou cobrir a foto inteira.</p>
 <h2 id="what-blur-does">O que o Desfoque Faz com uma Imagem</h2>
 <p>Desfocar suaviza uma região calculando a média das cores dos pixels vizinhos. Bordas nítidas se dissolvem, o texto fica ilegível e os rostos perdem as feições.</p>
 <p>Um desfoque leve só suaviza o detalhe um pouco, enquanto um desfoque forte transforma a região em uma mancha suave de cor. A configuração de intensidade decide quanta informação sobrevive.</p>
@@ -8450,7 +8451,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Desfoque e pixelação escondem coisas, mas não são a mesma ferramenta. Um suaviza uma região até virar uma mancha suave de cor, enquanto o outro a substitui por grandes blocos.</p>
 <p>A diferença importa quando a privacidade está em jogo. Um método que parece censurado ainda pode deixar um rosto reconhecível ou uma palavra legível, e a escolha errada pode expor justamente o que você queria esconder.</p>
-<p>Este artigo compara os dois métodos diretamente: como funcionam, como ficam, qual é mais seguro para rostos e textos e quando combiná-los para uma censura bem feita.</p>
+<p>Este artigo compara os dois métodos diretamente: como funcionam, como ficam, qual é mais seguro para rostos e textos e quando combiná-los para uma censura bem feita. Depois de escolher o método, o <a href="/pt/desfocar-e-pixelar-imagem/">Desfocar e pixelar imagem</a> aplica o desfoque ou a pixelação na hora, com o controle de intensidade na sua mão.</p>
 <h2 id="how-each-method-works">Como Cada Método Funciona</h2>
 <p>Desfocar calcula a média das cores dos pixels vizinhos. Bordas nítidas se dissolvem, o texto fica ilegível e os rostos perdem as feições conforme a intensidade aumenta.</p>
 <p>Pixelar substitui uma região por blocos de cor sólida. Cada bloco é a média dos pixels por baixo, então todo detalhe fino some e só resta um mosaico grosseiro.</p>
@@ -8754,7 +8755,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>O texto em uma foto só é útil se as pessoas conseguirem lê-lo. Uma legenda linda que some em um fundo cheio é pior que nenhuma legenda, porque frustra o espectador.</p>
 <p>A legibilidade não é questão de gosto. Ela vem de contraste, tamanho, escolha de fonte e posicionamento, e cada um deles pode ser testado antes de você publicar.</p>
-<p>Este artigo explica as regras que tornam o texto em imagens legível. Ele cobre fontes, contraste, contornos, painéis de fundo e os hábitos de teste que pegam problemas cedo.</p>
+<p>Este artigo explica as regras que tornam o texto em imagens legível. Ele cobre fontes, contraste, contornos, painéis de fundo e os hábitos de teste que pegam problemas cedo. Para testar as regras na sua própria foto, o <a href="/pt/adicionar-texto-a-imagem/">Adicionar texto a imagem</a> deixa você arrastar o texto, trocar a fonte e ajustar contorno e sombra em tempo real.</p>
 <h2 id="why-readability-matters">Por que a Legibilidade Importa Mais que o Estilo</h2>
 <p>Uma fonte estilosa que ninguém consegue ler é um design fracassado. O primeiro trabalho do texto em uma imagem é ser lido, e o estilo só importa depois que esse trabalho é feito.</p>
 <p>A maioria das imagens é vista no celular, em feeds, em tamanhos pequenos. Um texto claro em tamanho real no computador pode ser ilegível em uma prévia de feed, onde a imagem tem só alguns centímetros de largura.</p>
@@ -9064,6 +9065,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Uma moldura muda como uma foto é vista. A mesma imagem em uma borda branca fina, uma moldura Polaroid ou uma borda brilhante em gradiente parece três fotos diferentes.</p>
 <p>Escolher um estilo não é só decoração. A moldura define o clima, sinaliza o contexto e diz ao espectador se a foto é uma memória, um produto ou uma obra de arte.</p>
 <p>Este artigo compara os principais estilos de moldura e onde cada um funciona melhor. Ele cobre redes sociais, impressão, fotos de produto, retratos e as escolhas de cor e sombra que fazem uma moldura parecer intencional.</p>
+<p>Se quiser experimentar os estilos na sua foto, o <a href="/pt/adicionar-borda-a-imagem/">Gerador de bordas para imagem</a> aplica molduras sólidas, em gradiente e com sombra, com prévia imediata.</p>
 <h2 id="why-frames-matter">Por que as Molduras Importam</h2>
 <p>Uma moldura separa a imagem do que está ao redor. Em uma página cheia ou um feed lotado, uma foto com borda se destaca, enquanto uma sem borda pode se misturar com o fundo.</p>
 <p>As molduras também adicionam uma sensação de conclusão. Uma foto com borda parece acabada, como uma impressão montada, enquanto uma foto sem borda pode parecer um arquivo cru.</p>
@@ -9167,7 +9169,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Cantos arredondados deixam uma foto mais suave. Eles transformam um retângulo rígido numa forma amigável, que combina com as telas, os cartões e os avatares de hoje.</p>
 <p>Hoje todo aplicativo e todo site usa cantos arredondados. A foto de perfil do WhatsApp e do Instagram é um círculo, os cartões têm bordas suaves e os botões são em forma de pílula, então uma foto com cantos arredondados combina com o visual atual.</p>
-<p>Este guia explica como o arredondamento funciona, quais formas escolher e como exportar o resultado do jeito certo. Você vai ver raio, controle por canto, transparência e formatos.</p>
+<p>Este guia explica como o arredondamento funciona, quais formas escolher e como exportar o resultado do jeito certo. Você vai ver raio, controle por canto, transparência e formatos. Na hora de aplicar, o <a href="/pt/arredondar-cantos-da-imagem/">Arredondar cantos da imagem</a> deixa você ajustar o raio canto por canto e exportar com fundo transparente em PNG.</p>
 <h2 id="what-rounding-does">O que arredondar os cantos realmente faz</h2>
 <p>Arredondar corta os cantos da imagem seguindo uma curva. As bordas retas continuam, mas os cantos de 90 graus viram arcos suaves.</p>
 <p>A curva é definida por um valor de raio. Um raio pequeno dá uma suavização leve, enquanto um raio grande transforma os cantos em curvas profundas que mudam a forma inteira.</p>
@@ -9381,7 +9383,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Cantos arredondados e recorte circular suavizam uma foto, mas não são a mesma coisa. Um mantém o retângulo e curva os cantos, enquanto o outro transforma a imagem numa forma redonda.</p>
 <p>A diferença importa para avatares, cartões e perfis de redes sociais, onde a forma decide como a foto se encaixa e como ela é vista. A forma errada pode cortar um rosto ou parecer fora de lugar.</p>
-<p>Este artigo compara as duas formas diretamente: como funcionam, como ficam, onde cada uma se encaixa e quando combiná-las para o melhor resultado.</p>
+<p>Este artigo compara as duas formas diretamente: como funcionam, como ficam, onde cada uma se encaixa e quando combiná-las para o melhor resultado. Para ver as duas formas na sua foto, o <a href="/pt/arredondar-cantos-da-imagem/">Arredondar cantos da imagem</a> arredonda os cantos com o raio que você escolher e exporta em PNG transparente.</p>
 <h2 id="what-each-shape-does">O que cada forma faz</h2>
 <p>Cantos arredondados mantêm a imagem como um retângulo e curvam os quatro cantos seguindo um arco. As bordas retas continuam, mas as pontas afiadas viram curvas suaves.</p>
 <p>Um recorte circular corta a imagem numa forma redonda. Tudo fora do círculo é removido, então a foto vira um disco sem nenhuma borda reta.</p>
@@ -9486,6 +9488,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Brilho é o ajuste mais simples de uma foto, e o primeiro que todo mundo procura. Uma foto escura fica visível, uma foto estourada ganha profundidade e uma foto sem graça volta à vida.</p>
 <p>Mas é fácil exagerar no brilho. Se passar do ponto, a foto fica chapada e cinza, com os realces estourados e nenhum detalhe nas áreas claras.</p>
 <p>Este guia explica como o brilho funciona, como usar bem o controle e as predefinições, e como corrigir fotos escuras sem destruí-las. Você vai ver retratos, paisagens, capturas de tela e os erros que estragam uma boa imagem.</p>
+<p>Para clarear a sua foto agora, o <a href="/pt/ajustar-brilho-da-imagem/">Editor de brilho de imagem</a> mostra o antes e o depois lado a lado enquanto você move o controle.</p>
 <h2 id="what-brightness-does">O que o brilho realmente faz</h2>
 <p>Brilho desloca todos os pixels da imagem em direção ao branco ou ao preto. Ao aumentar, as áreas escuras clareiam e as claras ficam ainda mais claras, e ao diminuir, tudo escurece.</p>
 <p>A mudança é uniforme na imagem inteira. Um ajuste de brilho não escolhe as sombras ou os realces; ele move toda a faixa tonal para cima ou para baixo ao mesmo tempo.</p>
@@ -9699,7 +9702,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Brilho, exposição e contraste são os três controles que todo editor de fotos oferece, e é fácil confundi-los. Os três deixam uma foto mais clara ou mais escura, mas de jeitos diferentes.</p>
 <p>Usar o errado dá um resultado pior. Uma foto que precisa de contraste vai parecer estourada se você só clarear, e uma foto que precisa de brilho vai parecer dura se você só adicionar contraste.</p>
-<p>Este artigo explica cada controle, como eles diferem, como interagem e qual usar em cada situação. É a base de todas as outras edições de foto que você vai fazer.</p>
+<p>Este artigo explica cada controle, como eles diferem, como interagem e qual usar em cada situação. É a base de todas as outras edições de foto que você vai fazer. O brilho em si dá para testar no <a href="/pt/ajustar-brilho-da-imagem/">Editor de brilho de imagem</a>, que deixa você clarear ou escurecer a foto e comparar o resultado com o original.</p>
 <h2 id="what-each-does">O que cada controle faz</h2>
 <p>Brilho desloca todos os pixels em direção ao branco ou ao preto, de forma uniforme na imagem inteira. É o controle mais simples, e corrige uma foto escura ou clara por inteiro.</p>
 <p>Exposição muda quanta luz a imagem parece ter capturado. Ela afeta os realces e as sombras de forma diferente, preservando mais detalhe nos extremos que o brilho.</p>
@@ -9804,6 +9807,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Contraste é a diferença entre as partes mais escuras e mais claras de uma foto. É o que faz uma imagem parecer marcante e sólida, ou chapada e cinza.</p>
 <p>Uma foto com bom contraste tem sombras profundas, realces claros e uma sensação clara de profundidade. Uma foto com pouco contraste parece com neblina, como se tivesse sido tirada através de um nevoeiro.</p>
 <p>Este guia explica como o contraste funciona, como usar bem o controle e as predefinições, e como dar impacto sem cortar os realces nem esmagar as sombras. Você vai ver retratos, paisagens, capturas de tela e os erros que estragam uma boa imagem.</p>
+<p>Para dar esse impacto na sua foto, o <a href="/pt/ajustar-contraste-da-imagem/">Editor de contraste de imagem</a> mostra o antes e o depois ao vivo enquanto você ajusta o controle.</p>
 <h2 id="what-contrast-does">O que o contraste realmente faz</h2>
 <p>O contraste estica ou aperta a faixa tonal de uma imagem. Ao aumentar, os pixels escuros ficam mais escuros e os claros mais claros, ampliando a distância entre eles.</p>
 <p>Diminuir o contraste faz o contrário. Ele aproxima escuros e claros, suavizando a imagem e reduzindo a diferença entre as partes mais claras e mais escuras.</p>
@@ -10017,7 +10021,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Texto sobre uma foto só serve se as pessoas conseguirem lê-lo. Um título que some num céu claro ou uma legenda que se mistura com uma sombra escura falha no seu único trabalho.</p>
 <p>Contraste é o que deixa o texto legível. É a diferença de brilho entre as letras e o fundo atrás delas, e dá para corrigir na foto, no texto, ou nos dois.</p>
-<p>Este artigo explica como construir esse contraste. Você vai ver escurecimento, sobreposições, painéis, escolhas de cor e os hábitos de teste que pegam texto ilegível antes de você publicar.</p>
+<p>Este artigo explica como construir esse contraste. Você vai ver escurecimento, sobreposições, painéis, escolhas de cor e os hábitos de teste que pegam texto ilegível antes de você publicar. Antes de colocar o texto, vale ajustar a foto no <a href="/pt/ajustar-contraste-da-imagem/">Editor de contraste de imagem</a>, que escurece ou clareia o fundo até as letras se destacarem com clareza.</p>
 <h2 id="why-contrast-matters">Por que o contraste importa mais que a fonte</h2>
 <p>Uma fonte linda que ninguém consegue ler é um design fracassado. O primeiro trabalho do texto sobre uma imagem é ser lido, e o contraste decide se esse trabalho é feito.</p>
 <p>A maioria das imagens é vista no celular, em feeds, em tamanhos pequenos. Um texto claro em tamanho real no computador pode ser ilegível na prévia do feed, onde a imagem tem só alguns centímetros de largura.</p>
@@ -10117,6 +10121,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Saturação é a intensidade da cor numa foto. Uma imagem bem saturada tem cores vivas e marcantes, enquanto uma dessaturada parece suave, apagada ou totalmente cinza.</p>
 <p>Acertar a saturação é o que faz uma foto parecer natural. Com pouco, a imagem fica desbotada e sem vida, e com muito, a grama brilha neon e a pele fica laranja.</p>
 <p>Este guia explica como a saturação funciona, como usar bem o controle e as predefinições, e como manter as cores naturais. Você vai ver retratos, paisagens, comida, produtos e os erros que deixam as fotos falsas.</p>
+<p>Para encontrar o ponto certo na sua foto, o <a href="/pt/ajustar-saturacao-da-imagem/">Editor de saturação de imagem</a> deixa você subir ou descer a intensidade e ver o resultado na hora, sem instalar nada.</p>
 <h2 id="what-saturation-does">O que a saturação realmente faz</h2>
 <p>A saturação controla o quanto as cores de uma imagem são puras ou cinzas. Ao aumentar, cada cor fica mais forte e mais viva, e ao diminuir, a cor se esvai em direção ao cinza.</p>
 <p>Em zero, a imagem parece normal. Em mais 100 por cento, as cores estão o mais fortes que podem, e em menos 100 por cento, a imagem vira totalmente preto e branco.</p>
@@ -10330,7 +10335,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Saturação e vibrância deixam as cores mais fortes, mas de jeitos diferentes. Uma reforça todas as cores por igual, enquanto a outra reforça só as cores que precisam.</p>
 <p>A diferença importa para fotos naturais. Um reforço de saturação pode deixar a pele laranja e a grama neon, enquanto um reforço de vibrância protege as cores que já estão fortes.</p>
-<p>Este artigo compara os dois controles diretamente: como funcionam, como tratam os tons de pele, quando usar cada um e como combiná-los para uma cor natural e viva.</p>
+<p>Este artigo compara os dois controles diretamente: como funcionam, como tratam os tons de pele, quando usar cada um e como combiná-los para uma cor natural e viva. A saturação em si dá para testar no <a href="/pt/ajustar-saturacao-da-imagem/">Editor de saturação de imagem</a>, que mostra o antes e o depois lado a lado enquanto você move o controle.</p>
 <h2 id="what-each-does">O que cada controle faz</h2>
 <p>A saturação reforça todas as cores por igual. Cada tom da imagem fica mais forte na mesma medida, estivesse ele vivo ou mal visível.</p>
 <p>A vibrância reforça mais as cores suaves e menos as vivas. Ela levanta os tons apagados enquanto deixa as cores já fortes praticamente como estavam.</p>
@@ -10434,7 +10439,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Um filtro de foto muda o clima de uma imagem num só clique. Ele desloca as cores, o contraste e o tom, transformando uma foto comum numa imagem estilizada.</p>
 <p>Filtros são a edição mais rápida da fotografia. Um só toque pode deixar uma foto vintage, dramática, quente ou fria, sem nenhum ajuste manual.</p>
-<p>Este guia explica como os filtros funcionam, o que os 11 estilos fazem e como usá-los bem. Você vai ver intensidade, comparação, consistência e os erros que deixam fotos filtradas baratas.</p>
+<p>Este guia explica como os filtros funcionam, o que os 11 estilos fazem e como usá-los bem. Você vai ver intensidade, comparação, consistência e os erros que deixam fotos filtradas baratas. Os 11 estilos estão prontos no <a href="/pt/filtros-de-imagem/">Filtros de imagem</a>, onde dá para aplicar cada um, ajustar a intensidade e comparar com a foto original.</p>
 <h2 id="what-filters-do">O que os filtros de foto realmente fazem</h2>
 <p>Um filtro aplica uma combinação pronta de mudanças de cor, contraste e tom a uma foto. Cada filtro é uma receita: cores mais quentes, contraste mais suave, pretos desbotados ou uma paleta mais fria.</p>
 <p>As mudanças acontecem todas de uma vez. Em vez de ajustar brilho, contraste e saturação separadamente, um filtro aplica um conjunto coordenado de mudanças num só passo.</p>
@@ -10648,7 +10653,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     body: `
 <p>Onze filtros é muita escolha. Cada um muda o clima de uma foto, e o errado pode deixar uma boa imagem barata ou estranha.</p>
 <p>Comparar os filtros lado a lado é o jeito mais rápido de aprendê-los. Depois que você sabe o que cada um faz, escolher fica rápido, e suas fotos ganham um visual consistente.</p>
-<p>Este artigo compara os 11 estilos diretamente: como eles diferem, com quais assuntos cada um combina e como construir um hábito de filtro consistente no seu trabalho.</p>
+<p>Este artigo compara os 11 estilos diretamente: como eles diferem, com quais assuntos cada um combina e como construir um hábito de filtro consistente no seu trabalho. Para comparar os estilos na sua própria foto, o <a href="/pt/filtros-de-imagem/">Filtros de imagem</a> aplica os 11 filtros com intensidade ajustável, direto no navegador.</p>
 <h2 id="why-compare-filters">Por que comparar filtros</h2>
 <p>Filtros parecem semelhantes numa grade pequena, mas se comportam de forma bem diferente em tamanho real. Um filtro que parece quente numa miniatura pode deixar um rosto laranja na prévia principal.</p>
 <p>Compará-los na mesma foto mostra as diferenças claramente. O mesmo retrato sob Vintage, Sépia e Noir P&B parece três fotografias diferentes.</p>
