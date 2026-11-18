@@ -96,6 +96,8 @@ export const JA = {
       { slug: '/terms', label: '利用規約' }, // 'Terms of Service'
       { slug: '/about', label: '私たちについて' }, // 'About Us'
       { slug: '/contact', label: 'サポートに連絡' }, // 'Contact Support'
+      { slug: '/disclaimer', label: '免責事項' },
+      { slug: '/cookie-policy', label: 'Cookieポリシー' },
     ],
     guidesLinks: [
       {

@@ -89,6 +89,8 @@ const DEFAULT_FOOTER_STRINGS: FooterStrings = {
     { slug: '/terms', label: 'Terms of Service' },
     { slug: '/about', label: 'About Us' },
     { slug: '/contact', label: 'Contact Support' },
+    { slug: '/disclaimer', label: 'Disclaimer' },
+    { slug: '/cookie-policy', label: 'Cookie Policy' },
   ],
   guidesLinks: [
     {

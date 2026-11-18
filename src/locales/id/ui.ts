@@ -87,6 +87,8 @@ export const ID = {
       { slug: '/terms', label: 'Syarat Layanan' },
       { slug: '/about', label: 'Tentang Kami' },
       { slug: '/contact', label: 'Hubungi Dukungan' },
+      { slug: '/disclaimer', label: 'Penafian' },
+      { slug: '/cookie-policy', label: 'Kebijakan Cookie' },
     ],
     guidesLinks: [
       {

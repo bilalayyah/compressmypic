@@ -60,6 +60,8 @@ export const ZH_PATH_BY_EN: Record<string, string> = {
   '/contact': '/zh/lianxi-women',
   '/privacy': '/zh/yinsi-zhengce',
   '/terms': '/zh/shiyong-tiaokuan',
+  '/disclaimer': '/zh/mianze-shengming',
+  '/cookie-policy': '/zh/cookie-zhengce',
   // --- Guides ---
   '/guides/compress-images-for-whatsapp': '/zh/zhinan/whatsapp-tupian-yasuo',
   '/guides/jpg-vs-png-vs-webp': '/zh/zhinan/jpg-vs-png-vs-webp',

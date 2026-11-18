@@ -60,6 +60,8 @@ export const ES_PATH_BY_EN: Record<string, string> = {
   '/contact': '/es/contacto',
   '/privacy': '/es/privacidad',
   '/terms': '/es/terminos-de-servicio',
+  '/disclaimer': '/es/aviso-legal',
+  '/cookie-policy': '/es/politica-de-cookies',
   // --- Guides (Batch 7) ---
   '/guides/compress-images-for-whatsapp': '/es/guias/comprimir-imagenes-para-whatsapp',
   '/guides/jpg-vs-png-vs-webp': '/es/guias/jpg-vs-png-vs-webp',

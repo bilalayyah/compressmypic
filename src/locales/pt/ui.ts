@@ -86,6 +86,8 @@ export const PT = {
       { slug: '/terms', label: 'Termos de serviço' },
       { slug: '/about', label: 'Sobre nós' },
       { slug: '/contact', label: 'Falar com o suporte' },
+      { slug: '/disclaimer', label: 'Aviso legal' },
+      { slug: '/cookie-policy', label: 'Política de cookies' },
     ],
     guidesLinks: [
       {

@@ -84,6 +84,8 @@ export const RU = {
       { slug: '/terms', label: 'Условия использования' },
       { slug: '/about', label: 'О нас' },
       { slug: '/contact', label: 'Связаться с поддержкой' },
+      { slug: '/disclaimer', label: 'Отказ от ответственности' },
+      { slug: '/cookie-policy', label: 'Политика использования файлов cookie' },
     ],
     guidesLinks: [
       {

@@ -87,6 +87,8 @@ export const KO = {
       { slug: '/terms', label: '이용약관' }, // 'Terms of Service'
       { slug: '/about', label: '회사 소개' }, // 'About Us'
       { slug: '/contact', label: '고객 지원 문의' }, // 'Contact Support'
+      { slug: '/disclaimer', label: '면책 조항' },
+      { slug: '/cookie-policy', label: '쿠키 정책' },
     ],
     guidesLinks: [
       {
