@@ -504,7 +504,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'image-size-50kb-vs-100kb-vs-200kb',
-      title: '50KB vs 100KB vs 200KB: Which Size to Choose?',
+      title: '50KB vs 100KB vs 200KB: Which Size?',
       description: 'Compare 50KB, 100KB and 200KB images: quality differences, best use cases, and a simple rule for picking the right size for any portal.',
       body: `
 <p>Three numbers dominate image upload forms: 50KB, 100KB, and 200KB. They look similar, but the pictures they produce are not.</p>
@@ -1860,7 +1860,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: '500kb-vs-1mb-image-quality',
-      title: '500KB vs 1MB: Image Quality for Web and Print',
+      title: '500KB vs 1MB: Image Quality Compared',
       description: 'Compare 500KB and 1MB images: visible quality differences, loading speed, when each size wins, and how to choose for web and print.',
       body: `
 <p>Five hundred kilobytes and one megabyte sound very different. One is half the other, so the bigger file must look twice as good, right?</p>
@@ -11460,7 +11460,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'image-frames-borders-styles',
-      title: 'Image Frames and Borders for Social and Print',
+      title: 'Image Frames and Borders for Social',
       description: 'Which frame style suits your photo? Minimal, Polaroid, gallery, gradient glow, and retro frames compared for social media, print, and product photos.',
       body: `
 <p>A frame changes how a photo is seen. The same image in a thin white border, a Polaroid frame, or a glowing gradient edge feels like three different pictures.</p>
@@ -13063,7 +13063,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'saturation-vs-vibrance',
-      title: 'Saturation vs Vibrance: Natural Colour Editing',
+      title: 'Saturation vs Vibrance: Natural Colour',
       description: 'Saturation or vibrance? How each control treats colour, which one protects skin tones, and how to get natural, vivid colour without neon grass.',
       body: `
 <p>Saturation and vibrance both make colours stronger, but they do it in different ways. One boosts every colour equally, while the other boosts only the colours that need it.</p>
@@ -15582,7 +15582,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'how-to-extract-color-palette-from-image',
-      title: 'How to Extract a Colour Palette from an Image',
+      title: 'How to Extract a Colour Palette',
       description: 'Extract a colour palette from any photo in five steps: upload, pick 3–12 swatches, read the percentages, and copy CSS or JSON — free, in your browser.',
       body: `
 <p>You have a photo with colors you love, and you need those colors as a palette for a website, a poster, or a brand. Copying them by eye is slow and inaccurate.</p>
@@ -16350,7 +16350,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'product-photo-backgrounds',
-      title: 'Product Photo Backgrounds: Colours and Context',
+      title: 'Product Photo Backgrounds: Colours',
       description: 'Choose the right background for product photos: white, brand colours, marketplace rules, and the consistency that makes a shop look like a brand.',
       body: `
 <p>The background of a product photo is not decoration. It decides whether the buyer sees the product first, whether the listing looks trustworthy, and whether a shop feels like a brand or a random collection of images. A good background is invisible; a bad one is all anyone notices.</p>
@@ -17010,7 +17010,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'gif-frame-rate-file-size',
-      title: 'GIF Frame Rate and File Size: Smooth vs Small',
+      title: 'GIF Frame Rate and File Size',
       description: 'The trade-off at the heart of every GIF: how frame rate, frame count, dimensions, and colour palette decide whether your animation is smooth, small, or both.',
       body: `
 <p>Every GIF is a compromise between smoothness and size. A higher frame rate makes the motion fluid, but it also makes the file bigger. A smaller file shares faster, but it can look choppy. The skill of making GIFs is finding the balance for each animation.</p>

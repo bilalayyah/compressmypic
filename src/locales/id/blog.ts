@@ -15224,7 +15224,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 },
 'how-to-convert-image-to-base64': {
   title: 'Cara Mengubah Gambar Menjadi Base64',
-  description: 'Ubah gambar menjadi Base64 dalam empat langkah: unggah, pilih output Data URL, mentah, HTML, atau CSS, lalu salin atau unduh. Berfungsi untuk PNG, JPG, SVG, GIF, dan ICO.',
+  description: 'Ubah gambar menjadi Base64: unggah, pilih output Data URL, mentah, HTML, atau CSS, lalu salin atau unduh. Berfungsi untuk PNG, JPG, SVG, GIF, dan ICO.',
   body: `
 <p>Anda membutuhkan gambar sebagai teks: logo untuk stylesheet, ikon untuk email, atau gambar untuk payload JSON. Konversinya memakan waktu sekitar satu menit begitu Anda tahu langkah-langkahnya.</p>
 <p>Panduan ini memandu Anda mengubah gambar menjadi Base64 dalam empat langkah: unggah file, pilih format output, salin atau unduh string-nya, lalu tempel ke dalam kode Anda.</p>

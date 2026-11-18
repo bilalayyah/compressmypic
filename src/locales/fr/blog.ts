@@ -16559,7 +16559,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 12,
   },
   'photo-privacy-gps-exif-risks': {
-    title: 'Métadonnées photo : danger pour la vie privée',
+    title: 'Métadonnées photo et vie privée',
     description: 'Ce que la position GPS, les données EXIF et les métadonnées cachées de vos photos révèlent — et les gestes simples qui les empêchent de dévoiler votre adresse.',
     body: `
 <p>Une photo montre un instant. Ses métadonnées peuvent montrer où vous vivez, où vos enfants vont à l'école, et quand votre maison est vide.</p>

@@ -8130,7 +8130,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'image-crop-ratios-explained': {
-    title: 'Zuschneiden: 1:1, 4:3, 16:9 – welches Format?',
+    title: 'Seitenverhältnis: 1:1, 4:3, 16:9 – welches?',
     description: 'Was bedeuten Seitenverhältnisse beim Zuschneiden, und welches Format passt wofür? 1:1, 4:3, 3:2, 16:9 und mehr für Profilbilder, Druck und Social Media.',
     body: `
 <p>Jeder Zuschnitt hat ein Verhältnis – ob Sie es gewählt haben oder nicht. Das Verhältnis ist die Form des Rechtecks, das Sie behalten, und es entscheidet, wohin das Bild passt und wie es aussieht.</p>
