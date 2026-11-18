@@ -1770,7 +1770,9 @@ export default function App() {
             description: version.description,
             url: nextCanonical,
             datePublished: blogArticle.publishedAt,
-            ...(blogArticle.updatedAt ? { dateModified: blogArticle.updatedAt } : {}),
+            // dateModified = datePublished until an article is actually
+            // updated (audit P2-1: BlogPosting had no dateModified at all).
+            dateModified: blogArticle.updatedAt ?? blogArticle.publishedAt,
             author: { '@type': 'Organization', name: 'CompressMyPic', url: 'https://compressmypic.online' },
             publisher: { '@type': 'Organization', name: 'CompressMyPic', url: 'https://compressmypic.online' },
             mainEntityOfPage: { '@type': 'WebPage', '@id': nextCanonical },

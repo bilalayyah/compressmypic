@@ -495,7 +495,7 @@ export const FR = {
     'ai-tools': 'Outils IA',
     create: 'Créer',
     privacy: 'Outils de confidentialité',
-    developer: 'Outils développeur',
+    developer: 'Outils de développement',
   },
   compressionControls: {
     modeLabel: 'Mode de compression', // 'Compression Mode'

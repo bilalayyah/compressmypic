@@ -3477,7 +3477,7 @@ export const ES_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     faqs: [
       { question: '¿Cuál es la diferencia entre convertir y comprimir una imagen?', answer: 'Convertir cambia el formato de archivo, como de JPG a PNG, mientras que comprimir reduce el tamaño del archivo, normalmente dentro del mismo formato. Una conversión también puede achicar un archivo, por ejemplo de JPG a WebP, pero su trabajo principal es la compatibilidad. La compresión mantiene el formato y apunta a un tamaño menor.' },
       { question: '¿Convertir una imagen cambia sus dimensiones en píxeles?', answer: 'No, la conversión mantiene el mismo ancho y alto por defecto. Una foto de 4000 por 3000 sigue siendo de 4000 por 3000 después de convertirla, solo cambian el formato y el tamaño del archivo. Si además necesitas dimensiones más pequeñas, usa la herramienta Redimensionar imágenes después de convertir.' },
-      { question: '¿Puedo convertir una imagen sin perder calidad?', answer: 'Sí, cuando el formato de destino no tiene pérdida. Convertir JPG a PNG no pierde nada más allá del daño que ya tenía el JPG, y convertir PNG a WebP en modo sin pérdida conserva cada píxel. Convertir a JPG siempre implica algo de pérdida, así que mantén el control de calidad alto para las fotos importantes.' },
+      { question: '¿Puedo convertir una imagen sin perder calidad?', answer: 'Sí, cuando el formato de destino no tiene pérdida. Convertir JPG a PNG no pierde nada más allá del daño que ya tenía el JPG, En esta herramienta, el PNG es la opción sin pérdida: WebP usa el control de calidad, así que una conversión de PNG a WebP solo es tan fiel como lo permita el ajuste de calidad. Convertir a JPG siempre implica algo de pérdida, así que mantén el control de calidad alto para las fotos importantes.' },
       { question: '¿Por qué mi archivo convertido tiene un nombre distinto?', answer: 'El conversor conserva el nombre original de tu archivo y solo cambia la extensión, así beach-day.heic se convierte en beach-day.jpg. Esto mantiene tus archivos organizados y deja claro cuál archivo es la copia convertida. Si dos archivos chocaran, la descarga del navegador añade un número.' },
       { question: '¿Necesito instalar algo para convertir imágenes en el navegador?', answer: 'No. El conversor funciona por completo en un navegador moderno en Windows, Mac, Linux, ChromeOS, Android e iOS. No hay aplicación que instalar ni cuenta que crear. Solo abre la página, suelta un archivo y descarga el resultado.' },
       { question: '¿Qué hago si mi imagen convertida se ve peor que la original?', answer: 'Sube el control de calidad y convierte de nuevo desde el archivo original, porque el original sigue en la cola. Revisa si convertiste al formato equivocado, por ejemplo una foto detallada a JPG de baja calidad. Si la fuente en sí era de baja calidad, ningún ajuste puede restaurar detalle que nunca existió.' },
@@ -3608,7 +3608,7 @@ export const ES_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Piénsalo como fotocopiar una fotocopia. Cada generación se ve un poco peor que la anterior, y el daño es peor en los detalles finos.</p>
 <h2 id="lossy-vs-lossless">Con pérdida vs. sin pérdida: la diferencia central</h2>
 <p>Los formatos con pérdida, como JPG, WebP en modo con pérdida y AVIF, descartan datos para achicar el archivo. Conservan las partes de la imagen que tus ojos notan más y simplifican el resto.</p>
-<p>Los formatos sin pérdida, como PNG y WebP en modo sin pérdida, guardan cada píxel con exactitud. El archivo es más grande, pero la imagen es una copia perfecta de la fuente, sin ninguna degradación.</p>
+<p>Los formatos sin pérdida, como PNG y WebP en modo sin pérdida, guardan cada píxel con exactitud. El archivo es más grande, pero la imagen es una copia perfecta de la fuente, sin ninguna degradación. (El formato WebP también tiene un modo sin pérdida, pero el conversor de imágenes de este sitio genera WebP solo mediante el control de calidad, así que sus archivos WebP tienen pérdida: elija PNG aquí para un resultado realmente sin pérdida.)</p>
 <p>HEIC también pertenece al grupo con pérdida, aunque es mucho más eficiente que JPG. También descarta datos, solo que de forma más inteligente, y por eso las fotos de iPhone se ven bien con la mitad del tamaño.</p>
 <p>Cuando conviertes, la pérdida depende del formato de destino, no del de origen. Convertir un JPG a PNG no pierde nada nuevo, mientras que convertir un PNG a JPG siempre pierde algo.</p>
 <h2 id="jpg-quality-explained">La calidad JPG, explicada con honestidad</h2>
@@ -11771,7 +11771,7 @@ export const ES_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-color-picker-guide': {
     title: 'Selector de color de imagen: guía completa',
-    description: 'Tome cualquier color de cualquier imagen con un cuentagotas. Aprenda los códigos HEX, RGB, HSL y CMYK, la lupa de aumento, las muestras y la exportación a CSS — gratis, en su navegador.',
+    description: 'Tome cualquier color de cualquier imagen con un cuentagotas. Códigos HEX, RGB, HSL y CMYK, lupa, muestras y exportación a CSS, gratis en su navegador.',
     body: `
 <p>A todo diseñador le ha pasado: ve un color en pantalla y quiere su código exacto. Una captura de pantalla, una foto, un logotipo o un mockup pueden tener el tono perfecto, pero adivinar su valor nunca funciona.</p>
 <p>Un selector de color de imagen resuelve ese problema en segundos. Usted abre una imagen, apunta a cualquier píxel y lee su código de color exacto en HEX, RGB, HSL y CMYK.</p>
@@ -14153,7 +14153,7 @@ export const ES_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Ambos controles son sutiles por diseño. Una sombra fuerte o un radio de esquina extremo atraen la atención hacia el efecto en vez de hacia la imagen. Usa lo suficiente para agregar profundidad y pulido, y detente antes de que el tratamiento se vuelva el protagonista.</p>
 <h2 id="output-formats-and-quality">Formatos de salida y calidad</h2>
 <p>La herramienta exporta la imagen terminada como JPG o PNG. El JPG es la opción adecuada para fotos y para cualquier imagen donde un archivo pequeño importa, como un banner de sitio web o una publicación social. Comprime bien y carga rápido.</p>
-<p>El PNG es la opción adecuada cuando la imagen principal tiene transparencia que debe sobrevivir, o cuando la imagen tiene texto nítido y colores planos que el JPG difuminaría. Un archivo PNG es más grande, pero mantiene cada borde definido.</p>
+<p>El PNG es la opción adecuada cuando la imagen tiene texto nítido y colores planos que el JPG difuminaría. El fondo nuevo cubre todo el lienzo, así que en la imagen terminada no queda transparencia que conservar: el PNG vale aquí por la nitidez, no por la transparencia. Un archivo PNG es más grande, pero mantiene cada borde definido.</p>
 <p>La calidad de exportación para JPG es alta por defecto, lo que preserva el detalle de la imagen principal y la suavidad del degradado. Un degradado exportado con baja calidad puede mostrar bandas, que son los pasos visibles entre tonos de color. Mantén la calidad alta para fondos degradados.</p>
 <p>El archivo descargado se nombra según la configuración del fondo, así puedes distinguir las exportaciones cuando haces varias versiones. Un nombre de archivo claro te ahorra abrir cinco archivos casi idénticos para encontrar el correcto.</p>
 <h2 id="backgrounds-for-product-photos">Fondos para fotos de producto</h2>
@@ -14173,7 +14173,7 @@ export const ES_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Por último, mucha gente agrega un fondo a una foto que todavía tiene su fondo original desordenado. La herramienta coloca toda la foto sobre el telón nuevo, así que el fondo viejo sigue visible dentro del marco. Quita el fondo viejo primero y luego agrega el nuevo.</p>
 <h2 id="quick-reference">Referencia rápida: cómo elegir un fondo</h2>
 <p>Usa un color sólido para anuncios, logos y todo lo que exija que la imagen principal domine. Usa un degradado para gráficos sociales y promociones donde la energía ayude. Usa una foto difuminada cuando la forma del marco difiera de la forma de la foto y necesites llenar los huecos.</p>
-<p>Ajusta la proporción del lienzo para el destino, escala la imagen principal con aire para respirar, y exporta JPG para fotos y PNG para transparencia o texto nítido. Haz una vista previa al tamaño que verá tu audiencia.</p>
+<p>Ajusta la proporción del lienzo para el destino, escala la imagen principal con aire para respirar, y exporta JPG para fotos y PNG para texto nítido. Haz una vista previa al tamaño que verá tu audiencia.</p>
 <p>Para la versión paso a paso, lee <a href="/es/blog/como-agregar-fondo-a-una-imagen/">Cómo agregar un fondo a una imagen</a>, y para consejos específicos de producto, lee <a href="/es/blog/fondos-para-fotos-de-producto/">Fondos para fotos de producto: colores y contexto</a>. Pruébalo ahora con la herramienta <a href="/es/agregar-fondo-a-imagen/">Agregar fondo a imagen</a>, o empieza desde un recorte limpio con el <a href="/es/eliminar-fondo-imagen/">eliminador de fondo</a>.</p>
 `,
     faqs: [
@@ -14191,7 +14191,7 @@ export const ES_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
       },
       {
         question: '¿Debería exportar como JPG o PNG después de agregar un fondo?',
-        answer: 'Usa JPG para fotos y para cualquier imagen donde un archivo pequeño importa, como publicaciones sociales y banners de sitios web. Usa PNG cuando la imagen tenga texto nítido o colores planos que necesiten bordes definidos, o cuando quieras conservar la transparencia.',
+        answer: 'Usa JPG para fotos y para cualquier imagen donde un archivo pequeño importa, como publicaciones sociales y banners de sitios web. Usa PNG cuando la imagen tenga texto nítido o colores planos que necesiten bordes definidos. Una vez compuesto el fondo nuevo, no queda transparencia que conservar: todo el lienzo está cubierto.',
       },
       {
         question: '¿Por qué mi fondo degradado muestra bandas visibles?',
@@ -15305,8 +15305,8 @@ export const ES_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 13,
   },
   'image-resizer-guide': {
-    title: '¿Qué es un redimensionador de imágenes? Guía completa',
-    description: 'Aprenda qué hace un redimensionador de imágenes, cómo funcionan el cambio de tamaño por píxeles y por porcentaje, cuándo conviene bloquear la relación de aspecto y cómo elegir el tamaño adecuado para la web, las redes sociales y la impresión.',
+    title: '¿Qué es un redimensionador de imágenes?',
+    description: 'Aprenda qué hace un redimensionador de imágenes: cambio por píxeles y por porcentaje, relación de aspecto y qué tamaño usar para web, redes e impresión.',
     body: `
 <p>Un redimensionador de imágenes cambia las dimensiones en píxeles de una foto o un gráfico. Una foto que empieza con 4000 por 3000 píxeles puede quedar en 1200 por 900, 800 por 600 o cualquier otro tamaño que necesite. La imagen conserva su motivo y sus colores, pero ocupa un espacio distinto en la pantalla.</p>
 <p>El tamaño importa porque casi todos los destinos esperan unas dimensiones concretas. La imagen principal de un sitio web debe ser ancha, la foto de perfil debe ser cuadrada y la ficha de un marketplace necesita fotos de producto uniformes. El <a href="/es/redimensionar-imagenes/">redimensionador de imágenes</a> le permite cumplir con esos tamaños sin instalar programas ni abrir un editor pesado.</p>

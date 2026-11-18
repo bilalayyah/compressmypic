@@ -1233,7 +1233,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-compress-image-to-500kb': {
     title: 'Comment compresser une image à 500 Ko',
-    description: 'Étape par étape : compressez n’importe quelle photo à 500 Ko pour les portfolios, les présentations et les galeries. Choix de format, conseils de lot et solutions pour les cibles manquées.',
+    description: 'Compressez n’importe quelle photo à 500 Ko pour portfolios, présentations et galeries. Choix de format, conseils de lot et solutions pour les cibles manquées.',
     body: `
 <p>Compresser une image à 500 Ko est le travail de compression le plus facile qui soit. Le budget est généreux, la qualité reste élevée, et le processus prend environ deux minutes.</p>
 <p>Ce guide parcourt chaque étape. Vous préparerez le fichier source, vous choisirez le bon format, vous lancerez la compression et vous vérifierez le résultat avant de l’utiliser.</p>
@@ -3046,7 +3046,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     faqs: [
       { question: 'Quelle est la différence entre convertir et compresser une image ?', answer: 'Convertir change le format du fichier, par exemple de JPG en PNG, tandis que compresser réduit la taille du fichier, généralement dans le même format. Une conversion peut aussi alléger un fichier, par exemple de JPG en WebP, mais son rôle premier est la compatibilité. La compression garde le format et vise une taille plus petite.' },
       { question: 'La conversion d’une image change-t-elle ses dimensions en pixels ?', answer: 'Non, la conversion conserve par défaut la même largeur et la même hauteur. Une photo de 4000 sur 3000 pixels reste de 4000 sur 3000 après conversion : seuls le format et la taille du fichier changent. Si vous devez aussi réduire les dimensions, utilisez l’outil de redimensionnement après la conversion.' },
-      { question: 'Peut-on convertir une image sans perdre en qualité ?', answer: 'Oui, quand le format cible est sans perte. Convertir un JPG en PNG ne perd rien au-delà des dégâts déjà présents dans le JPG, et convertir un PNG en WebP sans perte conserve chaque pixel. Convertir en JPG entraîne toujours une certaine perte : gardez donc le curseur de qualité élevé pour les photos importantes.' },
+      { question: 'Peut-on convertir une image sans perdre en qualité ?', answer: 'Oui, quand le format cible est sans perte. Convertir un JPG en PNG ne perd rien au-delà des dégâts déjà présents dans le JPG, Dans cet outil, le PNG est l’option sans perte : le WebP utilise le curseur de qualité, donc une conversion de PNG en WebP n’est fidèle que dans la mesure permise par le réglage de qualité. Convertir en JPG entraîne toujours une certaine perte : gardez donc le curseur de qualité élevé pour les photos importantes.' },
       { question: 'Pourquoi mon fichier converti porte-t-il un nom différent ?', answer: 'Le convertisseur conserve le nom de votre fichier d’origine et change seulement l’extension : plage.heic devient plage.jpg. Vos fichiers restent ainsi organisés, et l’on voit tout de suite quel fichier est la copie convertie. Si deux fichiers risquent de se chevaucher, le téléchargement du navigateur ajoute un numéro.' },
       { question: 'Faut-il installer quelque chose pour convertir des images dans le navigateur ?', answer: 'Non. Le convertisseur fonctionne entièrement dans un navigateur moderne, sous Windows, Mac, Linux, ChromeOS, Android et iOS. Aucune application à installer, aucun compte à créer. Ouvrez simplement la page, déposez un fichier et téléchargez le résultat.' },
       { question: 'Que faire si mon image convertie semble moins bonne que l’originale ?', answer: 'Augmentez le curseur de qualité et convertissez de nouveau à partir du fichier d’origine, qui est toujours dans la file d’attente. Vérifiez si vous n’avez pas choisi le mauvais format, par exemple une photo détaillée en JPG de faible qualité. Si la source elle-même était de mauvaise qualité, aucun réglage ne peut restaurer des détails qui n’ont jamais existé.' },
@@ -3176,7 +3176,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Pensez à la photocopie d’une photocopie. Chaque génération a l’air un peu moins bonne que la précédente, et les dégâts se concentrent sur les détails fins.</p>
 <h2 id="lossy-vs-lossless">Destructif ou sans perte : la différence fondamentale</h2>
 <p>Les formats destructifs, comme le JPG, le WebP en mode destructif et l’AVIF, rejettent des données pour alléger le fichier. Ils gardent les parties de l’image que vos yeux remarquent le plus et simplifient le reste.</p>
-<p>Les formats sans perte, comme le PNG et le WebP en mode sans perte, stockent chaque pixel exactement. Le fichier est plus lourd, mais l’image est une copie parfaite de la source, sans aucune dégradation.</p>
+<p>Les formats sans perte, comme le PNG et le WebP en mode sans perte, stockent chaque pixel exactement. Le fichier est plus lourd, mais l’image est une copie parfaite de la source, sans aucune dégradation. (Le format WebP a aussi un mode sans perte, mais le convertisseur d’images de ce site ne produit du WebP que via le curseur de qualité : ses fichiers WebP sont donc destructifs. Choisissez le PNG ici pour un résultat vraiment sans perte.)</p>
 <p>Le HEIC appartient lui aussi au camp des formats destructifs, même s’il est bien plus efficace que le JPG. Il rejette des données lui aussi, simplement de façon plus astucieuse — d’où les photos d’iPhone qui ont l’air bonnes pour deux fois moins de place.</p>
 <p>Quand vous convertissez, la perte dépend du format cible, et non de la source. Convertir un JPG en PNG ne perd rien de nouveau, tandis que convertir un PNG en JPG perd toujours quelque chose.</p>
 <h2 id="jpg-quality-explained">La qualité JPG, expliquée honnêtement</h2>
@@ -13869,7 +13869,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 
 <h2 id="output-formats-and-quality">Formats de sortie et qualité</h2>
 <p>L’outil exporte l’image finie en JPG ou en PNG. Le JPG est le bon choix pour les photos et pour toute image où un petit fichier compte, comme une bannière de site web ou une publication sur les réseaux sociaux. Il se compresse bien et se charge vite.</p>
-<p>Le PNG est le bon choix quand le premier plan a une transparence à préserver, ou quand l’image contient du texte net et des couleurs plates que le JPG rendrait floues. Un fichier PNG est plus gros, mais il garde chaque contour net.</p>
+<p>Le PNG est le bon choix quand l’image contient du texte net et des couleurs plates que le JPG rendrait floues. Le nouveau fond couvre tout le canevas : il ne reste donc aucune transparence à préserver dans l’image finie — le PNG se justifie ici par la netteté, pas par la transparence. Un fichier PNG est plus gros, mais il garde chaque contour net.</p>
 <p>La qualité d’export du JPG est élevée par défaut, ce qui préserve les détails du premier plan et la douceur du dégradé. Un dégradé exporté en basse qualité peut montrer des bandes, c’est-à-dire les marches visibles entre les nuances de couleur.</p>
 <p>Gardez la qualité élevée pour les fonds en dégradé.</p>
 <p>Le fichier téléchargé est nommé en fonction des réglages du fond, pour que vous puissiez distinguer les exports quand vous faites plusieurs versions. Un nom de fichier clair vous évite d’ouvrir cinq fichiers presque identiques pour trouver le bon.</p>
@@ -13904,7 +13904,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 
 <h2 id="quick-reference">Aide-mémoire : choisir un arrière-plan</h2>
 <p>Utilisez une couleur unie pour les fiches, les logos et tout ce où le premier plan doit dominer. Utilisez un dégradé pour les visuels sociaux et les promotions où l’énergie aide. Utilisez une photo floutée quand la forme du cadre diffère de celle de la photo et que vous devez combler les vides.</p>
-<p>Réglez le rapport du canevas selon la destination, adaptez l’échelle du premier plan en laissant de l’air, et exportez en JPG pour les photos et en PNG pour la transparence ou le texte net. Vérifiez l’aperçu à la taille que votre public verra.</p>
+<p>Réglez le rapport du canevas selon la destination, adaptez l’échelle du premier plan en laissant de l’air, et exportez en JPG pour les photos et en PNG pour le texte net. Vérifiez l’aperçu à la taille que votre public verra.</p>
 <p>Pour la version pas à pas, lisez <a href="/fr/blog/comment-ajouter-un-arriere-plan-a-une-image/">Comment ajouter un arrière-plan à une image</a>, et pour des conseils propres aux produits, lisez <a href="/fr/blog/fond-photo-produit/">Fond pour photo de produit : blanc, couleur ou décor ?</a>. Essayez maintenant avec l’outil <a href="/fr/ajouter-arriere-plan-image/">Ajouter un arrière-plan à une image</a>, ou partez d’une découpe nette avec l’outil de <a href="/fr/supprimer-arriere-plan-image/">suppression d’arrière-plan</a>.</p>
 `,
     faqs: [
@@ -13922,7 +13922,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
       },
       {
         question: 'Dois-je exporter en JPG ou en PNG après avoir ajouté un arrière-plan ?',
-        answer: 'Utilisez le JPG pour les photos et pour toute image où un petit fichier compte, comme les publications sociales et les bannières de sites web. Utilisez le PNG quand l’image contient du texte net ou des couleurs plates qui exigent des contours nets, ou quand vous voulez conserver la transparence.',
+        answer: 'Utilisez le JPG pour les photos et pour toute image où un petit fichier compte, comme les publications sociales et les bannières de sites web. Utilisez le PNG quand l’image contient du texte net ou des couleurs plates qui exigent des contours nets. Une fois le nouveau fond assemblé, il ne reste plus de transparence à conserver : tout le canevas est rempli.',
       },
       {
         question: 'Pourquoi mon fond en dégradé montre-t-il des bandes visibles ?',
@@ -15859,8 +15859,8 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 14,
   },
   'bulk-resize-presets-social-ecommerce-print': {
-    title: 'Tailles d’images : Instagram, boutique en ligne et impression',
-    description: 'Quelle taille choisir pour une photo Instagram, une fiche produit ou une impression ? Retrouvez les bonnes dimensions pour chaque destination, et quand saisir une taille sur mesure au lieu d’utiliser un préréglage.',
+    title: 'Tailles d’images pour Instagram et boutiques',
+    description: 'Quelle taille choisir pour une photo Instagram, une fiche produit ou une impression ? Les bonnes dimensions et quand saisir une taille sur mesure.',
     body: `
 <p>Chaque destination veut une taille d’image différente, et un préréglage est un raccourci vers la bonne. Au lieu de chercher les chiffres d’une plateforme et de les saisir à la main, vous cliquez sur un préréglage et les dimensions se remplissent toutes seules. Le lot applique ensuite cette taille à chaque image de la file.</p>
 <p>Ce guide associe les préréglages du redimensionneur en lot et les tailles sociales courantes aux endroits qui les attendent : fils sociaux, boutiques en ligne, blogs, miniatures, écrans et impression. Il explique aussi quand un préréglage est le mauvais outil, et quand une taille personnalisée saisie à la main est la bonne.</p>
@@ -16559,8 +16559,8 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 12,
   },
   'photo-privacy-gps-exif-risks': {
-    title: 'Métadonnées photo : le danger pour votre vie privée (GPS, EXIF)',
-    description: 'Ce que la position GPS, les données EXIF et les métadonnées cachées de vos photos peuvent révéler sur vous — et les gestes simples qui empêchent vos images de dévoiler votre adresse et vos habitudes.',
+    title: 'Métadonnées photo et vie privée',
+    description: 'Ce que la position GPS, les données EXIF et les métadonnées cachées de vos photos révèlent — et les gestes simples qui les empêchent de dévoiler votre adresse.',
     body: `
 <p>Une photo montre un instant. Ses métadonnées peuvent montrer où vous vivez, où vos enfants vont à l'école, et quand votre maison est vide.</p>
 <p>La plupart des gens partagent des photos sans jamais vérifier ce qui voyage dans le fichier. Le risque est invisible, et c'est justement pour ça qu'il est si facile de l'ignorer.</p>

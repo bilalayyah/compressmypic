@@ -17,7 +17,7 @@ export const TOOL_CATEGORIES_FR: ToolCategoryMeta[] = [
   { id: "ai-tools", label: "Outils IA", description: "Traitement intelligent des images dans le navigateur" },
   { id: "create", label: "Créer", description: "Créez des favicons, des collages et des ressources web" },
   { id: "privacy", label: "Outils de confidentialité", description: "Inspectez et supprimez les métadonnées EXIF, GPS et cachées" },
-  { id: "developer", label: "Outils développeur", description: "Choisissez des couleurs, inspectez les dimensions et générez des ressources web" },
+  { id: "developer", label: "Outils de développement", description: "Choisissez des couleurs, inspectez les dimensions et générez des ressources web" },
 ];
 
 export const TOOLS_REGISTRY_FR: ToolDefinition[] = [

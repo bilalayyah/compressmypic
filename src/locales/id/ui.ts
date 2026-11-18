@@ -511,10 +511,10 @@ export const ID = {
     resize: 'Ubah Ukuran',
     convert: 'Konversi',
     'crop-edit': 'Potong & Edit',
-    'ai-tools': 'Tool AI',
+    'ai-tools': 'Alat AI',
     create: 'Buat',
-    privacy: 'Tool Privasi',
-    developer: 'Tool Developer',
+    privacy: 'Privasi',
+    developer: 'Pengembang',
   },
   compressionControls: {
     modeLabel: 'Mode Kompresi', // 'Compression Mode'

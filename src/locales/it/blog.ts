@@ -3067,7 +3067,7 @@ export const IT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     faqs: [
       { question: 'Qual è la differenza tra convertire e comprimere un’immagine?', answer: 'Convertire cambia il formato del file, per esempio da JPG a PNG, mentre comprimere riduce le dimensioni del file, di solito restando nello stesso formato. Una conversione può anche rimpicciolire un file, per esempio da JPG a WebP, ma il suo scopo principale è la compatibilità. La compressione mantiene il formato e punta a un file più piccolo.' },
       { question: 'Convertire un’immagine cambia le dimensioni in pixel?', answer: 'No, la conversione mantiene per impostazione predefinita la stessa larghezza e la stessa altezza. Una foto di 4000 per 3000 pixel resta di 4000 per 3000 dopo la conversione: cambiano solo il formato e le dimensioni del file. Se ti servono anche dimensioni più piccole, usa lo strumento per ridimensionare le immagini dopo la conversione.' },
-      { question: 'Posso convertire un’immagine senza perdere qualità?', answer: 'Sì, quando il formato di destinazione non ha perdite. Convertire un JPG in PNG non aggiunge danni oltre a quelli già presenti nel JPG, e convertire un PNG in WebP in modalità senza perdite conserva ogni pixel. Convertire in JPG comporta sempre qualche perdita, quindi tieni alto il cursore della qualità per le foto importanti.' },
+      { question: 'Posso convertire un’immagine senza perdere qualità?', answer: 'Sì, quando il formato di destinazione non ha perdite. Convertire un JPG in PNG non aggiunge danni oltre a quelli già presenti nel JPG, In questo strumento, il PNG è l’opzione senza perdite: WebP usa il cursore di qualità, quindi una conversione da PNG a WebP è fedele solo quanto lo consente l’impostazione di qualità. Convertire in JPG comporta sempre qualche perdita, quindi tieni alto il cursore della qualità per le foto importanti.' },
       { question: 'Perché il mio file convertito ha un nome diverso?', answer: 'Il convertitore mantiene il nome originale del file e cambia solo l’estensione, così vacanza-mare.heic diventa vacanza-mare.jpg. In questo modo i file restano organizzati ed è subito chiaro quale sia la copia convertita. Se due file dovessero avere lo stesso nome, il download del browser aggiunge un numero.' },
       { question: 'Devo installare qualcosa per convertire immagini nel browser?', answer: 'No. Il convertitore funziona interamente in un browser moderno su Windows, Mac, Linux, ChromeOS, Android e iOS. Non c’è un’app da installare e non serve creare un account. Basta aprire la pagina, trascinare dentro un file e scaricare il risultato.' },
       { question: 'Cosa faccio se l’immagine convertita sembra peggiore dell’originale?', answer: 'Alza il cursore della qualità e converti di nuovo dal file originale, che è ancora in coda. Controlla se hai convertito nel formato sbagliato, per esempio una foto dettagliata in un JPG di bassa qualità. Se la sorgente stessa era di bassa qualità, nessuna impostazione può ripristinare dettagli che non c’erano.' },
@@ -3200,7 +3200,7 @@ export const IT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Pensa alla fotocopia di una fotocopia. Ogni generazione sembra leggermente peggiore della precedente, e il danno è più grave nei dettagli fini.</p>
 <h2 id="lossy-vs-lossless">Con perdite o senza perdite: la differenza fondamentale</h2>
 <p>I formati con perdite, come JPG, WebP in modalità con perdite e AVIF, scartano dati per rimpicciolire il file. Conservano le parti dell’immagine che i tuoi occhi notano di più e semplificano il resto.</p>
-<p>I formati senza perdite, come PNG e WebP in modalità senza perdite, memorizzano ogni pixel esattamente. Il file è più grande, ma l’immagine è una copia perfetta della sorgente, senza alcun degrado.</p>
+<p>I formati senza perdite, come PNG e WebP in modalità senza perdite, memorizzano ogni pixel esattamente. Il file è più grande, ma l’immagine è una copia perfetta della sorgente, senza alcun degrado. (Anche il formato WebP ha una modalità senza perdite, ma il convertitore di immagini di questo sito produce WebP solo tramite il cursore di qualità, quindi i suoi file WebP sono con perdite: scegli PNG qui per un risultato davvero senza perdite.)</p>
 <p>Anche HEIC appartiene al gruppo con perdite, sebbene sia molto più efficiente del JPG. Scarta dati anche lui, solo in modo più intelligente, ed è per questo che le foto iPhone sembrano buone a metà delle dimensioni.</p>
 <p>Quando converti, la perdita dipende dal formato di destinazione, non dalla sorgente. Convertire un JPG in PNG non aggiunge nulla di nuovo, mentre convertire un PNG in JPG perde sempre qualcosa.</p>
 <h2 id="jpg-quality-explained">La qualità JPG, spiegata onestamente</h2>
@@ -12810,7 +12810,7 @@ export const IT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Entrambi i controlli sono discreti per scelta. Un’ombra pesante o un raggio estremo attirano l’attenzione sull’effetto invece che sull’immagine. Usane abbastanza per aggiungere profondità e rifinitura, poi fermati prima che il trattamento diventi il soggetto.</p>
 <h2 id="output-formats-and-quality">Formati di output e qualità</h2>
 <p>Lo strumento esporta l’immagine finita come JPG o PNG. Il JPG è la scelta giusta per le foto e per qualsiasi immagine in cui un file piccolo conta, come un banner di sito o un post social. Comprime bene e si carica in fretta.</p>
-<p>Il PNG è la scelta giusta quando il primo piano ha trasparenza che deve sopravvivere, oppure quando l’immagine ha testo nitido e colori piatti che il JPG sfumerebbe. Un file PNG è più grande, ma mantiene ogni bordo netto.</p>
+<p>Il PNG è la scelta giusta quando l’immagine ha testo nitido e colori piatti che il JPG sfumerebbe. Il nuovo sfondo copre l’intera tela, quindi nell’immagine finita non resta trasparenza da conservare: il PNG vale qui per la nitidezza, non per la trasparenza. Un file PNG è più grande, ma mantiene ogni bordo netto.</p>
 <p>La qualità di esportazione per il JPG è alta per impostazione predefinita, e preserva il dettaglio del primo piano e la morbidezza del gradiente. Un gradiente esportato a bassa qualità può mostrare banding, cioè i gradini visibili tra le sfumature di colore. Mantieni la qualità alta per gli sfondi sfumati.</p>
 <p>Il file scaricato prende un nome che riflette le impostazioni dello sfondo, così puoi distinguere le esportazioni quando fai più versioni. Un nome di file chiaro ti evita di aprire cinque file quasi identici per trovare quello giusto.</p>
 <h2 id="backgrounds-for-product-photos">Sfondi per foto di prodotto</h2>
@@ -12830,14 +12830,14 @@ export const IT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Infine, molte persone aggiungono uno sfondo a una foto che ha ancora il suo vecchio sfondo disordinato. Lo strumento colloca l’intera foto sul nuovo sfondo, quindi il vecchio sfondo resta visibile dentro la cornice. Rimuovi prima il vecchio sfondo, poi aggiungi quello nuovo.</p>
 <h2 id="quick-reference">Riferimento rapido: come scegliere uno sfondo</h2>
 <p>Usa un colore pieno per schede, loghi e tutto ciò in cui il primo piano deve dominare. Usa un gradiente per grafiche social e promozioni, dove l’energia aiuta. Usa una foto sfocata quando la forma della cornice è diversa da quella della foto e devi riempire gli spazi.</p>
-<p>Imposta il rapporto della tela per la destinazione, scala il primo piano con spazio per respirare ed esporta in JPG per le foto e in PNG per trasparenza o testo nitido. Guarda l’anteprima alla dimensione in cui il pubblico la vedrà.</p>
+<p>Imposta il rapporto della tela per la destinazione, scala il primo piano con spazio per respirare ed esporta in JPG per le foto e in PNG per testo nitido. Guarda l’anteprima alla dimensione in cui il pubblico la vedrà.</p>
 <p>Per la versione passo passo, leggi <a href="/it/blog/come-aggiungere-sfondo-a-un-immagine/">Come aggiungere uno sfondo a un’immagine</a>, e per consigli specifici sui prodotti, leggi <a href="/it/blog/sfondi-per-foto-di-prodotto/">Sfondi per foto di prodotto: colori e contesto</a>. Provalo ora con lo strumento <a href="/it/aggiungi-sfondo-immagine/">Aggiungi sfondo a immagine</a>, oppure parti da un ritaglio pulito con il <a href="/it/rimuovere-sfondo-immagine/">rimuovi-sfondo</a>.</p>
 `,
     faqs: [
       { question: 'Qual è la differenza tra aggiungere uno sfondo e rimuoverne uno?', answer: 'Rimuovere uno sfondo toglie il vecchio sfondo e lascia un ritaglio trasparente. Aggiungere uno sfondo colloca quel ritaglio, o qualsiasi foto, su un nuovo sfondo come un colore pieno, un gradiente o una foto sfocata. I due passaggi spesso funzionano in coppia.' },
       { question: 'Quale modalità di sfondo dovrei scegliere per una foto di prodotto?', answer: 'Uno sfondo bianco pieno è lo standard per i marketplace, perché mantiene il prodotto come unico protagonista. Un colore di brand funziona per il tuo negozio o il tuo feed social, mentre uno sfondo con foto sfocata si addice agli scatti lifestyle, dove una scena aggiunge contesto.' },
       { question: 'Posso aggiungere uno sfondo a una foto che ha ancora lo sfondo originale?', answer: 'Sì, lo strumento colloca l’intera foto sul nuovo sfondo, ma lo sfondo originale resta visibile dentro la cornice. Per un risultato pulito, rimuovi prima il vecchio sfondo con un rimuovi-sfondo, poi aggiungi quello nuovo qui.' },
-      { question: 'Dovrei esportare in JPG o PNG dopo aver aggiunto uno sfondo?', answer: 'Usa il JPG per le foto e per qualsiasi immagine in cui un file piccolo conta, come post social e banner di siti. Usa il PNG quando l’immagine ha testo nitido o colori piatti che richiedono bordi netti, oppure quando vuoi mantenere la trasparenza.' },
+      { question: 'Dovrei esportare in JPG o PNG dopo aver aggiunto uno sfondo?', answer: 'Usa il JPG per le foto e per qualsiasi immagine in cui un file piccolo conta, come post social e banner di siti. Usa il PNG quando l’immagine ha testo nitido o colori piatti che richiedono bordi netti. Una volta composto il nuovo sfondo, non resta trasparenza da mantenere: l’intera tela è coperta.' },
       { question: 'Perché il mio sfondo sfumato mostra bande visibili?', answer: 'Il banding compare quando un gradiente fluido viene salvato a bassa qualità, perché la compressione JPG raggruppa sfumature simili in gradini visibili. Esporta ad alta qualità per mantenere fluido il gradiente, e preferisci il PNG per grafiche con ampie aree sfumate e piatte.' },
       { question: 'Aggiungere uno sfondo modifica il mio file foto originale?', answer: 'No. Lo strumento crea una nuova immagine con primo piano e sfondo combinati, e il tuo file originale resta intatto sul tuo dispositivo. Puoi esportare più versioni con sfondi diversi dallo stesso caricamento.' },
     ],
@@ -13327,7 +13327,7 @@ export const IT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-make-gif-from-images': {
     title: 'Come creare una GIF da immagini',
-    description: 'Trasforma le tue foto in una GIF animata in pochi minuti: raccogli i fotogrammi, caricali, ordinali e temporizzali, imposta il loop, guarda l’anteprima e scarica una GIF pronta da condividere.',
+    description: 'Trasforma le tue foto in una GIF animata: raccogli i fotogrammi, ordinali e temporizzali, imposta il loop e scarica una GIF pronta da condividere.',
     body: `
 <p>Creare una GIF da immagini è un lavoro breve: raccogli alcune foto, le carichi come fotogrammi, imposti i tempi e scarichi l’animazione. Questa guida ti accompagna passo dopo passo, in ordine, dalla scelta dei fotogrammi alla condivisione della GIF finita.</p>
 <p>Prima di iniziare ti serve una sola cosa: due o più immagini da animare. Possono essere foto, screenshot, scatti di prodotto o illustrazioni. Dimensioni e forme simili danno il risultato più fluido, ma lo strumento gestisce anche dimensioni miste.</p>
@@ -14175,8 +14175,8 @@ export const IT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 12,
   },
   'how-to-resize-multiple-images': {
-    title: 'Come ridimensionare più immagini contemporaneamente',
-    description: 'Ridimensiona più immagini contemporaneamente: carica un lotto, scegli Fit Max, Larghezza uniforme, Dimensioni esatte o Percentuale, imposta un preset, controlla i risultati e scarica un unico ZIP.',
+    title: 'Come ridimensionare più immagini insieme',
+    description: 'Ridimensiona più immagini insieme: carica un lotto, scegli Fit Max, Larghezza uniforme, Dimensioni esatte o Percentuale, imposta un preset e scarica un ZIP.',
     body: `
 <p>Ridimensionare venti foto una alla volta è un lavoro lento e soggetto a errori. Ridimensionarle come lotto richiede pochi minuti e applica le stesse impostazioni a ogni immagine.</p>
 <p>Questa guida ti accompagna passo passo nel <a href="/it/ridimensiona-immagini-in-lotto/">ridimensionatore di immagini in lotto</a>, dalla preparazione della cartella al download dello ZIP. Copre le quattro strategie, i preset, le impostazioni di qualità e i controlli che intercettano un lotto sbagliato prima che tu lo usi.</p>
@@ -14493,7 +14493,7 @@ export const IT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-view-image-metadata': {
     title: 'Come vedere i metadati di una foto',
-    description: 'Guida passo passo per vedere i metadati di un’immagine: apri la foto nel visualizzatore, leggi i campi EXIF e GPS, esporta un report JSON e verifica un file pulito.',
+    description: 'Vedere i metadati di un’immagine, passo passo: apri la foto nel visualizzatore, leggi i campi EXIF e GPS, esporta un report JSON e verifica un file pulito.',
     body: `
 <p>Vedere i metadati di un’immagine sembra una cosa tecnica, ma richiede meno di un minuto. Apri una foto in un visualizzatore, leggi il report e decidi se qualcosa al suo interno debba restare privato.</p>
 <p>Questa guida ti accompagna passo passo con il <a href="/it/visualizzare-metadati-immagine/">Visualizzatore metadati immagine</a>, gratuito. Funziona nel browser, non serve un account e non carica mai le tue foto.</p>

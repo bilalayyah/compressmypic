@@ -504,7 +504,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'image-size-50kb-vs-100kb-vs-200kb',
-      title: '50KB vs 100KB vs 200KB: Which Size to Choose?',
+      title: '50KB vs 100KB vs 200KB: Which Size?',
       description: 'Compare 50KB, 100KB and 200KB images: quality differences, best use cases, and a simple rule for picking the right size for any portal.',
       body: `
 <p>Three numbers dominate image upload forms: 50KB, 100KB, and 200KB. They look similar, but the pictures they produce are not.</p>
@@ -960,7 +960,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: '100kb-image-quality-formats',
-      title: '100KB Image Quality: JPG vs PNG vs WebP at 100KB',
+      title: '100KB Image Quality: JPG vs PNG vs WebP',
       description: 'Which format looks best at 100KB? A detailed JPG vs PNG vs WebP quality comparison with real guidance for photos, graphics, and text.',
       body: `
 <p>At 100KB, the format you choose decides how good the image looks. The same photo can be crisp in one format and muddy in another.</p>
@@ -1860,7 +1860,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: '500kb-vs-1mb-image-quality',
-      title: '500KB vs 1MB: Image Quality for Web and Print',
+      title: '500KB vs 1MB: Image Quality Compared',
       description: 'Compare 500KB and 1MB images: visible quality differences, loading speed, when each size wins, and how to choose for web and print.',
       body: `
 <p>Five hundred kilobytes and one megabyte sound very different. One is half the other, so the bigger file must look twice as good, right?</p>
@@ -2317,7 +2317,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'batch-image-compression-best-practices',
-      title: 'Batch Compression: ZIP Workflow and Best Practices',
+      title: 'Batch Compression: ZIP Workflow Tips',
       description: 'Best practices for batch image compression: presets, quality checks, ZIP organisation, naming, and workflows for blogs, shops, and teams.',
       body: `
 <p>Batch compression is simple to start and easy to get wrong. A careless batch can produce fifty soft images, a tangled ZIP, and a morning spent fixing it.</p>
@@ -2772,7 +2772,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'exact-kb-target-binary-quality-search',
-      title: 'Exact KB Targets: Binary Quality Search Explained',
+      title: 'Exact KB Targets: Binary Quality Search',
       description: 'How the binary quality search finds the sharpest image at any exact KB size: the algorithm, the steps, scaling, and its limits.',
       body: `
 <p>How does a tool hit an exact file size like 80KB without guessing? The answer is a simple, elegant algorithm called binary search.</p>
@@ -3217,8 +3217,8 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'image-optimization-core-web-vitals',
-      title: 'Image Optimization for Core Web Vitals: LCP and File Size',
-      description: 'How image optimization improves Core Web Vitals: LCP, CLS, and INP explained, with practical fixes for slow pages.',
+      title: 'Image Optimization for Core Web Vitals',
+      description: 'How image optimization improves Core Web Vitals: LCP, CLS, and INP explained, with practical fixes for slow pages — compression, resizing, and formats.',
       body: `
 <p>Core Web Vitals are the speed scores Google uses to judge your pages. They measure how fast the largest content appears, how stable the layout is, and how quickly the page responds.</p>
 <p>Images affect all three scores. A heavy hero delays the largest paint, a missing width causes layout shift, and a bloated page slows interaction.</p>
@@ -3916,7 +3916,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
         },
         {
           question: 'Can I convert an image without losing any quality?',
-          answer: 'Yes, when the target format is lossless. Converting JPG to PNG loses nothing beyond the damage already in the JPG, and converting PNG to WebP in lossless mode keeps every pixel. Converting to JPG always involves some loss, so keep the quality slider high for important photos.',
+          answer: 'Yes, when the target format is lossless. Converting JPG to PNG loses nothing beyond the damage already in the JPG. In this tool, PNG is the lossless option: WebP uses the quality slider, so a PNG to WebP conversion is only as faithful as the quality setting allows. Converting to JPG always involves some loss, so keep the quality slider high for important photos.',
         },
         {
           question: 'Why does my converted file have a different name?',
@@ -4081,7 +4081,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'image-format-conversion-quality-loss',
-      title: 'Image Format Conversion: Quality Loss and When to Convert',
+      title: 'Image Format Conversion: Quality Loss',
       description: 'Does converting an image lose quality? Lossy vs lossless formats, repeated conversions, and the settings that keep your photos sharp.',
       body: `
 <p>Every format conversion changes how your image is stored, and some of those changes are permanent. Understanding which conversions lose quality, and which do not, saves you from slowly damaging your photos.</p>
@@ -4094,7 +4094,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 <p>Think of it like photocopying a photocopy. Each generation looks slightly worse than the last, and the damage is worst in the fine details.</p>
 <h2 id="lossy-vs-lossless">Lossy vs Lossless: The Core Difference</h2>
 <p>Lossy formats, such as JPG, WebP in lossy mode, and AVIF, discard data to shrink the file. They keep the parts of the image your eyes notice most and simplify the rest.</p>
-<p>Lossless formats, such as PNG and WebP in lossless mode, store every pixel exactly. The file is bigger, but the image is a perfect copy of the source, with zero degradation.</p>
+<p>Lossless formats, such as PNG, store every pixel exactly. The file is bigger, but the image is a perfect copy of the source, with zero degradation. (The WebP format also has a lossless mode, but this site's Image Converter outputs WebP through its quality slider, so its WebP files are lossy — pick PNG here for a truly lossless result.)</p>
 <p>HEIC sits in the lossy camp too, though it is far more efficient than JPG. It discards data as well, just more cleverly, which is why iPhone photos look good at half the size.</p>
 <p>When you convert, the loss depends on the target format, not the source. Converting a JPG to PNG loses nothing new, while converting a PNG to JPG always loses something.</p>
 <h2 id="jpg-quality-explained">JPG Quality, Explained Honestly</h2>
@@ -4350,7 +4350,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     en: {
       slug: 'how-to-convert-image-to-pdf',
       title: 'How to Convert an Image to PDF',
-      description: 'Turn one photo or a whole set into a PDF in minutes. Upload, order the pages, pick a size, and download your document.',
+      description: 'Turn one photo or a whole set into a PDF in minutes. Upload, order the pages, pick a size, and download your document — free, in your browser.',
       body: `
 <p>Converting an image to PDF is one of the most useful everyday file jobs. A photo becomes a document, a set of scans becomes a single file, and everything is ready to send or print.</p>
 <p>The whole process takes a few minutes, even for a long document. You upload the images, arrange them, choose a page size, and download the finished PDF.</p>
@@ -4492,7 +4492,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'jpg-to-pdf-vs-png-to-pdf',
-      title: 'JPG to PDF vs PNG to PDF: Best Settings for Documents',
+      title: 'JPG vs PNG to PDF: Best Document Settings',
       description: 'Should your PDF use JPG or PNG images? File size, text sharpness, transparency and the best settings for each document type.',
       body: `
 <p>When you build a PDF from images, the format of those images matters more than most people expect. A JPG page and a PNG page can look identical on screen yet behave very differently.</p>
@@ -5314,7 +5314,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'heic-vs-jpg',
-      title: 'HEIC vs JPG: Compatibility, Quality and File Size',
+      title: 'HEIC vs JPG: Compatibility and Quality',
       description: 'HEIC vs JPG compared honestly: file size, image quality, compatibility, and which format to use for photos, forms, and the web.',
       body: `
 <p>HEIC and JPG are the two formats that matter most for phone photos. One is modern and efficient, the other is old and universal, and choosing between them is a trade-off, not a clear win.</p>
@@ -6150,7 +6150,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'png-to-jpg-file-size-quality',
-      title: 'PNG to JPG: File-Size Savings and Quality Trade-offs',
+      title: 'PNG to JPG: File Size and Quality Trade-offs',
       description: 'How much smaller does PNG to JPG really get? Real savings by image type, quality settings that protect text, and when the trade is not worth it.',
       body: `
 <p>PNG to JPG conversion is famous for shrinking files, but the savings are not the same for every image. A screenshot may drop by 90 percent, while a simple icon may grow instead.</p>
@@ -6574,7 +6574,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'jpg-vs-webp',
-      title: 'JPG vs WebP: File Size, Quality and Browser Support',
+      title: 'JPG vs WebP: Size, Quality and Support',
       description: 'JPG vs WebP compared head to head: file size savings, image quality, transparency, browser support, and which format to use where.',
       body: `
 <p>JPG has ruled the web for thirty years. WebP is the challenger Google built to replace it, and on pure efficiency, WebP wins. On compatibility, JPG still holds the crown.</p>
@@ -6718,7 +6718,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     en: {
       slug: 'webp-to-jpg-guide',
       title: 'WebP to JPG: Complete Guide',
-      description: 'Convert WebP images back to JPG for compatibility. Matte colours, quality settings, batches, and when JPG beats WebP.',
+      description: 'Convert WebP images back to JPG for compatibility. Matte colours, quality settings, batch conversion, and when JPG beats WebP for your use case.',
       body: `
 <p>WebP is a wonderful format for the web, until you meet a system that refuses it. A printer, an old program, or an upload form that lists only JPG will bounce a WebP file without explanation.</p>
 <p>Converting WebP to JPG is the fix. The result opens everywhere, from a ten-year-old laptop to a government portal, and the conversion takes seconds.</p>
@@ -6998,7 +6998,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'webp-to-jpg-compatibility',
-      title: 'WebP to JPG: When Compatibility Beats Compression',
+      title: 'WebP to JPG: When Compatibility Wins',
       description: 'WebP is smaller, but JPG opens everywhere. When compatibility matters more than size — forms, printers, email, and old software.',
       body: `
 <p>WebP is the better format on paper. It is smaller, sharper, and more capable than JPG, and every modern browser supports it. Yet there are many situations where JPG is still the right choice.</p>
@@ -7423,7 +7423,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'png-vs-webp',
-      title: 'PNG vs WebP: Transparency and File Size Compared',
+      title: 'PNG vs WebP: Transparency and File Size',
       description: 'PNG vs WebP compared: transparency, file size, text sharpness, browser support, and which format to use for logos, screenshots, and photos.',
       body: `
 <p>PNG and WebP both store transparency, both keep edges sharp, and both work on the modern web. The difference is file size, and WebP usually wins by a large margin.</p>
@@ -7848,7 +7848,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'webp-to-png-editing-compatibility',
-      title: 'WebP to PNG: Editing, Transparency and Compatibility',
+      title: 'WebP to PNG: Editing and Compatibility',
       description: 'Why designers convert WebP to PNG: editing workflows, transparency, and compatibility with Photoshop, Figma, Office and print.',
       body: `
 <p>WebP is the format of the modern web, but the design world still runs on PNG. Photoshop, Figma, PowerPoint, and print shops all handle PNG natively, while WebP support is still catching up.</p>
@@ -8268,7 +8268,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     en: {
       slug: 'svg-vs-png-vector-raster',
       title: 'SVG vs PNG: Vector vs Raster Explained',
-      description: 'SVG vs PNG compared: vector vs raster, scaling, file size, transparency, browser support, and when to use each format.',
+      description: 'SVG vs PNG compared: vector vs raster, scaling, file size, transparency, browser support, and when to use each format — with examples for web and print.',
       body: `
 <p>SVG and PNG are the two formats that matter most for logos and graphics, and they work in opposite ways. SVG describes shapes with code, while PNG stores a grid of pixels.</p>
 <p>That difference decides everything: how the image scales, how big the file is, where it works, and when you should convert from one to the other.</p>
@@ -8685,7 +8685,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'avif-vs-jpg',
-      title: 'AVIF vs JPG: Next-Gen Format vs Universal Format',
+      title: 'AVIF vs JPG: Next-Gen vs Universal',
       description: 'AVIF vs JPG compared: file size, image quality, HDR, transparency, browser support, and which format to use for the web and beyond.',
       body: `
 <p>AVIF is the most efficient image format ever made for the web, and JPG is the most compatible format ever made, full stop. One wins on technology, the other wins on ubiquity, and the choice between them is a trade-off.</p>
@@ -9506,7 +9506,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'image-orientation-exif-rotation',
-      title: 'Image Orientation: EXIF Rotation Problems Explained',
+      title: 'Image Orientation: EXIF Rotation Problems',
       description: 'Why does the same photo look right on your phone and sideways everywhere else? EXIF orientation explained, plus how to fix it permanently.',
       body: `
 <p>The same photo can look perfectly fine on your phone and completely sideways on a website. Nothing about the file changed between the two views, yet the image appears rotated.</p>
@@ -9898,7 +9898,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'image-crop-ratios-explained',
-      title: 'Crop Ratios Explained: 1:1, 4:3, 16:9 and Custom',
+      title: 'Crop Ratios Explained: 1:1, 4:3, 16:9',
       description: 'What do crop ratios mean, and which one should you pick? 1:1, 4:3, 3:2, 16:9, and custom ratios explained for profiles, print, and social media.',
       body: `
 <p>Every crop has a ratio, whether you chose it or not. The ratio is the shape of the rectangle you keep, and it decides where the image fits and how it looks.</p>
@@ -10291,7 +10291,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'watermark-best-practices',
-      title: 'Watermark Best Practices: Placement, Opacity and Branding',
+      title: 'Watermark Best Practices: Placement, Opacity',
       description: 'How to watermark photos properly: placement rules, opacity ranges, sizing, colour, tiled patterns, and branding that protects without ruining the image.',
       body: `
 <p>A watermark should protect your work without ruining it. That balance is harder than it looks, because a mark that is too faint protects nothing and a mark that is too strong ruins the photo.</p>
@@ -10679,7 +10679,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'blur-vs-pixelate-image',
-      title: 'Blur vs Pixelate: Hiding Faces, Text and Details',
+      title: 'Blur vs Pixelate: Hiding Faces and Text',
       description: 'Blur or pixelate? How each method hides faces, text, and numbers, which one is safer, and when to combine them for proper redaction.',
       body: `
 <p>Blur and pixelation both hide things, but they are not the same tool. One softens a region into a smooth wash of colour, while the other replaces it with large blocks.</p>
@@ -11067,7 +11067,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'text-on-images-readability-tips',
-      title: 'Text on Images: Fonts, Contrast and Readability',
+      title: 'Text on Images: Fonts and Readability',
       description: 'How to make text on images readable: font choices, size rules, contrast, outlines, shadows, background panels, and testing on small screens.',
       body: `
 <p>Text on a photo is only useful if people can read it. A beautiful caption that vanishes into a busy background is worse than no caption at all, because it frustrates the viewer.</p>
@@ -11460,7 +11460,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'image-frames-borders-styles',
-      title: 'Image Frames and Borders: Styles for Social and Print',
+      title: 'Image Frames and Borders for Social',
       description: 'Which frame style suits your photo? Minimal, Polaroid, gallery, gradient glow, and retro frames compared for social media, print, and product photos.',
       body: `
 <p>A frame changes how a photo is seen. The same image in a thin white border, a Polaroid frame, or a glowing gradient edge feels like three different pictures.</p>
@@ -11862,7 +11862,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'rounded-corners-vs-circle-crop',
-      title: 'Rounded Corners vs Circle Crop: Avatars and Cards',
+      title: 'Rounded Corners vs Circle Crop',
       description: 'Rounded corners or a circle crop? How each shape works for avatars, cards, and social profiles, and when to use one, the other, or both.',
       body: `
 <p>Rounded corners and circle crops both soften a photo, but they are not the same thing. One keeps the rectangle and curves its corners, while the other turns the image into a round shape.</p>
@@ -12264,7 +12264,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'brightness-vs-exposure-vs-contrast',
-      title: 'Brightness vs Exposure vs Contrast: Editing Basics',
+      title: 'Brightness vs Exposure vs Contrast',
       description: 'Brightness, exposure, and contrast explained: what each one does to a photo, how they interact, and which control to reach for in each situation.',
       body: `
 <p>Brightness, exposure, and contrast are the three controls every photo editor offers, and they are easy to confuse. All three make a photo lighter or darker, but they do it in different ways.</p>
@@ -13063,7 +13063,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'saturation-vs-vibrance',
-      title: 'Saturation vs Vibrance: Natural Colour Editing',
+      title: 'Saturation vs Vibrance: Natural Colour',
       description: 'Saturation or vibrance? How each control treats colour, which one protects skin tones, and how to get natural, vivid colour without neon grass.',
       body: `
 <p>Saturation and vibrance both make colours stronger, but they do it in different ways. One boosts every colour equally, while the other boosts only the colours that need it.</p>
@@ -13465,7 +13465,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'photo-filters-compared',
-      title: 'Photo Filters Compared: Choosing a Consistent Look',
+      title: 'Photo Filters Compared: A Consistent Look',
       description: 'All 11 photo filters compared: Vintage vs Sepia, Grayscale vs Noir, Warm vs Cool, and which style suits portraits, landscapes, food, and products.',
       body: `
 <p>Eleven filters is a lot of choice. Each one changes the mood of a photo, and the wrong one can make a good image look cheap or strange.</p>
@@ -13980,7 +13980,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     en: {
       slug: 'image-dimensions-checker-guide',
       title: 'Image Dimensions Checker: Complete Guide',
-      description: 'Check image dimensions in bulk: width, height, aspect ratio, megapixels, print size, and transparency. Validate minimums and export CSV or JSON — free, in your browser.',
+      description: 'Check image dimensions: width, height, aspect ratio, megapixels, print size, and transparency. Validate minimums and export CSV or JSON — free, in your browser.',
       body: `
 <p>An image can look perfect on your screen and still fail the moment you upload it. A marketplace rejects it for being too small, a printer crops it unexpectedly, or a website stretches it into a blur.</p>
 <p>The cause is almost always the dimensions: the width and height in pixels. Most people never check them until something breaks, and by then the deadline is already tight.</p>
@@ -14228,7 +14228,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'image-dimensions-vs-resolution-vs-file-size',
-      title: 'Dimensions vs Resolution vs File Size Explained',
+      title: 'Dimensions vs Resolution vs File Size',
       description: 'Dimensions, resolution, and file size are three different numbers. Learn what each one means, how they relate, and which one matters for web, print, and social.',
       body: `
 <p>Three numbers describe every image, and people mix them up constantly. Dimensions, resolution, and file size sound related, but each one measures something different.</p>
@@ -14350,7 +14350,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     en: {
       slug: 'image-dpi-changer-guide',
       title: 'Image DPI Changer: Complete Guide',
-      description: 'Change image DPI without losing quality. Presets from 72 to 600 DPI, custom values up to 2400, batch ZIP export, and a Verified DPI badge — free, in your browser.',
+      description: 'Change image DPI without losing quality. Presets from 72 to 600 DPI, custom values up to 2400, batch ZIP export, and a Verified DPI badge.',
       body: `
 <p>Your photo has the right pixels, the right size, and the right look, but the printer or the publishing platform rejects it. The reason is often a single number buried in the file: the DPI value.</p>
 <p>DPI tells software how densely to pack the pixels when the image is printed. A file tagged at 72 DPI looks like a poster to a print system, while the same pixels tagged at 300 DPI look like a proper page.</p>
@@ -15331,7 +15331,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'base64-vs-image-files',
-      title: 'Base64 vs Image Files: Performance and Use Cases',
+      title: 'Base64 vs Image Files: Performance',
       description: 'Base64 strings and image files carry the same picture in different ways. Compare size, speed, caching, and editing, and learn when each one wins.',
       body: `
 <p>Every image on the web exists in one of two forms: as a file with a name and a URL, or as a Base64 string embedded in code. Both carry the same pixels, but they behave very differently.</p>
@@ -15582,7 +15582,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'how-to-extract-color-palette-from-image',
-      title: 'How to Extract a Colour Palette from an Image',
+      title: 'How to Extract a Colour Palette',
       description: 'Extract a colour palette from any photo in five steps: upload, pick 3–12 swatches, read the percentages, and copy CSS or JSON — free, in your browser.',
       body: `
 <p>You have a photo with colors you love, and you need those colors as a palette for a website, a poster, or a brand. Copying them by eye is slow and inaccurate.</p>
@@ -15706,7 +15706,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'color-palettes-from-photos-design',
-      title: 'Colour Palettes from Photos: Design Workflow Tips',
+      title: 'Colour Palettes from Photos: Design Tips',
       description: 'Turn photos into design palettes that actually work: the 60-30-10 rule, dominant vs accent, contrast, brand use, and the mistakes that make palettes muddy.',
       body: `
 <p>A photo already contains a color palette that works. The light, the surfaces, and the subject conspired to produce colors that belong together, and a good designer can borrow that harmony wholesale.</p>
@@ -16034,7 +16034,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     en: {
       slug: 'favicon-sizes-explained',
       title: 'Favicon Sizes Explained: 16×16 to 512×512',
-      description: 'Every favicon size and what it is for: 16×16 tab icons, 32×32 retina, 180×180 Apple Touch, 192×192 and 512×512 Android, and how the ICO container ties them together.',
+      description: 'Every favicon size and what it is for: 16×16 tab icons, 32×32 retina, 180×180 Apple Touch, 192×192 and 512×512 Android, and how the ICO file ties them together.',
       body: `
 <p>A favicon is not one image. It is a family of images at different sizes, each serving a different place in the browser or on a device. The smallest is 16 by 16 pixels for the tab, and the largest is 512 by 512 pixels for Android install screens.</p>
 <p>Understanding which size goes where saves you from the two classic failures: a blurry tab icon and a pixelated home screen icon. This guide walks through every size in a complete pack, from 16 pixels to 512 pixels, and explains what each one does.</p>
@@ -16139,7 +16139,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     en: {
       slug: 'add-background-to-image-guide',
       title: 'Add Background to Images: Complete Guide',
-      description: 'Put any photo or transparent cutout on a solid, gradient, or blurred background: how the tool works, which mode to choose, and how to frame images for social and shops.',
+      description: 'Put any photo or transparent cutout on a solid, gradient, or blurred background: how the tool works, which mode to choose, and framing for social and shops.',
       body: `
 <p>A photo with its background removed is only half finished. A transparent cutout needs something behind it before it can be used, and a plain photo often needs a frame that fits the place it will be published. Adding a background is the step that turns a cutout into a finished image.</p>
 <p>The <a href="/add-background-to-image/">Add Background to Image</a> tool places any photo or transparent PNG on a solid color, a two-tone gradient, or a blurred version of itself. It runs entirely in your browser, so your images never leave your device.</p>
@@ -16186,7 +16186,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 <p>Both controls are subtle by design. A heavy shadow or an extreme corner radius draws attention to the effect instead of the image. Use enough to add depth and polish, then stop before the treatment becomes the subject.</p>
 <h2 id="output-formats-and-quality">Output Formats and Quality</h2>
 <p>The tool exports the finished image as a JPG or PNG. JPG is the right choice for photos and for any image where a small file matters, such as a website banner or a social post. It compresses well and loads fast.</p>
-<p>PNG is the right choice when the foreground has transparency that must survive, or when the image has sharp text and flat colors that JPG would blur. A PNG file is larger, but it keeps every edge crisp.</p>
+<p>PNG is the right choice when the image has sharp text and flat colors that JPG would blur. A PNG file is larger, but it keeps every edge crisp. The new background covers the whole canvas, so the finished image has no transparency left to keep — PNG earns its place here through crisp edges, not transparency.</p>
 <p>Export quality for JPG is high by default, which preserves the detail of the foreground and the smoothness of the gradient. A gradient exported at low quality can show banding, which is the visible steps between color shades. Keep the quality high for gradient backgrounds.</p>
 <p>The downloaded file is named to reflect the backdrop settings, so you can tell exports apart when you make several versions. A clear filename saves you from opening five near-identical files to find the right one.</p>
 <h2 id="backgrounds-for-product-photos">Backgrounds for Product Photos</h2>
@@ -16206,7 +16206,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 <p>Finally, many people add a background to a photo that still has its original messy background. The tool places the whole photo on the new backdrop, so the old background stays visible inside the frame. Remove the old background first, then add the new one.</p>
 <h2 id="quick-reference">Quick Reference: Choosing a Background</h2>
 <p>Use a solid color for listings, logos, and anything where the foreground must dominate. Use a gradient for social graphics and promotions where energy helps. Use a blurred photo when the frame shape differs from the photo shape and you need to fill the gaps.</p>
-<p>Set the canvas ratio for the destination, scale the foreground with breathing room, and export JPG for photos and PNG for transparency or sharp text. Preview at the size your audience will see.</p>
+<p>Set the canvas ratio for the destination, scale the foreground with breathing room, and export JPG for photos and PNG for sharp text. Preview at the size your audience will see.</p>
 <p>For the step-by-step version, read <a href="/blog/how-to-add-background-to-image/">How to Add a Background to an Image</a>, and for product-specific advice, read <a href="/blog/product-photo-backgrounds/">Product Photo Backgrounds: Colours and Context</a>. Try it now with the <a href="/add-background-to-image/">Add Background to Image</a> tool, or start from a clean cutout with the <a href="/remove-background/">background remover</a>.</p>
 `,
       faqs: [
@@ -16224,7 +16224,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
         },
         {
           question: 'Should I export as JPG or PNG after adding a background?',
-          answer: 'Use JPG for photos and for any image where a small file matters, such as social posts and website banners. Use PNG when the image has sharp text or flat colors that need crisp edges, or when you want to keep transparency.',
+          answer: 'Use JPG for photos and for any image where a small file matters, such as social posts and website banners. Use PNG when the image has sharp text or flat colors that need crisp edges. Once the new background is composited, there is no transparency left to keep — the whole canvas is filled.',
         },
         {
           question: 'Why does my gradient background show visible bands?',
@@ -16290,7 +16290,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 <p>Look at the image on your phone if you can. A background that looks subtle on a desktop monitor can look loud on a phone screen, and a gradient that looks smooth on a large display can band on a small one. The phone is where most viewers will see it.</p>
 <p>Compare the three background modes one last time if you are unsure. Switching is free and keeps your framing, so a final comparison costs seconds and often changes the choice. Trust the version that reads best at a glance, not the one that looked best in the editor.</p>
 <h2 id="step-8-export-and-download">Step 8: Export and Download</h2>
-<p>Choose the export format. JPG suits photos and any image where a small file matters, such as a social post or a website banner. PNG suits images with sharp text, flat colors, or transparency that must survive the export.</p>
+<p>Choose the export format. JPG suits photos and any image where a small file matters, such as a social post or a website banner. PNG suits images with sharp text or flat colors that need crisp edges.</p>
 <p>Click download and the finished image saves to your device. The filename reflects the backdrop settings, so you can tell different versions apart when you export several. Save the file where you can find it again, and keep the original foreground file too.</p>
 <p>Open the downloaded file and look at it once more. Check the size, the format, and the appearance at the size it will be published. A quick check now catches a wrong format or a bad crop before the image goes live.</p>
 <p>If the result is not right, change one setting and export again. The tool does not limit how many versions you make, so iterate freely. A second export with a different background or scale takes seconds.</p>
@@ -16308,7 +16308,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 <p>Pet and wildlife photos suit a blurred photo background, because the blurred colors suggest the real environment while the animal stays sharp. A solid color behind a pet can look like a studio portrait, which suits a formal shot but feels stiff for a candid one.</p>
 <h2 id="quick-reference">Quick Reference: Background Checklist</h2>
 <p>Upload the foreground, pick Solid, Gradient, or Blurred Photo, choose the color or blur, set the canvas ratio for the destination, scale the foreground with breathing room, and add a subtle shadow if it suits the image.</p>
-<p>Export JPG for photos and PNG for sharp text or transparency, then check the download at the size it will be seen. If the edge of a cutout looks rough, clean the cutout first and export again.</p>
+<p>Export JPG for photos and PNG for sharp text, then check the download at the size it will be seen. If the edge of a cutout looks rough, clean the cutout first and export again.</p>
 <p>For the full guide to every mode, read the <a href="/blog/add-background-to-image-guide/">Add Background to Images: Complete Guide</a>, and for product-specific advice, read <a href="/blog/product-photo-backgrounds/">Product Photo Backgrounds: Colours and Context</a>. Start now with the <a href="/add-background-to-image/">Add Background to Image</a> tool.</p>
 `,
       faqs: [
@@ -16350,8 +16350,8 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'product-photo-backgrounds',
-      title: 'Product Photo Backgrounds: Colours and Context',
-      description: 'Choose the right background for product photos: white, brand colours, lifestyle context, marketplace rules, and the consistency that makes a shop look like a brand.',
+      title: 'Product Photo Backgrounds: Colours',
+      description: 'Choose the right background for product photos: white, brand colours, marketplace rules, and the consistency that makes a shop look like a brand.',
       body: `
 <p>The background of a product photo is not decoration. It decides whether the buyer sees the product first, whether the listing looks trustworthy, and whether a shop feels like a brand or a random collection of images. A good background is invisible; a bad one is all anyone notices.</p>
 <p>This guide covers the background choices that matter for selling: plain white, brand colors, lifestyle context, and the rules that marketplaces impose. It also covers consistency, because a shop where every product sits on a different background looks disorganized no matter how good each photo is.</p>
@@ -16681,7 +16681,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     en: {
       slug: 'split-images-instagram-grid',
       title: 'Split Images for Instagram Grids and Puzzles',
-      description: 'Turn one photo into an Instagram grid puzzle: the 3×3 split, preparing a square source, posting order, puzzle styles, and how to keep the grid looking good over time.',
+      description: 'Turn one photo into an Instagram grid puzzle: the 3×3 split, preparing a square source, posting order, puzzle styles, and keeping the grid looking good.',
       body: `
 <p>An Instagram grid puzzle turns one photo into nine tiles that form a single large image across your profile page. Visitors who open your profile see the full picture, while each tile also works as a normal post in the feed. It is the most visible way to use a split image.</p>
 <p>This guide covers the whole job: preparing a square source photo, splitting it 3 by 3, posting the tiles in the right order, and keeping the grid intact as you publish new content. The split itself takes minutes with the <a href="/image-splitter/">image splitter</a>; the planning is what makes it look good.</p>
@@ -16791,7 +16791,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     en: {
       slug: 'gif-maker-guide',
       title: 'GIF Maker: Complete Guide',
-      description: 'Make animated GIFs from your photos: how the GIF maker works, choosing frames, timing, loop options, frame fit, colour quality, and keeping file size under control.',
+      description: 'Make animated GIFs from your photos: how the GIF maker works, choosing frames, timing, loop options, frame fit, colour quality, and keeping file size in check.',
       body: `
 <p>A GIF is a short looping animation made from a series of still images. It plays without sound, repeats forever or for a set number of loops, and works in almost every chat app, social feed, and website. A well-made GIF says in two seconds what a paragraph cannot.</p>
 <p>The <a href="/gif-maker/">GIF maker</a> turns your photos into an animated GIF in the browser. Upload two or more frame images, set the timing for each frame, choose the loop count, and download a watermark-free GIF89a file. Nothing uploads to a server.</p>
@@ -17010,7 +17010,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'gif-frame-rate-file-size',
-      title: 'GIF Frame Rate and File Size: Smooth vs Small',
+      title: 'GIF Frame Rate and File Size',
       description: 'The trade-off at the heart of every GIF: how frame rate, frame count, dimensions, and colour palette decide whether your animation is smooth, small, or both.',
       body: `
 <p>Every GIF is a compromise between smoothness and size. A higher frame rate makes the motion fluid, but it also makes the file bigger. A smaller file shares faster, but it can look choppy. The skill of making GIFs is finding the balance for each animation.</p>
@@ -17121,7 +17121,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     en: {
       slug: 'image-collage-maker-guide',
       title: 'Photo Collage Maker: Complete Guide',
-      description: 'Build photo collages in minutes: grids and strips, drag-to-swap, adjustable splits, gaps, rounded corners, background colours, and JPG or PNG export up to 4000 px.',
+      description: 'Build photo collages in minutes: grids and strips, drag-to-swap, adjustable splits, gaps, rounded corners, background colours, and JPG or PNG export.',
       body: `
 <p>A photo collage turns several pictures into one image. It shows a set of moments together: a trip, a product range, a before and after, or a family gathering. One collage says more than a row of separate photos, and it fits anywhere a single image fits.</p>
 <p>The <a href="/image-collage-maker/">image collage maker</a> arranges your photos in 2 by 2 and 3 by 3 grids or in vertical and horizontal strips, with drag-to-swap, adjustable splits, gaps, rounded corners, and export up to 4000 pixels. It runs entirely in your browser.</p>
@@ -17341,7 +17341,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'collage-layouts-grids-mood-boards',
-      title: 'Collage Layouts: Grids, Mood Boards and Stories',
+      title: 'Collage Layouts: Grids and Mood Boards',
       description: 'Choose the right collage layout: 2×2 and 3×3 grids, vertical and horizontal strips, mood boards, story layouts, before-and-after, and borderless collages.',
       body: `
 <p>The layout is the first decision in a collage, and it shapes everything that follows. A grid says the photos are equals. A strip says they are a sequence. A mood board says they are a feeling. The same photos in a different layout tell a different story.</p>
@@ -17452,7 +17452,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     en: {
       slug: 'image-resizer-guide',
       title: 'What Is an Image Resizer? Complete Guide',
-      description: 'Learn what an image resizer does, how pixel and percentage resizing work, when to lock the aspect ratio, and how to pick the right size for web, social, and print.',
+      description: 'Learn what an image resizer does, how pixel and percentage resizing work, when to lock the aspect ratio, and how to pick the right size for web and social.',
       body: `
 <p>An image resizer changes the pixel dimensions of a photo or graphic. A photo that starts at 4000 by 3000 pixels can become 1200 by 900, 800 by 600, or any other size you need. The picture keeps its subject and its colours, but it occupies a different amount of space on screen.</p>
 <p>Resizing matters because almost every destination has a size it expects. A website hero wants a wide image, a profile photo wants a square, and a marketplace listing wants a consistent product shot. The <a href="/image-resizer/">image resizer</a> lets you meet those sizes without installing software or opening a heavy editor.</p>
@@ -17564,7 +17564,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     en: {
       slug: 'how-to-resize-image',
       title: 'How to Resize an Image Online',
-      description: 'Resize an image online in minutes: upload, pick pixels or percentage, lock the aspect ratio, choose a preset, set quality, and download — no software to install.',
+      description: 'Resize an image online in minutes: upload, pick pixels or percentage, lock the aspect ratio, choose a preset, set quality, and download.',
       body: `
 <p>Resizing an image online takes about a minute once you know the steps. Upload the photo, choose the size, check the preview, and download the result. No software to install, no account to create, and no waiting for an upload to a server.</p>
 <p>This guide walks through the process on the <a href="/image-resizer/">image resizer</a>, from the first upload to the final download. It covers both sizing modes, the aspect ratio lock, the presets, and the quality settings, so you can resize one photo or a whole batch with confidence.</p>
@@ -17684,7 +17684,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     en: {
       slug: 'resize-vs-compress-image',
       title: 'Resize vs Compress: What Is the Difference?',
-      description: 'Resize changes pixel dimensions; compress changes how efficiently pixels are stored. Learn what each one does, when to use each, and why doing both gives the smallest file.',
+      description: 'Resize changes pixel dimensions; compress changes how pixels are stored. What each one does, when to use each, and why doing both gives the smallest file.',
       body: `
 <p>Resize and compress are the two ways to make an image file smaller, and they work in completely different ways. Resizing removes pixels. Compressing keeps the pixels and stores them more efficiently. People mix the two up constantly, and the confusion leads to images that are still too heavy, or smaller than they needed to be.</p>
 <p>This guide explains what each step does, how they affect quality and file size, and when to use one, the other, or both. It uses the <a href="/image-resizer/">image resizer</a> and the <a href="/">image compressor</a> as the examples, because together they cover the whole job.</p>
@@ -17801,7 +17801,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     en: {
       slug: 'bulk-image-resizer-guide',
       title: 'Bulk Image Resizer: Complete Guide',
-      description: 'Resize dozens of images at once: Fit Max, Uniform Width, Exact pixels, and Percentage modes, no-upscale protection, presets, and one-click ZIP download — all in your browser.',
+      description: 'Resize dozens of images at once: Fit Max, Uniform Width, Exact pixels, and Percentage modes, no-upscale protection, presets, and one-click ZIP download.',
       body: `
 <p>A bulk image resizer changes the pixel dimensions of many images in one pass. Instead of opening each photo, typing a size, and downloading it separately, you drop a whole folder into the queue, choose one strategy, and download every result in a single ZIP file.</p>
 <p>That matters because real image work is rarely one photo. A product shoot is forty photos, a blog folder is twenty, and a photo album is a hundred. The <a href="/bulk-image-resizer/">bulk image resizer</a> turns that repetitive job into a single batch, with the same settings applied consistently to every file.</p>
@@ -18036,8 +18036,8 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'bulk-resize-presets-social-ecommerce-print',
-      title: 'Bulk Resize Presets: Social, E-commerce and Print',
-      description: 'Choose the right bulk resize preset for each destination: social sizes, e-commerce squares, blog widths, thumbnails, Full HD, and print — plus when to type a custom size instead.',
+      title: 'Bulk Resize Presets: Social and Print',
+      description: 'Pick the right bulk resize preset for each destination: social sizes, e-commerce squares, thumbnails, Full HD, and print — plus when to use a custom size.',
       body: `
 <p>Every destination wants a different image size, and a preset is a shortcut to the right one. Instead of looking up a platform's numbers and typing them in by hand, you click a preset and the dimensions fill themselves in. The batch then applies that size to every image in the queue.</p>
 <p>This guide maps the bulk resizer's presets and the common social sizes to the places that expect them: social feeds, online shops, blogs, thumbnails, screens, and print. It also explains when a preset is the wrong tool, and a custom size typed by hand is the right one.</p>
@@ -18153,7 +18153,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       slug: 'image-metadata-viewer-guide',
       title: 'Image Metadata Viewer: Complete Guide',
       description:
-        'Learn what an image metadata viewer shows, from EXIF camera settings and GPS coordinates to PNG and WebP chunks, and how to inspect any photo privately in your browser.',
+        'Learn what an image metadata viewer shows, from EXIF camera settings and GPS coordinates to PNG and WebP chunks, and how to inspect any photo privately.',
       body: `
 <p>Every photo you take carries a hidden layer of information. Camera settings, capture time, device model, and sometimes your exact location travel inside the file, invisible in the image itself.</p>
 <p>An image metadata viewer reads that hidden layer and shows it to you in plain language. It turns raw binary headers into a readable report you can actually use.</p>
@@ -18814,7 +18814,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       slug: 'photo-privacy-gps-exif-risks',
       title: 'Photo Privacy: GPS, EXIF and Metadata Risks',
       description:
-        'What GPS coordinates, EXIF data, and hidden metadata in your photos can reveal — and the practical steps that stop your pictures leaking your location and routine.',
+        'What GPS coordinates, EXIF data, and hidden metadata in your photos can reveal — and the steps that stop your pictures leaking your location and routine.',
       body: `
 <p>A photo shows a moment. Its metadata can show where you live, where your children go to school, and when your house is empty.</p>
 <p>Most people share photos without ever checking what travels inside the file. The risk is invisible, which is exactly why it is so easy to ignore.</p>
@@ -19199,7 +19199,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       slug: 'ai-background-removal-vs-manual-cutout',
       title: 'AI Background Removal vs Manual Cutout',
       description:
-        'AI background removal is fast, free, and private — but manual cutout still wins on hair, glass, and high-stakes images. A full comparison of speed, accuracy, cost, and privacy.',
+        'AI background removal is fast, free, and private — but manual cutout still wins on hair, glass, and high-stakes images. Speed, accuracy, and privacy compared.',
       body: `
 <p>There are two ways to cut a subject out of a photo. An AI model can do it in seconds, or a person can trace the outline by hand.</p>
 <p>Both methods produce a transparent cutout. The difference lies in speed, accuracy, cost, and control, and the right choice depends on the photo and the job.</p>

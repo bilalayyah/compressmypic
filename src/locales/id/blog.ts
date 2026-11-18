@@ -3582,7 +3582,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
       },
       {
         question: 'Bisakah saya mengonversi gambar tanpa kehilangan kualitas sama sekali?',
-        answer: 'Bisa, ketika format tujuannya lossless. Mengubah JPG ke PNG tidak menghilangkan apa pun di luar kerusakan yang sudah ada di JPG, dan mengubah PNG ke WebP dalam mode lossless mempertahankan setiap piksel. Mengubah ke JPG selalu melibatkan sedikit kehilangan, jadi jaga slider kualitas tetap tinggi untuk foto penting.',
+        answer: 'Bisa, ketika format tujuannya lossless. Mengubah JPG ke PNG tidak menghilangkan apa pun di luar kerusakan yang sudah ada di JPG, Dalam alat ini, PNG adalah pilihan lossless: WebP memakai slider kualitas, jadi konversi PNG ke WebP hanya setia sejauh pengaturan kualitas mengizinkan. Mengubah ke JPG selalu melibatkan sedikit kehilangan, jadi jaga slider kualitas tetap tinggi untuk foto penting.',
       },
       {
         question: 'Mengapa file hasil konversi saya namanya berbeda?',
@@ -3744,7 +3744,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Bayangkan seperti memfotokopi hasil fotokopi. Setiap generasi tampak sedikit lebih buruk daripada generasi sebelumnya, dan kerusakannya paling parah pada detail halus.</p>
 <h2 id="lossy-vs-lossless">Lossy vs Lossless: Perbedaan Intinya</h2>
 <p>Format lossy, seperti JPG, WebP dalam mode lossy, dan AVIF, membuang data untuk memperkecil file. Format-format itu mempertahankan bagian gambar yang paling diperhatikan mata Anda dan menyederhanakan sisanya.</p>
-<p>Format lossless, seperti PNG dan WebP dalam mode lossless, menyimpan setiap piksel secara persis. Filenya lebih besar, tetapi gambarnya merupakan salinan sempurna dari sumbernya, tanpa degradasi sama sekali.</p>
+<p>Format lossless, seperti PNG dan WebP dalam mode lossless, menyimpan setiap piksel secara persis. Filenya lebih besar, tetapi gambarnya merupakan salinan sempurna dari sumbernya, tanpa degradasi sama sekali. (Format WebP juga punya mode lossless, tetapi Konverter Gambar di situs ini mengeluarkan WebP hanya lewat slider kualitas, jadi file WebP-nya lossy — pilih PNG di sini untuk hasil yang benar-benar lossless.)</p>
 <p>HEIC juga termasuk kubu lossy, meskipun jauh lebih efisien daripada JPG. Format ini juga membuang data, hanya saja dengan cara yang lebih cerdas, dan itulah alasan foto iPhone tampak bagus pada ukuran setengahnya.</p>
 <p>Ketika Anda mengonversi, kehilangan itu bergantung pada format target, bukan pada sumbernya. Mengubah JPG ke PNG tidak menghilangkan apa pun yang baru, sementara mengubah PNG ke JPG selalu menghilangkan sesuatu.</p>
 <h2 id="jpg-quality-explained">Kualitas JPG, Dijelaskan dengan Jujur</h2>
@@ -15123,7 +15123,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 },
 'image-to-base64-guide': {
   title: 'Gambar ke Base64: Panduan Lengkap',
-  description: 'Ubah gambar apa pun menjadi Base64: Data URL, string mentah, snippet img HTML, dan output url() CSS. Pelajari overhead 33%, kapan menyematkan, dan kapan menautkan saja.',
+  description: 'Ubah gambar apa pun menjadi Base64: Data URL, string mentah, snippet img HTML, dan output url() CSS. Pelajari overhead 33% dan kapan menyematkan.',
   body: `
 <p>Developer sering membutuhkan gambar sebagai teks, bukan sebagai file. Ikon di dalam stylesheet, logo di dalam email HTML, atau gambar di dalam payload JSON semuanya membutuhkan gambar yang diubah menjadi karakter.</p>
 <p>Base64 adalah encoding yang memungkinkan hal itu. Base64 mengubah byte biner gambar menjadi string teks biasa yang bisa hidup di dalam kode, markup, dan pesan.</p>
@@ -15224,7 +15224,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 },
 'how-to-convert-image-to-base64': {
   title: 'Cara Mengubah Gambar Menjadi Base64',
-  description: 'Ubah gambar menjadi Base64 dalam empat langkah: unggah, pilih output Data URL, mentah, HTML, atau CSS, lalu salin atau unduh. Berfungsi untuk PNG, JPG, SVG, GIF, dan ICO.',
+  description: 'Ubah gambar menjadi Base64: unggah, pilih output Data URL, mentah, HTML, atau CSS, lalu salin atau unduh. Berfungsi untuk PNG, JPG, SVG, GIF, dan ICO.',
   body: `
 <p>Anda membutuhkan gambar sebagai teks: logo untuk stylesheet, ikon untuk email, atau gambar untuk payload JSON. Konversinya memakan waktu sekitar satu menit begitu Anda tahu langkah-langkahnya.</p>
 <p>Panduan ini memandu Anda mengubah gambar menjadi Base64 dalam empat langkah: unggah file, pilih format output, salin atau unduh string-nya, lalu tempel ke dalam kode Anda.</p>
@@ -16339,7 +16339,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Kedua kontrol ini halus karena memang didesain begitu. Bayangan yang berat atau radius sudut yang ekstrem menarik perhatian ke efeknya, bukan ke gambarnya. Pakai secukupnya untuk menambah kedalaman dan kesan rapi, lalu berhenti sebelum penanganannya menjadi subjek.</p>
 <h2 id="output-formats-and-quality">Format Keluaran dan Kualitas</h2>
 <p>Alat ini mengekspor gambar jadi sebagai JPG atau PNG. JPG adalah pilihan tepat untuk foto dan gambar apa pun yang ukuran filenya penting, seperti banner situs web atau unggahan sosial. JPG terkompresi dengan baik dan dimuat cepat.</p>
-<p>PNG adalah pilihan tepat ketika latar depan punya transparansi yang harus bertahan, atau ketika gambar punya teks tajam dan warna datar yang akan diburamkan JPG. File PNG lebih besar, tetapi menjaga setiap tepi tetap renyah.</p>
+<p>PNG adalah pilihan tepat ketika gambar punya teks tajam dan warna datar yang akan diburamkan JPG. Latar baru menutupi seluruh kanvas, jadi pada gambar akhir tidak ada lagi transparansi yang perlu dipertahankan: PNG berguna di sini karena ketajaman tepinya, bukan karena transparansi. File PNG lebih besar, tetapi menjaga setiap tepi tetap renyah.</p>
 <p>Kualitas ekspor JPG tinggi secara default, dan ini mempertahankan detail latar depan serta kehalusan gradien. Gradien yang diekspor pada kualitas rendah bisa menunjukkan banding, yaitu langkah-langkah warna yang terlihat. Pertahankan kualitas tinggi untuk latar gradien.</p>
 <p>File yang diunduh diberi nama yang mencerminkan pengaturan backdrop, jadi Anda bisa membedakan ekspor saat membuat beberapa versi. Nama file yang jelas menyelamatkan Anda dari membuka lima file yang hampir identik untuk menemukan yang tepat.</p>
 <h2 id="backgrounds-for-product-photos">Latar untuk Foto Produk</h2>
@@ -16359,14 +16359,14 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Terakhir, banyak orang menambahkan latar pada foto yang masih punya latar asli yang berantakan. Alat menempatkan seluruh foto di atas backdrop baru, jadi latar lama tetap terlihat di dalam bingkai. Hapus dulu latar lama, lalu tambahkan yang baru.</p>
 <h2 id="quick-reference">Referensi Cepat: Memilih Latar</h2>
 <p>Pakai warna solid untuk listing, logo, dan apa pun yang latar depannya harus mendominasi. Pakai gradien untuk grafis sosial dan promosi yang butuh energi. Pakai foto buram saat bentuk bingkai berbeda dari bentuk foto dan Anda perlu mengisi celahnya.</p>
-<p>Atur rasio kanvas sesuai tujuan, skala latar depan dengan ruang napas, dan ekspor JPG untuk foto serta PNG untuk transparansi atau teks tajam. Pratinjau pada ukuran yang akan dilihat audiens Anda.</p>
+<p>Atur rasio kanvas sesuai tujuan, skala latar depan dengan ruang napas, dan ekspor JPG untuk foto serta PNG untuk teks tajam. Pratinjau pada ukuran yang akan dilihat audiens Anda.</p>
 <p>Untuk versi langkah demi langkah, baca <a href="/id/blog/cara-menambah-latar-gambar/">Cara Menambah Latar pada Gambar</a>, dan untuk saran khusus produk, baca <a href="/id/blog/latar-foto-produk/">Latar Foto Produk: Warna dan Konteks</a>. Coba sekarang dengan alat <a href="/id/tambah-latar-gambar/">Tambah Latar ke Gambar</a>, atau mulai dari potongan bersih dengan <a href="/id/hapus-latar-belakang/">penghapus latar</a>.</p>
 `,
     faqs: [
       { question: 'Apa bedanya menambah latar dan menghapus latar?', answer: 'Menghapus latar mengambil backdrop lama dan menyisakan potongan transparan. Menambah latar menempatkan potongan itu, atau foto apa pun, ke atas backdrop baru seperti warna solid, gradien, atau foto buram. Kedua langkah ini sering bekerja berpasangan.' },
       { question: 'Mode latar mana yang sebaiknya saya pilih untuk foto produk?', answer: 'Latar putih solid adalah standar untuk marketplace, karena membuat produk menjadi satu-satunya fokus. Warna merek bekerja untuk toko Anda sendiri atau feed sosial, dan latar foto buram cocok untuk foto gaya hidup yang butuh konteks adegan.' },
       { question: 'Bisakah saya menambah latar pada foto yang masih punya latar asli?', answer: 'Bisa, alat menempatkan seluruh foto ke atas backdrop baru, tetapi latar asli tetap terlihat di dalam bingkai. Untuk hasil yang bersih, hapus dulu latar lama dengan penghapus latar, lalu tambahkan yang baru di sini.' },
-      { question: 'Sebaiknya saya ekspor sebagai JPG atau PNG setelah menambah latar?', answer: 'Pakai JPG untuk foto dan gambar apa pun yang ukuran filenya penting, seperti unggahan sosial dan banner situs web. Pakai PNG ketika gambar punya teks tajam atau warna datar yang butuh tepi renyah, atau ketika Anda ingin mempertahankan transparansi.' },
+      { question: 'Sebaiknya saya ekspor sebagai JPG atau PNG setelah menambah latar?', answer: 'Pakai JPG untuk foto dan gambar apa pun yang ukuran filenya penting, seperti unggahan sosial dan banner situs web. Pakai PNG ketika gambar punya teks tajam atau warna datar yang butuh tepi renyah. Setelah latar baru digabungkan, tidak ada lagi transparansi yang perlu dipertahankan: seluruh kanvas sudah terisi.' },
       { question: 'Mengapa latar gradien saya menunjukkan garis-garis yang terlihat?', answer: 'Banding muncul saat gradien halus disimpan pada kualitas rendah, karena kompresi JPG mengelompokkan warna yang mirip menjadi langkah-langkah yang terlihat. Ekspor pada kualitas tinggi agar gradien tetap halus, dan pilih PNG untuk grafis dengan area gradien datar yang luas.' },
       { question: 'Apakah menambah latar mengubah file foto asli saya?', answer: 'Tidak. Alat membuat gambar baru dengan latar depan dan backdrop yang digabungkan, dan file asli Anda tetap utuh di perangkat. Anda bisa mengekspor beberapa versi dengan latar berbeda dari unggahan yang sama.' },
     ],

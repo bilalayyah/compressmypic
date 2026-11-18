@@ -14,10 +14,10 @@ export const TOOL_CATEGORIES_ID: ToolCategoryMeta[] = [
   { id: 'resize', label: 'Ubah Ukuran', description: 'Ubah dimensi piksel atau skala gambar secara massal' },
   { id: 'convert', label: 'Konversi', description: 'Konversi antar format gambar dan buat PDF' },
   { id: 'crop-edit', label: 'Potong & Edit', description: 'Putar, balik, potong, dan sesuaikan gambar' },
-  { id: 'ai-tools', label: 'Tool AI', description: 'Pemrosesan gambar cerdas di browser' },
+  { id: 'ai-tools', label: 'Alat AI', description: 'Pemrosesan gambar cerdas di browser' },
   { id: 'create', label: 'Buat', description: 'Buat favicon, kolase, dan aset web' },
-  { id: 'privacy', label: 'Tool Privasi', description: 'Periksa dan hapus metadata EXIF, GPS, dan tersembunyi' },
-  { id: 'developer', label: 'Tool Developer', description: 'Pilih warna, periksa dimensi, dan buat aset web' },
+  { id: 'privacy', label: 'Privasi', description: 'Periksa dan hapus metadata EXIF, GPS, dan tersembunyi' },
+  { id: 'developer', label: 'Pengembang', description: 'Pilih warna, periksa dimensi, dan buat aset web' },
 ];
 
 export const TOOLS_REGISTRY_ID: ToolDefinition[] = [
