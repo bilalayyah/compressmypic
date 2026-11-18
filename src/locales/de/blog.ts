@@ -6,7 +6,7 @@ import type { BlogArticleLocaleOverride } from '../../types/blog';
 
 export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   'compress-image-to-50kb-guide': {
-    title: 'Bild auf 50 KB komprimieren: Die komplette Anleitung',
+    title: 'Bild auf 50 KB komprimieren: Anleitung',
     description: 'So komprimieren Sie jedes Bild auf 50 KB, ohne es zu ruinieren. Formate, Qualität, Portale und ein kostenloses Browser-Tool, das die Zielgröße genau trifft.',
     body: `
 <p>Manche Upload-Formulare sind streng. Sie verlangen ein Foto unter 50 KB und lehnen alles Größere ab – egal, wie gut es aussieht.</p>
@@ -135,7 +135,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-compress-image-to-50kb': {
     title: 'Bild auf 50 KB komprimieren: So geht es',
-    description: 'Eine praktische Schritt-für-Schritt-Anleitung, um jedes Foto unter 50 KB zu schrumpfen: die richtige Datei wählen, das Format bestimmen und Probleme beheben, wenn das Ziel verfehlt wird.',
+    description: 'Schritt für Schritt: jedes Foto unter 50 KB schrumpfen – Datei wählen, Format bestimmen und Probleme beheben, wenn das Ziel verfehlt wird.',
     body: `
 <p>Sie haben ein Foto und ein Formular, das alles über 50 KB ablehnt. Mit den richtigen Schritten dauert die Lösung etwa zwei Minuten.</p>
 <p>Diese Anleitung führt Sie durch den gesamten Vorgang. Sie bereiten die richtige Ausgangsdatei vor, lassen sie durch den Kompressor laufen, prüfen das Ergebnis und beheben die üblichen Probleme, an denen die meisten scheitern.</p>
@@ -256,8 +256,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'image-size-50kb-vs-100kb-vs-200kb': {
-    title: '50 KB vs. 100 KB vs. 200 KB: Welche Größe soll ich wählen?',
-    description: 'Vergleich von 50-KB-, 100-KB- und 200-KB-Bildern: Qualitätsunterschiede, beste Einsatzbereiche und eine einfache Regel, um für jedes Portal die richtige Größe zu wählen.',
+    title: '50, 100 oder 200 KB: Welche Größe passt?',
+    description: 'Vergleich von 50-, 100- und 200-KB-Bildern: Qualitätsunterschiede, beste Einsatzbereiche und eine einfache Regel für die richtige Größe.',
     body: `
 <p>Drei Zahlen beherrschen die Upload-Formulare für Bilder: 50 KB, 100 KB und 200 KB. Sie sehen ähnlich aus, aber die Bilder, die sie erzeugen, sind es nicht.</p>
 <p>Wählen Sie die falsche, scheitern Sie entweder beim Hochladen oder werfen ohne Grund Qualität weg. Wählen Sie die richtige, akzeptiert das Formular Ihre Datei beim ersten Versuch.</p>
@@ -381,8 +381,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'compress-image-to-100kb-guide': {
-    title: 'Bild auf 100 KB komprimieren: Die komplette Anleitung',
-    description: 'Alles über das Komprimieren von Bildern auf 100 KB: warum 100 KB genau die richtige Größe ist, wie die Qualität hält, welche Formate passen und das kostenlose Tool, das es erledigt.',
+    title: 'Bild auf 100 KB komprimieren: Anleitung',
+    description: 'Alles über Bilder auf 100 KB: warum die Größe passt, wie die Qualität hält, welche Formate passen und das kostenlose Tool dazu.',
     body: `
 <p>Einhundert Kilobyte sind die nützlichste Dateigröße im Internet. Sie ist klein genug für jedes Upload-Formular und groß genug, um gut auszusehen.</p>
 <p>Lebensläufe, Jobportale, Blog-Thumbnails und E-Mail-Grafiken leben alle gut mit 100 KB. Es ist die Größe, bei der Qualität und Bequemlichkeit zusammenkommen.</p>
@@ -628,7 +628,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   '100kb-image-quality-formats': {
-    title: '100-KB-Bildqualität: JPG vs. PNG vs. WebP bei 100 KB',
+    title: '100 KB: JPG vs. PNG vs. WebP im Vergleich',
     description: 'Welches Format sieht bei 100 KB am besten aus? Ein ausführlicher Qualitätsvergleich von JPG, PNG und WebP mit echten Empfehlungen für Fotos, Grafiken und Text.',
     body: `
 <p>Bei 100 KB entscheidet das gewählte Format darüber, wie gut das Bild aussieht. Dasselbe Foto kann in einem Format gestochen scharf und in einem anderen matschig sein.</p>
@@ -759,8 +759,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'compress-image-to-200kb-guide': {
-    title: 'Bild auf 200 KB komprimieren: Die komplette Anleitung',
-    description: 'Die komplette Anleitung zum Komprimieren von Bildern auf 200 KB: Qualität, Formate, E-Commerce-Einsatz, Blogs und das kostenlose Browser-Tool, das die Zielgröße genau trifft.',
+    title: 'Bild auf 200 KB komprimieren: Anleitung',
+    description: 'Die Anleitung zum Komprimieren auf 200 KB: Qualität, Formate, E-Commerce, Blogs und das kostenlose Browser-Tool für die Zielgröße.',
     body: `
 <p>Zweihundert Kilobyte sind der Punkt, an dem Bildkomprimierung aufhört, ein Kompromiss zu sein, und anfängt, unsichtbar zu werden. In dieser Größe sehen die meisten Fotos genauso aus wie das Original.</p>
 <p>Blogs, Onlineshops und Content-Plattformen standardisieren aus genau diesem Grund auf 200 KB. Die Größe ist leicht genug, um schnell zu laden, und schwer genug, um gut auszusehen.</p>
@@ -1115,7 +1115,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'compress-image-to-500kb-guide': {
-    title: 'Bild auf 500 KB komprimieren: Die komplette Anleitung',
+    title: 'Bild auf 500 KB komprimieren: Anleitung',
     description: 'Die komplette Anleitung zum Komprimieren von Bildern auf 500 KB: nahezu Originalqualität, Portfolios, Präsentationen und das kostenlose Browser-Tool.',
     body: `
 <p>Fünfhundert Kilobyte sind die Größe für Bilder, die nahezu perfekt aussehen müssen. In dieser Größe behält ein Foto seine feinen Details, seine glatten Verläufe und seinen scharfen Text – und wirft trotzdem den größten Teil seines ursprünglichen Gewichts ab.</p>
@@ -1360,7 +1360,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 12,
   },
   '500kb-vs-1mb-image-quality': {
-    title: '500 KB vs. 1 MB: Bildqualität für Web und Druck',
+    title: '500 KB vs. 1 MB: Qualität für Web & Druck',
     description: 'Vergleich von 500-KB- und 1-MB-Bildern: sichtbare Qualitätsunterschiede, Ladegeschwindigkeit, wann jede Größe gewinnt und wie man für Web und Druck wählt.',
     body: `
 <p>Fünfhundert Kilobyte und ein Megabyte klingen sehr unterschiedlich. Das eine ist die Hälfte des anderen, also muss die größere Datei doppelt so gut aussehen, oder?</p>
@@ -1484,8 +1484,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'bulk-image-compressor-guide': {
-    title: 'Bilder stapelweise komprimieren: Die komplette Anleitung',
-    description: 'Die komplette Anleitung zur Stapelkomprimierung von Bildern: Stapel-Voreinstellungen, ZIP-Export, Qualitätseinstellungen und wie man Dutzende von Bildern auf einmal komprimiert.',
+    title: 'Bilder stapelweise komprimieren: Anleitung',
+    description: 'Die Anleitung zur Stapelkomprimierung: Voreinstellungen, ZIP-Export, Qualitätseinstellungen und Dutzende Bilder auf einmal komprimieren.',
     body: `
 <p>Ein Bild zu komprimieren, ist leicht. Fünfzig zu komprimieren, ist eine andere Aufgabe – und sie einzeln zu erledigen, verschwendet einen Nachmittag.</p>
 <p>Die Stapelkomprimierung löst das. Sie legen einen ganzen Ordner hinein, wählen eine Voreinstellung und laden jedes komprimierte Bild gemeinsam in einer einzigen ZIP-Datei herunter.</p>
@@ -1608,8 +1608,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'how-to-compress-multiple-images-at-once': {
-    title: 'Mehrere Bilder gleichzeitig komprimieren: Anleitung',
-    description: 'Schritt für Schritt: Dutzende von Bildern auf einmal komprimieren – mit Voreinstellungen, Fortschrittsbalken und einem einzigen ZIP-Download. Für Blogs, Shops und Alben.',
+    title: 'Mehrere Bilder auf einmal komprimieren',
+    description: 'Schritt für Schritt: Dutzende Bilder auf einmal komprimieren – mit Voreinstellungen, Fortschrittsbalken und einem einzigen ZIP-Download.',
     body: `
 <p>Ein Bild zu komprimieren, dauert eine Minute. Fünfzig Bilder dauern einen Nachmittag – es sei denn, man stapelt sie.</p>
 <p>Die Stapelkomprimierung verarbeitet einen ganzen Ordner auf einmal. Sie wählen eine Voreinstellung, beobachten den Fortschrittsbalken und laden alles gemeinsam als ZIP herunter.</p>
@@ -1733,8 +1733,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'batch-image-compression-best-practices': {
-    title: 'Stapelkomprimierung: ZIP-Workflow und bewährte Tipps',
-    description: 'Bewährte Tipps für die Stapelkomprimierung von Bildern: Voreinstellungen, Qualitätsprüfungen, ZIP-Organisation, Benennung und Abläufe für Blogs, Shops und Teams.',
+    title: 'Stapelkomprimierung: ZIP-Workflow & Tipps',
+    description: 'Bewährte Tipps für die Stapelkomprimierung: Voreinstellungen, Qualitätsprüfungen, ZIP-Organisation, Benennung und Abläufe für Blogs und Shops.',
     body: `
 <p>Stapelkomprimierung ist leicht zu starten und leicht falsch zu machen. Ein nachlässiger Stapel kann fünfzig weiche Bilder, eine verhedderte ZIP-Datei und einen Morgen voller Reparaturen erzeugen.</p>
 <p>Ein sorgfältiger Stapel macht das Gegenteil. Er erzeugt konsistente, scharfe Bilder, organisiert in einem sauberen Paket, bereit zum Hochladen in einem Zug.</p>
@@ -1857,8 +1857,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'target-file-size-compressor-guide': {
-    title: 'Bild auf eine beliebige Dateigröße komprimieren: Die komplette Anleitung',
-    description: 'Die komplette Anleitung zum Komprimieren von Bildern auf eine beliebige KB- oder MB-Größe: eigene Wunschgröße eintippen, automatische Qualitätssuche, Skalierung und wann man das Tool verwendet.',
+    title: 'Bild auf Wunschgröße komprimieren',
+    description: 'Die Anleitung zum Komprimieren auf eine beliebige KB- oder MB-Größe: Wunschgröße eintippen, automatische Qualitätssuche, Skalierung und Einsatzgebiete.',
     body: `
 <p>Die meisten Kompressoren bieten feste Größen: 50 KB, 100 KB, 200 KB oder 500 KB. Aber was, wenn Ihr Portal 80 KB, 150 KB oder 1,5 MB verlangt?</p>
 <p>Das ist die Aufgabe des <a href="/de/bild-auf-zieldateigroesse-komprimieren/">Zielgrößen-Kompressors</a>. Sie tippen jede Größe ein, die Sie brauchen, und das Tool komprimiert Ihr Bild so, dass es genau diese Zahl trifft.</p>
@@ -1978,8 +1978,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'how-to-compress-image-to-exact-kb': {
-    title: 'Bild auf eine genaue KB-Größe komprimieren: Anleitung',
-    description: 'Schritt für Schritt: Jedes Bild für ungewöhnliche Portalgrenzen auf eine exakte KB-Größe komprimieren. Die Zahl eintippen, die Suche laufen lassen und das Ergebnis prüfen.',
+    title: 'Bild auf exakte KB-Größe komprimieren',
+    description: 'Schritt für Schritt: jedes Bild auf eine exakte KB-Größe komprimieren – Zahl eintippen, Suche laufen lassen und das Ergebnis prüfen.',
     body: `
 <p>Ihr Portal will 80 KB. Nicht 50 KB, nicht 100 KB, sondern genau 80 KB. Die Tools mit fester Größe können nicht helfen, und eine geratene Qualitätseinstellung trifft die Zahl nicht.</p>
 <p>Der Zielgrößen-Kompressor löst das. Sie tippen die exakte Zahl ein, und das Tool sucht nach der besten Qualität, die knapp darunter landet.</p>
@@ -2104,7 +2104,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'exact-kb-target-binary-quality-search': {
-    title: 'Exakte KB-Größe treffen: So funktioniert die Qualitätssuche',
+    title: 'Exakte KB-Größe: So läuft die Suche',
     description: 'Wie das Tool bei jeder exakten KB-Größe die schärfste Qualität findet: das Suchverfahren, die Schritte, die Skalierung und seine Grenzen.',
     body: `
 <p>Wie trifft ein Tool eine exakte Dateigröße wie 80 KB, ohne zu raten? Die Antwort ist ein einfacher, eleganter Algorithmus namens binäre Suche.</p>
@@ -2220,7 +2220,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'web-image-optimizer-guide': {
-    title: 'Bilder fürs Web optimieren: Die komplette Anleitung',
+    title: 'Bilder fürs Web optimieren: Anleitung',
     description: 'Die komplette Anleitung zur Bildoptimierung für Websites: Voreinstellungen für Titel-, Produkt- und Kartenbilder, Core Web Vitals und einsetzfertiges HTML.',
     body: `
 <p>Eine Website ist nur so schnell wie ihre Bilder. Text lädt in Millisekunden, aber ein einziges nicht optimiertes Foto kann eine Seite Sekunden lang aufhalten.</p>
@@ -2341,7 +2341,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'how-to-optimize-images-for-website-speed': {
-    title: 'Bilder für Website-Geschwindigkeit optimieren: Anleitung',
+    title: 'Bilder für schnellere Websites optimieren',
     description: 'Schritt für Schritt: Bilder für Website-Geschwindigkeit optimieren – mit Voreinstellungen, richtigen Abmessungen, Lazy Loading und einsetzfertigen HTML-Tags.',
     body: `
 <p>Bilder sind der schwerste Teil der meisten Websites. Eine Seite, die langsam lädt, hat meist Bilder als Schuldige, und sie zu reparieren, ist der schnellste Geschwindigkeitsgewinn, den es gibt.</p>
@@ -2464,7 +2464,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'image-optimization-core-web-vitals': {
-    title: 'Bildoptimierung für Core Web Vitals: LCP und Dateigröße',
+    title: 'Bildoptimierung für Core Web Vitals',
     description: 'Wie Bildoptimierung die Core Web Vitals verbessert: LCP, CLS und INP erklärt, mit praktischen Lösungen für langsame Seiten.',
     body: `
 <p>Core Web Vitals sind die Geschwindigkeitswerte, mit denen Google Ihre Seiten beurteilt. Sie messen, wie schnell der größte Inhalt erscheint, wie stabil das Layout ist und wie schnell die Seite reagiert.</p>
@@ -2713,7 +2713,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-compress-gif': {
     title: 'GIF komprimieren: So geht es',
-    description: 'Schritt für Schritt: jedes animierte GIF für Discord, Slack, Websites und Chat komprimieren. Voreinstellungen, Palette, Skalierung und Lösungen für hartnäckige Dateien.',
+    description: 'Schritt für Schritt: jedes animierte GIF für Discord, Slack, Websites und Chat komprimieren – Voreinstellungen, Palette und Skalierung.',
     body: `
 <p>Ihr GIF ist zu groß zum Senden. Discord lehnt es ab, die Seite lädt langsam, oder die Chat-App verweigert den Upload.</p>
 <p>Ein GIF zu komprimieren, dauert etwa zwei Minuten. Sie wählen eine Voreinstellung, passen Palette und Skalierung an, schauen sich die Animation in der Vorschau an und laden die kleinere Datei herunter.</p>
@@ -2838,7 +2838,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'gif-vs-webp-vs-mp4-animated': {
-    title: 'GIF vs. WebP vs. MP4: Animierte Bilder im Vergleich',
+    title: 'GIF vs. WebP vs. MP4 im Vergleich',
     description: 'Vergleich von animiertem GIF, WebP und MP4: Dateigröße, Qualität, Kompatibilität und wann man welches Format für Animationen im Web verwendet.',
     body: `
 <p>Drei Formate konkurrieren um animierte Bilder im Web: GIF, WebP und MP4. Sie sehen auf dem Bildschirm ähnlich aus, aber ihre Dateigrößen unterscheiden sich enorm.</p>
@@ -2960,7 +2960,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'image-converter-guide': {
-    title: 'Bilder konvertieren: Anleitung, Formate & Tipps',
+    title: 'Bilder konvertieren: Anleitung & Tipps',
     description: 'Bilder im Browser zwischen JPG, PNG, WebP, HEIC, SVG, BMP, GIF und AVIF umwandeln – Formate, Qualität, Transparenz und Stapel-Tipps.',
     body: `
 <p>Jedes Bild auf Ihren Geräten liegt in einem bestimmten Format vor – und die Formate vertragen sich nicht immer. Handys speichern HEIC, Kameras JPG, Designer arbeiten mit PNG und Websites liefern WebP aus. Trifft das falsche Format auf die falsche App, lässt sich die Datei einfach nicht öffnen.</p>
@@ -3052,7 +3052,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-image-format': {
     title: 'Bildformat konvertieren: Anleitung',
-    description: 'Jedes Bild in sechs schnellen Schritten nach JPG, PNG oder WebP konvertieren. Hochladen, Format wählen, Qualität einstellen, Vorschau ansehen und herunterladen – alles im Browser.',
+    description: 'Jedes Bild in sechs Schritten nach JPG, PNG oder WebP konvertieren: hochladen, Format wählen, Qualität einstellen und herunterladen.',
     body: `
 <p>Ein Bildformat zu konvertieren klingt technisch, doch der ganze Auftrag dauert weniger als eine Minute. Sie laden eine Datei hoch, wählen das Format, das Sie brauchen, und laden das Ergebnis herunter.</p>
 <p>Keine Software zu installieren, kein Konto zu erstellen und kein Warten auf einen Upload zu einem fernen Server. Alles passiert in Ihrem Browser, auf Ihrem eigenen Gerät.</p>
@@ -3160,8 +3160,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'image-format-conversion-quality-loss': {
-    title: 'Bildformat ändern ohne Qualitätsverlust: So geht’s',
-    description: 'Verliert ein Bild beim Konvertieren an Qualität? Verlustbehaftete vs. verlustfreie Formate, wiederholte Konvertierungen und die Einstellungen, die Ihre Fotos scharf halten.',
+    title: 'Format wechseln ohne Qualitätsverlust',
+    description: 'Verliert ein Bild beim Konvertieren an Qualität? Verlustbehaftete vs. verlustfreie Formate und die Einstellungen, die Fotos scharf halten.',
     body: `
 <p>Jede Formatkonvertierung verändert, wie Ihr Bild gespeichert wird – und manche dieser Veränderungen sind dauerhaft. Wer versteht, welche Konvertierungen Qualität kosten und welche nicht, schützt seine Fotos davor, langsam Schaden zu nehmen.</p>
 <p>Die Regel ist leicht auszusprechen und leicht zu vergessen: Verlustbehaftete Formate werfen Details weg, verlustfreie Formate behalten alles. Jede Konvertierungsentscheidung folgt aus dieser einen Tatsache.</p>
@@ -3263,7 +3263,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'image-to-pdf-guide': {
-    title: 'Bilder in PDF umwandeln: Anleitung, Seitengrößen & Tipps',
+    title: 'Bilder in PDF umwandeln: Anleitung',
     description: 'Fotos und Scans im Browser in ein PDF umwandeln. Seitengröße, Ränder, Ausrichtung, Qualität und Reihenfolge – alles erklärt.',
     body: `
 <p>Ein PDF ist der zuverlässigste Weg, eine Reihe von Bildern als ein einziges Dokument zu teilen. Es öffnet sich auf jedem Gerät gleich, druckt vorhersehbar und bringt Ihre Seiten nie durcheinander.</p>
@@ -3373,7 +3373,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'how-to-convert-image-to-pdf': {
-    title: 'Bilder in PDF umwandeln: Schritt-für-Schritt-Anleitung',
+    title: 'Bild in PDF umwandeln: Schritt für Schritt',
     description: 'Ein Foto oder einen ganzen Satz in wenigen Minuten in ein PDF verwandeln. Hochladen, Seiten ordnen, Größe wählen und Dokument herunterladen.',
     body: `
 <p>Ein Bild in PDF zu verwandeln gehört zu den nützlichsten Datei-Aufgaben im Alltag. Aus einem Foto wird ein Dokument, aus einer Reihe von Scans eine einzige Datei – und alles ist bereit zum Verschicken oder Drucken.</p>
@@ -3488,8 +3488,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'jpg-to-pdf-vs-png-to-pdf': {
-    title: 'JPG oder PNG in PDF umwandeln: Was ist besser?',
-    description: 'JPG oder PNG in PDF umwandeln? Dateigröße, Textschärfe, Transparenz und die besten Einstellungen für jeden Dokumenttyp.',
+    title: 'JPG oder PNG in PDF: Was ist besser?',
+    description: 'JPG oder PNG in PDF umwandeln? Dateigröße, Textschärfe, Transparenz und die besten Einstellungen für jeden Dokumenttyp. Fotos als JPG, Scans als PNG.',
     body: `
 <p>Wenn Sie ein PDF aus Bildern bauen, spielt das Format dieser Bilder eine größere Rolle, als die meisten erwarten. Eine JPG-Seite und eine PNG-Seite können auf dem Bildschirm identisch aussehen und sich trotzdem sehr unterschiedlich verhalten.</p>
 <p>Die Wahl beeinflusst Dateigröße, Textschärfe und wie das PDF druckt. Für ein Fotoalbum gewinnt ein Format, für einen gescannten Vertrag das andere.</p>
@@ -3597,7 +3597,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'bulk-image-converter-guide': {
-    title: 'Bilder stapelweise konvertieren: Anleitung & Tipps',
+    title: 'Bilder stapelweise konvertieren: Tipps',
     description: 'Ganze Ordner mit Bildern auf einmal in ein Format umwandeln. Gemischte Formate, eine Einstellung für alle, ZIP-Download und Dateinamen – so geht’s.',
     body: `
 <p>Ein Bild zu konvertieren geht schnell. Zweihundert Bilder einzeln zu konvertieren frisst einen ganzen Nachmittag. Genau dieses Problem löst ein Stapelkonverter.</p>
@@ -3701,7 +3701,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-multiple-images': {
     title: 'Mehrere Bilder auf einmal konvertieren',
-    description: 'Einen ganzen Ordner mit Bildern in einem Durchgang nach JPG, PNG oder WebP konvertieren. Hochladen, Format wählen, Qualität einstellen und eine ZIP herunterladen.',
+    description: 'Einen ganzen Ordner mit Bildern in einem Durchgang nach JPG, PNG oder WebP konvertieren – hochladen, Format wählen und eine ZIP laden.',
     body: `
 <p>Bilder einzeln zu konvertieren ist für ein einziges Foto in Ordnung. Für einen Ordner mit fünfzig ist es eine lästige Arbeit, die einen Nachmittag frisst. Die Stapelkonvertierung erledigt den ganzen Ordner in einem Durchgang.</p>
 <p>Der Ablauf ist einfach: Ordner hochladen, ein Ausgabeformat wählen, die Qualität einmal einstellen und eine einzige ZIP mit allem darin herunterladen.</p>
@@ -3815,7 +3815,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'batch-image-conversion-workflow': {
-    title: 'Viele Bilder auf einmal umwandeln: Ordner, Dateinamen & Workflow',
+    title: 'Viele Bilder auf einmal umwandeln',
     description: 'Hunderte Bilder immer gleich gut umwandeln: Ordneraufbau, Dateinamen, Qualitätsprüfung und Archivierung – für Teams und Websites.',
     body: `
 <p>Ein paar Bilder zu konvertieren braucht kein System. Hunderte von Bildern jede Woche zu konvertieren schon – und der Unterschied zwischen einem reibungslosen Workflow und einem Chaos sind ein paar einfache Gewohnheiten.</p>
@@ -3925,7 +3925,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'heic-to-jpg-guide': {
-    title: 'HEIC zu JPG umwandeln: Anleitung, Qualität & Tipps',
+    title: 'HEIC zu JPG umwandeln: Anleitung',
     description: 'iPhone-Fotos (HEIC) im Browser in JPG umwandeln: Warum es HEIC gibt, was bei der Umwandlung passiert, welche Qualität passt und was mit Live Photos geschieht.',
     body: `
 <p>Wenn Sie ein iPhone besitzen, sind die meisten Ihrer Fotos HEIC-Dateien – ob Sie sie wollten oder nicht. Auf Ihrem Handy sehen sie perfekt aus und lassen sich auf der Hälfte der Computer und Websites, denen Sie begegnen, nicht öffnen.</p>
@@ -4143,7 +4143,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'heic-vs-jpg': {
-    title: 'HEIC vs. JPG: Kompatibilität, Qualität und Dateigröße',
+    title: 'HEIC vs. JPG: Qualität & Dateigröße',
     description: 'HEIC vs. JPG ehrlich verglichen: Dateigröße, Bildqualität, Kompatibilität und welches Format sich für Fotos, Formulare und das Web eignet.',
     body: `
 <p>HEIC und JPG sind die beiden Formate, die für Handyfotos am wichtigsten sind. Eines ist modern und effizient, das andere alt und universell – und die Wahl zwischen ihnen ist ein Kompromiss, kein klarer Sieg.</p>
@@ -4252,7 +4252,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'jpg-to-png-guide': {
-    title: 'JPG in PNG umwandeln: Wann es sich lohnt (und wann nicht)',
+    title: 'JPG in PNG umwandeln: Wann es sich lohnt',
     description: 'JPG in PNG umwandeln – richtig gemacht: Wann es hilft, warum die Datei größer wird und wie Sie PNG zum Bearbeiten, für Text und Grafiken nutzen.',
     body: `
 <p>Ein JPG nach PNG zu konvertieren fühlt sich wie ein Upgrade an. PNG klingt besser, verlustfrei klingt besser, und die Datei wirkt professioneller. Die Wirklichkeit ist komplizierter als das.</p>
@@ -4361,8 +4361,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'how-to-convert-jpg-to-png': {
-    title: 'JPG in PNG umwandeln: Anleitung',
-    description: 'JPG-Bilder in Sekunden nach PNG konvertieren – eine Datei oder ein Stapel von zwanzig. Hochladen, konvertieren, vergleichen und herunterladen – alles im Browser.',
+    title: 'JPG in PNG umwandeln: Schritt für Schritt',
+    description: 'JPG-Bilder in Sekunden nach PNG konvertieren – eine Datei oder ein Stapel von zwanzig. Hochladen, konvertieren und herunterladen, alles im Browser.',
     body: `
 <p>Ein JPG nach PNG zu konvertieren ist eine einfache Aufgabe, doch es lohnt sich, sie richtig zu machen. Eine ordentliche Konvertierung schreibt die Datei als echtes PNG neu – nicht nur als umbenanntes JPG.</p>
 <p>Der Ablauf dauert Sekunden pro Datei, und Sie können bis zu zwanzig Bilder auf einmal konvertieren. Alles läuft in Ihrem Browser, ohne etwas zu installieren.</p>
@@ -4478,7 +4478,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'jpg-vs-png-transparency': {
     title: 'JPG vs. PNG: Wann Transparenz zählt',
-    description: 'JPG vs. PNG im Vergleich: Transparenz, Dateigröße, Textschärfe und Fotos. Erfahren Sie, wann jedes Format gewinnt und warum Konvertieren keine Transparenz hinzufügen kann.',
+    description: 'JPG vs. PNG im Vergleich: Transparenz, Dateigröße, Textschärfe und Fotos. Wann jedes Format gewinnt und warum Konvertieren keine Transparenz schafft.',
     body: `
 <p>JPG und PNG sind die beiden ältesten Bildformate im Web, und sie lösen entgegengesetzte Probleme. JPG macht Fotos klein, während PNG Grafiken perfekt und transparent hält.</p>
 <p>Der am meisten missverstandene Unterschied zwischen ihnen ist Transparenz. JPG kann sie überhaupt nicht speichern, PNG kann es – doch ein JPG nach PNG zu konvertieren erzeugt sie nicht auf magische Weise.</p>
@@ -4586,7 +4586,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'png-to-jpg-guide': {
-    title: 'PNG in JPG umwandeln: Anleitung, Qualität & Tipps',
+    title: 'PNG in JPG umwandeln: Kleinere Dateien',
     description: 'PNG-Screenshots und -Fotos in JPG umwandeln und dabei bis zu 90 % kleiner machen. Mattfarbe, Qualität, Stapelverarbeitung – und wann sich die Umwandlung lohnt.',
     body: `
 <p>Mac- und Windows-Screenshots speichern standardmäßig als PNG, und diese PNGs sind riesig. Ein einzelner Screenshot kann 5 MB wiegen, während dasselbe Bild als JPG 500 KB wiegt.</p>
@@ -4695,8 +4695,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'how-to-convert-png-to-jpg': {
-    title: 'PNG in JPG umwandeln: Anleitung',
-    description: 'PNG-Screenshots und -Bilder in sechs Schritten nach JPG konvertieren. Mattfarbe wählen, Qualität einstellen, Vorschau ansehen und herunterladen – eine Datei oder ein Stapel.',
+    title: 'PNG in JPG umwandeln: Mattfarbe, Qualität',
+    description: 'PNG-Screenshots und -Bilder in sechs Schritten nach JPG konvertieren: Mattfarbe wählen, Qualität einstellen und herunterladen – einzeln oder als Stapel.',
     body: `
 <p>Ein PNG-Screenshot kann zehnmal mehr wiegen als dasselbe Bild als JPG. Ihn zu konvertieren dauert weniger als eine Minute, und das Ergebnis lässt sich deutlich leichter verschicken, hochladen und speichern.</p>
 <p>Der einzige knifflige Teil ist Transparenz. JPG kann keine durchsichtigen Pixel speichern, Sie müssen also vor der Konvertierung eine Füllfarbe für sie wählen.</p>
@@ -4811,8 +4811,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'png-to-jpg-file-size-quality': {
-    title: 'PNG in JPG umwandeln: Dateigröße & Qualität im Vergleich',
-    description: 'Wie viel kleiner wird ein PNG als JPG wirklich? Die Ersparnis je nach Bildtyp, Qualitätseinstellungen, die Text scharf halten, und wann sich die Umwandlung nicht lohnt.',
+    title: 'PNG in JPG: Dateigröße & Qualität',
+    description: 'Wie viel kleiner wird ein PNG als JPG wirklich? Die Ersparnis je nach Bildtyp, Qualitätseinstellungen für scharfen Text und wann es sich nicht lohnt.',
     body: `
 <p>PNG-zu-JPG-Konvertierung ist berühmt dafür, Dateien zu verkleinern, doch die Ersparnisse sind nicht bei jedem Bild gleich. Ein Screenshot kann um 90 Prozent fallen, während ein einfaches Icon stattdessen wachsen kann.</p>
 <p>Zu verstehen, was die Ersparnisse antreibt, hilft Ihnen, das Ergebnis vor der Konvertierung vorherzusagen und die Qualitätseinstellung zu wählen, die schützt, was zählt.</p>
@@ -4921,8 +4921,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'jpg-to-webp-guide': {
-    title: 'JPG in WebP umwandeln: Anleitung, Qualität & Tipps',
-    description: 'JPG-Fotos in WebP umwandeln und Websites schneller machen: Wie viel kleiner die Dateien werden, welche Qualität passt, welche Browser WebP zeigen und wann JPG besser bleibt.',
+    title: 'JPG in WebP umwandeln: Schnellere Websites',
+    description: 'JPG-Fotos in WebP umwandeln und Websites schneller machen: Wie viel kleiner die Dateien werden, welche Qualität passt und wann JPG besser bleibt.',
     body: `
 <p>WebP ist das Format, das Google gebaut hat, um das Web schneller zu machen – und es funktioniert. Ein JPG-Foto, das nach WebP konvertiert wurde, ist typischerweise 25 bis 35 Prozent kleiner, ohne sichtbaren Qualitätsunterschied.</p>
 <p>Diese Ersparnis zählt. Kleinere Bilder bedeuten schnellere Seiten, zufriedenere Besucher und bessere Suchrankings – darum liefert heute jede große Website WebP aus.</p>
@@ -5036,8 +5036,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'how-to-convert-jpg-to-webp': {
-    title: 'JPG in WebP umwandeln: Anleitung',
-    description: 'JPG-Fotos in wenigen Schritten nach WebP konvertieren. Hochladen, Qualität einstellen, Ersparnis in der Vorschau ansehen und herunterladen – ein Foto oder ein ganzer Ordner.',
+    title: 'JPG in WebP umwandeln: Schritt für Schritt',
+    description: 'JPG-Fotos in wenigen Schritten nach WebP konvertieren: hochladen, Qualität einstellen, Ersparnis in der Vorschau ansehen und herunterladen.',
     body: `
 <p>Ein JPG nach WebP zu konvertieren ist einer der einfachsten Geschwindigkeitsgewinne für eine Website. Das Foto sieht gleich aus, die Datei ist ein Drittel kleiner, und die Seite lädt schneller.</p>
 <p>Der Ablauf dauert Sekunden pro Foto, und Sie können einen ganzen Ordner auf einmal konvertieren. Alles läuft in Ihrem Browser, ohne etwas zu installieren.</p>
@@ -5152,7 +5152,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'jpg-vs-webp': {
-    title: 'JPG vs. WebP: Dateigröße, Qualität und Browserunterstützung',
+    title: 'JPG vs. WebP: Größe, Qualität, Browser',
     description: 'JPG vs. WebP im direkten Vergleich: Dateigrößen-Ersparnis, Bildqualität, Transparenz, Browserunterstützung und welches Format sich wo eignet.',
     body: `
 <p>JPG beherrscht das Web seit dreißig Jahren. WebP ist der Herausforderer, den Google gebaut hat, um es zu ersetzen – und rein auf Effizienz gewinnt WebP. Bei Kompatibilität hält JPG noch immer die Krone.</p>
@@ -5267,7 +5267,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'webp-to-jpg-guide': {
-    title: 'WebP in JPG umwandeln: Die komplette Anleitung',
+    title: 'WebP in JPG umwandeln: Überall öffnen',
     description: 'WebP-Bilder zurück in JPG umwandeln für volle Kompatibilität. Mattfarben, Qualitätseinstellungen, Stapelverarbeitung – und wann JPG WebP wirklich schlägt.',
     body: `
 <p>WebP ist ein wunderbares Format fürs Web – bis man auf ein System trifft, das es schlicht ablehnt. Ein Drucker, ein altes Programm oder ein Upload-Formular, das nur JPG kennt, weist eine WebP-Datei kommentarlos ab.</p>
@@ -5528,7 +5528,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'webp-to-jpg-compatibility': {
-    title: 'WebP oder JPG: Wann Kompatibilität mehr zählt als Dateigröße',
+    title: 'WebP oder JPG: Kompatibilität zählt',
     description: 'WebP ist kleiner, aber JPG öffnet sich überall. Wann Kompatibilität mehr zählt als Dateigröße – Formulare, Drucker, E-Mail und alte Software.',
     body: `
 <p>WebP ist auf dem Papier das bessere Format. Es ist kleiner, schärfer und leistungsfähiger als JPG, und jeder moderne Browser unterstützt es. Trotzdem gibt es viele Situationen, in denen JPG noch immer die richtige Wahl ist.</p>
@@ -5657,8 +5657,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'png-to-webp-guide': {
-    title: 'PNG in WebP umwandeln: Die komplette Anleitung',
-    description: 'PNG-Bilder in WebP umwandeln für kleinere Dateien bei erhaltener Transparenz. Logos, Icons, Screenshots und Hero-Bilder – Einstellungen und beste Einsatzgebiete.',
+    title: 'PNG in WebP umwandeln: Transparenz bleibt',
+    description: 'PNG-Bilder in WebP umwandeln für kleinere Dateien bei erhaltener Transparenz: Logos, Icons und Screenshots – Einstellungen und Einsatzgebiete.',
     body: `
 <p>PNG ist das Format für Logos, Icons und Screenshots – aber auch ein schweres Format. Ein PNG-Hero-Bild kann mehrere Megabyte wiegen, während dasselbe Bild als WebP nur einen Bruchteil davon wiegt.</p>
 <p>Die Umwandlung von PNG in WebP behält die Transparenz, die PNG so nützlich macht, und schrumpft die Datei gleichzeitig dramatisch. Das Beste aus beiden Formaten in einer Umwandlung.</p>
@@ -5784,7 +5784,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'how-to-convert-png-to-webp': {
-    title: 'PNG in WebP konvertieren',
+    title: 'PNG in WebP konvertieren: Für Logos',
     description: 'PNG-Bilder in wenigen Schritten in WebP umwandeln. Hochladen, Qualität einstellen, Transparenz prüfen und herunterladen – ein Logo oder ein ganzes Icon-Set.',
     body: `
 <p>Ein PNG-Logo ist scharf, aber schwer, und ein PNG-Hero-Bild kann mehrere Megabyte wiegen. Die Umwandlung in WebP behält Transparenz und Schärfe und schrumpft die Datei gleichzeitig dramatisch.</p>
@@ -5924,7 +5924,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'png-vs-webp': {
-    title: 'PNG oder WebP? Transparenz und Dateigröße im Vergleich',
+    title: 'PNG oder WebP? Transparenz & Größe',
     description: 'PNG vs WebP im Vergleich: Transparenz, Dateigröße, Textschärfe, Browser-Unterstützung und welches Format sich für Logos, Screenshots und Fotos eignet.',
     body: `
 <p>PNG und WebP speichern beide Transparenz, beide halten Kanten scharf, und beide funktionieren im modernen Web. Der Unterschied ist die Dateigröße – und da gewinnt WebP meist mit großem Abstand.</p>
@@ -6057,7 +6057,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'webp-to-png-guide': {
-    title: 'WebP in PNG umwandeln: Die komplette Anleitung',
+    title: 'WebP in PNG umwandeln: Zum Bearbeiten',
     description: 'WebP-Bilder in PNG umwandeln ohne Qualitätsverlust. Transparenz, Bearbeitung, Kompatibilität und wann PNG das richtige Ziel ist.',
     body: `
 <p>WebP ist ein tolles Format fürs Web – bis man das Bild bearbeiten, drucken oder in einem älteren Programm öffnen muss. Dann wird PNG zum richtigen Ziel.</p>
@@ -6184,7 +6184,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'how-to-convert-webp-to-png': {
-    title: 'WebP in PNG konvertieren',
+    title: 'WebP in PNG konvertieren: In 5 Schritten',
     description: 'WebP-Bilder in wenigen Schritten in PNG umwandeln. Hochladen, umwandeln, Transparenz prüfen und herunterladen – eine Datei oder ein ganzer Stapel.',
     body: `
 <p>Ein WebP-Bild von einer Website muss oft erst zu einem PNG werden, bevor man es bearbeiten, drucken oder in einem älteren Programm öffnen kann. Die Umwandlung dauert Sekunden, und das Ergebnis ist eine perfekte Kopie.</p>
@@ -6319,7 +6319,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'webp-to-png-editing-compatibility': {
-    title: 'WebP in PNG umwandeln: Für Photoshop, Figma, Office und Druck',
+    title: 'WebP in PNG: Für Photoshop & Office',
     description: 'Warum Designer WebP in PNG umwandeln: Bearbeiten, Transparenz und Kompatibilität mit Photoshop, Figma, Office und Druck.',
     body: `
 <p>WebP ist das Format des modernen Webs, doch die Designwelt läuft noch auf PNG. Photoshop, Figma, PowerPoint und Druckereien arbeiten alle nativ mit PNG, während die WebP-Unterstützung noch aufholt.</p>
@@ -6448,7 +6448,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'svg-to-png-guide': {
-    title: 'SVG in PNG umwandeln: Die komplette Anleitung',
+    title: 'SVG in PNG umwandeln: Anleitung',
     description: 'SVG-Logos und -Icons in PNG umwandeln, in jeder Größe. Skalierung, Transparenz, Schriften, Verläufe und die Grenzen – alles erklärt.',
     body: `
 <p>Ein SVG-Logo lässt sich auf jede Größe skalieren, ohne je unscharf zu werden – doch die Hälfte der Orte, an denen man es braucht, akzeptiert kein SVG. Ein Formular, eine E-Mail oder ein altes Programm will ein PNG, und das SVG muss zu Pixeln werden.</p>
@@ -6576,7 +6576,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-svg-to-png': {
     title: 'SVG in PNG konvertieren',
-    description: 'SVG-Logos und -Icons in PNG umwandeln, in der Größe, die Sie brauchen. Hochladen, Skalierung wählen, Ergebnis prüfen und herunterladen – eine Datei oder ein ganzer Pack.',
+    description: 'SVG-Logos und -Icons in PNG umwandeln, in der Größe, die Sie brauchen: hochladen, Skalierung wählen, Ergebnis prüfen und herunterladen.',
     body: `
 <p>Ein SVG-Logo ist unendlich skalierbar, doch viele Orte wollen noch immer ein PNG. Die Umwandlung dauert Sekunden, und die einzige Entscheidung, die zählt, ist die Ausgabegröße.</p>
 <p>Wählen Sie die richtige Skalierung, und das PNG sieht perfekt aus. Wählen Sie die falsche, kommt es unscharf oder unnötig riesig heraus.</p>
@@ -6836,7 +6836,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'avif-to-jpg-guide': {
-    title: 'AVIF in JPG umwandeln: Die komplette Anleitung',
+    title: 'AVIF in JPG umwandeln: Anleitung',
     description: 'AVIF-Bilder von modernen Websites in JPG umwandeln. Was AVIF ist, warum Apps es ablehnen, Qualitätseinstellungen und Umgang mit Transparenz.',
     body: `
 <p>AVIF ist das neueste Bildformat im Web – und gleichzeitig das, das die meisten Apps nicht öffnen können. Man lädt ein wunderschönes Bild von einer modernen Website herunter, und der Foto-Viewer, der Editor oder das Upload-Formular lehnt es ab.</p>
@@ -7224,7 +7224,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'bmp-to-jpg-guide': {
-    title: 'BMP in JPG umwandeln: Die komplette Anleitung',
+    title: 'BMP in JPG umwandeln: Anleitung',
     description: 'BMP-Bitmaps in JPG umwandeln und sie um 90 Prozent oder mehr verkleinern. Warum BMP-Dateien riesig sind, Qualitätseinstellungen, Scans und Stapel.',
     body: `
 <p>BMP ist das älteste Bildformat unter Windows – und zugleich das verschwenderischste. Ein BMP-Screenshot kann 20 MB wiegen, während dasselbe Bild als JPG 500 KB wiegt, ohne sichtbaren Unterschied.</p>
@@ -7352,7 +7352,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-bmp-to-jpg': {
     title: 'BMP in JPG konvertieren',
-    description: 'BMP-Bitmaps in wenigen Schritten in JPG umwandeln. Hochladen, Qualität einstellen, Einsparung in der Vorschau prüfen und herunterladen – eine Datei oder ein ganzer Ordner mit Scans.',
+    description: 'BMP-Bitmaps in wenigen Schritten in JPG umwandeln: hochladen, Qualität einstellen, Einsparung prüfen und herunterladen – einzeln oder als Ordner.',
     body: `
 <p>Eine BMP-Datei aus alter Windows-Software kann zwanzigmal mehr wiegen als dasselbe Bild als JPG. Die Umwandlung dauert weniger als eine Minute, und das Ergebnis lässt sich weit leichter verschicken, hochladen und speichern.</p>
 <p>Es gibt keine Transparenz, über die man sich Sorgen machen müsste, weil BMP-Dateien deckend sind, und die einzige Entscheidung ist die Qualitätseinstellung.</p>
@@ -7612,7 +7612,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'rotate-flip-image-guide': {
-    title: 'Bilder drehen und spiegeln: Die komplette Anleitung',
+    title: 'Bilder drehen und spiegeln: Anleitung',
     description: 'Bilder online drehen und spiegeln: Drehungen um 90 und 180 Grad, eigene Winkel, gespiegelte Selfies und EXIF-Ausrichtungsprobleme – alles im Browser.',
     body: `
 <p>Ein Foto, das auf der Seite liegt, gehört zu den häufigsten Bildproblemen überhaupt. Man öffnet ein Bild, das man mit dem Handy aufgenommen hat, und stellt fest: Der Horizont verläuft senkrecht, oder ein eingescanntes Dokument lässt sich nur von unten nach oben lesen.</p>
@@ -7717,7 +7717,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-rotate-flip-image': {
     title: 'Bild drehen oder spiegeln: Anleitung',
-    description: 'Drehen oder spiegeln Sie jedes Bild in Sekunden: hochladen, 90 oder 180 Grad oder einen eigenen Winkel wählen, horizontal oder vertikal spiegeln, Vorschau ansehen und herunterladen.',
+    description: 'Drehen oder spiegeln Sie jedes Bild in Sekunden: hochladen, 90 oder 180 Grad oder eigenen Winkel wählen, spiegeln und herunterladen.',
     body: `
 <p>Ein schiefes Foto ist in Sekunden korrigiert, sobald man die Schritte kennt. Sie brauchen keine Software zu installieren und kein Konto anzulegen – die ganze Arbeit läuft in Ihrem Browser.</p>
 <p>Diese Anleitung führt Sie vom Hochladen bis zum Herunterladen. Sie behandelt schnelle Drehungen um 90 Grad, eigene Winkel für gekippte Aufnahmen und horizontale Spiegelungen für seitenverkehrte Selfies.</p>
@@ -7822,7 +7822,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'image-orientation-exif-rotation': {
-    title: 'Foto falsch herum? EXIF-Ausrichtung einfach erklärt',
+    title: 'Foto falsch herum? EXIF einfach erklärt',
     description: 'Warum sieht dasselbe Foto auf dem Handy richtig und überall sonst schief aus? EXIF-Ausrichtung erklärt – und wie man sie dauerhaft korrigiert.',
     body: `
 <p>Dasselbe Foto kann auf dem Handy perfekt aussehen und auf einer Website komplett schief liegen. An der Datei hat sich zwischen den beiden Ansichten nichts geändert – und trotzdem erscheint das Bild gedreht.</p>
@@ -8026,7 +8026,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-crop-image': {
     title: 'Bild zuschneiden: Anleitung',
-    description: 'Schneiden Sie jedes Bild online in Sekunden zu: hochladen, Auswahlrechteck ziehen, Seitenverhältnis wählen, Maße prüfen und einen sauberen Zuschnitt herunterladen.',
+    description: 'Schneiden Sie jedes Bild online in Sekunden zu: hochladen, Auswahlrechteck ziehen, Seitenverhältnis wählen, Maße prüfen und herunterladen.',
     body: `
 <p>Ein Bild zuzuschneiden dauert weniger als eine Minute, sobald man die Schritte kennt. Sie laden das Foto hoch, ziehen ein Rechteck um den Teil, den Sie behalten möchten, und laden das Ergebnis herunter.</p>
 <p>Diese Anleitung führt Sie durch den gesamten Ablauf. Sie behandelt die Wahl des Seitenverhältnisses, das Raster für einen besseren Bildausschnitt, die Prüfung der Ausgabegröße und die Wahl des richtigen Exportformats.</p>
@@ -8229,8 +8229,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'image-watermark-guide': {
-    title: 'Bilder mit Wasserzeichen versehen: Die komplette Anleitung',
-    description: 'Bilder online mit Wasserzeichen versehen: Text- und Logo-Wasserzeichen, sich wiederholende Muster, Deckkraft und Platzierung – Fotos schützen, ohne sie zu ruinieren.',
+    title: 'Bilder mit Wasserzeichen versehen',
+    description: 'Bilder online mit Wasserzeichen versehen: Text- und Logo-Wasserzeichen, Muster, Deckkraft und Platzierung – Fotos schützen, ohne sie zu ruinieren.',
     body: `
 <p>Ein Wasserzeichen ist eine Markierung, die über ein Bild gelegt wird, um zu zeigen, wer es gemacht hat oder wem es gehört. Es kann ein Name, ein Logo oder ein sich wiederholendes Muster sein – und es reist mit der Datei, wohin das Bild auch geht.</p>
 <p>Fotografen nutzen Wasserzeichen, um Kundenproofs zu schützen. Designer nutzen sie, um ihre Arbeit zu brandmarken. Shops nutzen sie, um Konkurrenten davon abzuhalten, Produktfotos wiederzuverwenden.</p>
@@ -8334,7 +8334,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-add-watermark-to-image': {
     title: 'Bild mit Wasserzeichen versehen: Anleitung',
-    description: 'Versehen Sie jedes Bild in Minuten mit einem Wasserzeichen: Text oder Logo, Platzierung, Deckkraft, Größe und gekachelte Muster, mit einem sauberen Export am Ende.',
+    description: 'Versehen Sie jedes Bild in Minuten mit einem Wasserzeichen: Text oder Logo, Platzierung, Deckkraft, Größe und gekachelte Muster – mit sauberem Export.',
     body: `
 <p>Ein Wasserzeichen hinzuzufügen dauert nur wenige Minuten und schützt Ihre Arbeit, wohin das Bild auch reist. Sie brauchen keine Designsoftware und kein Konto – die ganze Arbeit läuft in Ihrem Browser.</p>
 <p>Diese Anleitung führt Sie Schritt für Schritt durch den Ablauf. Sie behandelt Text- und Logo-Wasserzeichen, Platzierung, Deckkraft, Größe und das gekachelte Muster, das Kundenproofs schützt.</p>
@@ -8439,8 +8439,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'watermark-best-practices': {
-    title: 'Wasserzeichen richtig setzen: Tipps für Platzierung, Deckkraft und Branding',
-    description: 'Wie Sie Fotos richtig mit Wasserzeichen versehen: Platzierung, Deckkraft, Größe, Farbe, sich wiederholende Muster und Branding, das schützt, ohne das Bild zu ruinieren.',
+    title: 'Wasserzeichen richtig setzen: Tipps',
+    description: 'Wie Sie Fotos richtig mit Wasserzeichen versehen: Platzierung, Deckkraft, Größe, Farbe, Muster und Branding, das schützt, ohne das Bild zu ruinieren.',
     body: `
 <p>Ein Wasserzeichen sollte Ihre Arbeit schützen, ohne sie zu ruinieren. Diese Balance ist schwieriger, als sie aussieht – denn eine Markierung, die zu schwach ist, schützt nichts, und eine Markierung, die zu stark ist, ruiniert das Foto.</p>
 <p>Die besten Wasserzeichen folgen ein paar einfachen Regeln zu Platzierung, Deckkraft, Größe und Farbe. Sie sind in Ihrer gesamten Arbeit konsistent, auf jedem Hintergrund lesbar und schwer zu entfernen, ohne das Bild zu beschädigen.</p>
@@ -8538,7 +8538,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'blur-pixelate-image-guide': {
-    title: 'Bilder weichzeichnen und pixelieren: Die komplette Anleitung',
+    title: 'Bilder weichzeichnen & pixelieren',
     description: 'Bilder online weichzeichnen und pixelieren: Gesichter, Text und Details mit sanftem Weichzeichner oder Mosaik verbergen – per Pinsel oder fürs ganze Bild.',
     body: `
 <p>Manche Teile eines Fotos sollten nicht geteilt werden. Ein Gesicht im Hintergrund, eine Adresse auf einem Brief oder ein Passwort auf einem Bildschirm können echten Schaden anrichten, wenn sie in die falschen Augen geraten.</p>
@@ -8637,8 +8637,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'how-to-blur-pixelate-image': {
-    title: 'Bild weichzeichnen oder pixelieren: Anleitung',
-    description: 'Weichzeichnen oder pixelieren Sie jedes Bild in Minuten: Malen Sie mit einem Pinsel über Gesichter und Text oder weichzeichnen Sie das ganze Bild und exportieren Sie dann eine saubere zensierte Kopie.',
+    title: 'Bild weichzeichnen oder pixelieren',
+    description: 'Weichzeichnen oder pixelieren Sie jedes Bild in Minuten: Gesichter und Text übermalen oder das ganze Bild weichzeichnen und exportieren.',
     body: `
 <p>Ein Gesicht oder eine Adresse in einem Foto zu verbergen, dauert nur wenige Minuten. Sie malen mit einem Pinsel über den sensiblen Teil, prüfen das Ergebnis und laden die zensierte Kopie herunter.</p>
 <p>Diese Anleitung führt Sie durch den gesamten Ablauf. Sie behandelt Pinsel- und Gesamtbildmodus, Weichzeichnen und Pixelierung, Pinselgröße und die Prüfungen, die bestätigen, dass nichts mehr lesbar ist.</p>
@@ -8743,8 +8743,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'blur-vs-pixelate-image': {
-    title: 'Weichzeichnen oder Pixelieren – was schützt Gesichter und Text besser?',
-    description: 'Weichzeichnen oder pixelieren? Wie jede Methode Gesichter, Text und Zahlen verbirgt, welche sicherer ist und wann Sie beide kombinieren, um alles sicher unkenntlich zu machen.',
+    title: 'Weichzeichnen oder pixelieren? Vergleich',
+    description: 'Weichzeichnen oder pixelieren? Wie jede Methode Gesichter, Text und Zahlen verbirgt, welche sicherer ist und wann man beide kombiniert.',
     body: `
 <p>Weichzeichnen und Pixelierung verbergen beide Dinge, sind aber nicht dasselbe Werkzeug. Das eine glättet einen Bereich zu einem sanften Farbverlauf, während das andere ihn durch große Blöcke ersetzt.</p>
 <p>Der Unterschied zählt, wenn Datenschutz auf dem Spiel steht. Eine Methode, die zensiert aussieht, kann ein Gesicht erkennbar oder ein Wort lesbar lassen – und die falsche Wahl kann genau das preisgeben, was Sie verbergen wollten.</p>
@@ -8842,7 +8842,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'add-text-to-image-guide': {
-    title: 'Text zu Bildern hinzufügen: Die komplette Anleitung',
+    title: 'Text zu Bildern hinzufügen: Anleitung',
     description: 'Text online zu Bildern hinzufügen: Bildunterschriften, Titel, Memes, Zitate und Anmerkungen – mit Schriftarten, Farben, Konturen und Ebenen.',
     body: `
 <p>Text verwandelt ein Bild in eine Botschaft. Eine Bildunterschrift erklärt, was das Foto zeigt, ein Titel gibt ihm einen Namen und ein Zitat gibt ihm eine Stimme.</p>
@@ -8942,7 +8942,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-add-text-to-image': {
     title: 'Text zu einem Bild hinzufügen: Anleitung',
-    description: 'Fügen Sie in Minuten Text zu jedem Bild hinzu: hochladen, Bildunterschrift tippen, Schriftart und Größe wählen, Farbe und Kontur festlegen, Ebenen positionieren und herunterladen.',
+    description: 'Fügen Sie in Minuten Text zu jedem Bild hinzu: hochladen, Bildunterschrift tippen, Schriftart und Größe wählen, Farbe festlegen und herunterladen.',
     body: `
 <p>Text zu einem Foto hinzuzufügen, dauert nur wenige Minuten. Sie laden das Bild hoch, tippen Ihre Worte, wählen eine Schriftart und eine Farbe und platzieren den Text, wo er hingehört.</p>
 <p>Diese Anleitung führt Sie Schritt für Schritt durch den gesamten Ablauf. Sie behandelt einzelne und mehrere Ebenen, Schriftart- und Größenwahl, Konturen und Schatten sowie die Exporteinstellungen, die Text scharf halten.</p>
@@ -9047,7 +9047,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'text-on-images-readability-tips': {
-    title: 'Text auf Bildern lesbar machen: Schriftart, Kontrast und Tipps',
+    title: 'Text auf Bildern lesbar machen: Tipps',
     description: 'Wie man Text auf Bildern lesbar macht: Schriftartwahl, Größenregeln, Kontrast, Konturen, Schatten, Hintergrundflächen und Tests auf kleinen Bildschirmen.',
     body: `
 <p>Text auf einem Foto ist nur nützlich, wenn Menschen ihn lesen können. Eine schöne Bildunterschrift, die in einem belebten Hintergrund verschwindet, ist schlimmer als gar keine Bildunterschrift – weil sie den Betrachter frustriert.</p>
@@ -9246,7 +9246,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-add-border-to-image': {
     title: 'Bild mit Rahmen versehen: Anleitung',
-    description: 'Fügen Sie in Minuten einen Rahmen zu jedem Bild hinzu: hochladen, Stil wählen, Größe und Farbe festlegen, Schatten hinzufügen, Vorschau ansehen und ein gerahmtes Foto herunterladen.',
+    description: 'Fügen Sie in Minuten einen Rahmen zu jedem Bild hinzu: hochladen, Stil wählen, Größe und Farbe festlegen, Schatten hinzufügen und herunterladen.',
     body: `
 <p>Einen Rahmen zu einem Foto hinzuzufügen, dauert nur wenige Minuten. Sie laden das Bild hoch, wählen einen Stil, stellen Größe und Farbe ein und laden das gerahmte Ergebnis herunter.</p>
 <p>Diese Anleitung führt Sie Schritt für Schritt durch den gesamten Ablauf. Sie behandelt einfarbige, Polaroid- und Verlauf-Glow-Stile, Eckenradius, Schlagschatten und die Exporteinstellungen, die den Rahmen richtig aussehen lassen.</p>
@@ -9356,7 +9356,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'image-frames-borders-styles': {
-    title: 'Bilder einrahmen: Rahmenstile für Social Media und Druck',
+    title: 'Bilder einrahmen: Stile für Social Media',
     description: 'Welcher Rahmenstil passt zu Ihrem Foto? Minimal-, Polaroid-, Galerie-, Verlauf-Glow- und Retro-Rahmen im Vergleich für soziale Medien, Druck und Produktfotos.',
     body: `
 <p>Ein Rahmen verändert, wie ein Foto gesehen wird. Dasselbe Bild in einem dünnen weißen Rahmen, einem Polaroid-Rahmen oder einer leuchtenden Verlaufskante wirkt wie drei verschiedene Bilder.</p>
@@ -9583,7 +9583,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-round-image-corners': {
     title: 'Bildecken abrunden: So geht’s',
-    description: 'Runden Sie Bildecken in wenigen Minuten ab: hochladen, Radius einstellen, einzelne Ecken oder Kreis-Funktion nutzen, transparente oder farbige Füllung wählen und herunterladen.',
+    description: 'Runden Sie Bildecken in wenigen Minuten ab: hochladen, Radius einstellen, einzelne Ecken oder Kreis-Funktion nutzen und herunterladen.',
     body: `
 <p>Die Ecken eines Fotos abzurunden, dauert nur wenige Minuten. Sie laden das Bild hoch, ziehen einen Regler, um die Kurve einzustellen, und laden das weicher gewordene Ergebnis herunter.</p>
 <p>Diese Anleitung führt Sie Schritt für Schritt durch den ganzen Ablauf. Sie behandelt den Radius-Regler, die Steuerung einzelner Ecken, die Vollkreis-Funktion, die Füllung und die Exportformate, die Ecken transparent halten.</p>
@@ -9710,8 +9710,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'rounded-corners-vs-circle-crop': {
-    title: 'Abgerundete Ecken oder rundes Bild: Profilbilder und Karten',
-    description: 'Abgerundete Ecken oder rundes Bild? Wie jede Form bei Profilbildern, Karten und Social-Media-Profilen funktioniert und wann man die eine, die andere oder beide nutzt.',
+    title: 'Abgerundete Ecken oder rundes Bild?',
+    description: 'Abgerundete Ecken oder rundes Bild? Wie jede Form bei Profilbildern, Karten und Social-Media-Profilen funktioniert und wann man welche nutzt.',
     body: `
 <p>Abgerundete Ecken und Kreiszuschnitt machen ein Foto beide weicher, doch sie sind nicht dasselbe. Die eine behält das Rechteck und wölbt seine Ecken, die andere verwandelt das Bild in eine runde Form.</p>
 <p>Der Unterschied zählt bei Profilbildern, Karten und Social-Media-Profilen, wo die Form entscheidet, wie das Foto passt und wie es gesehen wird. Die falsche Form kann ein Gesicht abschneiden oder deplatziert wirken.</p>
@@ -9832,8 +9832,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'image-brightness-editor-guide': {
-    title: 'Bildhelligkeit anpassen: Die komplette Anleitung',
-    description: 'Erfahren Sie, wie Sie die Bildhelligkeit online anpassen: Helligkeitsregler, Schnell-Voreinstellungen, Vergleichsmodi und wie Sie dunkle Fotos retten, ohne sie auszuwaschen.',
+    title: 'Bildhelligkeit anpassen: Anleitung',
+    description: 'Erfahren Sie, wie Sie die Bildhelligkeit online anpassen: Helligkeitsregler, Voreinstellungen, Vergleichsmodi und dunkle Fotos retten.',
     body: `
 <p>Helligkeit ist die einfachste Fotokorrektur – und die, zu der man zuerst greift. Ein dunkles Foto wird sichtbar, ein ausgewaschenes gewinnt Tiefe und eine matte Aufnahme lebt wieder auf.</p>
 <p>Doch Helligkeit lässt sich leicht übertreiben. Schiebt man sie zu weit, wird das Foto flach und grau, mit ausgebrannten Lichtern und ohne Details in den hellen Bereichen.</p>
@@ -9955,7 +9955,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-adjust-image-brightness': {
     title: 'Bildhelligkeit anpassen: So geht’s',
-    description: 'Passen Sie die Bildhelligkeit in wenigen Minuten an: hochladen, Regler ziehen, Voreinstellung ausprobieren, Vorher und Nachher vergleichen und ein sauberes, gut beleuchtetes Foto herunterladen.',
+    description: 'Passen Sie die Bildhelligkeit in wenigen Minuten an: hochladen, Regler ziehen, Voreinstellung ausprobieren, vergleichen und herunterladen.',
     body: `
 <p>Die Helligkeit anzupassen, dauert nur wenige Minuten. Sie laden das Foto hoch, ziehen einen Regler, prüfen das Ergebnis und laden die hellere Version herunter.</p>
 <p>Diese Anleitung führt Sie Schritt für Schritt durch den ganzen Ablauf. Sie behandelt den Regler, die Schnell-Voreinstellungen, die Vergleichsmodi und die Exporteinstellungen, die das Ergebnis natürlich aussehen lassen.</p>
@@ -10082,8 +10082,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'brightness-vs-exposure-vs-contrast': {
-    title: 'Helligkeit, Belichtung und Kontrast: Der Unterschied einfach erklärt',
-    description: 'Helligkeit, Belichtung und Kontrast – der Unterschied einfach erklärt: was jeder Regler mit einem Foto macht, wie sie zusammenwirken und welcher in welcher Situation der richtige ist.',
+    title: 'Helligkeit, Belichtung, Kontrast: Vergleich',
+    description: 'Helligkeit, Belichtung und Kontrast – der Unterschied einfach erklärt: was jeder Regler mit einem Foto macht und welcher wann der richtige ist.',
     body: `
 <p>Helligkeit, Belichtung und Kontrast sind die drei Regler, die jeder Fotoeditor anbietet – und sie lassen sich leicht verwechseln. Alle drei machen ein Foto heller oder dunkler, doch sie tun es auf verschiedene Weise.</p>
 <p>Wer den falschen nimmt, bekommt ein schlechteres Ergebnis. Ein Foto, das Kontrast braucht, sieht ausgewaschen aus, wenn man es nur aufhellt, und ein Foto, das Helligkeit braucht, wirkt hart, wenn man nur Kontrast hinzufügt.</p>
@@ -10204,8 +10204,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'image-contrast-editor-guide': {
-    title: 'Bildkontrast anpassen: Die komplette Anleitung',
-    description: 'Erfahren Sie, wie Sie den Bildkontrast online anpassen: Kontrastregler, Schnell-Voreinstellungen, Vergleichsmodi und wie Sie Druck hinzufügen, ohne Lichter abzuschneiden.',
+    title: 'Bildkontrast anpassen: Anleitung',
+    description: 'Erfahren Sie, wie Sie den Bildkontrast online anpassen: Kontrastregler, Voreinstellungen und Vergleichsmodi für druckvolle Fotos.',
     body: `
 <p>Kontrast ist der Unterschied zwischen den dunkelsten und hellsten Teilen eines Fotos. Er ist es, was ein Bild druckvoll und solide wirken lässt – oder flach und grau.</p>
 <p>Ein Foto mit gutem Kontrast hat tiefe Schatten, helle Lichter und ein klares Gefühl von Tiefe. Ein Foto mit niedrigem Kontrast wirkt dunstig, als wäre es durch Nebel aufgenommen worden.</p>
@@ -10327,7 +10327,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-adjust-image-contrast': {
     title: 'Bildkontrast anpassen: So geht’s',
-    description: 'Passen Sie den Bildkontrast in wenigen Minuten an: hochladen, Regler ziehen, Voreinstellung ausprobieren, Lichter und Schatten prüfen und ein druckvolles, ausgewogenes Foto herunterladen.',
+    description: 'Passen Sie den Bildkontrast in wenigen Minuten an: hochladen, Regler ziehen, Voreinstellung ausprobieren und ein druckvolles Foto herunterladen.',
     body: `
 <p>Den Kontrast anzupassen, dauert nur wenige Minuten. Sie laden das Foto hoch, ziehen einen Regler, prüfen Lichter und Schatten und laden die druckvollere Version herunter.</p>
 <p>Diese Anleitung führt Sie Schritt für Schritt durch den ganzen Ablauf. Sie behandelt den Regler, die Schnell-Voreinstellungen, die Vergleichsmodi und die Exporteinstellungen, die das Ergebnis natürlich aussehen lassen.</p>
@@ -10454,7 +10454,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'contrast-readability-text-over-photos': {
-    title: 'Text auf Fotos lesbar machen: Kontrast, Overlays und Panels',
+    title: 'Text auf Fotos lesbar machen: Kontrast',
     description: 'Wie man Text auf Fotos lesbar macht: Kontrast zwischen Buchstaben und Hintergrund, Abdunkeln, Overlays, Panels und Testen auf kleinen Bildschirmen.',
     body: `
 <p>Text auf einem Foto nützt nur etwas, wenn man ihn lesen kann. Eine Überschrift, die in einem hellen Himmel verschwindet, oder eine Bildunterschrift, die in einem dunklen Schatten untergeht, versagt bei ihrer einzigen Aufgabe.</p>
@@ -10571,8 +10571,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'image-saturation-editor-guide': {
-    title: 'Bildsättigung anpassen: Die komplette Anleitung',
-    description: 'Erfahren Sie, wie Sie die Bildsättigung online anpassen: Sättigungsregler, Voreinstellungen, matte und Graustufen-Looks, Hauttöne und natürliche Farbbearbeitung.',
+    title: 'Bildsättigung anpassen: Anleitung',
+    description: 'Erfahren Sie, wie Sie die Bildsättigung online anpassen: Sättigungsregler, Voreinstellungen, matte und Graustufen-Looks und natürliche Farben.',
     body: `
 <p>Sättigung ist die Intensität der Farben in einem Foto. Ein stark gesättigtes Bild hat lebhafte, druckvolle Farben, während ein entsättigtes matt, weich oder komplett grau wirkt.</p>
 <p>Die Sättigung richtig zu treffen, macht ein Foto natürlich. Zu wenig, und das Bild wirkt ausgewaschen und leblos, zu viel, und das Gras leuchtet neon und die Haut wird orange.</p>
@@ -10694,7 +10694,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-adjust-image-saturation': {
     title: 'Bildsättigung anpassen: So geht’s',
-    description: 'Passen Sie die Bildsättigung in wenigen Minuten an: hochladen, Regler ziehen, Voreinstellung ausprobieren, Hauttöne prüfen und ein Foto mit natürlichen, lebhaften Farben herunterladen.',
+    description: 'Passen Sie die Bildsättigung in wenigen Minuten an: hochladen, Regler ziehen, Voreinstellung ausprobieren und ein Foto mit natürlichen Farben laden.',
     body: `
 <p>Die Sättigung anzupassen, dauert nur wenige Minuten. Sie laden das Foto hoch, ziehen einen Regler, prüfen die Farben und laden die lebhaftere Version herunter.</p>
 <p>Diese Anleitung führt Sie Schritt für Schritt durch den ganzen Ablauf. Sie behandelt den Regler, die Schnell-Voreinstellungen, Hauttöne und die Exporteinstellungen, die die Farben natürlich aussehen lassen.</p>
@@ -10821,8 +10821,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'saturation-vs-vibrance': {
-    title: 'Sättigung und Vibranz: Der Unterschied für natürliche Farben',
-    description: 'Sättigung und Vibranz – der Unterschied für natürliche Farben: wie jeder Regler Farben behandelt, welcher Hauttöne schützt und wie man lebhafte Farben ohne Neongras bekommt.',
+    title: 'Sättigung und Vibranz: Der Unterschied',
+    description: 'Sättigung und Vibranz – der Unterschied für natürliche Farben: wie jeder Regler Farben behandelt und welcher Hauttöne schützt.',
     body: `
 <p>Sättigung und Vibranz machen Farben beide stärker, doch sie tun es auf verschiedene Weise. Die eine verstärkt jede Farbe gleich stark, die andere nur die Farben, die es brauchen.</p>
 <p>Der Unterschied zählt bei natürlichen Fotos. Eine Sättigungsverstärkung kann Haut orange und Gras neon machen, während eine Vibranzverstärkung die Farben schützt, die bereits stark sind.</p>
@@ -10944,7 +10944,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-filters-guide': {
     title: 'Bildfilter: Die komplette Anleitung',
-    description: 'Erfahren Sie, wie Sie Fotofilter online nutzen: Vintage, Sepia, Schwarz-Weiß-Noir, Warm, Kalt und 6 weitere Stile, Intensitätssteuerung und einen einheitlichen Look wählen.',
+    description: 'Erfahren Sie, wie Sie Fotofilter online nutzen: Vintage, Sepia, Schwarz-Weiß-Noir, Warm, Kalt und weitere Stile, Intensität und einheitlicher Look.',
     body: `
 <p>Ein Fotofilter verändert die Stimmung eines Bildes mit einem Klick. Er verschiebt Farben, Kontrast und Ton und verwandelt einen gewöhnlichen Schnappschuss in ein stilisiertes Bild.</p>
 <p>Filter sind die schnellste Bearbeitung in der Fotografie. Ein einziger Fingertipp kann ein Foto vintage, dramatisch, warm oder kalt wirken lassen, ohne jegliche manuelle Anpassung.</p>
@@ -11066,7 +11066,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-apply-photo-filters': {
     title: 'Fotofilter anwenden: So geht’s',
-    description: 'Wenden Sie Fotofilter in wenigen Minuten an: hochladen, die 11 Stile durchsuchen, Intensität einstellen, mit dem Original vergleichen und ein gestyltes Foto herunterladen.',
+    description: 'Wenden Sie Fotofilter in wenigen Minuten an: hochladen, die 11 Stile durchsuchen, Intensität einstellen, vergleichen und herunterladen.',
     body: `
 <p>Einen Fotofilter anzuwenden, dauert nur wenige Minuten. Sie laden das Foto hoch, wählen einen Stil, stellen die Intensität ein und laden die gestylte Version herunter.</p>
 <p>Diese Anleitung führt Sie Schritt für Schritt durch den ganzen Ablauf. Sie behandelt das Filterraster, den Intensitätsregler, die Vergleichswerkzeuge und die Exporteinstellungen, die das Ergebnis sauber aussehen lassen.</p>
@@ -11193,7 +11193,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'photo-filters-compared': {
-    title: 'Fotofilter im Vergleich: Einen einheitlichen Look wählen',
+    title: 'Fotofilter im Vergleich: Look wählen',
     description: 'Alle 11 Fotofilter im Vergleich: Vintage oder Sepia, Graustufen oder Noir, Warm oder Kalt und welcher Stil zu Porträts, Landschaften, Essen und Produkten passt.',
     body: `
 <p>Elf Filter sind eine Menge Auswahl. Jeder verändert die Stimmung eines Fotos, und der falsche kann ein gutes Bild billig oder seltsam aussehen lassen.</p>
@@ -11315,8 +11315,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'image-color-picker-guide': {
-    title: 'Farbe aus einem Bild auslesen: Die komplette Anleitung',
-    description: 'Lesen Sie jede Farbe aus jedem Bild aus – mit Pipette, Lupe und Farbfeldern. HEX-, RGB-, HSL- und CMYK-Codes, CSS-Export inklusive – kostenlos, direkt im Browser.',
+    title: 'Farbe aus Bild auslesen: Anleitung',
+    description: 'Lesen Sie jede Farbe aus jedem Bild aus – mit Pipette, Lupe und Farbfeldern. HEX-, RGB-, HSL- und CMYK-Codes, CSS-Export inklusive.',
     body: `
 <p>Jeder Designer kennt das: Man sieht eine Farbe auf dem Bildschirm und will ihren exakten Code wissen. Ein Screenshot, ein Foto, ein Logo oder ein Website-Mockup kann den perfekten Farbton enthalten – doch Raten führt nie zum Ziel.</p>
 <p>Mit einem Farbwähler lösen Sie das in Sekunden. Sie öffnen ein Bild, zeigen auf ein beliebiges Pixel und lesen den exakten Farbcode in HEX, RGB, HSL und CMYK ab.</p>
@@ -11435,7 +11435,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 
   'how-to-pick-color-from-image': {
     title: 'Farbe aus einem Bild auswählen: So geht es',
-    description: 'Entnehmen Sie in vier Schritten eine exakte Farbe aus jedem Foto, Logo oder Screenshot. Nutzen Sie die Vergrößerungslupe, bauen Sie Farbfelder auf und exportieren Sie CSS – ohne Installation, ohne Upload.',
+    description: 'Entnehmen Sie in vier Schritten eine exakte Farbe aus jedem Foto, Logo oder Screenshot: Lupe nutzen, Farbfelder aufbauen und CSS exportieren.',
     body: `
 <p>Sie haben in einem Foto oder einem Screenshot die perfekte Farbe gefunden und brauchen jetzt ihren Code. Raten kostet Zeit, und ein fast richtiger Farbton sieht neben dem Original falsch aus.</p>
 <p>Diese Anleitung führt Sie in vier praktischen Schritten durch das Entnehmen einer Farbe aus einem Bild. Sie laden das Bild hoch, zielen mit der Lupe, speichern die Farbe und exportieren sie für Ihr Projekt.</p>
@@ -11551,7 +11551,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 
   'hex-vs-rgb-vs-hsl': {
     title: 'HEX vs. RGB vs. HSL: Farbcodes erklärt',
-    description: 'HEX, RGB, HSL und CMYK beschreiben dieselbe Farbe auf unterschiedliche Weise. Erfahren Sie, was jedes Format bedeutet, wann man es verwendet und wie man zwischen ihnen umrechnet.',
+    description: 'HEX, RGB, HSL und CMYK beschreiben dieselbe Farbe unterschiedlich. Was jedes Format bedeutet, wann man es verwendet und wie man umrechnet.',
     body: `
 <p>Jede Farbe auf Ihrem Bildschirm hat mehrere Namen. Dasselbe Blau kann #2563EB, rgb(37, 99, 235) oder hsl(221, 83%, 53%) sein – und alle drei beschreiben exakt dieselben Pixel.</p>
 <p>Diese Überschneidung verwirrt Anfänger. Wenn die Codes austauschbar sind, warum gibt es dann vier Formate – und welches sollte man eigentlich verwenden?</p>
@@ -11670,8 +11670,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
 
   'image-dimensions-checker-guide': {
-    title: 'Bilddimensionen prüfen: Die komplette Anleitung',
-    description: 'Prüfen Sie Bilddimensionen stapelweise: Breite, Höhe, Seitenverhältnis, Megapixel, Druckgröße und Transparenz. Validieren Sie Mindestwerte und exportieren Sie CSV oder JSON – kostenlos, im Browser.',
+    title: 'Bilddimensionen prüfen: Anleitung',
+    description: 'Prüfen Sie Bilddimensionen stapelweise: Breite, Höhe, Seitenverhältnis, Megapixel und Druckgröße. Mindestwerte validieren und CSV oder JSON exportieren.',
     body: `
 <p>Ein Bild kann auf Ihrem Bildschirm perfekt aussehen und trotzdem scheitern, sobald Sie es hochladen. Ein Marktplatz lehnt es ab, weil es zu klein ist, ein Drucker schneidet es unerwartet zu, oder eine Website zieht es unscharf in die Länge.</p>
 <p>Die Ursache sind fast immer die Dimensionen: die Breite und Höhe in Pixeln. Die meisten prüfen sie nie, bis etwas schiefgeht – und dann ist die Deadline schon knapp.</p>
@@ -12014,7 +12014,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 
   'image-dpi-changer-guide': {
     title: 'Bild-DPI ändern: Die komplette Anleitung',
-    description: 'Ändern Sie die DPI eines Bildes ohne Qualitätsverlust: Voreinstellungen von 72 bis 600 DPI, eigene Werte bis 2400, Stapelverarbeitung mit ZIP-Download und geprüfte DPI – kostenlos, im Browser.',
+    description: 'Ändern Sie die DPI eines Bildes ohne Qualitätsverlust: Voreinstellungen von 72 bis 600 DPI, eigene Werte bis 2400 und Stapelverarbeitung mit ZIP-Download.',
     body: `
 <p>Ihr Foto hat die richtigen Pixel, die richtige Größe und das richtige Aussehen – doch die Druckerei oder die Publikationsplattform lehnt es ab. Der Grund ist oft eine einzige Zahl, die in der Datei vergraben ist: der DPI-Wert.</p>
 <p>DPI sagt Software, wie dicht die Pixel beim Drucken zu packen sind. Eine Datei mit einem 72-DPI-Tag wirkt auf ein Drucksystem wie ein Poster, während dieselben Pixel mit einem 300-DPI-Tag wie eine ordentliche Seite wirken.</p>
@@ -12122,7 +12122,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 
   'how-to-change-image-dpi': {
     title: 'Bild-DPI ändern: So geht es',
-    description: 'Ändern Sie die DPI eines Bildes in vier Schritten auf 72, 150, 300 oder 600 – oder auf jeden eigenen Wert bis 2400. Stapelunterstützung, ZIP-Download und ein Verifiziertes-DPI-Abzeichen inklusive.',
+    description: 'Ändern Sie die DPI eines Bildes in vier Schritten auf 72, 150, 300 oder 600 – oder jeden eigenen Wert bis 2400. Mit Stapel und ZIP-Download.',
     body: `
 <p>Ihr Bild ist fertig, doch die Plattform will 300 DPI, und Ihre Datei sagt 72 – oder sagt gar nichts. Die Lösung dauert unter einer Minute, wenn man die Schritte kennt.</p>
 <p>Diese Anleitung führt Sie in vier praktischen Schritten durch das Ändern der Bild-DPI: hochladen, den Wert wählen, das Abzeichen verifizieren und herunterladen. Sie behandelt auch Stapel, Screenshots und die gängigen Probleme, über die Leute stolpern.</p>
@@ -12236,7 +12236,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 
   'dpi-vs-ppi-print-web': {
     title: 'DPI vs. PPI: Was für Druck und Web zählt',
-    description: 'DPI und PPI klingen ähnlich, messen aber unterschiedliche Dinge. Erfahren Sie, welche für den Druck zählt, welche für Bildschirme zählt und warum 72 vs. 300 DPI alle verwirrt.',
+    description: 'DPI und PPI klingen ähnlich, messen aber unterschiedliche Dinge. Welche für den Druck zählt, welche für Bildschirme – und warum 72 vs. 300 DPI verwirrt.',
     body: `
 <p>DPI und PPI sind das am häufigsten verwechselte Paar in der gesamten Bildwelt. Leute nutzen sie austauschbar, Tools beschriften sie uneinheitlich, und das Ergebnis ist ein Durcheinander aus falschen Ratschlägen.</p>
 <p>Die Verwirrung hat echte Kosten. Designer setzen 300 DPI auf Webbilder, die es nicht brauchen, und Druckkäufer akzeptieren 72-DPI-Dateien, die niemals gut drucken werden.</p>
@@ -12347,8 +12347,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
 
   'image-to-base64-guide': {
-    title: 'Bild in Base64 umwandeln: Die komplette Anleitung',
-    description: 'Wandeln Sie jedes Bild in Base64 um: Data-URL, reine Zeichenfolge, HTML-img-Snippet und CSS-url()-Ausgabe. Erfahren Sie, was die 33 % mehr Größe bedeuten, wann Einbetten sinnvoll ist und wann Verlinken besser ist.',
+    title: 'Bild in Base64 umwandeln: Für HTML und CSS',
+    description: 'Wandeln Sie jedes Bild in Base64 um: Data-URL, reine Zeichenfolge oder HTML- und CSS-Ausgabe – und erfahren Sie, wann Einbetten sinnvoll ist.',
     body: `
 <p>Entwickler brauchen ein Bild oft als Text statt als Datei. Ein Icon in einem Stylesheet, ein Logo in einer HTML-E-Mail oder ein Bild in einem JSON-Payload – all das braucht das Bild in Zeichen umgewandelt.</p>
 <p>Base64 ist die Kodierung, die das möglich macht. Sie verwandelt die binären Bytes eines Bildes in eine reine Textzeichenfolge, die in Code, Markup und Nachrichten leben kann.</p>
@@ -12459,8 +12459,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
 
   'how-to-convert-image-to-base64': {
-    title: 'Bild in Base64 umwandeln: So geht es',
-    description: 'Wandeln Sie ein Bild in vier Schritten in Base64 um: hochladen, Data-URL, reines Base64, HTML- oder CSS-Ausgabe wählen, dann kopieren oder herunterladen. Funktioniert für PNG, JPG, SVG, GIF und ICO.',
+    title: 'Bild in Base64 umwandeln: In 4 Schritten',
+    description: 'Wandeln Sie ein Bild in vier Schritten in Base64 um: hochladen, Ausgabe wählen, dann kopieren oder herunterladen. Für PNG, JPG, SVG, GIF und ICO.',
     body: `
 <p>Sie brauchen ein Bild als Text: ein Logo für ein Stylesheet, ein Icon für eine E-Mail oder ein Bild für einen JSON-Payload. Die Umwandlung dauert etwa eine Minute, wenn man die Schritte kennt.</p>
 <p>Diese Anleitung führt Sie in vier Schritten durch das Umwandeln eines Bildes in Base64: Datei hochladen, Ausgabeformat wählen, Zeichenfolge kopieren oder herunterladen und in Ihren Code einfügen.</p>
@@ -12572,8 +12572,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
 
   'base64-images-when-to-embed': {
-    title: 'Base64-Bilder: Wann einbetten – und wann nicht',
-    description: 'Das Einbetten von Base64-Bildern spart Anfragen, kostet aber 33 % mehr Bytes und verhindert Caching. Lernen Sie die Größenschwellen, die Caching-Rechnung und eine Entscheidungs-Checkliste kennen.',
+    title: 'Base64-Bilder: Einbetten oder nicht?',
+    description: 'Das Einbetten von Base64-Bildern spart Anfragen, kostet aber 33 % mehr Bytes und verhindert Caching. Größenschwellen, Caching-Rechnung und Checkliste.',
     body: `
 <p>Ein Bild als Base64 einzubetten, fühlt sich an wie ein kostenloser Gewinn. Eine Anfrage weniger, keine separate Datei zu verwalten, und das Bild erscheint in dem Moment, in dem die Seite lädt.</p>
 <p>Der Gewinn ist real, aber nicht kostenlos. Das eingebettete Bild kostet ein Drittel mehr Bytes, kann nicht separat gecacht werden und macht Ihren Code schwerer lesbar und schwerer zu pflegen.</p>
@@ -12689,8 +12689,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
 
   'base64-to-image-guide': {
-    title: 'Base64 in Bild umwandeln: Die komplette Anleitung',
-    description: 'Dekodieren Sie jede Base64-Zeichenfolge zurück in ein Bild. Automatisches Dekodieren beim Einfügen, URL-sichere Varianten, Transparenzvorschau und Download als PNG, JPG, WebP oder im Originalformat.',
+    title: 'Base64 in Bild umwandeln: Text dekodieren',
+    description: 'Dekodieren Sie jede Base64-Zeichenfolge zurück in ein Bild: URL-sichere Varianten, Transparenzvorschau und Download als PNG, JPG, WebP oder Original.',
     body: `
 <p>Eine lange Textwand kommt in einer E-Mail, einer Chatnachricht oder einer API-Antwort an, und irgendwo darin steckt ein Bild. Der Text ist eine Base64-Zeichenfolge, und das Bild wartet darauf, dekodiert zu werden.</p>
 <p>Dekodieren verwandelt diese Zeichenfolge zurück in die Originalbilddatei. Es ist die Umkehrung der Kodierung und genauso verlustfrei: Die Bytes, die herauskommen, sind die Bytes, die hineingegangen sind.</p>
@@ -12803,8 +12803,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
 
   'how-to-convert-base64-to-image': {
-    title: 'Base64 in Bild umwandeln: So geht es',
-    description: 'Wandeln Sie eine Base64-Zeichenfolge in vier Schritten in ein Bild um: einfügen, Vorschau prüfen, Original, PNG, JPG oder WebP wählen und herunterladen. Handhabt URL-sichere Zeichenfolgen und Zeilenumbrüche.',
+    title: 'Base64 in Bild umwandeln: Vorschau prüfen',
+    description: 'Wandeln Sie eine Base64-Zeichenfolge in vier Schritten in ein Bild um: einfügen, Vorschau prüfen, Format wählen und herunterladen.',
     body: `
 <p>Eine Base64-Zeichenfolge sitzt in Ihrer Zwischenablage, Ihrer E-Mail oder einer API-Antwort, und Sie brauchen das Bild, das sie enthält. Die Umwandlung dauert etwa eine Minute, wenn man die Schritte kennt.</p>
 <p>Diese Anleitung führt Sie in vier Schritten durch das Umwandeln von Base64 in ein Bild: Zeichenfolge einfügen, Vorschau prüfen, Downloadformat wählen und Datei speichern.</p>
@@ -12923,8 +12923,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
 
   'base64-vs-image-files': {
-    title: 'Base64 vs. Bilddateien: Vor- und Nachteile im Vergleich',
-    description: 'Base64-Zeichenfolgen und Bilddateien tragen dasselbe Bild auf unterschiedliche Weise. Vergleichen Sie Größe, Geschwindigkeit, Caching und Bearbeitung und erfahren Sie, wann jede gewinnt.',
+    title: 'Base64 vs. Bilddateien: Der Vergleich',
+    description: 'Base64-Zeichenfolgen und Bilddateien tragen dasselbe Bild unterschiedlich: Größe, Geschwindigkeit, Caching und Bearbeitung im Vergleich.',
     body: `
 <p>Jedes Bild im Web existiert in einer von zwei Formen: als Datei mit einem Namen und einer URL oder als Base64-Zeichenfolge, die in Code eingebettet ist. Beide tragen dieselben Pixel, verhalten sich aber sehr unterschiedlich.</p>
 <p>Die falsche Form zu wählen, kostet Leistung, verschwendet Bandbreite oder macht aus einer einfachen Aktualisierung eine schmerzhafte Pflichtübung. Die richtige Form zu wählen, ist meist eine Frage davon, zu wissen, worin jede gut ist.</p>
@@ -13042,8 +13042,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
 
   'image-color-palette-extractor-guide': {
-    title: 'Farbpalette aus einem Bild extrahieren: Die komplette Anleitung',
-    description: 'Extrahieren Sie eine Farbpalette aus jedem Foto: 3 bis 12 Farbfelder, sortiert nach Abdeckung, mit HEX-, RGB- und HSL-Codes, CSS-Export, JSON und Download der Palette als Bild.',
+    title: 'Farbpalette aus Bild extrahieren',
+    description: 'Extrahieren Sie eine Farbpalette aus jedem Foto: 3 bis 12 Farbfelder, sortiert nach Abdeckung, mit HEX-, RGB- und HSL-Codes und CSS-Export.',
     body: `
 <p>Jedes gute Design beginnt mit einer Farbpalette, und jede gute Palette beginnt irgendwo Realem: einem Foto, einem Markenbild oder einer Szene, die sich schon richtig anfühlt.</p>
 <p>Mit dem Tool zum Extrahieren von Farbpaletten finden Sie die dominanten Farben in diesem Bild. Es scannt die Pixel, gruppiert sie in die Farben, die zählen, und übergibt Ihnen in Sekunden eine sortierte Palette.</p>
@@ -13156,8 +13156,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
 
   'how-to-extract-color-palette-from-image': {
-    title: 'Farbpalette aus einem Bild extrahieren: So geht es',
-    description: 'Extrahieren Sie in fünf Schritten eine Farbpalette aus jedem Foto: hochladen, 3–12 Farbfelder wählen, die Prozente lesen und CSS oder JSON kopieren – kostenlos, im Browser.',
+    title: 'Farbpalette aus Foto extrahieren',
+    description: 'Extrahieren Sie in fünf Schritten eine Farbpalette aus jedem Foto: hochladen, 3–12 Farbfelder wählen, Prozente lesen und CSS oder JSON kopieren.',
     body: `
 <p>Sie haben ein Foto mit Farben, die Sie lieben, und brauchen diese Farben als Palette für eine Website, ein Poster oder eine Marke. Sie mit dem Auge zu kopieren, ist langsam und ungenau.</p>
 <p>Diese Anleitung führt Sie in fünf Schritten durch das Extrahieren einer Farbpalette aus einem Bild: hochladen, die Farbfeldanzahl wählen, die Prozente lesen und das Ergebnis kopieren oder herunterladen.</p>
@@ -13271,8 +13271,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
 
   'color-palettes-from-photos-design': {
-    title: 'Farbpaletten aus Fotos: Tipps für den Design-Workflow',
-    description: 'Verwandeln Sie Fotos in Designpaletten, die wirklich funktionieren: die 60-30-10-Regel, dominant vs. Akzent, Kontrast, Markennutzung und die Fehler, die Paletten trüb machen.',
+    title: 'Farbpaletten aus Fotos fürs Design',
+    description: 'Verwandeln Sie Fotos in Designpaletten, die funktionieren: die 60-30-10-Regel, dominant vs. Akzent, Kontrast und die Fehler, die Paletten trüb machen.',
     body: `
 <p>Ein Foto enthält bereits eine Farbpalette, die funktioniert. Licht, Oberflächen und Motiv haben sich zusammengetan, um Farben zu erzeugen, die zusammengehören – und ein guter Designer kann sich diese Harmonie komplett ausleihen.</p>
 <p>Der schwierige Teil ist nicht, die Farben zu finden. Es ist, zu wählen, welche man nutzt, wie viel von jeder und was man weglässt, damit die Palette dem Design dient statt gegen es zu arbeiten.</p>
@@ -13384,7 +13384,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'favicon-generator-guide': {
     title: 'Favicon-Generator: Die komplette Anleitung',
-    description: 'Alles über Favicons: was sie sind, welche Dateien ein komplettes Icon-Paket braucht, wie Sie aus Ihrem Logo eines erstellen und wie Sie es auf jeder Website einbauen.',
+    description: 'Alles über Favicons: was sie sind, welche Dateien ein Icon-Paket braucht, wie Sie aus Ihrem Logo eines erstellen und es auf Ihrer Website einbauen.',
     body: `
 <p>Ein Favicon ist das kleine Symbol, das im Browser-Tab neben dem Seitentitel erscheint. Oft ist es das erste visuelle Detail, das Besuchern auffällt – und es begleitet Ihre Website in Lesezeichen, Verlaufslisten und auf den Startbildschirm von Smartphones.</p>
 <p>Kaum jemand denkt bewusst über Favicons nach. Trotzdem wirkt eine Website ohne oder mit unscharfem Icon unfertig. Ein gestochen scharfes Symbol vermittelt Sorgfalt und Professionalität, noch bevor jemand ein einziges Wort Ihrer Inhalte gelesen hat.</p>
@@ -13461,7 +13461,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-create-favicon': {
     title: 'Favicon erstellen: Anleitung',
-    description: 'Erstellen Sie in wenigen Minuten ein Favicon aus Ihrem Logo: Quellbild vorbereiten, Abstand und Hintergrund festlegen, helle und dunkle Tabs prüfen und das Paket auf Ihrer Website installieren.',
+    description: 'Erstellen Sie in wenigen Minuten ein Favicon aus Ihrem Logo: Quellbild vorbereiten, Abstand und Hintergrund festlegen und das Paket installieren.',
     body: `
 <p>Ein Favicon zu erstellen klingt technisch, dauert mit dem richtigen Tool aber nur wenige Minuten. Sie laden ein Logo hoch, stellen ein paar Einstellungen ein, laden ein Paket mit Dateien herunter und fügen ein kurzes Snippet in Ihre Website ein. Diese Anleitung führt Sie Schritt für Schritt durch den Ablauf.</p>
 <p>Vor dem Start brauchen Sie nur zwei Dinge: eine Logo-Datei und Zugriff auf Ihre Website-Dateien. Ein quadratisches PNG- oder SVG-Logo eignet sich am besten, und die größte Version, die Sie haben, liefert das schärfste Ergebnis. Haben Sie nur ein JPG, funktioniert das ebenfalls.</p>
@@ -13532,8 +13532,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'favicon-sizes-explained': {
-    title: 'Favicon-Größen erklärt: von 16×16 bis 512×512',
-    description: 'Jede Favicon-Größe und wofür sie da ist: 16×16-Tab-Icons, 32×32-Retina, 180×180 Apple Touch, 192×192 und 512×512 Android – und wie der ICO-Container sie zusammenhält.',
+    title: 'Favicon-Größen: 16×16 bis 512×512',
+    description: 'Jede Favicon-Größe und wofür sie da ist: 16×16-Tab-Icons, 32×32-Retina, 180×180 Apple Touch, 192×192 und 512×512 Android.',
     body: `
 <p>Ein Favicon ist nicht ein Bild. Es ist eine Familie von Bildern in verschiedenen Größen, jedes für einen anderen Ort im Browser oder auf einem Gerät. Das kleinste misst 16 mal 16 Pixel für den Tab, das größte 512 mal 512 Pixel für Android-Installationsbildschirme.</p>
 <p>Wer weiß, welche Größe wohin gehört, vermeidet die zwei klassischen Fehler: ein unscharfes Tab-Icon und ein verpixeltes Startbildschirm-Icon. Diese Anleitung geht jede Größe eines kompletten Pakets durch – von 16 bis 512 Pixeln – und erklärt, was jede einzelne macht.</p>
@@ -13609,8 +13609,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'add-background-to-image-guide': {
-    title: 'Bildern einen Hintergrund hinzufügen: Die komplette Anleitung',
-    description: 'Setzen Sie jedes Foto oder jeden transparenten Ausschnitt auf einen einfarbigen Hintergrund, einen Verlauf oder einen unscharfen Hintergrund: wie das Tool funktioniert, welcher Modus passt und wie Sie Bilder für Social Media und Shops rahmen.',
+    title: 'Bildern Hintergrund hinzufügen: Anleitung',
+    description: 'Setzen Sie jedes Foto auf einen einfarbigen Hintergrund, einen Verlauf oder einen unscharfen Hintergrund: welcher Modus passt und wie Sie Bilder rahmen.',
     body: `
 <p>Ein Foto mit entferntem Hintergrund ist erst halb fertig. Ein transparenter Ausschnitt braucht etwas hinter sich, bevor er verwendet werden kann, und ein einfaches Foto braucht oft einen Rahmen, der zu dem Ort passt, an dem es veröffentlicht wird. Einen Hintergrund hinzuzufügen ist der Schritt, der aus einem Ausschnitt ein fertiges Bild macht.</p>
 <p>Das Tool <a href="/de/hintergrund-zu-bild-hinzufuegen/">Hintergrund zum Bild hinzufügen</a> setzt jedes Foto oder transparente PNG auf eine Volltonfarbe, einen zweifarbigen Verlauf oder eine unscharfe Version seiner selbst. Es läuft vollständig in Ihrem Browser – Ihre Bilder verlassen Ihr Gerät nie.</p>
@@ -13691,8 +13691,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 12,
   },
   'how-to-add-background-to-image': {
-    title: 'Hintergrund zu einem Bild hinzufügen: Anleitung',
-    description: 'Fügen Sie einem Foto oder transparenten Ausschnitt in wenigen Minuten einen Hintergrund hinzu: Wählen Sie einen einfarbigen, Verlauf- oder unscharfen Hintergrund, rahmen Sie ihn in die richtige Form und exportieren Sie.',
+    title: 'Hintergrund zum Bild hinzufügen',
+    description: 'Fügen Sie einem Foto oder transparenten Ausschnitt in wenigen Minuten einen Hintergrund hinzu: einfarbig, Verlauf oder unscharf – dann exportieren.',
     body: `
 <p>Einem Bild einen Hintergrund hinzuzufügen ist eine kurze Aufgabe, wenn man die Schritte kennt. Sie laden ein Foto oder einen transparenten Ausschnitt hoch, wählen einen Hintergrund, legen die Rahmenform fest und laden das fertige Bild herunter. Diese Anleitung führt Sie Schritt für Schritt durch den Ablauf.</p>
 <p>Vor dem Start brauchen Sie nur eines: das Vordergrundbild. Das kann ein normales Foto, ein transparenter PNG-Ausschnitt, ein Logo oder ein Screenshot sein. Hat Ihr Foto noch einen unordentlichen Originalhintergrund, entfernen Sie ihn zuerst, damit der neue Hintergrund mit einem sauberen Ausschnitt arbeiten kann.</p>
@@ -13848,7 +13848,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-splitter-guide': {
     title: 'Bild teilen: Die komplette Anleitung',
-    description: 'Teilen Sie jedes Bild in Raster-Kacheln oder Streifen: wie Raster-, Horizontal- und Vertikal-Modus funktionieren, Voreinstellungen, Exporte in voller Auflösung und die besten Einsatzzwecke für jede Teilung.',
+    description: 'Teilen Sie jedes Bild in Raster-Kacheln oder Streifen: Raster-, Horizontal- und Vertikal-Modus, Voreinstellungen und Exporte in voller Auflösung.',
     body: `
 <p>Mit Bild teilen schneiden Sie ein Bild in mehrere kleinere Teile. Die Teile können ein Raster für ein Social-Media-Profil bilden, Streifen für ein Karussell oder Schnitte, um ein großes Bild über viele Seiten zu drucken. Das Originalbild bleibt intakt – Sie bekommen einfach seine Teile.</p>
 <p>Mit <a href="/de/bild-zerteilen/">Bild teilen</a> schneiden Sie Fotos in N-mal-M-Raster-Kacheln, horizontale Reihen oder vertikale Streifen und laden die Teile einzeln oder als eine ZIP-Datei herunter. Das Tool läuft vollständig in Ihrem Browser – Ihre Fotos verlassen Ihr Gerät nie.</p>
@@ -13930,7 +13930,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-split-image': {
     title: 'Bild teilen: Schritt für Schritt',
-    description: 'Teilen Sie jedes Bild in wenigen Minuten in Raster-Kacheln oder Streifen: hochladen, Modus wählen, Reihen und Spalten festlegen, Schnittlinien prüfen und die Kacheln oder eine ZIP-Datei herunterladen.',
+    description: 'Teilen Sie jedes Bild in wenigen Minuten in Raster-Kacheln oder Streifen: hochladen, Modus wählen, Reihen und Spalten festlegen und Kacheln laden.',
     body: `
 <p>Ein Bild zu teilen ist eine kurze Aufgabe: Foto hochladen, Teilungsart wählen, Schnittlinien prüfen und die Teile herunterladen. Diese Anleitung führt Sie Schritt für Schritt durch den Ablauf – vom ersten Upload bis zu den fertigen Kacheln.</p>
 <p>Vor dem Start brauchen Sie nur eines: das Bild, das Sie teilen möchten. Eine große, hochauflösende Quelle ergibt die besten Kacheln, weil jede Kachel in voller Originalgröße geschnitten wird. Eine kleine Quelle ergibt kleine Kacheln – nutzen Sie also die größte Datei, die Sie haben.</p>
@@ -14011,8 +14011,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'split-images-instagram-grid': {
-    title: 'Instagram-Grid erstellen: Bild in 9 Kacheln teilen',
-    description: 'Verwandeln Sie ein Foto in ein Instagram-Raster-Puzzle: die 3×3-Teilung, eine quadratische Quelle vorbereiten, Post-Reihenfolge, Puzzle-Stile und wie das Raster langfristig gut aussieht.',
+    title: 'Instagram-Grid: Bild in 9 Kacheln teilen',
+    description: 'Verwandeln Sie ein Foto in ein Instagram-Raster-Puzzle: die 3×3-Teilung, quadratische Quelle vorbereiten, Post-Reihenfolge und Puzzle-Stile.',
     body: `
 <p>Ein Instagram-Raster-Puzzle verwandelt ein Foto in neun Kacheln, die über Ihre Profilseite ein einziges großes Bild bilden. Besucher, die Ihr Profil öffnen, sehen das vollständige Bild, während jede Kachel auch als normaler Post im Feed funktioniert. Es ist die sichtbarste Art, ein geteiltes Bild zu nutzen.</p>
 <p>Diese Anleitung behandelt die ganze Aufgabe: eine quadratische Quelldatei vorbereiten, sie 3 mal 3 teilen, die Kacheln in der richtigen Reihenfolge posten und das Raster intakt halten, während Sie neue Inhalte veröffentlichen. Die Teilung selbst dauert mit <a href="/de/bild-zerteilen/">Bild teilen</a> nur Minuten – die Planung ist es, die sie gut aussehen lässt.</p>
@@ -14094,7 +14094,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'gif-maker-guide': {
     title: 'GIF erstellen: Die komplette Anleitung',
-    description: 'Erstellen Sie animierte GIFs aus Ihren Fotos: wie das Tool funktioniert, Frames auswählen, Timing, Loop-Optionen, Frame-Anpassung, Farbqualität und die Dateigröße im Griff behalten.',
+    description: 'Erstellen Sie animierte GIFs aus Ihren Fotos: Frames auswählen, Timing, Loop-Optionen, Frame-Anpassung und die Dateigröße im Griff behalten.',
     body: `
 <p>Ein GIF ist eine kurze, sich wiederholende Animation aus einer Reihe von Standbildern. Es spielt ohne Ton, wiederholt sich endlos oder eine festgelegte Anzahl von Loops und funktioniert in fast jeder Chat-App, jedem Social-Media-Feed und jeder Website. Ein gut gemachtes GIF sagt in zwei Sekunden, was ein Absatz nicht kann.</p>
 <p>Mit <a href="/de/gif-erstellen/">GIF erstellen</a> verwandeln Sie Ihre Fotos im Browser in ein animiertes GIF. Laden Sie zwei oder mehr Frame-Bilder hoch, legen Sie das Timing für jeden Frame fest, wählen Sie die Loop-Anzahl und laden Sie eine GIF89a-Datei ohne Wasserzeichen herunter. Nichts wird auf einen Server hochgeladen.</p>
@@ -14176,7 +14176,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-make-gif-from-images': {
     title: 'GIF aus Bildern erstellen: Anleitung',
-    description: 'Verwandeln Sie Ihre Fotos in wenigen Minuten in ein animiertes GIF: Frames sammeln, hochladen, ordnen und timen, Loop festlegen, Vorschau prüfen und ein teilbereites GIF herunterladen.',
+    description: 'Verwandeln Sie Ihre Fotos in wenigen Minuten in ein animiertes GIF: Frames sammeln, ordnen und timen, Loop festlegen und herunterladen.',
     body: `
 <p>Ein GIF aus Bildern zu erstellen ist eine kurze Aufgabe: ein paar Fotos sammeln, als Frames hochladen, das Timing festlegen und die Animation herunterladen. Diese Anleitung führt Sie Schritt für Schritt durch den Ablauf – von der Wahl der Frames bis zum Teilen des fertigen GIF.</p>
 <p>Vor dem Start brauchen Sie nur eines: zwei oder mehr Bilder zum Animieren. Das können Fotos, Screenshots, Produktaufnahmen oder Illustrationen sein. Ähnliche Größen und Formen ergeben das geschmeidigste Ergebnis, aber das Tool verarbeitet auch gemischte Größen.</p>
@@ -14257,7 +14257,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'gif-frame-rate-file-size': {
-    title: 'GIF-Bildrate und Dateigröße: flüssig vs. klein',
+    title: 'GIF-Bildrate & Dateigröße: Der Vergleich',
     description: 'Der Kompromiss im Zentrum jedes GIF: wie Bildrate, Frame-Anzahl, Abmessungen und Farbpalette entscheiden, ob Ihre Animation geschmeidig, klein oder beides ist.',
     body: `
 <p>Jedes GIF ist ein Kompromiss zwischen Geschmeidigkeit und Größe. Eine höhere Bildrate macht die Bewegung flüssiger, aber auch die Datei größer. Eine kleinere Datei lässt sich schneller teilen, kann aber ruckelig wirken. Die Kunst, GIFs zu erstellen, ist, für jede Animation die Balance zu finden.</p>
@@ -14339,8 +14339,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'image-collage-maker-guide': {
-    title: 'Bildcollage erstellen: Die komplette Anleitung',
-    description: 'Erstellen Sie Fotocollagen in wenigen Minuten: Raster und Streifen, Ziehen zum Tauschen, verstellbare Teilungen, Abstände, abgerundete Ecken, Hintergrundfarben und JPG- oder PNG-Export bis 4000 px.',
+    title: 'Bildcollage erstellen: Anleitung',
+    description: 'Erstellen Sie Fotocollagen in wenigen Minuten: Raster und Streifen, Ziehen zum Tauschen, Abstände, abgerundete Ecken und JPG- oder PNG-Export bis 4000 px.',
     body: `
 <p>Eine Fotocollage verwandelt mehrere Bilder in ein einziges Bild. Sie zeigt eine Reihe von Momenten gemeinsam: eine Reise, eine Produktrange, ein Vorher und Nachher oder ein Familientreffen. Eine Collage sagt mehr als eine Reihe separater Fotos – und sie passt überall hin, wo ein einzelnes Bild hinpasst.</p>
 <p>Mit <a href="/de/bildcollage-erstellen/">Bildcollage erstellen</a> ordnen Sie Ihre Fotos in 2-mal-2- und 3-mal-3-Rastern oder in vertikalen und horizontalen Streifen an – mit Ziehen zum Tauschen, verstellbaren Teilungen, Abständen, abgerundeten Ecken und Export bis 4000 Pixel. Das Tool läuft vollständig in Ihrem Browser.</p>
@@ -14422,7 +14422,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-make-photo-collage': {
     title: 'Fotocollage erstellen: Anleitung',
-    description: 'Erstellen Sie in wenigen Minuten eine Fotocollage: Fotos auswählen, Raster- oder Streifen-Layout wählen, anordnen, Abstände und Hintergrund festlegen und ein teilbereites Bild exportieren.',
+    description: 'Erstellen Sie in wenigen Minuten eine Fotocollage: Fotos auswählen, Layout wählen, anordnen, Abstände und Hintergrund festlegen und exportieren.',
     body: `
 <p>Eine Fotocollage zu erstellen ist eine kurze Aufgabe: ein paar Fotos auswählen, ein Layout wählen, sie anordnen und ein Bild exportieren. Diese Anleitung führt Sie Schritt für Schritt durch den Ablauf – von der Wahl der Fotos bis zum Teilen der fertigen Collage.</p>
 <p>Vor dem Start brauchen Sie nur eines: die Fotos, die Sie kombinieren möchten. Vier bis neun starke Fotos mit ähnlichem Licht ergeben die beste Collage. Eine Reihe von Fotos von einer Reise, einem Ereignis oder einer Produktrange funktioniert besser als eine zufällige Mischung.</p>
@@ -14504,8 +14504,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 12,
   },
   'collage-layouts-grids-mood-boards': {
-    title: 'Collage-Layouts: Raster, Moodboards und Stories',
-    description: 'Wählen Sie das richtige Collage-Layout: 2×2- und 3×3-Raster, vertikale und horizontale Streifen, Moodboards, Story-Layouts, Vorher-und-Nachher und rahmenlose Collagen.',
+    title: 'Collage-Layouts: Raster & Moodboards',
+    description: 'Wählen Sie das richtige Collage-Layout: 2×2- und 3×3-Raster, Streifen, Moodboards, Story-Layouts und Vorher-und-Nachher.',
     body: `
 <p>Das Layout ist die erste Entscheidung bei einer Collage, und es prägt alles, was folgt. Ein Raster sagt, dass die Fotos gleichwertig sind. Ein Streifen sagt, dass sie eine Sequenz sind. Ein Moodboard sagt, dass sie ein Gefühl sind. Dieselben Fotos erzählen in einem anderen Layout eine andere Geschichte.</p>
 <p>Diese Anleitung vergleicht die Layouts, die <a href="/de/bildcollage-erstellen/">Bildcollage erstellen</a> bietet: die 2-mal-2- und 3-mal-3-Raster, die vertikalen und horizontalen Streifen und die freieren Stile, die daraus entstehen – darunter Moodboards, Story-Layouts und Vorher-und-Nachher-Vergleiche.</p>
@@ -14587,7 +14587,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-resizer-guide': {
     title: 'Bildgröße ändern: Die komplette Anleitung',
-    description: 'Erfahren Sie, wie Sie die Bildgröße ändern: Pixel und Prozent erklärt, wann Sie das Seitenverhältnis sperren sollten und welche Größe für Web, Social Media und Druck passt.',
+    description: 'Erfahren Sie, wie Sie die Bildgröße ändern: Pixel und Prozent erklärt, wann Sie das Seitenverhältnis sperren und welche Größe für Web und Druck passt.',
     body: `
 <p>Wenn Sie die Bildgröße ändern, verändern Sie die Pixelmaße eines Fotos oder einer Grafik. Aus einem Foto mit 4000 mal 3000 Pixeln werden so 1200 mal 900, 800 mal 600 oder jede andere Größe, die Sie brauchen. Motiv und Farben bleiben gleich, nur der Platz, den das Bild auf dem Bildschirm einnimmt, ändert sich.</p>
 <p>Die richtige Größe ist deshalb wichtig, weil fast jedes Ziel eine bestimmte Größe erwartet. Ein Website-Hero braucht ein breites Bild, ein Profilfoto ein quadratisches und ein Marktplatz-Angebot ein einheitliches Produktfoto. Mit dem Tool <a href="/de/bildgroesse-aendern/">Bildgröße ändern</a> erreichen Sie diese Maße, ohne Software zu installieren oder einen schweren Editor zu öffnen.</p>
@@ -14690,7 +14690,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-resize-image': {
     title: 'Bildgröße online ändern',
-    description: 'Bildgröße in wenigen Minuten online ändern: hochladen, Pixel oder Prozent wählen, Seitenverhältnis sperren, Vorlage wählen, Qualität einstellen und herunterladen – ohne Softwareinstallation.',
+    description: 'Bildgröße in wenigen Minuten online ändern: hochladen, Pixel oder Prozent wählen, Seitenverhältnis sperren, Vorlage wählen und herunterladen.',
     body: `
 <p>Die Bildgröße online zu ändern dauert etwa eine Minute, wenn man die Schritte kennt. Foto hochladen, Größe wählen, Vorschau prüfen und Ergebnis herunterladen. Keine Software zu installieren, kein Konto anzulegen und kein Warten auf einen Upload zu einem Server.</p>
 <p>Diese Anleitung führt durch den Ablauf im Tool <a href="/de/bildgroesse-aendern/">Bildgröße ändern</a>, vom ersten Upload bis zum finalen Download. Sie deckt beide Größenmodi, die Seitenverhältnis-Sperre, die Vorlagen und die Qualitätseinstellungen ab, damit Sie ein Foto oder einen ganzen Stapel sicher verkleinern können.</p>
@@ -14799,9 +14799,9 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 12,
   },
   'resize-vs-compress-image': {
-    title: 'Bildgröße ändern oder komprimieren: Was ist der Unterschied?',
+    title: 'Bildgröße ändern oder komprimieren?',
 
-    description: 'Größenänderung verändert die Pixelmaße, Komprimierung verändert, wie effizient Pixel gespeichert werden. Erfahren Sie, was jeder Schritt tut, wann Sie welchen nutzen und warum beide zusammen die kleinste Datei ergeben.',
+    description: 'Größenänderung verändert die Pixelmaße, Komprimierung die Speicherung. Wann Sie welchen Schritt nutzen und warum beide zusammen die kleinste Datei ergeben.',
     body: `
 <p>Größenänderung und Komprimierung sind die zwei Wege, eine Bilddatei kleiner zu machen, und sie funktionieren völlig unterschiedlich. Verkleinern entfernt Pixel. Komprimieren behält die Pixel und speichert sie effizienter. Menschen verwechseln die beiden ständig, und diese Verwirrung führt zu Bildern, die immer noch zu schwer oder kleiner sind, als sie sein müssten.</p>
 <p>Diese Anleitung erklärt, was jeder Schritt tut, wie er Qualität und Dateigröße beeinflusst und wann Sie einen, den anderen oder beide nutzen. Als Beispiele dienen das Tool <a href="/de/bildgroesse-aendern/">Bildgröße ändern</a> und der <a href="/de/">Bildkompressor</a>, weil sie zusammen die ganze Arbeit abdecken.</p>
@@ -14907,8 +14907,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 13,
   },
   'bulk-image-resizer-guide': {
-    title: 'Bilder stapelweise verkleinern: Die komplette Anleitung',
-    description: 'Dutzende Bilder auf einmal verkleinern: die Modi „Maximalmaße“, „Einheitliche Breite“, „Exakte Pixel“ und „Prozent“, Schutz vor Vergrößerung, Vorlagen und ZIP-Download mit einem Klick – alles in Ihrem Browser.',
+    title: 'Bilder stapelweise verkleinern: Anleitung',
+    description: 'Dutzende Bilder auf einmal verkleinern: die Modi Maximalmaße, Einheitliche Breite, Exakte Pixel und Prozent, Schutz vor Vergrößerung und ZIP-Download.',
     body: `
 <p>Wenn Sie Bilder stapelweise verkleinern, verändern Sie die Pixelmaße vieler Bilder in einem Durchgang. Statt jedes Foto einzeln zu öffnen, eine Größe einzutippen und separat herunterzuladen, legen Sie einen ganzen Ordner in die Warteschlange, wählen eine Strategie und laden alle Ergebnisse in einer einzigen ZIP-Datei herunter.</p>
 <p>Das zählt, weil echte Bildarbeit selten ein Foto ist. Ein Produktshooting sind vierzig Fotos, ein Blogordner zwanzig und ein Fotoalbum hundert. Das Tool <a href="/de/bilder-stapelweise-verkleinern/">Bilder stapelweise verkleinern</a> macht aus dieser sich wiederholenden Arbeit einen einzigen Stapel, mit denselben Einstellungen, die konsistent auf jede Datei angewendet werden.</p>
@@ -15018,7 +15018,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-resize-multiple-images': {
     title: 'Mehrere Bilder auf einmal verkleinern',
-    description: 'Mehrere Bilder auf einmal verkleinern: Stapel ablegen, Maximalmaße, Einheitliche Breite, Exakt oder Prozent wählen, Vorlage einstellen, Ergebnisse prüfen und eine ZIP herunterladen.',
+    description: 'Mehrere Bilder auf einmal verkleinern: Stapel ablegen, Modus wählen, Vorlage einstellen, Ergebnisse prüfen und eine ZIP herunterladen.',
     body: `
 <p>Zwanzig Fotos einzeln zu verkleinern ist eine langsame, fehleranfällige Arbeit. Dieselbe Größe zwanzigmal einzutippen lädt zu Tippfehlern ein, und zwanzig Dateien einzeln herunterzuladen verschwendet den Nachmittag. Als Stapel verkleinert dauert es wenige Minuten und wendet dieselben Einstellungen auf jedes Bild an.</p>
 <p>Diese Anleitung führt durch den Ablauf im Tool <a href="/de/bilder-stapelweise-verkleinern/">Bilder stapelweise verkleinern</a>, von der Vorbereitung des Ordners bis zum Herunterladen der ZIP. Sie deckt die vier Strategien, die Vorlagen, die Qualitätseinstellungen und die Prüfungen ab, die einen schlechten Stapel abfangen, bevor Sie ihn verwenden.</p>
@@ -15124,8 +15124,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 13,
   },
   'bulk-resize-presets-social-ecommerce-print': {
-    title: 'Bilder stapelweise verkleinern: Vorlagen für Social Media, E-Commerce und Druck',
-    description: 'Wählen Sie die richtige Vorlage fürs stapelweise Verkleinern für jedes Ziel: Social-Media-Größen, E-Commerce-Quadrate, Blogbreiten, Thumbnails, Full HD und Druck – plus wann Sie stattdessen eine eigene Größe tippen.',
+    title: 'Stapel-Verkleinern: Vorlagen für jeden Zweck',
+    description: 'Wählen Sie die richtige Vorlage fürs stapelweise Verkleinern: Social-Media-Größen, E-Commerce-Quadrate, Blogbreiten, Thumbnails und Druck.',
     body: `
 <p>Jedes Ziel will eine andere Bildgröße, und eine Vorlage ist eine Abkürzung zur richtigen. Statt die Zahlen einer Plattform nachzuschlagen und von Hand einzutippen, klicken Sie eine Vorlage an und die Maße tragen sich selbst ein. Der Stapel wendet diese Größe dann auf jedes Bild in der Warteschlange an.</p>
 <p>Diese Anleitung ordnet die Vorlagen des Stapelverkleinerers und die gängigen Social-Media-Größen den Orten zu, die sie erwarten: Social-Media-Feeds, Onlineshops, Blogs, Thumbnails, Bildschirme und Druck. Sie erklärt außerdem, wann eine Vorlage das falsche Werkzeug ist und eine eigene Größe, von Hand getippt, die richtige.</p>
@@ -15229,7 +15229,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 12,
   },
   'image-metadata-viewer-guide': {
-    title: 'Bild-Metadaten auslesen: Anleitung für EXIF, GPS und mehr',
+    title: 'Bild-Metadaten auslesen: EXIF & GPS',
     description: 'Bild-Metadaten auslesen: Was EXIF, GPS und PNG- oder WebP-Blöcke über ein Foto verraten – und wie Sie jedes Foto privat in Ihrem Browser prüfen.',
     body: `
 <p>Jedes Foto, das Sie aufnehmen, trägt eine versteckte Informationsebene in sich. Kameraeinstellungen, Aufnahmezeit, Gerätemodell und manchmal sogar Ihr genauer Standort reisen unsichtbar in der Datei mit.</p>
@@ -15330,8 +15330,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'how-to-view-image-metadata': {
-    title: 'Bild-Metadaten ansehen: Schritt für Schritt erklärt',
-    description: 'Bild-Metadaten ansehen: Öffnen Sie ein Foto im Viewer, lesen Sie EXIF- und GPS-Felder, exportieren Sie einen JSON-Bericht und prüfen Sie eine bereinigte Datei – Schritt für Schritt erklärt.',
+    title: 'Bild-Metadaten ansehen: Schritt für Schritt',
+    description: 'Bild-Metadaten ansehen: Öffnen Sie ein Foto im Viewer, lesen Sie EXIF- und GPS-Felder, exportieren Sie einen JSON-Bericht und prüfen Sie die Datei.',
     body: `
 <p>Bildmetadaten anzusehen, klingt technisch, dauert aber weniger als eine Minute. Sie öffnen ein Foto in einem Viewer, lesen den Bericht und entscheiden, ob etwas davon privat bleiben sollte.</p>
 <p>Diese Anleitung führt Sie Schritt für Schritt durch den kostenlosen <a href="/de/bild-metadaten-anzeigen/">Bild-Metadaten-Viewer</a>. Er läuft in Ihrem Browser, braucht kein Konto und lädt Ihre Fotos nie hoch.</p>
@@ -15442,7 +15442,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'exif-data-explained': {
     title: 'EXIF-Daten erklärt: Was Ihre Fotos verraten',
-    description: 'EXIF-Daten einfach erklärt: Wie Kameras sie speichern, welche Felder Ihren Standort und Ihre Gewohnheiten verraten, wie Apps sie entfernen – und wie Sie sie lesen und löschen.',
+    description: 'EXIF-Daten einfach erklärt: Wie Kameras sie speichern, welche Felder Standort und Gewohnheiten verraten und wie Sie sie lesen und löschen.',
     body: `
 <p>Ein Foto zeigt einen Moment. Seine EXIF-Daten erzählen die Geschichte um diesen Moment herum: welche Kamera es aufgenommen hat, wann, wo und mit welchen Einstellungen.</p>
 <p>Die meisten Menschen sehen diese Ebene nie. Sie reist lautlos in der Datei mit und überlebt Kopien, Weiterleitungen und Downloads, bis etwas sie entfernt.</p>
@@ -15539,8 +15539,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'remove-image-metadata-guide': {
-    title: 'Metadaten aus Bildern entfernen: Anleitung für EXIF und GPS',
-    description: 'Bild-Metadaten entfernen: Was dabei gelöscht wird, verlustfreies Entfernen oder Canvas-Neucodierung, Stapelbereinigung per ZIP – und wie Sie prüfen, ob eine Datei wirklich sauber ist.',
+    title: 'Metadaten aus Bildern entfernen: EXIF',
+    description: 'Bild-Metadaten entfernen: Was dabei gelöscht wird, verlustfreies Entfernen oder Canvas-Neucodierung, Stapelbereinigung per ZIP und die Prüfung danach.',
     body: `
 <p>Jedes Foto, das Sie teilen, kann versteckte Daten enthalten: Ihren Standort, Ihre Kamera, den genauen Zeitpunkt der Aufnahme. Bildmetadaten zu entfernen, nimmt diese Daten heraus, bevor jemand anderes sie lesen kann.</p>
 <p>Diese Anleitung erklärt, was das Entfernen von Metadaten bewirkt, welche Methode Sie wählen sollten, wie Sie einen ganzen Stapel bereinigen und wie Sie das Ergebnis prüfen. Sie ist für das kostenlose Tool <a href="/de/bild-metadaten-entfernen/">Bild-Metadaten entfernen</a> geschrieben, das vollständig in Ihrem Browser arbeitet.</p>
@@ -15640,7 +15640,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'how-to-remove-metadata-from-image': {
-    title: 'Metadaten aus einem Bild entfernen: Schritt für Schritt',
+    title: 'Metadaten aus Bild entfernen: Anleitung',
     description: 'Metadaten aus einem Bild entfernen: Foto hochladen, EXIF und GPS löschen, die passende Methode wählen, saubere Dateien herunterladen – und das Ergebnis prüfen.',
     body: `
 <p>Metadaten aus einem Bild zu entfernen, dauert weniger als eine Minute. Sie laden das Foto hoch, das Tool entfernt die versteckten Daten, und Sie laden eine saubere Kopie herunter.</p>
@@ -15745,8 +15745,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'photo-privacy-gps-exif-risks': {
-    title: 'Foto-Datenschutz: Was GPS- und EXIF-Daten über Sie verraten',
-    description: 'Was GPS-Koordinaten, EXIF-Daten und versteckte Metadaten in Ihren Fotos verraten können – und welche praktischen Schritte verhindern, dass Ihre Bilder Ihren Standort und Ihre Routine preisgeben.',
+    title: 'Foto-Datenschutz: Was GPS & EXIF verraten',
+    description: 'Was GPS-Koordinaten, EXIF-Daten und versteckte Metadaten in Ihren Fotos verraten – und wie Sie verhindern, dass Bilder Ihren Standort preisgeben.',
     body: `
 <p>Ein Foto zeigt einen Moment. Seine Metadaten können zeigen, wo Sie wohnen, wo Ihre Kinder zur Schule gehen und wann Ihr Haus leer steht.</p>
 <p>Die meisten Menschen teilen Fotos, ohne je zu prüfen, was in der Datei mitreist. Das Risiko ist unsichtbar – und genau darum lässt es sich so leicht ignorieren.</p>
@@ -15850,8 +15850,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'background-remover-guide': {
-    title: 'Hintergrund entfernen: Die komplette Anleitung',
-    description: 'Was es heißt, den Hintergrund aus einem Foto zu entfernen, wie die KI Ihr Motiv erkennt und wie Sie einen sauberen, transparenten Ausschnitt bekommen – kostenlos, im Browser und ohne Upload.',
+    title: 'Hintergrund entfernen: Anleitung',
+    description: 'Was es heißt, den Hintergrund aus einem Foto zu entfernen, wie die KI Ihr Motiv erkennt und wie Sie einen sauberen, transparenten Ausschnitt bekommen.',
     body: `
 <p>Ein Hintergrundentferner nimmt ein Foto und trennt das Motiv von allem, was dahinter liegt. Heraus kommt ein sauberer Ausschnitt, den Sie auf jeden beliebigen Hintergrund legen – oder transparent lassen können.</p>
 <p>Das klingt nach einer Aufgabe für Designer mit teurer Software. Heute erledigt das ein kleines KI-Modell direkt in Ihrem Browser – in wenigen Sekunden, ohne Upload und ohne Konto.</p>
@@ -15947,8 +15947,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'how-to-remove-background-from-image': {
-    title: 'Hintergrund aus Bild entfernen – Anleitung in 6 Schritten',
-    description: 'Entfernen Sie den Hintergrund aus jedem Foto in sechs Schritten: Wählen Sie das richtige Foto, laden Sie es hoch, prüfen Sie den Ausschnitt im Vorher-Nachher-Vergleich und laden Sie ein transparentes PNG herunter.',
+    title: 'Hintergrund aus Bild entfernen: Anleitung',
+    description: 'Entfernen Sie den Hintergrund aus jedem Foto in sechs Schritten: Foto wählen, hochladen, Ausschnitt im Vorher-Nachher-Vergleich prüfen und PNG laden.',
     body: `
 <p>Den Hintergrund aus einem Foto zu entfernen, dauert weniger als eine Minute, wenn man die Schritte kennt. Wählen Sie ein gutes Foto, laden Sie es hoch, prüfen Sie den Ausschnitt und laden Sie ihn herunter.</p>
 <p>Diese Anleitung führt Sie durch den gesamten Ablauf im <a href="/de/hintergrund-entfernen/">KI-Hintergrundentferner</a> von CompressMyPic – vom ersten Laden des Modells bis zur fertigen Datei. Sie behandelt auch die Probleme, die am häufigsten auftreten, und wie Sie sie beheben.</p>
@@ -16043,8 +16043,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'ai-background-removal-vs-manual-cutout': {
-    title: 'Hintergrund mit KI entfernen oder manuell freistellen? Der Vergleich',
-    description: 'Den Hintergrund mit KI entfernen ist schnell, kostenlos und privat – doch das manuelle Freistellen gewinnt bei Haaren, Glas und wichtigen Bildern weiterhin. Der vollständige Vergleich von Tempo, Genauigkeit, Kosten und Datenschutz.',
+    title: 'KI-Freistellen oder manuell? Der Vergleich',
+    description: 'Den Hintergrund mit KI entfernen ist schnell, kostenlos und privat – doch manuelles Freistellen gewinnt bei Haaren, Glas und wichtigen Bildern weiterhin.',
     body: `
 <p>Es gibt zwei Wege, ein Motiv aus einem Foto herauszuschneiden. Ein KI-Modell schafft es in Sekunden, oder eine Person zieht die Kontur von Hand nach.</p>
 <p>Beide Wege führen zu einem transparenten Ausschnitt. Der Unterschied liegt in Tempo, Genauigkeit, Kosten und Kontrolle – und die richtige Wahl hängt vom Foto und von der Aufgabe ab.</p>

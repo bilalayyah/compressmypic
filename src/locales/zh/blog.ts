@@ -7,7 +7,7 @@ import type { BlogArticleLocaleOverride } from '../../types/blog';
 export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   'compress-image-to-50kb-guide': {
     title: '图片压缩到50KB：完整指南',
-    description: '学会把任意图片压缩到50KB，同时不毁掉画质。格式选择、画质取舍、报名网站的要求，以及一款能精准命中目标大小的免费浏览器工具。',
+    description: '学会把任意图片压缩到50KB，同时不毁掉画质。格式选择、画质取舍、报名网站的要求，以及一款能精准命中目标大小的免费浏览器工具，帮你一次通过上传限制，不用反复试错重传。文中还讲了画质档位怎么选、尺寸缩到多少才够用，以及上传失败时最常见的几个原因和对应的修法。',
     body: `
 <p>有些上传表单非常严格。它们要求照片小于50KB，超过一点就直接拒绝，不管照片本身有多清晰。</p>
 <p>这个上限听起来很小，尤其和现在的手机照片比起来。一张随手拍的照片动不动就4MB以上，是上限的八十倍。</p>
@@ -135,7 +135,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-compress-image-to-50kb': {
     title: '如何把图片压缩到50KB',
-    description: '一步一步把任意照片压到50KB以下：选对原图、选对格式，目标没达成时也有办法修好。',
+    description: '一步一步把任意照片压到50KB以下：选对原图、选对格式，目标没达成时也有办法修好。从上传、调整画质到缩小尺寸，每一步都讲清楚，证件照和报名照片都能一次通过。还讲了原图太糊怎么办、尺寸和画质先调哪一个，以及压完之后怎样检查文件大小和画面细节是否合格。',
     body: `
 <p>你手里有一张照片，报名表却不接受超过50KB的文件。掌握了步骤之后，整个操作大概只要两分钟。</p>
 <p>这篇指南会带你走完整个流程。你会准备好合适的原图、跑一遍压缩器、检查结果，并解决最常见的卡点。</p>
@@ -257,7 +257,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-size-50kb-vs-100kb-vs-200kb': {
     title: '50KB vs 100KB vs 200KB：选哪个尺寸？',
-    description: '对比50KB、100KB和200KB图片的画质差别、各自最适合的场景，以及一分钟就能定下来的选择方法。',
+    description: '对比50KB、100KB和200KB图片的画质差别、各自最适合的场景，以及一分钟就能定下来的选择方法。看清不同上限下的清晰度取舍，报名、简历和网页用图不再纠结。还按报名、简历、博客和电商分了场景，告诉你哪个上限最划算、哪个最容易一次通过，选起来不再纠结。',
     body: `
 <p>报名表上最常见的三个数字是50KB、100KB和200KB。它们看起来差不多，压出来的照片却完全不一样。</p>
 <p>选错了，要么上传失败，要么白白扔掉画质。选对了，表格一次就能通过。</p>
@@ -382,7 +382,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'compress-image-to-100kb-guide': {
     title: '图片压缩到100KB：完整指南',
-    description: '关于把图片压缩到100KB的一切：为什么它是黄金尺寸、画质表现如何、格式怎么选，以及能做到这一点的免费工具。',
+    description: '关于把图片压缩到100KB的一切：为什么它是黄金尺寸、画质表现如何、格式怎么选，以及能做到这一点的免费工具。证件照、简历和报名照片都能压到刚好够用，又足够清晰。还讲了100KB在不同网站上的通过率、照片和截图的区别，以及画质调到多少既清晰又不会超重。',
     body: `
 <p>100KB是网上最实用的文件大小。它小到能通过任何上传表单，又大到看起来依然好看。</p>
 <p>简历、招聘网站、博客缩略图和邮件配图，都能在100KB下活得很好。这就是画质和便利相遇的尺寸。</p>
@@ -504,7 +504,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-reduce-image-to-100kb': {
     title: '如何把图片缩小到100KB',
-    description: '一步一步把任意照片压到100KB，用于简历、报名网站、博客和邮件。包括格式选择、批量技巧和问题修复。',
+    description: '一步一步把任意照片压到100KB，用于简历、报名网站、博客和邮件。包括格式选择、批量技巧和问题修复，照片压得小、看起来依然清晰，上传一次就能通过。还讲了批量处理怎么省时间、照片太暗或太糊要不要先修，以及上传被拒时最快找到原因的检查顺序。上手很快。',
     body: `
 <p>按正确的步骤来，把图片缩小到100KB只要五分钟。流程很简单，但细节决定了结果好不好看。</p>
 <p>这篇指南覆盖完整的工作流。你会选对原图、选好格式、跑完压缩，并在使用之前验证结果。</p>
@@ -629,7 +629,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   '100kb-image-quality-formats': {
     title: '100KB图片画质：JPG、PNG、WebP对比',
-    description: '100KB下哪种格式看起来最好？JPG、PNG、WebP的详细画质对比，针对照片、图形和文字给出实用的选择建议。',
+    description: '100KB下哪种格式看起来最好？JPG、PNG、WebP的详细画质对比，针对照片、图形和文字给出实用的选择建议。看懂每种格式的强项，同样大小也能压出更清晰的画面。还用同一张照片做了对照，讲清文字边缘、肤色渐变和大面积纯色在不同格式下分别会变成什么样。',
     body: `
 <p>100KB下，格式的选择决定了图片看起来有多好。同一张照片，用一种格式可能很清晰，换一种就可能发灰。</p>
 <p>JPG、PNG和WebP存储图片的方式各不相同。文件预算一收紧，它们的长处和短处就都显出来了。</p>
@@ -760,7 +760,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'compress-image-to-200kb-guide': {
     title: '图片压缩到200KB：完整指南',
-    description: '把图片压缩到200KB的完整指南：画质、格式、电商用途、博客场景，以及能精准命中目标的免费浏览器工具。',
+    description: '把图片压缩到200KB的完整指南：画质、格式、电商用途、博客场景，以及能精准命中目标的免费浏览器工具。照片既够清晰又足够轻，上传、发邮件和放进网页都很顺手。还讲了200KB在博客和网店里的实际表现、不同格式的取舍，以及图片太多时怎样批量处理才省时间。',
     body: `
 <p>200KB是个分界点。到了这个尺寸，图片压缩不再是妥协，开始变得看不出来。大多数照片在这个大小下和原图一模一样。</p>
 <p>博客、网店和内容平台把200KB当作标准，正是这个原因。它轻到加载很快，又重到看起来很好。</p>
@@ -875,7 +875,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-compress-image-to-200kb': {
     title: '如何把图片压缩到200KB',
-    description: '一步一步把任意照片压到200KB，用于博客、网店和报名网站。格式选择、批量技巧，以及目标没达成时的修复方法。',
+    description: '一步一步把任意照片压到200KB，用于博客、网店和报名网站。格式选择、批量技巧，以及目标没达成时的修复方法，跟着步骤走，几分钟就能得到合乎要求的文件。还讲了原图尺寸太大怎么办、画质和尺寸先调哪一个，以及压完之后怎样快速检查文件是否真的合要求。步骤很清晰。',
     body: `
 <p>把图片压缩到200KB大概只要两分钟。流程很简单，但中间的几个选择决定了结果是出色还是仅仅过得去。</p>
 <p>这篇指南会走完每一步。你会准备好原图、选好格式、跑完压缩，并在使用之前验证结果。</p>
@@ -996,7 +996,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   '200kb-image-job-portal-settings': {
     title: '200KB图片：招聘网站与报名表设置',
-    description: '为招聘网站、求职申请和报名表准备200KB图片：照片规则、证件扫描、格式选择，以及一次通过的设置方法。',
+    description: '为招聘网站、求职申请和报名表准备200KB图片：照片规则、证件扫描、格式选择，以及一次通过的设置方法。证件照清晰合规，简历附件轻巧好传，不用反复修改重传。还讲了证件照的尺寸和底色要求、扫描件太糊怎么处理，以及不同招聘网站对图片格式的常见限制。很容易上手。',
     body: `
 <p>招聘网站和报名表对图片很挑剔。它们设定了文件大小上限、尺寸规则和格式清单，违反任何一条都会被拒绝。</p>
 <p>200KB是这些系统里照片和证件最常见的上限。它足够宽裕，能做出清晰的图片，又足够严格，能让服务器保持快速。</p>
@@ -1116,7 +1116,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'compress-image-to-500kb-guide': {
     title: '图片压缩到500KB：完整指南',
-    description: '把图片压缩到500KB的完整指南：接近原图的画质、作品集、演示文稿，以及免费的浏览器工具。',
+    description: '把图片压缩到500KB的完整指南：接近原图的画质、作品集、演示文稿，以及免费的浏览器工具。画面细节保留得很好，文件却轻了很多，作品展示和分享都更方便。还讲了500KB在作品集和演示文稿里的实际效果、不同格式的取舍，以及图片太多时怎样批量处理更省时间。',
     body: `
 <p>500KB是为必须看起来近乎完美的图片准备的尺寸。这个大小下，照片能保留细腻的细节、平滑的渐变和锐利的文字，同时减掉大部分原始体积。</p>
 <p>作品集、演示文稿和高质量的网页图库都在500KB这个档位。这是你更看重画质、不想再往下挤的时候该选的尺寸。</p>
@@ -1231,7 +1231,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-compress-image-to-500kb': {
     title: '如何把图片压缩到500KB',
-    description: '一步一步把任意照片压到500KB，用于作品集、演示文稿和图库。格式选择、批量技巧，以及目标没达成时的修复方法。',
+    description: '一步一步把任意照片压到500KB，用于作品集、演示文稿和图库。格式选择、批量技巧，以及目标没达成时的修复方法，几分钟就能压出一张清晰又轻巧的图片。还讲了原图太大怎么办、画质调到多少最合适，以及压完之后怎样检查细节有没有丢、颜色有没有变。几分钟就学会。',
     body: `
 <p>把图片压缩到500KB是最轻松的压缩任务。预算很宽裕，画质保持很高，整个过程大概只要两分钟。</p>
 <p>这篇指南会走完每一步。你会准备好原图、选好格式、跑完压缩，并在使用之前验证结果。</p>
@@ -1361,7 +1361,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   '500kb-vs-1mb-image-quality': {
     title: '500KB vs 1MB：网页与打印的图片画质',
-    description: '对比500KB和1MB图片的画质：看得见的差别、加载速度、各在什么时候胜出，以及网页和打印场景下怎么选。',
+    description: '对比500KB和1MB图片的画质：看得见的差别、加载速度、各在什么时候胜出，以及网页和打印场景下怎么选。看懂体积和清晰度的取舍，上传分享时不再白白浪费流量。还按网页、打印和分享分了场景，讲清哪个体积更划算、哪个更适合留档，选的时候不再只看数字大小。',
     body: `
 <p>500KB和1MB听起来差别很大。一个是另一个的一半，所以更大的文件看起来一定好一倍，对吗？</p>
 <p>并不完全是这样。图片画质不会随着文件大小线性增长，500KB和1MB之间的差距比数字暗示的要小得多。</p>
@@ -1485,7 +1485,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'bulk-image-compressor-guide': {
     title: '批量图片压缩工具：完整指南',
-    description: '批量图片压缩的完整指南：批量预设、ZIP导出、画质设置，以及一次压缩几十张图片的方法。',
+    description: '批量图片压缩的完整指南：批量预设、ZIP导出、画质设置，以及一次压缩几十张图片的方法。整套照片统一压小、统一打包，博客更新和网店上架都能省下大量时间。还讲了预设怎么定、画质抽查怎么做、ZIP文件怎么整理，以及团队共用一套规则时要注意的细节。照着做即可。',
     body: `
 <p>压缩一张图片很容易。压缩五十张就是另一回事，一张一张做会浪费一个下午。</p>
 <p>批量压缩能解决这个问题。你把一整个文件夹拖进来，选一个预设，然后把所有压缩好的图片一起打包成ZIP下载。</p>
@@ -1609,7 +1609,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-compress-multiple-images-at-once': {
     title: '如何一次压缩多张图片',
-    description: '一步一步一次压缩几十张图片：预设、进度条和一次ZIP下载。适用于博客、网店和相册。',
+    description: '一步一步一次压缩几十张图片：预设、进度条和一次ZIP下载。适用于博客、网店和相册，整批照片统一处理，不用一张一张重复操作，省时又不容易出错。还讲了预设怎么保存、进度怎么查看、ZIP下载后怎么整理，以及图片太多时怎样分批处理、画质抽查怎么做才省心。',
     body: `
 <p>一张图片一分钟就能压完。五十张图片要花一个下午，除非你批量处理。</p>
 <p>批量压缩能一次处理一整个文件夹。你选一个预设，看着进度条跑完，然后把所有内容一起打包成ZIP下载。</p>
@@ -1734,7 +1734,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'batch-image-compression-best-practices': {
     title: '批量压缩：ZIP工作流与最佳实践',
-    description: '批量图片压缩的最佳实践：预设、画质检查、ZIP整理、命名规范，以及博客、网店和团队的工作流。',
+    description: '批量图片压缩的最佳实践：预设、画质检查、ZIP整理、命名规范，以及博客、网店和团队的工作流。一次定好规则，以后每批图片都能压得又快、又整齐、又清晰。还讲了命名规则、文件夹整理和画质抽查的完整做法，以及团队协作时怎样统一标准、避免每个人压出来的效果不一样。',
     body: `
 <p>批量压缩上手很简单，做错也很容易。一个粗心的批量可能做出五十张发虚的图片、一个乱糟糟的ZIP，和一个花在修复上的上午。</p>
 <p>一个细心的批量正好相反。它做出一致、锐利的图片，整理成干净的包，一步就能上传。</p>
@@ -1857,7 +1857,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'target-file-size-compressor-guide': {
     title: '目标文件大小压缩工具：完整指南',
-    description: '把图片压缩到精确的KB或MB大小的完整指南：自定义目标、二分搜索、尺寸缩放，以及什么时候用它。',
+    description: '把图片压缩到精确的KB或MB大小的完整指南：自定义目标、二分搜索、尺寸缩放，以及什么时候用它。不管网站上限多特别，都能压到刚好合乎要求，画质也尽量保留。还讲了自定义目标怎么填、二分搜索怎么找最佳画质，以及尺寸缩放和画质调整先做哪一个更划算。操作起来很顺手。',
     body: `
 <p>大多数压缩工具只提供固定的尺寸：50KB、100KB、200KB或500KB。但如果你的报名网站要求80KB、150KB，或者1.5MB呢？</p>
 <p>这就是<a href="/zh/mubiao-wenjian-daxiao-yasuo/">目标文件大小压缩工具</a>的工作。你输入需要的任意大小，工具会把图片压缩到正好命中那个数字。</p>
@@ -1978,7 +1978,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-compress-image-to-exact-kb': {
     title: '如何把图片压缩到精确的KB大小',
-    description: '一步一步把任意图片压到精确的KB大小，应对不寻常的网站上限。输入数字、运行搜索，再验证结果。',
+    description: '一步一步把任意图片压到精确的KB大小，应对不寻常的网站上限。输入数字、运行搜索，再验证结果，目标数字再特别也能命中，不用靠猜反复尝试。还讲了目标数字填错怎么办、搜索结果不满意怎么微调，以及验证文件大小和画质是否合格的完整检查步骤。照着做就行。',
     body: `
 <p>你的报名网站要求80KB。不是50KB，不是100KB，而是正好80KB。固定尺寸工具帮不上忙，猜一个画质设置也命中不了这个数字。</p>
 <p>目标文件大小压缩工具能解决这个问题。你输入精确的数字，工具会搜索能落在它以下一点点的最佳画质。</p>
@@ -2104,7 +2104,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'exact-kb-target-binary-quality-search': {
     title: '精确KB目标：二分画质搜索详解',
-    description: '二分画质搜索如何在任意精确KB大小下找到最清晰的图片：算法、步骤、尺寸缩放，以及它的局限。',
+    description: '二分画质搜索如何在任意精确KB大小下找到最清晰的图片：算法、步骤、尺寸缩放，以及它的局限。看懂它怎样一步步逼近最佳画质，就知道为什么结果既合要求又清晰。还用猜数字的例子讲清了搜索过程，说明它为什么收敛得快、什么时候会改动尺寸，以及它的适用边界在哪里。',
     body: `
 <p>工具不用猜，是怎么命中80KB这样的精确文件大小的？答案是一种简单又优雅的算法，叫二分搜索。</p>
 <p>二分搜索只要几次测试，就能为你的图片找到最佳画质设置。它从不猜测，从不满足于整数，也从不浪费画质。</p>
@@ -2220,7 +2220,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'web-image-optimizer-guide': {
     title: '网页图片优化工具：完整指南',
-    description: '网页图片优化工具的完整指南：首图、商品图和卡片图的预设，核心网页指标，以及可以直接粘贴的HTML代码。',
+    description: '网页图片优化工具的完整指南：首图、商品图和卡片图的预设，核心网页指标，以及可以直接粘贴的HTML代码。图片变轻、页面变快，访客不用等，搜索引擎也更喜欢。还讲了首图和商品图的不同预设、懒加载怎么配合，以及改完之后怎样用核心网页指标验证速度真的变快了。',
     body: `
 <p>一个网站的速度取决于它的图片。文字几毫秒就能加载，一张没优化过的照片却能让页面卡住好几秒。</p>
 <p><a href="/zh/wangye-tupian-youhua/">网页图片优化工具</a>就是为这个问题做的。它会针对网站上具体的图片位置压缩图片，然后把可以直接粘贴到页面的HTML代码交给你。</p>
@@ -2341,7 +2341,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-optimize-images-for-website-speed': {
     title: '如何优化图片提升网站速度',
-    description: '一步一步优化图片提升网站速度：预设、正确的尺寸、懒加载，以及可以直接粘贴的HTML标签。',
+    description: '一步一步优化图片提升网站速度：预设、正确的尺寸、懒加载，以及可以直接粘贴的HTML标签。按步骤处理首图和商品图，页面加载明显变快，访客体验也更好。还讲了图片尺寸和文件大小的关系、懒加载的正确写法，以及改完之后怎样检查页面加载速度有没有真的提升。',
     body: `
 <p>图片是大多数网站最重的部分。页面加载慢，通常都是图片的问题，而修复它们是最快的速度提升方法。</p>
 <p>这篇指南会走完整个优化流程。你会检查页面、选对预设、优化图片，再把HTML代码粘贴到位。</p>
@@ -2464,7 +2464,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-optimization-core-web-vitals': {
     title: '图片优化与核心网页指标：LCP与文件大小',
-    description: '图片优化如何改善核心网页指标：LCP、CLS和INP详解，以及慢速页面的实用修复方法。',
+    description: '图片优化如何改善核心网页指标：LCP、CLS和INP详解，以及慢速页面的实用修复方法。看懂图片怎样拖慢页面，再按方法逐项修好，速度分数和访客体验一起提升。还把LCP、CLS和INP逐个讲清，说明图片分别怎样影响它们，以及先修哪一项对速度分数的提升最明显。',
     body: `
 <p>核心网页指标是谷歌用来评判页面速度的分数。它们测量最大内容出现得有多快、版式有多稳定，以及页面响应得有多快。</p>
 <p>图片影响这三项分数。一张沉重的首图会推迟最大的绘制，缺了宽度的图片会造成版式偏移，臃肿的页面会拖慢交互。</p>
@@ -2588,7 +2588,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'gif-compressor-guide': {
     title: 'GIF压缩工具：完整指南',
-    description: '压缩动态GIF的完整指南：预设、调色板、帧率、缩放，以及怎样缩小GIF又不毁掉它。',
+    description: '压缩动态GIF的完整指南：预设、调色板、帧率、缩放，以及怎样缩小GIF又不毁掉它。动图变轻、播放依然流畅，聊天、发帖和放进网页都更顺手，不用等半天。还讲了调色板和帧率怎么取舍、尺寸缩到多少才够用，以及动图太大时先砍帧数还是先降色彩更划算。上手很快。',
     body: `
 <p>动态GIF是网上最重的图片。一段十秒的片段可能重达20MB，比整整一页照片还要重。</p>
 <p>压缩GIF和压缩照片不一样。GIF有帧、调色板和时间，每一个都提供了缩小文件的方法。</p>
@@ -2712,7 +2712,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-compress-gif': {
     title: '如何压缩GIF',
-    description: '一步一步压缩任意动态GIF，用于Discord、Slack、网站和聊天软件。预设、调色板、缩放，以及顽固文件的修复方法。',
+    description: '一步一步压缩任意动态GIF，用于Discord、Slack、网站和聊天软件。预设、调色板、缩放，以及顽固文件的修复方法，跟着步骤走，几分钟就能得到又小又流畅的动图。还讲了预设怎么选、调色板设多少色才够，以及文件压不下去时怎样一步步排查原因、找到最占体积的部分。',
     body: `
 <p>你的GIF太大了，发不出去。Discord拒绝它，页面加载很慢，聊天软件不让上传。</p>
 <p>压缩GIF大概只要两分钟。你选一个预设，调整调色板和缩放，预览动画，再下载更小的文件。</p>
@@ -2838,7 +2838,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'gif-vs-webp-vs-mp4-animated': {
     title: 'GIF、WebP、MP4：动态图片对比',
-    description: '对比动态GIF、WebP和MP4：文件大小、画质、兼容性，以及网上做动画时每种格式适合用在哪里。',
+    description: '对比动态GIF、WebP和MP4：文件大小、画质、兼容性，以及网上做动画时每种格式适合用在哪里。看懂三种格式的取舍，动图、表情包和网页动画都能选对格式。还按聊天、社交发帖和网页动画分了场景，讲清哪种格式最轻、哪种最清晰、哪种兼容性最好。步骤很清晰。',
     body: `
 <p>网上做动态图片有三种格式在竞争：GIF、WebP和MP4。屏幕上看起来差不多，文件大小却差得惊人。</p>
 <p>一段十秒的片段，做成GIF可能20MB，做成动态WebP可能8MB，做成MP4可能只有2MB。格式选错了，带宽白白浪费，页面也变慢。</p>
@@ -2960,7 +2960,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-converter-guide': {
     title: '图片格式转换完全指南：JPG、PNG、WebP、HEIC 一次讲清',
-    description: '在浏览器里把图片在 JPG、PNG、WebP、HEIC、SVG、BMP、GIF、AVIF 之间自由转换。本文讲清各格式的区别、画质设置、透明背景与批量转换技巧。',
+    description: '在浏览器里把图片在JPG、PNG、WebP、HEIC、SVG、BMP、GIF、AVIF之间自由转换。本文讲清各格式的区别、画质设置、透明背景与批量转换技巧，换格式不再靠猜，免费又不用装软件。还讲了透明背景怎么保留、批量转换怎么设置，以及不同用途下最省事的格式搭配。',
     body: `
 <p>手机里存的是 HEIC，相机拍的是 JPG，设计师用的是 PNG，网站上跑的又是 WebP。同一张图片，换个地方就可能打不开。</p>
 <p>图片格式转换就是为了解决这种不匹配。它把文件从一种格式改写成另一种，画面本身不变，只是换了个“外壳”，走到哪里都能用。</p>
@@ -3051,7 +3051,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-image-format': {
     title: '如何转换图片格式？6 步搞定 JPG、PNG、WebP 互转',
-    description: '6 个步骤把任意图片转成 JPG、PNG 或 WebP：上传、选格式、调画质、预览、下载，全程在浏览器里完成，不用安装软件。',
+    description: '6个步骤把任意图片转成JPG、PNG或WebP：上传、选格式、调画质、预览、下载，全程在浏览器里完成，不用安装软件。几分钟就能换好格式，画质和透明度都照顾到。还讲了预览怎么看、画质滑块调到多少最合适，以及转完之后怎样检查透明度和细节有没有丢。很容易上手。',
     body: `
 <p>转换图片格式听起来很技术，其实整个过程不到一分钟。上传文件，选好需要的格式，下载结果，就这么简单。</p>
 <p>不用安装软件，不用注册账号，也不用等文件上传到遥远的服务器。一切都在你的浏览器里、在你自己的设备上完成。</p>
@@ -3160,7 +3160,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-format-conversion-quality-loss': {
     title: '图片格式转换会损失画质吗？有损与无损全解析',
-    description: '转换图片格式会损失画质吗？有损格式与无损格式的区别、反复转换的危害，以及让照片保持清晰的设置方法。',
+    description: '转换图片格式会损失画质吗？有损格式与无损格式的区别、反复转换的危害，以及让照片保持清晰的设置方法。看懂每次转换对画质的影响，换格式也能尽量不留痕迹。还讲了有损和无损的根本区别、反复转换为什么越转越糊，以及保存原图、只转副本的好习惯。几分钟就学会。',
     body: `
 <p>每次格式转换都会改变图片的存储方式，有些改变是永久性的。弄清楚哪些转换会损失画质、哪些不会，能帮你避免慢慢毁掉自己的照片。</p>
 <p>规则说起来简单，却很容易忘：有损格式会丢掉细节，无损格式全部保留。每一个转换决定，都是从这个事实推导出来的。</p>
@@ -3263,7 +3263,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-to-pdf-guide': {
     title: '图片转 PDF 完全指南：合并、排版与打印一次搞定',
-    description: '在浏览器里把照片和扫描件做成一个 PDF 文档。页面尺寸、方向、边距、画质与排序，全部讲清楚。',
+    description: '在浏览器里把照片和扫描件做成一个PDF文档。页面尺寸、方向、边距、画质与排序，全部讲清楚，证件、合同和资料都能整齐归进一个文件，分享和打印都很方便。还讲了页面尺寸和方向怎么选、边距留多少才好看，以及多张图片排序和画质设置的实用细节。照着做即可。',
     body: `
 <p>把图片做成 PDF，过去要装软件，或者把文件上传到某个网站。现在在浏览器里就能完成，图片还不用离开你的设备。</p>
 <p>这篇指南会讲完整流程。你会了解页面尺寸、方向、边距、画质，以及让 PDF 看起来专业的小决定。</p>
@@ -3371,7 +3371,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-image-to-pdf': {
     title: '如何把图片转换成 PDF？6 步快速搞定',
-    description: '一张照片或一整套图片，几分钟就能做成 PDF：上传、排页、选尺寸、下载，步骤全讲清。',
+    description: '一张照片或一整套图片，几分钟就能做成PDF：上传、排页、选尺寸、下载，步骤全讲清。不用安装软件，扫描件和照片都能快速合成一个整齐的PDF文档。还讲了单张和多张图片的不同做法、页面尺寸怎么选，以及做好的PDF怎样检查、分享和打印才方便。操作起来很顺手。',
     body: `
 <p>图片转 PDF 是最实用的日常文件操作之一。一张照片变成文档，一组扫描件变成单个文件，发送或打印都直接能用。</p>
 <p>整个过程只要几分钟，哪怕是长文档也一样。上传图片、排好顺序、选个页面尺寸，下载做好的 PDF。</p>
@@ -3486,7 +3486,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'jpg-to-pdf-vs-png-to-pdf': {
     title: 'JPG 转 PDF 和 PNG 转 PDF 哪个好？全面对比',
-    description: '做 PDF 该用 JPG 图片还是 PNG 图片？文件大小、文字清晰度、透明背景与各类文档的最佳设置，一次讲清。',
+    description: '做PDF该用JPG图片还是PNG图片？文件大小、文字清晰度、透明背景与各类文档的最佳设置，一次讲清。看懂两种图片做PDF的差别，文档既轻巧、文字又清晰好读。还按文字文档、照片集和扫描件分了场景，讲清哪种图片做出来的PDF更轻、文字更清晰、打印效果更好。',
     body: `
 <p>用图片做 PDF 时，图片本身的格式比大多数人想的重要。JPG 页面和 PNG 页面在屏幕上看起来一模一样，实际表现却大不相同。</p>
 <p>这个选择会影响文件大小、文字清晰度和打印效果。相册用一种格式赢，扫描合同用另一种格式赢。</p>
@@ -3595,7 +3595,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'bulk-image-converter-guide': {
     title: '批量图片转换完全指南：一次处理上百张图片',
-    description: '整文件夹图片一次转成同一种格式。混合输入、批量设置、ZIP 导出与命名规则，完整指南一次讲清。',
+    description: '整文件夹图片一次转成同一种格式。混合输入、批量设置、ZIP导出与命名规则，完整指南一次讲清，几十张图片统一换格式，不用一张一张重复操作，省时又整齐。还讲了混合格式输入怎么处理、命名规则怎么定，以及ZIP导出后怎样快速检查、避免转错或漏转。上手很快。',
     body: `
 <p>转一张图片很快。一张一张转两百张图片，就是一下午没了。批量图片转换工具正是为了解决这个问题而存在的。</p>
 <p>批量转换器把一整个文件夹的混合图片一次转成同一种格式，再打成一个 ZIP 交给你。设置只定一次，应用到每个文件。</p>
@@ -3698,7 +3698,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-multiple-images': {
     title: '如何一次转换多张图片？批量转换 6 步教程',
-    description: '一整文件夹图片一次转成 JPG、PNG 或 WebP：上传、选格式、设画质、下载一个 ZIP，步骤全讲清。',
+    description: '一整文件夹图片一次转成JPG、PNG或WebP：上传、选格式、设画质、下载一个ZIP，步骤全讲清。整批图片统一转换、统一打包，网站更新和资料整理都快很多。还讲了批量设置怎么一次定好、ZIP下载后怎么整理，以及转完之后怎样抽查画质和格式是否正确。',
     body: `
 <p>一张照片一张一张转没问题，一文件夹五十张就成了耗掉一下午的苦差。批量转换能把整文件夹一次搞定。</p>
 <p>流程很简单：上传文件夹，选一种输出格式，画质设一次，下载一个装着全部结果的 ZIP。</p>
@@ -3813,7 +3813,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'batch-image-conversion-workflow': {
     title: '批量图片转换工作流：从整理到交付的高效方法',
-    description: '一套可重复的流程，转换几百张图片：文件夹搭建、命名规则、画质检查与存档，适合团队与网站使用。',
+    description: '一套可重复的流程，转换几百张图片：文件夹搭建、命名规则、画质检查与存档，适合团队与网站使用。一次定好流程，以后每批图片都能转得又快、又整齐、又好找。还讲了文件夹怎么搭建、命名怎么统一、画质抽查怎么做，以及存档时怎样留好原图、方便以后再改。步骤很清晰。',
     body: `
 <p>转几张图片不需要系统。每周转几百张图片就需要，而且流程顺畅和一团糟之间，只差几个简单习惯。</p>
 <p>好的批量流程覆盖四件事：文件夹怎么组织、文件怎么命名、画质怎么检查、原文件怎么存档。</p>
@@ -3922,7 +3922,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'heic-to-jpg-guide': {
     title: 'HEIC 转 JPG 完全指南：iPhone 照片这样转最清晰',
-    description: '在浏览器里把 iPhone 的 HEIC 照片转成 JPG。HEIC 是什么、为什么存在、解码原理、画质设置，以及实况照片怎么处理。',
+    description: '在浏览器里把iPhone的HEIC照片转成JPG。HEIC是什么、为什么存在、解码原理、画质设置，以及实况照片怎么处理，讲清之后，苹果照片在任何设备上都能正常打开。还讲了实况照片和连拍怎么处理、画质设置怎么选，以及转完之后怎样检查照片有没有变糊或偏色。',
     body: `
 <p>你有一部 iPhone，你的大多数照片就是 HEIC 文件，不管你想不想要。它们在手机上看起来完美无缺，到了半数电脑和网站上却打不开。</p>
 <p>把 HEIC 转成 JPG 就是解决办法。JPG 哪里都能打开，从十年前的 Windows 笔记本到政府上传表格，转换只要几秒钟。</p>
@@ -4025,7 +4025,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-heic-to-jpg': {
     title: '如何把 HEIC 转换成 JPG？iPhone 照片 6 步搞定',
-    description: '几下点按就能把 iPhone 的 HEIC 照片转成 JPG：上传、检查预览、下载，任何设备都能用，不用安装软件。',
+    description: '几下点按就能把iPhone的HEIC照片转成JPG：上传、检查预览、下载，任何设备都能用，不用安装软件。转好的照片通用又清晰，发给别人、上传网站都不会打不开。还讲了上传后预览怎么看、画质调到多少最合适，以及转好的JPG在不同设备上打开要注意的地方。',
     body: `
 <p>你的 iPhone 拍出的照片很美，却存成了一种半个世界都打不开的格式。把这些 HEIC 文件转成 JPG 不到一分钟，结果哪里都能用。</p>
 <p>不用安装应用，不用注册账号，不用上传到服务器。转换在你的浏览器里、在你自己的设备上运行。</p>
@@ -4140,7 +4140,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'heic-vs-jpg': {
     title: 'HEIC 和 JPG 有什么区别？全面对比',
-    description: 'HEIC 与 JPG 诚实对比：文件大小、画质、兼容性，以及照片、表格、网站分别该用哪种格式。',
+    description: 'HEIC与JPG诚实对比：文件大小、画质、兼容性，以及照片、表格、网站分别该用哪种格式。看懂苹果新格式的优缺点，就知道什么时候留着HEIC，什么时候该转成JPG。还按手机相册、电脑存档和网站上传分了场景，讲清哪种格式更省空间、哪种打开更方便、哪种更适合长期保存。',
     body: `
 <p>HEIC 和 JPG 是手机照片里最重要的两种格式。一个现代高效，一个老牌通用，选哪个是取舍，不是非黑即白。</p>
 <p>苹果给 iPhone 选了 HEIC，因为它能把文件缩小一半。世界其他地方还在用 JPG，因为它哪里都能打开。</p>
@@ -4249,7 +4249,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'jpg-to-png-guide': {
     title: 'JPG 转 PNG 完全指南：什么时候转、为什么文件会变大',
-    description: '正确地把 JPG 照片转成 PNG：什么时候有用、为什么文件变大，以及 PNG 在编辑、文字与图形上的用法。',
+    description: '正确地把JPG照片转成PNG：什么时候有用、为什么文件变大，以及PNG在编辑、文字与图形上的用法。看懂两种格式的取舍，换格式之前先想清楚，到底要的是清晰还是轻巧。还讲了文件为什么会变大、哪些图片转PNG才值得，以及编辑、文字和图形场景下PNG的真正优势在哪里。',
     body: `
 <p>JPG 转 PNG 感觉像升级。PNG 听起来更好，无损听起来更好，文件看起来也更专业。实际情况比这复杂得多。</p>
 <p>JPG 转 PNG 永远不会让图像变好。它把 JPG 原样保留下来，瑕疵也一并保留，文件却大得多。</p>
@@ -4357,8 +4357,8 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'how-to-convert-jpg-to-png': {
-    title: '如何把 JPG 转换成 PNG？6 步搞定',
-    description: '几秒钟把 JPG 图片转成 PNG，单张或一次二十张都行：上传、转换、对比、下载，全程在浏览器里完成。',
+    title: 'JPG 转 PNG：保留透明背景，适合编辑设计',
+    description: '几秒钟把JPG图片转成PNG，单张或一次二十张都行：上传、转换、对比、下载，全程在浏览器里完成。换好格式就能直接用于编辑、设计和需要无损保存的场合。还讲了批量转换怎么操作、对比功能怎么用，以及转完之后怎样检查边缘和文字有没有变模糊。很容易上手。',
     body: `
 <p>JPG 转 PNG 是个简单任务，但值得做对。正确的转换会把文件重写成真正的 PNG，而不是改了名的 JPG。</p>
 <p>每张只要几秒，一次最多能转二十张图片。一切都在浏览器里运行，不用安装。</p>
@@ -4474,7 +4474,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'jpg-vs-png-transparency': {
     title: 'JPG 与 PNG 透明度对比：什么时候该用哪个',
-    description: 'JPG 与 PNG 对比：透明背景、文件大小、文字清晰度与照片。了解每种格式什么时候胜出，以及为什么转换变不出透明背景。',
+    description: 'JPG与PNG对比：透明背景、文件大小、文字清晰度与照片。了解每种格式什么时候胜出，以及为什么转换变不出透明背景，选格式不再靠猜，图片用途一次想清楚。还讲了透明背景到底是什么、为什么JPG变不出透明，以及需要透明效果时正确的做法应该是什么。几分钟就学会。',
     body: `
 <p>JPG 和 PNG 是网上最古老的两种图片格式，解决的是相反的问题。JPG 让照片变小，PNG 让图形保持完美和透明。</p>
 <p>两者最容易被误解的区别是透明背景。JPG 完全存不了透明，PNG 可以，但 JPG 转 PNG 并不会神奇地变出透明。</p>
@@ -4583,7 +4583,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'png-to-jpg-guide': {
     title: 'PNG 转 JPG 完全指南：体积、画质与适用场景',
-    description: '把 PNG 截图和照片转成 JPG，大幅缩小体积。底色填充、画质设置、批量转换与最佳用途，全部讲清。',
+    description: '把PNG截图和照片转成JPG，大幅缩小体积。底色填充、画质设置、批量转换与最佳用途，全部讲清，截图和照片变轻很多，上传、发邮件和放进网页都更方便。还讲了底色怎么选、画质调到多少文字才清晰，以及批量转换时怎样统一设置、一次处理几十张截图。照着做即可。',
     body: `
 <p>Mac 和 Windows 的截图默认存成 PNG，那些 PNG 大得吓人。一张截图可能 5MB，同样图片存成 JPG 只有 500KB。</p>
 <p>PNG 转 JPG 是缩小截图、照片和图形最快的方法，前提是它们不需要透明背景。画质损失很小，体积省得很大。</p>
@@ -4691,8 +4691,8 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 9,
   },
   'how-to-convert-png-to-jpg': {
-    title: '如何把 PNG 转换成 JPG？6 步搞定',
-    description: '6 个步骤把 PNG 截图和图片转成 JPG：选底色、设画质、预览、下载，单张或批量都行。',
+    title: 'PNG 转 JPG：截图瘦身十倍，分享上传更快',
+    description: '6个步骤把PNG截图和图片转成JPG：选底色、设画质、预览、下载，单张或批量都行。几分钟就能把沉甸甸的截图压小，文字依然清晰，分享和上传都顺手。还讲了底色填充的细节、画质滑块怎么调，以及转完之后怎样检查文字边缘有没有糊、颜色有没有变。操作起来很顺手。',
     body: `
 <p>一张 PNG 截图可能比同样图片的 JPG 重十倍。转换不到一分钟，结果发送、上传、存储都容易得多。</p>
 <p>唯一需要留意的是透明背景。JPG 存不了透明像素，转换前需要给它们选一个填充颜色。</p>
@@ -4808,7 +4808,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'png-to-jpg-file-size-quality': {
     title: 'PNG 转 JPG 后体积和画质怎么变？实测解析',
-    description: 'PNG 转 JPG 到底能小多少？按图片类型看真实节省、保护文字的画质设置，以及什么时候这笔交易不划算。',
+    description: 'PNG转JPG到底能小多少？按图片类型看真实节省、保护文字的画质设置，以及什么时候这笔交易不划算。看懂不同图片的节省幅度，换格式之前先算清楚值不值得。还按截图、照片和插画分了类型，讲清每种图片能省多少、画质设多少最划算，以及什么时候不值得转。上手很快。',
     body: `
 <p>PNG 转 JPG 以缩小文件出名，但省多少因图片而异。截图可能缩小 90%，简单图标反而可能变大。</p>
 <p>理解什么决定了节省，能帮你在转换前预测结果，选出保护重要内容的画质设置。</p>
@@ -4917,7 +4917,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'jpg-to-webp-guide': {
     title: 'JPG 转 WebP 完全指南：网站图片提速必看',
-    description: '把 JPG 照片转成 WebP，让网站更快。能小多少、用什么画质、浏览器支持情况，以及什么时候该留着 JPG。',
+    description: '把JPG照片转成WebP，让网站更快。能小多少、用什么画质、浏览器支持情况，以及什么时候该留着JPG，讲清之后，网站图片既轻又清晰，加载速度明显提升。还讲了WebP能比JPG小多少、画质怎么选、老浏览器怎么办，以及网站图片全部换格式之前要注意的事。',
     body: `
 <p>WebP 是谷歌为让网络更快而打造的格式，它确实管用。JPG 照片转成 WebP 通常能小 25% 到 35%，画质上看不出差别。</p>
 <p>省下来的体积很重要。图片更小意味着页面更快、访客更开心、搜索排名更好，这就是每个大网站现在都提供 WebP 的原因。</p>
@@ -5032,7 +5032,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-jpg-to-webp': {
     title: '如何把 JPG 转换成 WebP？6 步搞定',
-    description: '几步把 JPG 照片转成 WebP：上传、设画质、预览节省、下载，单张照片或整文件夹都行。',
+    description: '几步把JPG照片转成WebP：上传、设画质、预览节省、下载，单张照片或整文件夹都行。转好的图片体积更小、画质依然在线，网站和博客加载都快很多。还讲了画质滑块怎么调、预览里的节省数字怎么看，以及转完之后怎样检查图片在不同浏览器里显示是否正常。步骤很清晰。',
     body: `
 <p>JPG 转 WebP 是网站最容易的速度胜利之一。照片看起来一样，文件小三分之一，页面加载更快。</p>
 <p>每张照片只要几秒，整文件夹一次也能转。一切都在浏览器里运行，不用安装。</p>
@@ -5148,7 +5148,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'jpg-vs-webp': {
     title: 'JPG 与 WebP 对比：画质、体积与兼容性全解析',
-    description: 'JPG 与 WebP 正面对决：体积节省、画质、透明背景、浏览器支持，以及每种场合该用哪种格式。',
+    description: 'JPG与WebP正面对决：体积节省、画质、透明背景、浏览器支持，以及每种场合该用哪种格式。看懂新老格式的取舍，照片、网页和社交分享都能选到最合适的格式。还按照片、网页和社交分享分了场景，讲清哪种格式更轻、哪种更清晰、哪种兼容性更好，选起来有据可依。',
     body: `
 <p>JPG 统治网络三十年了。WebP 是谷歌为取代它而打造的挑战者，论纯效率，WebP 赢了。论兼容性，JPG 仍是王。</p>
 <p>两者之间的选择，不是理论上哪种格式更好。而是图片会住在哪里、谁会看它、这张图片最重要的是什么。</p>
@@ -5263,7 +5263,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'webp-to-jpg-guide': {
     title: 'WebP转JPG完全指南',
-    description: '把WebP图片转回JPG，解决兼容性问题。填充色、画质设置、批量转换，以及JPG什么时候真的比WebP更合适。',
+    description: '把WebP图片转回JPG，解决兼容性问题。填充色、画质设置、批量转换，以及JPG什么时候真的比WebP更合适，讲清之后，老软件、表单和打印机面前也不再打不开图。还讲了填充色怎么选才自然、画质设多少最合适，以及批量转回JPG时怎样统一设置、避免一张一张重做。',
     body: `
 <p>WebP 是很适合网页的图片格式，直到你遇到一个不认它的系统。打印机、老软件，或者只接受 JPG 的上传表单，都会毫不客气地把 WebP 文件挡在门外。</p>
 <p>把 WebP 转成 JPG 就能解决这个问题。转出来的文件到处都能打开，从用了十年的旧笔记本到政务网站都一样，而且整个转换只要几秒钟。</p>
@@ -5372,7 +5372,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-webp-to-jpg': {
     title: '如何把WebP转换成JPG',
-    description: '几步把 WebP 图片转成 JPG：上传、选填充色、设置画质、下载，一个文件或一整批都可以。',
+    description: '几步把WebP图片转成JPG：上传、选填充色、设置画质、下载，一个文件或一整批都可以。转好的JPG到处都能打开，上传表单、发邮件和打印都不会再遇到兼容问题。还讲了填充色和画质的搭配、批量处理的操作，以及转完之后怎样检查图片有没有偏色或丢细节。很容易上手。',
     body: `
 <p>从网上下载的 WebP 图片，常常在你需要的软件里打不开。转成 JPG 不到一分钟就能搞定，转出来的文件到处都能用。</p>
 <p>唯一有点讲究的是透明度。JPG 存不了透明像素，转换前要先给透明区域选一个填充色。</p>
@@ -5488,7 +5488,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'webp-to-jpg-compatibility': {
     title: 'WebP转JPG：兼容性比压缩更重要的时候',
-    description: 'WebP 更小，但 JPG 到处都能打开。表单、打印机、邮件和老软件面前，兼容性比体积更重要。',
+    description: 'WebP更小，但JPG到处都能打开。表单、打印机、邮件和老软件面前，兼容性比体积更重要，看懂什么时候该把WebP转回JPG，免得文件到了对方手里打不开。还讲了哪些软件打不开WebP、表单和打印机最常见的问题，以及提前转成JPG能省掉的麻烦和返工。',
     body: `
 <p>单看纸面数据，WebP 是更好的格式。它比 JPG 更小、更清晰、能力更强，而且所有现代浏览器都支持它。可即便如此，很多场景下 JPG 依然是正确的选择。</p>
 <p>原因就是兼容性。当接收方或系统情况不明时，一个到处能打开的格式，胜过一个几乎到处能打开的格式。</p>
@@ -5598,7 +5598,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'png-to-webp-guide': {
     title: 'PNG转WebP完全指南',
-    description: '把 PNG 图片转成 WebP，文件更小，透明度还在。标志、图标、截图和头图——画质设置与最佳用法。',
+    description: '把PNG图片转成WebP，文件更小，透明度还在。标志、图标、截图和头图——画质设置与最佳用法，讲清之后，网站图片既轻巧又保留透明背景，加载也更快。还讲了透明度怎么检查、画质调到多少最合适，以及标志、图标和截图转WebP时各自要注意的细节。几分钟就学会。',
     body: `
 <p>PNG 是标志、图标和截图的常用格式，但它也很占体积。一张 PNG 头图可能有好几 MB，同样一张图转成 WebP，体积只有原来的零头。</p>
 <p>PNG 转 WebP 能保留让 PNG 好用的透明度，同时把文件大幅缩小。一次转换，两个格式的优点都占了。</p>
@@ -5707,7 +5707,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-png-to-webp': {
     title: '如何把PNG转换成WebP',
-    description: '几步把 PNG 图片转成 WebP：上传、设置画质、检查透明度、下载，一个标志或一整套图标都可以。',
+    description: '几步把PNG图片转成WebP：上传、设置画质、检查透明度、下载，一个标志或一整套图标都可以。转好的图片体积更小、透明背景完好，网站和应用里用起来都顺手。还讲了画质和透明度的检查方法、批量转换的操作，以及转完之后怎样确认图标边缘依然清晰干净。照着做即可。',
     body: `
 <p>PNG 标志很清晰，但也很重，一张 PNG 头图可能有好几 MB。转成 WebP 后透明度和锐利度都在，文件却大幅缩小了。</p>
 <p>每张图片的转换只要几秒钟，整套图标也可以一次转完。全部在浏览器里运行，不用安装任何东西。</p>
@@ -5829,7 +5829,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'png-vs-webp': {
     title: 'PNG vs WebP：透明度与文件大小对比',
-    description: 'PNG 与 WebP 对比：透明度、文件大小、文字锐利度、浏览器支持，以及标志、截图和照片分别该用哪个格式。',
+    description: 'PNG与WebP对比：透明度、文件大小、文字锐利度、浏览器支持，以及标志、截图和照片分别该用哪个格式。看懂两种格式的取舍，透明图和网页图都能选对格式。还按标志、截图和照片分了场景，讲清哪种格式更轻、哪种文字更锐利、哪种透明效果更可靠。操作起来很顺手。',
     body: `
 <p>PNG 和 WebP 都能存透明度，都能保持边缘锐利，在现代网页上都能用。差别在文件大小上，而 WebP 通常能赢下一大截。</p>
 <p>但 PNG 并没有过时。它更简单、更兼容，默认就是无损的，好几个场景里反而是更安全的选择。</p>
@@ -5944,7 +5944,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'webp-to-png-guide': {
     title: 'WebP转PNG完全指南',
-    description: '把 WebP 图片转成 PNG，不损失画质。透明度、编辑、兼容性，以及 PNG 什么时候是正确的目标格式。',
+    description: '把WebP图片转成PNG，不损失画质。透明度、编辑、兼容性，以及PNG什么时候是正确的目标格式，讲清之后，图片既能正常编辑，又能在更多软件里打开使用。还讲了无损转换的原理、透明度怎么保留，以及编辑和打印场景下PNG比WebP更顺手的具体原因。上手很快。',
     body: `
 <p>WebP 是很适合网页的格式，直到你需要编辑图片、打印它，或者在老软件里打开它。这时 PNG 就成了正确的目标。</p>
 <p>WebP 转 PNG 在实际意义上是无损的。像素原样保留，透明度得以保留，转换结果到处都能打开。</p>
@@ -6053,7 +6053,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-webp-to-png': {
     title: '如何把WebP转换成PNG',
-    description: '几步把 WebP 图片转成 PNG：上传、转换、检查透明度、下载，一个文件或一整批都可以。',
+    description: '几步把WebP图片转成PNG：上传、转换、检查透明度、下载，一个文件或一整批都可以。转好的PNG画质无损、透明背景完好，编辑、设计和打印都能直接用。还讲了批量转换的操作、透明度检查的方法，以及转完之后怎样确认图片在编辑软件里能正常打开。步骤很清晰。',
     body: `
 <p>网上来的 WebP 图片，常常要先变成 PNG 才能编辑、打印，或者在老软件里打开。转换只要几秒钟，结果是一份完美的副本。</p>
 <p>不用操心画质滑块，因为 PNG 是无损的。上传、转换、下载，像素原样保留。</p>
@@ -6170,7 +6170,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'webp-to-png-editing-compatibility': {
     title: 'WebP转PNG：编辑、透明度与兼容性',
-    description: '设计师为什么把 WebP 转成 PNG：编辑流程、透明度，以及与 Photoshop、Figma、Office 和打印的兼容性。',
+    description: '设计师为什么把WebP转成PNG：编辑流程、透明度，以及与Photoshop、Figma、Office和打印的兼容性。看懂设计工作里PNG的优势，图片进了编辑软件也不再处处受限。还讲了不同编辑软件对WebP的支持情况，以及转成PNG之后工作流程会顺畅在哪里。',
     body: `
 <p>WebP 是现代网页的格式，但设计世界依然靠 PNG 运转。Photoshop、Figma、PowerPoint 和打印店都原生处理 PNG，WebP 的支持还在追赶。</p>
 <p>把 WebP 转成 PNG，就是连接这两个世界的桥梁。像素原样保留，透明度得以保留，转换结果到处都能打开。</p>
@@ -6280,7 +6280,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'svg-to-png-guide': {
     title: 'SVG转PNG完全指南',
-    description: '把 SVG 标志和图标转成任意尺寸的 PNG。缩放、透明度、字体、渐变与限制，全部讲清楚。',
+    description: '把SVG标志和图标转成任意尺寸的PNG。缩放、透明度、字体、渐变与限制，全部讲清楚，标志想用多大就导出多大，清晰不模糊，社交头像和文档里都能用。还讲了字体和渐变怎么处理、导出尺寸怎么选，以及SVG转PNG时最常见的显示问题和解决办法。很容易上手。',
     body: `
 <p>SVG 标志可以放大到任意尺寸都不会糊，可一半需要用到它的地方都不接受 SVG。表单、邮件或老软件要的是 PNG，SVG 必须变成像素。</p>
 <p>把 SVG 转成 PNG 叫作栅格化，就是把矢量形状变成按你选的尺寸排列的固定像素网格。转出来的是一张普通的、到处能打开的图片。</p>
@@ -6389,7 +6389,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-svg-to-png': {
     title: '如何把SVG转换成PNG',
-    description: '把 SVG 标志和图标转成需要尺寸的 PNG：上传、选缩放比例、检查结果、下载，一个文件或一整套都可以。',
+    description: '把SVG标志和图标转成需要尺寸的PNG：上传、选缩放比例、检查结果、下载，一个文件或一整套都可以。导出的PNG边缘清晰、透明背景完好，哪里需要贴哪里。还讲了缩放比例怎么定、批量导出怎么操作，以及导出的PNG怎样检查边缘是否清晰、透明是否完好。几分钟就学会。',
     body: `
 <p>SVG 标志可以无限缩放，但很多地方还是只要 PNG。转换只要几秒钟，唯一真正重要的决定是输出尺寸。</p>
 <p>比例选对了，PNG 看起来完美。选错了，要么模糊，要么大得没必要。</p>
@@ -6505,7 +6505,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'svg-vs-png-vector-raster': {
     title: 'SVG vs PNG：矢量图与位图全面对比',
-    description: 'SVG 与 PNG 对比：矢量与位图、缩放、文件大小、透明度、浏览器支持，以及两种格式分别该用在什么时候。',
+    description: 'SVG与PNG对比：矢量与位图、缩放、文件大小、透明度、浏览器支持，以及两种格式分别该用在什么时候。看懂矢量图和位图的根本差别，标志和照片就不会选错格式。还按标志、插画和照片分了场景，讲清矢量图什么时候无可替代、位图什么时候更实用，选格式有据可依。',
     body: `
 <p>SVG 和 PNG 是标志与图形最重要的两种格式，工作方式却完全相反。SVG 用代码描述形状，PNG 存的是像素网格。</p>
 <p>这个差别决定了一切：图片怎么缩放、文件有多大、在哪里能用，以及什么时候该从一种格式转成另一种。</p>
@@ -6614,7 +6614,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'avif-to-jpg-guide': {
     title: 'AVIF转JPG完全指南',
-    description: '把现代网站上的 AVIF 图片转成 JPG。AVIF 是什么、为什么很多软件打不开、画质设置与透明度处理。',
+    description: '把现代网站上的AVIF图片转成JPG。AVIF是什么、为什么很多软件打不开、画质设置与透明度处理，讲清之后，网上保存的图片在任何设备和软件里都能正常打开。还讲了AVIF的压缩优势、为什么很多软件还打不开，以及画质和透明度设置怎样搭配才最稳妥。照着做即可。',
     body: `
 <p>AVIF 是网上最新的图片格式，也是大多数软件打不开的格式。从现代网站上下载一张漂亮的图片，你的看图软件、编辑器或上传表单却拒绝了它。</p>
 <p>把 AVIF 转成 JPG 就能解决这个问题。转出来的文件到处都能打开，从用了十年的旧笔记本到政务网站都一样，而且整个转换只要几秒钟。</p>
@@ -6723,7 +6723,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-avif-to-jpg': {
     title: '如何把AVIF转换成JPG',
-    description: '几步把 AVIF 图片转成 JPG：上传、设置画质、处理透明度、下载，一个文件或一整批都可以。',
+    description: '几步把AVIF图片转成JPG：上传、设置画质、处理透明度、下载，一个文件或一整批都可以。转好的JPG通用又清晰，老软件、表单和打印面前都不会再打不开。还讲了画质滑块怎么调、透明度怎么处理，以及批量转换时怎样统一设置、一次处理整批图片。操作起来很顺手。',
     body: `
 <p>从现代网站上下载的 AVIF 图片，常常在你需要的软件里打不开。转成 JPG 不到一分钟就能搞定，转出来的文件到处都能用。</p>
 <p>唯一有点讲究的是透明度，唯一的要求是一台能解码 AVIF 的现代浏览器。</p>
@@ -6839,7 +6839,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'avif-vs-jpg': {
     title: 'AVIF vs JPG：新一代格式与通用格式对比',
-    description: 'AVIF 与 JPG 对比：文件大小、画质、HDR、透明度、浏览器支持，以及上网和其他场景分别该用哪个格式。',
+    description: 'AVIF与JPG对比：文件大小、画质、HDR、透明度、浏览器支持，以及上网和其他场景分别该用哪个格式。看懂新格式的优势和短板，网站用图和日常分享都能选对格式。还按网站、手机相册和日常分享分了场景，讲清哪种格式更轻、哪种更清晰、哪种打开更方便。上手很快。',
     body: `
 <p>AVIF 是网上效率最高的图片格式，JPG 是兼容性最强的格式，没有之一。一个赢在技术，一个赢在普及，两者之间就是一场取舍。</p>
 <p>网站纷纷换成 AVIF，因为它能把图片体积减半。世界其他地方还在用 JPG，因为它到处能打开。</p>
@@ -6948,7 +6948,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'bmp-to-jpg-guide': {
     title: 'BMP转JPG完全指南',
-    description: '把 BMP 位图转成 JPG，体积缩小 90% 以上。BMP 文件为什么这么大、画质设置、扫描件与批量转换。',
+    description: '把BMP位图转成JPG，体积缩小90%以上。BMP文件为什么这么大、画质设置、扫描件与批量转换，讲清之后，沉甸甸的老图片和扫描件都能变轻，分享和存档都方便。还讲了BMP为什么这么占地方、扫描件转JPG要注意什么，以及批量处理老图片时怎样整理和存档。',
     body: `
 <p>BMP 是 Windows 上最古老的图片格式，也是最浪费的格式。一张 BMP 截图可能有 20MB，同样图片存成 JPG 只有 500KB，肉眼看不出区别。</p>
 <p>把 BMP 转成 JPG，是让老 Windows 图片重新好用的最快办法。文件缩小 90% 以上，转出来的结果到处都能打开。</p>
@@ -7057,7 +7057,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-bmp-to-jpg': {
     title: '如何把BMP转换成JPG',
-    description: '几步把 BMP 位图转成 JPG：上传、设置画质、预览节省的体积、下载，一个文件或一整文件夹扫描件都可以。',
+    description: '几步把BMP位图转成JPG：上传、设置画质、预览节省的体积、下载，一个文件或一整文件夹扫描件都可以。转好的图片轻了很多、画质依然够用，上传和存档都顺手。还讲了画质怎么选、预览里的节省幅度怎么看，以及整文件夹扫描件一次转完之后怎样检查和整理。步骤很清晰。',
     body: `
 <p>老 Windows 软件出来的 BMP 文件，可能比同样图片的 JPG 重二十倍。转换不到一分钟就能搞定，转出来的结果发送、上传和存储都容易得多。</p>
 <p>不用操心透明度，因为 BMP 文件是不透明的，唯一要做的决定就是画质设置。</p>
@@ -7173,7 +7173,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'bmp-vs-jpg-file-size': {
     title: 'BMP vs JPG：为什么BMP文件这么大',
-    description: 'BMP 与 JPG 对比：BMP 文件为什么这么大、JPG 能省多少、画质、颜色深度，以及每种格式什么时候还有意义。',
+    description: 'BMP与JPG对比：BMP文件为什么这么大、JPG能省多少、画质、颜色深度，以及每种格式什么时候还有意义。看懂两种格式的体积差别，就知道老图片为什么值得转成JPG。还按扫描件、截图和老照片分了类型，讲清每种图片转JPG能省多少、画质会不会受影响、值不值得转。',
     body: `
 <p>BMP 和 JPG 都是 Windows 时代的老格式，差别却大得惊人。一张 BMP 截图有 6MB，同样图片存成 JPG 只有 500KB，两张在屏幕上看起来一模一样。</p>
 <p>差别在压缩方式。BMP 几乎不压缩，JPG 却是为强力压缩而生的，这一个设计选择就解释了全部的体积差距。</p>
@@ -7282,7 +7282,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'rotate-flip-image-guide': {
     title: '图片旋转翻转完全指南：90度、180度、自定义角度一次讲清',
-    description: '在线旋转和翻转图片完全指南：90度、180度旋转、自定义角度、镜像自拍修正、EXIF方向问题修复，全程在浏览器本地完成。',
+    description: '在线旋转和翻转图片完全指南：90度、180度旋转、自定义角度、镜像自拍修正、EXIF方向问题修复，全程在浏览器本地完成。照片歪了、反了都能几秒修好，不用装软件。还讲了自定义角度怎么调、自拍镜像怎么修正，以及EXIF方向问题为什么总在上传之后才出现、怎么根治。',
     body: `
 <p>照片拍歪了，是最常见的图片问题。打开手机里刚拍的照片，却发现地平线变成了竖的；或者扫描的文件上下颠倒，根本没法读。</p>
 <p>旋转和翻转，就是解决这两个问题的办法。旋转是把整张图片转一个角度；翻转是把图片左右或上下镜像。</p>
@@ -7404,7 +7404,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-rotate-flip-image': {
     title: '如何旋转或翻转图片：手机电脑都能用的6步教程',
-    description: '几秒钟旋转或翻转任意图片：上传、选择90度、180度或自定义角度、水平或垂直翻转、预览并下载。',
+    description: '几秒钟旋转或翻转任意图片：上传、选择90度、180度或自定义角度、水平或垂直翻转、预览并下载。照片方向不对、自拍镜像反了，都能马上修好，修完直接下载使用。还讲了预览怎么确认方向、翻转和旋转能不能一起用，以及修好之后怎样保存、避免下次打开又歪回去。',
     body: `
 <p>一张歪照片，知道步骤后几秒钟就能修好。不用安装软件，不用注册账号，整个过程都在浏览器里完成。</p>
 <p>这篇教程会从上传讲到下载，一步步带你走完流程。包括90度快速旋转、自定义角度拉直、水平翻转修正镜像自拍。</p>
@@ -7528,7 +7528,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-orientation-exif-rotation': {
     title: '图片方向异常？EXIF旋转问题详解：为什么手机上正常、发出去就歪了',
-    description: '同一张照片，为什么手机上看着正常，传到网站上就歪了？EXIF方向原理详解，以及如何永久修复，让照片在任何地方都显示正常。',
+    description: '同一张照片，为什么手机上看着正常，传到网站上就歪了？EXIF方向原理详解，以及如何永久修复，让照片在任何地方都显示正常。看懂原因，歪照片一次修好不再复发。还讲了手机和电脑读取方向的不同、永久修复和临时旋转的区别，以及上传前怎样一次检查到位。很容易上手。',
     body: `
 <p>同一张照片，在手机上看着好好的，传到网站上却整个歪了。文件本身什么都没变，显示出来的图片却转了个方向。</p>
 <p>罪魁祸首是一小段元数据，叫EXIF方向信息。它是写在文件里的一条备注，记录了拍照时相机是怎么拿的，但不是每个程序都会读它。</p>
@@ -7650,7 +7650,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-cropper-guide': {
     title: '图片裁剪完全指南：比例、三分法、画质与常见错误',
-    description: '在线裁剪图片完全指南：长宽比、三分法构图、缩放、画质设置，以及头像、横幅和打印的裁剪方法。',
+    description: '在线裁剪图片完全指南：长宽比、三分法构图、缩放、画质设置，以及头像、横幅和打印的裁剪方法。裁掉多余部分、留住画面重点，一张图就能裁出头像、封面和打印版。还讲了三分法构图怎么用、缩放和画质怎么配合，以及头像、横幅和打印图裁剪时各自的尺寸要点。几分钟就学会。',
     body: `
 <p>裁剪是提升照片最快的方法。去掉干扰、收紧构图，还能把图片改成适合放上去的形状。</p>
 <p>每张照片里都藏着一个更好的版本。天空留白太多的广角照，裁掉多余空间就变成一张有力的竖构图；杂乱的截图，裁掉边缘立刻变得清晰易读。</p>
@@ -7767,7 +7767,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-crop-image': {
     title: '如何裁剪图片：5步裁出干净的头像、横幅与截图',
-    description: '几秒钟在线裁剪任意图片：上传、拖动选框、选择长宽比、检查尺寸，下载一张干净的裁剪图。',
+    description: '几秒钟在线裁剪任意图片：上传、拖动选框、选择长宽比、检查尺寸，下载一张干净的裁剪图。头像、横幅和证件照都能快速裁好，不用安装修图软件，手机上也能操作。还讲了选框怎么拖才精准、长宽比锁定有什么用，以及裁完之后怎样检查尺寸、直接下载就能用。照着做即可。',
     body: `
 <p>裁剪图片不到一分钟就能完成，步骤都知道的话。上传照片、框出想要的部分、下载结果，就这么简单。</p>
 <p>这篇教程会带你走完整个流程。包括选择长宽比、用网格改善构图、检查输出尺寸，以及选择合适的导出格式。</p>
@@ -7890,7 +7890,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-crop-ratios-explained': {
     title: '图片裁剪比例详解：1:1、4:3、16:9与自定义比例怎么选',
-    description: '裁剪比例是什么意思，该选哪一个？1:1、4:3、3:2、16:9与自定义比例详解，头像、打印、社交媒体全覆盖。',
+    description: '裁剪比例是什么意思，该选哪一个？1:1、4:3、3:2、16:9与自定义比例详解，头像、打印、社交媒体全覆盖。看懂每个比例的用途，裁图之前先选对，免得裁完还要重来。还按头像、打印和社交媒体给了推荐比例，讲清每个比例适合什么画面、裁错了会丢掉哪些重要内容。',
     body: `
 <p>每次裁剪都有一个比例，不管你选没选它。比例就是保留下来的矩形形状，它决定了图片能放在哪、看起来怎么样。</p>
 <p>正方形裁剪和宽幅裁剪不能互换。一个适合头像，另一个适合横幅，用错了，平台会替你重新裁剪。</p>
@@ -8007,7 +8007,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-watermark-guide': {
     title: '图片水印完全指南：文字水印、Logo水印与平铺防盗',
-    description: '在线给图片加水印完全指南：文字水印与Logo水印、平铺图案、透明度、位置，以及如何保护照片又不毁掉画面。',
+    description: '在线给图片加水印完全指南：文字水印与Logo水印、平铺图案、透明度、位置，以及如何保护照片又不毁掉画面。作品有了归属标记，分享出去也不怕被人直接拿走冒用。还讲了文字和Logo水印的区别、平铺图案怎么设，以及水印太淡没用、太浓毁图的平衡点在哪里。',
     body: `
 <p>水印是盖在图片上的一个标记，表明这张图是谁做的、归谁所有。可以是名字、标志，也可以是重复的图案，图片走到哪，水印就跟到哪。</p>
 <p>摄影师用水印保护客户样片，设计师用水印给作品打品牌，店铺用水印防止竞争对手盗用产品照片。</p>
@@ -8129,7 +8129,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-add-watermark-to-image': {
     title: '如何给图片加水印：6步教程（文字、Logo与平铺）',
-    description: '几分钟给任意图片加水印：文字或Logo、位置、透明度、大小与平铺图案，导出一张干净的带水印图片。',
+    description: '几分钟给任意图片加水印：文字或Logo、位置、透明度、大小与平铺图案，导出一张干净的带水印图片。照片和作品都能快速打上标记，保护版权又不破坏画面美感。还讲了位置和透明度怎么搭配、大小调到多少最合适，以及导出之前怎样预览、确认水印不挡住主体。操作起来很顺手。',
     body: `
 <p>给图片加水印只需要几分钟，图片走到哪，保护就跟到哪。不用设计软件，不用注册账号，整个过程都在浏览器里完成。</p>
 <p>这篇教程会一步步带你走完流程。包括文字水印和Logo水印、位置、透明度、大小，以及保护客户样片的平铺图案。</p>
@@ -8253,7 +8253,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'watermark-best-practices': {
     title: '图片水印最佳实践：位置、透明度、大小与品牌打法',
-    description: '正确给照片加水印的方法：位置规则、透明度范围、大小、颜色、平铺图案，以及既保护图片又不毁掉画面的品牌打法。',
+    description: '正确给照片加水印的方法：位置规则、透明度范围、大小、颜色、平铺图案，以及既保护图片又不毁掉画面的品牌打法。水印放得讲究，防盗用和好看可以同时做到。还讲了品牌水印的颜色和字体选择、不同照片上的位置规律，以及既防盗用又不破坏画面的实用分寸。上手很快。',
     body: `
 <p>好的水印应该保护作品，又不毁掉作品。这个平衡比看起来难：太淡的水印什么都保护不了，太重的水印会毁掉照片。</p>
 <p>最好的水印遵循几条简单规则，关于位置、透明度、大小和颜色。它们在你的作品里保持一致，在任何背景上都可读，而且不损坏图片就很难去掉。</p>
@@ -8370,7 +8370,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'blur-pixelate-image-guide': {
     title: '图片模糊与马赛克完全指南：遮脸、遮文字、遮细节',
-    description: '在线模糊与打码图片完全指南：用平滑模糊或马赛克遮住人脸、文字与细节，画笔模式与整图模式全讲清。',
+    description: '在线模糊与打码图片完全指南：用平滑模糊或马赛克遮住人脸、文字与细节，画笔模式与整图模式全讲清。隐私信息遮得严严实实，照片发出去也不用担心泄露。还讲了画笔和整图两种模式的区别、模糊强度怎么调，以及遮盖之后怎样检查、确认敏感信息真的看不见了。步骤很清晰。',
     body: `
 <p>照片里有些部分不该被分享。背景里的一张脸、信封上的地址、屏幕上的密码，一旦落到错误的人手里，都可能造成真实的伤害。</p>
 <p>模糊和打码是遮住这些细节的两种办法。两者都能让一个区域无法辨认，但看起来不同，保护效果也不同。</p>
@@ -8487,7 +8487,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-blur-pixelate-image': {
     title: '如何模糊或打码图片：遮脸、遮车牌、遮截图的6步教程',
-    description: '几分钟模糊或打码任意图片：用画笔画过人脸和文字，或整图模糊，然后导出一张干净的遮盖副本。',
+    description: '几分钟模糊或打码任意图片：用画笔画过人脸和文字，或整图模糊，然后导出一张干净的遮盖副本。人脸、车牌和敏感文字都能遮住，分享之前先把隐私处理好。还讲了画笔大小怎么选、整图模糊什么时候更合适，以及导出之前怎样放大检查、确认遮盖没有漏掉角落。很容易上手。',
     body: `
 <p>在照片里藏住一张脸或一个地址，只需要几分钟。画笔涂过敏感部位，检查结果，下载遮盖后的副本就行。</p>
 <p>这篇教程会带你走完整个流程。包括画笔模式与整图模式、模糊与打码、画笔大小，以及确认没有任何东西还可读的检查步骤。</p>
@@ -8611,7 +8611,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'blur-vs-pixelate-image': {
     title: '模糊 vs 马赛克：隐藏人脸、文字与细节，哪种更安全',
-    description: '用模糊还是打码？两种方法如何隐藏人脸、文字与数字，哪一种更安全，以及什么时候该结合使用、做好真正的遮盖。',
+    description: '用模糊还是打码？两种方法如何隐藏人脸、文字与数字，哪一种更安全，以及什么时候该结合使用、做好真正的遮盖。选对遮盖方式，隐私才真的藏得住，不会轻易被还原。还按人脸、文字和数字分了场景，讲清哪种遮盖更安全、哪种更容易被还原，以及两者结合使用的正确做法。',
     body: `
 <p>模糊和打码都能藏东西，但它们不是同一种工具。一个把区域柔化成平滑的色彩，另一个把它换成大块的色块。</p>
 <p>涉及隐私时，这个差别很重要。看着已经遮住的方法，可能还留着一张可认的脸或一个可读的词，选错了就等于暴露了你本来想藏的东西。</p>
@@ -8728,7 +8728,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'add-text-to-image-guide': {
     title: '图片加文字完全指南：标题、表情包、引用与标注',
-    description: '在线给图片加文字完全指南：标题、表情包、引用与标注，字体、颜色、描边与分层定位全讲清。',
+    description: '在线给图片加文字完全指南：标题、表情包、引用与标注，字体、颜色、描边与分层定位全讲清。不管是做海报、表情包还是加标注，文字都能放得好看又清晰好读。还讲了标题、表情包和标注的不同做法、字体和描边怎么搭配，以及文字分层定位时要注意的细节。几分钟就学会。',
     body: `
 <p>文字能把一张图片变成一条信息。说明文字解释照片内容，标题给它起名字，引用给它一个声音。</p>
 <p>给图片加文字是个简单的技能，用途却很多：社交帖子、表情包、演示文稿、产品标签和带标注的截图都离不开它。</p>
@@ -8845,7 +8845,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-add-text-to-image': {
     title: '如何在图片上加文字：6步做出标题、表情包与标注',
-    description: '几分钟给任意图片加文字：上传、输入说明文字、选择字体与大小、设置颜色与描边、定位图层并下载。',
+    description: '几分钟给任意图片加文字：上传、输入说明文字、选择字体与大小、设置颜色与描边、定位图层并下载。海报、表情包和社交配图都能快速做好，直接下载就能分享。还讲了字体大小和颜色怎么选、描边和阴影怎么加，以及定位图层之后怎样检查、确认文字没有挡住重点。照着做即可。',
     body: `
 <p>给照片加文字只需要几分钟。上传图片、输入文字、选字体和颜色、把文字放到合适的位置，就完成了。</p>
 <p>这篇教程会一步步带你走完整个流程。包括单个与多个图层、字体与大小的选择、描边与阴影，以及让文字保持锐利的导出设置。</p>
@@ -8969,7 +8969,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'text-on-images-readability-tips': {
     title: '图片文字可读性指南：字体、对比度与排版技巧',
-    description: '如何让图片上的文字清晰可读：字体选择、大小规则、对比度、描边、阴影、背景板，以及小屏幕测试方法。',
+    description: '如何让图片上的文字清晰可读：字体选择、大小规则、对比度、描边、阴影、背景板，以及小屏幕测试方法。文字和背景拉开对比，手机上看图也能一眼读清，不费眼睛。还讲了对比度怎么算、背景板什么时候该用，以及在小屏幕上测试的具体方法，确保手机上也能一眼读清。',
     body: `
 <p>照片上的文字只有让人读出来才有用。好看的说明文字淹没在复杂的背景里，还不如没有，因为它只会让观众着急。</p>
 <p>可读性不是品味问题。它来自对比度、大小、字体选择和位置，每一项都可以在发布前测试。</p>
@@ -9086,7 +9086,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-border-generator-guide': {
     title: '图片边框完全指南：纯色、拍立得与渐变光晕边框',
-    description: '在线给图片加边框完全指南：纯色、拍立得与渐变光晕边框，边框大小、圆角、阴影与颜色全讲清。',
+    description: '在线给图片加边框完全指南：纯色、拍立得与渐变光晕边框，边框大小、圆角、阴影与颜色全讲清。照片加个框立刻有了质感，发社交平台和打印出来都更好看。还讲了纯色、拍立得和渐变光晕的区别、圆角和阴影怎么搭配，以及不同风格适合什么样的照片和用途。操作起来很顺手。',
     body: `
 <p>边框是照片外面的一圈框。它把图片和周围环境分开，加一个收尾的点缀，让照片有一种完整的感觉。</p>
 <p>边框从摄影一开始就是其中的一部分。照片装裱在卡纸上，幻灯片放在框里，今天数字边框在屏幕上做的是同样的工作。</p>
@@ -9203,7 +9203,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-add-border-to-image': {
     title: '如何给图片加边框：6步做出纯色、拍立得与渐变边框',
-    description: '几分钟给任意图片加边框：上传、选样式、设置大小与颜色、加阴影、预览，下载一张带框的照片。',
+    description: '几分钟给任意图片加边框：上传、选样式、设置大小与颜色、加阴影、预览，下载一张带框的照片。简单几步就能让普通照片变精致，头像、相册和礼物配图都适用。还讲了样式和颜色怎么搭配、阴影加多少才自然，以及预览之后怎样微调、确认边框没有喧宾夺主。上手很快。',
     body: `
 <p>给照片加边框只需要几分钟。上传图片、选样式、设置大小和颜色，下载带框的结果就行。</p>
 <p>这篇教程会一步步带你走完整个流程。包括纯色、拍立得和渐变光晕样式，圆角、阴影，以及让画框保持好看的导出设置。</p>
@@ -9332,7 +9332,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-frames-borders-styles': {
     title: '图片相框与边框样式指南：社交、打印与产品照怎么选',
-    description: '哪种画框样式适合你的照片？极简、拍立得、画廊、渐变光晕与复古画框对比，社交媒体、打印与产品照片全覆盖。',
+    description: '哪种画框样式适合你的照片？极简、拍立得、画廊、渐变光晕与复古画框对比，社交媒体、打印与产品照片全覆盖。看懂每种风格的气质，照片配框一次就选对。还按社交媒体、打印和产品照片给了搭配建议，讲清每种画框的气质、适合的照片，以及容易踩的搭配误区。步骤很清晰。',
     body: `
 <p>画框会改变照片被观看的方式。同一张图片，配细白色边框、拍立得画框或发光渐变边，感觉像是三张不同的照片。</p>
 <p>选样式不只是装饰。画框定下氛围、表明场景，告诉观众这张照片是一段回忆、一件产品，还是一件艺术品。</p>
@@ -9454,7 +9454,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'round-image-corners-guide': {
     title: '图片圆角完全指南：半径、透明底与导出格式全讲清',
-    description: '在线给图片加圆角：圆角半径怎么选、单个圆角怎么调、圆形与胶囊形怎么做、透明底和纯色填充有什么区别，以及 PNG、WebP、JPG 该用哪个。',
+    description: '在线给图片加圆角：圆角半径怎么选、单个圆角怎么调、圆形与胶囊形怎么做、透明底和纯色填充有什么区别，以及PNG、WebP、JPG该用哪个。照片变圆角立刻更柔和现代。还讲了半径调到多少最自然、单个圆角和整圆的区别，以及透明底和纯色填充在不同用途下的选择方法。',
     body: `
 <p>圆角能让照片立刻变柔和。尖锐的直角矩形变成友好的圆角形状，放在现代屏幕、卡片和头像里都更顺眼。</p>
 <p>现在几乎所有 App 和网站都在用圆角。头像是圆的，卡片边缘是软的，按钮是胶囊形的，圆角照片放进去一点也不违和。</p>
@@ -9558,7 +9558,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-round-image-corners': {
     title: '怎么给图片加圆角：5步做出圆形头像和圆角卡片',
-    description: '几分钟给图片加圆角：上传、调半径、用单个圆角控制或整圆快捷按钮、选透明还是纯色填充，然后下载成品。',
+    description: '几分钟给图片加圆角：上传、调半径、用单个圆角控制或整圆快捷按钮、选透明还是纯色填充，然后下载成品。头像、卡片和网页配图都能快速做出圆角效果。还讲了半径滑块怎么调、单个圆角控制怎么用，以及选透明还是纯色填充之前要先想清楚图片用在哪里。很容易上手。',
     body: `
 <p>给照片加圆角只要几分钟。上传图片，拖一下滑块定好弧度，下载下来就是柔和的成品。</p>
 <p>这篇教程会一步步带你走完整个流程。包括半径滑块、单个圆角控制、整圆快捷按钮、填充选择，以及能保住透明角的导出格式。</p>
@@ -9772,7 +9772,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-brightness-editor-guide': {
     title: '图片亮度调整完全指南：提亮暗照片不发灰',
-    description: '在线调整图片亮度：亮度滑块怎么用、快捷预设怎么选、三种对比模式怎么看，以及暗照片怎么修才不会发灰。',
+    description: '在线调整图片亮度：亮度滑块怎么用、快捷预设怎么选、三种对比模式怎么看，以及暗照片怎么修才不会发灰。照片太暗或太亮都能调回来，画面自然不失真。还讲了亮度滑块和预设的搭配、三种对比模式怎么看，以及暗照片提亮时怎样避免画面发灰、丢细节。照着做就行。',
     body: `
 <p>亮度是最简单的修图操作，也是大家最先想到的办法。偏暗的照片变清楚了，发灰的照片有了层次，平淡的照片又活了过来。</p>
 <p>但亮度很容易调过头。推得太远，照片会变得又平又灰，高光部分一片死白，细节全没了。</p>
@@ -9876,7 +9876,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-adjust-image-brightness': {
     title: '怎么调图片亮度：5步修好偏暗照片',
-    description: '几分钟调好图片亮度：上传、拖滑块、试预设、前后对比检查，然后下载一张亮度自然、看着舒服的照片。',
+    description: '几分钟调好图片亮度：上传、拖滑块、试预设、前后对比检查，然后下载一张亮度自然、看着舒服的照片。暗照片提亮也不发灰，亮照片压暗也不丢细节。还讲了滑块拖到多少最合适、预设怎么试，以及前后对比检查时要看亮部、暗部和肤色有没有失真。操作简单，新手也能上手。',
     body: `
 <p>调亮度只要几分钟。上传照片，拖一下滑块，检查效果，下载提亮后的版本。</p>
 <p>这篇教程会一步步带你走完整个流程。包括滑块、快捷预设、对比模式，以及让成品看着自然的导出设置。</p>
@@ -9986,7 +9986,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'brightness-vs-exposure-vs-contrast': {
     title: '亮度、曝光和对比度有什么区别？一文讲清',
-    description: '亮度、曝光和对比度讲清楚：每个控制对照片做了什么、它们之间怎么互相影响，以及不同情况下该用哪一个。',
+    description: '亮度、曝光和对比度讲清楚：每个控制对照片做了什么、它们之间怎么互相影响，以及不同情况下该用哪一个。看懂三个控制的区别，修图时就不会越调越乱。还用同一张照片做了对照，讲清三个控制分别动了画面的哪一部分、叠加使用时应该先调哪一个。新手也能照着做。',
     body: `
 <p>亮度、曝光和对比度是每个修图软件都有的三个控制，很容易搞混。三个都能让照片变亮或者变暗，但做法完全不一样。</p>
 <p>用错了，结果反而更糟。需要对比度的照片只提亮，会看着发灰；需要亮度的照片只加对比度，会看着很生硬。</p>
@@ -10090,7 +10090,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-contrast-editor-guide': {
     title: '图片对比度调整完全指南：让照片更有层次',
-    description: '在线调整图片对比度：对比度滑块怎么用、快捷预设怎么选、三种对比模式怎么看，以及怎么加冲击力又不裁掉高光。',
+    description: '在线调整图片对比度：对比度滑块怎么用、快捷预设怎么选、三种对比模式怎么看，以及怎么加冲击力又不裁掉高光。照片层次更分明，亮部和暗部细节都还在。还讲了对比度滑块和预设的搭配、三种对比模式怎么看，以及加冲击力时怎样保护高光和阴影的细节。几分钟就学会。',
     body: `
 <p>对比度是照片最暗和最亮部分的差别。它决定了一张图看着有冲击力、很扎实，还是发灰、很平淡。</p>
 <p>对比度好的照片，阴影深、高光亮，层次感很清楚。对比度低的照片看着像蒙了一层雾，像是隔着雾拍的。</p>
@@ -10194,7 +10194,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-adjust-image-contrast': {
     title: '怎么调图片对比度：5步拯救发灰照片',
-    description: '几分钟调好图片对比度：上传、拖滑块、试预设、检查高光和阴影，然后下载一张有冲击力、层次分明的照片。',
+    description: '几分钟调好图片对比度：上传、拖滑块、试预设、检查高光和阴影，然后下载一张有冲击力、层次分明的照片。平淡的照片立刻有了立体感，看起来更通透。还讲了滑块怎么调、预设怎么试，以及检查高光和阴影时要注意什么，避免照片看起来过曝或死黑。新手也能照着做。',
     body: `
 <p>调对比度只要几分钟。上传照片，拖一下滑块，检查高光和阴影，下载更有冲击力的版本。</p>
 <p>这篇教程会一步步带你走完整个流程。包括滑块、快捷预设、对比模式，以及让成品看着自然的导出设置。</p>
@@ -10304,7 +10304,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'contrast-readability-text-over-photos': {
     title: '图片上的文字怎么才清晰？对比度与可读性指南',
-    description: '图片上的文字怎么才看得清：文字和背景的对比度、调暗、遮罩、底板，以及在小屏幕上测试的方法。',
+    description: '图片上的文字怎么才看得清：文字和背景的对比度、调暗、遮罩、底板，以及在小屏幕上测试的方法。文字从背景里跳出来，海报和封面在手机上也能一眼读清。还讲了调暗、遮罩和底板三种做法的区别、分别适合什么样的照片，以及小屏幕测试的具体步骤。新手也能照着做。',
     body: `
 <p>照片上的文字，只有看得清才有用。标题融进明亮的天空、说明文字混进深色的阴影，这样的文字等于白放。</p>
 <p>可读性靠的是对比度。文字和它后面背景的亮度差越大，字就越清楚。这个对比度可以从照片、从文字，或者从两边一起修。</p>
@@ -10403,7 +10403,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-saturation-editor-guide': {
     title: '图片饱和度调整完全指南：颜色鲜艳又不假',
-    description: '在线调整图片饱和度：饱和度滑块怎么用、快捷预设怎么选、柔和与黑白效果怎么做、肤色怎么保护，以及自然调色的办法。',
+    description: '在线调整图片饱和度：饱和度滑块怎么用、快捷预设怎么选、柔和与黑白效果怎么做、肤色怎么保护，以及自然调色的办法。颜色鲜艳又不假，照片看起来依然真实。还讲了饱和度滑块和预设的搭配、柔和与黑白效果怎么做，以及调色时怎样保护肤色、避免颜色失真。照着做即可。',
     body: `
 <p>饱和度是照片里颜色的浓烈程度。饱和度高的图片色彩鲜明、有冲击力，饱和度低的图片看着柔和、平淡，甚至完全是灰色的。</p>
 <p>饱和度调对了，照片才看着自然。太低，图片发灰、没精神；太高，草地绿得发光、皮肤变得橘红。</p>
@@ -10507,7 +10507,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-adjust-image-saturation': {
     title: '怎么调图片饱和度：5步让照片色彩自然生动',
-    description: '几分钟调好图片饱和度：上传、拖滑块、试预设、检查肤色，然后下载一张颜色自然、鲜艳的照片。',
+    description: '几分钟调好图片饱和度：上传、拖滑块、试预设、检查肤色，然后下载一张颜色自然、鲜艳的照片。灰蒙蒙的照片恢复生气，肤色也不会变得奇怪发红。还讲了滑块拖到多少最合适、预设怎么试，以及检查肤色和草地颜色时要注意什么，避免调得太假。操作简单，新手也能上手。',
     body: `
 <p>调饱和度只要几分钟。上传照片，拖一下滑块，检查颜色，下载更鲜艳的版本。</p>
 <p>这篇教程会一步步带你走完整个流程。包括滑块、快捷预设、肤色，以及让颜色看着自然的导出设置。</p>
@@ -10617,7 +10617,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'saturation-vs-vibrance': {
     title: '饱和度与鲜艳度有什么区别？自然调色指南',
-    description: '饱和度还是鲜艳度？两种控制对颜色的处理有什么不同，哪一种更保护肤色，以及怎么调出自然鲜艳的颜色，又不让草地变荧光。',
+    description: '饱和度还是鲜艳度？两种控制对颜色的处理有什么不同，哪一种更保护肤色，以及怎么调出自然鲜艳的颜色，又不让草地变荧光。看懂区别，调色就不会一不小心调过头。还用同一张照片做了对照，讲清两种控制对肤色、草地和天空的影响，以及日常调色先用哪一个更稳妥。操作起来很顺手。',
     body: `
 <p>饱和度和鲜艳度都能让颜色更浓，但做法不一样。一个是所有颜色一起提，另一个只提需要提的颜色。</p>
 <p>这个区别对自然照片很重要。饱和度提升可能让皮肤变橘、草地变荧光，鲜艳度提升却能保护本来就很浓的颜色。</p>
@@ -10721,7 +10721,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-filters-guide': {
     title: '图片滤镜完全指南：11种滤镜用法与强度控制',
-    description: '在线用照片滤镜：复古、棕褐、黑白 noir、暖色、冷色等 11 种风格怎么用，强度怎么控制，以及怎么保持统一风格。',
+    description: '在线用照片滤镜：复古、棕褐、黑白Noir、暖色、冷色等11种风格怎么用，强度怎么控制，以及怎么保持统一风格。一套照片用同一种滤镜，社交主页立刻整齐又好看。还讲了11种风格各自的气质、强度滑块怎么控制，以及一套照片怎样保持统一风格、看起来像同一组作品。',
     body: `
 <p>照片滤镜一点就能改变图片的氛围。它调整颜色、对比度和色调，把一张普通的快照变成有风格的照片。</p>
 <p>滤镜是摄影里最快的修图。点一下，照片就有了复古、戏剧、暖色或者冷色的感觉，不用手动调任何东西。</p>
@@ -10825,7 +10825,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-apply-photo-filters': {
     title: '怎么给照片加滤镜：5步做出统一风格',
-    description: '几分钟给照片加滤镜：上传、浏览 11 种风格、设好强度、和原图对照，然后下载一张风格统一的照片。',
+    description: '几分钟给照片加滤镜：上传、浏览11种风格、设好强度、和原图对照，然后下载一张风格统一的照片。不用装修图软件，手机和电脑上都能快速做出有质感的照片。还讲了风格怎么挑、强度设多少最合适，以及和原图对照时要看肤色、亮部和整体氛围有没有走样。上手很快。',
     body: `
 <p>给照片加滤镜只要几分钟。上传照片，选个风格，设好强度，下载风格化后的版本。</p>
 <p>这篇教程会一步步带你走完整个流程。包括滤镜网格、强度滑块、对比工具，以及让成品看着干净的导出设置。</p>
@@ -10935,7 +10935,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'photo-filters-compared': {
     title: '照片滤镜对比：11种滤镜怎么选？',
-    description: '11 种照片滤镜全对比：复古和棕褐、黑白和 Noir、暖色和冷色有什么不同，哪种风格适合人像、风景、美食和商品。',
+    description: '11种照片滤镜全对比：复古和棕褐、黑白和Noir、暖色和冷色有什么不同，哪种风格适合人像、风景、美食和商品。看懂每种滤镜的气质，选滤镜不再靠运气乱试。还按人像、风景、美食和商品给了推荐，讲清每种滤镜适合什么样的光线和氛围，选的时候不再乱试。步骤很清晰。',
     body: `
 <p>11 种滤镜，选择可不少。每种都会改变照片的氛围，选错了，好照片也可能看着廉价或者奇怪。</p>
 <p>把滤镜并排对比，是最快学会它们的办法。知道每种滤镜是干什么的，选择就快了，照片也有了统一风格。</p>
@@ -11039,7 +11039,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-color-picker-guide': {
     title: '图片取色器完整指南',
-    description: '用吸管工具从任意图片中取色，轻松获取 HEX、RGB、HSL 与 CMYK 颜色代码，支持放大镜、色板收藏与 CSS 导出——免费、免安装，浏览器里直接用。',
+    description: '用吸管工具从任意图片中取色，轻松获取HEX、RGB、HSL与CMYK颜色代码，支持放大镜、色板收藏与CSS导出——免费、免安装，浏览器里直接用。设计配色再也不用靠眼睛猜，取到的颜色精确又好用。还讲了放大镜怎么瞄准细节、色板怎么收藏整理，以及取到的颜色怎样用到设计和代码里。',
     body: `
 <p>每个设计师都遇到过这样的时刻：屏幕上看到一个颜色，想要它的准确色值。截图、照片、Logo 或者网站设计稿里可能藏着最完美的那个色调，但靠猜永远猜不准。</p>
 <p>图片取色器几秒钟就能解决这个问题。打开一张图片，对准任意一个像素，就能读到它的 HEX、RGB、HSL 与 CMYK 代码。</p>
@@ -11139,7 +11139,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-pick-color-from-image': {
     title: '如何从图片中取色：4 步搞定',
-    description: '4 步从任意照片、Logo 或截图中取到精确颜色：用放大镜瞄准、收藏色板、导出 CSS——免安装、不上传。',
+    description: '4步从任意照片、Logo或截图中取到精确颜色：用放大镜瞄准、收藏色板、导出CSS——免安装、不上传。喜欢的颜色点一下就能拿到代码，设计和开发时直接复制就能用。还讲了放大镜的使用技巧、色板收藏和导出的方法，以及取色之后怎样快速用到设计稿和样式表里。',
     body: `
 <p>你在照片或截图里找到了完美的颜色，现在需要它的色值。靠猜只会浪费时间，而且差一点点，放在原图旁边就会显得不对。</p>
 <p>本指南会用 4 个实际步骤带你从图片中取色：上传图片、用放大镜瞄准、保存颜色，再导出到你的项目里。</p>
@@ -11337,7 +11337,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-dimensions-checker-guide': {
     title: '图片尺寸检查器完整指南',
-    description: '批量检查图片尺寸：宽度、高度、宽高比、像素数、打印尺寸与透明度。支持最小值验证，可导出 CSV 或 JSON——免费、浏览器里直接用。',
+    description: '批量检查图片尺寸：宽度、高度、宽高比、像素数、打印尺寸与透明度。支持最小值验证，可导出CSV或JSON——免费、浏览器里直接用，整批图片合不合格一眼就能看出来。还讲了最小值验证怎么设、CSV和JSON报告怎么读，以及整批图片里不合格的怎样快速找出来、单独处理。',
     body: `
 <p>一张图片在你的屏幕上看起来完美无缺，上传的那一刻却可能失败。电商平台因为太小而拒绝它，印刷厂把它裁得面目全非，或者网站把它拉伸成一片模糊。</p>
 <p>原因几乎总是尺寸：以像素为单位的宽度和高度。大多数人直到出问题才去查尺寸，而那时截止日期已经很紧了。</p>
@@ -11430,7 +11430,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-check-image-dimensions': {
     title: '如何查看图片尺寸：批量检查 5 步',
-    description: '查看任意图片的宽度、高度、宽高比与打印尺寸——单个文件或整批都可以。5 个步骤，最后导出 CSV 或 JSON 报告。',
+    description: '查看任意图片的宽度、高度、宽高比与打印尺寸——单个文件或整批都可以。5个步骤，最后导出CSV或JSON报告，上传之前先确认尺寸，免得传上去才发现不合要求。还讲了单个和批量两种做法、报告里的数字怎么读，以及尺寸不合要求时下一步应该调整还是重新导出。',
     body: `
 <p>上传、印刷或交给客户之前，你需要知道一张图片真实的像素大小。文件名不会告诉你，缩略图也会骗人。</p>
 <p>本指南会用 5 个步骤教你检查图片尺寸，单个图片或整批图片都适用。大约一分钟就能完成，最后还能得到一份可以分享的报告。</p>
@@ -11530,7 +11530,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-dimensions-vs-resolution-vs-file-size': {
     title: '图片尺寸、分辨率与文件大小的区别',
-    description: '尺寸、分辨率和文件大小是三个不同的数字。了解每个数字的含义、它们之间的关系，以及在网页、印刷和社交媒体上哪个更重要。',
+    description: '尺寸、分辨率和文件大小是三个不同的数字。了解每个数字的含义、它们之间的关系，以及在网页、印刷和社交媒体上哪个更重要，选图、压图和打印时就不会再搞混。还用具体例子讲清了三个数字的关系，说明改尺寸、改分辨率和压缩文件分别会影响哪一个、不会影响哪一个。',
     body: `
 <p>三个数字描述着每一张图片，人们却经常把它们混淆。尺寸、分辨率和文件大小听起来有关联，但每个数字衡量的东西都不一样。</p>
 <p>这种混淆会造成真实的错误。有人买了高像素的相机，却不明白为什么印出来的照片发软；有人压缩了文件，却不明白为什么还是上传不上去。</p>
@@ -11623,7 +11623,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-dpi-changer-guide': {
     title: '图片 DPI 修改器完整指南',
-    description: '无损修改图片 DPI：72 到 600 DPI 预设、最高 2400 的自定义值、批量打包 ZIP 导出，还有已验证 DPI 徽章——免费、浏览器里直接用。',
+    description: '无损修改图片DPI：72到600DPI预设、最高2400的自定义值、批量打包ZIP导出，还有已验证DPI徽章——免费、浏览器里直接用。打印店要的DPI几分钟就能改好，不用重拍重做。还讲了预设和自定义值怎么选、批量导出怎么整理，以及已验证徽章代表什么意思。',
     body: `
 <p>你的照片像素对、大小对、样子也对，印刷厂或投稿平台却拒绝了它。原因常常是藏在文件里的一个数字：DPI 值。</p>
 <p>DPI 告诉软件，打印时像素要以多大的密度排列。同一组像素标为 72 DPI，在印刷系统眼里像一张海报；标为 300 DPI，才像正常的一页纸。</p>
@@ -11712,7 +11712,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-change-image-dpi': {
     title: '如何修改图片 DPI：72 / 150 / 300 / 600 一步到位',
-    description: '4 步把图片 DPI 改成 72、150、300 或 600——或 1 到 2400 之间的任意自定义值。支持批量处理、ZIP 下载和已验证 DPI 徽章。',
+    description: '4步把图片DPI改成72、150、300或600——或1到2400之间的任意自定义值。支持批量处理、ZIP下载和已验证DPI徽章，打印和报名要的DPI都能一次改好，像素完全不动。还讲了不同用途该选哪个DPI值、批量处理的操作，以及改完之后怎样确认像素一点都没动。',
     body: `
 <p>你的图片已经准备好了，但平台要求 300 DPI，而你的文件写着 72，或者什么都没写。一旦知道步骤，修复不到一分钟。</p>
 <p>本指南会用 4 个实际步骤带你修改图片 DPI：上传、选择数值、验证徽章、下载。还会讲批量处理、截图，以及容易让人绊倒的常见问题。</p>
@@ -11807,7 +11807,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'dpi-vs-ppi-print-web': {
     title: 'DPI 与 PPI 的区别：打印与网页分别看什么',
-    description: 'DPI 和 PPI 听起来很像，衡量的却是不同的东西。了解哪个对印刷重要、哪个对屏幕重要，以及 72 DPI 与 300 DPI 为什么让所有人困惑。',
+    description: 'DPI和PPI听起来很像，衡量的却是不同的东西。了解哪个对印刷重要、哪个对屏幕重要，以及72DPI与300DPI为什么让所有人困惑，看懂之后，打印设置再也不会选错数字。还讲了72DPI和300DPI的常见误解、打印店到底看哪个数字，以及网页图片为什么不用纠结DPI。',
     body: `
 <p>DPI 和 PPI 是图像领域最容易混淆的一对概念。人们把它们混着用，工具的标注也不一致，结果就是一堆错误的建议。</p>
 <p>这种混淆是有实际代价的。设计师给根本不需要的网页图片设置 300 DPI，印刷买家却接受了永远印不好的 72 DPI 文件。</p>
@@ -11900,7 +11900,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-to-base64-guide': {
     title: '图片转 Base64 完整指南',
-    description: '把任意图片转成 Base64：Data URL、原始字符串、HTML img 代码和 CSS url() 输出。了解 33% 的体积膨胀、什么时候该嵌入、什么时候该用链接。',
+    description: '把任意图片转成Base64：Data URL、原始字符串、HTML img代码和CSS url()输出。了解33%的体积膨胀、什么时候该嵌入、什么时候该用链接，小图标嵌进代码更方便，大图还是用链接。还讲了不同输出格式的用法、大小阈值怎么判断，以及嵌入之后缓存和加载的变化。',
     body: `
 <p>开发者常常需要把图片当作文字而不是文件来用。样式表里的图标、HTML 邮件里的 Logo，或者 JSON 数据里的图片，都需要把图片转换成字符。</p>
 <p>Base64 就是让这件事成为可能的编码。它把图片的二进制字节变成一串纯文本字符串，可以放进代码、标记和消息里。</p>
@@ -11993,7 +11993,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-image-to-base64': {
     title: '如何把图片转成 Base64：4 步完成',
-    description: '4 步把图片转成 Base64：上传、选择 Data URL、原始、HTML 或 CSS 输出，再复制或下载。支持 PNG、JPG、SVG、GIF、ICO。',
+    description: '4步把图片转成Base64：上传、选择Data URL、原始、HTML或CSS输出，再复制或下载。支持PNG、JPG、SVG、GIF、ICO，小图标和Logo转成代码就能直接嵌进网页和样式表里。还讲了四种输出格式分别适合什么场景、复制和下载怎么选，以及大图转Base64之前要先想清楚的事。',
     body: `
 <p>你需要把图片变成文字：样式表用的 Logo、邮件用的图标，或者 JSON 数据里的一张图片。知道步骤之后，转换大约一分钟就能完成。</p>
 <p>本指南会用 4 个步骤带你把图片转成 Base64：上传文件、选择输出格式、复制或下载字符串，再把它粘贴进代码。</p>
@@ -12087,7 +12087,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'base64-images-when-to-embed': {
     title: 'Base64 图片：什么时候该嵌入、什么时候不该',
-    description: '嵌入 Base64 图片能省请求，却要多花 33% 的字节，还无法单独缓存。了解大小阈值、缓存取舍和决策清单。',
+    description: '嵌入Base64图片能省请求，却要多花33%的字节，还无法单独缓存。了解大小阈值、缓存取舍和决策清单，看懂什么时候嵌进代码更划算，什么时候老老实实用图片链接更好。还给了一个决策清单，讲清多大的图片值得嵌入、多大的应该用链接，以及缓存和加载速度怎么权衡。',
     body: `
 <p>把图片嵌为 Base64 感觉像白捡的好处。少一次请求，不用管理单独的文件，图片在页面加载的那一刻就出现。</p>
 <p>这个好处是真实的，但不是免费的。嵌入的图片要多花三分之一的字节，无法单独缓存，还会让代码更难读、更难维护。</p>
@@ -12185,7 +12185,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'base64-to-image-guide': {
     title: 'Base64 转图片完整指南',
-    description: '把任意 Base64 字符串解码回图片。粘贴自动解码、支持 URL 安全变体、透明度预览，可下载 PNG、JPG、WebP 或原始格式。',
+    description: '把任意Base64字符串解码回图片。粘贴自动解码、支持URL安全变体、透明度预览，可下载PNG、JPG、WebP或原始格式，代码里的一长串字符几秒就能变回一张能看的图片。还讲了URL安全变体的处理、透明度预览怎么看，以及解码失败时最常见的原因和对应的检查方法。',
     body: `
 <p>一堵长长的文字墙出现在邮件、聊天消息或 API 响应里，里面藏着一张图片。这段文字是一个 Base64 字符串，图片正等着被解码出来。</p>
 <p>解码会把这个字符串变回原始的图片文件。这和编码正好相反，同样是无损的：解码出来的字节和编码进去的字节一模一样。</p>
@@ -12280,7 +12280,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-convert-base64-to-image': {
     title: '如何把 Base64 转成图片：4 步完成',
-    description: '4 步把 Base64 字符串转成图片：粘贴、预览、选择原始、PNG、JPG 或 WebP 格式，再下载。支持 URL 安全字符串和换行。',
+    description: '4步把Base64字符串转成图片：粘贴、预览、选择原始、PNG、JPG或WebP格式，再下载。支持URL安全字符串和换行，代码、邮件和文档里的图片数据都能快速还原成文件。还讲了粘贴之后预览怎么确认、不同输出格式怎么选，以及字符串里有换行或空格时应该怎么处理。',
     body: `
 <p>一段 Base64 字符串躺在你的剪贴板、邮件或 API 响应里，你需要它里面藏着的那张图片。知道步骤之后，转换大约一分钟就能完成。</p>
 <p>本指南会用 4 个步骤带你把 Base64 转成图片：粘贴字符串、查看预览、选择下载格式、保存文件。</p>
@@ -12381,7 +12381,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'base64-vs-image-files': {
     title: 'Base64 与图片文件对比：性能与使用场景',
-    description: 'Base64 字符串和图片文件用不同方式承载同一张图片。对比大小、速度、缓存与编辑，了解各自在什么时候更胜一筹。',
+    description: 'Base64字符串和图片文件用不同方式承载同一张图片。对比大小、速度、缓存与编辑，了解各自在什么时候更胜一筹，选对承载方式，网页加载和小图标处理都更顺手。还按小图标、大图和可编辑图片分了场景，讲清哪种承载方式更省请求、哪种更利于缓存和修改。很容易上手。',
     body: `
 <p>网页上的每张图片都以两种形式之一存在：一个有名字和 URL 的文件，或者一段嵌在代码里的 Base64 字符串。两者承载的像素相同，行为却大不相同。</p>
 <p>选错形式会损失性能、浪费带宽，或者把一次简单的更新变成痛苦的差事。选对形式，主要在于知道各自擅长什么。</p>
@@ -12481,7 +12481,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-color-palette-extractor-guide': {
     title: '图片配色提取器完整指南',
-    description: '从任意照片提取配色：3 到 12 个色板、按占比排序，支持 HEX、RGB、HSL、CSS 导出、JSON 与配色卡下载。',
+    description: '从任意照片提取配色：3到12个色板、按占比排序，支持HEX、RGB、HSL、CSS导出、JSON与配色卡下载。喜欢的照片一键变成可用配色，设计、海报和网站配色都有了灵感来源。还讲了占比百分比怎么读、配色卡怎么下载，以及提取的配色怎样用到设计稿里。',
     body: `
 <p>每个好的设计都从一套配色开始，而每套好的配色都从某个真实的地方开始：一张照片、一张品牌图，或者一个本身感觉就对的场景。</p>
 <p>配色提取器会为你找到图片里的主导颜色。它扫描像素，把它们归纳成重要的颜色，几秒钟就交给你一套排好序的配色。</p>
@@ -12576,7 +12576,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-extract-color-palette-from-image': {
     title: '如何从图片中提取配色：5 步完成',
-    description: '5 步从任意照片提取配色：上传、选择 3–12 个色板、读懂百分比，再复制 CSS 或 JSON——免费、浏览器里直接用。',
+    description: '5步从任意照片提取配色：上传、选择3–12个色板、读懂百分比，再复制CSS或JSON——免费、浏览器里直接用。照片里的主色和点缀色一次看清，设计时直接拿来就能用。还讲了色板数量怎么选、百分比代表什么意思，以及复制CSS或JSON之后怎样快速用到设计和代码里。',
     body: `
 <p>你有一张颜色很喜欢的照片，需要把这些颜色变成一套配色，用在网站、海报或品牌上。凭眼睛复制又慢又不准。</p>
 <p>本指南会用 5 个步骤带你从图片中提取配色：上传、选择色板数量、读懂百分比，再复制或下载结果。</p>
@@ -12672,7 +12672,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'color-palettes-from-photos-design': {
     title: '从照片提取配色：设计工作流程技巧',
-    description: '把照片变成真正好用的设计配色：60-30-10 规则、主色与强调色、对比度、品牌使用，以及让配色变浑浊的错误。',
+    description: '把照片变成真正好用的设计配色：60-30-10规则、主色与强调色、对比度、品牌使用，以及让配色变浑浊的错误。看懂配色比例和搭配方法，照片配色也能做出专业设计感。还讲了主色和强调色怎么分、对比度怎么检查，以及品牌配色使用时最容易犯的几个错误和避坑方法。',
     body: `
 <p>一张照片里已经包含一套好用的配色。光线、表面和主体共同作用，产生了彼此属于对方的颜色，好的设计师可以整套借用这种和谐。</p>
 <p>难的不是找到颜色，而是选择用哪些、用多少、舍弃哪些，让配色服务设计而不是和设计作对。</p>
@@ -12766,7 +12766,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'favicon-generator-guide': {
     title: 'Favicon 生成器完全指南：从 Logo 到完整图标包',
-    description: '关于网站图标的一切：Favicon 是什么、完整图标包需要哪些文件、如何用 Logo 生成图标包，以及如何在任意网站上安装。',
+    description: '关于网站图标的一切：Favicon是什么、完整图标包需要哪些文件、如何用Logo生成图标包，以及如何在任意网站上安装。小小图标让网站在标签页和收藏夹里一眼就能认出来。还讲了完整图标包里每个文件的用途、Logo准备时要注意的留白和清晰度，以及安装后怎样检查是否生效。',
     body: `
 <p>Favicon 是浏览器标签页里显示在页面标题旁边的小图标。它往往是访客注意到的第一个视觉细节，还会跟着你的网站进入收藏夹、历史记录和手机主屏幕。</p>
 <p>大多数访客不会刻意去想 Favicon 这回事。但图标缺失或者模糊，网站立刻显得没做完。一个清晰的图标能在别人读到正文之前，就传递出认真和专业的感觉。</p>
@@ -12861,7 +12861,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-create-favicon': {
     title: '如何制作 Favicon：一步步教你生成网站图标',
-    description: '几分钟就能用 Logo 做出 Favicon：准备源图片、设置留白和背景、在浅色与深色标签下预览，再把图标包安装到你的网站上。',
+    description: '几分钟就能用Logo做出Favicon：准备源图片、设置留白和背景、在浅色与深色标签下预览，再把图标包安装到你的网站上。做好的图标在浏览器标签页里清晰好看，品牌感立刻提升。还讲了源图片怎么准备、留白和背景怎么设，以及浅色和深色标签下预览时要注意的细节。',
     body: `
 <p>制作 Favicon 听起来很技术，其实只要用对工具，几分钟就能搞定。上传 Logo，调几个设置，下载一包文件，再把一小段代码加到网站上就行。这篇指南会按顺序带你走完每一步。</p>
 <p>开始之前只需要准备两样东西：一个 Logo 文件，以及对你网站文件的访问权限。方形 PNG 或 SVG 格式的 Logo 效果最好，尺寸越大结果越清晰。如果只有 JPG，也能用。</p>
@@ -12951,7 +12951,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'favicon-sizes-explained': {
     title: 'Favicon 尺寸全解析：从 16×16 到 512×512',
-    description: '每一个 Favicon 尺寸是做什么用的：16×16 标签图标、32×32 高清屏、180×180 苹果图标、192×192 与 512×512 安卓图标，以及 ICO 容器如何把它们串在一起。',
+    description: '每一个Favicon尺寸是做什么用的：16×16标签图标、32×32高清屏、180×180苹果图标、192×192与512×512安卓图标，以及ICO容器如何把它们串在一起。一次备齐所有尺寸，网站图标在任何设备上都清晰。还讲了缺了某个尺寸会怎样、ICO容器怎么打包，以及安装后怎样逐个检查。',
     body: `
 <p>Favicon 不是一张图，而是一组不同尺寸的图片，每个尺寸对应浏览器或设备里的一个位置。最小的是标签页用的 16×16 像素，最大的是安卓安装界面用的 512×512 像素。</p>
 <p>弄清楚每个尺寸用在哪里，能帮你避开两个经典问题：模糊的标签图标，以及发虚的主屏幕图标。这篇指南会从 16 像素讲到 512 像素，逐个说明完整图标包里的每个尺寸是做什么的。</p>
@@ -13046,7 +13046,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'add-background-to-image-guide': {
     title: '给图片添加背景完全指南：纯色、渐变与模糊背景',
-    description: '把任意照片或透明抠图放到纯色、双色渐变或模糊背景上：工具怎么工作、三种模式怎么选，以及如何为社交平台和网店调整画面。',
+    description: '把任意照片或透明抠图放到纯色、双色渐变或模糊背景上：工具怎么工作、三种模式怎么选，以及如何为社交平台和网店调整画面。抠好的图换个背景立刻能用，商品图和头像都更出片。还讲了纯色、渐变和模糊三种模式的区别、分别适合什么样的照片，以及为不同平台调整画面的要点。',
     body: `
 <p>抠掉背景的照片只完成了一半。透明抠图在使用之前，背后总得有点东西；一张普通的照片也常常需要一个合适的画框，才能放进要发布的地方。添加背景，就是把抠图变成成品图的那一步。</p>
 <p><a href="/zh/tupian-tianjia-beijing/">给图片添加背景</a>工具可以把任意照片或透明 PNG 放到纯色、双色渐变，或者它自身的模糊版本上。整个过程都在浏览器里完成，你的图片不会离开自己的设备。</p>
@@ -13146,7 +13146,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-add-background-to-image': {
     title: '如何给图片添加背景：几分钟做出成品图',
-    description: '几分钟就能给任意照片或透明抠图加上背景：选纯色、渐变或模糊背景，按正确的形状取景，再导出成品。',
+    description: '几分钟就能给任意照片或透明抠图加上背景：选纯色、渐变或模糊背景，按正确的形状取景，再导出成品。不用抠图软件，商品图、头像和社交配图都能快速换上新背景。还讲了三种背景模式怎么选、取景形状怎么定，以及导出之前怎样检查边缘和背景过渡是否自然。几分钟就学会。',
     body: `
 <p>给图片加背景是个很快的活，知道步骤就好。上传一张照片或透明抠图，选一个背景，定好画框形状，下载成品图就行。这篇指南会按顺序带你走完每一步。</p>
 <p>开始之前只需要准备一样东西：前景图片。可以是普通照片、透明 PNG 抠图、Logo 或截图。如果照片还带着杂乱的原始背景，先把它抠掉，新背景才能配上干净的抠图。</p>
@@ -13338,7 +13338,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-splitter-guide': {
     title: '图片分割器完全指南：网格、横条与竖条切分',
-    description: '把任意图片切成网格小块或长条：网格、横向与纵向三种模式怎么工作、预设、原分辨率导出，以及每种切分最适合什么用途。',
+    description: '把任意图片切成网格小块或长条：网格、横向与纵向三种模式怎么工作、预设、原分辨率导出，以及每种切分最适合什么用途。一张长图切开用，拼图、海报和社交排版都更灵活。还讲了网格、横向和纵向模式的区别、预设怎么选，以及原分辨率导出时要注意的文件大小和格式。',
     body: `
 <p>图片分割器能把一张图片切成好几个小块。这些小块可以拼成社交主页的网格，可以做成轮播图的长条，也可以切成多页打印一张大图。原图保持完整，分割器只是把它的各个部分交给你。</p>
 <p><a href="/zh/fenge-tupian/">图片分割器</a>可以把照片切成 N×M 的网格、横向长条或纵向长条，小块可以逐个下载，也可以打包成一个 ZIP。整个过程都在浏览器里完成，你的照片不会离开自己的设备。</p>
@@ -13438,7 +13438,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-split-image': {
     title: '如何分割图片：网格切分与条带切分全步骤',
-    description: '几分钟就能把任意图片切成网格小块或长条：上传、选择模式、设置行列数、检查切分线，再下载小块或 ZIP。',
+    description: '几分钟就能把任意图片切成网格小块或长条：上传、选择模式、设置行列数、检查切分线，再下载小块或ZIP。切好的图片原分辨率不变，拼图和分段发布都能直接用。还讲了行列数怎么定、切分线怎么检查，以及下载小块和ZIP两种方式分别适合什么样的用途。照着做即可。',
     body: `
 <p>切分图片是个很快的活：上传一张照片，选择怎么切，检查切分线，下载各部分就行。这篇指南会按顺序带你走完每一步，从第一次上传到拿到成品小块。</p>
 <p>开始之前只需要准备一样东西：你要切分的图片。分辨率高、尺寸大的源图能得到最好的小块，因为每张小块都按原始尺寸切割。源图小，小块就小，所以要用你手头最大的文件。</p>
@@ -13538,7 +13538,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'split-images-instagram-grid': {
     title: 'Instagram 九宫格拼图：切图、发布顺序与维护',
-    description: '把一张照片做成 Instagram 九宫格拼图：3×3 切分、方形源图的准备、发布顺序、拼图风格，以及如何让网格长期保持好看。',
+    description: '把一张照片做成Instagram九宫格拼图：3×3切分、方形源图的准备、发布顺序、拼图风格，以及如何让网格长期保持好看。一张大图切成九块发出去，主页立刻变成整齐的拼图墙。还讲了方形源图怎么准备、九张图的发布顺序，以及拼图做好之后怎样维护、避免以后发图打乱网格。',
     body: `
 <p>Instagram 九宫格拼图是把一张照片切成九块，在你的主页上拼成一张大图。打开你主页的访客能看到完整的图片，而每张小块在信息流里也是一张普通的帖子。这是使用切分图片最显眼的方式。</p>
 <p>这篇指南会讲完整的工作：准备方形源照片、切成 3×3、按正确的顺序发布小块，以及在发布新内容时保持网格完整。切分本身用<a href="/zh/fenge-tupian/">图片分割器</a>几分钟就能完成，真正决定效果的是前期的规划。</p>
@@ -13638,7 +13638,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'gif-maker-guide': {
     title: 'GIF 制作器完全指南：帧、时序与文件大小',
-    description: '用你的照片制作动态 GIF：GIF 制作器怎么工作、如何选择帧、设置时序、循环选项、画面适配、色彩画质，以及如何控制文件大小。',
+    description: '用你的照片制作动态GIF：GIF制作器怎么工作、如何选择帧、设置时序、循环选项、画面适配、色彩画质，以及如何控制文件大小。几张照片就能做成会动的表情包，分享到聊天里更有趣。还讲了帧数和时序怎么搭配、循环选项怎么选，以及文件太大时先调哪里最有效。',
     body: `
 <p>GIF 是由一系列静态图片组成的短循环动画。它没有声音，会一直重复或按设定的次数循环，几乎所有聊天应用、社交信息流和网站都支持。做得好的 GIF，两秒钟就能表达一段文字讲不清的东西。</p>
 <p><a href="/zh/zhizuo-gif/">GIF 制作器</a>可以在浏览器里把你的照片变成动态 GIF。上传两张或更多帧图片，设置每帧的时长，选择循环次数，下载一张没有水印的 GIF89a 文件。什么都不用上传到服务器。</p>
@@ -13738,7 +13738,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-make-gif-from-images': {
     title: '如何用图片制作 GIF：从选帧到分享全步骤',
-    description: '几分钟就能把你的照片变成动态 GIF：收集帧图片、上传、排序和设置时序、选择循环、预览，再下载一张可以直接分享的 GIF。',
+    description: '几分钟就能把你的照片变成动态GIF：收集帧图片、上传、排序和设置时序、选择循环、预览，再下载一张可以直接分享的GIF。照片动起来，表情包和教程演示都生动很多。还讲了帧图片怎么排序、时序设多少才自然，以及预览之后怎样微调、确认动图流畅又不太大。操作起来很顺手。',
     body: `
 <p>用图片做 GIF 是个很快的活：收集几张照片，上传作为帧，设置时序，下载动画就行。这篇指南会按顺序带你走完每一步，从选帧到分享成品 GIF。</p>
 <p>开始之前只需要准备一样东西：两张或更多要做成动画的图片。可以是照片、截图、产品图或插画。尺寸和形状接近的图片做出来的效果最平滑，工具也能处理尺寸混合的图片。</p>
@@ -13838,7 +13838,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'gif-frame-rate-file-size': {
     title: 'GIF 帧率与文件大小：流畅还是小巧，怎么取舍',
-    description: '每个 GIF 的核心取舍：帧率、帧数、尺寸和色彩调色板如何决定你的动画是流畅、是小巧，还是两者兼顾。',
+    description: '每个GIF的核心取舍：帧率、帧数、尺寸和色彩调色板如何决定你的动画是流畅、是小巧，还是两者兼顾。看懂四个因素的互相影响，动图既流畅又轻巧，不用在两者之间二选一。还讲了帧率、帧数、尺寸和调色板各自的影响、哪个对体积最大，以及四者之间怎样取舍才划算。',
     body: `
 <p>每个 GIF 都是流畅和体积之间的一次妥协。帧率越高，动作越流畅，文件也越大。文件越小，分享越快，但看起来可能一顿一顿。做 GIF 的本事，就是为每段动画找到这个平衡点。</p>
 <p>这篇指南会讲决定 GIF 文件大小的四个因素：帧率、帧数、尺寸和色彩调色板。说明每个因素如何与流畅度交换，以及怎么缩小 GIF 又不把它毁掉。</p>
@@ -13938,7 +13938,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-collage-maker-guide': {
     title: '照片拼图制作器完全指南：布局、间距与导出',
-    description: '几分钟就能做好照片拼图：网格与长条布局、拖动换位、可调分割线、间隙、圆角、背景颜色，以及最高 4000 像素的 JPG 或 PNG 导出。',
+    description: '几分钟就能做好照片拼图：网格与长条布局、拖动换位、可调分割线、间隙、圆角、背景颜色，以及最高4000像素的JPG或PNG导出。旅行照和生活照拼成一张大图，分享一次就讲完整件事。还讲了布局和间隙怎么搭配、背景颜色怎么选，以及导出4000像素大图时要注意的细节。',
     body: `
 <p>照片拼图能把好几张照片变成一张图。它把一组时刻放在一起展示：一次旅行、一个产品系列、一组前后对比，或者一次家庭聚会。一张拼图比一排单独的照片表达得更多，而且哪里能放单张图片，哪里就能放它。</p>
 <p><a href="/zh/tupian-pintu/">照片拼图制作器</a>提供 2×2 和 3×3 网格，以及纵向和横向长条布局，支持拖动换位、可调分割线、间隙、圆角，导出最高 4000 像素。整个过程都在浏览器里完成。</p>
@@ -14038,7 +14038,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-make-photo-collage': {
     title: '如何制作照片拼图：选图、排版到导出全步骤',
-    description: '几分钟就能做好一张照片拼图：选照片、选网格或长条布局、排列它们、设置间隙和背景，再导出一张可以直接分享的图片。',
+    description: '几分钟就能做好一张照片拼图：选照片、选网格或长条布局、排列它们、设置间隙和背景，再导出一张可以直接分享的图片。不用装修图软件，回忆拼成一张图就能发出去。还讲了照片怎么选、布局怎么定、间隙和背景怎么调，以及导出之前怎样检查、确认拼图没有裁掉重要内容。',
     body: `
 <p>做一张照片拼图是个很快的活：选几张照片、选一个布局、排列它们、导出一张图就行。这篇指南会按顺序带你走完每一步，从选照片到分享成品拼图。</p>
 <p>开始之前只需要准备一样东西：你要拼合的照片。光线接近的四到九张强照片能做出最好的拼图。一次旅行、一场活动或一个产品系列的照片，放在一起比随机混合的照片好得多。</p>
@@ -14139,7 +14139,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'collage-layouts-grids-mood-boards': {
     title: '拼图布局怎么选：网格、情绪板与故事排版',
-    description: '选对拼图布局：2×2 与 3×3 网格、纵向与横向长条、情绪板、故事布局、前后对比，以及无边框拼图。',
+    description: '选对拼图布局：2×2与3×3网格、纵向与横向长条、情绪板、故事布局、前后对比，以及无边框拼图。看懂每种布局适合讲什么故事，拼图不再只是把照片堆在一起。还按旅行、情绪板和前后对比给了搭配建议，讲清每种布局适合讲什么故事、照片数量多少最合适。上手很快。',
     body: `
 <p>布局是拼图的第一个决定，它决定了之后的一切。网格说照片是平等的，长条说它们是一个序列，情绪板说它们是一种感觉。同样的照片换个布局，讲的就是另一个故事。</p>
 <p>这篇指南会比较 <a href="/zh/tupian-pintu/">照片拼图制作器</a>提供的布局：2×2 和 3×3 网格、纵向和横向长条，以及由它们组合出来的自由风格，包括情绪板、故事布局和前后对比。</p>
@@ -14239,7 +14239,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-resizer-guide': {
     title: '图片尺寸调整器是什么？完整指南',
-    description: '了解图片尺寸调整器是做什么的：按像素和按百分比调整有什么区别，什么时候锁定长宽比，如何为网站、社交媒体和打印选择合适的尺寸。',
+    description: '了解图片尺寸调整器是做什么的：按像素和按百分比调整有什么区别，什么时候锁定长宽比，如何为网站、社交媒体和打印选择合适的尺寸。尺寸改对了，图片既清晰又合要求。还讲了按像素和按百分比的区别、长宽比锁定什么时候该开，以及不同用途下尺寸选错会带来什么问题。',
     body: `<p>图片尺寸调整器可以改变一张照片或图片的像素尺寸。一张 4000×3000 像素的照片，可以变成 1200×900、800×600，或者任何你需要的尺寸。画面里的内容和颜色不变，变的是它在屏幕上占用的空间。</p>
 <p>调整尺寸之所以重要，是因为几乎每个用途都有自己期望的尺寸。网站头图要宽图，头像要方形，电商商品图要统一规格。<a href="/zh/tiaozheng-tupian-chicun/">图片尺寸调整器</a>可以帮你改到这些尺寸，不用安装软件，也不用打开笨重的修图工具。</p>
 <p>这篇指南会讲清楚：调整尺寸到底做了什么，像素和百分比两种方式怎么用，长宽比锁定有什么作用，以及三种适配模式如何处理形状不匹配的图片。还会讲格式、画质、批量调整，以及那些让图片变模糊或变形的常见错误。</p>
@@ -14321,7 +14321,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-resize-image': {
     title: '如何在线调整图片尺寸',
-    description: '几分钟就能在线调整图片尺寸：上传、选按像素或按百分比、锁定长宽比、选预设、设好画质、下载——不用安装任何软件。',
+    description: '几分钟就能在线调整图片尺寸：上传、选按像素或按百分比、锁定长宽比、选预设、设好画质、下载——不用安装任何软件。头像、封面和打印图都能快速改到正确尺寸。还讲了预设怎么选、画质怎么设，以及调整之后怎样检查尺寸和清晰度、确认图片可以直接使用。步骤很清晰。',
     body: `<p>在线调整图片尺寸，会了步骤一分钟就能搞定。上传照片、选好尺寸、检查预览、下载结果。不用安装软件，不用注册账号，也不用等图片上传到服务器。</p>
 <p>这篇指南会在<a href="/zh/tiaozheng-tupian-chicun/">图片尺寸调整器</a>上一步步带你走完整个流程：从第一次上传，到最后下载。两种尺寸模式、长宽比锁定、预设、画质设置都会讲到，一张照片或一整批照片都能放心操作。</p>
 <p>看完你就知道：给网站、社交帖子或打印分别该选什么目标尺寸，以及使用前怎么检查结果。想先了解背后的原理，可以读<a href="/zh/blog/tupian-chicun-tiaozheng-wanquan-zhinan/">图片尺寸调整器是什么？完整指南</a>。</p>
@@ -14411,7 +14411,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'resize-vs-compress-image': {
     title: '调整图片尺寸和压缩图片有什么区别？',
-    description: '调整尺寸改变的是像素数量，压缩改变的是像素的存储效率。了解两者各自的作用、分别在什么时候用，以及为什么两个都做文件才最小。',
+    description: '调整尺寸改变的是像素数量，压缩改变的是像素的存储效率。了解两者各自的作用、分别在什么时候用，以及为什么两个都做文件才最小，看懂之后，图片处理再也不会只做一半。还讲了只做其中一个会怎样、两个一起做为什么文件最小，以及处理顺序不同会不会影响最终画质。',
     body: `<p>调整尺寸和压缩是让图片文件变小的两种办法，原理完全不同。调整尺寸是去掉像素，压缩是把像素存得更高效。很多人一直把两者混为一谈，结果图片要么还是太重，要么缩得比实际需要的还小。</p>
 <p>这篇指南会讲清楚：每一步到底做了什么，它们对画质和文件大小各有什么影响，什么时候只用一个、什么时候两个都要用。例子用的是<a href="/zh/tiaozheng-tupian-chicun/">图片尺寸调整器</a>和<a href="/zh/">图片压缩工具</a>，两个配合起来就是完整的活儿。</p>
 <p>先说结论：调整尺寸决定图片有多大，压缩决定每个像素占多少空间。想要文件尽可能小、又好用，通常两个都要做，而且顺序是先调整尺寸、再压缩。</p>
@@ -14498,7 +14498,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'bulk-image-resizer-guide': {
     title: '批量调整图片尺寸：完整指南',
-    description: '一次调整几十张图片：最大适配框、统一宽度、精确像素、百分比四种模式，防放大保护，预设尺寸，一键下载 ZIP——全程在浏览器里完成。',
+    description: '一次调整几十张图片：最大适配框、统一宽度、精确像素、百分比四种模式，防放大保护，预设尺寸，一键下载ZIP——全程在浏览器里完成。整批图片统一改尺寸，网店和博客更新快很多。还讲了四种模式分别适合什么情况、防放大保护有什么用，以及预设尺寸怎么选、ZIP下载后怎么整理。',
     body: `<p>批量图片尺寸调整器可以在一次操作里改变很多张图片的像素尺寸。不用一张张打开照片、输入尺寸、逐个下载，只要把整个文件夹拖进队列，选一个策略，所有结果打包成一个 ZIP 文件下载。</p>
 <p>这很重要，因为真正的图片工作很少只有一张照片。一次商品拍摄是四十张照片，一个博客文件夹是二十张，一本相册是一百张。<a href="/zh/piliang-tiaozheng-tupian-chicun/">批量图片尺寸调整器</a>把这种重复活变成一批处理，同一套设置稳定地套用到每个文件上。</p>
 <p>这篇指南会讲四种调整策略、预设尺寸、防放大保护、格式和画质控制，以及横竖混杂的批量怎么处理。还会讲隐私、ZIP 流程，以及批量调整和批量压缩的区别。</p>
@@ -14588,7 +14588,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-resize-multiple-images': {
     title: '如何一次调整多张图片的尺寸',
-    description: '一次调整多张图片：把一批图片拖进去，选最大适配框、统一宽度、精确尺寸或百分比，设好预设，检查结果，打包成一个 ZIP 下载。',
+    description: '一次调整多张图片：把一批图片拖进去，选最大适配框、统一宽度、精确尺寸或百分比，设好预设，检查结果，打包成一个ZIP下载。整批照片统一尺寸，不用一张一张重复改。还讲了四种模式怎么选、预设怎么设，以及检查结果时要看尺寸、比例和画质有没有哪一张出了问题。',
     body: `<p>二十张照片一张张调整，又慢又容易出错。同一个尺寸输二十遍，难免打错数字；二十个文件逐个下载，一下午就没了。批量调整几分钟就能完成，同一套设置套用到每张图片上。</p>
 <p>这篇指南会在<a href="/zh/piliang-tiaozheng-tupian-chicun/">批量图片尺寸调整器</a>上一步步带你走完流程：从准备文件夹，到下载 ZIP。四种策略、预设、画质设置都会讲到，还有那些能在用之前发现坏批次的检查方法。</p>
 <p>看完你就知道：一次商品拍摄、一个博客文件夹、一组社交图片，怎么一次处理完。想了解每种策略背后的原理，可以读<a href="/zh/blog/piliang-tiaozheng-tupian-chicun-wanquan-zhinan/">批量调整图片尺寸：完整指南</a>。</p>
@@ -14674,7 +14674,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'bulk-resize-presets-social-ecommerce-print': {
     title: '批量调整图片预设尺寸：社交媒体、电商与打印',
-    description: '为每个用途选对批量调整预设：社交媒体尺寸、电商方形图、博客宽度、缩略图、全高清和打印尺寸，以及什么时候该手动输入自定义尺寸。',
+    description: '为每个用途选对批量调整预设：社交媒体尺寸、电商方形图、博客宽度、缩略图、全高清和打印尺寸，以及什么时候该手动输入自定义尺寸。预设一次选对，整批图片都合乎平台要求。还按社交、电商、博客和打印给了推荐尺寸，讲清每个预设的用途、以及什么时候必须手动输入自定义尺寸。',
     body: `<p>每个用途想要的图片尺寸都不一样，预设就是直达正确尺寸的快捷方式。不用去查平台的数字、再一个个手输，点一下预设，尺寸自己就填好了。整批图片接着按这个尺寸处理。</p>
 <p>这篇指南会把批量调整器的预设和常见社交尺寸，对应到要求它们的那些地方：社交信息流、网店、博客、缩略图、屏幕和打印。还会讲预设什么时候不管用、手动输入自定义尺寸才是正确做法。</p>
 <p>预设省时间，但代替不了判断。预设给你的是画框，画框里装什么，取决于你的照片、你的策略和你的画质设置。看完指南，打开<a href="/zh/piliang-tiaozheng-tupian-chicun/">批量图片尺寸调整器</a>，把你的批量搭起来。</p>
@@ -14759,7 +14759,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-metadata-viewer-guide': {
     title: '图片元数据查看器：完整指南',
-    description: '了解图片元数据查看器能显示什么：从 EXIF 相机参数、GPS 坐标，到 PNG 和 WebP 文件块，教你如何在浏览器里私密地查看任意照片的隐藏信息。',
+    description: '了解图片元数据查看器能显示什么：从EXIF相机参数、GPS坐标，到PNG和WebP文件块，教你如何在浏览器里私密地查看任意照片的隐藏信息。照片背后藏了什么，看一眼就知道。还讲了EXIF、GPS和文件块分别藏在哪里、哪些字段最值得看，以及在浏览器里查看为什么不用担心隐私泄露。',
     body: `
 <p>你拍的每一张照片，都藏着一层看不见的信息。相机参数、拍摄时间、设备型号，有时甚至是你当时的精确位置，都跟着文件一起走，只是图片本身看不出来。</p>
 <p>图片元数据查看器就是把这层隐藏信息读出来，用通俗易懂的方式展示给你。它把原始的二进制文件头，变成一份真正能看懂的报告。</p>
@@ -14860,7 +14860,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-view-image-metadata': {
     title: '如何查看图片元数据',
-    description: '手把手教你查看图片元数据：在查看器里打开照片，读懂 EXIF 和 GPS 字段，导出 JSON 报告，并验证清理过的文件是否真的干净。',
+    description: '手把手教你查看图片元数据：在查看器里打开照片，读懂EXIF和GPS字段，导出JSON报告，并验证清理过的文件是否真的干净。照片的拍摄信息和隐私痕迹都能一次看清。还讲了EXIF和GPS字段怎么读、JSON报告里有什么，以及清理过的文件怎样验证、确认真的已经干净了。',
     body: `
 <p>查看图片元数据听起来很技术，其实不到一分钟就能完成。在查看器里打开照片、读报告，再决定里面有没有不该公开的内容，就这么简单。</p>
 <p>本指南会用免费的<a href="/zh/chakan-tupian-yuanshuju/">图片元数据查看器</a>一步步带你操作。它在浏览器里运行，无需账号，也不会上传你的照片。</p>
@@ -14971,7 +14971,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'exif-data-explained': {
     title: 'EXIF 数据详解：你的照片泄露了什么',
-    description: '深入了解 EXIF 数据：相机如何写入它，哪些字段会暴露你的位置和生活习惯，应用如何清理它，以及如何安全地读取和删除它。',
+    description: '深入了解EXIF数据：相机如何写入它，哪些字段会暴露你的位置和生活习惯，应用如何清理它，以及如何安全地读取和删除它。看懂照片里的隐藏信息，分享之前先把隐私关好。还讲了相机写入EXIF的过程、哪些字段最容易暴露隐私，以及读取和删除时各自要注意的安全细节。',
     body: `
 <p>一张照片展示的是一个瞬间。它的 EXIF 数据讲述的却是这个瞬间背后的故事：哪台相机拍的、什么时候拍的、在哪里拍的、用了什么参数。</p>
 <p>大多数人从来没有见过这一层信息。它悄悄地待在文件里，经历复制、转发和下载，直到被什么东西清理掉才消失。</p>
@@ -15069,7 +15069,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'remove-image-metadata-guide': {
     title: '删除图片元数据：完整指南',
-    description: '教你如何安全地删除图片元数据：会清理哪些内容，无损清理与画布重新编码的区别，批量清理、ZIP 导出，以及如何验证文件真的干净了。',
+    description: '教你如何安全地删除图片元数据：会清理哪些内容，无损清理与画布重新编码的区别，批量清理、ZIP导出，以及如何验证文件真的干净了。照片分享出去，位置和设备信息都不会跟着走。还讲了无损清理和重新编码的区别、批量清理的操作，以及清理之后怎样验证、确认文件真的干净了。',
     body: `
 <p>你分享的每一张照片都可能带有隐藏数据：你的位置、你的相机、你拍摄的确切时间。删除图片元数据，就是在别人读到这些数据之前，把它们从文件里拿掉。</p>
 <p>本指南会讲清楚元数据删除做了什么、该选哪种方法、如何清理一整批照片，以及如何验证结果。全文围绕免费的<a href="/zh/shanchu-tupian-yuanshuju/">删除图片元数据</a>工具展开，它完全在你的浏览器里运行。</p>
@@ -15170,7 +15170,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-remove-metadata-from-image': {
     title: '如何删除图片元数据',
-    description: '手把手教你删除图片元数据：上传照片，清理 EXIF 和 GPS，选择合适的清理方法，下载干净的文件，并验证结果。',
+    description: '手把手教你删除图片元数据：上传照片，清理EXIF和GPS，选择合适的清理方法，下载干净的文件，并验证结果。几分钟就能把照片里的位置和设备信息清干净，放心分享。还讲了两种清理方法怎么选、批量处理的操作，以及下载之后怎样验证、确认位置信息已经清掉了。',
     body: `
 <p>删除图片元数据不到一分钟就能完成。上传照片，工具清理隐藏数据，你下载一份干净的副本，就这么简单。</p>
 <p>本指南会用免费的<a href="/zh/shanchu-tupian-yuanshuju/">删除图片元数据</a>工具一步步带你操作。它在浏览器里运行，无需账号，也不会把你的照片上传到任何地方。</p>
@@ -15275,7 +15275,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'photo-privacy-gps-exif-risks': {
     title: '照片隐私：GPS、EXIF 与元数据风险',
-    description: '照片里的 GPS 坐标、EXIF 数据和隐藏元数据会泄露什么？本文讲清它们如何暴露你的位置和生活规律，以及阻止照片泄露的实用步骤。',
+    description: '照片里的GPS坐标、EXIF数据和隐藏元数据会泄露什么？本文讲清它们如何暴露你的位置和生活规律，以及阻止照片泄露的实用步骤。分享照片之前先清掉元数据，隐私才不会跟着照片走。还讲了位置泄露的具体方式、生活规律怎么被推断，以及分享之前最值得做的几步防护。',
     body: `
 <p>一张照片展示的是一个瞬间。它的元数据却能展示你住在哪里、孩子在哪所学校上学、家里什么时候没人。</p>
 <p>大多数人分享照片时，从来不检查文件里跟着走了什么。风险是看不见的，这正是它最容易被忽视的原因。</p>
@@ -15380,7 +15380,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'background-remover-guide': {
     title: '抠图完全指南：免费在线去除图片背景',
-    description: '什么是抠图工具？AI 如何认出照片里的主体，又怎样抠出一张干净的透明底图——免费、不用上传，直接在浏览器里完成。',
+    description: '什么是抠图工具？AI如何认出照片里的主体，又怎样抠出一张干净的透明底图——免费、不用上传，直接在浏览器里完成。商品图、头像和设计素材都能快速抠好，边缘干净又自然。还讲了AI识别主体的原理、头发和透明边缘怎么处理，以及抠完之后怎样检查、确认边缘干净自然。',
     body: `
 <p>抠图，就是把照片里的主体从背景中分离出来。抠完之后，你可以把主体放到任意背景上，也可以直接保留透明底。</p>
 <p>听起来像是设计师用昂贵软件才能干的活。如今，一个小小的 AI 模型在浏览器里几秒钟就能搞定，不用上传，不用注册账号。</p>
@@ -15477,7 +15477,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-remove-background-from-image': {
     title: '如何去除图片背景？6 步抠图并导出透明 PNG',
-    description: '6 步给图片去背景：选好照片、上传、检查抠图效果，再下载透明 PNG。全程免费，在浏览器里完成，照片不用上传。',
+    description: '6步给图片去背景：选好照片、上传、检查抠图效果，再下载透明PNG。全程免费，在浏览器里完成，照片不用上传，抠好的透明图放进设计、海报和商品图里都能直接用。还讲了选什么样的照片抠得最干净、效果不满意怎么换图重抠，以及透明PNG下载后怎样用到设计里。',
     body: `
 <p>给照片去背景，熟悉流程后不到一分钟就能完成。选一张好照片，上传，检查抠图效果，再下载下来。</p>
 <p>这篇指南会在 CompressMyPic 的<a href="/zh/quchu-beijing/">抠图工具</a>上带你走完整个流程，从第一次加载模型，到拿到成品文件。最常见的问题和解决办法也会一并讲到。</p>
@@ -15573,7 +15573,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'ai-background-removal-vs-manual-cutout': {
     title: 'AI 抠图 vs 手动抠图：速度、精度、费用全面对比',
-    description: 'AI 抠图又快又免费，照片还不用上传——但头发、玻璃和高要求图片，手动抠图仍然更胜一筹。速度、精度、费用和隐私，一次讲清楚。',
+    description: 'AI抠图又快又免费，照片还不用上传——但头发、玻璃和高要求图片，手动抠图仍然更胜一筹。速度、精度、费用和隐私，一次讲清楚，帮你判断哪种抠图方式更适合手头的图片。还按头发、玻璃和精细边缘分了情况，讲清AI和手动各自的胜负手、以及要求很高时怎样组合使用最划算。',
     body: `
 <p>把主体从照片里抠出来，有两种办法。AI 模型几秒钟就能搞定，或者由人亲手沿着轮廓一点一点描。</p>
 <p>两种办法最后都能得到一张透明底的图。差别在于速度、精度、费用和控制权，选哪一种，要看照片本身，也要看这个活儿的要求。</p>

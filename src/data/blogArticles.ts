@@ -5451,7 +5451,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'jpg-to-png-guide',
-      title: 'JPG to PNG: Complete Guide',
+      title: 'JPG to PNG for Lossless Editing',
       description: 'Convert JPG photos to PNG the right way. When it helps, why files get bigger, and how to use PNG for editing, text and graphics.',
       body: `
 <p>Converting a JPG to PNG feels like an upgrade. PNG sounds better, lossless sounds better, and the file looks more professional. The reality is more complicated than that.</p>
@@ -5588,7 +5588,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'how-to-convert-jpg-to-png',
-      title: 'How to Convert JPG to PNG',
+      title: 'How to Convert JPG to PNG Losslessly',
       description: 'Convert JPG images to PNG in seconds, one file or a batch of twenty. Upload, convert, compare, and download — all in your browser.',
       body: `
 <p>Converting a JPG to PNG is a simple job, but it is worth doing correctly. A proper conversion rewrites the file as a genuine PNG, not just a renamed JPG.</p>
@@ -5869,7 +5869,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'png-to-jpg-guide',
-      title: 'PNG to JPG: Complete Guide',
+      title: 'PNG to JPG: Shrink Screenshots Fast',
       description: 'Convert PNG screenshots and photos to JPG and shrink them dramatically. Matte colours, quality settings, batches and best uses explained.',
       body: `
 <p>Mac and Windows screenshots save as PNG by default, and those PNGs are enormous. A single screenshot can weigh 5MB, while the same image as a JPG weighs 500KB.</p>
@@ -6006,7 +6006,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'how-to-convert-png-to-jpg',
-      title: 'How to Convert PNG to JPG',
+      title: 'How to Convert PNG to JPG and Shrink It',
       description: 'Convert PNG screenshots and images to JPG in six steps. Pick a matte colour, set quality, preview, and download — one file or a batch.',
       body: `
 <p>A PNG screenshot can weigh ten times more than the same image as a JPG. Converting it takes less than a minute, and the result is far easier to send, upload, and store.</p>
@@ -6287,7 +6287,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'jpg-to-webp-guide',
-      title: 'JPG to WebP: Complete Guide',
+      title: 'JPG to WebP for Faster Websites',
       description: 'Convert JPG photos to WebP for faster websites. How much smaller, which quality to use, browser support, and when to keep JPG instead.',
       body: `
 <p>WebP is the format Google built to make the web faster, and it works. A JPG photo converted to WebP is typically 25 to 35 percent smaller, with no visible difference in quality.</p>
@@ -6430,7 +6430,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'how-to-convert-jpg-to-webp',
-      title: 'How to Convert JPG to WebP',
+      title: 'How to Convert JPG to WebP for Faster Pages',
       description: 'Convert JPG photos to WebP in a few steps. Upload, set quality, preview the savings, and download — one photo or a whole folder.',
       body: `
 <p>Converting a JPG to WebP is one of the easiest speed wins for a website. The photo looks the same, the file is a third smaller, and the page loads faster.</p>
@@ -6717,7 +6717,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'webp-to-jpg-guide',
-      title: 'WebP to JPG: Complete Guide',
+      title: 'WebP to JPG for Universal Compatibility',
       description: 'Convert WebP images back to JPG for compatibility. Matte colours, quality settings, batch conversion, and when JPG beats WebP for your use case.',
       body: `
 <p>WebP is a wonderful format for the web, until you meet a system that refuses it. A printer, an old program, or an upload form that lists only JPG will bounce a WebP file without explanation.</p>
@@ -6854,7 +6854,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'how-to-convert-webp-to-jpg',
-      title: 'How to Convert WebP to JPG',
+      title: 'How to Convert WebP to JPG for Any App',
       description: 'Convert WebP images to JPG in a few steps. Upload, pick a matte colour, set quality, and download — one file or a whole batch.',
       body: `
 <p>A WebP image downloaded from a website often refuses to open in the app you need. Converting it to JPG takes less than a minute, and the result works everywhere.</p>
@@ -7136,7 +7136,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'png-to-webp-guide',
-      title: 'PNG to WebP: Complete Guide',
+      title: 'PNG to WebP Without Losing Transparency',
       description: 'Convert PNG images to WebP for smaller files with transparency kept. Logos, icons, screenshots and hero images — settings and best uses.',
       body: `
 <p>PNG is the format of logos, icons, and screenshots, but it is also a heavy format. A PNG hero image can weigh several megabytes, while the same image as WebP weighs a fraction of that.</p>
@@ -7273,7 +7273,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'how-to-convert-png-to-webp',
-      title: 'How to Convert PNG to WebP',
+      title: 'How to Convert PNG to WebP in Seconds',
       description: 'Convert PNG images to WebP in a few steps. Upload, set quality, check transparency, and download — one logo or a whole icon set.',
       body: `
 <p>A PNG logo is crisp but heavy, and a PNG hero image can weigh several megabytes. Converting to WebP keeps the transparency and the sharpness while shrinking the file dramatically.</p>
@@ -7566,7 +7566,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'webp-to-png-guide',
-      title: 'WebP to PNG: Complete Guide',
+      title: 'WebP to PNG for Editing and Printing',
       description: 'Convert WebP images to PNG without losing quality. Transparency, editing, compatibility, and when PNG is the right target.',
       body: `
 <p>WebP is a great format for the web, until you need to edit the image, print it, or open it in an older program. That is when PNG becomes the right target.</p>
@@ -7703,7 +7703,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'how-to-convert-webp-to-png',
-      title: 'How to Convert WebP to PNG',
+      title: 'How to Convert WebP to PNG Losslessly',
       description: 'Convert WebP images to PNG in a few steps. Upload, convert, check transparency, and download — one file or a whole batch.',
       body: `
 <p>A WebP image from a website often needs to become a PNG before you can edit it, print it, or open it in an older program. Converting it takes seconds, and the result is a perfect copy.</p>
@@ -14710,7 +14710,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'image-to-base64-guide',
-      title: 'Image to Base64: Complete Guide',
+      title: 'Image to Base64: Embed Images in Code',
       description: 'Convert any image to Base64: Data URLs, raw strings, HTML img snippets, and CSS url() output. Learn the 33% overhead, when to embed, and when to link instead.',
       body: `
 <p>Developers often need an image as text rather than as a file. An icon inside a stylesheet, a logo inside an HTML email, or a picture inside a JSON payload all need the image converted into characters.</p>
@@ -14831,7 +14831,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'how-to-convert-image-to-base64',
-      title: 'How to Convert an Image to Base64',
+      title: 'How to Convert an Image to Base64 for Code',
       description: 'Convert an image to Base64 in four steps: upload, pick Data URL, raw, HTML, or CSS output, then copy or download. Works for PNG, JPG, SVG, GIF, and ICO.',
       body: `
 <p>You need an image as text: a logo for a stylesheet, an icon for an email, or a picture for a JSON payload. The conversion takes about a minute once you know the steps.</p>
@@ -15079,7 +15079,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'base64-to-image-guide',
-      title: 'Base64 to Image: Complete Guide',
+      title: 'Base64 to Image: Decode a String to a File',
       description: 'Decode any Base64 string back into an image. Auto-decode on paste, URL-safe variants, transparency preview, and PNG, JPG, WebP, or original-format download.',
       body: `
 <p>A long wall of text arrives in an email, a chat message, or an API response, and somewhere inside it is a picture. The text is a Base64 string, and the picture is waiting to be decoded.</p>
@@ -15202,7 +15202,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: '2026-11-17',
     en: {
       slug: 'how-to-convert-base64-to-image',
-      title: 'How to Convert Base64 to an Image',
+      title: 'How to Convert Base64 to an Image File',
       description: 'Convert a Base64 string to an image in four steps: paste, preview, pick Original, PNG, JPG, or WebP, and download. Handles URL-safe strings and line breaks.',
       body: `
 <p>A Base64 string sits in your clipboard, your email, or an API response, and you need the picture it contains. The conversion takes about a minute once you know the steps.</p>

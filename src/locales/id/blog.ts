@@ -7,7 +7,7 @@ import type { BlogArticleLocaleOverride } from '../../types/blog';
 export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   'compress-image-to-50kb-guide': {
     title: 'Kompres Gambar Menjadi 50KB: Panduan Lengkap',
-    description: 'Pelajari cara mengompres gambar apa pun menjadi 50KB tanpa merusaknya. Format, kualitas, portal pendaftaran, dan alat gratis di browser yang bisa mencapai targetnya.',
+    description: 'Pelajari cara mengompres gambar apa pun menjadi 50KB tanpa merusaknya. Format, kualitas, dan alat gratis di browser yang bisa mencapai targetnya.',
     body: `
 <p>Ada formulir daring yang sangat ketat. Mereka meminta foto di bawah 50KB dan menolak apa pun yang lebih besar, sebagus apa pun fotonya.</p>
 <p>Batas itu terdengar sangat kecil jika dibandingkan dengan foto dari ponsel masa kini. Satu jepretan saja bisa berbobot 4MB atau lebih, alias delapan puluh kali lipat dari batas tersebut.</p>
@@ -153,7 +153,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-compress-image-to-50kb': {
     title: 'Cara Kompres Gambar Menjadi 50KB',
-    description: 'Panduan langkah demi langkah yang praktis untuk mengecilkan foto apa pun di bawah 50KB: pilih file yang tepat, tentukan formatnya, dan perbaiki saat target tidak tercapai.',
+    description: 'Panduan praktis mengecilkan foto apa pun di bawah 50KB: pilih file yang tepat, tentukan formatnya, dan perbaiki saat target tidak tercapai.',
     body: `
 <p>Anda punya foto dan formulir yang menolak apa pun di atas 50KB. Perbaikannya hanya butuh sekitar dua menit begitu Anda tahu langkah-langkahnya.</p>
 <p>Panduan ini membawa Anda melewati seluruh prosesnya. Anda akan menyiapkan file sumber yang tepat, menjalankannya lewat alat kompres, memeriksa hasilnya, dan memperbaiki masalah umum yang menghentikan banyak orang.</p>
@@ -296,8 +296,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'image-size-50kb-vs-100kb-vs-200kb': {
-    title: '50KB vs 100KB vs 200KB: Ukuran Mana yang Harus Dipilih?',
-    description: 'Bandingkan gambar 50KB, 100KB, dan 200KB: perbedaan kualitas, kasus penggunaan terbaik, dan aturan sederhana untuk memilih ukuran yang tepat untuk portal apa pun.',
+    title: '50KB vs 100KB vs 200KB: Pilih yang Mana?',
+    description: 'Bandingkan gambar 50KB, 100KB, dan 200KB: perbedaan kualitas, kasus penggunaan terbaik, dan aturan sederhana memilih ukuran yang tepat.',
     body: `
 <p>Tiga angka mendominasi formulir unggah gambar: 50KB, 100KB, dan 200KB. Kelihatannya mirip, tetapi gambar yang dihasilkannya tidak sama.</p>
 <p>Salah pilih dan Anda bisa gagal mengunggah atau membuang kualitas tanpa alasan. Pilih yang tepat dan formulir menerima file Anda pada percobaan pertama.</p>
@@ -443,7 +443,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'compress-image-to-100kb-guide': {
-    title: 'Kompres Gambar Menjadi 100KB: Panduan Lengkap',
+    title: 'Kompres Gambar ke 100KB: Panduan Lengkap',
     description: 'Semua tentang mengompres gambar ke 100KB: kenapa ini titik idealnya, bagaimana kualitasnya bertahan, formatnya, dan alat gratis yang melakukannya.',
     body: `
 <p>Seratus kilobyte adalah ukuran file paling berguna di internet. Ia cukup kecil untuk formulir unggah apa pun dan cukup besar untuk tampak bagus.</p>
@@ -735,7 +735,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   '100kb-image-quality-formats': {
-    title: 'Kualitas Gambar 100KB: JPG vs PNG vs WebP di 100KB',
+    title: 'Kualitas Gambar 100KB: JPG vs PNG vs WebP',
     description: 'Format mana yang tampak paling bagus di 100KB? Perbandingan kualitas JPG vs PNG vs WebP yang detail, dengan panduan nyata untuk foto, grafis, dan teks.',
     body: `
 <p>Di 100KB, format yang Anda pilih menentukan seberapa bagus gambar itu tampak. Foto yang sama bisa renyah dalam satu format dan lembek dalam format lain.</p>
@@ -886,7 +886,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'compress-image-to-200kb-guide': {
-    title: 'Kompres Gambar Menjadi 200KB: Panduan Lengkap',
+    title: 'Kompres Gambar ke 200KB: Panduan Lengkap',
     description: 'Panduan lengkap mengompres gambar ke 200KB: kualitas, format, penggunaan e-commerce, blog, dan alat browser gratis yang mencapai targetnya.',
     body: `
 <p>Dua ratus kilobyte adalah titik tempat kompresi gambar berhenti menjadi kompromi dan mulai tidak terlihat. Pada ukuran ini, kebanyakan foto tampak sama dengan aslinya.</p>
@@ -1024,7 +1024,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-compress-image-to-200kb': {
     title: 'Cara Kompres Gambar Menjadi 200KB',
-    description: 'Langkah demi langkah: kompres foto apa pun menjadi 200KB untuk blog, toko, dan portal. Pilihan format, tips batch, dan perbaikan untuk target yang tidak tercapai.',
+    description: 'Langkah demi langkah: kompres foto apa pun menjadi 200KB untuk blog, toko, dan portal. Pilihan format, tips batch, dan perbaikan saat target tak tercapai.',
     body: `
 <p>Mengompres gambar menjadi 200KB hanya butuh sekitar dua menit. Prosesnya sederhana, tetapi beberapa pilihan di sepanjang jalan menentukan apakah hasilnya tampak hebat atau sekadar cukup.</p>
 <p>Panduan ini membahas setiap langkah. Anda akan menyiapkan file sumber, memilih format yang tepat, menjalankan kompresi, dan memeriksa hasilnya sebelum memakainya.</p>
@@ -1168,7 +1168,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   '200kb-image-job-portal-settings': {
-    title: 'Gambar 200KB untuk Portal Lowongan dan Formulir',
+    title: 'Gambar 200KB untuk Portal Lowongan',
     description: 'Siapkan gambar 200KB untuk portal lowongan, lamaran, dan formulir: aturan foto, pindaian dokumen, format, dan pengaturan yang lolos pada percobaan pertama.',
     body: `
 <p>Portal lowongan dan formulir lamaran sangat pemilih soal gambar. Mereka menetapkan batas ukuran file, aturan dimensi, dan daftar format, lalu menolak apa pun yang melanggarnya.</p>
@@ -1310,7 +1310,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'compress-image-to-500kb-guide': {
-    title: 'Kompres Gambar Menjadi 500KB: Panduan Lengkap',
+    title: 'Kompres Gambar ke 500KB: Panduan Lengkap',
     description: 'Panduan lengkap mengompres gambar ke 500KB: kualitas yang hampir seperti original, portofolio, presentasi, dan alat browser gratis.',
     body: `
 <p>Lima ratus kilobyte adalah ukuran untuk gambar yang harus tampak hampir sempurna. Pada ukuran ini, foto menyimpan detail halusnya, gradasi halusnya, dan teks tajamnya, sambil tetap membuang sebagian besar bobot aslinya.</p>
@@ -1447,7 +1447,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-compress-image-to-500kb': {
     title: 'Cara Kompres Gambar Menjadi 500KB',
-    description: 'Langkah demi langkah: kompres foto apa pun menjadi 500KB untuk portofolio, deck, dan galeri. Pilihan format, tips batch, dan perbaikan untuk target yang tidak tercapai.',
+    description: 'Langkah demi langkah: kompres foto apa pun menjadi 500KB untuk portofolio dan galeri. Pilihan format, tips batch, dan perbaikan saat target tak tercapai.',
     body: `
 <p>Mengompres gambar menjadi 500KB adalah pekerjaan kompresi paling mudah yang ada. Anggarannya longgar, kualitasnya tetap tinggi, dan prosesnya hanya butuh sekitar dua menit.</p>
 <p>Panduan ini membahas setiap langkah. Anda akan menyiapkan file sumber, memilih format yang tepat, menjalankan kompresi, dan memeriksa hasilnya sebelum memakainya.</p>
@@ -1597,7 +1597,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   '500kb-vs-1mb-image-quality': {
-    title: '500KB vs 1MB: Kualitas Gambar untuk Web dan Cetak',
+    title: '500KB vs 1MB: Kualitas untuk Web & Cetak',
     description: 'Bandingkan gambar 500KB dan 1MB: perbedaan kualitas yang terlihat, kecepatan muat, kapan setiap ukuran menang, dan cara memilih untuk web dan cetak.',
     body: `
 <p>Lima ratus kilobyte dan satu megabyte terdengar sangat berbeda. Yang satu separuh dari yang lain, jadi file yang lebih besar pasti tampak dua kali lebih bagus, bukan?</p>
@@ -2039,7 +2039,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'batch-image-compression-best-practices': {
-    title: 'Kompresi Gambar Massal: Alur ZIP dan Praktik Terbaik',
+    title: 'Kompresi Gambar Massal: Praktik Terbaik',
     description: 'Praktik terbaik untuk kompresi gambar massal: preset, pemeriksaan kualitas, penataan ZIP, penamaan, dan alur kerja untuk blog, toko, dan tim.',
     body: `
 <p>Kompresi batch mudah dimulai dan mudah dilakukan dengan salah. Batch yang ceroboh bisa menghasilkan lima puluh gambar yang lembut, ZIP yang berantakan, dan pagi yang dihabiskan untuk memperbaikinya.</p>
@@ -2185,7 +2185,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'target-file-size-compressor-guide': {
-    title: 'Kompres Gambar ke Ukuran File Target: Panduan Lengkap',
+    title: 'Kompres Gambar ke Ukuran File Target',
     description: 'Panduan lengkap mengompres gambar ke ukuran KB atau MB yang persis: target khusus, pencarian biner, penskalaan, dan kapan menggunakannya.',
     body: `
 <p>Kebanyakan alat kompres menawarkan ukuran tetap: 50KB, 100KB, 200KB, atau 500KB. Tetapi bagaimana jika portal Anda menuntut 80KB, atau 150KB, atau 1,5MB?</p>
@@ -2329,7 +2329,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-compress-image-to-exact-kb': {
     title: 'Cara Kompres Gambar ke Ukuran KB yang Tepat',
-    description: 'Langkah demi langkah: kompres gambar apa pun ke ukuran KB yang persis untuk batas portal yang tidak biasa. Ketik angkanya, jalankan pencarian, dan verifikasi hasilnya.',
+    description: 'Langkah demi langkah: kompres gambar apa pun ke ukuran KB yang persis untuk batas portal tak biasa. Ketik angka, jalankan pencarian, dan verifikasi hasil.',
     body: `
 <p>Portal Anda menginginkan 80KB. Bukan 50KB, bukan 100KB, tetapi tepat 80KB. Alat ukuran tetap tidak bisa membantu, dan menebak pengaturan kualitas tidak akan mencapai angka itu.</p>
 <p>Alat kompres ukuran file target menyelesaikan ini. Anda mengetik angka yang persis, dan alat mencari kualitas terbaik yang mendarat sedikit di bawahnya.</p>
@@ -2476,8 +2476,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'exact-kb-target-binary-quality-search': {
-    title: 'Target KB yang Tepat: Cara Kerja Pencarian Kualitas Biner',
-    description: 'Bagaimana pencarian kualitas biner menemukan gambar paling tajam pada ukuran KB yang persis: algoritmanya, langkah-langkahnya, penskalaannya, dan batas-batasnya.',
+    title: 'Target KB Tepat: Pencarian Kualitas Biner',
+    description: 'Bagaimana pencarian kualitas biner menemukan gambar paling tajam pada ukuran KB yang persis: algoritma, langkah, penskalaan, dan batasnya.',
     body: `
 <p>Bagaimana alat bisa mencapai ukuran file yang persis seperti 80KB tanpa menebak? Jawabannya adalah algoritma sederhana dan elegan yang disebut pencarian biner.</p>
 <p>Pencarian biner menemukan pengaturan kualitas terbaik untuk gambar Anda dalam beberapa pengujian saja. Ia tidak pernah menebak, tidak pernah puas dengan angka bulat, dan tidak pernah menyisakan kualitas.</p>
@@ -2757,7 +2757,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'how-to-optimize-images-for-website-speed': {
-    title: 'Cara Optimasi Gambar agar Website Lebih Cepat',
+    title: 'Optimasi Gambar agar Website Lebih Cepat',
     description: 'Langkah demi langkah: optimasi gambar untuk kecepatan website dengan preset, dimensi yang benar, pemuatan malas, dan tag HTML siap salin-tempel.',
     body: `
 <p>Gambar adalah bagian terberat dari kebanyakan website. Halaman yang termuat lambat biasanya punya gambar yang harus disalahkan, dan memperbaikinya adalah kemenangan kecepatan tercepat yang tersedia.</p>
@@ -2904,7 +2904,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'image-optimization-core-web-vitals': {
-    title: 'Optimasi Gambar untuk Core Web Vitals: LCP dan Ukuran File',
+    title: 'Optimasi Gambar untuk Core Web Vitals',
     description: 'Bagaimana optimasi gambar memperbaiki Core Web Vitals: LCP, CLS, dan INP dijelaskan, dengan perbaikan praktis untuk halaman yang lambat.',
     body: `
 <p>Core Web Vitals adalah skor kecepatan yang dipakai Google untuk menilai halaman Anda. Mereka mengukur seberapa cepat konten terbesar muncul, seberapa stabil tata letaknya, dan seberapa cepat halaman merespons.</p>
@@ -3345,7 +3345,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'gif-vs-webp-vs-mp4-animated': {
-    title: 'GIF vs WebP vs MP4: Perbandingan Gambar Animasi',
+    title: 'GIF vs WebP vs MP4: Animasi Dibandingkan',
     description: 'Bandingkan GIF animasi, WebP, dan MP4: ukuran file, kualitas, kompatibilitas, dan kapan memakai setiap format untuk animasi di web.',
     body: `
 <p>Tiga format bersaing untuk gambar animasi di web: GIF, WebP, dan MP4. Mereka tampak mirip di layar, tetapi ukuran filenya sangat berbeda.</p>
@@ -3731,7 +3731,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'image-format-conversion-quality-loss': {
-    title: 'Konversi Format Gambar: Apakah Kualitas Menurun dan Kapan Harus Mengonversi',
+    title: 'Konversi Format Gambar: Kualitas Menurun?',
     description: 'Apakah mengubah format gambar menurunkan kualitas? Format lossy vs lossless, konversi berulang, dan pengaturan yang menjaga foto tetap tajam.',
     body: `
 <p>Setiap konversi format mengubah cara gambar Anda disimpan, dan sebagian perubahan itu bersifat permanen. Memahami konversi mana yang menghilangkan kualitas, dan mana yang tidak, menyelamatkan Anda dari kerusakan foto secara perlahan.</p>
@@ -4121,7 +4121,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'jpg-to-pdf-vs-png-to-pdf': {
-    title: 'JPG ke PDF vs PNG ke PDF: Pengaturan Terbaik untuk Dokumen',
+    title: 'JPG ke PDF vs PNG ke PDF: Mana Terbaik?',
     description: 'Sebaiknya PDF Anda memakai gambar JPG atau PNG? Ukuran file, ketajaman teks, transparansi, dan pengaturan terbaik untuk setiap jenis dokumen.',
     body: `
 <p>Ketika Anda membuat PDF dari gambar, format gambar itu jauh lebih penting daripada yang diduga kebanyakan orang. Halaman JPG dan halaman PNG bisa tampak identik di layar, tetapi berperilaku sangat berbeda.</p>
@@ -4511,7 +4511,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'batch-image-conversion-workflow': {
-    title: 'Konversi Batch: Alur Kerja Folder dan Penamaan File',
+    title: 'Konversi Batch: Alur Folder & Penamaan File',
     description: 'Alur kerja yang bisa diulang untuk mengonversi ratusan gambar. Penyiapan folder, aturan penamaan, pemeriksaan kualitas, dan pengarsipan — untuk tim dan website.',
     body: `
 <p>Mengonversi segenggam gambar tidak membutuhkan sistem. Mengonversi ratusan gambar setiap minggu membutuhkan sistem, dan perbedaan antara alur kerja yang lancar dan kekacauan adalah beberapa kebiasaan sederhana.</p>
@@ -4905,7 +4905,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'heic-vs-jpg': {
-    title: 'HEIC vs JPG: Kompatibilitas, Kualitas, dan Ukuran File',
+    title: 'HEIC vs JPG: Kompatibilitas & Ukuran File',
     description: 'HEIC vs JPG dibandingkan secara jujur: ukuran file, kualitas gambar, kompatibilitas, dan format mana yang dipakai untuk foto, formulir, dan web.',
     body: `
 <p>HEIC dan JPG adalah dua format yang paling penting untuk foto ponsel. Yang satu modern dan efisien, yang lain tua dan universal, dan memilih di antara keduanya adalah pertukaran, bukan kemenangan yang jelas.</p>
@@ -5035,7 +5035,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'jpg-to-png-guide': {
-    title: 'JPG ke PNG: Panduan Lengkap',
+    title: 'JPG ke PNG: Master Lossless untuk Diedit',
     description: 'Ubah foto JPG ke PNG dengan cara yang benar. Kapan berguna, mengapa file jadi lebih besar, dan cara memakai PNG untuk mengedit, teks, dan grafis.',
     body: `
 <p>Mengonversi JPG ke PNG terasa seperti peningkatan. PNG terdengar lebih baik, lossless terdengar lebih baik, dan file tampak lebih profesional. Kenyataannya lebih rumit daripada itu.</p>
@@ -5166,7 +5166,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'how-to-convert-jpg-to-png': {
-    title: 'Cara Mengubah JPG ke PNG',
+    title: 'Cara Mengubah JPG ke PNG untuk Diedit',
     description: 'Ubah gambar JPG ke PNG dalam hitungan detik, satu file atau 20 file sekaligus. Unggah, konversi, bandingkan, lalu unduh — semua di browser.',
     body: `
 <p>Mengonversi JPG ke PNG adalah pekerjaan sederhana, tetapi layak dilakukan dengan benar. Konversi yang benar menulis ulang file sebagai PNG yang asli, bukan sekadar JPG yang diganti namanya.</p>
@@ -5305,7 +5305,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'jpg-vs-png-transparency': {
     title: 'JPG vs PNG: Kapan Transparansi Itu Penting',
-    description: 'JPG vs PNG dibandingkan: transparansi, ukuran file, ketajaman teks, dan foto. Pelajari kapan masing-masing format menang dan mengapa konversi tidak bisa menambah transparansi.',
+    description: 'JPG vs PNG: transparansi, ukuran file, ketajaman teks, dan foto. Kapan masing-masing menang dan mengapa konversi tak bisa menambah transparansi.',
     body: `
 <p>JPG dan PNG adalah dua format gambar tertua di web, dan keduanya memecahkan masalah yang berlawanan. JPG membuat foto menjadi kecil, sementara PNG menjaga grafis tetap sempurna dan transparan.</p>
 <p>Perbedaan yang paling disalahpahami di antara keduanya adalah transparansi. JPG sama sekali tidak bisa menyimpannya, dan PNG bisa, tetapi mengonversi JPG ke PNG tidak menciptakan transparansi secara ajaib.</p>
@@ -5435,7 +5435,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'png-to-jpg-guide': {
-    title: 'PNG ke JPG: Panduan Lengkap',
+    title: 'PNG ke JPG: Perkecil Screenshot & Foto',
     description: 'Ubah screenshot dan foto PNG ke JPG dan perkecil ukurannya secara drastis. Warna matte, pengaturan kualitas, batch, dan kegunaan terbaik dijelaskan.',
     body: `
 <p>Screenshot Mac dan Windows tersimpan sebagai PNG secara bawaan, dan PNG itu sangat besar. Satu screenshot bisa berbobot 5MB, sementara gambar yang sama sebagai JPG berbobot 500KB.</p>
@@ -5566,7 +5566,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'how-to-convert-png-to-jpg': {
-    title: 'Cara Mengubah PNG ke JPG',
+    title: 'Cara Mengubah PNG ke JPG: Matte & Kualitas',
     description: 'Ubah screenshot dan gambar PNG ke JPG dalam enam langkah. Pilih warna matte, atur kualitas, pratinjau, lalu unduh — satu file atau sekaligus.',
     body: `
 <p>Screenshot PNG bisa berbobot sepuluh kali lebih banyak daripada gambar yang sama sebagai JPG. Mengonversinya memakan waktu kurang dari satu menit, dan hasilnya jauh lebih mudah dikirim, diunggah, dan disimpan.</p>
@@ -5707,8 +5707,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'png-to-jpg-file-size-quality': {
-    title: 'PNG ke JPG: Penghematan Ukuran File dan Pengorbanan Kualitas',
-    description: 'Seberapa kecil hasil PNG ke JPG sebenarnya? Penghematan nyata berdasarkan jenis gambar, pengaturan kualitas yang melindungi teks, dan kapan pengorbanan itu tidak sepadan.',
+    title: 'PNG ke JPG: Hemat Ukuran, Jaga Kualitas',
+    description: 'Seberapa kecil hasil PNG ke JPG sebenarnya? Penghematan nyata per jenis gambar, pengaturan yang melindungi teks, dan kapan pengorbanan itu tak sepadan.',
     body: `
 <p>Konversi PNG ke JPG terkenal karena memperkecil file, tetapi penghematannya tidak sama untuk setiap gambar. Screenshot bisa turun 90 persen, sementara ikon sederhana bisa justru membesar.</p>
 <p>Memahami apa yang mendorong penghematan itu membantu Anda memprediksi hasilnya sebelum mengonversi, dan memilih pengaturan kualitas yang melindungi hal yang penting.</p>
@@ -5837,7 +5837,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'jpg-to-webp-guide': {
-    title: 'JPG ke WebP: Panduan Lengkap',
+    title: 'JPG ke WebP: Foto Lebih Kecil, Web Cepat',
     description: 'Ubah foto JPG ke WebP agar website lebih cepat. Seberapa kecil hasilnya, kualitas mana yang dipakai, dukungan browser, dan kapan tetap memakai JPG.',
     body: `
 <p>WebP adalah format yang dibuat Google untuk membuat web lebih cepat, dan format itu berhasil. Foto JPG yang dikonversi ke WebP biasanya 25 hingga 35 persen lebih kecil, tanpa perbedaan kualitas yang terlihat.</p>
@@ -5972,7 +5972,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'how-to-convert-jpg-to-webp': {
-    title: 'Cara Mengubah JPG ke WebP',
+    title: 'Cara Mengubah JPG ke WebP untuk Website',
     description: 'Ubah foto JPG ke WebP dalam beberapa langkah. Unggah, atur kualitas, periksa penghematannya, lalu unduh — satu foto atau satu folder penuh.',
     body: `
 <p>Mengonversi JPG ke WebP adalah salah satu kemenangan kecepatan termudah untuk website. Fotonya tampak sama, filenya sepertiga lebih kecil, dan halamannya dimuat lebih cepat.</p>
@@ -6112,7 +6112,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'jpg-vs-webp': {
-    title: 'JPG vs WebP: Ukuran File, Kualitas, dan Dukungan Browser',
+    title: 'JPG vs WebP: Ukuran, Kualitas & Browser',
     description: 'JPG vs WebP dibandingkan langsung: penghematan ukuran file, kualitas gambar, transparansi, dukungan browser, dan format mana yang dipakai di mana.',
     body: `
 <p>JPG sudah menguasai web selama tiga puluh tahun. WebP adalah penantang yang dibuat Google untuk menggantikannya, dan dalam hal efisiensi murni, WebP menang. Dalam hal kompatibilitas, JPG masih memegang mahkota.</p>
@@ -6245,7 +6245,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'webp-to-jpg-guide': {
-    title: 'WebP ke JPG: Panduan Lengkap',
+    title: 'WebP ke JPG: Buka di Mana Saja',
     description: 'Ubah gambar WebP ke JPG agar bisa dibuka di mana saja. Warna matte, pengaturan kualitas, konversi massal, dan kapan JPG lebih baik dari WebP.',
     body: `
 <p>WebP memang format yang bagus untuk website, sampai Anda bertemu sistem yang menolaknya. Printer, aplikasi lama, atau formulir unggah yang hanya menerima JPG akan menolak file WebP tanpa penjelasan.</p>
@@ -6372,7 +6372,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'how-to-convert-webp-to-jpg': {
-    title: 'Cara Mengubah WebP ke JPG',
+    title: 'Cara Mengubah WebP ke JPG dari Unduhan',
     description: 'Ubah gambar WebP ke JPG dalam beberapa langkah. Unggah, pilih warna matte, atur kualitas, lalu unduh — satu file atau satu batch sekaligus.',
     body: `
 <p>Gambar WebP yang diunduh dari website sering menolak dibuka di aplikasi yang Anda butuhkan. Mengubahnya ke JPG hanya butuh kurang dari satu menit, dan hasilnya bisa dipakai di mana saja.</p>
@@ -6509,7 +6509,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'webp-to-jpg-compatibility': {
-    title: 'WebP ke JPG: Saat Kompatibilitas Lebih Penting dari Kompresi',
+    title: 'WebP ke JPG: Kompatibilitas vs Kompresi',
     description: 'WebP lebih kecil, tapi JPG bisa dibuka di mana saja. Kapan kompatibilitas lebih penting daripada ukuran — formulir, printer, email, dan perangkat lunak lama.',
     body: `
 <p>WebP adalah format yang lebih baik di atas kertas. Ia lebih kecil, lebih tajam, dan lebih mumpuni daripada JPG, dan semua browser modern mendukungnya. Namun ada banyak situasi di mana JPG tetap menjadi pilihan yang tepat.</p>
@@ -6640,8 +6640,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'png-to-webp-guide': {
-    title: 'PNG ke WebP: Panduan Lengkap',
-    description: 'Ubah gambar PNG ke WebP untuk file yang lebih kecil dengan transparansi tetap terjaga. Logo, ikon, tangkapan layar, dan hero image — pengaturan dan kegunaan terbaiknya.',
+    title: 'PNG ke WebP: Transparansi Tetap, File Kecil',
+    description: 'Ubah PNG ke WebP agar file lebih kecil dan transparansi tetap terjaga. Logo, ikon, tangkapan layar, dan hero image — pengaturan dan kegunaan terbaik.',
     body: `
 <p>PNG adalah format untuk logo, ikon, dan tangkapan layar, tapi ia juga format yang berat. Gambar hero PNG bisa berbobot beberapa megabyte, sementara gambar yang sama sebagai WebP hanya sepersekian dari itu.</p>
 <p>Mengubah PNG ke WebP menjaga transparansi yang membuat PNG berguna, sekaligus mengecilkan file secara dramatis. Ini yang terbaik dari kedua format dalam satu konversi.</p>
@@ -6770,7 +6770,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'how-to-convert-png-to-webp': {
-    title: 'Cara Mengubah PNG ke WebP',
+    title: 'Cara Mengubah PNG ke WebP: Logo Tetap Tajam',
     description: 'Ubah gambar PNG ke WebP dalam beberapa langkah. Unggah, atur kualitas, periksa transparansi, lalu unduh — satu logo atau satu set ikon sekaligus.',
     body: `
 <p>Logo PNG memang tajam tapi berat, dan hero image PNG bisa berbobot beberapa megabyte. Mengubah ke WebP menjaga transparansi dan ketajaman sambil mengecilkan file secara dramatis.</p>
@@ -6910,7 +6910,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'png-vs-webp': {
-    title: 'PNG vs WebP: Transparansi dan Ukuran File Dibandingkan',
+    title: 'PNG vs WebP: Transparansi & Ukuran File',
     description: 'PNG vs WebP dibandingkan: transparansi, ukuran file, ketajaman teks, dukungan browser, dan format mana yang dipakai untuk logo, tangkapan layar, dan foto.',
     body: `
 <p>PNG dan WebP sama-sama menyimpan transparansi, sama-sama menjaga tepi tetap tajam, dan sama-sama berfungsi di web modern. Perbedaannya adalah ukuran file, dan WebP biasanya menang dengan selisih besar.</p>
@@ -7043,7 +7043,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'webp-to-png-guide': {
-    title: 'WebP ke PNG: Panduan Lengkap',
+    title: 'WebP ke PNG: Salinan Lossless untuk Diedit',
     description: 'Ubah gambar WebP ke PNG tanpa kehilangan kualitas. Transparansi, pengeditan, kompatibilitas, dan kapan PNG menjadi target yang tepat.',
     body: `
 <p>WebP adalah format yang bagus untuk web, sampai Anda perlu mengedit gambar, mencetaknya, atau membukanya di program lama. Saat itulah PNG menjadi target yang tepat.</p>
@@ -7173,7 +7173,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'how-to-convert-webp-to-png': {
-    title: 'Cara Mengubah WebP ke PNG',
+    title: 'Cara Mengubah WebP ke PNG untuk Dicetak',
     description: 'Ubah gambar WebP ke PNG dalam beberapa langkah. Unggah, konversi, periksa transparansi, lalu unduh — satu file atau satu batch sekaligus.',
     body: `
 <p>Gambar WebP dari website sering perlu menjadi PNG sebelum Anda bisa mengeditnya, mencetaknya, atau membukanya di program lama. Mengubahnya hanya butuh beberapa detik, dan hasilnya berupa salinan yang sempurna.</p>
@@ -7311,7 +7311,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'webp-to-png-editing-compatibility': {
-    title: 'WebP ke PNG: Editing, Transparansi, dan Kompatibilitas',
+    title: 'WebP ke PNG: Editing & Kompatibilitas',
     description: 'Kenapa desainer mengubah WebP ke PNG: alur kerja pengeditan, transparansi, dan kompatibilitas dengan Photoshop, Figma, Office, dan cetak.',
     body: `
 <p>WebP adalah format web modern, tapi dunia desain masih berjalan di atas PNG. Photoshop, Figma, PowerPoint, dan percetakan semuanya menangani PNG secara bawaan, sementara dukungan WebP masih menyusul.</p>
@@ -8105,7 +8105,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'avif-vs-jpg': {
-    title: 'AVIF vs JPG: Format Generasi Baru vs Format Universal',
+    title: 'AVIF vs JPG: Format Baru vs Universal',
     description: 'AVIF vs JPG dibandingkan: ukuran file, kualitas gambar, HDR, transparansi, dukungan browser, dan format mana yang dipakai untuk web dan lainnya.',
     body: `
 <p>AVIF adalah format gambar paling efisien yang pernah dibuat untuk web, dan JPG adalah format paling kompatibel yang pernah dibuat, tanpa kecuali. Satu menang dalam teknologi, yang lain menang dalam keberadaan di mana-mana, dan pilihan di antara keduanya adalah pertukaran.</p>
@@ -8631,8 +8631,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'rotate-flip-image-guide': {
-    title: 'Cara Memutar dan Membalik Gambar: Panduan Lengkap',
-    description: 'Pelajari cara memutar dan membalik gambar online: putaran 90 dan 180 derajat, sudut bebas, selfie terbalik, dan perbaikan orientasi EXIF, semua langsung di browser.',
+    title: 'Cara Memutar & Membalik Gambar Online',
+    description: 'Cara memutar dan membalik gambar online: putaran 90 dan 180 derajat, sudut bebas, selfie terbalik, dan perbaikan orientasi EXIF, semua langsung di browser.',
     body: `
 <p>Foto miring adalah salah satu masalah gambar yang paling sering terjadi. Anda membuka foto dari ponsel, lalu mendapati garis horizon berdiri tegak atau hasil scan dokumen yang terbalik.</p>
 
@@ -9038,7 +9038,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'image-orientation-exif-rotation': {
-    title: 'Orientasi Gambar: Masalah Rotasi EXIF Dijelaskan',
+    title: 'Orientasi Gambar: Masalah Rotasi EXIF',
     description: 'Mengapa foto yang sama terlihat benar di ponsel tetapi miring di tempat lain? Penjelasan orientasi EXIF, plus cara memperbaikinya secara permanen.',
     body: `
 <p>Foto yang sama bisa terlihat sempurna di ponsel Anda dan sepenuhnya miring di website. Tidak ada yang berubah dari file itu di antara kedua tampilan tersebut, tetapi gambarnya tampak berputar.</p>
@@ -9648,7 +9648,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'image-crop-ratios-explained': {
-    title: 'Rasio Crop Gambar Dijelaskan: 1:1, 4:3, 16:9, dan Khusus',
+    title: 'Rasio Crop Gambar: 1:1, 4:3, 16:9 & Khusus',
     description: 'Apa arti rasio crop, dan mana yang harus dipilih? Rasio 1:1, 4:3, 3:2, 16:9, dan rasio khusus dijelaskan untuk profil, cetak, dan media sosial.',
     body: `
 <p>Setiap potongan memiliki rasio, baik Anda memilihnya maupun tidak. Rasio adalah bentuk persegi yang Anda simpan, dan rasio menentukan tempat gambar cocok dan tampilannya.</p>
@@ -10257,8 +10257,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'watermark-best-practices': {
-    title: 'Tips Watermark Foto yang Benar: Penempatan, Opacity, dan Branding',
-    description: 'Cara memberi watermark pada foto dengan benar: aturan penempatan, rentang opacity, ukuran, warna, pola berulang, dan branding yang melindungi tanpa merusak gambar.',
+    title: 'Watermark Foto yang Benar: Tips Praktis',
+    description: 'Cara memberi watermark pada foto: aturan penempatan, rentang opacity, ukuran, warna, pola berulang, dan branding yang melindungi tanpa merusak gambar.',
     body: `
 <p>Watermark seharusnya melindungi karya Anda tanpa merusaknya. Keseimbangan itu lebih sulit dari yang terlihat, karena tanda yang terlalu samar tidak melindungi apa pun dan tanda yang terlalu kuat merusak foto.</p>
 
@@ -10860,7 +10860,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'blur-vs-pixelate-image': {
-    title: 'Blur vs Pixelate: Menyembunyikan Wajah, Teks, dan Detail',
+    title: 'Blur vs Pixelate: Sembunyikan Detail Foto',
     description: 'Blur atau pixelate? Bagaimana setiap metode menyembunyikan wajah, teks, dan angka, mana yang lebih aman, dan kapan menggabungkannya untuk sensor yang benar.',
     body: `
 <p>Blur dan pixelasi sama-sama menyembunyikan sesuatu, tetapi keduanya bukan tool yang sama. Satu melembutkan area menjadi sapuan warna yang halus, sedangkan satu lagi menggantinya dengan blok besar.</p>
@@ -11263,7 +11263,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-add-text-to-image': {
     title: 'Cara Menambah Teks pada Gambar',
-    description: 'Tambah teks pada gambar apa pun dalam hitungan menit: unggah, ketik keterangan Anda, pilih font dan ukuran, atur warna dan garis tepi, tempatkan lapisan, lalu unduh.',
+    description: 'Tambah teks pada gambar dalam hitungan menit: unggah, ketik keterangan, pilih font dan ukuran, atur warna dan garis tepi, tempatkan lapisan, lalu unduh.',
     body: `
 <p>Menambah teks pada foto hanya butuh beberapa menit. Anda mengunggah gambar, mengetik kata-kata Anda, memilih font dan warna, lalu menempatkan teks di tempatnya.</p>
 
@@ -11467,7 +11467,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'text-on-images-readability-tips': {
-    title: 'Teks pada Gambar: Font, Kontras, dan Keterbacaan',
+    title: 'Teks pada Gambar: Font & Keterbacaan',
     description: 'Cara membuat teks pada gambar mudah dibaca: pilihan font, aturan ukuran, kontras, garis tepi, bayangan, panel latar, dan pengujian di layar kecil.',
     body: `
 <p>Teks pada foto hanya berguna jika orang bisa membacanya. Keterangan indah yang hilang ke dalam latar yang ramai lebih buruk daripada tidak ada keterangan sama sekali, karena membuat penonton frustrasi.</p>
@@ -12076,8 +12076,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'image-frames-borders-styles': {
-    title: 'Gaya Bingkai Foto untuk Media Sosial dan Cetak',
-    description: 'Gaya bingkai mana yang cocok untuk foto Anda? Bingkai minimal, Polaroid, galeri, gradien glow, dan retro dibandingkan untuk media sosial, cetak, dan foto produk.',
+    title: 'Gaya Bingkai Foto: Media Sosial & Cetak',
+    description: 'Gaya bingkai mana yang cocok untuk foto? Bingkai minimal, Polaroid, galeri, gradien glow, dan retro dibandingkan untuk media sosial, cetak, dan foto produk.',
     body: `
 <p>Bingkai mengubah cara foto dilihat. Gambar yang sama dalam bingkai putih tipis, bingkai Polaroid, atau tepi gradien bercahaya terasa seperti tiga gambar berbeda.</p>
 
@@ -12540,7 +12540,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   readingMinutes: 10,
 },
 'rounded-corners-vs-circle-crop': {
-  title: 'Sudut Bulat vs Crop Lingkaran: Avatar dan Kartu',
+  title: 'Sudut Bulat vs Crop Lingkaran: Avatar',
   description: 'Sudut bulat atau crop lingkaran? Cara kerja masing-masing bentuk untuk avatar, kartu, dan profil media sosial, serta kapan memakai salah satu, atau keduanya.',
   body: `
 <p>Sudut membulat dan crop lingkaran sama-sama melembutkan foto, tetapi keduanya bukan hal yang sama. Yang satu mempertahankan persegi dan melengkungkan sudutnya, sedangkan yang lain mengubah gambar menjadi bentuk bulat.</p>
@@ -12929,8 +12929,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   readingMinutes: 10,
 },
 'brightness-vs-exposure-vs-contrast': {
-  title: 'Kecerahan vs Eksposur vs Kontras: Dasar-Dasar Editing',
-  description: 'Kecerahan, eksposur, dan kontras dijelaskan: apa yang dilakukan masing-masing pada foto, bagaimana ketiganya saling memengaruhi, dan kontrol mana yang dipakai di tiap situasi.',
+  title: 'Kecerahan vs Eksposur vs Kontras',
+  description: 'Kecerahan, eksposur, dan kontras: pengaruh masing-masing pada foto, bagaimana ketiganya saling memengaruhi, dan kontrol mana yang dipakai tiap situasi.',
   body: `
 <p>Kecerahan, eksposur, dan kontras adalah tiga kontrol yang ditawarkan setiap editor foto, dan ketiganya mudah tertukar. Ketiganya membuat foto lebih terang atau lebih gelap, tetapi dengan cara yang berbeda.</p>
 <p>Memakai kontrol yang salah memberi hasil yang lebih buruk. Foto yang butuh kontras akan terlihat pudar jika hanya dicerahkan, dan foto yang butuh kecerahan akan terlihat kasar jika hanya ditambah kontras.</p>
@@ -13699,8 +13699,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   readingMinutes: 10,
 },
 'saturation-vs-vibrance': {
-  title: 'Saturasi vs Vibrance: Editing Warna yang Natural',
-  description: 'Saturasi atau vibrance? Cara masing-masing kontrol memperlakukan warna, mana yang melindungi warna kulit, dan cara mendapat warna natural yang hidup tanpa rumput neon.',
+  title: 'Saturasi vs Vibrance: Warna Natural',
+  description: 'Saturasi atau vibrance? Cara masing-masing kontrol mengolah warna, mana yang melindungi warna kulit, dan cara mendapat warna natural tanpa rumput neon.',
   body: `
 <p>Saturasi dan vibrance sama-sama membuat warna makin kuat, tetapi dengan cara yang berbeda. Yang satu mendorong setiap warna secara merata, sedangkan yang lain hanya mendorong warna yang membutuhkannya.</p>
 <p>Perbedaan ini penting untuk foto yang natural. Dorongan saturasi bisa mengubah kulit menjadi oranye dan rumput menjadi neon, sedangkan dorongan vibrance melindungi warna yang sudah kuat.</p>
@@ -14082,7 +14082,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   readingMinutes: 10,
 },
 'photo-filters-compared': {
-  title: 'Filter Foto Dibandingkan: Memilih Tampilan yang Konsisten',
+  title: 'Filter Foto Dibandingkan: Tampilan Konsisten',
   description: 'Semua 11 filter foto dibandingkan: Vintage vs Sepia, Grayscale vs Noir, Warm vs Cool, dan gaya mana yang cocok untuk potret, lanskap, makanan, dan produk.',
   body: `
 <p>Sebelas filter adalah banyak pilihan. Masing-masing mengubah suasana foto, dan filter yang salah bisa membuat gambar yang bagus terlihat murahan atau aneh.</p>
@@ -14210,7 +14210,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 },
 'image-color-picker-guide': {
   title: 'Pemilih Warna Gambar: Panduan Lengkap',
-  description: 'Ambil warna apa pun dari gambar apa pun dengan eyedropper. Pelajari kode HEX, RGB, HSL, dan CMYK, lensa pembesar, swatch, dan ekspor CSS — gratis, langsung di browser.',
+  description: 'Ambil warna apa pun dari gambar apa pun dengan eyedropper. Kode HEX, RGB, HSL, dan CMYK, lensa pembesar, swatch, dan ekspor CSS — gratis, langsung di browser.',
   body: `
 <p>Setiap desainer pasti pernah melihat sebuah warna di layar dan ingin tahu kode persisnya. Warna itu bisa ada di tangkapan layar, foto, logo, atau mockup situs web, tapi menebak nilainya tidak pernah berhasil.</p>
 <p>Pemilih warna gambar menyelesaikan masalah ini dalam hitungan detik. Anda membuka gambar, mengarahkan kursor ke piksel mana pun, lalu membaca kode warnanya dalam format HEX, RGB, HSL, dan CMYK.</p>
@@ -14313,7 +14313,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 },
 'how-to-pick-color-from-image': {
   title: 'Cara Mengambil Warna dari Gambar',
-  description: 'Ambil warna persis dari foto, logo, atau tangkapan layar apa pun dalam empat langkah. Gunakan lensa pembesar, susun swatch, dan ekspor CSS — tanpa instalasi, tanpa unggahan.',
+  description: 'Ambil warna persis dari foto, logo, atau tangkapan layar dalam 4 langkah. Pakai lensa pembesar, susun swatch, dan ekspor CSS — tanpa instalasi dan unggahan.',
   body: `
 <p>Anda menemukan warna yang sempurna di sebuah foto atau tangkapan layar, dan sekarang Anda butuh kodenya. Menebak hanya membuang waktu, dan warna yang hampir benar akan terlihat salah di samping warna aslinya.</p>
 <p>Panduan ini memandu Anda mengambil warna dari gambar dalam empat langkah praktis. Anda akan mengunggah gambar, membidik dengan pembesar, menyimpan warnanya, lalu mengekspornya untuk proyek Anda.</p>
@@ -14417,7 +14417,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 },
 'hex-vs-rgb-vs-hsl': {
   title: 'HEX vs RGB vs HSL: Penjelasan Kode Warna',
-  description: 'HEX, RGB, HSL, dan CMYK menjelaskan warna yang sama dengan cara berbeda. Pelajari arti setiap format, kapan memakainya, dan cara mengubah dari satu format ke format lain.',
+  description: 'HEX, RGB, HSL, dan CMYK menjelaskan warna yang sama dengan cara berbeda. Arti setiap format, kapan memakainya, dan cara mengubah antarformat.',
   body: `
 <p>Setiap warna di layar Anda punya beberapa nama. Warna biru yang sama bisa ditulis #2563EB, rgb(37, 99, 235), atau hsl(221, 83%, 53%), dan ketiganya menjelaskan piksel yang persis sama.</p>
 <p>Kesamaan itu membingungkan pemula. Jika kode-kodenya bisa saling menggantikan, kenapa ada empat format, dan mana yang sebenarnya harus dipakai?</p>
@@ -14521,7 +14521,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 },
 'image-dimensions-checker-guide': {
   title: 'Pemeriksa Dimensi Gambar: Panduan Lengkap',
-  description: 'Periksa dimensi gambar secara massal: lebar, tinggi, rasio aspek, megapiksel, ukuran cetak, dan transparansi. Validasi nilai minimum dan ekspor CSV atau JSON — gratis, langsung di browser.',
+  description: 'Periksa dimensi gambar: lebar, tinggi, rasio, megapiksel, ukuran cetak dan transparansi. Validasi nilai minimum, ekspor CSV atau JSON — gratis di browser.',
   body: `
 <p>Sebuah gambar bisa terlihat sempurna di layar Anda, lalu gagal begitu diunggah. Marketplace menolaknya karena terlalu kecil, percetakan memotongnya tanpa diduga, atau situs web merenggangkannya hingga buram.</p>
 <p>Penyebabnya hampir selalu dimensi: lebar dan tinggi dalam piksel. Kebanyakan orang tidak pernah memeriksanya sampai ada yang rusak, dan saat itu tenggat sudah mepet.</p>
@@ -14725,8 +14725,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   readingMinutes: 10,
 },
 'image-dimensions-vs-resolution-vs-file-size': {
-  title: 'Dimensi vs Resolusi vs Ukuran File Gambar: Penjelasannya',
-  description: 'Dimensi, resolusi, dan ukuran file adalah tiga angka yang berbeda. Pelajari arti masing-masing, hubungannya, dan mana yang penting untuk web, cetak, dan media sosial.',
+  title: 'Dimensi vs Resolusi vs Ukuran File',
+  description: 'Dimensi, resolusi, dan ukuran file adalah tiga angka yang berbeda. Arti masing-masing, hubungannya, dan mana yang penting untuk web, cetak, dan media sosial.',
   body: `
 <p>Tiga angka menjelaskan setiap gambar, dan orang terus-menerus mencampuradukkannya. Dimensi, resolusi, dan ukuran file terdengar berhubungan, tapi masing-masing mengukur hal yang berbeda.</p>
 <p>Kebingungan itu menimbulkan kesalahan nyata. Orang membeli kamera bermegapiksel tinggi lalu heran kenapa hasil cetaknya lembut, atau mengompres file lalu heran kenapa tetap tidak bisa diunggah.</p>
@@ -14826,7 +14826,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 },
 'image-dpi-changer-guide': {
   title: 'Pengubah DPI Gambar: Panduan Lengkap',
-  description: 'Ubah DPI gambar tanpa kehilangan kualitas. Preset dari 72 sampai 600 DPI, nilai kustom hingga 2400, ekspor ZIP massal, dan lencana Verified DPI — gratis, langsung di browser.',
+  description: 'Ubah DPI gambar tanpa kehilangan kualitas. Preset dari 72 sampai 600 DPI, nilai kustom hingga 2400, ekspor ZIP massal, dan lencana Verified DPI — gratis.',
   body: `
 <p>Foto Anda punya piksel yang tepat, ukuran yang tepat, dan tampilan yang tepat, tapi printer atau platform penerbitan menolaknya. Penyebabnya sering kali satu angka yang tersembunyi di dalam file: nilai DPI.</p>
 <p>DPI memberi tahu software seberapa rapat piksel harus dikemas saat gambar dicetak. File yang diberi tag 72 DPI terlihat seperti poster bagi sistem cetak, sementara piksel yang sama dengan tag 300 DPI terlihat seperti halaman yang benar.</p>
@@ -14923,7 +14923,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 },
 'how-to-change-image-dpi': {
   title: 'Cara Mengubah DPI Gambar',
-  description: 'Ubah DPI gambar menjadi 72, 150, 300, atau 600 dalam empat langkah — atau nilai kustom apa pun hingga 2400. Dukungan batch, unduhan ZIP, dan lencana Verified DPI sudah termasuk.',
+  description: 'Ubah DPI gambar menjadi 72, 150, 300, atau 600 dalam 4 langkah — atau nilai kustom apa pun hingga 2400. Dukungan batch, unduhan ZIP, dan lencana Verified DPI.',
   body: `
 <p>Gambar Anda sudah siap, tapi platform meminta 300 DPI sementara file Anda bilang 72, atau tidak bilang apa-apa sama sekali. Perbaikannya memakan waktu kurang dari satu menit begitu Anda tahu langkah-langkahnya.</p>
 <p>Panduan ini memandu Anda mengubah DPI gambar dalam empat langkah praktis: unggah, pilih nilainya, verifikasi lencananya, dan unduh. Panduan ini juga membahas batch, tangkapan layar, dan masalah umum yang sering menjebak orang.</p>
@@ -15022,8 +15022,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   readingMinutes: 10,
 },
 'dpi-vs-ppi-print-web': {
-  title: 'DPI vs PPI: Mana yang Penting untuk Cetak dan Web',
-  description: 'DPI dan PPI terdengar mirip tapi mengukur hal yang berbeda. Pelajari mana yang penting untuk cetak, mana yang penting untuk layar, dan kenapa 72 vs 300 DPI membingungkan semua orang.',
+  title: 'DPI vs PPI: Cetak vs Web, Mana Penting?',
+  description: 'DPI dan PPI terdengar mirip tapi mengukur hal yang berbeda. Mana yang penting buat cetak dan layar, dan kenapa 72 vs 300 DPI membingungkan semua orang.',
   body: `
 <p>DPI dan PPI adalah pasangan yang paling membingungkan di seluruh dunia pencitraan. Orang memakainya secara bergantian, alat memberi label secara tidak konsisten, dan hasilnya adalah tumpukan saran yang salah.</p>
 <p>Kebingungan itu menimbulkan biaya nyata. Desainer mengatur 300 DPI pada gambar web yang tidak membutuhkannya, dan pembeli cetak menerima file 72 DPI yang tidak akan pernah tercetak dengan baik.</p>
@@ -15122,7 +15122,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   readingMinutes: 10,
 },
 'image-to-base64-guide': {
-  title: 'Gambar ke Base64: Panduan Lengkap',
+  title: 'Gambar ke Base64: Sisipkan ke HTML & CSS',
   description: 'Ubah gambar apa pun menjadi Base64: Data URL, string mentah, snippet img HTML, dan output url() CSS. Pelajari overhead 33% dan kapan menyematkan.',
   body: `
 <p>Developer sering membutuhkan gambar sebagai teks, bukan sebagai file. Ikon di dalam stylesheet, logo di dalam email HTML, atau gambar di dalam payload JSON semuanya membutuhkan gambar yang diubah menjadi karakter.</p>
@@ -15223,7 +15223,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   readingMinutes: 10,
 },
 'how-to-convert-image-to-base64': {
-  title: 'Cara Mengubah Gambar Menjadi Base64',
+  title: 'Cara Mengubah Gambar Menjadi Base64 di Kode',
   description: 'Ubah gambar menjadi Base64: unggah, pilih output Data URL, mentah, HTML, atau CSS, lalu salin atau unduh. Berfungsi untuk PNG, JPG, SVG, GIF, dan ICO.',
   body: `
 <p>Anda membutuhkan gambar sebagai teks: logo untuk stylesheet, ikon untuk email, atau gambar untuk payload JSON. Konversinya memakan waktu sekitar satu menit begitu Anda tahu langkah-langkahnya.</p>
@@ -15324,7 +15324,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   readingMinutes: 10,
 },
 'base64-images-when-to-embed': {
-  title: 'Gambar Base64: Kapan Disematkan dan Kapan Tidak',
+  title: 'Gambar Base64: Kapan Disematkan?',
   description: 'Menyematkan gambar Base64 menghemat request tapi menambah 33% byte dan mematikan caching. Pelajari ambang ukuran, kompromi caching, dan checklist keputusan.',
   body: `
 <p>Menyematkan gambar sebagai Base64 terasa seperti kemenangan gratis. Satu request lebih sedikit, tidak ada file terpisah yang harus dikelola, dan gambar muncul begitu halaman dimuat.</p>
@@ -15425,8 +15425,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   readingMinutes: 10,
 },
 'base64-to-image-guide': {
-  title: 'Base64 ke Gambar: Panduan Lengkap',
-  description: 'Dekode string Base64 apa pun kembali menjadi gambar. Dekode otomatis saat ditempel, varian URL-safe, pratinjau transparansi, dan unduhan PNG, JPG, WebP, atau format asli.',
+  title: 'Base64 ke Gambar: Dekode Teks Jadi File',
+  description: 'Dekode string Base64 menjadi gambar. Dekode otomatis saat ditempel, varian URL-safe, pratinjau transparansi, dan unduhan PNG, JPG, WebP, atau format asli.',
   body: `
 <p>Dinding teks yang panjang tiba di email, pesan chat, atau respons API, dan di suatu tempat di dalamnya ada sebuah gambar. Teks itu adalah string Base64, dan gambarnya sedang menunggu untuk didekode.</p>
 <p>Dekoding mengubah string itu kembali menjadi file gambar aslinya. Proses ini adalah kebalikan dari encoding, dan sama lossless-nya: byte yang keluar adalah byte yang masuk.</p>
@@ -15525,8 +15525,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   readingMinutes: 10,
 },
 'how-to-convert-base64-to-image': {
-  title: 'Cara Mengubah Base64 Menjadi Gambar',
-  description: 'Ubah string Base64 menjadi gambar dalam empat langkah: tempel, pratinjau, pilih Original, PNG, JPG, atau WebP, lalu unduh. Menangani string URL-safe dan jeda baris.',
+  title: 'Cara Mengubah Base64 Menjadi Gambar: Tempel',
+  description: 'Ubah string Base64 menjadi gambar dalam 4 langkah: tempel, pratinjau, pilih Original, PNG, JPG, atau WebP, lalu unduh. Menangani URL-safe dan jeda baris.',
   body: `
 <p>Sebuah string Base64 berada di clipboard, email, atau respons API Anda, dan Anda membutuhkan gambar yang dikandungnya. Konversinya memakan waktu sekitar satu menit begitu Anda tahu langkah-langkahnya.</p>
 <p>Panduan ini memandu Anda mengubah Base64 menjadi gambar dalam empat langkah: tempel string, tinjau pratinjau, pilih format unduhan, lalu simpan file-nya.</p>
@@ -15633,8 +15633,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   readingMinutes: 10,
 },
 'base64-vs-image-files': {
-  title: 'Base64 vs File Gambar: Performa dan Kegunaannya',
-  description: 'String Base64 dan file gambar membawa gambar yang sama dengan cara berbeda. Bandingkan ukuran, kecepatan, caching, dan pengeditan, lalu pelajari kapan masing-masing menang.',
+  title: 'Base64 vs File Gambar: Performa',
+  description: 'String Base64 dan file gambar membawa gambar yang sama dengan cara berbeda. Bandingkan ukuran, kecepatan, caching, dan pengeditan, kapan masing-masing menang.',
   body: `
 <p>Setiap gambar di web ada dalam satu dari dua bentuk: sebagai file dengan nama dan URL, atau sebagai string Base64 yang disematkan di dalam kode. Keduanya membawa piksel yang sama, tapi berperilaku sangat berbeda.</p>
 <p>Memilih bentuk yang salah menghabiskan performa, membuang bandwidth, atau mengubah pembaruan sederhana menjadi pekerjaan yang menyakitkan. Memilih bentuk yang tepat sebagian besar soal mengetahui kelebihan masing-masing.</p>
@@ -15842,7 +15842,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 },
 'how-to-extract-color-palette-from-image': {
   title: 'Cara Mengekstrak Paleta Warna dari Gambar',
-  description: 'Ekstrak paleta warna dari foto apa pun dalam lima langkah: unggah, pilih 3–12 swatch, baca persentasenya, lalu salin CSS atau JSON — gratis, langsung di browser.',
+  description: 'Ekstrak paleta warna dari foto apa pun dalam lima langkah: unggah, pilih 3–12 swatch, baca persentasenya, lalu salin CSS atau JSON — gratis.',
   body: `
 <p>Anda punya foto dengan warna-warna yang Anda sukai, dan Anda membutuhkan warna-warna itu sebagai palet untuk situs web, poster, atau merek. Menyalinnya dengan mata lambat dan tidak akurat.</p>
 <p>Panduan ini memandu Anda mengekstrak palet warna dari gambar dalam lima langkah: unggah, pilih jumlah swatch, baca persentasenya, lalu salin atau unduh hasilnya.</p>
@@ -16125,7 +16125,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-create-favicon': {
     title: 'Cara Membuat Favicon',
-    description: 'Buat favicon dari logo Anda dalam hitungan menit: siapkan gambar sumber, atur padding dan latar, pratinjau tab terang dan gelap, lalu pasang paketnya di situs Anda.',
+    description: 'Buat favicon dari logo dalam hitungan menit: siapkan gambar sumber, atur padding dan latar, pratinjau tab terang dan gelap, lalu pasang paketnya di situs Anda.',
     body: `
 <p>Membuat favicon terdengar teknis, tetapi hanya butuh beberapa menit dengan alat yang tepat. Anda mengunggah logo, menyesuaikan beberapa pengaturan, mengunduh paket berisi file-file, dan menambahkan cuplikan pendek ke situs web Anda. Panduan ini memandu setiap langkah secara berurutan.</p>
 <p>Anda hanya butuh dua hal sebelum memulai: file logo dan akses ke file situs web Anda. Logo PNG atau SVG berbentuk persegi bekerja paling baik, dan versi terbesar yang Anda punya memberi hasil paling tajam. Kalau Anda hanya punya JPG, itu pun bisa dipakai.</p>
@@ -16205,7 +16205,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'favicon-sizes-explained': {
-    title: 'Ukuran Favicon Dijelaskan: 16×16 sampai 512×512',
+    title: 'Ukuran Favicon: 16×16 sampai 512×512',
     description: 'Setiap ukuran favicon dan fungsinya: ikon tab 16×16, retina 32×32, Apple Touch 180×180, Android 192×192 dan 512×512, serta cara wadah ICO menyatukannya.',
     body: `
 <p>Favicon bukan satu gambar. Favicon adalah keluarga gambar dengan ukuran berbeda, masing-masing melayani tempat berbeda di browser atau perangkat. Yang terkecil 16 x 16 piksel untuk tab, dan yang terbesar 512 x 512 piksel untuk layar instal Android.</p>
@@ -16289,7 +16289,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'add-background-to-image-guide': {
     title: 'Menambah Latar pada Gambar: Panduan Lengkap',
-    description: 'Letakkan foto atau potongan transparan apa pun di atas latar solid, gradien, atau buram: cara kerja alat ini, mode mana yang dipilih, dan cara membingkai gambar untuk media sosial dan toko.',
+    description: 'Letakkan foto atau potongan transparan di atas latar solid, gradien, atau buram: cara kerjanya, mode yang dipilih, dan membingkai gambar untuk medsos dan toko.',
     body: `
 <p>Foto yang latarnya sudah dihapus baru setengah jadi. Potongan transparan butuh sesuatu di belakangnya sebelum bisa dipakai, dan foto biasa sering butuh bingkai yang sesuai dengan tempat ia akan diterbitkan. Menambah latar adalah langkah yang mengubah potongan menjadi gambar jadi.</p>
 <p><a href="/id/tambah-latar-gambar/">Alat Tambah Latar ke Gambar</a> menempatkan foto atau PNG transparan apa pun di atas warna solid, gradien dua nada, atau versi buram dari foto itu sendiri. Alat ini berjalan sepenuhnya di browser Anda, jadi gambar Anda tidak pernah meninggalkan perangkat.</p>
@@ -16374,7 +16374,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-add-background-to-image': {
     title: 'Cara Menambah Latar pada Gambar',
-    description: 'Tambahkan latar pada foto atau potongan transparan apa pun dalam hitungan menit: pilih backdrop solid, gradien, atau buram, bingkai sesuai bentuk yang tepat, lalu ekspor.',
+    description: 'Tambahkan latar pada foto atau potongan transparan dalam hitungan menit: pilih backdrop solid, gradien, atau buram, bingkai sesuai bentuk, lalu ekspor.',
     body: `
 <p>Menambah latar pada gambar adalah pekerjaan singkat begitu Anda tahu langkahnya. Anda mengunggah foto atau potongan transparan, memilih backdrop, mengatur bentuk bingkai, dan mengunduh gambar jadi. Panduan ini memandu setiap langkah secara berurutan.</p>
 <p>Anda hanya butuh satu hal sebelum memulai: gambar latar depan. Gambar itu bisa berupa foto biasa, potongan PNG transparan, logo, atau tangkapan layar. Jika foto Anda masih punya latar asli yang berantakan, hapus dulu agar backdrop baru punya potongan bersih untuk dikerjakan.</p>
@@ -16540,7 +16540,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-splitter-guide': {
     title: 'Pembagi Gambar: Panduan Lengkap',
-    description: 'Bagi gambar apa pun menjadi ubin grid atau strip: cara kerja mode grid, horizontal, dan vertikal, preset, ekspor resolusi penuh, dan kegunaan terbaik setiap pembagian.',
+    description: 'Bagi gambar menjadi ubin grid atau strip: cara kerja mode grid, horizontal, dan vertikal, preset, ekspor resolusi penuh, dan kegunaan terbaik pembagian.',
     body: `
 <p>Pembagi gambar memotong satu gambar menjadi beberapa bagian yang lebih kecil. Bagian-bagian itu bisa membentuk grid untuk profil sosial, strip untuk carousel, atau irisan untuk mencetak gambar besar di banyak halaman. Gambar asli tetap utuh; pembagi hanya memberikan bagian-bagiannya.</p>
 <p><a href="/id/bagi-gambar/">Pembagi gambar</a> membagi foto menjadi ubin grid N x M, baris horizontal, atau strip vertikal, dan mengunduh bagian-bagiannya satu per satu atau sekaligus sebagai ZIP. Alat ini berjalan sepenuhnya di browser Anda, jadi foto Anda tidak pernah meninggalkan perangkat.</p>
@@ -16708,8 +16708,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'split-images-instagram-grid': {
-    title: 'Membagi Gambar untuk Grid dan Puzzle Instagram',
-    description: 'Ubah satu foto menjadi puzzle grid Instagram: pembagian 3×3, menyiapkan sumber persegi, urutan unggah, gaya puzzle, dan cara menjaga grid tetap bagus dari waktu ke waktu.',
+    title: 'Bagi Gambar untuk Grid Instagram',
+    description: 'Ubah satu foto menjadi puzzle grid Instagram: pembagian 3×3, menyiapkan sumber persegi, urutan unggah, gaya puzzle, dan menjaga grid tetap bagus jangka panjang.',
     body: `
 <p>Puzzle grid Instagram mengubah satu foto menjadi sembilan ubin yang membentuk satu gambar besar di seluruh halaman profil Anda. Pengunjung yang membuka profil Anda melihat gambar utuh, sedangkan setiap ubin juga bekerja sebagai unggahan biasa di feed. Ini cara paling terlihat untuk memakai gambar yang dibagi.</p>
 <p>Panduan ini membahas seluruh pekerjaan: menyiapkan foto sumber persegi, membaginya 3 x 3, mengunggah ubin dalam urutan yang benar, dan menjaga grid tetap utuh saat Anda menerbitkan konten baru. Pembagiannya sendiri hanya butuh hitungan menit dengan <a href="/id/bagi-gambar/">pembagi gambar</a>; perencanaanlah yang membuatnya tampak bagus.</p>
@@ -16794,7 +16794,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'gif-maker-guide': {
     title: 'Pembuat GIF: Panduan Lengkap',
-    description: 'Buat GIF animasi dari foto Anda: cara kerja pembuat GIF, memilih frame, mengatur waktu, pilihan loop, kesesuaian frame, kualitas warna, dan menjaga ukuran file tetap terkendali.',
+    description: 'Buat GIF animasi dari foto: cara kerjanya, memilih frame, mengatur waktu, pilihan loop, kesesuaian frame, kualitas warna, dan menjaga ukuran file terkendali.',
     body: `
 <p>GIF adalah animasi loop pendek yang dibuat dari serangkaian gambar diam. GIF diputar tanpa suara, berulang selamanya atau untuk jumlah loop tertentu, dan bekerja di hampir semua aplikasi chat, feed sosial, dan situs web. GIF yang dibuat dengan baik menyampaikan dalam dua detik apa yang tidak bisa disampaikan satu paragraf.</p>
 <p><a href="/id/buat-gif/">Pembuat GIF</a> mengubah foto Anda menjadi GIF animasi di browser. Unggah dua frame gambar atau lebih, atur waktu untuk setiap frame, pilih jumlah loop, dan unduh file GIF89a tanpa watermark. Tidak ada yang diunggah ke server.</p>
@@ -16876,7 +16876,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-make-gif-from-images': {
     title: 'Cara Membuat GIF dari Gambar',
-    description: 'Ubah foto Anda menjadi GIF animasi dalam hitungan menit: kumpulkan frame, unggah, susun dan atur waktunya, atur loop, pratinjau, lalu unduh GIF yang siap dibagikan.',
+    description: 'Ubah foto menjadi GIF animasi dalam hitungan menit: kumpulkan frame, unggah, susun dan atur waktunya, atur loop, pratinjau, lalu unduh GIF yang siap dibagikan.',
     body: `
 <p>Membuat GIF dari gambar adalah pekerjaan singkat: kumpulkan beberapa foto, unggah sebagai frame, atur waktu, dan unduh animasinya. Panduan ini memandu setiap langkah secara berurutan, dari memilih frame sampai membagikan GIF jadi.</p>
 <p>Anda hanya butuh satu hal sebelum memulai: dua gambar atau lebih untuk dianimasikan. Gambar itu bisa berupa foto, tangkapan layar, foto produk, atau ilustrasi. Ukuran dan bentuk yang mirip memberi hasil paling halus, tetapi alat ini juga menangani ukuran campuran.</p>
@@ -16962,7 +16962,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'gif-frame-rate-file-size': {
-    title: 'Frame Rate GIF dan Ukuran File: Halus vs Kecil',
+    title: 'Frame Rate GIF: Halus vs File Kecil',
     description: 'Pertukaran di jantung setiap GIF: bagaimana frame rate, jumlah frame, dimensi, dan palet warna menentukan apakah animasi Anda halus, kecil, atau keduanya.',
     body: `
 <p>Setiap GIF adalah kompromi antara kehalusan dan ukuran. Frame rate yang lebih tinggi membuat gerakan cair, tetapi juga membuat file lebih besar. File yang lebih kecil dibagikan lebih cepat, tetapi bisa tampak tersendat. Keterampilan membuat GIF adalah menemukan keseimbangan untuk setiap animasi.</p>
@@ -17048,7 +17048,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-collage-maker-guide': {
     title: 'Pembuat Kolase Foto: Panduan Lengkap',
-    description: 'Buat kolase foto dalam hitungan menit: grid dan strip, seret-untuk-tukar, pembagian yang bisa disesuaikan, celah, sudut membulat, warna latar, dan ekspor JPG atau PNG hingga 4000 px.',
+    description: 'Buat kolase foto cepat: grid dan strip, seret-tukar, pembagian fleksibel, celah, sudut membulat, warna latar, dan ekspor JPG atau PNG hingga 4000 px.',
     body: `
 <p>Kolase foto mengubah beberapa gambar menjadi satu gambar. Kolase menampilkan sekumpulan momen bersama-sama: perjalanan, rangkaian produk, sebelum dan sesudah, atau kumpul keluarga. Satu kolase menyampaikan lebih banyak daripada deretan foto terpisah, dan kolase muat di mana pun satu gambar muat.</p>
 <p><a href="/id/buat-kolase-gambar/">Pembuat kolase gambar</a> menyusun foto Anda dalam grid 2 x 2 dan 3 x 3 atau dalam strip vertikal dan horizontal, dengan seret-untuk-tukar, pembagian yang bisa disesuaikan, celah, sudut membulat, dan ekspor hingga 4000 piksel. Alat ini berjalan sepenuhnya di browser Anda.</p>
@@ -17300,8 +17300,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'image-resizer-guide': {
-  title: 'Apa Itu Image Resizer? Panduan Lengkap Mengubah Ukuran Gambar',
-  description: 'Pelajari apa itu image resizer, cara kerja resize berdasarkan piksel dan persentase, kapan harus mengunci rasio aspek, dan cara memilih ukuran yang tepat untuk web, media sosial, dan cetak.',
+  title: 'Apa Itu Image Resizer? Panduan Lengkap',
+  description: 'Apa itu image resizer, resize piksel dan persentase, kapan mengunci rasio aspek, dan memilih ukuran tepat untuk web, medsos, dan cetak.',
   body: `
 <p>Image resizer adalah alat untuk mengubah dimensi piksel sebuah foto atau grafis. Foto yang awalnya berukuran 4000 x 3000 piksel bisa diubah menjadi 1200 x 900, 800 x 600, atau ukuran lain sesuai kebutuhan. Subjek dan warna gambar tetap sama, hanya ruang yang ditempatinya di layar yang berubah.</p>
 <p>Mengubah ukuran itu penting karena hampir setiap tempat tujuan punya ukuran yang diharapkan. Gambar hero website butuh gambar yang lebar, foto profil butuh bentuk persegi, dan foto produk di marketplace butuh tampilan yang konsisten. Dengan <a href="/id/ubah-ukuran-gambar/">image resizer</a>, Anda bisa memenuhi ukuran itu tanpa menginstal perangkat lunak atau membuka editor yang berat.</p>
@@ -17403,7 +17403,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-resize-image': {
     title: 'Cara Mengubah Ukuran Gambar Online',
-    description: 'Ubah ukuran gambar online dalam hitungan menit: unggah, pilih piksel atau persentase, kunci rasio aspek, pilih preset, atur kualitas, lalu unduh — tanpa perlu menginstal perangkat lunak.',
+    description: 'Ubah ukuran gambar online dalam hitungan menit: unggah, pilih piksel atau persentase, kunci rasio aspek, pilih preset, atur kualitas, lalu unduh.',
     body: `
 <p>Mengubah ukuran gambar online hanya butuh sekitar satu menit setelah Anda tahu langkahnya. Unggah foto, pilih ukuran, periksa pratinjau, lalu unduh hasilnya. Tidak ada perangkat lunak yang perlu diinstal, tidak ada akun yang perlu dibuat, dan tidak ada waktu tunggu untuk unggahan ke server.</p>
 <p>Panduan ini memandu prosesnya di <a href="/id/ubah-ukuran-gambar/">image resizer</a>, dari unggahan pertama hingga unduhan terakhir. Panduan ini membahas kedua mode ukuran, kunci rasio aspek, preset, dan pengaturan kualitas, jadi Anda bisa mengubah ukuran satu foto atau sekumpulan foto dengan percaya diri.</p>
@@ -17513,7 +17513,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'resize-vs-compress-image': {
     title: 'Resize vs Kompres Gambar: Apa Bedanya?',
-    description: 'Resize mengubah dimensi piksel; kompres mengubah seberapa efisien piksel disimpan. Pelajari apa yang dilakukan masing-masing, kapan memakai yang mana, dan mengapa melakukan keduanya memberi file terkecil.',
+    description: 'Resize mengubah dimensi piksel; kompres mengubah seberapa efisien piksel disimpan. Kapan memakai yang mana, dan mengapa keduanya memberi file terkecil.',
     body: `
 <p>Resize dan kompres adalah dua cara membuat file gambar lebih kecil, dan keduanya bekerja dengan cara yang sepenuhnya berbeda. Resize membuang piksel. Kompres mempertahankan piksel dan menyimpannya dengan lebih efisien. Banyak orang terus mencampuradukkan keduanya, dan kebingungan itu menghasilkan gambar yang masih terlalu berat, atau lebih kecil daripada yang dibutuhkan.</p>
 <p>Panduan ini menjelaskan apa yang dilakukan setiap langkah, bagaimana pengaruhnya terhadap kualitas dan ukuran file, serta kapan memakai salah satu, yang lain, atau keduanya. Panduan ini memakai <a href="/id/ubah-ukuran-gambar/">image resizer</a> dan <a href="/id/">image compressor</a> sebagai contoh, karena keduanya bersama mencakup seluruh pekerjaan.</p>
@@ -17619,8 +17619,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 12,
   },
   'bulk-image-resizer-guide': {
-    title: 'Bulk Image Resizer: Panduan Lengkap Mengubah Ukuran Banyak Gambar',
-    description: 'Ubah ukuran puluhan gambar sekaligus: mode Fit Max, Uniform Width, Exact, dan Persentase, perlindungan anti-perbesaran, preset, dan unduhan ZIP sekali klik — semuanya di browser Anda.',
+    title: 'Bulk Image Resizer: Ubah Banyak Gambar',
+    description: 'Ubah ukuran puluhan gambar sekaligus: mode Fit Max, Uniform Width, Exact, dan Persentase, perlindungan anti-perbesaran, preset, dan unduhan ZIP sekali klik.',
     body: `
 <p>Bulk image resizer mengubah dimensi piksel banyak gambar dalam satu proses. Alih-alih membuka setiap foto, mengetik ukuran, dan mengunduhnya satu per satu, Anda memasukkan seluruh folder ke antrean, memilih satu strategi, lalu mengunduh semua hasilnya dalam satu file ZIP.</p>
 <p>Hal itu penting karena pekerjaan gambar yang nyata jarang hanya satu foto. Pemotretan produk berisi empat puluh foto, folder blog berisi dua puluh, dan album foto berisi seratus. <a href="/id/ubah-ukuran-gambar-massal/">Bulk image resizer</a> mengubah pekerjaan berulang itu menjadi satu batch, dengan pengaturan yang sama diterapkan secara konsisten ke setiap file.</p>
@@ -17835,8 +17835,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   'bulk-resize-presets-social-ecommerce-print': {
-    title: 'Ukuran Gambar untuk Media Sosial, Toko Online, dan Cetak: Panduan Preset',
-    description: 'Pilih preset bulk resize yang tepat untuk setiap tempat tujuan: ukuran media sosial, persegi e-commerce, lebar blog, thumbnail, Full HD, dan cetak — plus kapan mengetik ukuran kustom.',
+    title: 'Preset Resize: Sosial, Toko & Cetak',
+    description: 'Pilih preset bulk resize yang tepat untuk setiap tempat tujuan: ukuran media sosial, persegi e-commerce, lebar blog, thumbnail, Full HD, dan cetak.',
     body: `
 <p>Setiap tempat tujuan menginginkan ukuran gambar yang berbeda, dan preset adalah jalan pintas menuju ukuran yang tepat. Alih-alih mencari angka platform lalu mengetiknya manual, Anda mengklik preset dan dimensinya terisi sendiri. Batch kemudian menerapkan ukuran itu ke setiap gambar dalam antrean.</p>
 <p>Panduan ini memetakan preset bulk resizer dan ukuran media sosial yang umum ke tempat-tempat yang mengharapkannya: feed media sosial, toko online, blog, thumbnail, layar, dan cetak. Panduan ini juga menjelaskan kapan preset adalah alat yang salah, dan ukuran kustom yang diketik manual adalah yang benar.</p>
@@ -17941,7 +17941,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-metadata-viewer-guide': {
     title: 'Panduan Lengkap Melihat Metadata Gambar',
-    description: 'Pelajari apa saja yang ditampilkan penampil metadata gambar, mulai dari pengaturan kamera EXIF dan koordinat GPS hingga chunk PNG dan WebP, serta cara memeriksa foto apa pun secara privat di browser.',
+    description: 'Apa saja yang ditampilkan penampil metadata gambar: pengaturan kamera EXIF, koordinat GPS, chunk PNG dan WebP, serta cara memeriksa foto privat di browser.',
     body: `
 <p>Setiap foto yang Anda ambil menyimpan lapisan informasi tersembunyi. Pengaturan kamera, waktu pemotretan, model perangkat, dan terkadang lokasi persis Anda ikut tersimpan di dalam file, tanpa terlihat pada gambarnya.</p>
 <p>Penampil metadata gambar membaca lapisan tersembunyi itu dan menampilkannya dalam bahasa yang mudah dipahami. Data biner yang rumit diubah menjadi laporan yang bisa Anda gunakan.</p>
@@ -18046,7 +18046,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-view-image-metadata': {
     title: 'Cara Melihat Metadata Gambar',
-    description: 'Panduan langkah demi langkah melihat metadata gambar: buka foto di penampil, baca kolom EXIF dan GPS, ekspor laporan JSON, dan verifikasi file yang sudah dibersihkan.',
+    description: 'Panduan melihat metadata gambar: buka foto di penampil, baca kolom EXIF dan GPS, ekspor laporan JSON, dan verifikasi file yang sudah dibersihkan.',
     body: `
 <p>Melihat metadata gambar terdengar teknis, tetapi sebenarnya kurang dari satu menit. Anda membuka foto di penampil, membaca laporannya, lalu memutuskan apakah ada isinya yang harus tetap privat.</p>
 <p>Panduan ini memandu Anda langkah demi langkah dengan <a href="/id/lihat-metadata-gambar/">Penampil Metadata Gambar</a> yang gratis. Alat ini berjalan di browser, tanpa akun, dan tidak pernah mengunggah foto Anda.</p>
@@ -18157,7 +18157,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'exif-data-explained': {
     title: 'Data EXIF: Apa yang Foto Anda Ungkapkan',
-    description: 'Penjelasan mendalam tentang data EXIF: cara kamera menuliskannya, kolom mana yang mengungkap lokasi dan kebiasaan Anda, cara aplikasi menghapusnya, serta cara membaca dan menghapusnya dengan aman.',
+    description: 'Data EXIF dijelaskan: cara kamera menuliskannya, kolom mana yang mengungkap lokasi Anda, cara aplikasi menghapusnya, serta cara membaca dan menghapusnya.',
     body: `
 <p>Sebuah foto menunjukkan satu momen. Data EXIF-nya menceritakan kisah di sekitar momen itu: kamera apa yang mengambilnya, kapan, di mana, dan dengan pengaturan seperti apa.</p>
 <p>Kebanyakan orang tidak pernah melihat lapisan ini. Lapisan ini ikut terbawa diam-diam di dalam file, bertahan melewati salinan, penerusan, dan unduhan sampai sesuatu menghapusnya.</p>
@@ -18259,7 +18259,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'remove-image-metadata-guide': {
     title: 'Panduan Lengkap Menghapus Metadata Gambar',
-    description: 'Pelajari cara menghapus metadata gambar dengan aman: apa saja yang dihapus, beda lossless dan canvas re-encode, pembersihan massal, ekspor ZIP, dan cara memverifikasi file yang sudah bersih.',
+    description: 'Cara menghapus metadata gambar: apa yang dihapus, lossless vs canvas re-encode, pembersihan massal, ekspor ZIP, dan verifikasi file yang sudah bersih.',
     body: `
 <p>Setiap foto yang Anda bagikan dapat membawa data tersembunyi: lokasi Anda, kamera Anda, dan waktu persis Anda mengambilnya. Menghapus metadata gambar menghilangkan data itu sebelum orang lain bisa membacanya.</p>
 <p>Panduan ini menjelaskan apa yang dilakukan penghapusan metadata, metode mana yang harus dipilih, cara membersihkan banyak file sekaligus, dan cara memverifikasi hasilnya. Panduan ini ditulis untuk alat gratis <a href="/id/hapus-metadata-gambar/">Hapus Metadata Gambar</a>, yang bekerja sepenuhnya di browser Anda.</p>
@@ -18469,7 +18469,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'photo-privacy-gps-exif-risks': {
     title: 'Privasi Foto: Risiko GPS, EXIF, dan Metadata',
-    description: 'Apa yang dapat diungkap koordinat GPS, data EXIF, dan metadata tersembunyi dalam foto Anda — serta langkah praktis yang menghentikan foto Anda membocorkan lokasi dan rutinitas.',
+    description: 'Apa yang diungkap koordinat GPS, data EXIF, dan metadata tersembunyi dalam foto — serta langkah praktis agar foto tak membocorkan lokasi dan rutinitas.',
     body: `
 <p>Sebuah foto menunjukkan satu momen. Metadatanya dapat menunjukkan tempat tinggal Anda, sekolah anak Anda, dan kapan rumah Anda kosong.</p>
 <p>Kebanyakan orang membagikan foto tanpa pernah memeriksa apa yang ikut terbawa di dalam file. Risikonya tidak terlihat, dan justru karena itulah risiko ini sangat mudah diabaikan.</p>
@@ -18576,7 +18576,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'background-remover-guide': {
-    title: 'Penghapus Latar Belakang Foto: Panduan Lengkap',
+    title: 'Penghapus Latar Belakang Foto: Panduan',
     description: 'Apa itu penghapus latar belakang, cara kerja AI di baliknya, dan cara mendapatkan potongan transparan yang rapi — gratis, di browser, tanpa unggah.',
     body: `
 <p>Penghapus latar belakang mengambil sebuah foto lalu memisahkan subjeknya dari semua yang ada di belakangnya. Hasilnya adalah potongan rapi yang bisa ditempatkan di latar apa pun, atau dibiarkan transparan.</p>
@@ -18785,8 +18785,8 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'ai-background-removal-vs-manual-cutout': {
-    title: 'Penghapus Latar Belakang AI vs Manual: Mana yang Lebih Baik?',
-    description: 'Penghapusan latar belakang AI itu cepat, gratis, dan privat — tapi potongan manual masih unggul untuk rambut, kaca, dan gambar penting. Perbandingan lengkap kecepatan, akurasi, biaya, dan privasi.',
+    title: 'AI vs Manual: Hapus Latar Belakang Foto',
+    description: 'Hapus latar belakang AI cepat dan gratis — tapi manual unggul di rambut, kaca, dan foto penting. Bandingkan kecepatan, akurasi, biaya, dan privasi.',
     body: `
 <p>Ada dua cara untuk memotong subjek dari sebuah foto. Model AI bisa melakukannya dalam hitungan detik, atau seseorang bisa menelusuri garis tepinya dengan tangan.</p>
 <p>Kedua metode menghasilkan potongan transparan. Perbedaannya terletak pada kecepatan, akurasi, biaya, dan kontrol, dan pilihan yang tepat bergantung pada foto dan pekerjaannya.</p>
