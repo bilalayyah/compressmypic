@@ -4094,7 +4094,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 <p>Think of it like photocopying a photocopy. Each generation looks slightly worse than the last, and the damage is worst in the fine details.</p>
 <h2 id="lossy-vs-lossless">Lossy vs Lossless: The Core Difference</h2>
 <p>Lossy formats, such as JPG, WebP in lossy mode, and AVIF, discard data to shrink the file. They keep the parts of the image your eyes notice most and simplify the rest.</p>
-<p>Lossless formats, such as PNG and WebP in lossless mode, store every pixel exactly. The file is bigger, but the image is a perfect copy of the source, with zero degradation.</p>
+<p>Lossless formats, such as PNG, store every pixel exactly. The file is bigger, but the image is a perfect copy of the source, with zero degradation. (The WebP format also has a lossless mode, but this site's Image Converter outputs WebP through its quality slider, so its WebP files are lossy — pick PNG here for a truly lossless result.)</p>
 <p>HEIC sits in the lossy camp too, though it is far more efficient than JPG. It discards data as well, just more cleverly, which is why iPhone photos look good at half the size.</p>
 <p>When you convert, the loss depends on the target format, not the source. Converting a JPG to PNG loses nothing new, while converting a PNG to JPG always loses something.</p>
 <h2 id="jpg-quality-explained">JPG Quality, Explained Honestly</h2>
