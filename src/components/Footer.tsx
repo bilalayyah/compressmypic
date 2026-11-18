@@ -89,6 +89,8 @@ const DEFAULT_FOOTER_STRINGS: FooterStrings = {
     { slug: '/terms', label: 'Terms of Service' },
     { slug: '/about', label: 'About Us' },
     { slug: '/contact', label: 'Contact Support' },
+    { slug: '/disclaimer', label: 'Disclaimer' },
+    { slug: '/cookie-policy', label: 'Cookie Policy' },
   ],
   guidesLinks: [
     {
@@ -308,9 +310,9 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Col 2: Image Tools */}
           <div>
-            <h4 className="text-xs font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">
+            <h3 className="text-xs font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">
               {strings.toolsHeading}
-            </h4>
+            </h3>
             <ul className="space-y-2 text-xs">
               {strings.toolsLinks.map((link) => (
                 <li key={link.slug}>
@@ -331,9 +333,9 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Col 3: Legal & Trust */}
           <div>
-            <h4 className="text-xs font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">
+            <h3 className="text-xs font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">
               {strings.legalHeading}
-            </h4>
+            </h3>
             <ul className="space-y-2 text-xs">
               {strings.legalLinks.map((link) => (
                 <li key={link.slug}>
@@ -354,7 +356,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Guides */}
           <div>
-            <h4 className="text-xs font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">{strings.guidesHeading}</h4>
+            <h3 className="text-xs font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">{strings.guidesHeading}</h3>
             <ul className="space-y-2 text-xs text-[var(--ink-2)]">
               <li>
                 <a
@@ -387,9 +389,9 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Col 4: More Tools */}
           <div>
-            <h4 className="text-xs font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">
+            <h3 className="text-xs font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">
               {strings.moreHeading}
-            </h4>
+            </h3>
             <ul className="space-y-2 text-xs text-[var(--ink-2)]">
               {strings.moreLinks.map((link) => (
                 <li key={link.slug}>
@@ -414,9 +416,9 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Compact Advanced Compression, Editing & Developer Tools Directory */}
         <div className="pt-8 pb-6 border-t border-[var(--line)]">
-          <h4 className="text-xs font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">
+          <h3 className="text-xs font-bold text-[var(--ink-navy)] uppercase tracking-wider mb-3">
             {strings.directoryHeading}
-          </h4>
+          </h3>
           <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-[var(--ink-2)]">
             {/* Localized tools-directory link (SEO audit #29): the non-EN
                 directory pages had no inbound links. */}

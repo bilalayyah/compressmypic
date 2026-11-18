@@ -59,6 +59,13 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
   const browsePrefix = strings?.browsePrefix ?? 'or';
   const browseButtonText = strings?.browseButton ?? 'browse files';
   const browseSuffixText = strings?.browseSuffix ?? 'from your computer or phone';
+  // P2-7 (audit 2026-11-18, label-content-name-mismatch): the dropzone's
+  // accessible name must contain its visible text. strings.ariaLabel
+  // ("Upload images area...") did not contain the visible heading
+  // ("Drag & drop images here"), so the name is derived from the visible
+  // strings instead; the same name labels the hidden file input below,
+  // which previously had no label at all (home-desktop `label` failure).
+  const dropzoneLabel = `${resolvedTitle}. ${browsePrefix} ${browseButtonText} ${browseSuffixText}`;
   const [isDragging, setIsDragging] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -200,7 +207,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
               fileInputRef.current?.click();
             }
           }}
-          aria-label={strings?.ariaLabel ?? 'Upload images area. Drag and drop or click to browse files.'}
+          aria-label={dropzoneLabel}
         >
           <input
             ref={fileInputRef}
@@ -210,6 +217,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
             onChange={handleFileInputChange}
             className="hidden"
             disabled={disabled}
+            aria-label={dropzoneLabel}
           />
 
           <div className="flex flex-col items-center justify-center max-w-md mx-auto">
@@ -258,7 +266,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
       </div>
 
       {errorMessage && (
-        <div className="mt-3 flex items-start gap-2 p-3.5 pastel-card-14 border text-[#991b1b] dark:text-[#fecaca] text-xs sm:text-sm rounded-2xl">
+        <div role="alert" className="mt-3 flex items-start gap-2 p-3.5 pastel-card-14 border text-[#991b1b] dark:text-[#fecaca] text-xs sm:text-sm rounded-2xl">
           <AlertCircle className="w-4 h-4 mt-0.5 shrink-0 text-[#dc2626] dark:text-[#f87171]" />
           <span>{errorMessage}</span>
         </div>

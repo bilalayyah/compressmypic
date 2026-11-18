@@ -93,6 +93,8 @@ export const ZH = {
       { slug: '/terms', label: '服务条款' }, // 'Terms of Service'
       { slug: '/about', label: '关于我们' }, // 'About Us'
       { slug: '/contact', label: '联系客服' }, // 'Contact Support'
+      { slug: '/disclaimer', label: '免责声明' },
+      { slug: '/cookie-policy', label: 'Cookie 政策' },
     ],
     guidesLinks: [
       {

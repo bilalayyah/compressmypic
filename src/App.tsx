@@ -40,6 +40,12 @@ const PrivacyPage = React.lazy(() =>
 const TermsPage = React.lazy(() =>
   import('./pages/TermsPage').then((m) => ({ default: m.TermsPage }))
 );
+const DisclaimerPage = React.lazy(() =>
+  import('./pages/DisclaimerPage').then((m) => ({ default: m.DisclaimerPage }))
+);
+const CookiePolicyPage = React.lazy(() =>
+  import('./pages/CookiePolicyPage').then((m) => ({ default: m.CookiePolicyPage }))
+);
 const AdminCommentsPage = React.lazy(() =>
   import('./pages/AdminCommentsPage').then((m) => ({ default: m.AdminCommentsPage }))
 );
@@ -244,6 +250,12 @@ const PrivacyPageEs = React.lazy(() =>
 const TermsPageEs = React.lazy(() =>
   import('./pages/es/TermsPageEs').then((m) => ({ default: m.TermsPageEs }))
 );
+const DisclaimerPageEs = React.lazy(() =>
+  import('./pages/es/DisclaimerPageEs').then((m) => ({ default: m.DisclaimerPageEs }))
+);
+const CookiePolicyPageEs = React.lazy(() =>
+  import('./pages/es/CookiePolicyPageEs').then((m) => ({ default: m.CookiePolicyPageEs }))
+);
 const AllToolsPageEs = React.lazy(() =>
   import('./pages/es/AllToolsPageEs').then((m) => ({ default: m.AllToolsPageEs }))
 );
@@ -267,6 +279,12 @@ const PrivacyPagePt = React.lazy(() =>
 );
 const TermsPagePt = React.lazy(() =>
   import('./pages/pt/TermsPagePt').then((m) => ({ default: m.TermsPagePt }))
+);
+const DisclaimerPagePt = React.lazy(() =>
+  import('./pages/pt/DisclaimerPagePt').then((m) => ({ default: m.DisclaimerPagePt }))
+);
+const CookiePolicyPagePt = React.lazy(() =>
+  import('./pages/pt/CookiePolicyPagePt').then((m) => ({ default: m.CookiePolicyPagePt }))
 );
 const AllToolsPagePt = React.lazy(() =>
   import('./pages/pt/AllToolsPagePt').then((m) => ({ default: m.AllToolsPagePt }))
@@ -292,6 +310,12 @@ const PrivacyPageFr = React.lazy(() =>
 const TermsPageFr = React.lazy(() =>
   import('./pages/fr/TermsPageFr').then((m) => ({ default: m.TermsPageFr }))
 );
+const DisclaimerPageFr = React.lazy(() =>
+  import('./pages/fr/DisclaimerPageFr').then((m) => ({ default: m.DisclaimerPageFr }))
+);
+const CookiePolicyPageFr = React.lazy(() =>
+  import('./pages/fr/CookiePolicyPageFr').then((m) => ({ default: m.CookiePolicyPageFr }))
+);
 const AllToolsPageFr = React.lazy(() =>
   import('./pages/fr/AllToolsPageFr').then((m) => ({ default: m.AllToolsPageFr }))
 );
@@ -315,6 +339,12 @@ const PrivacyPageDe = React.lazy(() =>
 );
 const TermsPageDe = React.lazy(() =>
   import('./pages/de/TermsPageDe').then((m) => ({ default: m.TermsPageDe }))
+);
+const DisclaimerPageDe = React.lazy(() =>
+  import('./pages/de/DisclaimerPageDe').then((m) => ({ default: m.DisclaimerPageDe }))
+);
+const CookiePolicyPageDe = React.lazy(() =>
+  import('./pages/de/CookiePolicyPageDe').then((m) => ({ default: m.CookiePolicyPageDe }))
 );
 const AllToolsPageDe = React.lazy(() =>
   import('./pages/de/AllToolsPageDe').then((m) => ({ default: m.AllToolsPageDe }))
@@ -340,6 +370,12 @@ const PrivacyPageIt = React.lazy(() =>
 const TermsPageIt = React.lazy(() =>
   import('./pages/it/TermsPageIt').then((m) => ({ default: m.TermsPageIt }))
 );
+const DisclaimerPageIt = React.lazy(() =>
+  import('./pages/it/DisclaimerPageIt').then((m) => ({ default: m.DisclaimerPageIt }))
+);
+const CookiePolicyPageIt = React.lazy(() =>
+  import('./pages/it/CookiePolicyPageIt').then((m) => ({ default: m.CookiePolicyPageIt }))
+);
 const AllToolsPageIt = React.lazy(() =>
   import('./pages/it/AllToolsPageIt').then((m) => ({ default: m.AllToolsPageIt }))
 );
@@ -363,6 +399,12 @@ const PrivacyPageId = React.lazy(() =>
 );
 const TermsPageId = React.lazy(() =>
   import('./pages/id/TermsPageId').then((m) => ({ default: m.TermsPageId }))
+);
+const DisclaimerPageId = React.lazy(() =>
+  import('./pages/id/DisclaimerPageId').then((m) => ({ default: m.DisclaimerPageId }))
+);
+const CookiePolicyPageId = React.lazy(() =>
+  import('./pages/id/CookiePolicyPageId').then((m) => ({ default: m.CookiePolicyPageId }))
 );
 const AllToolsPageId = React.lazy(() =>
   import('./pages/id/AllToolsPageId').then((m) => ({ default: m.AllToolsPageId }))
@@ -388,6 +430,12 @@ const PrivacyPageRu = React.lazy(() =>
 const TermsPageRu = React.lazy(() =>
   import('./pages/ru/TermsPageRu').then((m) => ({ default: m.TermsPageRu }))
 );
+const DisclaimerPageRu = React.lazy(() =>
+  import('./pages/ru/DisclaimerPageRu').then((m) => ({ default: m.DisclaimerPageRu }))
+);
+const CookiePolicyPageRu = React.lazy(() =>
+  import('./pages/ru/CookiePolicyPageRu').then((m) => ({ default: m.CookiePolicyPageRu }))
+);
 const AllToolsPageRu = React.lazy(() =>
   import('./pages/ru/AllToolsPageRu').then((m) => ({ default: m.AllToolsPageRu }))
 );
@@ -411,6 +459,12 @@ const PrivacyPageJa = React.lazy(() =>
 );
 const TermsPageJa = React.lazy(() =>
   import('./pages/ja/TermsPageJa').then((m) => ({ default: m.TermsPageJa }))
+);
+const DisclaimerPageJa = React.lazy(() =>
+  import('./pages/ja/DisclaimerPageJa').then((m) => ({ default: m.DisclaimerPageJa }))
+);
+const CookiePolicyPageJa = React.lazy(() =>
+  import('./pages/ja/CookiePolicyPageJa').then((m) => ({ default: m.CookiePolicyPageJa }))
 );
 const AllToolsPageJa = React.lazy(() =>
   import('./pages/ja/AllToolsPageJa').then((m) => ({ default: m.AllToolsPageJa }))
@@ -436,6 +490,12 @@ const PrivacyPageKo = React.lazy(() =>
 const TermsPageKo = React.lazy(() =>
   import('./pages/ko/TermsPageKo').then((m) => ({ default: m.TermsPageKo }))
 );
+const DisclaimerPageKo = React.lazy(() =>
+  import('./pages/ko/DisclaimerPageKo').then((m) => ({ default: m.DisclaimerPageKo }))
+);
+const CookiePolicyPageKo = React.lazy(() =>
+  import('./pages/ko/CookiePolicyPageKo').then((m) => ({ default: m.CookiePolicyPageKo }))
+);
 const AllToolsPageKo = React.lazy(() =>
   import('./pages/ko/AllToolsPageKo').then((m) => ({ default: m.AllToolsPageKo }))
 );
@@ -459,6 +519,12 @@ const PrivacyPageZh = React.lazy(() =>
 );
 const TermsPageZh = React.lazy(() =>
   import('./pages/zh/TermsPageZh').then((m) => ({ default: m.TermsPageZh }))
+);
+const DisclaimerPageZh = React.lazy(() =>
+  import('./pages/zh/DisclaimerPageZh').then((m) => ({ default: m.DisclaimerPageZh }))
+);
+const CookiePolicyPageZh = React.lazy(() =>
+  import('./pages/zh/CookiePolicyPageZh').then((m) => ({ default: m.CookiePolicyPageZh }))
 );
 const AllToolsPageZh = React.lazy(() =>
   import('./pages/zh/AllToolsPageZh').then((m) => ({ default: m.AllToolsPageZh }))
@@ -490,6 +556,8 @@ const KNOWN_ROUTES = [
   '/contact',
   '/privacy',
   '/terms',
+  '/disclaimer',
+  '/cookie-policy',
   '/admin/comments',
   '/guides/compress-images-for-whatsapp',
   '/guides/jpg-vs-png-vs-webp',
@@ -1043,6 +1111,8 @@ export default function App() {
       '/contact': 'Contact CompressMyPic – Help, Feedback & Bug Reports',
       '/privacy': 'Privacy Policy | CompressMyPic – Your Images Stay Private',
       '/terms': 'Terms of Service | CompressMyPic – Free Image Tools Rules',
+      '/disclaimer': 'Disclaimer | CompressMyPic – Free Image Tools',
+      '/cookie-policy': 'Cookie Policy | CompressMyPic – How Cookies Are Used',
       '/admin/comments': 'Comments Admin | CompressMyPic (Private Page)',
       '/guides/compress-images-for-whatsapp': 'Compress Images for WhatsApp Without Losing Quality',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: Which Image Format Is Best? (Guide)',
@@ -1055,6 +1125,8 @@ export default function App() {
       '/contact': 'Contact CompressMyPic for help, feedback or bug reports about our free image tools. We reply by email — please tell us the tool name and what went wrong.',
       '/privacy': 'Privacy Policy for CompressMyPic: your images are compressed in your browser and never uploaded. Read how cookies, ads and analytics work on this site.',
       '/terms': 'Terms of Service for CompressMyPic: fair use, your content, liability and service changes for our free online image tools. Plain rules, no legal jargon.',
+      '/disclaimer': 'Disclaimer for CompressMyPic: our free image tools are provided as-is, without warranty. Read the limits of liability and accuracy of our guides.',
+      '/cookie-policy': 'Cookie Policy for CompressMyPic: we set no cookies ourselves. Learn which cookies Google AdSense and Analytics use, and how to control them.',
       '/admin/comments': 'Private admin page for moderating CompressMyPic comments. This page is not for public use — please use the contact page for help, feedback or bug reports.',
       '/guides/compress-images-for-whatsapp': 'Learn how to compress images for WhatsApp without losing quality. Free, private, no signup — shrink photos before sending so they stay sharp and send fast.',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP compared: file size, quality, transparency and browser support — pick the right image format for photos, logos, websites and social media.',
@@ -1067,6 +1139,8 @@ export default function App() {
       '/contact': 'Contacto – CompressMyPic, compresor de imágenes gratis online',
       '/privacy': 'Política de privacidad – CompressMyPic',
       '/terms': 'Términos de servicio – CompressMyPic',
+      '/disclaimer': 'Aviso legal | CompressMyPic – Herramientas de imagen gratuitas',
+      '/cookie-policy': 'Política de cookies | CompressMyPic – Cómo se usan las cookies',
       [ES_ALL_TOOLS_PATH]: 'Todas las herramientas de imagen gratis | CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'Comprimir imágenes para WhatsApp sin perder calidad',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: ¿qué formato debería usar?',
@@ -1079,6 +1153,8 @@ export default function App() {
       '/contact': 'Fale conosco - CompressMyPic',
       '/privacy': 'Política de Privacidade - CompressMyPic',
       '/terms': 'Termos de Serviço - CompressMyPic',
+      '/disclaimer': 'Aviso legal | CompressMyPic – Ferramentas de imagem gratuitas',
+      '/cookie-policy': 'Política de cookies | CompressMyPic – Como os cookies são usados',
       [PT_ALL_TOOLS_PATH]: 'Todas as ferramentas de imagem grátis | CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'Comprimir imagens para WhatsApp sem perder qualidade',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: qual formato devo usar?',
@@ -1091,6 +1167,8 @@ export default function App() {
       '/contact': 'Contactez-nous - CompressMyPic',
       '/privacy': 'Politique de confidentialité - CompressMyPic',
       '/terms': 'Conditions d’utilisation - CompressMyPic',
+      '/disclaimer': 'Avertissement | CompressMyPic – Outils d’image gratuits',
+      '/cookie-policy': 'Politique relative aux cookies | CompressMyPic – Comment les cookies sont utilisés',
       [FR_ALL_TOOLS_PATH]: 'Tous les outils image gratuits en ligne | CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'Compresser des images pour WhatsApp sans perdre en qualité',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP : quel format utiliser ?',
@@ -1103,6 +1181,8 @@ export default function App() {
       '/contact': 'Kontakt – CompressMyPic',
       '/privacy': 'Datenschutzerklärung – CompressMyPic',
       '/terms': 'Nutzungsbedingungen – CompressMyPic',
+      '/disclaimer': 'Haftungsausschluss | CompressMyPic – Kostenlose Bild-Tools',
+      '/cookie-policy': 'Cookie-Richtlinie | CompressMyPic – Wie Cookies verwendet werden',
       [DE_ALL_TOOLS_PATH]: 'Alle kostenlosen Bildtools online | CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'Bilder für WhatsApp komprimieren ohne Qualitätsverlust',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: Welches Format sollten Sie verwenden?',
@@ -1115,6 +1195,8 @@ export default function App() {
       '/contact': 'Contattaci - CompressMyPic',
       '/privacy': 'Informativa sulla privacy - CompressMyPic',
       '/terms': 'Termini di servizio - CompressMyPic',
+      '/disclaimer': 'Disclaimer | CompressMyPic – Strumenti per immagini gratuiti',
+      '/cookie-policy': 'Politica dei cookie | CompressMyPic – Come vengono usati i cookie',
       [IT_ALL_TOOLS_PATH]: 'Tutti gli strumenti immagine gratuiti | CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'Comprimere immagini per WhatsApp senza perdere qualità',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: quale formato dovresti usare?',
@@ -1126,6 +1208,8 @@ export default function App() {
       '/contact': 'Hubungi Kami - CompressMyPic',
       '/privacy': 'Kebijakan Privasi - CompressMyPic',
       '/terms': 'Syarat Layanan - CompressMyPic',
+      '/disclaimer': 'Penafian | CompressMyPic – Alat Gambar Gratis',
+      '/cookie-policy': 'Kebijakan Cookie | CompressMyPic – Cara Cookie Digunakan',
       [ID_ALL_TOOLS_PATH]: 'Semua alat gambar online gratis | CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'Mengompres Gambar untuk WhatsApp Tanpa Kehilangan Kualitas',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: Format Mana yang Harus Anda Gunakan?',
@@ -1137,6 +1221,8 @@ export default function App() {
       '/contact': 'Связаться с нами — CompressMyPic',
       '/privacy': 'Политика конфиденциальности — CompressMyPic',
       '/terms': 'Условия использования — CompressMyPic',
+      '/disclaimer': 'Отказ от ответственности | CompressMyPic – Бесплатные инструменты для изображений',
+      '/cookie-policy': 'Политика использования файлов cookie | CompressMyPic – Как используются cookie',
       [RU_ALL_TOOLS_PATH]: 'Все бесплатные инструменты для изображений | CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'Как сжать изображения для WhatsApp без потери качества',
       '/guides/jpg-vs-png-vs-webp': 'JPG против PNG против WebP: какой формат выбрать?',
@@ -1148,6 +1234,8 @@ export default function App() {
       '/contact': 'お問い合わせ - CompressMyPic',
       '/privacy': 'プライバシーポリシー - CompressMyPic',
       '/terms': '利用規約 - CompressMyPic',
+      '/disclaimer': '免責事項 | CompressMyPic – 無料の画像ツール',
+      '/cookie-policy': 'Cookieポリシー | CompressMyPic – Cookieの使い方',
       [JA_ALL_TOOLS_PATH]: 'すべての無料画像ツール | CompressMyPic',
       '/guides/compress-images-for-whatsapp': 'WhatsApp用に画像を圧縮する方法｜画質を落とさず送る',
       '/guides/jpg-vs-png-vs-webp': 'JPG・PNG・WebPの違いと使い分け｜どれを選ぶべき？',
@@ -1159,6 +1247,8 @@ export default function App() {
       '/contact': '문의하기 - CompressMyPic',
       '/privacy': '개인정보처리방침 - CompressMyPic',
       '/terms': '이용약관 - CompressMyPic',
+      '/disclaimer': '면책 조항 | CompressMyPic – 무료 이미지 도구',
+      '/cookie-policy': '쿠키 정책 | CompressMyPic – 쿠키 사용 방법',
       [KO_ALL_TOOLS_PATH]: '모든 무료 이미지 도구 | CompressMyPic',
       '/guides/compress-images-for-whatsapp': '화질 저하 없이 WhatsApp용 이미지를 압축하는 방법',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: 어떤 형식을 사용해야 할까요?',
@@ -1170,6 +1260,8 @@ export default function App() {
       '/contact': '联系我们 - CompressMyPic',
       '/privacy': '隐私政策 - CompressMyPic',
       '/terms': '使用条款 - CompressMyPic',
+      '/disclaimer': '免责声明 | CompressMyPic – 免费图片工具',
+      '/cookie-policy': 'Cookie 政策 | CompressMyPic – Cookie 的使用方式',
       [ZH_ALL_TOOLS_PATH]: '全部免费图片工具 | CompressMyPic',
       '/guides/compress-images-for-whatsapp': '如何在 WhatsApp 上压缩图片而不损失画质',
       '/guides/jpg-vs-png-vs-webp': 'JPG、PNG、WebP 对比：应该选择哪种格式？',
@@ -1177,6 +1269,8 @@ export default function App() {
     };
 
     const staticDescriptionsEs: Record<string, string> = {
+      '/disclaimer': 'Aviso legal de CompressMyPic: nuestras herramientas gratuitas se ofrecen tal cual, sin garantía. Lea los límites de responsabilidad y la exactitud de las guías.',
+      '/cookie-policy': 'Política de cookies de CompressMyPic: nosotros no instalamos cookies. Descubra qué cookies usan Google AdSense y Analytics y cómo controlarlas.',
       '/': esLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'Acerca de CompressMyPic: un compresor de imágenes online gratis para JPG, PNG y WebP, sin registro, sin marca de agua y sin subir nada a ningún servidor.',
       '/contact': '¿Tiene preguntas, comentarios o necesita ayuda? Escríbale a nuestro equipo con el formulario de abajo o contáctenos directamente por correo electrónico.',
@@ -1189,6 +1283,8 @@ export default function App() {
     };
 
     const staticDescriptionsPt: Record<string, string> = {
+      '/disclaimer': 'Aviso legal do CompressMyPic: nossas ferramentas gratuitas são fornecidas como estão, sem garantia. Leia os limites de responsabilidade e a exatidão dos guias.',
+      '/cookie-policy': 'Política de cookies do CompressMyPic: nós não definimos cookies. Saiba quais cookies o Google AdSense e o Analytics usam e como controlá-los.',
       '/': ptLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'Sobre o CompressMyPic: um compressor de imagens online grátis para JPG, PNG e WebP, sem cadastro, sem marca d’água e sem enviar nada para nenhum servidor.',
       '/contact': 'Tem perguntas, comentários ou precisa de ajuda? Escreva para nossa equipe com o formulário abaixo ou fale conosco diretamente por e-mail.',
@@ -1201,6 +1297,8 @@ export default function App() {
     };
 
     const staticDescriptionsFr: Record<string, string> = {
+      '/disclaimer': 'Avertissement de CompressMyPic : nos outils gratuits sont fournis tels quels, sans garantie. Lisez les limites de responsabilité et l’exactitude des guides.',
+      '/cookie-policy': 'Politique relative aux cookies de CompressMyPic : nous ne définissons aucun cookie. Découvrez ceux de Google AdSense et Analytics et comment les contrôler.',
       '/': frLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'À propos de CompressMyPic : un compresseur d’images online gratuit pour JPG, PNG et WebP, sans inscription, sans filigrane et sans rien envoyer vers un serveur.',
       '/contact': 'Vous avez des questions, des commentaires ou besoin d’aide ? Écrivez à notre équipe avec le formulaire ci-dessous ou contactez-nous directement par e-mail.',
@@ -1213,6 +1311,8 @@ export default function App() {
     };
 
     const staticDescriptionsDe: Record<string, string> = {
+      '/disclaimer': 'Haftungsausschluss von CompressMyPic: Unsere kostenlosen Tools werden ohne Gewähr bereitgestellt. Lesen Sie die Haftungsgrenzen und Hinweise zur Genauigkeit.',
+      '/cookie-policy': 'Cookie-Richtlinie von CompressMyPic: Wir setzen selbst keine Cookies. Erfahren Sie, welche Cookies Google AdSense und Analytics verwenden und wie Sie sie steuern.',
       '/': deLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'Über CompressMyPic: ein kostenloser Online-Bildkomprimierer für JPG, PNG und WebP, ohne Anmeldung, ohne Wasserzeichen und ohne Upload auf einen Server.',
       '/contact': 'Haben Sie Fragen, Feedback oder brauchen Sie Hilfe? Wenden Sie sich über das Formular unten an unser Team oder kontaktieren Sie uns direkt per E-Mail.',
@@ -1225,6 +1325,8 @@ export default function App() {
     };
 
     const staticDescriptionsIt: Record<string, string> = {
+      '/disclaimer': 'Disclaimer di CompressMyPic: i nostri strumenti gratuiti sono forniti così come sono, senza garanzia. Leggi i limiti di responsabilità e l’accuratezza delle guide.',
+      '/cookie-policy': 'Politica dei cookie di CompressMyPic: noi non impostiamo cookie. Scopri quali cookie usano Google AdSense e Analytics e come controllarli.',
       '/': itLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'Chi è CompressMyPic: un compressore di immagini online gratuito per JPG, PNG e WebP, senza registrazione, senza filigrana e senza caricare nulla su nessun server.',
       '/contact': 'Hai domande, commenti o hai bisogno di aiuto? Scrivi al nostro team con il modulo qui sotto, oppure contattaci direttamente via email.',
@@ -1236,6 +1338,8 @@ export default function App() {
       '/guides/reduce-image-size-to-100kb': 'Riduci le dimensioni di un’immagine a 100 KB per siti web ed email con un compressore online gratuito. Guida passo passo, senza registrazione né filigrana.',
     };
     const staticDescriptionsId: Record<string, string> = {
+      '/disclaimer': 'Penafian CompressMyPic: alat gratis kami disediakan apa adanya, tanpa jaminan. Baca batasan tanggung jawab dan keakuratan panduan kami.',
+      '/cookie-policy': 'Kebijakan Cookie CompressMyPic: kami tidak memasang cookie sendiri. Pelajari cookie yang digunakan Google AdSense dan Analytics serta cara mengendalikannya.',
       '/': idLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'CompressMyPic adalah kompresor gambar gratis dan privat. Kompres gambar JPG, PNG, dan WebP langsung di browser Anda — cepat, aman, dan tanpa mengunggah file Anda ke mana pun.',
       '/contact': 'Punya pertanyaan, masukan, atau butuh bantuan? Hubungi tim kami melalui formulir di bawah ini, atau hubungi kami langsung lewat email.',
@@ -1247,6 +1351,8 @@ export default function App() {
       '/guides/reduce-image-size-to-100kb': 'Foto sebesar 4 MB memperlambat situs web Anda dan menyumbat email. Mengecilkannya menjadi sekitar 100KB membuat halaman dimuat dengan cepat dan email terkirim seketika.',
     };
     const staticDescriptionsRu: Record<string, string> = {
+      '/disclaimer': 'Отказ от ответственности CompressMyPic: наши бесплатные инструменты предоставляются как есть, без гарантий. Прочтите об ограничениях ответственности.',
+      '/cookie-policy': 'Политика использования файлов cookie CompressMyPic: мы сами не устанавливаем cookie. Узнайте, какие cookie используют Google AdSense и Analytics и как ими управлять.',
       '/': ruLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'CompressMyPic — это бесплатный и приватный компрессор изображений. Сжимайте изображения JPG, PNG и WebP прямо в браузере — быстро, безопасно и без загрузки файлов куда-либо.',
       '/contact': 'Есть вопросы, отзывы или нужна помощь? Обратитесь к нашей команде через форму ниже или свяжитесь с нами напрямую по электронной почте.',
@@ -1258,6 +1364,8 @@ export default function App() {
       '/guides/reduce-image-size-to-100kb': 'Фотография на 4 МБ замедляет ваш сайт и забивает электронную почту. Уменьшение её примерно до 100 КБ делает страницы быстрыми, а письма отправляются мгновенно.',
     };
     const staticDescriptionsJa: Record<string, string> = {
+      '/disclaimer': 'CompressMyPicの免責事項：無料ツールは現状のまま提供され、保証はありません。責任の範囲とガイドの正確性についてお読みください。',
+      '/cookie-policy': 'CompressMyPicのCookieポリシー：当サイト自体はCookieを設定しません。Googleアドセンスとアナリティクスが使用するCookieとその管理方法をご覧ください。',
       '/': jaLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'CompressMyPicは、無料でプライバシーを守る画像圧縮ツールです。JPG、PNG、WebPの画像をブラウザー上で直接圧縮できます。速く、安全で、ファイルをどこにもアップロードしません。',
       '/contact': 'ご質問やご感想、サポートが必要な場合は、下のフォームからご連絡いただくか、メールで直接お問い合わせください。',
@@ -1269,6 +1377,8 @@ export default function App() {
       '/guides/reduce-image-size-to-100kb': '4MBの写真はウェブサイトを遅くし、メールも詰まらせます。100KB程度まで小さくすれば、ページは速く読み込まれ、メールもすぐに送れます。正しく行えば、誰にも違いはわかりません。',
     };
     const staticDescriptionsKo: Record<string, string> = {
+      '/disclaimer': 'CompressMyPic 면책 조항: 무료 도구는 있는 그대로 제공되며 보증이 없습니다. 책임 범위와 가이드 정확성에 대해 읽어보세요.',
+      '/cookie-policy': 'CompressMyPic 쿠키 정책: 저희는 직접 쿠키를 설정하지 않습니다. Google 애드센스와 애널리틱스가 사용하는 쿠키와 관리 방법을 알아보세요.',
       '/': koLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'CompressMyPic은 무료이며 개인정보를 보호하는 이미지 압축기입니다. JPG, PNG, WebP 이미지를 브라우저에서 바로 압축하세요. 빠르고 안전하며, 파일을 어디에도 업로드하지 않습니다.',
       '/contact': '질문, 피드백이 있거나 도움이 필요하신가요? 아래 양식을 이용해 팀에 연락하거나 이메일로 직접 문의해 주세요.',
@@ -1280,6 +1390,8 @@ export default function App() {
       '/guides/reduce-image-size-to-100kb': '4MB 사진은 웹사이트를 느리게 만들고 이메일을 막히게 합니다. 약 100KB로 줄이면 페이지가 빠르게 로드되고 이메일이 즉시 전송됩니다. 제대로 하면 아무도 차이를 알아차리지 못합니다.',
     };
     const staticDescriptionsZh: Record<string, string> = {
+      '/disclaimer': 'CompressMyPic 免责声明：我们的免费图片工具按原样提供，不作任何保证。请阅读责任范围与指南准确性说明。',
+      '/cookie-policy': 'CompressMyPic Cookie 政策：我们自己不设置 Cookie。了解 Google AdSense 与 Analytics 使用的 Cookie 以及如何管理它们。',
       '/': zhLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'CompressMyPic 是一款免费、私密的图片压缩器。直接在浏览器中压缩 JPG、PNG 与 WebP 图片——快速、安全，无需把文件上传到任何地方。',
       '/contact': '有问题、反馈或需要帮助？请使用下面的表格联系我们的团队，或直接通过邮箱联系我们。',
@@ -1678,7 +1790,9 @@ export default function App() {
       currentPath === '/about' ||
       currentPath === '/contact' ||
       currentPath === '/privacy' ||
-      currentPath === '/terms';
+      currentPath === '/terms' ||
+      currentPath === '/disclaimer' ||
+      currentPath === '/cookie-policy';
     if (currentPath === '/') {
       upsertPageJsonLd({
         '@context': 'https://schema.org',
@@ -2704,41 +2818,121 @@ export default function App() {
         <main id="main" className="flex-1">
           <TermsPageEs onNavigate={handleNavigate} />
         </main>
+      ) : lang === 'es' && currentPath === '/disclaimer' ? (
+        <main id="main" className="flex-1">
+          <DisclaimerPageEs onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'es' && currentPath === '/cookie-policy' ? (
+        <main id="main" className="flex-1">
+          <CookiePolicyPageEs onNavigate={handleNavigate} />
+        </main>
       ) : lang === 'pt' && currentPath === '/terms' ? (
         <main id="main" className="flex-1">
           <TermsPagePt onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'pt' && currentPath === '/disclaimer' ? (
+        <main id="main" className="flex-1">
+          <DisclaimerPagePt onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'pt' && currentPath === '/cookie-policy' ? (
+        <main id="main" className="flex-1">
+          <CookiePolicyPagePt onNavigate={handleNavigate} />
         </main>
       ) : lang === 'fr' && currentPath === '/terms' ? (
         <main id="main" className="flex-1">
           <TermsPageFr onNavigate={handleNavigate} />
         </main>
+      ) : lang === 'fr' && currentPath === '/disclaimer' ? (
+        <main id="main" className="flex-1">
+          <DisclaimerPageFr onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'fr' && currentPath === '/cookie-policy' ? (
+        <main id="main" className="flex-1">
+          <CookiePolicyPageFr onNavigate={handleNavigate} />
+        </main>
       ) : lang === 'de' && currentPath === '/terms' ? (
         <main id="main" className="flex-1">
           <TermsPageDe onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'de' && currentPath === '/disclaimer' ? (
+        <main id="main" className="flex-1">
+          <DisclaimerPageDe onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'de' && currentPath === '/cookie-policy' ? (
+        <main id="main" className="flex-1">
+          <CookiePolicyPageDe onNavigate={handleNavigate} />
         </main>
       ) : lang === 'it' && currentPath === '/terms' ? (
         <main id="main" className="flex-1">
           <TermsPageIt onNavigate={handleNavigate} />
         </main>
+      ) : lang === 'it' && currentPath === '/disclaimer' ? (
+        <main id="main" className="flex-1">
+          <DisclaimerPageIt onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'it' && currentPath === '/cookie-policy' ? (
+        <main id="main" className="flex-1">
+          <CookiePolicyPageIt onNavigate={handleNavigate} />
+        </main>
       ) : lang === 'id' && currentPath === '/terms' ? (
         <main id="main" className="flex-1">
           <TermsPageId onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'id' && currentPath === '/disclaimer' ? (
+        <main id="main" className="flex-1">
+          <DisclaimerPageId onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'id' && currentPath === '/cookie-policy' ? (
+        <main id="main" className="flex-1">
+          <CookiePolicyPageId onNavigate={handleNavigate} />
         </main>
       ) : lang === 'ru' && currentPath === '/terms' ? (
         <main id="main" className="flex-1">
           <TermsPageRu onNavigate={handleNavigate} />
         </main>
+      ) : lang === 'ru' && currentPath === '/disclaimer' ? (
+        <main id="main" className="flex-1">
+          <DisclaimerPageRu onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'ru' && currentPath === '/cookie-policy' ? (
+        <main id="main" className="flex-1">
+          <CookiePolicyPageRu onNavigate={handleNavigate} />
+        </main>
       ) : lang === 'ja' && currentPath === '/terms' ? (
         <main id="main" className="flex-1">
           <TermsPageJa onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'ja' && currentPath === '/disclaimer' ? (
+        <main id="main" className="flex-1">
+          <DisclaimerPageJa onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'ja' && currentPath === '/cookie-policy' ? (
+        <main id="main" className="flex-1">
+          <CookiePolicyPageJa onNavigate={handleNavigate} />
         </main>
       ) : lang === 'ko' && currentPath === '/terms' ? (
         <main id="main" className="flex-1">
           <TermsPageKo onNavigate={handleNavigate} />
         </main>
+      ) : lang === 'ko' && currentPath === '/disclaimer' ? (
+        <main id="main" className="flex-1">
+          <DisclaimerPageKo onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'ko' && currentPath === '/cookie-policy' ? (
+        <main id="main" className="flex-1">
+          <CookiePolicyPageKo onNavigate={handleNavigate} />
+        </main>
       ) : lang === 'zh' && currentPath === '/terms' ? (
         <main id="main" className="flex-1">
           <TermsPageZh onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'zh' && currentPath === '/disclaimer' ? (
+        <main id="main" className="flex-1">
+          <DisclaimerPageZh onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'zh' && currentPath === '/cookie-policy' ? (
+        <main id="main" className="flex-1">
+          <CookiePolicyPageZh onNavigate={handleNavigate} />
         </main>
       ) : currentPath === '/about' ? (
         <main id="main" className="flex-1">
@@ -2755,6 +2949,14 @@ export default function App() {
       ) : currentPath === '/terms' ? (
         <main id="main" className="flex-1">
           <TermsPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/disclaimer' ? (
+        <main id="main" className="flex-1">
+          <DisclaimerPage onNavigate={handleNavigate} />
+        </main>
+      ) : currentPath === '/cookie-policy' ? (
+        <main id="main" className="flex-1">
+          <CookiePolicyPage onNavigate={handleNavigate} />
         </main>
             ) : lang === 'es' && currentPath === '/guides/compress-images-for-whatsapp' ? (
               <main id="main" className="flex-1">

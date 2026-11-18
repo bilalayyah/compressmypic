@@ -85,6 +85,8 @@ export const IT = {
       { slug: '/terms', label: 'Termini di servizio' },
       { slug: '/about', label: 'Chi siamo' },
       { slug: '/contact', label: 'Contatta il supporto' },
+      { slug: '/disclaimer', label: 'Disclaimer' },
+      { slug: '/cookie-policy', label: 'Politica dei cookie' },
     ],
     guidesLinks: [
       {

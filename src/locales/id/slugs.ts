@@ -60,6 +60,8 @@ export const ID_PATH_BY_EN: Record<string, string> = {
   '/contact': '/id/kontak',
   '/privacy': '/id/privasi',
   '/terms': '/id/syarat-dan-ketentuan',
+  '/disclaimer': '/id/penafian',
+  '/cookie-policy': '/id/kebijakan-cookie',
   // --- Guides ---
   '/guides/compress-images-for-whatsapp': '/id/panduan/mengompres-gambar-untuk-whatsapp',
   '/guides/jpg-vs-png-vs-webp': '/id/panduan/jpg-vs-png-vs-webp',

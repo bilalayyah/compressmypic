@@ -60,6 +60,8 @@ export const JA_PATH_BY_EN: Record<string, string> = {
   '/contact': '/ja/otoiawase',
   '/privacy': '/ja/puraibashi',
   '/terms': '/ja/riyo-kiyaku',
+  '/disclaimer': '/ja/menseki-jiko',
+  '/cookie-policy': '/ja/kukki-porishi',
   // --- Guides ---
   '/guides/compress-images-for-whatsapp': '/ja/gaido/whatsapp-yo-gazo-asshuku',
   '/guides/jpg-vs-png-vs-webp': '/ja/gaido/jpg-vs-png-vs-webp',

@@ -47,6 +47,8 @@ const EN_STATIC_PATHS = new Set([
   '/contact',
   '/privacy',
   '/terms',
+  '/disclaimer',
+  '/cookie-policy',
   '/guides/compress-images-for-whatsapp',
   '/guides/jpg-vs-png-vs-webp',
   '/guides/reduce-image-size-to-100kb',
@@ -75,7 +77,7 @@ for (const [prefix, lang] of Object.entries(LANG_FROM_CONST)) {
 
 console.log(`// branches parsed: ${branches.length} (tools ${tools.size}, localized ${localized.size}, dirs ${dirs.size})`);
 if (tools.size !== 48) { console.error('EXPECTED 48 tools, got', tools.size); process.exit(1); }
-if (localized.size !== 40 + 30 + 7 + 1) { console.error('EXPECTED 78 localized (40 legal + 30 guides + 7 EN static + admin), got', localized.size); process.exit(1); }
+if (localized.size !== 60 + 30 + 9 + 1) { console.error('EXPECTED 100 localized (60 legal + 30 guides + 9 EN static + admin), got', localized.size); process.exit(1); }
 if (dirs.size !== 10) { console.error('EXPECTED 10 dirs, got', dirs.size); process.exit(1); }
 const sorted = (map) => [...map.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1));
 const obj = (map) => '{\n' + sorted(map).map(([k, v]) => `  '${k}': '${v}',`).join('\n') + '\n}';

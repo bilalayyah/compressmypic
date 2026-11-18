@@ -68,6 +68,8 @@ export const FR = {
       { slug: '/terms', label: 'Conditions d’utilisation' },
       { slug: '/about', label: 'À propos' },
       { slug: '/contact', label: 'Contacter l’assistance' },
+      { slug: '/disclaimer', label: 'Avertissement' },
+      { slug: '/cookie-policy', label: 'Politique relative aux cookies' },
     ],
     guidesLinks: [
       {

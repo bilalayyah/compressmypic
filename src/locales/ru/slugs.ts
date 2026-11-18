@@ -60,6 +60,8 @@ export const RU_PATH_BY_EN: Record<string, string> = {
   '/contact': '/ru/kontakty',
   '/privacy': '/ru/konfidentsialnost',
   '/terms': '/ru/usloviya-ispolzovaniya',
+  '/disclaimer': '/ru/otkaz-ot-otvetstvennosti',
+  '/cookie-policy': '/ru/politika-cookie',
   // --- Guides ---
   '/guides/compress-images-for-whatsapp': '/ru/rukovodstva/szhat-izobrazheniya-dlya-whatsapp',
   '/guides/jpg-vs-png-vs-webp': '/ru/rukovodstva/jpg-protiv-png-protiv-webp',
