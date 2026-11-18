@@ -247,6 +247,27 @@ function sanitizePrerenderedHtml(html, baseUrl) {
   const escaped = baseUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   let out = html.replace(new RegExp(`<link[^>]*href="${escaped}[^"]*"[^>]*>`, 'g'), '');
   out = out.split(baseUrl).join('');
+  // Week-2 speed work (audit C1/H1): the app injects the AdSense +
+  // gtag.js <script> tags at mount, so a raw snapshot ships them as static
+  // tags — the live browser would then fetch both scripts immediately at
+  // parse time, defeating the deferred loader in src/utils/thirdParty.ts.
+  // Strip the two external tags here; the inline gtag stub
+  // (#cmp-gtag-config) is intentionally KEPT — it is tiny, has no network
+  // cost, and lets analytics.ts queue events until gtag.js arrives.
+  out = out.replace(
+    /<script[^>]*src="[^"]*(?:googlesyndication\.com|googletagmanager\.com)[^"]*"[^>]*>(?:<\/script>)?/g,
+    '',
+  );
+  // The font stylesheets load async via the media=print trick (index.html),
+  // but the onload handler flips media to 'all' while this page renders —
+  // the snapshot would then ship render-blocking font links (this is why
+  // the quick-wins Great Vibes fix currently ships as media="all").
+  // Reset every Google Fonts css2 link to media="print"; the live onload
+  // handler still flips it to 'all' once the CSS arrives.
+  out = out.replace(
+    /(<link[^>]*href="[^"]*fonts\.googleapis\.com\/css2[^"]*"[^>]*media=")all("[^>]*>)/g,
+    '$1print$2',
+  );
   return out;
 }
 
@@ -306,6 +327,12 @@ async function renderRoute(browser, baseUrl, routePath, attempt) {
     // only strips the raw form, so check the encoded form explicitly.
     if (html.includes(encodeURIComponent(baseUrl))) {
       throw new Error(`prerendered HTML still contains the URL-encoded preview origin ${encodeURIComponent(baseUrl)}`);
+    }
+    // Week-2 speed work: the deferred loader only works if the snapshot
+    // carries no external third-party script tag (see sanitize above).
+    // The inline gtag stub (#cmp-gtag-config) is allowed — it has no src.
+    if (/<script[^>]*src="[^"]*(?:googlesyndication\.com|googletagmanager\.com)/.test(html)) {
+      throw new Error('prerendered HTML still contains a third-party script tag (adsbygoogle/gtag.js) — the deferred loader would be defeated');
     }
     const title = await page.evaluate(() => document.title);
     // H1-count assertion (Batch 2): exactly one <h1> per page. Article

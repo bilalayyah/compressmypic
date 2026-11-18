@@ -63,13 +63,17 @@
     <meta name="twitter:image" content="https://compressmypic.online/og-image.png" />
     <meta name="twitter:image:alt" content="CompressMyPic – Free online image compressor" />
     <!-- Google Web Fonts: Inter for headings/UI/body, JetBrains Mono for technical values, Great Vibes for the footer credit names.
-         Inter + JetBrains Mono are render-critical (preloaded); Great Vibes is
-         used only by the two footer credit names, so it loads non-blocking
-         (media=print trick) to keep the font stylesheet off the critical path. -->
+         All three load non-blocking via the media=print trick (Week-2 speed
+         work, audit H3: the Inter/JetBrains stylesheet was render-blocking,
+         898–1,852ms wasted). The onload handler flips media to 'all' once
+         the CSS arrives, so the fonts apply with font-display: swap and no
+         render-blocking fetch. Great Vibes was already async (quick wins);
+         do not make it blocking again. The prerender (scripts/prerender.cjs)
+         resets any media="all" the snapshot captured back to "print". -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" /></noscript>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <!-- Schema.org Organization JSON-LD (site-level) -->
     <script type="application/ld+json">
