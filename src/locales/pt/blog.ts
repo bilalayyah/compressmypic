@@ -3178,7 +3178,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   <p>Pense nisso como fotocopiar uma fotocópia. Cada geração fica um pouco pior que a anterior, e o dano é pior nos detalhes finos.</p>
   <h2 id="lossy-vs-lossless">Com perda vs. sem perda: a diferença central</h2>
   <p>Formatos com perda, como JPG, WebP no modo com perda e AVIF, descartam dados para encolher o arquivo. Eles mantêm as partes da imagem que os seus olhos mais percebem e simplificam o resto.</p>
-  <p>Formatos sem perda, como PNG e WebP no modo sem perda, guardam cada pixel exatamente. O arquivo é maior, mas a imagem é uma cópia perfeita da fonte, sem nenhuma degradação.</p>
+  <p>Formatos sem perda, como PNG e WebP no modo sem perda, guardam cada pixel exatamente. O arquivo é maior, mas a imagem é uma cópia perfeita da fonte, sem nenhuma degradação. (O formato WebP também tem um modo sem perda, mas o conversor de imagens deste site gera WebP apenas pelo controle de qualidade, então seus arquivos WebP têm perda — escolha PNG aqui para um resultado realmente sem perda.)</p>
   <p>O HEIC também está no grupo com perda, embora seja bem mais eficiente que o JPG. Ele também descarta dados, só que de forma mais esperta, e é por isso que as fotos do iPhone parecem boas com metade do tamanho.</p>
   <p>Quando você converte, a perda depende do formato de destino, não da fonte. Converter um JPG para PNG não perde nada de novo, enquanto converter um PNG para JPG sempre perde alguma coisa.</p>
   <h2 id="jpg-quality-explained">Qualidade do JPG, explicada com honestidade</h2>

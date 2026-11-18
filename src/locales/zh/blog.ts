@@ -3172,7 +3172,7 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>可以想成复印的复印件。每一代都比上一代差一点，损伤最严重的永远是精细细节。</p>
 <h2 id="lossy-vs-lossless">有损与无损：核心区别</h2>
 <p>JPG、WebP 有损模式、AVIF 这类有损格式，会丢弃数据来缩小文件。它们保留人眼最在意的部分，把其余部分简化掉。</p>
-<p>PNG 和无损模式的 WebP 这类无损格式，会精确存储每一个像素。文件更大，但图像是原图的完美复制，零退化。</p>
+<p>PNG 和无损模式的 WebP 这类无损格式，会精确存储每一个像素。文件更大，但图像是原图的完美复制，零退化。（WebP 格式本身也有无损模式，但本站的图片转换器只通过画质滑块输出 WebP，所以它的 WebP 文件是有损的——想要真正无损的结果，请在这里选择 PNG。）</p>
 <p>HEIC 也属于有损阵营，只不过比 JPG 高效得多。它同样会丢弃数据，只是丢得更聪明，所以 iPhone 照片一半大小看起来还很好。</p>
 <p>转换时会不会损失，取决于目标格式，而不是源格式。JPG 转 PNG 不会新增损失，PNG 转 JPG 则一定会损失一些。</p>
 <h2 id="jpg-quality-explained">JPG 画质，实话实说</h2>

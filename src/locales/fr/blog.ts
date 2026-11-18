@@ -3176,7 +3176,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Pensez à la photocopie d’une photocopie. Chaque génération a l’air un peu moins bonne que la précédente, et les dégâts se concentrent sur les détails fins.</p>
 <h2 id="lossy-vs-lossless">Destructif ou sans perte : la différence fondamentale</h2>
 <p>Les formats destructifs, comme le JPG, le WebP en mode destructif et l’AVIF, rejettent des données pour alléger le fichier. Ils gardent les parties de l’image que vos yeux remarquent le plus et simplifient le reste.</p>
-<p>Les formats sans perte, comme le PNG et le WebP en mode sans perte, stockent chaque pixel exactement. Le fichier est plus lourd, mais l’image est une copie parfaite de la source, sans aucune dégradation.</p>
+<p>Les formats sans perte, comme le PNG et le WebP en mode sans perte, stockent chaque pixel exactement. Le fichier est plus lourd, mais l’image est une copie parfaite de la source, sans aucune dégradation. (Le format WebP a aussi un mode sans perte, mais le convertisseur d’images de ce site ne produit du WebP que via le curseur de qualité : ses fichiers WebP sont donc destructifs. Choisissez le PNG ici pour un résultat vraiment sans perte.)</p>
 <p>Le HEIC appartient lui aussi au camp des formats destructifs, même s’il est bien plus efficace que le JPG. Il rejette des données lui aussi, simplement de façon plus astucieuse — d’où les photos d’iPhone qui ont l’air bonnes pour deux fois moins de place.</p>
 <p>Quand vous convertissez, la perte dépend du format cible, et non de la source. Convertir un JPG en PNG ne perd rien de nouveau, tandis que convertir un PNG en JPG perd toujours quelque chose.</p>
 <h2 id="jpg-quality-explained">La qualité JPG, expliquée honnêtement</h2>

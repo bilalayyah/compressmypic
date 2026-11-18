@@ -3744,7 +3744,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Bayangkan seperti memfotokopi hasil fotokopi. Setiap generasi tampak sedikit lebih buruk daripada generasi sebelumnya, dan kerusakannya paling parah pada detail halus.</p>
 <h2 id="lossy-vs-lossless">Lossy vs Lossless: Perbedaan Intinya</h2>
 <p>Format lossy, seperti JPG, WebP dalam mode lossy, dan AVIF, membuang data untuk memperkecil file. Format-format itu mempertahankan bagian gambar yang paling diperhatikan mata Anda dan menyederhanakan sisanya.</p>
-<p>Format lossless, seperti PNG dan WebP dalam mode lossless, menyimpan setiap piksel secara persis. Filenya lebih besar, tetapi gambarnya merupakan salinan sempurna dari sumbernya, tanpa degradasi sama sekali.</p>
+<p>Format lossless, seperti PNG dan WebP dalam mode lossless, menyimpan setiap piksel secara persis. Filenya lebih besar, tetapi gambarnya merupakan salinan sempurna dari sumbernya, tanpa degradasi sama sekali. (Format WebP juga punya mode lossless, tetapi Konverter Gambar di situs ini mengeluarkan WebP hanya lewat slider kualitas, jadi file WebP-nya lossy — pilih PNG di sini untuk hasil yang benar-benar lossless.)</p>
 <p>HEIC juga termasuk kubu lossy, meskipun jauh lebih efisien daripada JPG. Format ini juga membuang data, hanya saja dengan cara yang lebih cerdas, dan itulah alasan foto iPhone tampak bagus pada ukuran setengahnya.</p>
 <p>Ketika Anda mengonversi, kehilangan itu bergantung pada format target, bukan pada sumbernya. Mengubah JPG ke PNG tidak menghilangkan apa pun yang baru, sementara mengubah PNG ke JPG selalu menghilangkan sesuatu.</p>
 <h2 id="jpg-quality-explained">Kualitas JPG, Dijelaskan dengan Jujur</h2>

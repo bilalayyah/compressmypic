@@ -3173,7 +3173,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 <p>Stellen Sie es sich vor wie das Fotokopieren einer Fotokopie. Jede Generation sieht etwas schlechter aus als die vorherige, und der Schaden ist bei den feinen Details am größten.</p>
 <h2 id="lossy-vs-lossless">Verlustbehaftet vs. verlustfrei: Der Kernunterschied</h2>
 <p>Verlustbehaftete Formate wie JPG, WebP im verlustbehafteten Modus und AVIF werfen Daten weg, um die Datei zu verkleinern. Sie behalten die Teile des Bildes, die Ihre Augen am ehesten wahrnehmen, und vereinfachen den Rest.</p>
-<p>Verlustfreie Formate wie PNG und WebP im verlustfreien Modus speichern jeden Pixel exakt. Die Datei ist größer, aber das Bild ist eine perfekte Kopie der Quelle – ohne jede Verschlechterung.</p>
+<p>Verlustfreie Formate wie PNG und WebP im verlustfreien Modus speichern jeden Pixel exakt. Die Datei ist größer, aber das Bild ist eine perfekte Kopie der Quelle – ohne jede Verschlechterung. (Das WebP-Format hat zwar auch einen verlustfreien Modus, aber der Bildkonverter dieser Website gibt WebP nur über den Qualitätsregler aus – seine WebP-Dateien sind also verlustbehaftet. Wählen Sie hier PNG für ein wirklich verlustfreies Ergebnis.)</p>
 <p>HEIC gehört ebenfalls ins verlustbehaftete Lager, obwohl es weit effizienter ist als JPG. Es verwirft Daten ebenfalls, nur cleverer – darum sehen iPhone-Fotos bei halber Größe gut aus.</p>
 <p>Beim Konvertieren hängt der Verlust vom Zielformat ab, nicht von der Quelle. Ein JPG nach PNG zu konvertieren verliert nichts Neues, während ein PNG nach JPG immer etwas verliert.</p>
 <h2 id="jpg-quality-explained">JPG-Qualität, ehrlich erklärt</h2>
