@@ -3916,7 +3916,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
         },
         {
           question: 'Can I convert an image without losing any quality?',
-          answer: 'Yes, when the target format is lossless. Converting JPG to PNG loses nothing beyond the damage already in the JPG, and converting PNG to WebP in lossless mode keeps every pixel. Converting to JPG always involves some loss, so keep the quality slider high for important photos.',
+          answer: 'Yes, when the target format is lossless. Converting JPG to PNG loses nothing beyond the damage already in the JPG. In this tool, PNG is the lossless option: WebP uses the quality slider, so a PNG to WebP conversion is only as faithful as the quality setting allows. Converting to JPG always involves some loss, so keep the quality slider high for important photos.',
         },
         {
           question: 'Why does my converted file have a different name?',
@@ -16186,7 +16186,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 <p>Both controls are subtle by design. A heavy shadow or an extreme corner radius draws attention to the effect instead of the image. Use enough to add depth and polish, then stop before the treatment becomes the subject.</p>
 <h2 id="output-formats-and-quality">Output Formats and Quality</h2>
 <p>The tool exports the finished image as a JPG or PNG. JPG is the right choice for photos and for any image where a small file matters, such as a website banner or a social post. It compresses well and loads fast.</p>
-<p>PNG is the right choice when the foreground has transparency that must survive, or when the image has sharp text and flat colors that JPG would blur. A PNG file is larger, but it keeps every edge crisp.</p>
+<p>PNG is the right choice when the image has sharp text and flat colors that JPG would blur. A PNG file is larger, but it keeps every edge crisp. The new background covers the whole canvas, so the finished image has no transparency left to keep — PNG earns its place here through crisp edges, not transparency.</p>
 <p>Export quality for JPG is high by default, which preserves the detail of the foreground and the smoothness of the gradient. A gradient exported at low quality can show banding, which is the visible steps between color shades. Keep the quality high for gradient backgrounds.</p>
 <p>The downloaded file is named to reflect the backdrop settings, so you can tell exports apart when you make several versions. A clear filename saves you from opening five near-identical files to find the right one.</p>
 <h2 id="backgrounds-for-product-photos">Backgrounds for Product Photos</h2>
@@ -16206,7 +16206,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 <p>Finally, many people add a background to a photo that still has its original messy background. The tool places the whole photo on the new backdrop, so the old background stays visible inside the frame. Remove the old background first, then add the new one.</p>
 <h2 id="quick-reference">Quick Reference: Choosing a Background</h2>
 <p>Use a solid color for listings, logos, and anything where the foreground must dominate. Use a gradient for social graphics and promotions where energy helps. Use a blurred photo when the frame shape differs from the photo shape and you need to fill the gaps.</p>
-<p>Set the canvas ratio for the destination, scale the foreground with breathing room, and export JPG for photos and PNG for transparency or sharp text. Preview at the size your audience will see.</p>
+<p>Set the canvas ratio for the destination, scale the foreground with breathing room, and export JPG for photos and PNG for sharp text. Preview at the size your audience will see.</p>
 <p>For the step-by-step version, read <a href="/blog/how-to-add-background-to-image/">How to Add a Background to an Image</a>, and for product-specific advice, read <a href="/blog/product-photo-backgrounds/">Product Photo Backgrounds: Colours and Context</a>. Try it now with the <a href="/add-background-to-image/">Add Background to Image</a> tool, or start from a clean cutout with the <a href="/remove-background/">background remover</a>.</p>
 `,
       faqs: [
@@ -16224,7 +16224,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
         },
         {
           question: 'Should I export as JPG or PNG after adding a background?',
-          answer: 'Use JPG for photos and for any image where a small file matters, such as social posts and website banners. Use PNG when the image has sharp text or flat colors that need crisp edges, or when you want to keep transparency.',
+          answer: 'Use JPG for photos and for any image where a small file matters, such as social posts and website banners. Use PNG when the image has sharp text or flat colors that need crisp edges. Once the new background is composited, there is no transparency left to keep — the whole canvas is filled.',
         },
         {
           question: 'Why does my gradient background show visible bands?',
@@ -16290,7 +16290,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 <p>Look at the image on your phone if you can. A background that looks subtle on a desktop monitor can look loud on a phone screen, and a gradient that looks smooth on a large display can band on a small one. The phone is where most viewers will see it.</p>
 <p>Compare the three background modes one last time if you are unsure. Switching is free and keeps your framing, so a final comparison costs seconds and often changes the choice. Trust the version that reads best at a glance, not the one that looked best in the editor.</p>
 <h2 id="step-8-export-and-download">Step 8: Export and Download</h2>
-<p>Choose the export format. JPG suits photos and any image where a small file matters, such as a social post or a website banner. PNG suits images with sharp text, flat colors, or transparency that must survive the export.</p>
+<p>Choose the export format. JPG suits photos and any image where a small file matters, such as a social post or a website banner. PNG suits images with sharp text or flat colors that need crisp edges.</p>
 <p>Click download and the finished image saves to your device. The filename reflects the backdrop settings, so you can tell different versions apart when you export several. Save the file where you can find it again, and keep the original foreground file too.</p>
 <p>Open the downloaded file and look at it once more. Check the size, the format, and the appearance at the size it will be published. A quick check now catches a wrong format or a bad crop before the image goes live.</p>
 <p>If the result is not right, change one setting and export again. The tool does not limit how many versions you make, so iterate freely. A second export with a different background or scale takes seconds.</p>
@@ -16308,7 +16308,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 <p>Pet and wildlife photos suit a blurred photo background, because the blurred colors suggest the real environment while the animal stays sharp. A solid color behind a pet can look like a studio portrait, which suits a formal shot but feels stiff for a candid one.</p>
 <h2 id="quick-reference">Quick Reference: Background Checklist</h2>
 <p>Upload the foreground, pick Solid, Gradient, or Blurred Photo, choose the color or blur, set the canvas ratio for the destination, scale the foreground with breathing room, and add a subtle shadow if it suits the image.</p>
-<p>Export JPG for photos and PNG for sharp text or transparency, then check the download at the size it will be seen. If the edge of a cutout looks rough, clean the cutout first and export again.</p>
+<p>Export JPG for photos and PNG for sharp text, then check the download at the size it will be seen. If the edge of a cutout looks rough, clean the cutout first and export again.</p>
 <p>For the full guide to every mode, read the <a href="/blog/add-background-to-image-guide/">Add Background to Images: Complete Guide</a>, and for product-specific advice, read <a href="/blog/product-photo-backgrounds/">Product Photo Backgrounds: Colours and Context</a>. Start now with the <a href="/add-background-to-image/">Add Background to Image</a> tool.</p>
 `,
       faqs: [
