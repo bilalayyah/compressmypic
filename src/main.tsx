@@ -352,6 +352,7 @@ const LOCALIZED_PAGE_MODULES: Record<string, string> = {
   'de|/terms': './pages/de/TermsPageDe.tsx',
   'en|/about': './pages/AboutPage.tsx',
   'en|/admin/comments': './pages/AdminCommentsPage.tsx',
+  'en|/all-tools': './pages/AllToolsPage.tsx',
   'en|/contact': './pages/ContactPage.tsx',
   'en|/cookie-policy': './pages/CookiePolicyPage.tsx',
   'en|/disclaimer': './pages/DisclaimerPage.tsx',

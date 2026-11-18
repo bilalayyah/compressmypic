@@ -46,6 +46,9 @@ const DisclaimerPage = React.lazy(() =>
 const CookiePolicyPage = React.lazy(() =>
   import('./pages/CookiePolicyPage').then((m) => ({ default: m.CookiePolicyPage }))
 );
+const AllToolsPage = React.lazy(() =>
+  import('./pages/AllToolsPage').then((m) => ({ default: m.AllToolsPage }))
+);
 const AdminCommentsPage = React.lazy(() =>
   import('./pages/AdminCommentsPage').then((m) => ({ default: m.AdminCommentsPage }))
 );
@@ -558,6 +561,7 @@ const KNOWN_ROUTES = [
   '/terms',
   '/disclaimer',
   '/cookie-policy',
+  '/all-tools',
   '/admin/comments',
   '/guides/compress-images-for-whatsapp',
   '/guides/jpg-vs-png-vs-webp',
@@ -1113,6 +1117,7 @@ export default function App() {
       '/terms': 'Terms of Service | CompressMyPic – Free Image Tools Rules',
       '/disclaimer': 'Disclaimer | CompressMyPic – Free Image Tools',
       '/cookie-policy': 'Cookie Policy | CompressMyPic – How Cookies Are Used',
+      '/all-tools': 'All Image Tools | CompressMyPic – Free Image Tools',
       '/admin/comments': 'Comments Admin | CompressMyPic (Private Page)',
       '/guides/compress-images-for-whatsapp': 'Compress Images for WhatsApp Without Losing Quality',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: Which Image Format Is Best? (Guide)',
@@ -1127,6 +1132,7 @@ export default function App() {
       '/terms': 'Terms of Service for CompressMyPic: fair use, your content, liability and service changes for our free online image tools. Plain rules, no legal jargon.',
       '/disclaimer': 'Disclaimer for CompressMyPic: our free image tools are provided as-is, without warranty. Read the limits of liability and accuracy of our guides.',
       '/cookie-policy': 'Cookie Policy for CompressMyPic: we set no cookies ourselves. Learn which cookies Google AdSense and Analytics use, and how to control them.',
+      '/all-tools': 'All 48 free CompressMyPic image tools in one place — compress, convert, resize, crop and edit images in your browser. No signup, no watermark.',
       '/admin/comments': 'Private admin page for moderating CompressMyPic comments. This page is not for public use — please use the contact page for help, feedback or bug reports.',
       '/guides/compress-images-for-whatsapp': 'Learn how to compress images for WhatsApp without losing quality. Free, private, no signup — shrink photos before sending so they stay sharp and send fast.',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP compared: file size, quality, transparency and browser support — pick the right image format for photos, logos, websites and social media.',
@@ -2653,6 +2659,10 @@ export default function App() {
               categories={categoryLabels}
             />
           ) : null}
+        </main>
+      ) : currentPath === '/all-tools' ? (
+        <main id="main" className="flex-1">
+          <AllToolsPage onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
         </main>
       ) : currentPath === ES_ALL_TOOLS_PATH ? (
         <main id="main" className="flex-1">

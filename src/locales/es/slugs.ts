@@ -60,6 +60,7 @@ export const ES_PATH_BY_EN: Record<string, string> = {
   '/contact': '/es/contacto',
   '/privacy': '/es/privacidad',
   '/terms': '/es/terminos-de-servicio',
+  '/all-tools': '/es/todas-las-herramientas',
   '/disclaimer': '/es/aviso-legal',
   '/cookie-policy': '/es/politica-de-cookies',
   // --- Guides (Batch 7) ---

@@ -60,6 +60,7 @@ export const JA_PATH_BY_EN: Record<string, string> = {
   '/contact': '/ja/otoiawase',
   '/privacy': '/ja/puraibashi',
   '/terms': '/ja/riyo-kiyaku',
+  '/all-tools': '/ja/tools',
   '/disclaimer': '/ja/menseki-jiko',
   '/cookie-policy': '/ja/kukki-porishi',
   // --- Guides ---

@@ -60,6 +60,7 @@ export const KO_PATH_BY_EN: Record<string, string> = {
   '/contact': '/ko/mun-ui',
   '/privacy': '/ko/gaein-jeongbo',
   '/terms': '/ko/iyong-yag-gwan',
+  '/all-tools': '/ko/tools',
   '/disclaimer': '/ko/myeonchaek',
   '/cookie-policy': '/ko/kuki-jeongchaek',
   // --- Guides ---

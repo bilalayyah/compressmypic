@@ -60,6 +60,7 @@ export const ID_PATH_BY_EN: Record<string, string> = {
   '/contact': '/id/kontak',
   '/privacy': '/id/privasi',
   '/terms': '/id/syarat-dan-ketentuan',
+  '/all-tools': '/id/semua-alat',
   '/disclaimer': '/id/penafian',
   '/cookie-policy': '/id/kebijakan-cookie',
   // --- Guides ---

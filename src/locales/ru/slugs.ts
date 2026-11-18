@@ -60,6 +60,7 @@ export const RU_PATH_BY_EN: Record<string, string> = {
   '/contact': '/ru/kontakty',
   '/privacy': '/ru/konfidentsialnost',
   '/terms': '/ru/usloviya-ispolzovaniya',
+  '/all-tools': '/ru/vse-instrumenty',
   '/disclaimer': '/ru/otkaz-ot-otvetstvennosti',
   '/cookie-policy': '/ru/politika-cookie',
   // --- Guides ---

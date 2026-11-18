@@ -60,6 +60,7 @@ export const ZH_PATH_BY_EN: Record<string, string> = {
   '/contact': '/zh/lianxi-women',
   '/privacy': '/zh/yinsi-zhengce',
   '/terms': '/zh/shiyong-tiaokuan',
+  '/all-tools': '/zh/all-tools',
   '/disclaimer': '/zh/mianze-shengming',
   '/cookie-policy': '/zh/cookie-zhengce',
   // --- Guides ---

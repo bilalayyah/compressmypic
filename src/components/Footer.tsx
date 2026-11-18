@@ -226,7 +226,7 @@ export const Footer: React.FC<FooterProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [detectedLang]);
   const directoryHref =
-    detectedLang === 'en' ? '/#tools-directory' : DIRECTORY_PATH_BY_LANG[detectedLang];
+    detectedLang === 'en' ? '/all-tools' : DIRECTORY_PATH_BY_LANG[detectedLang];
 
   // M8: reveal the "Privacy and cookie settings" revocation link only where
   // the GDPR message applies. Google's Example 2 pattern: hidden by default,

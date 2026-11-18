@@ -353,6 +353,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
         ? 'https://compressmypic.online/'
         : `https://compressmypic.online/${lang}/`;
     const directoryPathByLang: Record<string, string> = {
+      en: '/all-tools',
       es: ES_ALL_TOOLS_PATH,
       pt: PT_ALL_TOOLS_PATH,
       fr: FR_ALL_TOOLS_PATH,
@@ -376,9 +377,8 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
         item: `https://compressmypic.online${withTrailingSlash(directoryPath)}`,
       });
     } else {
-      // English has no standalone tools-directory page (the directory lives
-      // on the homepage), so the category crumb points at the homepage —
-      // a name-only crumb is invalid (GSC "Missing field item").
+      // Unknown language: fall back to the homepage URL so the crumb keeps
+      // its item (a name-only crumb is invalid — GSC "Missing field item").
       breadcrumbItems.push({ '@type': 'ListItem', position: 2, name: categoryLabel, item: homeUrl });
     }
     breadcrumbItems.push({
