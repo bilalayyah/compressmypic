@@ -8130,8 +8130,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 10,
   },
   'image-crop-ratios-explained': {
-    title: 'Seitenverhältnis beim Zuschneiden: 1:1, 4:3, 16:9 – welches Format wofür?',
-    description: 'Was bedeuten Seitenverhältnisse beim Zuschneiden, und welches Format passt wofür? 1:1, 4:3, 3:2, 16:9 und eigene Formate erklärt – für Profilbilder, Druck und soziale Medien.',
+    title: 'Zuschneiden: 1:1, 4:3, 16:9 – welches Format?',
+    description: 'Was bedeuten Seitenverhältnisse beim Zuschneiden, und welches Format passt wofür? 1:1, 4:3, 3:2, 16:9 und mehr für Profilbilder, Druck und Social Media.',
     body: `
 <p>Jeder Zuschnitt hat ein Verhältnis – ob Sie es gewählt haben oder nicht. Das Verhältnis ist die Form des Rechtecks, das Sie behalten, und es entscheidet, wohin das Bild passt und wie es aussieht.</p>
 <p>Ein quadratischer Zuschnitt und ein breiter Zuschnitt sind nicht austauschbar. Der eine passt zu einem Profilbild, der andere zu einem Banner – und wer das falsche nimmt, dessen Arbeit wird von der Plattform selbst neu zugeschnitten.</p>
@@ -11901,8 +11901,8 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
 
   'image-dimensions-vs-resolution-vs-file-size': {
-    title: 'Bilddimensionen vs. Auflösung vs. Dateigröße erklärt',
-    description: 'Dimensionen, Auflösung und Dateigröße sind drei verschiedene Zahlen. Erfahren Sie, was jede bedeutet, wie sie zusammenhängen und welche für Web, Druck und Social Media zählt.',
+    title: 'Bilddimensionen vs. Auflösung vs. Dateigröße',
+    description: 'Dimensionen, Auflösung und Dateigröße sind drei verschiedene Zahlen. Was jede bedeutet, wie sie zusammenhängen und welche für Web, Druck und Social Media zählt.',
     body: `
 <p>Drei Zahlen beschreiben jedes Bild, und Menschen verwechseln sie ständig. Dimensionen, Auflösung und Dateigröße klingen verwandt, doch jede misst etwas anderes.</p>
 <p>Die Verwirrung verursacht echte Fehler. Leute kaufen eine Kamera mit vielen Megapixeln und wundern sich, warum der Druck weich aussieht – oder komprimieren eine Datei und wundern sich, warum sie sich immer noch nicht hochladen lässt.</p>
@@ -13766,7 +13766,7 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'product-photo-backgrounds': {
     title: 'Produktfoto-Hintergründe: Farben und Kontext',
-    description: 'Wählen Sie den richtigen Hintergrund für Produktfotos: Weiß, Markenfarben, Lifestyle-Kontext, Marktplatz-Regeln und die Konsistenz, die einen Shop wie eine Marke wirken lässt.',
+    description: 'Wählen Sie den richtigen Hintergrund für Produktfotos: Weiß, Markenfarben, Marktplatz-Regeln und die Konsistenz, die einen Shop zur Marke macht.',
     body: `
 <p>Der Hintergrund eines Produktfotos ist keine Dekoration. Er entscheidet, ob der Käufer zuerst das Produkt sieht, ob die Anzeige vertrauenswürdig wirkt und ob ein Shop wie eine Marke oder wie eine zufällige Sammlung von Bildern aussieht. Ein guter Hintergrund ist unsichtbar; ein schlechter ist alles, was man bemerkt.</p>
 <p>Diese Anleitung behandelt die Hintergrund-Entscheidungen, die beim Verkaufen zählen: schlichtes Weiß, Markenfarben, Lifestyle-Kontext und die Regeln, die Marktplätze vorgeben. Außerdem geht es um Konsistenz – denn ein Shop, in dem jedes Produkt auf einem anderen Hintergrund sitzt, wirkt unorganisiert, egal wie gut jedes einzelne Foto ist.</p>

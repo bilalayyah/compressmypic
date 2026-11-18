@@ -11771,7 +11771,7 @@ export const ES_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'image-color-picker-guide': {
     title: 'Selector de color de imagen: guía completa',
-    description: 'Tome cualquier color de cualquier imagen con un cuentagotas. Aprenda los códigos HEX, RGB, HSL y CMYK, la lupa de aumento, las muestras y la exportación a CSS — gratis, en su navegador.',
+    description: 'Tome cualquier color de cualquier imagen con un cuentagotas. Códigos HEX, RGB, HSL y CMYK, lupa, muestras y exportación a CSS, gratis en su navegador.',
     body: `
 <p>A todo diseñador le ha pasado: ve un color en pantalla y quiere su código exacto. Una captura de pantalla, una foto, un logotipo o un mockup pueden tener el tono perfecto, pero adivinar su valor nunca funciona.</p>
 <p>Un selector de color de imagen resuelve ese problema en segundos. Usted abre una imagen, apunta a cualquier píxel y lee su código de color exacto en HEX, RGB, HSL y CMYK.</p>
@@ -15305,8 +15305,8 @@ export const ES_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 13,
   },
   'image-resizer-guide': {
-    title: '¿Qué es un redimensionador de imágenes? Guía completa',
-    description: 'Aprenda qué hace un redimensionador de imágenes, cómo funcionan el cambio de tamaño por píxeles y por porcentaje, cuándo conviene bloquear la relación de aspecto y cómo elegir el tamaño adecuado para la web, las redes sociales y la impresión.',
+    title: '¿Qué es un redimensionador de imágenes?',
+    description: 'Aprenda qué hace un redimensionador de imágenes: cambio por píxeles y por porcentaje, relación de aspecto y qué tamaño usar para web, redes e impresión.',
     body: `
 <p>Un redimensionador de imágenes cambia las dimensiones en píxeles de una foto o un gráfico. Una foto que empieza con 4000 por 3000 píxeles puede quedar en 1200 por 900, 800 por 600 o cualquier otro tamaño que necesite. La imagen conserva su motivo y sus colores, pero ocupa un espacio distinto en la pantalla.</p>
 <p>El tamaño importa porque casi todos los destinos esperan unas dimensiones concretas. La imagen principal de un sitio web debe ser ancha, la foto de perfil debe ser cuadrada y la ficha de un marketplace necesita fotos de producto uniformes. El <a href="/es/redimensionar-imagenes/">redimensionador de imágenes</a> le permite cumplir con esos tamaños sin instalar programas ni abrir un editor pesado.</p>

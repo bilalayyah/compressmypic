@@ -1233,7 +1233,7 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-compress-image-to-500kb': {
     title: 'Comment compresser une image à 500 Ko',
-    description: 'Étape par étape : compressez n’importe quelle photo à 500 Ko pour les portfolios, les présentations et les galeries. Choix de format, conseils de lot et solutions pour les cibles manquées.',
+    description: 'Compressez n’importe quelle photo à 500 Ko pour portfolios, présentations et galeries. Choix de format, conseils de lot et solutions pour les cibles manquées.',
     body: `
 <p>Compresser une image à 500 Ko est le travail de compression le plus facile qui soit. Le budget est généreux, la qualité reste élevée, et le processus prend environ deux minutes.</p>
 <p>Ce guide parcourt chaque étape. Vous préparerez le fichier source, vous choisirez le bon format, vous lancerez la compression et vous vérifierez le résultat avant de l’utiliser.</p>
@@ -15859,8 +15859,8 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 14,
   },
   'bulk-resize-presets-social-ecommerce-print': {
-    title: 'Tailles d’images : Instagram, boutique en ligne et impression',
-    description: 'Quelle taille choisir pour une photo Instagram, une fiche produit ou une impression ? Retrouvez les bonnes dimensions pour chaque destination, et quand saisir une taille sur mesure au lieu d’utiliser un préréglage.',
+    title: 'Tailles d’images pour Instagram et boutiques',
+    description: 'Quelle taille choisir pour une photo Instagram, une fiche produit ou une impression ? Les bonnes dimensions et quand saisir une taille sur mesure.',
     body: `
 <p>Chaque destination veut une taille d’image différente, et un préréglage est un raccourci vers la bonne. Au lieu de chercher les chiffres d’une plateforme et de les saisir à la main, vous cliquez sur un préréglage et les dimensions se remplissent toutes seules. Le lot applique ensuite cette taille à chaque image de la file.</p>
 <p>Ce guide associe les préréglages du redimensionneur en lot et les tailles sociales courantes aux endroits qui les attendent : fils sociaux, boutiques en ligne, blogs, miniatures, écrans et impression. Il explique aussi quand un préréglage est le mauvais outil, et quand une taille personnalisée saisie à la main est la bonne.</p>
@@ -16559,8 +16559,8 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 12,
   },
   'photo-privacy-gps-exif-risks': {
-    title: 'Métadonnées photo : le danger pour votre vie privée (GPS, EXIF)',
-    description: 'Ce que la position GPS, les données EXIF et les métadonnées cachées de vos photos peuvent révéler sur vous — et les gestes simples qui empêchent vos images de dévoiler votre adresse et vos habitudes.',
+    title: 'Métadonnées photo : danger pour la vie privée',
+    description: 'Ce que la position GPS, les données EXIF et les métadonnées cachées de vos photos révèlent — et les gestes simples qui les empêchent de dévoiler votre adresse.',
     body: `
 <p>Une photo montre un instant. Ses métadonnées peuvent montrer où vous vivez, où vos enfants vont à l'école, et quand votre maison est vide.</p>
 <p>La plupart des gens partagent des photos sans jamais vérifier ce qui voyage dans le fichier. Le risque est invisible, et c'est justement pour ça qu'il est si facile de l'ignorer.</p>

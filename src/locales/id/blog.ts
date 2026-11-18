@@ -15123,7 +15123,7 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
 },
 'image-to-base64-guide': {
   title: 'Gambar ke Base64: Panduan Lengkap',
-  description: 'Ubah gambar apa pun menjadi Base64: Data URL, string mentah, snippet img HTML, dan output url() CSS. Pelajari overhead 33%, kapan menyematkan, dan kapan menautkan saja.',
+  description: 'Ubah gambar apa pun menjadi Base64: Data URL, string mentah, snippet img HTML, dan output url() CSS. Pelajari overhead 33% dan kapan menyematkan.',
   body: `
 <p>Developer sering membutuhkan gambar sebagai teks, bukan sebagai file. Ikon di dalam stylesheet, logo di dalam email HTML, atau gambar di dalam payload JSON semuanya membutuhkan gambar yang diubah menjadi karakter.</p>
 <p>Base64 adalah encoding yang memungkinkan hal itu. Base64 mengubah byte biner gambar menjadi string teks biasa yang bisa hidup di dalam kode, markup, dan pesan.</p>

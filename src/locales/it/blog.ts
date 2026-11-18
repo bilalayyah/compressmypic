@@ -13327,7 +13327,7 @@ export const IT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-make-gif-from-images': {
     title: 'Come creare una GIF da immagini',
-    description: 'Trasforma le tue foto in una GIF animata in pochi minuti: raccogli i fotogrammi, caricali, ordinali e temporizzali, imposta il loop, guarda l’anteprima e scarica una GIF pronta da condividere.',
+    description: 'Trasforma le tue foto in una GIF animata: raccogli i fotogrammi, ordinali e temporizzali, imposta il loop e scarica una GIF pronta da condividere.',
     body: `
 <p>Creare una GIF da immagini è un lavoro breve: raccogli alcune foto, le carichi come fotogrammi, imposti i tempi e scarichi l’animazione. Questa guida ti accompagna passo dopo passo, in ordine, dalla scelta dei fotogrammi alla condivisione della GIF finita.</p>
 <p>Prima di iniziare ti serve una sola cosa: due o più immagini da animare. Possono essere foto, screenshot, scatti di prodotto o illustrazioni. Dimensioni e forme simili danno il risultato più fluido, ma lo strumento gestisce anche dimensioni miste.</p>
@@ -14175,8 +14175,8 @@ export const IT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 12,
   },
   'how-to-resize-multiple-images': {
-    title: 'Come ridimensionare più immagini contemporaneamente',
-    description: 'Ridimensiona più immagini contemporaneamente: carica un lotto, scegli Fit Max, Larghezza uniforme, Dimensioni esatte o Percentuale, imposta un preset, controlla i risultati e scarica un unico ZIP.',
+    title: 'Come ridimensionare più immagini insieme',
+    description: 'Ridimensiona più immagini insieme: carica un lotto, scegli Fit Max, Larghezza uniforme, Dimensioni esatte o Percentuale, imposta un preset e scarica un ZIP.',
     body: `
 <p>Ridimensionare venti foto una alla volta è un lavoro lento e soggetto a errori. Ridimensionarle come lotto richiede pochi minuti e applica le stesse impostazioni a ogni immagine.</p>
 <p>Questa guida ti accompagna passo passo nel <a href="/it/ridimensiona-immagini-in-lotto/">ridimensionatore di immagini in lotto</a>, dalla preparazione della cartella al download dello ZIP. Copre le quattro strategie, i preset, le impostazioni di qualità e i controlli che intercettano un lotto sbagliato prima che tu lo usi.</p>
@@ -14493,7 +14493,7 @@ export const IT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
   },
   'how-to-view-image-metadata': {
     title: 'Come vedere i metadati di una foto',
-    description: 'Guida passo passo per vedere i metadati di un’immagine: apri la foto nel visualizzatore, leggi i campi EXIF e GPS, esporta un report JSON e verifica un file pulito.',
+    description: 'Vedere i metadati di un’immagine, passo passo: apri la foto nel visualizzatore, leggi i campi EXIF e GPS, esporta un report JSON e verifica un file pulito.',
     body: `
 <p>Vedere i metadati di un’immagine sembra una cosa tecnica, ma richiede meno di un minuto. Apri una foto in un visualizzatore, leggi il report e decidi se qualcosa al suo interno debba restare privato.</p>
 <p>Questa guida ti accompagna passo passo con il <a href="/it/visualizzare-metadati-immagine/">Visualizzatore metadati immagine</a>, gratuito. Funziona nel browser, non serve un account e non carica mai le tue foto.</p>

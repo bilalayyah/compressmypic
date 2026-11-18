@@ -630,7 +630,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 11,
   },
   '100kb-image-quality-formats': {
-    title: 'Qualidade de imagem com 100 KB: JPG vs PNG vs WebP',
+    title: 'JPG vs PNG vs WebP com 100 KB: qualidade',
     description: 'Qual formato fica melhor com 100 KB? Uma comparação detalhada de qualidade entre JPG, PNG e WebP com orientações reais para fotos, gráficos e texto.',
     body: `
 <p>Com 100 KB, o formato que você escolhe decide como a imagem fica. A mesma foto pode ser nítida num formato e turva em outro.</p>
@@ -3495,7 +3495,7 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 12,
   },
   'jpg-to-pdf-vs-png-to-pdf': {
-    title: 'JPG ou PNG para PDF: qual é melhor para documentos?',
+    title: 'JPG ou PNG para PDF: qual é melhor?',
     description: 'Para o seu PDF, é melhor usar JPG ou PNG? Compare tamanho, nitidez do texto e transparência e veja os melhores ajustes para cada tipo de documento.',
     body: `
   <p>Quando você cria um PDF a partir de imagens, o formato dessas imagens importa mais do que a maioria espera. Uma página JPG e uma página PNG podem parecer idênticas na tela e se comportar de forma bem diferente.</p>
@@ -14556,8 +14556,8 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     readingMinutes: 14,
   },
   'image-metadata-viewer-guide': {
-    title: 'Visualizador de Metadados de Foto: Guia Completo',
-    description: 'Veja o que um visualizador de metadados de foto revela — configurações EXIF da câmera, coordenadas GPS e blocos de PNG e WebP — e como inspecionar qualquer foto direto no navegador, sem enviar nada para servidor nenhum.',
+    title: 'Metadados de Foto: Guia Completo',
+    description: 'Veja o que um visualizador de metadados revela: EXIF da câmera, GPS e blocos de PNG e WebP. Inspecione fotos no navegador, sem enviar nada a servidor algum.',
     body: `
 <p>Toda foto que você tira carrega uma camada escondida de informações. Configurações da câmera, horário da captura, modelo do aparelho e, às vezes, a sua localização exata viajam dentro do arquivo, invisíveis na imagem.</p>
 <p>Um visualizador de metadados de imagem lê essa camada escondida e mostra tudo em linguagem simples. Ele transforma cabeçalhos binários em um relatório legível, que você consegue usar de verdade.</p>
