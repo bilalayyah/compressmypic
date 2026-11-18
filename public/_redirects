@@ -8,21 +8,32 @@
 /compress-image-for-whatsapp/ /guides/compress-images-for-whatsapp/ 301
 /compress-image-for-whatsapp /guides/compress-images-for-whatsapp/ 301
 #
-# ACTIVE RULE (1): prerendered EN homepage.
+# ACTIVE RULE (1a): /home/ is an unlisted duplicate of the homepage (P2-5,
+# audit 2026-11-18) — 301 it to / so only one homepage URL exists. This
+# MUST stay above rule (1b): rules match top-down, first match wins, so a
+# direct /home/ request 301s here, while / falls through to the rewrite.
+# No loop: the rewrite in (1b) is internal (200), not a redirect, so /
+# never redirects back. Canonical on the homepage already points to /.
+# NOTE: vite preview does NOT apply _redirects, so this 301 cannot be
+# verified locally — verify live after deploy (curl -I /home/ -> 301).
+/home/ / 301
+/home / 301
+#
+# ACTIVE RULE (1b): prerendered EN homepage.
 # /  ->  /home/  (200 rewrite, URL stays "/")
 # The homepage cannot be prerendered as public/index.html — Vite
 # overwrites dist/index.html with its own shell on every build, so a
 # committed public/index.html would NOT survive the Cloudflare build
 # (verified locally 2026-11-15). Instead the rendered home lives at
-# public/home/index.html (snapshot captured 2026-11-16, quick wins,
-# 200 KB, full content: H1, 2,738 words in <main>) and this rewrite
-# serves it for "/".
+# public/home/index.html and this rewrite serves it for "/".
 # LESSON (2026-11-15): do NOT point the rewrite at /home.html — Pages
 # 308-redirects *.html URLs to their clean form (/home), so "/" ended
 # up at "/home" instead of staying "/". A directory target (/home/)
 # is served directly with 200 and the URL stays "/".
-# Regenerate home/index.html whenever the JS bundle hash changes
-# (it references /assets/index-B6Hq_WNW.js) or home content changes.
+# OWNERSHIP (P0-1 fix, audit 2026-11-18): scripts/prerender.cjs renders
+# '/' -> public/home/index.html on EVERY run, in the same run as all other
+# routes, so a bundle-hash change can never strand it again. Do NOT edit
+# public/home/index.html by hand; regenerate it with the prerender script.
 /   /home/   200
 #
 # ACTIVE RULE (2): 100KB redirects (audit 2026-11-16, M1).

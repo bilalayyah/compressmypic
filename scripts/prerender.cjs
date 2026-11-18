@@ -24,11 +24,18 @@
  * documentElement.outerHTML to public/<route>/index.html -> `vite build`
  * again so dist/ contains the prerendered files (skipped with --no-rebuild).
  *
- * Route list: public/sitemap.xml (626 URLs) + /admin/comments (a real route
- * that is deliberately NOT in the sitemap). The home route '/' is SKIPPED on
- * purpose: public/index.html would be copied to dist/index.html and could
- * conflict with Vite's own index.html output. Home needs no prerender —
- * Vite's index.html already carries the correct home title/meta.
+ * Route list: public/sitemap.xml (2,309 URLs) + /admin/comments (a real route
+ * that is deliberately NOT in the sitemap). The home route '/' renders to
+ * public/home/index.html — NOT public/index.html, because Vite overwrites
+ * dist/index.html with its own shell on every build, so a committed
+ * public/index.html would NOT survive the Cloudflare build (verified
+ * locally 2026-11-15). public/_redirects rewrites / -> /home/ 200, so
+ * public/home/index.html IS the live homepage. P0-1 (audit 2026-11-18):
+ * prerender used to SKIP '/' entirely and nothing regenerated /home/, so
+ * the live homepage referenced a dead bundle hash (index-Cz5DrMrK.js) and
+ * rendered blank on ~38% of loads. Every prerender run now regenerates
+ * public/home/index.html from the current build, in the same run as every
+ * other route — a bundle-hash change can no longer strand it.
  *
  * Playwright is NOT a dependency of this repo. It resolves from the shared
  * screenshot-tool checkout (~/workspace/compressmypic/screenshot-tool/) via
@@ -150,8 +157,11 @@ function readRoutes() {
 function outPathFor(routePath) {
   // '/de/bildgroesse-aendern' -> public/de/bildgroesse-aendern/index.html
   // '/de/' (locale home)      -> public/de/index.html
+  // '/' (EN home)             -> public/home/index.html (see header: Vite
+  //   overwrites dist/index.html, so the live homepage lives at /home/ and
+  //   is served by the / -> /home/ 200 rewrite in public/_redirects).
   const clean = routePath.replace(/\/+$/, '') || '/';
-  if (clean === '/') return null; // home: skipped on purpose, see header
+  if (clean === '/') return path.join(PUBLIC_DIR, 'home', 'index.html');
   return path.join(PUBLIC_DIR, ...clean.split('/').filter(Boolean), 'index.html');
 }
 
@@ -237,6 +247,27 @@ function sanitizePrerenderedHtml(html, baseUrl) {
   const escaped = baseUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   let out = html.replace(new RegExp(`<link[^>]*href="${escaped}[^"]*"[^>]*>`, 'g'), '');
   out = out.split(baseUrl).join('');
+  // Week-2 speed work (audit C1/H1): the app injects the AdSense +
+  // gtag.js <script> tags at mount, so a raw snapshot ships them as static
+  // tags — the live browser would then fetch both scripts immediately at
+  // parse time, defeating the deferred loader in src/utils/thirdParty.ts.
+  // Strip the two external tags here; the inline gtag stub
+  // (#cmp-gtag-config) is intentionally KEPT — it is tiny, has no network
+  // cost, and lets analytics.ts queue events until gtag.js arrives.
+  out = out.replace(
+    /<script[^>]*src="[^"]*(?:googlesyndication\.com|googletagmanager\.com)[^"]*"[^>]*>(?:<\/script>)?/g,
+    '',
+  );
+  // The font stylesheets load async via the media=print trick (index.html),
+  // but the onload handler flips media to 'all' while this page renders —
+  // the snapshot would then ship render-blocking font links (this is why
+  // the quick-wins Great Vibes fix currently ships as media="all").
+  // Reset every Google Fonts css2 link to media="print"; the live onload
+  // handler still flips it to 'all' once the CSS arrives.
+  out = out.replace(
+    /(<link[^>]*href="[^"]*fonts\.googleapis\.com\/css2[^"]*"[^>]*media=")all("[^>]*>)/g,
+    '$1print$2',
+  );
   return out;
 }
 
@@ -297,6 +328,12 @@ async function renderRoute(browser, baseUrl, routePath, attempt) {
     if (html.includes(encodeURIComponent(baseUrl))) {
       throw new Error(`prerendered HTML still contains the URL-encoded preview origin ${encodeURIComponent(baseUrl)}`);
     }
+    // Week-2 speed work: the deferred loader only works if the snapshot
+    // carries no external third-party script tag (see sanitize above).
+    // The inline gtag stub (#cmp-gtag-config) is allowed — it has no src.
+    if (/<script[^>]*src="[^"]*(?:googlesyndication\.com|googletagmanager\.com)/.test(html)) {
+      throw new Error('prerendered HTML still contains a third-party script tag (adsbygoogle/gtag.js) — the deferred loader would be defeated');
+    }
     const title = await page.evaluate(() => document.title);
     // H1-count assertion (Batch 2): exactly one <h1> per page. Article
     // bodies must not contain an <h1> (the page title is the one <h1>) —
@@ -323,7 +360,7 @@ async function main() {
     const missing = [...wanted].filter((r) => !routes.includes(r));
     if (missing.length) console.warn(`[prerender] WARNING routes not in sitemap+extras, skipped: ${missing.join(', ')}`);
   }
-  const toRender = routes.filter((r) => outPathFor(r) !== null);
+  const toRender = routes; // outPathFor maps every route, including '/' -> public/home/index.html
   let renderList = toRender;
   if (opts.skipExisting) {
     renderList = toRender.filter((r) => {
@@ -338,8 +375,7 @@ async function main() {
   }
   // --limit applies after --skip-existing so it counts remaining work.
   if (opts.limit > 0) renderList = renderList.slice(0, opts.limit);
-  const skippedHome = routes.length - toRender.length;
-  console.log(`[prerender] ${renderList.length} routes to render (${skippedHome} home route skipped), concurrency ${opts.concurrency}`);
+  console.log(`[prerender] ${renderList.length} routes to render, concurrency ${opts.concurrency}`);
   if (renderList.length === 0) {
     console.log('[prerender] nothing to render — exiting without building.');
     process.exit(0);
