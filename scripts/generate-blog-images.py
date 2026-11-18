@@ -51,24 +51,62 @@ CJK_BOLD_CANDIDATES = [
 def font_for(lang, size, bold=True):
     """Pick a font that can render the language; CJK needs a CJK font."""
     if lang in ("ja", "ko", "zh"):
-        for path in CJK_BOLD_CANDIDATES if bold else []:
-            if os.path.exists(path):
-                return ImageFont.truetype(path, size)
-        # Fall through to Noto Sans: it lacks CJK glyphs (tofu boxes).
-        # The full-batch driver must fail loudly here instead of shipping tofu.
-        raise RuntimeError(
-            f"No CJK bold font found for lang={lang}; refusing to render. "
-            f"Checked: {CJK_BOLD_CANDIDATES}"
-        )
+        if bold:
+            for path in CJK_BOLD_CANDIDATES:
+                if os.path.exists(path):
+                    return ImageFont.truetype(path, size)
+            # Fall through to Noto Sans: it lacks CJK glyphs (tofu boxes).
+            # The full-batch driver must fail loudly here instead of shipping tofu.
+            raise RuntimeError(
+                f"No CJK bold font found for lang={lang}; refusing to render. "
+                f"Checked: {CJK_BOLD_CANDIDATES}"
+            )
+        # Regular weight is only ever used for Latin-only strings (the
+        # "FREE ONLINE IMAGE TOOLS" tagline and the privacy subline), so
+        # Noto Sans Regular is correct here.
+        return ImageFont.truetype(FONT_REGULAR, size)
     path = FONT_BOLD if bold else FONT_REGULAR
     return ImageFont.truetype(path, size)
 
 
+def _split_point(draw, word, font, max_width):
+    """Largest fitting character prefix (binary search), preferring not to
+    split inside a Latin letter/digit run (keeps acronyms like 'PNG'
+    together). Backs off to the run start when the prefix stays usable."""
+    lo, hi = 1, len(word)
+    while lo < hi:
+        mid = (lo + hi + 1) // 2
+        if draw.textlength(word[:mid], font=font) <= max_width:
+            lo = mid
+        else:
+            hi = mid - 1
+    while (
+        lo > 4
+        and lo < len(word)
+        and word[lo - 1].isascii()
+        and word[lo - 1].isalnum()
+        and word[lo].isascii()
+        and word[lo].isalnum()
+    ):
+        lo -= 1
+    return lo
+
+
 def wrap_text(draw, text, font, max_width):
-    """Greedy word wrap by pixel width; returns list of lines."""
+    """Greedy word wrap by pixel width; returns list of lines.
+    A word wider than max_width is split by character — required for
+    spaceless CJK titles (Japanese has no spaces, so the whole title is
+    a single 'word'); CJK breaks anywhere without hyphenation."""
     words = text.split()
     lines, cur = [], ""
     for word in words:
+        while draw.textlength(word, font=font) > max_width:
+            cut = _split_point(draw, word, font, max_width)
+            chunk, word = word[:cut], word[cut:]
+            if cur:
+                lines.append(cur)
+                cur = ""
+            lines.append(chunk)
         trial = f"{cur} {word}".strip()
         if draw.textlength(trial, font=font) <= max_width:
             cur = trial
@@ -93,7 +131,12 @@ def fit_title(draw, title, lang, max_width, max_lines=3):
     # Fallback: smallest size, allow overflow lines (should not happen for
     # real titles, which are <=60 chars after the metadata fix).
     font = font_for(lang, 44, bold=True)
-    return font, wrap_text(draw, title, font, max_width)
+    lines = wrap_text(draw, title, font, max_width)
+    if len(lines) > max_lines or any(
+        draw.textlength(line, font=font) > max_width for line in lines
+    ):
+        print(f"OVERFLOW title needs {len(lines)} lines at 44px: {title!r}", file=sys.stderr)
+    return font, lines
 
 
 def draw_icon(draw, cx, top, w=120, h=92):

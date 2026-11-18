@@ -145,6 +145,23 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
         {updated ? ` · ${updated}` : ''} · {reading}
       </p>
 
+      {/* Per-article hero image (article-images batch): the same branded
+          1200x630 card as og:image, visible in the article. width/height
+          are set to avoid CLS; fetchPriority high because it is above the
+          fold and may become the LCP element (user chose this knowing the
+          speed cost). Only renders for articles published in this language
+          (this branch is the published-in-lang path). */}
+      <figure className="mt-8">
+        <img
+          src={`/blog-images/${article.id}-${lang}.png`}
+          width={1200}
+          height={630}
+          alt={version.title}
+          fetchPriority="high"
+          className="w-full h-auto rounded-2xl shadow-[var(--shadow)]"
+        />
+      </figure>
+
       <div className="mt-8">
         <ArticleTOC body={body} />
       </div>
