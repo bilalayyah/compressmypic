@@ -242,15 +242,15 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     category: 'convert',
     seoTitle: 'Free Online Image Converter – JPG, PNG, WebP & HEIC',
     seoDescription:
-      'Fast browser image converter for JPG, PNG, WebP, HEIC, SVG, BMP, GIF, and AVIF. Convert batches privately on your device with quality control and ZIP export.',
+      'Convert one image at a time with precision: JPG, PNG, WebP, HEIC, SVG, BMP, GIF, and AVIF in your browser. Inspect each result before saving, privately on your device.',
     h1: 'Free Online Image Converter',
     subtitle:
-      'Built for iPhone photographers, web developers, marketers, and office teams, this browser image converter switches seamlessly between JPG, PNG, WebP, HEIC, SVG, BMP, GIF, and AVIF. Adjust output quality, pick a matte fill for transparent cutouts, and convert whole batches locally without uploading files.',
+      'Built for the one-off conversion — a single photo for an email, one logo for a deck, one screenshot for a ticket — this precision image converter switches one file at a time between JPG, PNG, WebP, HEIC, SVG, BMP, GIF, and AVIF. Adjust output quality, pick a matte fill for transparent cutouts, and convert locally without uploading files. For whole folders and asset libraries, use the Bulk Image Converter instead.',
     howToSteps: [
       {
-        title: 'Add one or multiple image files',
+        title: 'Add one image — or just a few — for a precise conversion',
         description:
-          'Drop JPG, PNG, WebP, HEIC, SVG, BMP, GIF, or AVIF images (up to 20 MB each) into the upload zone, select files from disk, or paste via Ctrl+V.',
+          'Drop a single JPG, PNG, WebP, HEIC, SVG, BMP, GIF, or AVIF image (up to 20 MB) into the upload zone, select it from disk, or paste via Ctrl+V. One file at a time keeps the compare view focused on that image.',
       },
       {
         title: 'Pick your output format',
@@ -268,14 +268,14 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'Drag the Quality slider between 10% and 100% for WebP or JPG outputs (the slider automatically disables for lossless PNG).',
       },
       {
-        title: 'Convert and inspect results',
+        title: 'Convert and inspect this one result',
         description:
-          'Click Convert All to re-encode your queue with updated settings, then click Compare on any item to check visual fidelity and byte change.',
+          'Click Convert All to re-encode your file with updated settings, then click Compare on that single card to check visual fidelity and byte change before you save it.',
       },
       {
-        title: 'Download individual files or ZIP',
+        title: 'Download the single file — no ZIP needed',
         description:
-          'Save each converted file via its Download button, or click Download All (ZIP) to download the entire batch together.',
+          'Save the converted file via its Download button. A ZIP only appears when you convert two or more files at once.',
       },
     ],
     features: [
@@ -290,9 +290,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'Preserves alpha transparency when converting to PNG or WebP, and lets you customize the matte background color when converting to JPG.',
       },
       {
-        title: 'Batch Conversion & ZIP Export',
+        title: 'Precise Single-File Conversion',
         description:
-          'Convert entire folders of images at once with consistent quality settings and download them in one click.',
+          'Convert one image at a time with per-file quality control and a side-by-side compare, or add a few more files when a small set needs the same treatment.',
       },
       {
         title: 'Private Client-Side Engine',
@@ -337,14 +337,14 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'No, re-saving an already compressed JPG as PNG cannot recover detail discarded during original JPEG encoding, and it usually increases file size significantly. Choose PNG only if you need lossless storage before future multi-step editing.',
       },
       {
-        question: 'Can I mix different formats in a single batch conversion?',
+        question: 'How do I convert just one photo for an email attachment?',
         answer:
-          'Yes, you can drop HEIC photos, BMP screenshots, PNG logos, and AVIF downloads together into the same queue. Every valid file converts to your selected target format and downloads cleanly in one ZIP archive.',
+          'Drop the single photo into the converter, pick JPG (Universal) for maximum email-client compatibility, and set quality around 80% to keep the attachment light. Click Convert, check the byte size on the card, and download the one .jpg file — no ZIP, no batch, no extra files to sort through.',
       },
       {
-        question: 'What happens if I upload an animated GIF to the general converter?',
+        question: 'Can I convert one file first to test the quality before doing the rest?',
         answer:
-          'Canvas draws the initial frame of the GIF and converts that frame to a static WebP, JPG, or PNG file. If you want to shrink an animated GIF while keeping motion intact, switch to our GIF Compressor tool.',
+          'Yes. Convert a single representative file, open Compare to inspect edges and text at your chosen quality, and only then add the remaining files. Your settings stay active, so the test tells you exactly how the rest will look.',
       },
       {
         question: 'Why did WebP output cut my PNG screenshot size so dramatically?',
@@ -372,14 +372,14 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'Each converted file keeps your sanitized base filename and swaps in the new .webp, .jpg, or .png extension automatically. You can see the exact output filename and converted byte size on each card before downloading.',
       },
       {
-        question: 'Can I convert BMP bitmaps from older Windows software to WebP or JPG?',
+        question: 'What is the fastest way to convert a single screenshot?',
         answer:
-          'Yes, uncompressed .bmp files decode natively in the browser and convert immediately to compact JPG or WebP files. Eliminating uncompressed bitmap headers routinely cuts storage weight dramatically.',
+          'Take the screenshot, press Ctrl+V anywhere on the page to paste it straight into the queue, pick your output format, and click Convert. The single file downloads immediately — no file picker, no folder, no ZIP.',
       },
       {
-        question: 'What if one file in my batch is corrupted or unreadable?',
+        question: 'Does converting one file at a time give me better quality control?',
         answer:
-          'Each image processes independently, so a single corrupted or unsupported file shows an inline error badge without halting the rest of your queue. All valid images still convert and package into your ZIP download.',
+          'Yes. With one file in the queue, the Compare viewer and byte-change readout describe that exact image, so you can tune quality precisely for it. Batch mode applies one setting to everything; single-file mode lets each image get its own best setting.',
       },
       {
         question: 'Does converting via HTML5 Canvas strip hidden EXIF camera metadata?',
@@ -392,14 +392,14 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'Yes, copying an image or taking a screenshot and pressing Ctrl+V anywhere on the page adds it directly to the converter queue. It immediately encodes to your active target format.',
       },
       {
-        question: 'Is there a daily cap or file count limit on batch conversions?',
+        question: 'Can I convert a single image without downloading a ZIP file?',
         answer:
-          'No, there are no accounts, watermarks, or daily conversion quotas. You are only bounded by the 20 MB per-file check and your device’s available browser RAM.',
+          'Yes. Single files download individually through the per-card Download button, keeping your original filename with the new extension. The Download All (ZIP) option only appears once two or more files finish converting.',
       },
       {
-        question: 'When should I choose Download All (ZIP) vs single-file Download?',
+        question: 'How do I convert one photo for a form or portal upload?',
         answer:
-          'Use the per-card Download button when saving a single converted photo quickly. Whenever two or more images finish converting, click Download All (ZIP) in the batch summary bar to bundle them into converted_images_compressmypic.zip.',
+          'Check the portal’s required format first — usually JPG or PNG — drop in the single photo, pick that format, and download the one converted file. Converting one file at a time keeps the filename and format exactly matched to what the form expects.',
       },
     ],
     relatedSlugs: ['/', '/image-resizer', '/image-to-pdf', '/favicon-generator'],
@@ -1244,12 +1244,12 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     name: 'Image Color Picker',
     shortDescription: 'Pick exact pixel colors from any image in HEX, RGB, HSL & CMYK.',
     category: 'developer',
-    seoTitle: 'Image Color Picker – Extract HEX, RGB & HSL Codes Free',
+    seoTitle: 'Image Color Picker – 11×11 Pixel Loupe, Exact HEX & RGB',
     seoDescription:
-      'Sample exact pixel colors with our online image color picker. Inspect HEX, RGB, HSL, and CMYK values with a live pixel loupe and export CSS variables locally.',
+      'Sample one exact pixel at a time with an 11×11 magnified loupe. Read live pixel coordinates with per-pixel HEX, RGB, HSL, and CMYK values, and export CSS variables locally.',
     h1: 'Free Online Image Color Picker',
     subtitle:
-      'Built for web designers, frontend developers, brand stylists, and illustrators, our browser image color picker samples exact RGBA pixels from any photo, logo, or screenshot. Hover to inspect an 11×11 magnified loupe with live HEX readout, click pixels to save swatches, and export CSS custom properties without uploading your files.',
+      'Point at one exact pixel — not an average, not a region — and read its true color with our browser image color picker. Hover to inspect an 11×11 magnified loupe with live (x, y) pixel coordinates and HEX readout, click pixels to save swatches, and export CSS custom properties without uploading your files. Built for web designers, frontend developers, brand stylists, and illustrators working with photos, logos, and screenshots.',
     howToSteps: [
       {
         title: 'Upload an image or paste a screenshot',
@@ -1371,9 +1371,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'Yes, the Pixel Inspector header displays live x and y coordinates (for example, x:412, y:198) in monospace type as you hover over the canvas. That helps you match specific pixels consistently across large assets.',
       },
       {
-        question: 'Why does clicking a color inside a JPEG photo vary slightly between adjacent pixels?',
+        question: 'Why do two adjacent pixels in the same flat area of a JPEG photo show different HEX codes?',
         answer:
-          'JPEG compression uses chroma subsampling and block transforms that introduce slight pixel-to-pixel variations across flat surfaces. Using the 11×11 loupe lets you pick a clean representative pixel away from compressed edges.',
+          'JPEG compression uses chroma subsampling and 8×8 block transforms that introduce slight pixel-to-pixel variations across flat surfaces, so two neighboring pixels can differ by a few HEX digits. Using the 11×11 loupe, pick a clean representative pixel from the middle of a flat area, away from compressed edges.',
       },
       {
         question: 'Can I tap colors accurately on an iPad or smartphone touchscreen?',
@@ -1381,9 +1381,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'Yes, tapping any area of the canvas on mobile triggers the sampler at your tap location, pins the swatch, updates all four color formats, and adds the HEX code to Picked Swatches. You can also tap any saved swatch pill to copy it.',
       },
       {
-        question: 'Does this tool replace my saved swatches if I click the same hex color twice?',
+        question: 'Does the 11×11 loupe average nearby pixels, or read one exact pixel?',
         answer:
-          'No, Picked Swatches checks for matching HEX strings automatically and ignores duplicates. That keeps your collected palette tidy even if you sample the same background or brand color multiple times.',
+          'It reads exactly one pixel: the center pixel under the crosshair. The 11×11 grid is only a magnified view so you can see which pixel is active and avoid anti-aliased border pixels. The HEX, RGB, HSL, and CMYK values always describe that single center pixel, never an average of the grid.',
       },
       {
         question: 'Why use HSL alongside HEX and RGB when styling websites?',
@@ -1396,12 +1396,12 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'Individual uploaded images can be up to 20 MB in file size. That ceiling easily handles high-megapixel camera photos, large Figma PNG exports, and full-page screenshots.',
       },
       {
-        question: 'Is there any cost, account, or limit on how many colors I can sample?',
+        question: 'When should I use this eyedropper instead of the Palette Extractor?',
         answer:
-          'No, the image color picker is completely free with no accounts or paywalls. You can upload unlimited images and export CSS color palettes with zero watermarks.',
+          'Use this picker when you need one exact color — a brand HEX from a logo, the precise shade of a button, a single pixel at known coordinates. Need a whole palette instead? Use our Image Color Palette Extractor, which clusters the entire image into 3 to 12 dominant colors. The eyedropper answers “what color is this pixel”; the extractor answers “what is this image’s color scheme”.',
       },
     ],
-    relatedSlugs: ['/favicon-generator', '/image-dimensions-checker', '/image-resizer', '/'],
+    relatedSlugs: ['/image-color-palette-extractor', '/favicon-generator', '/image-dimensions-checker', '/image-resizer'],
   },
   {
     slug: '/image-dimensions-checker',
@@ -4664,17 +4664,17 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       'Compress image to 200KB online free for WordPress, Shopify, and blog banners. Preserves crisp detail locally using binary quality search and ZIP export.',
     h1: 'Compress Image to 200KB Online',
     subtitle:
-      'Prepare crisp storefront product photography, blog feature headers, and business listings when you compress image to 200KB without bloat. Tailored for WordPress editors, Shopify merchants, and digital marketers, it prioritizes 100% original dimensions first and runs completely locally on files up to 25 MB with zero server transfers.',
+      'Get every product photo and blog hero under 200KB — the file size WordPress and Shopify sites standardize on — without bloat. Tailored for WordPress editors, Shopify merchants, and digital marketers, it prioritizes 100% original dimensions first and runs completely locally on files up to 25 MB with zero server transfers.',
     howToSteps: [
       {
-        title: 'Upload store or blog images',
+        title: 'Upload WordPress media-library or Shopify product photos',
         description:
-          'Drop single files or entire batches of JPG, PNG, WebP, or HEIC images up to 25 MB each into the workspace.',
+          'Drop single files or entire batches of JPG, PNG, WebP, or HEIC images up to 25 MB each — your WordPress media library uploads or Shopify product shots — into the workspace.',
       },
       {
         title: 'Choose WebP, JPG, Original, or PNG output',
         description:
-          'Pick WebP for modern CMS speed, JPG for universal marketplace compatibility, or Original to convert only heavy PNGs automatically.',
+          'Pick WebP for modern WordPress speed, JPG for universal Shopify and marketplace compatibility, or Original to convert only heavy PNGs automatically.',
       },
       {
         title: 'Toggle full-dimension vs. fallback scaling',
@@ -4684,12 +4684,12 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         title: 'Check savings and side-by-side detail',
         description:
-          'Verify the emerald Under 200 KB indicator and drag the Compare slider over labels, fabric grain, or fine UI edges.',
+          'Verify the emerald Under 200 KB indicator and drag the Compare slider over labels, fabric grain, or fine UI edges before the file goes into WordPress or Shopify.',
       },
       {
         title: 'Save single assets or Download All (ZIP)',
         description:
-          'Download individual <name>_200kb images directly or package your storefront catalog into compressmypic_200kb.zip.',
+          'Download individual <name>_200kb images directly, or package your Shopify catalog or WordPress media batch into compressmypic_200kb.zip.',
       },
     ],
     features: [
@@ -4753,9 +4753,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'Yes. Pure white (#ffffff) backgrounds compress extremely efficiently in JPEG while meeting marketplace white-backdrop guidelines, freeing extra bytes within 200 KB for the actual product in the center.',
       },
       {
-        question: 'Why did my 140 KB WebP upload show a Grew alert after re-processing?',
+        question: 'What are WordPress image upload limits, and why is 200KB the safe target?',
         answer:
-          'If an already well-optimized file under 200 KB is re-encoded at Canvas default high quality, it may land near 165 KB instead of shrinking. Clicking Keep original restores the untouched 140 KB source file immediately.',
+          'WordPress itself has no single 200KB cap — your host sets the upload limit (commonly 2MB to 64MB) and your theme or plugins add their own rules. The 200KB target is the performance standard WordPress agencies use: product photos and blog heroes under 200KB keep pages fast on mobile and stay safely under every theme, plugin, and CDN limit you are likely to meet.',
       },
       {
         question: 'Are unreleased product prototypes or client campaign banners stored on external servers?',
@@ -4783,9 +4783,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'Yes. Writing images through HTML5 Canvas strips EXIF metadata blocks and embedded preview thumbnails, improving privacy and eliminating wasted kilobytes on WordPress and CDN servers.',
       },
       {
-        question: 'What if an oversized lossless PNG only scales down to 35% to stay PNG under 200 KB?',
+        question: 'What dimensions should my Shopify product photos be at 200KB?',
         answer:
-          'With Format set to Original and Auto-convert PNG enabled, any lossless PNG forced below 65% scale automatically switches to WebP or JPG. That lets you keep much sharper pixel dimensions while comfortably clearing the 200 KB limit.',
+          'Shopify recommends 2048×2048 px square product photos. A detailed 2048×2048 studio shot often needs WebP at 70%–80% quality, or a step down to around 1800 px wide, to sit under 200KB with labels and fabric detail intact. The tool’s binary search finds the highest quality that fits, and the Compare slider lets you verify the result before uploading to your store.',
       },
       {
         question: 'Can I preview fine fabric or jewelry details before downloading the 200 KB file?',
@@ -4793,9 +4793,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'Yes. Clicking Compare on any finished result card opens an interactive split-screen slider comparing your uncompressed original pixels directly against the compressed output.',
       },
       {
-        question: 'What happens if I drop an SVG vector banner into the 200 KB compressor?',
+        question: 'Should my blog hero image be 200KB or 100KB?',
         answer:
-          'Your browser rasterizes the SVG onto Canvas and optimizes it into a sub-200 KB PNG, WebP, or JPG according to your format choice. This is handy whenever marketplaces or CMS portals reject raw .svg uploads.',
+          'Use 200KB for detailed blog heroes — wide photos, infographics, and images with small text need the extra bytes to stay crisp at full width. Use 100KB for thumbnails, author avatars, and small in-article images, where the same photo at half the budget still looks identical. If your hero is a simple flat graphic, 100KB is plenty; if it is a busy photograph, 200KB is the safer target.',
       },
       {
         question: 'What is the maximum source file size accepted per image here?',
@@ -6014,10 +6014,10 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     category: 'convert',
     seoTitle: 'HEIC to JPG Converter Free – Convert iPhone Photos',
     seoDescription:
-      'Turn Apple photos into universal files with our free HEIC to JPG converter. Local WebAssembly decoding runs privately in your browser with batch ZIP export.',
+      'Convert iPhone HEIC photos to JPG for Windows users, job applicants, and photo labs. Free HEIC to JPG converter with local WebAssembly decoding, private in your browser, batch ZIP export.',
     h1: 'Free Online HEIC to JPG Converter',
     subtitle:
-      'Transform Apple iPhone and iPad HEIC or HEIF camera roll shots into universally readable .jpg files with our free HEIC to JPG converter running locally in your browser. Ideal for Windows users, job applicants, and photo labs that reject Apple’s High Efficiency format, it decodes up to 25 MB per file via client-side WebAssembly with adjustable quality and single-ZIP batch downloads.',
+      'Windows cannot open iPhone HEIC photos out of the box — convert them into universally readable .jpg files with our free HEIC to JPG converter, running locally in your browser. Ideal for Windows users, job applicants, and photo labs that reject Apple’s High Efficiency format, it decodes up to 25 MB per file via client-side WebAssembly with adjustable quality and single-ZIP batch downloads.',
     howToSteps: [
       {
         title: 'Drop Apple HEIC or HEIF photos',
@@ -6044,6 +6044,11 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
         description:
           'Save individual .jpg photos directly or click Download All (ZIP) to download compressmypic_heic_to_jpg.zip in one click.',
       },
+      {
+        title: 'Optional: stop your iPhone saving new photos as HEIC',
+        description:
+          'On your iPhone, open Settings, go to Camera, tap Formats, and pick Most Compatible so future shots save as JPG. Your existing HEIC photos still convert here anytime.',
+      },
     ],
     features: [
       {
@@ -6067,7 +6072,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         question: 'Why do Windows PCs, older software, and upload forms reject .heic photos from iPhones?',
         answer:
-          'Apple adopted the HEIC container (built on HEVC video compression) starting in iOS 11 to save storage space on iPhones and iPads. Because many Windows installations, government portals, CMS backends, and desktop editors lack licensed HEVC codecs, converting HEIC to standard JPG makes your photos open everywhere instantly.',
+          'Apple adopted the HEIC container (built on HEVC video compression) starting in iOS 11 to save storage space on iPhones and iPads. Windows 10 and 11 do not ship the HEVC codec by default — Microsoft sells it separately as HEVC Video Extensions — so Windows Photos, government portals, CMS backends, and desktop editors cannot open .heic files. Converting HEIC to standard JPG makes your photos open everywhere instantly, with no codec to install.',
       },
       {
         question: 'How does this HEIC to JPG converter decode Apple files inside a standard web browser?',
@@ -6110,9 +6115,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'No. Encoding through HTML5 Canvas strips embedded EXIF GPS locations, camera serial numbers, and timestamps automatically—giving you extra privacy before posting converted JPGs online.',
       },
       {
-        question: 'Why might decoding a 12-megapixel or 48-megapixel iPhone ProRAW/HEIC take a second or two per file?',
+        question: 'Why does decoding a 48-megapixel iPhone HEIC take a second or two per file?',
         answer:
-          'HEVC decompression in WebAssembly requires heavier CPU math than standard JPEG decoding, especially on 24 MP or 48 MP iPhone Pro photos. Processing batches locally means conversion speed depends smoothly on your device processor rather than upload bandwidth.',
+          'HEVC decompression in WebAssembly requires heavier CPU math than standard JPEG decoding, and a 48MP iPhone Pro frame holds four times the pixels of a 12MP shot. Processing batches locally means conversion speed depends on your device processor rather than upload bandwidth.',
       },
       {
         question: 'What happens to vertical vs. horizontal iPhone camera orientation during HEIC to JPG conversion?',
@@ -6120,9 +6125,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'Modern browsers read embedded orientation flags when decoding the image onto Canvas. That ensures vertical selfies and landscape shots export upright without sideways rotation.',
       },
       {
-        question: 'Why did a file named image.heic fail with an invalid HEIC error notice?',
+        question: 'Do I need to buy Microsoft’s HEVC Video Extensions to open HEIC on Windows?',
         answer:
-          'Occasionally third-party messaging apps save corrupted containers or mislabeled files with a .heic extension, or exceed the 25 MB limit. Trying an original copy exported via AirDrop, iCloud Photos, or Apple Files resolves damaged wrapper headers.',
+          'Only if you want Windows itself to open .heic files: the HEVC codec is a paid add-on in the Microsoft Store on most Windows installs, and some PCs include it free from the manufacturer. Converting to JPG here avoids the codec entirely — your photos open in Windows Photos, browsers, and upload forms with nothing to install or buy.',
       },
       {
         question: 'What is the maximum size per HEIC or HEIF photo accepted here?',
@@ -6162,7 +6167,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         question: 'Does this converter accept JPG or PNG files too, or strictly HEIC and HEIF?',
         answer:
-          'This page intentionally filters exclusively for .heic and .heif inputs so Apple photo batches stay clean. Use our Bulk Image Converter if your folder mixes HEIC alongside PNG, WebP, and BMP files.',
+          'This page intentionally filters exclusively for .heic and .heif inputs so Apple photo batches stay clean. Need other formats too? Use the general Image Converter for JPG, PNG, WebP, HEIC, SVG, BMP, GIF, and AVIF in one queue.',
       },
     ],
     relatedSlugs: ['/image-converter', '/bulk-image-converter', '/jpg-to-webp', '/remove-image-metadata'],
@@ -6494,10 +6499,10 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     category: 'convert',
     seoTitle: 'JPG to WebP Converter Free – Shrink JPGs for Faster Sites',
     seoDescription:
-      'Convert JPG photos to modern WebP online free in your browser. Smaller files, faster pages and better Core Web Vitals, with a quality slider and batch ZIP.',
+      'Convert JPG photos to modern WebP online free in your browser. Shrink hero images, product photos, and blog featured images for faster pages and better Core Web Vitals, with a quality slider and batch ZIP.',
     h1: 'Free Online JPG to WebP Converter',
     subtitle:
-      'Turn everyday JPG photos into lightweight modern WebP images with our free JPG to WebP converter, running entirely in your browser. Built for bloggers, store owners, and developers who need faster pages and better Core Web Vitals, it converts JPG files up to 25 MB each at your chosen quality — 82% by default — with batch processing and one-click ZIP downloads, and nothing is ever uploaded.',
+      'Turn camera JPG photos — hero images, product photos, and blog featured images — into lightweight modern WebP files with our free JPG to WebP converter, running entirely in your browser. Built for photographers, bloggers, and store owners who need faster pages and better Core Web Vitals, it converts JPG files up to 25 MB each at 82% quality by default, a setting tuned for already-compressed camera photos rather than lossless graphics, with batch processing and one-click ZIP downloads, and nothing is ever uploaded.',
     howToSteps: [
       {
         title: 'Drop JPG photos up to 25 MB each',
@@ -6507,7 +6512,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         title: 'Set WebP output quality (20%–100%)',
         description:
-          'Keep the sharp 82% default for photos, or drag the slider toward 20% for tiny files and 100% for maximum detail, then click Re-convert All.',
+          'Keep the sharp 82% default, tuned for camera photos, or drag the slider toward 20% for tiny files and 100% for maximum detail, then click Re-convert All.',
       },
       {
         title: 'Check the size savings on every card',
@@ -6536,7 +6541,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
       {
         title: 'Batch Export to ZIP',
-        description: 'Optimize entire blog or e-commerce image folders locally in seconds.',
+        description: 'Optimize entire blog photo folders or e-commerce product shoots locally in seconds.',
       },
       {
         title: 'Zero Server Round-Trips',
@@ -6545,14 +6550,14 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
     ],
     faqs: [
       {
-        question: 'How much smaller is a WebP file than the same photo saved as JPG?',
+        question: 'How much smaller is a WebP file than the same camera photo saved as JPG?',
         answer:
-          'At similar visual quality, WebP files typically run 25% to 35% smaller than the same photo saved as JPG, because WebP compression predicts pixels more efficiently. The exact saving depends on the photo: detailed landscapes save less, while smooth skies and studio shots save more.',
+          'At similar visual quality, a camera photo re-encoded as WebP typically runs 25% to 35% smaller than the same JPG, because WebP predicts pixels more efficiently than the older JPEG DCT blocks your camera already used. The exact saving depends on the shot: detailed landscapes save less, while smooth skies and studio portraits save more.',
       },
       {
-        question: 'Why does Google recommend WebP for faster websites and better Core Web Vitals?',
+        question: 'Why does Google recommend WebP for hero images and faster Core Web Vitals?',
         answer:
-          'Google’s Lighthouse and PageSpeed tools flag heavy images as a top cause of slow Largest Contentful Paint (LCP) scores. Serving the same photo as a lighter WebP cuts download time on slow connections, which directly improves LCP and the experience score Google uses as a ranking signal.',
+          'Google’s Lighthouse and PageSpeed tools flag heavy hero images as a top cause of slow Largest Contentful Paint (LCP) scores, because the hero photo is usually the largest thing a visitor downloads. Serving that same photo as a lighter WebP cuts download time on slow connections, which directly improves LCP and the experience score Google uses as a ranking signal.',
       },
       {
         question: 'Which browsers can open a WebP file without installing anything?',
@@ -6560,14 +6565,14 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'All modern browsers open WebP natively: Chrome, Edge, Firefox, and Safari on desktop, plus Chrome on Android and Safari on iOS. No plugin or viewer app is needed, so WebP images display directly on web pages, in chats, and in most modern image viewers.',
       },
       {
-        question: 'What quality setting should I use for JPG to WebP photos on a website?',
+        question: 'Why does this converter default to 82% quality while the PNG converter defaults to 85%?',
         answer:
-          'For website photos, 80% to 85% is the sweet spot: images look virtually identical to the JPG original while staying much smaller. The tool defaults to 82% for exactly this reason, and you can push toward 90% or higher for hero images where every detail matters.',
+          'JPG photos arrive already lossy-compressed by your camera, so re-encoding them at 82% preserves visible camera detail while cutting file size sharply. PNG sources start lossless, so the PNG converter defaults to 85% to protect razor-sharp graphic edges that have never been compressed before. For website photos, 80% to 85% is the sweet spot either way, and you can push toward 90% or higher for hero images where every detail matters.',
       },
       {
-        question: 'Will converting a JPG to WebP change the photo dimensions?',
+        question: 'Do my camera photo’s megapixels change when I convert JPG to WebP?',
         answer:
-          'No. Conversion only changes the file container and compression, so the exported WebP keeps 100% of the original JPG’s pixel width and height. If you also want smaller dimensions, use Image Resizer afterward for exact pixel sizes.',
+          'No. Conversion only changes the file container and compression, so the exported WebP keeps 100% of your camera photo’s pixel width and height — a 24-megapixel shot stays 24 megapixels. If you also want smaller dimensions, use Image Resizer afterward for exact pixel sizes.',
       },
       {
         question: 'Can a JPG photo keep its transparency when converted to WebP?',
@@ -6575,24 +6580,24 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'No, because standard JPG files have no transparency channel to preserve — every pixel in a JPG is fully opaque. If your source graphic has a transparent background, start from PNG instead and use our PNG to WebP converter, which preserves the full alpha channel.',
       },
       {
-        question: 'Are my JPG photos uploaded to a server during conversion?',
+        question: 'Are my camera-roll photos uploaded to a server during conversion?',
         answer:
-          'Never. The conversion runs on HTML5 Canvas inside your own browser tab, so your photos are encoded locally and never leave your computer or phone. Closing the tab clears them from browser memory.',
+          'Never. The conversion runs on HTML5 Canvas inside your own browser tab, so your camera-roll photos are encoded locally and never leave your computer or phone. Closing the tab clears them from browser memory.',
       },
       {
-        question: 'Can I convert a whole folder of JPG blog images to WebP at once?',
+        question: 'Can I convert a whole folder of JPG blog photos and featured images to WebP at once?',
         answer:
-          'Yes. Drop multiple .jpg or .jpeg files up to 25 MB each into the queue, pick one quality setting for the whole batch, and download everything together in compressmypic_jpg_to_webp.zip. Each file converts independently, so one bad file never blocks the rest.',
+          'Yes. Drop multiple .jpg or .jpeg files up to 25 MB each into the queue — a full set of blog featured images or product photos — pick one quality setting for the whole batch, and download everything together in compressmypic_jpg_to_webp.zip. Each file converts independently, so one bad file never blocks the rest.',
       },
       {
-        question: 'What happens to EXIF camera data and GPS tags when a JPG becomes WebP?',
+        question: 'What happens to my camera’s EXIF data and GPS location tags when a JPG becomes WebP?',
         answer:
-          'Drawing pixels onto HTML5 Canvas strips embedded EXIF data, including GPS coordinates, camera model, and timestamps. That keeps output WebP files lean and protects your privacy before you publish photos online.',
+          'Drawing pixels onto HTML5 Canvas strips embedded EXIF data, including GPS coordinates, camera model, lens, and timestamps your phone or camera wrote into the JPG. That keeps output WebP files lean and protects your privacy before you publish photos online.',
       },
       {
-        question: 'Why is the converted WebP sometimes larger than the original JPG?',
+        question: 'Why is the converted WebP sometimes larger than my original JPG photo?',
         answer:
-          'Very small or already heavily compressed JPGs can grow slightly when re-encoded, especially at 100% quality, because WebP adds its own container overhead. If a file grows, lower the quality toward 80% or keep the original JPG — the Change column on each card shows the result honestly.',
+          'Phone photos saved at very low JPG quality are already squeezed hard, so re-encoding them — especially at 100% quality — can add WebP container overhead without finding new savings. If a photo grows, lower the quality toward 80% or keep the original JPG — the Change column on each card shows the result honestly.',
       },
       {
         question: 'Can I use the converted WebP files in WordPress, Shopify, or Wix?',
@@ -6600,14 +6605,14 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'Yes. WordPress, Shopify, Wix, Squarespace, and most modern site builders accept WebP uploads directly, and browsers serve them without extra setup. For very old themes or plugins that reject WebP, convert back with our WebP to JPG tool.',
       },
       {
-        question: 'What is the maximum JPG file size accepted here?',
+        question: 'What is the maximum size for a camera JPG I upload here?',
         answer:
-          'Each JPG or JPEG file can be up to 25 MB, which covers high-resolution camera photos and large screenshots. Because conversion happens on your device, large files process at local CPU speed with no upload waiting time.',
+          'Each JPG or JPEG file can be up to 25 MB, which covers high-resolution camera photos and large phone shots straight from your camera roll. Because conversion happens on your device, large files process at local CPU speed with no upload waiting time.',
       },
       {
-        question: 'Does converting to WebP work on a phone browser?',
+        question: 'Can I convert JPG photos from my phone’s camera roll in a mobile browser?',
         answer:
-          'Yes. The quality slider, batch queue, comparison viewer, and ZIP download all work in Safari on iOS and Chrome on Android, with no app to install. On phones, very large batches simply take a little longer because the work runs on the phone’s processor.',
+          'Yes. Pick photos straight from your camera roll: the quality slider, batch queue, comparison viewer, and ZIP download all work in Safari on iOS and Chrome on Android, with no app to install. On phones, very large batches simply take a little longer because the work runs on the phone’s processor.',
       },
       {
         question: 'How do I check the converted WebP still looks sharp before downloading?',
@@ -6615,9 +6620,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'Click Compare on any result card to open the split viewer and drag across the photo to inspect faces, text, and edges against the original JPG. If anything looks soft, raise the quality slider and click Re-convert All.',
       },
       {
-        question: 'Can I change the quality after the first conversion without re-uploading?',
+        question: 'Can I change the quality for my whole photo batch without re-uploading?',
         answer:
-          'Yes. Move the quality slider to a new value anytime and click Re-convert All to regenerate every loaded file at the new setting. Your uploaded files stay in the queue, so there is no need to drag them in again.',
+          'Yes. Move the quality slider to a new value anytime and click Re-convert All to regenerate every loaded photo at the new setting. Your uploaded files stay in the queue, so there is no need to drag them in again.',
       },
       {
         question: 'Is WebP better than JPG for product photos on an online store?',
@@ -6625,14 +6630,14 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'For product photos displayed on a website, yes: WebP at 80% to 85% looks the same as JPG while loading noticeably faster, which helps both shoppers and search rankings. Keep JPG only when a marketplace, print lab, or buyer explicitly asks for it.',
       },
       {
-        question: 'What filename do the downloaded WebP files keep?',
+        question: 'Do JPEG block artifacts and banding in skies disappear when I convert to WebP?',
         answer:
-          'Single downloads keep your sanitized original filename with a .webp extension, so photo_01.jpg becomes photo_01.webp. Batches of two or more files export bundled inside compressmypic_jpg_to_webp.zip.',
+          'No — WebP cannot restore detail your camera’s JPEG compression already threw away. Blocky patches in blue skies and banded sunsets stay in the converted file, because the artifacts are baked into the source pixels. What WebP does avoid is adding fresh artifacts of its own, so convert at 82% or higher and check the Compare viewer on smooth gradients.',
       },
       {
         question: 'Can I convert JPG screenshots with text to WebP without blurry letters?',
         answer:
-          'Yes, at 85% to 90% quality, screenshot text stays crisp because WebP preserves sharp high-contrast edges well. Dropping below 70% can soften small letters, so check the Compare viewer and raise the quality if text looks fuzzy.',
+          'Yes, at 85% to 90% quality, screenshot text stays crisp because WebP preserves sharp high-contrast edges better than the JPEG blocks that originally blurred them. Dropping below 70% can soften small letters, so check the Compare viewer and raise the quality if text looks fuzzy.',
       },
       {
         question: 'Does this converter work offline after the page loads?',
@@ -6640,9 +6645,9 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
           'Yes. Once the page has loaded in your browser, conversion runs entirely in local JavaScript and HTML5 Canvas with no server calls. You only need the internet again to load the page itself or to download the finished files.',
       },
       {
-        question: 'When should I keep JPG instead of converting to WebP?',
+        question: 'When should I keep the original JPG photo instead of converting to WebP?',
         answer:
-          'Keep JPG when the file must open in older software, email attachments, print labs, or upload portals that still reject WebP. For anything published on a modern website, WebP is the better choice — and you can always convert back with WebP to JPG.',
+          'Keep JPG when the photo must open in older software, email attachments, print labs, or upload portals that still reject WebP — or when a marketplace or buyer explicitly asks for JPG files. For anything published on a modern website, WebP is the better choice — and you can always convert back with WebP to JPG.',
       },
     ],
     relatedSlugs: ['/webp-to-jpg', '/png-to-webp', '/web-image-optimizer', '/bulk-image-converter'],
