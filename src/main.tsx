@@ -5,7 +5,7 @@ import {isSupportedLang, LANG_STORAGE_KEY, type SupportedLang} from './locales/c
 import { loadThirdPartyScripts } from './utils/thirdParty';
 import { loadLocaleData } from './locales/loadLocaleData';
 import { setCachedLocale } from './locales/localeCache';
-import { loadBlogBody } from './data/blogBody';
+import { loadBlogBody, loadBlogBodyLocale } from './data/blogBody';
 import {EN_PATH_BY_ES} from './locales/es/slugs';
 import {EN_PATH_BY_PT} from './locales/pt/slugs';
 import {EN_PATH_BY_FR} from './locales/fr/slugs';
@@ -172,6 +172,13 @@ async function start(): Promise<void> {
     // render, or hydration would render an empty body and the prerender
     // snapshot would ship without content.
     blogRoute?.kind === 'article' ? loadBlogBody(blogRoute.articleId) : Promise.resolve(),
+    // Perf split 2026-11-19: the same for the LOCALE body on non-EN
+    // article routes — without it hydration would render the English body
+    // over the localized prerender (React #418). On EN routes the locale
+    // loader is a no-op passthrough to the EN body.
+    blogRoute?.kind === 'article' && urlLang !== null && urlLang !== 'en'
+      ? loadBlogBodyLocale(urlLang, blogRoute.articleId)
+      : Promise.resolve(),
   ]);
   const rootEl = document.getElementById('root')!;
   // Tier J (hydration fix, 2026-11-19): React adopts the prerendered DOM

@@ -38,15 +38,17 @@ export interface BlogArticleLocaleVersion {
 }
 
 /**
- * Per-locale content override. No `slug` here — the localized slug lives in
- * that locale's slugs.ts. `faqs` is optional (falls back to the English
- * FAQs when a translation has none yet); everything else is required.
+ * Per-locale content override — METADATA ONLY (perf split 2026-11-19).
+ * No `slug` here — the localized slug lives in that locale's slugs.ts.
+ * Bodies + FAQs live in per-article modules
+ * (src/locales/<lang>/blog-bodies/<id>.ts) and load on demand through
+ * src/data/blogBody.ts (loadBlogBodyLocale) — the same Tier B split the
+ * English bodies got. Do NOT move bodies back here, or every blog route
+ * in the language downloads all 144 articles' bodies (~660-954 KiB gzip).
  */
 export interface BlogArticleLocaleOverride {
   title: string;
   description: string;
-  body: string;
-  faqs?: BlogArticleFaq[];
   readingMinutes: number;
 }
 

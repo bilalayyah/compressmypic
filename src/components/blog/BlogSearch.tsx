@@ -5,7 +5,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import type { BlogArticleMeta } from '../../types/blog';
 import type { SupportedLang } from '../../locales/config';
 import { BLOG_ARTICLES, getBlogArticleVersion } from '../../data/blogArticles';
-import { getBlogBody, preloadAllBlogBodies } from '../../data/blogBody';
+import { getBlogBody, getBlogBodyLocale, preloadAllBlogBodies, preloadAllBlogBodiesLocale } from '../../data/blogBody';
 import { useBlog } from './BlogContext';
 import { BlogCard } from './BlogCard';
 import { stripHtml } from './blogBody';
@@ -25,11 +25,21 @@ export function BlogSearch({ articles, lang, categories }: BlogSearchProps) {
   // works immediately, before any body arrives.
   const [bodyVersion, setBodyVersion] = useState(0);
   useEffect(() => {
-    const kick = () =>
+    const kick = () => {
       preloadAllBlogBodies(
         BLOG_ARTICLES.map((a) => a.id),
         () => setBodyVersion((v) => v + 1),
       );
+      // Perf split 2026-11-19: the locale bodies too (non-EN) so
+      // full-text search covers the translated body text.
+      if (lang !== 'en') {
+        preloadAllBlogBodiesLocale(
+          lang,
+          BLOG_ARTICLES.map((a) => a.id),
+          () => setBodyVersion((v) => v + 1),
+        );
+      }
+    };
     // requestIdleCallback is not in this project's DOM lib, so read it
     // through a cast instead of an `in` check (which narrows window to never).
     const idle = window as unknown as {
@@ -42,13 +52,19 @@ export function BlogSearch({ articles, lang, categories }: BlogSearchProps) {
     }
     const t = window.setTimeout(kick, 1000);
     return () => window.clearTimeout(t);
-  }, []);
+  }, [lang]);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return articles;
     return articles.filter((a) => {
-      const v = getBlogArticleVersion(a, lang, overrides, getBlogBody(a.id));
+      const v = getBlogArticleVersion(
+        a,
+        lang,
+        overrides,
+        getBlogBody(a.id),
+        lang === 'en' ? undefined : getBlogBodyLocale(lang, a.id),
+      );
       const haystack = `${v.title} ${v.description} ${stripHtml(v.body)}`.toLowerCase();
       return haystack.includes(q);
     });

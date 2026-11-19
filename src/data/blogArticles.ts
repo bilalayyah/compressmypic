@@ -2442,14 +2442,17 @@ export function getBlogArticleSlug(article: BlogArticleMeta, lang: SupportedLang
  *  (missing override -> EN content with the localized slug).
  *  Bodies + FAQs no longer live in the registry (Tier B speed fix): the EN
  *  body comes from `enBody` (src/data/blogBody.ts — preloaded by main.tsx
- *  on article routes, loaded on demand elsewhere). Callers that only need
- *  title/description/readingMinutes (cards, search, SEO titles) may omit
- *  it; they get an empty body, which they must not render. */
+ *  on article routes, loaded on demand elsewhere), and the LOCALE body
+ *  comes from `localeBody` (same module — preloaded the same way; perf
+ *  split 2026-11-19). Callers that only need title/description/
+ *  readingMinutes (cards, search, SEO titles) may omit both; they get an
+ *  empty body, which they must not render. */
 export function getBlogArticleVersion(
   article: BlogArticleMeta,
   lang: SupportedLang,
   overrides: Record<string, BlogArticleLocaleOverride> = {},
   enBody?: BlogBodyData,
+  localeBody?: BlogBodyData,
 ): BlogArticleLocaleVersion {
   const base = article.en;
   const slug = getBlogArticleSlug(article, lang);
@@ -2478,8 +2481,8 @@ export function getBlogArticleVersion(
     slug,
     title: o.title,
     description: o.description,
-    body: o.body,
-    faqs: o.faqs ?? enBody?.faqs ?? [],
+    body: localeBody?.body ?? enBody?.body ?? '',
+    faqs: localeBody?.faqs ?? enBody?.faqs ?? [],
     readingMinutes: o.readingMinutes,
   };
 }

@@ -32,7 +32,7 @@ import { Writable } from 'node:stream';
 import App, { parsePath, toLocalizedPath } from './App.tsx';
 import { loadLocaleData } from './locales/loadLocaleData';
 import { getCachedLocale, setCachedLocale } from './locales/localeCache';
-import { getBlogBody, loadBlogBody } from './data/blogBody';
+import { getBlogBody, getBlogBodyLocale, loadBlogBody, loadBlogBodyLocale } from './data/blogBody';
 import {
   BLOG_ARTICLES,
   getBlogArticleVersion,
@@ -63,6 +63,10 @@ async function preloadRoute(urlPath: string): Promise<void> {
   }
   if (blogRoute?.kind === 'article') {
     preloads.push(loadBlogBody(blogRoute.articleId));
+    // Perf split 2026-11-19: the locale body too (non-EN) — without it
+    // the SSR snapshot would render the English body/FAQs over the
+    // localized prerender.
+    if (lang !== 'en') preloads.push(loadBlogBodyLocale(lang, blogRoute.articleId));
   }
   await Promise.all(preloads);
 }
@@ -96,7 +100,13 @@ export async function getArticleFaqPage(
           blog?: Record<string, BlogArticleLocaleOverride>;
         }>(lang);
   const overrides = localeData?.blog ?? {};
-  const version = getBlogArticleVersion(article, lang, overrides, body);
+  const version = getBlogArticleVersion(
+    article,
+    lang,
+    overrides,
+    body,
+    lang === 'en' ? undefined : getBlogBodyLocale(lang, article.id),
+  );
   if (!version.faqs || version.faqs.length === 0) return null;
   const heading =
     localeData?.ui?.blog?.faqHeading ?? EN_BLOG_STRINGS.faqHeading;

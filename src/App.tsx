@@ -240,7 +240,7 @@ import {
   resolveBlogRoute,
 } from './data/blogArticles';
 import type { BlogArticleMeta } from './types/blog';
-import { getBlogBody } from './data/blogBody';
+import { getBlogBody, getBlogBodyLocale } from './data/blogBody';
 import { getCachedLocale, setCachedLocale } from './locales/localeCache';
 import { loadLocaleData } from './locales/loadLocaleData';
 const AboutPageEs = React.lazy(() =>
@@ -1951,8 +1951,15 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       } else if (blogRoute.kind === 'article' && blogArticle && !blogNoIndex) {
         // Tier B: the body comes from the per-article body cache —
         // main.tsx preloads it before first render on article routes,
-        // so the FAQPage JSON-LD keeps its FAQs.
-        const version = getBlogArticleVersion(blogArticle, lang, blogOverrides, getBlogBody(blogArticle.id));
+        // so the FAQPage JSON-LD keeps its FAQs. Perf split 2026-11-19:
+        // the locale body comes from the per-article locale module.
+        const version = getBlogArticleVersion(
+          blogArticle,
+          lang,
+          blogOverrides,
+          getBlogBody(blogArticle.id),
+          lang === 'en' ? undefined : getBlogBodyLocale(lang, blogArticle.id),
+        );
         const catLabel = getBlogCategoryLabel(blogArticle.categoryId, catLabelsForSeo);
         const graph: Record<string, unknown>[] = [
           {

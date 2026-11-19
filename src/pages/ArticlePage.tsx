@@ -10,7 +10,7 @@ import type { BlogArticleMeta } from '../types/blog';
 import type { SupportedLang } from '../locales/config';
 import { localizePath } from '../locales/alternates';
 import type { ToolMeta } from '../data/toolsMeta';
-import { getBlogBody, loadBlogBody } from '../data/blogBody';
+import { getBlogBody, getBlogBodyLocale, loadBlogBody, loadBlogBodyLocale } from '../data/blogBody';
 import {
   getBlogArticlePrevNext,
   getBlogArticleUrl,
@@ -43,23 +43,27 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
   // the prerender); on client-side navigation it loads here instead, and
   // the page shows a loading state until it lands.
   const cachedBody = getBlogBody(article.id);
+  // Perf split 2026-11-19: the locale body comes from the per-article
+  // locale module. main.tsx preloads it before first render on article
+  // routes (direct loads and the prerender), like the EN body; on
+  // client-side navigation it loads here instead, and the page shows a
+  // loading state until it lands.
+  const cachedLocaleBody = lang === 'en' ? undefined : getBlogBodyLocale(lang, article.id);
   const [, setBodyTick] = useState(0);
   useEffect(() => {
-    if (cachedBody) return;
+    if (cachedBody && (lang === 'en' || cachedLocaleBody)) return;
     let cancelled = false;
-    loadBlogBody(article.id)
-      .then(() => {
-        if (!cancelled) setBodyTick((t) => t + 1);
-      })
-      .catch(() => {
-        // A failed body load leaves the loading state; navigating away and
-        // back retries. Never crash the page for this.
-      });
+    const jobs: Promise<unknown>[] = [];
+    if (!cachedBody) jobs.push(loadBlogBody(article.id));
+    if (lang !== 'en' && !cachedLocaleBody) jobs.push(loadBlogBodyLocale(lang, article.id));
+    void Promise.allSettled(jobs).then(() => {
+      if (!cancelled) setBodyTick((t) => t + 1);
+    });
     return () => {
       cancelled = true;
     };
-  }, [article.id, cachedBody]);
-  const version = getBlogArticleVersion(article, lang, overrides, cachedBody);
+  }, [article.id, cachedBody, cachedLocaleBody, lang]);
+  const version = getBlogArticleVersion(article, lang, overrides, cachedBody, cachedLocaleBody);
   const body = ensureHeadingIds(version.body);
   const categoryLabel = getBlogCategoryLabel(article.categoryId, categories);
   const categoryUrl = getBlogCategoryUrl(article.categoryId, lang);

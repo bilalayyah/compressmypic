@@ -17,7 +17,19 @@
 // A body module exports BODY (trusted HTML) + FAQS. The cache is the
 // single source of truth for synchronously-rendered bodies: components
 // read it with getBlogBody() during render and never await inside render.
+//
+// LOCALE BODIES (perf split 2026-11-19): the same split for the 10
+// non-EN locales. Each locale's overrides file
+// (src/locales/<lang>/blog.ts) used to hold all 144 articles' bodies +
+// FAQs (2.1-4.5 MB source, 660-954 KiB gzip per locale) and was imported
+// whole on every blog route in that language — the root cause of the
+// German article's mobile LCP instability (1.4s vs 3.6s) and of the ~11s
+// TTI on non-EN article pages. Now each locale has per-article modules
+// (src/locales/<lang>/blog-bodies/<id>.ts) with the same BODY + FAQS
+// shape, loaded through loadBlogBodyLocale() below. The locale registry
+// keeps metadata only (title, description, readingMinutes).
 import type { BlogArticleFaq } from '../types/blog';
+import type { SupportedLang } from '../locales/config';
 
 export interface BlogBodyData {
   body: string;
@@ -61,6 +73,62 @@ export function preloadAllBlogBodies(ids: string[], onEach?: () => void): void {
     for (const id of ids) {
       try {
         await loadBlogBody(id);
+      } catch {
+        // One bad body must not block the rest.
+      }
+      onEach?.();
+    }
+  })();
+}
+
+// --- Locale bodies (perf split 2026-11-19) ---
+// Same cache contract as the EN bodies above, keyed by `${lang}/${id}`.
+// Vite resolves the two-variable dynamic import by globbing
+// src/locales/*/blog-bodies/*.ts into one chunk per article module.
+
+const localeCache = new Map<string, BlogBodyData>();
+
+export function getBlogBodyLocale(lang: SupportedLang, id: string): BlogBodyData | undefined {
+  if (lang === 'en') return getBlogBody(id);
+  return localeCache.get(`${lang}/${id}`);
+}
+
+/** Load one article's body in `lang` (cached after the first load). */
+export async function loadBlogBodyLocale(lang: SupportedLang, id: string): Promise<BlogBodyData> {
+  if (lang === 'en') return loadBlogBody(id);
+  const key = `${lang}/${id}`;
+  const cached = localeCache.get(key);
+  if (cached) return cached;
+  const mod = (await import(`../locales/${lang}/blog-bodies/${id}.ts`)) as {
+    BODY: string;
+    FAQS: BlogArticleFaq[];
+  };
+  const data: BlogBodyData = { body: mod.BODY, faqs: mod.FAQS };
+  localeCache.set(key, data);
+  return data;
+}
+
+let allLocaleLoading: string | null = null;
+
+/**
+ * Load every listed locale body in the background (BlogSearch full-text
+ * search in that language). Same contract as preloadAllBlogBodies.
+ */
+export function preloadAllBlogBodiesLocale(
+  lang: SupportedLang,
+  ids: string[],
+  onEach?: () => void,
+): void {
+  if (lang === 'en') {
+    preloadAllBlogBodies(ids, onEach);
+    return;
+  }
+  if (allLocaleLoading === lang) return;
+  allLocaleLoading = lang;
+  void (async () => {
+    for (const id of ids) {
+      try {
+        await loadBlogBodyLocale(lang, id);
       } catch {
         // One bad body must not block the rest.
       }
