@@ -30,9 +30,9 @@ CompressMyPic is a production-ready, client-side image compression web applicati
   - Pre-configured OpenGraph and Twitter Cards metadata.
   - Schema.org structured data (`WebApplication` and FAQ).
   - XML Sitemap (`/sitemap.xml`) and `robots.txt` with easy canonical domain replacement.
-- **Google AdSense & Analytics Readiness**:
-  - Reserved, policy-compliant ad containers clearly labeled and decoupled from functional controls.
-  - Configurable slots for Google AdSense Publisher ID, Google Analytics 4 (GA4), and Google Search Console verification.
+- **Analytics Readiness** (advertising discontinued):
+  - Google AdSense was discontinued on 2026-11-19 and all ad code was removed — do not re-add it.
+  - Google Analytics 4 (GA4) and Google Search Console verification are configured.
 - **Legal & Trust Pages**:
   - Accessible modals for **About Us**, **Contact Us** (with interactive message submission), **Privacy Policy**, and **Terms of Service**.
 
@@ -128,13 +128,8 @@ git push -u origin main
 ### 1. Domain & Canonical URLs
 The site is configured for production at `https://compressmypic.online/`. Canonical links, Open Graph metadata, sitemap, and robots.txt are pre-configured.
 
-### 2. Google AdSense Integration
-Once your Google AdSense account is approved:
-1. Open `index.html` and add your AdSense script tag to the `<head>`:
-   ```html
-   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
-   ```
-2. Replace the placeholder containers in `src/components/AdSlot.tsx` with your `<ins class="adsbygoogle" ...></ins>` ad snippets.
+### 2. Advertising — Discontinued
+Google AdSense was discontinued on 2026-11-19 and all advertising code (`adsbygoogle.js`, `AdSlot.tsx`, `src/config/ads.ts`, Funding Choices) was removed from the site. Do not re-add it. `public/ads.txt` is kept in place for now so re-adding ads later would be a code-only change.
 
 ### 3. Google Analytics 4 (GA4)
 To enable tracking, insert your GA4 measurement ID in `index.html`:
