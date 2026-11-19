@@ -29,11 +29,21 @@
 import React from 'react';
 import { renderToPipeableStream, renderToString } from 'react-dom/server';
 import { Writable } from 'node:stream';
-import App, { parsePath } from './App.tsx';
+import App, { parsePath, toLocalizedPath } from './App.tsx';
 import { loadLocaleData } from './locales/loadLocaleData';
-import { setCachedLocale } from './locales/localeCache';
-import { loadBlogBody } from './data/blogBody';
-import { isBlogEnPath, resolveBlogRoute } from './data/blogArticles';
+import { getCachedLocale, setCachedLocale } from './locales/localeCache';
+import { getBlogBody, loadBlogBody } from './data/blogBody';
+import {
+  BLOG_ARTICLES,
+  getBlogArticleVersion,
+  isBlogArticlePublishedIn,
+  isBlogEnPath,
+  resolveBlogRoute,
+} from './data/blogArticles';
+import { EN_BLOG_STRINGS } from './components/blog/blogStrings';
+import { withTrailingSlash } from './locales/alternates';
+import { buildFaqPageNode } from './utils/faqJsonLd';
+import type { BlogArticleLocaleOverride } from './types/blog';
 
 async function preloadRoute(urlPath: string): Promise<void> {
   const parsed = parsePath(urlPath);
@@ -51,6 +61,45 @@ async function preloadRoute(urlPath: string): Promise<void> {
     preloads.push(loadBlogBody(blogRoute.articleId));
   }
   await Promise.all(preloads);
+}
+
+// FAQPage JSON-LD node for one article route, computed from the real data
+// (registry + loaded body + locale strings) — the SSR-side counterpart of
+// the App.tsx head effect. The effect is client-only (useEffect), so the
+// SSR prerender cannot reuse it; this helper lets scripts/prerender-ssr.cjs
+// regenerate the FAQPage node that the old Chromium-captured heads are
+// missing for EN articles (0/145) instead of carrying the stale head
+// forward. Returns null for non-article routes, unpublished-in-language
+// articles (noindex — App emits no page JSON-LD for those), and articles
+// with no FAQs.
+export async function getArticleFaqPage(
+  urlPath: string,
+): Promise<Record<string, unknown> | null> {
+  await preloadRoute(urlPath);
+  const parsed = parsePath(urlPath);
+  const lang = parsed.lang;
+  const blogRoute = isBlogEnPath(parsed.path) ? resolveBlogRoute(parsed.path) : null;
+  if (blogRoute?.kind !== 'article') return null;
+  const article = BLOG_ARTICLES.find((a) => a.id === blogRoute.articleId);
+  if (!article) return null;
+  if (!isBlogArticlePublishedIn(article, lang)) return null;
+  const body = getBlogBody(article.id);
+  const localeData =
+    lang === 'en'
+      ? null
+      : getCachedLocale<{
+          ui?: { blog?: { faqHeading?: string } };
+          blog?: Record<string, BlogArticleLocaleOverride>;
+        }>(lang);
+  const overrides = localeData?.blog ?? {};
+  const version = getBlogArticleVersion(article, lang, overrides, body);
+  if (!version.faqs || version.faqs.length === 0) return null;
+  const heading =
+    localeData?.ui?.blog?.faqHeading ?? EN_BLOG_STRINGS.faqHeading;
+  // Same canonical the App head effect computes (its baseDomain is a local
+  // const inside that effect; the literal is the site's canonical domain).
+  const canonical = `https://compressmypic.online${withTrailingSlash(toLocalizedPath(parsed.path, lang))}`;
+  return buildFaqPageNode({ faqs: version.faqs, heading, url: canonical });
 }
 
 // Warm-up pass: render with renderToPipeableStream and wait for onAllReady,

@@ -198,7 +198,7 @@ async function main() {
   if (opts.limit) routes = routes.slice(0, opts.limit);
   console.log(`[prerender-ssr] routes: ${routes.length}`);
 
-  const { renderRoute } = await import(SSR_BUNDLE);
+  const { renderRoute, getArticleFaqPage } = await import(SSR_BUNDLE);
   let done = 0;
   let skipped = 0;
   const failed = [];
@@ -289,6 +289,70 @@ async function main() {
       );
     }
   }
+
+  // FAQPage repair pass — the page JSON-LD is emitted by a client-side
+  // effect, so this script carries heads from old Chromium snapshots, and
+  // EN article heads were captured without FAQPage (0/145: the effect ran
+  // at mount before the body loaded and never re-ran for EN). Regenerate
+  // the node from the real data and inject it into the carried head's
+  // @graph when it is missing. Idempotent: heads that already carry
+  // FAQPage (144/145 localized) are left byte-identical, and non-article
+  // routes are never touched.
+  let faqRepaired = 0;
+  let faqNoNode = 0;
+  for (const route of routes) {
+    let faqNode = null;
+    try {
+      faqNode = await getArticleFaqPage(route);
+    } catch (e) {
+      console.error(
+        `[prerender-ssr] FAQPage lookup failed for ${route}: ${String((e && e.message) || e).slice(0, 120)}`,
+      );
+      continue;
+    }
+    if (!faqNode) {
+      faqNoNode += 1;
+      continue;
+    }
+    const outPath = outPathFor(route);
+    if (!fs.existsSync(outPath)) continue;
+    let html;
+    try {
+      html = fs.readFileSync(outPath, 'utf8');
+    } catch {
+      continue;
+    }
+    const m = html.match(
+      /<script type="application\/ld\+json" id="app-page-jsonld">([\s\S]*?)<\/script>/,
+    );
+    if (!m) continue;
+    let doc;
+    try {
+      doc = JSON.parse(m[1]);
+    } catch {
+      continue;
+    }
+    const graph = doc && Array.isArray(doc['@graph']) ? doc['@graph'] : null;
+    if (!graph || !graph.some((n) => n && n['@type'] === 'BlogPosting')) continue;
+    if (graph.some((n) => n && n['@type'] === 'FAQPage')) continue;
+    graph.push(faqNode);
+    const updated = html.replace(
+      m[0],
+      `<script type="application/ld+json" id="app-page-jsonld">${JSON.stringify(doc)}</script>`,
+    );
+    if (updated === html) continue;
+    try {
+      fs.writeFileSync(outPath, updated, 'utf8');
+      faqRepaired += 1;
+    } catch (e) {
+      console.error(
+        `[prerender-ssr] FAQPage write failed for ${route}: ${String((e && e.message) || e).slice(0, 120)}`,
+      );
+    }
+  }
+  console.log(
+    `[prerender-ssr] FAQPage repair: injected into ${faqRepaired} article heads (${faqNoNode} non-article/no-FAQ routes skipped)`,
+  );
 
   console.log(
     `[prerender-ssr] FINISHED routes=${routes.length} rendered=${done} skipped=${skipped} failed=${failed.length} elapsed=${Math.round((Date.now() - t0) / 1000)}s`,

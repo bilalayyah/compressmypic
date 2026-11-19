@@ -553,6 +553,7 @@ const NotFoundPage = React.lazy(() =>
 import { CompressionSettings, ImageFormat, ImageItem } from './types';
 import { compressSingleImage, detectTransparency, loadImageFromFile, toDecodableBlob } from './utils/compressor';
 import { getFileExtension } from './utils/formatters';
+import { buildFaqPageNode } from './utils/faqJsonLd';
 import { trackPageView, trackFileCompressed, trackFileDownloaded } from './utils/analytics';
 
 const KNOWN_ROUTES = [
@@ -734,8 +735,10 @@ export function parsePath(rawPathname: string): ParsedPath {
 /** English path → the equivalent path in `lang` (identity for 'en').
  * `enPath` may also be an already-localized tool-directory path (the router
  * stores the directory route under its localized key); directory paths map
- * across languages instead of falling through to the slug maps. */
-function toLocalizedPath(enPath: string, lang: SupportedLang): string {
+ * across languages instead of falling through to the slug maps.
+ * Exported for the SSR prerender (src/entry-server.tsx), which computes
+ * the same canonical the head effect does. */
+export function toLocalizedPath(enPath: string, lang: SupportedLang): string {
   if (lang === 'en') return enPath;
   if (enPath === '/') return `/${lang}/`;
   if (
@@ -1983,19 +1986,13 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
           },
         ];
         if (version.faqs && version.faqs.length > 0) {
-          graph.push({
-            '@type': 'FAQPage',
-            name: blogStrings.faqHeading,
-            url: nextCanonical,
-            mainEntity: version.faqs.map((f) => ({
-              '@type': 'Question',
-              name: f.question,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: f.answer.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim(),
-              },
-            })),
-          });
+          graph.push(
+            buildFaqPageNode({
+              faqs: version.faqs,
+              heading: blogStrings.faqHeading,
+              url: nextCanonical,
+            }),
+          );
         }
         upsertPageJsonLd({ '@context': 'https://schema.org', '@graph': graph });
       } else if (existingPageJsonLd) {
