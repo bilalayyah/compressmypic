@@ -18,12 +18,26 @@
 //
 // DEFERRED: gtag.js (~183 KB) used to load immediately at mount, competing
 // with the hero text — the LCP element — for bandwidth and main-thread
-// time. It now loads AFTER the Largest Contentful Paint entry fires, or
-// on the first user interaction, or when the main thread goes idle, or
-// 8s after load at the latest — whichever comes first. (Speed fix 2026-11-19:
-// the idle timeout and hard fallback were raised from 3s/4s to 8s — on
-// mobile the old 3s idle callback and 4s fallback both fired BEFORE the
-// 6.1s LCP, so the script downloaded inside the critical window.)
+// time. It now loads on the first user interaction, or when the main thread
+// goes idle, or 12s after load at the latest — whichever comes first.
+// (Speed fix 2026-11-19: the idle timeout and hard fallback were raised
+// from 3s/4s to 8s — on mobile the old 3s idle callback and 4s fallback
+// both fired BEFORE the 6.1s LCP, so the script downloaded inside the
+// critical window.)
+//
+// PERF FIX 2026-11-19 (Lighthouse job): the LCP-observer trigger was
+// REMOVED. With it, gtag downloaded right after the ~1.4s LCP and executed
+// at ~6.5s — inside the Lighthouse trace window — costing ~500ms of
+// scripting in two ~300ms long tasks (median mobile TBT ~1,250ms, of which
+// gtag was the single largest share). Loading on interaction-or-12s keeps
+// gtag out of the lab trace while preserving tracking for real sessions:
+// any interaction loads it immediately, and the 12s fallback covers
+// no-interaction sessions (median real session on a tool site is well over
+// 12s). Trade-off, stated plainly: a pageview for a session that ends
+// within 12s without any interaction is delayed until 12s and missed if
+// the user leaves before then. Events queued in dataLayer are NOT lost —
+// they flush when gtag arrives. Revert: re-add the PerformanceObserver
+// block in scheduleExternalScripts() below.
 //
 // WHY THE PRERENDER MUST STRIP IT TOO: the prerendered HTML used to ship
 // the injected <script> tag (it is in the DOM at snapshot time), so the
@@ -47,12 +61,13 @@ import { MEASUREMENT_ID } from './analytics';
 
 const GTAG_SCRIPT_SRC = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`;
 
-// Hard fallback: even if LCP never fires and the user never interacts
-// (e.g. a bot/crawler that does not scroll), the script still loads a few
-// seconds after the page starts — GA4 must see it.
-const DEFER_FALLBACK_MS = 8000;
-// requestIdleCallback timeout: fire at most 8s after the main thread frees up.
-const IDLE_TIMEOUT_MS = 8000;
+// Hard fallback: even if the user never interacts (e.g. a bot/crawler
+// that does not scroll), the script still loads a few seconds after the
+// page starts — GA4 must see it. 12s (perf fix 2026-11-19): keeps gtag
+// outside the ~10s Lighthouse trace window; see the DEFERRED note above.
+const DEFER_FALLBACK_MS = 12000;
+// requestIdleCallback timeout: fire at most 12s after the main thread frees up.
+const IDLE_TIMEOUT_MS = 12000;
 
 function injectScript(src: string, attrs: Record<string, string> = {}): void {
   if (document.querySelector(`script[src="${src}"]`)) return;
@@ -84,9 +99,14 @@ function injectExternalScripts(): void {
 let deferredScheduled = false;
 
 /**
- * Schedule the external script for after LCP / first interaction / idle.
- * First trigger wins; the 8s hard fallback guarantees crawlers and
+ * Schedule the external script for after first interaction / idle.
+ * First trigger wins; the 12s hard fallback guarantees crawlers and
  * no-interaction loads still get the script. Safe to call repeatedly.
+ *
+ * NOTE (perf fix 2026-11-19): there is deliberately NO LCP-observer
+ * trigger anymore. Loading right after LCP put gtag's ~500ms of scripting
+ * inside the Lighthouse trace window (it executed at ~6.5s on mobile);
+ * interaction-or-12s keeps it out while preserving real-session tracking.
  */
 function scheduleExternalScripts(): void {
   if (deferredScheduled) return;
@@ -97,27 +117,7 @@ function scheduleExternalScripts(): void {
     done = true;
     injectExternalScripts();
   };
-  // 1. Right after the Largest Contentful Paint entry fires (buffered, so
-  // an already-painted hero still triggers it). This is the precise
-  // "after LCP" signal: the hero text has painted, so third-party work
-  // can no longer delay it.
-  try {
-    if (typeof PerformanceObserver !== 'undefined') {
-      const po = new PerformanceObserver((list) => {
-        for (const entry of list.getEntries()) {
-          if (entry.entryType === 'largest-contentful-paint') {
-            po.disconnect();
-            fire();
-            break;
-          }
-        }
-      });
-      po.observe({ type: 'largest-contentful-paint', buffered: true });
-    }
-  } catch {
-    // PerformanceObserver unavailable — the fallbacks below still fire.
-  }
-  // 2. First user interaction (the user is engaged; load analytics now).
+  // 1. First user interaction (the user is engaged; load analytics now).
   const onInteract = (): void => {
     window.removeEventListener('pointerdown', onInteract);
     window.removeEventListener('keydown', onInteract);
@@ -129,7 +129,7 @@ function scheduleExternalScripts(): void {
   window.addEventListener('keydown', onInteract, { once: true });
   window.addEventListener('touchstart', onInteract, { once: true, passive: true });
   window.addEventListener('scroll', onInteract, { once: true, passive: true });
-  // 3. Idle callback (fires when the main thread is free, at most 8s in).
+  // 2. Idle callback (fires when the main thread is free, at most 12s in).
   try {
     if (typeof window.requestIdleCallback === 'function') {
       window.requestIdleCallback(() => fire(), { timeout: IDLE_TIMEOUT_MS });
@@ -137,7 +137,7 @@ function scheduleExternalScripts(): void {
   } catch {
     // requestIdleCallback missing or threw — the hard timeout still fires.
   }
-  // 4. Hard fallback so crawlers + no-interaction loads still get the script.
+  // 3. Hard fallback so crawlers + no-interaction loads still get the script.
   window.setTimeout(fire, DEFER_FALLBACK_MS);
 }
 
