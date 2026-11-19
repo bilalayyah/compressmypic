@@ -61,28 +61,10 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
 
           <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              3. Advertising (Google AdSense)
+              3. Advertising
             </h2>
             <p>
-              We use Google AdSense to show ads once enabled. Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this website or other websites. Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to this site and/or other sites on the Internet. You may opt out of personalized advertising by visiting Google Ads Settings (
-              <a
-                href="https://adssettings.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
-              >
-                https://adssettings.google.com
-              </a>
-              ) or{' '}
-              <a
-                href="https://www.aboutads.info/choices/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
-              >
-                https://www.aboutads.info/choices/
-              </a>
-              .
+              CompressMyPic currently shows no advertisements. No advertising cookies are set by this site.
             </p>
           </section>
 
@@ -109,10 +91,10 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
               6. Cookies and Consent
             </h2>
             <p>
-              CompressMyPic itself does not set any cookies for its image tools: compression runs entirely in your browser and needs no cookie, account, or stored preference on our side. Cookies on this site come from third-party services. Google AdSense and its partners may set advertising cookies to show you relevant ads and to measure how often an ad is shown. Your browser stores these cookies on your device, and you can delete them at any time through your browser settings.
+              CompressMyPic itself does not set any cookies for its image tools: compression runs entirely in your browser and needs no cookie, account, or stored preference on our side. Cookies on this site come from third-party services. For example, Google Analytics may set cookies for usage statistics. Your browser stores these cookies on your device, and you can delete them at any time through your browser settings.
             </p>
             <p>
-              If you visit from the European Economic Area or the United Kingdom, we ask for your consent before personalized advertising is shown, in line with the GDPR and Google's EU User Consent Policy. You can withdraw that consent at any time by clearing your browser cookies or by changing the consent choice offered on the site. Choosing non-personalized ads does not stop advertising altogether, but it means ads are no longer based on your browsing history.
+              CompressMyPic currently shows no advertisements, so no advertising consent is requested from visitors in any region.
             </p>
           </section>
 

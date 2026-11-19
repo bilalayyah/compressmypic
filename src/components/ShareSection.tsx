@@ -93,11 +93,11 @@ export function ShareSection({ strings = DEFAULT_STRINGS }: { strings?: ShareSec
         <p className="text-[var(--ink-2)] mb-6">{strings.text}</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           {shareLinks.map((s) => (
-            <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={strings.shareOn.replace('{name}', s.name)} title={strings.shareOn.replace('{name}', s.name)} onClick={() => trackOutboundClick({ link_url: s.url, link_text: s.name })} className="w-11 h-11 rounded-full flex items-center justify-center text-white shadow-sm hover:opacity-85 hover:scale-105 transition" style={{ backgroundColor: s.bg }}>
+            <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={strings.shareOn.replace('{name}', s.name)} title={strings.shareOn.replace('{name}', s.name)} onClick={() => trackOutboundClick({ link_url: s.url, link_text: s.name })} className="w-11 h-11 rounded-full flex items-center justify-center text-white shadow-sm hover:opacity-85 hover:scale-105 transition-[transform,opacity]" style={{ backgroundColor: s.bg }}>
               {s.icon}
             </a>
           ))}
-          <button onClick={handleCopy} aria-label={strings.copyLink} title={strings.copyLink} className="h-11 px-5 rounded-full bg-[var(--surface)] border border-[var(--line)] text-[var(--ink)] font-semibold text-sm flex items-center gap-2 hover:border-[#7c3aed]/50 transition cursor-pointer shadow-2xs">
+          <button onClick={handleCopy} aria-label={strings.copyLink} title={strings.copyLink} className="h-11 px-5 rounded-full bg-[var(--surface)] border border-[var(--line)] text-[var(--ink)] font-semibold text-sm flex items-center gap-2 hover:border-[#7c3aed]/50 transition-[border-color] cursor-pointer shadow-2xs">
             {copied ? <Check className="w-4 h-4 text-[#16a34a]" /> : <Link2 className="w-4 h-4 text-[#7c3aed]" />}
             {copied ? strings.copied : strings.copyLink}
           </button>

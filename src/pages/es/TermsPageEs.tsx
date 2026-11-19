@@ -112,7 +112,7 @@ export const TermsPageEs: React.FC<TermsPageEsProps> = ({ onNavigate }) => {
               8. Servicios de terceros
             </h2>
             <p>
-              El sitio usa servicios de terceros para funcionar, incluyendo alojamiento y entrega de contenido a través de Cloudflare, publicidad a través de Google AdSense y entrega de mensajes a través de FormSubmit. Esos servicios tienen sus propios términos y políticas de privacidad, y su uso de ellos se rige por esos documentos, además de por estos términos. No somos responsables de la disponibilidad, el contenido ni las prácticas de los sitios web o servicios de terceros enlazados desde CompressMyPic.
+              El sitio usa servicios de terceros para funcionar, incluyendo alojamiento y entrega de contenido a través de Cloudflare y entrega de mensajes a través de FormSubmit. Esos servicios tienen sus propios términos y políticas de privacidad, y su uso de ellos se rige por esos documentos, además de por estos términos. No somos responsables de la disponibilidad, el contenido ni las prácticas de los sitios web o servicios de terceros enlazados desde CompressMyPic.
             </p>
           </section>
 

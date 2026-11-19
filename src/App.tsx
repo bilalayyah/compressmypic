@@ -19,7 +19,6 @@ import { Footer } from './components/Footer';
 const ShareSection = React.lazy(() =>
   import('./components/ShareSection').then((m) => ({ default: m.ShareSection }))
 );
-import { AdSlot } from './components/AdSlot';
 const ToolsDirectorySection = React.lazy(() =>
   import('./components/ToolsDirectorySection').then((m) => ({ default: m.ToolsDirectorySection }))
 );
@@ -211,7 +210,7 @@ const AvifToJpgPage = React.lazy(() =>
 const BmpToJpgPage = React.lazy(() =>
   import('./pages/BmpToJpgPage').then((m) => ({ default: m.BmpToJpgPage }))
 );
-import { TOOL_BY_SLUG, TOOLS_REGISTRY, TOOL_CATEGORIES } from './data/tools';
+import { TOOL_META_BY_SLUG, TOOLS_META, TOOL_CATEGORIES } from './data/toolsMeta';
 import { SUPPORTED_LANGS, LANG_STORAGE_KEY, type SupportedLang } from './locales/config';
 import { ES_PATH_BY_EN, EN_PATH_BY_ES, ES_HOME_ALIAS, ES_ALL_TOOLS_PATH } from './locales/es/slugs';
 import { PT_PATH_BY_EN, EN_PATH_BY_PT, PT_HOME_ALIAS, PT_ALL_TOOLS_PATH } from './locales/pt/slugs';
@@ -240,7 +239,10 @@ import {
   isBlogEnPath,
   resolveBlogRoute,
 } from './data/blogArticles';
-import type { BlogArticle } from './types/blog';
+import type { BlogArticleMeta } from './types/blog';
+import { getBlogBody } from './data/blogBody';
+import { getCachedLocale, setCachedLocale } from './locales/localeCache';
+import { loadLocaleData } from './locales/loadLocaleData';
 const AboutPageEs = React.lazy(() =>
   import('./pages/es/AboutPageEs').then((m) => ({ default: m.AboutPageEs }))
 );
@@ -616,9 +618,9 @@ const KNOWN_ROUTES = [
   '/remove-background',
 ];
 
-interface ParsedPath { path: string; lang: SupportedLang; notFound?: boolean; }
+export interface ParsedPath { path: string; lang: SupportedLang; notFound?: boolean; }
 
-function parsePath(rawPathname: string): ParsedPath {
+export function parsePath(rawPathname: string): ParsedPath {
   const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
   let p = rawPathname.toLowerCase();
   if (base && base !== '/' && p.startsWith(base.toLowerCase())) {
@@ -869,8 +871,13 @@ interface ZhLocale {
 
 type AnyLocale = EsLocale | PtLocale | FrLocale | DeLocale | ItLocale | IdLocale | RuLocale | JaLocale | KoLocale | ZhLocale;
 
-export default function App() {
+export default function App({ initialPath }: { initialPath?: string } = {}) {
   const [route, setRoute] = useState<ParsedPath>(() => {
+    // SSR: the server passes the request path explicitly (there is no
+    // window in Node). Client: read it from the browser as before.
+    if (initialPath) {
+      return parsePath(initialPath);
+    }
     if (typeof window !== 'undefined') {
       return parsePath(window.location.pathname);
     }
@@ -885,16 +892,66 @@ export default function App() {
   // localized languages have a dedicated directory page.
   const allToolsPath =
     lang === 'es' ? ES_ALL_TOOLS_PATH : lang === 'pt' ? PT_ALL_TOOLS_PATH : lang === 'fr' ? FR_ALL_TOOLS_PATH : lang === 'de' ? DE_ALL_TOOLS_PATH : lang === 'it' ? IT_ALL_TOOLS_PATH : lang === 'id' ? ID_ALL_TOOLS_PATH : lang === 'ru' ? RU_ALL_TOOLS_PATH : lang === 'ja' ? JA_ALL_TOOLS_PATH : lang === 'ko' ? KO_ALL_TOOLS_PATH : lang === 'zh' ? ZH_ALL_TOOLS_PATH : '/#tools-directory';
-  const [esLocale, setEsLocale] = useState<EsLocale | null>(null);
-  const [ptLocale, setPtLocale] = useState<PtLocale | null>(null);
-  const [frLocale, setFrLocale] = useState<FrLocale | null>(null);
-  const [deLocale, setDeLocale] = useState<DeLocale | null>(null);
-  const [itLocale, setItLocale] = useState<ItLocale | null>(null);
-  const [idLocale, setIdLocale] = useState<IdLocale | null>(null);
-  const [ruLocale, setRuLocale] = useState<RuLocale | null>(null);
-  const [jaLocale, setJaLocale] = useState<JaLocale | null>(null);
-  const [koLocale, setKoLocale] = useState<KoLocale | null>(null);
-  const [zhLocale, setZhLocale] = useState<ZhLocale | null>(null);
+  const [esLocale, setEsLocale] = useState<EsLocale | null>(
+    // Tier J: main.tsx stored the preloaded locale in the cache
+    // before first render, so the first render is already
+    // localized and hydrateRoot can adopt the prerendered DOM.
+    () => getCachedLocale<EsLocale>('es'),
+  );
+  const [ptLocale, setPtLocale] = useState<PtLocale | null>(
+    // Tier J: main.tsx stored the preloaded locale in the cache
+    // before first render, so the first render is already
+    // localized and hydrateRoot can adopt the prerendered DOM.
+    () => getCachedLocale<PtLocale>('pt'),
+  );
+  const [frLocale, setFrLocale] = useState<FrLocale | null>(
+    // Tier J: main.tsx stored the preloaded locale in the cache
+    // before first render, so the first render is already
+    // localized and hydrateRoot can adopt the prerendered DOM.
+    () => getCachedLocale<FrLocale>('fr'),
+  );
+  const [deLocale, setDeLocale] = useState<DeLocale | null>(
+    // Tier J: main.tsx stored the preloaded locale in the cache
+    // before first render, so the first render is already
+    // localized and hydrateRoot can adopt the prerendered DOM.
+    () => getCachedLocale<DeLocale>('de'),
+  );
+  const [itLocale, setItLocale] = useState<ItLocale | null>(
+    // Tier J: main.tsx stored the preloaded locale in the cache
+    // before first render, so the first render is already
+    // localized and hydrateRoot can adopt the prerendered DOM.
+    () => getCachedLocale<ItLocale>('it'),
+  );
+  const [idLocale, setIdLocale] = useState<IdLocale | null>(
+    // Tier J: main.tsx stored the preloaded locale in the cache
+    // before first render, so the first render is already
+    // localized and hydrateRoot can adopt the prerendered DOM.
+    () => getCachedLocale<IdLocale>('id'),
+  );
+  const [ruLocale, setRuLocale] = useState<RuLocale | null>(
+    // Tier J: main.tsx stored the preloaded locale in the cache
+    // before first render, so the first render is already
+    // localized and hydrateRoot can adopt the prerendered DOM.
+    () => getCachedLocale<RuLocale>('ru'),
+  );
+  const [jaLocale, setJaLocale] = useState<JaLocale | null>(
+    // Tier J: main.tsx stored the preloaded locale in the cache
+    // before first render, so the first render is already
+    // localized and hydrateRoot can adopt the prerendered DOM.
+    () => getCachedLocale<JaLocale>('ja'),
+  );
+  const [koLocale, setKoLocale] = useState<KoLocale | null>(
+    // Tier J: main.tsx stored the preloaded locale in the cache
+    // before first render, so the first render is already
+    // localized and hydrateRoot can adopt the prerendered DOM.
+    () => getCachedLocale<KoLocale>('ko'),
+  );
+  const [zhLocale, setZhLocale] = useState<ZhLocale | null>(
+    // Tier J: main.tsx stored the preloaded locale in the cache
+    // before first render, so the first render is already
+    // localized and hydrateRoot can adopt the prerendered DOM.
+    () => getCachedLocale<ZhLocale>('zh'),
+  );
   const [localeLoading, setLocaleLoading] = useState(false);
 
   // The active non-English locale (null for English). Defined early so the
@@ -907,113 +964,94 @@ export default function App() {
   // off-blog), the article for article routes, the active language's blog
   // UI strings (EN fallback) and article overrides (empty for EN).
   const blogRoute = isBlogEnPath(currentPath) ? resolveBlogRoute(currentPath) : null;
-  const blogArticle: BlogArticle | undefined =
+  const blogArticle: BlogArticleMeta | undefined =
     blogRoute?.kind === 'article' ? getBlogArticleById(blogRoute.articleId) : undefined;
   const blogStrings = activeUi?.blog ?? EN_BLOG_STRINGS;
   const blogOverrides = activeLocale?.blog ?? {};
 
   // Generic loader — later languages add one branch each; only the selected
   // language's files are ever downloaded (Vite code-splits each dynamic import).
-  const loadLocale = useCallback(async (target: SupportedLang) => {
+  //
+  // Tier J: the actual loading lives in the shared loadLocaleData()
+  // (src/locales/loadLocaleData.ts) — the same module specifiers main.tsx
+  // uses for the boot preload — and the result is stored in the locale
+  // cache so a remount never re-fetches. Tier C: withBlog=false skips the
+  // locale blog chunk (only blog routes need it); when the user navigates
+  // client-side onto a blog route, the lang effect re-runs with
+  // withBlog=true and the second half of the guard tops the blog chunk up
+  // into the already-loaded locale (the module cache makes the re-load
+  // cheap — the ui/tools chunks resolve without a network fetch).
+  const loadLocale = useCallback(async (target: SupportedLang, opts?: { withBlog?: boolean }) => {
     if (target === 'en') return;
-    if (target === 'es' && !esLocale) {
+    const withBlog = opts?.withBlog ?? true;
+    if (target === 'es' && (!esLocale || (withBlog && Object.keys(esLocale.blog ?? {}).length === 0))) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod, blogMod] = await Promise.all([
-        import('./locales/es/ui'),
-        import('./locales/es/tools'),
-        import('./locales/es/blog'),
-      ]);
-      setEsLocale({ ui: uiMod.ES, tools: toolsMod.TOOL_BY_SLUG_ES, categories: toolsMod.TOOL_CATEGORIES_ES, toolUi: uiMod.TOOL_UI_ES, blog: blogMod.ES_BLOG_OVERRIDES });
+      const data = await loadLocaleData<EsLocale>('es', { withBlog });
+      setEsLocale(data);
+      setCachedLocale('es', data);
       setLocaleLoading(false);
     }
-    if (target === 'pt' && !ptLocale) {
+    if (target === 'pt' && (!ptLocale || (withBlog && Object.keys(ptLocale.blog ?? {}).length === 0))) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod, blogMod] = await Promise.all([
-        import('./locales/pt/ui'),
-        import('./locales/pt/tools'),
-        import('./locales/pt/blog'),
-      ]);
-      setPtLocale({ ui: uiMod.PT, tools: toolsMod.TOOL_BY_SLUG_PT, categories: toolsMod.TOOL_CATEGORIES_PT, toolUi: uiMod.TOOL_UI_PT, blog: blogMod.PT_BLOG_OVERRIDES });
+      const data = await loadLocaleData<PtLocale>('pt', { withBlog });
+      setPtLocale(data);
+      setCachedLocale('pt', data);
       setLocaleLoading(false);
     }
-    if (target === 'fr' && !frLocale) {
+    if (target === 'fr' && (!frLocale || (withBlog && Object.keys(frLocale.blog ?? {}).length === 0))) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod, blogMod] = await Promise.all([
-        import('./locales/fr/ui'),
-        import('./locales/fr/tools'),
-        import('./locales/fr/blog'),
-      ]);
-      setFrLocale({ ui: uiMod.FR, tools: toolsMod.TOOL_BY_SLUG_FR, categories: toolsMod.TOOL_CATEGORIES_FR, toolUi: uiMod.TOOL_UI_FR, blog: blogMod.FR_BLOG_OVERRIDES });
+      const data = await loadLocaleData<FrLocale>('fr', { withBlog });
+      setFrLocale(data);
+      setCachedLocale('fr', data);
       setLocaleLoading(false);
     }
-    if (target === 'de' && !deLocale) {
+    if (target === 'de' && (!deLocale || (withBlog && Object.keys(deLocale.blog ?? {}).length === 0))) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod, blogMod] = await Promise.all([
-        import('./locales/de/ui'),
-        import('./locales/de/tools'),
-        import('./locales/de/blog'),
-      ]);
-      setDeLocale({ ui: uiMod.DE, tools: toolsMod.TOOL_BY_SLUG_DE, categories: toolsMod.TOOL_CATEGORIES_DE, toolUi: uiMod.TOOL_UI_DE, blog: blogMod.DE_BLOG_OVERRIDES });
+      const data = await loadLocaleData<DeLocale>('de', { withBlog });
+      setDeLocale(data);
+      setCachedLocale('de', data);
       setLocaleLoading(false);
     }
-    if (target === 'it' && !itLocale) {
+    if (target === 'it' && (!itLocale || (withBlog && Object.keys(itLocale.blog ?? {}).length === 0))) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod, blogMod] = await Promise.all([
-        import('./locales/it/ui'),
-        import('./locales/it/tools'),
-        import('./locales/it/blog'),
-      ]);
-      setItLocale({ ui: uiMod.IT, tools: toolsMod.TOOL_BY_SLUG_IT, categories: toolsMod.TOOL_CATEGORIES_IT, toolUi: uiMod.TOOL_UI_IT, blog: blogMod.IT_BLOG_OVERRIDES });
+      const data = await loadLocaleData<ItLocale>('it', { withBlog });
+      setItLocale(data);
+      setCachedLocale('it', data);
       setLocaleLoading(false);
     }
-    if (target === 'id' && !idLocale) {
+    if (target === 'id' && (!idLocale || (withBlog && Object.keys(idLocale.blog ?? {}).length === 0))) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod, blogMod] = await Promise.all([
-        import('./locales/id/ui'),
-        import('./locales/id/tools'),
-        import('./locales/id/blog'),
-      ]);
-      setIdLocale({ ui: uiMod.ID, tools: toolsMod.TOOL_BY_SLUG_ID, categories: toolsMod.TOOL_CATEGORIES_ID, toolUi: uiMod.TOOL_UI_ID, blog: blogMod.ID_BLOG_OVERRIDES });
+      const data = await loadLocaleData<IdLocale>('id', { withBlog });
+      setIdLocale(data);
+      setCachedLocale('id', data);
       setLocaleLoading(false);
     }
-    if (target === 'ru' && !ruLocale) {
+    if (target === 'ru' && (!ruLocale || (withBlog && Object.keys(ruLocale.blog ?? {}).length === 0))) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod, blogMod] = await Promise.all([
-        import('./locales/ru/ui'),
-        import('./locales/ru/tools'),
-        import('./locales/ru/blog'),
-      ]);
-      setRuLocale({ ui: uiMod.RU, tools: toolsMod.TOOL_BY_SLUG_RU, categories: toolsMod.TOOL_CATEGORIES_RU, toolUi: uiMod.TOOL_UI_RU, blog: blogMod.RU_BLOG_OVERRIDES });
+      const data = await loadLocaleData<RuLocale>('ru', { withBlog });
+      setRuLocale(data);
+      setCachedLocale('ru', data);
       setLocaleLoading(false);
     }
-    if (target === 'ja' && !jaLocale) {
+    if (target === 'ja' && (!jaLocale || (withBlog && Object.keys(jaLocale.blog ?? {}).length === 0))) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod, blogMod] = await Promise.all([
-        import('./locales/ja/ui'),
-        import('./locales/ja/tools'),
-        import('./locales/ja/blog'),
-      ]);
-      setJaLocale({ ui: uiMod.JA, tools: toolsMod.TOOL_BY_SLUG_JA, categories: toolsMod.TOOL_CATEGORIES_JA, toolUi: uiMod.TOOL_UI_JA, blog: blogMod.JA_BLOG_OVERRIDES });
+      const data = await loadLocaleData<JaLocale>('ja', { withBlog });
+      setJaLocale(data);
+      setCachedLocale('ja', data);
       setLocaleLoading(false);
     }
-    if (target === 'ko' && !koLocale) {
+    if (target === 'ko' && (!koLocale || (withBlog && Object.keys(koLocale.blog ?? {}).length === 0))) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod, blogMod] = await Promise.all([
-        import('./locales/ko/ui'),
-        import('./locales/ko/tools'),
-        import('./locales/ko/blog'),
-      ]);
-      setKoLocale({ ui: uiMod.KO, tools: toolsMod.TOOL_BY_SLUG_KO, categories: toolsMod.TOOL_CATEGORIES_KO, toolUi: uiMod.TOOL_UI_KO, blog: blogMod.KO_BLOG_OVERRIDES });
+      const data = await loadLocaleData<KoLocale>('ko', { withBlog });
+      setKoLocale(data);
+      setCachedLocale('ko', data);
       setLocaleLoading(false);
     }
-    if (target === 'zh' && !zhLocale) {
+    if (target === 'zh' && (!zhLocale || (withBlog && Object.keys(zhLocale.blog ?? {}).length === 0))) {
       setLocaleLoading(true);
-      const [uiMod, toolsMod, blogMod] = await Promise.all([
-        import('./locales/zh/ui'),
-        import('./locales/zh/tools'),
-        import('./locales/zh/blog'),
-      ]);
-      setZhLocale({ ui: uiMod.ZH, tools: toolsMod.TOOL_BY_SLUG_ZH, categories: toolsMod.TOOL_CATEGORIES_ZH, toolUi: uiMod.TOOL_UI_ZH, blog: blogMod.ZH_BLOG_OVERRIDES });
+      const data = await loadLocaleData<ZhLocale>('zh', { withBlog });
+      setZhLocale(data);
+      setCachedLocale('zh', data);
       setLocaleLoading(false);
     }
   }, [esLocale, ptLocale, frLocale, deLocale, itLocale, idLocale, ruLocale, jaLocale, koLocale, zhLocale]);
@@ -1062,11 +1100,15 @@ export default function App() {
   }, [route.lang]);
 
   // Load the locale files when the language changes to a non-English one.
+  // Tier C: the blog chunk loads only on blog routes — when the user
+  // navigates client-side from a non-blog route to a blog route in the
+  // same language, blogRoute changes and this re-runs, topping the blog
+  // chunk up into the already-loaded locale (see loadLocale's guard).
   useEffect(() => {
     if (lang !== 'en') {
-      loadLocale(lang);
+      loadLocale(lang, { withBlog: blogRoute !== null });
     }
-  }, [lang, loadLocale]);
+  }, [lang, loadLocale, blogRoute]);
 
   // Keep <html lang> in sync with the active language.
   useEffect(() => {
@@ -1108,7 +1150,7 @@ export default function App() {
     const baseDomain = 'https://compressmypic.online';
     const toolMeta =
       (activeLocale ? activeLocale.tools[currentPath] : undefined) ??
-      TOOL_BY_SLUG[currentPath];
+      TOOL_META_BY_SLUG[currentPath];
 
     const staticTitles: Record<string, string> = {
       '/about': 'About CompressMyPic – Free Online Image Compressor',
@@ -1131,7 +1173,7 @@ export default function App() {
       '/privacy': 'Privacy Policy for CompressMyPic: your images are compressed in your browser and never uploaded. Read how cookies, ads and analytics work on this site.',
       '/terms': 'Terms of Service for CompressMyPic: fair use, your content, liability and service changes for our free online image tools. Plain rules, no legal jargon.',
       '/disclaimer': 'Disclaimer for CompressMyPic: our free image tools are provided as-is, without warranty. Read the limits of liability and accuracy of our guides.',
-      '/cookie-policy': 'Cookie Policy for CompressMyPic: we set no cookies ourselves. Learn which cookies Google AdSense and Analytics use, and how to control them.',
+      '/cookie-policy': 'Cookie Policy for CompressMyPic: we set no cookies ourselves. Learn which cookies Google Analytics uses, and how to control them.',
       '/all-tools': 'All 48 free CompressMyPic image tools in one place — compress, convert, resize, crop and edit images in your browser. No signup, no watermark.',
       '/admin/comments': 'Private admin page for moderating CompressMyPic comments. This page is not for public use — please use the contact page for help, feedback or bug reports.',
       '/guides/compress-images-for-whatsapp': 'Learn how to compress images for WhatsApp without losing quality. Free, private, no signup — shrink photos before sending so they stay sharp and send fast.',
@@ -1276,7 +1318,7 @@ export default function App() {
 
     const staticDescriptionsEs: Record<string, string> = {
       '/disclaimer': 'Aviso legal de CompressMyPic: nuestras herramientas gratuitas se ofrecen tal cual, sin garantía. Lea los límites de responsabilidad y la exactitud de las guías.',
-      '/cookie-policy': 'Política de cookies de CompressMyPic: nosotros no instalamos cookies. Descubra qué cookies usan Google AdSense y Analytics y cómo controlarlas.',
+      '/cookie-policy': 'Política de cookies de CompressMyPic: nosotros no instalamos cookies. Descubra qué cookies usa Google Analytics y cómo controlarlas.',
       '/': esLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'Acerca de CompressMyPic: un compresor de imágenes online gratis para JPG, PNG y WebP, sin registro, sin marca de agua y sin subir nada a ningún servidor.',
       '/contact': '¿Tiene preguntas, comentarios o necesita ayuda? Escríbale a nuestro equipo con el formulario de abajo o contáctenos directamente por correo electrónico.',
@@ -1290,7 +1332,7 @@ export default function App() {
 
     const staticDescriptionsPt: Record<string, string> = {
       '/disclaimer': 'Aviso legal do CompressMyPic: nossas ferramentas gratuitas são fornecidas como estão, sem garantia. Leia os limites de responsabilidade e a exatidão dos guias.',
-      '/cookie-policy': 'Política de cookies do CompressMyPic: nós não definimos cookies. Saiba quais cookies o Google AdSense e o Analytics usam e como controlá-los.',
+      '/cookie-policy': 'Política de cookies do CompressMyPic: nós não definimos cookies. Saiba quais cookies o Google Analytics usa e como controlá-los.',
       '/': ptLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'Sobre o CompressMyPic: um compressor de imagens online grátis para JPG, PNG e WebP, sem cadastro, sem marca d’água e sem enviar nada para nenhum servidor.',
       '/contact': 'Tem perguntas, comentários ou precisa de ajuda? Escreva para nossa equipe com o formulário abaixo ou fale conosco diretamente por e-mail.',
@@ -1304,7 +1346,7 @@ export default function App() {
 
     const staticDescriptionsFr: Record<string, string> = {
       '/disclaimer': 'Avertissement de CompressMyPic : nos outils gratuits sont fournis tels quels, sans garantie. Lisez les limites de responsabilité et l’exactitude des guides.',
-      '/cookie-policy': 'Politique relative aux cookies de CompressMyPic : nous ne définissons aucun cookie. Découvrez ceux de Google AdSense et Analytics et comment les contrôler.',
+      '/cookie-policy': 'Politique relative aux cookies de CompressMyPic : nous ne définissons aucun cookie. Découvrez ceux de Google Analytics et comment les contrôler.',
       '/': frLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'À propos de CompressMyPic : un compresseur d’images online gratuit pour JPG, PNG et WebP, sans inscription, sans filigrane et sans rien envoyer vers un serveur.',
       '/contact': 'Vous avez des questions, des commentaires ou besoin d’aide ? Écrivez à notre équipe avec le formulaire ci-dessous ou contactez-nous directement par e-mail.',
@@ -1318,7 +1360,7 @@ export default function App() {
 
     const staticDescriptionsDe: Record<string, string> = {
       '/disclaimer': 'Haftungsausschluss von CompressMyPic: Unsere kostenlosen Tools werden ohne Gewähr bereitgestellt. Lesen Sie die Haftungsgrenzen und Hinweise zur Genauigkeit.',
-      '/cookie-policy': 'Cookie-Richtlinie von CompressMyPic: Wir setzen selbst keine Cookies. Erfahren Sie, welche Cookies Google AdSense und Analytics verwenden und wie Sie sie steuern.',
+      '/cookie-policy': 'Cookie-Richtlinie von CompressMyPic: Wir setzen selbst keine Cookies. Erfahren Sie, welche Cookies Google Analytics verwendet und wie Sie sie steuern.',
       '/': deLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'Über CompressMyPic: ein kostenloser Online-Bildkomprimierer für JPG, PNG und WebP, ohne Anmeldung, ohne Wasserzeichen und ohne Upload auf einen Server.',
       '/contact': 'Haben Sie Fragen, Feedback oder brauchen Sie Hilfe? Wenden Sie sich über das Formular unten an unser Team oder kontaktieren Sie uns direkt per E-Mail.',
@@ -1332,7 +1374,7 @@ export default function App() {
 
     const staticDescriptionsIt: Record<string, string> = {
       '/disclaimer': 'Disclaimer di CompressMyPic: i nostri strumenti gratuiti sono forniti così come sono, senza garanzia. Leggi i limiti di responsabilità e l’accuratezza delle guide.',
-      '/cookie-policy': 'Politica dei cookie di CompressMyPic: noi non impostiamo cookie. Scopri quali cookie usano Google AdSense e Analytics e come controllarli.',
+      '/cookie-policy': 'Politica dei cookie di CompressMyPic: noi non impostiamo cookie. Scopri quali cookie usa Google Analytics e come controllarli.',
       '/': itLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'Chi è CompressMyPic: un compressore di immagini online gratuito per JPG, PNG e WebP, senza registrazione, senza filigrana e senza caricare nulla su nessun server.',
       '/contact': 'Hai domande, commenti o hai bisogno di aiuto? Scrivi al nostro team con il modulo qui sotto, oppure contattaci direttamente via email.',
@@ -1345,7 +1387,7 @@ export default function App() {
     };
     const staticDescriptionsId: Record<string, string> = {
       '/disclaimer': 'Penafian CompressMyPic: alat gratis kami disediakan apa adanya, tanpa jaminan. Baca batasan tanggung jawab dan keakuratan panduan kami.',
-      '/cookie-policy': 'Kebijakan Cookie CompressMyPic: kami tidak memasang cookie sendiri. Pelajari cookie yang digunakan Google AdSense dan Analytics serta cara mengendalikannya.',
+      '/cookie-policy': 'Kebijakan Cookie CompressMyPic: kami tidak memasang cookie sendiri. Pelajari cookie yang digunakan Google Analytics serta cara mengendalikannya.',
       '/': idLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'CompressMyPic adalah kompresor gambar gratis dan privat. Kompres gambar JPG, PNG, dan WebP langsung di browser Anda — cepat, aman, dan tanpa mengunggah file Anda ke mana pun.',
       '/contact': 'Punya pertanyaan, masukan, atau butuh bantuan? Hubungi tim kami melalui formulir di bawah ini, atau hubungi kami langsung lewat email.',
@@ -1358,7 +1400,7 @@ export default function App() {
     };
     const staticDescriptionsRu: Record<string, string> = {
       '/disclaimer': 'Отказ от ответственности CompressMyPic: наши бесплатные инструменты предоставляются как есть, без гарантий. Прочтите об ограничениях ответственности.',
-      '/cookie-policy': 'Политика использования файлов cookie CompressMyPic: мы сами не устанавливаем cookie. Узнайте, какие cookie используют Google AdSense и Analytics и как ими управлять.',
+      '/cookie-policy': 'Политика использования файлов cookie CompressMyPic: мы сами не устанавливаем cookie. Узнайте, какие cookie использует Google Analytics и как ими управлять.',
       '/': ruLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'CompressMyPic — это бесплатный и приватный компрессор изображений. Сжимайте изображения JPG, PNG и WebP прямо в браузере — быстро, безопасно и без загрузки файлов куда-либо.',
       '/contact': 'Есть вопросы, отзывы или нужна помощь? Обратитесь к нашей команде через форму ниже или свяжитесь с нами напрямую по электронной почте.',
@@ -1397,7 +1439,7 @@ export default function App() {
     };
     const staticDescriptionsZh: Record<string, string> = {
       '/disclaimer': 'CompressMyPic 免责声明：我们的免费图片工具按原样提供，不作任何保证。请阅读责任范围与指南准确性说明。',
-      '/cookie-policy': 'CompressMyPic Cookie 政策：我们自己不设置 Cookie。了解 Google AdSense 与 Analytics 使用的 Cookie 以及如何管理它们。',
+      '/cookie-policy': 'CompressMyPic Cookie 政策：我们自己不设置 Cookie。了解 Google Analytics 使用的 Cookie 以及如何管理它们。',
       '/': zhLocale?.ui.homeMeta.seoDescription ?? '',
       '/about': 'CompressMyPic 是一款免费、私密的图片压缩器。直接在浏览器中压缩 JPG、PNG 与 WebP 图片——快速、安全，无需把文件上传到任何地方。',
       '/contact': '有问题、反馈或需要帮助？请使用下面的表格联系我们的团队，或直接通过邮箱联系我们。',
@@ -1631,7 +1673,7 @@ export default function App() {
     };
     // '/' is the home entry in the registry, not a tool page — it must get
     // App-owned hreflang like any other non-tool page.
-    const isToolPage = currentPath !== '/' && Boolean(TOOL_BY_SLUG[currentPath]);
+    const isToolPage = currentPath !== '/' && Boolean(TOOL_META_BY_SLUG[currentPath]);
     const isDirectoryPath =
       currentPath === ES_ALL_TOOLS_PATH ||
       currentPath === PT_ALL_TOOLS_PATH ||
@@ -1904,7 +1946,10 @@ export default function App() {
           ],
         });
       } else if (blogRoute.kind === 'article' && blogArticle && !blogNoIndex) {
-        const version = getBlogArticleVersion(blogArticle, lang, blogOverrides);
+        // Tier B: the body comes from the per-article body cache —
+        // main.tsx preloads it before first render on article routes,
+        // so the FAQPage JSON-LD keeps its FAQs.
+        const version = getBlogArticleVersion(blogArticle, lang, blogOverrides, getBlogBody(blogArticle.id));
         const catLabel = getBlogCategoryLabel(blogArticle.categoryId, catLabelsForSeo);
         const graph: Record<string, unknown>[] = [
           {
@@ -2392,8 +2437,8 @@ export default function App() {
   // and the homepage: English order, with the translated entry substituted
   // when it exists (tools not yet translated keep their English entry).
   const toolsRegistry = activeLocale
-    ? TOOLS_REGISTRY.map((t) => activeLocale.tools[t.slug] ?? t)
-    : TOOLS_REGISTRY;
+    ? TOOLS_META.map((t) => activeLocale.tools[t.slug] ?? t)
+    : TOOLS_META;
   const categoryLabels = activeLocale ? activeLocale.categories : TOOL_CATEGORIES;
   const showLocaleLoading = lang !== 'en' && localeLoading && !activeLocale;
   const localeLoadingText =
@@ -2538,12 +2583,12 @@ export default function App() {
                     <Suspense fallback={null}>
                       <ShareSection strings={strings?.shareSection} />
                     </Suspense>
-          {/* Reserved AdSlot 2: Between Tool and Educational Content */}
-          <div className="px-4">
-            <AdSlot slotId="mid-content-banner" format="horizontal" />
-          </div>
 
-          {/* Educational Content Section */}
+          {/* Educational Content Section — Tier F: below the fold, so the
+              browser may skip rendering it until it nears the viewport.
+              The content stays in the DOM (SEO-safe); the intrinsic-size
+              estimate reserves space so the footer does not jump. */}
+          <div style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 1200px' }}>
           <EducationalContent
             sections={
               strings
@@ -2554,15 +2599,17 @@ export default function App() {
                 : undefined
             }
           />
+          </div>
 
-          {/* FAQ Section */}
+          {/* FAQ Section — Tier F: same content-visibility treatment as
+              the educational content above (below the fold). */}
           {/* Guides Section */}
       <section className="py-16 sm:py-20 bg-[var(--bg-soft)] border-t border-[var(--line)]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <h2 className="text-2xl sm:text-3xl font-sans font-bold text-[var(--ink-navy)] tracking-tight">{strings?.guidesSection.heading ?? 'Guides'}</h2>
           <p className="mt-4 text-base sm:text-lg text-[var(--ink-2)] leading-relaxed">{strings?.guidesSection.subheading ?? 'Step-by-step guides to get smaller files without losing visible quality.'}</p>
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-5">
-            <a href={toLocalizedPath('/guides/compress-images-for-whatsapp', lang)} onClick={(e) => { e.preventDefault(); handleNavigate('/guides/compress-images-for-whatsapp'); }} className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#c4b5fd] dark:hover:border-[#8b5cf6] transition-all duration-200 flex flex-col justify-between">
+            <a href={toLocalizedPath('/guides/compress-images-for-whatsapp', lang)} onClick={(e) => { e.preventDefault(); handleNavigate('/guides/compress-images-for-whatsapp'); }} className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#c4b5fd] dark:hover:border-[#8b5cf6] transition-[transform,box-shadow,border-color] duration-200 flex flex-col justify-between">
               <div>
                 <div className="w-10 h-10 rounded-lg pastel-tile-6 flex items-center justify-center mb-3.5"><MessageCircle className="w-5 h-5" /></div>
                 <h3 className="text-lg font-sans font-bold text-[var(--ink-navy)] group-hover:text-[#7c3aed] dark:group-hover:text-[#c4b5fd] transition-colors leading-snug">{strings?.guidesSection.cards[0].title ?? 'How to compress images for WhatsApp without losing quality'}</h3>
@@ -2570,7 +2617,7 @@ export default function App() {
               </div>
               <span className="mt-4 inline-block text-[13px] font-semibold text-[#7c3aed] dark:text-[#c4b5fd]">{strings?.guidesSection.cards[0].cta ?? 'Read guide →'}</span>
             </a>
-            <a href={toLocalizedPath('/guides/jpg-vs-png-vs-webp', lang)} onClick={(e) => { e.preventDefault(); handleNavigate('/guides/jpg-vs-png-vs-webp'); }} className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#c4b5fd] dark:hover:border-[#8b5cf6] transition-all duration-200 flex flex-col justify-between">
+            <a href={toLocalizedPath('/guides/jpg-vs-png-vs-webp', lang)} onClick={(e) => { e.preventDefault(); handleNavigate('/guides/jpg-vs-png-vs-webp'); }} className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#c4b5fd] dark:hover:border-[#8b5cf6] transition-[transform,box-shadow,border-color] duration-200 flex flex-col justify-between">
               <div>
                 <div className="w-10 h-10 rounded-lg pastel-tile-2 flex items-center justify-center mb-3.5"><FileImage className="w-5 h-5" /></div>
                 <h3 className="text-lg font-sans font-bold text-[var(--ink-navy)] group-hover:text-[#7c3aed] dark:group-hover:text-[#c4b5fd] transition-colors leading-snug">{strings?.guidesSection.cards[1].title ?? 'JPG vs PNG vs WebP: Which Format Should You Use?'}</h3>
@@ -2578,7 +2625,7 @@ export default function App() {
               </div>
               <span className="mt-4 inline-block text-[13px] font-semibold text-[#7c3aed] dark:text-[#c4b5fd]">{strings?.guidesSection.cards[1].cta ?? 'Read guide →'}</span>
             </a>
-            <a href={toLocalizedPath('/guides/reduce-image-size-to-100kb', lang)} onClick={(e) => { e.preventDefault(); handleNavigate('/guides/reduce-image-size-to-100kb'); }} className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#c4b5fd] dark:hover:border-[#8b5cf6] transition-all duration-200 flex flex-col justify-between">
+            <a href={toLocalizedPath('/guides/reduce-image-size-to-100kb', lang)} onClick={(e) => { e.preventDefault(); handleNavigate('/guides/reduce-image-size-to-100kb'); }} className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#c4b5fd] dark:hover:border-[#8b5cf6] transition-[transform,box-shadow,border-color] duration-200 flex flex-col justify-between">
               <div>
                 <div className="w-10 h-10 rounded-lg pastel-tile-0 flex items-center justify-center mb-3.5"><Zap className="w-5 h-5" /></div>
                 <h3 className="text-lg font-sans font-bold text-[var(--ink-navy)] group-hover:text-[#7c3aed] dark:group-hover:text-[#c4b5fd] transition-colors leading-snug">{strings?.guidesSection.cards[2].title ?? 'How to Reduce Image Size to 100KB for Web &amp; Email'}</h3>
@@ -2589,16 +2636,14 @@ export default function App() {
           </div>
         </div>
       </section>
-      <FaqSection
-        heading={strings?.faqSection.heading}
-        subheading={strings?.faqSection.subheading}
-        faqs={strings ? [...strings.faqSection.faqs] : undefined}
-      />
+      <div style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 1000px' }}>
+        <FaqSection
+          heading={strings?.faqSection.heading}
+          subheading={strings?.faqSection.subheading}
+          faqs={strings ? [...strings.faqSection.faqs] : undefined}
+        />
+      </div>
 
-          {/* Reserved AdSlot 3: Near Bottom of Page */}
-          <div className="px-4 pb-6">
-            <AdSlot slotId="footer-bottom-banner" format="horizontal" />
-          </div>
           </main>
     </>
   );
@@ -8444,6 +8489,7 @@ zhStrings={
             : undefined
         }
         localizePath={activeUi ? (slug) => toLocalizedPath(slug, lang) : undefined}
+        directoryLabel={activeUi?.toolsDirectory.allTools}
       />
 
       {/* Comparison Modal */}

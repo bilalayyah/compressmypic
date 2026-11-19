@@ -81,7 +81,7 @@ export const DisclaimerPageZh: React.FC<DisclaimerPageZhProps> = ({ onNavigate }
               5. 第三方服务与链接
             </h2>
             <p>
-              本网站使用第三方服务——用于广告的 Google AdSense、用于使用统计的 Google Analytics 4、用于联系表单的 FormSubmit，以及用于匿名评论的 Cloudflare Worker——并链接到外部网站。我们无法控制这些服务或网站，也不对它们的内容、可用性、隐私做法或准确性负责。使用它们时，适用其各自的条款和隐私政策。
+              本网站使用第三方服务——用于使用统计的 Google Analytics 4、用于联系表单的 FormSubmit，以及用于匿名评论的 Cloudflare Worker——并链接到外部网站。我们无法控制这些服务或网站，也不对它们的内容、可用性、隐私做法或准确性负责。使用它们时，适用其各自的条款和隐私政策。
             </p>
           </section>
 
@@ -90,7 +90,7 @@ export const DisclaimerPageZh: React.FC<DisclaimerPageZhProps> = ({ onNavigate }
               6. 广告
             </h2>
             <p>
-              本网站展示的广告由 Google AdSense 及其合作伙伴提供。我们不对任何广告中的产品、服务或声明表示认可、保证或承担责任。您基于广告作出的任何购买或决定均由您自行承担风险；请在购买前自行评估广告主。
+              本网站目前不展示任何广告。
             </p>
           </section>
 

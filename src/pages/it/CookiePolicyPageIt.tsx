@@ -60,14 +60,10 @@ export const CookiePolicyPageIt: React.FC<CookiePolicyPageItProps> = ({ onNaviga
 
           <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              3. Cookie pubblicitari di Google AdSense
+              3. Cookie pubblicitari
             </h2>
             <p>
-              Utilizziamo Google AdSense per mostrare annunci su questo sito. AdSense e i suoi partner possono impostare cookie sul tuo dispositivo per mostrare annunci in base alle tue visite precedenti a questo sito web o ad altri siti web. L’uso dei cookie pubblicitari da parte di Google consente a Google e ai suoi partner di mostrarti annunci in base alla tua visita a questo sito e/o ad altri siti su Internet, e di misurare la frequenza con cui viene mostrato un annuncio. Gli spazi pubblicitari di questo sito sono scelti manualmente; non utilizziamo l’inserimento automatico di annunci. Puoi disattivare la pubblicità personalizzata visitando le Impostazioni annunci di Google (
-              <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">https://adssettings.google.com</a>
-              ) o 
-              <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">https://www.aboutads.info/choices/</a>
-              . Scegliere annunci non personalizzati non elimina del tutto la pubblicità, ma significa che gli annunci non saranno più basati sulla tua cronologia di navigazione.
+              CompressMyPic al momento non mostra annunci e non installa cookie pubblicitari.
             </p>
           </section>
 
@@ -85,7 +81,7 @@ export const CookiePolicyPageIt: React.FC<CookiePolicyPageItProps> = ({ onNaviga
               5. Consenso (SEE, Regno Unito e Svizzera)
             </h2>
             <p>
-              Se ci visiti dallo Spazio economico europeo, dal Regno Unito o dalla Svizzera, Google ti mostra un messaggio di consenso prima di mostrare pubblicità personalizzata, in linea con il GDPR e con le Norme sul consenso degli utenti dell’UE di Google. Puoi modificare o ritirare il tuo consenso in qualsiasi momento usando il link "Impostazioni sulla privacy e sui cookie" nel piè di pagina di questo sito, che riapre il messaggio di consenso, oppure cancellando i cookie del tuo browser. Ritirare il consenso non influisce su quanto fatto lecitamente prima del ritiro.
+              Poiché questo sito al momento non mostra annunci, non viene mostrato alcun messaggio di consenso per la pubblicità e non viene richiesto alcun consenso pubblicitario. Le statistiche di utilizzo vengono raccolte con Google Analytics; puoi bloccare i cookie di analisi dalle impostazioni del browser (vedi sezione 8).
             </p>
           </section>
 
@@ -116,7 +112,7 @@ export const CookiePolicyPageIt: React.FC<CookiePolicyPageItProps> = ({ onNaviga
               8. Come controllare i cookie
             </h2>
             <p>
-              Puoi eliminare i cookie già salvati sul tuo dispositivo e impedire che vengano impostati cookie in futuro dalle impostazioni del tuo browser — tutti i principali browser (Chrome, Firefox, Safari, Edge) offrono questa opzione nelle impostazioni di privacy o sicurezza. Bloccare tutti i cookie non comprometterà i nostri strumenti per immagini, che non dipendono dai cookie, ma potrebbe influire sulle funzioni di servizi di terze parti come annunci e statistiche. Puoi anche usare la modalità privata o in incognito del tuo browser, che elimina i cookie quando chiudi la finestra.
+              Puoi eliminare i cookie già salvati sul tuo dispositivo e impedire che vengano impostati cookie in futuro dalle impostazioni del tuo browser — tutti i principali browser (Chrome, Firefox, Safari, Edge) offrono questa opzione nelle impostazioni di privacy o sicurezza. Bloccare tutti i cookie non comprometterà i nostri strumenti per immagini, che non dipendono dai cookie, ma potrebbe influire sulle funzioni di servizi di terze parti come statistiche. Puoi anche usare la modalità privata o in incognito del tuo browser, che elimina i cookie quando chiudi la finestra.
             </p>
           </section>
 

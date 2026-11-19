@@ -81,7 +81,6 @@ export const JA = {
       '© {year} CompressMyPic. 無断転載を禁じます。無料のブラウザ内画像圧縮ユーティリティ。', // '© {year} CompressMyPic. All rights reserved. Free client-side image compression utility.'
     deployedNote: 'Crafted with ❤️ by Bilal inspired by Shaheen',
     contactLabel: 'お問い合わせ：bilalayyah@gmail.com', // 'Contact: bilalayyah@gmail.com'
-    cookieSettingsLabel: 'プライバシーと Cookie の設定',
     toolsLinks: [
       { slug: '/', label: '画像圧縮' }, // 'Compress Images'
       { slug: '/image-resizer', label: '画像リサイズ' }, // 'Image Resizer'

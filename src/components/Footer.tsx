@@ -12,28 +12,6 @@ import { JA_ALL_TOOLS_PATH } from '../locales/ja/slugs';
 import { KO_ALL_TOOLS_PATH } from '../locales/ko/slugs';
 import { ZH_ALL_TOOLS_PATH } from '../locales/zh/slugs';
 
-// M8 (re-audit 2026-11-15): Funding Choices consent revocation — the
-// OFFICIAL mechanism (developers.google.com/funding-choices/fc-api-docs +
-// AdSense Help "Add a consent revocation link to your site").
-// googlefc.showRevocationMessage() clears the EU consent record and shows
-// the GDPR message again so the visitor can change their decision. No extra
-// tag is needed — the message is served through the existing AdSense tag.
-// There is NO __tcfapi('show', …) command in the IAB TCF v2 API (it only
-// reads consent state); do not invent one.
-declare global {
-  interface Window {
-    googlefc?: {
-      showRevocationMessage?: () => void;
-      callbackQueue?: Array<Record<string, unknown> | (() => void)>;
-    };
-    __tcfapi?: (
-      command: string,
-      version: number,
-      callback: (tcData: { gdprApplies?: boolean }, success: boolean) => void,
-    ) => void;
-  }
-}
-
 export interface FooterStrings {
   blurb: string;
   privacyNote: string;
@@ -47,11 +25,6 @@ export interface FooterStrings {
   bottomRights: string; // contains {year}
   deployedNote: string; // 'Crafted with ❤️ by Bilal inspired by Shaheen' — Bilal/Shaheen render in script font
   contactLabel: string; // 'Contacto: bilalayyah@gmail.com'
-  /** M8 (re-audit 2026-11-15): Funding Choices consent-revocation link label.
-      Google's required wording is 'Privacy and cookie settings'; the label is
-      translated per locale. The link only appears where the GDPR message
-      applies (see the CONSENT_API_READY + gdprApplies gate in Footer). */
-  cookieSettingsLabel: string;
   toolsLinks: Array<{ slug: string; label: string }>;
   legalLinks: Array<{ slug: string; label: string }>;
   guidesLinks: Array<{ slug: string; label: string }>;
@@ -74,7 +47,6 @@ const DEFAULT_FOOTER_STRINGS: FooterStrings = {
     '© {year} CompressMyPic. All rights reserved. Free client-side image compression utility.',
   deployedNote: 'Crafted with ❤️ by Bilal inspired by Shaheen',
   contactLabel: 'Contact: bilalayyah@gmail.com',
-  cookieSettingsLabel: 'Privacy and cookie settings',
   toolsLinks: [
     { slug: '/', label: 'Compress Images' },
     { slug: '/image-resizer', label: 'Image Resizer' },
@@ -161,12 +133,20 @@ interface FooterProps {
   /** Maps an English slug to its path in the active language (App passes
       `(slug) => toLocalizedPath(slug, lang)`). Defaults to identity. */
   localizePath?: (englishSlug: string) => string;
+  /** Localized "All Tools" label for the directory link. When provided
+      (App passes activeUi.toolsDirectory.allTools), the FIRST render
+      already shows the localized label — required for SSR hydration:
+      the old useState('All Tools') + useEffect load rendered English
+      server-side and localized client-side, a React #418 text mismatch
+      on every non-English page. When omitted, the effect below loads it. */
+  directoryLabel?: string;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onNavigate,
   strings: stringsProp,
   localizePath = (slug: string) => slug,
+  directoryLabel: directoryLabelProp,
 }) => {
   const strings: FooterStrings = { ...DEFAULT_FOOTER_STRINGS, ...stringsProp };
 
@@ -194,6 +174,11 @@ export const Footer: React.FC<FooterProps> = ({
   // is invented here. Explicit literal dynamic imports (like App's): the
   // locale ui modules are code-split, and a static import would pull all
   // 10 dictionaries into the main bundle.
+  //
+  // SSR (2026-11-19): when App passes directoryLabel (from the already
+  // loaded activeUi), it is the initial state — the first render already
+  // shows the localized label, matching the SSR HTML. The effect below
+  // only runs the dynamic import when no prop was provided.
   const UI_LABEL_IMPORTERS: Record<Exclude<SupportedLang, 'en'>, () => Promise<string | undefined>> = {
     es: () => import('../locales/es/ui').then((m) => m.ES.toolsDirectory.allTools),
     pt: () => import('../locales/pt/ui').then((m) => m.PT.toolsDirectory.allTools),
@@ -206,8 +191,12 @@ export const Footer: React.FC<FooterProps> = ({
     ko: () => import('../locales/ko/ui').then((m) => m.KO.toolsDirectory.allTools),
     zh: () => import('../locales/zh/ui').then((m) => m.ZH.toolsDirectory.allTools),
   };
-  const [directoryLabel, setDirectoryLabel] = useState('All Tools');
+  const [directoryLabel, setDirectoryLabel] = useState(directoryLabelProp ?? 'All Tools');
   useEffect(() => {
+    if (directoryLabelProp) {
+      setDirectoryLabel(directoryLabelProp);
+      return;
+    }
     if (detectedLang === 'en') {
       setDirectoryLabel('All Tools');
       return;
@@ -227,47 +216,6 @@ export const Footer: React.FC<FooterProps> = ({
   }, [detectedLang]);
   const directoryHref =
     detectedLang === 'en' ? '/all-tools' : DIRECTORY_PATH_BY_LANG[detectedLang];
-
-  // M8: reveal the "Privacy and cookie settings" revocation link only where
-  // the GDPR message applies. Google's Example 2 pattern: hidden by default,
-  // shown from the CONSENT_API_READY callback when tcdata.gdprApplies is
-  // true — so it never dead-clicks for visitors outside the EEA/UK/CH.
-  // window.googlefc may not exist yet when this effect runs (adsbygoogle.js
-  // loads async); creating the callbackQueue object here is the documented
-  // pattern — the script picks up the pre-existing queue when it loads.
-  const [showCookieSettings, setShowCookieSettings] = useState(false);
-  useEffect(() => {
-    const w = window;
-    w.googlefc = w.googlefc ?? {};
-    const queue = (w.googlefc.callbackQueue ??= []);
-    queue.push({
-      CONSENT_API_READY: () => {
-        if (typeof w.__tcfapi === 'function') {
-          w.__tcfapi('addEventListener', 2, (tcData, success) => {
-            if (success && tcData?.gdprApplies) setShowCookieSettings(true);
-          });
-        } else {
-          // No TCF API (e.g. consent library blocked): show the link
-          // anyway — showRevocationMessage() is a no-op where no GDPR
-          // message applies.
-          setShowCookieSettings(true);
-        }
-      },
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // The only supported way to invoke a messaging call asynchronously is via
-  // the callbackQueue (Funding Choices JS API docs).
-  const openConsentSettings = () => {
-    const fc = window.googlefc;
-    if (!fc?.showRevocationMessage) return;
-    if (fc.callbackQueue) {
-      fc.callbackQueue.push(fc.showRevocationMessage);
-    } else {
-      fc.showRevocationMessage();
-    }
-  };
 
   return (
     <footer className="footer-pastel-band text-[var(--ink-2)] border-t border-[var(--line)] text-sm">
@@ -463,15 +411,6 @@ export const Footer: React.FC<FooterProps> = ({
             )}
           </p>
           <div className="flex items-center gap-4">
-            {showCookieSettings && (
-              <button
-                type="button"
-                onClick={openConsentSettings}
-                className="text-[var(--ink-3)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] hover:underline transition-colors cursor-pointer"
-              >
-                {strings.cookieSettingsLabel}
-              </button>
-            )}
             <a href="mailto:bilalayyah@gmail.com">{strings.contactLabel}</a>
           </div>
         </div>

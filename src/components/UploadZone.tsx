@@ -194,7 +194,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
           onClick={() => !disabled && fileInputRef.current?.click()}
-          className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-12 text-center transition-all cursor-pointer select-none ${
+          className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-12 text-center transition-[border-color,background-color,transform,opacity] cursor-pointer select-none ${
             isDragging
               ? 'border-[#7c3aed] bg-[#ede9fe]/70 dark:bg-[#7c3aed]/20 scale-[1.005]'
               : 'dropzone-pastel-blue hover:border-[#7c3aed] hover:bg-white/95 dark:hover:bg-slate-800/80'
@@ -222,7 +222,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
 
           <div className="flex flex-col items-center justify-center max-w-md mx-auto">
             <div
-              className={`w-[60px] h-[60px] rounded-2xl flex items-center justify-center mb-4 transition-all shadow-xs ${
+              className={`w-[60px] h-[60px] rounded-2xl flex items-center justify-center mb-4 transition-[background-color,border-color] shadow-xs ${
                 isDragging
                   ? 'btn-purple-grad'
                   : 'pastel-tile-0 border border-[#ddd6fe] dark:border-[#8b5cf6]/35'

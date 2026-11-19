@@ -60,28 +60,10 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onNavigate }
 
           <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              3. Google AdSense Advertising Cookies
+              3. Advertising cookies
             </h2>
             <p>
-              We use Google AdSense to show ads on this site. AdSense and its partners may set cookies on your device to serve ads based on your prior visits to this website or other websites. Google&apos;s use of advertising cookies enables it and its partners to serve ads to you based on your visit to this site and/or other sites on the Internet, and to measure how often an ad is shown. Ad placements on this site are chosen manually; we do not use automatic ad insertion. You can opt out of personalized advertising by visiting Google Ads Settings (
-              <a
-                href="https://adssettings.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
-              >
-                https://adssettings.google.com
-              </a>
-              ) or{' '}
-              <a
-                href="https://www.aboutads.info/choices/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
-              >
-                https://www.aboutads.info/choices/
-              </a>
-              . Choosing non-personalized ads does not stop advertising altogether, but it means ads are no longer based on your browsing history.
+              CompressMyPic currently shows no ads and does not set advertising cookies.
             </p>
           </section>
 
@@ -99,7 +81,7 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onNavigate }
               5. Consent (EEA, UK, and Switzerland)
             </h2>
             <p>
-              If you visit from the European Economic Area, the United Kingdom, or Switzerland, Google shows you a consent message before personalized advertising is shown, in line with the GDPR and Google&apos;s EU User Consent Policy. You can change or withdraw your consent at any time using the &quot;Privacy and cookie settings&quot; link in the footer of this site, which re-opens the consent message, or by clearing your browser cookies. Withdrawing consent does not affect anything done lawfully before the withdrawal.
+              Because this site currently shows no advertisements, no advertising consent message is shown and no advertising consent is requested. Usage statistics are collected with Google Analytics; you can block analytics cookies through your browser settings (see section 8).
             </p>
           </section>
 
@@ -144,7 +126,7 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onNavigate }
               8. How to Control Cookies
             </h2>
             <p>
-              You can delete cookies already stored on your device and block cookies from being set in the future through your browser settings — every major browser (Chrome, Firefox, Safari, Edge) offers this under its privacy or security settings. Blocking all cookies will not break our image tools, which do not depend on cookies, but it may affect features of third-party services such as ads and analytics. You can also use your browser&apos;s private or incognito mode, which deletes cookies when you close the window.
+              You can delete cookies already stored on your device and block cookies from being set in the future through your browser settings — every major browser (Chrome, Firefox, Safari, Edge) offers this under its privacy or security settings. Blocking all cookies will not break our image tools, which do not depend on cookies, but it may affect features of third-party services such as analytics. You can also use your browser&apos;s private or incognito mode, which deletes cookies when you close the window.
             </p>
           </section>
 

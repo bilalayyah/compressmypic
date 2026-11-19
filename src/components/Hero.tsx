@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ShieldCheck, Zap, Lock, Search, ArrowRight, LayoutGrid } from 'lucide-react';
-import { TOOLS_REGISTRY, type ToolDefinition } from '../data/tools';
+import { TOOLS_META, type ToolMeta } from '../data/toolsMeta';
 
 export interface HeroStrings {
   pill: string;
@@ -25,14 +25,14 @@ interface HeroProps {
   strings?: HeroStrings;
   onNavigate?: (path: string) => void;
   onScrollToTool?: () => void;
-  toolsRegistry?: ToolDefinition[];
+  toolsRegistry?: ToolMeta[];
 }
 
 export const Hero: React.FC<HeroProps> = ({
   strings = EN_STRINGS,
   onNavigate,
   onScrollToTool,
-  toolsRegistry = TOOLS_REGISTRY,
+  toolsRegistry = TOOLS_META,
 }) => {
   const [query, setQuery] = useState('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -111,7 +111,7 @@ export const Hero: React.FC<HeroProps> = ({
               handlePickTool(filteredTools[0].slug);
             }
           }}
-          className="flex items-center bg-[var(--surface)] border border-[var(--line)] focus-within:border-[#7c3aed] focus-within:ring-2 focus-within:ring-[#7c3aed]/20 rounded-full px-4 py-2.5 shadow-[var(--shadow)] transition-all"
+          className="flex items-center bg-[var(--surface)] border border-[var(--line)] focus-within:border-[#7c3aed] focus-within:ring-2 focus-within:ring-[#7c3aed]/20 rounded-full px-4 py-2.5 shadow-[var(--shadow)] transition-[border-color,box-shadow]"
         >
           <Search className="w-4 h-4 text-[var(--ink-3)] shrink-0 mr-2.5" />
           <input
@@ -154,7 +154,7 @@ export const Hero: React.FC<HeroProps> = ({
                       {tool.shortDescription}
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-[#7c3aed] shrink-0 opacity-70 group-hover:translate-x-0.5 group-hover:opacity-100 transition-all" />
+                  <ArrowRight className="w-4 h-4 text-[#7c3aed] shrink-0 opacity-70 group-hover:translate-x-0.5 group-hover:opacity-100 transition-[transform,opacity]" />
                 </button>
               ))
             )}

@@ -61,28 +61,10 @@ export const PrivacyPageJa: React.FC<PrivacyPageJaProps> = ({ onNavigate }) => {
 
           <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              3. 広告（Google AdSense）
+              3. 広告
             </h2>
             <p>
-              当社は、有効化された後に広告を表示するため、Google AdSenseを使用しています。Googleを含む第三者ベンダーは、ユーザーが過去にこのウェブサイトや他のウェブサイトを訪問した際の情報に基づいて広告を配信するためにCookieを使用します。Googleによる広告Cookieの使用により、Googleおよびそのパートナーは、ユーザーのこのサイトやインターネット上の他のサイトへの訪問に基づいて広告を配信できます。パーソナライズド広告を無効にするには、Google広告設定（
-              <a
-                href="https://adssettings.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
-              >
-                https://adssettings.google.com
-              </a>
-              ）または{' '}
-              <a
-                href="https://www.aboutads.info/choices/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
-              >
-                https://www.aboutads.info/choices/
-              </a>
-              をご覧ください。
+              CompressMyPicでは現在、広告を表示していません。このサイトでは広告Cookieを設定していません。
             </p>
           </section>
 
@@ -109,10 +91,10 @@ export const PrivacyPageJa: React.FC<PrivacyPageJaProps> = ({ onNavigate }) => {
               6. Cookieと同意
             </h2>
             <p>
-              CompressMyPic自体は、画像ツール用にCookieを一切設定しません。圧縮はすべてお使いのブラウザー内で行われ、当社側でCookie、アカウント、保存された設定を必要としません。このサイトのCookieはサードパーティのサービスによるものです。Google AdSenseとそのパートナーは、関連性の高い広告を表示したり、広告の表示回数を測定したりするために、広告Cookieを設定する場合があります。これらのCookieはお使いのブラウザーによってデバイスに保存され、ブラウザーの設定からいつでも削除できます。
+              CompressMyPic自体は、画像ツール用にCookieを一切設定しません。圧縮はすべてお使いのブラウザー内で行われ、当社側でCookie、アカウント、保存された設定を必要としません。このサイトのCookieはサードパーティのサービスによるものです。たとえば、Googleアナリティクスが利用状況の統計のためにCookieを設定する場合があります。これらのCookieはお使いのブラウザーによってデバイスに保存され、ブラウザーの設定からいつでも削除できます。
             </p>
             <p>
-              欧州経済領域または英国からアクセスされる場合、GDPRおよびGoogleのEUユーザー同意ポリシーに従い、パーソナライズド広告を表示する前に同意をお願いしています。同意は、ブラウザーのCookieを削除するか、サイト上で提供される同意の選択を変更することで、いつでも撤回できます。パーソナライズされていない広告を選んでも広告が完全になくなるわけではありませんが、広告が閲覧履歴に基づかなくなります。
+              CompressMyPicでは現在、広告を表示していないため、どの地域の訪問者にも広告に関する同意は求めていません。
             </p>
           </section>
 

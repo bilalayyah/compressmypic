@@ -60,14 +60,10 @@ export const CookiePolicyPagePt: React.FC<CookiePolicyPagePtProps> = ({ onNaviga
 
           <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              3. Cookies de publicidade do Google AdSense
+              3. Cookies de publicidade
             </h2>
             <p>
-              Usamos o Google AdSense para exibir anúncios neste site. O AdSense e seus parceiros podem definir cookies no seu dispositivo para veicular anúncios com base nas suas visitas anteriores a este site ou a outros sites. O uso de cookies de publicidade pelo Google permite que ele e seus parceiros veiculem anúncios para você com base na sua visita a este site e/ou a outros sites na Internet, e meçam a frequência com que um anúncio é exibido. Os espaços publicitários deste site são escolhidos manualmente; não usamos inserção automática de anúncios. Você pode desativar a publicidade personalizada visitando as Configurações de anúncios do Google (
-              <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">https://adssettings.google.com</a>
-              ) ou 
-              <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">https://www.aboutads.info/choices/</a>
-              . Escolher anúncios não personalizados não interrompe a publicidade por completo, mas significa que os anúncios não serão mais baseados no seu histórico de navegação.
+              O CompressMyPic atualmente não exibe anúncios nem instala cookies de publicidade.
             </p>
           </section>
 
@@ -85,7 +81,7 @@ export const CookiePolicyPagePt: React.FC<CookiePolicyPagePtProps> = ({ onNaviga
               5. Consentimento (EEE, Reino Unido e Suíça)
             </h2>
             <p>
-              Se você nos visita do Espaço Econômico Europeu, do Reino Unido ou da Suíça, o Google mostra uma mensagem de consentimento antes de exibir publicidade personalizada, de acordo com o RGPD e a Política de Consentimento de Usuários da UE do Google. Você pode alterar ou retirar seu consentimento a qualquer momento usando o link "Configurações de privacidade e cookies" no rodapé deste site, que reabre a mensagem de consentimento, ou limpando os cookies do seu navegador. Retirar o consentimento não afeta nada feito licitamente antes da retirada.
+              Como este site não exibe anúncios atualmente, nenhuma mensagem de consentimento publicitário é exibida nem é solicitado consentimento para publicidade. As estatísticas de uso são coletadas com o Google Analytics; você pode bloquear os cookies de análise nas configurações do seu navegador (ver seção 8).
             </p>
           </section>
 
@@ -116,7 +112,7 @@ export const CookiePolicyPagePt: React.FC<CookiePolicyPagePtProps> = ({ onNaviga
               8. Como controlar os cookies
             </h2>
             <p>
-              Você pode excluir os cookies já armazenados no seu dispositivo e impedir que cookies sejam definidos no futuro nas configurações do seu navegador — todos os principais navegadores (Chrome, Firefox, Safari, Edge) oferecem isso nas configurações de privacidade ou segurança. Bloquear todos os cookies não afetará nossas ferramentas de imagem, que não dependem de cookies, mas pode afetar recursos de serviços de terceiros, como anúncios e estatísticas. Você também pode usar o modo privado ou anônimo do navegador, que exclui os cookies ao fechar a janela.
+              Você pode excluir os cookies já armazenados no seu dispositivo e impedir que cookies sejam definidos no futuro nas configurações do seu navegador — todos os principais navegadores (Chrome, Firefox, Safari, Edge) oferecem isso nas configurações de privacidade ou segurança. Bloquear todos os cookies não afetará nossas ferramentas de imagem, que não dependem de cookies, mas pode afetar recursos de serviços de terceiros, como estatísticas. Você também pode usar o modo privado ou anônimo do navegador, que exclui os cookies ao fechar a janela.
             </p>
           </section>
 

@@ -1,13 +1,13 @@
 // Related-articles grid (article page + category fallback). Renders
 // nothing when there are no related articles.
 import React from 'react';
-import type { BlogArticle } from '../../types/blog';
+import type { BlogArticleMeta } from '../../types/blog';
 import type { SupportedLang } from '../../locales/config';
 import { useBlog } from './BlogContext';
 import { BlogCard } from './BlogCard';
 
 interface RelatedArticlesProps {
-  articles: BlogArticle[];
+  articles: BlogArticleMeta[];
   lang: SupportedLang;
   heading?: string;
   categories?: Array<{ id: string; label: string }>;

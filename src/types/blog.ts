@@ -50,7 +50,13 @@ export interface BlogArticleLocaleOverride {
   readingMinutes: number;
 }
 
-export interface BlogArticle {
+/**
+ * Article metadata — the registry entry (src/data/blogArticles.ts).
+ * Bodies + FAQs live in per-article modules (src/data/blog-bodies/<id>.ts)
+ * and load on demand (Tier B speed fix, 2026-11-19); the registry must
+ * stay small because App.tsx imports it into the entry bundle.
+ */
+export interface BlogArticleMeta {
   /** Stable key, e.g. 'image-resizer-guide'. Translations link by this id. */
   id: string;
   /** Tool slug, e.g. '/image-resizer'. */
@@ -61,8 +67,14 @@ export interface BlogArticle {
   /** ISO date, e.g. '2026-11-18'. Drives sitemap lastmod + published_time. */
   publishedAt: string;
   updatedAt?: string;
-  /** The English version (the original). */
-  en: BlogArticleLocaleVersion;
+  /** The English version's metadata (slug/title/description/reading time).
+   *  No body/faqs — see src/data/blogBody.ts. */
+  en: {
+    slug: string;
+    title: string;
+    description: string;
+    readingMinutes: number;
+  };
   /** Other tools worth linking from this article (slugs, e.g. '/image-converter'). */
   relatedToolSlugs: string[];
 }

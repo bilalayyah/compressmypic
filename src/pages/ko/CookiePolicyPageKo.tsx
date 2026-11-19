@@ -60,14 +60,10 @@ export const CookiePolicyPageKo: React.FC<CookiePolicyPageKoProps> = ({ onNaviga
 
           <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              3. Google 애드센스 광고 쿠키
+              3. 광고 쿠키
             </h2>
             <p>
-              이 사이트에서는 광고 표시를 위해 Google 애드센스를 사용합니다. 애드센스와 그 파트너는 이 웹사이트나 다른 웹사이트에 대한 이전 방문을 기반으로 광고를 제공하기 위해 장치에 쿠키를 설정할 수 있습니다. Google의 광고 쿠키 사용으로 Google과 그 파트너는 이 사이트 및/또는 인터넷상의 다른 사이트 방문을 기반으로 광고를 제공하고, 광고가 표시되는 빈도를 측정할 수 있습니다. 이 사이트의 광고 게재 위치는 수동으로 선택합니다. 자동 광고 삽입은 사용하지 않습니다. 맞춤 광고를 거부하려면 Google 광고 설정(
-              <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">https://adssettings.google.com</a>
-              ) 또는 
-              <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">https://www.aboutads.info/choices/</a>
-              를 방문하세요. 맞춤설정되지 않은 광고를 선택해도 광고가 완전히 사라지는 것은 아니지만, 광고가 더 이상 탐색 기록을 기반으로 하지 않게 됩니다.
+              CompressMyPic은 현재 광고를 표시하지 않으며 광고 쿠키를 설정하지 않습니다.
             </p>
           </section>
 
@@ -85,7 +81,7 @@ export const CookiePolicyPageKo: React.FC<CookiePolicyPageKoProps> = ({ onNaviga
               5. 동의(EEA, 영국, 스위스)
             </h2>
             <p>
-              유럽경제지역, 영국, 스위스에서 방문하는 경우, Google은 GDPR 및 Google EU 사용자 동의 정책에 따라 맞춤 광고를 표시하기 전에 동의 메시지를 표시합니다. 동의는 이 사이트 바닥글의 "개인정보 및 쿠키 설정" 링크를 사용해 언제든지 변경하거나 철회할 수 있으며, 이 링크를 클릭하면 동의 메시지가 다시 열립니다. 또는 브라우저 쿠키를 삭제하여 철회할 수도 있습니다. 동의를 철회해도 철회 전에 합법적으로 이루어진 일에는 영향을 미치지 않습니다.
+              이 사이트는 현재 광고를 표시하지 않으므로 광고 동의 메시지가 표시되지 않으며 광고 동의를 요청하지도 않습니다. 이용 통계는 Google 애널리틱스로 수집합니다. 분석 쿠키는 브라우저 설정에서 차단할 수 있습니다(섹션 8 참조).
             </p>
           </section>
 
@@ -116,7 +112,7 @@ export const CookiePolicyPageKo: React.FC<CookiePolicyPageKoProps> = ({ onNaviga
               8. 쿠키 관리 방법
             </h2>
             <p>
-              장치에 이미 저장된 쿠키를 삭제하고 향후 쿠키 설정을 차단하려면 브라우저 설정에서 할 수 있습니다. 모든 주요 브라우저(Chrome, Firefox, Safari, Edge)는 개인정보 또는 보안 설정에서 이 옵션을 제공합니다. 모든 쿠키를 차단해도 쿠키에 의존하지 않는 이미지 도구에는 문제가 없지만, 광고나 분석 같은 제3자 서비스 기능에는 영향을 줄 수 있습니다. 브라우저의 비공개 또는 시크릿 모드를 사용할 수도 있으며, 이 모드에서는 창을 닫으면 쿠키가 삭제됩니다.
+              장치에 이미 저장된 쿠키를 삭제하고 향후 쿠키 설정을 차단하려면 브라우저 설정에서 할 수 있습니다. 모든 주요 브라우저(Chrome, Firefox, Safari, Edge)는 개인정보 또는 보안 설정에서 이 옵션을 제공합니다. 모든 쿠키를 차단해도 쿠키에 의존하지 않는 이미지 도구에는 문제가 없지만, 분석 같은 제3자 서비스 기능에는 영향을 줄 수 있습니다. 브라우저의 비공개 또는 시크릿 모드를 사용할 수도 있으며, 이 모드에서는 창을 닫으면 쿠키가 삭제됩니다.
             </p>
           </section>
 

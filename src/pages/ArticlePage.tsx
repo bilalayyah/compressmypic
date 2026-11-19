@@ -5,11 +5,12 @@
 // active language yet, renders a notice + links (NOT a 404); App.tsx's head
 // effect sets noIndex + the EN canonical for that case. SEO is set by
 // App.tsx's head effect, not here.
-import React, { useState } from 'react';
-import type { BlogArticle } from '../types/blog';
+import React, { useEffect, useState } from 'react';
+import type { BlogArticleMeta } from '../types/blog';
 import type { SupportedLang } from '../locales/config';
 import { localizePath } from '../locales/alternates';
-import type { ToolDefinition } from '../data/tools';
+import type { ToolMeta } from '../data/toolsMeta';
+import { getBlogBody, loadBlogBody } from '../data/blogBody';
 import {
   getBlogArticlePrevNext,
   getBlogArticleUrl,
@@ -27,9 +28,9 @@ import { ensureHeadingIds, formatBlogDate } from '../components/blog/blogBody';
 
 interface ArticlePageProps {
   lang: SupportedLang;
-  article: BlogArticle;
+  article: BlogArticleMeta;
   onNavigate: (path: string) => void;
-  tools: ToolDefinition[];
+  tools: ToolMeta[];
   categories: Array<{ id: string; label: string }>;
 }
 
@@ -37,7 +38,28 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
   const { overrides, strings } = useBlog();
   const [copied, setCopied] = useState(false);
   const publishedInLang = isBlogArticlePublishedIn(article, lang);
-  const version = getBlogArticleVersion(article, lang, overrides);
+  // Tier B: the body comes from the per-article body cache. main.tsx
+  // preloads it before first render on article routes (direct loads and
+  // the prerender); on client-side navigation it loads here instead, and
+  // the page shows a loading state until it lands.
+  const cachedBody = getBlogBody(article.id);
+  const [, setBodyTick] = useState(0);
+  useEffect(() => {
+    if (cachedBody) return;
+    let cancelled = false;
+    loadBlogBody(article.id)
+      .then(() => {
+        if (!cancelled) setBodyTick((t) => t + 1);
+      })
+      .catch(() => {
+        // A failed body load leaves the loading state; navigating away and
+        // back retries. Never crash the page for this.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [article.id, cachedBody]);
+  const version = getBlogArticleVersion(article, lang, overrides, cachedBody);
   const body = ensureHeadingIds(version.body);
   const categoryLabel = getBlogCategoryLabel(article.categoryId, categories);
   const categoryUrl = getBlogCategoryUrl(article.categoryId, lang);
@@ -54,7 +76,7 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
   const mainTool = tools.find((t) => t.slug === `/${article.toolSlug}`);
   const relatedTools = article.relatedToolSlugs
     .map((slug) => tools.find((t) => t.slug === `/${slug}`))
-    .filter((t): t is ToolDefinition => Boolean(t));
+    .filter((t): t is ToolMeta => Boolean(t));
   const related = getRelatedBlogArticles(article, lang);
   const { prev, next } = getBlogArticlePrevNext(article, lang);
 
@@ -162,6 +184,8 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
         />
       </figure>
 
+      {cachedBody ? (
+        <>
       <div className="mt-8">
         <ArticleTOC body={body} />
       </div>
@@ -190,6 +214,10 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
           </div>
         </section>
       ) : null}
+        </>
+      ) : (
+        <p className="mt-8 text-sm text-[var(--ink-2)]">Loading…</p>
+      )}
 
       {mainTool ? (
         <section aria-label={strings.relatedToolsHeading} className="mt-12">
@@ -200,7 +228,7 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
               e.preventDefault();
               onNavigate(mainTool.slug);
             }}
-            className="group flex items-center justify-between gap-4 p-5 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#7c3aed]/40 hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all"
+            className="group flex items-center justify-between gap-4 p-5 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#7c3aed]/40 hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-[transform,box-shadow,border-color]"
           >
             <span>
               <span className="block font-bold group-hover:text-[#7c3aed] transition-colors">
@@ -231,7 +259,7 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
                   e.preventDefault();
                   onNavigate(t.slug);
                 }}
-                className="group flex items-center justify-between gap-4 p-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#7c3aed]/40 hover:-translate-y-0.5 transition-all"
+                className="group flex items-center justify-between gap-4 p-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#7c3aed]/40 hover:-translate-y-0.5 transition-[transform,border-color]"
               >
                 <span className="font-semibold group-hover:text-[#7c3aed] transition-colors">
                   {t.name}
@@ -250,7 +278,7 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
           {prev ? (
             <a
               href={getBlogArticleUrl(prev, lang)}
-              className="group p-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#7c3aed]/40 transition-all"
+              className="group p-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#7c3aed]/40 transition-[border-color]"
             >
               <span className="block text-xs font-semibold text-[var(--ink-3)]">
                 {strings.prevArticle}
@@ -265,7 +293,7 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
           {next ? (
             <a
               href={getBlogArticleUrl(next, lang)}
-              className="group p-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#7c3aed]/40 transition-all text-right"
+              className="group p-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#7c3aed]/40 transition-[border-color] text-right"
             >
               <span className="block text-xs font-semibold text-[var(--ink-3)]">
                 {strings.nextArticle}

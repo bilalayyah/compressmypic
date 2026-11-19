@@ -78,7 +78,6 @@ export const ZH = {
       '© {year} CompressMyPic。保留所有权利。免费浏览器本地图片压缩工具。', // '© {year} CompressMyPic. All rights reserved. Free client-side image compression utility.'
     deployedNote: 'Crafted with ❤️ by Bilal inspired by Shaheen',
     contactLabel: '联系方式：bilalayyah@gmail.com', // 'Contact: bilalayyah@gmail.com'
-    cookieSettingsLabel: '隐私和 Cookie 设置',
     toolsLinks: [
       { slug: '/', label: '压缩图片' }, // 'Compress Images'
       { slug: '/image-resizer', label: '图片调整工具' }, // 'Image Resizer'

@@ -1,16 +1,17 @@
 // Client-side blog search — filters the current language's published
-// articles by title/description as the user types. No routing, no
+// articles by title/description/body as the user types. No routing, no
 // indexable search URL (the input never changes the page URL).
-import React, { useMemo, useState } from 'react';
-import type { BlogArticle } from '../../types/blog';
+import React, { useEffect, useMemo, useState } from 'react';
+import type { BlogArticleMeta } from '../../types/blog';
 import type { SupportedLang } from '../../locales/config';
-import { getBlogArticleVersion } from '../../data/blogArticles';
+import { BLOG_ARTICLES, getBlogArticleVersion } from '../../data/blogArticles';
+import { getBlogBody, preloadAllBlogBodies } from '../../data/blogBody';
 import { useBlog } from './BlogContext';
 import { BlogCard } from './BlogCard';
 import { stripHtml } from './blogBody';
 
 interface BlogSearchProps {
-  articles: BlogArticle[];
+  articles: BlogArticleMeta[];
   lang: SupportedLang;
   categories?: Array<{ id: string; label: string }>;
 }
@@ -18,16 +19,41 @@ interface BlogSearchProps {
 export function BlogSearch({ articles, lang, categories }: BlogSearchProps) {
   const { overrides, strings } = useBlog();
   const [query, setQuery] = useState('');
+  // Tier B: bodies are no longer in the entry bundle, so full-text search
+  // loads them in the background once the browser is idle (never blocking
+  // LCP); results refresh as each body lands. Title/description search
+  // works immediately, before any body arrives.
+  const [bodyVersion, setBodyVersion] = useState(0);
+  useEffect(() => {
+    const kick = () =>
+      preloadAllBlogBodies(
+        BLOG_ARTICLES.map((a) => a.id),
+        () => setBodyVersion((v) => v + 1),
+      );
+    // requestIdleCallback is not in this project's DOM lib, so read it
+    // through a cast instead of an `in` check (which narrows window to never).
+    const idle = window as unknown as {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    if (idle.requestIdleCallback) {
+      const id = idle.requestIdleCallback(kick, { timeout: 5000 });
+      return () => idle.cancelIdleCallback?.(id);
+    }
+    const t = window.setTimeout(kick, 1000);
+    return () => window.clearTimeout(t);
+  }, []);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return articles;
     return articles.filter((a) => {
-      const v = getBlogArticleVersion(a, lang, overrides);
+      const v = getBlogArticleVersion(a, lang, overrides, getBlogBody(a.id));
       const haystack = `${v.title} ${v.description} ${stripHtml(v.body)}`.toLowerCase();
       return haystack.includes(q);
     });
-  }, [query, articles, lang, overrides]);
+    // bodyVersion: recompute as background-loaded bodies arrive.
+  }, [query, articles, lang, overrides, bodyVersion]);
 
   return (
     <div>

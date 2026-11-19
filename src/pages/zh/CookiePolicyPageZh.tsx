@@ -60,14 +60,10 @@ export const CookiePolicyPageZh: React.FC<CookiePolicyPageZhProps> = ({ onNaviga
 
           <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              3. Google AdSense 广告 Cookie
+              3. 广告 Cookie
             </h2>
             <p>
-              我们使用 Google AdSense 在本网站展示广告。AdSense 及其合作伙伴可能会在您的设备上设置 Cookie，以便根据您之前访问本网站或其他网站的情况投放广告。Google 使用广告 Cookie，可让 Google 及其合作伙伴根据您访问本网站和/或互联网上其他网站的情况向您投放广告，并衡量广告的展示频率。本网站的广告位是手动选择的；我们不使用自动广告插入。您可以访问 Google 广告设置（
-              <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">https://adssettings.google.com</a>
-              ）或 
-              <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">https://www.aboutads.info/choices/</a>
-              ，选择不接收个性化广告。选择非个性化广告并不会完全停止广告，但意味着广告将不再基于您的浏览记录。
+              CompressMyPic 目前不展示广告，也不会设置广告 Cookie。
             </p>
           </section>
 
@@ -85,7 +81,7 @@ export const CookiePolicyPageZh: React.FC<CookiePolicyPageZhProps> = ({ onNaviga
               5. 同意（欧洲经济区、英国和瑞士）
             </h2>
             <p>
-              如果您从欧洲经济区、英国或瑞士访问，Google 会根据《通用数据保护条例》（GDPR）和 Google 的欧盟用户同意政策，在展示个性化广告之前向您显示同意消息。您可以随时使用本网站页脚中的“隐私和 Cookie 设置”链接更改或撤回同意，该链接会重新打开同意消息；也可以通过清除浏览器 Cookie 来撤回。撤回同意不影响撤回之前合法进行的一切事项。
+              由于本站目前不展示广告，因此不会显示广告同意消息，也不会征求广告同意。使用情况统计通过 Google Analytics 收集；您可以通过浏览器设置阻止分析 Cookie（见第 8 节）。
             </p>
           </section>
 
@@ -116,7 +112,7 @@ export const CookiePolicyPageZh: React.FC<CookiePolicyPageZhProps> = ({ onNaviga
               8. 如何管理 Cookie
             </h2>
             <p>
-              您可以通过浏览器设置删除设备上已存储的 Cookie，并阻止将来设置 Cookie——所有主流浏览器（Chrome、Firefox、Safari、Edge）都在其隐私或安全设置中提供此选项。阻止所有 Cookie 不会破坏我们的图片工具，因为它们不依赖 Cookie，但可能会影响广告和分析等第三方服务的功能。您也可以使用浏览器的隐私或无痕模式，关闭窗口时即会删除 Cookie。
+              您可以通过浏览器设置删除设备上已存储的 Cookie，并阻止将来设置 Cookie——所有主流浏览器（Chrome、Firefox、Safari、Edge）都在其隐私或安全设置中提供此选项。阻止所有 Cookie 不会破坏我们的图片工具，因为它们不依赖 Cookie，但可能会影响分析等第三方服务的功能。您也可以使用浏览器的隐私或无痕模式，关闭窗口时即会删除 Cookie。
             </p>
           </section>
 

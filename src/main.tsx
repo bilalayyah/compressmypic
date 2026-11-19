@@ -1,8 +1,11 @@
-import {createRoot} from 'react-dom/client';
+import {hydrateRoot} from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 import {isSupportedLang, LANG_STORAGE_KEY, type SupportedLang} from './locales/config';
 import { loadThirdPartyScripts } from './utils/thirdParty';
+import { loadLocaleData } from './locales/loadLocaleData';
+import { setCachedLocale } from './locales/localeCache';
+import { loadBlogBody } from './data/blogBody';
 import {EN_PATH_BY_ES} from './locales/es/slugs';
 import {EN_PATH_BY_PT} from './locales/pt/slugs';
 import {EN_PATH_BY_FR} from './locales/fr/slugs';
@@ -21,13 +24,14 @@ import { isBlogEnPath, resolveBlogRoute } from './data/blogArticles';
 // shifted the whole page. Fix: parse the locale from the URL path BEFORE the
 // first render and await the locale dictionary import, then render.
 //
-// This uses exactly the same dynamic imports App.tsx's loadLocale() uses, so
-// Vite's module cache is already warm when App mounts and its own load
-// resolves from cache in a microtask instead of over the network. The
-// prerendered HTML (scripts/prerender.cjs) already shows the correct
-// language while this import is in flight, so the wait never shows a blank
-// page. If the preload fails for any reason we render anyway and App falls
-// back to its own loading path — a failed preload must never block the app.
+// The assembled locale object is stored in the locale cache
+// (src/locales/localeCache.ts) so App's useState initializers can read it
+// synchronously — the first client render is already localized, which is
+// what makes hydrateRoot possible (Tier J). The prerendered HTML
+// (scripts/prerender.cjs) already shows the correct language while this
+// import is in flight, so the wait never shows a blank page. If the
+// preload fails for any reason we render anyway and App falls back to its
+// own loading path — a failed preload must never block the app.
 const PREFIXED_LANGS: SupportedLang[] = [
   'es',
   'pt',
@@ -46,59 +50,14 @@ function localeFromPath(pathname: string): SupportedLang | null {
   return isSupportedLang(firstSegment) && firstSegment !== 'en' ? firstSegment : null;
 }
 
-async function preloadLocale(lang: SupportedLang): Promise<void> {
-  switch (lang) {
-    case 'es':
-      await Promise.all([import('./locales/es/ui'), import('./locales/es/tools'), import('./locales/es/blog')]);
-      break;
-    case 'pt':
-      await Promise.all([import('./locales/pt/ui'), import('./locales/pt/tools'), import('./locales/pt/blog')]);
-      break;
-    case 'fr':
-      await Promise.all([import('./locales/fr/ui'), import('./locales/fr/tools'), import('./locales/fr/blog')]);
-      break;
-    case 'de':
-      await Promise.all([import('./locales/de/ui'), import('./locales/de/tools'), import('./locales/de/blog')]);
-      break;
-    case 'it':
-      await Promise.all([import('./locales/it/ui'), import('./locales/it/tools'), import('./locales/it/blog')]);
-      break;
-    case 'id':
-      await Promise.all([import('./locales/id/ui'), import('./locales/id/tools'), import('./locales/id/blog')]);
-      break;
-    case 'ru':
-      await Promise.all([import('./locales/ru/ui'), import('./locales/ru/tools'), import('./locales/ru/blog')]);
-      break;
-    case 'ja':
-      await Promise.all([import('./locales/ja/ui'), import('./locales/ja/tools'), import('./locales/ja/blog')]);
-      break;
-    case 'ko':
-      await Promise.all([import('./locales/ko/ui'), import('./locales/ko/tools'), import('./locales/ko/blog')]);
-      break;
-    case 'zh':
-      await Promise.all([import('./locales/zh/ui'), import('./locales/zh/tools'), import('./locales/zh/blog')]);
-      break;
-    default:
-      break;
-  }
+async function preloadLocale(lang: SupportedLang, opts?: { withBlog?: boolean }): Promise<void> {
+  // One shared loader for boot and App (src/locales/loadLocaleData.ts):
+  // same module specifiers, so Vite serves the same chunks from its module
+  // cache when App mounts. The assembled object goes into the locale
+  // cache, not just the module cache — App's first render reads it.
+  const data = await loadLocaleData(lang, opts);
+  setCachedLocale(lang, data);
 }
-
-// Texts of the two short-lived loading states (locale spinner + Suspense
-// fallback) in all 11 languages. Shared with scripts/prerender.cjs, which
-// uses the same list for its readiness check.
-const LOADING_TEXTS: string[] = [
-  'Loading…',
-  'Cargando…',
-  'Carregando…',
-  'Chargement…',
-  'Wird geladen…',
-  'Caricamento…',
-  'Memuat…',
-  'Загрузка…',
-  '読み込み中…',
-  '로딩 중…',
-  '加载中…',
-];
 
 // CLS, second half — preload the route's lazy page chunk (same issue 4).
 // Measured (2026-11-14, local render check): the locale preload alone left
@@ -174,8 +133,9 @@ async function start(): Promise<void> {
   const w = window as unknown as { __cmpAppStarted?: boolean };
   if (w.__cmpAppStarted) return;
   w.__cmpAppStarted = true;
-  // M6 (re-audit 2026-11-15): AdSense + GA4 load here (skipped on
-  // /admin/comments/) — they are no longer static tags in index.html.
+  // M6 (re-audit 2026-11-15): GA4 loads here (skipped on
+  // /admin/comments/) — it is no longer a static tag in index.html.
+  // (AdSense was removed 2026-11-19 by user order; see thirdParty.ts.)
   loadThirdPartyScripts();
   const pathname = window.location.pathname;
   const urlLang = localeFromPath(pathname);
@@ -192,89 +152,54 @@ async function start(): Promise<void> {
     }
   }
   const toPreload = [...new Set([urlLang, storedLang].filter((l): l is SupportedLang => l !== null))];
-  try {
-    await Promise.all([
-      ...toPreload.map((lang) => preloadLocale(lang)),
-      preloadPage(pathname),
-    ]);
-  } catch {
-    // Preload is best-effort only; App loads the locale and page itself.
-  }
+  // Tier C: the locale blog chunk loads only when the current route is a
+  // blog route in that language. The stored-language redirect always lands
+  // on the home page, so its locale loads without the blog chunk.
+  const cleanPath = pathname.toLowerCase().replace(/\/+$/, '') || '/';
+  const enPath = urlLang === 'en' || urlLang === null ? cleanPath : EN_PATH_BY_LANG[urlLang]?.[cleanPath];
+  const blogRoute = enPath && isBlogEnPath(enPath) ? resolveBlogRoute(enPath) : null;
+  // allSettled (not all): the preloads are independent — a failed page
+  // chunk or article body must never cut the locale preload short. (A
+  // single rejection here once aborted the locale load and broke hydration
+  // on every non-EN route: the locale cache stayed empty, the first render
+  // was English, React #418 discarded the SSR DOM. 2026-11-19.)
+  await Promise.allSettled([
+    ...toPreload.map((lang) =>
+      preloadLocale(lang, { withBlog: lang === urlLang && blogRoute !== null }),
+    ),
+    preloadPage(pathname),
+    // Tier B: the article body must be in the cache before the first
+    // render, or hydration would render an empty body and the prerender
+    // snapshot would ship without content.
+    blogRoute?.kind === 'article' ? loadBlogBody(blogRoute.articleId) : Promise.resolve(),
+  ]);
   const rootEl = document.getElementById('root')!;
-  // CLS, third half — hide the root until the app settles (same issue 4).
-  // Measured (2026-11-14): locale + page preloads alone still left DE CLS
-  // at 0.7852, and hydrateRoot does NOT fix it either — React throws
-  // minified error #418 (hydration text mismatch: App's first client render
-  // is English, the prerendered HTML is German) and discards the server DOM
-  // for a full client render. App's first commits are therefore always
-  // intermediate states (English + "Loading…" fallback, then the locale
-  // spinner, then the final localized page), and on this machine each commit
-  // paints before the next lands, moving the footer ~7,400px. Only
-  // main.tsx can change that without touching App.tsx: hide #root (the
-  // prerendered content stays painted until this point, so first paint is
-  // unaffected) and reveal it once the app has settled into its final
-  // state. Hidden elements generate no layout-shift entries, and the
-  // footer appears once, in its final position.
-  // Trade-off, stated plainly: the page is blank from mount until settle
-  // (~0.4s on this machine, less on a fast device) instead of flashing
-  // through wrong-language/spinner states. The proper fix is in App.tsx
-  // (hold the first render until the locale + page chunk are ready); until
-  // that lands, this keeps Core Web Vitals green. Reveal is guaranteed by
-  // a 2.5s hard timeout, so a broken render can never leave a blank page.
-  // The prerender script requires #root to be visible before snapshotting,
-  // so a captured page never ships with the hidden style.
-  // Settle detection must ignore the prerendered DOM: React renders
-  // concurrently, so right after createRoot().render() the old prerendered
-  // <main> (long, no loading text) is still in the DOM and would pass a
-  // naive content check, revealing the fallback. We therefore require the
-  // <main> to be a NEW node React created — the prerendered one is captured
-  // before mounting and must be gone.
-  const prerenderedMain = rootEl.querySelector('main');
-  rootEl.style.visibility = 'hidden';
-  createRoot(rootEl).render(<App />);
-  const reveal = () => {
-    rootEl.style.visibility = '';
-  };
-  const isSettled = () => {
-    const main = rootEl.querySelector('main');
-    if (!main || main === prerenderedMain || !rootEl.querySelector('footer')) return false;
-    // textContent, not innerText: innerText is empty while #root is hidden,
-    // so an innerText check would never settle and reveal would wait for
-    // the 2.5s fallback every time.
-    const text = main.textContent || '';
-    if (text.length < 80) return false;
-    const head = text.slice(0, 300);
-    return !LOADING_TEXTS.some((t) => head.includes(t));
-  };
-  if (isSettled()) {
-    reveal();
-  } else {
-    // Reveal only after the DOM has been settled for 150ms: the locale
-    // swap (English -> URL language) lands as a separate commit just after
-    // the first full-content commit, and revealing between the two would
-    // show the English footer briefly (the ~0.04 shifts). Waiting for a
-    // short quiet window reveals the final localized content instead.
-    let settledSince: number | null = null;
-    const timer = window.setInterval(() => {
-      if (isSettled()) {
-        if (settledSince === null) settledSince = Date.now();
-        else if (Date.now() - settledSince >= 150) {
-          window.clearInterval(timer);
-          window.clearTimeout(fallback);
-          reveal();
-        }
-      } else {
-        settledSince = null;
-      }
-    }, 50);
-    const fallback = window.setTimeout(() => {
-      window.clearInterval(timer);
-      reveal();
-    }, 2500);
-  }
+  // Tier J (hydration fix, 2026-11-19): React adopts the prerendered DOM
+  // instead of rebuilding it. The old createRoot + hide-until-settle
+  // approach existed because App's first client render was English while
+  // the prerender was localized (React error #418 — hydration text
+  // mismatch — discarded the server DOM). That root cause is fixed by the
+  // locale cache (src/locales/localeCache.ts): the locale was stored here
+  // before first render, App's useState initializers read it
+  // synchronously, so the first render is already localized and matches
+  // the prerendered HTML. The hide is gone: the prerendered content stays
+  // visible from first paint and hydration only wires up interactivity.
+  // If hydration ever mismatches, React logs a console error and falls
+  // back to a client render — the CLS probe in the verification step
+  // watches for that (DE was 0.7852 with a ~7,400px footer jump before
+  // the hide; it must stay < 0.1).
+  hydrateRoot(rootEl, <App />);
 }
 
-void start();
+// NOTE: `void start()` lives at the END of this file, after the page-module
+// maps below — do NOT move it back up here. start() calls resolvePageModule
+// synchronously before its first await, and resolvePageModule reads the
+// BLOG/TOOL/LOCALIZED/DIRECTORY_PAGE_MODULES maps. With the call above the
+// maps, the maps are still uninitialized when the boot runs, the lookup
+// throws, the preload aborts, the locale cache stays empty, and the first
+// render is English on every non-EN route (React #418, SSR DOM discarded,
+// CLS ~0.8 on DE articles). Found by debug logging 2026-11-19:
+// "TypeError: Cannot read properties of undefined (reading '/de')".
 
 // Route -> lazy page-chunk mapping, extracted from App.tsx (137 router branches:
 // 48 tools + 78 localized legal/guide/admin pages + 10 directories; home is
@@ -455,3 +380,9 @@ const DIRECTORY_PAGE_MODULES: Record<string, string> = {
   '/ru/vse-instrumenty': './pages/ru/AllToolsPageRu.tsx',
   '/zh/all-tools': './pages/zh/AllToolsPageZh.tsx',
 };
+
+// Boot entry — MUST stay after the page-module maps above (see the NOTE at
+// the end of start()). Moving it above the maps reintroduces the 2026-11-19
+// locale race: resolvePageModule reads uninitialized maps, throws, and the
+// locale preload aborts before the first render.
+void start();

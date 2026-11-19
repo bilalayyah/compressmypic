@@ -114,7 +114,7 @@ export const TermsPageDe: React.FC<TermsPageDeProps> = ({ onNavigate }) => {
               8. Dienste Dritter
             </h2>
             <p>
-              Die Website nutzt Dienste Dritter für ihren Betrieb, darunter Hosting und Content Delivery über Cloudflare, Werbung über Google AdSense und Nachrichtenübermittlung über FormSubmit. Diese Dienste haben eigene Bedingungen und Datenschutzerklärungen, und Ihre Nutzung dieser Dienste unterliegt sowohl diesen Dokumenten als auch diesen Bedingungen. Wir sind nicht verantwortlich für die Verfügbarkeit, den Inhalt oder die Praktiken von Websites oder Diensten Dritter, auf die CompressMyPic verlinkt.
+              Die Website nutzt Dienste Dritter für ihren Betrieb, darunter Hosting und Content Delivery über Cloudflare und Nachrichtenübermittlung über FormSubmit. Diese Dienste haben eigene Bedingungen und Datenschutzerklärungen, und Ihre Nutzung dieser Dienste unterliegt sowohl diesen Dokumenten als auch diesen Bedingungen. Wir sind nicht verantwortlich für die Verfügbarkeit, den Inhalt oder die Praktiken von Websites oder Diensten Dritter, auf die CompressMyPic verlinkt.
             </p>
           </section>
 

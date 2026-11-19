@@ -69,7 +69,6 @@ export const RU = {
       '© {year} CompressMyPic. Все права защищены. Бесплатная утилита для сжатия изображений в браузере.',
     deployedNote: 'Crafted with ❤️ by Bilal inspired by Shaheen',
     contactLabel: 'Контакт: bilalayyah@gmail.com',
-    cookieSettingsLabel: 'Настройки конфиденциальности и файлов cookie',
     toolsLinks: [
       { slug: '/', label: 'Сжать изображения' },
       { slug: '/image-resizer', label: 'Изменение размера изображения' },

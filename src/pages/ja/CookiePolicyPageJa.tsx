@@ -60,14 +60,10 @@ export const CookiePolicyPageJa: React.FC<CookiePolicyPageJaProps> = ({ onNaviga
 
           <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              3. Googleアドセンスの広告Cookie
+              3. 広告Cookie
             </h2>
             <p>
-              当サイトでは広告表示にGoogleアドセンスを使用しています。アドセンスとそのパートナーは、このウェブサイトや他のウェブサイトへの過去の訪問に基づき広告を配信するため、デバイスにCookieを設定する場合があります。Googleによる広告Cookieの使用により、Googleとそのパートナーは、このサイトや他のインターネット上のサイトへの訪問に基づいて広告を配信し、広告の表示頻度を測定できます。このサイトの広告枠は手動で選択しています。自動広告挿入は使用していません。パーソナライズド広告をオプトアウトするには、Google広告設定（
-              <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">https://adssettings.google.com</a>
-              ）または
-              <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">https://www.aboutads.info/choices/</a>
-              をご覧ください。パーソナライズされていない広告を選んでも広告が完全になくなるわけではありませんが、広告が閲覧履歴に基づかなくなります。
+              CompressMyPicでは現在、広告を表示しておらず、広告Cookieも設定していません。
             </p>
           </section>
 
@@ -85,7 +81,7 @@ export const CookiePolicyPageJa: React.FC<CookiePolicyPageJaProps> = ({ onNaviga
               5. 同意（EEA、英国、スイス）
             </h2>
             <p>
-              欧州経済領域、英国、スイスからアクセスする場合、GoogleはGDPRおよびGoogleのEUユーザー同意ポリシーに従い、パーソナライズド広告を表示する前に同意メッセージを表示します。同意は、このサイトのフッターにある「プライバシーとCookieの設定」リンクからいつでも変更または撤回できます。このリンクにより同意メッセージが再度表示されます。また、ブラウザのCookieを削除することでも撤回できます。同意の撤回は、撤回前に合法的に行われたことには影響しません。
+              このサイトでは現在、広告を表示していないため、広告に関する同意メッセージは表示されず、広告への同意も求めていません。利用状況の統計はGoogleアナリティクスで収集しています。分析用Cookieはブラウザの設定からブロックできます（セクション8を参照）。
             </p>
           </section>
 
@@ -116,7 +112,7 @@ export const CookiePolicyPageJa: React.FC<CookiePolicyPageJaProps> = ({ onNaviga
               8. Cookieの管理方法
             </h2>
             <p>
-              デバイスにすでに保存されているCookieの削除や、今後のCookie設定のブロックは、ブラウザ設定から行えます。主要なブラウザ（Chrome、Firefox、Safari、Edge）はすべて、プライバシーまたはセキュリティ設定でこのオプションを提供しています。すべてのCookieをブロックしても、Cookieに依存しない画像ツールは壊れませんが、広告や分析などの第三者サービスの機能に影響する場合があります。ブラウザのプライベートモードまたはシークレットモードを使用することもできます。これにより、ウィンドウを閉じるとCookieが削除されます。
+              デバイスにすでに保存されているCookieの削除や、今後のCookie設定のブロックは、ブラウザ設定から行えます。主要なブラウザ（Chrome、Firefox、Safari、Edge）はすべて、プライバシーまたはセキュリティ設定でこのオプションを提供しています。すべてのCookieをブロックしても、Cookieに依存しない画像ツールは壊れませんが、分析などの第三者サービスの機能に影響する場合があります。ブラウザのプライベートモードまたはシークレットモードを使用することもできます。これにより、ウィンドウを閉じるとCookieが削除されます。
             </p>
           </section>
 

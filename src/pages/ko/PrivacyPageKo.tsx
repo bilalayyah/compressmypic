@@ -61,28 +61,10 @@ export const PrivacyPageKo: React.FC<PrivacyPageKoProps> = ({ onNavigate }) => {
 
           <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              3. 광고 (Google AdSense)
+              3. 광고
             </h2>
             <p>
-              저희는 광고를 표시하기 위해 Google AdSense를 사용합니다(활성화 시). Google을 포함한 제3자 업체는 쿠키를 사용하여 사용자의 이 웹사이트 또는 다른 웹사이트에 대한 이전 방문 기록을 바탕으로 광고를 게재합니다. Google의 광고 쿠키 사용을 통해 Google과 그 파트너는 사용자의 이 사이트 및/또는 인터넷상의 다른 사이트 방문을 바탕으로 광고를 게재할 수 있습니다. Google 광고 설정(
-              <a
-                href="https://adssettings.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
-              >
-                https://adssettings.google.com
-              </a>
-              ) 또는{' '}
-              <a
-                href="https://www.aboutads.info/choices/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
-              >
-                https://www.aboutads.info/choices/
-              </a>
-              에서 맞춤 광고를 거부할 수 있습니다.
+              CompressMyPic은 현재 광고를 표시하지 않습니다. 이 사이트는 광고 쿠키를 설정하지 않습니다.
             </p>
           </section>
 
@@ -109,10 +91,10 @@ export const PrivacyPageKo: React.FC<PrivacyPageKoProps> = ({ onNavigate }) => {
               6. 쿠키 및 동의
             </h2>
             <p>
-              CompressMyPic 자체는 이미지 도구에 대해 어떠한 쿠키도 설정하지 않습니다. 압축은 전적으로 사용자의 브라우저 안에서 이루어지며, 저희 측의 쿠키, 계정, 저장된 설정이 필요하지 않습니다. 이 사이트의 쿠키는 제3자 서비스에서 제공됩니다. Google AdSense와 그 파트너는 관련성 있는 광고를 표시하고 광고 노출 횟수를 측정하기 위해 광고 쿠키를 설정할 수 있습니다. 이러한 쿠키는 사용자의 브라우저에 의해 기기에 저장되며, 브라우저 설정에서 언제든지 삭제할 수 있습니다.
+              CompressMyPic 자체는 이미지 도구에 대해 어떠한 쿠키도 설정하지 않습니다. 압축은 전적으로 사용자의 브라우저 안에서 이루어지며, 저희 측의 쿠키, 계정, 저장된 설정이 필요하지 않습니다. 이 사이트의 쿠키는 제3자 서비스에서 제공됩니다. 예를 들어 Google 애널리틱스는 사용 통계 목적으로 쿠키를 설정할 수 있습니다. 이러한 쿠키는 사용자의 브라우저에 의해 기기에 저장되며, 브라우저 설정에서 언제든지 삭제할 수 있습니다.
             </p>
             <p>
-              유럽경제지역 또는 영국에서 방문하시는 경우, GDPR 및 Google의 EU 사용자 동의 정책에 따라 개인 맞춤형 광고를 표시하기 전에 동의를 요청합니다. 브라우저 쿠키를 삭제하거나 사이트에서 제공하는 동의 선택을 변경하여 언제든지 동의를 철회할 수 있습니다. 개인 맞춤형이 아닌 광고를 선택해도 광고가 완전히 사라지는 것은 아니지만, 광고가 더 이상 사용자의 탐색 기록을 기반으로 하지 않게 됩니다.
+              CompressMyPic은 현재 광고를 표시하지 않으므로, 어느 지역의 방문자에게도 광고 동의를 요청하지 않습니다.
             </p>
           </section>
 

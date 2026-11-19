@@ -53,7 +53,6 @@ export const FR = {
       '© {year} CompressMyPic. Tous droits réservés. Utilitaire gratuit de compression d’images dans le navigateur.',
     deployedNote: 'Crafted with ❤️ by Bilal inspired by Shaheen',
     contactLabel: 'Contact : bilalayyah@gmail.com',
-    cookieSettingsLabel: 'Paramètres de confidentialité et de cookies',
     toolsLinks: [
       { slug: '/', label: 'Compresser des images' },
       { slug: '/image-resizer', label: 'Redimensionner une image' },

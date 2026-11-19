@@ -81,7 +81,7 @@ export const DisclaimerPageId: React.FC<DisclaimerPageIdProps> = ({ onNavigate }
               5. Layanan dan Tautan Pihak Ketiga
             </h2>
             <p>
-              Situs ini menggunakan layanan pihak ketiga — Google AdSense untuk iklan, Google Analytics 4 untuk statistik penggunaan, FormSubmit untuk formulir kontak, dan Cloudflare Worker untuk komentar anonim — serta menautkan ke situs web eksternal. Kami tidak mengendalikan layanan atau situs tersebut, dan kami tidak bertanggung jawab atas konten, ketersediaan, praktik privasi, atau keakuratan mereka. Ketentuan dan kebijakan privasi mereka sendiri berlaku saat Anda menggunakannya.
+              Situs ini menggunakan layanan pihak ketiga — Google Analytics 4 untuk statistik penggunaan, FormSubmit untuk formulir kontak, dan Cloudflare Worker untuk komentar anonim — serta menautkan ke situs web eksternal. Kami tidak mengendalikan layanan atau situs tersebut, dan kami tidak bertanggung jawab atas konten, ketersediaan, praktik privasi, atau keakuratan mereka. Ketentuan dan kebijakan privasi mereka sendiri berlaku saat Anda menggunakannya.
             </p>
           </section>
 
@@ -90,7 +90,7 @@ export const DisclaimerPageId: React.FC<DisclaimerPageIdProps> = ({ onNavigate }
               6. Iklan
             </h2>
             <p>
-              Iklan yang ditampilkan di situs ini disajikan oleh Google AdSense dan mitranya. Kami tidak mendukung, menjamin, atau bertanggung jawab atas produk, layanan, atau klaim apa pun yang dibuat dalam sebuah iklan. Pembelian atau keputusan apa pun yang Anda buat berdasarkan iklan sepenuhnya menjadi risiko Anda sendiri; harap menilai sendiri pengiklan sebelum membeli apa pun.
+              Situs ini saat ini tidak menampilkan iklan.
             </p>
           </section>
 

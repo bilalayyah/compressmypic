@@ -6,7 +6,7 @@
 // reaches this page (it 404s instead).
 import React from 'react';
 import type { SupportedLang } from '../locales/config';
-import type { ToolCategoryId, ToolDefinition } from '../data/tools';
+import type { ToolCategoryId, ToolMeta } from '../data/toolsMeta';
 import {
   getBlogArticlesForCategory,
   getBlogCategoryLabel,
@@ -20,7 +20,7 @@ interface BlogCategoryPageProps {
   lang: SupportedLang;
   categoryId: ToolCategoryId;
   onNavigate: (path: string) => void;
-  tools: ToolDefinition[];
+  tools: ToolMeta[];
   categories: Array<{ id: string; label: string }>;
 }
 

@@ -60,14 +60,10 @@ export const CookiePolicyPageId: React.FC<CookiePolicyPageIdProps> = ({ onNaviga
 
           <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              3. Cookie Iklan Google AdSense
+              3. Cookie iklan
             </h2>
             <p>
-              Kami menggunakan Google AdSense untuk menampilkan iklan di situs ini. AdSense dan mitranya dapat memasang cookie di perangkat Anda untuk menayangkan iklan berdasarkan kunjungan Anda sebelumnya ke situs web ini atau situs web lain. Penggunaan cookie iklan oleh Google memungkinkan Google dan mitranya menayangkan iklan kepada Anda berdasarkan kunjungan Anda ke situs ini dan/atau situs lain di Internet, serta mengukur seberapa sering sebuah iklan ditampilkan. Penempatan iklan di situs ini dipilih secara manual; kami tidak menggunakan penyisipan iklan otomatis. Anda dapat memilih tidak menerima iklan yang dipersonalisasi dengan mengunjungi Setelan Iklan Google (
-              <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">https://adssettings.google.com</a>
-              ) atau 
-              <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">https://www.aboutads.info/choices/</a>
-              . Memilih iklan yang tidak dipersonalisasi tidak menghentikan iklan sepenuhnya, tetapi berarti iklan tidak lagi didasarkan pada riwayat penelusuran Anda.
+              CompressMyPic saat ini tidak menampilkan iklan dan tidak memasang cookie iklan.
             </p>
           </section>
 
@@ -85,7 +81,7 @@ export const CookiePolicyPageId: React.FC<CookiePolicyPageIdProps> = ({ onNaviga
               5. Persetujuan (EEA, Inggris, dan Swiss)
             </h2>
             <p>
-              Jika Anda berkunjung dari Kawasan Ekonomi Eropa, Inggris, atau Swiss, Google akan menampilkan pesan persetujuan sebelum iklan yang dipersonalisasi ditampilkan, sesuai dengan GDPR dan Kebijakan Persetujuan Pengguna UE Google. Anda dapat mengubah atau menarik persetujuan Anda kapan saja menggunakan tautan "Pengaturan privasi dan cookie" di footer situs ini, yang membuka kembali pesan persetujuan, atau dengan menghapus cookie browser Anda. Penarikan persetujuan tidak memengaruhi apa pun yang telah dilakukan secara sah sebelum penarikan tersebut.
+              Karena situs ini saat ini tidak menampilkan iklan, tidak ada pesan persetujuan iklan yang ditampilkan dan tidak ada persetujuan iklan yang diminta. Statistik penggunaan dikumpulkan dengan Google Analytics; Anda dapat memblokir cookie analitik melalui pengaturan browser Anda (lihat bagian 8).
             </p>
           </section>
 
@@ -116,7 +112,7 @@ export const CookiePolicyPageId: React.FC<CookiePolicyPageIdProps> = ({ onNaviga
               8. Cara Mengendalikan Cookie
             </h2>
             <p>
-              Anda dapat menghapus cookie yang sudah tersimpan di perangkat Anda dan memblokir cookie agar tidak dipasang di masa mendatang melalui pengaturan browser Anda — semua browser utama (Chrome, Firefox, Safari, Edge) menyediakan opsi ini di pengaturan privasi atau keamanan mereka. Memblokir semua cookie tidak akan merusak alat gambar kami, yang tidak bergantung pada cookie, tetapi dapat memengaruhi fitur layanan pihak ketiga seperti iklan dan analitik. Anda juga dapat menggunakan mode privat atau penyamaran browser Anda, yang menghapus cookie saat Anda menutup jendela.
+              Anda dapat menghapus cookie yang sudah tersimpan di perangkat Anda dan memblokir cookie agar tidak dipasang di masa mendatang melalui pengaturan browser Anda — semua browser utama (Chrome, Firefox, Safari, Edge) menyediakan opsi ini di pengaturan privasi atau keamanan mereka. Memblokir semua cookie tidak akan merusak alat gambar kami, yang tidak bergantung pada cookie, tetapi dapat memengaruhi fitur layanan pihak ketiga seperti analitik. Anda juga dapat menggunakan mode privat atau penyamaran browser Anda, yang menghapus cookie saat Anda menutup jendela.
             </p>
           </section>
 

@@ -268,6 +268,14 @@ function sanitizePrerenderedHtml(html, baseUrl) {
     /(<link[^>]*href="[^"]*fonts\.googleapis\.com\/css2[^"]*"[^>]*media=")all("[^>]*>)/g,
     '$1print$2',
   );
+  // Tier D (speed fix): the app stylesheet loads async via the same
+  // media=print trick (vite.config.ts), but its onload handler flips media
+  // to 'all' while this page renders — reset it so the snapshot ships the
+  // async link instead of a render-blocking one.
+  out = out.replace(
+    /(<link[^>]*href="\/assets\/[^"]+\.css"[^>]*media=")all("[^>]*>)/g,
+    '$1print$2',
+  );
   return out;
 }
 
@@ -295,26 +303,43 @@ async function renderRoute(browser, baseUrl, routePath, attempt) {
     // Never wait for networkidle: /remove-background keeps the network busy
     // for 60s+ (audit note) and AdSense/fonts can hang behind the proxy.
     // Instead wait for the app to be actually rendered, then settle.
+    // Tier B: article routes must also have their body rendered — the body
+    // loads from a per-article chunk (main.tsx preloads it before first
+    // render), and a snapshot without it would ship an empty article.
+    const isArticle =
+      routePath.includes('/blog/') &&
+      !routePath.endsWith('/blog/') &&
+      !routePath.includes('/blog/category/');
     try {
       await page.waitForFunction(
-        (loadingTexts) => {
+        (opts) => {
           const root = document.getElementById('root');
           if (!root) return false;
-          // main.tsx hides #root until the app settles; never snapshot
-          // while hidden, or the prerendered file would ship hidden.
+          // Hydration never hides #root (the old createRoot hide is gone),
+          // but keep the guard: never snapshot while hidden, or the
+          // prerendered file would ship hidden.
           if (window.getComputedStyle(root).visibility === 'hidden') return false;
           const main = document.querySelector('#root main');
           if (!main) return false;
           const text = main.innerText || '';
           if (text.length < 80) return false;
           const head = text.slice(0, 300);
-          return !loadingTexts.some((t) => head.includes(t));
+          if (opts.loadingTexts.some((t) => head.includes(t))) return false;
+          if (opts.needsBody) {
+            const body = document.querySelector('#root .blog-body');
+            if (!body || (body.textContent || '').length < 100) return false;
+          }
+          return true;
         },
-        LOADING_TEXTS,
+        { loadingTexts: LOADING_TEXTS, needsBody: isArticle },
         { timeout: 45000 },
       );
     } catch {
       // Fall through and snapshot anyway; the run summary flags thin pages.
+      // Except articles: a snapshot without a body must never ship.
+      if (isArticle) {
+        throw new Error('article body did not render within 45s (body chunk failed to load?)');
+      }
     }
     await page.waitForTimeout(900);
     const rawHtml = await page.evaluate(() => document.documentElement.outerHTML);

@@ -114,7 +114,7 @@ export const TermsPageIt: React.FC<TermsPageItProps> = ({ onNavigate }) => {
               8. Servizi di terze parti
             </h2>
             <p>
-              Il sito utilizza servizi di terze parti per funzionare, tra cui hosting e distribuzione dei contenuti tramite Cloudflare, pubblicità tramite Google AdSense e invio di messaggi tramite FormSubmit. Questi servizi hanno i propri termini e informative sulla privacy, e il vostro utilizzo di essi è regolato da tali documenti oltre che da questi termini. Non siamo responsabili della disponibilità, del contenuto o delle pratiche di siti web o servizi di terze parti collegati da CompressMyPic.
+              Il sito utilizza servizi di terze parti per funzionare, tra cui hosting e distribuzione dei contenuti tramite Cloudflare e invio di messaggi tramite FormSubmit. Questi servizi hanno i propri termini e informative sulla privacy, e il vostro utilizzo di essi è regolato da tali documenti oltre che da questi termini. Non siamo responsabili della disponibilità, del contenuto o delle pratiche di siti web o servizi di terze parti collegati da CompressMyPic.
             </p>
           </section>
 

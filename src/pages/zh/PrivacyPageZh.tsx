@@ -1,8 +1,8 @@
 // Simplified Chinese (zh) Privacy Policy page — /zh/yinsi-zhengce.
 // Translated from the ENGLISH original only (src/pages/PrivacyPage.tsx,
 // repo HEAD cf50185). Same sections, same component shape, same props
-// (onNavigate). Legal meaning preserved, including the Google AdSense
-// disclosure (section 3) and opt-out links. Back-link points at /zh/.
+// (onNavigate). Legal meaning preserved. Section 3 states that the site
+// currently shows no advertisements. Back-link points at /zh/.
 
 import React, { useEffect } from 'react';
 import { ArrowLeft, Shield } from 'lucide-react';
@@ -67,28 +67,10 @@ export const PrivacyPageZh: React.FC<PrivacyPageZhProps> = ({ onNavigate }) => {
 
           <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              3. 广告（Google AdSense）
+              3. 广告
             </h2>
             <p>
-              我们使用 Google AdSense 在启用后展示广告。包括 Google 在内的第三方供应商会使用 Cookie，根据用户之前访问本网站或其他网站的情况投放广告。Google 使用广告 Cookie，使其及其合作伙伴能够根据您访问本网站和/或其他网站的情况向您投放广告。您可以访问 Google 广告设置（
-              <a
-                href="https://adssettings.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
-              >
-                https://adssettings.google.com
-              </a>
-              ）或{' '}
-              <a
-                href="https://www.aboutads.info/choices/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
-              >
-                https://www.aboutads.info/choices/
-              </a>
-              {' '}选择退出个性化广告。
+              CompressMyPic 目前不展示任何广告。本网站不设置广告 Cookie。
             </p>
           </section>
 
@@ -115,10 +97,10 @@ export const PrivacyPageZh: React.FC<PrivacyPageZhProps> = ({ onNavigate }) => {
               6. Cookie 与同意
             </h2>
             <p>
-              CompressMyPic 本身不会为其图片工具设置任何 Cookie：压缩完全在你的浏览器中进行，不需要我们这边保存任何 Cookie、帐户或偏好设置。本网站的 Cookie 来自第三方服务。Google AdSense 及其合作伙伴可能会设置广告 Cookie，以便向你展示相关广告并衡量广告的展示频率。你的浏览器会把这些 Cookie 保存在你的设备上，你可以随时通过浏览器设置将其删除。
+              CompressMyPic 本身不会为其图片工具设置任何 Cookie：压缩完全在你的浏览器中进行，不需要我们这边保存任何 Cookie、帐户或偏好设置。本网站的 Cookie 来自第三方服务。例如，Google Analytics 可能会为使用情况统计设置 Cookie。你的浏览器会把这些 Cookie 保存在你的设备上，你可以随时通过浏览器设置将其删除。
             </p>
             <p>
-              如果你从欧洲经济区或英国访问本站，根据《通用数据保护条例》（GDPR）和 Google 的欧盟用户同意政策，我们会在展示个性化广告之前征求你的同意。你可以随时通过清除浏览器 Cookie 或更改本站提供的同意选项来撤回同意。选择非个性化广告并不会完全停止广告，但意味着广告不再基于你的浏览记录。
+              CompressMyPic 目前不展示广告，因此不会向任何地区的访客征求广告同意。
             </p>
           </section>
 

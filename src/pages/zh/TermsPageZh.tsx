@@ -117,7 +117,7 @@ export const TermsPageZh: React.FC<TermsPageZhProps> = ({ onNavigate }) => {
               8. 第三方服务
             </h2>
             <p>
-              本站使用第三方服务来运营，包括通过 Cloudflare 进行托管和内容分发、通过 Google AdSense 投放广告，以及通过 FormSubmit 发送消息。这些服务各有其自身的条款和隐私政策，你对它们的使用受这些文件以及本条款的约束。我们不对 CompressMyPic 链接到的第三方网站或服务的可用性、内容或做法承担责任。
+              本站使用第三方服务来运营，包括通过 Cloudflare 进行托管和内容分发，以及通过 FormSubmit 发送消息。这些服务各有其自身的条款和隐私政策，你对它们的使用受这些文件以及本条款的约束。我们不对 CompressMyPic 链接到的第三方网站或服务的可用性、内容或做法承担责任。
             </p>
           </section>
 

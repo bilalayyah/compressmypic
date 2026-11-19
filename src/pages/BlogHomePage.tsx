@@ -6,7 +6,7 @@
 import React from 'react';
 import type { SupportedLang } from '../locales/config';
 import { localizePath } from '../locales/alternates';
-import type { ToolDefinition } from '../data/tools';
+import type { ToolMeta } from '../data/toolsMeta';
 import { getPublishedBlogArticles } from '../data/blogArticles';
 import { useBlog } from '../components/blog/BlogContext';
 import { BlogCard } from '../components/blog/BlogCard';
@@ -51,7 +51,7 @@ const EN_GUIDES_SECTION: BlogGuidesSectionStrings = {
 interface BlogHomePageProps {
   lang: SupportedLang;
   onNavigate: (path: string) => void;
-  tools: ToolDefinition[];
+  tools: ToolMeta[];
   categories: Array<{ id: string; label: string }>;
   /** Active locale's guides section (undefined for EN -> EN fallback). */
   guidesSection?: BlogGuidesSectionStrings;

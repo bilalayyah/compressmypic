@@ -2,7 +2,7 @@
 // and related-articles sections. Title is an <h3> (the page <h1> is the
 // hero / article title; section headings are <h2>).
 import React from 'react';
-import type { BlogArticle } from '../../types/blog';
+import type { BlogArticleMeta } from '../../types/blog';
 import type { SupportedLang } from '../../locales/config';
 import {
   getBlogArticleUrl,
@@ -13,7 +13,7 @@ import { useBlog } from './BlogContext';
 import { formatBlogDate } from './blogBody';
 
 interface BlogCardProps {
-  article: BlogArticle;
+  article: BlogArticleMeta;
   lang: SupportedLang;
   /** Localized tool name (shown as a chip when provided). */
   toolName?: string;
@@ -40,7 +40,7 @@ export function BlogCard({ article, lang, toolName, categories, onNavigate }: Bl
     : { href: url };
 
   return (
-    <article className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#7c3aed]/40 transition-all duration-200 flex flex-col gap-3">
+    <article className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#7c3aed]/40 transition-[transform,box-shadow,border-color] duration-200 flex flex-col gap-3">
       <div className="flex flex-wrap items-center gap-2">
         <span className="text-xs font-semibold text-[var(--ink-3)] bg-[var(--surface-2)] border border-[var(--line)] px-2.5 py-0.5 rounded-full">
           {categoryLabel}

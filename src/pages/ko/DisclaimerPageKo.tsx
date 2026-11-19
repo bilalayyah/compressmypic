@@ -81,7 +81,7 @@ export const DisclaimerPageKo: React.FC<DisclaimerPageKoProps> = ({ onNavigate }
               5. 제3자 서비스 및 링크
             </h2>
             <p>
-              이 사이트는 광고를 위한 Google 애드센스, 사용 통계를 위한 Google 애널리틱스 4, 문의 양식을 위한 FormSubmit, 익명 댓글을 위한 Cloudflare Worker 등 제3자 서비스를 사용하고 외부 웹사이트로 연결됩니다. 저희는 이러한 서비스나 사이트를 통제하지 않으며, 그 콘텐츠, 가용성, 개인정보 관행, 정확성에 대해 책임지지 않습니다. 이를 사용할 때는 각자의 약관과 개인정보처리방침이 적용됩니다.
+              이 사이트는 사용 통계를 위한 Google 애널리틱스 4, 문의 양식을 위한 FormSubmit, 익명 댓글을 위한 Cloudflare Worker 등 제3자 서비스를 사용하고 외부 웹사이트로 연결됩니다. 저희는 이러한 서비스나 사이트를 통제하지 않으며, 그 콘텐츠, 가용성, 개인정보 관행, 정확성에 대해 책임지지 않습니다. 이를 사용할 때는 각자의 약관과 개인정보처리방침이 적용됩니다.
             </p>
           </section>
 
@@ -90,7 +90,7 @@ export const DisclaimerPageKo: React.FC<DisclaimerPageKoProps> = ({ onNavigate }
               6. 광고
             </h2>
             <p>
-              이 사이트에 표시되는 광고는 Google 애드센스와 그 파트너가 제공합니다. 광고에 포함된 어떠한 제품, 서비스, 주장에 대해서도 저희는 보증하거나 책임지지 않습니다. 광고를 근거로 한 구매나 결정은 전적으로 본인의 책임입니다. 구매 전에 광고주를 직접 평가해 주세요.
+              이 사이트는 현재 광고를 표시하지 않습니다.
             </p>
           </section>
 

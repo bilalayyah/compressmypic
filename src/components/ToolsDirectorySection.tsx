@@ -35,7 +35,8 @@ import {
   Scissors,
   ZoomIn,
 } from 'lucide-react';
-import { TOOLS_REGISTRY, TOOL_CATEGORIES, ToolCategoryId, ToolDefinition } from '../data/tools';
+import { TOOLS_META, TOOL_CATEGORIES } from '../data/toolsMeta';
+import type { ToolCategoryId, ToolMeta } from '../data/toolsMeta';
 import { localizePath } from '../locales/alternates';
 import type { SupportedLang } from '../locales/config';
 import { CategoryGuides } from './blog/CategoryGuides';
@@ -54,7 +55,7 @@ interface ToolsDirectorySectionProps {
   currentPath?: string;
   /** Active language — tool cards link the same-language tool URL (M2, re-audit 2026-11-15). */
   lang?: SupportedLang;
-  toolsRegistry?: ToolDefinition[];
+  toolsRegistry?: ToolMeta[];
   categoryLabels?: Array<{ id: string; label: string }>;
   strings?: ToolsDirectoryStrings;
 }
@@ -124,7 +125,7 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
   onNavigate,
   currentPath = '/',
   lang = 'en',
-  toolsRegistry = TOOLS_REGISTRY,
+  toolsRegistry = TOOLS_META,
   categoryLabels = TOOL_CATEGORIES,
   strings = DEFAULT_STRINGS,
 }) => {
@@ -161,7 +162,7 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
           <button
             type="button"
             onClick={() => setSelectedCategory('all')}
-            className={`px-4 py-2 text-[13px] font-semibold border transition-all cursor-pointer ${
+            className={`px-4 py-2 text-[13px] font-semibold border transition-colors cursor-pointer ${
               selectedCategory === 'all'
                 ? 'btn-purple-pill border-transparent shadow-xs'
                 : 'rounded-full bg-[var(--surface)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#7c3aed]/50 hover:text-[var(--ink)]'
@@ -176,7 +177,7 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
                 key={cat.id}
                 type="button"
                 onClick={() => setSelectedCategory(cat.id as ToolCategoryId)}
-                className={`px-4 py-2 text-[13px] font-semibold border transition-all cursor-pointer ${
+                className={`px-4 py-2 text-[13px] font-semibold border transition-colors cursor-pointer ${
                   selectedCategory === cat.id
                     ? 'btn-purple-pill border-transparent shadow-xs'
                     : 'rounded-full bg-[var(--surface)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#7c3aed]/50 hover:text-[var(--ink)]'
@@ -201,7 +202,7 @@ export const ToolsDirectorySection: React.FC<ToolsDirectorySectionProps> = ({
                   e.preventDefault();
                   onNavigate(localizePath(tool.slug, lang));
                 }}
-                className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#7c3aed]/40 transition-all duration-200 flex flex-col justify-between"
+                className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#7c3aed]/40 transition-[transform,box-shadow,border-color] duration-200 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3.5">

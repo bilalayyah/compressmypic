@@ -61,28 +61,10 @@ export const PrivacyPageId: React.FC<PrivacyPageIdProps> = ({ onNavigate }) => {
 
           <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              3. Iklan (Google AdSense)
+              3. Iklan
             </h2>
             <p>
-              Kami menggunakan Google AdSense untuk menampilkan iklan setelah diaktifkan. Vendor pihak ketiga, termasuk Google, menggunakan cookie untuk menayangkan iklan berdasarkan kunjungan pengguna sebelumnya ke situs web ini atau situs web lainnya. Penggunaan cookie iklan oleh Google memungkinkan Google dan mitranya menayangkan iklan kepada Anda berdasarkan kunjungan Anda ke situs ini dan/atau situs lain di Internet. Anda dapat memilih untuk tidak menerima iklan yang dipersonalisasi dengan mengunjungi Pengaturan Iklan Google (
-              <a
-                href="https://adssettings.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
-              >
-                https://adssettings.google.com
-              </a>
-              ) atau{' '}
-              <a
-                href="https://www.aboutads.info/choices/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
-              >
-                https://www.aboutads.info/choices/
-              </a>
-              .
+              CompressMyPic saat ini tidak menampilkan iklan apa pun. Situs ini tidak memasang cookie iklan.
             </p>
           </section>
 
@@ -109,10 +91,10 @@ export const PrivacyPageId: React.FC<PrivacyPageIdProps> = ({ onNavigate }) => {
               6. Cookie dan Persetujuan
             </h2>
             <p>
-              CompressMyPic sendiri tidak memasang cookie apa pun untuk alat gambarnya: kompresi berjalan sepenuhnya di browser Anda dan tidak memerlukan cookie, akun, atau preferensi yang disimpan oleh kami. Cookie di situs ini berasal dari layanan pihak ketiga. Google AdSense dan mitranya dapat memasang cookie iklan untuk menampilkan iklan yang relevan kepada Anda dan mengukur seberapa sering suatu iklan ditampilkan. Browser Anda menyimpan cookie ini di perangkat Anda, dan Anda dapat menghapusnya kapan saja melalui pengaturan browser.
+              CompressMyPic sendiri tidak memasang cookie apa pun untuk alat gambarnya: kompresi berjalan sepenuhnya di browser Anda dan tidak memerlukan cookie, akun, atau preferensi yang disimpan oleh kami. Cookie di situs ini berasal dari layanan pihak ketiga. Misalnya, Google Analytics dapat memasang cookie untuk statistik penggunaan. Browser Anda menyimpan cookie ini di perangkat Anda, dan Anda dapat menghapusnya kapan saja melalui pengaturan browser.
             </p>
             <p>
-              Jika Anda berkunjung dari Kawasan Ekonomi Eropa atau Britania Raya, kami meminta persetujuan Anda sebelum menampilkan iklan yang dipersonalisasi, sesuai dengan GDPR dan Kebijakan Persetujuan Pengguna UE dari Google. Anda dapat menarik persetujuan itu kapan saja dengan menghapus cookie browser Anda atau mengubah pilihan persetujuan yang ditawarkan di situs. Memilih iklan yang tidak dipersonalisasi tidak menghentikan iklan sepenuhnya, tetapi berarti iklan tidak lagi didasarkan pada riwayat penjelajahan Anda.
+              CompressMyPic saat ini tidak menampilkan iklan, jadi tidak ada persetujuan iklan yang diminta dari pengunjung di wilayah mana pun.
             </p>
           </section>
 

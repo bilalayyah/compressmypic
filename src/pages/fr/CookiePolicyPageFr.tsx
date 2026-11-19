@@ -60,14 +60,10 @@ export const CookiePolicyPageFr: React.FC<CookiePolicyPageFrProps> = ({ onNaviga
 
           <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              3. Cookies publicitaires de Google AdSense
+              3. Cookies publicitaires
             </h2>
             <p>
-              Nous utilisons Google AdSense pour afficher des publicités sur ce site. AdSense et ses partenaires peuvent définir des cookies sur votre appareil pour diffuser des publicités en fonction de vos visites précédentes sur ce site ou sur d’autres sites. L’utilisation de cookies publicitaires par Google permet à Google et à ses partenaires de vous diffuser des publicités en fonction de votre visite sur ce site et/ou sur d’autres sites Internet, et de mesurer la fréquence d’affichage d’une publicité. Les emplacements publicitaires de ce site sont choisis manuellement ; nous n’utilisons pas l’insertion automatique d’annonces. Vous pouvez refuser la publicité personnalisée en visitant les Paramètres des annonces Google (
-              <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">https://adssettings.google.com</a>
-              ) ou 
-              <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">https://www.aboutads.info/choices/</a>
-              . Choisir des annonces non personnalisées n’arrête pas la publicité, mais cela signifie que les annonces ne sont plus basées sur votre historique de navigation.
+              CompressMyPic n'affiche actuellement aucune publicité et n'installe pas de cookies publicitaires.
             </p>
           </section>
 
@@ -85,7 +81,7 @@ export const CookiePolicyPageFr: React.FC<CookiePolicyPageFrProps> = ({ onNaviga
               5. Consentement (EEE, Royaume-Uni et Suisse)
             </h2>
             <p>
-              Si vous visitez le site depuis l’Espace économique européen, le Royaume-Uni ou la Suisse, Google vous présente un message de consentement avant l’affichage de publicités personnalisées, conformément au RGPD et à la Politique de consentement des utilisateurs de l’UE de Google. Vous pouvez modifier ou retirer votre consentement à tout moment en utilisant le lien « Paramètres de confidentialité et de cookies » dans le pied de page de ce site, qui rouvre le message de consentement, ou en effaçant les cookies de votre navigateur. Retirer votre consentement n’affecte pas ce qui a été fait légalement avant le retrait.
+              Comme ce site n'affiche actuellement aucune publicité, aucun message de consentement publicitaire n'est affiché et aucun consentement publicitaire n'est demandé. Les statistiques d'utilisation sont collectées avec Google Analytics ; vous pouvez bloquer les cookies d'analyse dans les paramètres de votre navigateur (voir la section 8).
             </p>
           </section>
 
@@ -116,7 +112,7 @@ export const CookiePolicyPageFr: React.FC<CookiePolicyPageFrProps> = ({ onNaviga
               8. Comment contrôler les cookies
             </h2>
             <p>
-              Vous pouvez supprimer les cookies déjà stockés sur votre appareil et empêcher l’installation de cookies à l’avenir dans les paramètres de votre navigateur — tous les principaux navigateurs (Chrome, Firefox, Safari, Edge) proposent cette option dans leurs paramètres de confidentialité ou de sécurité. Bloquer tous les cookies ne perturbera pas nos outils d’image, qui ne dépendent pas des cookies, mais cela peut affecter des fonctionnalités de services tiers comme les publicités et les statistiques. Vous pouvez aussi utiliser le mode privé ou de navigation incognito de votre navigateur, qui supprime les cookies à la fermeture de la fenêtre.
+              Vous pouvez supprimer les cookies déjà stockés sur votre appareil et empêcher l’installation de cookies à l’avenir dans les paramètres de votre navigateur — tous les principaux navigateurs (Chrome, Firefox, Safari, Edge) proposent cette option dans leurs paramètres de confidentialité ou de sécurité. Bloquer tous les cookies ne perturbera pas nos outils d’image, qui ne dépendent pas des cookies, mais cela peut affecter des fonctionnalités de services tiers comme les statistiques. Vous pouvez aussi utiliser le mode privé ou de navigation incognito de votre navigateur, qui supprime les cookies à la fermeture de la fenêtre.
             </p>
           </section>
 

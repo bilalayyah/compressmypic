@@ -81,7 +81,7 @@ export const DisclaimerPageIt: React.FC<DisclaimerPageItProps> = ({ onNavigate }
               5. Servizi e link di terze parti
             </h2>
             <p>
-              Questo sito utilizza servizi di terze parti — Google AdSense per la pubblicità, Google Analytics 4 per le statistiche di utilizzo, FormSubmit per il modulo di contatto e un Cloudflare Worker per i commenti anonimi — e collega a siti web esterni. Non controlliamo questi servizi né questi siti e non siamo responsabili dei loro contenuti, disponibilità, pratiche sulla privacy o accuratezza. Quando li usi, si applicano i loro termini e le loro informative sulla privacy.
+              Questo sito utilizza servizi di terze parti — Google Analytics 4 per le statistiche di utilizzo, FormSubmit per il modulo di contatto e un Cloudflare Worker per i commenti anonimi — e collega a siti web esterni. Non controlliamo questi servizi né questi siti e non siamo responsabili dei loro contenuti, disponibilità, pratiche sulla privacy o accuratezza. Quando li usi, si applicano i loro termini e le loro informative sulla privacy.
             </p>
           </section>
 
@@ -90,7 +90,7 @@ export const DisclaimerPageIt: React.FC<DisclaimerPageItProps> = ({ onNavigate }
               6. Pubblicità
             </h2>
             <p>
-              Gli annunci mostrati su questo sito sono forniti da Google AdSense e dai suoi partner. Non approviamo, garantiamo né ci assumiamo responsabilità per alcun prodotto, servizio o affermazione presente in un annuncio. Qualsiasi acquisto o decisione basata su un annuncio è interamente a tuo rischio; valuta tu stesso gli inserzionisti prima di acquistare qualsiasi cosa.
+              Questo sito al momento non mostra annunci.
             </p>
           </section>
 

@@ -60,14 +60,10 @@ export const CookiePolicyPageDe: React.FC<CookiePolicyPageDeProps> = ({ onNaviga
 
           <section className="space-y-2">
             <h2 className="text-lg font-sans font-bold text-[var(--ink-navy)]">
-              3. Werbe-Cookies von Google AdSense
+              3. Werbe-Cookies
             </h2>
             <p>
-              Wir verwenden Google AdSense, um Anzeigen auf dieser Website zu zeigen. AdSense und seine Partner können Cookies auf Ihrem Gerät setzen, um Anzeigen auf Grundlage Ihrer früheren Besuche auf dieser oder anderen Websites auszuliefern. Die Verwendung von Werbe-Cookies durch Google ermöglicht es Google und seinen Partnern, Ihnen Anzeigen auf Grundlage Ihres Besuchs auf dieser Website und/oder anderen Websites im Internet zu zeigen und zu messen, wie oft eine Anzeige gezeigt wird. Werbeplätze auf dieser Website werden manuell ausgewählt; wir verwenden keine automatische Anzeigeneinfügung. Sie können personalisierte Werbung ablehnen, indem Sie die Google-Anzeigeneinstellungen (
-              <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">https://adssettings.google.com</a>
-              ) oder 
-              <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">https://www.aboutads.info/choices/</a>
-               besuchen. Nicht personalisierte Anzeigen zu wählen beendet die Werbung nicht vollständig, bedeutet aber, dass Anzeigen nicht mehr auf Ihrem Browserverlauf basieren.
+              CompressMyPic zeigt derzeit keine Werbung und setzt keine Werbe-Cookies.
             </p>
           </section>
 
@@ -85,7 +81,7 @@ export const CookiePolicyPageDe: React.FC<CookiePolicyPageDeProps> = ({ onNaviga
               5. Einwilligung (EWR, Vereinigtes Königreich und Schweiz)
             </h2>
             <p>
-              Wenn Sie aus dem Europäischen Wirtschaftsraum, dem Vereinigten Königreich oder der Schweiz besuchen, zeigt Google Ihnen eine Einwilligungsmeldung, bevor personalisierte Werbung angezeigt wird, im Einklang mit der DSGVO und der EU-Nutzereinwilligungsrichtlinie von Google. Sie können Ihre Einwilligung jederzeit ändern oder widerrufen, indem Sie den Link „Datenschutz- und Cookie-Einstellungen“ in der Fußzeile dieser Website verwenden, der die Einwilligungsmeldung erneut öffnet, oder indem Sie Ihre Browser-Cookies löschen. Der Widerruf berührt nicht die Rechtmäßigkeit dessen, was zuvor rechtmäßig geschehen ist.
+              Da diese Website derzeit keine Werbung zeigt, wird keine Einwilligungsmeldung zur Werbung angezeigt und keine Einwilligung zur Werbung eingeholt. Nutzungsstatistiken werden mit Google Analytics erfasst; Analytics-Cookies können Sie über Ihre Browser-Einstellungen blockieren (siehe Abschnitt 8).
             </p>
           </section>
 
@@ -116,7 +112,7 @@ export const CookiePolicyPageDe: React.FC<CookiePolicyPageDeProps> = ({ onNaviga
               8. Wie Sie Cookies steuern
             </h2>
             <p>
-              Sie können bereits auf Ihrem Gerät gespeicherte Cookies löschen und das Setzen von Cookies für die Zukunft in Ihren Browser-Einstellungen blockieren — alle großen Browser (Chrome, Firefox, Safari, Edge) bieten dies in ihren Datenschutz- oder Sicherheitseinstellungen an. Das Blockieren aller Cookies beeinträchtigt unsere Bild-Tools nicht, da sie nicht auf Cookies angewiesen sind, kann aber Funktionen von Drittanbieter-Diensten wie Werbung und Analysen beeinträchtigen. Sie können auch den privaten oder Inkognito-Modus Ihres Browsers verwenden, der Cookies beim Schließen des Fensters löscht.
+              Sie können bereits auf Ihrem Gerät gespeicherte Cookies löschen und das Setzen von Cookies für die Zukunft in Ihren Browser-Einstellungen blockieren — alle großen Browser (Chrome, Firefox, Safari, Edge) bieten dies in ihren Datenschutz- oder Sicherheitseinstellungen an. Das Blockieren aller Cookies beeinträchtigt unsere Bild-Tools nicht, da sie nicht auf Cookies angewiesen sind, kann aber Funktionen von Drittanbieter-Diensten wie Analysen beeinträchtigen. Sie können auch den privaten oder Inkognito-Modus Ihres Browsers verwenden, der Cookies beim Schließen des Fensters löscht.
             </p>
           </section>
 

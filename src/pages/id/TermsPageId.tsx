@@ -112,7 +112,7 @@ export const TermsPageId: React.FC<TermsPageIdProps> = ({ onNavigate }) => {
               8. Layanan Pihak Ketiga
             </h2>
             <p>
-              Situs ini menggunakan layanan pihak ketiga untuk beroperasi, termasuk hosting dan pengiriman konten melalui Cloudflare, periklanan melalui Google AdSense, dan pengiriman pesan melalui FormSubmit. Layanan tersebut memiliki syarat dan kebijakan privasi masing-masing, dan penggunaan Anda atas layanan tersebut diatur oleh dokumen-dokumen tersebut serta oleh syarat ini. Kami tidak bertanggung jawab atas ketersediaan, konten, atau praktik situs web atau layanan pihak ketiga yang ditautkan dari CompressMyPic.
+              Situs ini menggunakan layanan pihak ketiga untuk beroperasi, termasuk hosting dan pengiriman konten melalui Cloudflare dan pengiriman pesan melalui FormSubmit. Layanan tersebut memiliki syarat dan kebijakan privasi masing-masing, dan penggunaan Anda atas layanan tersebut diatur oleh dokumen-dokumen tersebut serta oleh syarat ini. Kami tidak bertanggung jawab atas ketersediaan, konten, atau praktik situs web atau layanan pihak ketiga yang ditautkan dari CompressMyPic.
             </p>
           </section>
 

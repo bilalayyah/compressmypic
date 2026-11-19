@@ -13,8 +13,8 @@ import {
   LayoutGrid,
   Layers,
 } from 'lucide-react';
-import { TOOLS_REGISTRY, TOOL_CATEGORIES } from '../data/tools';
-import type { ToolDefinition } from '../data/tools';
+import { TOOLS_META, TOOL_CATEGORIES } from '../data/toolsMeta';
+import type { ToolMeta } from '../data/toolsMeta';
 import { SUPPORTED_LANGUAGES, type SupportedLang } from '../locales/config';
 import { ES_PATH_BY_EN } from '../locales/es/slugs';
 import { PT_PATH_BY_EN } from '../locales/pt/slugs';
@@ -26,7 +26,7 @@ import { RU_PATH_BY_EN } from '../locales/ru/slugs';
 import { JA_PATH_BY_EN } from '../locales/ja/slugs';
 import { KO_PATH_BY_EN } from '../locales/ko/slugs';
 import { ZH_PATH_BY_EN } from '../locales/zh/slugs';
-import { ThemePreference, useTheme } from '../utils/theme';
+import { ThemePreference, useTheme, type ResolvedTheme } from '../utils/theme';
 
 export interface HeaderStrings {
   home: string; tools: string; howItWorks: string; faq: string; about: string;
@@ -78,8 +78,8 @@ interface HeaderProps {
   /** Localized header strings. Defaults to English. */
   strings?: HeaderStrings;
   /** Active language's tool registry (drives the Tools dropdown + mobile lists).
-      Defaults to the English TOOLS_REGISTRY. */
-  toolsRegistry?: ToolDefinition[];
+      Defaults to the English TOOLS_META. */
+  toolsRegistry?: ToolMeta[];
   /** Active language's category list. Defaults to TOOL_CATEGORIES. */
   categoryLabels?: Array<{ id: string; label: string }>;
   /** Languages that have a translation of the CURRENT page (App computes this).
@@ -98,7 +98,7 @@ export const Header: React.FC<HeaderProps> = ({
   lang = 'en',
   onLanguageChange,
   strings: stringsProp,
-  toolsRegistry = TOOLS_REGISTRY,
+  toolsRegistry = TOOLS_META,
   categoryLabels = TOOL_CATEGORIES,
   availableLanguages = ['en'],
   languageHrefFor,
@@ -150,6 +150,19 @@ export const Header: React.FC<HeaderProps> = ({
   const contactUrl = localizedMap?.['/contact'] ?? '/contact';
 
   const { preference, resolvedTheme, setPreference } = useTheme();
+
+  // SSR: useTheme() reads localStorage/matchMedia, which do not exist in
+  // Node — the server always renders preference 'system' / resolved 'light'.
+  // A client with a stored dark theme (or a dark system) would render a
+  // different icon/label/check on first paint and break hydration (#418).
+  // Render the server-identical theme UI until after mount, then switch to
+  // the real values (post-hydration update, same-size button, no CLS).
+  const [themeMounted, setThemeMounted] = useState(false);
+  useEffect(() => {
+    setThemeMounted(true);
+  }, []);
+  const renderPreference: ThemePreference = themeMounted ? preference : 'system';
+  const renderResolvedTheme: ResolvedTheme = themeMounted ? resolvedTheme : 'light';
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -223,16 +236,16 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   const CurrentThemeIcon =
-    preference === 'light'
+    renderPreference === 'light'
       ? Sun
-      : preference === 'dark'
+      : renderPreference === 'dark'
       ? Moon
-      : resolvedTheme === 'dark'
+      : renderResolvedTheme === 'dark'
       ? Moon
       : Sun;
 
   const currentThemeLabel =
-    THEME_OPTIONS.find((opt) => opt.id === preference)?.label || strings.themeSystem;
+    THEME_OPTIONS.find((opt) => opt.id === renderPreference)?.label || strings.themeSystem;
 
   const comingSoonTitle = lang === 'es' ? 'Próximamente' : 'Coming soon';
 
@@ -542,7 +555,7 @@ export const Header: React.FC<HeaderProps> = ({
                 className="absolute right-0 top-full mt-2 w-48 rounded-2xl border border-[var(--line)] bg-[var(--surface)] py-1.5 shadow-[var(--shadow-lg)] z-50"
               >
                 {THEME_OPTIONS.map(({ id, label, Icon }) => {
-                  const isActive = preference === id;
+                  const isActive = renderPreference === id;
                   return (
                     <button
                       key={id}
@@ -680,7 +693,7 @@ export const Header: React.FC<HeaderProps> = ({
             </p>
             <div className="grid grid-cols-3 gap-2 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-xl">
               {THEME_OPTIONS.map(({ id, shortLabel, Icon }) => {
-                const isActive = preference === id;
+                const isActive = renderPreference === id;
                 return (
                   <button
                     key={id}

@@ -81,7 +81,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
             <button
               type="button"
               onClick={() => handlePresetSelect('low')}
-              className={`px-3.5 py-1.5 text-xs rounded-[9px] transition-all cursor-pointer whitespace-nowrap ${
+              className={`px-3.5 py-1.5 text-xs rounded-[9px] transition-colors cursor-pointer whitespace-nowrap ${
                 settings.preset === 'low'
                   ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] font-semibold shadow-xs'
                   : 'text-[var(--ink-2)] font-medium hover:text-[var(--ink)]'
@@ -92,7 +92,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
             <button
               type="button"
               onClick={() => handlePresetSelect('balanced')}
-              className={`px-3.5 py-1.5 text-xs rounded-[9px] transition-all cursor-pointer whitespace-nowrap ${
+              className={`px-3.5 py-1.5 text-xs rounded-[9px] transition-colors cursor-pointer whitespace-nowrap ${
                 settings.preset === 'balanced'
                   ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] font-semibold shadow-xs'
                   : 'text-[var(--ink-2)] font-medium hover:text-[var(--ink)]'
@@ -103,7 +103,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
             <button
               type="button"
               onClick={() => handlePresetSelect('high')}
-              className={`px-3.5 py-1.5 text-xs rounded-[9px] transition-all cursor-pointer whitespace-nowrap ${
+              className={`px-3.5 py-1.5 text-xs rounded-[9px] transition-colors cursor-pointer whitespace-nowrap ${
                 settings.preset === 'high'
                   ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] font-semibold shadow-xs'
                   : 'text-[var(--ink-2)] font-medium hover:text-[var(--ink)]'
@@ -114,7 +114,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
             <button
               type="button"
               onClick={() => onUpdateSettings({ preset: 'custom' })}
-              className={`px-3.5 py-1.5 text-xs rounded-[9px] transition-all cursor-pointer whitespace-nowrap flex items-center gap-1 ${
+              className={`px-3.5 py-1.5 text-xs rounded-[9px] transition-colors cursor-pointer whitespace-nowrap flex items-center gap-1 ${
                 settings.preset === 'custom'
                   ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] font-semibold shadow-xs'
                   : 'text-[var(--ink-2)] font-medium hover:text-[var(--ink)]'
@@ -144,7 +144,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
                 key={fmt.id}
                 type="button"
                 onClick={() => onUpdateSettings({ format: fmt.id })}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-[9px] transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-3 py-1.5 text-xs font-semibold rounded-[9px] transition-colors cursor-pointer whitespace-nowrap ${
                   settings.format === fmt.id
                     ? 'btn-purple-grad shadow-xs'
                     : 'text-[var(--ink-2)] hover:text-[var(--ink)]'

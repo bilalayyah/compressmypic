@@ -9,7 +9,6 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import { ToolDefinition, TOOL_BY_SLUG, TOOL_CATEGORIES } from '../data/tools';
-import { AdSlot } from './AdSlot';
 import { trackToolUsed } from '../utils/analytics';
 import { Comments, EN_COMMENT_STRINGS, type CommentStrings } from './Comments';
 import type { SupportedLang } from '../locales/config';
@@ -520,11 +519,6 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
         {children}
       </section>
 
-      {/* Reserved Non-Intrusive Ad Slot */}
-      <div className="px-4">
-        <AdSlot slotId={`tool-${tool.slug.replace(/\//g, '')}-mid`} format="horizontal" />
-      </div>
-
       {/* How to Use Section: Numbered Step Cards Cycling Pastel Palettes */}
       {tool.howToSteps.length > 0 && (
         <section className="py-12 sm:py-16 border-t border-[var(--line)] bg-[var(--bg-soft)]">
@@ -676,7 +670,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                     e.preventDefault();
                     onNavigate(rel.slug);
                   }}
-                  className="group flex items-start justify-between gap-4 p-5 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#7c3aed]/40 hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all"
+                  className="group flex items-start justify-between gap-4 p-5 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#7c3aed]/40 hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-[transform,box-shadow,border-color]"
                 >
                   <div className="flex items-start gap-3.5 min-w-0">
                     <span className={`w-9 h-9 rounded-lg ${getPastelTileClass(idx * 2)} flex items-center justify-center shrink-0 text-xs font-bold`}>

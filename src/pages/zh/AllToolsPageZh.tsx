@@ -12,7 +12,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, Search, Sparkles } from 'lucide-react';
-import type { ToolDefinition, ToolCategoryId } from '../../data/tools';
+import type { ToolMeta, ToolCategoryId } from '../../data/toolsMeta';
 import { CategoryGuides } from '../../components/blog/CategoryGuides';
 import { getPastelTileClass } from '../../utils/pastel';
 import { localizePath } from '../../locales/alternates';
@@ -39,7 +39,7 @@ const ZH_STRINGS: AllToolsPageZhStrings = {
 interface AllToolsPageZhProps {
   onNavigate: (path: string) => void;
   /** Active-language tool registry values (in registry order). */
-  tools: ToolDefinition[];
+  tools: ToolMeta[];
   /** Active-language category list. */
   categories: Array<{ id: string; label: string }>;
   /** Page strings. Defaults to Chinese. */
