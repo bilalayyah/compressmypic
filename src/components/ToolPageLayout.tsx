@@ -52,7 +52,7 @@ export interface ToolPageLayoutStrings {
   commentsLoading?: string;
 }
 
-const EN_STRINGS: ToolPageLayoutStrings = {
+export const EN_STRINGS: ToolPageLayoutStrings = {
   home: 'Home',
   privacyPill: '100% Private Browser Processing · Files Never Leave Your Device',
   noUploads: 'No server uploads',

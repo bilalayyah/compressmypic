@@ -198,7 +198,7 @@ async function main() {
   if (opts.limit) routes = routes.slice(0, opts.limit);
   console.log(`[prerender-ssr] routes: ${routes.length}`);
 
-  const { renderRoute, getArticleFaqPage } = await import(SSR_BUNDLE);
+  const { renderRoute, getArticleFaqPage, getToolPageHead } = await import(SSR_BUNDLE);
   let done = 0;
   let skipped = 0;
   const failed = [];
@@ -352,6 +352,136 @@ async function main() {
   }
   console.log(
     `[prerender-ssr] FAQPage repair: injected into ${faqRepaired} article heads (${faqNoNode} non-article/no-FAQ routes skipped)`,
+  );
+
+  // Tool-head refresh pass — the carried head is a Chromium-captured
+  // snapshot, so when tool copy changes (seoTitle, seoDescription,
+  // subtitle, howToSteps, FAQs) the head's <title>, meta/og/twitter
+  // tags and the HowTo + FAQPage JSON-LD nodes go stale even though the
+  // SSR body re-renders with the new copy. (This is what the GSC
+  // duplicate-canonical differentiation hit: the 5 changed tool pages
+  // re-rendered their bodies but kept old heads.) Regenerate those
+  // fields from the real data (entry-server getToolPageHead, which
+  // mirrors the ToolPageLayout client effects exactly) and replace them
+  // in the carried head. Idempotent: a value is replaced only when it
+  // differs from the fresh one, so unchanged pages stay byte-identical
+  // apart from the bundle-hash refresh the render loop already does.
+  const decodeEntities = (s) =>
+    s
+      .replace(/&amp;/g, '&')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;|&apos;/g, "'")
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>');
+  const escapeHtmlAttr = (s) =>
+    s
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  let toolHeadsRefreshed = 0;
+  for (const route of routes) {
+    let head = null;
+    try {
+      head = await getToolPageHead(route);
+    } catch (e) {
+      console.error(
+        `[prerender-ssr] Tool-head lookup failed for ${route}: ${String((e && e.message) || e).slice(0, 120)}`,
+      );
+      continue;
+    }
+    if (!head) continue;
+    const outPath = outPathFor(route);
+    if (!fs.existsSync(outPath)) continue;
+    let html;
+    try {
+      html = fs.readFileSync(outPath, 'utf8');
+    } catch {
+      continue;
+    }
+    let updated = html;
+    // <title> — text content, escaped the way innerHTML serializes it.
+    updated = updated.replace(/<title>([\s\S]*?)<\/title>/, (m, inner) =>
+      decodeEntities(inner) === head.seoTitle
+        ? m
+        : `<title>${escapeHtmlAttr(head.seoTitle)}</title>`,
+    );
+    // Meta content tags (name/property first, content second — the
+    // order the head effect creates them in).
+    const metaTargets = [
+      ['name', 'description', head.seoDescription],
+      ['property', 'og:title', head.seoTitle],
+      ['property', 'og:description', head.seoDescription],
+      ['property', 'og:image:alt', head.seoTitle],
+      ['name', 'twitter:title', head.seoTitle],
+      ['name', 'twitter:description', head.seoDescription],
+      ['name', 'twitter:image:alt', head.seoTitle],
+    ];
+    for (const [attr, key, fresh] of metaTargets) {
+      const escKey = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const re = new RegExp(
+        `<meta ${attr}="${escKey}" content="([^"]*)"\\s*/?>`,
+      );
+      updated = updated.replace(re, (m, content) =>
+        decodeEntities(content) === fresh
+          ? m
+          : m.replace(content, escapeHtmlAttr(fresh)),
+      );
+    }
+    // Tool JSON-LD: replace the HowTo + FAQPage nodes with fresh ones.
+    // The script text is JSON.stringify output (see ToolPageLayout),
+    // so parse + replace + stringify reproduces the original bytes
+    // exactly when nothing changed.
+    const scriptRe =
+      /<script type="application\/ld\+json" id="tool-[^"]*">([\s\S]*?)<\/script>/;
+    const sm = updated.match(scriptRe);
+    if (sm) {
+      try {
+        const doc = JSON.parse(sm[1]);
+        const graph =
+          doc && Array.isArray(doc['@graph']) ? doc['@graph'] : null;
+        if (graph) {
+          let changed = false;
+          for (const [type, fresh] of [
+            ['HowTo', head.howToNode],
+            ['FAQPage', head.faqNode],
+          ]) {
+            if (!fresh) continue;
+            const idx = graph.findIndex((n) => n && n['@type'] === type);
+            if (idx === -1) {
+              graph.push(fresh);
+              changed = true;
+            } else if (JSON.stringify(graph[idx]) !== JSON.stringify(fresh)) {
+              graph[idx] = fresh;
+              changed = true;
+            }
+          }
+          if (changed) {
+            const scriptId = sm[0].match(/id="([^"]*)"/)[1];
+            updated = updated.replace(
+              sm[0],
+              `<script type="application/ld+json" id="${scriptId}">${JSON.stringify(doc)}</script>`,
+            );
+          }
+        }
+      } catch {
+        // Unparseable script — leave the head untouched.
+      }
+    }
+    if (updated !== html) {
+      try {
+        fs.writeFileSync(outPath, updated, 'utf8');
+        toolHeadsRefreshed += 1;
+      } catch (e) {
+        console.error(
+          `[prerender-ssr] Tool-head write failed for ${route}: ${String((e && e.message) || e).slice(0, 120)}`,
+        );
+      }
+    }
+  }
+  console.log(
+    `[prerender-ssr] Tool-head refresh: ${toolHeadsRefreshed} heads updated`,
   );
 
   console.log(

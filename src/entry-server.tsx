@@ -43,6 +43,10 @@ import {
 import { EN_BLOG_STRINGS } from './components/blog/blogStrings';
 import { withTrailingSlash } from './locales/alternates';
 import { buildFaqPageNode } from './utils/faqJsonLd';
+import { TOOL_BY_SLUG } from './data/tools';
+import type { ToolDefinition } from './data/tools';
+import { EN_STRINGS } from './components/ToolPageLayout';
+import type { ToolPageLayoutStrings } from './components/ToolPageLayout';
 import type { BlogArticleLocaleOverride } from './types/blog';
 
 async function preloadRoute(urlPath: string): Promise<void> {
@@ -100,6 +104,83 @@ export async function getArticleFaqPage(
   // const inside that effect; the literal is the site's canonical domain).
   const canonical = `https://compressmypic.online${withTrailingSlash(toLocalizedPath(parsed.path, lang))}`;
   return buildFaqPageNode({ faqs: version.faqs, heading, url: canonical });
+}
+
+// Tool-page head data for one tool route, computed from the real data
+// (registry + locale strings) — the SSR-side counterpart of the
+// ToolPageLayout head effects (title, meta, og/twitter, HowTo + FAQPage
+// JSON-LD). Those effects are client-only (useEffect), so the SSR
+// prerender carries heads from old Chromium-captured snapshots; when tool
+// copy changes (title, description, subtitle, steps, FAQs), the carried
+// head goes stale even though the SSR body re-renders with the new copy.
+// This helper lets scripts/prerender-ssr.cjs refresh the carried head
+// from current data. Returns null for non-tool routes and the homepage
+// (no FAQs/steps of its own). The node shapes mirror the client effect
+// exactly (ToolPageLayout.tsx), so a refresh is byte-identical on
+// unchanged pages and only the changed values differ.
+export async function getToolPageHead(urlPath: string): Promise<{
+  seoTitle: string;
+  seoDescription: string;
+  faqNode: Record<string, unknown> | null;
+  howToNode: Record<string, unknown> | null;
+} | null> {
+  await preloadRoute(urlPath);
+  const parsed = parsePath(urlPath);
+  const lang = parsed.lang;
+  const enSlug = parsed.path;
+  if (enSlug === '/' || !TOOL_BY_SLUG[enSlug]) return null;
+  const localeData =
+    lang === 'en'
+      ? null
+      : getCachedLocale<{
+          ui?: { toolPageLayout?: ToolPageLayoutStrings };
+          tools?: Record<string, ToolDefinition>;
+        }>(lang);
+  const tool: ToolDefinition | undefined =
+    lang === 'en'
+      ? TOOL_BY_SLUG[enSlug]
+      : (localeData?.tools?.[enSlug] ?? TOOL_BY_SLUG[enSlug]);
+  if (!tool) return null;
+  const ui: ToolPageLayoutStrings =
+    lang === 'en'
+      ? EN_STRINGS
+      : (localeData?.ui?.toolPageLayout ?? EN_STRINGS);
+  // Same canonical the ToolPageLayout effect computes.
+  const canonicalUrl = `https://compressmypic.online${withTrailingSlash(toLocalizedPath(parsed.path, lang))}`;
+  const faqNode =
+    tool.faqs.length > 0
+      ? {
+          '@type': 'FAQPage',
+          name: ui.faqTitle.replace('{name}', tool.name),
+          url: canonicalUrl,
+          mainEntity: tool.faqs.map((f) => ({
+            '@type': 'Question',
+            name: f.question,
+            acceptedAnswer: { '@type': 'Answer', text: f.answer },
+          })),
+        }
+      : null;
+  const howToNode =
+    tool.howToSteps.length > 0
+      ? {
+          '@type': 'HowTo',
+          name: ui.howToTitle.replace('{name}', tool.name),
+          description: tool.subtitle || tool.seoDescription,
+          url: canonicalUrl,
+          step: tool.howToSteps.map((s, i) => ({
+            '@type': 'HowToStep',
+            position: i + 1,
+            name: s.title,
+            text: s.description,
+          })),
+        }
+      : null;
+  return {
+    seoTitle: tool.seoTitle,
+    seoDescription: tool.seoDescription,
+    faqNode,
+    howToNode,
+  };
 }
 
 // Warm-up pass: render with renderToPipeableStream and wait for onAllReady,
