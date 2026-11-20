@@ -231,7 +231,7 @@ export const Header: React.FC<HeaderProps> = ({
       handleNav(matchingTools[0].slug);
       setSearchQuery('');
     } else {
-      handleNav('/#tools-directory');
+      handleNav(localizedMap?.['/all-tools'] ?? '/all-tools');
     }
   };
 
@@ -583,7 +583,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           <button
             type="button"
-            onClick={() => handleNav('/#tools-directory')}
+            onClick={() => handleNav(localizedMap?.['/all-tools'] ?? '/all-tools')}
             className="hidden lg:inline-flex items-center gap-1.5 px-4 h-11 text-[0.82rem] font-semibold btn-purple-pill shadow-xs whitespace-nowrap shrink-0 cursor-pointer"
           >
             <LayoutGrid className="w-3.5 h-3.5" />

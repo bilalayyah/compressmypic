@@ -1,5 +1,5 @@
 // Blog home page — /blog/ (and /<lang>/blog/). Hero, search, category nav,
-// featured top 3, latest newest-first with count, the 3 existing guide
+// latest newest-first with count, the 3 existing guide
 // pages, and an empty state while Batch 3 articles are still being written.
 // Exactly one <h1> (the hero heading). SEO is set by App.tsx's head effect,
 // not here.
@@ -62,8 +62,7 @@ export function BlogHomePage({ lang, onNavigate, tools, categories, guidesSectio
   const articles = getPublishedBlogArticles(lang).sort((a, b) =>
     a.publishedAt < b.publishedAt ? 1 : -1,
   );
-  const featured = articles.slice(0, 3);
-  const latest = articles.slice(3);
+  const latest = articles;
   const guides = guidesSection ?? EN_GUIDES_SECTION;
 
   const toolNameFor = (toolSlug: string): string | undefined =>
@@ -95,22 +94,6 @@ export function BlogHomePage({ lang, onNavigate, tools, categories, guidesSectio
         </div>
       ) : (
         <>
-          <section aria-label={strings.featuredHeading} className="mt-12">
-            <h2 className="text-2xl font-bold mb-5">{strings.featuredHeading}</h2>
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {featured.map((a) => (
-                <BlogCard
-                  key={a.id}
-                  article={a}
-                  lang={lang}
-                  toolName={toolNameFor(a.toolSlug)}
-                  categories={categories}
-                  onNavigate={onNavigate}
-                />
-              ))}
-            </div>
-          </section>
-
           {latest.length > 0 ? (
             <section aria-label={strings.latestHeading.replace('{count}', String(articles.length))} className="mt-12">
               <h2 className="text-2xl font-bold mb-5">

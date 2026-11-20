@@ -182,9 +182,9 @@ export const Hero: React.FC<HeroProps> = ({
           type="button"
           onClick={() => {
             if (onNavigate) {
-              onNavigate('/#tools-directory');
+              onNavigate('/all-tools');
             } else {
-              document.getElementById('tools-directory')?.scrollIntoView({ behavior: 'smooth' });
+              window.location.assign('/all-tools');
             }
           }}
           className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-full bg-[var(--surface)] border border-[var(--line)] hover:border-[#7c3aed]/50 text-[var(--ink)] shadow-2xs transition-colors cursor-pointer"
@@ -211,27 +211,6 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
       </div>
 
-      {/* Real App Stats Strip */}
-      <div className="mt-7 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto">
-        <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl px-4 py-3.5 shadow-[var(--shadow)]">
-          <div className="text-xl sm:text-2xl font-extrabold font-mono text-[var(--ink-navy)]">
-            {toolCount}
-          </div>
-          <div className="text-xs font-medium text-[var(--ink-3)] mt-0.5">Free Image Tools</div>
-        </div>
-        <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl px-4 py-3.5 shadow-[var(--shadow)]">
-          <div className="text-xl sm:text-2xl font-extrabold font-mono text-[var(--ink-navy)]">
-            11
-          </div>
-          <div className="text-xs font-medium text-[var(--ink-3)] mt-0.5">Languages Supported</div>
-        </div>
-        <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl px-4 py-3.5 shadow-[var(--shadow)]">
-          <div className="text-xl sm:text-2xl font-extrabold font-mono text-[var(--ink-navy)]">
-            0
-          </div>
-          <div className="text-xs font-medium text-[var(--ink-3)] mt-0.5">Uploads &amp; Watermarks</div>
-        </div>
-      </div>
     </section>
   );
 };

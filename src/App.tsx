@@ -16,12 +16,6 @@ const ComparisonModal = React.lazy(() =>
 import { EducationalContent, HOW_IT_WORKS_STEPS } from './components/EducationalContent';
 import { FaqSection, FAQ_DATA } from './components/FaqSection';
 import { Footer } from './components/Footer';
-const ShareSection = React.lazy(() =>
-  import('./components/ShareSection').then((m) => ({ default: m.ShareSection }))
-);
-const ToolsDirectorySection = React.lazy(() =>
-  import('./components/ToolsDirectorySection').then((m) => ({ default: m.ToolsDirectorySection }))
-);
 // Route pages are lazy-loaded (code-split): each tool / legal / guide /
 // localized page ships as its own chunk, fetched only when its route opens.
 // The home compressor UI stays in the initial bundle. Shared components
@@ -887,10 +881,10 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
   const isNotFound = route.notFound === true;
 
   const [lang, setLang] = useState<SupportedLang>(route.lang);
-  // "All Tools" target for the 404 page: EN uses the home directory anchor;
-  // localized languages have a dedicated directory page.
+  // "All Tools" target for the 404 page: every language has a dedicated
+  // directory page (EN: /all-tools).
   const allToolsPath =
-    lang === 'es' ? ES_ALL_TOOLS_PATH : lang === 'pt' ? PT_ALL_TOOLS_PATH : lang === 'fr' ? FR_ALL_TOOLS_PATH : lang === 'de' ? DE_ALL_TOOLS_PATH : lang === 'it' ? IT_ALL_TOOLS_PATH : lang === 'id' ? ID_ALL_TOOLS_PATH : lang === 'ru' ? RU_ALL_TOOLS_PATH : lang === 'ja' ? JA_ALL_TOOLS_PATH : lang === 'ko' ? KO_ALL_TOOLS_PATH : lang === 'zh' ? ZH_ALL_TOOLS_PATH : '/#tools-directory';
+    lang === 'es' ? ES_ALL_TOOLS_PATH : lang === 'pt' ? PT_ALL_TOOLS_PATH : lang === 'fr' ? FR_ALL_TOOLS_PATH : lang === 'de' ? DE_ALL_TOOLS_PATH : lang === 'it' ? IT_ALL_TOOLS_PATH : lang === 'id' ? ID_ALL_TOOLS_PATH : lang === 'ru' ? RU_ALL_TOOLS_PATH : lang === 'ja' ? JA_ALL_TOOLS_PATH : lang === 'ko' ? KO_ALL_TOOLS_PATH : lang === 'zh' ? ZH_ALL_TOOLS_PATH : '/all-tools';
   const [esLocale, setEsLocale] = useState<EsLocale | null>(
     // Tier J: main.tsx stored the preloaded locale in the cache
     // before first render, so the first render is already
@@ -2554,21 +2548,9 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
             </div>
           </div>
 
-          {/* Tools Directory Grid */}
-          <Suspense fallback={null}>
-            <ToolsDirectorySection
-              onNavigate={handleNavigate}
-              currentPath="/"
-              lang={lang}
-              toolsRegistry={toolsRegistry}
-              categoryLabels={categoryLabels}
-              strings={strings?.toolsDirectory}
-            />
-          </Suspense>
-
-          {/* Visible link to the tools directory (SEO audit issue 29): EN
-              anchors to the directory section on this page; localized
-              languages have a dedicated directory page. */}
+          {/* Visible link to the tools directory (SEO audit issue 29): every
+              language links to its dedicated directory page (/all-tools for
+              EN; localized paths for the other languages). */}
           <p className="py-6 text-center">
             <a
               href={allToolsPath}
@@ -2578,11 +2560,6 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
               {strings?.toolsDirectory.allTools ?? 'All Tools'}
             </a>
           </p>
-
-          {/* Share Section */}
-                    <Suspense fallback={null}>
-                      <ShareSection strings={strings?.shareSection} />
-                    </Suspense>
 
           {/* Educational Content Section — Tier F: below the fold, so the
               browser may skip rendering it until it nears the viewport.

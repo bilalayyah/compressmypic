@@ -7,7 +7,7 @@ interface NotFoundPageProps {
   onNavigate?: (path: string) => void;
   lang?: SupportedLang;
   /** Target for the "Browse all tools" link: the localized directory page,
-   *  or '/#tools-directory' for English (the directory lives on the home page). */
+   *  or '/all-tools' for English (EN has a dedicated /all-tools page). */
   allToolsPath?: string;
 }
 
@@ -65,7 +65,7 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({
     }
   };
 
-  const directoryPath = allToolsPath ?? '/#tools-directory';
+  const directoryPath = allToolsPath ?? '/all-tools';
   const homeHref = lang && lang !== 'en' ? `/${lang}/` : '/';
 
   return (
