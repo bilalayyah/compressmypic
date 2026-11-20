@@ -2,7 +2,7 @@
 // Korean slugs are SEO-friendly, accent-free, and use natural vocabulary.
 // Home: '/' -> '/ko/'. Alias '/ko/imiji-apchuk' redirects to '/ko/' (no duplicate content).
 // Generated for the Japanese+Korean translation project (Phase 5, 2026-11-14). Keep in sync with
-// src/data/tools.ts (same 48 tools) and public/sitemap.xml.
+// src/data/tools.ts (same 47 tools) and public/sitemap.xml.
 
 export const KO_PATH_BY_EN: Record<string, string> = {
   '/': '/ko/',
@@ -54,7 +54,6 @@ export const KO_PATH_BY_EN: Record<string, string> = {
   '/svg-to-png': '/ko/svg-png-byeonhwan',
   '/avif-to-jpg': '/ko/avif-jpg-byeonhwan',
   '/bmp-to-jpg': '/ko/bmp-jpg-byeonhwan',
-  '/remove-background': '/ko/baegyeong-jegeo',
   // --- Legal ---
   '/about': '/ko/hoesa-sogae',
   '/contact': '/ko/mun-ui',
@@ -73,7 +72,6 @@ export const KO_PATH_BY_EN: Record<string, string> = {
   '/blog/category/resize': '/ko/blog/category/keugi-jojeong',
   '/blog/category/convert': '/ko/blog/category/byeonhwan',
   '/blog/category/crop-edit': '/ko/blog/category/jareugi-pyeonjip',
-  '/blog/category/ai-tools': '/ko/blog/category/ai-dogu',
   '/blog/category/create': '/ko/blog/category/mandeulgi',
   '/blog/category/privacy': '/ko/blog/category/gaeinjeongbo-dogu',
   '/blog/category/developer': '/ko/blog/category/gaebalja-dogu',
@@ -218,9 +216,6 @@ export const KO_PATH_BY_EN: Record<string, string> = {
   '/blog/remove-image-metadata-guide': '/ko/blog/imiji-metadeiteo-jegeo-wanjeon-gaideu',
   '/blog/how-to-remove-metadata-from-image': '/ko/blog/imiji-metadeiteo-jegeo-haneun-beop',
   '/blog/photo-privacy-gps-exif-risks': '/ko/blog/sajin-paibeosi-gps-exif-wiheom',
-  '/blog/background-remover-guide': '/ko/blog/baegyeong-jegeo-wanjeon-gaideu',
-  '/blog/how-to-remove-background-from-image': '/ko/blog/sajin-baegyeong-jiugi-bangbeop',
-  '/blog/ai-background-removal-vs-manual-cutout': '/ko/blog/ai-baegyeong-jegeo-vs-sudong-nukki',
 };
 
 export const EN_PATH_BY_KO: Record<string, string> = Object.fromEntries(

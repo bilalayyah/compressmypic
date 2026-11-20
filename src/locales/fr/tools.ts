@@ -1,4 +1,4 @@
-// French (fr) tool registry — COMPLETE (home + all 48 tools).
+// French (fr) tool registry — COMPLETE (home + all 47 tools).
 // Assembled from tools-fr-batch1.ts … tools-fr-batch6.ts (coordinator merge).
 // Target path in the repo: src/locales/fr/tools.ts
 // French (fr), vous form. Slugs, category ids and
@@ -14,7 +14,6 @@ export const TOOL_CATEGORIES_FR: ToolCategoryMeta[] = [
   { id: "resize", label: "Redimensionner", description: "Modifiez les dimensions en pixels ou redimensionnez des images en lot" },
   { id: "convert", label: "Convertir", description: "Convertissez entre formats d'image et générez des PDF" },
   { id: "crop-edit", label: "Recadrer et modifier", description: "Pivotez, retournez, recadrez et ajustez vos photos" },
-  { id: "ai-tools", label: "Outils IA", description: "Traitement intelligent des images dans le navigateur" },
   { id: "create", label: "Créer", description: "Créez des favicons, des collages et des ressources web" },
   { id: "privacy", label: "Outils de confidentialité", description: "Inspectez et supprimez les métadonnées EXIF, GPS et cachées" },
   { id: "developer", label: "Outils de développement", description: "Choisissez des couleurs, inspectez les dimensions et générez des ressources web" },
@@ -2028,7 +2027,7 @@ export const TOOLS_REGISTRY_FR: ToolDefinition[] = [
       {
         question: "Et si je veux flouter proprement tout l'arrière-plan d'un portrait sans peindre ?",
         answer:
-          "Utilisez le mode Image entière quand vous voulez un adoucissement uniforme de l'arrière-plan derrière des graphiques ou des cartes d'interface. Pour isoler un sujet sur un fond propre, associez-le à notre outil Supprimer l'arrière-plan.",
+          "Utilisez le mode Image entière quand vous voulez un adoucissement uniforme de l'arrière-plan derrière des graphiques ou des cartes d'interface.",
       },
       {
         question: "Jusqu'où peuvent aller le flou doux et la mosaïque pixelisée ?",
@@ -7786,174 +7785,6 @@ export const TOOLS_REGISTRY_FR: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/png-to-jpg', '/image-converter', '/bulk-image-converter', '/compress-image-to-100kb'],
-  },
-  {
-    slug: '/remove-background',
-    name: 'Suppression d’arrière-plan par IA',
-    shortDescription: 'Supprimez l’arrière-plan de vos images avec l’IA dans le navigateur et exportez des PNG transparents.',
-    category: 'ai-tools',
-    seoTitle: 'Supprimer l’arrière-plan d’une image gratuitement – IA, sans inscription',
-    seoDescription: 'Supprimez l’arrière-plan de n’importe quelle image gratuitement avec l’IA du navigateur. Téléchargez un PNG transparent ou ajoutez un fond blanc, noir ou personnalisé — sans inscription ni envoi.',
-    h1: 'Suppresseur d’arrière-plan IA gratuit en ligne',
-    subtitle:
-      'Supprimez l’arrière-plan des portraits, des photos de produit, des animaux et des logos grâce à notre suppresseur d’arrière-plan IA gratuit, qui fonctionne entièrement dans votre navigateur. Conçu pour les vendeurs, les créateurs et les designers qui ont besoin de découpes propres rapidement, il charge un modèle IA compact une seule fois (environ 35 Mo, mis en cache ensuite), traite une photo à la fois jusqu’à 20 Mo et exporte un PNG transparent — ou place votre découpe sur un fond blanc, noir ou personnalisé.',
-    howToSteps: [
-      {
-        title: 'Attendez le chargement du modèle IA',
-        description:
-          'Lors de la première utilisation, la page télécharge le modèle compact isnet_quint8 (environ 35 Mo) une seule fois et le met en cache dans votre navigateur ; les visites suivantes démarrent instantanément.',
-      },
-      {
-        title: 'Déposez une photo jusqu’à 20 Mo',
-        description:
-          'Importez une seule photo JPG, PNG, WebP, HEIC, BMP ou AVIF — un fichier à la fois — dans la zone de dépôt.',
-      },
-      {
-        title: 'Laissez l’IA découper votre sujet',
-        description:
-          'Le modèle isole votre sujet localement dans votre navigateur et affiche l’original à côté de la découpe transparente.',
-      },
-      {
-        title: 'Comparez la découpe avec l’original',
-        description:
-          'Cliquez sur Comparaison partagée pour glisser sur la vue avant/après et vérifier les contours autour des cheveux, de la fourrure et des détails fins.',
-      },
-      {
-        title: 'Choisissez transparent, blanc, noir ou personnalisé',
-        description:
-          'Gardez le PNG transparent, ou passez à un fond blanc, noir ou de couleur personnalisée avant de télécharger.',
-      },
-      {
-        title: 'Téléchargez votre découpe',
-        description:
-          'Enregistrez le PNG transparent (nommé d’après votre photo avec _no_bg ajouté) ou la version à fond uni, puis cliquez sur Nouvelle image pour la photo suivante.',
-      },
-    ],
-    features: [
-      {
-        title: 'Segmentation IA 100 % sur l’appareil',
-        description:
-          'Propulsé par le modèle ONNX léger isnet_quint8 qui s’exécute localement dans votre navigateur : vos photos ne sont jamais envoyées sur un serveur.',
-      },
-      {
-        title: 'Export instantané de PNG transparent',
-        description:
-          'Téléchargez des découpes PNG nettes avec transparence alpha, prêtes pour les annonces e-commerce, les miniatures, les présentations et le travail de design.',
-      },
-      {
-        title: 'Changeur de fond uni intégré',
-        description:
-          'Prévisualisez votre découpe et exportez-la sur fond blanc pur, noir intense ou n’importe quelle couleur hexadécimale personnalisée sans ouvrir une autre application.',
-      },
-      {
-        title: 'Gratuit, sans inscription et sans filigrane',
-        description:
-          'Des découpes en pleine résolution sans limite quotidienne, sans compte et sans filigrane.',
-      },
-    ],
-    faqs: [
-      {
-        question: 'La suppression d’arrière-plan envoie-t-elle ma photo sur un serveur ?',
-        answer:
-          'Non. Le modèle IA se télécharge une seule fois dans votre navigateur et exécute l’inférence entièrement sur votre appareil : votre photo n’est jamais envoyée, ni stockée, ni vue par qui que ce soit d’autre. Fermer l’onglet efface tout de la mémoire du navigateur.',
-      },
-      {
-        question: 'Pourquoi la première découpe est-elle plus lente que les suivantes ?',
-        answer:
-          'Lors de la première visite, votre navigateur télécharge le modèle compact isnet_quint8 (environ 35 Mo) et initialise le moteur IA WebAssembly, ce qui prend quelques secondes supplémentaires. Ensuite, le modèle est mis en cache : les photos suivantes se traitent donc bien plus vite.',
-      },
-      {
-        question: 'Quelle est la taille du modèle IA que mon navigateur télécharge ?',
-        answer:
-          'Environ 35 Mo, téléchargés une seule fois lors de la première utilisation puis mis en cache par votre navigateur. Le petit modèle quantifié isnet_quint8 est ce qui rend la suppression dans le navigateur possible sans serveur : les modèles cloud plus gros nécessiteraient un envoi et une API payante.',
-      },
-      {
-        question: 'Puis-je utiliser le suppresseur d’arrière-plan sans Internet après le premier chargement ?',
-        answer:
-          'En grande partie, oui : une fois le modèle mis en cache, la suppression réelle s’exécute entièrement hors ligne dans votre navigateur. Vous avez toujours besoin d’Internet pour charger la page elle-même la première fois, et le modèle en cache peut être effacé si le navigateur nettoie les données du site.',
-      },
-      {
-        question: 'Quels types de photos produisent les contours les plus propres ?',
-        answer:
-          'Les photos avec un sujet clair et un bon contraste avec l’arrière-plan fonctionnent le mieux : portraits, photos de produit, animaux, voitures et logos aux contours nets. Un éclairage uniforme et un décor simple donnent au modèle le travail le plus facile.',
-      },
-      {
-        question: 'Puis-je supprimer l’arrière-plan d’une photo avec un paysage désordonné ou très chargé ?',
-        answer:
-          'Oui, mais attendez-vous à des contours plus doux : quand le sujet se fond dans un arrière-plan chargé, le petit modèle sur l’appareil doit deviner où le sujet se termine. Un décor plus propre, un meilleur éclairage ou un recadrage plus serré avant l’import donnent une découpe visiblement meilleure.',
-      },
-      {
-        question: 'Que deviennent les cheveux fins, la fourrure ou les contours transparents ?',
-        answer:
-          'Les mèches fines et la fourrure vaporeuse sont le cas le plus difficile pour un modèle compact quantifié : les contours peuvent donc sembler légèrement doux ou perdre quelques cheveux. Vérifiez la vue Comparaison partagée : pour la plupart des portraits et des photos de produit, le résultat est propre, mais le masquage de cheveux parfait au pixel près est une limite connue.',
-      },
-      {
-        question: 'Comment placer ma découpe sur un fond blanc pur pour Amazon ou eBay ?',
-        answer:
-          'Une fois la découpe prête, choisissez Blanc sous Option de remplissage d’arrière-plan et cliquez sur Télécharger avec fond blanc. Les places de marché préfèrent les JPG et PNG nets à fond blanc opaque pour les miniatures principales de produit, et c’est exactement ce que cela exporte.',
-      },
-      {
-        question: 'Quels formats de fichier puis-je importer ?',
-        answer:
-          'JPG, PNG, WebP, HEIC, BMP et AVIF : l’outil accepte le même ensemble étendu d’images que le reste du site. Les photos HEIC d’iPhone sont converties automatiquement en une image décodable avant que le modèle ne s’exécute.',
-      },
-      {
-        question: 'Quelle est la taille maximale de photo acceptée ?',
-        answer:
-          'Chaque photo peut peser jusqu’à 20 Mo, et l’outil traite une photo à la fois. Cela couvre les photos haute résolution de téléphone et d’appareil photo ; les très gros fichiers prennent simplement un peu plus de temps, car le modèle s’exécute sur votre appareil.',
-      },
-      {
-        question: 'Puis-je supprimer les arrière-plans de plusieurs photos en une fois ?',
-        answer:
-          'Non, cet outil gère une photo à la fois pour que le modèle IA puisse concentrer toute la mémoire de l’appareil sur une seule découpe propre. Cliquez sur Nouvelle image après chaque téléchargement pour traiter la photo suivante : il n’y a pas de limite quotidienne.',
-      },
-      {
-        question: 'La découpe conserve-t-elle la résolution de la photo d’origine ?',
-        answer:
-          'Oui. Le PNG transparent exporté conserve 100 % de la largeur et de la hauteur en pixels de la photo d’origine : une photo de produit de 4000 px reste donc de 4000 px. Utilisez ensuite le redimensionneur d’images si vous avez besoin d’une version plus petite pour le web.',
-      },
-      {
-        question: 'Pourquoi mon PNG transparent pèse-t-il plus que la photo d’origine ?',
-        answer:
-          'PNG stocke chaque pixel de la découpe sans perte, tandis que votre JPG d’origine était fortement compressé : une grande découpe détaillée peut donc facilement peser plus qu’une petite source JPG. C’est normal : vous échangez de la taille de fichier contre de la transparence et des contours parfaits au pixel près.',
-      },
-      {
-        question: 'Puis-je relancer la suppression sur la même photo ?',
-        answer:
-          'Oui. Cliquez sur Relancer la suppression pour traiter à nouveau la même photo : utile si le premier passage a pris une ombre pour une partie du sujet ou si vous voulez comparer les résultats. Le modèle est déterministe : le résultat est donc généralement identique, sauf si l’entrée a changé.',
-      },
-      {
-        question: 'Que faire si une partie du sujet manque dans la découpe ?',
-        answer:
-          'Vérifiez d’abord la vue Comparaison partagée pour voir exactement ce qui a été découpé. Les sujets qui se fondent dans l’arrière-plan — vêtements de même couleur, verre ou camouflage — trompent le modèle ; essayez une photo avec un contraste sujet-arrière-plan plus fort ou recadrez plus près du sujet avant d’importer.',
-      },
-      {
-        question: 'Y a-t-il un filigrane sur le PNG téléchargé ?',
-        answer:
-          'Non. Les téléchargements sont des découpes en pleine résolution sans filigrane, sans logo et sans marque ajoutée. Il n’y a pas non plus d’inscription, de compte ni de limite quotidienne sur le nombre de photos dont vous pouvez supprimer l’arrière-plan.',
-      },
-      {
-        question: 'La suppression d’arrière-plan fonctionne-t-elle dans le navigateur de votre téléphone ?',
-        answer:
-          'Oui. Le modèle se télécharge et s’exécute dans Safari sur iOS et Chrome sur Android, avec les mêmes contrôles d’import, de comparaison et de téléchargement. Sur téléphone, les grosses photos prennent plus de temps, car l’IA s’exécute sur le processeur du téléphone : le Wi-Fi aide pour le premier téléchargement du modèle.',
-      },
-      {
-        question: 'En quoi cet outil diffère-t-il des outils payants comme remove.bg ?',
-        answer:
-          'Cet outil est gratuit, privé et s’exécute entièrement dans votre navigateur sans envoi ni compte, tandis que les outils cloud payants traitent votre photo sur leurs serveurs. Le compromis est la qualité sur les contours délicats : le petit modèle sur l’appareil est excellent pour les sujets clairs, mais ne peut pas égaler les grands modèles cloud sur les cheveux fins ou les scènes chargées.',
-      },
-      {
-        question: 'Puis-je utiliser la découpe dans Canva, Photoshop ou PowerPoint ?',
-        answer:
-          'Oui. Le PNG transparent exporté s’ouvre directement dans Canva, Photoshop, Figma, PowerPoint et Google Slides, où vous pouvez le placer sur n’importe quel arrière-plan, diapositive ou design. Le téléchargement à fond uni fonctionne de la même façon pour les applications qui ont besoin d’une image opaque.',
-      },
-      {
-        question: 'Que devient ma photo après avoir fermé l’onglet du suppresseur d’arrière-plan ?',
-        answer:
-          'Rien n’est stocké nulle part : le traitement a lieu dans la mémoire du navigateur, la photo n’est jamais envoyée et fermer l’onglet efface l’image et la découpe. Seul le modèle IA mis en cache reste dans le navigateur pour une utilisation future plus rapide.',
-      },
-    ],
-    relatedSlugs: ['/add-background-to-image', '/image-resizer', '/png-to-webp'],
   },
 ];
 

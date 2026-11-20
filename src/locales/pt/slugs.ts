@@ -2,7 +2,7 @@
 // Portuguese slugs are SEO-friendly, accent-free, and use Brazilian vocabulary.
 // Home: '/' -> '/pt/'. Alias '/pt/comprimir-imagens' redirects to '/pt/' (no duplicate content).
 // Generated for the Portuguese translation project (Phase 2, 2026-11-13). Keep in sync with
-// src/data/tools.pt.ts (same 48 tools) and public/sitemap.xml.
+// src/data/tools.pt.ts (same 47 tools) and public/sitemap.xml.
 
 export const PT_PATH_BY_EN: Record<string, string> = {
   '/': '/pt/',
@@ -54,7 +54,6 @@ export const PT_PATH_BY_EN: Record<string, string> = {
   '/svg-to-png': '/pt/converter-svg-para-png',
   '/avif-to-jpg': '/pt/converter-avif-para-jpg',
   '/bmp-to-jpg': '/pt/converter-bmp-para-jpg',
-  '/remove-background': '/pt/remover-fundo-da-imagem',
   // --- Legal ---
   '/about': '/pt/sobre',
   '/contact': '/pt/contato',
@@ -73,7 +72,6 @@ export const PT_PATH_BY_EN: Record<string, string> = {
   '/blog/category/resize': '/pt/blog/category/redimensionar',
   '/blog/category/convert': '/pt/blog/category/converter',
   '/blog/category/crop-edit': '/pt/blog/category/recortar-e-editar',
-  '/blog/category/ai-tools': '/pt/blog/category/ferramentas-de-ia',
   '/blog/category/create': '/pt/blog/category/criar',
   '/blog/category/privacy': '/pt/blog/category/privacidade',
   '/blog/category/developer': '/pt/blog/category/desenvolvedores',
@@ -218,9 +216,6 @@ export const PT_PATH_BY_EN: Record<string, string> = {
   '/blog/remove-image-metadata-guide': '/pt/blog/remover-metadados-de-foto',
   '/blog/how-to-remove-metadata-from-image': '/pt/blog/como-remover-metadados-de-uma-foto',
   '/blog/photo-privacy-gps-exif-risks': '/pt/blog/foto-revela-sua-localizacao',
-  '/blog/background-remover-guide': '/pt/blog/remover-fundo-de-imagem-guia',
-  '/blog/how-to-remove-background-from-image': '/pt/blog/como-remover-o-fundo-de-uma-imagem',
-  '/blog/ai-background-removal-vs-manual-cutout': '/pt/blog/remover-fundo-com-ia-ou-manualmente',
 };
 
 export const EN_PATH_BY_PT: Record<string, string> = Object.fromEntries(

@@ -2,7 +2,7 @@
 // Spanish slugs are SEO-friendly, accent-free, and use neutral Latin American vocabulary.
 // Home: '/' -> '/es/'. Alias '/es/comprimir-imagenes' redirects to '/es/' (no duplicate content).
 // Generated for the Spanish translation project (Batch 1, 2026-11-13). Keep in sync with
-// src/data/tools.es.ts (same 48 tools) and public/sitemap.xml.
+// src/data/tools.es.ts (same 47 tools) and public/sitemap.xml.
 
 export const ES_PATH_BY_EN: Record<string, string> = {
   '/': '/es/',
@@ -54,7 +54,6 @@ export const ES_PATH_BY_EN: Record<string, string> = {
   '/svg-to-png': '/es/convertir-svg-a-png',
   '/avif-to-jpg': '/es/convertir-avif-a-jpg',
   '/bmp-to-jpg': '/es/convertir-bmp-a-jpg',
-  '/remove-background': '/es/eliminar-fondo-imagen',
   // --- Legal ---
   '/about': '/es/acerca-de',
   '/contact': '/es/contacto',
@@ -73,7 +72,6 @@ export const ES_PATH_BY_EN: Record<string, string> = {
   '/blog/category/resize': '/es/blog/category/cambiar-tamano',
   '/blog/category/convert': '/es/blog/category/convertir',
   '/blog/category/crop-edit': '/es/blog/category/recortar-y-editar',
-  '/blog/category/ai-tools': '/es/blog/category/herramientas-de-ia',
   '/blog/category/create': '/es/blog/category/crear',
   '/blog/category/privacy': '/es/blog/category/privacidad',
   '/blog/category/developer': '/es/blog/category/desarrolladores',
@@ -218,9 +216,6 @@ export const ES_PATH_BY_EN: Record<string, string> = {
   '/blog/remove-image-metadata-guide': '/es/blog/guia-para-eliminar-metadatos-de-imagen',
   '/blog/how-to-remove-metadata-from-image': '/es/blog/como-eliminar-metadatos-de-una-imagen',
   '/blog/photo-privacy-gps-exif-risks': '/es/blog/riesgos-de-privacidad-de-fotos-gps-exif',
-  '/blog/background-remover-guide': '/es/blog/guia-eliminar-fondo-imagen',
-  '/blog/how-to-remove-background-from-image': '/es/blog/como-eliminar-fondo-de-imagen',
-  '/blog/ai-background-removal-vs-manual-cutout': '/es/blog/eliminacion-de-fondo-con-ia-vs-recorte-manual',
 };
 
 export const EN_PATH_BY_ES: Record<string, string> = Object.fromEntries(

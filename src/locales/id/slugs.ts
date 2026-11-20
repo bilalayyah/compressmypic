@@ -2,7 +2,7 @@
 // Indonesian slugs are SEO-friendly, accent-free, and use natural vocabulary.
 // Home: '/' -> '/id/'. Alias '/id/kompres-gambar' redirects to '/id/' (no duplicate content).
 // Generated for the Indonesian+Russian translation project (Phase 4, 2026-11-14). Keep in sync with
-// src/data/tools.ts (same 48 tools) and public/sitemap.xml.
+// src/data/tools.ts (same 47 tools) and public/sitemap.xml.
 
 export const ID_PATH_BY_EN: Record<string, string> = {
   '/': '/id/',
@@ -54,7 +54,6 @@ export const ID_PATH_BY_EN: Record<string, string> = {
   '/svg-to-png': '/id/svg-ke-png',
   '/avif-to-jpg': '/id/avif-ke-jpg',
   '/bmp-to-jpg': '/id/bmp-ke-jpg',
-  '/remove-background': '/id/hapus-latar-belakang',
   // --- Legal ---
   '/about': '/id/tentang-kami',
   '/contact': '/id/kontak',
@@ -73,7 +72,6 @@ export const ID_PATH_BY_EN: Record<string, string> = {
   '/blog/category/resize': '/id/blog/category/ubah-ukuran',
   '/blog/category/convert': '/id/blog/category/konversi',
   '/blog/category/crop-edit': '/id/blog/category/potong-dan-edit',
-  '/blog/category/ai-tools': '/id/blog/category/alat-ai',
   '/blog/category/create': '/id/blog/category/buat',
   '/blog/category/privacy': '/id/blog/category/privasi',
   '/blog/category/developer': '/id/blog/category/pengembang',
@@ -218,9 +216,6 @@ export const ID_PATH_BY_EN: Record<string, string> = {
   '/blog/remove-image-metadata-guide': '/id/blog/panduan-lengkap-hapus-metadata-gambar',
   '/blog/how-to-remove-metadata-from-image': '/id/blog/cara-menghapus-metadata-gambar',
   '/blog/photo-privacy-gps-exif-risks': '/id/blog/risiko-privasi-foto-gps-dan-exif',
-  '/blog/background-remover-guide': '/id/blog/penghapus-latar-belakang-foto',
-  '/blog/how-to-remove-background-from-image': '/id/blog/cara-menghapus-latar-belakang-foto',
-  '/blog/ai-background-removal-vs-manual-cutout': '/id/blog/penghapus-latar-belakang-ai-vs-manual',
 };
 
 export const EN_PATH_BY_ID: Record<string, string> = Object.fromEntries(

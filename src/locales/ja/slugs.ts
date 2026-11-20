@@ -2,7 +2,7 @@
 // Japanese slugs are SEO-friendly, accent-free, and use natural vocabulary.
 // Home: '/' -> '/ja/'. Alias '/ja/gazo-asshuku' redirects to '/ja/' (no duplicate content).
 // Generated for the Japanese+Korean translation project (Phase 5, 2026-11-14). Keep in sync with
-// src/data/tools.ts (same 48 tools) and public/sitemap.xml.
+// src/data/tools.ts (same 47 tools) and public/sitemap.xml.
 
 export const JA_PATH_BY_EN: Record<string, string> = {
   '/': '/ja/',
@@ -54,7 +54,6 @@ export const JA_PATH_BY_EN: Record<string, string> = {
   '/svg-to-png': '/ja/svg-to-png',
   '/avif-to-jpg': '/ja/avif-to-jpg',
   '/bmp-to-jpg': '/ja/bmp-to-jpg',
-  '/remove-background': '/ja/haikei-jokyo',
   // --- Legal ---
   '/about': '/ja/nitsuite',
   '/contact': '/ja/otoiawase',
@@ -73,7 +72,6 @@ export const JA_PATH_BY_EN: Record<string, string> = {
   '/blog/category/resize': '/ja/blog/category/saizu-henko',
   '/blog/category/convert': '/ja/blog/category/henkan',
   '/blog/category/crop-edit': '/ja/blog/category/torimingu-to-henshu',
-  '/blog/category/ai-tools': '/ja/blog/category/ai-tsuru',
   '/blog/category/create': '/ja/blog/category/sakusei',
   '/blog/category/privacy': '/ja/blog/category/puraibashi',
   '/blog/category/developer': '/ja/blog/category/kaihatsusha-tsuru',
@@ -218,9 +216,6 @@ export const JA_PATH_BY_EN: Record<string, string> = {
   '/blog/remove-image-metadata-guide': '/ja/blog/gazou-metadeta-sakujo-kanzen-gaido',
   '/blog/how-to-remove-metadata-from-image': '/ja/blog/gazou-metadeta-sakujo-houhou',
   '/blog/photo-privacy-gps-exif-risks': '/ja/blog/shashin-puraibashi-gps-exif-risuku',
-  '/blog/background-remover-guide': '/ja/blog/haikei-jokyo-kanzen-gaido',
-  '/blog/how-to-remove-background-from-image': '/ja/blog/haikei-wo-kesu-houhou',
-  '/blog/ai-background-removal-vs-manual-cutout': '/ja/blog/ai-haikei-jokyo-vs-tebiki-kiritori',
 };
 
 export const EN_PATH_BY_JA: Record<string, string> = Object.fromEntries(

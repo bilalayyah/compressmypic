@@ -26,7 +26,7 @@ export interface AllToolsPageStrings {
 const JA_STRINGS: AllToolsPageStrings = {
   heading: 'すべてのツール',
   subheading:
-    'CompressMyPicの無料ツール48種類で、画像の圧縮、変換、編集がブラウザー上で直接できます。',
+    'CompressMyPicの無料ツール47種類で、画像の圧縮、変換、編集がブラウザー上で直接できます。',
   searchPlaceholder: 'ツールを検索…',
   allLabel: 'すべて',
   noResults: 'その名前のツールは見つかりませんでした。',
@@ -55,7 +55,7 @@ export const AllToolsPageJa: React.FC<AllToolsPageJaProps> = ({
   useEffect(() => {
     document.title = 'すべての無料画像ツール | CompressMyPic';
     const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute('content', 'CompressMyPicの無料画像ツール48種類：画像の圧縮、変換、切り抜き、編集、リサイズがブラウザー上で直接でき、登録不要。JPG、PNG、WebP、HEICに対応し、写真はアップロードされません。');
+    if (metaDescription) metaDescription.setAttribute('content', 'CompressMyPicの無料画像ツール47種類：画像の圧縮、変換、切り抜き、編集、リサイズがブラウザー上で直接でき、登録不要。JPG、PNG、WebP、HEICに対応し、写真はアップロードされません。');
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 

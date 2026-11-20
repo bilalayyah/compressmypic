@@ -1,4 +1,4 @@
-// Spanish tool registry — COMPLETE (home + all 48 tools).
+// Spanish tool registry — COMPLETE (home + all 47 tools).
 // Assembled from tools-es-batch1.ts … tools-es-batch6.ts (coordinator merge).
 // Target path in the repo: src/locales/es/tools.ts
 // Neutral Latin American Spanish, usted forms. Slugs, category ids and
@@ -12,7 +12,6 @@ export const TOOL_CATEGORIES_ES: ToolCategoryMeta[] = [
   { id: 'resize', label: 'Cambiar tamaño', description: 'Cambie las dimensiones en píxeles o escale imágenes en lote' },
   { id: 'convert', label: 'Convertir', description: 'Convierta entre formatos de imagen y genere PDF' },
   { id: 'crop-edit', label: 'Recortar y editar', description: 'Rote, voltee, recorte y ajuste sus fotos' },
-  { id: 'ai-tools', label: 'Herramientas de IA', description: 'Procesamiento inteligente de imágenes en el navegador' },
   { id: 'create', label: 'Crear', description: 'Cree faviconos, collages y recursos web' },
   { id: 'privacy', label: 'Herramientas de privacidad', description: 'Inspeccione y elimine metadatos EXIF, GPS y ocultos' },
   { id: 'developer', label: 'Herramientas para desarrolladores', description: 'Elija colores, inspeccione dimensiones y genere recursos web' },
@@ -2004,7 +2003,7 @@ export const TOOLS_REGISTRY_ES: ToolDefinition[] = [
       {
         question: '¿Qué hago si quiero desenfocar todo el fondo de un retrato limpiamente sin pintar con la herramienta de desenfoque?',
         answer:
-          'Use el modo Imagen completa cuando quiera un suavizado uniforme del fondo detrás de gráficos superpuestos o tarjetas de interfaz. Para aislar un sujeto sobre un fondo limpio, combínelo con nuestra herramienta Eliminador de fondo.',
+          'Use el modo Imagen completa cuando quiera un suavizado uniforme del fondo detrás de gráficos superpuestos o tarjetas de interfaz.',
       },
       {
         question: '¿Qué tan fuerte pueden llegar el desenfoque suave y el mosaico pixelado de la herramienta de desenfoque?',
@@ -7799,174 +7798,6 @@ export const TOOLS_REGISTRY_ES: ToolDefinition[] = [
     relatedSlugs: ['/png-to-jpg', '/image-converter', '/bulk-image-converter', '/compress-image-to-100kb'],
   },
 
-  {
-    slug: '/remove-background',
-    name: 'Eliminador de fondo con IA',
-    shortDescription: 'Elimine el fondo de sus imágenes con IA en el navegador y exporte PNG transparentes.',
-    category: 'ai-tools',
-    seoTitle: 'Quitar fondo de imagen gratis – IA, sin registro',
-    seoDescription: 'Quite el fondo de cualquier imagen gratis con IA en el navegador. Descargue un PNG transparente o añada un fondo blanco, negro o personalizado, sin registro ni subidas.',
-    h1: 'Eliminador de fondo con IA gratis online',
-    subtitle:
-      'Elimine el fondo de retratos, fotos de producto, mascotas y logotipos con nuestro eliminador de fondo con IA gratis, que funciona por completo en su navegador. Pensado para vendedores, creadores y diseñadores que necesitan recortes limpios con rapidez, carga un modelo de IA compacto una sola vez (unos 35 MB, guardado en caché después), procesa una foto a la vez de hasta 20 MB y exporta un PNG transparente, o coloca su recorte sobre un fondo blanco, negro o personalizado.',
-    howToSteps: [
-      {
-        title: 'Espere a que cargue el modelo de IA',
-        description:
-          'En el primer uso, la página descarga el modelo compacto isnet_quint8 (unos 35 MB) una sola vez y lo guarda en la caché de su navegador; las visitas posteriores arrancan al instante.',
-      },
-      {
-        title: 'Suelte una foto de hasta 20 MB',
-        description:
-          'Suba una sola foto JPG, PNG, WebP, HEIC, BMP o AVIF — un archivo a la vez — a la zona de subida.',
-      },
-      {
-        title: 'Deje que la IA recorte su sujeto',
-        description:
-          'El modelo aísla su sujeto en local en su navegador y muestra el original junto al recorte transparente.',
-      },
-      {
-        title: 'Compare el recorte con el original',
-        description:
-          'Pulse Comparación dividida para arrastrar sobre la vista de antes y después y revisar los bordes alrededor del cabello, el pelaje y los detalles finos.',
-      },
-      {
-        title: 'Elija transparente, blanco, negro o personalizado',
-        description:
-          'Conserve el PNG transparente, o cambie a un fondo blanco, negro o de color personalizado antes de descargar.',
-      },
-      {
-        title: 'Descargue su recorte',
-        description:
-          'Guarde el PNG transparente (con el nombre de su foto más _no_bg) o la versión con fondo sólido, y luego pulse Nueva imagen para la siguiente foto.',
-      },
-    ],
-    features: [
-      {
-        title: 'Segmentación de IA 100 % en el dispositivo',
-        description:
-          'Impulsado por el modelo ONNX ligero isnet_quint8 que se ejecuta en local en su navegador: sus fotos nunca se suben a ningún servidor.',
-      },
-      {
-        title: 'Exportación instantánea de PNG transparente',
-        description:
-          'Descargue recortes PNG nítidos con transparencia alfa listos para anuncios de comercio electrónico, miniaturas, presentaciones y trabajo de diseño.',
-      },
-      {
-        title: 'Cambiador de fondo sólido integrado',
-        description:
-          'Obtenga una vista previa de su recorte y expórtelo sobre fondo blanco puro, negro intenso o cualquier color hexadecimal personalizado sin abrir otra aplicación.',
-      },
-      {
-        title: 'Gratis, sin registro y sin marca de agua',
-        description:
-          'Recortes a resolución completa sin límites diarios, sin cuentas y sin marcas de agua.',
-      },
-    ],
-    faqs: [
-      {
-        question: '¿La eliminación de fondo envía mi foto a un servidor?',
-        answer:
-          'No. El modelo de IA se descarga a su navegador una sola vez y ejecuta la inferencia por completo en su dispositivo, así que su foto nunca se sube, ni se almacena, ni la ve nadie más. Al cerrar la pestaña se borra todo de la memoria del navegador.',
-      },
-      {
-        question: '¿Por qué el primer recorte es más lento que los siguientes?',
-        answer:
-          'En la primera visita, su navegador descarga el modelo compacto isnet_quint8 (unos 35 MB) e inicializa el motor de IA WebAssembly, lo que toma unos segundos adicionales. Después el modelo queda en caché, así que las fotos siguientes se procesan mucho más rápido.',
-      },
-      {
-        question: '¿Qué tan grande es el modelo de IA que descarga mi navegador?',
-        answer:
-          'Unos 35 MB, descargados una sola vez en el primer uso y luego guardados en la caché de su navegador. El pequeño modelo cuantizado isnet_quint8 es lo que hace posible la eliminación en el navegador sin servidor: los modelos en la nube más grandes necesitarían una subida y una API paga.',
-      },
-      {
-        question: '¿Puedo usar el eliminador de fondo sin internet después de la primera carga?',
-        answer:
-          'En su mayor parte, sí: una vez que el modelo queda en caché, la eliminación real se ejecuta totalmente sin conexión en su navegador. Usted sigue necesitando internet para cargar la página misma la primera vez, y el modelo en caché puede borrarse si el navegador limpia los datos del sitio.',
-      },
-      {
-        question: '¿Qué tipos de fotos producen los bordes más limpios al eliminar el fondo?',
-        answer:
-          'Las fotos con un sujeto claro y buen contraste frente al fondo funcionan mejor: retratos, fotos de producto, mascotas, autos y logotipos con contornos nítidos. Una iluminación plana y un fondo sencillo le dan al modelo el trabajo más fácil.',
-      },
-      {
-        question: '¿Puedo eliminar el fondo de una foto con un paisaje desordenado o con mucho movimiento?',
-        answer:
-          'Sí, pero espere bordes más suaves: cuando el sujeto se mezcla con un fondo recargado, el pequeño modelo en el dispositivo tiene que adivinar dónde termina el sujeto. Un fondo más limpio, mejor iluminación o un recorte más cercano antes de subir dan un recorte visiblemente mejor.',
-      },
-      {
-        question: '¿Qué pasa con el cabello fino, el pelaje o los bordes transparentes al quitar el fondo?',
-        answer:
-          'Los mechones finos y el pelaje vaporoso son el caso más difícil para un modelo compacto cuantizado, así que los bordes allí pueden verse levemente suaves o perder algunos cabellos. Revise la vista Comparación dividida: para la mayoría de los retratos y fotos de producto el resultado es limpio, pero el enmascarado de cabello perfecto en píxeles es una limitación conocida.',
-      },
-      {
-        question: '¿Cómo coloco mi recorte sobre un fondo blanco puro para Amazon o eBay?',
-        answer:
-          'Después de que el recorte esté listo, elija Blanco en Opción de relleno de fondo y pulse Descargar con fondo blanco. Los mercados prefieren JPG y PNG nítidos con fondo blanco opaco para las miniaturas principales de producto, y esto exporta exactamente eso.',
-      },
-      {
-        question: '¿Qué formatos de archivo puedo subir al eliminador de fondo?',
-        answer:
-          'JPG, PNG, WebP, HEIC, BMP y AVIF: la herramienta acepta el mismo conjunto extendido de imágenes que el resto del sitio. Las fotos HEIC de iPhone se convierten a una imagen decodificable de forma automática antes de que se ejecute el modelo.',
-      },
-      {
-        question: '¿Qué tamaño máximo de foto acepta el eliminador de fondo?',
-        answer:
-          'Cada foto puede pesar hasta 20 MB, y la herramienta procesa una foto a la vez. Eso cubre fotos de alta resolución de celular y cámara; los archivos muy grandes simplemente tardan un poco más porque el modelo se ejecuta en su dispositivo.',
-      },
-      {
-        question: '¿Puedo eliminar el fondo de varias fotos a la vez?',
-        answer:
-          'No, esta herramienta maneja una foto a la vez para que el modelo de IA pueda concentrar toda la memoria del dispositivo en un solo recorte limpio. Pulse Nueva imagen después de cada descarga para procesar la siguiente foto: no hay límite diario.',
-      },
-      {
-        question: '¿El recorte conserva la resolución de la foto original?',
-        answer:
-          'Sí. El PNG transparente exportado conserva el 100 % del ancho y alto en píxeles de la foto original, así que una foto de producto de 4000 px sigue siendo de 4000 px. Use el Redimensionador de imágenes después si necesita una versión más pequeña para la web.',
-      },
-      {
-        question: '¿Por qué mi PNG transparente pesa más que la foto original?',
-        answer:
-          'PNG almacena cada píxel del recorte sin pérdida, mientras que su JPG original estaba muy comprimido, así que un recorte grande y detallado puede pesar fácilmente más que una fuente JPG pequeña. Eso es normal: usted está cambiando tamaño de archivo por transparencia y bordes perfectos en píxeles.',
-      },
-      {
-        question: '¿Puedo volver a ejecutar la eliminación en la misma foto?',
-        answer:
-          'Sí. Pulse Volver a ejecutar la eliminación para procesar la misma foto de nuevo: útil si la primera pasada tomó una sombra como parte del sujeto o si quiere comparar resultados. El modelo es determinista, así que el resultado suele ser idéntico a menos que la entrada haya cambiado.',
-      },
-      {
-        question: '¿Qué debo hacer si falta parte del sujeto en el recorte?',
-        answer:
-          'Primero revise la vista Comparación dividida para ver con exactitud qué se recortó. Los sujetos que se mezclan con el fondo — ropa del mismo color, vidrio o camuflaje — confunden al modelo; pruebe una foto con mayor contraste entre sujeto y fondo o recorte más cerca del sujeto antes de subir.',
-      },
-      {
-        question: '¿Hay alguna marca de agua en el PNG descargado del eliminador de fondo?',
-        answer:
-          'No. Las descargas son recortes a resolución completa sin marca de agua, sin logotipo y sin marca añadida. Tampoco hay registro, ni cuenta, ni límite diario sobre cuántas fotos puede procesar.',
-      },
-      {
-        question: '¿Funciona la eliminación de fondo en el navegador de su celular?',
-        answer:
-          'Sí. El modelo se descarga y se ejecuta en Safari en iOS y Chrome en Android, con los mismos controles de subida, comparación y descarga. En celulares, las fotos grandes tardan más porque la IA se ejecuta en el procesador del teléfono: el Wi-Fi ayuda para la primera descarga del modelo.',
-      },
-      {
-        question: '¿En qué se diferencia esta herramienta de servicios pagos como remove.bg?',
-        answer:
-          'Esta herramienta es gratis, privada y se ejecuta por completo en su navegador sin subida y sin cuenta, mientras que las herramientas pagas en la nube procesan su foto en sus servidores. El compromiso es la calidad en bordes difíciles: el pequeño modelo en el dispositivo es excelente para sujetos claros, pero no puede igualar a los modelos grandes en la nube en cabello fino o escenas recargadas.',
-      },
-      {
-        question: '¿Puedo usar el recorte en Canva, Photoshop o PowerPoint?',
-        answer:
-          'Sí. El PNG transparente exportado se abre directamente en Canva, Photoshop, Figma, PowerPoint y Google Slides, donde usted puede colocarlo sobre cualquier fondo, diapositiva o diseño. La descarga con fondo sólido funciona igual para aplicaciones que necesitan una imagen opaca.',
-      },
-      {
-        question: '¿Qué pasa con mi foto después de cerrar la pestaña del eliminador de fondo?',
-        answer:
-          'No se almacena nada en ningún lugar: el procesamiento ocurre en la memoria del navegador, la foto nunca se sube y al cerrar la pestaña se borran la imagen y el recorte. Solo el modelo de IA en caché permanece en el navegador para un uso futuro más rápido.',
-      },
-    ],
-    relatedSlugs: ['/add-background-to-image', '/image-resizer', '/png-to-webp'],
-  },
 ];
 
 export const TOOL_BY_SLUG_ES: Record<string, ToolDefinition> = Object.fromEntries(

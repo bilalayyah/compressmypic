@@ -544,9 +544,6 @@ const Guide100kbPageZh = React.lazy(() =>
   import('./pages/zh/Guide100kbPageZh').then((m) => ({ default: m.Guide100kbPageZh }))
 );
 
-const RemoveBackgroundPage = React.lazy(() =>
-  import('./pages/RemoveBackgroundPage').then((m) => ({ default: m.RemoveBackgroundPage }))
-);
 const NotFoundPage = React.lazy(() =>
   import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage }))
 );
@@ -616,7 +613,6 @@ const KNOWN_ROUTES = [
   '/svg-to-png',
   '/avif-to-jpg',
   '/bmp-to-jpg',
-  '/remove-background',
 ];
 
 export interface ParsedPath { path: string; lang: SupportedLang; notFound?: boolean; }
@@ -1177,7 +1173,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       '/terms': 'Terms of Service for CompressMyPic: fair use, your content, liability and service changes for our free online image tools. Plain rules, no legal jargon.',
       '/disclaimer': 'Disclaimer for CompressMyPic: our free image tools are provided as-is, without warranty. Read the limits of liability and accuracy of our guides.',
       '/cookie-policy': 'Cookie Policy for CompressMyPic: we set no cookies ourselves. Learn which cookies Google Analytics uses, and how to control them.',
-      '/all-tools': 'All 48 free CompressMyPic image tools in one place — compress, convert, resize, crop and edit images in your browser. No signup, no watermark.',
+      '/all-tools': 'All 47 free CompressMyPic image tools in one place — compress, convert, resize, crop and edit images in your browser. No signup, no watermark.',
       '/admin/comments': 'Private admin page for moderating CompressMyPic comments. This page is not for public use — please use the contact page for help, feedback or bug reports.',
       '/guides/compress-images-for-whatsapp': 'Learn how to compress images for WhatsApp without losing quality. Free, private, no signup — shrink photos before sending so they stay sharp and send fast.',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP compared: file size, quality, transparency and browser support — pick the right image format for photos, logos, websites and social media.',
@@ -1327,7 +1323,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       '/contact': '¿Tiene preguntas, comentarios o necesita ayuda? Escríbale a nuestro equipo con el formulario de abajo o contáctenos directamente por correo electrónico.',
       '/privacy': 'CompressMyPic procesa sus imágenes localmente en su navegador: nunca se suben a nuestros servidores y no recopilamos, almacenamos ni compartimos sus imágenes.',
       '/terms': 'Términos del servicio de CompressMyPic, el compresor de imágenes online gratis. Lea las reglas de uso de nuestras herramientas gratuitas: uso justo, su contenido y responsabilidad.',
-      [ES_ALL_TOOLS_PATH]: 'Las 48 herramientas gratis de CompressMyPic para comprimir, convertir, recortar y editar imágenes online, directamente en tu navegador y sin registrarte.',
+      [ES_ALL_TOOLS_PATH]: 'Las 47 herramientas gratis de CompressMyPic para comprimir, convertir, recortar y editar imágenes online, directamente en tu navegador y sin registrarte.',
       '/guides/compress-images-for-whatsapp': 'Aprenda a comprimir imágenes para WhatsApp sin perder calidad. Gratis y privado, sin registro: reduzca sus fotos antes de enviarlas para que lleguen nítidas.',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP explicado de forma sencilla: compare tamaño, calidad y transparencia para elegir el formato adecuado para sus fotos, logotipos y sitios web.',
       '/guides/reduce-image-size-to-100kb': 'Reduzca el tamaño de una imagen a 100 KB para sitios web y correo electrónico con un compresor online gratis. Guía paso a paso, sin registro ni marca de agua.',
@@ -1341,7 +1337,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       '/contact': 'Tem perguntas, comentários ou precisa de ajuda? Escreva para nossa equipe com o formulário abaixo ou fale conosco diretamente por e-mail.',
       '/privacy': 'O CompressMyPic processa suas imagens localmente no seu navegador: elas nunca são enviadas para os nossos servidores e não coletamos, armazenamos nem compartilhamos suas imagens.',
       '/terms': 'Termos de Serviço do CompressMyPic, o compressor de imagens online grátis. Leia as regras de uso das nossas ferramentas gratuitas: uso justo, seu conteúdo e responsabilidade.',
-      [PT_ALL_TOOLS_PATH]: 'As 48 ferramentas grátis do CompressMyPic para comprimir, converter, cortar e editar imagens JPG, PNG e WebP online, direto no seu navegador e sem cadastro.',
+      [PT_ALL_TOOLS_PATH]: 'As 47 ferramentas grátis do CompressMyPic para comprimir, converter, cortar e editar imagens JPG, PNG e WebP online, direto no seu navegador e sem cadastro.',
       '/guides/compress-images-for-whatsapp': 'Aprenda a comprimir imagens para WhatsApp sem perder qualidade. Grátis e privado, sem cadastro: reduza suas fotos antes de enviar para que cheguem nítidas.',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP explicado de forma simples: compare tamanho, qualidade e transparência para escolher o formato certo para suas fotos, logotipos e sites.',
       '/guides/reduce-image-size-to-100kb': 'Reduza o tamanho de uma imagem para 100 KB para sites e e-mail com um compressor online grátis. Guia passo a passo, sem cadastro nem marca d’água.',
@@ -1355,7 +1351,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       '/contact': 'Vous avez des questions, des commentaires ou besoin d’aide ? Écrivez à notre équipe avec le formulaire ci-dessous ou contactez-nous directement par e-mail.',
       '/privacy': 'CompressMyPic traite vos images localement dans votre navigateur : elles ne sont jamais envoyées vers nos serveurs et nous ne collectons, ne stockons ni ne partageons vos images.',
       '/terms': 'Conditions d’utilisation de CompressMyPic, le compresseur d’images en ligne gratuit. Lisez les règles d’usage de nos outils gratuits : usage raisonnable, votre contenu et responsabilité.',
-      [FR_ALL_TOOLS_PATH]: 'Les 48 outils gratuits de CompressMyPic pour compresser, convertir, recadrer et éditer des images en ligne, directement dans votre navigateur, sans inscription.',
+      [FR_ALL_TOOLS_PATH]: 'Les 47 outils gratuits de CompressMyPic pour compresser, convertir, recadrer et éditer des images en ligne, directement dans votre navigateur, sans inscription.',
       '/guides/compress-images-for-whatsapp': 'Apprenez à compresser des images pour WhatsApp sans perdre en qualité. Gratuit et privé, sans inscription : réduisez vos photos avant de les envoyer pour qu’elles arrivent nettes.',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP expliqué simplement : comparez taille, qualité et transparence pour choisir le bon format pour vos photos, logos et sites web.',
       '/guides/reduce-image-size-to-100kb': 'Réduisez la taille d’une image à 100 Ko pour les sites web et l’e-mail avec un compresseur online gratuit. Guide pas à pas, sans inscription ni filigrane.',
@@ -1369,7 +1365,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       '/contact': 'Haben Sie Fragen, Feedback oder brauchen Sie Hilfe? Wenden Sie sich über das Formular unten an unser Team oder kontaktieren Sie uns direkt per E-Mail.',
       '/privacy': 'CompressMyPic verarbeitet Ihre Bilder lokal in Ihrem Browser: Sie werden niemals auf unsere Server hochgeladen, und wir erfassen, speichern oder teilen Ihre Bilder nicht.',
       '/terms': 'Nutzungsbedingungen von CompressMyPic, dem kostenlosen Online-Bildkomprimierer. Lesen Sie die Regeln für unsere kostenlosen Tools: faire Nutzung, Ihre Inhalte und Haftung.',
-      [DE_ALL_TOOLS_PATH]: 'Alle 48 kostenlosen Bildtools von CompressMyPic: Bilder online komprimieren, konvertieren, zuschneiden und bearbeiten – direkt im Browser, ohne Anmeldung.',
+      [DE_ALL_TOOLS_PATH]: 'Alle 47 kostenlosen Bildtools von CompressMyPic: Bilder online komprimieren, konvertieren, zuschneiden und bearbeiten – direkt im Browser, ohne Anmeldung.',
       '/guides/compress-images-for-whatsapp': 'Lernen Sie, Bilder für WhatsApp zu komprimieren, ohne Qualität zu verlieren. Kostenlos und privat, ohne Anmeldung: Verkleinern Sie Ihre Fotos vor dem Senden, damit sie scharf ankommen.',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP einfach erklärt: Vergleichen Sie Größe, Qualität und Transparenz, um das richtige Format für Ihre Fotos, Logos und Websites zu wählen.',
       '/guides/reduce-image-size-to-100kb': 'Verkleinern Sie ein Bild auf 100 KB für Websites und E-Mails mit einem kostenlosen Online-Komprimierer. Schritt-für-Schritt-Anleitung, ohne Anmeldung und ohne Wasserzeichen.',
@@ -1383,7 +1379,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       '/contact': 'Hai domande, commenti o hai bisogno di aiuto? Scrivi al nostro team con il modulo qui sotto, oppure contattaci direttamente via email.',
       '/privacy': 'CompressMyPic elabora le tue immagini localmente nel tuo browser: non vengono mai caricate sui nostri server e non raccogliamo, archiviamo né condividiamo le tue immagini.',
       '/terms': 'Termini di servizio di CompressMyPic, il compressore di immagini online gratuito. Leggi le regole per usare i nostri strumenti gratuiti: uso corretto, i tuoi contenuti e responsabilità.',
-      [IT_ALL_TOOLS_PATH]: 'I 48 strumenti gratuiti di CompressMyPic per comprimere, convertire, ritagliare e modificare immagini online, direttamente nel browser e senza registrazione.',
+      [IT_ALL_TOOLS_PATH]: 'I 47 strumenti gratuiti di CompressMyPic per comprimere, convertire, ritagliare e modificare immagini online, direttamente nel browser e senza registrazione.',
       '/guides/compress-images-for-whatsapp': 'Impara a comprimere le immagini per WhatsApp senza perdere qualità. Gratis e privato, senza registrazione: riduci le tue foto prima di inviarle, così arrivano nitide.',
       '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP spiegato in modo semplice: confronta dimensioni, qualità e trasparenza per scegliere il formato giusto per le tue foto, i tuoi loghi e i tuoi siti.',
       '/guides/reduce-image-size-to-100kb': 'Riduci le dimensioni di un’immagine a 100 KB per siti web ed email con un compressore online gratuito. Guida passo passo, senza registrazione né filigrana.',
@@ -1396,7 +1392,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       '/contact': 'Punya pertanyaan, masukan, atau butuh bantuan? Hubungi tim kami melalui formulir di bawah ini, atau hubungi kami langsung lewat email.',
       '/privacy': 'CompressMyPic adalah kompresor gambar online gratis. Gambar diproses secara lokal di browser Anda menggunakan HTML5 Canvas — gambar tidak pernah diunggah ke server kami, dan kami tidak mengumpulkan, menyimpan, atau membagikan gambar Anda.',
       '/terms': 'Syarat Layanan CompressMyPic, kompresor gambar online gratis. Baca aturan penggunaan alat gratis kami: penggunaan wajar, konten Anda, dan tanggung jawab.',
-      [ID_ALL_TOOLS_PATH]: '48 alat gambar gratis CompressMyPic untuk mengompres, mengonversi, memotong, dan mengedit gambar online — langsung di browser Anda, tanpa perlu mendaftar.',
+      [ID_ALL_TOOLS_PATH]: '47 alat gambar gratis CompressMyPic untuk mengompres, mengonversi, memotong, dan mengedit gambar online — langsung di browser Anda, tanpa perlu mendaftar.',
       '/guides/compress-images-for-whatsapp': 'WhatsApp memperkecil setiap foto yang Anda kirim — sering kali jauh lebih kecil dari yang seharusnya. Kompres foto Anda sendiri terlebih dahulu, lalu kirim dengan cara yang tepat, dan foto akan tiba dalam keadaan tajam, cepat terkirim, dan hemat kuota.',
       '/guides/jpg-vs-png-vs-webp': 'Memilih format yang salah dapat membuat gambar Anda sepuluh kali lebih besar dari yang seharusnya — atau merusak logo transparan. Berikut perbandingan yang sederhana dan jujur, serta cara beralih antar format dalam hitungan detik.',
       '/guides/reduce-image-size-to-100kb': 'Foto sebesar 4 MB memperlambat situs web Anda dan menyumbat email. Mengecilkannya menjadi sekitar 100KB membuat halaman dimuat dengan cepat dan email terkirim seketika.',
@@ -1409,7 +1405,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       '/contact': 'Есть вопросы, отзывы или нужна помощь? Обратитесь к нашей команде через форму ниже или свяжитесь с нами напрямую по электронной почте.',
       '/privacy': 'CompressMyPic — это бесплатный online-компрессор изображений. Изображения обрабатываются локально в вашем браузере с помощью HTML5 Canvas — они никогда не загружаются на наши серверы, и мы не собираем, не храним и не передаём ваши изображения.',
       '/terms': 'Условия использования CompressMyPic — бесплатного онлайн-компрессора изображений. Прочитайте правила использования наших бесплатных инструментов: добросовестное использование, ваш контент и ответственность.',
-      [RU_ALL_TOOLS_PATH]: 'Все 48 бесплатных инструментов CompressMyPic для сжатия, конвертации, обрезки и редактирования изображений онлайн — прямо в браузере, без регистрации.',
+      [RU_ALL_TOOLS_PATH]: 'Все 47 бесплатных инструментов CompressMyPic для сжатия, конвертации, обрезки и редактирования изображений онлайн — прямо в браузере, без регистрации.',
       '/guides/compress-images-for-whatsapp': 'WhatsApp уменьшает каждую фотографию, которую вы отправляете, — зачастую гораздо сильнее, чем нужно. Сожмите фотографии сами заранее, а затем отправьте их правильным способом, и они дойдут чёткими, отправятся быстро и израсходуют меньше мобильного трафика.',
       '/guides/jpg-vs-png-vs-webp': 'Неправильный формат может сделать ваше изображение в десять раз больше, чем нужно, или испортить прозрачный логотип. Вот простое и честное сравнение, а также то, как конвертировать между форматами за секунды.',
       '/guides/reduce-image-size-to-100kb': 'Фотография на 4 МБ замедляет ваш сайт и забивает электронную почту. Уменьшение её примерно до 100 КБ делает страницы быстрыми, а письма отправляются мгновенно.',
@@ -1422,7 +1418,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       '/contact': 'ご質問やご感想、サポートが必要な場合は、下のフォームからご連絡いただくか、メールで直接お問い合わせください。',
       '/privacy': 'CompressMyPicは、無料のオンライン画像圧縮ツールです。画像はHTML5 Canvasを使ってお使いのブラウザー上でローカルに処理されます。画像が当社のサーバーにアップロードされることは決してなく、当社は画像を収集、保存、共有しません。',
       '/terms': 'CompressMyPic（無料オンライン画像圧縮ツール）の利用規約。無料ツールの利用ルール（公正な利用、コンテンツ、責任など）をご確認ください。',
-      [JA_ALL_TOOLS_PATH]: 'CompressMyPicの無料画像ツール48種類：画像の圧縮、変換、切り抜き、編集、リサイズがブラウザー上で直接でき、登録不要。JPG、PNG、WebP、HEICに対応し、写真はアップロードされません。',
+      [JA_ALL_TOOLS_PATH]: 'CompressMyPicの無料画像ツール47種類：画像の圧縮、変換、切り抜き、編集、リサイズがブラウザー上で直接でき、登録不要。JPG、PNG、WebP、HEICに対応し、写真はアップロードされません。',
       '/guides/compress-images-for-whatsapp': 'WhatsAppは送る写真をすべて縮小します。しかも、必要以上に小さくしてしまうことがよくあります。まず自分で写真を圧縮し、正しい方法で送れば、写真はくっきりしたまま届き、速く送れて、モバイルデータも少なく済みます。',
       '/guides/jpg-vs-png-vs-webp': '間違った形式を選ぶと、画像が必要以上に10倍も大きくなったり、透明なロゴが台無しになったりします。シンプルで正直な比較と、数秒で形式を変換する方法を紹介します。',
       '/guides/reduce-image-size-to-100kb': '4MBの写真はウェブサイトを遅くし、メールも詰まらせます。100KB程度まで小さくすれば、ページは速く読み込まれ、メールもすぐに送れます。正しく行えば、誰にも違いはわかりません。',
@@ -1435,7 +1431,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       '/contact': '질문, 피드백이 있거나 도움이 필요하신가요? 아래 양식을 이용해 팀에 연락하거나 이메일로 직접 문의해 주세요.',
       '/privacy': 'CompressMyPic은 무료 온라인 이미지 압축기입니다. 이미지는 HTML5 Canvas를 이용해 사용자의 브라우저에서 로컬로 처리됩니다. 이미지는 절대 저희 서버에 업로드되지 않으며, 저희는 사용자의 이미지를 수집, 저장, 공유하지 않습니다.',
       '/terms': '무료 온라인 이미지 압축기 CompressMyPic의 이용약관. 무료 도구 이용 규칙(공정한 이용, 콘텐츠, 책임 등)을 확인하세요.',
-      [KO_ALL_TOOLS_PATH]: 'CompressMyPic의 무료 이미지 도구 48가지로 이미지를 압축, 변환, 자르고, 크기를 조정하세요. 브라우저에서 바로 사용 가능하며 가입이 필요 없고, JPG, PNG, WebP, HEIC를 지원합니다.',
+      [KO_ALL_TOOLS_PATH]: 'CompressMyPic의 무료 이미지 도구 47가지로 이미지를 압축, 변환, 자르고, 크기를 조정하세요. 브라우저에서 바로 사용 가능하며 가입이 필요 없고, JPG, PNG, WebP, HEIC를 지원합니다.',
       '/guides/compress-images-for-whatsapp': 'WhatsApp은 보내는 모든 사진을 축소합니다. 종종 필요한 것보다 훨씬 더 많이요. 사진을 먼저 직접 압축한 뒤 올바른 방법으로 보내면 사진이 선명하게 도착하고, 빠르게 전송되며, 모바일 데이터도 적게 사용합니다.',
       '/guides/jpg-vs-png-vs-webp': '잘못된 형식을 선택하면 이미지가 필요한 것보다 10배 커지거나 투명한 로고가 망가질 수 있습니다. 간단하고 정직한 비교와 몇 초 만에 형식을 변환하는 방법을 소개합니다.',
       '/guides/reduce-image-size-to-100kb': '4MB 사진은 웹사이트를 느리게 만들고 이메일을 막히게 합니다. 약 100KB로 줄이면 페이지가 빠르게 로드되고 이메일이 즉시 전송됩니다. 제대로 하면 아무도 차이를 알아차리지 못합니다.',
@@ -1448,7 +1444,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       '/contact': '有问题、反馈或需要帮助？请使用下面的表格联系我们的团队，或直接通过邮箱联系我们。',
       '/privacy': 'CompressMyPic 是一款免费在线图片压缩器。图片使用 HTML5 Canvas 在您的浏览器本地处理——图片绝不会上传到我们的服务器，我们也不会收集、存储或分享您的图片。',
       '/terms': 'CompressMyPic（免费在线图片压缩器）使用条款。请阅读免费工具的使用规则：合理使用、您的内容与责任等。',
-      [ZH_ALL_TOOLS_PATH]: 'CompressMyPic 免费图片工具共 48 款：在线压缩、转换、裁剪、调整大小与编辑图片，直接在浏览器中使用，无需注册，支持 JPG、PNG、WebP 与 HEIC，图片不会上传。',
+      [ZH_ALL_TOOLS_PATH]: 'CompressMyPic 免费图片工具共 47 款：在线压缩、转换、裁剪、调整大小与编辑图片，直接在浏览器中使用，无需注册，支持 JPG、PNG、WebP 与 HEIC，图片不会上传。',
       '/guides/compress-images-for-whatsapp': 'WhatsApp 会缩小你发送的每一张照片——往往缩得比实际需要的多得多。先自己压缩照片，再用正确的方式发送，照片就会保持清晰、发送快速，还能节省流量。',
       '/guides/jpg-vs-png-vs-webp': '选错格式可能让你的图片比实际需要的大十倍——或者毁掉一个透明标志。下面是简单、诚实的对比，以及如何在几秒钟内转换格式。',
       '/guides/reduce-image-size-to-100kb': '一张 4 MB 的照片会拖慢你的网站，还会堵塞邮件。把它缩小到约 100KB，页面加载会变快，邮件也能即时发送——而且如果方法得当，没有人能看出差别。',
@@ -8348,124 +8344,6 @@ zhStrings={
                 : undefined
             }
           />
-        </main>
-      ) : currentPath === '/remove-background' ? (
-        <main id="main" className="flex-1">
-          <Suspense
-            fallback={
-              <div className="max-w-5xl mx-auto px-4 py-20 text-center text-sm text-[var(--ink-3)]">
-                Loading Background Remover...
-              </div>
-            }
-          >
-            <RemoveBackgroundPage
-            onNavigate={handleNavigate}
-            lang={lang}
-            tool={activeLocale ? activeLocale.tools['/remove-background'] : undefined}
-            toolRegistry={activeLocale?.tools}
-            categoryLabels={activeLocale?.categories}
-            esStrings={
-              lang === 'es' && esLocale && esLocale.tools['/remove-background']
-                ? {
-                    layoutUi: esLocale.ui.toolPageLayout,
-                    uploadZone: esLocale.ui.uploadZone,
-                    comparisonModal: esLocale.ui.comparisonModal,
-                    toolUi: esLocale.toolUi['/remove-background'],
-                  }
-                : undefined
-            }
-ptStrings={
-              lang === 'pt' && ptLocale && ptLocale.tools['/remove-background']
-                ? {
-                    layoutUi: ptLocale.ui.toolPageLayout,
-                    uploadZone: ptLocale.ui.uploadZone,
-                    comparisonModal: ptLocale.ui.comparisonModal,
-                    toolUi: ptLocale.toolUi['/remove-background'],
-                  }
-                : undefined
-            }
-frStrings={
-              lang === 'fr' && frLocale && frLocale.tools['/remove-background']
-                ? {
-                    layoutUi: frLocale.ui.toolPageLayout,
-                    uploadZone: frLocale.ui.uploadZone,
-                    comparisonModal: frLocale.ui.comparisonModal,
-                    toolUi: frLocale.toolUi['/remove-background'],
-                  }
-                : undefined
-            }
-deStrings={
-              lang === 'de' && deLocale && deLocale.tools['/remove-background']
-                ? {
-                    layoutUi: deLocale.ui.toolPageLayout,
-                    uploadZone: deLocale.ui.uploadZone,
-                    comparisonModal: deLocale.ui.comparisonModal,
-                    toolUi: deLocale.toolUi['/remove-background'],
-                  }
-                : undefined
-            }
-itStrings={
-              lang === 'it' && itLocale && itLocale.tools['/remove-background']
-                ? {
-                    layoutUi: itLocale.ui.toolPageLayout,
-                    uploadZone: itLocale.ui.uploadZone,
-                    comparisonModal: itLocale.ui.comparisonModal,
-                    toolUi: itLocale.toolUi['/remove-background'],
-                  }
-                : undefined
-            }
-idStrings={
-              lang === 'id' && idLocale && idLocale.tools['/remove-background']
-                ? {
-                    layoutUi: idLocale.ui.toolPageLayout,
-                    uploadZone: idLocale.ui.uploadZone,
-                    comparisonModal: idLocale.ui.comparisonModal,
-                    toolUi: idLocale.toolUi['/remove-background'],
-                  }
-                : undefined
-            }
-ruStrings={
-              lang === 'ru' && ruLocale && ruLocale.tools['/remove-background']
-                ? {
-                    layoutUi: ruLocale.ui.toolPageLayout,
-                    uploadZone: ruLocale.ui.uploadZone,
-                    comparisonModal: ruLocale.ui.comparisonModal,
-                    toolUi: ruLocale.toolUi['/remove-background'],
-                  }
-                : undefined
-            }
-jaStrings={
-              lang === 'ja' && jaLocale && jaLocale.tools['/remove-background']
-                ? {
-                    layoutUi: jaLocale.ui.toolPageLayout,
-                    uploadZone: jaLocale.ui.uploadZone,
-                    comparisonModal: jaLocale.ui.comparisonModal,
-                    toolUi: jaLocale.toolUi['/remove-background'],
-                  }
-                : undefined
-            }
-koStrings={
-              lang === 'ko' && koLocale && koLocale.tools['/remove-background']
-                ? {
-                    layoutUi: koLocale.ui.toolPageLayout,
-                    uploadZone: koLocale.ui.uploadZone,
-                    comparisonModal: koLocale.ui.comparisonModal,
-                    toolUi: koLocale.toolUi['/remove-background'],
-                  }
-                : undefined
-            }
-zhStrings={
-              lang === 'zh' && zhLocale && zhLocale.tools['/remove-background']
-                ? {
-                    layoutUi: zhLocale.ui.toolPageLayout,
-                    uploadZone: zhLocale.ui.uploadZone,
-                    comparisonModal: zhLocale.ui.comparisonModal,
-                    toolUi: zhLocale.toolUi['/remove-background'],
-                  }
-                : undefined
-            }
-          />
-          </Suspense>
         </main>
       ) : isNotFound ? (
         <main id="main" className="flex-1">

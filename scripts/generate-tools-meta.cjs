@@ -46,7 +46,11 @@ function main() {
   lines.push('// this light metadata (home directory, header, hero); full tool');
   lines.push('// definitions stay in tools.ts and load with the tool-page chunks.');
   lines.push('');
-  lines.push("export type { ToolCategoryId, ToolCategoryMeta } from './tools';");
+  // Both lines are needed: the import brings the names into scope for the
+  // interfaces below; the export re-exports them for consumers. A bare
+  // `export type { ... } from` does NOT define the local names (tsc TS2304).
+  lines.push("import type { ToolCategoryId, ToolCategoryMeta } from './tools';");
+  lines.push("export type { ToolCategoryId, ToolCategoryMeta };");
   lines.push('');
   lines.push('/** Light tool metadata — the subset the entry bundle needs. */');
   lines.push('export interface ToolMeta {');

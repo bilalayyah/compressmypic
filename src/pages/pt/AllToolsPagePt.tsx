@@ -28,7 +28,7 @@ export interface AllToolsPageStrings {
 const PT_STRINGS: AllToolsPageStrings = {
   heading: 'Todas as ferramentas',
   subheading:
-    'As 48 ferramentas grátis do CompressMyPic para comprimir, converter e editar imagens, diretamente no seu navegador.',
+    'As 47 ferramentas grátis do CompressMyPic para comprimir, converter e editar imagens, diretamente no seu navegador.',
   searchPlaceholder: 'Buscar ferramentas…',
   allLabel: 'Todas',
   noResults: 'Nenhuma ferramenta encontrada com esse nome.',

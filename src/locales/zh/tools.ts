@@ -1,4 +1,4 @@
-// Chinese (Simplified Mandarin) tool registry — COMPLETE (home + all 48 tools).
+// Chinese (Simplified Mandarin) tool registry — COMPLETE (home + all 47 tools).
 // Assembled from tools-zh-batch1.ts … tools-zh-batch6.ts (coordinator merge).
 // Target path in the repo: src/locales/zh/tools.ts
 // Chinese (Simplified Mandarin), natural Simplified Mandarin. Slugs, category ids and
@@ -14,7 +14,6 @@ export const TOOL_CATEGORIES_ZH: ToolCategoryMeta[] = [
   { id: 'resize', label: '调整尺寸', description: '按像素修改尺寸或批量缩放图片' },
   { id: 'convert', label: '转换', description: '转换图片格式并生成 PDF' },
   { id: 'crop-edit', label: '裁剪与编辑', description: '旋转、翻转、裁剪和调整照片' },
-  { id: 'ai-tools', label: 'AI工具', description: '可在浏览器中使用的智能图片处理工具' },
   { id: 'create', label: '创作', description: '制作网站图标、拼贴画和网页素材' },
   { id: 'privacy', label: '隐私', description: '查看和清除 EXIF、GPS 及隐藏元数据' },
   { id: 'developer', label: '开发者工具', description: '提取颜色、检查尺寸并生成网页素材' },
@@ -2028,7 +2027,7 @@ export const TOOLS_REGISTRY_ZH: ToolDefinition[] = [
       {
         question: '如果想干净地模糊整张人像背景而不涂抹，该怎么做？',
         answer:
-          '如需在叠加图形或界面卡片后方均匀柔化背景，请使用“整张图片”模式。如需将主体隔离在干净背景上，可以搭配我们的背景移除工具使用。',
+          '如需在叠加图形或界面卡片后方均匀柔化背景，请使用“整张图片”模式。',
       },
       {
         question: '平滑模糊与马赛克最强可以到什么程度？',
@@ -7591,170 +7590,6 @@ export const TOOLS_REGISTRY_ZH: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/png-to-jpg', '/image-converter', '/bulk-image-converter', '/compress-image-to-100kb'],
-  },
-  {
-    slug: '/remove-background',
-    name: '背景去除工具',
-    shortDescription: '使用 AI 在浏览器中去除图片背景，导出透明 PNG。',
-    category: 'ai-tools',
-    seoTitle: '免费去除图片背景 – AI 处理，无需注册',
-    seoDescription: '用浏览器内置 AI 免费去除任何图片的背景。下载透明 PNG，或添加白色、黑色或自定义背景——无需注册，无需上传。',
-    h1: '免费在线AI背景去除工具',
-    subtitle:
-      '使用免费的AI背景去除工具，去除人像、产品照片、宠物和标志的背景，全程在浏览器内运行。专为需要快速干净抠图的卖家、创作者和设计师打造；只需加载一次小巧的AI模型（约35 MB，之后会缓存），一次处理一张最大20 MB的照片，导出透明PNG，或把抠图放在白色、黑色或自定义背景上。',
-    howToSteps: [
-      {
-        title: '等待AI模型加载',
-        description:
-          '首次使用时，页面会下载一次小巧的isnet_quint8模型（约35 MB）并缓存在你的浏览器中；之后访问会立即启动。',
-      },
-      {
-        title: '拖入一张最大20 MB的照片',
-        description:
-          '上传一张JPG、PNG、WebP、HEIC、BMP或AVIF照片——一次一张——到上传区。',
-      },
-      {
-        title: '让AI抠出主体',
-        description:
-          '模型在你的浏览器本地分离主体，并在原图旁边显示透明抠图。',
-      },
-      {
-        title: '把抠图与原图对比',
-        description:
-          '点击“分屏对比”，拖动查看前后对比，检查头发、毛发和精细细节周围的边缘。',
-      },
-      {
-        title: '选择透明、白色、黑色或自定义背景',
-        description:
-          '保留透明PNG，或在下载前切换到白色、黑色或自定义颜色背景。',
-      },
-      {
-        title: '下载你的抠图',
-        description:
-          '保存透明PNG（以你的照片名加_no_bg命名）或纯色背景版本，然后点击“新建图片”处理下一张照片。',
-      },
-    ],
-    features: [
-      {
-        title: '100%客户端AI分割',
-        description: '由轻量级isnet_quint8 ONNX模型驱动，在你的浏览器本地运行——照片绝不会上传到任何服务器。',
-      },
-      {
-        title: '即时导出透明PNG',
-        description: '下载清晰的Alpha透明PNG抠图，可直接用于电商商品图、缩略图、幻灯片和设计工作。',
-      },
-      {
-        title: '内置纯色背景切换',
-        description: '无需打开其他应用，即可预览抠图在纯白、纯黑或任意自定义十六进制背景上的效果并导出。',
-      },
-      {
-        title: '免费、无需注册、没有水印',
-        description: '全分辨率抠图，零每日限额、零账号、零水印。',
-      },
-    ],
-    faqs: [
-      {
-        question: '去除背景会把我的照片发送到服务器吗？',
-        answer:
-          '不会。AI模型下载到你的浏览器后，推理完全在你的设备上进行，因此照片绝不会被上传、存储或被他人查看。关闭标签页后，所有内容都会从浏览器内存中清除。',
-      },
-      {
-        question: '为什么第一次抠图比之后慢？',
-        answer:
-          '首次访问时，浏览器需要下载小巧的isnet_quint8模型（约35 MB）并初始化WebAssembly AI运行环境，这会多花几秒钟。之后模型会被缓存，因此后续照片处理得快得多。',
-      },
-      {
-        question: '浏览器下载的AI模型有多大？',
-        answer:
-          '约35 MB，首次使用时下载一次，之后由浏览器缓存。正是这个小巧的量化isnet_quint8模型，让浏览器内去除背景成为可能，无需服务器——更大的云端模型需要上传和付费API。',
-      },
-      {
-        question: '第一次加载后，没有网络也能用背景去除工具吗？',
-        answer:
-          '基本可以：模型缓存后，实际的去除过程完全在浏览器内离线运行。首次加载页面本身仍然需要联网；如果浏览器清除了网站数据，缓存的模型也可能被清除。',
-      },
-      {
-        question: '哪种照片能抠出最干净的边缘？',
-        answer:
-          '主体清晰、与背景对比明显的照片效果最好——人像、产品照、宠物、汽车和轮廓锐利的标志。光线均匀、背景简单时，模型的工作最轻松。',
-      },
-      {
-        question: '背景杂乱的照片能去除背景吗？',
-        answer:
-          '可以，但边缘会更柔和：当主体融入杂乱背景时，小巧的设备端模型必须猜测主体在哪里结束。更干净的背景、更好的光线，或上传前把主体裁得更近，都能让抠图效果明显更好。',
-      },
-      {
-        question: '细碎的头发、毛发或半透明边缘会怎样？',
-        answer:
-          '细碎发丝和蓬松毛发是小巧量化模型最难处理的情况，因此那里的边缘可能略微发软，或丢失几根发丝。请查看“分屏对比”视图——对大多数人像和产品照来说，结果是干净的，但像素级完美的发丝抠图是一个已知的局限。',
-      },
-      {
-        question: '怎样把抠图放在纯白背景上，用于亚马逊或eBay？',
-        answer:
-          '抠图完成后，在“背景填充选项”中选择白色，然后点击“下载白色背景版本”。交易平台更喜欢主图缩略图使用清晰不透明的白色背景JPG和PNG，而本工具导出的正是这种效果。',
-      },
-      {
-        question: '可以上传哪些格式的文件？',
-        answer:
-          'JPG、PNG、WebP、HEIC、BMP和AVIF——本工具接受与本站其他工具相同的扩展图片格式。iPhone的HEIC照片在模型运行前会自动转换为可解码的图片。',
-      },
-      {
-        question: '照片最大可以多大？',
-        answer:
-          '每张照片最大20 MB，一次处理一张。这足以容纳高分辨率手机和相机拍摄的照片；非常大的文件只是处理时间稍长一些，因为模型在你的设备上运行。',
-      },
-      {
-        question: '可以一次去除多张照片的背景吗？',
-        answer:
-          '不可以，本工具一次处理一张照片，让AI模型可以把全部设备内存集中在一张干净的抠图上。每次下载后点击“新建图片”即可处理下一张照片——没有每日限额。',
-      },
-      {
-        question: '抠图会保留原始照片的分辨率吗？',
-        answer:
-          '会。导出的透明PNG会100%保留原始照片的像素宽高，因此4000像素的产品照片仍然是4000像素。如果需要更小的网页版本，之后请使用图片尺寸调整器。',
-      },
-      {
-        question: '为什么透明PNG比原始照片还大？',
-        answer:
-          'PNG会无损存储抠图的每个像素，而原始JPG经过了重度压缩——因此大型精细抠图很容易比小型JPG源文件更重。这是正常现象：你在用文件体积换取透明度和像素级完美的边缘。',
-      },
-      {
-        question: '可以对同一张照片重新执行去除吗？',
-        answer:
-          '可以。点击“重新去除”可以对同一张照片再次处理——如果第一次把阴影误认为主体的一部分，或想对比结果，这很有用。模型是确定性的，因此除非输入改变，结果通常完全相同。',
-      },
-      {
-        question: '如果抠图里缺失了主体的一部分该怎么办？',
-        answer:
-          '首先查看“分屏对比”视图，准确了解哪里被裁掉了。与背景融为一体的主体——同色衣服、玻璃或迷彩——会让模型困惑；请尝试主体与背景对比更强的照片，或上传前把主体裁得更近。',
-      },
-      {
-        question: '下载的PNG上有水印吗？',
-        answer:
-          '没有。下载的是全分辨率抠图，没有水印、没有标志、没有添加任何品牌标识。也无需注册、无需账号，去除背景的照片数量没有每日限额。',
-      },
-      {
-        question: '背景去除能在手机浏览器上使用吗？',
-        answer:
-          '可以。模型可以在iOS的Safari和安卓的Chrome中下载并运行，上传、对比和下载控件都相同。在手机上，大照片处理时间更长，因为AI在手机处理器上运行——首次下载模型时使用Wi-Fi会更快。',
-      },
-      {
-        question: '这个工具与remove.bg等付费工具有什么不同？',
-        answer:
-          '本工具免费、私密，完全在你的浏览器内运行，无需上传、无需账号，而付费云端工具会在它们的服务器上处理你的照片。代价是棘手边缘的画质：小巧的设备端模型对清晰主体表现出色，但在精细发丝或杂乱场景上无法与大型云端模型媲美。',
-      },
-      {
-        question: '可以在Canva、Photoshop或PowerPoint中使用抠图吗？',
-        answer:
-          '可以。导出的透明PNG可以直接在Canva、Photoshop、Figma、PowerPoint和Google Slides中打开，放在任何背景、幻灯片或设计上。纯色背景下载版本同样适用于需要不透明图片的应用。',
-      },
-      {
-        question: '关闭标签页后我的照片会怎样？',
-        answer:
-          '什么都不会留下：处理在浏览器内存中进行，照片从未上传，关闭标签页后图片和抠图都会被清除。只有缓存的AI模型会留在浏览器中，供下次更快使用。',
-      },
-    ],
-    relatedSlugs: ['/add-background-to-image', '/image-resizer', '/png-to-webp'],
   },
 ];
 

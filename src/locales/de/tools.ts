@@ -1,4 +1,4 @@
-// German (Standard German) tool registry — COMPLETE (home + all 48 tools).
+// German (Standard German) tool registry — COMPLETE (home + all 47 tools).
 // Assembled from tools-de-batch1.ts … tools-de-batch6.ts (coordinator merge).
 // Target path in the repo: src/locales/de/tools.ts
 // German (Standard German), Sie forms. Slugs, category ids and
@@ -14,7 +14,6 @@ export const TOOL_CATEGORIES_DE: ToolCategoryMeta[] = [
   { id: 'resize', label: 'Größe ändern', description: 'Pixelmaße ändern oder Bilder stapelweise skalieren' },
   { id: 'convert', label: 'Konvertieren', description: 'Zwischen Bildformaten konvertieren und PDFs erstellen' },
   { id: 'crop-edit', label: 'Zuschneiden & Bearbeiten', description: 'Bilder drehen, spiegeln, zuschneiden und anpassen' },
-  { id: 'ai-tools', label: 'KI-Tools', description: 'Intelligente Bildverarbeitung im Browser' },
   { id: 'create', label: 'Erstellen', description: 'Favicons, Collagen und Web-Assets erstellen' },
   { id: 'privacy', label: 'Datenschutz-Tools', description: 'EXIF-, GPS- und versteckte Metadaten prüfen und entfernen' },
   { id: 'developer', label: 'Entwickler-Tools', description: 'Farben wählen, Maße prüfen und Web-Assets generieren' },
@@ -2028,7 +2027,7 @@ export const TOOLS_REGISTRY_DE: ToolDefinition[] = [
       {
         question: 'Was, wenn ich einen ganzen Porträthintergrund sauber weichzeichnen möchte, ohne zu malen?',
         answer:
-          'Nutzen Sie den Modus „Gesamtbild“, wenn Sie eine gleichmäßige Hintergrundweichzeichnung hinter überlagerten Grafiken oder UI-Karten möchten. Um ein Motiv auf sauberem Hintergrund zu isolieren, kombinieren Sie ihn mit unserem Hintergrund-Entferner.',
+          'Nutzen Sie den Modus „Gesamtbild“, wenn Sie eine gleichmäßige Hintergrundweichzeichnung hinter überlagerten Grafiken oder UI-Karten möchten.',
       },
       {
         question: 'Wie stark können „Weiches Weichzeichnen“ und „Pixel-Mosaik“ werden?',
@@ -7684,170 +7683,6 @@ export const TOOLS_REGISTRY_DE: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/png-to-jpg', '/image-converter', '/bulk-image-converter', '/compress-image-to-100kb'],
-  },
-  {
-    slug: '/remove-background',
-    name: 'KI-Hintergrundentferner',
-    shortDescription: 'Entfernen Sie Bildhintergründe mit KI im Browser und exportieren Sie transparente PNGs.',
-    category: 'ai-tools',
-    seoTitle: 'Bildhintergrund kostenlos entfernen – KI, ohne Anmeldung',
-    seoDescription: 'Entfernen Sie den Hintergrund jedes Bildes kostenlos mit KI im Browser. Laden Sie ein transparentes PNG herunter oder wählen Sie einen weißen, schwarzen oder eigenen Hintergrund – ohne Anmeldung und ohne Upload.',
-    h1: 'Kostenloser Online-KI-Hintergrundentferner',
-    subtitle:
-      'Entfernen Sie Hintergründe aus Porträts, Produktfotos, Haustieren und Logos mit unserem kostenlosen KI-Hintergrundentferner, der vollständig in Ihrem Browser läuft. Der Konverter wurde für Verkäufer, Creator und Designer entwickelt, die schnell saubere Freisteller benötigen: Er lädt einmal ein kompaktes KI-Modell (ca. 35 MB, danach zwischengespeichert), verarbeitet ein Foto nach dem anderen bis zu 20 MB und exportiert ein transparentes PNG – oder legt Ihren Freisteller auf einen weißen, schwarzen oder eigenen Hintergrund.',
-    howToSteps: [
-      {
-        title: 'Warten, bis das KI-Modell geladen ist',
-        description:
-          'Beim ersten Aufruf lädt die Seite das kompakte Modell isnet_quint8 (ca. 35 MB) einmal herunter und speichert es in Ihrem Browser zwischen; spätere Besuche starten sofort.',
-      },
-      {
-        title: 'Ein Foto bis zu 20 MB ablegen',
-        description:
-          'Laden Sie ein einzelnes JPG-, PNG-, WebP-, HEIC-, BMP- oder AVIF-Foto – eine Datei nach der anderen – in den Upload-Bereich.',
-      },
-      {
-        title: 'KI den Freisteller erstellen lassen',
-        description:
-          'Das Modell isoliert Ihr Motiv lokal in Ihrem Browser und zeigt das Original neben dem transparenten Freisteller.',
-      },
-      {
-        title: 'Freisteller mit dem Original vergleichen',
-        description:
-          'Klicken Sie auf „Geteilter Vergleich“, um über die Vorher-Nachher-Ansicht zu fahren und Kanten um Haare, Fell und feine Details zu prüfen.',
-      },
-      {
-        title: 'Transparent, Weiß, Schwarz oder eigene Farbe wählen',
-        description:
-          'Behalten Sie das transparente PNG, oder wechseln Sie vor dem Herunterladen zu einem weißen, schwarzen oder eigenen farbigen Hintergrund.',
-      },
-      {
-        title: 'Freisteller herunterladen',
-        description:
-          'Speichern Sie das transparente PNG (benannt nach Ihrem Foto mit angehängtem _no_bg) oder die Version mit einfarbigem Hintergrund, und klicken Sie dann für das nächste Foto auf „Neues Bild“.',
-      },
-    ],
-    features: [
-      {
-        title: '100 % KI-Segmentierung auf dem Gerät',
-        description: 'Angetrieben vom leichten ONNX-Modell isnet_quint8, das lokal in Ihrem Browser läuft – Ihre Fotos werden nie auf einen Server hochgeladen.',
-      },
-      {
-        title: 'Sofortiger Export als transparentes PNG',
-        description: 'Laden Sie scharfe Freisteller mit Alpha-Transparenz herunter, bereit für E-Commerce-Angebote, Vorschaubilder, Folien und Design-Arbeiten.',
-      },
-      {
-        title: 'Eingebauter Wechsler für einfarbige Hintergründe',
-        description: 'Sehen Sie eine Vorschau Ihres Freistellers und exportieren Sie ihn auf reinem Weiß, tiefem Schwarz oder einer beliebigen eigenen Hex-Hintergrundfarbe, ohne eine andere App zu öffnen.',
-      },
-      {
-        title: 'Kostenlos, ohne Anmeldung und ohne Wasserzeichen',
-        description: 'Freisteller in voller Auflösung ohne Tageslimits, ohne Konten und ohne Wasserzeichen.',
-      },
-    ],
-    faqs: [
-      {
-        question: 'Sendet die Hintergrundentfernung mein Foto an einen Server?',
-        answer:
-          'Nein. Das KI-Modell wird einmal in Ihren Browser heruntergeladen und führt die Inferenz vollständig auf Ihrem Gerät aus, sodass Ihr Foto nie hochgeladen, gespeichert oder von jemand anderem angesehen wird. Wenn Sie den Tab schließen, wird alles aus dem Browser-Speicher gelöscht.',
-      },
-      {
-        question: 'Warum ist der erste Freisteller langsamer als die danach?',
-        answer:
-          'Beim ersten Besuch lädt Ihr Browser das kompakte Modell isnet_quint8 (ca. 35 MB) herunter und initialisiert die WebAssembly-KI-Laufzeit – das dauert einige Sekunden länger. Danach ist das Modell zwischengespeichert, sodass nachfolgende Fotos deutlich schneller verarbeitet werden.',
-      },
-      {
-        question: 'Wie groß ist das KI-Modell, das mein Browser herunterlädt?',
-        answer:
-          'Ca. 35 MB, einmal beim ersten Aufruf heruntergeladen und danach von Ihrem Browser zwischengespeichert. Das kleine quantisierte Modell isnet_quint8 macht die Entfernung im Browser überhaupt erst ohne Server möglich – größere Cloud-Modelle bräuchten einen Upload und eine kostenpflichtige API.',
-      },
-      {
-        question: 'Kann ich den Hintergrundentferner nach dem ersten Laden ohne Internet nutzen?',
-        answer:
-          'Größtenteils ja: Sobald das Modell zwischengespeichert ist, läuft die eigentliche Entfernung vollständig offline in Ihrem Browser. Internet benötigen Sie weiterhin, um die Seite beim ersten Mal zu laden, und das zwischengespeicherte Modell kann gelöscht werden, wenn der Browser Website-Daten entfernt.',
-      },
-      {
-        question: 'Welche Arten von Fotos ergeben die saubersten Kanten?',
-        answer:
-          'Fotos mit einem klaren Motiv und gutem Kontrast zum Hintergrund funktionieren am besten – Porträts, Produktaufnahmen, Haustiere, Autos und Logos mit scharfen Umrissen. Flaches Licht und ein einfacher Hintergrund geben dem Modell die leichteste Aufgabe.',
-      },
-      {
-        question: 'Kann ich den Hintergrund aus einem Foto mit unordentlicher oder belebter Umgebung entfernen?',
-        answer:
-          'Ja, aber rechnen Sie mit weicheren Kanten: Wenn sich das Motiv in einen überladenen Hintergrund einfügt, muss das kleine Modell auf dem Gerät raten, wo das Motiv endet. Ein saubererer Hintergrund, besseres Licht oder ein engerer Zuschnitt vor dem Hochladen ergeben einen sichtbar besseren Freisteller.',
-      },
-      {
-        question: 'Was geschieht mit feinen Haaren, Fell oder durchsichtigen Kanten?',
-        answer:
-          'Feine Strähnen und flauschiges Fell sind der schwierigste Fall für ein kompaktes quantisiertes Modell, sodass Kanten dort leicht weich wirken oder ein paar Haare verlieren können. Prüfen Sie die Ansicht „Geteilter Vergleich“ – für die meisten Porträts und Produktaufnahmen ist das Ergebnis sauber, aber pixelgenaues Haarmaskieren ist eine bekannte Grenze.',
-      },
-      {
-        question: 'Wie lege ich meinen Freisteller für Amazon oder eBay auf einen rein weißen Hintergrund?',
-        answer:
-          'Wählen Sie nach Fertigstellung des Freistellers unter „Option für Hintergrundfüllung“ Weiß und klicken Sie auf „Mit weißem Hintergrund herunterladen“. Marktplätze bevorzugen scharfe, deckende JPGs und PNGs mit weißem Hintergrund für die Haupt-Vorschaubilder von Produkten – genau das wird hier exportiert.',
-      },
-      {
-        question: 'Welche Dateiformate kann ich hochladen?',
-        answer:
-          'JPG, PNG, WebP, HEIC, BMP und AVIF – das Tool akzeptiert dieselbe erweiterte Bildauswahl wie der Rest der Website. HEIC-Fotos von iPhones werden automatisch in ein dekodierbares Bild umgewandelt, bevor das Modell läuft.',
-      },
-      {
-        question: 'Wie groß darf ein Foto maximal sein?',
-        answer:
-          'Jedes Foto darf bis zu 20 MB groß sein, und das Tool verarbeitet ein Foto nach dem anderen. Das deckt hochauflösende Smartphone- und Kameraaufnahmen ab; sehr große Dateien dauern nur etwas länger, weil das Modell auf Ihrem Gerät läuft.',
-      },
-      {
-        question: 'Kann ich Hintergründe von mehreren Fotos auf einmal entfernen?',
-        answer:
-          'Nein, dieses Tool verarbeitet ein Foto nach dem anderen, damit das KI-Modell den gesamten Gerätespeicher auf einen einzigen sauberen Freisteller konzentrieren kann. Klicken Sie nach jedem Download auf „Neues Bild“, um das nächste Foto zu verarbeiten – es gibt kein Tageslimit.',
-      },
-      {
-        question: 'Behält der Freisteller die ursprüngliche Fotoauflösung?',
-        answer:
-          'Ja. Das exportierte transparente PNG behält 100 % der ursprünglichen Pixelbreite und -höhe des Fotos, sodass ein 4000-px-Produktfoto 4000 px bleibt. Verwenden Sie danach das Tool „Bildgröße ändern“, wenn Sie eine kleinere Version für das Web benötigen.',
-      },
-      {
-        question: 'Warum ist mein transparentes PNG größer als das ursprüngliche Foto?',
-        answer:
-          'PNG speichert jedes Freisteller-Pixel verlustfrei, während Ihr ursprüngliches JPG stark komprimiert war – ein großer, detailreicher Freisteller kann daher leicht schwerer sein als eine kleine JPG-Quelle. Das ist normal: Sie tauschen Dateigröße gegen Transparenz und pixelgenaue Kanten.',
-      },
-      {
-        question: 'Kann ich die Entfernung bei demselben Foto erneut ausführen?',
-        answer:
-          'Ja. Klicken Sie auf „Entfernung erneut ausführen“, um dasselbe Foto noch einmal zu verarbeiten – nützlich, wenn der erste Durchgang einen Schatten als Teil des Motivs erfasst hat oder wenn Sie Ergebnisse vergleichen möchten. Das Modell ist deterministisch, sodass das Ergebnis meist identisch ist, sofern sich die Eingabe nicht geändert hat.',
-      },
-      {
-        question: 'Was soll ich tun, wenn ein Teil des Motivs im Freisteller fehlt?',
-        answer:
-          'Prüfen Sie zuerst in der Ansicht „Geteilter Vergleich“, was genau herausgeschnitten wurde. Motive, die sich in den Hintergrund einfügen – Kleidung in derselben Farbe, Glas oder Tarnung – verwirren das Modell; versuchen Sie ein Foto mit stärkerem Kontrast zwischen Motiv und Hintergrund oder schneiden Sie vor dem Hochladen enger am Motiv zu.',
-      },
-      {
-        question: 'Gibt es ein Wasserzeichen auf dem heruntergeladenen PNG?',
-        answer:
-          'Nein. Downloads sind Freisteller in voller Auflösung ohne Wasserzeichen, ohne Logo und ohne hinzugefügtes Branding. Es gibt auch keine Anmeldung, kein Konto und kein Tageslimit dafür, bei wie vielen Fotos Sie Hintergründe entfernen.',
-      },
-      {
-        question: 'Funktioniert die Hintergrundentfernung in mobilen Browsern?',
-        answer:
-          'Ja. Das Modell wird in Safari auf iOS und Chrome auf Android heruntergeladen und ausgeführt, mit denselben Upload-, Vergleichs- und Download-Steuerelementen. Auf Smartphones dauern große Fotos länger, weil die KI auf dem Prozessor des Telefons läuft – WLAN hilft beim ersten Modell-Download.',
-      },
-      {
-        question: 'Worin unterscheidet sich das von kostenpflichtigen Tools wie remove.bg?',
-        answer:
-          'Dieses Tool ist kostenlos, privat und läuft vollständig in Ihrem Browser ohne Upload und ohne Konto, während kostenpflichtige Cloud-Tools Ihr Foto auf ihren Servern verarbeiten. Der Kompromiss ist die Qualität bei schwierigen Kanten: Das kleine Modell auf dem Gerät ist hervorragend für klare Motive, kann aber bei feinen Haaren oder belebten Szenen nicht mit großen Cloud-Modellen mithalten.',
-      },
-      {
-        question: 'Kann ich den Freisteller in Canva, Photoshop oder PowerPoint verwenden?',
-        answer:
-          'Ja. Das exportierte transparente PNG öffnet sich direkt in Canva, Photoshop, Figma, PowerPoint und Google Slides, wo Sie es über jeden Hintergrund, jede Folie oder jedes Design legen können. Der Download mit einfarbigem Hintergrund funktioniert genauso für Apps, die ein deckendes Bild benötigen.',
-      },
-      {
-        question: 'Was geschieht mit meinem Foto, nachdem ich den Tab schließe?',
-        answer:
-          'Es wird nichts gespeichert: Die Verarbeitung geschieht im Browser-Speicher, das Foto wird nie hochgeladen, und wenn Sie den Tab schließen, werden Bild und Freisteller gelöscht. Nur das zwischengespeicherte KI-Modell bleibt im Browser für eine schnellere künftige Nutzung.',
-      },
-    ],
-    relatedSlugs: ['/add-background-to-image', '/image-resizer', '/png-to-webp'],
   },
 ];
 

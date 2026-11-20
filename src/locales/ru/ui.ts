@@ -76,7 +76,6 @@ export const RU = {
       { slug: '/rotate-flip-image', label: 'Поворот и отражение изображения' },
       { slug: '/image-to-pdf', label: 'Изображение в PDF' },
       { slug: '/remove-image-metadata', label: 'Удалить метаданные' },
-      { slug: '/remove-background', label: 'Удаление фона' },
     ],
     legalLinks: [
       { slug: '/privacy', label: 'Политика конфиденциальности' },
@@ -509,7 +508,6 @@ export const RU = {
     resize: 'Изменение размера',
     convert: 'Конвертация',
     'crop-edit': 'Обрезка и редактирование',
-    'ai-tools': 'ИИ-инструменты',
     create: 'Создание',
     privacy: 'Приватность',
     developer: 'Инструменты разработчика',
@@ -577,7 +575,7 @@ export const RU = {
   },
 } as const;
 
-// Per-tool workspace UI strings in Russian (Standard Russian) — COMPLETE (all 48 tools).
+// Per-tool workspace UI strings in Russian (Standard Russian) — COMPLETE (all 47 tools).
 // Assembled from tool-ui-ru-batch1.ts … tool-ui-ru-batch6.ts (coordinator merge).
 // Target: merged into src/locales/ru/ui.ts as the TOOL_UI_RU export.
 // Russian (Standard Russian), вы forms. Keyed by English slug.
@@ -2277,46 +2275,5 @@ export const TOOL_UI_RU = {
     comparisonAfterLabel: 'JPG ({size})', // afterLabel `${targetLabel} (${formatBytes(...)})`
     errorConvertFailed: 'Не удалось преобразовать «{name}» в JPG.', // `Failed to convert ${item.name} to ${targetLabel}.`
     errorCouldNotDecode: 'Не удалось декодировать «{name}». Убедитесь, что это допустимое изображение BMP.', // `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`
-  },
-  '/remove-background': {
-    uploadTitle: 'Перетащите фото, чтобы удалить фон с помощью ИИ', // 'Drop a photo to remove its background with AI'
-    modelLoadingTitle: 'Загрузка ИИ-модели в браузере (isnet_quint8)', // 'Loading in-browser AI model (isnet_quint8)'
-    modelCache: 'Кэш модели', // 'Model Cache'
-    progressWasm: 'Загрузка среды выполнения ИИ на WebAssembly…', // 'Loading WebAssembly AI runtime...'
-    progressModel: 'Скачивание ИИ-модели удаления фона (около 35 МБ, кэшируется для будущего использования)…', // 'Downloading AI background removal model (~35 MB, cached for future use)...'
-    progressCompute: 'Удаление фона локально в вашем браузере…', // 'Removing background locally in your browser...'
-    progressPreparing: 'Подготовка ИИ-модели в браузере…', // 'Preparing in-browser AI model...'
-    progressInitLibrary: 'Загрузка библиотеки ИИ для удаления фона…', // 'Loading AI background removal library...'
-    progressInitModule: 'Инициализация модуля ИИ для удаления фона…', // 'Initializing AI background removal module...'
-    errorModelInit: 'Не удалось инициализировать ИИ-модель фона: {message}', // `Could not initialize the AI background model: ${err.message}`
-    errorModelInitGeneric: 'Не удалось инициализировать ИИ-модель фона в этом браузере.', // 'Could not initialize the AI background model in this browser.'
-    errorDecodeOutput: 'Не удалось декодировать выходной прозрачный PNG.', // 'Failed to decode transparent PNG output.'
-    errorRemovalFailed: 'Не удалось удалить фон в этом браузере. Попробуйте другое изображение или перезагрузите страницу.', // 'Background removal failed in this browser. Try another image or reload.'
-    beforeAfterPreview: 'Предпросмотр «до/после»', // 'Before & After Preview'
-    splitCompare: 'Сравнение с разделением', // 'Split Compare'
-    newImage: 'Новое изображение', // 'New Image'
-    originalLabel: 'Оригинал', // 'Original'
-    transparentCutout: 'Прозрачная вырезка (PNG)', // 'Transparent Cutout (PNG)'
-    solidBackgroundPreview: 'Предпросмотр на сплошном фоне', // 'Solid Background Preview'
-    waitingForResult: 'Ожидание результата…', // 'Waiting for result...'
-    processingLocally: 'Локальная обработка…', // 'Processing locally...'
-    cutoutStatus: 'Статус вырезки', // 'Cutout Status'
-    ready: 'Готово', // 'Ready'
-    backgroundFillOption: 'Вариант заливки фона', // 'Background Fill Option'
-    bgTransparent: 'Прозрачный', // 'Transparent'
-    bgWhite: 'Белый', // 'White'
-    bgBlack: 'Чёрный', // 'Black'
-    bgCustom: 'Собственный цвет', // 'Custom'
-    customBackgroundColor: 'Собственный цвет фона', // 'Custom Background Color'
-    downloadTransparentPng: 'Скачать прозрачный PNG', // 'Download Transparent PNG'
-    downloadWithWhite: 'Скачать с белым фоном', // 'Download with White Background'
-    downloadWithBlack: 'Скачать с чёрным фоном', // 'Download with Black Background'
-    downloadWithCustom: 'Скачать с фоном {color}', // 'Download with {color} Background'
-    rerunRemoval: 'Удалить заново', // 'Re-run Removal'
-    comparisonTitlePrefix: 'Сравнение удаления фона', // 'Background Removal Comparison'
-    comparisonAfterTransparent: 'Вырезка (прозрачный PNG)', // 'Cutout (Transparent PNG)'
-    comparisonAfterSolid: 'Вырезка (сплошной фон)', // 'Cutout (Solid BG)'
-    altOriginal: 'Оригинал {name}', // alt `Original ${sourceFile.name}`
-    altCutout: 'Фон удалён {name}', // alt `Background removed ${sourceFile.name}`
   },
 };

@@ -136,7 +136,7 @@ export const AboutPageDe: React.FC<AboutPageDeProps> = ({ onNavigate }) => {
               CompressMyPic wurde von Bilal geschaffen, einem unabhängigen Entwickler, der kostenlose, datenschutzfreundliche Tools für das Web baut. Er hat CompressMyPic gestartet, nachdem er sich darüber geärgert hatte, dass Bildkomprimierer Menschen dazu zwangen, persönliche Fotos auf den Server eines Fremden hochzuladen, nur um eine Datei zu verkleinern. Seine Antwort war ein Tool, das die gesamte Arbeit im eigenen Browser des Besuchers erledigt – kein Upload, kein Konto, kein Wasserzeichen und keine überraschende Rechnung am Ende.
             </p>
             <p>
-              Bilal entwirft, baut und pflegt alle 48 Tools der Website selbst, vom Komprimierer und den Konvertern bis zum Favicon-Generator und dem Hintergrundentferner. Er beantwortet Support-Nachrichten persönlich, liest jedes Feedback und hält die Tools für alle kostenlos, ob sie ein Foto oder tausend komprimieren. In der Fußzeile der Website steht eine kleine Würdigung für Shaheen, dessen Ermutigung Bilal dazu inspiriert hat, weiterzubauen und die Tools wirklich nützlich zu machen, statt nur beliebt.
+              Bilal entwirft, baut und pflegt alle 47 Tools der Website selbst, vom Komprimierer und den Konvertern bis zum Favicon-Generator. Er beantwortet Support-Nachrichten persönlich, liest jedes Feedback und hält die Tools für alle kostenlos, ob sie ein Foto oder tausend komprimieren. In der Fußzeile der Website steht eine kleine Würdigung für Shaheen, dessen Ermutigung Bilal dazu inspiriert hat, weiterzubauen und die Tools wirklich nützlich zu machen, statt nur beliebt.
             </p>
             <p>
               Wenn Sie die Arbeit verfolgen möchten, finden Sie das Projekt auf 

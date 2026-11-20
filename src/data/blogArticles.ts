@@ -69,7 +69,6 @@ export const BLOG_CATEGORY_SLUGS: Record<SupportedLang, Record<ToolCategoryId, s
     resize: 'resize',
     convert: 'convert',
     'crop-edit': 'crop-edit',
-    'ai-tools': 'ai-tools',
     create: 'create',
     privacy: 'privacy',
     developer: 'developer',
@@ -79,7 +78,6 @@ export const BLOG_CATEGORY_SLUGS: Record<SupportedLang, Record<ToolCategoryId, s
     resize: 'cambiar-tamano',
     convert: 'convertir',
     'crop-edit': 'recortar-y-editar',
-    'ai-tools': 'herramientas-de-ia',
     create: 'crear',
     privacy: 'privacidad',
     developer: 'desarrolladores',
@@ -89,7 +87,6 @@ export const BLOG_CATEGORY_SLUGS: Record<SupportedLang, Record<ToolCategoryId, s
     resize: 'redimensionar',
     convert: 'converter',
     'crop-edit': 'recortar-e-editar',
-    'ai-tools': 'ferramentas-de-ia',
     create: 'criar',
     privacy: 'privacidade',
     developer: 'desenvolvedores',
@@ -99,7 +96,6 @@ export const BLOG_CATEGORY_SLUGS: Record<SupportedLang, Record<ToolCategoryId, s
     resize: 'redimensionner',
     convert: 'convertir',
     'crop-edit': 'recadrer-et-modifier',
-    'ai-tools': 'outils-ia',
     create: 'creer',
     privacy: 'confidentialite',
     developer: 'developpeur',
@@ -109,7 +105,6 @@ export const BLOG_CATEGORY_SLUGS: Record<SupportedLang, Record<ToolCategoryId, s
     resize: 'groesse-aendern',
     convert: 'konvertieren',
     'crop-edit': 'zuschneiden-und-bearbeiten',
-    'ai-tools': 'ki-tools',
     create: 'erstellen',
     privacy: 'datenschutz',
     developer: 'entwickler',
@@ -119,7 +114,6 @@ export const BLOG_CATEGORY_SLUGS: Record<SupportedLang, Record<ToolCategoryId, s
     resize: 'ridimensionare',
     convert: 'convertire',
     'crop-edit': 'ritagliare-e-modificare',
-    'ai-tools': 'strumenti-ia',
     create: 'creare',
     privacy: 'privacy',
     developer: 'sviluppatori',
@@ -129,7 +123,6 @@ export const BLOG_CATEGORY_SLUGS: Record<SupportedLang, Record<ToolCategoryId, s
     resize: 'ubah-ukuran',
     convert: 'konversi',
     'crop-edit': 'potong-dan-edit',
-    'ai-tools': 'alat-ai',
     create: 'buat',
     privacy: 'privasi',
     developer: 'pengembang',
@@ -139,7 +132,6 @@ export const BLOG_CATEGORY_SLUGS: Record<SupportedLang, Record<ToolCategoryId, s
     resize: 'izmenenie-razmera',
     convert: 'konvertatsiya',
     'crop-edit': 'obrezka-i-redaktirovanie',
-    'ai-tools': 'ii-instrumenty',
     create: 'sozdanie',
     privacy: 'privatnost',
     developer: 'instrumenty-razrabotchika',
@@ -149,7 +141,6 @@ export const BLOG_CATEGORY_SLUGS: Record<SupportedLang, Record<ToolCategoryId, s
     resize: 'saizu-henko',
     convert: 'henkan',
     'crop-edit': 'torimingu-to-henshu',
-    'ai-tools': 'ai-tsuru',
     create: 'sakusei',
     privacy: 'puraibashi',
     developer: 'kaihatsusha-tsuru',
@@ -159,7 +150,6 @@ export const BLOG_CATEGORY_SLUGS: Record<SupportedLang, Record<ToolCategoryId, s
     resize: 'keugi-jojeong',
     convert: 'byeonhwan',
     'crop-edit': 'jareugi-pyeonjip',
-    'ai-tools': 'ai-dogu',
     create: 'mandeulgi',
     privacy: 'gaeinjeongbo-dogu',
     developer: 'gaebalja-dogu',
@@ -169,7 +159,6 @@ export const BLOG_CATEGORY_SLUGS: Record<SupportedLang, Record<ToolCategoryId, s
     resize: 'tiaozheng-chicun',
     convert: 'zhuanhuan',
     'crop-edit': 'caijian-bianji',
-    'ai-tools': 'ai-gongju',
     create: 'chuangzuo',
     privacy: 'yinsi',
     developer: 'kaifazhe-gongju',
@@ -1961,7 +1950,7 @@ export const BLOG_ARTICLES: BlogArticleMeta[] = [
         description: 'Put any photo or transparent cutout on a solid, gradient, or blurred background: how the tool works, which mode to choose, and framing for social and shops.',
         readingMinutes: 12,
       },
-      relatedToolSlugs: ['/remove-background', '/image-cropper', '/add-text-to-image'],
+      relatedToolSlugs: ['/image-converter', '/image-cropper', '/add-text-to-image'],
     },
     {
       id: 'how-to-add-background-to-image',
@@ -1976,7 +1965,7 @@ export const BLOG_ARTICLES: BlogArticleMeta[] = [
         description: 'Add a background to any photo or transparent cutout in minutes: pick a solid, gradient, or blurred backdrop, frame it for the right shape, and export.',
         readingMinutes: 10,
       },
-      relatedToolSlugs: ['/remove-background', '/image-cropper', '/add-text-to-image'],
+      relatedToolSlugs: ['/image-converter', '/image-cropper', '/add-text-to-image'],
     },
     {
       id: 'product-photo-backgrounds',
@@ -1991,7 +1980,7 @@ export const BLOG_ARTICLES: BlogArticleMeta[] = [
         description: 'Choose the right background for product photos: white, brand colours, marketplace rules, and the consistency that makes a shop look like a brand.',
         readingMinutes: 12,
       },
-      relatedToolSlugs: ['/remove-background', '/image-cropper', '/bulk-image-compressor'],
+      relatedToolSlugs: ['/image-converter', '/image-cropper', '/bulk-image-compressor'],
     },
     {
       id: 'image-splitter-guide',
@@ -2308,51 +2297,6 @@ export const BLOG_ARTICLES: BlogArticleMeta[] = [
       },
       relatedToolSlugs: ['/image-metadata-viewer', '/image-converter', '/image-cropper', '/image-to-base64'],
     },
-    {
-      id: 'background-remover-guide',
-      toolSlug: '/remove-background',
-      categoryId: 'ai-tools',
-      type: 'guide',
-      status: 'published',
-      publishedAt: '2026-11-17',
-      en: {
-        slug: 'background-remover-guide',
-        title: 'Background Remover: Complete Guide',
-        description: 'What a background remover is, how the AI finds your subject, and how to get a clean transparent cutout — free, in your browser, with no upload.',
-        readingMinutes: 10,
-      },
-      relatedToolSlugs: ['/add-background-to-image', '/image-cropper', '/image-converter'],
-    },
-    {
-      id: 'how-to-remove-background-from-image',
-      toolSlug: '/remove-background',
-      categoryId: 'ai-tools',
-      type: 'howto',
-      status: 'published',
-      publishedAt: '2026-11-17',
-      en: {
-        slug: 'how-to-remove-background-from-image',
-        title: 'How to Remove a Background from an Image',
-        description: 'Remove the background from any photo in six steps: pick the right photo, upload it, check the cutout with Split Compare, and download a transparent PNG.',
-        readingMinutes: 10,
-      },
-      relatedToolSlugs: ['/add-background-to-image', '/image-cropper', '/image-resizer'],
-    },
-    {
-      id: 'ai-background-removal-vs-manual-cutout',
-      toolSlug: '/remove-background',
-      categoryId: 'ai-tools',
-      type: 'advanced',
-      status: 'published',
-      publishedAt: '2026-11-17',
-      en: {
-        slug: 'ai-background-removal-vs-manual-cutout',
-        title: 'AI Background Removal vs Manual Cutout',
-        description: 'AI background removal is fast, free, and private — but manual cutout still wins on hair, glass, and high-stakes images. Speed, accuracy, and privacy compared.',
-        readingMinutes: 10,
-      },
-      relatedToolSlugs: ['/add-background-to-image', '/image-cropper', '/image-converter'],
-    },
 ];
 
 // --- Route resolution (EN paths only; parsePath normalizes first) ---
@@ -2363,7 +2307,7 @@ export function resolveBlogCategorySlug(lang: SupportedLang, slug: string): Tool
   for (const [id, localized] of Object.entries(map)) {
     if (localized === slug) return id as ToolCategoryId;
   }
-  if (slug === 'compress' || slug === 'resize' || slug === 'convert' || slug === 'crop-edit' || slug === 'ai-tools' || slug === 'create' || slug === 'privacy' || slug === 'developer') {
+  if (slug === 'compress' || slug === 'resize' || slug === 'convert' || slug === 'crop-edit' || slug === 'create' || slug === 'privacy' || slug === 'developer') {
     return slug as ToolCategoryId;
   }
   return null;

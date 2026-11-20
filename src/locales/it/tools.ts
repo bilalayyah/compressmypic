@@ -1,4 +1,4 @@
-// Italian (Standard Italian) tool registry — COMPLETE (home + all 48 tools).
+// Italian (Standard Italian) tool registry — COMPLETE (home + all 47 tools).
 // Assembled from tools-it-batch1.ts … tools-it-batch6.ts (coordinator merge).
 // Target path in the repo: src/locales/it/tools.ts
 // Italian (Standard Italian), tu forms. Slugs, category ids and
@@ -14,7 +14,6 @@ export const TOOL_CATEGORIES_IT: ToolCategoryMeta[] = [
   { id: 'resize', label: 'Ridimensiona', description: 'Modifica le dimensioni in pixel o scala le immagini in blocco' },
   { id: 'convert', label: 'Converti', description: 'Converti tra formati di immagine e genera PDF' },
   { id: 'crop-edit', label: 'Ritaglia e modifica', description: 'Ruota, specchia, ritaglia e regola le tue foto' },
-  { id: 'ai-tools', label: 'Strumenti IA', description: 'Elaborazione intelligente delle immagini nel browser' },
   { id: 'create', label: 'Crea', description: 'Crea favicon, collage e risorse web' },
   { id: 'privacy', label: 'Strumenti privacy', description: 'Ispeziona e rimuovi metadati EXIF, GPS e nascosti' },
   { id: 'developer', label: 'Strumenti per sviluppatori', description: 'Scegli i colori, ispeziona le dimensioni e genera risorse web' },
@@ -1980,7 +1979,7 @@ export const TOOLS_REGISTRY_IT: ToolDefinition[] = [
       {
         question: 'E se voglio sfocare l\'intero sfondo di un ritratto in modo pulito senza dipingere?',
         answer:
-          'Usa la modalità Immagine intera quando vuoi un ammorbidimento uniforme dello sfondo dietro grafiche sovrapposte o schede di interfaccia. Per isolare un soggetto su uno sfondo pulito, abbinala al nostro strumento Rimuovi sfondo.',
+          'Usa la modalità Immagine intera quando vuoi un ammorbidimento uniforme dello sfondo dietro grafiche sovrapposte o schede di interfaccia.',
       },
       {
         question: 'Quanto possono arrivare la Sfocatura fluida e il Mosaico pixelizzato?',
@@ -7673,170 +7672,6 @@ export const TOOLS_REGISTRY_IT: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/png-to-jpg', '/image-converter', '/bulk-image-converter', '/compress-image-to-100kb'],
-  },
-  {
-    slug: '/remove-background',
-    name: 'Rimuovi Sfondo',
-    shortDescription: 'Rimuovi lo sfondo delle immagini con l’IA nel browser ed esporta PNG trasparenti.',
-    category: 'ai-tools',
-    seoTitle: 'Rimuovi lo sfondo da un’immagine gratis – IA, senza registrazione',
-    seoDescription: 'Rimuovi lo sfondo da qualsiasi immagine gratis con l’IA nel browser. Scarica un PNG trasparente o aggiungi uno sfondo bianco, nero o personalizzato: senza registrazione né caricamenti.',
-    h1: 'Rimuovi sfondo AI gratuito online',
-    subtitle:
-      'Rimuovi lo sfondo da ritratti, foto di prodotto, animali e loghi con il nostro rimuovi sfondo AI gratuito, che funziona interamente nel tuo browser. Pensato per venditori, creator e designer che vogliono ritagli puliti in fretta, carica un modello AI compatto una sola volta (circa 35 MB, poi memorizzato nella cache), elabora una foto alla volta fino a 20 MB ed esporta un PNG trasparente — oppure posiziona il ritaglio su uno sfondo bianco, nero o personalizzato.',
-    howToSteps: [
-      {
-        title: 'Attendi il caricamento del modello AI',
-        description:
-          'Al primo utilizzo la pagina scarica il modello compatto isnet_quint8 (circa 35 MB) una sola volta e lo memorizza nella cache del browser; le visite successive partono subito.',
-      },
-      {
-        title: 'Trascina una foto fino a 20 MB',
-        description:
-          'Carica una singola foto JPG, PNG, WebP, HEIC, BMP o AVIF — un file alla volta — nella zona di caricamento.',
-      },
-      {
-        title: 'Lascia che l’IA ritagli il soggetto',
-        description:
-          'Il modello isola il soggetto in locale nel tuo browser e mostra l’originale accanto al ritaglio trasparente.',
-      },
-      {
-        title: 'Confronta il ritaglio con l’originale',
-        description:
-          'Clicca Confronto a metà per trascinare sulla vista prima/dopo e controllare i bordi intorno a capelli, peli e dettagli fini.',
-      },
-      {
-        title: 'Scegli trasparente, bianco, nero o personalizzato',
-        description:
-          'Tieni il PNG trasparente, oppure passa a uno sfondo bianco, nero o di colore personalizzato prima di scaricare.',
-      },
-      {
-        title: 'Scarica il tuo ritaglio',
-        description:
-          'Salva il PNG trasparente (con il nome della tua foto più _no_bg) o la versione con sfondo solido, poi clicca Nuova immagine per la foto successiva.',
-      },
-    ],
-    features: [
-      {
-        title: 'Segmentazione AI 100% lato client',
-        description: 'Basato sul modello ONNX leggero isnet_quint8 che gira in locale nel tuo browser: le tue foto non vengono mai caricate su alcun server.',
-      },
-      {
-        title: 'Export istantaneo di PNG trasparente',
-        description: 'Scarica ritagli PNG nitidi con trasparenza alfa, pronti per annunci e-commerce, miniature, slide e lavori di design.',
-      },
-      {
-        title: 'Selettore di sfondo solido integrato',
-        description: 'Visualizza in anteprima ed esporta il ritaglio su bianco puro, nero intenso o qualsiasi colore esadecimale personalizzato senza aprire un’altra app.',
-      },
-      {
-        title: 'Gratis, senza registrazione e senza filigrana',
-        description: 'Ritagli a piena risoluzione senza limiti giornalieri, senza account e senza filigrane.',
-      },
-    ],
-    faqs: [
-      {
-        question: 'La rimozione dello sfondo invia la mia foto a un server?',
-        answer:
-          'No. Il modello AI viene scaricato nel tuo browser una sola volta ed esegue l’inferenza interamente sul tuo dispositivo, quindi la tua foto non viene mai caricata, memorizzata o vista da altri. Chiudendo la scheda, tutto viene rimosso dalla memoria del browser.',
-      },
-      {
-        question: 'Perché il primo ritaglio è più lento di quelli successivi?',
-        answer:
-          'Alla prima visita, il browser scarica il modello compatto isnet_quint8 (circa 35 MB) e inizializza il runtime AI WebAssembly, il che richiede qualche secondo in più. Dopo di che il modello è nella cache, quindi le foto successive vengono elaborate molto più velocemente.',
-      },
-      {
-        question: 'Quanto è grande il modello AI che scarica il mio browser?',
-        answer:
-          'Circa 35 MB, scaricati una sola volta al primo utilizzo e poi memorizzati nella cache dal browser. Il piccolo modello quantizzato isnet_quint8 è ciò che rende possibile la rimozione nel browser senza server: modelli cloud più grandi richiederebbero un caricamento e un’API a pagamento.',
-      },
-      {
-        question: 'Posso usare il rimuovi sfondo senza internet dopo il primo caricamento?',
-        answer:
-          'Per lo più sì: una volta che il modello è nella cache, la rimozione vera e propria avviene completamente offline nel tuo browser. Ti serve ancora internet per caricare la pagina stessa la prima volta, e il modello in cache può essere cancellato se il browser pulisce i dati del sito.',
-      },
-      {
-        question: 'Quali tipi di foto producono i bordi più puliti?',
-        answer:
-          'Le foto con un soggetto chiaro e un buon contrasto con lo sfondo funzionano meglio: ritratti, foto di prodotto, animali, auto e loghi con contorni netti. Un’illuminazione uniforme e uno sfondo semplice danno al modello il compito più facile.',
-      },
-      {
-        question: 'Posso rimuovere lo sfondo da una foto con uno scenario disordinato o affollato?',
-        answer:
-          'Sì, ma aspettati bordi più morbidi: quando il soggetto si confonde con uno sfondo disordinato, il piccolo modello sul dispositivo deve indovinare dove finisce il soggetto. Uno sfondo più pulito, una luce migliore o un ritaglio più ravvicinato prima del caricamento danno un ritaglio visibilmente migliore.',
-      },
-      {
-        question: 'Cosa succede ai capelli fini, al pelo o ai bordi trasparenti?',
-        answer:
-          'I fili sottili e il pelo vaporoso sono il caso più difficile per un modello quantizzato compatto, quindi i bordi lì possono sembrare leggermente morbidi o perdere qualche capello. Controlla la vista Confronto a metà: per la maggior parte dei ritratti e delle foto di prodotto il risultato è pulito, ma la mascheratura dei capelli perfetta in pixel è un limite noto.',
-      },
-      {
-        question: 'Come metto il mio ritaglio su uno sfondo bianco puro per Amazon o eBay?',
-        answer:
-          'Dopo che il ritaglio è pronto, scegli Bianco sotto Opzione di riempimento sfondo e clicca Scarica con sfondo bianco. I marketplace preferiscono JPG e PNG nitidi con sfondo bianco opaco per le miniature principali dei prodotti, e questo esporta esattamente quello.',
-      },
-      {
-        question: 'Quali formati di file posso caricare?',
-        answer:
-          'JPG, PNG, WebP, HEIC, BMP e AVIF: lo strumento accetta lo stesso set esteso di immagini del resto del sito. Le foto HEIC degli iPhone vengono convertite automaticamente in un’immagine decodificabile prima che il modello venga eseguito.',
-      },
-      {
-        question: 'Qual è la dimensione massima della foto?',
-        answer:
-          'Ogni foto può arrivare fino a 20 MB, e lo strumento elabora una foto alla volta. Questo copre scatti ad alta risoluzione di telefoni e fotocamere; i file molto grandi richiedono solo un po’ più di tempo perché il modello gira sul tuo dispositivo.',
-      },
-      {
-        question: 'Posso rimuovere lo sfondo da diverse foto in una volta?',
-        answer:
-          'No, questo strumento gestisce una foto alla volta così il modello AI può concentrare tutta la memoria del dispositivo su un singolo ritaglio pulito. Clicca Nuova immagine dopo ogni download per elaborare la foto successiva: non c’è un limite giornaliero.',
-      },
-      {
-        question: 'Il ritaglio mantiene la risoluzione della foto originale?',
-        answer:
-          'Sì. Il PNG trasparente esportato mantiene il 100% della larghezza e dell’altezza in pixel della foto originale, quindi una foto di prodotto da 4000px resta 4000px. Usa dopo il Ridimensionatore di immagini se ti serve una versione più piccola per il web.',
-      },
-      {
-        question: 'Perché il mio PNG trasparente è più grande della foto originale?',
-        answer:
-          'Il PNG memorizza ogni pixel del ritaglio senza perdita, mentre il tuo JPG originale era molto compresso: quindi un ritaglio grande e dettagliato può facilmente pesare più di una piccola fonte JPG. È normale: stai scambiando la dimensione del file con trasparenza e bordi perfetti in pixel.',
-      },
-      {
-        question: 'Posso rieseguire la rimozione sulla stessa foto?',
-        answer:
-          'Sì. Clicca Riesegui rimozione per elaborare di nuovo la stessa foto: utile se il primo passaggio ha preso un’ombra come parte del soggetto o se vuoi confrontare i risultati. Il modello è deterministico, quindi il risultato è in genere identico a meno che l’input non sia cambiato.',
-      },
-      {
-        question: 'Cosa dovrei fare se parte del soggetto manca nel ritaglio?',
-        answer:
-          'Prima controlla la vista Confronto a metà per vedere esattamente cosa è stato tagliato. I soggetti che si confondono con lo sfondo — abbigliamento dello stesso colore, vetro o mimetismo — confondono il modello; prova una foto con un contrasto soggetto-sfondo più forte oppure ritaglia più vicino al soggetto prima di caricare.',
-      },
-      {
-        question: 'C’è una filigrana sul PNG scaricato?',
-        answer:
-          'No. I download sono ritagli a piena risoluzione senza filigrana, senza logo e senza branding aggiunto. Inoltre non c’è registrazione, non c’è account e non c’è limite giornaliero su quante foto puoi rimuovere lo sfondo.',
-      },
-      {
-        question: 'La rimozione dello sfondo funziona nei browser mobili?',
-        answer:
-          'Sì. Il modello viene scaricato ed eseguito in Safari su iOS e in Chrome su Android, con gli stessi controlli di caricamento, confronto e download. Sui telefoni, le foto grandi richiedono più tempo perché l’IA gira sul processore del telefono: il Wi-Fi aiuta per il primo download del modello.',
-      },
-      {
-        question: 'In cosa è diverso da strumenti a pagamento come remove.bg?',
-        answer:
-          'Questo strumento è gratuito, privato e gira interamente nel tuo browser senza caricamento e senza account, mentre gli strumenti cloud a pagamento elaborano la tua foto sui loro server. Il compromesso è la qualità sui bordi difficili: il piccolo modello sul dispositivo è eccellente per soggetti chiari ma non può eguagliare i grandi modelli cloud su capelli fini o scene affollate.',
-      },
-      {
-        question: 'Posso usare il ritaglio in Canva, Photoshop o PowerPoint?',
-        answer:
-          'Sì. Il PNG trasparente esportato si apre direttamente in Canva, Photoshop, Figma, PowerPoint e Google Slides, dove puoi posizionarlo su qualsiasi sfondo, slide o design. Il download con sfondo solido funziona allo stesso modo per le app che hanno bisogno di un’immagine opaca.',
-      },
-      {
-        question: 'Cosa succede alla mia foto dopo che chiudo la scheda?',
-        answer:
-          'Non viene memorizzato nulla da nessuna parte: l’elaborazione avviene nella memoria del browser, la foto non viene mai caricata e chiudere la scheda cancella l’immagine e il ritaglio. Solo il modello AI in cache resta nel browser per un uso futuro più veloce.',
-      },
-    ],
-    relatedSlugs: ['/add-background-to-image', '/image-resizer', '/png-to-webp'],
   },
 ];
 

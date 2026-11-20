@@ -32,7 +32,6 @@ import {
   Gauge,
   Globe,
   Scaling,
-  Scissors,
   ZoomIn,
 } from 'lucide-react';
 import { TOOLS_META, TOOL_CATEGORIES } from '../data/toolsMeta';
@@ -117,7 +116,6 @@ const TOOL_ICONS: Record<string, React.ComponentType<{ className?: string }>> = 
   '/svg-to-png': RefreshCw,
   '/avif-to-jpg': RefreshCw,
   '/bmp-to-jpg': RefreshCw,
-  '/remove-background': Scissors,
   '/image-upscaler': ZoomIn,
 };
 

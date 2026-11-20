@@ -710,19 +710,4 @@ export const KO_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     description: "사진 속 GPS 좌표와 EXIF 데이터, 숨은 메타데이터가 무엇을 드러낼 수 있는지, 누가 악용할 수 있는지, 사진이 위치와 일상을 새는 것을 막는 실용적인 방법을 정리했습니다. SNS·메신저·중고 거래 사진 공유 전 위치가 새지 않게 확인하고 지우는 방법을 다룹니다.",
     readingMinutes: 8,
   },
-  "background-remover-guide": {
-    title: "사진 배경 제거 완전 가이드｜AI 누끼 따기 무료로 하는 방법",
-    description: "사진 배경을 제거하는 방법을 처음부터 정리했습니다. AI가 피사체를 찾는 원리, 투명한 누끼 PNG를 깔끔하게 만드는 법, 머리카락과 유리 같은 까다로운 피사체 요령까지. 무료로 브라우저에서 바로 사용할 수 있습니다.",
-    readingMinutes: 7,
-  },
-  "how-to-remove-background-from-image": {
-    title: "사진 배경 지우는 방법｜6단계로 투명 PNG 누끼 따기",
-    description: "사진 배경 지우기는 6단계면 끝납니다. 좋은 사진 고르기, 업로드, Split Compare로 누끼 확인, 투명 PNG 다운로드까지. 무료, 회원가입 없이 브라우저에서 바로 할 수 있습니다. 상품 사진·프로필·썸네일용 누끼를 AI로 빠르게 만드는 과정을 안내합니다.",
-    readingMinutes: 7,
-  },
-  "ai-background-removal-vs-manual-cutout": {
-    title: "AI 배경 제거 vs 수동 누끼｜속도·정확도·비용 완벽 비교",
-    description: "AI 배경 제거는 빠르고 무료이며 개인정보도 안전합니다. 하지만 머리카락, 유리, 중요한 이미지에서는 아직 수동 누끼가 앞섭니다. 속도, 정확도, 비용, 개인정보를 항목별로 비교했습니다. 머리카락·유리·복잡한 경계에서 결과가 갈리는 이유와 용도별 선택 기준까지 비교했습니다.",
-    readingMinutes: 7,
-  },
 };

@@ -136,7 +136,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               CompressMyPic was created by Bilal, an independent maker who builds free, privacy-first tools for the web. He started CompressMyPic after getting frustrated with image compressors that forced people to upload personal photos to a stranger's server just to make a file smaller. His answer was a tool that does the whole job inside the visitor's own browser — no upload, no account, no watermark, and no surprise bill at the end.
             </p>
             <p>
-              Bilal designs, builds, and maintains all 48 tools on the site himself, from the compressor and converters to the favicon generator and background remover. He answers support messages personally, reads every piece of feedback, and keeps the tools free for everyone, whether they compress one photo or a thousand. The site's footer carries a small credit to Shaheen, whose encouragement inspired Bilal to keep building and to make the tools genuinely useful rather than merely popular.
+              Bilal designs, builds, and maintains all 47 tools on the site himself, from the compressor and converters to the favicon generator. He answers support messages personally, reads every piece of feedback, and keeps the tools free for everyone, whether they compress one photo or a thousand. The site's footer carries a small credit to Shaheen, whose encouragement inspired Bilal to keep building and to make the tools genuinely useful rather than merely popular.
             </p>
             <p>
               If you want to follow the work, you can find the project on{' '}

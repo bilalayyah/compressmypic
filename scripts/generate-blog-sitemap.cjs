@@ -1,5 +1,5 @@
 // Blog sitemap generator (Batch 2 + Batch 3 + Batch 4) — inserts the blog
-// home (11) + category hub (88) + published article URLs into
+// home (11) + category hub (77) + published article URLs into
 // public/sitemap.xml, idempotently.
 //
 // SOURCE OF TRUTH: BLOG_CATEGORY_SLUGS + BLOG_ARTICLES in
@@ -27,7 +27,7 @@ const BASE = 'https://compressmypic.online';
 const LASTMOD = '2026-11-17'; // Batch 2 ship date; Batch 3 uses per-article lastmod
 const LANGS = ['en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh'];
 
-const BLOCK_START = '  <!-- Blog (Batch 2): 11 homes + 88 category hubs. Regenerate with scripts/generate-blog-sitemap.cjs. -->';
+const BLOCK_START = '  <!-- Blog (Batch 2): 11 homes + 77 category hubs. Regenerate with scripts/generate-blog-sitemap.cjs. -->';
 const BLOCK_END = '  <!-- /Blog (Batch 2) -->';
 
 function parseCategorySlugs() {
@@ -227,7 +227,7 @@ function buildBlogBlock(slugs, articles, localeSlugs) {
     for (const l of LANGS) alternates[l] = blogHomePath(l);
     parts.push(entryXml(blogHomePath(lang), alternates, '0.9'));
   }
-  // Category hubs (88): TOOL_CATEGORIES order, EN first within each.
+  // Category hubs (77): TOOL_CATEGORIES order, EN first within each.
   const categoryIds = Object.keys(slugs.en);
   for (const categoryId of categoryIds) {
     for (const lang of LANGS) {
@@ -259,9 +259,13 @@ function main() {
 
   let sitemap = fs.readFileSync(SITEMAP_PATH, 'utf8');
   const original = sitemap;
-  // Strip any previous blog block (idempotency).
+  // Strip any previous blog block (idempotency). The start marker is
+  // matched with any hub count: the count changed 88 -> 77 when the
+  // ai-tools category was removed (2026-11-20), and the strip must still
+  // find blocks written with the old count.
+  const START_RE = '  <!-- Blog \\(Batch 2\\): 11 homes \\+ \\d+ category hubs\\. Regenerate with scripts/generate-blog-sitemap\\.cjs\\. -->';
   const blockRe = new RegExp(
-    `\\n?${BLOCK_START.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[\\s\\S]*?${BLOCK_END.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`,
+    `\\n?${START_RE}[\\s\\S]*?${BLOCK_END.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`,
     'g'
   );
   sitemap = sitemap.replace(blockRe, '');
@@ -281,7 +285,7 @@ function main() {
   const tmp = `${SITEMAP_PATH}.tmp`;
   fs.writeFileSync(tmp, next);
   fs.renameSync(tmp, SITEMAP_PATH);
-  console.log(`sitemap updated: ${urlCount} URLs (${expectedBlogUrls} blog: 11 homes + 88 hubs + ${articleUrlCount} article URLs across ${articles.length} articles).`);
+  console.log(`sitemap updated: ${urlCount} URLs (${expectedBlogUrls} blog: 11 homes + 77 hubs + ${articleUrlCount} article URLs across ${articles.length} articles).`);
 }
 
 main();

@@ -3,7 +3,6 @@ export type ToolCategoryId =
   | 'resize'
   | 'convert'
   | 'crop-edit'
-  | 'ai-tools'
   | 'create'
   | 'privacy'
   | 'developer';
@@ -44,7 +43,6 @@ export const TOOL_CATEGORIES: ToolCategoryMeta[] = [
   { id: 'resize', label: 'Resize', description: 'Change pixel dimensions or scale images in bulk' },
   { id: 'convert', label: 'Convert', description: 'Convert between image formats and generate PDFs' },
   { id: 'crop-edit', label: 'Crop & Edit', description: 'Rotate, flip, crop, and adjust your photos' },
-  { id: 'ai-tools', label: 'AI Tools', description: 'Browser-based smart image processing tools' },
   { id: 'create', label: 'Create', description: 'Build favicons, collages, and web assets' },
   { id: 'privacy', label: 'Privacy Tools', description: 'Inspect and strip EXIF, GPS, and hidden metadata' },
   { id: 'developer', label: 'Developer Tools', description: 'Pick colors, inspect dimensions, and generate web assets' },
@@ -2011,7 +2009,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         question: 'What if I want to blur a whole portrait background cleanly without painting?',
         answer:
-          'Use Whole Image mode when you want uniform background softening behind overlay graphics or UI cards. For isolating a subject on a clean backdrop, pair it with our Background Remover tool.',
+          'Use Whole Image mode when you want uniform background softening behind overlay graphics or UI cards.',
       },
       {
         question: 'How strong can Smooth Blur and Pixelate Mosaic go?',
@@ -7616,171 +7614,6 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/png-to-jpg', '/image-converter', '/bulk-image-converter', '/compress-image-to-100kb'],
-  },
-  {
-    slug: '/remove-background',
-    name: 'Background Remover',
-    shortDescription: 'Remove image backgrounds with AI in-browser and export transparent PNGs.',
-    category: 'ai-tools',
-    seoTitle: 'Free AI Background Remover – Remove Image Background',
-    seoDescription:
-      'Remove the background from any image free with in-browser AI. Download a transparent PNG or add a white, black or custom background — no signup, no upload.',
-    h1: 'Free Online AI Background Remover',
-    subtitle:
-      'Remove backgrounds from portraits, product photos, pets, and logos with our free AI background remover, running entirely in your browser. Made for sellers, creators, and designers who need clean cutouts fast, it loads a compact AI model once (about 35 MB, cached afterward), processes one photo at a time up to 20 MB, and exports a transparent PNG — or places your cutout on a white, black, or custom background.',
-    howToSteps: [
-      {
-        title: 'Wait for the AI model to load',
-        description:
-          'On first use the page downloads the compact isnet_quint8 model (about 35 MB) once and caches it in your browser; later visits start instantly.',
-      },
-      {
-        title: 'Drop one photo up to 20 MB',
-        description:
-          'Upload a single JPG, PNG, WebP, HEIC, BMP, or AVIF photo — one file at a time — into the dropzone.',
-      },
-      {
-        title: 'Let the AI cut out your subject',
-        description:
-          'The model isolates your subject locally in your browser and shows the original next to the transparent cutout.',
-      },
-      {
-        title: 'Compare the cutout with the original',
-        description:
-          'Click Split Compare to drag across the before-and-after view and check edges around hair, fur, and fine details.',
-      },
-      {
-        title: 'Choose transparent, white, black, or custom',
-        description:
-          'Keep the transparent PNG, or switch to a white, black, or custom color background before downloading.',
-      },
-      {
-        title: 'Download your cutout',
-        description:
-          'Save the transparent PNG (named after your photo with _no_bg added) or the solid-background version, then click New Image for the next photo.',
-      },
-    ],
-    features: [
-      {
-        title: '100% Client-Side AI Segmentation',
-        description: 'Powered by the lightweight isnet_quint8 ONNX model running locally in your browser — your photos are never uploaded to any server.',
-      },
-      {
-        title: 'Instant Transparent PNG Export',
-        description: 'Download crisp alpha-transparent PNG cutouts ready for e-commerce listings, thumbnails, slides, and design work.',
-      },
-      {
-        title: 'Built-In Solid Background Switcher',
-        description: 'Preview and export your cutout on pure white, jet black, or any custom hex background color without opening another app.',
-      },
-      {
-        title: 'Free, No Signup & No Watermark',
-        description: 'Full-resolution cutouts with zero daily limits, zero accounts, and zero watermarks.',
-      },
-    ],
-    faqs: [
-      {
-        question: 'Does background removal send my photo to a server?',
-        answer:
-          'No. The AI model downloads to your browser once and runs inference entirely on your device, so your photo is never uploaded, stored, or viewed by anyone else. Closing the tab clears everything from browser memory.',
-      },
-      {
-        question: 'Why is the first cutout slower than the ones after it?',
-        answer:
-          'On the first visit, your browser downloads the compact isnet_quint8 model (about 35 MB) and initializes the WebAssembly AI runtime, which takes a few extra seconds. After that the model is cached, so subsequent photos process much faster.',
-      },
-      {
-        question: 'How big is the AI model my browser downloads?',
-        answer:
-          'About 35 MB, downloaded once on first use and then cached by your browser. The small quantized isnet_quint8 model is what makes in-browser removal possible without a server — larger cloud models would need an upload and a paid API.',
-      },
-      {
-        question: 'Can I use the background remover without the internet after the first load?',
-        answer:
-          'Mostly, yes: once the model is cached, the actual removal runs fully offline in your browser. You still need the internet to load the page itself the first time, and the cached model can be cleared if the browser wipes site data.',
-      },
-      {
-        question: 'Which kinds of photos produce the cleanest edges?',
-        answer:
-          'Photos with a clear subject and good contrast against the background work best — portraits, product shots, pets, cars, and logos with sharp outlines. Flat lighting and a simple backdrop give the model the easiest job.',
-      },
-      {
-        question: 'Can I remove the background from a photo with messy or busy scenery?',
-        answer:
-          'Yes, but expect softer edges: when the subject blends into a cluttered background, the small on-device model has to guess where the subject ends. A cleaner backdrop, better lighting, or a closer crop before uploading gives a visibly better cutout.',
-      },
-      {
-        question: 'What happens to fine hair, fur, or see-through edges?',
-        answer:
-          'Fine strands and wispy fur are the hardest case for a compact quantized model, so edges there can look slightly soft or lose a few hairs. Check the Split Compare view — for most portraits and product shots the result is clean, but pixel-perfect hair masking is a known limitation.',
-      },
-      {
-        question: 'How do I place my cutout on a pure white background for Amazon or eBay?',
-        answer:
-          'After the cutout is ready, pick White under Background Fill Option and click Download with White Background. Marketplaces prefer crisp opaque white-background JPGs and PNGs for main product thumbnails, and this exports exactly that.',
-      },
-      {
-        question: 'What file formats can I upload?',
-        answer:
-          'JPG, PNG, WebP, HEIC, BMP, and AVIF — the tool accepts the same extended image set as the rest of the site. HEIC photos from iPhones are converted to a decodable image automatically before the model runs.',
-      },
-      {
-        question: 'What is the maximum photo size?',
-        answer:
-          'Each photo can be up to 20 MB, and the tool processes one photo at a time. That covers high-resolution phone and camera shots; very large files simply take a little longer because the model runs on your device.',
-      },
-      {
-        question: 'Can I remove backgrounds from several photos at once?',
-        answer:
-          'No, this tool handles one photo at a time so the AI model can focus all device memory on a single clean cutout. Click New Image after each download to process the next photo — there is no daily limit.',
-      },
-      {
-        question: 'Does the cutout keep the original photo resolution?',
-        answer:
-          'Yes. The exported transparent PNG keeps 100% of the original photo’s pixel width and height, so a 4000px product photo stays 4000px. Use Image Resizer afterward if you need a smaller version for the web.',
-      },
-      {
-        question: 'Why is my transparent PNG larger than the original photo?',
-        answer:
-          'PNG stores every cutout pixel losslessly, while your original JPG was heavily compressed — so a large detailed cutout can easily outweigh a small JPG source. That is normal: you are trading file size for transparency and pixel-perfect edges.',
-      },
-      {
-        question: 'Can I re-run removal on the same photo?',
-        answer:
-          'Yes. Click Re-run Removal to process the same photo again — useful if the first pass caught a shadow as part of the subject or if you want to compare results. The model is deterministic, so the result is usually identical unless the input changed.',
-      },
-      {
-        question: 'What should I do if part of the subject is missing from the cutout?',
-        answer:
-          'First check the Split Compare view to see exactly what was cut. Subjects that blend into the background — same-color clothing, glass, or camouflage — confuse the model; try a photo with stronger subject-background contrast or crop closer to the subject before uploading.',
-      },
-      {
-        question: 'Is there a watermark on the downloaded PNG?',
-        answer:
-          'No. Downloads are full-resolution cutouts with no watermark, no logo, and no branding added. There is also no signup, no account, and no daily limit on how many photos you remove backgrounds from.',
-      },
-      {
-        question: 'Does background removal work on mobile browsers?',
-        answer:
-          'Yes. The model downloads and runs in Safari on iOS and Chrome on Android, with the same upload, compare, and download controls. On phones, large photos take longer because the AI runs on the phone’s processor — Wi-Fi helps for the first model download.',
-      },
-      {
-        question: 'How is this different from paid tools like remove.bg?',
-        answer:
-          'This tool is free, private, and runs entirely in your browser with no upload and no account, while paid cloud tools process your photo on their servers. The tradeoff is quality on tricky edges: the small on-device model is excellent for clear subjects but cannot match large cloud models on fine hair or busy scenes.',
-      },
-      {
-        question: 'Can I use the cutout in Canva, Photoshop, or PowerPoint?',
-        answer:
-          'Yes. The exported transparent PNG opens directly in Canva, Photoshop, Figma, PowerPoint, and Google Slides, where you can place it over any background, slide, or design. The solid-background download works the same way for apps that need an opaque image.',
-      },
-      {
-        question: 'What happens to my photo after I close the tab?',
-        answer:
-          'Nothing is stored anywhere: processing happens in browser memory, the photo is never uploaded, and closing the tab clears the image and the cutout. Only the cached AI model stays in the browser for faster future use.',
-      },
-    ],
-    relatedSlugs: ['/add-background-to-image', '/image-resizer', '/png-to-webp'],
   },
 ];
 

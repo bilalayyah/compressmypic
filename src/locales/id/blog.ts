@@ -710,19 +710,4 @@ export const ID_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     description: "Apa yang diungkap koordinat GPS, data EXIF, dan metadata tersembunyi dalam foto — serta langkah praktis agar foto tak membocorkan lokasi dan rutinitas.",
     readingMinutes: 10,
   },
-  "background-remover-guide": {
-    title: "Penghapus Latar Belakang Foto: Panduan",
-    description: "Apa itu penghapus latar belakang, cara kerja AI di baliknya, dan cara mendapatkan potongan transparan yang rapi — gratis, di browser, tanpa unggah.",
-    readingMinutes: 10,
-  },
-  "how-to-remove-background-from-image": {
-    title: "Cara Menghapus Latar Belakang Foto",
-    description: "Hapus latar belakang foto apa pun dalam enam langkah: pilih foto yang tepat, unggah, periksa potongan dengan Split Compare, lalu unduh PNG transparan.",
-    readingMinutes: 10,
-  },
-  "ai-background-removal-vs-manual-cutout": {
-    title: "AI vs Manual: Hapus Latar Belakang Foto",
-    description: "Hapus latar belakang AI cepat dan gratis — tapi manual unggul di rambut, kaca, dan foto penting. Bandingkan kecepatan, akurasi, biaya, dan privasi.",
-    readingMinutes: 10,
-  },
 };

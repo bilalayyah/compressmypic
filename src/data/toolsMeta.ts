@@ -39,11 +39,6 @@ export const TOOL_CATEGORIES: ToolCategoryMeta[] = [
     "description": "Rotate, flip, crop, and adjust your photos"
   },
   {
-    "id": "ai-tools",
-    "label": "AI Tools",
-    "description": "Browser-based smart image processing tools"
-  },
-  {
     "id": "create",
     "label": "Create",
     "description": "Build favicons, collages, and web assets"
@@ -83,7 +78,7 @@ export const TOOLS_META: ToolMeta[] = [
     "shortDescription": "Convert JPG, PNG, WebP, HEIC, BMP, GIF & SVG in your browser.",
     "category": "convert",
     "seoTitle": "Free Online Image Converter – JPG, PNG, WebP & HEIC",
-    "seoDescription": "Fast browser image converter for JPG, PNG, WebP, HEIC, SVG, BMP, GIF, and AVIF. Convert batches privately on your device with quality control and ZIP export."
+    "seoDescription": "Convert one image at a time with precision: JPG, PNG, WebP, HEIC, SVG, BMP, GIF, and AVIF in your browser. Inspect each result before saving, privately on your device."
   },
   {
     "slug": "/rotate-flip-image",
@@ -130,8 +125,8 @@ export const TOOLS_META: ToolMeta[] = [
     "name": "Image Color Picker",
     "shortDescription": "Pick exact pixel colors from any image in HEX, RGB, HSL & CMYK.",
     "category": "developer",
-    "seoTitle": "Image Color Picker – Extract HEX, RGB & HSL Codes Free",
-    "seoDescription": "Sample exact pixel colors with our online image color picker. Inspect HEX, RGB, HSL, and CMYK values with a live pixel loupe and export CSS variables locally."
+    "seoTitle": "Image Color Picker – 11×11 Pixel Loupe, Exact HEX & RGB",
+    "seoDescription": "Sample one exact pixel at a time with an 11×11 magnified loupe. Read live pixel coordinates with per-pixel HEX, RGB, HSL, and CMYK values, and export CSS variables locally."
   },
   {
     "slug": "/image-dimensions-checker",
@@ -371,7 +366,7 @@ export const TOOLS_META: ToolMeta[] = [
     "shortDescription": "Convert Apple iPhone HEIC/HEIF photos to universal JPG in browser.",
     "category": "convert",
     "seoTitle": "HEIC to JPG Converter Free – Convert iPhone Photos",
-    "seoDescription": "Turn Apple photos into universal files with our free HEIC to JPG converter. Local WebAssembly decoding runs privately in your browser with batch ZIP export."
+    "seoDescription": "Convert iPhone HEIC photos to JPG for Windows users, job applicants, and photo labs. Free HEIC to JPG converter with local WebAssembly decoding, private in your browser, batch ZIP export."
   },
   {
     "slug": "/jpg-to-png",
@@ -395,7 +390,7 @@ export const TOOLS_META: ToolMeta[] = [
     "shortDescription": "Convert JPG photos to next-gen WebP for faster websites & SEO.",
     "category": "convert",
     "seoTitle": "JPG to WebP Converter Free – Shrink JPGs for Faster Sites",
-    "seoDescription": "Convert JPG photos to modern WebP online free in your browser. Smaller files, faster pages and better Core Web Vitals, with a quality slider and batch ZIP."
+    "seoDescription": "Convert JPG photos to modern WebP online free in your browser. Shrink hero images, product photos, and blog featured images for faster pages and better Core Web Vitals, with a quality slider and batch ZIP."
   },
   {
     "slug": "/webp-to-jpg",
@@ -444,14 +439,6 @@ export const TOOLS_META: ToolMeta[] = [
     "category": "convert",
     "seoTitle": "BMP to JPG Converter Free – Shrink Huge Bitmaps Fast",
     "seoDescription": "Convert uncompressed BMP bitmaps to compact JPG online free in your browser. Cut file sizes by 85–95% privately, with a quality slider and batch ZIP download."
-  },
-  {
-    "slug": "/remove-background",
-    "name": "Background Remover",
-    "shortDescription": "Remove image backgrounds with AI in-browser and export transparent PNGs.",
-    "category": "ai-tools",
-    "seoTitle": "Free AI Background Remover – Remove Image Background",
-    "seoDescription": "Remove the background from any image free with in-browser AI. Download a transparent PNG or add a white, black or custom background — no signup, no upload."
   }
 ];
 

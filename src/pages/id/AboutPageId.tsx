@@ -136,7 +136,7 @@ export const AboutPageId: React.FC<AboutPageIdProps> = ({ onNavigate }) => {
               CompressMyPic dibuat oleh Bilal, seorang pembuat independen yang membangun alat gratis yang mengutamakan privasi untuk web. Ia memulai CompressMyPic setelah frustrasi dengan kompresor gambar yang memaksa orang mengunggah foto pribadi ke server orang asing hanya untuk memperkecil file. Jawabannya adalah alat yang melakukan seluruh pekerjaan di dalam browser pengunjung sendiri — tanpa unggahan, tanpa akun, tanpa watermark, dan tanpa tagihan mengejutkan di akhir.
             </p>
             <p>
-              Bilal merancang, membangun, dan memelihara sendiri ke-48 alat di situs ini, dari kompresor dan konverter hingga generator favicon dan penghapus latar belakang. Ia menjawab pesan dukungan secara pribadi, membaca setiap masukan, dan menjaga alat-alat ini gratis untuk semua orang, baik mereka mengompres satu foto maupun seribu foto. Footer situs memuat penghargaan kecil untuk Shaheen, yang dukungannya menginspirasi Bilal untuk terus membangun dan membuat alat-alat ini benar-benar berguna, bukan sekadar populer.
+              Bilal merancang, membangun, dan memelihara sendiri ke-47 alat di situs ini, dari kompresor dan konverter hingga generator favicon. Ia menjawab pesan dukungan secara pribadi, membaca setiap masukan, dan menjaga alat-alat ini gratis untuk semua orang, baik mereka mengompres satu foto maupun seribu foto. Footer situs memuat penghargaan kecil untuk Shaheen, yang dukungannya menginspirasi Bilal untuk terus membangun dan membuat alat-alat ini benar-benar berguna, bukan sekadar populer.
             </p>
             <p>
               Jika Anda ingin mengikuti pekerjaannya, Anda dapat menemukan proyek ini di 

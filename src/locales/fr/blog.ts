@@ -710,19 +710,4 @@ export const FR_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     description: "Ce que la position GPS, les données EXIF et les métadonnées cachées de vos photos révèlent — et les gestes simples qui les empêchent de dévoiler votre adresse.",
     readingMinutes: 12,
   },
-  "background-remover-guide": {
-    title: "Détourer une image : guide complet",
-    description: "Tout savoir pour détourer une image : comment l’IA repère votre sujet, quand le détourage est net, quelles sont ses limites.",
-    readingMinutes: 11,
-  },
-  "how-to-remove-background-from-image": {
-    title: "Comment supprimer l’arrière-plan d’une image",
-    description: "Supprimez l’arrière-plan de n’importe quelle photo en six étapes : choisissez la bonne photo, envoyez-la, vérifiez le détourage avec Split Compare.",
-    readingMinutes: 11,
-  },
-  "ai-background-removal-vs-manual-cutout": {
-    title: "Détourage par IA ou à la main ?",
-    description: "Le détourage par IA est rapide, gratuit et privé — mais le travail à la main reste meilleur pour les cheveux, le verre et les images importantes.",
-    readingMinutes: 11,
-  },
 };

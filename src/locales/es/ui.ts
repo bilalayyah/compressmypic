@@ -55,7 +55,6 @@ export const ES = {
       { slug: '/rotate-flip-image', label: 'Girar y voltear imagen' },
       { slug: '/image-to-pdf', label: 'Imagen a PDF' },
       { slug: '/remove-image-metadata', label: 'Eliminar metadatos' },
-      { slug: '/remove-background', label: 'Quitar fondo' },
     ],
     legalLinks: [
       { slug: '/privacy', label: 'Política de privacidad' },
@@ -488,7 +487,6 @@ export const ES = {
     resize: 'Cambiar tamaño',
     convert: 'Convertir',
     'crop-edit': 'Recortar y editar',
-    'ai-tools': 'Herramientas de IA',
     create: 'Crear',
     privacy: 'Herramientas de privacidad',
     developer: 'Herramientas para desarrolladores',
@@ -2099,46 +2097,5 @@ export const TOOL_UI_ES = {
     comparisonAfterLabel: 'JPG ({size})', // afterLabel `${targetLabel} (${formatBytes(...)})`
     errorConvertFailed: 'No se pudo convertir {name} a JPG.', // `Failed to convert ${item.name} to ${targetLabel}.`
     errorCouldNotDecode: 'No se pudo decodificar "{name}". Verifique que sea una imagen BMP válida.', // `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`
-  },
-  '/remove-background': {
-    uploadTitle: 'Suelte una foto para eliminar su fondo con IA', // 'Drop a photo to remove its background with AI'
-    modelLoadingTitle: 'Cargando modelo de IA en el navegador (isnet_quint8)', // 'Loading in-browser AI model (isnet_quint8)'
-    modelCache: 'Caché del modelo', // 'Model Cache'
-    progressWasm: 'Cargando el motor de IA WebAssembly…', // 'Loading WebAssembly AI runtime...'
-    progressModel: 'Descargando el modelo de IA para eliminar fondos (~35 MB, guardado en caché para uso futuro)…', // 'Downloading AI background removal model (~35 MB, cached for future use)...'
-    progressCompute: 'Eliminando el fondo en local en su navegador…', // 'Removing background locally in your browser...'
-    progressPreparing: 'Preparando el modelo de IA en el navegador…', // 'Preparing in-browser AI model...'
-    progressInitLibrary: 'Cargando la biblioteca de IA para eliminar fondos…', // 'Loading AI background removal library...'
-    progressInitModule: 'Inicializando el módulo de IA para eliminar fondos…', // 'Initializing AI background removal module...'
-    errorModelInit: 'No se pudo inicializar el modelo de IA para fondos: {message}', // `Could not initialize the AI background model: ${err.message}`
-    errorModelInitGeneric: 'No se pudo inicializar el modelo de IA para fondos en este navegador.', // 'Could not initialize the AI background model in this browser.'
-    errorDecodeOutput: 'No se pudo decodificar la salida PNG transparente.', // 'Failed to decode transparent PNG output.'
-    errorRemovalFailed: 'La eliminación de fondo falló en este navegador. Pruebe otra imagen o recargue la página.', // 'Background removal failed in this browser. Try another image or reload.'
-    beforeAfterPreview: 'Vista previa de antes y después', // 'Before & After Preview'
-    splitCompare: 'Comparación dividida', // 'Split Compare'
-    newImage: 'Nueva imagen', // 'New Image'
-    originalLabel: 'Original', // 'Original'
-    transparentCutout: 'Recorte transparente (PNG)', // 'Transparent Cutout (PNG)'
-    solidBackgroundPreview: 'Vista previa de fondo sólido', // 'Solid Background Preview'
-    waitingForResult: 'Esperando el resultado…', // 'Waiting for result...'
-    processingLocally: 'Procesando en local…', // 'Processing locally...'
-    cutoutStatus: 'Estado del recorte', // 'Cutout Status'
-    ready: 'Listo', // 'Ready'
-    backgroundFillOption: 'Opción de relleno de fondo', // 'Background Fill Option'
-    bgTransparent: 'Transparente', // 'Transparent'
-    bgWhite: 'Blanco', // 'White'
-    bgBlack: 'Negro', // 'Black'
-    bgCustom: 'Personalizado', // 'Custom'
-    customBackgroundColor: 'Color de fondo personalizado', // 'Custom Background Color'
-    downloadTransparentPng: 'Descargar PNG transparente', // 'Download Transparent PNG'
-    downloadWithWhite: 'Descargar con fondo blanco', // 'Download with White Background'
-    downloadWithBlack: 'Descargar con fondo negro', // 'Download with Black Background'
-    downloadWithCustom: 'Descargar con fondo {color}', // 'Download with {color} Background'
-    rerunRemoval: 'Volver a ejecutar la eliminación', // 'Re-run Removal'
-    comparisonTitlePrefix: 'Comparación de eliminación de fondo', // 'Background Removal Comparison'
-    comparisonAfterTransparent: 'Recorte (PNG transparente)', // 'Cutout (Transparent PNG)'
-    comparisonAfterSolid: 'Recorte (fondo sólido)', // 'Cutout (Solid BG)'
-    altOriginal: 'Original {name}', // alt `Original ${sourceFile.name}`
-    altCutout: 'Fondo eliminado {name}', // alt `Background removed ${sourceFile.name}`
   },
 } as const;

@@ -26,7 +26,7 @@ export interface AllToolsPageStrings {
 const RU_STRINGS: AllToolsPageStrings = {
   heading: 'Все инструменты',
   subheading:
-    'Все 48 бесплатных инструментов CompressMyPic для сжатия, конвертации и редактирования изображений — прямо в вашем браузере.',
+    'Все 47 бесплатных инструментов CompressMyPic для сжатия, конвертации и редактирования изображений — прямо в вашем браузере.',
   searchPlaceholder: 'Найти инструмент…',
   allLabel: 'Все',
   noResults: 'Инструмент с таким названием не найден.',
@@ -55,7 +55,7 @@ export const AllToolsPageRu: React.FC<AllToolsPageRuProps> = ({
   useEffect(() => {
     document.title = 'Все бесплатные инструменты для изображений | CompressMyPic';
     const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute('content', 'Все 48 бесплатных инструментов CompressMyPic для сжатия, конвертации, обрезки и редактирования изображений онлайн — прямо в браузере, без регистрации.');
+    if (metaDescription) metaDescription.setAttribute('content', 'Все 47 бесплатных инструментов CompressMyPic для сжатия, конвертации, обрезки и редактирования изображений онлайн — прямо в браузере, без регистрации.');
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 

@@ -2,7 +2,7 @@
 // Russian slugs are SEO-friendly, accent-free, and use natural vocabulary.
 // Home: '/' -> '/ru/'. Alias '/ru/szhat-izobrazhenie' redirects to '/ru/' (no duplicate content).
 // Generated for the Indonesian+Russian translation project (Phase 4, 2026-11-14). Keep in sync with
-// src/data/tools.ts (same 48 tools) and public/sitemap.xml.
+// src/data/tools.ts (same 47 tools) and public/sitemap.xml.
 
 export const RU_PATH_BY_EN: Record<string, string> = {
   '/': '/ru/',
@@ -54,7 +54,6 @@ export const RU_PATH_BY_EN: Record<string, string> = {
   '/svg-to-png': '/ru/svg-v-png',
   '/avif-to-jpg': '/ru/avif-v-jpg',
   '/bmp-to-jpg': '/ru/bmp-v-jpg',
-  '/remove-background': '/ru/udalit-fon',
   // --- Legal ---
   '/about': '/ru/o-nas',
   '/contact': '/ru/kontakty',
@@ -73,7 +72,6 @@ export const RU_PATH_BY_EN: Record<string, string> = {
   '/blog/category/resize': '/ru/blog/category/izmenenie-razmera',
   '/blog/category/convert': '/ru/blog/category/konvertatsiya',
   '/blog/category/crop-edit': '/ru/blog/category/obrezka-i-redaktirovanie',
-  '/blog/category/ai-tools': '/ru/blog/category/ii-instrumenty',
   '/blog/category/create': '/ru/blog/category/sozdanie',
   '/blog/category/privacy': '/ru/blog/category/privatnost',
   '/blog/category/developer': '/ru/blog/category/instrumenty-razrabotchika',
@@ -218,9 +216,6 @@ export const RU_PATH_BY_EN: Record<string, string> = {
   '/blog/remove-image-metadata-guide': '/ru/blog/kak-udalit-metadannye-izobrazheniya-polnoe-rukovodstvo',
   '/blog/how-to-remove-metadata-from-image': '/ru/blog/kak-udalit-metadannye-s-foto',
   '/blog/photo-privacy-gps-exif-risks': '/ru/blog/riski-privatnosti-foto-gps-exif',
-  '/blog/background-remover-guide': '/ru/blog/udalenie-fona-s-foto-polnoe-rukovodstvo',
-  '/blog/how-to-remove-background-from-image': '/ru/blog/kak-udalit-fon-s-foto',
-  '/blog/ai-background-removal-vs-manual-cutout': '/ru/blog/udalenie-fona-ii-ili-vruchnuyu-sravnenie',
 };
 
 export const EN_PATH_BY_RU: Record<string, string> = Object.fromEntries(

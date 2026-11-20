@@ -262,7 +262,6 @@ const TOOL_PAGE_MODULES: Record<string, string> = {
   '/jpg-to-webp': './pages/JpgToWebpPage.tsx',
   '/png-to-jpg': './pages/PngToJpgPage.tsx',
   '/png-to-webp': './pages/PngToWebpPage.tsx',
-  '/remove-background': './pages/RemoveBackgroundPage.tsx',
   '/remove-image-metadata': './pages/RemoveMetadataPage.tsx',
   '/rotate-flip-image': './pages/RotateFlipPage.tsx',
   '/round-image-corners': './pages/RoundCornersPage.tsx',

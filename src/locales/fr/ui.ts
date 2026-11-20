@@ -60,7 +60,6 @@ export const FR = {
       { slug: '/rotate-flip-image', label: 'Pivoter et retourner une image' },
       { slug: '/image-to-pdf', label: 'Image en PDF' },
       { slug: '/remove-image-metadata', label: 'Supprimer les métadonnées' },
-      { slug: '/remove-background', label: 'Supprimer l’arrière-plan' },
     ],
     legalLinks: [
       { slug: '/privacy', label: 'Politique de confidentialité' },
@@ -493,7 +492,6 @@ export const FR = {
     resize: 'Redimensionner',
     convert: 'Convertir',
     'crop-edit': 'Recadrer et modifier',
-    'ai-tools': 'Outils IA',
     create: 'Créer',
     privacy: 'Outils de confidentialité',
     developer: 'Outils de développement',
@@ -583,7 +581,7 @@ export const HOME_FR = {
   relatedSlugs: ['/image-resizer', '/image-converter', '/remove-image-metadata'],
 } as const;
 
-// Per-tool workspace UI strings in French (fr) — COMPLETE (all 48 tools).
+// Per-tool workspace UI strings in French (fr) — COMPLETE (all 47 tools).
 // Assembled from tool-ui-fr-batch1.ts … tool-ui-fr-batch6.ts (coordinator merge).
 // Target: merged into src/locales/fr/ui.ts as the TOOL_UI_FR export.
 // French (fr), vous form. Keyed by English slug.
@@ -2263,46 +2261,5 @@ export const TOOL_UI_FR = {
     comparisonAfterLabel: 'JPG ({size})', // afterLabel `${targetLabel} (${formatBytes(...)})`
     errorConvertFailed: 'Impossible de convertir {name} en JPG.', // `Failed to convert ${item.name} to ${targetLabel}.`
     errorCouldNotDecode: 'Impossible de décoder « {name} ». Vérifiez qu’il s’agit d’une image BMP valide.', // `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`
-  },
-  '/remove-background': {
-    uploadTitle: 'Déposez une photo pour supprimer son arrière-plan avec l’IA', // 'Drop a photo to remove its background with AI'
-    modelLoadingTitle: 'Chargement du modèle IA dans le navigateur (isnet_quint8)', // 'Loading in-browser AI model (isnet_quint8)'
-    modelCache: 'Cache du modèle', // 'Model Cache'
-    progressWasm: 'Chargement du moteur IA WebAssembly…', // 'Loading WebAssembly AI runtime...'
-    progressModel: 'Téléchargement du modèle IA de suppression d’arrière-plan (~35 Mo, mis en cache pour une utilisation future)…', // 'Downloading AI background removal model (~35 MB, cached for future use)...'
-    progressCompute: 'Suppression de l’arrière-plan localement dans votre navigateur…', // 'Removing background locally in your browser...'
-    progressPreparing: 'Préparation du modèle IA dans le navigateur…', // 'Preparing in-browser AI model...'
-    progressInitLibrary: 'Chargement de la bibliothèque IA de suppression d’arrière-plan…', // 'Loading AI background removal library...'
-    progressInitModule: 'Initialisation du module IA de suppression d’arrière-plan…', // 'Initializing AI background removal module...'
-    errorModelInit: 'Impossible d’initialiser le modèle IA d’arrière-plan : {message}', // `Could not initialize the AI background model: ${err.message}`
-    errorModelInitGeneric: 'Impossible d’initialiser le modèle IA d’arrière-plan dans ce navigateur.', // 'Could not initialize the AI background model in this browser.'
-    errorDecodeOutput: 'Impossible de décoder la sortie PNG transparente.', // 'Failed to decode transparent PNG output.'
-    errorRemovalFailed: 'La suppression d’arrière-plan a échoué dans ce navigateur. Essayez une autre image ou rechargez la page.', // 'Background removal failed in this browser. Try another image or reload.'
-    beforeAfterPreview: 'Aperçu avant/après', // 'Before & After Preview'
-    splitCompare: 'Comparaison partagée', // 'Split Compare'
-    newImage: 'Nouvelle image', // 'New Image'
-    originalLabel: 'Original', // 'Original'
-    transparentCutout: 'Découpe transparente (PNG)', // 'Transparent Cutout (PNG)'
-    solidBackgroundPreview: 'Aperçu à fond uni', // 'Solid Background Preview'
-    waitingForResult: 'En attente du résultat…', // 'Waiting for result...'
-    processingLocally: 'Traitement local…', // 'Processing locally...'
-    cutoutStatus: 'État de la découpe', // 'Cutout Status'
-    ready: 'Prêt', // 'Ready'
-    backgroundFillOption: 'Option de remplissage d’arrière-plan', // 'Background Fill Option'
-    bgTransparent: 'Transparent', // 'Transparent'
-    bgWhite: 'Blanc', // 'White'
-    bgBlack: 'Noir', // 'Black'
-    bgCustom: 'Personnalisé', // 'Custom'
-    customBackgroundColor: 'Couleur d’arrière-plan personnalisée', // 'Custom Background Color'
-    downloadTransparentPng: 'Télécharger le PNG transparent', // 'Download Transparent PNG'
-    downloadWithWhite: 'Télécharger avec fond blanc', // 'Download with White Background'
-    downloadWithBlack: 'Télécharger avec fond noir', // 'Download with Black Background'
-    downloadWithCustom: 'Télécharger avec fond {color}', // 'Download with {color} Background'
-    rerunRemoval: 'Relancer la suppression', // 'Re-run Removal'
-    comparisonTitlePrefix: 'Comparaison de suppression d’arrière-plan', // 'Background Removal Comparison'
-    comparisonAfterTransparent: 'Découpe (PNG transparent)', // 'Cutout (Transparent PNG)'
-    comparisonAfterSolid: 'Découpe (fond uni)', // 'Cutout (Solid BG)'
-    altOriginal: 'Original {name}', // alt `Original ${sourceFile.name}`
-    altCutout: 'Arrière-plan supprimé {name}', // alt `Background removed ${sourceFile.name}`
   },
 };

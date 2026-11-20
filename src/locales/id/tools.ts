@@ -1,4 +1,4 @@
-// Indonesian (Standard Bahasa Indonesia) tool registry — COMPLETE (home + all 48 tools).
+// Indonesian (Standard Bahasa Indonesia) tool registry — COMPLETE (home + all 47 tools).
 // Assembled from tools-id-batch1.ts … tools-id-batch6.ts (coordinator merge).
 // Target path in the repo: src/locales/id/tools.ts
 // Indonesian (Standard Bahasa Indonesia), neutral polite forms. Slugs, category ids and
@@ -14,7 +14,6 @@ export const TOOL_CATEGORIES_ID: ToolCategoryMeta[] = [
   { id: 'resize', label: 'Ubah Ukuran', description: 'Ubah dimensi piksel atau skala gambar secara massal' },
   { id: 'convert', label: 'Konversi', description: 'Konversi antar format gambar dan buat PDF' },
   { id: 'crop-edit', label: 'Potong & Edit', description: 'Putar, balik, potong, dan sesuaikan gambar' },
-  { id: 'ai-tools', label: 'Alat AI', description: 'Pemrosesan gambar cerdas di browser' },
   { id: 'create', label: 'Buat', description: 'Buat favicon, kolase, dan aset web' },
   { id: 'privacy', label: 'Privasi', description: 'Periksa dan hapus metadata EXIF, GPS, dan tersembunyi' },
   { id: 'developer', label: 'Pengembang', description: 'Pilih warna, periksa dimensi, dan buat aset web' },
@@ -2028,7 +2027,7 @@ export const TOOLS_REGISTRY_ID: ToolDefinition[] = [
       {
         question: 'Bagaimana jika saya ingin memburamkan seluruh latar potret dengan rapi tanpa melukis?',
         answer:
-          'Gunakan mode Seluruh Gambar saat Anda menginginkan pelembutan latar yang seragam di balik grafik overlay atau kartu UI. Untuk mengisolasi subjek pada latar yang bersih, padukan dengan alat Penghapus Latar kami.',
+          'Gunakan mode Seluruh Gambar saat Anda menginginkan pelembutan latar yang seragam di balik grafik overlay atau kartu UI.',
       },
       {
         question: 'Seberapa kuat Blur Halus dan Mosaik Pixelasi bisa diatur?',
@@ -7588,170 +7587,6 @@ export const TOOLS_REGISTRY_ID: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/png-to-jpg', '/image-converter', '/bulk-image-converter', '/compress-image-to-100kb'],
-  },
-  {
-    slug: '/remove-background',
-    name: 'Penghapus Latar Belakang',
-    shortDescription: 'Hapus latar belakang gambar dengan AI di browser dan ekspor PNG transparan.',
-    category: 'ai-tools',
-    seoTitle: 'Hapus Latar Gambar Gratis – AI, Tanpa Daftar',
-    seoDescription: 'Hapus latar dari gambar apa pun gratis dengan AI di browser. Unduh PNG transparan atau tambahkan latar putih, hitam, atau khusus — tanpa daftar dan tanpa unggahan.',
-    h1: 'Penghapus Latar Belakang AI Online Gratis',
-    subtitle:
-      'Hapus latar belakang dari potret, foto produk, hewan peliharaan, dan logo dengan penghapus latar belakang AI gratis kami, yang berjalan sepenuhnya di browser Anda. Dibuat untuk penjual, kreator, dan desainer yang membutuhkan potongan bersih dengan cepat, alat ini memuat model AI yang ringkas sekali (sekitar 35 MB, tersimpan di cache setelahnya), memproses satu foto hingga 20 MB dalam satu waktu, dan mengekspor PNG transparan — atau menempatkan potongan Anda di atas latar belakang putih, hitam, atau kustom.',
-    howToSteps: [
-      {
-        title: 'Tunggu model AI dimuat',
-        description:
-          'Pada penggunaan pertama, halaman mengunduh model isnet_quint8 yang ringkas (sekitar 35 MB) sekali lalu menyimpannya di cache browser Anda; kunjungan berikutnya dimulai langsung.',
-      },
-      {
-        title: 'Letakkan satu foto hingga 20 MB',
-        description:
-          'Unggah satu foto JPG, PNG, WebP, HEIC, BMP, atau AVIF — satu file dalam satu waktu — ke area unggah.',
-      },
-      {
-        title: 'Biarkan AI memotong subjek Anda',
-        description:
-          'Model mengisolasi subjek Anda secara lokal di browser Anda dan menampilkan foto asli di samping potongan transparan.',
-      },
-      {
-        title: 'Bandingkan potongan dengan foto asli',
-        description:
-          'Klik Bandingkan Terpisah untuk menyeret kursor melintasi tampilan sebelum-sesudah dan memeriksa tepi di sekitar rambut, bulu, dan detail halus.',
-      },
-      {
-        title: 'Pilih transparan, putih, hitam, atau kustom',
-        description:
-          'Pertahankan PNG transparan, atau beralih ke latar belakang warna putih, hitam, atau kustom sebelum mengunduh.',
-      },
-      {
-        title: 'Unduh potongan Anda',
-        description:
-          'Simpan PNG transparan (dinamai sesuai foto Anda dengan tambahan _no_bg) atau versi latar belakang solid, lalu klik Gambar Baru untuk foto berikutnya.',
-      },
-    ],
-    features: [
-      {
-        title: 'Segmentasi AI 100% di Sisi Klien',
-        description: 'Didukung model ONNX isnet_quint8 yang ringan dan berjalan secara lokal di browser Anda — foto Anda tidak pernah diunggah ke server mana pun.',
-      },
-      {
-        title: 'Ekspor PNG Transparan Instan',
-        description: 'Unduh potongan PNG transparan alpha yang tajam, siap untuk listing e-commerce, thumbnail, slide, dan pekerjaan desain.',
-      },
-      {
-        title: 'Pengalih Latar Belakang Solid Bawaan',
-        description: 'Pratinjau dan ekspor potongan Anda dengan latar belakang putih bersih, hitam pekat, atau warna hex kustom apa pun tanpa membuka aplikasi lain.',
-      },
-      {
-        title: 'Gratis, Tanpa Daftar & Tanpa Watermark',
-        description: 'Potongan resolusi penuh tanpa batas harian, tanpa akun, dan tanpa watermark.',
-      },
-    ],
-    faqs: [
-      {
-        question: 'Apakah penghapusan latar belakang mengirim foto saya ke server?',
-        answer:
-          'Tidak. Model AI diunduh ke browser Anda sekali lalu menjalankan inferensi sepenuhnya di perangkat Anda, sehingga foto Anda tidak pernah diunggah, disimpan, atau dilihat orang lain. Menutup tab akan menghapus semuanya dari memori browser.',
-      },
-      {
-        question: 'Mengapa potongan pertama lebih lambat daripada potongan berikutnya?',
-        answer:
-          'Pada kunjungan pertama, browser Anda mengunduh model isnet_quint8 yang ringkas (sekitar 35 MB) dan menginisialisasi runtime AI WebAssembly, yang membutuhkan beberapa detik ekstra. Setelah itu model tersimpan di cache, sehingga foto berikutnya diproses jauh lebih cepat.',
-      },
-      {
-        question: 'Seberapa besar model AI yang diunduh browser saya?',
-        answer:
-          'Sekitar 35 MB, diunduh sekali pada penggunaan pertama lalu disimpan di cache oleh browser Anda. Model isnet_quint8 terkuantisasi yang kecil inilah yang membuat penghapusan di browser menjadi mungkin tanpa server — model cloud yang lebih besar membutuhkan unggahan dan API berbayar.',
-      },
-      {
-        question: 'Bisakah saya memakai penghapus latar belakang tanpa internet setelah pemuatan pertama?',
-        answer:
-          'Sebagian besar, ya: setelah model tersimpan di cache, penghapusan sebenarnya berjalan sepenuhnya offline di browser Anda. Anda tetap membutuhkan internet untuk memuat halaman itu sendiri pada pertama kalinya, dan model yang tersimpan di cache bisa terhapus jika browser menghapus data situs.',
-      },
-      {
-        question: 'Jenis foto apa yang menghasilkan tepi paling bersih?',
-        answer:
-          'Foto dengan subjek yang jelas dan kontras yang baik terhadap latar belakang bekerja paling baik — potret, foto produk, hewan peliharaan, mobil, dan logo dengan garis yang tajam. Pencahayaan yang rata dan latar belakang yang sederhana memberikan pekerjaan termudah bagi model.',
-      },
-      {
-        question: 'Bisakah saya menghapus latar belakang dari foto dengan pemandangan yang berantakan atau ramai?',
-        answer:
-          'Ya, tetapi harap tepinya lebih lembut: saat subjek menyatu dengan latar belakang yang ramai, model kecil di perangkat harus menebak di mana subjek berakhir. Latar belakang yang lebih bersih, pencahayaan yang lebih baik, atau crop yang lebih dekat sebelum mengunggah memberikan potongan yang terlihat lebih baik.',
-      },
-      {
-        question: 'Apa yang terjadi pada rambut halus, bulu, atau tepi yang tembus pandang?',
-        answer:
-          'Helai halus dan bulu yang tipis adalah kasus tersulit bagi model terkuantisasi yang ringkas, sehingga tepi di sana bisa terlihat sedikit lembut atau kehilangan beberapa helai rambut. Periksa tampilan Bandingkan Terpisah — untuk sebagian besar potret dan foto produk, hasilnya bersih, tetapi masking rambut yang sempurna piksel demi piksel adalah keterbatasan yang diketahui.',
-      },
-      {
-        question: 'Bagaimana cara menempatkan potongan saya di atas latar belakang putih bersih untuk Amazon atau eBay?',
-        answer:
-          'Setelah potongan siap, pilih Putih di bawah Opsi Isian Latar Belakang lalu klik Unduh dengan Latar Belakang Putih. Marketplace lebih menyukai JPG dan PNG berlatar belakang putih buram yang tajam untuk thumbnail produk utama, dan alat ini mengekspor persis seperti itu.',
-      },
-      {
-        question: 'Format file apa saja yang bisa saya unggah?',
-        answer:
-          'JPG, PNG, WebP, HEIC, BMP, dan AVIF — alat ini menerima set gambar diperluas yang sama seperti bagian lain situs ini. Foto HEIC dari iPhone dikonversi menjadi gambar yang bisa didekode secara otomatis sebelum model berjalan.',
-      },
-      {
-        question: 'Berapa ukuran foto maksimum?',
-        answer:
-          'Setiap foto boleh berukuran hingga 20 MB, dan alat ini memproses satu foto dalam satu waktu. Itu mencakup foto ponsel dan kamera beresolusi tinggi; file yang sangat besar hanya membutuhkan waktu sedikit lebih lama karena model berjalan di perangkat Anda.',
-      },
-      {
-        question: 'Bisakah saya menghapus latar belakang dari beberapa foto sekaligus?',
-        answer:
-          'Tidak, alat ini menangani satu foto dalam satu waktu agar model AI bisa memusatkan seluruh memori perangkat pada satu potongan yang bersih. Klik Gambar Baru setelah setiap unduhan untuk memproses foto berikutnya — tidak ada batas harian.',
-      },
-      {
-        question: 'Apakah potongan mempertahankan resolusi foto aslinya?',
-        answer:
-          'Ya. PNG transparan hasil ekspor mempertahankan 100% lebar dan tinggi piksel foto aslinya, sehingga foto produk 4000px tetap 4000px. Gunakan Ubah Ukuran Gambar setelahnya jika Anda membutuhkan versi yang lebih kecil untuk web.',
-      },
-      {
-        question: 'Mengapa PNG transparan saya lebih besar daripada foto aslinya?',
-        answer:
-          'PNG menyimpan setiap piksel potongan secara lossless, sedangkan JPG asli Anda sangat terkompresi — sehingga potongan besar yang detail bisa dengan mudah lebih berat daripada sumber JPG yang kecil. Hal itu normal: Anda menukar ukuran file dengan transparansi dan tepi yang sempurna piksel demi piksel.',
-      },
-      {
-        question: 'Bisakah saya menjalankan penghapusan ulang pada foto yang sama?',
-        answer:
-          'Ya. Klik Jalankan Ulang Penghapusan untuk memproses foto yang sama lagi — berguna jika proses pertama menangkap bayangan sebagai bagian dari subjek atau jika Anda ingin membandingkan hasilnya. Model ini deterministik, sehingga hasilnya biasanya sama persis kecuali inputnya berubah.',
-      },
-      {
-        question: 'Apa yang harus saya lakukan jika sebagian subjek hilang dari potongan?',
-        answer:
-          'Pertama periksa tampilan Bandingkan Terpisah untuk melihat persis apa yang terpotong. Subjek yang menyatu dengan latar belakang — pakaian sewarna, kaca, atau kamuflase — membingungkan model; coba foto dengan kontras subjek-latar belakang yang lebih kuat atau crop lebih dekat ke subjek sebelum mengunggah.',
-      },
-      {
-        question: 'Apakah ada watermark pada PNG yang diunduh?',
-        answer:
-          'Tidak. Unduhan adalah potongan resolusi penuh tanpa watermark, tanpa logo, dan tanpa branding tambahan. Tidak ada pendaftaran, tidak ada akun, dan tidak ada batas harian untuk jumlah foto yang latar belakangnya Anda hapus.',
-      },
-      {
-        question: 'Apakah penghapusan latar belakang berfungsi di browser seluler?',
-        answer:
-          'Ya. Model diunduh dan berjalan di Safari pada iOS dan Chrome di Android, dengan kontrol unggah, bandingkan, dan unduh yang sama. Di ponsel, foto besar membutuhkan waktu lebih lama karena AI berjalan di prosesor ponsel — Wi-Fi membantu untuk unduhan model pertama.',
-      },
-      {
-        question: 'Apa bedanya alat ini dengan alat berbayar seperti remove.bg?',
-        answer:
-          'Alat ini gratis, privat, dan berjalan sepenuhnya di browser Anda tanpa unggahan dan tanpa akun, sedangkan alat cloud berbayar memproses foto Anda di server mereka. Komprominya adalah kualitas pada tepi yang rumit: model kecil di perangkat sangat baik untuk subjek yang jelas tetapi tidak bisa menandingi model cloud besar pada rambut halus atau pemandangan yang ramai.',
-      },
-      {
-        question: 'Bisakah saya memakai potongan di Canva, Photoshop, atau PowerPoint?',
-        answer:
-          'Ya. PNG transparan hasil ekspor terbuka langsung di Canva, Photoshop, Figma, PowerPoint, dan Google Slides, tempat Anda bisa menempatkannya di atas latar belakang, slide, atau desain apa pun. Unduhan latar belakang solid bekerja dengan cara yang sama untuk aplikasi yang membutuhkan gambar buram.',
-      },
-      {
-        question: 'Apa yang terjadi pada foto saya setelah saya menutup tab?',
-        answer:
-          'Tidak ada yang disimpan di mana pun: pemrosesan terjadi di memori browser, foto tidak pernah diunggah, dan menutup tab akan menghapus gambar dan potongannya. Hanya model AI yang tersimpan di cache yang tetap berada di browser untuk penggunaan berikutnya yang lebih cepat.',
-      },
-    ],
-    relatedSlugs: ['/add-background-to-image', '/image-resizer', '/png-to-webp'],
   },
 ];
 

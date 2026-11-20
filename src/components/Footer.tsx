@@ -54,7 +54,6 @@ const DEFAULT_FOOTER_STRINGS: FooterStrings = {
     { slug: '/rotate-flip-image', label: 'Rotate & Flip Image' },
     { slug: '/image-to-pdf', label: 'Image to PDF' },
     { slug: '/remove-image-metadata', label: 'Remove Metadata' },
-    { slug: '/remove-background', label: 'Background Remover' },
   ],
   legalLinks: [
     { slug: '/privacy', label: 'Privacy Policy' },

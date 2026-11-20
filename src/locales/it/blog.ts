@@ -710,19 +710,4 @@ export const IT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     description: "Cosa possono rivelare GPS, EXIF e metadati nascosti nelle tue foto, e i passi pratici per impedire che le immagini svelino posizione e abitudini.",
     readingMinutes: 12,
   },
-  "background-remover-guide": {
-    title: "Rimuovere lo sfondo di un’immagine: guida",
-    description: "Cos’è uno strumento per rimuovere lo sfondo, come l’IA trova il soggetto e come ottenere un ritaglio trasparente e pulito: gratis, nel browser.",
-    readingMinutes: 11,
-  },
-  "how-to-remove-background-from-image": {
-    title: "Rimuovere lo sfondo in 6 passaggi",
-    description: "Togli lo sfondo da qualsiasi foto in sei passaggi: scegli la foto giusta, caricala, controlla il ritaglio con Confronto diviso e scarica un PNG trasparente.",
-    readingMinutes: 10,
-  },
-  "ai-background-removal-vs-manual-cutout": {
-    title: "Sfondo con IA o ritaglio manuale?",
-    description: "La rimozione dello sfondo con l’IA è veloce, gratuita e privata, ma il ritaglio manuale vince su capelli e vetro: velocità, precisione e costi a confronto.",
-    readingMinutes: 11,
-  },
 };

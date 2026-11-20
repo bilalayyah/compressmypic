@@ -2,7 +2,7 @@
 // German slugs are SEO-friendly, accent-free, and use natural vocabulary.
 // Home: '/' -> '/de/'. Alias '/de/bilder-komprimieren' redirects to '/de/' (no duplicate content).
 // Generated for the German+Italian translation project (Phase 3, 2026-11-13). Keep in sync with
-// src/data/tools.ts (same 48 tools) and public/sitemap.xml.
+// src/data/tools.ts (same 47 tools) and public/sitemap.xml.
 
 export const DE_PATH_BY_EN: Record<string, string> = {
   '/': '/de/',
@@ -54,7 +54,6 @@ export const DE_PATH_BY_EN: Record<string, string> = {
   '/svg-to-png': '/de/svg-in-png-umwandeln',
   '/avif-to-jpg': '/de/avif-in-jpg-umwandeln',
   '/bmp-to-jpg': '/de/bmp-in-jpg-umwandeln',
-  '/remove-background': '/de/hintergrund-entfernen',
   // --- Legal ---
   '/about': '/de/ueber-uns',
   '/contact': '/de/kontakt',
@@ -73,7 +72,6 @@ export const DE_PATH_BY_EN: Record<string, string> = {
   '/blog/category/resize': '/de/blog/category/groesse-aendern',
   '/blog/category/convert': '/de/blog/category/konvertieren',
   '/blog/category/crop-edit': '/de/blog/category/zuschneiden-und-bearbeiten',
-  '/blog/category/ai-tools': '/de/blog/category/ki-tools',
   '/blog/category/create': '/de/blog/category/erstellen',
   '/blog/category/privacy': '/de/blog/category/datenschutz',
   '/blog/category/developer': '/de/blog/category/entwickler',
@@ -218,9 +216,6 @@ export const DE_PATH_BY_EN: Record<string, string> = {
   '/blog/remove-image-metadata-guide': '/de/blog/bild-metadaten-entfernen-anleitung',
   '/blog/how-to-remove-metadata-from-image': '/de/blog/metadaten-aus-bild-entfernen',
   '/blog/photo-privacy-gps-exif-risks': '/de/blog/foto-datenschutz-gps-exif-risiken',
-  '/blog/background-remover-guide': '/de/blog/hintergrund-entfernen-anleitung',
-  '/blog/how-to-remove-background-from-image': '/de/blog/bild-hintergrund-entfernen-anleitung',
-  '/blog/ai-background-removal-vs-manual-cutout': '/de/blog/ki-hintergrundentfernung-vs-manuelles-freistellen',
 };
 
 export const EN_PATH_BY_DE: Record<string, string> = Object.fromEntries(

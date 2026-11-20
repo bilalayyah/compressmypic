@@ -29,7 +29,7 @@ export interface AllToolsPageStrings {
 const FR_STRINGS: AllToolsPageStrings = {
   heading: 'Tous les outils',
   subheading:
-    'Les 48 outils gratuits de CompressMyPic pour compresser, convertir et éditer des images, directement dans votre navigateur.',
+    'Les 47 outils gratuits de CompressMyPic pour compresser, convertir et éditer des images, directement dans votre navigateur.',
   searchPlaceholder: 'Rechercher des outils…',
   allLabel: 'Tous',
   noResults: 'Aucun outil trouvé avec ce nom.',

@@ -2,7 +2,7 @@
 // French slugs are SEO-friendly, accent-free, and use natural international French vocabulary.
 // Home: '/' -> '/fr/'. Alias '/fr/compresser-images' redirects to '/fr/' (no duplicate content).
 // Generated for the French translation project (Phase 2, 2026-11-13). Keep in sync with
-// src/data/tools.fr.ts (same 48 tools) and public/sitemap.xml.
+// src/data/tools.fr.ts (same 47 tools) and public/sitemap.xml.
 
 export const FR_PATH_BY_EN: Record<string, string> = {
   '/': '/fr/',
@@ -54,7 +54,6 @@ export const FR_PATH_BY_EN: Record<string, string> = {
   '/svg-to-png': '/fr/convertir-svg-en-png',
   '/avif-to-jpg': '/fr/convertir-avif-en-jpg',
   '/bmp-to-jpg': '/fr/convertir-bmp-en-jpg',
-  '/remove-background': '/fr/supprimer-arriere-plan-image',
   // --- Legal ---
   '/about': '/fr/a-propos',
   '/contact': '/fr/contact',
@@ -73,7 +72,6 @@ export const FR_PATH_BY_EN: Record<string, string> = {
   '/blog/category/resize': '/fr/blog/category/redimensionner',
   '/blog/category/convert': '/fr/blog/category/convertir',
   '/blog/category/crop-edit': '/fr/blog/category/recadrer-et-modifier',
-  '/blog/category/ai-tools': '/fr/blog/category/outils-ia',
   '/blog/category/create': '/fr/blog/category/creer',
   '/blog/category/privacy': '/fr/blog/category/confidentialite',
   '/blog/category/developer': '/fr/blog/category/developpeur',
@@ -218,9 +216,6 @@ export const FR_PATH_BY_EN: Record<string, string> = {
   '/blog/remove-image-metadata-guide': '/fr/blog/supprimer-metadonnees-photo-guide-complet',
   '/blog/how-to-remove-metadata-from-image': '/fr/blog/comment-supprimer-metadonnees-photo',
   '/blog/photo-privacy-gps-exif-risks': '/fr/blog/metadonnees-photo-danger-vie-privee',
-  '/blog/background-remover-guide': '/fr/blog/detourer-une-image',
-  '/blog/how-to-remove-background-from-image': '/fr/blog/comment-supprimer-arriere-plan-dune-image',
-  '/blog/ai-background-removal-vs-manual-cutout': '/fr/blog/detourage-ia-ou-manuel',
 };
 
 export const EN_PATH_BY_FR: Record<string, string> = Object.fromEntries(

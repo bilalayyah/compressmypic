@@ -88,7 +88,6 @@ export const JA = {
       { slug: '/rotate-flip-image', label: '画像の回転と反転' }, // 'Rotate & Flip Image'
       { slug: '/image-to-pdf', label: '画像をPDFに変換' }, // 'Image to PDF'
       { slug: '/remove-image-metadata', label: 'メタデータを削除' }, // 'Remove Metadata'
-      { slug: '/remove-background', label: '背景除去' }, // 'Background Remover'
     ],
     legalLinks: [
       { slug: '/privacy', label: 'プライバシーポリシー' }, // 'Privacy Policy'
@@ -521,7 +520,6 @@ export const JA = {
     resize: 'サイズ変更', // 'Resize'
     convert: '変換', // 'Convert'
     'crop-edit': 'トリミングと編集', // 'Crop & Edit'
-    'ai-tools': 'AIツール', // 'AI Tools'
     create: '作成', // 'Create'
     privacy: 'プライバシー', // 'Privacy Tools'
     developer: '開発者ツール', // 'Developer Tools'
@@ -589,7 +587,7 @@ export const JA = {
   },
 } as const;
 
-// Per-tool workspace UI strings in Japanese (modern Japanese) — COMPLETE (all 48 tools).
+// Per-tool workspace UI strings in Japanese (modern Japanese) — COMPLETE (all 47 tools).
 // Assembled from tool-ui-ja-batch1.ts … tool-ui-ja-batch6.ts (coordinator merge).
 // Target: merged into src/locales/ja/ui.ts as the TOOL_UI_JA export.
 // Japanese (modern Japanese), polite desu/masu forms. Keyed by English slug.
@@ -2289,46 +2287,5 @@ export const TOOL_UI_JA = {
     comparisonAfterLabel: 'JPG（{size}）', // afterLabel `${targetLabel} (${formatBytes(...)})`
     errorConvertFailed: '「{name}」をJPGに変換できませんでした。', // `Failed to convert ${item.name} to ${targetLabel}.`
     errorCouldNotDecode: '「{name}」をデコードできませんでした。有効なBMP画像か確認してください。', // `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`
-  },
-  '/remove-background': {
-    uploadTitle: '写真をドロップしてAIで背景を除去', // 'Drop a photo to remove its background with AI'
-    modelLoadingTitle: 'ブラウザ内AIモデルを読み込み中（isnet_quint8）', // 'Loading in-browser AI model (isnet_quint8)'
-    modelCache: 'モデルキャッシュ', // 'Model Cache'
-    progressWasm: 'WebAssemblyのAIランタイムを読み込み中…', // 'Loading WebAssembly AI runtime...'
-    progressModel: 'AI背景除去モデルをダウンロード中（約35MB、次回以降はキャッシュされます）…', // 'Downloading AI background removal model (~35 MB, cached for future use)...'
-    progressCompute: 'お使いのブラウザ内でローカルに背景を除去中…', // 'Removing background locally in your browser...'
-    progressPreparing: 'ブラウザ内AIモデルを準備中…', // 'Preparing in-browser AI model...'
-    progressInitLibrary: 'AI背景除去ライブラリを読み込み中…', // 'Loading AI background removal library...'
-    progressInitModule: 'AI背景除去モジュールを初期化中…', // 'Initializing AI background removal module...'
-    errorModelInit: 'AI背景モデルを初期化できませんでした：{message}', // `Could not initialize the AI background model: ${err.message}`
-    errorModelInitGeneric: 'このブラウザでAI背景モデルを初期化できませんでした。', // 'Could not initialize the AI background model in this browser.'
-    errorDecodeOutput: '透明PNGの出力をデコードできませんでした。', // 'Failed to decode transparent PNG output.'
-    errorRemovalFailed: 'このブラウザで背景除去に失敗しました。別の画像を試すか、ページを再読み込みしてください。', // 'Background removal failed in this browser. Try another image or reload.'
-    beforeAfterPreview: '変換前後のプレビュー', // 'Before & After Preview'
-    splitCompare: '分割比較', // 'Split Compare'
-    newImage: '新しい画像', // 'New Image'
-    originalLabel: '元画像', // 'Original'
-    transparentCutout: '透明な切り抜き（PNG）', // 'Transparent Cutout (PNG)'
-    solidBackgroundPreview: '単色背景のプレビュー', // 'Solid Background Preview'
-    waitingForResult: '結果を待っています…', // 'Waiting for result...'
-    processingLocally: 'ローカルで処理中…', // 'Processing locally...'
-    cutoutStatus: '切り抜きステータス', // 'Cutout Status'
-    ready: '完了', // 'Ready'
-    backgroundFillOption: '背景の塗りつぶしオプション', // 'Background Fill Option'
-    bgTransparent: '透明', // 'Transparent'
-    bgWhite: '白', // 'White'
-    bgBlack: '黒', // 'Black'
-    bgCustom: 'カスタム', // 'Custom'
-    customBackgroundColor: 'カスタム背景色', // 'Custom Background Color'
-    downloadTransparentPng: '透明PNGをダウンロード', // 'Download Transparent PNG'
-    downloadWithWhite: '白い背景でダウンロード', // 'Download with White Background'
-    downloadWithBlack: '黒い背景でダウンロード', // 'Download with Black Background'
-    downloadWithCustom: '{color}の背景でダウンロード', // 'Download with {color} Background'
-    rerunRemoval: 'もう一度除去', // 'Re-run Removal'
-    comparisonTitlePrefix: '背景除去の比較', // 'Background Removal Comparison'
-    comparisonAfterTransparent: '切り抜き（透明PNG）', // 'Cutout (Transparent PNG)'
-    comparisonAfterSolid: '切り抜き（単色背景）', // 'Cutout (Solid BG)'
-    altOriginal: '元画像 {name}', // alt `Original ${sourceFile.name}`
-    altCutout: '背景を除去した {name}', // alt `Background removed ${sourceFile.name}`
   },
 };

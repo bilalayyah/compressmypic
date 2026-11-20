@@ -76,7 +76,6 @@ export const DE = {
       { slug: '/rotate-flip-image', label: 'Bild drehen und spiegeln' },
       { slug: '/image-to-pdf', label: 'Bild zu PDF' },
       { slug: '/remove-image-metadata', label: 'Metadaten entfernen' },
-      { slug: '/remove-background', label: 'Hintergrund entfernen' },
     ],
     legalLinks: [
       { slug: '/privacy', label: 'Datenschutzerklärung' },
@@ -358,7 +357,7 @@ export const DE = {
         id: 'faq-20',
         question: 'Was kann ich außer dem Komprimieren von Bildern noch tun?',
         answer:
-          'Die Website bietet insgesamt 48 kostenlose Tools: Größe ändern, Formate konvertieren, zuschneiden, drehen, Wasserzeichen hinzufügen, Hintergrund und Metadaten entfernen, GIFs und Collagen erstellen, Favicons generieren und vieles mehr. Alle funktionieren im Browser, ohne Anmeldung und ohne Server-Upload.',
+          'Die Website bietet insgesamt 47 kostenlose Tools: Größe ändern, Formate konvertieren, zuschneiden, drehen, Wasserzeichen hinzufügen, Metadaten entfernen, GIFs und Collagen erstellen, Favicons generieren und vieles mehr. Alle funktionieren im Browser, ohne Anmeldung und ohne Server-Upload.',
       },
     ],
   },
@@ -509,7 +508,6 @@ export const DE = {
     resize: 'Größe ändern',
     convert: 'Konvertieren',
     'crop-edit': 'Zuschneiden & Bearbeiten',
-    'ai-tools': 'KI-Tools',
     create: 'Erstellen',
     privacy: 'Datenschutz-Tools',
     developer: 'Entwickler-Tools',
@@ -587,7 +585,7 @@ export const DE = {
 // entry keeps slug '/' per the ES pattern (the app maps '/' -> '/de/').
 // ---------------------------------------------------------------------------
 
-// Per-tool workspace UI strings in German (Standard German) — COMPLETE (all 48 tools).
+// Per-tool workspace UI strings in German (Standard German) — COMPLETE (all 47 tools).
 // Assembled from tool-ui-de-batch1.ts … tool-ui-de-batch6.ts (coordinator merge).
 // Target: merged into src/locales/de/ui.ts as the TOOL_UI_DE export.
 // German (Standard German), Sie forms. Keyed by English slug.
@@ -2285,46 +2283,5 @@ export const TOOL_UI_DE = {
     comparisonAfterLabel: 'JPG ({size})', // afterLabel `${targetLabel} (${formatBytes(...)})`
     errorConvertFailed: '„{name}“ konnte nicht in JPG umgewandelt werden.', // `Failed to convert ${item.name} to ${targetLabel}.`
     errorCouldNotDecode: '„{name}“ konnte nicht dekodiert werden. Bitte prüfen Sie, ob es sich um ein gültiges BMP-Bild handelt.', // `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`
-  },
-  '/remove-background': {
-    uploadTitle: 'Foto ablegen, um den Hintergrund mit KI zu entfernen', // 'Drop a photo to remove its background with AI'
-    modelLoadingTitle: 'KI-Modell im Browser wird geladen (isnet_quint8)', // 'Loading in-browser AI model (isnet_quint8)'
-    modelCache: 'Modell-Cache', // 'Model Cache'
-    progressWasm: 'WebAssembly-KI-Laufzeit wird geladen…', // 'Loading WebAssembly AI runtime...'
-    progressModel: 'KI-Modell zur Hintergrundentfernung wird heruntergeladen (ca. 35 MB, für künftige Nutzung zwischengespeichert)…', // 'Downloading AI background removal model (~35 MB, cached for future use)...'
-    progressCompute: 'Hintergrund wird lokal in Ihrem Browser entfernt…', // 'Removing background locally in your browser...'
-    progressPreparing: 'KI-Modell im Browser wird vorbereitet…', // 'Preparing in-browser AI model...'
-    progressInitLibrary: 'KI-Bibliothek zur Hintergrundentfernung wird geladen…', // 'Loading AI background removal library...'
-    progressInitModule: 'KI-Modul zur Hintergrundentfernung wird initialisiert…', // 'Initializing AI background removal module...'
-    errorModelInit: 'Das KI-Hintergrundmodell konnte nicht initialisiert werden: {message}', // `Could not initialize the AI background model: ${err.message}`
-    errorModelInitGeneric: 'Das KI-Hintergrundmodell konnte in diesem Browser nicht initialisiert werden.', // 'Could not initialize the AI background model in this browser.'
-    errorDecodeOutput: 'Die transparente PNG-Ausgabe konnte nicht dekodiert werden.', // 'Failed to decode transparent PNG output.'
-    errorRemovalFailed: 'Die Hintergrundentfernung ist in diesem Browser fehlgeschlagen. Bitte versuchen Sie es mit einem anderen Bild oder laden Sie die Seite neu.', // 'Background removal failed in this browser. Try another image or reload.'
-    beforeAfterPreview: 'Vorher-Nachher-Vorschau', // 'Before & After Preview'
-    splitCompare: 'Geteilter Vergleich', // 'Split Compare'
-    newImage: 'Neues Bild', // 'New Image'
-    originalLabel: 'Original', // 'Original'
-    transparentCutout: 'Transparenter Freisteller (PNG)', // 'Transparent Cutout (PNG)'
-    solidBackgroundPreview: 'Vorschau mit einfarbigem Hintergrund', // 'Solid Background Preview'
-    waitingForResult: 'Warten auf Ergebnis…', // 'Waiting for result...'
-    processingLocally: 'Wird lokal verarbeitet…', // 'Processing locally...'
-    cutoutStatus: 'Freisteller-Status', // 'Cutout Status'
-    ready: 'Bereit', // 'Ready'
-    backgroundFillOption: 'Option für Hintergrundfüllung', // 'Background Fill Option'
-    bgTransparent: 'Transparent', // 'Transparent'
-    bgWhite: 'Weiß', // 'White'
-    bgBlack: 'Schwarz', // 'Black'
-    bgCustom: 'Eigene Farbe', // 'Custom'
-    customBackgroundColor: 'Eigene Hintergrundfarbe', // 'Custom Background Color'
-    downloadTransparentPng: 'Transparentes PNG herunterladen', // 'Download Transparent PNG'
-    downloadWithWhite: 'Mit weißem Hintergrund herunterladen', // 'Download with White Background'
-    downloadWithBlack: 'Mit schwarzem Hintergrund herunterladen', // 'Download with Black Background'
-    downloadWithCustom: 'Mit {color}-Hintergrund herunterladen', // 'Download with {color} Background'
-    rerunRemoval: 'Entfernung erneut ausführen', // 'Re-run Removal'
-    comparisonTitlePrefix: 'Vergleich der Hintergrundentfernung', // 'Background Removal Comparison'
-    comparisonAfterTransparent: 'Freisteller (transparentes PNG)', // 'Cutout (Transparent PNG)'
-    comparisonAfterSolid: 'Freisteller (einfarbiger Hintergrund)', // 'Cutout (Solid BG)'
-    altOriginal: 'Original {name}', // alt `Original ${sourceFile.name}`
-    altCutout: 'Hintergrund entfernt {name}', // alt `Background removed ${sourceFile.name}`
   },
 };

@@ -26,7 +26,7 @@ export interface AllToolsPageStrings {
 const DE_STRINGS: AllToolsPageStrings = {
   heading: 'Alle Tools',
   subheading:
-    'Die 48 kostenlosen Tools von CompressMyPic zum Komprimieren, Konvertieren und Bearbeiten von Bildern – direkt in Ihrem Browser.',
+    'Die 47 kostenlosen Tools von CompressMyPic zum Komprimieren, Konvertieren und Bearbeiten von Bildern – direkt in Ihrem Browser.',
   searchPlaceholder: 'Tools suchen…',
   allLabel: 'Alle',
   noResults: 'Kein Tool mit diesem Namen gefunden.',
@@ -55,7 +55,7 @@ export const AllToolsPageDe: React.FC<AllToolsPageDeProps> = ({
   useEffect(() => {
     document.title = 'Alle kostenlosen Bildtools online | CompressMyPic';
     const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute('content', 'Alle 48 kostenlosen Bildtools von CompressMyPic: Bilder online komprimieren, konvertieren, zuschneiden und bearbeiten – direkt im Browser, ohne Anmeldung.');
+    if (metaDescription) metaDescription.setAttribute('content', 'Alle 47 kostenlosen Bildtools von CompressMyPic: Bilder online komprimieren, konvertieren, zuschneiden und bearbeiten – direkt im Browser, ohne Anmeldung.');
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 

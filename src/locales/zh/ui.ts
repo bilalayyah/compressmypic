@@ -85,7 +85,6 @@ export const ZH = {
       { slug: '/rotate-flip-image', label: '旋转与翻转图片' }, // 'Rotate & Flip Image'
       { slug: '/image-to-pdf', label: '图片转PDF' }, // 'Image to PDF'
       { slug: '/remove-image-metadata', label: '删除元数据' }, // 'Remove Metadata'
-      { slug: '/remove-background', label: '背景移除工具' }, // 'Background Remover'
     ],
     legalLinks: [
       { slug: '/privacy', label: '隐私政策' }, // 'Privacy Policy'
@@ -518,7 +517,6 @@ export const ZH = {
     resize: '调整尺寸', // 'Resize'
     convert: '转换', // 'Convert'
     'crop-edit': '裁剪与编辑', // 'Crop & Edit'
-    'ai-tools': 'AI工具', // 'AI Tools'
     create: '创作', // 'Create'
     privacy: '隐私', // 'Privacy Tools'
     developer: '开发者工具', // 'Developer Tools'
@@ -586,7 +584,7 @@ export const ZH = {
   },
 } as const;
 
-// Per-tool workspace UI strings in Chinese (Simplified Mandarin) — COMPLETE (all 48 tools).
+// Per-tool workspace UI strings in Chinese (Simplified Mandarin) — COMPLETE (all 47 tools).
 // Assembled from tool-ui-zh-batch1.ts … tool-ui-zh-batch6.ts (coordinator merge).
 // Target: merged into src/locales/zh/ui.ts as the TOOL_UI_ZH export.
 // Chinese (Simplified Mandarin), natural Simplified Mandarin. Keyed by English slug.
@@ -2286,46 +2284,5 @@ export const TOOL_UI_ZH = {
     comparisonAfterLabel: 'JPG（{size}）', // afterLabel `${targetLabel} (${formatBytes(...)})`
     errorConvertFailed: '无法将 {name} 转换为 JPG。', // `Failed to convert ${item.name} to ${targetLabel}.`
     errorCouldNotDecode: '无法解码“{name}”。请确认它是一张有效的 BMP 图片。', // `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`
-  },
-  '/remove-background': {
-    uploadTitle: '拖放照片，使用 AI 去除背景', // 'Drop a photo to remove its background with AI'
-    modelLoadingTitle: '正在加载浏览器内 AI 模型（isnet_quint8）', // 'Loading in-browser AI model (isnet_quint8)'
-    modelCache: '模型缓存', // 'Model Cache'
-    progressWasm: '正在加载 WebAssembly AI 运行时…', // 'Loading WebAssembly AI runtime...'
-    progressModel: '正在下载 AI 背景去除模型（约 35 MB，以后将使用缓存）…', // 'Downloading AI background removal model (~35 MB, cached for future use)...'
-    progressCompute: '正在浏览器内本地去除背景…', // 'Removing background locally in your browser...'
-    progressPreparing: '正在准备浏览器内 AI 模型…', // 'Preparing in-browser AI model...'
-    progressInitLibrary: '正在加载 AI 背景去除库…', // 'Loading AI background removal library...'
-    progressInitModule: '正在初始化 AI 背景去除模块…', // 'Initializing AI background removal module...'
-    errorModelInit: '无法初始化 AI 背景模型：{message}', // `Could not initialize the AI background model: ${err.message}`
-    errorModelInitGeneric: '无法在此浏览器中初始化 AI 背景模型。', // 'Could not initialize the AI background model in this browser.'
-    errorDecodeOutput: '无法解码透明 PNG 输出。', // 'Failed to decode transparent PNG output.'
-    errorRemovalFailed: '在此浏览器中去除背景失败。请尝试另一张图片或重新加载页面。', // 'Background removal failed in this browser. Try another image or reload.'
-    beforeAfterPreview: '前后对比预览', // 'Before & After Preview'
-    splitCompare: '分割比较', // 'Split Compare'
-    newImage: '新图片', // 'New Image'
-    originalLabel: '原图', // 'Original'
-    transparentCutout: '透明抠图（PNG）', // 'Transparent Cutout (PNG)'
-    solidBackgroundPreview: '纯色背景预览', // 'Solid Background Preview'
-    waitingForResult: '等待结果…', // 'Waiting for result...'
-    processingLocally: '正在本地处理…', // 'Processing locally...'
-    cutoutStatus: '抠图状态', // 'Cutout Status'
-    ready: '就绪', // 'Ready'
-    backgroundFillOption: '背景填充选项', // 'Background Fill Option'
-    bgTransparent: '透明', // 'Transparent'
-    bgWhite: '白色', // 'White'
-    bgBlack: '黑色', // 'Black'
-    bgCustom: '自定义', // 'Custom'
-    customBackgroundColor: '自定义背景色', // 'Custom Background Color'
-    downloadTransparentPng: '下载透明 PNG', // 'Download Transparent PNG'
-    downloadWithWhite: '下载白色背景版本', // 'Download with White Background'
-    downloadWithBlack: '下载黑色背景版本', // 'Download with Black Background'
-    downloadWithCustom: '下载 {color} 背景版本', // 'Download with {color} Background'
-    rerunRemoval: '重新去除', // 'Re-run Removal'
-    comparisonTitlePrefix: '背景去除对比', // 'Background Removal Comparison'
-    comparisonAfterTransparent: '抠图（透明 PNG）', // 'Cutout (Transparent PNG)'
-    comparisonAfterSolid: '抠图（纯色背景）', // 'Cutout (Solid BG)'
-    altOriginal: '原图 {name}', // alt `Original ${sourceFile.name}`
-    altCutout: '已去除背景的 {name}', // alt `Background removed ${sourceFile.name}`
   },
 };

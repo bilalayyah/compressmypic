@@ -26,7 +26,7 @@ export interface AllToolsPageStrings {
 const KO_STRINGS: AllToolsPageStrings = {
   heading: '모든 도구',
   subheading:
-    'CompressMyPic의 48가지 무료 이미지 도구로 이미지를 압축, 변환, 자르고 편집하세요. 브라우저에서 바로 사용할 수 있습니다.',
+    'CompressMyPic의 47가지 무료 이미지 도구로 이미지를 압축, 변환, 자르고 편집하세요. 브라우저에서 바로 사용할 수 있습니다.',
   searchPlaceholder: '도구 검색…',
   allLabel: '전체',
   noResults: '해당 이름의 도구를 찾을 수 없습니다.',
@@ -55,7 +55,7 @@ export const AllToolsPageKo: React.FC<AllToolsPageKoProps> = ({
   useEffect(() => {
     document.title = '모든 무료 이미지 도구 | CompressMyPic';
     const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute('content', 'CompressMyPic의 무료 이미지 도구 48가지로 이미지를 압축, 변환, 자르고, 크기를 조정하세요. 브라우저에서 바로 사용 가능하며 가입이 필요 없고, JPG, PNG, WebP, HEIC를 지원합니다.');
+    if (metaDescription) metaDescription.setAttribute('content', 'CompressMyPic의 무료 이미지 도구 47가지로 이미지를 압축, 변환, 자르고, 크기를 조정하세요. 브라우저에서 바로 사용 가능하며 가입이 필요 없고, JPG, PNG, WebP, HEIC를 지원합니다.');
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 

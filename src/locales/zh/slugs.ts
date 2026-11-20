@@ -2,7 +2,7 @@
 // Chinese slugs are SEO-friendly, accent-free, and use natural vocabulary.
 // Home: '/' -> '/zh/'. Alias '/zh/yasuo-tupian' redirects to '/zh/' (no duplicate content).
 // Generated for the Simplified Chinese translation project (Phase 6, 2026-11-14). Keep in sync with
-// src/data/tools.ts (same 48 tools) and public/sitemap.xml.
+// src/data/tools.ts (same 47 tools) and public/sitemap.xml.
 
 export const ZH_PATH_BY_EN: Record<string, string> = {
   '/': '/zh/',
@@ -54,7 +54,6 @@ export const ZH_PATH_BY_EN: Record<string, string> = {
   '/svg-to-png': '/zh/svg-zhuan-png',
   '/avif-to-jpg': '/zh/avif-zhuan-jpg',
   '/bmp-to-jpg': '/zh/bmp-zhuan-jpg',
-  '/remove-background': '/zh/quchu-beijing',
   // --- Legal ---
   '/about': '/zh/guanyu-women',
   '/contact': '/zh/lianxi-women',
@@ -73,7 +72,6 @@ export const ZH_PATH_BY_EN: Record<string, string> = {
   '/blog/category/resize': '/zh/blog/category/tiaozheng-chicun',
   '/blog/category/convert': '/zh/blog/category/zhuanhuan',
   '/blog/category/crop-edit': '/zh/blog/category/caijian-bianji',
-  '/blog/category/ai-tools': '/zh/blog/category/ai-gongju',
   '/blog/category/create': '/zh/blog/category/chuangzuo',
   '/blog/category/privacy': '/zh/blog/category/yinsi',
   '/blog/category/developer': '/zh/blog/category/kaifazhe-gongju',
@@ -218,9 +216,6 @@ export const ZH_PATH_BY_EN: Record<string, string> = {
   '/blog/remove-image-metadata-guide': '/zh/blog/shanchu-tupian-yuanshuju-zhinan',
   '/blog/how-to-remove-metadata-from-image': '/zh/blog/ruhe-shanchu-tupian-yuanshuju',
   '/blog/photo-privacy-gps-exif-risks': '/zh/blog/zhaopian-yinsi-gps-exif-fengxian',
-  '/blog/background-remover-guide': '/zh/blog/koutu-wanzheng-zhinan',
-  '/blog/how-to-remove-background-from-image': '/zh/blog/ru-he-koutu-qu-beijing',
-  '/blog/ai-background-removal-vs-manual-cutout': '/zh/blog/ai-koutu-vs-shoudong-koutu',
 };
 
 export const EN_PATH_BY_ZH: Record<string, string> = Object.fromEntries(

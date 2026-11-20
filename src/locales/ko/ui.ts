@@ -79,7 +79,6 @@ export const KO = {
       { slug: '/rotate-flip-image', label: '이미지 회전 및 뒤집기' }, // 'Rotate & Flip Image'
       { slug: '/image-to-pdf', label: '이미지 PDF 변환' }, // 'Image to PDF'
       { slug: '/remove-image-metadata', label: '메타데이터 제거' }, // 'Remove Metadata'
-      { slug: '/remove-background', label: '배경 제거' }, // 'Background Remover'
     ],
     legalLinks: [
       { slug: '/privacy', label: '개인정보처리방침' }, // 'Privacy Policy'
@@ -512,7 +511,6 @@ export const KO = {
     resize: '크기 조정', // 'Resize'
     convert: '변환', // 'Convert'
     'crop-edit': '자르기·편집', // 'Crop & Edit'
-    'ai-tools': 'AI 도구', // 'AI Tools'
     create: '만들기', // 'Create'
     privacy: '개인정보 도구', // 'Privacy'
     developer: '개발자 도구', // 'Developer Tools'
@@ -580,7 +578,7 @@ export const KO = {
   },
 } as const;
 
-// Per-tool workspace UI strings in Korean (South Korean) — COMPLETE (all 48 tools).
+// Per-tool workspace UI strings in Korean (South Korean) — COMPLETE (all 47 tools).
 // Assembled from tool-ui-ko-batch1.ts … tool-ui-ko-batch6.ts (coordinator merge).
 // Target: merged into src/locales/ko/ui.ts as the TOOL_UI_KO export.
 // Korean (South Korean), polite -yo forms. Keyed by English slug.
@@ -2284,46 +2282,5 @@ export const TOOL_UI_KO = {
     comparisonAfterLabel: 'JPG ({size})', // afterLabel `${targetLabel} (${formatBytes(...)})`
     errorConvertFailed: '"{name}"을(를) JPG로 변환하지 못했습니다.', // `Failed to convert ${item.name} to ${targetLabel}.`
     errorCouldNotDecode: '"{name}"을(를) 디코딩할 수 없습니다. 유효한 BMP 이미지인지 확인하세요.', // `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`
-  },
-  '/remove-background': {
-    uploadTitle: '사진을 놓아 AI로 배경을 제거하세요', // 'Drop a photo to remove its background with AI'
-    modelLoadingTitle: '브라우저 내 AI 모델 로드 중 (isnet_quint8)', // 'Loading in-browser AI model (isnet_quint8)'
-    modelCache: '모델 캐시', // 'Model Cache'
-    progressWasm: 'WebAssembly AI 런타임 로드 중…', // 'Loading WebAssembly AI runtime...'
-    progressModel: 'AI 배경 제거 모델 다운로드 중 (약 35 MB, 다음 사용을 위해 캐시됩니다)…', // 'Downloading AI background removal model (~35 MB, cached for future use)...'
-    progressCompute: '브라우저에서 로컬로 배경을 제거하는 중…', // 'Removing background locally in your browser...'
-    progressPreparing: '브라우저에서 AI 모델을 준비하는 중…', // 'Preparing in-browser AI model...'
-    progressInitLibrary: 'AI 배경 제거 라이브러리 로드 중…', // 'Loading AI background removal library...'
-    progressInitModule: 'AI 배경 제거 모듈 초기화 중…', // 'Initializing AI background removal module...'
-    errorModelInit: 'AI 배경 모델을 초기화할 수 없습니다: {message}', // `Could not initialize the AI background model: ${err.message}`
-    errorModelInitGeneric: '이 브라우저에서 AI 배경 모델을 초기화할 수 없습니다.', // 'Could not initialize the AI background model in this browser.'
-    errorDecodeOutput: '투명 PNG 출력을 디코딩하지 못했습니다.', // 'Failed to decode transparent PNG output.'
-    errorRemovalFailed: '이 브라우저에서 배경 제거에 실패했습니다. 다른 이미지를 시도하거나 페이지를 새로고침하세요.', // 'Background removal failed in this browser. Try another image or reload.'
-    beforeAfterPreview: '전후 미리보기', // 'Before & After Preview'
-    splitCompare: '분할 비교', // 'Split Compare'
-    newImage: '새 이미지', // 'New Image'
-    originalLabel: '원본', // 'Original'
-    transparentCutout: '투명 누끼 (PNG)', // 'Transparent Cutout (PNG)'
-    solidBackgroundPreview: '단색 배경 미리보기', // 'Solid Background Preview'
-    waitingForResult: '결과 대기 중…', // 'Waiting for result...'
-    processingLocally: '로컬에서 처리 중…', // 'Processing locally...'
-    cutoutStatus: '누끼 상태', // 'Cutout Status'
-    ready: '준비됨', // 'Ready'
-    backgroundFillOption: '배경 채우기 옵션', // 'Background Fill Option'
-    bgTransparent: '투명', // 'Transparent'
-    bgWhite: '흰색', // 'White'
-    bgBlack: '검은색', // 'Black'
-    bgCustom: '사용자 지정', // 'Custom'
-    customBackgroundColor: '사용자 지정 배경 색상', // 'Custom Background Color'
-    downloadTransparentPng: '투명 PNG 다운로드', // 'Download Transparent PNG'
-    downloadWithWhite: '흰색 배경으로 다운로드', // 'Download with White Background'
-    downloadWithBlack: '검은색 배경으로 다운로드', // 'Download with Black Background'
-    downloadWithCustom: '{color} 배경으로 다운로드', // 'Download with {color} Background'
-    rerunRemoval: '제거 다시 실행', // 'Re-run Removal'
-    comparisonTitlePrefix: '배경 제거 비교', // 'Background Removal Comparison'
-    comparisonAfterTransparent: '누끼 (투명 PNG)', // 'Cutout (Transparent PNG)'
-    comparisonAfterSolid: '누끼 (단색 배경)', // 'Cutout (Solid BG)'
-    altOriginal: '원본 {name}', // alt `Original ${sourceFile.name}`
-    altCutout: '배경 제거됨 {name}', // alt `Background removed ${sourceFile.name}`
   },
 };

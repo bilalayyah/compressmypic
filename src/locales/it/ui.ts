@@ -77,7 +77,6 @@ export const IT = {
       { slug: '/rotate-flip-image', label: 'Ruota e specchia immagine' },
       { slug: '/image-to-pdf', label: 'Immagine in PDF' },
       { slug: '/remove-image-metadata', label: 'Rimuovi metadati' },
-      { slug: '/remove-background', label: 'Rimuovi sfondo' },
     ],
     legalLinks: [
       { slug: '/privacy', label: 'Informativa sulla privacy' },
@@ -510,7 +509,6 @@ export const IT = {
     resize: 'Ridimensiona',
     convert: 'Converti',
     'crop-edit': 'Ritaglia e modifica',
-    'ai-tools': 'Strumenti IA',
     create: 'Crea',
     privacy: 'Strumenti privacy',
     developer: 'Strumenti per sviluppatori',
@@ -588,7 +586,7 @@ export const IT = {
 // entry keeps slug '/' per the ES/PT pattern (the app maps '/' -> '/it/').
 // ---------------------------------------------------------------------------
 
-// Per-tool workspace UI strings in Italian (Standard Italian) — COMPLETE (all 48 tools).
+// Per-tool workspace UI strings in Italian (Standard Italian) — COMPLETE (all 47 tools).
 // Assembled from tool-ui-it-batch1.ts … tool-ui-it-batch6.ts (coordinator merge).
 // Target: merged into src/locales/it/ui.ts as the TOOL_UI_IT export.
 // Italian (Standard Italian), tu forms. Keyed by English slug.
@@ -2219,46 +2217,5 @@ export const TOOL_UI_IT = {
     comparisonAfterLabel: 'JPG ({size})', // afterLabel `${targetLabel} (${formatBytes(...)})`
     errorConvertFailed: 'Impossibile convertire {name} in JPG.', // `Failed to convert ${item.name} to ${targetLabel}.`
     errorCouldNotDecode: 'Impossibile decodificare "{name}". Verifica che sia un’immagine BMP valida.', // `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`
-  },
-  '/remove-background': {
-    uploadTitle: 'Trascina una foto per rimuovere lo sfondo con l’IA', // 'Drop a photo to remove its background with AI'
-    modelLoadingTitle: 'Caricamento del modello AI nel browser (isnet_quint8)', // 'Loading in-browser AI model (isnet_quint8)'
-    modelCache: 'Cache del modello', // 'Model Cache'
-    progressWasm: 'Caricamento del runtime AI WebAssembly…', // 'Loading WebAssembly AI runtime...'
-    progressModel: 'Download del modello AI di rimozione sfondo (~35 MB, memorizzato nella cache per usi futuri)…', // 'Downloading AI background removal model (~35 MB, cached for future use)...'
-    progressCompute: 'Rimozione dello sfondo in locale nel tuo browser…', // 'Removing background locally in your browser...'
-    progressPreparing: 'Preparazione del modello AI nel browser…', // 'Preparing in-browser AI model...'
-    progressInitLibrary: 'Caricamento della libreria AI di rimozione sfondo…', // 'Loading AI background removal library...'
-    progressInitModule: 'Inizializzazione del modulo AI di rimozione sfondo…', // 'Initializing AI background removal module...'
-    errorModelInit: 'Impossibile inizializzare il modello AI di sfondo: {message}', // `Could not initialize the AI background model: ${err.message}`
-    errorModelInitGeneric: 'Impossibile inizializzare il modello AI di sfondo in questo browser.', // 'Could not initialize the AI background model in this browser.'
-    errorDecodeOutput: 'Impossibile decodificare l’output PNG trasparente.', // 'Failed to decode transparent PNG output.'
-    errorRemovalFailed: 'La rimozione dello sfondo non è riuscita in questo browser. Prova un’altra immagine o ricarica la pagina.', // 'Background removal failed in this browser. Try another image or reload.'
-    beforeAfterPreview: 'Anteprima prima e dopo', // 'Before & After Preview'
-    splitCompare: 'Confronto a metà', // 'Split Compare'
-    newImage: 'Nuova immagine', // 'New Image'
-    originalLabel: 'Originale', // 'Original'
-    transparentCutout: 'Ritaglio trasparente (PNG)', // 'Transparent Cutout (PNG)'
-    solidBackgroundPreview: 'Anteprima sfondo solido', // 'Solid Background Preview'
-    waitingForResult: 'In attesa del risultato…', // 'Waiting for result...'
-    processingLocally: 'Elaborazione in locale…', // 'Processing locally...'
-    cutoutStatus: 'Stato del ritaglio', // 'Cutout Status'
-    ready: 'Pronto', // 'Ready'
-    backgroundFillOption: 'Opzione di riempimento sfondo', // 'Background Fill Option'
-    bgTransparent: 'Trasparente', // 'Transparent'
-    bgWhite: 'Bianco', // 'White'
-    bgBlack: 'Nero', // 'Black'
-    bgCustom: 'Personalizzato', // 'Custom'
-    customBackgroundColor: 'Colore di sfondo personalizzato', // 'Custom Background Color'
-    downloadTransparentPng: 'Scarica PNG trasparente', // 'Download Transparent PNG'
-    downloadWithWhite: 'Scarica con sfondo bianco', // 'Download with White Background'
-    downloadWithBlack: 'Scarica con sfondo nero', // 'Download with Black Background'
-    downloadWithCustom: 'Scarica con sfondo {color}', // 'Download with {color} Background'
-    rerunRemoval: 'Riesegui rimozione', // 'Re-run Removal'
-    comparisonTitlePrefix: 'Confronto rimozione sfondo', // 'Background Removal Comparison'
-    comparisonAfterTransparent: 'Ritaglio (PNG trasparente)', // 'Cutout (Transparent PNG)'
-    comparisonAfterSolid: 'Ritaglio (sfondo solido)', // 'Cutout (Solid BG)'
-    altOriginal: 'Originale {name}', // alt `Original ${sourceFile.name}`
-    altCutout: 'Sfondo rimosso {name}', // alt `Background removed ${sourceFile.name}`
   },
 };

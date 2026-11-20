@@ -7,7 +7,7 @@
 // Blog pages (Batch 2) are intentionally NOT in the output: the three blog
 // components are shared by all languages and resolve by route kind in
 // main.tsx (BLOG_PAGE_MODULES) — the router's `blogRoute?.kind` branches
-// match no branch pattern below, so the counts stay 48/78/10.
+// match no branch pattern below, so the counts stay 47/78/10.
 const fs = require('fs');
 const path = require('path');
 const appPath = path.join(__dirname, '..', 'src', 'App.tsx');
@@ -31,7 +31,6 @@ let m;
 while ((m = branchRe.exec(router)) !== null) {
   const after = router.slice(m.index, m.index + 600);
   // First capitalized component tag, skipping a nested <Suspense> wrapper
-  // (the /remove-background branch wraps its page in one).
   const comp = after.match(/<(?!Suspense\b)([A-Z]\w+)[\s/>]/);
   if (!comp) { console.error('NO COMPONENT for branch at', m.index, m[0]); process.exit(1); }
   branches.push({ lang: m[1] || null, path: m[2] || null, pathConst: m[3] || null, comp: comp[1] });
@@ -77,7 +76,7 @@ for (const [prefix, lang] of Object.entries(LANG_FROM_CONST)) {
 }
 
 console.log(`// branches parsed: ${branches.length} (tools ${tools.size}, localized ${localized.size}, dirs ${dirs.size})`);
-if (tools.size !== 48) { console.error('EXPECTED 48 tools, got', tools.size); process.exit(1); }
+if (tools.size !== 47) { console.error('EXPECTED 47 tools, got', tools.size); process.exit(1); }
 if (localized.size !== 60 + 30 + 10 + 1) { console.error('EXPECTED 101 localized (60 legal + 30 guides + 10 EN static + admin), got', localized.size); process.exit(1); }
 if (dirs.size !== 10) { console.error('EXPECTED 10 dirs, got', dirs.size); process.exit(1); }
 const sorted = (map) => [...map.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1));

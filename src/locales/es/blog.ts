@@ -710,19 +710,4 @@ export const ES_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     description: "Qué pueden revelar las coordenadas GPS, los datos EXIF y los metadatos ocultos de sus fotos, y los pasos que impiden que filtren su ubicación.",
     readingMinutes: 12,
   },
-  "background-remover-guide": {
-    title: "Eliminador de fondo: guía completa",
-    description: "Qué es un eliminador de fondo, cómo la IA encuentra el sujeto y cómo lograr un recorte limpio y transparente — gratis, en el navegador y sin subir nada.",
-    readingMinutes: 11,
-  },
-  "how-to-remove-background-from-image": {
-    title: "Cómo eliminar el fondo de una imagen",
-    description: "Elimina el fondo de cualquier foto en seis pasos: elige la foto correcta, súbela, revisa el recorte con Comparación dividida y descarga un PNG transparente.",
-    readingMinutes: 11,
-  },
-  "ai-background-removal-vs-manual-cutout": {
-    title: "Fondo con IA vs. recorte manual",
-    description: "La eliminación de fondo con IA es rápida, gratis y privada, pero el recorte manual sigue ganando en cabello, vidrio e imágenes de alto riesgo.",
-    readingMinutes: 11,
-  },
 };

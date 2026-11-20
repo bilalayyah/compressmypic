@@ -710,19 +710,4 @@ export const DE_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     description: "Was GPS-Koordinaten, EXIF-Daten und versteckte Metadaten in Ihren Fotos verraten – und wie Sie verhindern, dass Bilder Ihren Standort preisgeben.",
     readingMinutes: 11,
   },
-  "background-remover-guide": {
-    title: "Hintergrund entfernen: Anleitung",
-    description: "Was es heißt, den Hintergrund aus einem Foto zu entfernen, wie die KI Ihr Motiv erkennt und wie Sie einen sauberen, transparenten Ausschnitt bekommen.",
-    readingMinutes: 10,
-  },
-  "how-to-remove-background-from-image": {
-    title: "Hintergrund aus Bild entfernen: Anleitung",
-    description: "Entfernen Sie den Hintergrund aus jedem Foto in sechs Schritten: Foto wählen, hochladen, Ausschnitt im Vorher-Nachher-Vergleich prüfen und PNG laden.",
-    readingMinutes: 10,
-  },
-  "ai-background-removal-vs-manual-cutout": {
-    title: "KI-Freistellen oder manuell? Der Vergleich",
-    description: "Den Hintergrund mit KI entfernen ist schnell, kostenlos und privat – doch manuelles Freistellen gewinnt bei Haaren, Glas und wichtigen Bildern weiterhin.",
-    readingMinutes: 10,
-  },
 };

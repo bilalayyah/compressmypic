@@ -3,9 +3,9 @@
 // App.tsx passes the active-language registry (ZH tool names +
 // shortDescriptions) and categories as props, so this component never
 // imports a locale file directly (keeps locale files lazy-loaded).
-// Expected ZH category labels (8): 压缩 (compress), 调整尺寸 (resize),
-// 转换 (convert), 裁剪与编辑 (crop-edit), AI工具 (ai-tools), 创作 (create),
-// 隐私 (privacy), 开发者工具 (developer). The registry holds all 48 tools
+// Expected ZH category labels (7): 压缩 (compress), 调整尺寸 (resize),
+// 转换 (convert), 裁剪与编辑 (crop-edit), 创作 (create),
+// 隐私 (privacy), 开发者工具 (developer). The registry holds all 47 tools
 // (home '/' excluded — it is the compressor itself).
 // Search filters by Chinese tool name / shortDescription.
 // 在线 is used consistently throughout the Chinese prose.
@@ -29,7 +29,7 @@ export interface AllToolsPageZhStrings {
 const ZH_STRINGS: AllToolsPageZhStrings = {
   heading: '全部工具',
   subheading:
-    '使用 CompressMyPic 的 48 款免费工具，在浏览器中直接压缩、转换和编辑图片。',
+    '使用 CompressMyPic 的 47 款免费工具，在浏览器中直接压缩、转换和编辑图片。',
   searchPlaceholder: '搜索工具…',
   allLabel: '全部',
   noResults: '没有找到同名工具。',
@@ -58,7 +58,7 @@ export const AllToolsPageZh: React.FC<AllToolsPageZhProps> = ({
   useEffect(() => {
     document.title = '全部免费图片工具 | CompressMyPic';
     const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute('content', 'CompressMyPic 免费图片工具共 48 款：在线压缩、转换、裁剪、调整大小与编辑图片，直接在浏览器中使用，无需注册，支持 JPG、PNG、WebP 与 HEIC，图片不会上传。');
+    if (metaDescription) metaDescription.setAttribute('content', 'CompressMyPic 免费图片工具共 47 款：在线压缩、转换、裁剪、调整大小与编辑图片，直接在浏览器中使用，无需注册，支持 JPG、PNG、WebP 与 HEIC，图片不会上传。');
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 

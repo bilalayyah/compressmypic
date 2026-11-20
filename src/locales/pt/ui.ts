@@ -78,7 +78,6 @@ export const PT = {
       { slug: '/rotate-flip-image', label: 'Girar e inverter imagem' },
       { slug: '/image-to-pdf', label: 'Imagem para PDF' },
       { slug: '/remove-image-metadata', label: 'Remover metadados' },
-      { slug: '/remove-background', label: 'Remover fundo' },
     ],
     legalLinks: [
       { slug: '/privacy', label: 'Política de privacidade' },
@@ -360,7 +359,7 @@ export const PT = {
         id: 'faq-20',
         question: 'O que mais posso fazer além de comprimir imagens?',
         answer:
-          'O site tem 48 ferramentas gratuitas no total: redimensionar, converter formatos, cortar, girar, adicionar marca d’água, remover fundo e metadados, criar GIFs e colagens, gerar favicon e muito mais. Todas funcionam no navegador, sem cadastro e sem envio para servidores.',
+          'O site tem 47 ferramentas gratuitas no total: redimensionar, converter formatos, cortar, girar, adicionar marca d’água, remover metadados, criar GIFs e colagens, gerar favicon e muito mais. Todas funcionam no navegador, sem cadastro e sem envio para servidores.',
       },
     ],
   },
@@ -511,7 +510,6 @@ export const PT = {
     resize: 'Redimensionar',
     convert: 'Converter',
     'crop-edit': 'Recortar e editar',
-    'ai-tools': 'Ferramentas de IA',
     create: 'Criar',
     privacy: 'Ferramentas de privacidade',
     developer: 'Ferramentas para desenvolvedores',
@@ -579,7 +577,7 @@ export const PT = {
   },
 } as const;
 
-// Per-tool workspace UI strings in Portuguese (Brazilian pt-BR) — COMPLETE (all 48 tools).
+// Per-tool workspace UI strings in Portuguese (Brazilian pt-BR) — COMPLETE (all 47 tools).
 // Assembled from tool-ui-pt-batch1.ts … tool-ui-pt-batch6.ts (coordinator merge).
 // Target: merged into src/locales/pt/ui.ts as the TOOL_UI_PT export.
 // Portuguese (Brazilian pt-BR), você forms. Keyed by English slug.
@@ -2326,46 +2324,5 @@ export const TOOL_UI_PT = {
     comparisonAfterLabel: 'JPG ({size})', // afterLabel `${targetLabel} (${formatBytes(...)})`
     errorConvertFailed: 'Não foi possível converter {name} para JPG.', // `Failed to convert ${item.name} to ${targetLabel}.`
     errorCouldNotDecode: 'Não foi possível decodificar "{name}". Verifique se é uma imagem BMP válida.', // `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`
-  },
-  '/remove-background': {
-    uploadTitle: 'Solte uma foto para remover o fundo com IA', // 'Drop a photo to remove its background with AI'
-    modelLoadingTitle: 'Carregando modelo de IA no navegador (isnet_quint8)', // 'Loading in-browser AI model (isnet_quint8)'
-    modelCache: 'Cache do modelo', // 'Model Cache'
-    progressWasm: 'Carregando o mecanismo de IA WebAssembly…', // 'Loading WebAssembly AI runtime...'
-    progressModel: 'Baixando o modelo de IA de remoção de fundo (~35 MB, guardado em cache para uso futuro)…', // 'Downloading AI background removal model (~35 MB, cached for future use)...'
-    progressCompute: 'Removendo o fundo localmente no seu navegador…', // 'Removing background locally in your browser...'
-    progressPreparing: 'Preparando o modelo de IA no navegador…', // 'Preparing in-browser AI model...'
-    progressInitLibrary: 'Carregando a biblioteca de IA de remoção de fundo…', // 'Loading AI background removal library...'
-    progressInitModule: 'Inicializando o módulo de IA de remoção de fundo…', // 'Initializing AI background removal module...'
-    errorModelInit: 'Não foi possível inicializar o modelo de IA de fundo: {message}', // `Could not initialize the AI background model: ${err.message}`
-    errorModelInitGeneric: 'Não foi possível inicializar o modelo de IA de fundo neste navegador.', // 'Could not initialize the AI background model in this browser.'
-    errorDecodeOutput: 'Não foi possível decodificar a saída PNG transparente.', // 'Failed to decode transparent PNG output.'
-    errorRemovalFailed: 'A remoção de fundo falhou neste navegador. Tente outra imagem ou recarregue a página.', // 'Background removal failed in this browser. Try another image or reload.'
-    beforeAfterPreview: 'Pré-visualização de antes e depois', // 'Before & After Preview'
-    splitCompare: 'Comparação dividida', // 'Split Compare'
-    newImage: 'Nova imagem', // 'New Image'
-    originalLabel: 'Original', // 'Original'
-    transparentCutout: 'Recorte transparente (PNG)', // 'Transparent Cutout (PNG)'
-    solidBackgroundPreview: 'Pré-visualização de fundo sólido', // 'Solid Background Preview'
-    waitingForResult: 'Aguardando o resultado…', // 'Waiting for result...'
-    processingLocally: 'Processando localmente…', // 'Processing locally...'
-    cutoutStatus: 'Status do recorte', // 'Cutout Status'
-    ready: 'Pronto', // 'Ready'
-    backgroundFillOption: 'Opção de preenchimento de fundo', // 'Background Fill Option'
-    bgTransparent: 'Transparente', // 'Transparent'
-    bgWhite: 'Branco', // 'White'
-    bgBlack: 'Preto', // 'Black'
-    bgCustom: 'Personalizado', // 'Custom'
-    customBackgroundColor: 'Cor de fundo personalizada', // 'Custom Background Color'
-    downloadTransparentPng: 'Baixar PNG transparente', // 'Download Transparent PNG'
-    downloadWithWhite: 'Baixar com fundo branco', // 'Download with White Background'
-    downloadWithBlack: 'Baixar com fundo preto', // 'Download with Black Background'
-    downloadWithCustom: 'Baixar com fundo {color}', // 'Download with {color} Background'
-    rerunRemoval: 'Executar a remoção de novo', // 'Re-run Removal'
-    comparisonTitlePrefix: 'Comparação de remoção de fundo', // 'Background Removal Comparison'
-    comparisonAfterTransparent: 'Recorte (PNG transparente)', // 'Cutout (Transparent PNG)'
-    comparisonAfterSolid: 'Recorte (fundo sólido)', // 'Cutout (Solid BG)'
-    altOriginal: 'Original {name}', // alt `Original ${sourceFile.name}`
-    altCutout: 'Fundo removido {name}', // alt `Background removed ${sourceFile.name}`
   },
 };

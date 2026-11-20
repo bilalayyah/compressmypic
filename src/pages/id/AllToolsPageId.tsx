@@ -26,7 +26,7 @@ export interface AllToolsPageStrings {
 const ID_STRINGS: AllToolsPageStrings = {
   heading: 'Semua Alat',
   subheading:
-    '48 alat gratis CompressMyPic untuk mengompres, mengonversi, dan mengedit gambar — langsung di browser Anda.',
+    '47 alat gratis CompressMyPic untuk mengompres, mengonversi, dan mengedit gambar — langsung di browser Anda.',
   searchPlaceholder: 'Cari alat…',
   allLabel: 'Semua',
   noResults: 'Tidak ada alat dengan nama tersebut.',
@@ -55,7 +55,7 @@ export const AllToolsPageId: React.FC<AllToolsPageIdProps> = ({
   useEffect(() => {
     document.title = 'Semua alat gambar online gratis | CompressMyPic';
     const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute('content', '48 alat gambar gratis CompressMyPic untuk mengompres, mengonversi, memotong, dan mengedit gambar online — langsung di browser Anda, tanpa perlu mendaftar.');
+    if (metaDescription) metaDescription.setAttribute('content', '47 alat gambar gratis CompressMyPic untuk mengompres, mengonversi, memotong, dan mengedit gambar online — langsung di browser Anda, tanpa perlu mendaftar.');
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 

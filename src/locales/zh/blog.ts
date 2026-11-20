@@ -710,19 +710,4 @@ export const ZH_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     description: "照片里的GPS坐标、EXIF数据和隐藏元数据会泄露什么？本文讲清它们如何暴露你的位置和生活规律，以及阻止照片泄露的实用步骤。分享照片之前先清掉元数据，隐私才不会跟着照片走。还讲了位置泄露的具体方式、生活规律怎么被推断，以及分享之前最值得做的几步防护。",
     readingMinutes: 11,
   },
-  "background-remover-guide": {
-    title: "抠图完全指南：免费在线去除图片背景",
-    description: "什么是抠图工具？AI如何认出照片里的主体，又怎样抠出一张干净的透明底图——免费、不用上传，直接在浏览器里完成。商品图、头像和设计素材都能快速抠好，边缘干净又自然。还讲了AI识别主体的原理、头发和透明边缘怎么处理，以及抠完之后怎样检查、确认边缘干净自然。",
-    readingMinutes: 9,
-  },
-  "how-to-remove-background-from-image": {
-    title: "如何去除图片背景？6 步抠图并导出透明 PNG",
-    description: "6步给图片去背景：选好照片、上传、检查抠图效果，再下载透明PNG。全程免费，在浏览器里完成，照片不用上传，抠好的透明图放进设计、海报和商品图里都能直接用。还讲了选什么样的照片抠得最干净、效果不满意怎么换图重抠，以及透明PNG下载后怎样用到设计里。",
-    readingMinutes: 9,
-  },
-  "ai-background-removal-vs-manual-cutout": {
-    title: "AI 抠图 vs 手动抠图：速度、精度、费用全面对比",
-    description: "AI抠图又快又免费，照片还不用上传——但头发、玻璃和高要求图片，手动抠图仍然更胜一筹。速度、精度、费用和隐私，一次讲清楚，帮你判断哪种抠图方式更适合手头的图片。还按头发、玻璃和精细边缘分了情况，讲清AI和手动各自的胜负手、以及要求很高时怎样组合使用最划算。",
-    readingMinutes: 9,
-  },
 };

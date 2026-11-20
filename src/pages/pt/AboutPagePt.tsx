@@ -136,7 +136,7 @@ export const AboutPagePt: React.FC<AboutPagePtProps> = ({ onNavigate }) => {
               O CompressMyPic foi criado por Bilal, um criador independente que constrói ferramentas gratuitas e respeitosas com a privacidade para a web. Ele começou o CompressMyPic depois de se frustrar com compressores de imagens que obrigavam as pessoas a enviar fotos pessoais para o servidor de um desconhecido só para deixar um arquivo menor. A resposta dele foi uma ferramenta que faz todo o trabalho dentro do próprio navegador do visitante: sem envio, sem conta, sem marca d’água e sem uma fatura surpresa no final.
             </p>
             <p>
-              Bilal projeta, constrói e mantém sozinho as 48 ferramentas do site, do compressor e dos conversores ao gerador de favicon e ao removedor de fundo. Ele responde pessoalmente às mensagens de suporte, lê cada comentário e mantém as ferramentas gratuitas para todos, seja para comprimir uma foto ou mil. O rodapé do site traz um pequeno reconhecimento a Shaheen, cujo incentivo inspirou Bilal a continuar construindo e a tornar as ferramentas realmente úteis, e não apenas populares.
+              Bilal projeta, constrói e mantém sozinho as 47 ferramentas do site, do compressor e dos conversores ao gerador de favicon. Ele responde pessoalmente às mensagens de suporte, lê cada comentário e mantém as ferramentas gratuitas para todos, seja para comprimir uma foto ou mil. O rodapé do site traz um pequeno reconhecimento a Shaheen, cujo incentivo inspirou Bilal a continuar construindo e a tornar as ferramentas realmente úteis, e não apenas populares.
             </p>
             <p>
               Se quiser acompanhar o trabalho, você pode encontrar o projeto no 

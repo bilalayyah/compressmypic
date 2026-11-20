@@ -2,7 +2,7 @@
 // Italian slugs are SEO-friendly, accent-free, and use natural vocabulary.
 // Home: '/' -> '/it/'. Alias '/it/comprimere-immagini' redirects to '/it/' (no duplicate content).
 // Generated for the German+Italian translation project (Phase 3, 2026-11-13). Keep in sync with
-// src/data/tools.ts (same 48 tools) and public/sitemap.xml.
+// src/data/tools.ts (same 47 tools) and public/sitemap.xml.
 
 export const IT_PATH_BY_EN: Record<string, string> = {
   '/': '/it/',
@@ -54,7 +54,6 @@ export const IT_PATH_BY_EN: Record<string, string> = {
   '/svg-to-png': '/it/convertire-svg-in-png',
   '/avif-to-jpg': '/it/convertire-avif-in-jpg',
   '/bmp-to-jpg': '/it/convertire-bmp-in-jpg',
-  '/remove-background': '/it/rimuovere-sfondo-immagine',
   // --- Legal ---
   '/about': '/it/chi-siamo',
   '/contact': '/it/contatti',
@@ -73,7 +72,6 @@ export const IT_PATH_BY_EN: Record<string, string> = {
   '/blog/category/resize': '/it/blog/category/ridimensionare',
   '/blog/category/convert': '/it/blog/category/convertire',
   '/blog/category/crop-edit': '/it/blog/category/ritagliare-e-modificare',
-  '/blog/category/ai-tools': '/it/blog/category/strumenti-ia',
   '/blog/category/create': '/it/blog/category/creare',
   '/blog/category/privacy': '/it/blog/category/privacy',
   '/blog/category/developer': '/it/blog/category/sviluppatori',
@@ -218,9 +216,6 @@ export const IT_PATH_BY_EN: Record<string, string> = {
   '/blog/remove-image-metadata-guide': '/it/blog/rimuovere-metadati-immagine-guida-completa',
   '/blog/how-to-remove-metadata-from-image': '/it/blog/come-rimuovere-metadati-foto',
   '/blog/photo-privacy-gps-exif-risks': '/it/blog/privacy-foto-gps-exif-rischi',
-  '/blog/background-remover-guide': '/it/blog/guida-rimuovere-sfondo-immagine',
-  '/blog/how-to-remove-background-from-image': '/it/blog/come-rimuovere-sfondo-da-immagine',
-  '/blog/ai-background-removal-vs-manual-cutout': '/it/blog/rimozione-sfondo-ia-vs-ritaglio-manuale',
 };
 
 export const EN_PATH_BY_IT: Record<string, string> = Object.fromEntries(

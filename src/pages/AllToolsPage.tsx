@@ -28,7 +28,7 @@ export interface AllToolsPageStrings {
 const EN_STRINGS: AllToolsPageStrings = {
   heading: 'All Image Tools',
   subheading:
-    'All 48 free CompressMyPic tools to compress, convert, and edit images, right in your browser.',
+    'All 47 free CompressMyPic tools to compress, convert, and edit images, right in your browser.',
   searchPlaceholder: 'Search tools…',
   allLabel: 'All',
   noResults: 'No tools found with that name.',

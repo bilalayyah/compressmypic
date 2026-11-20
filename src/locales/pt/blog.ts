@@ -710,19 +710,4 @@ export const PT_BLOG_OVERRIDES: Record<string, BlogArticleLocaleOverride> = {
     description: "Uma foto pode entregar onde você mora, onde seus filhos estudam e quando sua casa fica vazia. Entenda os riscos de GPS e EXIF — e como proteger suas fotos.",
     readingMinutes: 11,
   },
-  "background-remover-guide": {
-    title: "Remover Fundo de Imagem: Guia Completo",
-    description: "Aprenda a remover o fundo de uma imagem: como a IA encontra o assunto da foto e como conseguir um recorte transparente e limpo — grátis, no navegador.",
-    readingMinutes: 11,
-  },
-  "how-to-remove-background-from-image": {
-    title: "Como remover o fundo de uma imagem",
-    description: "Remova o fundo de qualquer foto em seis passos: escolha a foto certa, envie, confira o recorte com a comparação lado a lado e baixe um PNG transparente.",
-    readingMinutes: 11,
-  },
-  "ai-background-removal-vs-manual-cutout": {
-    title: "Remover fundo com IA ou manualmente?",
-    description: "Remover o fundo com IA é rápido, grátis e particular — mas o manual ganha em cabelo, vidro e imagens de alto risco. Compare velocidade, precisão e custo.",
-    readingMinutes: 11,
-  },
 };

@@ -79,7 +79,6 @@ export const ID = {
       { slug: '/rotate-flip-image', label: 'Putar & Balik Gambar' },
       { slug: '/image-to-pdf', label: 'Gambar ke PDF' },
       { slug: '/remove-image-metadata', label: 'Hapus Metadata' },
-      { slug: '/remove-background', label: 'Penghapus Latar Belakang' },
     ],
     legalLinks: [
       { slug: '/privacy', label: 'Kebijakan Privasi' },
@@ -512,7 +511,6 @@ export const ID = {
     resize: 'Ubah Ukuran',
     convert: 'Konversi',
     'crop-edit': 'Potong & Edit',
-    'ai-tools': 'Alat AI',
     create: 'Buat',
     privacy: 'Privasi',
     developer: 'Pengembang',
@@ -580,7 +578,7 @@ export const ID = {
   },
 } as const;
 
-// Per-tool workspace UI strings in Indonesian (Standard Bahasa Indonesia) — COMPLETE (all 48 tools).
+// Per-tool workspace UI strings in Indonesian (Standard Bahasa Indonesia) — COMPLETE (all 47 tools).
 // Assembled from tool-ui-id-batch1.ts … tool-ui-id-batch6.ts (coordinator merge).
 // Target: merged into src/locales/id/ui.ts as the TOOL_UI_ID export.
 // Indonesian (Standard Bahasa Indonesia), neutral polite forms. Keyed by English slug.
@@ -2278,46 +2276,5 @@ export const TOOL_UI_ID = {
     comparisonAfterLabel: 'JPG ({size})', // afterLabel `${targetLabel} (${formatBytes(...)})`
     errorConvertFailed: 'Tidak dapat mengonversi "{name}" ke JPG.', // `Failed to convert ${item.name} to ${targetLabel}.`
     errorCouldNotDecode: 'Tidak dapat mendekode "{name}". Pastikan file tersebut adalah gambar BMP yang valid.', // `Could not decode "${file.name}". Verify it is a valid ${sourceLabel} image.`
-  },
-  '/remove-background': {
-    uploadTitle: 'Letakkan foto untuk menghapus latar belakangnya dengan AI', // 'Drop a photo to remove its background with AI'
-    modelLoadingTitle: 'Memuat model AI di browser (isnet_quint8)', // 'Loading in-browser AI model (isnet_quint8)'
-    modelCache: 'Cache Model', // 'Model Cache'
-    progressWasm: 'Memuat runtime AI WebAssembly…', // 'Loading WebAssembly AI runtime...'
-    progressModel: 'Mengunduh model AI penghapus latar belakang (sekitar 35 MB, tersimpan di cache untuk penggunaan berikutnya)…', // 'Downloading AI background removal model (~35 MB, cached for future use)...'
-    progressCompute: 'Menghapus latar belakang secara lokal di browser Anda…', // 'Removing background locally in your browser...'
-    progressPreparing: 'Menyiapkan model AI di browser…', // 'Preparing in-browser AI model...'
-    progressInitLibrary: 'Memuat pustaka AI penghapus latar belakang…', // 'Loading AI background removal library...'
-    progressInitModule: 'Menginisialisasi modul AI penghapus latar belakang…', // 'Initializing AI background removal module...'
-    errorModelInit: 'Tidak dapat menginisialisasi model AI latar belakang: {message}', // `Could not initialize the AI background model: ${err.message}`
-    errorModelInitGeneric: 'Tidak dapat menginisialisasi model AI latar belakang di browser ini.', // 'Could not initialize the AI background model in this browser.'
-    errorDecodeOutput: 'Tidak dapat mendekode output PNG transparan.', // 'Failed to decode transparent PNG output.'
-    errorRemovalFailed: 'Penghapusan latar belakang gagal di browser ini. Coba gambar lain atau muat ulang halaman.', // 'Background removal failed in this browser. Try another image or reload.'
-    beforeAfterPreview: 'Pratinjau Sebelum & Sesudah', // 'Before & After Preview'
-    splitCompare: 'Bandingkan Terpisah', // 'Split Compare'
-    newImage: 'Gambar Baru', // 'New Image'
-    originalLabel: 'Asli', // 'Original'
-    transparentCutout: 'Potongan Transparan (PNG)', // 'Transparent Cutout (PNG)'
-    solidBackgroundPreview: 'Pratinjau Latar Belakang Solid', // 'Solid Background Preview'
-    waitingForResult: 'Menunggu hasil…', // 'Waiting for result...'
-    processingLocally: 'Memproses secara lokal…', // 'Processing locally...'
-    cutoutStatus: 'Status Potongan', // 'Cutout Status'
-    ready: 'Siap', // 'Ready'
-    backgroundFillOption: 'Opsi Isian Latar Belakang', // 'Background Fill Option'
-    bgTransparent: 'Transparan', // 'Transparent'
-    bgWhite: 'Putih', // 'White'
-    bgBlack: 'Hitam', // 'Black'
-    bgCustom: 'Warna Kustom', // 'Custom'
-    customBackgroundColor: 'Warna Latar Belakang Kustom', // 'Custom Background Color'
-    downloadTransparentPng: 'Unduh PNG Transparan', // 'Download Transparent PNG'
-    downloadWithWhite: 'Unduh dengan Latar Belakang Putih', // 'Download with White Background'
-    downloadWithBlack: 'Unduh dengan Latar Belakang Hitam', // 'Download with Black Background'
-    downloadWithCustom: 'Unduh dengan Latar Belakang {color}', // 'Download with {color} Background'
-    rerunRemoval: 'Jalankan Ulang Penghapusan', // 'Re-run Removal'
-    comparisonTitlePrefix: 'Perbandingan Penghapusan Latar Belakang', // 'Background Removal Comparison'
-    comparisonAfterTransparent: 'Potongan (PNG transparan)', // 'Cutout (Transparent PNG)'
-    comparisonAfterSolid: 'Potongan (Latar Belakang Solid)', // 'Cutout (Solid BG)'
-    altOriginal: 'Asli {name}', // alt `Original ${sourceFile.name}`
-    altCutout: 'Latar belakang dihapus {name}', // alt `Background removed ${sourceFile.name}`
   },
 };
