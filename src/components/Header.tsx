@@ -284,7 +284,7 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               handleNav(homeUrl);
             }}
-            className="px-2.5 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
+            className="px-2 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.home}
           </a>
@@ -299,7 +299,7 @@ export const Header: React.FC<HeaderProps> = ({
                 setLangMenuOpen(false);
                 setSearchOpen(false);
               }}
-              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[0.875rem] font-medium text-[var(--ink)] hover:bg-white/70 dark:hover:bg-white/10 transition-colors cursor-pointer whitespace-nowrap"
+              className="flex items-center gap-1 px-2 py-1.5 rounded-lg text-[0.875rem] font-medium text-[var(--ink)] hover:bg-white/70 dark:hover:bg-white/10 transition-colors cursor-pointer whitespace-nowrap"
               aria-expanded={toolsOpen}
               aria-haspopup="true"
             >
@@ -345,7 +345,7 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               handleNav('/#how-it-works');
             }}
-            className="px-2.5 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
+            className="px-2 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.howItWorks}
           </a>
@@ -355,7 +355,7 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               handleNav('/#faq');
             }}
-            className="px-2.5 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
+            className="px-2 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.faq}
           </a>
@@ -365,7 +365,7 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               handleNav(aboutUrl);
             }}
-            className="px-2.5 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
+            className="px-2 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.about}
           </a>
@@ -375,7 +375,7 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               handleNav('/blog');
             }}
-            className="px-2.5 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
+            className="px-2 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.blog}
           </a>
@@ -385,7 +385,7 @@ export const Header: React.FC<HeaderProps> = ({
               e.preventDefault();
               handleNav(contactUrl);
             }}
-            className="px-2.5 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
+            className="px-2 py-1.5 rounded-lg hover:bg-white/70 dark:hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
           >
             {strings.contact}
           </a>
@@ -397,7 +397,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="hidden xl:block relative">
             <form
               onSubmit={handleSearchSubmit}
-              className="flex items-center bg-[var(--surface)] border border-[var(--line)] rounded-lg p-1 pl-3 shadow-xs w-[250px]"
+              className="flex items-center bg-[var(--surface)] border border-[var(--line)] rounded-lg p-1 pl-3 shadow-xs w-[200px]"
             >
               <Search className="w-3.5 h-3.5 text-[var(--ink-3)] shrink-0 mr-1.5" />
               <input
