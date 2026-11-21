@@ -44,7 +44,7 @@ const SSR_BUNDLE = path.join(REPO_ROOT, 'dist-server', 'entry-server.js');
 const SITE_ORIGIN = 'https://compressmypic.online';
 const EXTRA_ROUTES = ['/admin/comments'];
 const SUPPORTED_LANGS = new Set([
-  'en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh',
+  'en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'hi',
 ]);
 
 // Script tags the runtime third-party loader used to inject and which must

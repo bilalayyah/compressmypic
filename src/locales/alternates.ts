@@ -1,11 +1,11 @@
 // Shared hreflang alternates for CompressMyPic — all language versions of a page.
 // Single module so every page (in any language) lists the FULL reciprocal set:
-// en + es + pt + fr + de + it + id + ru + ja + ko + zh + x-default. The per-language helpers
+// en + es + pt + fr + de + it + id + ru + ja + ko + zh + hi + x-default. The per-language helpers
 // (getEsAlternates, getPtAlternates, getFrAlternates, getDeAlternates,
-// getItAlternates, getIdAlternates, getRuAlternates, getJaAlternates, getKoAlternates, getZhAlternates) return only their own pair and must NOT be used for tool
+// getItAlternates, getIdAlternates, getRuAlternates, getJaAlternates, getKoAlternates, getZhAlternates, getHiAlternates) return only their own pair and must NOT be used for tool
 // pages anymore — a page listing only its own pair makes Google treat the
 // other versions' annotations as non-reciprocal.
-// One-way imports only (this module imports the ten slug maps; no slug map
+// One-way imports only (this module imports the eleven slug maps; no slug map
 // imports this module), so there are no circular imports.
 
 import { ES_PATH_BY_EN } from './es/slugs';
@@ -18,6 +18,7 @@ import { RU_PATH_BY_EN } from './ru/slugs';
 import { JA_PATH_BY_EN } from './ja/slugs';
 import { KO_PATH_BY_EN } from './ko/slugs';
 import { ZH_PATH_BY_EN } from './zh/slugs';
+import { HI_PATH_BY_EN } from './hi/slugs';
 
 const BASE = 'https://compressmypic.online';
 
@@ -52,6 +53,7 @@ const PATH_BY_EN_BY_LANG: Record<string, Record<string, string>> = {
   ja: JA_PATH_BY_EN,
   ko: KO_PATH_BY_EN,
   zh: ZH_PATH_BY_EN,
+  hi: HI_PATH_BY_EN,
 };
 
 /**
@@ -83,6 +85,7 @@ export function getAlternates(enPath: string): HreflangAlternate[] {
   const ja = JA_PATH_BY_EN[enPath];
   const ko = KO_PATH_BY_EN[enPath];
   const zh = ZH_PATH_BY_EN[enPath];
+  const hi = HI_PATH_BY_EN[enPath];
   const items: HreflangAlternate[] = [{ lang: 'en', href: `${BASE}${withTrailingSlash(enPath)}` }];
   if (es) items.push({ lang: 'es', href: `${BASE}${withTrailingSlash(es)}` });
   if (pt) items.push({ lang: 'pt', href: `${BASE}${withTrailingSlash(pt)}` });
@@ -94,6 +97,7 @@ export function getAlternates(enPath: string): HreflangAlternate[] {
   if (ja) items.push({ lang: 'ja', href: `${BASE}${withTrailingSlash(ja)}` });
   if (ko) items.push({ lang: 'ko', href: `${BASE}${withTrailingSlash(ko)}` });
   if (zh) items.push({ lang: 'zh', href: `${BASE}${withTrailingSlash(zh)}` });
+  if (hi) items.push({ lang: 'hi', href: `${BASE}${withTrailingSlash(hi)}` });
   items.push({ lang: 'x-default', href: `${BASE}${withTrailingSlash(enPath)}` });
   return items;
 }
@@ -115,6 +119,7 @@ export const OG_LOCALE_BY_LANG: Record<string, string> = {
   ja: 'ja_JP',
   ko: 'ko_KR',
   zh: 'zh_CN',
+  hi: 'hi_IN',
 };
 
 /** og:locale value for a language code (falls back to en_US). */
@@ -122,7 +127,7 @@ export function getOgLocale(lang: string): string {
   return OG_LOCALE_BY_LANG[lang] ?? 'en_US';
 }
 
-/** The 10 og:locale:alternate values for a page in `lang` (every locale except its own). */
+/** The 11 og:locale:alternate values for a page in `lang` (every locale except its own). */
 export function getOgLocaleAlternates(lang: string): string[] {
   return Object.entries(OG_LOCALE_BY_LANG)
     .filter(([code]) => code !== lang)

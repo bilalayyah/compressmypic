@@ -11484,6 +11484,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- Blog (Batch 2): 11 homes + 77 category hubs. Regenerate with scripts/generate-blog-sitemap.cjs. -->
   <url>
     <loc>https://compressmypic.online/blog/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/blog/" />
