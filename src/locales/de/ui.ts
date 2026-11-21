@@ -48,6 +48,9 @@ export const DE = {
     themeDarkShort: 'Dunkel', // 'Dark'
     themeSystemShort: 'System', // 'System'
     themeHeading: 'Design', // 'Theme' (mobile drawer heading + theme menu aria-label)
+    categories: 'Kategorien',
+    appearance: 'Darstellung',
+    allTools: 'Alle Tools',
     menuAriaLabel: 'Navigationsmenü ein- oder ausblenden', // 'Toggle navigation menu'
     themeAriaLabel: 'Farbdesign ändern (aktuell: {current})', // 'Change color theme (Current: {current})'
     themeTitle: 'Design: {current}', // 'Theme: {current}'

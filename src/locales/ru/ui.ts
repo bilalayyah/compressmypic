@@ -48,6 +48,9 @@ export const RU = {
     themeDarkShort: 'Тёмная', // 'Dark'
     themeSystemShort: 'Система', // 'System'
     themeHeading: 'Тема', // 'Theme' (mobile drawer heading + theme menu aria-label)
+    categories: 'Категории',
+    appearance: 'Оформление',
+    allTools: 'Все инструменты',
     menuAriaLabel: 'Показать или скрыть меню навигации', // 'Toggle navigation menu'
     themeAriaLabel: 'Сменить цветовую тему (текущая: {current})', // 'Change color theme (Current: {current})'
     themeTitle: 'Тема: {current}', // 'Theme: {current}'

@@ -91,7 +91,7 @@ export const AllToolsPage: React.FC<AllToolsPageProps> = ({
           />
         </div>
 
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
+        <div id="categories" className="mt-5 flex flex-wrap items-center justify-center gap-2">
           <button
             type="button"
             onClick={() => setSelectedCategory('all')}

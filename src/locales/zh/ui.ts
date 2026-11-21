@@ -57,6 +57,9 @@ export const ZH = {
     themeDarkShort: '深色', // 'Dark'
     themeSystemShort: '系统', // 'System'
     themeHeading: '主题', // 'Theme' (mobile drawer heading + theme menu aria-label)
+    categories: '分类',
+    appearance: '外观',
+    allTools: '全部工具',
     menuAriaLabel: '切换导航菜单', // 'Toggle navigation menu'
     themeAriaLabel: '更改颜色主题（当前：{current}）', // 'Change color theme (Current: {current})'
     themeTitle: '主题：{current}', // 'Theme: {current}'

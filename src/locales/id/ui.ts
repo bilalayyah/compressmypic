@@ -51,6 +51,9 @@ export const ID = {
     themeDarkShort: 'Gelap', // 'Dark'
     themeSystemShort: 'Sistem', // 'System'
     themeHeading: 'Tema', // 'Theme' (mobile drawer heading + theme menu aria-label)
+    categories: 'Kategori',
+    appearance: 'Tampilan',
+    allTools: 'Semua Alat',
     menuAriaLabel: 'Tampilkan atau sembunyikan menu navigasi', // 'Toggle navigation menu'
     themeAriaLabel: 'Ubah tema warna (saat ini: {current})', // 'Change color theme (Current: {current})'
     themeTitle: 'Tema: {current}', // 'Theme: {current}'

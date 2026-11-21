@@ -60,6 +60,9 @@ export const JA = {
     themeDarkShort: 'ダーク', // 'Dark'
     themeSystemShort: 'システム', // 'System'
     themeHeading: 'テーマ', // 'Theme' (mobile drawer heading + theme menu aria-label)
+    categories: 'カテゴリー',
+    appearance: '外観',
+    allTools: 'すべてのツール',
     menuAriaLabel: 'ナビゲーションメニューの表示・非表示を切り替える', // 'Toggle navigation menu'
     themeAriaLabel: 'カラーテーマを変更（現在：{current}）', // 'Change color theme (Current: {current})'
     themeTitle: 'テーマ：{current}', // 'Theme: {current}'

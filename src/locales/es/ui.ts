@@ -27,6 +27,9 @@ export const ES = {
     themeDarkShort: 'Oscuro', // 'Dark'
     themeSystemShort: 'Sistema', // 'System'
     themeHeading: 'Tema', // 'Theme' (mobile drawer heading + theme menu aria-label)
+    categories: 'Categorías',
+    appearance: 'Apariencia',
+    allTools: 'Todas las herramientas',
     menuAriaLabel: 'Mostrar u ocultar el menú de navegación', // 'Toggle navigation menu'
     themeAriaLabel: 'Cambiar el tema de color (actual: {current})', // 'Change color theme (Current: {current})'
     themeTitle: 'Tema: {current}', // 'Theme: {current}'

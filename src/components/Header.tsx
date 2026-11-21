@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import {
   Menu,
   X,
-  ArrowUpRight,
   ChevronDown,
   Sun,
   Moon,
@@ -36,6 +35,7 @@ import { ThemePreference, useTheme, type ResolvedTheme } from '../utils/theme';
 export interface HeaderStrings {
   home: string; tools: string; howItWorks: string; faq: string; about: string;
   blog: string;
+  categories: string; appearance: string; allTools: string;
   contact: string; compressImages: string;
   themeLight: string; themeDark: string; themeSystem: string;
   themeLightShort: string; themeDarkShort: string; themeSystemShort: string;
@@ -55,6 +55,9 @@ const DEFAULT_HEADER_STRINGS: HeaderStrings = {
   faq: 'FAQ',
   about: 'About',
   blog: 'Blog',
+  categories: 'Categories',
+  appearance: 'Appearance',
+  allTools: 'All Tools',
   contact: 'Contact',
   compressImages: 'Compress Images',
   themeLight: 'Light Mode',
@@ -99,7 +102,6 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({
   onNavigate,
-  onScrollToTool,
   lang = 'en',
   onLanguageChange,
   strings: stringsProp,
@@ -131,7 +133,7 @@ export const Header: React.FC<HeaderProps> = ({
   const [langMenuOpen, setLangMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchOpen, setSearchOpen] = useState(false);
-  const mobileSearchRef = useRef<HTMLInputElement>(null);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
   // Localized header nav URLs (SEO audit #31): logo + Home -> /<lang>/,
@@ -181,6 +183,7 @@ export const Header: React.FC<HeaderProps> = ({
         setThemeMenuOpen(false);
         setLangMenuOpen(false);
         setSearchOpen(false);
+        setMobileSearchOpen(false);
       }
     };
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -189,6 +192,7 @@ export const Header: React.FC<HeaderProps> = ({
         setThemeMenuOpen(false);
         setLangMenuOpen(false);
         setSearchOpen(false);
+        setMobileSearchOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -206,6 +210,7 @@ export const Header: React.FC<HeaderProps> = ({
     setThemeMenuOpen(false);
     setLangMenuOpen(false);
     setSearchOpen(false);
+    setMobileSearchOpen(false);
   };
 
   const handleSelectTheme = (next: ThemePreference) => {
@@ -600,19 +605,19 @@ export const Header: React.FC<HeaderProps> = ({
             <span>All Tools</span>
           </button>
 
-          {/* Mobile Search Button (SEO audit #17): opens the mobile menu and
-              focuses the search field inside it, so tool pages have a search
+          {/* Mobile Search Button (UtilityFlow-style): toggles the expandable
+              search row under the header, so tool pages have a search
               affordance on mobile too. */}
           <button
             type="button"
             onClick={() => {
-              setMobileMenuOpen(true);
+              setMobileSearchOpen(!mobileSearchOpen);
               setThemeMenuOpen(false);
               setLangMenuOpen(false);
-              window.setTimeout(() => mobileSearchRef.current?.focus(), 80);
             }}
             className="lg:hidden h-10 w-10 sm:h-11 sm:w-11 grid place-items-center rounded-lg border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:bg-[var(--surface-2)] cursor-pointer shrink-0"
             aria-label="Search tools"
+            aria-expanded={mobileSearchOpen}
           >
             <Search className="w-5 h-5 text-[var(--ink-3)]" />
           </button>
@@ -635,18 +640,15 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div id="mobile-menu" className="lg:hidden border-t border-[var(--line)] bg-[var(--surface)] px-4 pt-3 pb-6 space-y-2 max-h-[82vh] overflow-y-auto shadow-[var(--shadow-lg)]">
-          {/* Mobile Search (SEO audit #17): the same tool search as desktop,
-              so mobile visitors can find tools from any page. */}
+      {/* Mobile search row (expandable, UtilityFlow-style) */}
+      {mobileSearchOpen && (
+        <div className="xl:hidden border-t border-[var(--line)] bg-[var(--surface)] px-4 py-3">
           <form
             onSubmit={handleSearchSubmit}
             className="flex items-center bg-[var(--surface-2)] border border-[var(--line)] rounded-full px-3 py-1"
           >
             <Search className="w-4 h-4 text-[var(--ink-3)] shrink-0 me-2" />
             <input
-              ref={mobileSearchRef}
               type="search"
               value={searchQuery}
               onChange={(e) => {
@@ -666,7 +668,7 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </form>
           {searchQuery.trim() !== '' && matchingTools.length > 0 && (
-            <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-2">
+            <div className="mt-2 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-2">
               {matchingTools.map((tool) => (
                 <a
                   key={tool.slug}
@@ -684,24 +686,69 @@ export const Header: React.FC<HeaderProps> = ({
               ))}
             </div>
           )}
+        </div>
+      )}
 
+      {/* Mobile Drawer (UtilityFlow-style: 5 nav links, Appearance
+          segmented control, full-width All Tools pill) */}
+      {mobileMenuOpen && (
+        <div id="mobile-menu" className="lg:hidden border-t border-[var(--line)] bg-[var(--surface)] px-4 py-4 space-y-2">
           <a
-            href={homeUrl}
+            href={localizedMap?.['/all-tools'] ?? '/all-tools'}
             onClick={(e) => {
               e.preventDefault();
-              handleNav(homeUrl);
+              handleNav(localizedMap?.['/all-tools'] ?? '/all-tools');
             }}
-            className="block px-3 py-2 text-base font-medium text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-xl"
+            className="flex items-center rounded-lg px-3 py-2.5 text-base font-medium min-h-[44px] text-[var(--ink-2)] hover:bg-[var(--surface-2)] hover:text-[var(--ink)]"
           >
-            {strings.home}
+            {strings.tools}
+          </a>
+          <a
+            href={`${localizedMap?.['/all-tools'] ?? '/all-tools'}#categories`}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav('/all-tools/#categories');
+            }}
+            className="flex items-center rounded-lg px-3 py-2.5 text-base font-medium min-h-[44px] text-[var(--ink-2)] hover:bg-[var(--surface-2)] hover:text-[var(--ink)]"
+          >
+            {strings.categories}
+          </a>
+          <a
+            href={localizedMap?.['/blog'] ?? '/blog'}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav(localizedMap?.['/blog'] ?? '/blog');
+            }}
+            className="flex items-center rounded-lg px-3 py-2.5 text-base font-medium min-h-[44px] text-[var(--ink-2)] hover:bg-[var(--surface-2)] hover:text-[var(--ink)]"
+          >
+            {strings.blog}
+          </a>
+          <a
+            href={aboutUrl}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav(aboutUrl);
+            }}
+            className="flex items-center rounded-lg px-3 py-2.5 text-base font-medium min-h-[44px] text-[var(--ink-2)] hover:bg-[var(--surface-2)] hover:text-[var(--ink)]"
+          >
+            {strings.about}
+          </a>
+          <a
+            href={contactUrl}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNav(contactUrl);
+            }}
+            className="flex items-center rounded-lg px-3 py-2.5 text-base font-medium min-h-[44px] text-[var(--ink-2)] hover:bg-[var(--surface-2)] hover:text-[var(--ink)]"
+          >
+            {strings.contact}
           </a>
 
-          {/* Mobile Quick Theme Selector */}
-          <div className="py-2 border-t border-[var(--line)] px-1">
-            <p className="px-2 text-xs font-semibold uppercase tracking-wide text-[var(--ink-3)] mb-2">
-              {strings.themeHeading}
+          <div className="pt-2 border-t border-[var(--line)]">
+            <p className="px-1 text-xs font-semibold text-[var(--ink-3)]">
+              {strings.appearance}
             </p>
-            <div className="grid grid-cols-3 gap-2 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-xl">
+            <div className="mt-1.5 grid grid-cols-3 gap-1 rounded-xl bg-[var(--surface-2)] p-1 border border-[var(--line)]">
               {THEME_OPTIONS.map(({ id, shortLabel, Icon }) => {
                 const isActive = renderPreference === id;
                 return (
@@ -709,13 +756,13 @@ export const Header: React.FC<HeaderProps> = ({
                     key={id}
                     type="button"
                     onClick={() => handleSelectTheme(id)}
-                    className={`flex items-center justify-center gap-1.5 min-h-11 py-2 px-2 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
+                    className={`inline-flex items-center justify-center gap-1.5 rounded-lg px-2.5 py-2 text-xs font-semibold min-h-[40px] transition-colors cursor-pointer ${
                       isActive
                         ? 'bg-[var(--surface)] text-[#dc2626] dark:text-[#fca5a5] shadow-xs'
                         : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
-                    <Icon className="w-3.5 h-3.5" />
+                    <Icon className="w-3.5 h-3.5 shrink-0" />
                     <span>{shortLabel}</span>
                   </button>
                 );
@@ -723,150 +770,13 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
 
-          {/* Mobile Language Selector */}
-          <div className="py-2 border-t border-[var(--line)] px-1">
-            <p className="px-2 text-xs font-semibold uppercase tracking-wide text-[var(--ink-3)] mb-2">
-              {strings.languageLabel}
-            </p>
-            <div className="grid grid-cols-3 gap-2 p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-xl">
-              {SUPPORTED_LANGUAGES.map((language) => {
-                const isActive = language.code === lang;
-                const isAvailable = availableLanguages.includes(language.code);
-                const itemClassName = `flex items-center justify-center gap-1.5 min-h-11 py-2 px-2 rounded-lg text-xs font-semibold transition-colors ${
-                  !isAvailable
-                    ? 'text-[var(--ink-3)] opacity-50 cursor-not-allowed'
-                    : isActive
-                    ? 'bg-[var(--surface)] text-[#dc2626] dark:text-[#fca5a5] shadow-xs cursor-pointer'
-                    : 'text-[var(--ink-2)] hover:text-[var(--ink)] cursor-pointer'
-                }`;
-                if (!isAvailable) {
-                  return (
-                    <button
-                      key={language.code}
-                      type="button"
-                      aria-disabled
-                      disabled
-                      title={comingSoonTitle}
-                      className={itemClassName}
-                    >
-                      <span>{language.code.toUpperCase()}</span>
-                    </button>
-                  );
-                }
-                // Real <a> anchor (SEO audit #30); click still switches language.
-                return (
-                  <a
-                    key={language.code}
-                    href={langHrefFor(language.code)}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleSelectLanguage(language.code);
-                    }}
-                    className={itemClassName}
-                  >
-                    <span>{language.code.toUpperCase()}</span>
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="pt-2 border-t border-[var(--line)] space-y-3">
-            {activeCategories.map((cat) => {
-              const catTools = toolsRegistry.filter((t) => t.category === cat.id && t.slug !== '/');
-              if (catTools.length === 0) return null;
-              return (
-                <div key={cat.id}>
-                  <p className="px-3 text-xs font-semibold uppercase tracking-wide text-[var(--ink-3)]">
-                    {cat.label}
-                  </p>
-                  <div className="mt-1 grid grid-cols-2 gap-1">
-                    {catTools.map((tool) => (
-                      <a
-                        key={tool.slug}
-                        href={localizedMap?.[tool.slug] ?? tool.slug}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleNav(tool.slug);
-                        }}
-                        className="block px-3 py-1.5 text-xs font-medium leading-snug text-[var(--ink-2)] hover:bg-[var(--accent-soft)] hover:text-[#b91c1c] dark:hover:text-[#fecaca] rounded-lg"
-                      >
-                        {tool.name}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="pt-2 border-t border-[var(--line)] space-y-1">
-            <a
-              href={`${homeUrl}#how-it-works`}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNav('/#how-it-works');
-              }}
-              className="block px-3 py-2 text-base font-medium text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-xl"
-            >
-              {strings.howItWorks}
-            </a>
-            <a
-              href={`${homeUrl}#faq`}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNav('/#faq');
-              }}
-              className="block px-3 py-2 text-base font-medium text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-xl"
-            >
-              {strings.faq}
-            </a>
-            <a
-              href={aboutUrl}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNav(aboutUrl);
-              }}
-              className="block px-3 py-2 text-base font-medium text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-xl"
-            >
-              {strings.aboutUs}
-            </a>
-            <a
-              href={blogUrl}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNav('/blog');
-              }}
-              className="block px-3 py-2 text-base font-medium text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-xl"
-            >
-              {strings.blog}
-            </a>
-            <a
-              href={contactUrl}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNav(contactUrl);
-              }}
-              className="block px-3 py-2 text-base font-medium text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)] rounded-xl"
-            >
-              {strings.contactUs}
-            </a>
-          </div>
-
-          <div className="pt-2 flex flex-col gap-2">
+          <div className="pt-2">
             <button
               type="button"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                setToolsOpen(false);
-                setThemeMenuOpen(false);
-                setLangMenuOpen(false);
-                onScrollToTool();
-              }}
-              className="w-full flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold btn-purple-pill shadow-xs cursor-pointer"
+              onClick={() => handleNav(localizedMap?.['/all-tools'] ?? '/all-tools')}
+              className="w-full flex items-center justify-center rounded-full btn-purple-pill px-4 py-2.5 text-sm font-semibold min-h-[44px] cursor-pointer"
             >
-              <span>{strings.compressImages}</span>
-              <ArrowUpRight className="w-4 h-4" />
+              {strings.allTools}
             </button>
           </div>
         </div>

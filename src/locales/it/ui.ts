@@ -49,6 +49,9 @@ export const IT = {
     themeDarkShort: 'Scura', // 'Dark'
     themeSystemShort: 'Sistema', // 'System'
     themeHeading: 'Tema', // 'Theme' (mobile drawer heading + theme menu aria-label)
+    categories: 'Categorie',
+    appearance: 'Aspetto',
+    allTools: 'Tutti gli strumenti',
     menuAriaLabel: 'Mostra o nascondi il menu di navigazione', // 'Toggle navigation menu'
     themeAriaLabel: 'Cambia il tema dei colori (attuale: {current})', // 'Change color theme (Current: {current})'
     themeTitle: 'Tema: {current}', // 'Theme: {current}'

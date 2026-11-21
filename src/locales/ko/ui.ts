@@ -51,6 +51,9 @@ export const KO = {
     themeDarkShort: '다크', // 'Dark'
     themeSystemShort: '시스템', // 'System'
     themeHeading: '테마', // 'Theme' (mobile drawer heading + theme menu aria-label)
+    categories: '카테고리',
+    appearance: '모양',
+    allTools: '모든 도구',
     menuAriaLabel: '탐색 메뉴 열기/닫기', // 'Toggle navigation menu'
     themeAriaLabel: '색상 테마 변경 (현재: {current})', // 'Change color theme (Current: {current})'
     themeTitle: '테마: {current}', // 'Theme: {current}'
