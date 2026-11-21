@@ -397,7 +397,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="hidden xl:block relative">
             <form
               onSubmit={handleSearchSubmit}
-              className="flex items-center bg-[var(--surface)] border border-[var(--line)] rounded-full p-1 pl-3 shadow-xs w-[250px]"
+              className="flex items-center bg-[var(--surface)] border border-[var(--line)] rounded-lg p-1 pl-3 shadow-xs w-[250px]"
             >
               <Search className="w-3.5 h-3.5 text-[var(--ink-3)] shrink-0 mr-1.5" />
               <input
@@ -440,7 +440,7 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </div>
 
-          {/* Language Switcher Pill */}
+          {/* Language Switcher Button (UtilityFlow-style) */}
           <div className="relative">
             <button
               type="button"
@@ -454,12 +454,12 @@ export const Header: React.FC<HeaderProps> = ({
               aria-expanded={langMenuOpen}
               aria-haspopup="menu"
               title={strings.languageLabel}
-              className="inline-flex items-center gap-1 sm:gap-1.5 h-11 px-1.5 sm:px-3 rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#dc2626]/50 transition-colors cursor-pointer text-xs font-semibold shadow-2xs"
+              className="inline-flex items-center gap-1.5 min-h-[40px] px-2.5 sm:px-3 py-2 rounded-lg border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:bg-[var(--surface-2)] transition-colors cursor-pointer text-xs font-semibold shadow-2xs"
             >
-              <Globe className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
-              <span className="hidden xl:inline">{lang.toUpperCase()}</span>
+              <Globe className="w-4 h-4 text-[var(--ink-3)]" />
+              <span className="hidden sm:inline">{lang.toUpperCase()}</span>
               <ChevronDown
-                className={`hidden sm:block w-3.5 h-3.5 text-[var(--ink-3)] transition-transform ${
+                className={`max-[379px]:hidden w-3.5 h-3.5 text-[var(--ink-3)] transition-transform ${
                   langMenuOpen ? 'rotate-180' : ''
                 }`}
               />
@@ -523,7 +523,7 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </div>
 
-          {/* Theme Switcher Pill */}
+          {/* Theme Switcher Button (UtilityFlow-style) */}
           <div className="relative">
             <button
               type="button"
@@ -538,11 +538,11 @@ export const Header: React.FC<HeaderProps> = ({
               aria-haspopup="menu"
               data-testid="theme-toggle-button"
               title={strings.themeTitle.replace('{current}', currentThemeLabel)}
-              className="inline-flex items-center gap-1 sm:gap-1.5 h-11 px-1.5 sm:px-3 rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#dc2626]/50 transition-colors cursor-pointer text-xs font-semibold shadow-2xs"
+              className="inline-flex items-center gap-1.5 min-h-[40px] px-2.5 sm:px-3 py-2 rounded-lg border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:bg-[var(--surface-2)] transition-colors cursor-pointer text-xs font-semibold shadow-2xs"
             >
-              <CurrentThemeIcon className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
+              <CurrentThemeIcon className="w-4 h-4 text-[#dc2626] dark:text-[#f87171]" />
               <ChevronDown
-                className={`hidden sm:block w-3.5 h-3.5 text-[var(--ink-3)] transition-transform ${
+                className={`max-[379px]:hidden w-3.5 h-3.5 text-[var(--ink-3)] transition-transform ${
                   themeMenuOpen ? 'rotate-180' : ''
                 }`}
               />
@@ -601,10 +601,10 @@ export const Header: React.FC<HeaderProps> = ({
               setLangMenuOpen(false);
               window.setTimeout(() => mobileSearchRef.current?.focus(), 80);
             }}
-            className="lg:hidden h-10 w-10 sm:h-11 sm:w-11 grid place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#dc2626]/50 cursor-pointer shrink-0"
+            className="lg:hidden h-10 w-10 sm:h-11 sm:w-11 grid place-items-center rounded-lg border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:bg-[var(--surface-2)] cursor-pointer shrink-0"
             aria-label="Search tools"
           >
-            <Search className="w-5 h-5" />
+            <Search className="w-5 h-5 text-[var(--ink-3)]" />
           </button>
 
           {/* Mobile Menu Button */}
@@ -615,12 +615,12 @@ export const Header: React.FC<HeaderProps> = ({
               setThemeMenuOpen(false);
               setLangMenuOpen(false);
             }}
-            className="lg:hidden h-10 w-10 sm:h-11 sm:w-11 grid place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#dc2626]/50 cursor-pointer shrink-0"
+            className="lg:hidden h-10 w-10 sm:h-11 sm:w-11 grid place-items-center rounded-lg border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:bg-[var(--surface-2)] cursor-pointer shrink-0"
             aria-label={strings.menuAriaLabel}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-5 h-5 text-[var(--ink-3)]" /> : <Menu className="w-5 h-5 text-[var(--ink-3)]" />}
           </button>
         </div>
       </div>
