@@ -229,7 +229,7 @@ export const GuideFormatsPageHi: React.FC<GuideFormatsPageHiProps> = ({ onNaviga
         <div className="mb-6">
           <button
             type="button"
-            onClick={() => onNavigate('/')}
+            onClick={() => onNavigate('/hi/')}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -243,7 +243,7 @@ export const GuideFormatsPageHi: React.FC<GuideFormatsPageHiProps> = ({ onNaviga
             JPG vs PNG vs WebP: आपको कौन सा फ़ॉर्मैट इस्तेमाल करना चाहिए?
           </h1>
           <p className="mt-3 text-sm text-[var(--ink-3)]">
-            द्वारा <a href="/about" onClick={(e) => { e.preventDefault(); onNavigate('/about'); }} className="font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:underline">Bilal</a>
+            द्वारा <a href="/hi/hamare-bare-me" onClick={(e) => { e.preventDefault(); onNavigate('/hi/hamare-bare-me'); }} className="font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:underline">Bilal</a>
           </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             गलत फ़ॉर्मैट चुनने से आपकी इमेज ज़रूरत से दस गुना बड़ी हो सकती है, या पारदर्शी लोगो खराब हो सकता है। यहां सरल और ईमानदार तुलना है, और कुछ ही सेकंड में फ़ॉर्मैट के बीच कन्वर्ट करने का तरीका भी।
@@ -458,7 +458,7 @@ export const GuideFormatsPageHi: React.FC<GuideFormatsPageHiProps> = ({ onNaviga
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button
                 type="button"
-                onClick={() => onNavigate('/guides/compress-images-for-whatsapp')}
+                onClick={() => onNavigate('/hi/guides/whatsapp-ke-liye-image-compress-kare')}
                 className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">बिना क्वालिटी गंवाए WhatsApp के लिए इमेज कैसे कंप्रेस करें</div>
@@ -466,7 +466,7 @@ export const GuideFormatsPageHi: React.FC<GuideFormatsPageHiProps> = ({ onNaviga
               </button>
               <button
                 type="button"
-                onClick={() => onNavigate('/guides/reduce-image-size-to-100kb')}
+                onClick={() => onNavigate('/hi/guides/image-100kb-me-compress-kaise-kare')}
                 className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">वेबसाइट और ईमेल के लिए इमेज का साइज़ 100 KB तक कैसे घटाएं</div>
@@ -478,14 +478,14 @@ export const GuideFormatsPageHi: React.FC<GuideFormatsPageHiProps> = ({ onNaviga
           <div className="pt-2 flex flex-col sm:flex-row gap-3">
             <button
               type="button"
-              onClick={() => onNavigate('/')}
+              onClick={() => onNavigate('/hi/')}
               className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               मुफ़्त में इमेज कंप्रेस करें
             </button>
             <button
               type="button"
-              onClick={() => onNavigate('/guides/compress-images-for-whatsapp')}
+              onClick={() => onNavigate('/hi/guides/whatsapp-ke-liye-image-compress-kare')}
               className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               WhatsApp के लिए कंप्रेस करें

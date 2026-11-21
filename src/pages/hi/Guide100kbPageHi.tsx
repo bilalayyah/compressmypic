@@ -233,7 +233,7 @@ export const Guide100kbPageHi: React.FC<Guide100kbPageHiProps> = ({ onNavigate }
         <div className="mb-6">
           <button
             type="button"
-            onClick={() => onNavigate('/')}
+            onClick={() => onNavigate('/hi/')}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -247,7 +247,7 @@ export const Guide100kbPageHi: React.FC<Guide100kbPageHiProps> = ({ onNavigate }
             वेबसाइट और ईमेल के लिए इमेज का साइज़ 100 KB तक कैसे घटाएं
           </h1>
           <p className="mt-3 text-sm text-[var(--ink-3)]">
-            द्वारा <a href="/about" onClick={(e) => { e.preventDefault(); onNavigate('/about'); }} className="font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:underline">Bilal</a>
+            द्वारा <a href="/hi/hamare-bare-me" onClick={(e) => { e.preventDefault(); onNavigate('/hi/hamare-bare-me'); }} className="font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:underline">Bilal</a>
           </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             4 MB की फ़ोटो आपकी वेबसाइट को धीमा लोड कराती है और ईमेल को अटका देती है। उसे लगभग 100 KB तक घटाने से पेज तेज़ी से लोड होते हैं और ईमेल तुरंत भेजे जाते हैं, और यदि आप इसे सही तरीके से करें, तो कोई अंतर नहीं बता सकता।
@@ -438,7 +438,7 @@ export const Guide100kbPageHi: React.FC<Guide100kbPageHiProps> = ({ onNavigate }
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button
                 type="button"
-                onClick={() => onNavigate('/guides/compress-images-for-whatsapp')}
+                onClick={() => onNavigate('/hi/guides/whatsapp-ke-liye-image-compress-kare')}
                 className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">बिना क्वालिटी गंवाए WhatsApp के लिए इमेज कैसे कंप्रेस करें</div>
@@ -446,7 +446,7 @@ export const Guide100kbPageHi: React.FC<Guide100kbPageHiProps> = ({ onNavigate }
               </button>
               <button
                 type="button"
-                onClick={() => onNavigate('/guides/jpg-vs-png-vs-webp')}
+                onClick={() => onNavigate('/hi/guides/jpg-vs-png-vs-webp')}
                 className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG vs PNG vs WebP: आपको कौन सा फ़ॉर्मैट इस्तेमाल करना चाहिए?</div>
@@ -458,14 +458,14 @@ export const Guide100kbPageHi: React.FC<Guide100kbPageHiProps> = ({ onNavigate }
           <div className="pt-2 flex flex-col sm:flex-row gap-3">
             <button
               type="button"
-              onClick={() => onNavigate('/')}
+              onClick={() => onNavigate('/hi/')}
               className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               मुफ़्त में इमेज कंप्रेस करें
             </button>
             <button
               type="button"
-              onClick={() => onNavigate('/guides/jpg-vs-png-vs-webp')}
+              onClick={() => onNavigate('/hi/guides/jpg-vs-png-vs-webp')}
               className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               JPG vs PNG vs WebP

@@ -68,7 +68,7 @@ export const ContactPageHi: React.FC<ContactPageHiProps> = ({ onNavigate }) => {
         <div className="mb-6">
           <button
             type="button"
-            onClick={() => onNavigate('/')}
+            onClick={() => onNavigate('/hi/')}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -300,7 +300,7 @@ export const ContactPageHi: React.FC<ContactPageHiProps> = ({ onNavigate }) => {
               जब आप हमें लिखें, तो अपने ब्राउज़र का नाम और वर्शन, वह टूल जिसका आप इस्तेमाल कर रहे थे, और इमेज का साइज़ व फ़ॉर्मैट शामिल करें। हम अंग्रेज़ी में जवाब देते हैं, आमतौर पर 24 से 48 कार्य घंटों के भीतर। यदि आपका सवाल यह है कि हम आपके डेटा से कैसे निपटते हैं, तो पहले हमारी 
               <button
                 type="button"
-                onClick={() => onNavigate('/privacy')}
+                onClick={() => onNavigate('/hi/privacy-policy')}
                 className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold cursor-pointer"
               >
                 गोपनीयता नीति

@@ -20,7 +20,7 @@ export const AboutPageHi: React.FC<AboutPageHiProps> = ({ onNavigate }) => {
         <div className="mb-6">
           <button
             type="button"
-            onClick={() => onNavigate('/')}
+            onClick={() => onNavigate('/hi/')}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -160,7 +160,7 @@ export const AboutPageHi: React.FC<AboutPageHiProps> = ({ onNavigate }) => {
               {' '}पर पढ़ सकते हैं, या 
               <button
                 type="button"
-                onClick={() => onNavigate('/contact')}
+                onClick={() => onNavigate('/hi/sampark-kare')}
                 className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold cursor-pointer"
               >
                 संपर्क पेज
@@ -184,7 +184,7 @@ export const AboutPageHi: React.FC<AboutPageHiProps> = ({ onNavigate }) => {
               यह जानने के लिए कि हम आपकी गोपनीयता से कैसे निपटते हैं, हमारी{' '}
               <button
                 type="button"
-                onClick={() => onNavigate('/privacy')}
+                onClick={() => onNavigate('/hi/privacy-policy')}
                 className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold cursor-pointer"
               >
                 गोपनीयता नीति
@@ -209,14 +209,14 @@ export const AboutPageHi: React.FC<AboutPageHiProps> = ({ onNavigate }) => {
           <div className="pt-2 flex flex-col sm:flex-row gap-3">
             <button
               type="button"
-              onClick={() => onNavigate('/')}
+              onClick={() => onNavigate('/hi/')}
               className="flex-1 px-5 py-2.5 btn-purple-pill text-sm font-semibold shadow-sm cursor-pointer"
             >
               इमेज कंप्रेस करना शुरू करें
             </button>
             <button
               type="button"
-              onClick={() => onNavigate('/contact')}
+              onClick={() => onNavigate('/hi/sampark-kare')}
               className="flex-1 px-5 py-2.5 rounded-full bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:bg-[var(--surface-2)] transition-colors cursor-pointer"
             >
               हमसे संपर्क करें

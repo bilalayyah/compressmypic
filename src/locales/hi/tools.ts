@@ -4518,7 +4518,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'अलग साइज़ चाहिए तो कौन सा टूल इस्तेमाल करूँ?',
-        answer: 'अलग लिमिट के लिए <a href="/compress-image-to-100kb/">इमेज 100KB में कंप्रेस करें</a> देखें, या अपनी पसंद का कोई भी KB/MB टारगेट सेट करने के लिए <a href="/target-file-size-compressor/">टारगेट फाइल साइज़ कंप्रेसर</a> इस्तेमाल करें।',
+        answer: 'अलग लिमिट के लिए <a href="/hi/image-100kb-me-compress-kare">इमेज 100KB में कंप्रेस करें</a> देखें, या अपनी पसंद का कोई भी KB/MB टारगेट सेट करने के लिए <a href="/hi/target-file-size-compress-kare">टारगेट फाइल साइज़ कंप्रेसर</a> इस्तेमाल करें।',
       },
     ],
     relatedSlugs: ['/compress-image-to-100kb', '/compress-image-to-200kb', '/target-file-size-compressor', '/image-resizer'],
@@ -4651,7 +4651,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'अलग साइज़ चाहिए तो कौन सा टूल इस्तेमाल करूँ?',
-        answer: 'अलग लिमिट के लिए <a href="/compress-image-to-200kb/">इमेज 200KB में कंप्रेस करें</a> देखें, या अपनी पसंद का कोई भी KB/MB टारगेट सेट करने के लिए <a href="/target-file-size-compressor/">टारगेट फाइल साइज़ कंप्रेसर</a> इस्तेमाल करें।',
+        answer: 'अलग लिमिट के लिए <a href="/hi/image-200kb-me-compress-kare">इमेज 200KB में कंप्रेस करें</a> देखें, या अपनी पसंद का कोई भी KB/MB टारगेट सेट करने के लिए <a href="/hi/target-file-size-compress-kare">टारगेट फाइल साइज़ कंप्रेसर</a> इस्तेमाल करें।',
       },
     ],
     relatedSlugs: ['/compress-image-to-50kb', '/compress-image-to-200kb', '/web-image-optimizer', '/target-file-size-compressor'],
@@ -4784,7 +4784,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'अलग साइज़ चाहिए तो कौन सा टूल इस्तेमाल करूँ?',
-        answer: 'अलग लिमिट के लिए <a href="/compress-image-to-500kb/">इमेज 500KB में कंप्रेस करें</a> देखें, या अपनी पसंद का कोई भी KB/MB टारगेट सेट करने के लिए <a href="/target-file-size-compressor/">टारगेट फाइल साइज़ कंप्रेसर</a> इस्तेमाल करें।',
+        answer: 'अलग लिमिट के लिए <a href="/hi/image-500kb-me-compress-kare">इमेज 500KB में कंप्रेस करें</a> देखें, या अपनी पसंद का कोई भी KB/MB टारगेट सेट करने के लिए <a href="/hi/target-file-size-compress-kare">टारगेट फाइल साइज़ कंप्रेसर</a> इस्तेमाल करें।',
       },
     ],
     relatedSlugs: ['/compress-image-to-100kb', '/compress-image-to-500kb', '/web-image-optimizer', '/bulk-image-compressor'],
@@ -4917,7 +4917,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'अलग साइज़ चाहिए तो कौन सा टूल इस्तेमाल करूँ?',
-        answer: 'अलग लिमिट के लिए <a href="/compress-image-to-200kb/">इमेज 200KB में कंप्रेस करें</a> देखें, या अपनी पसंद का कोई भी KB/MB टारगेट सेट करने के लिए <a href="/target-file-size-compressor/">टारगेट फाइल साइज़ कंप्रेसर</a> इस्तेमाल करें।',
+        answer: 'अलग लिमिट के लिए <a href="/hi/image-200kb-me-compress-kare">इमेज 200KB में कंप्रेस करें</a> देखें, या अपनी पसंद का कोई भी KB/MB टारगेट सेट करने के लिए <a href="/hi/target-file-size-compress-kare">टारगेट फाइल साइज़ कंप्रेसर</a> इस्तेमाल करें।',
       },
     ],
     relatedSlugs: ['/compress-image-to-200kb', '/target-file-size-compressor', '/bulk-image-compressor', '/'],
@@ -5018,7 +5018,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'ई-कॉमर्स कैटलॉग के लिए कौन सी प्रोफ़ाइल सही है?',
-        answer: 'प्रोडक्ट फोटो के लिए High Fidelity (85%) या Web Fast (WebP 75%) बढ़िया है — फोटो साफ़ भी रहती है और पेज तेज़ भी लोड होता है। एक-एक फोटो के लिए <a href="/web-image-optimizer/">वेब इमेज ऑप्टिमाइज़र</a> भी देख सकते हैं।',
+        answer: 'प्रोडक्ट फोटो के लिए High Fidelity (85%) या Web Fast (WebP 75%) बढ़िया है — फोटो साफ़ भी रहती है और पेज तेज़ भी लोड होता है। एक-एक फोटो के लिए <a href="/hi/web-image-optimize-kare">वेब इमेज ऑप्टिमाइज़र</a> भी देख सकते हैं।',
       },
       {
         question: 'क्या यह टूल मुफ़्त है?',
@@ -5183,7 +5183,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'क्या टारगेट साइज़ के लिए कोई प्रीसेट भी हैं?',
-        answer: 'हाँ, 50KB, 100KB, 200KB और 500KB के क्विक प्रीसेट हैं। इन पर टैप करते ही टारगेट सेट हो जाता है — या अलग साइज़ के लिए <a href="/compress-image-to-100kb/">इमेज 100KB में कंप्रेस करें</a> पेज भी देख सकते हैं।',
+        answer: 'हाँ, 50KB, 100KB, 200KB और 500KB के क्विक प्रीसेट हैं। इन पर टैप करते ही टारगेट सेट हो जाता है — या अलग साइज़ के लिए <a href="/hi/image-100kb-me-compress-kare">इमेज 100KB में कंप्रेस करें</a> पेज भी देख सकते हैं।',
       },
       {
         question: 'क्या पेज लोड होने के बाद बिना इंटरनेट के चलेगा?',
@@ -5288,7 +5288,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'एक ही फोटो रिसाइज़ करनी हो तो क्या करूँ?',
-        answer: 'एक फोटो के लिए <a href="/image-resizer/">इमेज रिसाइज़र</a> इस्तेमाल करें — वही कंट्रोल, बिना बैच के।',
+        answer: 'एक फोटो के लिए <a href="/hi/image-resize-kare">इमेज रिसाइज़र</a> इस्तेमाल करें — वही कंट्रोल, बिना बैच के।',
       },
       {
         question: 'क्या यह टूल मुफ़्त है?',
@@ -5421,7 +5421,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'एक ही फाइल बदलनी हो तो क्या करूँ?',
-        answer: 'एक फाइल के लिए <a href="/image-converter/">इमेज कन्वर्टर</a> इस्तेमाल करें — वही कंट्रोल, बिना बैच के।',
+        answer: 'एक फाइल के लिए <a href="/hi/image-convert-kare">इमेज कन्वर्टर</a> इस्तेमाल करें — वही कंट्रोल, बिना बैच के।',
       },
       {
         question: 'ZIP में फाइलों के नाम कैसे होंगे?',
@@ -5562,7 +5562,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'WordPress साइट के लिए यह कैसे मदद करता है?',
-        answer: 'WordPress मीडिया लाइब्रेरी में भारी फोटो पेज धीमा करती हैं। यहाँ ऑप्टिमाइज़ करके अपलोड करें — पेज तेज़ लोड होगा और SEO भी बेहतर होगा। 200KB लिमिट के लिए <a href="/compress-image-to-200kb/">इमेज 200KB में कंप्रेस करें</a> भी देख सकते हैं।',
+        answer: 'WordPress मीडिया लाइब्रेरी में भारी फोटो पेज धीमा करती हैं। यहाँ ऑप्टिमाइज़ करके अपलोड करें — पेज तेज़ लोड होगा और SEO भी बेहतर होगा। 200KB लिमिट के लिए <a href="/hi/image-200kb-me-compress-kare">इमेज 200KB में कंप्रेस करें</a> भी देख सकते हैं।',
       },
       {
         question: 'डाउनलोड की गई फाइल का नाम क्या होगा?',
@@ -5598,7 +5598,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'क्या SVG और GIF भी ऑप्टिमाइज़ होंगी?',
-        answer: 'हाँ, SVG, GIF और AVIF समेत सभी फॉर्मैट सपोर्ट हैं। GIF के लिए <a href="/gif-compressor/">GIF कंप्रेसर</a> ज़्यादा कंट्रोल देता है।',
+        answer: 'हाँ, SVG, GIF और AVIF समेत सभी फॉर्मैट सपोर्ट हैं। GIF के लिए <a href="/hi/gif-compress-kare">GIF कंप्रेसर</a> ज़्यादा कंट्रोल देता है।',
       },
     ],
     relatedSlugs: ['/bulk-image-compressor', '/compress-image-to-100kb', '/image-resizer', '/image-converter'],
@@ -5703,7 +5703,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'नई GIF बनानी हो तो क्या करूँ?',
-        answer: 'फोटो से नई GIF बनाने के लिए <a href="/gif-maker/">GIF मेकर</a> इस्तेमाल करें — फ्रेम, डिले और लूप के साथ।',
+        answer: 'फोटो से नई GIF बनाने के लिए <a href="/hi/gif-banaye">GIF मेकर</a> इस्तेमाल करें — फ्रेम, डिले और लूप के साथ।',
       },
       {
         question: 'क्या कंप्रेस्ड GIF की क्वालिटी पहले देख सकती हूँ?',
@@ -5836,7 +5836,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'और फॉर्मैट बदलने हों तो कौन सा टूल इस्तेमाल करूँ?',
-        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/bulk-image-converter/">बल्क इमेज कन्वर्टर</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
+        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/hi/bulk-image-convert-kare">बल्क इमेज कन्वर्टर</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
       },
       {
         question: 'क्या यह टूल मुफ़्त है?',
@@ -5969,7 +5969,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'और फॉर्मैट बदलने हों तो कौन सा टूल इस्तेमाल करूँ?',
-        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/png-to-jpg/">PNG से JPG</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
+        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/hi/png-to-jpg">PNG से JPG</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
       },
       {
         question: 'क्या यह टूल मुफ़्त है?',
@@ -6102,7 +6102,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'और फॉर्मैट बदलने हों तो कौन सा टूल इस्तेमाल करूँ?',
-        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/jpg-to-png/">JPG से PNG</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
+        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/hi/jpg-to-png">JPG से PNG</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
       },
       {
         question: 'क्या यह टूल मुफ़्त है?',
@@ -6219,7 +6219,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'क्या WebP फाइल हर ब्राउज़र में खुलेगी?',
-        answer: 'हाँ, Chrome, Firefox, Safari और Edge के नए वर्ज़न WebP खोलते हैं। बहुत पुराने सॉफ़्टवेयर या फॉर्म के लिए <a href="/webp-to-jpg/">WebP से JPG</a> से वापस JPG बना सकते हैं।',
+        answer: 'हाँ, Chrome, Firefox, Safari और Edge के नए वर्ज़न WebP खोलते हैं। बहुत पुराने सॉफ़्टवेयर या फॉर्म के लिए <a href="/hi/webp-to-jpg">WebP से JPG</a> से वापस JPG बना सकते हैं।',
       },
       {
         question: 'WebP फाइल कहाँ-कहाँ इस्तेमाल होती है?',
@@ -6235,7 +6235,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'और फॉर्मैट बदलने हों तो कौन सा टूल इस्तेमाल करूँ?',
-        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/webp-to-jpg/">WebP से JPG</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
+        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/hi/webp-to-jpg">WebP से JPG</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
       },
       {
         question: 'क्या यह टूल मुफ़्त है?',
@@ -6368,7 +6368,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'और फॉर्मैट बदलने हों तो कौन सा टूल इस्तेमाल करूँ?',
-        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/jpg-to-webp/">JPG से WebP</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
+        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/hi/jpg-to-webp">JPG से WebP</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
       },
       {
         question: 'क्या यह टूल मुफ़्त है?',
@@ -6501,7 +6501,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'और फॉर्मैट बदलने हों तो कौन सा टूल इस्तेमाल करूँ?',
-        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/webp-to-png/">WebP से PNG</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
+        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/hi/webp-to-png">WebP से PNG</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
       },
       {
         question: 'क्या यह टूल मुफ़्त है?',
@@ -6634,7 +6634,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'और फॉर्मैट बदलने हों तो कौन सा टूल इस्तेमाल करूँ?',
-        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/png-to-webp/">PNG से WebP</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
+        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/hi/png-to-webp">PNG से WebP</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
       },
       {
         question: 'क्या यह टूल मुफ़्त है?',
@@ -6775,7 +6775,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'और फॉर्मैट बदलने हों तो कौन सा टूल इस्तेमाल करूँ?',
-        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/favicon-generator/">Favicon Generator</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
+        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/hi/favicon-banaye">Favicon Generator</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
       },
       {
         question: 'क्या यह टूल मुफ़्त है?',
@@ -6904,7 +6904,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'और फॉर्मैट बदलने हों तो कौन सा टूल इस्तेमाल करूँ?',
-        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/webp-to-jpg/">WebP से JPG</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
+        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/hi/webp-to-jpg">WebP से JPG</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
       },
       {
         question: 'क्या यह टूल मुफ़्त है?',
@@ -7037,7 +7037,7 @@ export const TOOLS_REGISTRY_HI: ToolDefinition[] = [
       },
       {
         question: 'और फॉर्मैट बदलने हों तो कौन सा टूल इस्तेमाल करूँ?',
-        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/png-to-jpg/">PNG से JPG</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
+        answer: 'कई फॉर्मैट एक साथ बदलने के लिए <a href="/hi/png-to-jpg">PNG से JPG</a> देखें — वहाँ JPG, PNG, WebP, HEIC, SVG और BMP सब एक जगह मिलते हैं।',
       },
       {
         question: 'क्या यह टूल मुफ़्त है?',

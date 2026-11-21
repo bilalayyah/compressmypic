@@ -18,7 +18,7 @@ export const CookiePolicyPageHi: React.FC<CookiePolicyPageHiProps> = ({ onNaviga
         <div className="mb-6">
           <button
             type="button"
-            onClick={() => onNavigate('/')}
+            onClick={() => onNavigate('/hi/')}
             className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -133,7 +133,7 @@ export const CookiePolicyPageHi: React.FC<CookiePolicyPageHiProps> = ({ onNaviga
               यदि इस नीति के बारे में आपके कोई सवाल हैं, तो हमें 
               <a href="mailto:bilalayyah@gmail.com" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">bilalayyah@gmail.com</a>
                पर संपर्क करें या हमारी 
-              <a href="/privacy" onClick={(e) => { e.preventDefault(); onNavigate('/privacy'); }} className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">गोपनीयता नीति</a>
+              <a href="/hi/privacy-policy" onClick={(e) => { e.preventDefault(); onNavigate('/hi/privacy-policy'); }} className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">गोपनीयता नीति</a>
               {' '}पढ़ें।
             </p>
           </section>
