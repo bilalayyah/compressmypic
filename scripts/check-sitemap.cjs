@@ -30,7 +30,7 @@ const SITEMAP_PATH = path.join(REPO_ROOT, 'public', 'sitemap.xml');
 const REGISTRY_PATH = path.join(REPO_ROOT, 'src', 'data', 'blogArticles.ts');
 const BASE = 'https://compressmypic.online';
 const LANGS = ['en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'hi'];
-const PRE_BLOG_BASELINE = 638; // <url> count before Batch 2 (b0afe1b) was 626; +22 legal pages (Disclaimer + Cookie Policy × 11 locales) + 1 EN /all-tools/ hub (audit fix 2026-11-18); -11 remove-background tool URLs (removal 2026-11-20)
+const PRE_BLOG_BASELINE = 696; // <url> count before Batch 2 (b0afe1b) was 626; +22 legal pages (Disclaimer + Cookie Policy × 11 locales) + 1 EN /all-tools/ hub (audit fix 2026-11-18); -11 remove-background tool URLs (removal 2026-11-20); +58 Hindi non-blog URLs (i18n/hindi-cmp-2026-11-22)
 // EXPECTED_BLOG_URLS is computed in main() from the registry:
 // 12 homes + 84 hubs + <published articles>.
 

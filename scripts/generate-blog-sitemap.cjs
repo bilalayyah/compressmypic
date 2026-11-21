@@ -27,7 +27,7 @@ const BASE = 'https://compressmypic.online';
 const LASTMOD = '2026-11-17'; // Batch 2 ship date; Batch 3 uses per-article lastmod
 const LANGS = ['en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'hi'];
 
-const BLOCK_START = '  <!-- Blog (Batch 2): 11 homes + 77 category hubs. Regenerate with scripts/generate-blog-sitemap.cjs. -->';
+const BLOCK_START = '  <!-- Blog (Batch 2): 12 homes + 84 category hubs. Regenerate with scripts/generate-blog-sitemap.cjs. -->';
 const BLOCK_END = '  <!-- /Blog (Batch 2) -->';
 
 function parseCategorySlugs() {
@@ -263,7 +263,7 @@ function main() {
   // matched with any hub count: the count changed 88 -> 77 when the
   // ai-tools category was removed (2026-11-20), and the strip must still
   // find blocks written with the old count.
-  const START_RE = '  <!-- Blog \\(Batch 2\\): 11 homes \\+ \\d+ category hubs\\. Regenerate with scripts/generate-blog-sitemap\\.cjs\\. -->';
+  const START_RE = '  <!-- Blog \\(Batch 2\\): \\d+ homes \\+ \\d+ category hubs\\. Regenerate with scripts/generate-blog-sitemap\\.cjs\\. -->';
   const blockRe = new RegExp(
     `\\n?${START_RE}[\\s\\S]*?${BLOCK_END.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`,
     'g'
@@ -285,7 +285,7 @@ function main() {
   const tmp = `${SITEMAP_PATH}.tmp`;
   fs.writeFileSync(tmp, next);
   fs.renameSync(tmp, SITEMAP_PATH);
-  console.log(`sitemap updated: ${urlCount} URLs (${expectedBlogUrls} blog: 11 homes + 77 hubs + ${articleUrlCount} article URLs across ${articles.length} articles).`);
+  console.log(`sitemap updated: ${urlCount} URLs (${expectedBlogUrls} blog: 12 homes + 84 hubs + ${articleUrlCount} article URLs across ${articles.length} articles).`);
 }
 
 main();
