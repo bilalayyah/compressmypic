@@ -10,8 +10,8 @@ import {
   Globe,
   Search,
   LayoutGrid,
-  Layers,
 } from 'lucide-react';
+import { SiteLogo } from './Logo';
 import { TOOLS_META, TOOL_CATEGORIES } from '../data/toolsMeta';
 import type { ToolMeta } from '../data/toolsMeta';
 import { SUPPORTED_LANGUAGES, type SupportedLang } from '../locales/config';
@@ -280,15 +280,7 @@ export const Header: React.FC<HeaderProps> = ({
           aria-label={strings.homeAriaLabel}
           className="flex items-center gap-2 sm:gap-2.5 whitespace-nowrap shrink-0 group py-1"
         >
-          <span
-            className="w-8 h-8 sm:w-9 sm:h-9 rounded-[10px] btn-purple-grad grid place-items-center shadow-xs shrink-0"
-            aria-hidden="true"
-          >
-            <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
-          </span>
-          <span className="font-sans text-[1rem] sm:text-[1.22rem] font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
-            Compress<span className="text-[#dc2626] dark:text-[#f87171]">MyPic</span>
-          </span>
+          <SiteLogo />
         </a>
 
         {/* Zone 2: Navigation Links */}
