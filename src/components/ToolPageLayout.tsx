@@ -274,7 +274,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
     const ogImageUrl =
       tool.slug && tool.slug !== '/'
         ? `https://compressmypic.online/og-${tool.slug.slice(1)}.png`
-        : 'https://compressmypic.online/og-image.png';
+        : 'https://compressmypic.online/og-image.png?v=2';
     setMetaTag(
       'meta[property="og:image"]',
       'property',

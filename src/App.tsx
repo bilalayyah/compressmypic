@@ -1603,13 +1603,13 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
         'meta[property="og:image"]',
         'property',
         'og:image',
-        `${baseDomain}/og-image.png`
+        `${baseDomain}/og-image.png?v=2`
       );
       setMetaContent(
         'meta[name="twitter:image"]',
         'name',
         'twitter:image',
-        `${baseDomain}/og-image.png`
+        `${baseDomain}/og-image.png?v=2`
       );
     }
     if (isGuidePage) {
