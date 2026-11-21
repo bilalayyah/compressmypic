@@ -459,7 +459,7 @@ export const Header: React.FC<HeaderProps> = ({
               <Globe className="w-4 h-4 text-[var(--ink-3)]" />
               <span className="hidden sm:inline">{lang.toUpperCase()}</span>
               <ChevronDown
-                className={`max-[379px]:hidden w-3.5 h-3.5 text-[var(--ink-3)] transition-transform ${
+                className={`max-[411px]:hidden w-3.5 h-3.5 text-[var(--ink-3)] transition-transform ${
                   langMenuOpen ? 'rotate-180' : ''
                 }`}
               />
@@ -542,7 +542,7 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <CurrentThemeIcon className="w-4 h-4 text-[#dc2626] dark:text-[#f87171]" />
               <ChevronDown
-                className={`max-[379px]:hidden w-3.5 h-3.5 text-[var(--ink-3)] transition-transform ${
+                className={`max-[411px]:hidden w-3.5 h-3.5 text-[var(--ink-3)] transition-transform ${
                   themeMenuOpen ? 'rotate-180' : ''
                 }`}
               />
