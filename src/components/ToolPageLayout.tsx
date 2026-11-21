@@ -25,6 +25,7 @@ import { KO_ALL_TOOLS_PATH } from '../locales/ko/slugs';
 import { ZH_ALL_TOOLS_PATH } from '../locales/zh/slugs';
 import { getPastelCardClass, getPastelTileClass } from '../utils/pastel';
 import { ToolRelatedArticles } from './blog/ToolRelatedArticles';
+import { ShareButtons, type ShareButtonLabels } from './ShareButtons';
 
 export interface ToolPageLayoutStrings {
   home: string;
@@ -38,6 +39,13 @@ export interface ToolPageLayoutStrings {
   relatedTitle: string;
   /** Lead-in for the contextual related-tool links under the FAQ list. */
   relatedLinksIntro?: string;
+  /** Share-this-tool labels (redesign 2026-11-21). Optional — fall back to EN. */
+  shareHeading?: string;
+  shareCopyLink?: string;
+  shareCopied?: string;
+  shareOnX?: string;
+  shareOnFacebook?: string;
+  shareOnWhatsApp?: string;
   commentsTitle?: string;
   commentsNote?: string;
   commentsNamePlaceholder?: string;
@@ -63,6 +71,12 @@ export const EN_STRINGS: ToolPageLayoutStrings = {
   faqTitle: '{name} — Frequently Asked Questions',
   relatedTitle: 'Related Free Image Tools',
   relatedLinksIntro: 'You may also need:',
+  shareHeading: 'Share this tool',
+  shareCopyLink: 'Copy link',
+  shareCopied: 'Copied!',
+  shareOnX: 'Share on X',
+  shareOnFacebook: 'Share on Facebook',
+  shareOnWhatsApp: 'Share on WhatsApp',
   commentsTitle: 'Comments',
   commentsNote: 'Share your thoughts about this tool — just write your name and post. No account needed.',
   commentsNamePlaceholder: 'Your name',
@@ -470,7 +484,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
               e.preventDefault();
               onNavigate('/');
             }}
-            className="text-[var(--ink-3)] hover:text-[#7c3aed] transition-colors"
+            className="text-[var(--ink-3)] hover:text-[#dc2626] transition-colors"
           >
             {ui.home}
           </a>
@@ -482,11 +496,11 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
 
         {/* Category Pill + Runs Locally in Browser */}
         <div className="flex flex-wrap items-center gap-2.5 mb-4">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ede9fe] dark:bg-[#7c3aed]/25 border border-[#ddd6fe] dark:border-[#8b5cf6]/35 text-[#6d28d9] dark:text-[#ddd6fe] text-xs font-semibold">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fee2e2] dark:bg-[#dc2626]/25 border border-[#fecaca] dark:border-[#ef4444]/35 text-[#b91c1c] dark:text-[#fecaca] text-xs font-semibold">
             {categoryLabel}
           </span>
           <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--ink-3)]">
-            <Lock className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#c4b5fd]" />
+            <Lock className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#fca5a5]" />
             <span>{ui.privacyPill}</span>
           </span>
         </div>
@@ -508,7 +522,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
             ·
           </span>
           <div className="flex items-center gap-1.5">
-            <Zap className="w-4 h-4 text-[#7c3aed] dark:text-[#c4b5fd]" />
+            <Zap className="w-4 h-4 text-[#dc2626] dark:text-[#fca5a5]" />
             <span>{ui.freeNote}</span>
           </div>
         </div>
@@ -517,6 +531,26 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
       {/* Main Tool Workspace */}
       <section ref={toolAreaRef} className="max-w-[1180px] w-full mx-auto px-4 sm:px-6 pb-14">
         {children}
+      </section>
+
+      {/* Share this tool: red share buttons (redesign 2026-11-21) */}
+      <section className="py-10 border-t border-[var(--line)] bg-[var(--bg)]">
+        <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
+          <ShareButtons
+            title={tool.seoTitle}
+            url={canonicalUrl}
+            labels={{
+              heading: ui.shareHeading ?? EN_STRINGS.shareHeading ?? 'Share this tool',
+              copyLink: ui.shareCopyLink ?? EN_STRINGS.shareCopyLink ?? 'Copy link',
+              copied: ui.shareCopied ?? EN_STRINGS.shareCopied ?? 'Copied!',
+              onX: ui.shareOnX ?? EN_STRINGS.shareOnX ?? 'Share on X',
+              onFacebook: ui.shareOnFacebook ?? EN_STRINGS.shareOnFacebook ?? 'Share on Facebook',
+              onWhatsApp: ui.shareOnWhatsApp ?? EN_STRINGS.shareOnWhatsApp ?? 'Share on WhatsApp',
+            } satisfies ShareButtonLabels}
+            networks={['copy', 'x', 'facebook', 'whatsapp']}
+            className=""
+          />
+        </div>
       </section>
 
       {/* How to Use Section: Numbered Step Cards Cycling Pastel Palettes */}
@@ -563,7 +597,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                   className={`border rounded-2xl p-5 shadow-[var(--shadow)] ${idx % 2 === 0 ? 'pastel-card-0' : 'pastel-card-2'}`}
                 >
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#7c3aed] dark:text-[#c4b5fd] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-[#dc2626] dark:text-[#fca5a5] shrink-0 mt-0.5" />
                     <div>
                       <h3 className="font-sans text-base font-bold text-[var(--ink-navy)]">{feat.title}</h3>
                       <p className="mt-1.5 text-sm text-[var(--ink-2)] leading-relaxed">
@@ -604,7 +638,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                       </span>
                       <ChevronDown
                         className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${
-                          isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'
+                          isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'
                         }`}
                       />
                     </button>
@@ -631,7 +665,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                         e.preventDefault();
                         onNavigate(rel.slug);
                       }}
-                      className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] underline underline-offset-2"
+                      className="font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] underline underline-offset-2"
                     >
                       {rel.name}
                     </a>
@@ -670,14 +704,14 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                     e.preventDefault();
                     onNavigate(rel.slug);
                   }}
-                  className="group flex items-start justify-between gap-4 p-5 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#7c3aed]/40 hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-[transform,box-shadow,border-color]"
+                  className="group flex items-start justify-between gap-4 p-5 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#dc2626]/40 hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-[transform,box-shadow,border-color]"
                 >
                   <div className="flex items-start gap-3.5 min-w-0">
                     <span className={`w-9 h-9 rounded-lg ${getPastelTileClass(idx * 2)} flex items-center justify-center shrink-0 text-xs font-bold`}>
                       <ArrowRight className="w-4 h-4" />
                     </span>
                     <div className="min-w-0">
-                      <h3 className="font-sans text-base font-bold text-[var(--ink-navy)] group-hover:text-[#7c3aed] dark:group-hover:text-[#c4b5fd] transition-colors">
+                      <h3 className="font-sans text-base font-bold text-[var(--ink-navy)] group-hover:text-[#dc2626] dark:group-hover:text-[#fca5a5] transition-colors">
                         {rel.name}
                       </h3>
                       <p className="text-xs text-[var(--ink-3)] mt-1 leading-relaxed">{rel.shortDescription}</p>

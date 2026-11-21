@@ -370,7 +370,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                     setPerCorner(false);
                     setUniformPercent(100);
                   }}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#6d28d9] dark:text-[#c4b5fd] hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#b91c1c] dark:text-[#fca5a5] hover:underline cursor-pointer"
                 >
                   <Circle className="w-3.5 h-3.5" />
                   <span>{t('fullCirclePill', 'Full Circle / Pill')}</span>
@@ -394,7 +394,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                       setBlPercent(uniformPercent);
                     }
                   }}
-                  className="w-4 h-4 accent-[#7c3aed] rounded cursor-pointer"
+                  className="w-4 h-4 accent-[#dc2626] rounded cursor-pointer"
                 />
               </label>
 
@@ -402,7 +402,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-1.5">
                     <span className="font-semibold text-[var(--ink-2)]">{t('allCornersRadius', 'All Corners Radius')}</span>
-                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">
+                    <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">
                       {Math.round((uniformPercent / 100) * (Math.min(imageInfo.width, imageInfo.height) / 2))}px ({uniformPercent}%)
                     </span>
                   </div>
@@ -426,7 +426,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                     <div key={c.id} className="p-2.5 rounded-[11px] border border-[var(--line)] bg-[var(--surface-2)]">
                       <div className="flex justify-between text-xs font-semibold text-[var(--ink-2)] mb-1">
                         <span>{cornerLabelById[c.id] ?? c.label}</span>
-                        <span className="font-mono text-[#7c3aed] dark:text-[#a78bfa]">{c.val}%</span>
+                        <span className="font-mono text-[#dc2626] dark:text-[#f87171]">{c.val}%</span>
                       </div>
                       <input
                         type="range"
@@ -454,8 +454,8 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                     }}
                     className={`py-2 text-xs font-semibold rounded-[11px] border cursor-pointer transition-colors ${
                       bgMode === 'transparent'
-                        ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/20 border-[#7c3aed] text-[#6d28d9] dark:text-[#ddd6fe]'
-                        : 'bg-[var(--surface-2)] border-[var(--line)] text-[var(--ink-2)] hover:border-[#7c3aed]'
+                        ? 'bg-[#fee2e2] dark:bg-[#dc2626]/20 border-[#dc2626] text-[#b91c1c] dark:text-[#fecaca]'
+                        : 'bg-[var(--surface-2)] border-[var(--line)] text-[var(--ink-2)] hover:border-[#dc2626]'
                     }`}
                   >
                     {t('transparentPngWebp', 'Transparent (PNG/WebP)')}
@@ -465,8 +465,8 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                     onClick={() => setBgMode('solid')}
                     className={`py-2 text-xs font-semibold rounded-[11px] border cursor-pointer transition-colors ${
                       bgMode === 'solid'
-                        ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/20 border-[#7c3aed] text-[#6d28d9] dark:text-[#ddd6fe]'
-                        : 'bg-[var(--surface-2)] border-[var(--line)] text-[var(--ink-2)] hover:border-[#7c3aed]'
+                        ? 'bg-[#fee2e2] dark:bg-[#dc2626]/20 border-[#dc2626] text-[#b91c1c] dark:text-[#fecaca]'
+                        : 'bg-[var(--surface-2)] border-[var(--line)] text-[var(--ink-2)] hover:border-[#dc2626]'
                     }`}
                   >
                     {t('solidColor', 'Solid Color')}
@@ -498,7 +498,7 @@ export const RoundCornersPage: React.FC<RoundCornersPageProps> = ({
                         onClick={() => setOutFormat(fmt)}
                         className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                           outFormat === fmt
-                            ? 'bg-[#7c3aed] text-white shadow-xs'
+                            ? 'bg-[#dc2626] text-white shadow-xs'
                             : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                         }`}
                       >

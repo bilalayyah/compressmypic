@@ -234,7 +234,7 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
           <button
             type="button"
             onClick={() => onNavigate('/ru/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Назад к компрессору изображений</span>
@@ -247,7 +247,7 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
             Как уменьшить размер изображения до 100 КБ для сайтов и электронной почты
           </h1>
           <p className="mt-3 text-sm text-[var(--ink-3)]">
-            Автор: <a href="/ru/o-nas" onClick={(e) => { e.preventDefault(); onNavigate('/ru/o-nas'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+            Автор: <a href="/ru/o-nas" onClick={(e) => { e.preventDefault(); onNavigate('/ru/o-nas'); }} className="font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:underline">Bilal</a>
           </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             Фотография на 4 МБ замедляет ваш сайт и забивает электронную почту. Уменьшение её примерно до 100 КБ делает страницы быстрыми, а письма отправляются мгновенно — и если сделать это правильно, никто не заметит разницы.
@@ -329,22 +329,22 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
                 </thead>
                 <tbody className="divide-y divide-[var(--line)]">
                   <tr>
-                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">200 КБ</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#dc2626] dark:text-[#fca5a5]">200 КБ</td>
                     <td className="px-4 py-3">70–80%</td>
                     <td className="px-4 py-3">Фото для блога, большие изображения для веба</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">100 КБ</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#dc2626] dark:text-[#fca5a5]">100 КБ</td>
                     <td className="px-4 py-3">50–70%</td>
                     <td className="px-4 py-3">Фото для сайта, вложения в письма</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">50 КБ</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#dc2626] dark:text-[#fca5a5]">50 КБ</td>
                     <td className="px-4 py-3">40–55% + WebP</td>
                     <td className="px-4 py-3">Миниатюры, чаты, быстрые страницы</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">20 КБ</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#dc2626] dark:text-[#fca5a5]">20 КБ</td>
                     <td className="px-4 py-3">25–40% + WebP</td>
                     <td className="px-4 py-3">Значки, крошечные превью</td>
                   </tr>
@@ -419,7 +419,7 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
                       className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
-                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'}`} />
+                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
                     </button>
                     {isOpen && (
                       <div className="px-5 py-4 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/55 dark:bg-slate-900/35">
@@ -466,7 +466,7 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
             <button
               type="button"
               onClick={() => onNavigate('/ru/rukovodstva/jpg-protiv-png-protiv-webp')}
-              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#7c3aed]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               JPG против PNG против WebP
             </button>

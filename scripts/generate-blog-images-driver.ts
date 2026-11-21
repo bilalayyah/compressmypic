@@ -18,7 +18,7 @@ import { JA_BLOG_OVERRIDES } from '../src/locales/ja/blog';
 import { KO_BLOG_OVERRIDES } from '../src/locales/ko/blog';
 import { ZH_BLOG_OVERRIDES } from '../src/locales/zh/blog';
 
-const OUT_DIR = '/home/hatch/workspace/compressmypic/fix-2026-11-18/article-images-work';
+const OUT_DIR = '/home/hatch/workspace/compressmypic/redesign-2026-11-21/article-images-work';
 const CHUNK = 400;
 
 const OVERRIDES: Record<string, Record<string, { title?: string }>> = {

@@ -528,7 +528,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
         <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-5">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5 mb-2.5">
-              <Globe className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Globe className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
               <span>{t('webPerformancePresets', 'Web Performance Presets')}</span>
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5">
@@ -539,8 +539,8 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                   onClick={() => handleSelectPreset(preset)}
                   className={`text-left p-3 rounded-[11px] border transition-all cursor-pointer ${
                     activePresetId === preset.id
-                      ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/25 border-[#7c3aed] ring-1 ring-[#7c3aed] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs'
-                      : `${getPastelCardClass(idx)} text-[var(--ink-2)] hover:border-[#7c3aed]/60`
+                      ? 'bg-[#fee2e2] dark:bg-[#dc2626]/25 border-[#dc2626] ring-1 ring-[#dc2626] text-[#b91c1c] dark:text-[#fecaca] shadow-xs'
+                      : `${getPastelCardClass(idx)} text-[var(--ink-2)] hover:border-[#dc2626]/60`
                   }`}
                 >
                   <p className="text-xs font-bold text-[var(--ink-navy)]">{preset.label}</p>
@@ -565,7 +565,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                       setFormat(f);
                     }}
                     className={`px-3 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
-                      format === f ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                      format === f ? 'bg-[#dc2626] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
                     {f === 'jpeg' ? 'JPG' : f.toUpperCase()}
@@ -584,7 +584,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                   setActivePresetId('custom');
                   setMaxEdge(parseInt(e.target.value, 10));
                 }}
-                className="w-full px-3 py-2 text-xs font-semibold border border-[var(--line-strong)] rounded-[11px] bg-[var(--surface-2)] text-[var(--ink)] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                className="w-full px-3 py-2 text-xs font-semibold border border-[var(--line-strong)] rounded-[11px] bg-[var(--surface-2)] text-[var(--ink)] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
               >
                 <option value={0}>{t('keepOriginalDimensions', 'Keep Original Dimensions')}</option>
                 <option value={1920}>{t('max1920', 'Max 1920px (Retina / Full HD)')}</option>
@@ -598,7 +598,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
             <div>
               <div className="flex justify-between text-xs mb-2">
                 <span className="font-bold uppercase tracking-wider text-[var(--ink-3)]">
-                  {t('quality', 'Quality:')} <strong className="text-[#7c3aed] dark:text-[#a78bfa] font-mono">{quality}%</strong>
+                  {t('quality', 'Quality:')} <strong className="text-[#dc2626] dark:text-[#f87171] font-mono">{quality}%</strong>
                 </span>
               </div>
               <input
@@ -622,7 +622,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                 type="checkbox"
                 checked={preventUpscale}
                 onChange={(e) => setPreventUpscale(e.target.checked)}
-                className="w-4 h-4 rounded border-[var(--line-strong)] accent-[#7c3aed]"
+                className="w-4 h-4 rounded border-[var(--line-strong)] accent-[#dc2626]"
               />
               <span>{t('onlyDownscale', 'Only downscale larger images (EXIF & GPS metadata automatically stripped)')}</span>
             </label>
@@ -667,7 +667,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
             {doneItems.length > 0 && (
               <div className="panel-pastel-blue border rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-[#fca5a5]">
                     {t('webPerformanceSummary', 'Web Performance Summary')}
                   </span>
                   <p className="text-sm font-semibold text-[var(--ink-navy)] mt-0.5">
@@ -720,7 +720,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                       />
                       {isBusy && (
                         <div className="absolute inset-0 bg-[var(--surface)]/80 flex items-center justify-center">
-                          <RotateCcw className="w-5 h-5 text-[#7c3aed] animate-spin" />
+                          <RotateCcw className="w-5 h-5 text-[#dc2626] animate-spin" />
                         </div>
                       )}
                     </div>
@@ -768,7 +768,7 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                         <button
                           type="button"
                           onClick={() => void handleCopyImgTag(item)}
-                          className="px-3.5 py-2 text-[var(--ink-2)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer border border-[var(--line)] hover:border-[#7c3aed] transition-colors"
+                          className="px-3.5 py-2 text-[var(--ink-2)] hover:text-[#b91c1c] dark:hover:text-[#fecaca] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer border border-[var(--line)] hover:border-[#dc2626] transition-colors"
                           title={t('copyImgTitle', 'Copy responsive HTML img tag with explicit width and height')}
                         >
                           {copiedId === item.id ? (
@@ -786,9 +786,9 @@ export const WebOptimizerPage: React.FC<WebOptimizerPageProps> = ({
                         <button
                           type="button"
                           onClick={() => setComparisonTarget(item)}
-                          className="px-3.5 py-2 text-[var(--ink-2)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
+                          className="px-3.5 py-2 text-[var(--ink-2)] hover:text-[#b91c1c] dark:hover:text-[#fecaca] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
                         >
-                          <SplitSquareVertical className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
+                          <SplitSquareVertical className="w-4 h-4 text-[#dc2626] dark:text-[#f87171]" />
                           <span>{t('compare', 'Compare')}</span>
                         </button>
                         <button

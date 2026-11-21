@@ -19,7 +19,7 @@ export const CookiePolicyPageRu: React.FC<CookiePolicyPageRuProps> = ({ onNaviga
           <button
             type="button"
             onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Вернуться к компрессору изображений</span>
@@ -91,9 +91,9 @@ export const CookiePolicyPageRu: React.FC<CookiePolicyPageRuProps> = ({ onNaviga
             </h2>
             <p>
               Некоторые другие сервисы на этом сайте могут использовать собственные cookie или похожее хранилище. Google reCAPTCHA, защищающая нашу форму обратной связи от спама, может устанавливать cookie, чтобы отличать людей от ботов; её использование регулируется 
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Политика конфиденциальности Google</a>
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline">Политика конфиденциальности Google</a>
                и 
-              <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Условия использования Google</a>
+              <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline">Условия использования Google</a>
                Google. Cloudflare, на котором размещён этот сайт, может устанавливать cookie безопасности для защиты сайта от злоупотреблений. Анонимные комментарии под нашими инструментами запрашивают только имя, которое хранится сервисом комментариев — а не в cookie этого сайта.
             </p>
           </section>
@@ -131,9 +131,9 @@ export const CookiePolicyPageRu: React.FC<CookiePolicyPageRuProps> = ({ onNaviga
             </h2>
             <p>
               Если у вас есть вопросы об этой политике, свяжитесь с нами по адресу 
-              <a href="mailto:bilalayyah@gmail.com" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">bilalayyah@gmail.com</a>
+              <a href="mailto:bilalayyah@gmail.com" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">bilalayyah@gmail.com</a>
                или прочитайте нашу 
-              <a href="/ru/konfidentsialnost" onClick={(e) => { e.preventDefault(); onNavigate('/ru/konfidentsialnost'); }} className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Политика конфиденциальности</a>
+              <a href="/ru/konfidentsialnost" onClick={(e) => { e.preventDefault(); onNavigate('/ru/konfidentsialnost'); }} className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">Политика конфиденциальности</a>
               .
             </p>
           </section>

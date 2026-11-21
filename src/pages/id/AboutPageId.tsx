@@ -21,7 +21,7 @@ export const AboutPageId: React.FC<AboutPageIdProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/id/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Kembali ke Kompresor Gambar</span>
@@ -42,7 +42,7 @@ export const AboutPageId: React.FC<AboutPageIdProps> = ({ onNavigate }) => {
         <div className="space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Cpu className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Cpu className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Apa Itu CompressMyPic?</span>
             </h2>
             <p>
@@ -58,7 +58,7 @@ export const AboutPageId: React.FC<AboutPageIdProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Layers className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Layers className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Format yang Didukung: JPG, PNG, dan WebP</span>
             </h2>
             <p>
@@ -116,7 +116,7 @@ export const AboutPageId: React.FC<AboutPageIdProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Users className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Users className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Untuk Siapa CompressMyPic?</span>
             </h2>
             <p>
@@ -129,7 +129,7 @@ export const AboutPageId: React.FC<AboutPageIdProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Users className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Users className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Pembuatnya: Bilal</span>
             </h2>
             <p>
@@ -144,7 +144,7 @@ export const AboutPageId: React.FC<AboutPageIdProps> = ({ onNavigate }) => {
                 href="https://github.com/bilalayyah/compressmypic"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 GitHub
               </a>
@@ -153,7 +153,7 @@ export const AboutPageId: React.FC<AboutPageIdProps> = ({ onNavigate }) => {
                 href="https://dev.to/bilalayyah"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 Dev.to
               </a>
@@ -161,7 +161,7 @@ export const AboutPageId: React.FC<AboutPageIdProps> = ({ onNavigate }) => {
               <button
                 type="button"
                 onClick={() => onNavigate('/id/kontak')}
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold cursor-pointer"
               >
                 halaman kontak
               </button>
@@ -185,7 +185,7 @@ export const AboutPageId: React.FC<AboutPageIdProps> = ({ onNavigate }) => {
               <button
                 type="button"
                 onClick={() => onNavigate('/id/privasi')}
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold cursor-pointer"
               >
                 Kebijakan Privasi
               </button>

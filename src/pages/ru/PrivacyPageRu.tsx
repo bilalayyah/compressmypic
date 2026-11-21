@@ -21,7 +21,7 @@ export const PrivacyPageRu: React.FC<PrivacyPageRuProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/ru/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Назад к компрессору изображений</span>
@@ -110,7 +110,7 @@ export const PrivacyPageRu: React.FC<PrivacyPageRuProps> = ({ onNavigate }) => {
             <p>
               Поскольку наши инструменты обрабатывают изображения локально и у нас нет учётных записей пользователей, единственные персональные данные, которые мы обычно храним, — это имя, адрес электронной почты и сообщение, которые вы отправляете через форму обратной связи. Чтобы воспользоваться любым из этих прав, напишите нам на <a
                 href="mailto:bilalayyah@gmail.com"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 bilalayyah@gmail.com
               </a>, и мы ответим в течение 30 дней. Вы также имеете право подать жалобу в местный орган по защите данных, если считаете, что мы обрабатывали ваши данные несправедливо.
@@ -135,14 +135,14 @@ export const PrivacyPageRu: React.FC<PrivacyPageRuProps> = ({ onNavigate }) => {
                 href="https://policies.google.com/privacy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline"
               >
                 Политикой конфиденциальности
               </a> и <a
                 href="https://policies.google.com/terms"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline"
               >
                 Условиями использования
               </a> Google. Мы никогда не просим вас отправлять пароли, платёжные данные или конфиденциальные личные документы через форму обратной связи, и вам не следует включать их в сообщение.
@@ -175,7 +175,7 @@ export const PrivacyPageRu: React.FC<PrivacyPageRuProps> = ({ onNavigate }) => {
               Если у вас есть вопросы по поводу этой политики, свяжитесь с нами по адресу{' '}
               <a
                 href="mailto:bilalayyah@gmail.com"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 bilalayyah@gmail.com
               </a>

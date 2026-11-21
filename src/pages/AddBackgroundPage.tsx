@@ -372,7 +372,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
             <div className="lg:col-span-7 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5">
-                  <Layers className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+                  <Layers className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
                   {t('backgroundPreview', 'Background Preview')}
                 </span>
                 <button
@@ -477,7 +477,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
                   <div>
                     <div className="flex justify-between text-xs mb-1">
                       <span className="font-semibold text-[var(--ink-2)]">{t('angle', 'Angle')}</span>
-                      <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{gradAngle}°</span>
+                      <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{gradAngle}°</span>
                     </div>
                     <input
                       type="range"
@@ -495,7 +495,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-1">
                     <span className="font-semibold text-[var(--ink-2)]">{t('backdropBlurRadius', 'Backdrop Blur Radius')}</span>
-                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{blurRadius}px</span>
+                    <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{blurRadius}px</span>
                   </div>
                   <input
                     type="range"
@@ -519,7 +519,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
                       type="button"
                       onClick={() => setAspect(r)}
                       className={`py-1.5 text-xs font-semibold rounded-[8px] capitalize cursor-pointer transition-all ${
-                        aspect === r ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                        aspect === r ? 'bg-[var(--surface)] text-[#b91c1c] dark:text-[#fecaca] shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {r === 'original' ? t('aspectOriginal', 'Orig') : r}
@@ -532,7 +532,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-1">
                     <span className="font-semibold text-[var(--ink-2)]">{t('imageScale', 'Image Scale')}</span>
-                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{fgScale}%</span>
+                    <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{fgScale}%</span>
                   </div>
                   <input
                     type="range"
@@ -546,7 +546,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-1">
                     <span className="font-semibold text-[var(--ink-2)]">{t('roundness', 'Roundness')}</span>
-                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{fgRadiusPct}%</span>
+                    <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{fgRadiusPct}%</span>
                   </div>
                   <input
                     type="range"
@@ -565,7 +565,7 @@ export const AddBackgroundPage: React.FC<AddBackgroundPageProps> = ({
                   type="checkbox"
                   checked={fgShadow}
                   onChange={(e) => setFgShadow(e.target.checked)}
-                  className="w-4 h-4 accent-[#7c3aed] rounded cursor-pointer"
+                  className="w-4 h-4 accent-[#dc2626] rounded cursor-pointer"
                 />
               </label>
 

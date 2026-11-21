@@ -21,35 +21,35 @@
 
 :root,
 [data-theme="light"] {
-  --bg: #f8f7ff;
-  --bg-soft: #f5f3ff;
-  --bg-tint: #f3f0ff;
+  --bg: #fbfbf9; /* warm white (red minimalist mockups) */
+  --bg-soft: #f6f5f3;
+  --bg-tint: #fef2f2;
   --surface: #ffffff;
-  --surface-2: #f8fafc;
+  --surface-2: #f8f7f5;
   --line: #e5e7eb;
-  --line-strong: #cbd5e1;
+  --line-strong: #d1d5db;
   --ink: #111827;
   --ink-navy: #0f172a;
   --ink-2: #374151;
   --ink-3: #666d7a; /* darkened from #6b7280: muted-text contrast 4.54 -> ~4.89 on page bg (SEO audit #39) */
-  --accent: #7c3aed;
-  --accent-deep: #6d28d9;
-  --accent-soft: #ede9fe;
-  --accent-gradient: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
-  --header-gradient: linear-gradient(90deg, #ede9fe 0%, #e0e7ff 52%, #dbeafe 100%);
-  --footer-gradient: linear-gradient(180deg, #f5f3ff 0%, #eff6ff 100%);
-  --panel-blue-gradient: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
-  --panel-blue-border: #c7d2fe;
-  --dropzone-blue-bg: rgba(255, 255, 255, 0.72);
-  --dropzone-blue-border: #93c5fd;
-  /* Semantic token aliases mapped cleanly to pastel violet + green */
-  --terra: #7c3aed;
-  --terra-deep: #6d28d9;
-  --terra-soft: #ede9fe;
+  --accent: #dc2626; /* red minimalist (was violet #dc2626) */
+  --accent-deep: #b91c1c;
+  --accent-soft: #fee2e2;
+  --accent-gradient: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  --header-gradient: linear-gradient(180deg, #ffffff 0%, #fbfbf9 100%);
+  --footer-gradient: linear-gradient(180deg, #fbfbf9 0%, #f6f5f3 100%);
+  --panel-blue-gradient: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+  --panel-blue-border: #fecaca;
+  --dropzone-blue-bg: rgba(254, 242, 242, 0.72);
+  --dropzone-blue-border: #fca5a5;
+  /* Semantic token aliases mapped cleanly to red + green */
+  --terra: #dc2626;
+  --terra-deep: #b91c1c;
+  --terra-soft: #fee2e2;
   --sage: #16a34a;
   --sage-deep: #15803d;
   --sage-soft: #dcfce7;
-  /* Secondary pastel accents */
+  /* Secondary pastel accents (kept: semantic/tool colors, not brand) */
   --blue: #2563eb;
   --blue-soft: #dbeafe;
   --green: #16a34a;
@@ -62,8 +62,8 @@
   --pink-soft: #fce7f3;
   --yellow: #ca8a04;
   --yellow-soft: #fef9c3;
-  --shadow: 0 1px 3px rgba(17, 24, 39, 0.05), 0 8px 24px -12px rgba(79, 70, 229, 0.12);
-  --shadow-lg: 0 4px 10px rgba(17, 24, 39, 0.06), 0 20px 44px -16px rgba(79, 70, 229, 0.18);
+  --shadow: 0 1px 3px rgba(17, 24, 39, 0.05), 0 8px 24px -12px rgba(17, 24, 39, 0.10);
+  --shadow-lg: 0 4px 10px rgba(17, 24, 39, 0.06), 0 20px 44px -16px rgba(17, 24, 39, 0.14);
   --radius: 16px;
   --radius-card: 16px;
   --radius-btn: 11px;
@@ -73,7 +73,7 @@
 [data-theme="dark"] {
   --bg: #0f172a;
   --bg-soft: #111827;
-  --bg-tint: #172036;
+  --bg-tint: #1c1512;
   --surface: #1e293b;
   --surface-2: #263348;
   --line: #334155;
@@ -82,20 +82,20 @@
   --ink-navy: #f1f5f9;
   --ink-2: #cbd5e1;
   --ink-3: #94a3b8;
-  --accent: #8b5cf6;
-  --accent-deep: #7c3aed;
-  --accent-soft: rgba(124, 58, 237, 0.22);
-  --accent-gradient: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
-  --header-gradient: linear-gradient(90deg, #1e1b4b 0%, #1e293b 52%, #172554 100%);
+  --accent: #ef4444; /* red minimalist on dark (was #ef4444) */
+  --accent-deep: #f87171;
+  --accent-soft: rgba(220, 38, 38, 0.22);
+  --accent-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  --header-gradient: linear-gradient(90deg, #2a1215 0%, #1e293b 52%, #2a1215 100%);
   --footer-gradient: linear-gradient(180deg, #111827 0%, #0f172a 100%);
-  --panel-blue-gradient: linear-gradient(135deg, rgba(30, 58, 138, 0.34) 0%, rgba(91, 33, 182, 0.26) 100%);
-  --panel-blue-border: rgba(129, 140, 248, 0.35);
+  --panel-blue-gradient: linear-gradient(135deg, rgba(220, 38, 38, 0.34) 0%, rgba(185, 28, 28, 0.26) 100%);
+  --panel-blue-border: rgba(248, 113, 113, 0.35);
   --dropzone-blue-bg: rgba(15, 23, 42, 0.55);
-  --dropzone-blue-border: rgba(96, 165, 250, 0.45);
+  --dropzone-blue-border: rgba(248, 113, 113, 0.45);
   /* Semantic token aliases */
-  --terra: #a78bfa;
-  --terra-deep: #c4b5fd;
-  --terra-soft: rgba(124, 58, 237, 0.22);
+  --terra: #f87171;
+  --terra-deep: #fca5a5;
+  --terra-soft: rgba(220, 38, 38, 0.22);
   --sage: #22c55e;
   --sage-deep: #4ade80;
   --sage-soft: rgba(22, 163, 74, 0.2);
@@ -160,7 +160,7 @@
   /* Hero search: visible keyboard focus (SEO audit #37). The hero input
      must never suppress its outline again. */
   .hero-search-input:focus-visible {
-    outline: 2px solid #7c3aed;
+    outline: 2px solid #dc2626;
     outline-offset: 2px;
   }
 
@@ -187,7 +187,7 @@
 
   input[type="checkbox"],
   input[type="radio"] {
-    accent-color: #7c3aed;
+    accent-color: #dc2626;
   }
 }
 
@@ -199,7 +199,7 @@
 
 /* Custom range input styling */
 input[type="range"] {
-  accent-color: #7c3aed;
+  accent-color: #dc2626;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -208,7 +208,7 @@ input[type="range"]::-webkit-slider-thumb {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #7c3aed;
+  background: #dc2626;
   cursor: pointer;
   border: 2px solid #ffffff;
   box-shadow: 0 1px 4px rgba(15, 23, 42, 0.25);
@@ -217,14 +217,14 @@ input[type="range"]::-webkit-slider-thumb {
 
 input[type="range"]::-webkit-slider-thumb:hover {
   transform: scale(1.15);
-  background: #6d28d9;
+  background: #b91c1c;
 }
 
 input[type="range"]::-moz-range-thumb {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #7c3aed;
+  background: #dc2626;
   cursor: pointer;
   border: 2px solid #ffffff;
   box-shadow: 0 1px 4px rgba(15, 23, 42, 0.25);
@@ -250,8 +250,11 @@ input[type="range"]::-moz-range-thumb {
   border-color: var(--dropzone-blue-border);
 }
 
+/* NOTE (red redesign 2026-11-21): class names btn-purple-* are legacy —
+   they now render the RED gradient (was violet). Names kept to avoid
+   touching 184 usages across tool pages. */
 .btn-purple-grad {
-  background-image: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  background-image: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
   color: #ffffff;
   border-radius: 11px;
   transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
@@ -259,11 +262,11 @@ input[type="range"]::-moz-range-thumb {
 
 .btn-purple-grad:hover:not(:disabled) {
   filter: brightness(1.06);
-  box-shadow: 0 6px 18px -4px rgba(124, 58, 237, 0.42);
+  box-shadow: 0 6px 18px -4px rgba(220, 38, 38, 0.42);
 }
 
 .btn-purple-pill {
-  background-image: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  background-image: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
   color: #ffffff;
   border-radius: 9999px;
   transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
@@ -271,75 +274,79 @@ input[type="range"]::-moz-range-thumb {
 
 .btn-purple-pill:hover:not(:disabled) {
   filter: brightness(1.06);
-  box-shadow: 0 6px 18px -4px rgba(124, 58, 237, 0.42);
+  box-shadow: 0 6px 18px -4px rgba(220, 38, 38, 0.42);
 }
 
-/* 15 Cycling Pastel Card Surfaces (Light Mode) */
-.pastel-card-0 { background: linear-gradient(135deg, #ede9fe 0%, #f5f3ff 100%); border-color: #ddd6fe; }
-.pastel-card-1 { background: linear-gradient(135deg, #f3e8ff 0%, #faf5ff 100%); border-color: #e9d5ff; }
-.pastel-card-2 { background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%); border-color: #bfdbfe; }
-.pastel-card-3 { background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%); border-color: #bae6fd; }
-.pastel-card-4 { background: linear-gradient(135deg, #cffafe 0%, #ecfeff 100%); border-color: #a5f3fc; }
-.pastel-card-5 { background: linear-gradient(135deg, #ccfbf1 0%, #f0fdfa 100%); border-color: #99f6e4; }
-.pastel-card-6 { background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%); border-color: #a7f3d0; }
-.pastel-card-7 { background: linear-gradient(135deg, #dcfce7 0%, #f0fdf4 100%); border-color: #bbf7d0; }
-.pastel-card-8 { background: linear-gradient(135deg, #ecfccb 0%, #f7fee7 100%); border-color: #d9f99d; }
-.pastel-card-9 { background: linear-gradient(135deg, #fef9c3 0%, #fefce8 100%); border-color: #fef08a; }
-.pastel-card-10 { background: linear-gradient(135deg, #ffedd5 0%, #fff7ed 100%); border-color: #fed7aa; }
-.pastel-card-11 { background: linear-gradient(135deg, #fed7aa 0%, #fff7ed 100%); border-color: #fdba74; }
-.pastel-card-12 { background: linear-gradient(135deg, #fce7f3 0%, #fdf2f8 100%); border-color: #fbcfe8; }
-.pastel-card-13 { background: linear-gradient(135deg, #ffe4e6 0%, #fff1f2 100%); border-color: #fecdd3; }
-.pastel-card-14 { background: linear-gradient(135deg, #fee2e2 0%, #fef2f2 100%); border-color: #fecaca; }
+/* Minimalist card surfaces (red redesign 2026-11-21): the old 15-colour
+   pastel cycle is replaced by plain white cards with hairline borders,
+   matching the approved mockups. Class names kept; all usages render the
+   same neutral card now. */
+.pastel-card-0 { background: #ffffff; border-color: #e5e7eb; }
+.pastel-card-1 { background: #ffffff; border-color: #e5e7eb; }
+.pastel-card-2 { background: #ffffff; border-color: #e5e7eb; }
+.pastel-card-3 { background: #ffffff; border-color: #e5e7eb; }
+.pastel-card-4 { background: #ffffff; border-color: #e5e7eb; }
+.pastel-card-5 { background: #ffffff; border-color: #e5e7eb; }
+.pastel-card-6 { background: #ffffff; border-color: #e5e7eb; }
+.pastel-card-7 { background: #ffffff; border-color: #e5e7eb; }
+.pastel-card-8 { background: #ffffff; border-color: #e5e7eb; }
+.pastel-card-9 { background: #ffffff; border-color: #e5e7eb; }
+.pastel-card-10 { background: #ffffff; border-color: #e5e7eb; }
+.pastel-card-11 { background: #ffffff; border-color: #e5e7eb; }
+.pastel-card-12 { background: #ffffff; border-color: #e5e7eb; }
+.pastel-card-13 { background: #ffffff; border-color: #e5e7eb; }
+.pastel-card-14 { background: #ffffff; border-color: #e5e7eb; }
 
-/* 15 Cycling Pastel Card Surfaces (Dark Mode) */
-html.dark .pastel-card-0 { background: linear-gradient(135deg, rgba(109, 40, 217, 0.24) 0%, rgba(30, 41, 59, 0.92) 100%); border-color: rgba(167, 139, 250, 0.35); }
-html.dark .pastel-card-1 { background: linear-gradient(135deg, rgba(147, 51, 234, 0.24) 0%, rgba(30, 41, 59, 0.92) 100%); border-color: rgba(192, 132, 252, 0.35); }
-html.dark .pastel-card-2 { background: linear-gradient(135deg, rgba(37, 99, 235, 0.24) 0%, rgba(30, 41, 59, 0.92) 100%); border-color: rgba(96, 165, 250, 0.35); }
-html.dark .pastel-card-3 { background: linear-gradient(135deg, rgba(2, 132, 199, 0.24) 0%, rgba(30, 41, 59, 0.92) 100%); border-color: rgba(56, 189, 248, 0.35); }
-html.dark .pastel-card-4 { background: linear-gradient(135deg, rgba(8, 145, 178, 0.24) 0%, rgba(30, 41, 59, 0.92) 100%); border-color: rgba(34, 211, 238, 0.35); }
-html.dark .pastel-card-5 { background: linear-gradient(135deg, rgba(13, 148, 136, 0.24) 0%, rgba(30, 41, 59, 0.92) 100%); border-color: rgba(45, 212, 191, 0.35); }
-html.dark .pastel-card-6 { background: linear-gradient(135deg, rgba(5, 150, 105, 0.24) 0%, rgba(30, 41, 59, 0.92) 100%); border-color: rgba(52, 211, 153, 0.35); }
-html.dark .pastel-card-7 { background: linear-gradient(135deg, rgba(22, 163, 74, 0.24) 0%, rgba(30, 41, 59, 0.92) 100%); border-color: rgba(74, 222, 128, 0.35); }
-html.dark .pastel-card-8 { background: linear-gradient(135deg, rgba(101, 163, 13, 0.22) 0%, rgba(30, 41, 59, 0.92) 100%); border-color: rgba(163, 230, 53, 0.35); }
-html.dark .pastel-card-9 { background: linear-gradient(135deg, rgba(202, 138, 4, 0.22) 0%, rgba(30, 41, 59, 0.92) 100%); border-color: rgba(250, 204, 21, 0.35); }
-html.dark .pastel-card-10 { background: linear-gradient(135deg, rgba(234, 88, 12, 0.24) 0%, rgba(30, 41, 59, 0.92) 100%); border-color: rgba(251, 146, 60, 0.35); }
-html.dark .pastel-card-11 { background: linear-gradient(135deg, rgba(249, 115, 22, 0.24) 0%, rgba(30, 41, 59, 0.92) 100%); border-color: rgba(253, 186, 116, 0.35); }
-html.dark .pastel-card-12 { background: linear-gradient(135deg, rgba(219, 39, 119, 0.24) 0%, rgba(30, 41, 59, 0.92) 100%); border-color: rgba(244, 114, 182, 0.35); }
-html.dark .pastel-card-13 { background: linear-gradient(135deg, rgba(225, 29, 72, 0.24) 0%, rgba(30, 41, 59, 0.92) 100%); border-color: rgba(251, 113, 133, 0.35); }
-html.dark .pastel-card-14 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.24) 0%, rgba(30, 41, 59, 0.92) 100%); border-color: rgba(248, 113, 113, 0.35); }
+/* Minimalist card surfaces (Dark Mode) */
+html.dark .pastel-card-0 { background: var(--surface); border-color: var(--line); }
+html.dark .pastel-card-1 { background: var(--surface); border-color: var(--line); }
+html.dark .pastel-card-2 { background: var(--surface); border-color: var(--line); }
+html.dark .pastel-card-3 { background: var(--surface); border-color: var(--line); }
+html.dark .pastel-card-4 { background: var(--surface); border-color: var(--line); }
+html.dark .pastel-card-5 { background: var(--surface); border-color: var(--line); }
+html.dark .pastel-card-6 { background: var(--surface); border-color: var(--line); }
+html.dark .pastel-card-7 { background: var(--surface); border-color: var(--line); }
+html.dark .pastel-card-8 { background: var(--surface); border-color: var(--line); }
+html.dark .pastel-card-9 { background: var(--surface); border-color: var(--line); }
+html.dark .pastel-card-10 { background: var(--surface); border-color: var(--line); }
+html.dark .pastel-card-11 { background: var(--surface); border-color: var(--line); }
+html.dark .pastel-card-12 { background: var(--surface); border-color: var(--line); }
+html.dark .pastel-card-13 { background: var(--surface); border-color: var(--line); }
+html.dark .pastel-card-14 { background: var(--surface); border-color: var(--line); }
 
-/* 15 Cycling Pastel Gradient Icon Tiles */
-.pastel-tile-0 { background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); color: #6d28d9; }
-.pastel-tile-1 { background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); color: #7e22ce; }
-.pastel-tile-2 { background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); color: #1d4ed8; }
-.pastel-tile-3 { background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); color: #0369a1; }
-.pastel-tile-4 { background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 100%); color: #0e7490; }
-.pastel-tile-5 { background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 100%); color: #0f766e; }
-.pastel-tile-6 { background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); color: #047857; }
-.pastel-tile-7 { background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); color: #15803d; }
-.pastel-tile-8 { background: linear-gradient(135deg, #ecfccb 0%, #d9f99d 100%); color: #4d7c0f; }
-.pastel-tile-9 { background: linear-gradient(135deg, #fef9c3 0%, #fef08a 100%); color: #a16207; }
-.pastel-tile-10 { background: linear-gradient(135deg, #ffedd5 0%, #fed7aa 100%); color: #c2410c; }
-.pastel-tile-11 { background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%); color: #c2410c; }
-.pastel-tile-12 { background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); color: #be185d; }
-.pastel-tile-13 { background: linear-gradient(135deg, #ffe4e6 0%, #fecdd3 100%); color: #be123c; }
-.pastel-tile-14 { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); color: #b91c1c; }
+/* Red icon tiles (red redesign 2026-11-21): all tiles are the red-soft
+   tile with a red icon, matching the approved mockups. */
+.pastel-tile-0 { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); color: #dc2626; }
+.pastel-tile-1 { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); color: #dc2626; }
+.pastel-tile-2 { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); color: #dc2626; }
+.pastel-tile-3 { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); color: #dc2626; }
+.pastel-tile-4 { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); color: #dc2626; }
+.pastel-tile-5 { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); color: #dc2626; }
+.pastel-tile-6 { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); color: #dc2626; }
+.pastel-tile-7 { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); color: #dc2626; }
+.pastel-tile-8 { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); color: #dc2626; }
+.pastel-tile-9 { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); color: #dc2626; }
+.pastel-tile-10 { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); color: #dc2626; }
+.pastel-tile-11 { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); color: #dc2626; }
+.pastel-tile-12 { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); color: #dc2626; }
+.pastel-tile-13 { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); color: #dc2626; }
+.pastel-tile-14 { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); color: #dc2626; }
 
-html.dark .pastel-tile-0 { background: linear-gradient(135deg, rgba(124, 58, 237, 0.35), rgba(109, 40, 217, 0.25)); color: #ddd6fe; }
-html.dark .pastel-tile-1 { background: linear-gradient(135deg, rgba(147, 51, 234, 0.35), rgba(126, 34, 206, 0.25)); color: #e9d5ff; }
-html.dark .pastel-tile-2 { background: linear-gradient(135deg, rgba(37, 99, 235, 0.35), rgba(29, 78, 216, 0.25)); color: #bfdbfe; }
-html.dark .pastel-tile-3 { background: linear-gradient(135deg, rgba(2, 132, 199, 0.35), rgba(3, 105, 161, 0.25)); color: #bae6fd; }
-html.dark .pastel-tile-4 { background: linear-gradient(135deg, rgba(8, 145, 178, 0.35), rgba(14, 116, 144, 0.25)); color: #a5f3fc; }
-html.dark .pastel-tile-5 { background: linear-gradient(135deg, rgba(13, 148, 136, 0.35), rgba(15, 118, 110, 0.25)); color: #99f6e4; }
-html.dark .pastel-tile-6 { background: linear-gradient(135deg, rgba(5, 150, 105, 0.35), rgba(4, 120, 87, 0.25)); color: #a7f3d0; }
-html.dark .pastel-tile-7 { background: linear-gradient(135deg, rgba(22, 163, 74, 0.35), rgba(21, 128, 61, 0.25)); color: #bbf7d0; }
-html.dark .pastel-tile-8 { background: linear-gradient(135deg, rgba(101, 163, 13, 0.35), rgba(77, 124, 15, 0.25)); color: #d9f99d; }
-html.dark .pastel-tile-9 { background: linear-gradient(135deg, rgba(202, 138, 4, 0.35), rgba(161, 98, 7, 0.25)); color: #fef08a; }
-html.dark .pastel-tile-10 { background: linear-gradient(135deg, rgba(234, 88, 12, 0.35), rgba(194, 65, 12, 0.25)); color: #fed7aa; }
-html.dark .pastel-tile-11 { background: linear-gradient(135deg, rgba(249, 115, 22, 0.35), rgba(194, 65, 12, 0.25)); color: #fdba74; }
-html.dark .pastel-tile-12 { background: linear-gradient(135deg, rgba(219, 39, 119, 0.35), rgba(190, 24, 93, 0.25)); color: #fbcfe8; }
-html.dark .pastel-tile-13 { background: linear-gradient(135deg, rgba(225, 29, 72, 0.35), rgba(190, 18, 60, 0.25)); color: #fecdd3; }
-html.dark .pastel-tile-14 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.25)); color: #fecaca; }
+html.dark .pastel-tile-0 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.25)); color: #fca5a5; }
+html.dark .pastel-tile-1 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.25)); color: #fca5a5; }
+html.dark .pastel-tile-2 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.25)); color: #fca5a5; }
+html.dark .pastel-tile-3 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.25)); color: #fca5a5; }
+html.dark .pastel-tile-4 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.25)); color: #fca5a5; }
+html.dark .pastel-tile-5 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.25)); color: #fca5a5; }
+html.dark .pastel-tile-6 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.25)); color: #fca5a5; }
+html.dark .pastel-tile-7 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.25)); color: #fca5a5; }
+html.dark .pastel-tile-8 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.25)); color: #fca5a5; }
+html.dark .pastel-tile-9 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.25)); color: #fca5a5; }
+html.dark .pastel-tile-10 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.25)); color: #fca5a5; }
+html.dark .pastel-tile-11 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.25)); color: #fca5a5; }
+html.dark .pastel-tile-12 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.25)); color: #fca5a5; }
+html.dark .pastel-tile-13 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.25)); color: #fca5a5; }
+html.dark .pastel-tile-14 { background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.25)); color: #fca5a5; }
 
 /* Dark navy / charcoal overrides for utility classes */
 @layer utilities {

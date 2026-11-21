@@ -389,12 +389,12 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({
                 <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5">
                   {scope === 'brush' ? (
                     <>
-                      <Brush className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+                      <Brush className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
                       <span>{effectMode === 'blur' ? t('paintOverAreasBlur', 'Paint Over Areas to Blur') : t('paintOverAreasPixelate', 'Paint Over Areas to Pixelate')}</span>
                     </>
                   ) : (
                     <>
-                      <Droplets className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+                      <Droplets className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
                       <span>{t('wholeImagePreview', 'Whole-Image Preview')}</span>
                     </>
                   )}
@@ -406,7 +406,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({
                       <button
                         type="button"
                         onClick={() => setStrokes((s) => s.slice(0, -1))}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-semibold rounded-[11px] bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#c4b5fd] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] text-[var(--ink-2)] cursor-pointer transition-colors"
+                        className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-semibold rounded-[11px] bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#fca5a5] hover:text-[#dc2626] dark:hover:text-[#fca5a5] text-[var(--ink-2)] cursor-pointer transition-colors"
                       >
                         <Undo2 className="w-3.5 h-3.5" />
                         <span>{t('undo', 'Undo')}</span>
@@ -414,7 +414,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({
                       <button
                         type="button"
                         onClick={() => setStrokes([])}
-                        className="px-3 py-1.5 text-xs font-semibold rounded-[11px] bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#c4b5fd] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] text-[var(--ink-2)] cursor-pointer transition-colors"
+                        className="px-3 py-1.5 text-xs font-semibold rounded-[11px] bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#fca5a5] hover:text-[#dc2626] dark:hover:text-[#fca5a5] text-[var(--ink-2)] cursor-pointer transition-colors"
                       >
                         {t('resetBrush', 'Reset Brush')}
                       </button>
@@ -485,7 +485,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({
                     type="button"
                     onClick={() => setEffectMode('pixelate')}
                     className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
-                      effectMode === 'pixelate' ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                      effectMode === 'pixelate' ? 'bg-[var(--surface)] text-[#b91c1c] dark:text-[#fecaca] shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
                     {t('pixelateMosaic', 'Pixelate Mosaic')}
@@ -494,7 +494,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({
                     type="button"
                     onClick={() => setEffectMode('blur')}
                     className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
-                      effectMode === 'blur' ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                      effectMode === 'blur' ? 'bg-[var(--surface)] text-[#b91c1c] dark:text-[#fecaca] shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
                     {t('smoothBlur', 'Smooth Blur')}
@@ -506,7 +506,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-1.5">
                     <span className="font-semibold text-[var(--ink-2)]">{t('blurRadius', 'Blur Radius')}</span>
-                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{blurRadius}px</span>
+                    <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{blurRadius}px</span>
                   </div>
                   <input
                     type="range"
@@ -521,7 +521,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-1.5">
                     <span className="font-semibold text-[var(--ink-2)]">{t('mosaicBlockSize', 'Mosaic Block Size')}</span>
-                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{pixelSize}px</span>
+                    <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{pixelSize}px</span>
                   </div>
                   <input
                     type="range"
@@ -538,7 +538,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-1.5">
                     <span className="font-semibold text-[var(--ink-2)]">{t('brushSize', 'Brush Size')}</span>
-                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{brushSizePct}%</span>
+                    <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{brushSizePct}%</span>
                   </div>
                   <input
                     type="range"
@@ -573,7 +573,7 @@ export const BlurPixelatePage: React.FC<BlurPixelatePageProps> = ({
                   <div>
                     <div className="flex justify-between text-xs mb-1">
                       <span className="font-semibold text-[var(--ink-2)]">{t('quality', 'Quality')}</span>
-                      <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{quality}%</span>
+                      <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{quality}%</span>
                     </div>
                     <input
                       type="range"

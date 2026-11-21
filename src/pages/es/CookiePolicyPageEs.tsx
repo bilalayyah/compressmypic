@@ -19,7 +19,7 @@ export const CookiePolicyPageEs: React.FC<CookiePolicyPageEsProps> = ({ onNaviga
           <button
             type="button"
             onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Volver al compresor de imágenes</span>
@@ -91,9 +91,9 @@ export const CookiePolicyPageEs: React.FC<CookiePolicyPageEsProps> = ({ onNaviga
             </h2>
             <p>
               Algunos otros servicios de este sitio pueden usar cookies o almacenamiento similar propios. Google reCAPTCHA, que protege nuestro formulario de contacto contra el spam, puede instalar cookies para distinguir a las personas de los bots; su uso se rige por la 
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Política de Privacidad de Google</a>
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline">Política de Privacidad de Google</a>
                y los 
-              <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Términos de Servicio de Google</a>
+              <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline">Términos de Servicio de Google</a>
                de Google. Cloudflare, que aloja este sitio, puede instalar una cookie de seguridad para proteger el sitio contra abusos. Los comentarios anónimos bajo nuestras herramientas solo piden un nombre, que guarda el servicio de comentarios, no en una cookie de este sitio.
             </p>
           </section>
@@ -131,9 +131,9 @@ export const CookiePolicyPageEs: React.FC<CookiePolicyPageEsProps> = ({ onNaviga
             </h2>
             <p>
               Si tiene preguntas sobre esta política, contáctenos en 
-              <a href="mailto:bilalayyah@gmail.com" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">bilalayyah@gmail.com</a>
+              <a href="mailto:bilalayyah@gmail.com" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">bilalayyah@gmail.com</a>
                o lea nuestra 
-              <a href="/es/privacidad" onClick={(e) => { e.preventDefault(); onNavigate('/es/privacidad'); }} className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Política de Privacidad</a>
+              <a href="/es/privacidad" onClick={(e) => { e.preventDefault(); onNavigate('/es/privacidad'); }} className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">Política de Privacidad</a>
               .
             </p>
           </section>

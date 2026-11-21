@@ -474,7 +474,7 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
                     onClick={() => setStrategy(s.id)}
                     className={`px-3 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                       strategy === s.id
-                        ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs'
+                        ? 'bg-[var(--surface)] text-[#b91c1c] dark:text-[#fecaca] shadow-xs'
                         : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
@@ -496,7 +496,7 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
                     onClick={() => setFormat(fmt)}
                     className={`px-3 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                       format === fmt
-                        ? 'bg-[#7c3aed] text-white shadow-xs'
+                        ? 'bg-[#dc2626] text-white shadow-xs'
                         : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
@@ -512,7 +512,7 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
               <div className="flex items-center justify-between text-xs mb-2">
                 <span className="font-semibold text-[var(--ink-2)]">
                   {t('scaleAllImages', 'Scale All Images:')}{' '}
-                  <strong className="text-[#7c3aed] dark:text-[#a78bfa] font-mono text-sm">{percentage}%</strong>
+                  <strong className="text-[#dc2626] dark:text-[#f87171] font-mono text-sm">{percentage}%</strong>
                 </span>
                 <div className="flex gap-1.5">
                   {[25, 50, 75, 100, 150].map((pct) => (
@@ -522,7 +522,7 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
                       onClick={() => setPercentage(pct)}
                       className={`px-2.5 py-1 rounded-full text-xs font-semibold cursor-pointer transition-colors ${
                         percentage === pct
-                          ? 'bg-[#7c3aed] text-white'
+                          ? 'bg-[#dc2626] text-white'
                           : 'bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-2)] hover:border-[var(--line-strong)]'
                       }`}
                     >
@@ -558,7 +558,7 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
                     max={12000}
                     value={maxWidth}
                     onChange={(e) => setMaxWidth(Math.max(1, parseInt(e.target.value || '1', 10) || 1))}
-                    className="w-full px-3.5 py-2.5 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                    className="w-full px-3.5 py-2.5 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                   />
                 </div>
 
@@ -575,7 +575,7 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
                       onChange={(e) =>
                         setMaxHeight(Math.max(1, parseInt(e.target.value || '1', 10) || 1))
                       }
-                      className="w-full px-3.5 py-2.5 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                      className="w-full px-3.5 py-2.5 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                     />
                   </div>
                 )}
@@ -586,7 +586,7 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
                       type="checkbox"
                       checked={preventUpscale}
                       onChange={(e) => setPreventUpscale(e.target.checked)}
-                      className="w-4 h-4 rounded border-[var(--line-strong)] accent-[#7c3aed]"
+                      className="w-4 h-4 rounded border-[var(--line-strong)] accent-[#dc2626]"
                     />
                     <span>{t('doNotEnlarge', 'Do not enlarge smaller images')}</span>
                   </label>
@@ -607,7 +607,7 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
                           onClick={() => setFitMode(m.id)}
                           className={`px-3 py-2 text-xs font-semibold rounded-[10px] border cursor-pointer transition-colors ${
                             fitMode === m.id
-                              ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/25 border-[#7c3aed] dark:border-[#8b5cf6] text-[#6d28d9] dark:text-[#ddd6fe]'
+                              ? 'bg-[#fee2e2] dark:bg-[#dc2626]/25 border-[#dc2626] dark:border-[#ef4444] text-[#b91c1c] dark:text-[#fecaca]'
                               : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)]'
                           }`}
                         >
@@ -633,7 +633,7 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
                       setMaxWidth(p.w);
                       setMaxHeight(p.h);
                     }}
-                    className="px-3 py-1.5 text-xs font-medium bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 text-[var(--ink-2)] rounded-full cursor-pointer transition-colors"
+                    className="px-3 py-1.5 text-xs font-medium bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 text-[var(--ink-2)] rounded-full cursor-pointer transition-colors"
                   >
                     {p.label}
                   </button>
@@ -646,7 +646,7 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
             <div className="flex-1 max-w-md">
               <div className="flex justify-between text-xs mb-1.5">
                 <span className="font-semibold text-[var(--ink-2)]">
-                  {t('quality', 'Quality:')} <strong className="text-[#7c3aed] dark:text-[#a78bfa] font-mono">{quality}%</strong>
+                  {t('quality', 'Quality:')} <strong className="text-[#dc2626] dark:text-[#f87171] font-mono">{quality}%</strong>
                 </span>
                 {format === 'jpeg' && (
                   <label className="flex items-center gap-1.5 text-[var(--ink-2)]">
@@ -713,7 +713,7 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
             {doneItems.length > 0 && (
               <div className="panel-pastel-blue border rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-[#fca5a5]">
                     {t('bulkResizeComplete', 'Bulk Resize Complete')}
                   </span>
                   <p className="text-sm font-semibold text-[var(--ink-navy)] mt-0.5">
@@ -757,7 +757,7 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
                       />
                       {isBusy && (
                         <div className="absolute inset-0 bg-[var(--surface)]/80 flex items-center justify-center">
-                          <RotateCcw className="w-5 h-5 text-[#7c3aed] animate-spin" />
+                          <RotateCcw className="w-5 h-5 text-[#dc2626] animate-spin" />
                         </div>
                       )}
                     </div>
@@ -792,9 +792,9 @@ export const BulkResizerPage: React.FC<BulkResizerPageProps> = ({
                         <button
                           type="button"
                           onClick={() => setComparisonTarget(item)}
-                          className="px-3.5 py-2 text-[var(--ink)] bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed]/50 text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
+                          className="px-3.5 py-2 text-[var(--ink)] bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#dc2626]/50 text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
                         >
-                          <SplitSquareVertical className="w-4 h-4 text-[#7c3aed] dark:text-[#c4b5fd]" />
+                          <SplitSquareVertical className="w-4 h-4 text-[#dc2626] dark:text-[#fca5a5]" />
                           <span>{t('compare', 'Compare')}</span>
                         </button>
                         <button

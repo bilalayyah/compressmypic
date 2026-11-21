@@ -83,7 +83,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
               onClick={() => handlePresetSelect('low')}
               className={`px-3.5 py-1.5 text-xs rounded-[9px] transition-colors cursor-pointer whitespace-nowrap ${
                 settings.preset === 'low'
-                  ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] font-semibold shadow-xs'
+                  ? 'bg-[var(--surface)] text-[#b91c1c] dark:text-[#fecaca] font-semibold shadow-xs'
                   : 'text-[var(--ink-2)] font-medium hover:text-[var(--ink)]'
               }`}
             >
@@ -94,7 +94,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
               onClick={() => handlePresetSelect('balanced')}
               className={`px-3.5 py-1.5 text-xs rounded-[9px] transition-colors cursor-pointer whitespace-nowrap ${
                 settings.preset === 'balanced'
-                  ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] font-semibold shadow-xs'
+                  ? 'bg-[var(--surface)] text-[#b91c1c] dark:text-[#fecaca] font-semibold shadow-xs'
                   : 'text-[var(--ink-2)] font-medium hover:text-[var(--ink)]'
               }`}
             >
@@ -105,7 +105,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
               onClick={() => handlePresetSelect('high')}
               className={`px-3.5 py-1.5 text-xs rounded-[9px] transition-colors cursor-pointer whitespace-nowrap ${
                 settings.preset === 'high'
-                  ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] font-semibold shadow-xs'
+                  ? 'bg-[var(--surface)] text-[#b91c1c] dark:text-[#fecaca] font-semibold shadow-xs'
                   : 'text-[var(--ink-2)] font-medium hover:text-[var(--ink)]'
               }`}
             >
@@ -116,11 +116,11 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
               onClick={() => onUpdateSettings({ preset: 'custom' })}
               className={`px-3.5 py-1.5 text-xs rounded-[9px] transition-colors cursor-pointer whitespace-nowrap flex items-center gap-1 ${
                 settings.preset === 'custom'
-                  ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] font-semibold shadow-xs'
+                  ? 'bg-[var(--surface)] text-[#b91c1c] dark:text-[#fecaca] font-semibold shadow-xs'
                   : 'text-[var(--ink-2)] font-medium hover:text-[var(--ink)]'
               }`}
             >
-              <Sliders className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#c4b5fd]" />
+              <Sliders className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#fca5a5]" />
               {strings?.presetCustom ?? 'Custom'}
             </button>
           </div>
@@ -163,7 +163,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
           <div className="flex items-center justify-between text-xs mb-2">
             <span className="font-semibold text-[var(--ink)] flex items-center gap-1.5">
               {strings?.qualityLabel ?? 'Quality Target:'}
-              <span className="text-[#7c3aed] dark:text-[#c4b5fd] font-bold font-mono text-sm tabular-nums">
+              <span className="text-[#dc2626] dark:text-[#fca5a5] font-bold font-mono text-sm tabular-nums">
                 {settings.quality}%
               </span>
             </span>
@@ -218,7 +218,7 @@ export const CompressionControls: React.FC<CompressionControlsProps> = ({
             type="button"
             onClick={onClearAll}
             disabled={isCompressing || totalImagesCount === 0}
-            className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[var(--surface)] border border-[var(--line)] hover:border-[#7c3aed]/40 hover:bg-[var(--accent-soft)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-2)] text-sm font-medium rounded-[11px] transition-colors cursor-pointer whitespace-nowrap shrink-0"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[var(--surface)] border border-[var(--line)] hover:border-[#dc2626]/40 hover:bg-[var(--accent-soft)] hover:text-[#b91c1c] dark:hover:text-[#fecaca] text-[var(--ink-2)] text-sm font-medium rounded-[11px] transition-colors cursor-pointer whitespace-nowrap shrink-0"
             title={strings?.clearAllTitle ?? 'Clear all images'}
           >
             <Trash2 className="w-4 h-4" />

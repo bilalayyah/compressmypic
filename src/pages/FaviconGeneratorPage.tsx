@@ -258,7 +258,7 @@ export const FaviconGeneratorPage: React.FC<FaviconGeneratorPageProps> = ({
           subtitle={
             <>
               {t('uploadSubtitlePrefix', 'Square PNG or SVG recommended · ')}
-              <span className="text-[#7c3aed] dark:text-[#a78bfa] font-semibold underline underline-offset-2">
+              <span className="text-[#dc2626] dark:text-[#f87171] font-semibold underline underline-offset-2">
                 {t('uploadBrowseFile', 'browse file')}
               </span>
             </>
@@ -294,7 +294,7 @@ export const FaviconGeneratorPage: React.FC<FaviconGeneratorPageProps> = ({
                           borderRadiusPercent
                         );
                       }}
-                      className="rounded border-[var(--line-strong)] accent-[#7c3aed]"
+                      className="rounded border-[var(--line-strong)] accent-[#dc2626]"
                     />
                     <span>{t('transparent', 'Transparent')}</span>
                   </label>
@@ -324,7 +324,7 @@ export const FaviconGeneratorPage: React.FC<FaviconGeneratorPageProps> = ({
                   <span className="font-bold uppercase tracking-wider text-[var(--ink-3)]">
                     {t('padding', 'Padding')}
                   </span>
-                  <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{paddingPercent}%</span>
+                  <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{paddingPercent}%</span>
                 </div>
                 <input
                   type="range"
@@ -351,7 +351,7 @@ export const FaviconGeneratorPage: React.FC<FaviconGeneratorPageProps> = ({
                   <span className="font-bold uppercase tracking-wider text-[var(--ink-3)]">
                     {t('cornerRadius', 'Corner Radius')}
                   </span>
-                  <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{borderRadiusPercent}%</span>
+                  <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{borderRadiusPercent}%</span>
                 </div>
                 <input
                   type="range"
@@ -436,7 +436,7 @@ export const FaviconGeneratorPage: React.FC<FaviconGeneratorPageProps> = ({
                 <button
                   type="button"
                   onClick={() => triggerDownload(pkg.icoBlob, 'favicon.ico')}
-                  className="p-2 bg-[var(--surface)] border border-[var(--line)] hover:bg-[#7c3aed] hover:text-white hover:border-[#7c3aed] text-[#7c3aed] dark:text-[#c4b5fd] rounded-[11px] cursor-pointer transition-colors"
+                  className="p-2 bg-[var(--surface)] border border-[var(--line)] hover:bg-[#dc2626] hover:text-white hover:border-[#dc2626] text-[#dc2626] dark:text-[#fca5a5] rounded-[11px] cursor-pointer transition-colors"
                   title={t('downloadFaviconIco', 'Download favicon.ico')}
                 >
                   <Download className="w-4 h-4" />
@@ -466,7 +466,7 @@ export const FaviconGeneratorPage: React.FC<FaviconGeneratorPageProps> = ({
                   <button
                     type="button"
                     onClick={() => triggerDownload(asset.blob, asset.filename)}
-                    className="p-2 bg-[var(--surface)] border border-[var(--line)] hover:bg-[#7c3aed] hover:text-white hover:border-[#7c3aed] text-[#7c3aed] dark:text-[#c4b5fd] rounded-[11px] cursor-pointer transition-colors"
+                    className="p-2 bg-[var(--surface)] border border-[var(--line)] hover:bg-[#dc2626] hover:text-white hover:border-[#dc2626] text-[#dc2626] dark:text-[#fca5a5] rounded-[11px] cursor-pointer transition-colors"
                     title={t('downloadFile', 'Download {filename}').replace('{filename}', asset.filename)}
                   >
                     <Download className="w-4 h-4" />
@@ -497,7 +497,7 @@ export const FaviconGeneratorPage: React.FC<FaviconGeneratorPageProps> = ({
                   )}
                 </button>
               </div>
-              <pre className="text-xs font-mono text-[#c4b5fd] overflow-x-auto leading-relaxed">
+              <pre className="text-xs font-mono text-[#fca5a5] overflow-x-auto leading-relaxed">
                 {pkg.htmlSnippet}
               </pre>
             </div>

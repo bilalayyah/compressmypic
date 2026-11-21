@@ -24,8 +24,8 @@ export function BlogCategoryNav({ lang, activeCategoryId = null, categories }: B
       aria-current={active ? 'page' : undefined}
       className={`px-4 py-2 rounded-full text-sm font-semibold border transition-colors ${
         active
-          ? 'bg-[#7c3aed] text-white border-[#7c3aed]'
-          : 'bg-[var(--surface)] border-[var(--line)] text-[var(--ink-2)] hover:border-[#7c3aed]/40 hover:text-[#7c3aed]'
+          ? 'bg-[#dc2626] text-white border-[#dc2626]'
+          : 'bg-[var(--surface)] border-[var(--line)] text-[var(--ink-2)] hover:border-[#dc2626]/40 hover:text-[#dc2626]'
       }`}
     >
       {label}

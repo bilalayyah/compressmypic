@@ -315,7 +315,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
 
         {isDecoding && (
           <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 text-sm text-[var(--ink-2)] flex items-center gap-3 shadow-[var(--shadow)]">
-            <RotateCcw className="w-4 h-4 animate-spin text-[#7c3aed] dark:text-[#a78bfa]" />
+            <RotateCcw className="w-4 h-4 animate-spin text-[#dc2626] dark:text-[#f87171]" />
             <span>{t('decodingGif', 'Decoding animated GIF frames locally in your browser...')}</span>
           </div>
         )}
@@ -326,7 +326,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
             <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-5">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[var(--line)]">
                 <div className="flex items-center gap-2.5">
-                  <Film className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+                  <Film className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
                   <div>
                     <h2 className="font-sans text-sm font-bold text-[var(--ink-navy)]">{sourceFile.name}</h2>
                     <p className="text-xs text-[var(--ink-3)] font-mono">
@@ -341,21 +341,21 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                   <button
                     type="button"
                     onClick={() => handleApplyLevel('light')}
-                    className="px-3.5 py-1.5 text-xs font-semibold bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 text-[var(--ink-2)] rounded-full cursor-pointer transition-colors"
+                    className="px-3.5 py-1.5 text-xs font-semibold bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 text-[var(--ink-2)] rounded-full cursor-pointer transition-colors"
                   >
                     {t('presetLight', 'Light')}
                   </button>
                   <button
                     type="button"
                     onClick={() => handleApplyLevel('balanced')}
-                    className="px-3.5 py-1.5 text-xs font-semibold bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 text-[var(--ink-2)] rounded-full cursor-pointer transition-colors"
+                    className="px-3.5 py-1.5 text-xs font-semibold bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 text-[var(--ink-2)] rounded-full cursor-pointer transition-colors"
                   >
                     {t('presetBalanced', 'Balanced')}
                   </button>
                   <button
                     type="button"
                     onClick={() => handleApplyLevel('strong')}
-                    className="px-3.5 py-1.5 text-xs font-semibold bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 text-[var(--ink-2)] rounded-full cursor-pointer transition-colors"
+                    className="px-3.5 py-1.5 text-xs font-semibold bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 text-[var(--ink-2)] rounded-full cursor-pointer transition-colors"
                   >
                     {t('presetMaxShrink', 'Max Shrink')}
                   </button>
@@ -367,7 +367,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-2">
                     <span className="font-bold text-[var(--ink-2)]">{t('colorPaletteLimit', 'Color Palette Limit')}</span>
-                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{t('colorsCount', '{count} colors').replace('{count}', String(maxColors))}</span>
+                    <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{t('colorsCount', '{count} colors').replace('{count}', String(maxColors))}</span>
                   </div>
                   <input
                     type="range"
@@ -386,7 +386,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                         onClick={() => setMaxColors(c)}
                         className={`px-2.5 py-1 text-xs font-semibold rounded-full cursor-pointer transition-colors ${
                           maxColors === c
-                            ? 'bg-[#7c3aed] text-white'
+                            ? 'bg-[#dc2626] text-white'
                             : 'bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-2)] hover:border-[var(--line-strong)]'
                         }`}
                       >
@@ -400,7 +400,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-2">
                     <span className="font-bold text-[var(--ink-2)]">{t('outputScale', 'Output Scale')}</span>
-                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">
+                    <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">
                       {t('scaleWithDims', '{percent}% ({width}×{height})')
                         .replace('{percent}', String(scalePercent))
                         .replace('{width}', String(targetOutW))
@@ -415,7 +415,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                         onClick={() => setScalePercent(pct)}
                         className={`px-3 py-1.5 text-xs font-semibold rounded-full cursor-pointer transition-colors ${
                           scalePercent === pct
-                            ? 'bg-[#7c3aed] text-white'
+                            ? 'bg-[#dc2626] text-white'
                             : 'bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-2)] hover:border-[var(--line-strong)]'
                         }`}
                       >
@@ -445,7 +445,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                         disabled={decodedGif.frames.length <= 2 && opt.step > 1}
                         className={`text-left px-3 py-1.5 text-xs font-medium rounded-[10px] border cursor-pointer disabled:opacity-40 transition-colors ${
                           frameStep === opt.step
-                            ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/25 border-[#7c3aed] dark:border-[#8b5cf6] text-[#6d28d9] dark:text-[#ddd6fe] font-semibold'
+                            ? 'bg-[#fee2e2] dark:bg-[#dc2626]/25 border-[#dc2626] dark:border-[#ef4444] text-[#b91c1c] dark:text-[#fecaca] font-semibold'
                             : 'bg-[var(--surface-2)] border-[var(--line)] text-[var(--ink-2)] hover:border-[var(--line-strong)]'
                         }`}
                       >

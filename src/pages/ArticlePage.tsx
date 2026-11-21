@@ -24,6 +24,7 @@ import {
 import { useBlog } from '../components/blog/BlogContext';
 import { ArticleTOC } from '../components/blog/ArticleTOC';
 import { RelatedArticles } from '../components/blog/RelatedArticles';
+import { ShareButtons } from '../components/ShareButtons';
 import { ensureHeadingIds, formatBlogDate } from '../components/blog/blogBody';
 
 interface ArticlePageProps {
@@ -36,7 +37,6 @@ interface ArticlePageProps {
 
 export function ArticlePage({ lang, article, onNavigate, tools, categories }: ArticlePageProps) {
   const { overrides, strings } = useBlog();
-  const [copied, setCopied] = useState(false);
   const publishedInLang = isBlogArticlePublishedIn(article, lang);
   // Tier B: the body comes from the per-article body cache. main.tsx
   // preloads it before first render on article routes (direct loads and
@@ -84,28 +84,15 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
   const related = getRelatedBlogArticles(article, lang);
   const { prev, next } = getBlogArticlePrevNext(article, lang);
 
-  const copyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(absoluteUrl);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // Clipboard unavailable (older browsers) — the link itself is shown below.
-    }
-  };
-
-  const shareText = encodeURIComponent(version.title);
-  const shareUrl = encodeURIComponent(absoluteUrl);
-
   if (!publishedInLang) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-10 sm:py-14">
         <nav aria-label="Breadcrumb" className="text-sm text-[var(--ink-3)]">
-          <a href={homeUrl} className="hover:text-[#7c3aed]">
+          <a href={homeUrl} className="hover:text-[#dc2626]">
             CompressMyPic
           </a>
           {' / '}
-          <a href={blogHomeUrl} className="hover:text-[#7c3aed]">
+          <a href={blogHomeUrl} className="hover:text-[#dc2626]">
             {strings.blog}
           </a>
         </nav>
@@ -117,13 +104,13 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <a
               href={getBlogArticleUrl(article, 'en')}
-              className="px-5 py-2.5 rounded-full bg-[#7c3aed] text-white text-sm font-semibold hover:bg-[#6d28d9] transition-colors"
+              className="px-5 py-2.5 rounded-full bg-[#dc2626] text-white text-sm font-semibold hover:bg-[#b91c1c] transition-colors"
             >
               {version.title} (English)
             </a>
             <a
               href={blogHomeUrl}
-              className="px-5 py-2.5 rounded-full border border-[var(--line)] bg-[var(--surface)] text-sm font-semibold hover:border-[#7c3aed]/40 hover:text-[#7c3aed] transition-colors"
+              className="px-5 py-2.5 rounded-full border border-[var(--line)] bg-[var(--surface)] text-sm font-semibold hover:border-[#dc2626]/40 hover:text-[#dc2626] transition-colors"
             >
               {strings.viewBlogHome} →
             </a>
@@ -136,15 +123,15 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
   return (
     <div className="max-w-3xl mx-auto px-4 py-10 sm:py-14">
       <nav aria-label="Breadcrumb" className="text-sm text-[var(--ink-3)]">
-        <a href={homeUrl} className="hover:text-[#7c3aed]">
+        <a href={homeUrl} className="hover:text-[#dc2626]">
           CompressMyPic
         </a>
         {' / '}
-        <a href={blogHomeUrl} className="hover:text-[#7c3aed]">
+        <a href={blogHomeUrl} className="hover:text-[#dc2626]">
           {strings.blog}
         </a>
         {' / '}
-        <a href={categoryUrl} className="hover:text-[#7c3aed]">
+        <a href={categoryUrl} className="hover:text-[#dc2626]">
           {categoryLabel}
         </a>
         {' / '}
@@ -156,7 +143,7 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
       <div className="mt-6">
         <a
           href={categoryUrl}
-          className="inline-block text-xs font-semibold text-[#7c3aed] bg-[#7c3aed]/10 px-2.5 py-0.5 rounded-full"
+          className="inline-block text-xs font-semibold text-[#dc2626] bg-[#dc2626]/10 px-2.5 py-0.5 rounded-full"
         >
           {categoryLabel}
         </a>
@@ -195,7 +182,7 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
       </div>
 
       <div
-        className="blog-body mt-8 text-base leading-relaxed [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:mb-4 [&_ul]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:mb-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-1.5 [&_a]:text-[#7c3aed] [&_a]:underline [&_strong]:font-bold [&_img]:rounded-2xl [&_img]:my-6 [&_blockquote]:border-l-4 [&_blockquote]:border-[#7c3aed]/40 [&_blockquote]:pl-4 [&_blockquote]:my-4 [&_blockquote]:text-[var(--ink-2)] [&_code]:bg-[var(--surface-2)] [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-sm"
+        className="blog-body mt-8 text-base leading-relaxed [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:mb-4 [&_ul]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:mb-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-1.5 [&_a]:text-[#dc2626] [&_a]:underline [&_strong]:font-bold [&_img]:rounded-2xl [&_img]:my-6 [&_blockquote]:border-l-4 [&_blockquote]:border-[#dc2626]/40 [&_blockquote]:pl-4 [&_blockquote]:my-4 [&_blockquote]:text-[var(--ink-2)] [&_code]:bg-[var(--surface-2)] [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-sm [&_table]:block [&_table]:overflow-x-auto [&_table]:max-w-full [&_table]:my-6 [&_table]:text-sm [&_table]:border-collapse [&_th]:text-left [&_th]:font-bold [&_th]:px-3 [&_th]:py-2 [&_th]:border [&_th]:border-[var(--line)] [&_th]:bg-[var(--surface-2)] [&_th]:whitespace-normal [&_td]:px-3 [&_td]:py-2 [&_td]:border [&_td]:border-[var(--line)] [&_td]:whitespace-normal [&_td]:break-words"
         dangerouslySetInnerHTML={{ __html: body }}
       />
 
@@ -210,7 +197,7 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
               >
                 <h3 className="font-bold leading-snug">{faq.question}</h3>
                 <div
-                  className="mt-2 text-sm text-[var(--ink-2)] leading-relaxed [&_a]:text-[#7c3aed] [&_a]:underline"
+                  className="mt-2 text-sm text-[var(--ink-2)] leading-relaxed [&_a]:text-[#dc2626] [&_a]:underline"
                   dangerouslySetInnerHTML={{ __html: faq.answer }}
                 />
               </div>
@@ -232,17 +219,17 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
               e.preventDefault();
               onNavigate(mainTool.slug);
             }}
-            className="group flex items-center justify-between gap-4 p-5 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#7c3aed]/40 hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-[transform,box-shadow,border-color]"
+            className="group flex items-center justify-between gap-4 p-5 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#dc2626]/40 hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-[transform,box-shadow,border-color]"
           >
             <span>
-              <span className="block font-bold group-hover:text-[#7c3aed] transition-colors">
+              <span className="block font-bold group-hover:text-[#dc2626] transition-colors">
                 {mainTool.name}
               </span>
               <span className="block mt-1 text-sm text-[var(--ink-2)]">
                 {strings.tryToolCta.replace('{tool}', mainTool.name)}
               </span>
             </span>
-            <span aria-hidden="true" className="text-xl text-[#7c3aed]">
+            <span aria-hidden="true" className="text-xl text-[#dc2626]">
               →
             </span>
           </a>
@@ -263,12 +250,12 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
                   e.preventDefault();
                   onNavigate(t.slug);
                 }}
-                className="group flex items-center justify-between gap-4 p-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#7c3aed]/40 hover:-translate-y-0.5 transition-[transform,border-color]"
+                className="group flex items-center justify-between gap-4 p-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#dc2626]/40 hover:-translate-y-0.5 transition-[transform,border-color]"
               >
-                <span className="font-semibold group-hover:text-[#7c3aed] transition-colors">
+                <span className="font-semibold group-hover:text-[#dc2626] transition-colors">
                   {t.name}
                 </span>
-                <span aria-hidden="true" className="text-[#7c3aed]">
+                <span aria-hidden="true" className="text-[#dc2626]">
                   →
                 </span>
               </a>
@@ -282,12 +269,12 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
           {prev ? (
             <a
               href={getBlogArticleUrl(prev, lang)}
-              className="group p-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#7c3aed]/40 transition-[border-color]"
+              className="group p-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#dc2626]/40 transition-[border-color]"
             >
               <span className="block text-xs font-semibold text-[var(--ink-3)]">
                 {strings.prevArticle}
               </span>
-              <span className="block mt-1 font-bold group-hover:text-[#7c3aed] transition-colors">
+              <span className="block mt-1 font-bold group-hover:text-[#dc2626] transition-colors">
                 {getBlogArticleVersion(prev, lang, overrides).title}
               </span>
             </a>
@@ -297,12 +284,12 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
           {next ? (
             <a
               href={getBlogArticleUrl(next, lang)}
-              className="group p-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#7c3aed]/40 transition-[border-color] text-right"
+              className="group p-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#dc2626]/40 transition-[border-color] text-right"
             >
               <span className="block text-xs font-semibold text-[var(--ink-3)]">
                 {strings.nextArticle}
               </span>
-              <span className="block mt-1 font-bold group-hover:text-[#7c3aed] transition-colors">
+              <span className="block mt-1 font-bold group-hover:text-[#dc2626] transition-colors">
                 {getBlogArticleVersion(next, lang, overrides).title}
               </span>
             </a>
@@ -310,37 +297,22 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
         </nav>
       ) : null}
 
-      <section aria-label={strings.shareHeading} className="mt-12">
-        <h2 className="text-lg font-bold mb-3">{strings.shareHeading}</h2>
-        <div className="flex flex-wrap gap-2">
-          <button
-            type="button"
-            onClick={copyLink}
-            className="px-4 py-2 rounded-full border border-[var(--line)] bg-[var(--surface)] text-sm font-semibold hover:border-[#7c3aed]/40 hover:text-[#7c3aed] transition-colors"
-          >
-            {copied ? strings.copied : strings.copyLink}
-          </button>
-          <a
-            href={`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 rounded-full border border-[var(--line)] bg-[var(--surface)] text-sm font-semibold hover:border-[#7c3aed]/40 hover:text-[#7c3aed] transition-colors"
-          >
-            {strings.shareOnX}
-          </a>
-          <a
-            href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 rounded-full border border-[var(--line)] bg-[var(--surface)] text-sm font-semibold hover:border-[#7c3aed]/40 hover:text-[#7c3aed] transition-colors"
-          >
-            {strings.shareOnFacebook}
-          </a>
-        </div>
-      </section>
+      {/* Share this guide: red share buttons (redesign 2026-11-21) */}
+      <ShareButtons
+        title={version.title}
+        url={absoluteUrl}
+        labels={{
+          heading: strings.shareHeading,
+          copyLink: strings.copyLink,
+          copied: strings.copied,
+          onX: strings.shareOnX,
+          onFacebook: strings.shareOnFacebook,
+        }}
+        networks={['copy', 'x', 'facebook']}
+      />
 
       <p className="mt-10">
-        <a href={blogHomeUrl} className="font-semibold text-[#7c3aed]">
+        <a href={blogHomeUrl} className="font-semibold text-[#dc2626]">
           {strings.backToBlog}
         </a>
       </p>

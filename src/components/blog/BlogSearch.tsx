@@ -82,7 +82,7 @@ export function BlogSearch({ articles, lang, categories }: BlogSearchProps) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder={strings.searchPlaceholder}
-        className="w-full max-w-xl rounded-full border border-[var(--line)] bg-[var(--surface)] px-5 py-3 text-sm shadow-[var(--shadow)] outline-none focus:border-[#7c3aed]/60"
+        className="w-full max-w-xl rounded-full border border-[var(--line)] bg-[var(--surface)] px-5 py-3 text-sm shadow-[var(--shadow)] outline-none focus:border-[#dc2626]/60"
       />
       {query.trim() && results.length === 0 ? (
         <p className="mt-6 text-sm text-[var(--ink-2)]">

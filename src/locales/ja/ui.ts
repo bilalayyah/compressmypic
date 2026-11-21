@@ -39,7 +39,7 @@
 // the app splits them on the FIRST ASCII ': ' — so the separator in every
 // bullet below is an ASCII colon + space, never a full-width colon.
 // NOTE on real limits: main compressor 20 MB per image; format converters
-// 25 MB per file; Background Remover 20 MB. No fake stats anywhere.
+// 25 MB per file. No fake stats anywhere.
 
 export const JA = {
   header: {
@@ -459,6 +459,12 @@ export const JA = {
     faqTitle: '{name} — よくある質問', // '{name} — Frequently Asked Questions'
     relatedTitle: '関連する無料画像ツール', // 'Related Free Image Tools'
     relatedLinksIntro: 'こちらもご利用ください：', // 'You may also need:'
+    shareHeading: 'このツールを共有',
+    shareCopyLink: 'リンクをコピー',
+    shareCopied: 'コピーしました！',
+    shareOnX: 'Xでシェア',
+    shareOnFacebook: 'Facebookでシェア',
+    shareOnWhatsApp: 'WhatsAppでシェア',
     commentsTitle: 'コメント',
     commentsNote: 'このツールについての感想を共有しましょう — 名前を書いて投稿するだけ。アカウントは不要です。',
     commentsNamePlaceholder: 'あなたの名前',

@@ -234,7 +234,7 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
           <button
             type="button"
             onClick={() => onNavigate('/id/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Kembali ke Kompresor Gambar</span>
@@ -247,7 +247,7 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
             Cara Mengurangi Ukuran Gambar menjadi 100KB untuk Situs Web dan Email
           </h1>
           <p className="mt-3 text-sm text-[var(--ink-3)]">
-            Oleh <a href="/id/tentang-kami" onClick={(e) => { e.preventDefault(); onNavigate('/id/tentang-kami'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+            Oleh <a href="/id/tentang-kami" onClick={(e) => { e.preventDefault(); onNavigate('/id/tentang-kami'); }} className="font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:underline">Bilal</a>
           </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             Foto sebesar 4 MB memperlambat situs web Anda dan menyumbat email. Mengecilkannya menjadi sekitar 100KB membuat halaman dimuat dengan cepat dan email terkirim seketika — dan jika Anda melakukannya dengan benar, tidak ada yang dapat melihat perbedaannya.
@@ -329,22 +329,22 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
                 </thead>
                 <tbody className="divide-y divide-[var(--line)]">
                   <tr>
-                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">200KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#dc2626] dark:text-[#fca5a5]">200KB</td>
                     <td className="px-4 py-3">70–80%</td>
                     <td className="px-4 py-3">Foto blog, gambar web besar</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">100KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#dc2626] dark:text-[#fca5a5]">100KB</td>
                     <td className="px-4 py-3">50–70%</td>
                     <td className="px-4 py-3">Foto situs web, lampiran email</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">50KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#dc2626] dark:text-[#fca5a5]">50KB</td>
                     <td className="px-4 py-3">40–55% + WebP</td>
                     <td className="px-4 py-3">Thumbnail, chat, halaman cepat</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">20KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#dc2626] dark:text-[#fca5a5]">20KB</td>
                     <td className="px-4 py-3">25–40% + WebP</td>
                     <td className="px-4 py-3">Ikon, pratinjau kecil</td>
                   </tr>
@@ -419,7 +419,7 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
                       className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
-                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'}`} />
+                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
                     </button>
                     {isOpen && (
                       <div className="px-5 py-4 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/55 dark:bg-slate-900/35">
@@ -466,7 +466,7 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
             <button
               type="button"
               onClick={() => onNavigate('/id/panduan/jpg-vs-png-vs-webp')}
-              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#7c3aed]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               JPG vs PNG vs WebP
             </button>

@@ -459,7 +459,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
               <div className="lg:col-span-7 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5">
-                    <Film className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+                    <Film className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
                     <span>
                       {encodedGif
                         ? t('generatedGif', 'Generated GIF ({width}×{height}px · {size})')
@@ -562,7 +562,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-1.5">
                     <span className="font-semibold text-[var(--ink-2)]">{t('defaultFrameDuration', 'Default Frame Duration')}</span>
-                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">
+                    <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">
                       {t('frameDurationValue', '{ms} ms ({fps} FPS)')
                         .replace('{ms}', String(globalDelayMs))
                         .replace('{fps}', (1000 / Math.max(20, globalDelayMs)).toFixed(1))}
@@ -591,7 +591,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                         }}
                         className={`py-1.5 text-xs font-semibold rounded-full border cursor-pointer transition-colors ${
                           globalDelayMs === p.ms
-                            ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/25 border-[#7c3aed] dark:border-[#8b5cf6] text-[#6d28d9] dark:text-[#ddd6fe]'
+                            ? 'bg-[#fee2e2] dark:bg-[#dc2626]/25 border-[#dc2626] dark:border-[#ef4444] text-[#b91c1c] dark:text-[#fecaca]'
                             : 'bg-[var(--surface-2)] border-[var(--line)] text-[var(--ink-2)] hover:border-[var(--line-strong)]'
                         }`}
                       >
@@ -622,7 +622,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                           setLoopMode(m.id);
                         }}
                         className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer ${
-                          loopMode === m.id ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                          loopMode === m.id ? 'bg-[#dc2626] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                         }`}
                       >
                         {m.label}
@@ -641,7 +641,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                           invalidateEncodedGif();
                           setTotalPlays(Math.max(2, Math.min(50, parseInt(e.target.value, 10) || 2)));
                         }}
-                        className="w-20 px-2.5 py-1 text-xs font-mono border border-[var(--line-strong)] rounded-[8px] bg-[var(--surface)] text-[var(--ink)] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                        className="w-20 px-2.5 py-1 text-xs font-mono border border-[var(--line-strong)] rounded-[8px] bg-[var(--surface)] text-[var(--ink)] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                       />
                     </div>
                   )}
@@ -656,7 +656,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                     <button
                       type="button"
                       onClick={() => setLockAspect((l) => !l)}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] cursor-pointer"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] cursor-pointer"
                     >
                       {lockAspect ? <Lock className="w-3.5 h-3.5" /> : <Unlock className="w-3.5 h-3.5" />}
                       <span>{lockAspect ? t('ratioLocked', 'Ratio Locked') : t('ratioUnlocked', 'Unlocked')}</span>
@@ -671,7 +671,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                         max={2000}
                         value={outWidth}
                         onChange={(e) => handleWidthChange(parseInt(e.target.value, 10))}
-                        className="w-full px-3 py-2 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                        className="w-full px-3 py-2 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                       />
                     </div>
                     <div>
@@ -682,7 +682,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                         max={2000}
                         value={outHeight}
                         onChange={(e) => handleHeightChange(parseInt(e.target.value, 10))}
-                        className="w-full px-3 py-2 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                        className="w-full px-3 py-2 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                       />
                     </div>
                   </div>
@@ -692,7 +692,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                         key={p.label}
                         type="button"
                         onClick={() => applySizePreset(p.maxSide)}
-                        className="py-1.5 text-xs font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-2)] cursor-pointer transition-colors"
+                        className="py-1.5 text-xs font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca] text-[var(--ink-2)] cursor-pointer transition-colors"
                       >
                         {p.label}
                       </button>
@@ -714,7 +714,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                             setFitMode(m);
                           }}
                           className={`py-1 text-xs font-semibold rounded-[8px] capitalize cursor-pointer ${
-                            fitMode === m ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs' : 'text-[var(--ink-2)]'
+                            fitMode === m ? 'bg-[var(--surface)] text-[#b91c1c] dark:text-[#fecaca] shadow-xs' : 'text-[var(--ink-2)]'
                           }`}
                         >
                           {m === 'contain' ? t('fitContain', 'contain') : t('fitCover', 'cover')}
@@ -742,7 +742,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-1">
                     <span className="font-semibold text-[var(--ink-2)]">{t('colorPaletteQuality', 'Color Palette Quality')}</span>
-                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{quality}%</span>
+                    <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{quality}%</span>
                   </div>
                   <input
                     type="range"
@@ -812,7 +812,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                   <button
                     type="button"
                     onClick={() => addInputRef.current?.click()}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#ede9fe] dark:bg-[#7c3aed]/25 hover:bg-[#7c3aed] hover:text-white text-[#6d28d9] dark:text-[#ddd6fe] text-xs font-bold rounded-full cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#fee2e2] dark:bg-[#dc2626]/25 hover:bg-[#dc2626] hover:text-white text-[#b91c1c] dark:text-[#fecaca] text-xs font-bold rounded-full cursor-pointer transition-colors"
                   >
                     <Plus className="w-4 h-4" />
                     <span>{t('addFrames', 'Add Frames')}</span>
@@ -832,7 +832,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                       setDraggedIdx(null);
                     }}
                     className={`border rounded-xl p-3 flex items-center gap-3 bg-[var(--surface-2)] transition-all ${
-                      draggedIdx === index ? 'border-[#7c3aed] opacity-60' : 'border-[var(--line)]'
+                      draggedIdx === index ? 'border-[#dc2626] opacity-60' : 'border-[var(--line)]'
                     }`}
                   >
                     <GripVertical className="w-4 h-4 text-[var(--ink-3)] shrink-0 cursor-grab" />
@@ -873,7 +873,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                           type="button"
                           disabled={index === 0}
                           onClick={() => moveFrame(index, index - 1)}
-                          className="p-1 text-[var(--ink-3)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] disabled:opacity-30 cursor-pointer"
+                          className="p-1 text-[var(--ink-3)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] disabled:opacity-30 cursor-pointer"
                           title={t('moveEarlier', 'Move earlier')}
                           aria-label={t('moveFrameEarlierAria', 'Move frame {n} earlier').replace('{n}', String(index + 1))}
                         >
@@ -883,7 +883,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                           type="button"
                           disabled={index === frames.length - 1}
                           onClick={() => moveFrame(index, index + 1)}
-                          className="p-1 text-[var(--ink-3)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] disabled:opacity-30 cursor-pointer"
+                          className="p-1 text-[var(--ink-3)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] disabled:opacity-30 cursor-pointer"
                           title={t('moveLater', 'Move later')}
                           aria-label={t('moveFrameLaterAria', 'Move frame {n} later').replace('{n}', String(index + 1))}
                         >
@@ -892,7 +892,7 @@ export const GifMakerPage: React.FC<GifMakerPageProps> = ({
                         <button
                           type="button"
                           onClick={() => duplicateFrame(index)}
-                          className="p-1 text-[var(--ink-3)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] cursor-pointer"
+                          className="p-1 text-[var(--ink-3)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] cursor-pointer"
                           title={t('duplicateFrame', 'Duplicate frame')}
                           aria-label={t('duplicateFrameAria', 'Duplicate frame {n}').replace('{n}', String(index + 1))}
                         >

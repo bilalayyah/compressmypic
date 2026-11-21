@@ -99,7 +99,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({
       {/* Total Overview & Bulk Download Header */}
       <div className="panel-pastel-blue border rounded-2xl p-5 sm:p-7 shadow-[var(--shadow)] flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div>
-          <div className="flex items-center gap-2 text-xs font-bold text-[#6d28d9] dark:text-[#c4b5fd] tracking-wider uppercase mb-1">
+          <div className="flex items-center gap-2 text-xs font-bold text-[#b91c1c] dark:text-[#fca5a5] tracking-wider uppercase mb-1">
             <span>{strings?.summary ?? 'Compression Summary'}</span>
             <span aria-hidden="true">·</span>
             <span>{images.length} {images.length === 1 ? strings?.image ?? 'Image' : strings?.images ?? 'Images'}</span>
@@ -234,7 +234,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                     />
                     {isCompressing && (
                       <div className="absolute inset-0 bg-[var(--surface)]/80 backdrop-blur-xs flex items-center justify-center">
-                        <RotateCcw className="w-6 h-6 text-[#7c3aed] animate-spin" />
+                        <RotateCcw className="w-6 h-6 text-[#dc2626] animate-spin" />
                       </div>
                     )}
                     {isDone && (
@@ -252,7 +252,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                         {image.name}
                       </h3>
                       {image.hasAlpha && (
-                        <span className="text-[10px] font-mono font-medium px-2 py-0.5 bg-[var(--accent-soft)] border border-[#ddd6fe] dark:border-[#8b5cf6]/35 text-[#6d28d9] dark:text-[#ddd6fe] rounded-full">
+                        <span className="text-[10px] font-mono font-medium px-2 py-0.5 bg-[var(--accent-soft)] border border-[#fecaca] dark:border-[#ef4444]/35 text-[#b91c1c] dark:text-[#fecaca] rounded-full">
                           {strings?.alpha ?? 'Alpha'}
                         </span>
                       )}
@@ -266,8 +266,8 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                     {/* Status Indicator */}
                     <div className="mt-2 flex items-center gap-2">
                       {isDone && keptOriginal && (
-                        <span className="inline-flex items-center gap-1 text-xs text-[#6d28d9] dark:text-[#c4b5fd] font-semibold">
-                          <ShieldCheck className="w-3.5 h-3.5 text-[#7c3aed] shrink-0" />
+                        <span className="inline-flex items-center gap-1 text-xs text-[#b91c1c] dark:text-[#fca5a5] font-semibold">
+                          <ShieldCheck className="w-3.5 h-3.5 text-[#dc2626] shrink-0" />
                           {strings?.keptOriginal ?? 'Kept original (re-encode was larger)'}
                         </span>
                       )}
@@ -286,7 +286,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                         </span>
                       )}
                       {isCompressing && (
-                        <span className="text-xs text-[#7c3aed] dark:text-[#c4b5fd] font-medium animate-pulse">
+                        <span className="text-xs text-[#dc2626] dark:text-[#fca5a5] font-medium animate-pulse">
                           {strings?.optimizing ?? 'Optimizing pixels...'}
                         </span>
                       )}
@@ -353,10 +353,10 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                       <button
                         type="button"
                         onClick={() => onOpenComparison(image)}
-                        className="px-3.5 py-2 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed]/50 text-[var(--ink)] text-xs font-semibold rounded-[11px] transition-colors cursor-pointer flex items-center gap-1.5"
+                        className="px-3.5 py-2 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#dc2626]/50 text-[var(--ink)] text-xs font-semibold rounded-[11px] transition-colors cursor-pointer flex items-center gap-1.5"
                         title={strings?.compareActionTitle ?? 'Compare visual before/after'}
                       >
-                        <SplitSquareVertical className="w-4 h-4 text-[#7c3aed] dark:text-[#c4b5fd]" />
+                        <SplitSquareVertical className="w-4 h-4 text-[#dc2626] dark:text-[#fca5a5]" />
                         <span className="hidden sm:inline">{strings?.compare ?? 'Compare'}</span>
                       </button>
 
@@ -375,7 +375,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                     <button
                       type="button"
                       onClick={() => onRecompressSingle(image.id)}
-                      className="inline-flex items-center gap-1 px-3.5 py-2 text-xs font-semibold text-[#7c3aed] hover:bg-[var(--accent-soft)] rounded-[11px] transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1 px-3.5 py-2 text-xs font-semibold text-[#dc2626] hover:bg-[var(--accent-soft)] rounded-[11px] transition-colors cursor-pointer"
                     >
                       <RotateCcw className="w-4 h-4" />
                       <span>{strings?.retry ?? 'Retry'}</span>
@@ -416,9 +416,9 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                     <button
                       type="button"
                       onClick={() => onKeepOriginal(image.id)}
-                      className="shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-[10px] bg-[var(--surface)] border border-[var(--line)] text-[var(--ink)] hover:border-[#7c3aed] font-bold text-xs cursor-pointer transition-colors"
+                      className="shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-[10px] bg-[var(--surface)] border border-[var(--line)] text-[var(--ink)] hover:border-[#dc2626] font-bold text-xs cursor-pointer transition-colors"
                     >
-                      <ShieldCheck className="w-3.5 h-3.5 text-[#7c3aed]" />
+                      <ShieldCheck className="w-3.5 h-3.5 text-[#dc2626]" />
                       <span>{strings?.keepOriginal ?? 'Keep original'}</span>
                     </button>
                   )}

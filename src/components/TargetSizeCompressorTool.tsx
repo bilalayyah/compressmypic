@@ -587,7 +587,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                         const v = Math.max(1, parseInt(e.target.value || '1', 10) || 1);
                         setTargetValue(v);
                       }}
-                      className="w-28 px-3.5 py-2 text-sm font-bold font-mono bg-[var(--surface-2)] text-[var(--ink-navy)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                      className="w-28 px-3.5 py-2 text-sm font-bold font-mono bg-[var(--surface-2)] text-[var(--ink-navy)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                       aria-label={t('targetNumberAria', 'Target file size number')}
                     />
                     <div className="inline-flex p-1 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px]">
@@ -636,7 +636,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                         className={`px-3 py-1 text-xs font-semibold rounded-full cursor-pointer transition-colors ${
                           targetValue === preset.v && unit === preset.u
                             ? 'btn-purple-pill'
-                            : 'bg-[var(--surface-2)] text-[var(--ink-2)] border border-[var(--line)] hover:border-[#c4b5fd] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd]'
+                            : 'bg-[var(--surface-2)] text-[var(--ink-2)] border border-[var(--line)] hover:border-[#fca5a5] hover:text-[#dc2626] dark:hover:text-[#fca5a5]'
                         }`}
                       >
                         {preset.label}
@@ -646,10 +646,10 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                 </div>
               ) : (
                 <div className="flex flex-wrap items-center gap-3">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#ede9fe] dark:bg-[#7c3aed]/20 border border-[#ddd6fe] dark:border-[#8b5cf6]/35 text-[#6d28d9] dark:text-[#ddd6fe]">
-                    <Target className="w-4 h-4 text-[#7c3aed] dark:text-[#c4b5fd]" />
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#fee2e2] dark:bg-[#dc2626]/20 border border-[#fecaca] dark:border-[#ef4444]/35 text-[#b91c1c] dark:text-[#fecaca]">
+                    <Target className="w-4 h-4 text-[#dc2626] dark:text-[#fca5a5]" />
                     <span className="text-sm font-extrabold font-mono">{targetLabel}</span>
-                    <span className="text-xs text-[#7c3aed] dark:text-[#c4b5fd] font-medium">
+                    <span className="text-xs text-[#dc2626] dark:text-[#fca5a5] font-medium">
                       {t('targetMaxSuffix', '({bytes} max)').replace(
                         '{bytes}',
                         formatBytes(effectiveTargetBytes)
@@ -659,7 +659,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                   <button
                     type="button"
                     onClick={() => onNavigate('/target-file-size-compressor')}
-                    className="text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline underline-offset-2 cursor-pointer"
+                    className="text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:underline underline-offset-2 cursor-pointer"
                   >
                     {t('needDifferentTarget', 'Need a different target KB?')}
                   </button>
@@ -790,7 +790,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
             {doneItems.length > 0 && (
               <div className="panel-pastel-blue border rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-[var(--shadow)]">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-[#fca5a5]">
                     {t('targetSummary', 'Target Compression Summary · Goal ≤ {target}').replace(
                       '{target}',
                       targetLabel
@@ -845,7 +845,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                         />
                         {isBusy && (
                           <div className="absolute inset-0 bg-[var(--surface)]/85 flex items-center justify-center">
-                            <RotateCcw className="w-5 h-5 text-[#7c3aed] animate-spin" />
+                            <RotateCcw className="w-5 h-5 text-[#dc2626] animate-spin" />
                           </div>
                         )}
                       </div>
@@ -917,7 +917,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                                 ? 'text-[#ea580c] dark:text-[#fb923c]'
                                 : meta?.achievedTarget
                                 ? 'text-[#16a34a] dark:text-[#4ade80]'
-                                : 'text-[#7c3aed] dark:text-[#a78bfa]'
+                                : 'text-[#dc2626] dark:text-[#f87171]'
                             }`}
                           >
                             {formatBytes(item.compressedSize)}
@@ -941,7 +941,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                           </span>
                           <span
                             className={`text-xs sm:text-sm font-bold font-mono tabular-nums ${
-                              (item.compressionPercentage ?? 0) < 0 ? 'text-[#ea580c] dark:text-[#fb923c]' : 'text-[#7c3aed] dark:text-[#a78bfa]'
+                              (item.compressionPercentage ?? 0) < 0 ? 'text-[#ea580c] dark:text-[#fb923c]' : 'text-[#dc2626] dark:text-[#f87171]'
                             }`}
                           >
                             {formatPercent(item.compressionPercentage)}
@@ -956,9 +956,9 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                           <button
                             type="button"
                             onClick={() => setComparisonTarget(item)}
-                            className="px-3.5 py-2 text-[var(--ink-2)] bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#c4b5fd] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
+                            className="px-3.5 py-2 text-[var(--ink-2)] bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#fca5a5] hover:text-[#dc2626] dark:hover:text-[#fca5a5] text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
                           >
-                            <SplitSquareVertical className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
+                            <SplitSquareVertical className="w-4 h-4 text-[#dc2626] dark:text-[#f87171]" />
                             <span>{t('compare', 'Compare')}</span>
                           </button>
                           <button
@@ -1025,7 +1025,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                               : meta.statusNote}
                           </p>
                           {meta.switchedFormatNote && (
-                            <p className="text-[#7c3aed] dark:text-[#c4b5fd] font-medium">{meta.switchedFormatNote}</p>
+                            <p className="text-[#dc2626] dark:text-[#fca5a5] font-medium">{meta.switchedFormatNote}</p>
                           )}
                         </div>
                       </div>

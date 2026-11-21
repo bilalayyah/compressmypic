@@ -3173,7 +3173,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         question: 'Does this tool automatically remove an existing photo background first?',
         answer:
-          'No, this editor places your uploaded image (transparent cutout, logo, or full photo) onto a new backdrop canvas rather than running AI cutout segmentation. If you have a photo with a busy scene to erase first, run it through our Background Remover tool and then drop the transparent PNG here.',
+          'No, this editor places your uploaded image (transparent cutout, logo, or full photo) onto a new backdrop canvas rather than running AI cutout segmentation. If you have a photo with a busy scene to erase first, remove the background with any background-removal app and then drop the transparent PNG here.',
       },
       {
         question: 'Which output formats are supported and at what compression quality?',
@@ -6250,7 +6250,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         question: 'Does converting a JPG with a solid white background to PNG make that background transparent?',
         answer:
-          'No. Standard JPEG files store zero alpha transparency information, so converting JPG to PNG produces a fully opaque .png image preserving the white backdrop. Pair it with our Background Remover afterward if you need an alpha cutout.',
+          'No. Standard JPEG files store zero alpha transparency information, so converting JPG to PNG produces a fully opaque .png image preserving the white backdrop. If you need an alpha cutout, remove the background with any background-removal app first, then convert the transparent image.',
       },
       {
         question: 'Why shouldn’t you just rename a .jpg file extension to .png manually?',

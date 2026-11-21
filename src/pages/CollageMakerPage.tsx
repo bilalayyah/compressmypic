@@ -549,7 +549,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                 <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5">
-                      <LayoutGrid className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+                      <LayoutGrid className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
                       <span>
                         {t('collagePreview', 'Collage Preview ({width}×{height}px)')
                           .replace('{width}', String(outWidth))
@@ -594,7 +594,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                         targetSlotRef.current = null;
                         slotFileInputRef.current?.click();
                       }}
-                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#ede9fe] dark:bg-[#7c3aed]/25 hover:bg-[#7c3aed] hover:text-white text-[#6d28d9] dark:text-[#ddd6fe] text-xs font-bold rounded-full cursor-pointer transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#fee2e2] dark:bg-[#dc2626]/25 hover:bg-[#dc2626] hover:text-white text-[#b91c1c] dark:text-[#fecaca] text-xs font-bold rounded-full cursor-pointer transition-colors"
                     >
                       <Plus className="w-3.5 h-3.5" />
                       <span>{t('addPhotos', 'Add Photos')}</span>
@@ -634,10 +634,10 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                           }}
                           className={`relative rounded-[11px] border p-2 flex flex-col gap-2 transition-all cursor-pointer ${
                             isSwapSelected
-                              ? 'border-[#7c3aed] bg-[#ede9fe] dark:bg-[#7c3aed]/25 ring-2 ring-[#7c3aed]'
+                              ? 'border-[#dc2626] bg-[#fee2e2] dark:bg-[#dc2626]/25 ring-2 ring-[#dc2626]'
                               : dragCellIdx === idx
-                              ? 'border-[#7c3aed] opacity-50 bg-[var(--surface-2)]'
-                              : 'border-[var(--line)] bg-[var(--surface-2)] hover:border-[#7c3aed]/60'
+                              ? 'border-[#dc2626] opacity-50 bg-[var(--surface-2)]'
+                              : 'border-[var(--line)] bg-[var(--surface-2)] hover:border-[#dc2626]/60'
                           }`}
                         >
                           <div className="flex items-center justify-between text-xs font-semibold text-[var(--ink-3)]">
@@ -650,7 +650,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                                     e.stopPropagation();
                                     swapCells(idx, idx - 1);
                                   }}
-                                  className="p-0.5 hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] cursor-pointer"
+                                  className="p-0.5 hover:text-[#dc2626] dark:hover:text-[#fca5a5] cursor-pointer"
                                   aria-label={t('moveCellBackAria', 'Move cell {n} back').replace('{n}', String(idx + 1))}
                                 >
                                   <ArrowLeft className="w-3 h-3" />
@@ -663,7 +663,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                                     e.stopPropagation();
                                     swapCells(idx, idx + 1);
                                   }}
-                                  className="p-0.5 hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] cursor-pointer"
+                                  className="p-0.5 hover:text-[#dc2626] dark:hover:text-[#fca5a5] cursor-pointer"
                                   aria-label={t('moveCellForwardAria', 'Move cell {n} forward').replace('{n}', String(idx + 1))}
                                 >
                                   <ArrowRight className="w-3 h-3" />
@@ -701,7 +701,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                                 targetSlotRef.current = idx;
                                 slotFileInputRef.current?.click();
                               }}
-                              className="h-20 rounded-[8px] border-2 border-dashed border-[var(--line-strong)] hover:border-[#7c3aed] bg-[var(--surface)] flex flex-col items-center justify-center text-[var(--ink-3)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] text-xs font-semibold cursor-pointer transition-colors"
+                              className="h-20 rounded-[8px] border-2 border-dashed border-[var(--line-strong)] hover:border-[#dc2626] bg-[var(--surface)] flex flex-col items-center justify-center text-[var(--ink-3)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] text-xs font-semibold cursor-pointer transition-colors"
                             >
                               <Plus className="w-4 h-4 mb-0.5" />
                               <span>{t('addPhoto', 'Add Photo')}</span>
@@ -735,8 +735,8 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                         onClick={() => changeLayout(l.id)}
                         className={`py-2 px-3 text-xs font-semibold rounded-[11px] border cursor-pointer transition-colors ${
                           layout === l.id
-                            ? 'bg-[#7c3aed] text-white border-[#7c3aed] shadow-xs'
-                            : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe]'
+                            ? 'bg-[#dc2626] text-white border-[#dc2626] shadow-xs'
+                            : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca]'
                         }`}
                       >
                         {l.label}
@@ -758,7 +758,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                         setRowSplitPct(50);
                         setFirstStripPct(0);
                       }}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline cursor-pointer"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:underline cursor-pointer"
                     >
                       <RotateCcw className="w-3 h-3" />
                       <span>{t('equalCells', 'Equal Cells')}</span>
@@ -772,7 +772,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                           <span className="font-semibold text-[var(--ink-2)]">
                             {layout === '2x2' ? t('colSplit', 'Col Split') : t('centerCol', 'Center Col')}
                           </span>
-                          <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{colSplitPct}%</span>
+                          <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{colSplitPct}%</span>
                         </div>
                         <input
                           type="range"
@@ -788,7 +788,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                           <span className="font-semibold text-[var(--ink-2)]">
                             {layout === '2x2' ? t('rowSplit', 'Row Split') : t('centerRow', 'Center Row')}
                           </span>
-                          <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{rowSplitPct}%</span>
+                          <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{rowSplitPct}%</span>
                         </div>
                         <input
                           type="range"
@@ -806,7 +806,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="font-semibold text-[var(--ink-2)]">{t('leadCellEmphasis', 'Lead Cell Emphasis')}</span>
-                        <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">+{firstStripPct}%</span>
+                        <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">+{firstStripPct}%</span>
                       </div>
                       <input
                         type="range"
@@ -823,7 +823,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="font-semibold text-[var(--ink-2)]">{t('gapSpacing', 'Gap Spacing')}</span>
-                        <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{gapPx}px</span>
+                        <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{gapPx}px</span>
                       </div>
                       <input
                         type="range"
@@ -837,7 +837,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="font-semibold text-[var(--ink-2)]">{t('cellRadius', 'Cell Radius')}</span>
-                        <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{cornerRadius}px</span>
+                        <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{cornerRadius}px</span>
                       </div>
                       <input
                         type="range"
@@ -888,7 +888,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                           type="button"
                           onClick={() => setFitMode(m)}
                           className={`py-1 text-xs font-semibold rounded-[8px] capitalize cursor-pointer ${
-                            fitMode === m ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs' : 'text-[var(--ink-2)]'
+                            fitMode === m ? 'bg-[var(--surface)] text-[#b91c1c] dark:text-[#fecaca] shadow-xs' : 'text-[var(--ink-2)]'
                           }`}
                         >
                           {m === 'cover' ? t('fitCover', 'cover') : t('fitContain', 'contain')}
@@ -914,7 +914,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                         onChange={(e) =>
                           setOutWidth(Math.max(200, Math.min(4000, parseInt(e.target.value, 10) || 200)))
                         }
-                        className="w-full px-3 py-1.5 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                        className="w-full px-3 py-1.5 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                       />
                     </div>
                     <div>
@@ -927,7 +927,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                         onChange={(e) =>
                           setOutHeight(Math.max(200, Math.min(4000, parseInt(e.target.value, 10) || 200)))
                         }
-                        className="w-full px-3 py-1.5 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                        className="w-full px-3 py-1.5 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                       />
                     </div>
                   </div>
@@ -944,7 +944,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                           setOutWidth(s.w);
                           setOutHeight(s.h);
                         }}
-                        className="py-1.5 text-xs font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-2)] cursor-pointer transition-colors"
+                        className="py-1.5 text-xs font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca] text-[var(--ink-2)] cursor-pointer transition-colors"
                       >
                         {s.label}
                       </button>
@@ -961,7 +961,7 @@ export const CollageMakerPage: React.FC<CollageMakerPageProps> = ({
                         type="button"
                         onClick={() => setOutFormat(fmt)}
                         className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer ${
-                          outFormat === fmt ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                          outFormat === fmt ? 'bg-[#dc2626] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                         }`}
                       >
                         {fmt === 'jpeg' ? t('formatJpg', 'JPG') : t('formatPngLossless', 'PNG (Lossless)')}

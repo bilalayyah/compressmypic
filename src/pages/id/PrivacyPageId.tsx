@@ -19,7 +19,7 @@ export const PrivacyPageId: React.FC<PrivacyPageIdProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/id/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Kembali ke Kompresor Gambar</span>
@@ -108,7 +108,7 @@ export const PrivacyPageId: React.FC<PrivacyPageIdProps> = ({ onNavigate }) => {
             <p>
               Karena alat kami memproses gambar secara lokal dan kami tidak memiliki akun pengguna, satu-satunya data pribadi yang biasanya kami miliki adalah nama, alamat email, dan pesan yang Anda kirim melalui formulir kontak. Untuk menggunakan salah satu hak ini, kirim email kepada kami di <a
                 href="mailto:bilalayyah@gmail.com"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 bilalayyah@gmail.com
               </a> dan kami akan membalas dalam 30 hari. Anda juga berhak mengajukan keluhan kepada otoritas perlindungan data setempat jika Anda merasa kami menangani data Anda secara tidak adil.
@@ -133,14 +133,14 @@ export const PrivacyPageId: React.FC<PrivacyPageIdProps> = ({ onNavigate }) => {
                 href="https://policies.google.com/privacy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline"
               >
                 Kebijakan Privasi
               </a> dan <a
                 href="https://policies.google.com/terms"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline"
               >
                 Persyaratan Layanan
               </a> Google. Kami tidak pernah meminta Anda mengirim kata sandi, detail pembayaran, atau dokumen pribadi yang sensitif melalui formulir kontak, dan Anda tidak boleh menyertakannya dalam pesan.
@@ -173,7 +173,7 @@ export const PrivacyPageId: React.FC<PrivacyPageIdProps> = ({ onNavigate }) => {
               Jika Anda memiliki pertanyaan tentang kebijakan ini, hubungi kami di{' '}
               <a
                 href="mailto:bilalayyah@gmail.com"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 bilalayyah@gmail.com
               </a>

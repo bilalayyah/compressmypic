@@ -272,7 +272,7 @@ export const Header: React.FC<HeaderProps> = ({
             <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
           </span>
           <span className="font-sans text-[1rem] sm:text-[1.22rem] font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
-            Compress<span className="text-[#7c3aed] dark:text-[#a78bfa]">MyPic</span>
+            Compress<span className="text-[#dc2626] dark:text-[#f87171]">MyPic</span>
           </span>
         </a>
 
@@ -326,7 +326,7 @@ export const Header: React.FC<HeaderProps> = ({
                               e.preventDefault();
                               handleNav(tool.slug);
                             }}
-                            className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[var(--ink-2)] hover:bg-[var(--accent-soft)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors"
+                            className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[var(--ink-2)] hover:bg-[var(--accent-soft)] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors"
                           >
                             {tool.name}
                           </a>
@@ -410,7 +410,7 @@ export const Header: React.FC<HeaderProps> = ({
                 onFocus={() => setSearchOpen(true)}
                 placeholder="Search tools..."
                 aria-label="Search tools"
-                className="w-full text-xs text-[var(--ink)] bg-transparent! border-0! focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-[#7c3aed] p-0! placeholder:text-[var(--ink-3)]"
+                className="w-full text-xs text-[var(--ink)] bg-transparent! border-0! focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-[#dc2626] p-0! placeholder:text-[var(--ink-3)]"
               />
               <button
                 type="submit"
@@ -454,9 +454,9 @@ export const Header: React.FC<HeaderProps> = ({
               aria-expanded={langMenuOpen}
               aria-haspopup="menu"
               title={strings.languageLabel}
-              className="inline-flex items-center gap-1 sm:gap-1.5 h-11 px-1.5 sm:px-3 rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 transition-colors cursor-pointer text-xs font-semibold shadow-2xs"
+              className="inline-flex items-center gap-1 sm:gap-1.5 h-11 px-1.5 sm:px-3 rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#dc2626]/50 transition-colors cursor-pointer text-xs font-semibold shadow-2xs"
             >
-              <Globe className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Globe className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
               <span className="hidden xl:inline">{lang.toUpperCase()}</span>
               <ChevronDown
                 className={`hidden sm:block w-3.5 h-3.5 text-[var(--ink-3)] transition-transform ${
@@ -482,7 +482,7 @@ export const Header: React.FC<HeaderProps> = ({
                     !isAvailable
                       ? 'text-[var(--ink-3)] opacity-55 cursor-not-allowed'
                       : isActive
-                      ? 'bg-[var(--accent-soft)] text-[#6d28d9] dark:text-[#ddd6fe] cursor-pointer'
+                      ? 'bg-[var(--accent-soft)] text-[#b91c1c] dark:text-[#fecaca] cursor-pointer'
                       : 'text-[var(--ink-2)] hover:bg-[var(--surface-2)] hover:text-[var(--ink)] cursor-pointer'
                   }`;
                   if (!isAvailable) {
@@ -538,9 +538,9 @@ export const Header: React.FC<HeaderProps> = ({
               aria-haspopup="menu"
               data-testid="theme-toggle-button"
               title={strings.themeTitle.replace('{current}', currentThemeLabel)}
-              className="inline-flex items-center gap-1 sm:gap-1.5 h-11 px-1.5 sm:px-3 rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 transition-colors cursor-pointer text-xs font-semibold shadow-2xs"
+              className="inline-flex items-center gap-1 sm:gap-1.5 h-11 px-1.5 sm:px-3 rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#dc2626]/50 transition-colors cursor-pointer text-xs font-semibold shadow-2xs"
             >
-              <CurrentThemeIcon className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <CurrentThemeIcon className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
               <ChevronDown
                 className={`hidden sm:block w-3.5 h-3.5 text-[var(--ink-3)] transition-transform ${
                   themeMenuOpen ? 'rotate-180' : ''
@@ -565,7 +565,7 @@ export const Header: React.FC<HeaderProps> = ({
                       onClick={() => handleSelectTheme(id)}
                       className={`w-full flex items-center justify-between gap-2 px-3.5 py-2 text-xs font-semibold transition-colors cursor-pointer ${
                         isActive
-                          ? 'bg-[var(--accent-soft)] text-[#6d28d9] dark:text-[#ddd6fe]'
+                          ? 'bg-[var(--accent-soft)] text-[#b91c1c] dark:text-[#fecaca]'
                           : 'text-[var(--ink-2)] hover:bg-[var(--surface-2)] hover:text-[var(--ink)]'
                       }`}
                     >
@@ -601,7 +601,7 @@ export const Header: React.FC<HeaderProps> = ({
               setLangMenuOpen(false);
               window.setTimeout(() => mobileSearchRef.current?.focus(), 80);
             }}
-            className="lg:hidden h-10 w-10 sm:h-11 sm:w-11 grid place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 cursor-pointer shrink-0"
+            className="lg:hidden h-10 w-10 sm:h-11 sm:w-11 grid place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#dc2626]/50 cursor-pointer shrink-0"
             aria-label="Search tools"
           >
             <Search className="w-5 h-5" />
@@ -615,7 +615,7 @@ export const Header: React.FC<HeaderProps> = ({
               setThemeMenuOpen(false);
               setLangMenuOpen(false);
             }}
-            className="lg:hidden h-10 w-10 sm:h-11 sm:w-11 grid place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#7c3aed]/50 cursor-pointer shrink-0"
+            className="lg:hidden h-10 w-10 sm:h-11 sm:w-11 grid place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[#dc2626]/50 cursor-pointer shrink-0"
             aria-label={strings.menuAriaLabel}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
@@ -701,7 +701,7 @@ export const Header: React.FC<HeaderProps> = ({
                     onClick={() => handleSelectTheme(id)}
                     className={`flex items-center justify-center gap-1.5 min-h-11 py-2 px-2 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
                       isActive
-                        ? 'bg-[var(--surface)] text-[#7c3aed] dark:text-[#c4b5fd] shadow-xs'
+                        ? 'bg-[var(--surface)] text-[#dc2626] dark:text-[#fca5a5] shadow-xs'
                         : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
@@ -726,7 +726,7 @@ export const Header: React.FC<HeaderProps> = ({
                   !isAvailable
                     ? 'text-[var(--ink-3)] opacity-50 cursor-not-allowed'
                     : isActive
-                    ? 'bg-[var(--surface)] text-[#7c3aed] dark:text-[#c4b5fd] shadow-xs cursor-pointer'
+                    ? 'bg-[var(--surface)] text-[#dc2626] dark:text-[#fca5a5] shadow-xs cursor-pointer'
                     : 'text-[var(--ink-2)] hover:text-[var(--ink)] cursor-pointer'
                 }`;
                 if (!isAvailable) {
@@ -779,7 +779,7 @@ export const Header: React.FC<HeaderProps> = ({
                           e.preventDefault();
                           handleNav(tool.slug);
                         }}
-                        className="block px-3 py-1.5 text-xs font-medium leading-snug text-[var(--ink-2)] hover:bg-[var(--accent-soft)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] rounded-lg"
+                        className="block px-3 py-1.5 text-xs font-medium leading-snug text-[var(--ink-2)] hover:bg-[var(--accent-soft)] hover:text-[#b91c1c] dark:hover:text-[#fecaca] rounded-lg"
                       >
                         {tool.name}
                       </a>

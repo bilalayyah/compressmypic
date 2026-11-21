@@ -25,7 +25,7 @@ export const PrivacyPageZh: React.FC<PrivacyPageZhProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/zh/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>返回图片压缩器</span>
@@ -114,7 +114,7 @@ export const PrivacyPageZh: React.FC<PrivacyPageZhProps> = ({ onNavigate }) => {
             <p>
               由于我们的工具在本地处理图片，且我们没有用户帐户，因此我们通常持有的唯一个人数据，就是你通过联系表格发送的姓名、电子邮箱地址和消息。要行使上述任何权利，请发送电子邮件至<a
                 href="mailto:bilalayyah@gmail.com"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 bilalayyah@gmail.com
               </a>，我们将在 30 天内回复。如果你认为我们不公平地处理了你的数据，你也有权向当地的数据保护机构投诉。
@@ -139,14 +139,14 @@ export const PrivacyPageZh: React.FC<PrivacyPageZhProps> = ({ onNavigate }) => {
                 href="https://policies.google.com/privacy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline"
               >
                 隐私政策
               </a>和<a
                 href="https://policies.google.com/terms"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline"
               >
                 使用条款
               </a>约束。我们绝不会要求你通过联系表格发送密码、支付信息或敏感的个人文件，你也不应在消息中包含这些内容。
@@ -179,7 +179,7 @@ export const PrivacyPageZh: React.FC<PrivacyPageZhProps> = ({ onNavigate }) => {
               如果您对本政策有任何疑问，请通过以下邮箱联系我们：{' '}
               <a
                 href="mailto:bilalayyah@gmail.com"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 bilalayyah@gmail.com
               </a>

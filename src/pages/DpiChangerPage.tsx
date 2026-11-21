@@ -314,8 +314,8 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
                     }}
                     className={`px-3.5 py-1.5 text-xs font-semibold rounded-full border cursor-pointer transition-colors ${
                       targetDpi === p.dpi
-                        ? 'bg-[#7c3aed] text-white border-[#7c3aed]'
-                        : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe]'
+                        ? 'bg-[#dc2626] text-white border-[#dc2626]'
+                        : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca]'
                     }`}
                   >
                     {t(DPI_PRESET_LABEL_KEYS[p.dpi] ?? 'preset300HighPrint', p.label)}
@@ -335,7 +335,7 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
                   max={2400}
                   value={targetDpi}
                   onChange={(e) => setTargetDpi(Math.max(1, Math.min(2400, parseInt(e.target.value, 10) || 1)))}
-                  className="w-28 px-3 py-2 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                  className="w-28 px-3 py-2 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                 />
               </div>
               {items.length > 0 && (
@@ -366,7 +366,7 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
         {doneItems.length > 1 && (
           <div className="panel-pastel-blue border rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-[#fca5a5]">
                 {t('batchReady', 'Batch Ready')}
               </span>
               <p className="text-sm font-semibold text-[var(--ink-navy)] mt-0.5">
@@ -406,7 +406,7 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
                       {res?.previewUrl ? (
                         <img src={res.previewUrl} alt={item.file.name} className="max-w-full max-h-full object-contain" />
                       ) : (
-                        <Loader2 className="w-5 h-5 text-[#7c3aed] animate-spin" />
+                        <Loader2 className="w-5 h-5 text-[#dc2626] animate-spin" />
                       )}
                     </div>
 
@@ -426,7 +426,7 @@ export const DpiChangerPage: React.FC<DpiChangerPageProps> = ({
                               <CheckCircle2 className="w-3.5 h-3.5" />
                               {t('verifiedDpi', 'Verified: {dpi} DPI').replace('{dpi}', String(res.afterDpi.dpiX ?? targetDpi))}
                             </span>
-                            <span className="text-xs font-medium text-[#6d28d9] dark:text-[#ddd6fe] bg-[#ede9fe] dark:bg-[#7c3aed]/25 px-2.5 py-0.5 rounded-full">
+                            <span className="text-xs font-medium text-[#b91c1c] dark:text-[#fecaca] bg-[#fee2e2] dark:bg-[#dc2626]/25 px-2.5 py-0.5 rounded-full">
                               {methodBadge}
                             </span>
                           </div>

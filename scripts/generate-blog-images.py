@@ -3,17 +3,20 @@
 
 Usage:
     python3 scripts/generate-blog-images.py --jobs /tmp/jobs.json --out public/blog-images
+    python3 scripts/generate-blog-images.py --jobs /tmp/og-jobs.json --out public --og
 
 Jobs JSON: a list of {"id": <article id>, "lang": <lang>, "title": <localized title>}.
-Output: 1200x630 PNG files named <id>-<lang>.png, matching the house style of
-the existing per-tool cards in public/og-*.png (pastel background, soft
-circles, purple CompressMyPic wordmark, centered bold title, privacy subline,
-purple bottom bar). Deterministic: same input -> byte-identical output
-(PNG, no timestamps). $0 — uses only Pillow + system fonts (Noto Sans).
+Output: 1200x630 PNG files named <id>-<lang>.png, in the RED minimalist
+house style (warm-white background, faint red blobs, red CompressMyPic
+wordmark, centered bold title, privacy subline, red bottom bar).
+With --og, output is named og-<id>.png instead (per-tool social cards,
+title = tool name, same red style). Deterministic: same input ->
+byte-identical output (PNG, no timestamps). $0 — uses only Pillow +
+system fonts (Noto Sans).
 
-Full batch driver (all 1,584 articles) is a separate step: it extracts titles
+Full batch driver (all 1,551 articles) is a separate step: it extracts titles
 from src/data/blogArticles.ts + src/locales/<lang>/blog.ts and calls this
-script in chunks. See ~/workspace/compressmypic/fix-2026-11-18/article-images-plan.md.
+script in chunks. See scripts/generate-blog-images-driver.ts.
 """
 
 import argparse
@@ -24,17 +27,19 @@ import sys
 from PIL import Image, ImageDraw, ImageFont
 
 W, H = 1200, 630
-BG = (244, 241, 254)          # light lavender
-PURPLE = (124, 58, 237)      # #7c3aed brand purple
-DARK = (30, 27, 75)           # #1e1b4b title ink
-MUTED = (100, 116, 139)       # #64748b subline
-SUN = (245, 158, 11)          # #f59e0b icon sun
+BG = (251, 251, 249)          # warm white #fbfbf9
+RED = (220, 38, 38)           # #dc2626 brand red
+RED_DEEP = (185, 28, 28)      # #b91c1c
+RED_LIGHT = (252, 165, 165)   # #fca5a5
+DARK = (17, 24, 39)           # #111827 title ink
+MUTED = (102, 109, 122)       # #666d7a subline
+SUN = (245, 158, 11)          # #f59e0b icon sun (kept: warm highlight)
 CIRCLES = [
-    # (cx, cy, r, rgb) — soft pastel blobs, partly off-canvas
-    (-40, -40, 260, (219, 234, 254)),    # light blue, top-left
-    (60, 640, 300, (252, 231, 243)),     # pink, bottom-left
-    (1230, -60, 280, (237, 233, 254)),   # lavender, top-right
-    (1150, 660, 260, (220, 252, 231)),   # mint, bottom-right
+    # (cx, cy, r, rgb) — soft red-tint blobs, partly off-canvas
+    (-40, -40, 260, (254, 226, 226)),    # red-100, top-left
+    (60, 640, 300, (255, 241, 242)),     # rose-50, bottom-left
+    (1230, -60, 280, (254, 242, 242)),   # red-50, top-right
+    (1150, 660, 260, (254, 226, 226)),   # red-100, bottom-right
 ]
 SUBLINE = "Free · No Signup · No Upload · 100% Private"
 
@@ -142,17 +147,17 @@ def fit_title(draw, title, lang, max_width, max_lines=3):
 def draw_icon(draw, cx, top, w=120, h=92):
     """Simple image glyph: rounded-rect outline, mountains, sun."""
     x0, y0, x1, y1 = cx - w // 2, top, cx + w // 2, top + h
-    draw.rounded_rectangle([x0, y0, x1, y1], radius=18, outline=PURPLE, width=6)
+    draw.rounded_rectangle([x0, y0, x1, y1], radius=18, outline=RED, width=6)
     # sun
     draw.ellipse([x1 - 38, y0 + 14, x1 - 14, y0 + 38], fill=SUN)
     # mountains
     draw.polygon(
         [(x0 + 16, y1 - 8), (x0 + 52, y0 + 42), (x0 + 88, y1 - 8)],
-        fill=(167, 139, 250),
+        fill=RED_LIGHT,
     )
     draw.polygon(
         [(x0 + 48, y1 - 8), (x0 + 84, y0 + 50), (x1 - 8, y1 - 8)],
-        fill=PURPLE,
+        fill=RED,
     )
 
 
@@ -166,7 +171,7 @@ def render_card(title, lang):
 
     # wordmark + tagline, top-left
     wm_font = font_for(lang, 44, bold=True)
-    draw.text((60, 46), "CompressMyPic", font=wm_font, fill=PURPLE)
+    draw.text((60, 46), "CompressMyPic", font=wm_font, fill=RED)
     tag_font = font_for(lang, 21, bold=False)
     draw.text((62, 102), "FREE ONLINE IMAGE TOOLS", font=tag_font, fill=MUTED)
 
@@ -190,8 +195,8 @@ def render_card(title, lang):
     sw = draw.textlength(sub, font=sub_font)
     draw.text(((W - sw) / 2, 292 + total_h + 22), sub, font=sub_font, fill=MUTED)
 
-    # purple bottom bar
-    draw.rectangle([0, H - 16, W, H], fill=PURPLE)
+    # red bottom bar
+    draw.rectangle([0, H - 16, W, H], fill=RED)
     return img
 
 
@@ -199,6 +204,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--jobs", required=True, help="JSON list of {id, lang, title}")
     ap.add_argument("--out", required=True, help="output directory")
+    ap.add_argument("--og", action="store_true",
+                    help="per-tool social cards: output og-<id>.png (lang ignored)")
     args = ap.parse_args()
 
     with open(args.jobs, encoding="utf-8") as f:
@@ -207,7 +214,7 @@ def main():
 
     for job in jobs:
         img = render_card(job["title"], job["lang"])
-        name = f"{job['id']}-{job['lang']}.png"
+        name = f"og-{job['id']}.png" if args.og else f"{job['id']}-{job['lang']}.png"
         path = os.path.join(args.out, name)
         img.save(path, format="PNG", optimize=True)
         print(f"{name}: {os.path.getsize(path)} bytes")

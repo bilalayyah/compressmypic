@@ -331,7 +331,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
               <div className="lg:col-span-7 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5">
-                    <Grid className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+                    <Grid className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
                     {t('cutLinePreview', 'Cut-Line Preview ({rows} × {cols} = {tiles} tiles)').replace('{rows}', String(effectiveRows)).replace('{cols}', String(effectiveCols)).replace('{tiles}', String(effectiveRows * effectiveCols))}
                   </span>
                   <button
@@ -399,7 +399,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                         type="button"
                         onClick={() => setMode(m.id)}
                         className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
-                          mode === m.id ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                          mode === m.id ? 'bg-[#dc2626] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                         }`}
                       >
                         {m.label}
@@ -420,7 +420,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                         max={10}
                         value={rows}
                         onChange={(e) => setRows(Math.max(1, Math.min(10, parseInt(e.target.value, 10) || 1)))}
-                        className="w-full px-3 py-2 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                        className="w-full px-3 py-2 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                       />
                     </div>
                   )}
@@ -435,7 +435,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                         max={10}
                         value={cols}
                         onChange={(e) => setCols(Math.max(1, Math.min(10, parseInt(e.target.value, 10) || 1)))}
-                        className="w-full px-3 py-2 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                        className="w-full px-3 py-2 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                       />
                     </div>
                   )}
@@ -456,7 +456,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                         setRows(p.r);
                         setCols(p.c);
                       }}
-                      className="px-3 py-1.5 text-xs font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-2)] cursor-pointer transition-colors"
+                      className="px-3 py-1.5 text-xs font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca] text-[var(--ink-2)] cursor-pointer transition-colors"
                     >
                       {p.label}
                     </button>
@@ -471,7 +471,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                         type="button"
                         onClick={() => setFormat(fmt)}
                         className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
-                          format === fmt ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                          format === fmt ? 'bg-[#dc2626] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                         }`}
                       >
                         {fmt === 'original' ? t('formatOriginal', 'Orig') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
@@ -483,7 +483,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="font-semibold text-[var(--ink-2)]">{t('tileQuality', 'Tile Quality')}</span>
-                        <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{quality}%</span>
+                        <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{quality}%</span>
                       </div>
                       <input
                         type="range"
@@ -522,7 +522,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
               <div className="space-y-4">
                 <div className="panel-pastel-blue border rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-[#fca5a5]">
                       {t('splitComplete', 'Split Complete')}
                     </span>
                     <p className="text-sm font-semibold text-[var(--ink-navy)] mt-0.5">

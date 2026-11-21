@@ -19,7 +19,7 @@ export const PrivacyPageKo: React.FC<PrivacyPageKoProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/ko/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>이미지 압축기로 돌아가기</span>
@@ -108,7 +108,7 @@ export const PrivacyPageKo: React.FC<PrivacyPageKoProps> = ({ onNavigate }) => {
             <p>
               저희 도구는 이미지를 로컬에서 처리하고 사용자 계정이 없으므로, 저희가 일반적으로 보유하는 개인 데이터는 문의 양식을 통해 보내주신 이름, 이메일 주소, 메시지뿐입니다. 이러한 권리를 행사하시려면 <a
                 href="mailto:bilalayyah@gmail.com"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 bilalayyah@gmail.com
               </a>로 이메일을 보내주세요. 30일 이내에 답변드리겠습니다. 또한 저희가 데이터를 부당하게 처리했다고 생각되시면 현지 데이터 보호 기관에 불만을 제기할 권리도 있습니다.
@@ -133,14 +133,14 @@ export const PrivacyPageKo: React.FC<PrivacyPageKoProps> = ({ onNavigate }) => {
                 href="https://policies.google.com/privacy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline"
               >
                 개인정보처리방침
               </a> 및 <a
                 href="https://policies.google.com/terms"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline"
               >
                 이용약관
               </a>의 적용을 받습니다. 저희는 문의 양식을 통해 비밀번호, 결제 정보, 민감한 개인 문서를 보내달라고 요청하지 않으며, 메시지에도 포함하지 마세요.
@@ -173,7 +173,7 @@ export const PrivacyPageKo: React.FC<PrivacyPageKoProps> = ({ onNavigate }) => {
               이 방침에 대해 질문이 있으시면{' '}
               <a
                 href="mailto:bilalayyah@gmail.com"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 bilalayyah@gmail.com
               </a>

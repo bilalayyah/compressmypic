@@ -146,7 +146,7 @@ export const AdminCommentsPage: React.FC<AdminCommentsPageProps> = ({ onNavigate
           <button
             type="button"
             onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Image Compressor</span>
@@ -155,8 +155,8 @@ export const AdminCommentsPage: React.FC<AdminCommentsPageProps> = ({ onNavigate
 
         <div className="border-b border-[var(--line)] pb-6 mb-8">
           <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-2xl bg-[#ede9fe] dark:bg-[#312e81] flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-5 h-5 text-[#7c3aed] dark:text-[#c4b5fd]" />
+            <span className="w-10 h-10 rounded-2xl bg-[#fee2e2] dark:bg-[#312e81] flex items-center justify-center shrink-0">
+              <ShieldCheck className="w-5 h-5 text-[#dc2626] dark:text-[#fca5a5]" />
             </span>
             <div>
               <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink-navy)]">Comments admin</h1>
@@ -186,7 +186,7 @@ export const AdminCommentsPage: React.FC<AdminCommentsPageProps> = ({ onNavigate
               placeholder="ADMIN_TOKEN"
               autoComplete="off"
               required
-              className="mt-3 w-full px-3 py-2 rounded-xl border border-[var(--line)] bg-[var(--bg)] text-sm text-[var(--ink-navy)] placeholder:text-[var(--ink-3)] focus:outline-none focus:border-[#7c3aed]"
+              className="mt-3 w-full px-3 py-2 rounded-xl border border-[var(--line)] bg-[var(--bg)] text-sm text-[var(--ink-navy)] placeholder:text-[var(--ink-3)] focus:outline-none focus:border-[#dc2626]"
             />
             {authError && <p className="text-sm text-red-600 dark:text-red-400 mt-3">{authError}</p>}
             <button

@@ -553,8 +553,8 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-navy)] text-xs font-bold">
                 <span>{sourceLabel}</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
-                <span className="text-[#7c3aed] dark:text-[#a78bfa]">{targetLabel}</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
+                <span className="text-[#dc2626] dark:text-[#f87171]">{targetLabel}</span>
               </span>
               {targetFormat === 'png' && (
                 <span className="text-xs font-medium text-[#15803d] dark:text-[#86efac] bg-[#dcfce7] dark:bg-[#16a34a]/20 border border-[#bbf7d0] dark:border-[#16a34a]/35 px-3 py-0.5 rounded-full">
@@ -603,7 +603,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                   <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)]">
                     {t('outputQualityLabel', t('outputQuality', `${targetLabel} Output Quality`))}
                   </span>
-                  <span className="text-sm font-bold font-mono text-[#7c3aed] dark:text-[#a78bfa]">{quality}%</span>
+                  <span className="text-sm font-bold font-mono text-[#dc2626] dark:text-[#f87171]">{quality}%</span>
                 </div>
                 <input
                   type="range"
@@ -685,7 +685,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                       onClick={() => setBackgroundColor(preset)}
                       className={`px-3 py-1 text-xs font-mono rounded-full border cursor-pointer transition-colors ${
                         backgroundColor.toLowerCase() === preset
-                          ? 'border-[#7c3aed] bg-[#ede9fe] text-[#6d28d9] dark:bg-[#7c3aed]/25 dark:text-[#ddd6fe] dark:border-[#8b5cf6] font-bold'
+                          ? 'border-[#dc2626] bg-[#fee2e2] text-[#b91c1c] dark:bg-[#dc2626]/25 dark:text-[#fecaca] dark:border-[#ef4444] font-bold'
                           : 'border-[var(--line)] bg-[var(--surface-2)] text-[var(--ink-2)] hover:border-[var(--line-strong)]'
                       }`}
                     >
@@ -718,7 +718,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
             {doneItems.length > 0 && (
               <div className="panel-pastel-blue border rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-[var(--shadow)]">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-[#fca5a5]">
                     {t('batchSummary', `${sourceLabel} → ${targetLabel} Batch Summary`)
                       .replace('{source}', sourceLabel)
                       .replace('{target}', targetLabel)}
@@ -769,7 +769,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                       />
                       {isBusy && (
                         <div className="absolute inset-0 bg-[var(--surface)]/85 flex items-center justify-center">
-                          <RotateCcw className="w-5 h-5 text-[#7c3aed] animate-spin" />
+                          <RotateCcw className="w-5 h-5 text-[#dc2626] animate-spin" />
                         </div>
                       )}
                     </div>
@@ -812,7 +812,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                         <span className="text-xs text-[var(--ink-3)] block font-medium">
                           {targetLabel}
                         </span>
-                        <span className="text-xs sm:text-sm font-bold font-mono text-[#7c3aed] dark:text-[#a78bfa] tabular-nums">
+                        <span className="text-xs sm:text-sm font-bold font-mono text-[#dc2626] dark:text-[#f87171] tabular-nums">
                           {formatBytes(item.compressedSize)}
                         </span>
                       </div>
@@ -839,9 +839,9 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                         <button
                           type="button"
                           onClick={() => setComparisonTarget(item)}
-                          className="px-3.5 py-2 text-[var(--ink-2)] bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#c4b5fd] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
+                          className="px-3.5 py-2 text-[var(--ink-2)] bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#fca5a5] hover:text-[#dc2626] dark:hover:text-[#fca5a5] text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
                         >
-                          <SplitSquareVertical className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
+                          <SplitSquareVertical className="w-4 h-4 text-[#dc2626] dark:text-[#f87171]" />
                           <span>{t('compare', 'Compare')}</span>
                         </button>
                         <button

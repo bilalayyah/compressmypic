@@ -19,7 +19,7 @@ export const DisclaimerPageId: React.FC<DisclaimerPageIdProps> = ({ onNavigate }
           <button
             type="button"
             onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Kembali ke kompresor gambar</span>
@@ -118,7 +118,7 @@ export const DisclaimerPageId: React.FC<DisclaimerPageIdProps> = ({ onNavigate }
             </h2>
             <p>
               Jika Anda memiliki pertanyaan tentang penafian ini, hubungi kami di 
-              <a href="mailto:bilalayyah@gmail.com" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">bilalayyah@gmail.com</a>
+              <a href="mailto:bilalayyah@gmail.com" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">bilalayyah@gmail.com</a>
               .
             </p>
           </section>

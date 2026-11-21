@@ -40,19 +40,19 @@ export function BlogCard({ article, lang, toolName, categories, onNavigate }: Bl
     : { href: url };
 
   return (
-    <article className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#7c3aed]/40 transition-[transform,box-shadow,border-color] duration-200 flex flex-col gap-3">
+    <article className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#dc2626]/40 transition-[transform,box-shadow,border-color] duration-200 flex flex-col gap-3">
       <div className="flex flex-wrap items-center gap-2">
         <span className="text-xs font-semibold text-[var(--ink-3)] bg-[var(--surface-2)] border border-[var(--line)] px-2.5 py-0.5 rounded-full">
           {categoryLabel}
         </span>
         {toolName ? (
-          <span className="text-xs font-semibold text-[#7c3aed] bg-[#7c3aed]/10 px-2.5 py-0.5 rounded-full">
+          <span className="text-xs font-semibold text-[#dc2626] bg-[#dc2626]/10 px-2.5 py-0.5 rounded-full">
             {toolName}
           </span>
         ) : null}
       </div>
       <h3 className="text-lg font-bold leading-snug">
-        <a {...linkProps} className="group-hover:text-[#7c3aed] transition-colors">
+        <a {...linkProps} className="group-hover:text-[#dc2626] transition-colors">
           {version.title}
         </a>
       </h3>
@@ -61,7 +61,7 @@ export function BlogCard({ article, lang, toolName, categories, onNavigate }: Bl
         <span>
           {dateStr} · {reading}
         </span>
-        <a {...linkProps} className="font-semibold text-[#7c3aed] whitespace-nowrap" aria-label={version.title}>
+        <a {...linkProps} className="font-semibold text-[#dc2626] whitespace-nowrap" aria-label={version.title}>
           {strings.readArticle}
         </a>
       </div>

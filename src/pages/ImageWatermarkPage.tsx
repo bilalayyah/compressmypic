@@ -396,7 +396,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
             <div className="lg:col-span-7 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5">
-                  <Stamp className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+                  <Stamp className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
                   {tiled ? t('tiledPreview', 'Tiled Preview') : t('dragToPosition', 'Drag on Image to Position')}
                 </span>
                 <button
@@ -441,7 +441,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
                     type="button"
                     onClick={() => setWatermarkMode('text')}
                     className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
-                      watermarkMode === 'text' ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                      watermarkMode === 'text' ? 'bg-[#dc2626] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
                     {t('modeText', 'Text Watermark')}
@@ -450,7 +450,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
                     type="button"
                     onClick={() => setWatermarkMode('image')}
                     className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
-                      watermarkMode === 'image' ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                      watermarkMode === 'image' ? 'bg-[#dc2626] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
                     {t('modeLogo', 'Logo Image')}
@@ -469,7 +469,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
                       value={text}
                       onChange={(e) => setText(e.target.value)}
                       placeholder={t('placeholderBrand', '© Your Brand')}
-                      className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                      className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                     />
                   </div>
                   <div className="flex items-center justify-between gap-4">
@@ -485,7 +485,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
                     <div className="flex-1">
                       <div className="flex justify-between text-xs mb-1">
                         <span className="font-semibold text-[var(--ink-2)]">{t('size', 'Size')}</span>
-                        <span className="font-mono text-[#7c3aed] dark:text-[#a78bfa]">{fontSizePct}%</span>
+                        <span className="font-mono text-[#dc2626] dark:text-[#f87171]">{fontSizePct}%</span>
                       </div>
                       <input
                         type="range"
@@ -510,7 +510,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
                   <button
                     type="button"
                     onClick={() => logoInputRef.current?.click()}
-                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[var(--surface-2)] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:border-[#7c3aed] border border-[var(--line)] text-[var(--ink-2)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[var(--surface-2)] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 hover:text-[#b91c1c] dark:hover:text-[#fecaca] hover:border-[#dc2626] border border-[var(--line)] text-[var(--ink-2)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                   >
                     <Upload className="w-4 h-4" />
                     <span>{logoInfo ? t('changeLogo', 'Change Logo Image') : t('uploadLogo', 'Upload Logo (PNG / SVG)')}</span>
@@ -519,7 +519,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="font-semibold text-[var(--ink-2)]">{t('logoWidth', 'Logo Width')}</span>
-                        <span className="font-mono text-[#7c3aed] dark:text-[#a78bfa]">{logoScalePct}%</span>
+                        <span className="font-mono text-[#dc2626] dark:text-[#f87171]">{logoScalePct}%</span>
                       </div>
                       <input
                         type="range"
@@ -538,7 +538,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-1">
                     <span className="font-semibold text-[var(--ink-2)]">{t('opacity', 'Opacity')}</span>
-                    <span className="font-mono text-[#7c3aed] dark:text-[#a78bfa]">{opacity}%</span>
+                    <span className="font-mono text-[#dc2626] dark:text-[#f87171]">{opacity}%</span>
                   </div>
                   <input
                     type="range"
@@ -552,7 +552,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-1">
                     <span className="font-semibold text-[var(--ink-2)]">{t('rotation', 'Rotation')}</span>
-                    <span className="font-mono text-[#7c3aed] dark:text-[#a78bfa]">{rotation}°</span>
+                    <span className="font-mono text-[#dc2626] dark:text-[#f87171]">{rotation}°</span>
                   </div>
                   <input
                     type="range"
@@ -568,14 +568,14 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
               <div className="space-y-2.5">
                 <label className="flex items-center justify-between p-3 rounded-[11px] bg-[var(--surface-2)] border border-[var(--line)] cursor-pointer">
                   <span className="text-xs font-semibold text-[var(--ink-2)] flex items-center gap-1.5">
-                    <Grid className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+                    <Grid className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
                     <span>{t('tiledRepeatPattern', 'Tiled Repeat Pattern')}</span>
                   </span>
                   <input
                     type="checkbox"
                     checked={tiled}
                     onChange={(e) => setTiled(e.target.checked)}
-                    className="w-4 h-4 accent-[#7c3aed] rounded cursor-pointer"
+                    className="w-4 h-4 accent-[#dc2626] rounded cursor-pointer"
                   />
                 </label>
 
@@ -583,7 +583,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
                   <div>
                     <div className="flex justify-between text-xs mb-1">
                       <span className="font-semibold text-[var(--ink-2)]">{t('tileSpacing', 'Tile Spacing')}</span>
-                      <span className="font-mono text-[#7c3aed] dark:text-[#a78bfa]">{tileSpacingPct}%</span>
+                      <span className="font-mono text-[#dc2626] dark:text-[#f87171]">{tileSpacingPct}%</span>
                     </div>
                     <input
                       type="range"
@@ -611,8 +611,8 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
                           }}
                           className={`py-1.5 text-xs font-semibold rounded-[8px] border cursor-pointer transition-colors ${
                             Math.abs(posX - a.x) < 0.04 && Math.abs(posY - a.y) < 0.04
-                              ? 'bg-[#7c3aed] text-white border-[#7c3aed]'
-                              : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe]'
+                              ? 'bg-[#dc2626] text-white border-[#dc2626]'
+                              : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca]'
                           }`}
                         >
                           {a.label}
@@ -631,7 +631,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
                       type="button"
                       onClick={() => setFormat(fmt)}
                       className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
-                        format === fmt ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                        format === fmt ? 'bg-[#dc2626] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {fmt === 'original' ? t('formatOrig', 'Orig') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
@@ -642,7 +642,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
                   <div>
                     <div className="flex justify-between text-xs mb-1">
                       <span className="font-semibold text-[var(--ink-2)]">{t('quality', 'Quality')}</span>
-                      <span className="font-mono text-[#7c3aed] dark:text-[#a78bfa]">{quality}%</span>
+                      <span className="font-mono text-[#dc2626] dark:text-[#f87171]">{quality}%</span>
                     </div>
                     <input
                       type="range"

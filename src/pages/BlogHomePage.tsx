@@ -131,15 +131,15 @@ export function BlogHomePage({ lang, onNavigate, tools, categories, guidesSectio
                   e.preventDefault();
                   onNavigate(enPath);
                 }}
-                className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#7c3aed]/40 transition-all duration-200 flex flex-col justify-between"
+                className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#dc2626]/40 transition-all duration-200 flex flex-col justify-between"
               >
                 <div>
-                  <h3 className="text-lg font-bold leading-snug group-hover:text-[#7c3aed] transition-colors">
+                  <h3 className="text-lg font-bold leading-snug group-hover:text-[#dc2626] transition-colors">
                     {card.title}
                   </h3>
                   <p className="mt-1.5 text-sm text-[var(--ink-2)] leading-relaxed">{card.desc}</p>
                 </div>
-                <span className="mt-4 inline-block text-[13px] font-semibold text-[#7c3aed]">
+                <span className="mt-4 inline-block text-[13px] font-semibold text-[#dc2626]">
                   {card.cta}
                 </span>
               </a>

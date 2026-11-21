@@ -170,7 +170,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({
                   </span>
                   <ChevronDown
                     className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'
+                      isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'
                     }`}
                   />
                 </button>

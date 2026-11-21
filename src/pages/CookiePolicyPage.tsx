@@ -19,7 +19,7 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onNavigate }
           <button
             type="button"
             onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Image Compressor</span>
@@ -95,7 +95,7 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onNavigate }
                 href="https://policies.google.com/privacy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline"
               >
                 Privacy Policy
               </a>
@@ -104,7 +104,7 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onNavigate }
                 href="https://policies.google.com/terms"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline"
               >
                 Terms of Service
               </a>
@@ -147,7 +147,7 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onNavigate }
               If you have questions about this policy, contact us at{' '}
               <a
                 href="mailto:bilalayyah@gmail.com"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 bilalayyah@gmail.com
               </a>
@@ -158,7 +158,7 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ onNavigate }
                   e.preventDefault();
                   onNavigate('/privacy');
                 }}
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 Privacy Policy
               </a>

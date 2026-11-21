@@ -88,8 +88,8 @@ export const Hero: React.FC<HeroProps> = ({
   return (
     <section className="pt-10 pb-8 sm:pt-14 sm:pb-10 text-center px-4 max-w-5xl mx-auto">
       {/* Eyebrow Pill */}
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ede9fe] dark:bg-[#7c3aed]/20 border border-[#ddd6fe] dark:border-[#8b5cf6]/35 text-[#6d28d9] dark:text-[#ddd6fe] text-xs sm:text-sm font-semibold mb-5">
-        <Lock className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#c4b5fd]" />
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fee2e2] dark:bg-[#dc2626]/20 border border-[#fecaca] dark:border-[#ef4444]/35 text-[#b91c1c] dark:text-[#fecaca] text-xs sm:text-sm font-semibold mb-5">
+        <Lock className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#fca5a5]" />
         <span>{strings.pill}</span>
       </div>
 
@@ -111,7 +111,7 @@ export const Hero: React.FC<HeroProps> = ({
               handlePickTool(filteredTools[0].slug);
             }
           }}
-          className="flex items-center bg-[var(--surface)] border border-[var(--line)] focus-within:border-[#7c3aed] focus-within:ring-2 focus-within:ring-[#7c3aed]/20 rounded-full px-4 py-2.5 shadow-[var(--shadow)] transition-[border-color,box-shadow]"
+          className="flex items-center bg-[var(--surface)] border border-[var(--line)] focus-within:border-[#dc2626] focus-within:ring-2 focus-within:ring-[#dc2626]/20 rounded-full px-4 py-2.5 shadow-[var(--shadow)] transition-[border-color,box-shadow]"
         >
           <Search className="w-4 h-4 text-[var(--ink-3)] shrink-0 mr-2.5" />
           <input
@@ -147,14 +147,14 @@ export const Hero: React.FC<HeroProps> = ({
                   className="w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl hover:bg-[var(--accent-soft)] transition-colors cursor-pointer group"
                 >
                   <div className="min-w-0">
-                    <div className="text-sm font-semibold text-[var(--ink)] group-hover:text-[#6d28d9] dark:group-hover:text-[#ddd6fe] truncate">
+                    <div className="text-sm font-semibold text-[var(--ink)] group-hover:text-[#b91c1c] dark:group-hover:text-[#fecaca] truncate">
                       {tool.name}
                     </div>
                     <div className="text-xs text-[var(--ink-3)] truncate">
                       {tool.shortDescription}
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-[#7c3aed] shrink-0 opacity-70 group-hover:translate-x-0.5 group-hover:opacity-100 transition-[transform,opacity]" />
+                  <ArrowRight className="w-4 h-4 text-[#dc2626] shrink-0 opacity-70 group-hover:translate-x-0.5 group-hover:opacity-100 transition-[transform,opacity]" />
                 </button>
               ))
             )}
@@ -187,9 +187,9 @@ export const Hero: React.FC<HeroProps> = ({
               window.location.assign('/all-tools');
             }
           }}
-          className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-full bg-[var(--surface)] border border-[var(--line)] hover:border-[#7c3aed]/50 text-[var(--ink)] shadow-2xs transition-colors cursor-pointer"
+          className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-full bg-[var(--surface)] border border-[var(--line)] hover:border-[#dc2626]/50 text-[var(--ink)] shadow-2xs transition-colors cursor-pointer"
         >
-          <LayoutGrid className="w-4 h-4 text-[#7c3aed] dark:text-[#c4b5fd]" />
+          <LayoutGrid className="w-4 h-4 text-[#dc2626] dark:text-[#fca5a5]" />
           <span>Explore {toolCount} Tools</span>
         </button>
       </div>
@@ -202,7 +202,7 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
         <span aria-hidden="true" className="text-[var(--line-strong)] hidden sm:inline">·</span>
         <div className="flex items-center gap-1.5">
-          <Zap className="w-4 h-4 text-[#7c3aed] dark:text-[#c4b5fd]" />
+          <Zap className="w-4 h-4 text-[#dc2626] dark:text-[#fca5a5]" />
           <span>{strings.badge2}</span>
         </div>
         <span aria-hidden="true" className="text-[var(--line-strong)] hidden sm:inline">·</span>

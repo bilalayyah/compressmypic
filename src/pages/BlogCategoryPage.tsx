@@ -35,11 +35,11 @@ export function BlogCategoryPage({ lang, categoryId, onNavigate, tools, categori
   return (
     <div className="max-w-6xl mx-auto px-4 py-10 sm:py-14">
       <nav aria-label="Breadcrumb" className="text-sm text-[var(--ink-3)]">
-        <a href={lang === 'en' ? '/' : `/${lang}/`} className="hover:text-[#7c3aed]">
+        <a href={lang === 'en' ? '/' : `/${lang}/`} className="hover:text-[#dc2626]">
           CompressMyPic
         </a>
         {' / '}
-        <a href={getBlogHomeUrl(lang)} className="hover:text-[#7c3aed]">
+        <a href={getBlogHomeUrl(lang)} className="hover:text-[#dc2626]">
           {strings.blog}
         </a>
         {' / '}
@@ -64,7 +64,7 @@ export function BlogCategoryPage({ lang, categoryId, onNavigate, tools, categori
             {strings.emptyText}
           </p>
           <p className="mt-4">
-            <a href={getBlogHomeUrl(lang)} className="font-semibold text-[#7c3aed]">
+            <a href={getBlogHomeUrl(lang)} className="font-semibold text-[#dc2626]">
               {strings.viewBlogHome} →
             </a>
           </p>

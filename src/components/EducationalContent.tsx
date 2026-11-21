@@ -197,7 +197,7 @@ export const EducationalContent: React.FC<EducationalContentProps> = ({ sections
                 return (
                   <div key={i} className={`border rounded-2xl p-5 shadow-[var(--shadow)] ${i % 2 === 0 ? 'pastel-card-0' : 'pastel-card-2'}`}>
                     <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#7c3aed] dark:text-[#c4b5fd] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-5 h-5 text-[#dc2626] dark:text-[#fca5a5] shrink-0 mt-0.5" />
                       <div>
                         <h3 className="text-base font-sans font-bold text-[var(--ink-navy)]">{title}</h3>
                         <p className="mt-1.5 text-sm text-[var(--ink-2)] leading-relaxed">{description}</p>
@@ -264,7 +264,7 @@ export const EducationalContent: React.FC<EducationalContentProps> = ({ sections
           {/* Section 8: Optimization Tips */}
           <div className="pastel-card-0 border rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)]">
             <h2 className="text-lg sm:text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Zap className="w-5 h-5 text-[#7c3aed] dark:text-[#c4b5fd]" />
+              <Zap className="w-5 h-5 text-[#dc2626] dark:text-[#fca5a5]" />
               {s[7]?.heading}
             </h2>
             <ul className="mt-4 space-y-3">
@@ -273,7 +273,7 @@ export const EducationalContent: React.FC<EducationalContentProps> = ({ sections
                 const Icon = tipIcons[i] ?? CheckCircle2;
                 return (
                   <li key={i} className="flex gap-3 text-sm text-[var(--ink-2)] leading-relaxed">
-                    <Icon className="w-5 h-5 text-[#7c3aed] dark:text-[#c4b5fd] flex-shrink-0 mt-0.5" />
+                    <Icon className="w-5 h-5 text-[#dc2626] dark:text-[#fca5a5] flex-shrink-0 mt-0.5" />
                     <span><strong className="text-[var(--ink-navy)]">{title}:</strong> {description}</span>
                   </li>
                 );
@@ -367,7 +367,7 @@ export const EducationalContent: React.FC<EducationalContentProps> = ({ sections
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>
-                  <p className="text-xs font-bold uppercase tracking-[0.08em] text-[#7c3aed] dark:text-[#c4b5fd]">{step.step}</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.08em] text-[#dc2626] dark:text-[#fca5a5]">{step.step}</p>
                   <h3 className="mt-1 text-base font-sans font-bold text-[var(--ink-navy)]">{step.title}</h3>
                   <p className="mt-1.5 text-sm text-[var(--ink-2)] leading-relaxed">{step.description}</p>
                 </div>
@@ -388,7 +388,7 @@ export const EducationalContent: React.FC<EducationalContentProps> = ({ sections
             {features.map((feature, i) => (
               <div key={feature.title} className={`border rounded-2xl p-5 shadow-[var(--shadow)] ${i % 2 === 0 ? 'pastel-card-0' : 'pastel-card-2'}`}>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#7c3aed] dark:text-[#c4b5fd] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#dc2626] dark:text-[#fca5a5] shrink-0 mt-0.5" />
                   <div>
                     <h3 className="text-base font-sans font-bold text-[var(--ink-navy)]">{feature.title}</h3>
                     <p className="mt-1.5 text-sm text-[var(--ink-2)] leading-relaxed">{feature.description}</p>
@@ -443,7 +443,7 @@ export const EducationalContent: React.FC<EducationalContentProps> = ({ sections
             </div>
           </div>
           <div className="mt-5 rounded-2xl border pastel-card-3 p-4 flex gap-3">
-            <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-[#7c3aed] dark:text-[#c4b5fd] mt-0.5" />
+            <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-[#dc2626] dark:text-[#fca5a5] mt-0.5" />
             <p className="text-sm text-[var(--ink-2)] leading-relaxed">
               <strong className="text-[var(--ink-navy)]">Compare the Visual Difference:</strong> Not sure how much compression is acceptable? Use the before-and-after comparison option in the tool. Our interactive slider tool lets you inspect the original image and the compressed version side-by-side to spot any visual artifacts or quality loss before you download.
             </p>
@@ -484,28 +484,28 @@ export const EducationalContent: React.FC<EducationalContentProps> = ({ sections
         {/* Section 8: Optimization Tips */}
         <div className="pastel-card-0 border rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)]">
           <h2 className="text-lg sm:text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-            <Zap className="w-5 h-5 text-[#7c3aed] dark:text-[#c4b5fd]" />
+            <Zap className="w-5 h-5 text-[#dc2626] dark:text-[#fca5a5]" />
             Optimization Tips: Reduce Image Size Without Losing Quality
           </h2>
           <ul className="mt-4 space-y-3">
             <li className="flex gap-3 text-sm text-[var(--ink-2)] leading-relaxed">
-              <CheckCircle2 className="w-5 h-5 text-[#7c3aed] dark:text-[#c4b5fd] flex-shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-5 h-5 text-[#dc2626] dark:text-[#fca5a5] flex-shrink-0 mt-0.5" />
               <span><strong className="text-[var(--ink-navy)]">Start with the Balanced Preset:</strong> The Balanced preset (70% quality) offers the optimal trade-off for most images — dramatically smaller files with great visual similarity to the original.</span>
             </li>
             <li className="flex gap-3 text-sm text-[var(--ink-2)] leading-relaxed">
-              <CheckCircle2 className="w-5 h-5 text-[#7c3aed] dark:text-[#c4b5fd] flex-shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-5 h-5 text-[#dc2626] dark:text-[#fca5a5] flex-shrink-0 mt-0.5" />
               <span><strong className="text-[var(--ink-navy)]">Choose the right format:</strong> For photographs, JPG or WebP will always outperform PNG in file size. For logos and line graphics with transparency, use PNG.</span>
             </li>
             <li className="flex gap-3 text-sm text-[var(--ink-2)] leading-relaxed">
-              <CheckCircle2 className="w-5 h-5 text-[#7c3aed] dark:text-[#c4b5fd] flex-shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-5 h-5 text-[#dc2626] dark:text-[#fca5a5] flex-shrink-0 mt-0.5" />
               <span><strong className="text-[var(--ink-navy)]">Aim for a target size:</strong> For website use, aim for images under 200 KB. For emails and messages, stay under 1 MB to ensure fast delivery. Use the quality slider and the live size display to reach your target size.</span>
             </li>
             <li className="flex gap-3 text-sm text-[var(--ink-2)] leading-relaxed">
-              <Gauge className="w-5 h-5 text-[#7c3aed] dark:text-[#c4b5fd] flex-shrink-0 mt-0.5" />
+              <Gauge className="w-5 h-5 text-[#dc2626] dark:text-[#fca5a5] flex-shrink-0 mt-0.5" />
               <span><strong className="text-[var(--ink-navy)]">Find the sweet spot:</strong> Set the quality slider to 85-90% for hero images where quality matters; 70-80% is typically the ideal balance for general website use; 50-60% is better for thumbnails or when size is the top priority.</span>
             </li>
             <li className="flex gap-3 text-sm text-[var(--ink-2)] leading-relaxed">
-              <CheckCircle2 className="w-5 h-5 text-[#7c3aed] dark:text-[#c4b5fd] flex-shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-5 h-5 text-[#dc2626] dark:text-[#fca5a5] flex-shrink-0 mt-0.5" />
               <span><strong className="text-[var(--ink-navy)]">Try WebP for the smallest files:</strong> Switching the output format to WebP usually shrinks a JPG or PNG by another 25-35% at similar quality — a simple way to reduce image size without losing quality.</span>
             </li>
           </ul>

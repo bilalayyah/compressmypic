@@ -75,7 +75,7 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/zh/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>返回图片压缩器</span>
@@ -97,7 +97,7 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
           <div className="space-y-6 md:col-span-1">
             <div className="p-4 rounded-2xl border pastel-card-0 shadow-[var(--shadow)] space-y-2">
               <div className="flex items-center gap-2 text-[var(--ink-navy)] font-bold text-sm">
-                <Mail className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
+                <Mail className="w-4 h-4 text-[#dc2626] dark:text-[#f87171]" />
                 <span>直接联系</span>
               </div>
               <p className="text-xs text-[var(--ink-2)] font-mono break-all select-all">
@@ -157,7 +157,7 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="contact-name" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
-                      您的姓名 <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
+                      您的姓名 <span className="text-[#dc2626] dark:text-[#fca5a5]">*</span>
                     </label>
                     <input
                       id="contact-name"
@@ -167,13 +167,13 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
                       value={contactName}
                       onChange={(e) => setContactName(e.target.value)}
                       placeholder="张小明"
-                      className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                      className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                     />
                   </div>
 
                   <div>
                     <label htmlFor="contact-email" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
-                      电子邮箱 <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
+                      电子邮箱 <span className="text-[#dc2626] dark:text-[#fca5a5]">*</span>
                     </label>
                     <input
                       id="contact-email"
@@ -183,14 +183,14 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
                       value={contactEmail}
                       onChange={(e) => setContactEmail(e.target.value)}
                       placeholder="zhangxiaoming@example.com"
-                      className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                      className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                     />
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="contact-subject" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
-                    主题 <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
+                    主题 <span className="text-[#dc2626] dark:text-[#fca5a5]">*</span>
                   </label>
                   <input
                       id="contact-subject"
@@ -200,13 +200,13 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
                     value={contactSubject}
                     onChange={(e) => setContactSubject(e.target.value)}
                     placeholder="反馈、错误报告或一般问题"
-                    className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                    className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="contact-message" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
-                    消息 <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
+                    消息 <span className="text-[#dc2626] dark:text-[#fca5a5]">*</span>
                   </label>
                   <textarea
                       id="contact-message"
@@ -216,7 +216,7 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
                     value={contactMessage}
                     onChange={(e) => setContactMessage(e.target.value)}
                     placeholder="我们能帮您什么？请详细描述您的问题或建议……"
-                    className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                    className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                   ></textarea>
                 </div>
 
@@ -246,7 +246,7 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
         <div className="mt-12 space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Mail className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Mail className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>谁在运营 CompressMyPic</span>
             </h2>
             <p>
@@ -259,7 +259,7 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <MessageSquare className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <MessageSquare className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>你可以就哪些事情联系我们？</span>
             </h2>
             <p>
@@ -272,7 +272,7 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Github className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Github className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>联系 Bilal 的其他方式</span>
             </h2>
             <p>
@@ -280,15 +280,15 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
             </p>
             <ul className="list-disc pl-6 space-y-1.5">
               <li>
-                <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
+                <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
                 {' '}— 源代码、错误报告和开发动态。
               </li>
               <li>
-                <a href="https://dev.to/bilalayyah" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Dev.to — dev.to/bilalayyah</a>
+                <a href="https://dev.to/bilalayyah" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">Dev.to — dev.to/bilalayyah</a>
                 {' '}— JPG、PNG 与 WebP 压缩指南。
               </li>
               <li>
-                <a href="https://www.indiehackers.com/product/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Indie Hackers — indiehackers.com/product/compressmypic</a>
+                <a href="https://www.indiehackers.com/product/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">Indie Hackers — indiehackers.com/product/compressmypic</a>
                 {' '}— 产品页面、里程碑和社区反馈。
               </li>
             </ul>
@@ -296,7 +296,7 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Lightbulb className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Lightbulb className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>写信之前</span>
             </h2>
             <p>
@@ -307,7 +307,7 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
               <button
                 type="button"
                 onClick={() => onNavigate('/zh/yinsi-zhengce')}
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold cursor-pointer"
               >
                 隐私政策
               </button>
@@ -317,7 +317,7 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Bug className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Bug className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>报告问题</span>
             </h2>
             <p>

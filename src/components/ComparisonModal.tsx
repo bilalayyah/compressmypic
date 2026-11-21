@@ -130,7 +130,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
               <span aria-hidden="true">·</span>
               <span>
                 {image.compressedSize && image.compressedSize > image.originalSize ? sizeChangeLabel : reductionLabel}{' '}
-                <strong className="font-mono tabular-nums text-[#7c3aed] dark:text-[#c4b5fd]">
+                <strong className="font-mono tabular-nums text-[#dc2626] dark:text-[#fca5a5]">
                   {formatPercent(image.compressionPercentage)}
                 </strong>
               </span>
@@ -144,22 +144,22 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                 type="button"
                 onClick={() => setViewMode('slider')}
                 className={`px-2.5 py-1.5 text-xs font-medium rounded-[9px] transition-colors cursor-pointer flex items-center gap-1 ${
-                  viewMode === 'slider' ? 'bg-[var(--accent-soft)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs font-semibold' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                  viewMode === 'slider' ? 'bg-[var(--accent-soft)] text-[#b91c1c] dark:text-[#fecaca] shadow-xs font-semibold' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                 }`}
                 title={sliderLabel}
               >
-                <SplitSquareVertical className="w-3.5 h-3.5 text-[#7c3aed]" />
+                <SplitSquareVertical className="w-3.5 h-3.5 text-[#dc2626]" />
                 <span>{sliderLabel}</span>
               </button>
               <button
                 type="button"
                 onClick={() => setViewMode('sideBySide')}
                 className={`px-2.5 py-1.5 text-xs font-medium rounded-[9px] transition-colors cursor-pointer flex items-center gap-1 ${
-                  viewMode === 'sideBySide' ? 'bg-[var(--accent-soft)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs font-semibold' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                  viewMode === 'sideBySide' ? 'bg-[var(--accent-soft)] text-[#b91c1c] dark:text-[#fecaca] shadow-xs font-semibold' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                 }`}
                 title={sideBySideLabel}
               >
-                <Columns className="w-3.5 h-3.5 text-[#7c3aed]" />
+                <Columns className="w-3.5 h-3.5 text-[#dc2626]" />
                 <span>{sideBySideLabel}</span>
               </button>
             </div>
@@ -253,7 +253,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
               <div className="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-xs text-slate-100 text-xs font-bold uppercase tracking-[0.06em] px-3 py-1 rounded-full pointer-events-none">
                 {beforeLabel}
               </div>
-              <div className="absolute top-3 right-3 bg-[#7c3aed]/90 backdrop-blur-xs text-white text-xs font-bold uppercase tracking-[0.06em] px-3 py-1 rounded-full pointer-events-none">
+              <div className="absolute top-3 right-3 bg-[#dc2626]/90 backdrop-blur-xs text-white text-xs font-bold uppercase tracking-[0.06em] px-3 py-1 rounded-full pointer-events-none">
                 {afterLabel}
               </div>
             </div>
@@ -275,7 +275,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                 />
               </div>
               <div className="flex flex-col items-center bg-[#1e293b] rounded-2xl p-3 border border-slate-700">
-                <span className="text-xs font-semibold text-[#c4b5fd] mb-2">{afterLabel}</span>
+                <span className="text-xs font-semibold text-[#fca5a5] mb-2">{afterLabel}</span>
                 <img
                   src={image.compressedPreviewUrl || image.originalPreviewUrl}
                   alt={altProcessedText}

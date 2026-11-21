@@ -71,7 +71,7 @@ export const ContactPageIt: React.FC<ContactPageItProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/it/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Torna al compressore di immagini</span>
@@ -93,7 +93,7 @@ export const ContactPageIt: React.FC<ContactPageItProps> = ({ onNavigate }) => {
           <div className="space-y-6 md:col-span-1">
             <div className="p-4 rounded-2xl border pastel-card-0 shadow-[var(--shadow)] space-y-2">
               <div className="flex items-center gap-2 text-[var(--ink-navy)] font-bold text-sm">
-                <Mail className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
+                <Mail className="w-4 h-4 text-[#dc2626] dark:text-[#f87171]" />
                 <span>Contatto diretto</span>
               </div>
               <p className="text-xs text-[var(--ink-2)] font-mono break-all select-all">
@@ -153,7 +153,7 @@ export const ContactPageIt: React.FC<ContactPageItProps> = ({ onNavigate }) => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="contact-name" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
-                      Il tuo nome <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
+                      Il tuo nome <span className="text-[#dc2626] dark:text-[#fca5a5]">*</span>
                     </label>
                     <input
                       id="contact-name"
@@ -163,13 +163,13 @@ export const ContactPageIt: React.FC<ContactPageItProps> = ({ onNavigate }) => {
                       value={contactName}
                       onChange={(e) => setContactName(e.target.value)}
                       placeholder="Maria Rossi"
-                      className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                      className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                     />
                   </div>
 
                   <div>
                     <label htmlFor="contact-email" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
-                      Indirizzo email <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
+                      Indirizzo email <span className="text-[#dc2626] dark:text-[#fca5a5]">*</span>
                     </label>
                     <input
                       id="contact-email"
@@ -179,14 +179,14 @@ export const ContactPageIt: React.FC<ContactPageItProps> = ({ onNavigate }) => {
                       value={contactEmail}
                       onChange={(e) => setContactEmail(e.target.value)}
                       placeholder="maria@esempio.com"
-                      className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                      className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                     />
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="contact-subject" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
-                    Oggetto <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
+                    Oggetto <span className="text-[#dc2626] dark:text-[#fca5a5]">*</span>
                   </label>
                   <input
                       id="contact-subject"
@@ -196,13 +196,13 @@ export const ContactPageIt: React.FC<ContactPageItProps> = ({ onNavigate }) => {
                     value={contactSubject}
                     onChange={(e) => setContactSubject(e.target.value)}
                     placeholder="Commenti, segnalazione di un problema o domanda generale"
-                    className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                    className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="contact-message" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
-                    Messaggio <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
+                    Messaggio <span className="text-[#dc2626] dark:text-[#fca5a5]">*</span>
                   </label>
                   <textarea
                       id="contact-message"
@@ -212,7 +212,7 @@ export const ContactPageIt: React.FC<ContactPageItProps> = ({ onNavigate }) => {
                     value={contactMessage}
                     onChange={(e) => setContactMessage(e.target.value)}
                     placeholder="Come possiamo aiutarti? Descrivi il tuo problema o il tuo suggerimento in dettaglio..."
-                    className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                    className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                   ></textarea>
                 </div>
 
@@ -242,7 +242,7 @@ export const ContactPageIt: React.FC<ContactPageItProps> = ({ onNavigate }) => {
         <div className="mt-12 space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Mail className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Mail className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Chi gestisce CompressMyPic</span>
             </h2>
             <p>
@@ -255,7 +255,7 @@ export const ContactPageIt: React.FC<ContactPageItProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <MessageSquare className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <MessageSquare className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Di cosa potete scriverci?</span>
             </h2>
             <p>
@@ -268,7 +268,7 @@ export const ContactPageIt: React.FC<ContactPageItProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Github className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Github className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Altri modi per contattare Bilal</span>
             </h2>
             <p>
@@ -276,15 +276,15 @@ export const ContactPageIt: React.FC<ContactPageItProps> = ({ onNavigate }) => {
             </p>
             <ul className="list-disc pl-6 space-y-1.5">
               <li>
-                <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
+                <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
                 {' '}— codice sorgente, segnalazioni di bug e novità sullo sviluppo.
               </li>
               <li>
-                <a href="https://dev.to/bilalayyah" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Dev.to — dev.to/bilalayyah</a>
+                <a href="https://dev.to/bilalayyah" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">Dev.to — dev.to/bilalayyah</a>
                 {' '}— guide sulla compressione JPG, PNG e WebP.
               </li>
               <li>
-                <a href="https://www.indiehackers.com/product/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Indie Hackers — indiehackers.com/product/compressmypic</a>
+                <a href="https://www.indiehackers.com/product/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">Indie Hackers — indiehackers.com/product/compressmypic</a>
                 {' '}— pagina del prodotto, traguardi e feedback della community.
               </li>
             </ul>
@@ -292,7 +292,7 @@ export const ContactPageIt: React.FC<ContactPageItProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Lightbulb className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Lightbulb className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Prima di scriverci</span>
             </h2>
             <p>
@@ -303,7 +303,7 @@ export const ContactPageIt: React.FC<ContactPageItProps> = ({ onNavigate }) => {
               <button
                 type="button"
                 onClick={() => onNavigate('/it/privacy')}
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold cursor-pointer"
               >
                 Informativa sulla privacy
               </button>
@@ -313,7 +313,7 @@ export const ContactPageIt: React.FC<ContactPageItProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Bug className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Bug className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Segnalare un problema</span>
             </h2>
             <p>

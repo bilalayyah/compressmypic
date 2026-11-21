@@ -332,7 +332,7 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({
         <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 sm:p-6 shadow-[var(--shadow)] space-y-4">
           <div className="flex items-center justify-between gap-3">
             <label className="text-sm font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <FileCode2 className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <FileCode2 className="w-4 h-4 text-[#dc2626] dark:text-[#f87171]" />
               <span>{t('pasteLabel', 'Paste Base64 String or Data URL')}</span>
             </label>
             {input && (
@@ -359,7 +359,7 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({
               decodeString(val);
             }}
             placeholder={t('inputPlaceholder', 'Paste data:image/png;base64,iVBORw0KGgo... or raw Base64 bytes here')}
-            className="w-full p-3.5 font-mono text-xs bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+            className="w-full p-3.5 font-mono text-xs bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
           />
 
           <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[var(--ink-3)]">
@@ -384,7 +384,7 @@ export const Base64ToImagePage: React.FC<Base64ToImagePageProps> = ({
 
         {isDecoding && (
           <div className="flex items-center justify-center p-8 text-sm text-[var(--ink-2)] gap-2">
-            <Loader2 className="w-5 h-5 text-[#7c3aed] animate-spin" />
+            <Loader2 className="w-5 h-5 text-[#dc2626] animate-spin" />
             <span>{t('decodingBytes', 'Decoding Base64 bytes...')}</span>
           </div>
         )}

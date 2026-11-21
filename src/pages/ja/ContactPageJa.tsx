@@ -69,7 +69,7 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/ja/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>画像圧縮ツールに戻る</span>
@@ -91,7 +91,7 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
           <div className="space-y-6 md:col-span-1">
             <div className="p-4 rounded-2xl border pastel-card-0 shadow-[var(--shadow)] space-y-2">
               <div className="flex items-center gap-2 text-[var(--ink-navy)] font-bold text-sm">
-                <Mail className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
+                <Mail className="w-4 h-4 text-[#dc2626] dark:text-[#f87171]" />
                 <span>直接のお問い合わせ</span>
               </div>
               <p className="text-xs text-[var(--ink-2)] font-mono break-all select-all">
@@ -151,7 +151,7 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="contact-name" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
-                      お名前 <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
+                      お名前 <span className="text-[#dc2626] dark:text-[#fca5a5]">*</span>
                     </label>
                     <input
                       id="contact-name"
@@ -161,13 +161,13 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
                       value={contactName}
                       onChange={(e) => setContactName(e.target.value)}
                       placeholder="山田 太郎"
-                      className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                      className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                     />
                   </div>
 
                   <div>
                     <label htmlFor="contact-email" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
-                      メールアドレス <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
+                      メールアドレス <span className="text-[#dc2626] dark:text-[#fca5a5]">*</span>
                     </label>
                     <input
                       id="contact-email"
@@ -177,14 +177,14 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
                       value={contactEmail}
                       onChange={(e) => setContactEmail(e.target.value)}
                       placeholder="yamada@example.com"
-                      className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                      className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                     />
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="contact-subject" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
-                    件名 <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
+                    件名 <span className="text-[#dc2626] dark:text-[#fca5a5]">*</span>
                   </label>
                   <input
                       id="contact-subject"
@@ -194,13 +194,13 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
                     value={contactSubject}
                     onChange={(e) => setContactSubject(e.target.value)}
                     placeholder="ご感想、バグの報告、ご質問など"
-                    className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                    className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="contact-message" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
-                    メッセージ <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
+                    メッセージ <span className="text-[#dc2626] dark:text-[#fca5a5]">*</span>
                   </label>
                   <textarea
                       id="contact-message"
@@ -210,7 +210,7 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
                     value={contactMessage}
                     onChange={(e) => setContactMessage(e.target.value)}
                     placeholder="お困りの内容やご提案を詳しくお聞かせください…"
-                    className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                    className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                   ></textarea>
                 </div>
 
@@ -240,7 +240,7 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
         <div className="mt-12 space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Mail className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Mail className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>CompressMyPicの運営者について</span>
             </h2>
             <p>
@@ -253,7 +253,7 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <MessageSquare className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <MessageSquare className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>どのような内容でご連絡いただけますか</span>
             </h2>
             <p>
@@ -266,7 +266,7 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Github className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Github className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Bilalへのその他の連絡方法</span>
             </h2>
             <p>
@@ -274,15 +274,15 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
             </p>
             <ul className="list-disc pl-6 space-y-1.5">
               <li>
-                <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
+                <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
                 {' '}— ソースコード、バグ報告、開発の最新情報。
               </li>
               <li>
-                <a href="https://dev.to/bilalayyah" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Dev.to — dev.to/bilalayyah</a>
+                <a href="https://dev.to/bilalayyah" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">Dev.to — dev.to/bilalayyah</a>
                 {' '}— JPG、PNG、WebP圧縮のガイド。
               </li>
               <li>
-                <a href="https://www.indiehackers.com/product/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Indie Hackers — indiehackers.com/product/compressmypic</a>
+                <a href="https://www.indiehackers.com/product/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">Indie Hackers — indiehackers.com/product/compressmypic</a>
                 {' '}— 製品ページ、マイルストーン、コミュニティからのフィードバック。
               </li>
             </ul>
@@ -290,7 +290,7 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Lightbulb className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Lightbulb className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>ご連絡の前に</span>
             </h2>
             <p>
@@ -301,7 +301,7 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
               <button
                 type="button"
                 onClick={() => onNavigate('/ja/puraibashi')}
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold cursor-pointer"
               >
                 プライバシーポリシー
               </button>
@@ -311,7 +311,7 @@ export const ContactPageJa: React.FC<ContactPageJaProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Bug className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Bug className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>問題を報告する</span>
             </h2>
             <p>

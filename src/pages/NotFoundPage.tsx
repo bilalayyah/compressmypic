@@ -70,7 +70,7 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center">
-      <p className="text-7xl sm:text-8xl font-sans font-bold text-[#7c3aed] dark:text-[#c4b5fd] leading-none">
+      <p className="text-7xl sm:text-8xl font-sans font-bold text-[#dc2626] dark:text-[#fca5a5] leading-none">
         404
       </p>
       <h1 className="mt-6 text-2xl sm:text-3xl font-sans font-bold text-[var(--ink-navy)]">
@@ -92,7 +92,7 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({
         <a
           href={directoryPath}
           onClick={go(directoryPath)}
-          className="inline-flex items-center justify-center px-5 py-3 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] text-[var(--ink-navy)] text-sm font-semibold rounded-[11px] cursor-pointer transition-colors"
+          className="inline-flex items-center justify-center px-5 py-3 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#dc2626] text-[var(--ink-navy)] text-sm font-semibold rounded-[11px] cursor-pointer transition-colors"
         >
           Browse all tools
         </a>
@@ -111,7 +111,7 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Try “image resizer”, “jpg to png”, “pdf”…"
-          className="mt-2 w-full px-4 py-3 rounded-[11px] border border-[var(--line-strong)] bg-[var(--surface)] text-[var(--ink)] text-sm outline-none focus:border-[#7c3aed]"
+          className="mt-2 w-full px-4 py-3 rounded-[11px] border border-[var(--line-strong)] bg-[var(--surface)] text-[var(--ink)] text-sm outline-none focus:border-[#dc2626]"
         />
         {results.length > 0 && (
           <ul className="mt-3 divide-y divide-[var(--line)] rounded-[11px] border border-[var(--line)] bg-[var(--surface)] overflow-hidden">
@@ -120,7 +120,7 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({
                 <a
                   href={localizePath(tool.slug, lang ?? 'en')}
                   onClick={go(tool.slug)}
-                  className="block px-4 py-3 text-sm font-semibold text-[#6d28d9] dark:text-[#c4b5fd] hover:bg-[var(--surface-2)] cursor-pointer"
+                  className="block px-4 py-3 text-sm font-semibold text-[#b91c1c] dark:text-[#fca5a5] hover:bg-[var(--surface-2)] cursor-pointer"
                 >
                   {tool.name}
                   <span className="block text-xs font-normal text-[var(--ink-3)]">

@@ -19,7 +19,7 @@ export const TermsPageKo: React.FC<TermsPageKoProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/ko/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>이미지 압축기로 돌아가기</span>
@@ -29,7 +29,7 @@ export const TermsPageKo: React.FC<TermsPageKoProps> = ({ onNavigate }) => {
         {/* Page Title */}
         <div className="border-b border-[var(--line)] pb-6 mb-8">
           <div className="flex items-center gap-2.5 mb-2">
-            <FileText className="w-6 h-6 text-[#7c3aed] dark:text-[#a78bfa]" />
+            <FileText className="w-6 h-6 text-[#dc2626] dark:text-[#f87171]" />
             <h1 className="text-3xl sm:text-4xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">
               이용약관
             </h1>
@@ -142,7 +142,7 @@ export const TermsPageKo: React.FC<TermsPageKoProps> = ({ onNavigate }) => {
               본 약관에 대해 질문이 있으시면{' '}
               <a
                 href="mailto:bilalayyah@gmail.com"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 bilalayyah@gmail.com
               </a>

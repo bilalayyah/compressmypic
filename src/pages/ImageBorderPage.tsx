@@ -390,7 +390,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
             <div className="lg:col-span-7 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5">
-                  <Frame className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+                  <Frame className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
                   {t('framedPreview', 'Framed Preview')}
                 </span>
                 <button
@@ -442,7 +442,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
                       key={p.id}
                       type="button"
                       onClick={() => applyFramePreset(p.id as 'gallery' | 'polaroid' | 'dark' | 'sunset')}
-                      className="px-3 py-2 text-xs font-semibold rounded-full border border-[var(--line)] bg-[var(--surface-2)] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-2)] cursor-pointer transition-colors"
+                      className="px-3 py-2 text-xs font-semibold rounded-full border border-[var(--line)] bg-[var(--surface-2)] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca] text-[var(--ink-2)] cursor-pointer transition-colors"
                     >
                       {presetLabelById[p.id] ?? p.label}
                     </button>
@@ -461,7 +461,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
                       type="button"
                       onClick={() => setBorderType(bt)}
                       className={`py-1.5 text-xs font-semibold rounded-[8px] capitalize cursor-pointer transition-all ${
-                        borderType === bt ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                        borderType === bt ? 'bg-[#dc2626] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {bt === 'solid'
@@ -502,7 +502,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-1">
                     <span className="font-semibold text-[var(--ink-2)]">{t('gradientAngle', 'Gradient Angle')}</span>
-                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{gradientAngle}°</span>
+                    <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{gradientAngle}°</span>
                   </div>
                   <input
                     type="range"
@@ -518,7 +518,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
               <div>
                 <div className="flex justify-between text-xs mb-1">
                   <span className="font-semibold text-[var(--ink-2)]">{t('borderSize', 'Border Size')}</span>
-                  <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{borderSizePct}%</span>
+                  <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{borderSizePct}%</span>
                 </div>
                 <input
                   type="range"
@@ -534,7 +534,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-1">
                     <span className="font-semibold text-[var(--ink-2)]">{t('frameRadius', 'Frame Radius')}</span>
-                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{outerRadiusPct}%</span>
+                    <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{outerRadiusPct}%</span>
                   </div>
                   <input
                     type="range"
@@ -548,7 +548,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-1">
                     <span className="font-semibold text-[var(--ink-2)]">{t('photoRadius', 'Photo Radius')}</span>
-                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{innerRadiusPct}%</span>
+                    <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{innerRadiusPct}%</span>
                   </div>
                   <input
                     type="range"
@@ -572,7 +572,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
                       type="button"
                       onClick={() => setShadow(s)}
                       className={`py-1.5 text-xs font-semibold rounded-[8px] capitalize cursor-pointer transition-all ${
-                        shadow === s ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                        shadow === s ? 'bg-[var(--surface)] text-[#b91c1c] dark:text-[#fecaca] shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {s === 'none'
@@ -595,7 +595,7 @@ export const ImageBorderPage: React.FC<ImageBorderPageProps> = ({
                       type="button"
                       onClick={() => setOutFormat(fmt)}
                       className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
-                        outFormat === fmt ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                        outFormat === fmt ? 'bg-[#dc2626] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {fmt === 'jpeg' ? 'JPG' : fmt.toUpperCase()}

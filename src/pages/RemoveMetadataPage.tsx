@@ -320,7 +320,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
                     onClick={() => setMode('lossless')}
                     className={`px-3.5 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                       mode === 'lossless'
-                        ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs'
+                        ? 'bg-[var(--surface)] text-[#b91c1c] dark:text-[#fecaca] shadow-xs'
                         : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
@@ -331,7 +331,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
                     onClick={() => setMode('reencode')}
                     className={`px-3.5 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                       mode === 'reencode'
-                        ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs'
+                        ? 'bg-[var(--surface)] text-[#b91c1c] dark:text-[#fecaca] shadow-xs'
                         : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
@@ -352,7 +352,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
                       onClick={() => setFormat(fmt)}
                       className={`px-3 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                         format === fmt
-                          ? 'bg-[#7c3aed] text-white shadow-xs'
+                          ? 'bg-[#dc2626] text-white shadow-xs'
                           : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
@@ -371,7 +371,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
               <div className="flex-1 max-w-md">
                 <span className="text-xs font-semibold text-[var(--ink-2)] block mb-1.5">
                   {t('reencodeQuality', 'Re-encode Quality (used for WebP/HEIC or Full Re-encode):')}{' '}
-                  <strong className="text-[#7c3aed] dark:text-[#a78bfa] font-mono">{quality}%</strong>
+                  <strong className="text-[#dc2626] dark:text-[#f87171] font-mono">{quality}%</strong>
                 </span>
                 <input
                   type="range"
@@ -420,7 +420,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
             {doneItems.length > 1 && (
               <div className="panel-pastel-blue border rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-[#fca5a5]">
                     {t('privacyVerified', 'Privacy Verified')}
                   </span>
                   <p className="text-sm font-semibold text-[var(--ink-navy)] mt-0.5">
@@ -476,7 +476,7 @@ export const RemoveMetadataPage: React.FC<RemoveMetadataPageProps> = ({
                       </>
                     )}
                     {item.status === 'processing' && (
-                      <span className="text-xs text-[#7c3aed] dark:text-[#a78bfa] font-medium animate-pulse">
+                      <span className="text-xs text-[#dc2626] dark:text-[#f87171] font-medium animate-pulse">
                         {t('scrubbing', 'Scrubbing EXIF & GPS headers...')}
                       </span>
                     )}

@@ -450,6 +450,12 @@ export const KO = {
     faqTitle: '{name} — 자주 묻는 질문', // '{name} — Frequently Asked Questions'
     relatedTitle: '관련 무료 이미지 도구', // 'Related Free Image Tools'
     relatedLinksIntro: '함께 사용하면 좋은 도구:', // 'You may also need:'
+    shareHeading: '이 도구 공유하기',
+    shareCopyLink: '링크 복사',
+    shareCopied: '복사됨!',
+    shareOnX: 'X에서 공유',
+    shareOnFacebook: 'Facebook에서 공유',
+    shareOnWhatsApp: 'WhatsApp에서 공유',
     commentsTitle: '댓글',
     commentsNote: '이 도구에 대한 의견을 공유하세요. 이름만 쓰고 게시하면 됩니다. 계정이 필요 없습니다.',
     commentsNamePlaceholder: '이름',

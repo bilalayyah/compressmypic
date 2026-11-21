@@ -306,7 +306,7 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <h2 className="font-sans text-lg font-bold text-[var(--ink-navy)] flex items-center gap-2">
-                      <Palette className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
+                      <Palette className="w-4 h-4 text-[#dc2626] dark:text-[#f87171]" />
                       <span>{t('extractedPalette', 'Extracted Palette ({count} Colors)').replace('{count}', String(swatches.length))}</span>
                     </h2>
                     <p className="text-xs text-[var(--ink-3)] font-mono mt-0.5">
@@ -327,7 +327,7 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-1.5">
                     <span className="font-semibold text-[var(--ink-2)]">{t('numberOfColors', 'Number of Colors')}</span>
-                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{t('colorsCount', '{count} colors').replace('{count}', String(colorCount))}</span>
+                    <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{t('colorsCount', '{count} colors').replace('{count}', String(colorCount))}</span>
                   </div>
                   <input
                     type="range"
@@ -356,7 +356,7 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({
                   <button
                     type="button"
                     onClick={() => copyText(cssVarsText, 'css')}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--surface-2)] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] border border-[var(--line)] hover:border-[#7c3aed] text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--surface-2)] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 hover:text-[#b91c1c] dark:hover:text-[#fecaca] border border-[var(--line)] hover:border-[#dc2626] text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                   >
                     {copiedKey === 'css' ? <Check className="w-3.5 h-3.5 text-[#16a34a] dark:text-[#4ade80]" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedKey === 'css' ? t('copiedCss', 'Copied CSS!') : t('copyCssVariables', 'Copy CSS Variables')}</span>
@@ -364,7 +364,7 @@ export const PaletteExtractorPage: React.FC<PaletteExtractorPageProps> = ({
                   <button
                     type="button"
                     onClick={() => copyText(jsonText, 'json')}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--surface-2)] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] border border-[var(--line)] hover:border-[#7c3aed] text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--surface-2)] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 hover:text-[#b91c1c] dark:hover:text-[#fecaca] border border-[var(--line)] hover:border-[#dc2626] text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                   >
                     {copiedKey === 'json' ? <Check className="w-3.5 h-3.5 text-[#16a34a] dark:text-[#4ade80]" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedKey === 'json' ? t('copiedJson', 'Copied JSON!') : t('copyJson', 'Copy JSON')}</span>

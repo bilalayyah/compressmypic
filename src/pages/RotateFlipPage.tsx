@@ -387,7 +387,7 @@ export const RotateFlipPage: React.FC<RotateFlipPageProps> = ({
                       setAngle(next);
                       applyAllWith(next, flipH, flipV);
                     }}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#dc2626] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 hover:text-[#b91c1c] dark:hover:text-[#fecaca] text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                   >
                     <RotateCcw className="w-4 h-4" />
                     <span>{t('rotate90Left', 'Rotate 90° Left')}</span>
@@ -400,7 +400,7 @@ export const RotateFlipPage: React.FC<RotateFlipPageProps> = ({
                       setAngle(next);
                       applyAllWith(next, flipH, flipV);
                     }}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#dc2626] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 hover:text-[#b91c1c] dark:hover:text-[#fecaca] text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                   >
                     <RotateCw className="w-4 h-4" />
                     <span>{t('rotate90Right', 'Rotate 90° Right')}</span>
@@ -413,7 +413,7 @@ export const RotateFlipPage: React.FC<RotateFlipPageProps> = ({
                       setAngle(next);
                       applyAllWith(next, flipH, flipV);
                     }}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#dc2626] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 hover:text-[#b91c1c] dark:hover:text-[#fecaca] text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                   >
                     <RefreshCw className="w-4 h-4" />
                     <span>{t('rotate180', '180°')}</span>
@@ -428,8 +428,8 @@ export const RotateFlipPage: React.FC<RotateFlipPageProps> = ({
                     }}
                     className={`inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-[11px] border cursor-pointer transition-colors ${
                       flipH
-                        ? 'bg-[#7c3aed] text-white border-[#7c3aed]'
-                        : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe]'
+                        ? 'bg-[#dc2626] text-white border-[#dc2626]'
+                        : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca]'
                     }`}
                   >
                     <FlipHorizontal className="w-4 h-4" />
@@ -445,8 +445,8 @@ export const RotateFlipPage: React.FC<RotateFlipPageProps> = ({
                     }}
                     className={`inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-[11px] border cursor-pointer transition-colors ${
                       flipV
-                        ? 'bg-[#7c3aed] text-white border-[#7c3aed]'
-                        : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe]'
+                        ? 'bg-[#dc2626] text-white border-[#dc2626]'
+                        : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca]'
                     }`}
                   >
                     <FlipVertical className="w-4 h-4" />
@@ -470,7 +470,7 @@ export const RotateFlipPage: React.FC<RotateFlipPageProps> = ({
                       }}
                       className={`px-3 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                         format === fmt
-                          ? 'bg-[#7c3aed] text-white shadow-xs'
+                          ? 'bg-[#dc2626] text-white shadow-xs'
                           : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
@@ -490,7 +490,7 @@ export const RotateFlipPage: React.FC<RotateFlipPageProps> = ({
                 <div className="flex justify-between text-xs mb-1.5">
                   <span className="font-semibold text-[var(--ink-2)]">
                     {t('rotationAngle', 'Rotation Angle:')}{' '}
-                    <strong className="text-[#7c3aed] dark:text-[#a78bfa] font-mono">{((angle % 360) + 360) % 360}°</strong>
+                    <strong className="text-[#dc2626] dark:text-[#f87171] font-mono">{((angle % 360) + 360) % 360}°</strong>
                   </span>
                   <button
                     type="button"
@@ -500,7 +500,7 @@ export const RotateFlipPage: React.FC<RotateFlipPageProps> = ({
                       setFlipV(false);
                       applyAllWith(0, false, false);
                     }}
-                    className="text-[#6d28d9] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+                    className="text-[#b91c1c] dark:text-[#fca5a5] hover:underline font-semibold cursor-pointer"
                   >
                     {t('resetTo0', 'Reset to 0°')}
                   </button>
@@ -544,7 +544,7 @@ export const RotateFlipPage: React.FC<RotateFlipPageProps> = ({
             {doneItems.length > 1 && (
               <div className="panel-pastel-blue border rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-[#fca5a5]">
                     {t('batchReady', 'Batch Ready')}
                   </span>
                   <p className="text-sm font-semibold text-[var(--ink-navy)] mt-0.5">
@@ -589,7 +589,7 @@ export const RotateFlipPage: React.FC<RotateFlipPageProps> = ({
                       />
                       {isBusy && (
                         <div className="absolute inset-0 bg-[var(--surface)]/80 flex items-center justify-center">
-                          <RotateCw className="w-5 h-5 text-[#7c3aed] animate-spin" />
+                          <RotateCw className="w-5 h-5 text-[#dc2626] animate-spin" />
                         </div>
                       )}
                     </div>
@@ -628,9 +628,9 @@ export const RotateFlipPage: React.FC<RotateFlipPageProps> = ({
                         <button
                           type="button"
                           onClick={() => setComparisonTarget(item)}
-                          className="px-3.5 py-2 text-[var(--ink-2)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
+                          className="px-3.5 py-2 text-[var(--ink-2)] hover:text-[#b91c1c] dark:hover:text-[#fecaca] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
                         >
-                          <SplitSquareVertical className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
+                          <SplitSquareVertical className="w-4 h-4 text-[#dc2626] dark:text-[#f87171]" />
                           <span>{t('compare', 'Compare')}</span>
                         </button>
                         <button

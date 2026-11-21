@@ -69,7 +69,7 @@ export const ContactPagePt: React.FC<ContactPagePtProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/pt/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Voltar ao compressor de imagens</span>
@@ -91,7 +91,7 @@ export const ContactPagePt: React.FC<ContactPagePtProps> = ({ onNavigate }) => {
           <div className="space-y-6 md:col-span-1">
             <div className="p-4 rounded-2xl border pastel-card-0 shadow-[var(--shadow)] space-y-2">
               <div className="flex items-center gap-2 text-[var(--ink-navy)] font-bold text-sm">
-                <Mail className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
+                <Mail className="w-4 h-4 text-[#dc2626] dark:text-[#f87171]" />
                 <span>Contato direto</span>
               </div>
               <p className="text-xs text-[var(--ink-2)] font-mono break-all select-all">
@@ -151,7 +151,7 @@ export const ContactPagePt: React.FC<ContactPagePtProps> = ({ onNavigate }) => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="contact-name" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
-                      Seu nome <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
+                      Seu nome <span className="text-[#dc2626] dark:text-[#fca5a5]">*</span>
                     </label>
                     <input
                       id="contact-name"
@@ -161,13 +161,13 @@ export const ContactPagePt: React.FC<ContactPagePtProps> = ({ onNavigate }) => {
                       value={contactName}
                       onChange={(e) => setContactName(e.target.value)}
                       placeholder="Maria Silva"
-                      className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                      className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                     />
                   </div>
 
                   <div>
                     <label htmlFor="contact-email" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
-                      E-mail <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
+                      E-mail <span className="text-[#dc2626] dark:text-[#fca5a5]">*</span>
                     </label>
                     <input
                       id="contact-email"
@@ -177,14 +177,14 @@ export const ContactPagePt: React.FC<ContactPagePtProps> = ({ onNavigate }) => {
                       value={contactEmail}
                       onChange={(e) => setContactEmail(e.target.value)}
                       placeholder="maria@exemplo.com"
-                      className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                      className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                     />
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="contact-subject" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
-                    Assunto <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
+                    Assunto <span className="text-[#dc2626] dark:text-[#fca5a5]">*</span>
                   </label>
                   <input
                       id="contact-subject"
@@ -194,13 +194,13 @@ export const ContactPagePt: React.FC<ContactPagePtProps> = ({ onNavigate }) => {
                     value={contactSubject}
                     onChange={(e) => setContactSubject(e.target.value)}
                     placeholder="Comentários, relato de erro ou pergunta geral"
-                    className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                    className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="contact-message" className="block text-xs font-semibold text-[var(--ink-2)] mb-1">
-                    Mensagem <span className="text-[#7c3aed] dark:text-[#c4b5fd]">*</span>
+                    Mensagem <span className="text-[#dc2626] dark:text-[#fca5a5]">*</span>
                   </label>
                   <textarea
                       id="contact-message"
@@ -210,7 +210,7 @@ export const ContactPagePt: React.FC<ContactPagePtProps> = ({ onNavigate }) => {
                     value={contactMessage}
                     onChange={(e) => setContactMessage(e.target.value)}
                     placeholder="Como podemos ajudar você? Descreva seu problema ou sugestão em detalhes..."
-                    className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                    className="w-full px-3.5 py-2.5 bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] text-sm focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                   ></textarea>
                 </div>
 
@@ -240,7 +240,7 @@ export const ContactPagePt: React.FC<ContactPagePtProps> = ({ onNavigate }) => {
         <div className="mt-12 space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Mail className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Mail className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Quem administra o CompressMyPic</span>
             </h2>
             <p>
@@ -253,7 +253,7 @@ export const ContactPagePt: React.FC<ContactPagePtProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <MessageSquare className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <MessageSquare className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Sobre o que você pode nos escrever?</span>
             </h2>
             <p>
@@ -266,7 +266,7 @@ export const ContactPagePt: React.FC<ContactPagePtProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Github className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Github className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Outras formas de falar com o Bilal</span>
             </h2>
             <p>
@@ -274,15 +274,15 @@ export const ContactPagePt: React.FC<ContactPagePtProps> = ({ onNavigate }) => {
             </p>
             <ul className="list-disc pl-6 space-y-1.5">
               <li>
-                <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
+                <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
                 {' '}— código-fonte, relatórios de erros e novidades do desenvolvimento.
               </li>
               <li>
-                <a href="https://dev.to/bilalayyah" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Dev.to — dev.to/bilalayyah</a>
+                <a href="https://dev.to/bilalayyah" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">Dev.to — dev.to/bilalayyah</a>
                 {' '}— guias sobre compressão de JPG, PNG e WebP.
               </li>
               <li>
-                <a href="https://www.indiehackers.com/product/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">Indie Hackers — indiehackers.com/product/compressmypic</a>
+                <a href="https://www.indiehackers.com/product/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">Indie Hackers — indiehackers.com/product/compressmypic</a>
                 {' '}— página do produto, marcos e comentários da comunidade.
               </li>
             </ul>
@@ -290,7 +290,7 @@ export const ContactPagePt: React.FC<ContactPagePtProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Lightbulb className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Lightbulb className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Antes de escrever</span>
             </h2>
             <p>
@@ -301,7 +301,7 @@ export const ContactPagePt: React.FC<ContactPagePtProps> = ({ onNavigate }) => {
               <button
                 type="button"
                 onClick={() => onNavigate('/pt/privacidade')}
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold cursor-pointer"
               >
                 Política de Privacidade
               </button>
@@ -311,7 +311,7 @@ export const ContactPagePt: React.FC<ContactPagePtProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Bug className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Bug className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Relatar um problema</span>
             </h2>
             <p>

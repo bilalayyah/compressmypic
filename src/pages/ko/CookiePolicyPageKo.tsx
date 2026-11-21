@@ -19,7 +19,7 @@ export const CookiePolicyPageKo: React.FC<CookiePolicyPageKoProps> = ({ onNaviga
           <button
             type="button"
             onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>이미지 압축기로 돌아가기</span>
@@ -91,9 +91,9 @@ export const CookiePolicyPageKo: React.FC<CookiePolicyPageKoProps> = ({ onNaviga
             </h2>
             <p>
               이 사이트의 일부 다른 서비스도 자체 쿠키나 유사한 저장소를 사용할 수 있습니다. 문의 양식을 스팸으로부터 보호하는 Google reCAPTCHA는 사람과 봇을 구분하기 위해 쿠키를 설정할 수 있으며, 그 사용은 Google의 
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Google 개인정보처리방침</a>
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline">Google 개인정보처리방침</a>
                및 
-              <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Google 서비스 약관</a>
+              <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline">Google 서비스 약관</a>
               에 따릅니다. 이 사이트를 호스팅하는 Cloudflare는 사이트를 악용으로부터 보호하기 위해 보안 쿠키를 설정할 수 있습니다. 도구 아래의 익명 댓글은 이름만 요청하며, 이름은 댓글 서비스에 저장됩니다. 이 사이트의 쿠키에는 저장되지 않습니다.
             </p>
           </section>
@@ -131,9 +131,9 @@ export const CookiePolicyPageKo: React.FC<CookiePolicyPageKoProps> = ({ onNaviga
             </h2>
             <p>
               이 정책에 대해 질문이 있으시면 
-              <a href="mailto:bilalayyah@gmail.com" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">bilalayyah@gmail.com</a>
+              <a href="mailto:bilalayyah@gmail.com" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">bilalayyah@gmail.com</a>
               로 문의하거나 
-              <a href="/ko/gaein-jeongbo" onClick={(e) => { e.preventDefault(); onNavigate('/ko/gaein-jeongbo'); }} className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">개인정보처리방침</a>
+              <a href="/ko/gaein-jeongbo" onClick={(e) => { e.preventDefault(); onNavigate('/ko/gaein-jeongbo'); }} className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">개인정보처리방침</a>
               를 읽어보세요.
             </p>
           </section>

@@ -314,7 +314,7 @@ export const ImageToBase64Page: React.FC<ImageToBase64PageProps> = ({
                       type="button"
                       onClick={() => setTab(t.id)}
                       className={`px-3 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
-                        tab === t.id ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                        tab === t.id ? 'bg-[#dc2626] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
                       {t.label}
@@ -334,7 +334,7 @@ export const ImageToBase64Page: React.FC<ImageToBase64PageProps> = ({
                   <button
                     type="button"
                     onClick={handleDownloadTxt}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca] text-[var(--ink)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                   >
                     <Download className="w-4 h-4" />
                     <span>{t('saveTxt', 'Save .TXT')}</span>
@@ -349,7 +349,7 @@ export const ImageToBase64Page: React.FC<ImageToBase64PageProps> = ({
                   value={outputString}
                   onFocus={(e) => e.target.select()}
                   rows={9}
-                  className="w-full pl-9 pr-3 py-3 font-mono text-xs bg-[#0f172a] text-[#e2e8f0] rounded-xl border border-[#334155] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                  className="w-full pl-9 pr-3 py-3 font-mono text-xs bg-[#0f172a] text-[#e2e8f0] rounded-xl border border-[#334155] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                 />
               </div>
             </div>

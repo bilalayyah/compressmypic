@@ -19,7 +19,7 @@ export const CookiePolicyPageZh: React.FC<CookiePolicyPageZhProps> = ({ onNaviga
           <button
             type="button"
             onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>返回图片压缩器</span>
@@ -91,9 +91,9 @@ export const CookiePolicyPageZh: React.FC<CookiePolicyPageZhProps> = ({ onNaviga
             </h2>
             <p>
               本网站上的少数其他服务也可能使用其自己的 Cookie 或类似存储。用于保护我们联系表单免受垃圾信息侵害的 Google reCAPTCHA 可能会设置 Cookie，以区分人类和机器人；其使用受 Google 的 
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Google 隐私权政策</a>
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline">Google 隐私权政策</a>
               和 
-              <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Google 服务条款</a>
+              <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline">Google 服务条款</a>
               约束。托管本网站的 Cloudflare 可能会设置安全 Cookie，以保护网站免受滥用。我们工具下方的匿名评论仅要求提供姓名，该姓名由评论服务存储——而不是存储在本网站的 Cookie 中。
             </p>
           </section>
@@ -131,9 +131,9 @@ export const CookiePolicyPageZh: React.FC<CookiePolicyPageZhProps> = ({ onNaviga
             </h2>
             <p>
               如果您对本政策有任何疑问，请通过 
-              <a href="mailto:bilalayyah@gmail.com" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">bilalayyah@gmail.com</a>
+              <a href="mailto:bilalayyah@gmail.com" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">bilalayyah@gmail.com</a>
                联系我们，或阅读我们的
-              <a href="/zh/yinsi-zhengce" onClick={(e) => { e.preventDefault(); onNavigate('/zh/yinsi-zhengce'); }} className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">隐私政策</a>
+              <a href="/zh/yinsi-zhengce" onClick={(e) => { e.preventDefault(); onNavigate('/zh/yinsi-zhengce'); }} className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">隐私政策</a>
               。
             </p>
           </section>

@@ -459,10 +459,10 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
             <div className="lg:col-span-8 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-2 text-xs font-semibold text-[var(--ink-2)]">
-                  <Crop className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
+                  <Crop className="w-4 h-4 text-[#dc2626] dark:text-[#f87171]" />
                   <span>
                     {t('selection', 'Selection:')}{' '}
-                    <strong className="font-mono text-[#7c3aed] dark:text-[#a78bfa]">
+                    <strong className="font-mono text-[#dc2626] dark:text-[#f87171]">
                       {pixelCrop.w} × {pixelCrop.h}px
                     </strong>
                   </span>
@@ -548,7 +548,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
                       <div
                         key={h.id}
                         onPointerDown={(e) => startDrag(h.id, e)}
-                        className={`absolute w-3.5 h-3.5 bg-[#7c3aed] border-2 border-white rounded-[3px] shadow-sm touch-none ${h.posClass} ${h.cursor}`}
+                        className={`absolute w-3.5 h-3.5 bg-[#dc2626] border-2 border-white rounded-[3px] shadow-sm touch-none ${h.posClass} ${h.cursor}`}
                       />
                     ))}
                   </div>
@@ -574,7 +574,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
                     setCrop({ x: 0, y: 0, w: 1, h: 1 });
                     setZoom(1);
                   }}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#7c3aed] dark:text-[#a78bfa] hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#dc2626] dark:text-[#f87171] hover:underline cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>{t('selectFull', 'Select Full')}</span>
@@ -593,8 +593,8 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
                       onClick={() => applyAspectPreset(preset)}
                       className={`py-2 text-xs font-semibold rounded-[9px] border cursor-pointer transition-colors ${
                         aspectId === preset.id
-                          ? 'bg-[#7c3aed] text-white border-[#7c3aed]'
-                          : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe]'
+                          ? 'bg-[#dc2626] text-white border-[#dc2626]'
+                          : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca]'
                       }`}
                     >
                       {preset.id === 'free' ? t('aspectFree', preset.label) : preset.label}
@@ -626,7 +626,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
                         type="button"
                         onClick={() => setFormat(fmt)}
                         className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
-                          format === fmt ? 'bg-[#7c3aed] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
+                          format === fmt ? 'bg-[#dc2626] text-white shadow-xs' : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                         }`}
                       >
                         {fmt === 'original' ? t('formatOriginal', 'Original') : fmt === 'jpeg' ? t('formatJpg', 'JPG') : fmt.toUpperCase()}
@@ -639,7 +639,7 @@ export const ImageCropperPage: React.FC<ImageCropperPageProps> = ({
                   <div>
                     <div className="flex justify-between text-xs mb-1">
                       <span className="font-semibold text-[var(--ink-2)]">{t('quality', 'Quality')}</span>
-                      <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{quality}%</span>
+                      <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{quality}%</span>
                     </div>
                     <input
                       type="range"

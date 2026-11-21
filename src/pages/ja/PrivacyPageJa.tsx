@@ -19,7 +19,7 @@ export const PrivacyPageJa: React.FC<PrivacyPageJaProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/ja/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>画像圧縮ツールに戻る</span>
@@ -108,7 +108,7 @@ export const PrivacyPageJa: React.FC<PrivacyPageJaProps> = ({ onNavigate }) => {
             <p>
               当社のツールは画像をローカルで処理し、ユーザーアカウントもありませんので、当社が通常保有する個人データは、お問い合わせフォームから送信されたお名前、メールアドレス、メッセージのみです。これらの権利を行使するには、<a
                 href="mailto:bilalayyah@gmail.com"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 bilalayyah@gmail.com
               </a>までメールでご連絡ください。30日以内に返信いたします。また、当社があなたのデータを不公平に取り扱ったと思われる場合は、お住まいの地域のデータ保護当局に苦情を申し立てる権利もあります。
@@ -133,14 +133,14 @@ export const PrivacyPageJa: React.FC<PrivacyPageJaProps> = ({ onNavigate }) => {
                 href="https://policies.google.com/privacy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline"
               >
                 プライバシーポリシー
               </a>と<a
                 href="https://policies.google.com/terms"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline"
               >
                 利用規約
               </a>に準拠します。当社がお問い合わせフォームでパスワード、支払い情報、機密性の高い個人書類の送信を求めることは決してありません。また、メッセージにそれらを含めないでください。
@@ -173,7 +173,7 @@ export const PrivacyPageJa: React.FC<PrivacyPageJaProps> = ({ onNavigate }) => {
               このポリシーについてご質問がある場合は、{' '}
               <a
                 href="mailto:bilalayyah@gmail.com"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 bilalayyah@gmail.com
               </a>

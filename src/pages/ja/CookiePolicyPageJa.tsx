@@ -19,7 +19,7 @@ export const CookiePolicyPageJa: React.FC<CookiePolicyPageJaProps> = ({ onNaviga
           <button
             type="button"
             onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>画像圧縮ツールに戻る</span>
@@ -91,9 +91,9 @@ export const CookiePolicyPageJa: React.FC<CookiePolicyPageJaProps> = ({ onNaviga
             </h2>
             <p>
               このサイトの他のサービスも、独自のCookieまたは類似のストレージを使用する場合があります。お問い合わせフォームをスパムから保護するGoogle reCAPTCHAは、人間とボットを区別するためにCookieを設定する場合があります。その利用はGoogleの
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Googleプライバシーポリシー</a>
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline">Googleプライバシーポリシー</a>
               と
-              <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Google利用規約</a>
+              <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline">Google利用規約</a>
               に準拠します。このサイトをホストするCloudflareは、サイトを悪用から保護するためにセキュリティCookieを設定する場合があります。ツール下の匿名コメントでは名前のみを求め、その名前はコメントサービスによって保存されます。このサイトのCookieには保存されません。
             </p>
           </section>
@@ -131,9 +131,9 @@ export const CookiePolicyPageJa: React.FC<CookiePolicyPageJaProps> = ({ onNaviga
             </h2>
             <p>
               このポリシーについてご質問がある場合は、
-              <a href="mailto:bilalayyah@gmail.com" className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">bilalayyah@gmail.com</a>
+              <a href="mailto:bilalayyah@gmail.com" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">bilalayyah@gmail.com</a>
               までご連絡いただくか、
-              <a href="/ja/puraibashi" onClick={(e) => { e.preventDefault(); onNavigate('/ja/puraibashi'); }} className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold">プライバシーポリシー</a>
+              <a href="/ja/puraibashi" onClick={(e) => { e.preventDefault(); onNavigate('/ja/puraibashi'); }} className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">プライバシーポリシー</a>
               をお読みください。
             </p>
           </section>

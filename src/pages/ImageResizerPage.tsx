@@ -466,7 +466,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({
                     onClick={() => setMode('dimensions')}
                     className={`px-3.5 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                       mode === 'dimensions'
-                        ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs'
+                        ? 'bg-[var(--surface)] text-[#b91c1c] dark:text-[#fecaca] shadow-xs'
                         : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
@@ -477,7 +477,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({
                     onClick={() => setMode('percentage')}
                     className={`px-3.5 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                       mode === 'percentage'
-                        ? 'bg-[var(--surface)] text-[#6d28d9] dark:text-[#ddd6fe] shadow-xs'
+                        ? 'bg-[var(--surface)] text-[#b91c1c] dark:text-[#fecaca] shadow-xs'
                         : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                     }`}
                   >
@@ -498,7 +498,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({
                       onClick={() => setFormat(fmt)}
                       className={`px-3 py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                         format === fmt
-                          ? 'bg-[#7c3aed] text-white shadow-xs'
+                          ? 'bg-[#dc2626] text-white shadow-xs'
                           : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
@@ -523,7 +523,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({
                       value={targetWidth || ''}
                       onChange={(e) => handleWidthChange(e.target.value)}
                       placeholder={t('placeholderAuto', 'Auto')}
-                      className="w-full px-3.5 py-2.5 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                      className="w-full px-3.5 py-2.5 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                     />
                   </div>
                   <div>
@@ -537,7 +537,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({
                       value={targetHeight || ''}
                       onChange={(e) => handleHeightChange(e.target.value)}
                       placeholder={t('placeholderAuto', 'Auto')}
-                      className="w-full px-3.5 py-2.5 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                      className="w-full px-3.5 py-2.5 text-sm font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                     />
                   </div>
                   <div className="flex items-center gap-2">
@@ -546,7 +546,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({
                       onClick={() => setLockAspectRatio(!lockAspectRatio)}
                       className={`w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-[11px] text-xs font-semibold border transition-colors cursor-pointer ${
                         lockAspectRatio
-                          ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/20 border-[#7c3aed]/40 text-[#6d28d9] dark:text-[#ddd6fe]'
+                          ? 'bg-[#fee2e2] dark:bg-[#dc2626]/20 border-[#dc2626]/40 text-[#b91c1c] dark:text-[#fecaca]'
                           : 'bg-[var(--surface-2)] border-[var(--line)] text-[var(--ink-2)]'
                       }`}
                     >
@@ -576,8 +576,8 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({
                         onClick={() => setFitMode(m.id)}
                         className={`px-3 py-1 text-xs font-medium rounded-full border cursor-pointer transition-colors ${
                           fitMode === m.id
-                            ? 'bg-[#7c3aed] text-white border-[#7c3aed]'
-                            : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe]'
+                            ? 'bg-[#dc2626] text-white border-[#dc2626]'
+                            : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca]'
                         }`}
                       >
                         {m.label}
@@ -596,7 +596,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({
                         key={p.label}
                         type="button"
                         onClick={() => handleApplyPreset(p.width, p.height)}
-                        className="px-3 py-1.5 text-xs font-medium bg-[var(--surface-2)] border border-[var(--line)] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-2)] rounded-full transition-colors cursor-pointer"
+                        className="px-3 py-1.5 text-xs font-medium bg-[var(--surface-2)] border border-[var(--line)] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca] text-[var(--ink-2)] rounded-full transition-colors cursor-pointer"
                       >
                         {p.label}
                       </button>
@@ -609,7 +609,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({
                 <div className="flex items-center justify-between text-xs mb-2">
                   <span className="font-semibold text-[var(--ink-2)]">
                     {t('scalePercentage', 'Scale Percentage:')}{' '}
-                    <strong className="text-[#7c3aed] dark:text-[#a78bfa] font-mono text-sm">{percentage}%</strong>
+                    <strong className="text-[#dc2626] dark:text-[#f87171] font-mono text-sm">{percentage}%</strong>
                   </span>
                   <div className="flex gap-1.5">
                     {[25, 50, 75, 150, 200].map((pct) => (
@@ -619,8 +619,8 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({
                         onClick={() => setPercentage(pct)}
                         className={`px-2.5 py-1 rounded-full text-xs font-semibold cursor-pointer transition-colors ${
                           percentage === pct
-                            ? 'bg-[#7c3aed] text-white'
-                            : 'bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-2)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe]'
+                            ? 'bg-[#dc2626] text-white'
+                            : 'bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink-2)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca]'
                         }`}
                       >
                         {pct}%
@@ -644,7 +644,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({
               <div className="flex-1 max-w-md">
                 <div className="flex justify-between text-xs mb-1.5">
                   <span className="font-semibold text-[var(--ink-2)]">
-                    {t('outputQuality', 'Output Quality:')}{' '}<strong className="text-[#7c3aed] dark:text-[#a78bfa] font-mono">{quality}%</strong>
+                    {t('outputQuality', 'Output Quality:')}{' '}<strong className="text-[#dc2626] dark:text-[#f87171] font-mono">{quality}%</strong>
                   </span>
                   {format === 'jpeg' && (
                     <label className="flex items-center gap-1.5 text-[var(--ink-2)]">
@@ -706,7 +706,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({
             {doneItems.length > 1 && (
               <div className="panel-pastel-blue border rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-[#fca5a5]">
                     {t('batchReady', 'Batch Ready')}
                   </span>
                   <p className="text-sm font-semibold text-[var(--ink-navy)] mt-0.5">
@@ -750,7 +750,7 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({
                       />
                       {isBusy && (
                         <div className="absolute inset-0 bg-[var(--surface)]/80 flex items-center justify-center">
-                          <RotateCcw className="w-5 h-5 text-[#7c3aed] animate-spin" />
+                          <RotateCcw className="w-5 h-5 text-[#dc2626] animate-spin" />
                         </div>
                       )}
                     </div>
@@ -787,9 +787,9 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({
                         <button
                           type="button"
                           onClick={() => setComparisonTarget(item)}
-                          className="px-3.5 py-2 text-[var(--ink-2)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
+                          className="px-3.5 py-2 text-[var(--ink-2)] hover:text-[#b91c1c] dark:hover:text-[#fecaca] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
                         >
-                          <SplitSquareVertical className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
+                          <SplitSquareVertical className="w-4 h-4 text-[#dc2626] dark:text-[#f87171]" />
                           <span>{t('compare', 'Compare')}</span>
                         </button>
                         <button

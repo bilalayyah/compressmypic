@@ -234,7 +234,7 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
           <button
             type="button"
             onClick={() => onNavigate('/de/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Zurück zum Bildkomprimierer</span>
@@ -247,7 +247,7 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
             Bild auf 100 KB verkleinern für Websites und E-Mails
           </h1>
           <p className="mt-3 text-sm text-[var(--ink-3)]">
-            Von <a href="/de/ueber-uns" onClick={(e) => { e.preventDefault(); onNavigate('/de/ueber-uns'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+            Von <a href="/de/ueber-uns" onClick={(e) => { e.preventDefault(); onNavigate('/de/ueber-uns'); }} className="font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:underline">Bilal</a>
           </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             Ein 4-MB-Foto verlangsamt Ihre Website und verstopft eine E-Mail. Wenn Sie es auf etwa 100 KB verkleinern, laden Seiten schnell und E-Mails werden sofort gesendet – und wenn Sie es richtig machen, kann niemand den Unterschied erkennen.
@@ -329,22 +329,22 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
                 </thead>
                 <tbody className="divide-y divide-[var(--line)]">
                   <tr>
-                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">200 KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#dc2626] dark:text-[#fca5a5]">200 KB</td>
                     <td className="px-4 py-3">70–80 %</td>
                     <td className="px-4 py-3">Blogfotos, große Webbilder</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">100 KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#dc2626] dark:text-[#fca5a5]">100 KB</td>
                     <td className="px-4 py-3">50–70 %</td>
                     <td className="px-4 py-3">Website-Fotos, E-Mail-Anhänge</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">50 KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#dc2626] dark:text-[#fca5a5]">50 KB</td>
                     <td className="px-4 py-3">40–55 % + WebP</td>
                     <td className="px-4 py-3">Vorschaubilder, Chat, schnelle Seiten</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-mono font-bold text-[#7c3aed] dark:text-[#c4b5fd]">20 KB</td>
+                    <td className="px-4 py-3 font-mono font-bold text-[#dc2626] dark:text-[#fca5a5]">20 KB</td>
                     <td className="px-4 py-3">25–40 % + WebP</td>
                     <td className="px-4 py-3">Symbole, winzige Vorschauen</td>
                   </tr>
@@ -419,7 +419,7 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
                       className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
-                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'}`} />
+                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
                     </button>
                     {isOpen && (
                       <div className="px-5 py-4 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/55 dark:bg-slate-900/35">
@@ -466,7 +466,7 @@ export const Guide100kbPageDe: React.FC<Guide100kbPageDeProps> = ({ onNavigate }
             <button
               type="button"
               onClick={() => onNavigate('/de/anleitungen/jpg-vs-png-vs-webp')}
-              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#7c3aed]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               JPG vs PNG vs WebP
             </button>

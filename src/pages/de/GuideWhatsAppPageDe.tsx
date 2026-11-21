@@ -238,7 +238,7 @@ export const GuideWhatsAppPageDe: React.FC<GuideWhatsAppPageDeProps> = ({ onNavi
           <button
             type="button"
             onClick={() => onNavigate('/de/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Zurück zum Bildkomprimierer</span>
@@ -251,7 +251,7 @@ export const GuideWhatsAppPageDe: React.FC<GuideWhatsAppPageDeProps> = ({ onNavi
             Bilder für WhatsApp komprimieren ohne Qualitätsverlust
           </h1>
           <p className="mt-3 text-sm text-[var(--ink-3)]">
-            Von <a href="/de/ueber-uns" onClick={(e) => { e.preventDefault(); onNavigate('/de/ueber-uns'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+            Von <a href="/de/ueber-uns" onClick={(e) => { e.preventDefault(); onNavigate('/de/ueber-uns'); }} className="font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:underline">Bilal</a>
           </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             WhatsApp verkleinert jedes Foto, das Sie senden – oft viel stärker, als nötig wäre. Komprimieren Sie Ihre Fotos zuerst selbst und senden Sie sie dann auf dem richtigen Weg, dann kommen sie scharf an, werden schnell gesendet und verbrauchen weniger mobile Daten.
@@ -410,7 +410,7 @@ export const GuideWhatsAppPageDe: React.FC<GuideWhatsAppPageDeProps> = ({ onNavi
                       className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
-                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'}`} />
+                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
                     </button>
                     {isOpen && (
                       <div className="px-5 py-4 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/55 dark:bg-slate-900/35">
@@ -457,7 +457,7 @@ export const GuideWhatsAppPageDe: React.FC<GuideWhatsAppPageDeProps> = ({ onNavi
             <button
               type="button"
               onClick={() => onNavigate('/de/anleitungen/bild-auf-100-kb-verkleinern')}
-              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#7c3aed]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               Bild auf 100 KB verkleinern
             </button>

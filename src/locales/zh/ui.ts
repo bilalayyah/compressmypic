@@ -36,7 +36,7 @@
 // the app splits them on the FIRST ASCII ': ' — so the separator in every
 // bullet below is an ASCII colon + space, never a full-width colon.
 // NOTE on real limits: main compressor 20 MB per image; format converters
-// 25 MB per file; Background Remover 20 MB. No fake stats anywhere.
+// 25 MB per file. No fake stats anywhere.
 
 export const ZH = {
   header: {
@@ -456,6 +456,12 @@ export const ZH = {
     faqTitle: '{name} — 常见问题', // '{name} — Frequently Asked Questions'
     relatedTitle: '相关免费图片工具', // 'Related Free Image Tools'
     relatedLinksIntro: '您可能还需要：', // 'You may also need:'
+    shareHeading: '分享此工具',
+    shareCopyLink: '复制链接',
+    shareCopied: '已复制！',
+    shareOnX: '分享到X',
+    shareOnFacebook: '分享到Facebook',
+    shareOnWhatsApp: '分享到WhatsApp',
     commentsTitle: '评论',
     commentsNote: '分享您对这个工具的看法 — 只需写下您的名字即可发布，无需账号。',
     commentsNamePlaceholder: '您的名字',

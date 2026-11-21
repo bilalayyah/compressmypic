@@ -298,16 +298,16 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
                   <button
                     type="button"
                     onClick={() => onNavigate('/remove-image-metadata')}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#ede9fe] dark:bg-[#7c3aed]/20 hover:bg-[#ddd6fe] dark:hover:bg-[#7c3aed]/30 text-[#6d28d9] dark:text-[#ddd6fe] border border-[#c4b5fd] dark:border-[#7c3aed]/40 text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#fee2e2] dark:bg-[#dc2626]/20 hover:bg-[#fecaca] dark:hover:bg-[#dc2626]/30 text-[#b91c1c] dark:text-[#fecaca] border border-[#fca5a5] dark:border-[#dc2626]/40 text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                   >
-                    <ShieldOff className="w-4 h-4 text-[#7c3aed] dark:text-[#c4b5fd]" />
+                    <ShieldOff className="w-4 h-4 text-[#dc2626] dark:text-[#fca5a5]" />
                     <span>{t('stripMetadata', 'Strip Metadata')}</span>
                   </button>
                 )}
                 <button
                   type="button"
                   onClick={handleCopyJson}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--surface-2)] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] border border-[var(--line)] hover:border-[#7c3aed] text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--surface-2)] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 hover:text-[#b91c1c] dark:hover:text-[#fecaca] border border-[var(--line)] hover:border-[#dc2626] text-[var(--ink-navy)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                 >
                   {copied ? <Check className="w-4 h-4 text-[#16a34a] dark:text-[#4ade80]" /> : <Copy className="w-4 h-4" />}
                   <span>{copied ? t('copiedJson', 'Copied JSON') : t('copyJson', 'Copy JSON')}</span>
@@ -345,7 +345,7 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
                     <button
                       type="button"
                       onClick={() => onNavigate('/remove-image-metadata')}
-                      className="underline font-semibold text-[#6d28d9] dark:text-[#c4b5fd] cursor-pointer"
+                      className="underline font-semibold text-[#b91c1c] dark:text-[#fca5a5] cursor-pointer"
                     >
                       {gpsWarningLinkText}
                     </button>

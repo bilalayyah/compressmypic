@@ -173,7 +173,7 @@ export const Comments: React.FC<{
       {loadError && (
         <div className="flex items-center gap-3">
           <p className="text-sm text-red-600 dark:text-red-400">{s.loadError}</p>
-          <button type="button" onClick={load} className="text-sm font-bold text-[#7c3aed] dark:text-[#c4b5fd] underline">
+          <button type="button" onClick={load} className="text-sm font-bold text-[#dc2626] dark:text-[#fca5a5] underline">
             {s.retry}
           </button>
         </div>
@@ -213,7 +213,7 @@ export const Comments: React.FC<{
             placeholder={s.namePlaceholder}
             maxLength={40}
             required
-            className="w-full px-3 py-2 rounded-xl border border-[var(--line)] bg-[var(--bg)] text-sm text-[var(--ink-navy)] placeholder:text-[var(--ink-3)] focus:outline-none focus:border-[#7c3aed]"
+            className="w-full px-3 py-2 rounded-xl border border-[var(--line)] bg-[var(--bg)] text-sm text-[var(--ink-navy)] placeholder:text-[var(--ink-3)] focus:outline-none focus:border-[#dc2626]"
           />
         </label>
         <label className="block mt-3">
@@ -225,7 +225,7 @@ export const Comments: React.FC<{
             maxLength={1000}
             rows={3}
             required
-            className="w-full px-3 py-2 rounded-xl border border-[var(--line)] bg-[var(--bg)] text-sm text-[var(--ink-navy)] placeholder:text-[var(--ink-3)] focus:outline-none focus:border-[#7c3aed] resize-y"
+            className="w-full px-3 py-2 rounded-xl border border-[var(--line)] bg-[var(--bg)] text-sm text-[var(--ink-navy)] placeholder:text-[var(--ink-3)] focus:outline-none focus:border-[#dc2626] resize-y"
           />
         </label>
         {/* Honeypot: hidden from humans, bots fill it and get rejected. */}

@@ -245,7 +245,7 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
           <button
             type="button"
             onClick={() => onNavigate('/zh/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>返回图片压缩器</span>
@@ -258,7 +258,7 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
             如何在 WhatsApp 上压缩图片而不损失画质
           </h1>
           <p className="mt-3 text-sm text-[var(--ink-3)]">
-            作者：<a href="/zh/guanyu-women" onClick={(e) => { e.preventDefault(); onNavigate('/zh/guanyu-women'); }} className="font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline">Bilal</a>
+            作者：<a href="/zh/guanyu-women" onClick={(e) => { e.preventDefault(); onNavigate('/zh/guanyu-women'); }} className="font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:underline">Bilal</a>
           </p>
           <p className="mt-3 text-lg font-medium text-[var(--ink-2)] leading-relaxed">
             WhatsApp 会缩小你发送的每一张照片——往往缩得比实际需要的多得多。先自己压缩照片，再用正确的方式发送，照片就会保持清晰、发送快速，还能节省流量。
@@ -417,7 +417,7 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
                       className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
-                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#7c3aed] dark:text-[#c4b5fd]' : 'text-[var(--ink-3)]'}`} />
+                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
                     </button>
                     {isOpen && (
                       <div className="px-5 py-4 text-sm sm:text-base text-[var(--ink-2)] leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/55 dark:bg-slate-900/35">
@@ -464,7 +464,7 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
             <button
               type="button"
               onClick={() => onNavigate('/zh/zhinan/jiang-tupian-yasuo-zhi-100kb')}
-              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#7c3aed]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
+              className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               把图片压缩到 100KB
             </button>

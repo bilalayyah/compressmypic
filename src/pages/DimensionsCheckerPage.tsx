@@ -309,7 +309,7 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({
                     placeholder={t('placeholderMinWidth', 'e.g. 1200')}
                     value={minWidth}
                     onChange={(e) => setMinWidth(e.target.value)}
-                    className="w-32 px-3 py-2 text-xs font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                    className="w-32 px-3 py-2 text-xs font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                   />
                 </div>
                 <div>
@@ -322,7 +322,7 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({
                     placeholder={t('placeholderMinHeight', 'e.g. 630')}
                     value={minHeight}
                     onChange={(e) => setMinHeight(e.target.value)}
-                    className="w-32 px-3 py-2 text-xs font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                    className="w-32 px-3 py-2 text-xs font-mono bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                   />
                 </div>
               </div>
@@ -339,7 +339,7 @@ export const DimensionsCheckerPage: React.FC<DimensionsCheckerPageProps> = ({
                 <button
                   type="button"
                   onClick={handleExportJson}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--surface-2)] hover:border-[#c4b5fd] border border-[var(--line)] text-[var(--ink)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--surface-2)] hover:border-[#fca5a5] border border-[var(--line)] text-[var(--ink)] text-xs font-semibold rounded-[11px] cursor-pointer transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>{t('exportJson', 'Export JSON')}</span>

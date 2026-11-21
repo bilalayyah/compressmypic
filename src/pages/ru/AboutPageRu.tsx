@@ -21,7 +21,7 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/ru/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Назад к компрессору изображений</span>
@@ -42,7 +42,7 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
         <div className="space-y-8 text-base text-[var(--ink-2)] leading-relaxed">
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Cpu className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Cpu className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Что такое CompressMyPic?</span>
             </h2>
             <p>
@@ -58,7 +58,7 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Layers className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Layers className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Поддерживаемые форматы: JPG, PNG и WebP</span>
             </h2>
             <p>
@@ -116,7 +116,7 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Users className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Users className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Для кого предназначен CompressMyPic?</span>
             </h2>
             <p>
@@ -129,7 +129,7 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
 
           <section className="space-y-3">
             <h2 className="text-xl font-sans font-bold text-[var(--ink-navy)] flex items-center gap-2">
-              <Users className="w-5 h-5 text-[#7c3aed] dark:text-[#a78bfa]" />
+              <Users className="w-5 h-5 text-[#dc2626] dark:text-[#f87171]" />
               <span>Создатель: Билал</span>
             </h2>
             <p>
@@ -144,7 +144,7 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
                 href="https://github.com/bilalayyah/compressmypic"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 GitHub
               </a>
@@ -153,7 +153,7 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
                 href="https://dev.to/bilalayyah"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 Dev.to
               </a>
@@ -161,7 +161,7 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
               <button
                 type="button"
                 onClick={() => onNavigate('/ru/kontakty')}
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold cursor-pointer"
               >
                 страницу контактов
               </button>
@@ -185,7 +185,7 @@ export const AboutPageRu: React.FC<AboutPageRuProps> = ({ onNavigate }) => {
               <button
                 type="button"
                 onClick={() => onNavigate('/ru/konfidentsialnost')}
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold cursor-pointer"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold cursor-pointer"
               >
                 Политику конфиденциальности
               </button>

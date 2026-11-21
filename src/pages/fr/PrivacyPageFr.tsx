@@ -19,7 +19,7 @@ export const PrivacyPageFr: React.FC<PrivacyPageFrProps> = ({ onNavigate }) => {
           <button
             type="button"
             onClick={() => onNavigate('/fr/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:text-[#6d28d9] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Retour au compresseur d’images</span>
@@ -108,7 +108,7 @@ export const PrivacyPageFr: React.FC<PrivacyPageFrProps> = ({ onNavigate }) => {
             <p>
               Parce que nos outils traitent les images localement et que nous n'avons pas de comptes utilisateurs, les seules données personnelles que nous détenons normalement sont le nom, l'adresse e-mail et le message que vous envoyez via le formulaire de contact. Pour exercer l'un de ces droits, écrivez-nous à <a
                 href="mailto:bilalayyah@gmail.com"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 bilalayyah@gmail.com
               </a> et nous répondrons sous 30 jours. Vous avez également le droit de déposer une plainte auprès de votre autorité locale de protection des données si vous pensez que nous avons traité vos données de manière injuste.
@@ -133,14 +133,14 @@ export const PrivacyPageFr: React.FC<PrivacyPageFrProps> = ({ onNavigate }) => {
                 href="https://policies.google.com/privacy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline"
               >
                 Politique de confidentialité
               </a> et les <a
                 href="https://policies.google.com/terms"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline"
               >
                 Conditions d'utilisation
               </a> de Google. Nous ne vous demandons jamais d'envoyer des mots de passe, des informations de paiement ou des documents personnels sensibles via le formulaire de contact, et vous ne devriez jamais les inclure dans un message.
@@ -173,7 +173,7 @@ export const PrivacyPageFr: React.FC<PrivacyPageFrProps> = ({ onNavigate }) => {
               Si vous avez des questions sur cette politique, écrivez-nous à{' '}
               <a
                 href="mailto:bilalayyah@gmail.com"
-                className="text-[#7c3aed] dark:text-[#c4b5fd] hover:underline font-semibold"
+                className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold"
               >
                 bilalayyah@gmail.com
               </a>

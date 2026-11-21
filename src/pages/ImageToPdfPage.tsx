@@ -327,7 +327,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                     setPageSize(e.target.value as PdfPageSize);
                     setPdfBlob(null);
                   }}
-                  className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                  className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                 >
                   <option value="a4">{t('pageSizeA4', 'A4 (210 × 297 mm)')}</option>
                   <option value="letter">{t('pageSizeLetter', 'US Letter (8.5 × 11 in)')}</option>
@@ -346,7 +346,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                     setOrientation(e.target.value as PdfOrientation);
                     setPdfBlob(null);
                   }}
-                  className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed] disabled:opacity-50"
+                  className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626] disabled:opacity-50"
                 >
                   <option value="auto">{t('orientationAuto', 'Auto (Match Photo)')}</option>
                   <option value="portrait">{t('orientationPortrait', 'Portrait')}</option>
@@ -364,7 +364,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                     setMargin(e.target.value as PdfMargin);
                     setPdfBlob(null);
                   }}
-                  className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                  className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                 >
                   <option value="none">{t('marginNone', 'No Margin (Full Bleed)')}</option>
                   <option value="small">{t('marginSmall', 'Small Margin')}</option>
@@ -382,7 +382,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                     setFit(e.target.value as PdfImageFit);
                     setPdfBlob(null);
                   }}
-                  className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                  className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                 >
                   <option value="contain">{t('placementContain', 'Contain (Full Image)')}</option>
                   <option value="cover">{t('placementCover', 'Cover (Fill Page)')}</option>
@@ -400,13 +400,13 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                     type="text"
                     value={filename}
                     onChange={(e) => setFilename(e.target.value)}
-                    className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                    className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                   />
                 </div>
                 <div className="flex-1 max-w-xs">
                   <label className="text-xs font-semibold text-[var(--ink-2)] block mb-1.5">
                     {t('pdfImageQuality', 'PDF Image Quality:')}{' '}
-                    <strong className="text-[#7c3aed] dark:text-[#a78bfa] font-mono">{quality}%</strong>
+                    <strong className="text-[#dc2626] dark:text-[#f87171] font-mono">{quality}%</strong>
                   </label>
                   <input
                     type="range"
@@ -527,7 +527,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                     type="button"
                     disabled={index === 0}
                     onClick={() => movePage(index, -1)}
-                    className="p-2 text-[var(--ink-3)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 disabled:opacity-30 rounded-lg cursor-pointer transition-colors"
+                    className="p-2 text-[var(--ink-3)] hover:text-[#b91c1c] dark:hover:text-[#fecaca] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 disabled:opacity-30 rounded-lg cursor-pointer transition-colors"
                     title={t('movePageUp', 'Move page up')}
                   >
                     <ArrowUp className="w-4 h-4" />
@@ -536,7 +536,7 @@ export const ImageToPdfPage: React.FC<ImageToPdfPageProps> = ({
                     type="button"
                     disabled={index === pages.length - 1}
                     onClick={() => movePage(index, 1)}
-                    className="p-2 text-[var(--ink-3)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[#ede9fe] dark:hover:bg-[#7c3aed]/20 disabled:opacity-30 rounded-lg cursor-pointer transition-colors"
+                    className="p-2 text-[var(--ink-3)] hover:text-[#b91c1c] dark:hover:text-[#fecaca] hover:bg-[#fee2e2] dark:hover:bg-[#dc2626]/20 disabled:opacity-30 rounded-lg cursor-pointer transition-colors"
                     title={t('movePageDown', 'Move page down')}
                   >
                     <ArrowDown className="w-4 h-4" />

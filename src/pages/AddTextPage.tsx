@@ -462,7 +462,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
             <div className="lg:col-span-7 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5">
-                  <Type className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+                  <Type className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
                   {t('dragAnyText', 'Drag Any Text Directly on Image')}
                 </span>
                 <button
@@ -502,7 +502,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                       onClick={() => setActiveLayerId(layer.id)}
                       className={`px-3 py-1 text-xs font-semibold rounded-full border cursor-pointer transition-colors ${
                         layer.id === activeLayer?.id
-                          ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/25 border-[#7c3aed] dark:border-[#8b5cf6] text-[#6d28d9] dark:text-[#ddd6fe]'
+                          ? 'bg-[#fee2e2] dark:bg-[#dc2626]/25 border-[#dc2626] dark:border-[#ef4444] text-[#b91c1c] dark:text-[#fecaca]'
                           : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[var(--line-strong)]'
                       }`}
                     >
@@ -514,7 +514,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                   <button
                     type="button"
                     onClick={handleAddLayer}
-                    className="inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold bg-[var(--accent-soft)] text-[#6d28d9] dark:text-[#ddd6fe] hover:bg-[#7c3aed] hover:text-white rounded-full cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold bg-[var(--accent-soft)] text-[#b91c1c] dark:text-[#fecaca] hover:bg-[#dc2626] hover:text-white rounded-full cursor-pointer transition-colors"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>{t('add', 'Add')}</span>
@@ -542,7 +542,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                       rows={2}
                       value={activeLayer.text}
                       onChange={(e) => updateActiveLayer({ text: e.target.value })}
-                      className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                      className="w-full px-3 py-2 text-sm bg-[var(--surface-2)] text-[var(--ink)] border border-[var(--line-strong)] rounded-[11px] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                     />
                   </div>
 
@@ -552,7 +552,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                       <select
                         value={activeLayer.fontFamily}
                         onChange={(e) => updateActiveLayer({ fontFamily: e.target.value })}
-                        className="w-full px-2.5 py-2 text-xs border border-[var(--line-strong)] rounded-[11px] bg-[var(--surface-2)] text-[var(--ink)] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+                        className="w-full px-2.5 py-2 text-xs border border-[var(--line-strong)] rounded-[11px] bg-[var(--surface-2)] text-[var(--ink)] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
                       >
                         {FONT_OPTIONS.map((f) => (
                           <option key={f.label} value={f.value}>
@@ -577,7 +577,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                         onClick={() => updateActiveLayer({ bold: !activeLayer.bold })}
                         className={`p-2 rounded-[11px] border cursor-pointer transition-colors ${
                           activeLayer.bold
-                            ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/25 text-[#6d28d9] dark:text-[#ddd6fe] border-[#7c3aed] dark:border-[#8b5cf6]'
+                            ? 'bg-[#fee2e2] dark:bg-[#dc2626]/25 text-[#b91c1c] dark:text-[#fecaca] border-[#dc2626] dark:border-[#ef4444]'
                             : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[var(--line-strong)]'
                         }`}
                         aria-label={t('toggleBold', 'Toggle Bold')}
@@ -589,7 +589,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                         onClick={() => updateActiveLayer({ italic: !activeLayer.italic })}
                         className={`p-2 rounded-[11px] border cursor-pointer transition-colors ${
                           activeLayer.italic
-                            ? 'bg-[#ede9fe] dark:bg-[#7c3aed]/25 text-[#6d28d9] dark:text-[#ddd6fe] border-[#7c3aed] dark:border-[#8b5cf6]'
+                            ? 'bg-[#fee2e2] dark:bg-[#dc2626]/25 text-[#b91c1c] dark:text-[#fecaca] border-[#dc2626] dark:border-[#ef4444]'
                             : 'bg-[var(--surface-2)] text-[var(--ink-2)] border-[var(--line)] hover:border-[var(--line-strong)]'
                         }`}
                         aria-label={t('toggleItalic', 'Toggle Italic')}
@@ -603,7 +603,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="font-semibold text-[var(--ink-2)]">{t('size', 'Size')}</span>
-                        <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{activeLayer.fontSizePct}%</span>
+                        <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{activeLayer.fontSizePct}%</span>
                       </div>
                       <input
                         type="range"
@@ -617,7 +617,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="font-semibold text-[var(--ink-2)]">{t('rotation', 'Rotation')}</span>
-                        <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{activeLayer.rotation}°</span>
+                        <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{activeLayer.rotation}°</span>
                       </div>
                       <input
                         type="range"
@@ -637,7 +637,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                           type="checkbox"
                           checked={activeLayer.outline}
                           onChange={(e) => updateActiveLayer({ outline: e.target.checked })}
-                          className="w-4 h-4 accent-[#7c3aed] rounded"
+                          className="w-4 h-4 accent-[#dc2626] rounded"
                         />
                         <span>{t('textOutline', 'Text Outline')}</span>
                       </label>
@@ -667,7 +667,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                         type="checkbox"
                         checked={activeLayer.shadow}
                         onChange={(e) => updateActiveLayer({ shadow: e.target.checked })}
-                        className="w-4 h-4 accent-[#7c3aed] rounded"
+                        className="w-4 h-4 accent-[#dc2626] rounded"
                       />
                     </label>
                   </div>
@@ -693,7 +693,7 @@ export const AddTextPage: React.FC<AddTextPageProps> = ({
                   <div>
                     <div className="flex justify-between text-xs mb-1">
                       <span className="font-semibold text-[var(--ink-2)]">{t('quality', 'Quality')}</span>
-                      <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{quality}%</span>
+                      <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{quality}%</span>
                     </div>
                     <input
                       type="range"

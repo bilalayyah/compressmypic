@@ -196,8 +196,8 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
           onClick={() => !disabled && fileInputRef.current?.click()}
           className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-12 text-center transition-[border-color,background-color,transform,opacity] cursor-pointer select-none ${
             isDragging
-              ? 'border-[#7c3aed] bg-[#ede9fe]/70 dark:bg-[#7c3aed]/20 scale-[1.005]'
-              : 'dropzone-pastel-blue hover:border-[#7c3aed] hover:bg-white/95 dark:hover:bg-slate-800/80'
+              ? 'border-[#dc2626] bg-[#fee2e2]/70 dark:bg-[#dc2626]/20 scale-[1.005]'
+              : 'dropzone-pastel-blue hover:border-[#dc2626] hover:bg-white/95 dark:hover:bg-slate-800/80'
           } ${disabled ? 'opacity-60 cursor-not-allowed' : ''}`}
           role="button"
           tabIndex={0}
@@ -225,7 +225,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
               className={`w-[60px] h-[60px] rounded-2xl flex items-center justify-center mb-4 transition-[background-color,border-color] shadow-xs ${
                 isDragging
                   ? 'btn-purple-grad'
-                  : 'pastel-tile-0 border border-[#ddd6fe] dark:border-[#8b5cf6]/35'
+                  : 'pastel-tile-0 border border-[#fecaca] dark:border-[#ef4444]/35'
               }`}
             >
               <UploadCloud className="w-7 h-7" />
@@ -238,7 +238,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
               {subtitle || (
                 <>
                   {browsePrefix}{' '}
-                  <span className="text-[#7c3aed] dark:text-[#c4b5fd] font-semibold underline underline-offset-2">
+                  <span className="text-[#dc2626] dark:text-[#fca5a5] font-semibold underline underline-offset-2">
                     {browseButtonText}
                   </span>{' '}
                   {browseSuffixText}
@@ -248,7 +248,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
 
             <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-xs text-[var(--ink-2)]">
               <span className="inline-flex items-center gap-1.5 font-medium bg-[var(--surface)] border border-[var(--line)] text-[var(--ink-2)] px-3 py-1 rounded-full shadow-2xs">
-                <FileImage className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#c4b5fd]" />
+                <FileImage className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#fca5a5]" />
                 {formatsLabel}
               </span>
               <span className="font-medium bg-[var(--surface)] border border-[var(--line)] text-[var(--ink-2)] px-3 py-1 rounded-full shadow-2xs">

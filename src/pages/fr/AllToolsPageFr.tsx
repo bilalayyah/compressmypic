@@ -88,7 +88,7 @@ export const AllToolsPageFr: React.FC<AllToolsPageFrProps> = ({
             onChange={(e) => setQuery(e.target.value)}
             placeholder={strings.searchPlaceholder}
             aria-label={strings.searchPlaceholder}
-            className="w-full h-11 pl-10 pr-4 rounded-2xl border border-[var(--line-strong)] bg-[var(--surface)] shadow-[var(--shadow)] text-sm text-[var(--ink)] placeholder:text-[var(--ink-3)] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]"
+            className="w-full h-11 pl-10 pr-4 rounded-2xl border border-[var(--line-strong)] bg-[var(--surface)] shadow-[var(--shadow)] text-sm text-[var(--ink)] placeholder:text-[var(--ink-3)] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
           />
         </div>
 
@@ -99,7 +99,7 @@ export const AllToolsPageFr: React.FC<AllToolsPageFrProps> = ({
             className={`px-4 py-2 text-[13px] font-semibold border transition-all cursor-pointer ${
               selectedCategory === 'all'
                 ? 'btn-purple-pill border-transparent shadow-xs'
-                : 'rounded-full bg-[var(--surface)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#7c3aed]/50 hover:text-[var(--ink)]'
+                : 'rounded-full bg-[var(--surface)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#dc2626]/50 hover:text-[var(--ink)]'
             }`}
           >
             {strings.allLabel} ({catalogTools.length})
@@ -114,7 +114,7 @@ export const AllToolsPageFr: React.FC<AllToolsPageFrProps> = ({
                 className={`px-4 py-2 text-[13px] font-semibold border transition-all cursor-pointer ${
                   selectedCategory === cat.id
                     ? 'btn-purple-pill border-transparent shadow-xs'
-                    : 'rounded-full bg-[var(--surface)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#7c3aed]/50 hover:text-[var(--ink)]'
+                    : 'rounded-full bg-[var(--surface)] text-[var(--ink-2)] border-[var(--line)] hover:border-[#dc2626]/50 hover:text-[var(--ink)]'
                 }`}
               >
                 {cat.label} ({count})
@@ -149,7 +149,7 @@ export const AllToolsPageFr: React.FC<AllToolsPageFrProps> = ({
                     e.preventDefault();
                     onNavigate(tool.slug);
                   }}
-                  className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#7c3aed]/40 transition-all duration-200 flex flex-col justify-between"
+                  className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#dc2626]/40 transition-all duration-200 flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-3.5">
@@ -162,14 +162,14 @@ export const AllToolsPageFr: React.FC<AllToolsPageFrProps> = ({
                         </span>
                       )}
                     </div>
-                    <h3 className="text-[17px] font-sans font-bold text-[var(--ink-navy)] group-hover:text-[#7c3aed] dark:group-hover:text-[#c4b5fd] transition-colors leading-snug">
+                    <h3 className="text-[17px] font-sans font-bold text-[var(--ink-navy)] group-hover:text-[#dc2626] dark:group-hover:text-[#fca5a5] transition-colors leading-snug">
                       {tool.name}
                     </h3>
                     <p className="mt-1.5 text-sm text-[var(--ink-3)] leading-relaxed">
                       {tool.shortDescription}
                     </p>
                   </div>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#7c3aed] dark:text-[#c4b5fd]">
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#dc2626] dark:text-[#fca5a5]">
                     <span>{strings.openTool}</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                   </span>
@@ -193,7 +193,7 @@ export const AllToolsPageFr: React.FC<AllToolsPageFrProps> = ({
                     e.preventDefault();
                     onNavigate(tool.slug);
                   }}
-                  className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#7c3aed]/40 transition-all duration-200 flex flex-col justify-between"
+                  className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] hover:border-[#dc2626]/40 transition-all duration-200 flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-3.5">
@@ -206,14 +206,14 @@ export const AllToolsPageFr: React.FC<AllToolsPageFrProps> = ({
                         </span>
                       )}
                     </div>
-                    <h3 className="text-[17px] font-sans font-bold text-[var(--ink-navy)] group-hover:text-[#7c3aed] dark:group-hover:text-[#c4b5fd] transition-colors leading-snug">
+                    <h3 className="text-[17px] font-sans font-bold text-[var(--ink-navy)] group-hover:text-[#dc2626] dark:group-hover:text-[#fca5a5] transition-colors leading-snug">
                       {tool.name}
                     </h3>
                     <p className="mt-1.5 text-sm text-[var(--ink-3)] leading-relaxed">
                       {tool.shortDescription}
                     </p>
                   </div>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#7c3aed] dark:text-[#c4b5fd]">
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#dc2626] dark:text-[#fca5a5]">
                     <span>{strings.openTool}</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                   </span>

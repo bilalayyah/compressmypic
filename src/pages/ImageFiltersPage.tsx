@@ -368,7 +368,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({
             <div className="lg:col-span-7 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-3)] flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+                  <Sparkles className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
                   {t('filterPreview', 'Filter Preview')}
                 </span>
                 <div className="flex items-center gap-2">
@@ -379,7 +379,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({
                     onMouseLeave={() => setShowOriginal(false)}
                     onTouchStart={() => setShowOriginal(true)}
                     onTouchEnd={() => setShowOriginal(false)}
-                    className="px-3 py-1.5 text-xs font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-2)] cursor-pointer select-none transition-colors"
+                    className="px-3 py-1.5 text-xs font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca] text-[var(--ink-2)] cursor-pointer select-none transition-colors"
                   >
                     {t('holdToViewOriginal', 'Hold to View Original')}
                   </button>
@@ -387,9 +387,9 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({
                     type="button"
                     onClick={handleOpenCompare}
                     disabled={isExporting}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] text-[var(--ink-2)] cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-full bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#dc2626] hover:text-[#b91c1c] dark:hover:text-[#fecaca] text-[var(--ink-2)] cursor-pointer transition-colors"
                   >
-                    <SplitSquareVertical className="w-3.5 h-3.5 text-[#7c3aed] dark:text-[#a78bfa]" />
+                    <SplitSquareVertical className="w-3.5 h-3.5 text-[#dc2626] dark:text-[#f87171]" />
                     <span>{t('compare', 'Compare')}</span>
                   </button>
                   <button
@@ -433,7 +433,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({
                     setSelectedPreset('original');
                     setIntensity(100);
                   }}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#7c3aed] dark:text-[#a78bfa] hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#dc2626] dark:text-[#f87171] hover:underline cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>{t('reset', 'Reset')}</span>
@@ -450,8 +450,8 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({
                       onClick={() => setSelectedPreset(preset.id)}
                       className={`group rounded-[11px] border p-1.5 text-center transition-all cursor-pointer ${
                         active
-                          ? 'border-[#7c3aed] bg-[#ede9fe] dark:bg-[#7c3aed]/20 ring-1 ring-[#7c3aed]'
-                          : 'border-[var(--line)] hover:border-[#7c3aed] bg-[var(--surface-2)]'
+                          ? 'border-[#dc2626] bg-[#fee2e2] dark:bg-[#dc2626]/20 ring-1 ring-[#dc2626]'
+                          : 'border-[var(--line)] hover:border-[#dc2626] bg-[var(--surface-2)]'
                       }`}
                     >
                       <div className="w-full aspect-square rounded-[8px] overflow-hidden bg-[var(--surface)] mb-1.5">
@@ -465,7 +465,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({
                       </div>
                       <span
                         className={`block text-xs font-semibold truncate ${
-                          active ? 'text-[#6d28d9] dark:text-[#ddd6fe]' : 'text-[var(--ink-2)]'
+                          active ? 'text-[#b91c1c] dark:text-[#fecaca]' : 'text-[var(--ink-2)]'
                         }`}
                       >
                         {presetLabel(preset)}
@@ -479,7 +479,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({
                 <div>
                   <div className="flex justify-between text-xs mb-1.5">
                     <span className="font-semibold text-[var(--ink-2)]">{t('filterIntensity', 'Filter Intensity')}</span>
-                    <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{intensity}%</span>
+                    <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{intensity}%</span>
                   </div>
                   <input
                     type="range"
@@ -505,7 +505,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({
                         onClick={() => setFormat(fmt)}
                         className={`py-1.5 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                           format === fmt
-                            ? 'bg-[#7c3aed] text-white shadow-xs'
+                            ? 'bg-[#dc2626] text-white shadow-xs'
                             : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                         }`}
                       >
@@ -519,7 +519,7 @@ export const ImageFiltersPage: React.FC<ImageFiltersPageProps> = ({
                   <div>
                     <div className="flex justify-between text-xs mb-1.5">
                       <span className="font-semibold text-[var(--ink-2)]">{t('quality', 'Quality')}</span>
-                      <span className="font-mono font-bold text-[#7c3aed] dark:text-[#a78bfa]">{quality}%</span>
+                      <span className="font-mono font-bold text-[#dc2626] dark:text-[#f87171]">{quality}%</span>
                     </div>
                     <input
                       type="range"

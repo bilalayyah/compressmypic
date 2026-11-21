@@ -413,7 +413,7 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({
                       onClick={() => setTargetFormat(f.id)}
                       className={`px-3.5 py-2 text-xs font-semibold rounded-[8px] cursor-pointer transition-all ${
                         targetFormat === f.id
-                          ? 'bg-[#7c3aed] text-white shadow-xs'
+                          ? 'bg-[#dc2626] text-white shadow-xs'
                           : 'text-[var(--ink-2)] hover:text-[var(--ink)]'
                       }`}
                     >
@@ -497,7 +497,7 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({
             {doneItems.length > 1 && (
               <div className="panel-pastel-blue border rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-[#fca5a5]">
                     {t('conversionComplete', 'Conversion Complete')}
                   </span>
                   <p className="text-sm font-semibold text-[var(--ink-navy)] mt-0.5">
@@ -541,7 +541,7 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({
                       />
                       {isBusy && (
                         <div className="absolute inset-0 bg-[var(--surface)]/80 flex items-center justify-center">
-                          <RotateCcw className="w-5 h-5 text-[#7c3aed] animate-spin" />
+                          <RotateCcw className="w-5 h-5 text-[#dc2626] animate-spin" />
                         </div>
                       )}
                     </div>
@@ -578,9 +578,9 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({
                         <button
                           type="button"
                           onClick={() => setComparisonTarget(item)}
-                          className="px-3.5 py-2 text-[var(--ink)] bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#7c3aed]/50 text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
+                          className="px-3.5 py-2 text-[var(--ink)] bg-[var(--surface-2)] border border-[var(--line)] hover:border-[#dc2626]/50 text-xs font-semibold rounded-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
                         >
-                          <SplitSquareVertical className="w-4 h-4 text-[#7c3aed] dark:text-[#c4b5fd]" />
+                          <SplitSquareVertical className="w-4 h-4 text-[#dc2626] dark:text-[#fca5a5]" />
                           <span>{t('compare', 'Compare')}</span>
                         </button>
                         <button

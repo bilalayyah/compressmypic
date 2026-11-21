@@ -243,7 +243,7 @@ export const Footer: React.FC<FooterProps> = ({
                 </svg>
               </span>
               <span>
-                Compress<span className="text-[#7c3aed] dark:text-[#a78bfa]">My</span>Pic
+                Compress<span className="text-[#dc2626] dark:text-[#f87171]">My</span>Pic
               </span>
             </a>
             <p className="text-xs text-[var(--ink-3)] leading-relaxed">
@@ -269,7 +269,7 @@ export const Footer: React.FC<FooterProps> = ({
                       e.preventDefault();
                       onNavigate(link.slug);
                     }}
-                    className="inline-flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors"
+                    className="inline-flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] transition-colors"
                   >
                     {link.label}
                   </a>
@@ -292,7 +292,7 @@ export const Footer: React.FC<FooterProps> = ({
                       e.preventDefault();
                       onNavigate(link.slug);
                     }}
-                    className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors text-left"
+                    className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] transition-colors text-left"
                   >
                     {link.label}
                   </a>
@@ -312,7 +312,7 @@ export const Footer: React.FC<FooterProps> = ({
                     e.preventDefault();
                     onNavigate('/blog');
                   }}
-                  className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors text-left font-semibold"
+                  className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] transition-colors text-left font-semibold"
                 >
                   {strings.blogLabel}
                 </a>
@@ -325,7 +325,7 @@ export const Footer: React.FC<FooterProps> = ({
                       e.preventDefault();
                       onNavigate(link.slug);
                     }}
-                    className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors text-left"
+                    className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] transition-colors text-left"
                   >
                     {link.label}
                   </a>
@@ -348,7 +348,7 @@ export const Footer: React.FC<FooterProps> = ({
                       e.preventDefault();
                       onNavigate(link.slug);
                     }}
-                    className="inline-flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors"
+                    className="inline-flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] transition-colors"
                   >
                     {link.label}
                   </a>
@@ -375,7 +375,7 @@ export const Footer: React.FC<FooterProps> = ({
                 e.preventDefault();
                 onNavigate(directoryHref);
               }}
-              className="inline-flex items-center min-h-6 font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline transition-colors"
+              className="inline-flex items-center min-h-6 font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:underline transition-colors"
             >
               {directoryLabel}
             </a>
@@ -387,7 +387,7 @@ export const Footer: React.FC<FooterProps> = ({
                   e.preventDefault();
                   onNavigate(item.slug);
                 }}
-                className="inline-flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#7c3aed] dark:hover:text-[#c4b5fd] transition-colors"
+                className="inline-flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] transition-colors"
               >
                 {item.label}
               </a>

@@ -398,7 +398,7 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
               <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-[var(--shadow)] space-y-4">
                 <div className="flex items-center justify-between">
                   <h2 className="font-sans text-base font-bold text-[var(--ink-navy)] flex items-center gap-2">
-                    <Pipette className="w-4 h-4 text-[#7c3aed] dark:text-[#a78bfa]" />
+                    <Pipette className="w-4 h-4 text-[#dc2626] dark:text-[#f87171]" />
                     <span>{t('pixelInspector', 'Pixel Inspector')}</span>
                   </h2>
                   {activeColor && (
@@ -454,7 +454,7 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
                         <button
                           type="button"
                           onClick={() => copyValue(row.label, row.value)}
-                          className="p-1.5 text-[var(--ink-3)] hover:text-[#6d28d9] dark:hover:text-[#ddd6fe] hover:bg-[var(--surface)] rounded-[8px] cursor-pointer shrink-0 transition-colors"
+                          className="p-1.5 text-[var(--ink-3)] hover:text-[#b91c1c] dark:hover:text-[#fecaca] hover:bg-[var(--surface)] rounded-[8px] cursor-pointer shrink-0 transition-colors"
                           title={t('copyLabel', 'Copy {label}').replace('{label}', row.label)}
                         >
                           {copiedKey === row.label ? (
@@ -479,7 +479,7 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
                     <button
                       type="button"
                       onClick={exportCssVariables}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#7c3aed] dark:text-[#c4b5fd] hover:underline cursor-pointer"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:underline cursor-pointer"
                     >
                       <Download className="w-3.5 h-3.5" />
                       <span>{t('exportCss', 'Export CSS')}</span>
@@ -501,7 +501,7 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
                           setSelectedColor(c);
                           copyValue(`swatch-${c.hex}`, c.hex);
                         }}
-                        className="group flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 rounded-full border border-[var(--line)] hover:border-[#7c3aed] bg-[var(--surface-2)] text-xs font-mono cursor-pointer transition-colors"
+                        className="group flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 rounded-full border border-[var(--line)] hover:border-[#dc2626] bg-[var(--surface-2)] text-xs font-mono cursor-pointer transition-colors"
                         title={t('clickToSelectCopy', 'Click to select & copy {hex}').replace('{hex}', c.hex)}
                       >
                         <span
