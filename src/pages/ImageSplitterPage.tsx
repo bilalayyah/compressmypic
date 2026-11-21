@@ -361,7 +361,7 @@ export const ImageSplitterPage: React.FC<ImageSplitterPageProps> = ({
                       {Array.from({ length: effectiveRows * effectiveCols }).map((_, idx) => (
                         <div
                           key={idx}
-                          className="border border-dashed border-white/90 shadow-[inset_0_0_0_1px_rgba(124,58,237,0.55)] flex items-center justify-center"
+                          className="border border-dashed border-white/90 shadow-[inset_0_0_0_1px_rgba(220,38,38,0.55)] flex items-center justify-center"
                         >
                           <span className="px-1.5 py-0.5 rounded bg-[#0f172a]/80 text-[#f8fafc] text-[10px] font-mono font-bold">
                             {idx + 1}
