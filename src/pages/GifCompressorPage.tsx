@@ -25,6 +25,7 @@ import { toRussianPath } from '../locales/ru/slugs';
 import { toJapanesePath } from '../locales/ja/slugs';
 import { toKoreanPath } from '../locales/ko/slugs';
 import { toChinesePath } from '../locales/zh/slugs';
+import { toArabicPath } from '../locales/ar/slugs';
 import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
@@ -105,6 +106,13 @@ export interface PageZhStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageArStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 
 
 interface GifCompressorPageProps {
@@ -123,6 +131,7 @@ interface GifCompressorPageProps {
   jaStrings?: PageJaStrings;
   koStrings?: PageKoStrings;
   zhStrings?: PageZhStrings;
+  arStrings?: PageArStrings;
 }
 
 export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
@@ -141,10 +150,13 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
   jaStrings,
   koStrings,
   zhStrings,
+  arStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG['/gif-compressor'];
   const t = (key: string, fallback: string) =>
-    lang === 'zh' && zhStrings?.toolUi
+    lang === 'ar' && arStrings?.toolUi
+      ? ((arStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'zh' && zhStrings?.toolUi
       ? ((zhStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'ja' && jaStrings?.toolUi
       ? ((jaStrings.toolUi[key] as string | undefined) ?? fallback)
@@ -286,8 +298,8 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={lang === 'zh' ? zhStrings?.layoutUi : lang === 'ja' ? jaStrings?.layoutUi : lang === 'ko' ? koStrings?.layoutUi : lang === 'id' ? idStrings?.layoutUi : lang === 'ru' ? ruStrings?.layoutUi : lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
-      canonicalPath={lang === 'zh' ? toChinesePath(activeTool.slug) : lang === 'ja' ? toJapanesePath(activeTool.slug) : lang === 'ko' ? toKoreanPath(activeTool.slug) : lang === 'id' ? toIndonesianPath(activeTool.slug) : lang === 'ru' ? toRussianPath(activeTool.slug) : lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
+      ui={lang === 'ar' ? arStrings?.layoutUi : lang === 'zh' ? zhStrings?.layoutUi : lang === 'ja' ? jaStrings?.layoutUi : lang === 'ko' ? koStrings?.layoutUi : lang === 'id' ? idStrings?.layoutUi : lang === 'ru' ? ruStrings?.layoutUi : lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
+      canonicalPath={lang === 'ar' ? toArabicPath(activeTool.slug) : lang === 'zh' ? toChinesePath(activeTool.slug) : lang === 'ja' ? toJapanesePath(activeTool.slug) : lang === 'ko' ? toKoreanPath(activeTool.slug) : lang === 'id' ? toIndonesianPath(activeTool.slug) : lang === 'ru' ? toRussianPath(activeTool.slug) : lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
       alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
@@ -303,7 +315,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
           allowedExtensionsRegex={/\.gif$/i}
           supportedFormatsLabel="GIF (Animated or Static)"
           title={t('uploadTitle', 'Drop an animated GIF to compress')}
-          strings={lang === 'zh' ? zhStrings?.uploadZone : lang === 'ja' ? jaStrings?.uploadZone : lang === 'ko' ? koStrings?.uploadZone : lang === 'id' ? idStrings?.uploadZone : lang === 'ru' ? ruStrings?.uploadZone : lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
+          strings={lang === 'ar' ? arStrings?.uploadZone : lang === 'zh' ? zhStrings?.uploadZone : lang === 'ja' ? jaStrings?.uploadZone : lang === 'ko' ? koStrings?.uploadZone : lang === 'id' ? idStrings?.uploadZone : lang === 'ru' ? ruStrings?.uploadZone : lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
         />
 
         {errorMessage && (
@@ -443,7 +455,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                         type="button"
                         onClick={() => setFrameStep(opt.step)}
                         disabled={decodedGif.frames.length <= 2 && opt.step > 1}
-                        className={`text-left px-3 py-1.5 text-xs font-medium rounded-[10px] border cursor-pointer disabled:opacity-40 transition-colors ${
+                        className={`text-start px-3 py-1.5 text-xs font-medium rounded-[10px] border cursor-pointer disabled:opacity-40 transition-colors ${
                           frameStep === opt.step
                             ? 'bg-[#fee2e2] dark:bg-[#dc2626]/25 border-[#dc2626] dark:border-[#ef4444] text-[#b91c1c] dark:text-[#fecaca] font-semibold'
                             : 'bg-[var(--surface-2)] border-[var(--line)] text-[var(--ink-2)] hover:border-[var(--line-strong)]'
@@ -553,7 +565,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                 {!result.isSmaller && (
                   <div className="p-3.5 pastel-card-10 border rounded-xl text-xs text-[var(--ink)] flex items-start gap-2.5">
                     <AlertTriangle className="w-4 h-4 text-[#ea580c] dark:text-[#fb923c] shrink-0 mt-0.5" />
-                    {((lang === 'zh' && zhStrings) || (lang === 'ja' && jaStrings) || (lang === 'ko' && koStrings) || (lang === 'id' && idStrings) || (lang === 'ru' && ruStrings) || (lang === 'de' && deStrings) || (lang === 'it' && itStrings) || (lang === 'es' && esStrings) || (lang === 'pt' && ptStrings) || (lang === 'fr' && frStrings)) ? (
+                    {((lang === 'ar' && arStrings) || (lang === 'zh' && zhStrings) || (lang === 'ja' && jaStrings) || (lang === 'ko' && koStrings) || (lang === 'id' && idStrings) || (lang === 'ru' && ruStrings) || (lang === 'de' && deStrings) || (lang === 'it' && itStrings) || (lang === 'es' && esStrings) || (lang === 'pt' && ptStrings) || (lang === 'fr' && frStrings)) ? (
                       <p>
                         {t(
                           'notSmallerNotice',
@@ -573,7 +585,7 @@ export const GifCompressorPage: React.FC<GifCompressorPageProps> = ({
                 {result.isSmaller && (
                   <div className="p-3.5 pastel-card-7 border rounded-xl text-xs text-[#15803d] dark:text-[#86efac] flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#16a34a] dark:text-[#4ade80] shrink-0" />
-                    {((lang === 'zh' && zhStrings) || (lang === 'ja' && jaStrings) || (lang === 'ko' && koStrings) || (lang === 'id' && idStrings) || (lang === 'ru' && ruStrings) || (lang === 'de' && deStrings) || (lang === 'it' && itStrings) || (lang === 'es' && esStrings) || (lang === 'pt' && ptStrings) || (lang === 'fr' && frStrings)) ? (
+                    {((lang === 'ar' && arStrings) || (lang === 'zh' && zhStrings) || (lang === 'ja' && jaStrings) || (lang === 'ko' && koStrings) || (lang === 'id' && idStrings) || (lang === 'ru' && ruStrings) || (lang === 'de' && deStrings) || (lang === 'it' && itStrings) || (lang === 'es' && esStrings) || (lang === 'pt' && ptStrings) || (lang === 'fr' && frStrings)) ? (
                       <span>
                         {t(
                           'compressedByNotice',

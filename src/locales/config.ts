@@ -14,7 +14,8 @@ export type SupportedLang =
   | 'it'
   | 'ru'
   | 'ko'
-  | 'zh';
+  | 'zh'
+  | 'ar';
 
 export type LangStatus = 'live' | 'in-progress' | 'planned';
 
@@ -27,8 +28,8 @@ export interface LanguageMeta {
   nativeName: string;
   /** English name of the language. */
   englishName: string;
-  /** Text direction. All 11 languages on this site are LTR. */
-  dir: 'ltr';
+  /** Text direction. All languages are LTR except Arabic ('ar'), which is RTL. */
+  dir: 'ltr' | 'rtl';
   /** Regional variant to translate into. */
   variant: string;
   /** Implementation phase (see PLAN.md). */
@@ -53,6 +54,7 @@ export const SUPPORTED_LANGUAGES: LanguageMeta[] = [
   { code: 'ja', prefix: 'ja', nativeName: '日本語', englishName: 'Japanese', dir: 'ltr', variant: 'Natural modern Japanese', phase: 5, status: 'live', directoryPath: '/ja/tools' },
   { code: 'ko', prefix: 'ko', nativeName: '한국어', englishName: 'Korean', dir: 'ltr', variant: 'Standard South Korean', phase: 5, status: 'live', directoryPath: '/ko/tools' },
   { code: 'zh', prefix: 'zh', nativeName: '简体中文', englishName: 'Chinese (Simplified)', dir: 'ltr', variant: 'Simplified Mandarin Chinese', phase: 6, status: 'live', directoryPath: '/zh/all-tools' },
+  { code: 'ar', prefix: 'ar', nativeName: 'العربية', englishName: 'Arabic', dir: 'rtl', variant: 'Modern Standard Arabic', phase: 7, status: 'live', directoryPath: '/ar/jami-al-adawat' },
 ];
 
 export const SUPPORTED_LANGS: SupportedLang[] = SUPPORTED_LANGUAGES.map((l) => l.code);

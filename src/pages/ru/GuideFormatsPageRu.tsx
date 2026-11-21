@@ -265,7 +265,7 @@ export const GuideFormatsPageRu: React.FC<GuideFormatsPageRuProps> = ({ onNaviga
             <div className="overflow-x-auto pt-1">
               <table className="w-full text-sm border border-[var(--line)] rounded-2xl overflow-hidden bg-[var(--surface)] shadow-[var(--shadow)]">
                 <thead>
-                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-left border-b border-[var(--line)]">
+                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-start border-b border-[var(--line)]">
                     <th className="px-4 py-3 font-semibold">Формат</th>
                     <th className="px-4 py-3 font-semibold">Размер файла</th>
                     <th className="px-4 py-3 font-semibold">Прозрачность</th>
@@ -436,7 +436,7 @@ export const GuideFormatsPageRu: React.FC<GuideFormatsPageRuProps> = ({ onNaviga
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-start transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
                       <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
@@ -459,7 +459,7 @@ export const GuideFormatsPageRu: React.FC<GuideFormatsPageRuProps> = ({ onNaviga
               <button
                 type="button"
                 onClick={() => onNavigate('/ru/rukovodstva/szhat-izobrazheniya-dlya-whatsapp')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Как сжать изображения для WhatsApp без потери качества</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Сначала уменьшите фото сами, а затем отправьте их как документы, чтобы WhatsApp не мог их размыть.</p>
@@ -467,7 +467,7 @@ export const GuideFormatsPageRu: React.FC<GuideFormatsPageRuProps> = ({ onNaviga
               <button
                 type="button"
                 onClick={() => onNavigate('/ru/rukovodstva/umenshit-razmer-izobrazheniya-do-100-kb')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Как уменьшить размер изображения до 100 КБ для сайтов и электронной почты</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Пошаговое руководство, как достичь 100 КБ, не испортив фотографию.</p>

@@ -351,7 +351,7 @@ export const GuideWhatsAppPageId: React.FC<GuideWhatsAppPageIdProps> = ({ onNavi
               </span>
               <span>Tips untuk Hasil Terbaik</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
+            <ul className="space-y-2 list-disc ps-5 text-sm sm:text-base">
               <li>Kompres sekali, dan hanya sekali. Mengompres foto yang sudah dikompres untuk kedua kalinya membuang detail tanpa penghematan tambahan yang berarti.</li>
               <li>Selalu kirim file hasil kompresi sebagai dokumen jika kualitas penting — itu satu-satunya cara untuk menghentikan WhatsApp mengompresnya lagi.</li>
               <li>Kompres beberapa foto sekaligus dengan pengaturan yang sama dan unduh semuanya dengan tombol Unduh Semua (ZIP).</li>
@@ -379,7 +379,7 @@ export const GuideWhatsAppPageId: React.FC<GuideWhatsAppPageIdProps> = ({ onNavi
               </span>
               <span>Kesalahan Umum yang Harus Dihindari</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
+            <ul className="space-y-2 list-disc ps-5 text-sm sm:text-base">
               <li>Mengirim foto sebagai foto setelah mengompresnya — WhatsApp akan mengompresnya untuk kedua kalinya dan membatalkan pekerjaan Anda.</li>
               <li>Menurunkan kualitas di bawah 40% untuk foto yang menampilkan wajah — kulit dan detail halus menjadi pecah-pecah dengan sangat cepat pada kualitas rendah.</li>
               <li>Menggunakan PNG untuk foto kamera — file PNG jauh lebih besar daripada JPG untuk foto dan tidak memberi keuntungan apa pun di WhatsApp.</li>
@@ -407,7 +407,7 @@ export const GuideWhatsAppPageId: React.FC<GuideWhatsAppPageIdProps> = ({ onNavi
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-start transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
                       <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
@@ -430,7 +430,7 @@ export const GuideWhatsAppPageId: React.FC<GuideWhatsAppPageIdProps> = ({ onNavi
               <button
                 type="button"
                 onClick={() => onNavigate('/id/panduan/jpg-vs-png-vs-webp')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG vs PNG vs WebP — format mana yang harus Anda gunakan?</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Ukuran file, kualitas, dan transparansi dibandingkan, agar Anda memilih format yang tepat setiap saat.</p>
@@ -438,7 +438,7 @@ export const GuideWhatsAppPageId: React.FC<GuideWhatsAppPageIdProps> = ({ onNavi
               <button
                 type="button"
                 onClick={() => onNavigate('/id/panduan/mengurangi-ukuran-gambar-menjadi-100-kb')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Cara mengurangi ukuran gambar menjadi 100KB untuk situs web dan email</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Panduan langkah demi langkah untuk mencapai 100KB tanpa merusak foto Anda.</p>

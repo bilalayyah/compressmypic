@@ -274,7 +274,7 @@ export const ContactPageRu: React.FC<ContactPageRuProps> = ({ onNavigate }) => {
             <p>
               Если вы предпочитаете публичный канал, Билала и проект CompressMyPic можно найти в интернете. Исходный код размещён на GitHub, где также можно сообщать о технических проблемах и следить за разработкой. Подробные руководства по сжатию изображений публикуются на Dev.to, а продукт представлен на Indie Hackers, где можно следить за его развитием и оставлять отзывы.
             </p>
-            <ul className="list-disc pl-6 space-y-1.5">
+            <ul className="list-disc ps-6 space-y-1.5">
               <li>
                 <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
                 {' '}— исходный код, сообщения об ошибках и новости разработки.

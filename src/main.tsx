@@ -16,6 +16,7 @@ import {EN_PATH_BY_RU} from './locales/ru/slugs';
 import {EN_PATH_BY_JA} from './locales/ja/slugs';
 import {EN_PATH_BY_KO} from './locales/ko/slugs';
 import {EN_PATH_BY_ZH} from './locales/zh/slugs';
+import {EN_PATH_BY_AR} from './locales/ar/slugs';
 import { isBlogEnPath, resolveBlogRoute } from './data/blogArticles';
 
 // SEO audit issue 4 (non-EN CLS 1.2964): the app used to render its first
@@ -43,6 +44,7 @@ const PREFIXED_LANGS: SupportedLang[] = [
   'ja',
   'ko',
   'zh',
+  'ar',
 ];
 
 function localeFromPath(pathname: string): SupportedLang | null {
@@ -89,6 +91,7 @@ const EN_PATH_BY_LANG: Record<string, Record<string, string> | undefined> = {
   ja: EN_PATH_BY_JA,
   ko: EN_PATH_BY_KO,
   zh: EN_PATH_BY_ZH,
+  ar: EN_PATH_BY_AR,
 };
 
 function resolvePageModule(pathname: string): string | null {
@@ -272,6 +275,15 @@ const TOOL_PAGE_MODULES: Record<string, string> = {
   '/webp-to-png': './pages/WebpToPngPage.tsx',
 };
 const LOCALIZED_PAGE_MODULES: Record<string, string> = {
+  'ar|/about': './pages/ar/AboutPageAr.tsx',
+  'ar|/contact': './pages/ar/ContactPageAr.tsx',
+  'ar|/cookie-policy': './pages/ar/CookiePolicyPageAr.tsx',
+  'ar|/disclaimer': './pages/ar/DisclaimerPageAr.tsx',
+  'ar|/guides/compress-images-for-whatsapp': './pages/ar/GuideWhatsAppPageAr.tsx',
+  'ar|/guides/jpg-vs-png-vs-webp': './pages/ar/GuideFormatsPageAr.tsx',
+  'ar|/guides/reduce-image-size-to-100kb': './pages/ar/Guide100kbPageAr.tsx',
+  'ar|/privacy': './pages/ar/PrivacyPageAr.tsx',
+  'ar|/terms': './pages/ar/TermsPageAr.tsx',
   'de|/about': './pages/de/AboutPageDe.tsx',
   'de|/contact': './pages/de/ContactPageDe.tsx',
   'de|/cookie-policy': './pages/de/CookiePolicyPageDe.tsx',
@@ -375,6 +387,7 @@ const LOCALIZED_PAGE_MODULES: Record<string, string> = {
   'zh|/terms': './pages/zh/TermsPageZh.tsx',
 };
 const DIRECTORY_PAGE_MODULES: Record<string, string> = {
+  '/ar/jami-al-adawat': './pages/ar/AllToolsPageAr.tsx',
   '/de/alle-tools': './pages/de/AllToolsPageDe.tsx',
   '/es/todas-las-herramientas': './pages/es/AllToolsPageEs.tsx',
   '/fr/tous-les-outils': './pages/fr/AllToolsPageFr.tsx',

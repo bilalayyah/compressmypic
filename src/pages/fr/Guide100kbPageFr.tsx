@@ -321,7 +321,7 @@ export const Guide100kbPageFr: React.FC<Guide100kbPageFrProps> = ({ onNavigate }
             <div className="overflow-x-auto pt-1">
               <table className="w-full text-sm border border-[var(--line)] rounded-2xl overflow-hidden bg-[var(--surface)] shadow-[var(--shadow)]">
                 <thead>
-                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-left border-b border-[var(--line)]">
+                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-start border-b border-[var(--line)]">
                     <th className="px-4 py-3 font-semibold">Objectif</th>
                     <th className="px-4 py-3 font-semibold">Qualité typique</th>
                     <th className="px-4 py-3 font-semibold">Idéal pour</th>
@@ -363,7 +363,7 @@ export const Guide100kbPageFr: React.FC<Guide100kbPageFrProps> = ({ onNavigate }
               </span>
               <span>Conseils pour les sites web et les e-mails</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
+            <ul className="space-y-2 list-disc ps-5 text-sm sm:text-base">
               <li>Pour les sites web, utilisez la sortie WebP : c’est le moyen le plus rapide d’atteindre 100 Ko et tous les navigateurs modernes la prennent en charge.</li>
               <li>Pour les e-mails, JPG est le format le plus sûr car toutes les applications d’e-mail l’ouvrent. Un JPG de 100 Ko se joint instantanément et ne rebondit jamais à cause de sa taille.</li>
               <li>Compressez toutes les photos d’une page ou d’un e-mail ensemble, puis téléchargez-les toutes avec le bouton Tout télécharger (ZIP).</li>
@@ -416,7 +416,7 @@ export const Guide100kbPageFr: React.FC<Guide100kbPageFrProps> = ({ onNavigate }
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-start transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
                       <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
@@ -439,7 +439,7 @@ export const Guide100kbPageFr: React.FC<Guide100kbPageFrProps> = ({ onNavigate }
               <button
                 type="button"
                 onClick={() => onNavigate('/fr/guides/compresser-images-pour-whatsapp')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Comment compresser des images pour WhatsApp sans perdre en qualité</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Réduisez les photos vous-même d’abord, puis envoyez-les comme documents pour que WhatsApp ne puisse pas les rendre floues.</p>
@@ -447,7 +447,7 @@ export const Guide100kbPageFr: React.FC<Guide100kbPageFrProps> = ({ onNavigate }
               <button
                 type="button"
                 onClick={() => onNavigate('/fr/guides/jpg-vs-png-vs-webp')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG vs PNG vs WebP : quel format utiliser ?</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Taille de fichier, qualité et transparence comparées, pour que vous choisissiez le bon format à chaque fois.</p>

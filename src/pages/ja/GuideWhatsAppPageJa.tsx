@@ -351,7 +351,7 @@ export const GuideWhatsAppPageJa: React.FC<GuideWhatsAppPageJaProps> = ({ onNavi
               </span>
               <span>きれいに仕上げるコツ</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
+            <ul className="space-y-2 list-disc ps-5 text-sm sm:text-base">
               <li>圧縮は一度だけ行います。すでに圧縮した写真をもう一度圧縮しても、節約はほとんどなく、細部が失われるだけです。</li>
               <li>画質が大切な場合は、圧縮したファイルを必ずドキュメントとして送ります。それが、WhatsAppによる再圧縮を防ぐ唯一の方法です。</li>
               <li>複数の写真を同じ設定でまとめて圧縮し、「すべてダウンロード（ZIP）」ボタンでまとめてダウンロードします。</li>
@@ -379,7 +379,7 @@ export const GuideWhatsAppPageJa: React.FC<GuideWhatsAppPageJaProps> = ({ onNavi
               </span>
               <span>よくある失敗を避けるには</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
+            <ul className="space-y-2 list-disc ps-5 text-sm sm:text-base">
               <li>圧縮したあとに写真として送ること。WhatsAppが2回目の圧縮を行い、せっかくの作業が無駄になります。</li>
               <li>顔のある写真の画質を40％未満まで下げること。肌や細部が低い画質ではすぐにブロック状になります。</li>
               <li>カメラ写真にPNGを使うこと。PNGのファイルはJPGよりはるかに大きく、WhatsAppでは得るものがありません。</li>
@@ -407,7 +407,7 @@ export const GuideWhatsAppPageJa: React.FC<GuideWhatsAppPageJaProps> = ({ onNavi
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-start transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
                       <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
@@ -430,7 +430,7 @@ export const GuideWhatsAppPageJa: React.FC<GuideWhatsAppPageJaProps> = ({ onNavi
               <button
                 type="button"
                 onClick={() => onNavigate('/ja/gaido/jpg-vs-png-vs-webp')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG・PNG・WebPの違いと使い分け｜どれを選ぶべき？</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">ファイルサイズ、画質、透明対応を比較し、毎回正しい形式を選べるようにします。</p>
@@ -438,7 +438,7 @@ export const GuideWhatsAppPageJa: React.FC<GuideWhatsAppPageJaProps> = ({ onNavi
               <button
                 type="button"
                 onClick={() => onNavigate('/ja/gaido/gazo-saizu-o-100kb-ni-hedasu')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">画像サイズを100KBまで小さくする方法｜Web・メール用</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">写真を劣化させずに100KBまで小さくする手順を解説します。</p>

@@ -321,7 +321,7 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
             <div className="overflow-x-auto pt-1">
               <table className="w-full text-sm border border-[var(--line)] rounded-2xl overflow-hidden bg-[var(--surface)] shadow-[var(--shadow)]">
                 <thead>
-                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-left border-b border-[var(--line)]">
+                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-start border-b border-[var(--line)]">
                     <th className="px-4 py-3 font-semibold">Цель</th>
                     <th className="px-4 py-3 font-semibold">Типичное качество</th>
                     <th className="px-4 py-3 font-semibold">Подходит для</th>
@@ -363,7 +363,7 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
               </span>
               <span>Советы для сайтов и электронной почты</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
+            <ul className="space-y-2 list-disc ps-5 text-sm sm:text-base">
               <li>Для сайтов используйте выходной формат WebP — это самый быстрый способ достичь 100 КБ, и его поддерживают все современные браузеры.</li>
               <li>Для электронной почты JPG — самый безопасный формат, потому что его открывает каждое почтовое приложение. JPG на 100 КБ прикрепляется мгновенно и никогда не отклоняется из-за размера.</li>
               <li>Сожмите все фотографии для одной страницы или одного письма вместе, а затем скачайте их все кнопкой «Скачать все (ZIP)».</li>
@@ -416,7 +416,7 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-start transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
                       <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
@@ -439,7 +439,7 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
               <button
                 type="button"
                 onClick={() => onNavigate('/ru/rukovodstva/szhat-izobrazheniya-dlya-whatsapp')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Как сжать изображения для WhatsApp без потери качества</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Сначала уменьшите фото сами, а затем отправьте их как документы, чтобы WhatsApp не мог их размыть.</p>
@@ -447,7 +447,7 @@ export const Guide100kbPageRu: React.FC<Guide100kbPageRuProps> = ({ onNavigate }
               <button
                 type="button"
                 onClick={() => onNavigate('/ru/rukovodstva/jpg-protiv-png-protiv-webp')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG против PNG против WebP — какой формат выбрать?</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Размер файла, качество и прозрачность в сравнении, чтобы каждый раз выбирать правильный формат.</p>

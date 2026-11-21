@@ -278,7 +278,7 @@ export const ContactPageZh: React.FC<ContactPageZhProps> = ({ onNavigate }) => {
             <p>
               如果你更喜欢公开渠道，可以在网上找到 Bilal 和 CompressMyPic 项目。源代码托管在 GitHub，你也可以在那里报告技术问题并关注开发进展。关于图片压缩的详细指南发布在 Dev.to 上，产品也已在 Indie Hackers 上线，你可以在那里关注进展并留下反馈。
             </p>
-            <ul className="list-disc pl-6 space-y-1.5">
+            <ul className="list-disc ps-6 space-y-1.5">
               <li>
                 <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
                 {' '}— 源代码、错误报告和开发动态。

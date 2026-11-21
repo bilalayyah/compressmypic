@@ -81,14 +81,14 @@ export const AllToolsPageFr: React.FC<AllToolsPageFrProps> = ({
         </p>
 
         <div className="mt-6 max-w-xl mx-auto relative">
-          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--ink-3)] pointer-events-none" />
+          <Search className="w-4 h-4 absolute start-3.5 top-1/2 -translate-y-1/2 text-[var(--ink-3)] pointer-events-none" />
           <input
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={strings.searchPlaceholder}
             aria-label={strings.searchPlaceholder}
-            className="w-full h-11 pl-10 pr-4 rounded-2xl border border-[var(--line-strong)] bg-[var(--surface)] shadow-[var(--shadow)] text-sm text-[var(--ink)] placeholder:text-[var(--ink-3)] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
+            className="w-full h-11 ps-10 pe-4 rounded-2xl border border-[var(--line-strong)] bg-[var(--surface)] shadow-[var(--shadow)] text-sm text-[var(--ink)] placeholder:text-[var(--ink-3)] focus:outline-none focus:ring-2 focus:ring-[#dc2626]"
           />
         </div>
 

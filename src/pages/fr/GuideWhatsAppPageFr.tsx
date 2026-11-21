@@ -351,7 +351,7 @@ export const GuideWhatsAppPageFr: React.FC<GuideWhatsAppPageFrProps> = ({ onNavi
               </span>
               <span>Conseils pour obtenir les meilleurs résultats</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
+            <ul className="space-y-2 list-disc ps-5 text-sm sm:text-base">
               <li>Compressez une seule fois, et une seule fois. Compresser une photo déjà compressée une deuxième fois supprime des détails sans presque économiser davantage de taille.</li>
               <li>Envoyez toujours le fichier compressé comme document si la qualité compte : c’est la seule façon d’éviter que WhatsApp le compresse de nouveau.</li>
               <li>Compressez plusieurs photos à la fois avec les mêmes réglages et téléchargez-les toutes avec le bouton Tout télécharger (ZIP).</li>
@@ -379,7 +379,7 @@ export const GuideWhatsAppPageFr: React.FC<GuideWhatsAppPageFrProps> = ({ onNavi
               </span>
               <span>Erreurs courantes à éviter</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
+            <ul className="space-y-2 list-disc ps-5 text-sm sm:text-base">
               <li>Envoyer la photo comme photo après l’avoir compressée : WhatsApp la compressera une deuxième fois et annulera votre travail.</li>
               <li>Descendre la qualité en dessous de 40 % pour les photos avec des visages : la peau et les détails fins deviennent des blocs très vite avec une qualité faible.</li>
               <li>Utiliser PNG pour les photos d’appareil photo : les fichiers PNG sont beaucoup plus grands que les JPG pour les photos et ne vous apportent rien sur WhatsApp.</li>
@@ -407,7 +407,7 @@ export const GuideWhatsAppPageFr: React.FC<GuideWhatsAppPageFrProps> = ({ onNavi
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-start transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
                       <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
@@ -430,7 +430,7 @@ export const GuideWhatsAppPageFr: React.FC<GuideWhatsAppPageFrProps> = ({ onNavi
               <button
                 type="button"
                 onClick={() => onNavigate('/fr/guides/jpg-vs-png-vs-webp')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG vs PNG vs WebP : quel format utiliser ?</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Taille de fichier, qualité et transparence comparées, pour que vous choisissiez le bon format à chaque fois.</p>
@@ -438,7 +438,7 @@ export const GuideWhatsAppPageFr: React.FC<GuideWhatsAppPageFrProps> = ({ onNavi
               <button
                 type="button"
                 onClick={() => onNavigate('/fr/guides/reduire-image-a-100-ko')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Comment réduire la taille d’une image à 100 Ko pour le web et l’e-mail</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Guide étape par étape pour atteindre 100 Ko sans ruiner votre photo.</p>

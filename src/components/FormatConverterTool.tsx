@@ -26,6 +26,7 @@ import { toRussianPath } from '../locales/ru/slugs';
 import { toJapanesePath } from '../locales/ja/slugs';
 import { toKoreanPath } from '../locales/ko/slugs';
 import { toChinesePath } from '../locales/zh/slugs';
+import { toArabicPath } from '../locales/ar/slugs';
 import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from './ToolPageLayout';
 import { UploadZone } from './UploadZone';
@@ -108,6 +109,13 @@ export interface PageZhStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageArStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 export interface FormatConverterToolProps {
   slug: string;
   sourceLabel: string;
@@ -138,6 +146,7 @@ export interface FormatConverterToolProps {
   jaStrings?: PageJaStrings;
   koStrings?: PageKoStrings;
   zhStrings?: PageZhStrings;
+  arStrings?: PageArStrings;
   onNavigate: (path: string) => void;
 }
 
@@ -179,12 +188,13 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
   jaStrings,
   koStrings,
   zhStrings,
+  arStrings,
   onNavigate,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG[slug];
   // Active language's page-strings bundle (zh/ja/ko/id/ru/de/it/es/pt/fr); English uses defaults.
   const pageStrings =
-    lang === 'zh' ? zhStrings : lang === 'ja' ? jaStrings : lang === 'ko' ? koStrings : lang === 'id' ? idStrings : lang === 'ru' ? ruStrings : lang === 'de' ? deStrings : lang === 'it' ? itStrings : lang === 'pt' ? ptStrings : lang === 'fr' ? frStrings : lang === 'es' ? esStrings : undefined;
+    lang === 'ar' ? arStrings : lang === 'zh' ? zhStrings : lang === 'ja' ? jaStrings : lang === 'ko' ? koStrings : lang === 'id' ? idStrings : lang === 'ru' ? ruStrings : lang === 'de' ? deStrings : lang === 'it' ? itStrings : lang === 'pt' ? ptStrings : lang === 'fr' ? frStrings : lang === 'es' ? esStrings : undefined;
   const activeToolUi = pageStrings?.toolUi;
   const t = (key: string, fallback: string) =>
     activeToolUi ? ((activeToolUi[key] as string | undefined) ?? fallback) : fallback;
@@ -488,7 +498,9 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
       lang={lang}
       ui={pageStrings?.layoutUi}
       canonicalPath={
-        lang === 'zh'
+        lang === 'ar'
+          ? toArabicPath(activeTool.slug)
+          : lang === 'zh'
           ? toChinesePath(activeTool.slug)
           : lang === 'ja'
           ? toJapanesePath(activeTool.slug)
@@ -799,7 +811,7 @@ export const FormatConverterTool: React.FC<FormatConverterToolProps> = ({
                   </div>
 
                   {isDone && item.compressedSize !== null && (
-                    <div className="grid grid-cols-3 gap-3 py-2 px-3 sm:px-4 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] w-full md:w-auto text-center md:text-left">
+                    <div className="grid grid-cols-3 gap-3 py-2 px-3 sm:px-4 bg-[var(--surface-2)] border border-[var(--line)] rounded-[11px] w-full md:w-auto text-center md:text-start">
                       <div>
                         <span className="text-xs text-[var(--ink-3)] block font-medium">
                           {sourceLabel}

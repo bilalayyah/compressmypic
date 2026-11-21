@@ -98,7 +98,7 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({
         </a>
       </div>
 
-      <div className="mt-10 text-left">
+      <div className="mt-10 text-start">
         <label
           htmlFor="not-found-search"
           className="block text-xs font-bold uppercase tracking-wider text-[var(--ink-3)]"
