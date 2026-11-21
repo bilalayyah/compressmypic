@@ -398,6 +398,7 @@ export const FR = {
     copied: 'Copié !',
     shareOnX: 'Partager sur X',
     shareOnFacebook: 'Partager sur Facebook',
+    shareOnWhatsApp: 'Partager sur WhatsApp',
     notAvailableHeading: 'Ce guide n’est pas encore disponible dans votre langue',
     notAvailableText:
       'Nous traduisons encore ce guide. Vous pouvez le lire en anglais ou explorer les guides déjà disponibles dans votre langue.',

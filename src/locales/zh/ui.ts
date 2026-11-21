@@ -423,6 +423,7 @@ export const ZH = {
     copied: '已复制！',
     shareOnX: '分享到 X',
     shareOnFacebook: '分享到 Facebook',
+    shareOnWhatsApp: '分享到WhatsApp',
     notAvailableHeading: '本指南暂未提供您的语言版本',
     notAvailableText:
       '我们仍在翻译本指南。您可以阅读英文版，或浏览已有您的语言版本的指南。',

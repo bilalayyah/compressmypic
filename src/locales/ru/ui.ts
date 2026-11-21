@@ -414,6 +414,7 @@ export const RU = {
     copied: 'Скопировано!',
     shareOnX: 'Поделиться в X',
     shareOnFacebook: 'Поделиться в Facebook',
+    shareOnWhatsApp: 'Поделиться в WhatsApp',
     notAvailableHeading: 'Это руководство пока недоступно на вашем языке',
     notAvailableText:
       'Мы ещё переводим это руководство. Вы можете прочитать его на английском или посмотреть руководства, уже доступные на вашем языке.',

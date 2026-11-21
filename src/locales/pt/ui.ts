@@ -416,6 +416,7 @@ export const PT = {
     copied: 'Copiado!',
     shareOnX: 'Compartilhar no X',
     shareOnFacebook: 'Compartilhar no Facebook',
+    shareOnWhatsApp: 'Compartilhar no WhatsApp',
     notAvailableHeading: 'Este guia ainda não está disponível no seu idioma',
     notAvailableText:
       'Ainda estamos traduzindo este guia. Você pode lê-lo em inglês ou explorar os guias já disponíveis no seu idioma.',

@@ -417,6 +417,7 @@ export const ID = {
     copied: 'Disalin!',
     shareOnX: 'Bagikan di X',
     shareOnFacebook: 'Bagikan di Facebook',
+    shareOnWhatsApp: 'Bagikan di WhatsApp',
     notAvailableHeading: 'Panduan ini belum tersedia dalam bahasa Anda',
     notAvailableText:
       'Kami masih menerjemahkan panduan ini. Anda dapat membacanya dalam bahasa Inggris, atau menjelajahi panduan yang sudah tersedia dalam bahasa Anda.',

@@ -417,6 +417,7 @@ export const KO = {
     copied: '복사됨!',
     shareOnX: 'X에 공유',
     shareOnFacebook: 'Facebook에 공유',
+    shareOnWhatsApp: 'WhatsApp에서 공유',
     notAvailableHeading: '이 가이드는 아직 사용 중인 언어로 제공되지 않습니다',
     notAvailableText:
       '이 가이드를 아직 번역하고 있습니다. 영어로 읽거나 사용 중인 언어로 제공되는 가이드를 살펴보세요.',

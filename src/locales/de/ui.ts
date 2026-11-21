@@ -414,6 +414,7 @@ export const DE = {
     copied: 'Kopiert!',
     shareOnX: 'Auf X teilen',
     shareOnFacebook: 'Auf Facebook teilen',
+    shareOnWhatsApp: 'Auf WhatsApp teilen',
     notAvailableHeading: 'Diese Anleitung ist in Ihrer Sprache noch nicht verfügbar',
     notAvailableText:
       'Wir übersetzen diese Anleitung noch. Sie können sie auf Englisch lesen oder die Anleitungen stöbern, die es bereits in Ihrer Sprache gibt.',

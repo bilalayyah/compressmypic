@@ -35,6 +35,7 @@ export const EN_BLOG_STRINGS: BlogStrings = {
   copied: 'Copied!',
   shareOnX: 'Share on X',
   shareOnFacebook: 'Share on Facebook',
+  shareOnWhatsApp: 'Share on WhatsApp',
   notAvailableHeading: 'This guide is not available in your language yet',
   notAvailableText:
     'We are still translating this guide. You can read it in English, or browse the guides already available in your language.',

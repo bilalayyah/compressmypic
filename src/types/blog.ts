@@ -118,6 +118,7 @@ export interface BlogStrings {
   copied: string;
   shareOnX: string;
   shareOnFacebook: string;
+  shareOnWhatsApp: string;
   notAvailableHeading: string;
   notAvailableText: string;
   viewBlogHome: string;

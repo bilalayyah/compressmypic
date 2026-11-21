@@ -307,8 +307,9 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
           copied: strings.copied,
           onX: strings.shareOnX,
           onFacebook: strings.shareOnFacebook,
+          onWhatsApp: strings.shareOnWhatsApp,
         }}
-        networks={['copy', 'x', 'facebook']}
+        networks={['copy', 'x', 'facebook', 'whatsapp']}
       />
 
       <p className="mt-10">

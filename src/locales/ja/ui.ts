@@ -426,6 +426,7 @@ export const JA = {
     copied: 'コピーしました！',
     shareOnX: 'Xで共有',
     shareOnFacebook: 'Facebookで共有',
+    shareOnWhatsApp: 'WhatsAppでシェア',
     notAvailableHeading: 'このガイドはまだお使いの言語では利用できません',
     notAvailableText:
       'このガイドは翻訳中です。英語版を読むか、お使いの言語で利用できるガイドをご覧ください。',
