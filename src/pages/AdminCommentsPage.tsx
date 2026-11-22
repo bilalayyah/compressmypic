@@ -203,7 +203,7 @@ export const AdminCommentsPage: React.FC<AdminCommentsPageProps> = ({ onNavigate
               <p className="text-sm text-[var(--ink-3)]">
                 {comments.length === 0 ? 'No comments yet.' : `${comments.length} latest comment${comments.length === 1 ? '' : 's'}.`}
               </p>
-              <div className="ml-auto flex items-center gap-2">
+              <div className="ms-auto flex items-center gap-2">
                 <button
                   type="button"
                   onClick={() => load(token)}

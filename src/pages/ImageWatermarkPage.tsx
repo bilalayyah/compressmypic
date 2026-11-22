@@ -25,6 +25,7 @@ import { toRussianPath } from '../locales/ru/slugs';
 import { toJapanesePath } from '../locales/ja/slugs';
 import { toKoreanPath } from '../locales/ko/slugs';
 import { toChinesePath } from '../locales/zh/slugs';
+import { toUrduPath } from '../locales/ur/slugs';
 import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
@@ -110,6 +111,13 @@ export interface PageZhStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageUrStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface ImageWatermarkPageProps {
   onNavigate: (path: string) => void;
   lang?: SupportedLang;
@@ -126,6 +134,7 @@ interface ImageWatermarkPageProps {
   jaStrings?: PageJaStrings;
   koStrings?: PageKoStrings;
   zhStrings?: PageZhStrings;
+  urStrings?: PageUrStrings;
 }
 
 const ANCHOR_POSITIONS: { label: string; x: number; y: number }[] = [
@@ -156,9 +165,11 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
   jaStrings,
   koStrings,
   zhStrings,
+  urStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG['/image-watermark'];
   const t = (key: string, fallback: string) => {
+    if (lang === 'ur' && urStrings?.toolUi) return (urStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'zh' && zhStrings?.toolUi) return (zhStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'ja' && jaStrings?.toolUi) return (jaStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'ko' && koStrings?.toolUi) return (koStrings.toolUi[key] as string | undefined) ?? fallback;
@@ -372,8 +383,8 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={lang === 'zh' ? zhStrings?.layoutUi : lang === 'ja' ? jaStrings?.layoutUi : lang === 'ko' ? koStrings?.layoutUi : lang === 'id' ? idStrings?.layoutUi : lang === 'ru' ? ruStrings?.layoutUi : lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
-      canonicalPath={lang === 'zh' ? toChinesePath(activeTool.slug) : lang === 'ja' ? toJapanesePath(activeTool.slug) : lang === 'ko' ? toKoreanPath(activeTool.slug) : lang === 'id' ? toIndonesianPath(activeTool.slug) : lang === 'ru' ? toRussianPath(activeTool.slug) : lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
+      ui={lang === 'ur' ? urStrings?.layoutUi : lang === 'zh' ? zhStrings?.layoutUi : lang === 'ja' ? jaStrings?.layoutUi : lang === 'ko' ? koStrings?.layoutUi : lang === 'id' ? idStrings?.layoutUi : lang === 'ru' ? ruStrings?.layoutUi : lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
+      canonicalPath={lang === 'ur' ? toUrduPath(activeTool.slug) : lang === 'zh' ? toChinesePath(activeTool.slug) : lang === 'ja' ? toJapanesePath(activeTool.slug) : lang === 'ko' ? toKoreanPath(activeTool.slug) : lang === 'id' ? toIndonesianPath(activeTool.slug) : lang === 'ru' ? toRussianPath(activeTool.slug) : lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
       alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
@@ -389,7 +400,7 @@ export const ImageWatermarkPage: React.FC<ImageWatermarkPageProps> = ({
             allowedExtensionsRegex={EXTENDED_ALLOWED_EXT_REGEX}
             supportedFormatsLabel="JPG, PNG, WebP, HEIC, GIF, BMP, SVG"
             title={t('uploadTitle', 'Drop an image to add a text or logo watermark')}
-            strings={lang === 'zh' ? zhStrings?.uploadZone : lang === 'ja' ? jaStrings?.uploadZone : lang === 'ko' ? koStrings?.uploadZone : lang === 'id' ? idStrings?.uploadZone : lang === 'ru' ? ruStrings?.uploadZone : lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
+            strings={lang === 'ur' ? urStrings?.uploadZone : lang === 'zh' ? zhStrings?.uploadZone : lang === 'ja' ? jaStrings?.uploadZone : lang === 'ko' ? koStrings?.uploadZone : lang === 'id' ? idStrings?.uploadZone : lang === 'ru' ? ruStrings?.uploadZone : lang === 'de' ? deStrings?.uploadZone : lang === 'it' ? itStrings?.uploadZone : lang === 'pt' ? ptStrings?.uploadZone : lang === 'fr' ? frStrings?.uploadZone : esStrings?.uploadZone}
           />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">

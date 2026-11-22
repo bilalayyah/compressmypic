@@ -472,7 +472,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
   return (
     <div ref={layoutRootRef} className="bg-[var(--bg)]">
       {/* Left-Aligned Tool Page Header */}
-      <section className="pt-8 pb-6 sm:pt-11 sm:pb-8 px-4 sm:px-6 max-w-[1180px] mx-auto text-left">
+      <section className="pt-8 pb-6 sm:pt-11 sm:pb-8 px-4 sm:px-6 max-w-[1180px] mx-auto text-start">
         {/* Grey Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
@@ -631,7 +631,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                       type="button"
                       onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
                       aria-expanded={isOpen}
-                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left hover:bg-white/30 dark:hover:bg-white/5 transition-colors cursor-pointer"
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-start hover:bg-white/30 dark:hover:bg-white/5 transition-colors cursor-pointer"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">
                         {faq.question}

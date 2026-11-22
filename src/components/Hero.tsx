@@ -113,7 +113,7 @@ export const Hero: React.FC<HeroProps> = ({
           }}
           className="flex items-center bg-[var(--surface)] border border-[var(--line)] focus-within:border-[#dc2626] focus-within:ring-2 focus-within:ring-[#dc2626]/20 rounded-full px-4 py-2.5 shadow-[var(--shadow)] transition-[border-color,box-shadow]"
         >
-          <Search className="w-4 h-4 text-[var(--ink-3)] shrink-0 mr-2.5" />
+          <Search className="w-4 h-4 text-[var(--ink-3)] shrink-0 me-2.5" />
           <input
             ref={inputRef}
             type="search"
@@ -127,13 +127,13 @@ export const Hero: React.FC<HeroProps> = ({
             aria-label="Search 47 free image tools..."
             className="hero-search-input min-h-6 w-full text-sm text-[var(--ink)] bg-transparent! border-0! p-0! placeholder:text-[var(--ink-3)]"
           />
-          <kbd className="hidden sm:inline-flex items-center gap-0.5 px-2 py-0.5 ml-2 rounded-md bg-[var(--surface-2)] border border-[var(--line)] text-xs font-mono font-semibold text-[var(--ink-3)] shrink-0">
+          <kbd className="hidden sm:inline-flex items-center gap-0.5 px-2 py-0.5 ms-2 rounded-md bg-[var(--surface-2)] border border-[var(--line)] text-xs font-mono font-semibold text-[var(--ink-3)] shrink-0">
             ⌘K
           </kbd>
         </form>
 
         {dropdownOpen && (
-          <div className="absolute left-0 right-0 top-full mt-2 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-2 shadow-[var(--shadow-lg)] z-30 text-left max-h-[320px] overflow-y-auto">
+          <div className="absolute start-0 end-0 top-full mt-2 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-2 shadow-[var(--shadow-lg)] z-30 text-start max-h-[320px] overflow-y-auto">
             {filteredTools.length === 0 ? (
               <p className="px-3 py-4 text-xs text-center text-[var(--ink-3)]">
                 No matching tools found.

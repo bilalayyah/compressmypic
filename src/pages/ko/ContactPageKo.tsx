@@ -272,7 +272,7 @@ export const ContactPageKo: React.FC<ContactPageKoProps> = ({ onNavigate }) => {
             <p>
               공개 채널을 선호하신다면 웹에서 Bilal과 CompressMyPic 프로젝트를 찾으실 수 있습니다. 소스 코드는 GitHub에 있으며, 기술적인 문제를 신고하고 개발 과정을 지켜볼 수도 있습니다. 이미지 압축에 대한 자세한 가이드는 Dev.to에 게시되며, 제품은 Indie Hackers에 등록되어 있어 진행 상황을 확인하고 피드백을 남길 수 있습니다.
             </p>
-            <ul className="list-disc pl-6 space-y-1.5">
+            <ul className="list-disc ps-6 space-y-1.5">
               <li>
                 <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
                 {' '}— 소스 코드, 버그 신고, 개발 소식.

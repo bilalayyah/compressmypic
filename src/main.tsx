@@ -16,6 +16,7 @@ import {EN_PATH_BY_RU} from './locales/ru/slugs';
 import {EN_PATH_BY_JA} from './locales/ja/slugs';
 import {EN_PATH_BY_KO} from './locales/ko/slugs';
 import {EN_PATH_BY_ZH} from './locales/zh/slugs';
+import {EN_PATH_BY_UR} from './locales/ur/slugs';
 import { isBlogEnPath, resolveBlogRoute } from './data/blogArticles';
 
 // SEO audit issue 4 (non-EN CLS 1.2964): the app used to render its first
@@ -43,6 +44,7 @@ const PREFIXED_LANGS: SupportedLang[] = [
   'ja',
   'ko',
   'zh',
+  'ur',
 ];
 
 function localeFromPath(pathname: string): SupportedLang | null {
@@ -89,6 +91,7 @@ const EN_PATH_BY_LANG: Record<string, Record<string, string> | undefined> = {
   ja: EN_PATH_BY_JA,
   ko: EN_PATH_BY_KO,
   zh: EN_PATH_BY_ZH,
+  ur: EN_PATH_BY_UR,
 };
 
 function resolvePageModule(pathname: string): string | null {
@@ -364,6 +367,15 @@ const LOCALIZED_PAGE_MODULES: Record<string, string> = {
   'ru|/guides/reduce-image-size-to-100kb': './pages/ru/Guide100kbPageRu.tsx',
   'ru|/privacy': './pages/ru/PrivacyPageRu.tsx',
   'ru|/terms': './pages/ru/TermsPageRu.tsx',
+  'ur|/about': './pages/ur/AboutPageUr.tsx',
+  'ur|/contact': './pages/ur/ContactPageUr.tsx',
+  'ur|/cookie-policy': './pages/ur/CookiePolicyPageUr.tsx',
+  'ur|/disclaimer': './pages/ur/DisclaimerPageUr.tsx',
+  'ur|/guides/compress-images-for-whatsapp': './pages/ur/GuideWhatsAppPageUr.tsx',
+  'ur|/guides/jpg-vs-png-vs-webp': './pages/ur/GuideFormatsPageUr.tsx',
+  'ur|/guides/reduce-image-size-to-100kb': './pages/ur/Guide100kbPageUr.tsx',
+  'ur|/privacy': './pages/ur/PrivacyPageUr.tsx',
+  'ur|/terms': './pages/ur/TermsPageUr.tsx',
   'zh|/about': './pages/zh/AboutPageZh.tsx',
   'zh|/contact': './pages/zh/ContactPageZh.tsx',
   'zh|/cookie-policy': './pages/zh/CookiePolicyPageZh.tsx',
@@ -384,6 +396,7 @@ const DIRECTORY_PAGE_MODULES: Record<string, string> = {
   '/ko/tools': './pages/ko/AllToolsPageKo.tsx',
   '/pt/todas-as-ferramentas': './pages/pt/AllToolsPagePt.tsx',
   '/ru/vse-instrumenty': './pages/ru/AllToolsPageRu.tsx',
+  '/ur/tamam-auzar': './pages/ur/AllToolsPageUr.tsx',
   '/zh/all-tools': './pages/zh/AllToolsPageZh.tsx',
 };
 

@@ -321,7 +321,7 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
             <div className="overflow-x-auto pt-1">
               <table className="w-full text-sm border border-[var(--line)] rounded-2xl overflow-hidden bg-[var(--surface)] shadow-[var(--shadow)]">
                 <thead>
-                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-left border-b border-[var(--line)]">
+                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-start border-b border-[var(--line)]">
                     <th className="px-4 py-3 font-semibold">Target</th>
                     <th className="px-4 py-3 font-semibold">Kualitas umum</th>
                     <th className="px-4 py-3 font-semibold">Cocok untuk</th>
@@ -363,7 +363,7 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
               </span>
               <span>Tips untuk Situs Web dan Email</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
+            <ul className="space-y-2 list-disc ps-5 text-sm sm:text-base">
               <li>Untuk situs web, gunakan keluaran WebP — ini cara tercepat untuk mencapai 100KB, dan setiap browser modern mendukungnya.</li>
               <li>Untuk email, JPG adalah format paling aman karena setiap aplikasi email membukanya. JPG 100KB terlampir seketika dan tidak pernah gagal karena ukuran.</li>
               <li>Kompres semua foto untuk satu halaman atau satu email bersamaan, lalu unduh semuanya dengan tombol Unduh Semua (ZIP).</li>
@@ -416,7 +416,7 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-start transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
                       <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
@@ -439,7 +439,7 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
               <button
                 type="button"
                 onClick={() => onNavigate('/id/panduan/mengompres-gambar-untuk-whatsapp')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Cara mengompres gambar untuk WhatsApp tanpa kehilangan kualitas</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Perkecil foto sendiri terlebih dahulu, lalu kirim sebagai dokumen agar WhatsApp tidak dapat membuatnya buram.</p>
@@ -447,7 +447,7 @@ export const Guide100kbPageId: React.FC<Guide100kbPageIdProps> = ({ onNavigate }
               <button
                 type="button"
                 onClick={() => onNavigate('/id/panduan/jpg-vs-png-vs-webp')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG vs PNG vs WebP — format mana yang harus Anda gunakan?</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Ukuran file, kualitas, dan transparansi dibandingkan, agar Anda memilih format yang tepat setiap saat.</p>

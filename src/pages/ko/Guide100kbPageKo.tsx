@@ -321,7 +321,7 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
             <div className="overflow-x-auto pt-1">
               <table className="w-full text-sm border border-[var(--line)] rounded-2xl overflow-hidden bg-[var(--surface)] shadow-[var(--shadow)]">
                 <thead>
-                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-left border-b border-[var(--line)]">
+                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-start border-b border-[var(--line)]">
                     <th className="px-4 py-3 font-semibold">목표</th>
                     <th className="px-4 py-3 font-semibold">일반적인 화질</th>
                     <th className="px-4 py-3 font-semibold">적합한 용도</th>
@@ -363,7 +363,7 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
               </span>
               <span>웹사이트와 이메일을 위한 팁</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
+            <ul className="space-y-2 list-disc ps-5 text-sm sm:text-base">
               <li>웹사이트에는 WebP 출력을 사용하세요. 100KB에 도달하는 가장 빠른 방법이며 모든 최신 브라우저가 지원합니다.</li>
               <li>이메일에는 JPG가 가장 안전한 형식입니다. 모든 이메일 앱이 열 수 있습니다. 100KB JPG는 즉시 첨부되고 크기 때문에 반송되는 일이 없습니다.</li>
               <li>한 페이지나 한 이메일용 사진을 모두 함께 압축한 뒤 모두 다운로드(ZIP) 버튼으로 함께 다운로드하세요.</li>
@@ -416,7 +416,7 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-start transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
                       <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
@@ -439,7 +439,7 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
               <button
                 type="button"
                 onClick={() => onNavigate('/ko/gaideu/watsae-yong-imiji-apchuk')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">화질 저하 없이 WhatsApp용 이미지를 압축하는 방법</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">먼저 직접 사진을 축소한 뒤 문서로 보내 WhatsApp이 사진을 흐릿하게 만들지 못하게 하세요.</p>
@@ -447,7 +447,7 @@ export const Guide100kbPageKo: React.FC<Guide100kbPageKoProps> = ({ onNavigate }
               <button
                 type="button"
                 onClick={() => onNavigate('/ko/gaideu/jpg-vs-png-vs-webp')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG vs PNG vs WebP — 어떤 형식을 사용해야 할까요?</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">파일 크기, 화질, 투명도를 비교해 매번 올바른 형식을 선택하세요.</p>

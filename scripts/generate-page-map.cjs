@@ -36,7 +36,7 @@ while ((m = branchRe.exec(router)) !== null) {
   branches.push({ lang: m[1] || null, path: m[2] || null, pathConst: m[3] || null, comp: comp[1] });
 }
 
-const LANG_FROM_CONST = { ES: 'es', PT: 'pt', FR: 'fr', DE: 'de', IT: 'it', ID: 'id', RU: 'ru', JA: 'ja', KO: 'ko', ZH: 'zh' };
+const LANG_FROM_CONST = { ES: 'es', PT: 'pt', FR: 'fr', DE: 'de', IT: 'it', ID: 'id', RU: 'ru', JA: 'ja', KO: 'ko', ZH: 'zh', UR: 'ur' };
 const tools = new Map();       // enPath -> glob key (lang-independent)
 const localized = new Map();   // `${lang}|${enPath}` -> glob key
 const dirs = new Map();        // localized directory path -> glob key (filled below; path consts resolved via slugs)
@@ -77,8 +77,8 @@ for (const [prefix, lang] of Object.entries(LANG_FROM_CONST)) {
 
 console.log(`// branches parsed: ${branches.length} (tools ${tools.size}, localized ${localized.size}, dirs ${dirs.size})`);
 if (tools.size !== 47) { console.error('EXPECTED 47 tools, got', tools.size); process.exit(1); }
-if (localized.size !== 60 + 30 + 10 + 1) { console.error('EXPECTED 101 localized (60 legal + 30 guides + 10 EN static + admin), got', localized.size); process.exit(1); }
-if (dirs.size !== 10) { console.error('EXPECTED 10 dirs, got', dirs.size); process.exit(1); }
+if (localized.size !== 66 + 33 + 10 + 1) { console.error('EXPECTED 110 localized (66 legal + 33 guides + 10 EN static + admin), got', localized.size); process.exit(1); }
+if (dirs.size !== 11) { console.error('EXPECTED 11 dirs, got', dirs.size); process.exit(1); }
 const sorted = (map) => [...map.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1));
 const obj = (map) => '{\n' + sorted(map).map(([k, v]) => `  '${k}': '${v}',`).join('\n') + '\n}';
 console.log('export const TOOL_PAGE_MODULES: Record<string, string> = ' + obj(tools) + ';');

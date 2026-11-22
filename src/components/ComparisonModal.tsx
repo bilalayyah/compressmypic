@@ -250,10 +250,10 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
               </div>
 
               {/* Badges */}
-              <div className="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-xs text-slate-100 text-xs font-bold uppercase tracking-[0.06em] px-3 py-1 rounded-full pointer-events-none">
+              <div className="absolute top-3 start-3 bg-slate-900/80 backdrop-blur-xs text-slate-100 text-xs font-bold uppercase tracking-[0.06em] px-3 py-1 rounded-full pointer-events-none">
                 {beforeLabel}
               </div>
-              <div className="absolute top-3 right-3 bg-[#dc2626]/90 backdrop-blur-xs text-white text-xs font-bold uppercase tracking-[0.06em] px-3 py-1 rounded-full pointer-events-none">
+              <div className="absolute top-3 end-3 bg-[#dc2626]/90 backdrop-blur-xs text-white text-xs font-bold uppercase tracking-[0.06em] px-3 py-1 rounded-full pointer-events-none">
                 {afterLabel}
               </div>
             </div>

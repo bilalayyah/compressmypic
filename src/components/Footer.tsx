@@ -11,6 +11,7 @@ import { RU_ALL_TOOLS_PATH } from '../locales/ru/slugs';
 import { JA_ALL_TOOLS_PATH } from '../locales/ja/slugs';
 import { KO_ALL_TOOLS_PATH } from '../locales/ko/slugs';
 import { ZH_ALL_TOOLS_PATH } from '../locales/zh/slugs';
+import { UR_ALL_TOOLS_PATH } from '../locales/ur/slugs';
 
 export interface FooterStrings {
   blurb: string;
@@ -167,6 +168,7 @@ export const Footer: React.FC<FooterProps> = ({
     ja: JA_ALL_TOOLS_PATH,
     ko: KO_ALL_TOOLS_PATH,
     zh: ZH_ALL_TOOLS_PATH,
+    ur: UR_ALL_TOOLS_PATH,
   };
   // Localized "All Tools" label for the directory link, loaded from the
   // active locale's own dictionary (toolsDirectory.allTools) so no string
@@ -189,6 +191,7 @@ export const Footer: React.FC<FooterProps> = ({
     ja: () => import('../locales/ja/ui').then((m) => m.JA.toolsDirectory.allTools),
     ko: () => import('../locales/ko/ui').then((m) => m.KO.toolsDirectory.allTools),
     zh: () => import('../locales/zh/ui').then((m) => m.ZH.toolsDirectory.allTools),
+    ur: () => import('../locales/ur/ui').then((m) => m.UR.toolsDirectory.allTools),
   };
   const [directoryLabel, setDirectoryLabel] = useState(directoryLabelProp ?? 'All Tools');
   useEffect(() => {
@@ -292,7 +295,7 @@ export const Footer: React.FC<FooterProps> = ({
                       e.preventDefault();
                       onNavigate(link.slug);
                     }}
-                    className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] transition-colors text-left"
+                    className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] transition-colors text-start"
                   >
                     {link.label}
                   </a>
@@ -312,7 +315,7 @@ export const Footer: React.FC<FooterProps> = ({
                     e.preventDefault();
                     onNavigate('/blog');
                   }}
-                  className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] transition-colors text-left font-semibold"
+                  className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] transition-colors text-start font-semibold"
                 >
                   {strings.blogLabel}
                 </a>
@@ -325,7 +328,7 @@ export const Footer: React.FC<FooterProps> = ({
                       e.preventDefault();
                       onNavigate(link.slug);
                     }}
-                    className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] transition-colors text-left"
+                    className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] transition-colors text-start"
                   >
                     {link.label}
                   </a>
@@ -401,7 +404,7 @@ export const Footer: React.FC<FooterProps> = ({
           <p>
             {strings.deployedNote.split(/(Bilal|Shaheen)/g).map((part, index) =>
               part === 'Bilal' || part === 'Shaheen' ? (
-                <span key={index} className="font-script text-base pr-1">
+                <span key={index} className="font-script text-base pe-1">
                   {part}
                 </span>
               ) : (

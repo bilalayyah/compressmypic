@@ -330,11 +330,11 @@ export async function compressToTargetSize(
   const uiStrings = options.strings;
   const pickTemplate = (
     keys: string[],
-    fallbacks: Partial<Record<'es' | 'pt' | 'fr' | 'de' | 'it' | 'id' | 'ru' | 'ja' | 'ko' | 'zh', string>>,
+    fallbacks: Partial<Record<'es' | 'pt' | 'fr' | 'de' | 'it' | 'id' | 'ru' | 'ja' | 'ko' | 'zh' | 'ur', string>>,
     enFallback: string
   ): string => {
     const activeLang = options.lang;
-    if (activeLang === 'es' || activeLang === 'pt' || activeLang === 'fr' || activeLang === 'de' || activeLang === 'it' || activeLang === 'id' || activeLang === 'ru' || activeLang === 'ja' || activeLang === 'ko' || activeLang === 'zh') {
+    if (activeLang === 'es' || activeLang === 'pt' || activeLang === 'fr' || activeLang === 'de' || activeLang === 'it' || activeLang === 'id' || activeLang === 'ru' || activeLang === 'ja' || activeLang === 'ko' || activeLang === 'zh' || activeLang === 'ur') {
       for (const key of keys) {
         const value = uiStrings?.[key];
         if (value !== undefined) return value;

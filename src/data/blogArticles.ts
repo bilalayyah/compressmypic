@@ -36,6 +36,7 @@ import { RU_PATH_BY_EN } from '../locales/ru/slugs';
 import { JA_PATH_BY_EN } from '../locales/ja/slugs';
 import { KO_PATH_BY_EN } from '../locales/ko/slugs';
 import { ZH_PATH_BY_EN } from '../locales/zh/slugs';
+import { UR_PATH_BY_EN } from '../locales/ur/slugs';
 import type {
   BlogArticleMeta,
   BlogArticleLocaleOverride,
@@ -57,6 +58,7 @@ const PATH_BY_EN_BY_LANG: Record<string, Record<string, string>> = {
   ja: JA_PATH_BY_EN,
   ko: KO_PATH_BY_EN,
   zh: ZH_PATH_BY_EN,
+  ur: UR_PATH_BY_EN,
 };
 
 /** Localized category-hub slugs. EN uses the category id itself. Slugs are
@@ -162,6 +164,15 @@ export const BLOG_CATEGORY_SLUGS: Record<SupportedLang, Record<ToolCategoryId, s
     create: 'chuangzuo',
     privacy: 'yinsi',
     developer: 'kaifazhe-gongju',
+  },
+  ur: {
+    compress: 'compress-karein',
+    resize: 'resize-karein',
+    convert: 'convert-karein',
+    'crop-edit': 'crop-edit-karein',
+    create: 'takhleeq',
+    privacy: 'razdari',
+    developer: 'developer-tools',
   },
 };
 

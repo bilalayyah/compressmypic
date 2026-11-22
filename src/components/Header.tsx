@@ -309,7 +309,7 @@ export const Header: React.FC<HeaderProps> = ({
               />
             </button>
             {toolsOpen && (
-              <div className="absolute left-0 top-full mt-2 w-[780px] max-w-[94vw] max-h-[78vh] overflow-y-auto rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-lg)] grid grid-cols-3 gap-5 z-50">
+              <div className="absolute start-0 top-full mt-2 w-[780px] max-w-[94vw] max-h-[78vh] overflow-y-auto rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-lg)] grid grid-cols-3 gap-5 z-50">
                 {activeCategories.map((cat) => {
                   const catTools = toolsRegistry.filter((t) => t.category === cat.id);
                   return (
@@ -397,9 +397,9 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="hidden xl:block relative">
             <form
               onSubmit={handleSearchSubmit}
-              className="flex items-center bg-[var(--surface)] border border-[var(--line)] rounded-lg p-1 pl-3 shadow-xs w-[200px]"
+              className="flex items-center bg-[var(--surface)] border border-[var(--line)] rounded-lg p-1 ps-3 shadow-xs w-[200px]"
             >
-              <Search className="w-3.5 h-3.5 text-[var(--ink-3)] shrink-0 mr-1.5" />
+              <Search className="w-3.5 h-3.5 text-[var(--ink-3)] shrink-0 me-1.5" />
               <input
                 type="search"
                 value={searchQuery}
@@ -414,14 +414,14 @@ export const Header: React.FC<HeaderProps> = ({
               />
               <button
                 type="submit"
-                className="ml-1.5 px-3 py-1 text-xs font-semibold btn-purple-pill shrink-0 cursor-pointer"
+                className="ms-1.5 px-3 py-1 text-xs font-semibold btn-purple-pill shrink-0 cursor-pointer"
               >
                 Search
               </button>
             </form>
 
             {searchOpen && matchingTools.length > 0 && (
-              <div className="absolute right-0 top-full mt-2 w-[300px] rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-2 shadow-[var(--shadow-lg)] z-50">
+              <div className="absolute end-0 top-full mt-2 w-[300px] rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-2 shadow-[var(--shadow-lg)] z-50">
                 {matchingTools.map((tool) => (
                   <button
                     key={tool.slug}
@@ -430,7 +430,7 @@ export const Header: React.FC<HeaderProps> = ({
                       handleNav(tool.slug);
                       setSearchQuery('');
                     }}
-                    className="w-full text-left px-3 py-2 rounded-xl hover:bg-[var(--accent-soft)] transition-colors cursor-pointer"
+                    className="w-full text-start px-3 py-2 rounded-xl hover:bg-[var(--accent-soft)] transition-colors cursor-pointer"
                   >
                     <div className="text-xs font-semibold text-[var(--ink)]">{tool.name}</div>
                     <div className="text-xs text-[var(--ink-3)] truncate">{tool.shortDescription}</div>
@@ -469,7 +469,7 @@ export const Header: React.FC<HeaderProps> = ({
               <div
                 role="menu"
                 aria-label={strings.languageLabel}
-                className="absolute right-0 top-full mt-2 w-48 rounded-2xl border border-[var(--line)] bg-[var(--surface)] py-1.5 shadow-[var(--shadow-lg)] z-50"
+                className="absolute end-0 top-full mt-2 w-48 rounded-2xl border border-[var(--line)] bg-[var(--surface)] py-1.5 shadow-[var(--shadow-lg)] z-50"
               >
                 {SUPPORTED_LANGUAGES.map((language) => {
                   const isActive = language.code === lang;
@@ -552,7 +552,7 @@ export const Header: React.FC<HeaderProps> = ({
               <div
                 role="menu"
                 aria-label={strings.themeHeading}
-                className="absolute right-0 top-full mt-2 w-48 rounded-2xl border border-[var(--line)] bg-[var(--surface)] py-1.5 shadow-[var(--shadow-lg)] z-50"
+                className="absolute end-0 top-full mt-2 w-48 rounded-2xl border border-[var(--line)] bg-[var(--surface)] py-1.5 shadow-[var(--shadow-lg)] z-50"
               >
                 {THEME_OPTIONS.map(({ id, label, Icon }) => {
                   const isActive = renderPreference === id;
@@ -634,7 +634,7 @@ export const Header: React.FC<HeaderProps> = ({
             onSubmit={handleSearchSubmit}
             className="flex items-center bg-[var(--surface-2)] border border-[var(--line)] rounded-full px-3 py-1"
           >
-            <Search className="w-4 h-4 text-[var(--ink-3)] shrink-0 mr-2" />
+            <Search className="w-4 h-4 text-[var(--ink-3)] shrink-0 me-2" />
             <input
               ref={mobileSearchRef}
               type="search"
@@ -650,7 +650,7 @@ export const Header: React.FC<HeaderProps> = ({
             />
             <button
               type="submit"
-              className="ml-2 px-3 h-11 text-xs font-semibold btn-purple-pill shrink-0 cursor-pointer"
+              className="ms-2 px-3 h-11 text-xs font-semibold btn-purple-pill shrink-0 cursor-pointer"
             >
               Search
             </button>

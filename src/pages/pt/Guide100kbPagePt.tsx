@@ -321,7 +321,7 @@ export const Guide100kbPagePt: React.FC<Guide100kbPagePtProps> = ({ onNavigate }
             <div className="overflow-x-auto pt-1">
               <table className="w-full text-sm border border-[var(--line)] rounded-2xl overflow-hidden bg-[var(--surface)] shadow-[var(--shadow)]">
                 <thead>
-                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-left border-b border-[var(--line)]">
+                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-start border-b border-[var(--line)]">
                     <th className="px-4 py-3 font-semibold">Meta</th>
                     <th className="px-4 py-3 font-semibold">Qualidade típica</th>
                     <th className="px-4 py-3 font-semibold">Ideal para</th>
@@ -363,7 +363,7 @@ export const Guide100kbPagePt: React.FC<Guide100kbPagePtProps> = ({ onNavigate }
               </span>
               <span>Dicas para sites e e-mail</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
+            <ul className="space-y-2 list-disc ps-5 text-sm sm:text-base">
               <li>Para os sites, use a saída WebP: é a forma mais rápida de chegar a 100 KB e todos os navegadores modernos a aceitam.</li>
               <li>Para o e-mail, o JPG é o formato mais seguro porque todos os aplicativos de e-mail o abrem. Um JPG de 100 KB é anexado na hora e nunca volta por tamanho.</li>
               <li>Comprima todas as fotos de uma página ou de um e-mail juntas e depois baixe todas com o botão Baixar tudo (ZIP).</li>
@@ -416,7 +416,7 @@ export const Guide100kbPagePt: React.FC<Guide100kbPagePtProps> = ({ onNavigate }
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-start transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
                       <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
@@ -439,7 +439,7 @@ export const Guide100kbPagePt: React.FC<Guide100kbPagePtProps> = ({ onNavigate }
               <button
                 type="button"
                 onClick={() => onNavigate('/pt/guias/comprimir-imagens-para-whatsapp')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Como comprimir imagens para WhatsApp sem perder qualidade</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Reduza as fotos você mesmo primeiro e depois envie-as como documentos para que o WhatsApp não as deixe embaçadas.</p>
@@ -447,7 +447,7 @@ export const Guide100kbPagePt: React.FC<Guide100kbPagePtProps> = ({ onNavigate }
               <button
                 type="button"
                 onClick={() => onNavigate('/pt/guias/jpg-vs-png-vs-webp')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG vs PNG vs WebP: qual formato devo usar?</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Tamanho de arquivo, qualidade e transparência comparados, para você escolher o formato certo sempre.</p>

@@ -351,7 +351,7 @@ export const GuideWhatsAppPageRu: React.FC<GuideWhatsAppPageRuProps> = ({ onNavi
               </span>
               <span>Советы для лучших результатов</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
+            <ul className="space-y-2 list-disc ps-5 text-sm sm:text-base">
               <li>Сжимайте один раз и только один раз. Повторное сжатие уже сжатого фото второй раз отбрасывает детали почти без дополнительной экономии.</li>
               <li>Всегда отправляйте сжатый файл как документ, если важно качество, — это единственный способ не дать WhatsApp сжать его снова.</li>
               <li>Сожмите несколько фотографий сразу с одинаковыми настройками и скачайте их все кнопкой «Скачать все (ZIP)».</li>
@@ -379,7 +379,7 @@ export const GuideWhatsAppPageRu: React.FC<GuideWhatsAppPageRuProps> = ({ onNavi
               </span>
               <span>Распространённые ошибки</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
+            <ul className="space-y-2 list-disc ps-5 text-sm sm:text-base">
               <li>Отправка фото как фото после сжатия — WhatsApp сожмёт его второй раз и сведёт вашу работу на нет.</li>
               <li>Снижение качества ниже 40% для фото с лицами — кожа и мелкие детали очень быстро становятся блочными при низком качестве.</li>
               <li>Использование PNG для фото с камеры — файлы PNG для фотографий намного больше, чем JPG, и в WhatsApp это ничего не даёт.</li>
@@ -407,7 +407,7 @@ export const GuideWhatsAppPageRu: React.FC<GuideWhatsAppPageRuProps> = ({ onNavi
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-start transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
                       <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
@@ -430,7 +430,7 @@ export const GuideWhatsAppPageRu: React.FC<GuideWhatsAppPageRuProps> = ({ onNavi
               <button
                 type="button"
                 onClick={() => onNavigate('/ru/rukovodstva/jpg-protiv-png-protiv-webp')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG против PNG против WebP — какой формат выбрать?</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Размер файла, качество и прозрачность в сравнении, чтобы каждый раз выбирать правильный формат.</p>
@@ -438,7 +438,7 @@ export const GuideWhatsAppPageRu: React.FC<GuideWhatsAppPageRuProps> = ({ onNavi
               <button
                 type="button"
                 onClick={() => onNavigate('/ru/rukovodstva/umenshit-razmer-izobrazheniya-do-100-kb')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Как уменьшить размер изображения до 100 КБ для сайтов и электронной почты</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Пошаговое руководство, как достичь 100 КБ, не испортив фотографию.</p>

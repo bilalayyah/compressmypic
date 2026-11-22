@@ -6,7 +6,7 @@
 //  1. No duplicate <loc> values.
 //  2. Every <loc> ends with '/' (trailing-slash canonicals).
 //  3. All 11 blog homes present exactly once.
-//  4. All 77 category hubs present exactly once (from BLOG_CATEGORY_SLUGS in
+//  4. All 84 category hubs present exactly once (from BLOG_CATEGORY_SLUGS in
 //     src/data/blogArticles.ts — the same source the generator uses).
 //  5. Reciprocity: every blog home/hub entry's 12 hreflang alternates are
 //     exactly the expected localized set, and every alternate href is itself
@@ -29,10 +29,10 @@ const REPO_ROOT = path.join(__dirname, '..');
 const SITEMAP_PATH = path.join(REPO_ROOT, 'public', 'sitemap.xml');
 const REGISTRY_PATH = path.join(REPO_ROOT, 'src', 'data', 'blogArticles.ts');
 const BASE = 'https://compressmypic.online';
-const LANGS = ['en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh'];
-const PRE_BLOG_BASELINE = 638; // <url> count before Batch 2 (b0afe1b) was 626; +22 legal pages (Disclaimer + Cookie Policy × 11 locales) + 1 EN /all-tools/ hub (audit fix 2026-11-18); -11 remove-background tool URLs (removal 2026-11-20)
+const LANGS = ['en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'ur'];
+const PRE_BLOG_BASELINE = 696; // <url> count before Batch 2 (b0afe1b) was 626; +22 legal pages (Disclaimer + Cookie Policy × 11 locales) + 1 EN /all-tools/ hub (audit fix 2026-11-18); -11 remove-background tool URLs (removal 2026-11-20); +58 Urdu non-blog URLs (47 tools + home + 4 legal + Disclaimer + Cookie Policy + 3 guides + all-tools hub, 2026-11-22)
 // EXPECTED_BLOG_URLS is computed in main() from the registry:
-// 11 homes + 77 hubs + <published articles>.
+// 12 homes + 84 hubs + <published articles>.
 
 const failures = [];
 const fail = (msg) => failures.push(msg);
@@ -276,7 +276,7 @@ function main() {
   }
 
   // 7. Total count.
-  const EXPECTED_BLOG_URLS = 11 + 77 + articleUrlCount;
+  const EXPECTED_BLOG_URLS = 12 + 84 + articleUrlCount;
   const expectedTotal = PRE_BLOG_BASELINE + EXPECTED_BLOG_URLS;
   if (urlBlocks.length !== expectedTotal) {
     fail(`total <url> count ${urlBlocks.length}, expected ${expectedTotal} (${PRE_BLOG_BASELINE} baseline + ${EXPECTED_BLOG_URLS} blog)`);
@@ -294,7 +294,7 @@ function main() {
     process.exit(1);
   }
   console.log(
-    `sitemap OK: ${urlBlocks.length} URLs total (${blogCount} blog: 11 homes + 77 hubs + ${articles.length} articles / ${articleUrlCount} article URLs), no duplicates, all trailing-slash, hreflang reciprocal.`
+    `sitemap OK: ${urlBlocks.length} URLs total (${blogCount} blog: 12 homes + 84 hubs + ${articles.length} articles / ${articleUrlCount} article URLs), no duplicates, all trailing-slash, hreflang reciprocal.`
   );
 }
 

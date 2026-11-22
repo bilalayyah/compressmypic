@@ -272,7 +272,7 @@ export const ContactPagePt: React.FC<ContactPagePtProps> = ({ onNavigate }) => {
             <p>
               Se você prefere um canal público, pode encontrar o Bilal e o projeto CompressMyPic na web. O código-fonte está no GitHub, onde você também pode relatar problemas técnicos e acompanhar o desenvolvimento. Guias longos sobre compressão de imagens são publicados no Dev.to, e o produto está listado no Indie Hackers, onde você pode acompanhar o progresso e deixar comentários.
             </p>
-            <ul className="list-disc pl-6 space-y-1.5">
+            <ul className="list-disc ps-6 space-y-1.5">
               <li>
                 <a href="https://github.com/bilalayyah/compressmypic" target="_blank" rel="noopener noreferrer" className="text-[#dc2626] dark:text-[#fca5a5] hover:underline font-semibold">GitHub — github.com/bilalayyah/compressmypic</a>
                 {' '}— código-fonte, relatórios de erros e novidades do desenvolvimento.
