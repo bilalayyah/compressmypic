@@ -15,19 +15,26 @@ import {
 import { useBlog } from '../components/blog/BlogContext';
 import { BlogCard } from '../components/blog/BlogCard';
 import { BlogCategoryNav } from '../components/blog/BlogCategoryNav';
+import { localizePath, localizedHomePath } from '../locales/alternates';
 
 interface BlogCategoryPageProps {
   lang: SupportedLang;
   categoryId: ToolCategoryId;
   onNavigate: (path: string) => void;
   tools: ToolMeta[];
-  categories: Array<{ id: string; label: string }>;
+  categories: Array<{ id: string; label: string; description?: string }>;
 }
 
 export function BlogCategoryPage({ lang, categoryId, onNavigate, tools, categories }: BlogCategoryPageProps) {
   const { strings } = useBlog();
   const articles = getBlogArticlesForCategory(categoryId, lang);
   const label = getBlogCategoryLabel(categoryId, categories);
+  // Pillar hub (fix #3, 2026-11-21): the intro is the category's own
+  // localized description (already human-translated in every locale — no
+  // new copy written), and the hub links the category's tools, not just
+  // its articles.
+  const description = categories.find((c) => c.id === categoryId)?.description;
+  const categoryTools = tools.filter((t) => t.category === categoryId);
 
   const toolNameFor = (toolSlug: string): string | undefined =>
     tools.find((t) => t.slug === `/${toolSlug}`)?.name;
@@ -50,15 +57,44 @@ export function BlogCategoryPage({ lang, categoryId, onNavigate, tools, categori
 
       <h1 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight">{label}</h1>
       <p className="mt-3 text-base sm:text-lg text-[var(--ink-2)] leading-relaxed max-w-3xl">
-        {strings.categoryGuidesHeading.replace('{category}', label)}
+        {description ?? strings.categoryGuidesHeading.replace('{category}', label)}
       </p>
 
       <div className="mt-8">
         <BlogCategoryNav lang={lang} activeCategoryId={categoryId} categories={categories} />
       </div>
 
+      {categoryTools.length > 0 && (
+        <section aria-label={strings.relatedToolsHeading} className="mt-10">
+          <h2 className="text-2xl font-bold mb-5">{strings.relatedToolsHeading}</h2>
+          <ul className="grid gap-x-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+            {categoryTools.map((t) => {
+              const href = t.slug === '/' ? localizedHomePath(lang) : localizePath(t.slug, lang);
+              return (
+                <li key={t.slug}>
+                  <a
+                    href={href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavigate(href);
+                    }}
+                    className="font-semibold text-[#dc2626] hover:underline"
+                  >
+                    {t.name} →
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
+
+      <h2 className="mt-10 text-2xl font-bold mb-5">
+        {strings.categoryGuidesHeading.replace('{category}', label)}
+      </h2>
+
       {articles.length === 0 ? (
-        <div className="mt-10 bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-8 shadow-[var(--shadow)] text-center">
+        <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-8 shadow-[var(--shadow)] text-center">
           <h2 className="text-xl font-bold">{strings.emptyHeading}</h2>
           <p className="mt-2 text-sm text-[var(--ink-2)] leading-relaxed max-w-xl mx-auto">
             {strings.emptyText}
@@ -70,7 +106,7 @@ export function BlogCategoryPage({ lang, categoryId, onNavigate, tools, categori
           </p>
         </div>
       ) : (
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {articles.map((a) => (
             <BlogCard
               key={a.id}

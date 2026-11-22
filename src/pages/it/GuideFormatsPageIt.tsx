@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, FileImage, Camera, Layers, Globe, CheckCircle2, Scale } from 'lucide-react';
 import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
+import { GuideRelatedLinks } from '../../components/GuideRelatedLinks';
 
 interface GuideFormatsPageItProps {
   onNavigate: (path: string) => void;
@@ -227,14 +228,14 @@ export const GuideFormatsPageIt: React.FC<GuideFormatsPageItProps> = ({ onNaviga
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
-          <button
-            type="button"
-            onClick={() => onNavigate('/it/')}
+          <a
+            href="/it/"
+            onClick={(e) => { e.preventDefault(); onNavigate('/it/'); }}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Torna al compressore di immagini</span>
-          </button>
+          </a>
         </div>
 
         {/* Page Title */}
@@ -456,40 +457,41 @@ export const GuideFormatsPageIt: React.FC<GuideFormatsPageItProps> = ({ onNaviga
           <section className="space-y-3">
             <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">Guide correlate</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <button
-                type="button"
-                onClick={() => onNavigate('/it/guide/comprimere-immagini-per-whatsapp')}
-                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
+              <a
+                href="/it/guide/comprimere-immagini-per-whatsapp"
+                onClick={(e) => { e.preventDefault(); onNavigate('/it/guide/comprimere-immagini-per-whatsapp'); }}
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Come comprimere le immagini per WhatsApp senza perdere qualità</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Riduci prima le foto tu stesso, poi inviale come documenti, così WhatsApp non può sfocarle.</p>
-              </button>
-              <button
-                type="button"
-                onClick={() => onNavigate('/it/guide/ridurre-immagine-a-100-kb')}
-                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
-              >
+              </a>
+              <a
+                href="/it/guide/ridurre-immagine-a-100-kb"
+                onClick={(e) => { e.preventDefault(); onNavigate('/it/guide/ridurre-immagine-a-100-kb'); }}
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}              >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Come ridurre le dimensioni di un’immagine a 100 KB per siti web ed email</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Guida passo dopo passo per arrivare a 100 KB senza rovinare la tua foto.</p>
-              </button>
+              </a>
             </div>
           </section>
 
+          <GuideRelatedLinks guide="formats" lang="it" onNavigate={onNavigate} />
+
           <div className="pt-2 flex flex-col sm:flex-row gap-3">
-            <button
-              type="button"
-              onClick={() => onNavigate('/it/')}
+            <a
+              href="/it/"
+              onClick={(e) => { e.preventDefault(); onNavigate('/it/'); }}
               className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               Comprimi immagini gratis
-            </button>
-            <button
-              type="button"
-              onClick={() => onNavigate('/it/guide/comprimere-immagini-per-whatsapp')}
+            </a>
+            <a
+              href="/it/guide/comprimere-immagini-per-whatsapp"
+              onClick={(e) => { e.preventDefault(); onNavigate('/it/guide/comprimere-immagini-per-whatsapp'); }}
               className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               Comprimi per WhatsApp
-            </button>
+            </a>
           </div>
         </div>
       </div>

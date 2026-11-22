@@ -13,17 +13,7 @@ import { trackToolUsed } from '../utils/analytics';
 import { Comments, EN_COMMENT_STRINGS, type CommentStrings } from './Comments';
 import type { SupportedLang } from '../locales/config';
 import { getOgLocale, getOgLocaleAlternates, localizePath, localizedHomePath, withTrailingSlash } from '../locales/alternates';
-import { ES_ALL_TOOLS_PATH } from '../locales/es/slugs';
-import { PT_ALL_TOOLS_PATH } from '../locales/pt/slugs';
-import { FR_ALL_TOOLS_PATH } from '../locales/fr/slugs';
-import { DE_ALL_TOOLS_PATH } from '../locales/de/slugs';
-import { IT_ALL_TOOLS_PATH } from '../locales/it/slugs';
-import { ID_ALL_TOOLS_PATH } from '../locales/id/slugs';
-import { RU_ALL_TOOLS_PATH } from '../locales/ru/slugs';
-import { JA_ALL_TOOLS_PATH } from '../locales/ja/slugs';
-import { KO_ALL_TOOLS_PATH } from '../locales/ko/slugs';
-import { ZH_ALL_TOOLS_PATH } from '../locales/zh/slugs';
-import { AR_ALL_TOOLS_PATH } from '../locales/ar/slugs';
+import { getBlogCategoryUrl } from '../data/blogArticles';
 import { getPastelCardClass, getPastelTileClass } from '../utils/pastel';
 import { ToolRelatedArticles } from './blog/ToolRelatedArticles';
 import { ShareButtons, type ShareButtonLabels } from './ShareButtons';
@@ -366,36 +356,14 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
       lang === 'en'
         ? 'https://compressmypic.online/'
         : `https://compressmypic.online/${lang}/`;
-    const directoryPathByLang: Record<string, string> = {
-      en: '/all-tools',
-      es: ES_ALL_TOOLS_PATH,
-      pt: PT_ALL_TOOLS_PATH,
-      fr: FR_ALL_TOOLS_PATH,
-      de: DE_ALL_TOOLS_PATH,
-      it: IT_ALL_TOOLS_PATH,
-      id: ID_ALL_TOOLS_PATH,
-      ru: RU_ALL_TOOLS_PATH,
-      ja: JA_ALL_TOOLS_PATH,
-      ko: KO_ALL_TOOLS_PATH,
-      zh: ZH_ALL_TOOLS_PATH,
-      ar: AR_ALL_TOOLS_PATH,
-    };
-    const directoryPath = directoryPathByLang[lang];
+    // Category crumb points at the category pillar hub
+    // (/blog/category/<cat>/) — the same URL the visible breadcrumb links
+    // to (fixes #3 + #5, 2026-11-21). Previously it pointed at /all-tools/.
+    const categoryHubUrl = `https://compressmypic.online${getBlogCategoryUrl(tool.category, lang)}`;
     const breadcrumbItems: Record<string, unknown>[] = [
       { '@type': 'ListItem', position: 1, name: ui.home, item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: categoryLabel, item: categoryHubUrl },
     ];
-    if (directoryPath) {
-      breadcrumbItems.push({
-        '@type': 'ListItem',
-        position: 2,
-        name: categoryLabel,
-        item: `https://compressmypic.online${withTrailingSlash(directoryPath)}`,
-      });
-    } else {
-      // Unknown language: fall back to the homepage URL so the crumb keeps
-      // its item (a name-only crumb is invalid — GSC "Missing field item").
-      breadcrumbItems.push({ '@type': 'ListItem', position: 2, name: categoryLabel, item: homeUrl });
-    }
     breadcrumbItems.push({
       '@type': 'ListItem',
       position: 3,
@@ -491,7 +459,16 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
             {ui.home}
           </a>
           <ChevronRight className="w-3.5 h-3.5 text-[var(--ink-3)] rtl:rotate-180" />
-          <span className="text-[var(--ink-3)]">{categoryLabel}</span>
+          <a
+            href={getBlogCategoryUrl(tool.category, lang)}
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate(getBlogCategoryUrl(tool.category, lang));
+            }}
+            className="text-[var(--ink-3)] hover:text-[#dc2626] transition-colors"
+          >
+            {categoryLabel}
+          </a>
           <ChevronRight className="w-3.5 h-3.5 text-[var(--ink-3)] rtl:rotate-180" />
           <span className="text-[var(--ink-navy)] font-semibold">{tool.name}</span>
         </nav>
@@ -683,7 +660,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
           for this tool — the hook reads the registry via BlogContext. */}
       <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
         <ToolRelatedArticles
-          toolSlug={tool.slug.slice(1)}
+          toolSlug={tool.slug}
           lang={lang}
           toolName={tool.name}
           categories={categoryLabels}

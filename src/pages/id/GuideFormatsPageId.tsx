@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, FileImage, Camera, Layers, Globe, CheckCircle2, Scale } from 'lucide-react';
 import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
+import { GuideRelatedLinks } from '../../components/GuideRelatedLinks';
 
 interface GuideFormatsPageIdProps {
   onNavigate: (path: string) => void;
@@ -227,14 +228,14 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
-          <button
-            type="button"
-            onClick={() => onNavigate('/id/')}
+          <a
+            href="/id/"
+            onClick={(e) => { e.preventDefault(); onNavigate('/id/'); }}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Kembali ke Kompresor Gambar</span>
-          </button>
+          </a>
         </div>
 
         {/* Page Title */}
@@ -456,40 +457,41 @@ export const GuideFormatsPageId: React.FC<GuideFormatsPageIdProps> = ({ onNaviga
           <section className="space-y-3">
             <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">Panduan Terkait</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <button
-                type="button"
-                onClick={() => onNavigate('/id/panduan/mengompres-gambar-untuk-whatsapp')}
-                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
+              <a
+                href="/id/panduan/mengompres-gambar-untuk-whatsapp"
+                onClick={(e) => { e.preventDefault(); onNavigate('/id/panduan/mengompres-gambar-untuk-whatsapp'); }}
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Cara mengompres gambar untuk WhatsApp tanpa kehilangan kualitas</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Perkecil foto sendiri terlebih dahulu, lalu kirim sebagai dokumen agar WhatsApp tidak dapat membuatnya buram.</p>
-              </button>
-              <button
-                type="button"
-                onClick={() => onNavigate('/id/panduan/mengurangi-ukuran-gambar-menjadi-100-kb')}
-                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
-              >
+              </a>
+              <a
+                href="/id/panduan/mengurangi-ukuran-gambar-menjadi-100-kb"
+                onClick={(e) => { e.preventDefault(); onNavigate('/id/panduan/mengurangi-ukuran-gambar-menjadi-100-kb'); }}
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}              >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Cara mengurangi ukuran gambar menjadi 100KB untuk situs web dan email</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Panduan langkah demi langkah untuk mencapai 100KB tanpa merusak foto Anda.</p>
-              </button>
+              </a>
             </div>
           </section>
 
+          <GuideRelatedLinks guide="formats" lang="id" onNavigate={onNavigate} />
+
           <div className="pt-2 flex flex-col sm:flex-row gap-3">
-            <button
-              type="button"
-              onClick={() => onNavigate('/id/')}
+            <a
+              href="/id/"
+              onClick={(e) => { e.preventDefault(); onNavigate('/id/'); }}
               className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               Kompres Gambar Gratis
-            </button>
-            <button
-              type="button"
-              onClick={() => onNavigate('/id/panduan/mengompres-gambar-untuk-whatsapp')}
+            </a>
+            <a
+              href="/id/panduan/mengompres-gambar-untuk-whatsapp"
+              onClick={(e) => { e.preventDefault(); onNavigate('/id/panduan/mengompres-gambar-untuk-whatsapp'); }}
               className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               Kompres untuk WhatsApp
-            </button>
+            </a>
           </div>
         </div>
       </div>

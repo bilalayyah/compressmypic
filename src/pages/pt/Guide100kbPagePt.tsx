@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, Mail, Globe, Target, CheckCircle2, Layers, Gauge } from 'lucide-react';
 import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
+import { GuideRelatedLinks } from '../../components/GuideRelatedLinks';
 
 interface Guide100kbPagePtProps {
   onNavigate: (path: string) => void;
@@ -231,14 +232,14 @@ export const Guide100kbPagePt: React.FC<Guide100kbPagePtProps> = ({ onNavigate }
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
-          <button
-            type="button"
-            onClick={() => onNavigate('/pt/')}
+          <a
+            href="/pt/"
+            onClick={(e) => { e.preventDefault(); onNavigate('/pt/'); }}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Voltar ao compressor de imagens</span>
-          </button>
+          </a>
         </div>
 
         {/* Page Title */}
@@ -436,40 +437,41 @@ export const Guide100kbPagePt: React.FC<Guide100kbPagePtProps> = ({ onNavigate }
           <section className="space-y-3">
             <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">Guias relacionados</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <button
-                type="button"
-                onClick={() => onNavigate('/pt/guias/comprimir-imagens-para-whatsapp')}
-                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
+              <a
+                href="/pt/guias/comprimir-imagens-para-whatsapp"
+                onClick={(e) => { e.preventDefault(); onNavigate('/pt/guias/comprimir-imagens-para-whatsapp'); }}
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Como comprimir imagens para WhatsApp sem perder qualidade</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Reduza as fotos você mesmo primeiro e depois envie-as como documentos para que o WhatsApp não as deixe embaçadas.</p>
-              </button>
-              <button
-                type="button"
-                onClick={() => onNavigate('/pt/guias/jpg-vs-png-vs-webp')}
-                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
-              >
+              </a>
+              <a
+                href="/pt/guias/jpg-vs-png-vs-webp"
+                onClick={(e) => { e.preventDefault(); onNavigate('/pt/guias/jpg-vs-png-vs-webp'); }}
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}              >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG vs PNG vs WebP: qual formato devo usar?</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Tamanho de arquivo, qualidade e transparência comparados, para você escolher o formato certo sempre.</p>
-              </button>
+              </a>
             </div>
           </section>
 
+          <GuideRelatedLinks guide="100kb" lang="pt" onNavigate={onNavigate} />
+
           <div className="pt-2 flex flex-col sm:flex-row gap-3">
-            <button
-              type="button"
-              onClick={() => onNavigate('/pt/')}
+            <a
+              href="/pt/"
+              onClick={(e) => { e.preventDefault(); onNavigate('/pt/'); }}
               className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               Comprimir imagens grátis
-            </button>
-            <button
-              type="button"
-              onClick={() => onNavigate('/pt/guias/jpg-vs-png-vs-webp')}
+            </a>
+            <a
+              href="/pt/guias/jpg-vs-png-vs-webp"
+              onClick={(e) => { e.preventDefault(); onNavigate('/pt/guias/jpg-vs-png-vs-webp'); }}
               className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               JPG vs PNG vs WebP
-            </button>
+            </a>
           </div>
         </div>
       </div>
