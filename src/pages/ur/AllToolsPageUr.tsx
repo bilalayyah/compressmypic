@@ -166,7 +166,7 @@ export const AllToolsPageUr: React.FC<AllToolsPageUrProps> = ({
                           </div>
                           <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#dc2626] dark:text-[#fca5a5]">
                             <span>{strings.openTool}</span>
-                            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 rtl:rotate-180 transition-transform" />
                           </span>
                         </a>
                       );
@@ -211,7 +211,7 @@ export const AllToolsPageUr: React.FC<AllToolsPageUrProps> = ({
                   </div>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#dc2626] dark:text-[#fca5a5]">
                     <span>{strings.openTool}</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 rtl:rotate-180 transition-transform" />
                   </span>
                 </a>
               );

@@ -488,9 +488,9 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
           >
             {ui.home}
           </a>
-          <ChevronRight className="w-3.5 h-3.5 text-[var(--ink-3)]" />
+          <ChevronRight className="w-3.5 h-3.5 text-[var(--ink-3)] rtl:rotate-180" />
           <span className="text-[var(--ink-3)]">{categoryLabel}</span>
-          <ChevronRight className="w-3.5 h-3.5 text-[var(--ink-3)]" />
+          <ChevronRight className="w-3.5 h-3.5 text-[var(--ink-3)] rtl:rotate-180" />
           <span className="text-[var(--ink-navy)] font-semibold">{tool.name}</span>
         </nav>
 
@@ -708,7 +708,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                 >
                   <div className="flex items-start gap-3.5 min-w-0">
                     <span className={`w-9 h-9 rounded-lg ${getPastelTileClass(idx * 2)} flex items-center justify-center shrink-0 text-xs font-bold`}>
-                      <ArrowRight className="w-4 h-4" />
+                      <ArrowRight className="w-4 h-4 rtl:rotate-180" />
                     </span>
                     <div className="min-w-0">
                       <h3 className="font-sans text-base font-bold text-[var(--ink-navy)] group-hover:text-[#dc2626] dark:group-hover:text-[#fca5a5] transition-colors">

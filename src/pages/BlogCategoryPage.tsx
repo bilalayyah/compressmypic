@@ -65,7 +65,7 @@ export function BlogCategoryPage({ lang, categoryId, onNavigate, tools, categori
           </p>
           <p className="mt-4">
             <a href={getBlogHomeUrl(lang)} className="font-semibold text-[#dc2626]">
-              {strings.viewBlogHome} →
+              {strings.viewBlogHome} <span className="inline-block rtl:rotate-180">→</span>
             </a>
           </p>
         </div>
