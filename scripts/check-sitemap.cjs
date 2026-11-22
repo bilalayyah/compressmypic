@@ -5,10 +5,10 @@
 // Checks:
 //  1. No duplicate <loc> values.
 //  2. Every <loc> ends with '/' (trailing-slash canonicals).
-//  3. All 13 blog homes present exactly once.
-//  4. All 84 category hubs present exactly once (from BLOG_CATEGORY_SLUGS in
+//  3. All 14 blog homes present exactly once.
+//  4. All 98 category hubs present exactly once (from BLOG_CATEGORY_SLUGS in
 //     src/data/blogArticles.ts — the same source the generator uses).
-//  5. Reciprocity: every blog home/hub entry's 14 hreflang alternates are
+//  5. Reciprocity: every blog home/hub entry's 15 hreflang alternates are
 //     exactly the expected localized set, and every alternate href is itself
 //     a <loc> in the sitemap.
 //  6. Blog article URLs: exactly the published-article set from the registry
@@ -29,10 +29,11 @@ const REPO_ROOT = path.join(__dirname, '..');
 const SITEMAP_PATH = path.join(REPO_ROOT, 'public', 'sitemap.xml');
 const REGISTRY_PATH = path.join(REPO_ROOT, 'src', 'data', 'blogArticles.ts');
 const BASE = 'https://compressmypic.online';
-const LANGS = ['en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'hi', 'ar', 'tr'];
-const PRE_BLOG_BASELINE = 812; // <url> count before Batch 2 (b0afe1b) was 626; +22 legal pages (Disclaimer + Cookie Policy × 11 locales) + 1 EN /all-tools/ hub (audit fix 2026-11-18); -11 remove-background tool URLs (removal 2026-11-20); +58 Hindi non-blog URLs (i18n/hindi-cmp-2026-11-22); +58 Arabic non-blog URLs (47 tools + home + 4 legal + Disclaimer + Cookie Policy + 3 guides + all-tools hub, 2026-11-22); +58 Turkish non-blog URLs (2026-11-22)
+const LANGS = ['en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'hi', 'ar', 'tr', 'vi'];
+const PRE_BLOG_BASELINE = 870; // <url> count before Batch 2 (b0afe1b) was 626; +22 legal pages (Disclaimer + Cookie Policy × 11 locales) + 1 EN /all-tools/ hub (audit fix 2026-11-18); -11 remove-background tool URLs (removal 2026-11-20); +58 Hindi non-blog URLs (i18n/hindi-cmp-2026-11-22); +58 Arabic non-blog URLs (47 tools + home + 4 legal + Disclaimer + Cookie Policy + 3 guides + all-tools hub, 2026-11-22); +58 Turkish non-blog URLs (2026-11-22); +58 Vietnamese non-blog URLs (i18n/vietnamese-cmp-2026-11-22)
 // EXPECTED_BLOG_URLS is computed in main() from the registry:
 // LANGS.length homes + 7*LANGS.length hubs + <published articles>.
+// 12 homes + 84 hubs + <published articles>.
 
 const failures = [];
 const fail = (msg) => failures.push(msg);

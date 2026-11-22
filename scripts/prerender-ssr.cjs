@@ -47,6 +47,7 @@ const SUPPORTED_LANGS = new Set([
   'en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'hi',
   'en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'ar',
   'en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'tr',
+  'en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'vi',
 ]);
 
 // Script tags the runtime third-party loader used to inject and which must

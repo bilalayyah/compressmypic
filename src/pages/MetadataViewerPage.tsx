@@ -30,6 +30,7 @@ import { toChinesePath } from '../locales/zh/slugs';
 import { toHindiPath } from '../locales/hi/slugs';
 import { toArabicPath } from '../locales/ar/slugs';
 import { toTurkishPath } from '../locales/tr/slugs';
+import { toVietnamesePath } from '../locales/vi/slugs';
 import { getAlternates } from '../locales/alternates';
 import {
   EXTENDED_ALLOWED_EXT_REGEX,
@@ -127,6 +128,12 @@ export interface PageTrStrings {
   comparisonModal: ComparisonModalStrings;
   toolUi: Record<string, string>;
 }
+export interface PageViStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
 
 interface MetadataViewerPageProps {
   onNavigate: (path: string) => void;
@@ -147,6 +154,7 @@ interface MetadataViewerPageProps {
   hiStrings?: PageHiStrings;
   arStrings?: PageArStrings;
   trStrings?: PageTrStrings;
+  viStrings?: PageViStrings;
 }
 
 export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
@@ -168,12 +176,14 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
   hiStrings,
   arStrings,
   trStrings,
+  viStrings,
 }) => {
   const t = (key: string, fallback: string) => {
     if (lang === 'ar' && arStrings?.toolUi) return (arStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'zh' && zhStrings?.toolUi) return (zhStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'hi' && hiStrings?.toolUi) return (hiStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'tr' && trStrings?.toolUi) return (trStrings.toolUi[key] as string | undefined) ?? fallback;
+    if (lang === 'vi' && viStrings?.toolUi) return (viStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'ja' && jaStrings?.toolUi) return (jaStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'ko' && koStrings?.toolUi) return (koStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'id' && idStrings?.toolUi) return (idStrings.toolUi[key] as string | undefined) ?? fallback;
@@ -262,8 +272,8 @@ export const MetadataViewerPage: React.FC<MetadataViewerPageProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={lang === 'hi' ? hiStrings?.layoutUi : lang === 'zh' ? zhStrings?.layoutUi : lang === 'ja' ? jaStrings?.layoutUi : lang === 'ko' ? koStrings?.layoutUi : lang === 'id' ? idStrings?.layoutUi : lang === 'ru' ? ruStrings?.layoutUi : lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : lang === 'ar' ? arStrings?.layoutUi : lang === 'tr' ? trStrings?.layoutUi : esStrings?.layoutUi}
-      canonicalPath={lang === 'hi' ? toHindiPath(activeTool.slug) : lang === 'zh' ? toChinesePath(activeTool.slug) : lang === 'ja' ? toJapanesePath(activeTool.slug) : lang === 'ko' ? toKoreanPath(activeTool.slug) : lang === 'id' ? toIndonesianPath(activeTool.slug) : lang === 'ru' ? toRussianPath(activeTool.slug) : lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : lang === 'ar' ? toArabicPath(activeTool.slug) : lang === 'tr' ? toTurkishPath(activeTool.slug) : undefined}
+      ui={lang === 'hi' ? hiStrings?.layoutUi : lang === 'zh' ? zhStrings?.layoutUi : lang === 'ja' ? jaStrings?.layoutUi : lang === 'ko' ? koStrings?.layoutUi : lang === 'id' ? idStrings?.layoutUi : lang === 'ru' ? ruStrings?.layoutUi : lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : lang === 'ar' ? arStrings?.layoutUi : lang === 'tr' ? trStrings?.layoutUi : lang === 'vi' ? viStrings?.layoutUi : esStrings?.layoutUi}
+      canonicalPath={lang === 'hi' ? toHindiPath(activeTool.slug) : lang === 'zh' ? toChinesePath(activeTool.slug) : lang === 'ja' ? toJapanesePath(activeTool.slug) : lang === 'ko' ? toKoreanPath(activeTool.slug) : lang === 'id' ? toIndonesianPath(activeTool.slug) : lang === 'ru' ? toRussianPath(activeTool.slug) : lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : lang === 'ar' ? toArabicPath(activeTool.slug) : lang === 'tr' ? toTurkishPath(activeTool.slug) : lang === 'vi' ? toVietnamesePath(activeTool.slug) : undefined}
       alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}

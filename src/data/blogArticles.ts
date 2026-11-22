@@ -39,6 +39,7 @@ import { ZH_PATH_BY_EN } from '../locales/zh/slugs';
 import { HI_PATH_BY_EN } from '../locales/hi/slugs';
 import { AR_PATH_BY_EN } from '../locales/ar/slugs';
 import { TR_PATH_BY_EN } from '../locales/tr/slugs';
+import { VI_PATH_BY_EN } from '../locales/vi/slugs';
 import type {
   BlogArticleMeta,
   BlogArticleLocaleOverride,
@@ -63,6 +64,7 @@ const PATH_BY_EN_BY_LANG: Record<string, Record<string, string>> = {
   hi: HI_PATH_BY_EN,
   ar: AR_PATH_BY_EN,
   tr: TR_PATH_BY_EN,
+  vi: VI_PATH_BY_EN,
 };
 
 /** Localized category-hub slugs. EN uses the category id itself. Slugs are
@@ -195,6 +197,15 @@ export const BLOG_CATEGORY_SLUGS: Record<SupportedLang, Record<ToolCategoryId, s
     create: 'olustur',
     privacy: 'gizlilik',
     developer: 'gelistirici',
+  },
+  vi: {
+    compress: 'nen',
+    resize: 'thay-doi-kich-thuoc',
+    convert: 'chuyen-doi',
+    'crop-edit': 'cat-va-chinh-sua',
+    create: 'tao',
+    privacy: 'rieng-tu',
+    developer: 'lap-trinh-vien',
   },
 };
 

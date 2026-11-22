@@ -95,6 +95,12 @@ export interface PageTrStrings {
   comparisonModal: ComparisonModalStrings;
   toolUi: Record<string, string>;
 }
+export interface PageViStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
 
 interface SaturationEditorPageProps {
   onNavigate: (path: string) => void;
@@ -115,9 +121,10 @@ interface SaturationEditorPageProps {
   hiStrings?: PageHiStrings;
   arStrings?: PageArStrings;
   trStrings?: PageTrStrings;
+  viStrings?: PageViStrings;
 }
 
-export const SaturationEditorPage: React.FC<SaturationEditorPageProps> = ({onNavigate, lang, tool, toolRegistry, categoryLabels, esStrings, ptStrings, frStrings, deStrings, itStrings, idStrings, ruStrings, jaStrings, koStrings, zhStrings, hiStrings, arStrings, trStrings}) => {
+export const SaturationEditorPage: React.FC<SaturationEditorPageProps> = ({onNavigate, lang, tool, toolRegistry, categoryLabels, esStrings, ptStrings, frStrings, deStrings, itStrings, idStrings, ruStrings, jaStrings, koStrings, zhStrings, hiStrings, arStrings, trStrings, viStrings}) => {
   return (
     <ToneEditorTool
       tool={tool ?? TOOL_BY_SLUG['/image-saturation-editor']}
@@ -136,6 +143,7 @@ export const SaturationEditorPage: React.FC<SaturationEditorPageProps> = ({onNav
       hiStrings={hiStrings}
       arStrings={arStrings}
       trStrings={trStrings}
+      viStrings={viStrings}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
       onNavigate={onNavigate}
