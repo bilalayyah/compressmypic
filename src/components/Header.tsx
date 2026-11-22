@@ -30,6 +30,7 @@ import { HI_PATH_BY_EN } from '../locales/hi/slugs';
 import { AR_PATH_BY_EN } from '../locales/ar/slugs';
 import { TR_PATH_BY_EN } from '../locales/tr/slugs';
 import { VI_PATH_BY_EN } from '../locales/vi/slugs';
+import { BN_PATH_BY_EN } from '../locales/bn/slugs';
 import { ThemePreference, useTheme, type ResolvedTheme } from '../utils/theme';
 
 export interface HeaderStrings {
@@ -150,6 +151,7 @@ export const Header: React.FC<HeaderProps> = ({
     ar: AR_PATH_BY_EN,
     tr: TR_PATH_BY_EN,
     vi: VI_PATH_BY_EN,
+    bn: BN_PATH_BY_EN,
   };
   const localizedMap = PATH_BY_EN_BY_LANG[lang];
   const homeUrl = lang === 'en' ? '/' : `/${lang}/`;

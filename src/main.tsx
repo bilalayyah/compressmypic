@@ -20,6 +20,7 @@ import {EN_PATH_BY_HI} from './locales/hi/slugs';
 import {EN_PATH_BY_AR} from './locales/ar/slugs';
 import {EN_PATH_BY_TR} from './locales/tr/slugs';
 import {EN_PATH_BY_VI} from './locales/vi/slugs';
+import {EN_PATH_BY_BN} from './locales/bn/slugs';
 import { isBlogEnPath, resolveBlogRoute } from './data/blogArticles';
 
 // SEO audit issue 4 (non-EN CLS 1.2964): the app used to render its first
@@ -51,6 +52,7 @@ const PREFIXED_LANGS: SupportedLang[] = [
   'ar',
   'tr',
   'vi',
+  'bn',
 ];
 
 function localeFromPath(pathname: string): SupportedLang | null {
@@ -101,6 +103,7 @@ const EN_PATH_BY_LANG: Record<string, Record<string, string> | undefined> = {
   ar: EN_PATH_BY_AR,
   tr: EN_PATH_BY_TR,
   vi: EN_PATH_BY_VI,
+  bn: EN_PATH_BY_BN,
 };
 
 function resolvePageModule(pathname: string): string | null {
@@ -340,6 +343,15 @@ const LOCALIZED_PAGE_MODULES: Record<string, string> = {
   'hi|/guides/reduce-image-size-to-100kb': './pages/hi/Guide100kbPageHi.tsx',
   'hi|/privacy': './pages/hi/PrivacyPageHi.tsx',
   'hi|/terms': './pages/hi/TermsPageHi.tsx',
+  'bn|/about': './pages/bn/AboutPageBn.tsx',
+  'bn|/contact': './pages/bn/ContactPageBn.tsx',
+  'bn|/cookie-policy': './pages/bn/CookiePolicyPageBn.tsx',
+  'bn|/disclaimer': './pages/bn/DisclaimerPageBn.tsx',
+  'bn|/guides/compress-images-for-whatsapp': './pages/bn/GuideWhatsAppPageBn.tsx',
+  'bn|/guides/jpg-vs-png-vs-webp': './pages/bn/GuideFormatsPageBn.tsx',
+  'bn|/guides/reduce-image-size-to-100kb': './pages/bn/Guide100kbPageBn.tsx',
+  'bn|/privacy': './pages/bn/PrivacyPageBn.tsx',
+  'bn|/terms': './pages/bn/TermsPageBn.tsx',
   'id|/about': './pages/id/AboutPageId.tsx',
   'id|/contact': './pages/id/ContactPageId.tsx',
   'id|/cookie-policy': './pages/id/CookiePolicyPageId.tsx',
@@ -419,6 +431,7 @@ const DIRECTORY_PAGE_MODULES: Record<string, string> = {
   '/es/todas-las-herramientas': './pages/es/AllToolsPageEs.tsx',
   '/fr/tous-les-outils': './pages/fr/AllToolsPageFr.tsx',
   '/hi/sabhi-tools': './pages/hi/AllToolsPageHi.tsx',
+  '/bn/sob-tools': './pages/bn/AllToolsPageBn.tsx',
   '/id/semua-alat': './pages/id/AllToolsPageId.tsx',
   '/it/tutti-gli-strumenti': './pages/it/AllToolsPageIt.tsx',
   '/ja/tools': './pages/ja/AllToolsPageJa.tsx',

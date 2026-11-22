@@ -98,6 +98,12 @@ export interface PageViStrings {
   comparisonModal: ComparisonModalStrings;
   toolUi: Record<string, string>;
 }
+export interface PageBnStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
 
 
 
@@ -121,6 +127,7 @@ interface Props {
   arStrings?: PageArStrings;
   trStrings?: PageTrStrings;
   viStrings?: PageViStrings;
+  bnStrings?: PageBnStrings;
 }
 
 export const PngToJpgPage: React.FC<Props> = ({
@@ -143,6 +150,7 @@ export const PngToJpgPage: React.FC<Props> = ({
   arStrings,
   trStrings,
   viStrings,
+  bnStrings,
 }) => {
   const t = (key: string, fallback: string) =>
     lang === 'hi' && hiStrings?.toolUi
@@ -151,6 +159,8 @@ export const PngToJpgPage: React.FC<Props> = ({
       ? ((arStrings.toolUi[key] as string | undefined) ?? fallback)
     : lang === 'vi' && viStrings?.toolUi
       ? ((viStrings.toolUi[key] as string | undefined) ?? fallback)
+    : lang === 'bn' && bnStrings?.toolUi
+      ? ((bnStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'zh' && zhStrings?.toolUi
       ? ((zhStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'tr' && trStrings?.toolUi
@@ -197,6 +207,7 @@ export const PngToJpgPage: React.FC<Props> = ({
       arStrings={arStrings}
       trStrings={trStrings}
       viStrings={viStrings}
+      bnStrings={bnStrings}
       jaStrings={jaStrings}
       koStrings={koStrings}
       esStrings={esStrings}

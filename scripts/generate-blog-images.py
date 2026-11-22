@@ -155,6 +155,12 @@ def _draw_ar_line(draw, line, y, font_ar, font_lat):
             w = draw.textlength(run, font=font_lat)
             draw.text((x_right, baseline), run, font=font_lat, fill=DARK, anchor='rs')
             x_right -= w
+# Bengali (Bengali) — WARNING: this machine's Noto Sans Bengali has
+# NO Latin glyphs (173 glyphs, Bengali only) and Noto Sans has no
+# Bengali. Mixed titles like "Image 100KB Mein Compress Kaise Karein?"
+# must be rendered run-by-run via _run_font / draw_mixed_text — never with
+# a single font. (Same approach as the UtilityFlow Bengali pipeline.)
+BENGALI_BOLD = "/usr/share/fonts/truetype/noto/NotoSansBengali-Bold.ttf"
 
 
 def font_for(lang, size, bold=True):
@@ -175,6 +181,20 @@ def font_for(lang, size, bold=True):
         return ImageFont.truetype(FONT_REGULAR, size)
     if lang == "ar" and bold:
         return ImageFont.truetype(FONT_AR_BOLD, size)
+    if lang == "bn":
+        # Bold (titles) needs Bengali glyphs; regular weight is only
+        # ever used for Latin-only strings (the "FREE ONLINE IMAGE TOOLS"
+        # tagline and the privacy subline), so Noto Sans Regular is
+        # correct there — this machine's Bengali fonts have no Latin
+        # glyphs (see _run_font).
+        if bold:
+            if not os.path.exists(BENGALI_BOLD):
+                raise RuntimeError(
+                    f"No Bengali bold font found for lang=bn; refusing to render. "
+                    f"Checked: {BENGALI_BOLD}"
+                )
+            return ImageFont.truetype(BENGALI_BOLD, size)
+        return ImageFont.truetype(FONT_REGULAR, size)
     if lang in ("ja", "ko", "zh"):
         if bold:
             for path in CJK_BOLD_CANDIDATES:
@@ -201,6 +221,13 @@ def _is_deva(ch):
 
 def _split_runs(text):
     """Split mixed-script text into (is_devanagari, substring) runs.
+def _is_bengali(ch):
+    """Bengali codepoint (incl. ZWJ/ZWNJ joiners used in conjuncts)."""
+    return '\u0980' <= ch <= '\u09ff' or ch in ('\u200c', '\u200d')
+
+
+def _split_runs(text):
+    """Split mixed-script text into (is_bengali, substring) runs.
     Spaces are neutral: they ride with the preceding run (or the next run
     if the text starts with a space), so inter-word spacing is measured
     with a font that actually has a space glyph."""
@@ -217,6 +244,13 @@ def _split_runs(text):
             runs[-1] = (is_deva, runs[-1][1] + piece)
         else:
             runs.append((is_deva, piece))
+        is_bengali = _is_bengali(ch)
+        piece = pending_space + ch
+        pending_space = ''
+        if runs and runs[-1][0] == is_bengali:
+            runs[-1] = (is_bengali, runs[-1][1] + piece)
+        else:
+            runs.append((is_bengali, piece))
     if pending_space:
         if runs:
             runs[-1] = (runs[-1][0], runs[-1][1] + pending_space)
@@ -233,6 +267,14 @@ def _run_font(is_deva, size):
     run gets its own."""
     if is_deva:
         return ImageFont.truetype(DEVA_BOLD, size)
+def _run_font(is_bengali, size):
+    """Bold font for one script run of a Bengali title. This machine's
+    Noto Sans Bengali has NO Latin glyphs (173 glyphs, Bengali
+    only) and Noto Sans has no Bengali — a single font cannot render
+    mixed titles like 'Image 100KB Mein Compress Kaise Karein?', so each
+    run gets its own."""
+    if is_bengali:
+        return ImageFont.truetype(BENGALI_BOLD, size)
     return ImageFont.truetype(FONT_BOLD, size)
 
 
@@ -242,17 +284,26 @@ def mixed_textlength(draw, text, size):
         draw.textlength(run, font=_run_font(is_deva, size))
         for is_deva, run in _split_runs(text)
     )
+    """Pixel width of a mixed-script Bengali title line (sum of run widths)."""
+    return sum(
+        draw.textlength(run, font=_run_font(is_bengali, size))
+        for is_bengali, run in _split_runs(text)
+    )
 
 
 def draw_mixed_text(draw, x, y, text, size, fill):
     """Draw a mixed-script Hindi title line starting at x, run by run."""
     for is_deva, run in _split_runs(text):
         f = _run_font(is_deva, size)
+    """Draw a mixed-script Bengali title line starting at x, run by run."""
+    for is_bengali, run in _split_runs(text):
+        f = _run_font(is_bengali, size)
         draw.text((x, y), run, font=f, fill=fill)
         x += draw.textlength(run, font=f)
 
 
 def _split_point(draw, word, font, max_width, lang="en"):
+def _split_point(draw, word, font, max_width, wlen=None):
     """Largest fitting character prefix (binary search), preferring not to
     split inside a Latin letter/digit run (keeps acronyms like 'PNG'
     together). Backs off to the run start when the prefix stays usable."""
@@ -262,6 +313,7 @@ def _split_point(draw, word, font, max_width, lang="en"):
     while lo < hi:
         mid = (lo + hi + 1) // 2
         if _textlength(draw, word[:mid], font, lang) <= max_width:
+        if wlen(word[:mid]) <= max_width:
             lo = mid
         else:
             hi = mid - 1
@@ -278,17 +330,21 @@ def _split_point(draw, word, font, max_width, lang="en"):
 
 
 def wrap_text(draw, text, font, max_width, lang="en"):
+def wrap_text(draw, text, font, max_width, lang=None):
     """Greedy word wrap by pixel width; returns list of lines.
     A word wider than max_width is split by character — required for
     spaceless CJK titles (Japanese has no spaces, so the whole title is
     a single 'word'); CJK breaks anywhere without hyphenation.
     For lang='hi', widths are measured per script run (mixed_textlength):
     a Devanagari word measured with the Latin font (or vice versa) would
+    For lang='bn', widths are measured per script run (mixed_textlength):
+    a Bengali word measured with the Latin font (or vice versa) would
     use .notdef widths and wrap wrongly."""
     size = font.size
 
     def wlen(s):
         if lang == 'hi':
+        if lang == 'bn':
             return mixed_textlength(draw, s, size)
         return draw.textlength(s, font=font)
 
@@ -297,6 +353,8 @@ def wrap_text(draw, text, font, max_width, lang="en"):
     for word in words:
         while _textlength(draw, word, font, lang) > max_width:
             cut = _split_point(draw, word, font, max_width, lang)
+        while wlen(word) > max_width:
+            cut = _split_point(draw, word, font, max_width, wlen=wlen)
             chunk, word = word[:cut], word[cut:]
             if cur:
                 lines.append(cur)
@@ -304,6 +362,7 @@ def wrap_text(draw, text, font, max_width, lang="en"):
             lines.append(chunk)
         trial = f"{cur} {word}".strip()
         if _textlength(draw, trial, font, lang) <= max_width:
+        if wlen(trial) <= max_width:
             cur = trial
         else:
             if cur:
@@ -323,6 +382,11 @@ def fit_title(draw, title, lang, max_width, max_lines=3):
             (mixed_textlength(draw, line, size) if lang == 'hi'
              else _textlength(draw, line, font, lang)) <= max_width for line in lines
         ):
+        lines = wrap_text(draw, title, font, max_width, lang=lang)
+        if len(lines) <= max_lines and all(
+            (mixed_textlength(draw, line, size) if lang == 'bn'
+             else draw.textlength(line, font=font)) <= max_width for line in lines
+        ):
             return font, lines
     # Fallback: smallest size, allow overflow lines (should not happen for
     # real titles, which are <=60 chars after the metadata fix).
@@ -331,6 +395,11 @@ def fit_title(draw, title, lang, max_width, max_lines=3):
     if len(lines) > max_lines or any(
         (mixed_textlength(draw, line, 44) if lang == 'hi'
          else _textlength(draw, line, font, lang)) > max_width for line in lines
+    ):
+    lines = wrap_text(draw, title, font, max_width, lang=lang)
+    if len(lines) > max_lines or any(
+        (mixed_textlength(draw, line, 44) if lang == 'bn'
+         else draw.textlength(line, font=font)) > max_width for line in lines
     ):
         print(f"OVERFLOW title needs {len(lines)} lines at 44px: {title!r}", file=sys.stderr)
     return font, lines
@@ -368,6 +437,8 @@ def render_card(title, lang):
     # font (Noto Sans Arabic has no Latin glyphs, so font_for('ar') would
     # render the wordmark as tofu boxes).
     wm_font = font_for('en', 44, bold=True)
+    # Latin fonts (a Bengali font would render them as tofu).
+    wm_font = font_for("en", 44, bold=True)
     draw.text((60, 46), "CompressMyPic", font=wm_font, fill=RED)
     tag_font = font_for("en", 21, bold=False)
     draw.text((62, 102), "FREE ONLINE IMAGE TOOLS", font=tag_font, fill=MUTED)
@@ -396,6 +467,14 @@ def render_card(title, lang):
                 lw = draw.textlength(line, font=title_font)
                 draw.text(((W - lw) / 2, y), line, font=title_font, fill=DARK)
             y += line_h
+    for line in lines:
+        if lang == 'bn':
+            lw = mixed_textlength(draw, line, title_font.size)
+            draw_mixed_text(draw, (W - lw) / 2, y, line, title_font.size, DARK)
+        else:
+            lw = draw.textlength(line, font=title_font)
+            draw.text(((W - lw) / 2, y), line, font=title_font, fill=DARK)
+        y += line_h
     _ = total_h
 
     # subline, centered below title — Latin-only, always the Latin font
