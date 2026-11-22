@@ -24,7 +24,8 @@
  * documentElement.outerHTML to public/<route>/index.html -> `vite build`
  * again so dist/ contains the prerendered files (skipped with --no-rebuild).
  *
- * Route list: public/sitemap.xml (2,309 URLs) + /admin/comments (a real route
+ * Route list: the sitemap (public/sitemap.xml index → parts, see
+ * scripts/sitemap-split.cjs) + /admin/comments (a real route
  * that is deliberately NOT in the sitemap). The home route '/' renders to
  * public/home/index.html — NOT public/index.html, because Vite overwrites
  * dist/index.html with its own shell on every build, so a committed
@@ -59,7 +60,7 @@ const { createRequire } = require('module');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
 const PUBLIC_DIR = path.join(REPO_ROOT, 'public');
-const SITEMAP_PATH = path.join(PUBLIC_DIR, 'sitemap.xml');
+const { readSitemapEntries } = require('./sitemap-split.cjs');
 const SITE_ORIGIN = 'https://compressmypic.online';
 const EXTRA_ROUTES = ['/admin/comments'];
 const PROXY_ARGS = ['--proxy-server=http://127.0.0.1:18080', '--ignore-certificate-errors'];
@@ -131,15 +132,22 @@ function loadPlaywright() {
 }
 
 function readRoutes() {
-  const xml = fs.readFileSync(SITEMAP_PATH, 'utf8');
+  // Sitemap split (2026-11-22): public/sitemap.xml is an index — resolve it
+  // to its parts via scripts/sitemap-split.cjs and take the <loc> of every
+  // <url> entry. A loc ending in .xml is never a route (defensive: it
+  // would be a part file listed in the index itself).
+  const { entries } = readSitemapEntries(PUBLIC_DIR);
   const paths = [];
   const seen = new Set();
-  for (const m of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) {
-    let url = m[1].trim();
+  for (const block of entries) {
+    const lm = block.match(/<loc>([^<]+)<\/loc>/);
+    if (!lm) continue;
+    let url = lm[1].trim();
     if (!url.startsWith(SITE_ORIGIN)) continue;
     let p = url.slice(SITE_ORIGIN.length) || '/';
     p = p.split('#')[0].split('?')[0];
     if (!p.startsWith('/')) p = `/${p}`;
+    if (p.endsWith('.xml')) continue;
     if (p.length > 1) p = p.replace(/\/+$/, '');
     if (seen.has(p)) continue;
     seen.add(p);

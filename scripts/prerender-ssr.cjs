@@ -1,6 +1,7 @@
 // SSR prerender (real SSR) — CompressMyPic speed fix, 2026-11-19.
 //
-// Renders every route in public/sitemap.xml (+ /admin/comments) with the
+// Renders every route in the sitemap (public/sitemap.xml index → parts,
+// see scripts/sitemap-split.cjs) (+ /admin/comments) with the
 // SSR bundle (dist-server/entry-server.js, React renderToString) and writes
 // the assembled document to public/<route>/index.html, replacing the
 // Chromium-captured snapshots. No browser, no Chromium, no preview server —
@@ -38,7 +39,7 @@ const path = require('node:path');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
 const PUBLIC_DIR = path.join(REPO_ROOT, 'public');
-const SITEMAP_PATH = path.join(PUBLIC_DIR, 'sitemap.xml');
+const { readSitemapEntries } = require('./sitemap-split.cjs');
 const DIST_INDEX = path.join(REPO_ROOT, 'dist', 'index.html');
 const SSR_BUNDLE = path.join(REPO_ROOT, 'dist-server', 'entry-server.js');
 const SITE_ORIGIN = 'https://compressmypic.online';
@@ -88,15 +89,22 @@ function parseArgs(argv) {
 }
 
 function readRoutes() {
-  const xml = fs.readFileSync(SITEMAP_PATH, 'utf8');
+  // Sitemap split (2026-11-22): public/sitemap.xml is an index — resolve it
+  // to its parts via scripts/sitemap-split.cjs and take the <loc> of every
+  // <url> entry. A loc ending in .xml is never a route (defensive: it
+  // would be a part file listed in the index itself).
+  const { entries } = readSitemapEntries(PUBLIC_DIR);
   const paths = [];
   const seen = new Set();
-  for (const m of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) {
-    let url = m[1].trim();
+  for (const block of entries) {
+    const lm = block.match(/<loc>([^<]+)<\/loc>/);
+    if (!lm) continue;
+    let url = lm[1].trim();
     if (!url.startsWith(SITE_ORIGIN)) continue;
     let p = url.slice(SITE_ORIGIN.length) || '/';
     p = p.split('#')[0].split('?')[0];
     if (!p.startsWith('/')) p = `/${p}`;
+    if (p.endsWith('.xml')) continue;
     if (p.length > 1) p = p.replace(/\/+$/, '');
     if (seen.has(p)) continue;
     seen.add(p);

@@ -2,7 +2,16 @@
 // and drifts otherwise; run after every sitemap edit and in the Batch 5 QA
 // pass). Run: node scripts/check-sitemap.cjs
 //
+// SPLIT (2026-11-22): public/sitemap.xml is a sitemap-index listing
+// public/sitemap-1.xml ... sitemap-N.xml (see scripts/sitemap-split.cjs).
+// Checks run on the UNION of all parts, so every check below is unchanged
+// in meaning; check 0 validates the split layout itself (index lists
+// exactly the parts on disk, each part under the Cloudflare 25 MiB limit
+// with margin, and under the 50,000-URL protocol limit).
+//
 // Checks:
+//  0. Split layout: index is a sitemapindex; parts on disk == parts listed;
+//     each part < 20 MiB and < 50,000 URLs.
 //  1. No duplicate <loc> values.
 //  2. Every <loc> ends with '/' (trailing-slash canonicals).
 //  3. All 17 blog homes present exactly once.
@@ -24,9 +33,15 @@
 
 const fs = require('fs');
 const path = require('path');
+const {
+  readSitemapEntries,
+  CHECK_MAX_BYTES,
+  PART_MAX_URLS,
+} = require('./sitemap-split.cjs');
 
 const REPO_ROOT = path.join(__dirname, '..');
-const SITEMAP_PATH = path.join(REPO_ROOT, 'public', 'sitemap.xml');
+const PUBLIC_DIR = path.join(REPO_ROOT, 'public');
+const SITEMAP_PATH = path.join(PUBLIC_DIR, 'sitemap.xml');
 const REGISTRY_PATH = path.join(REPO_ROOT, 'src', 'data', 'blogArticles.ts');
 const BASE = 'https://compressmypic.online';
 const LANGS = ['en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'hi', 'ar', 'tr', 'vi', 'bn', 'ur'];
@@ -156,8 +171,43 @@ function main() {
   const slugs = parseCategorySlugs();
   const articles = parseArticles();
   const localeSlugs = parseLocaleArticleSlugs(articles);
-  const xml = fs.readFileSync(SITEMAP_PATH, 'utf8');
+  const { entries, parts, index } = readSitemapEntries(PUBLIC_DIR);
 
+  // 0. Split layout: public/sitemap.xml must be a sitemap-index listing
+  //    exactly the part files on disk; each part under the Cloudflare
+  //    25 MiB limit (checked at 20 MiB for margin) and under the
+  //    50,000-URL protocol limit.
+  const partInfo = [];
+  if (!index) {
+    fail('public/sitemap.xml is not a sitemap-index (expected the split layout)');
+  }
+  const onDiskParts = fs
+    .readdirSync(PUBLIC_DIR)
+    .filter((f) => /^sitemap-\d+\.xml$/.test(f))
+    .sort();
+  const listedParts = [...parts].sort();
+  if (JSON.stringify(onDiskParts) !== JSON.stringify(listedParts)) {
+    fail(
+      `sitemap parts on disk (${onDiskParts.join(', ') || '(none)'}) do not match the index (${listedParts.join(', ')})`
+    );
+  }
+  for (const name of listedParts) {
+    const p = path.join(PUBLIC_DIR, name);
+    const size = fs.statSync(p).size;
+    const partXml = fs.readFileSync(p, 'utf8');
+    const partUrls = (partXml.match(/<url>/g) || []).length;
+    partInfo.push({ name, urls: partUrls, bytes: size });
+    if (size >= CHECK_MAX_BYTES) {
+      fail(
+        `${name} is ${(size / 1048576).toFixed(1)} MiB, over the ${CHECK_MAX_BYTES / 1048576} MiB check limit (Cloudflare rejects files over 25 MiB)`
+      );
+    }
+    if (partUrls >= PART_MAX_URLS) {
+      fail(`${name} has ${partUrls} URLs, over the ${PART_MAX_URLS} protocol limit`);
+    }
+  }
+
+  const xml = entries.join('\n');
   const urlBlocks = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((m) => m[1]);
   const locs = urlBlocks.map((b) => {
     const m = b.match(/<loc>([^<]+)<\/loc>/);
@@ -293,8 +343,11 @@ function main() {
     for (const f of failures) console.log(`  - ${f}`);
     process.exit(1);
   }
+  const partSummary = partInfo
+    .map((p) => `${p.name} (${p.urls} URLs, ${(p.bytes / 1048576).toFixed(1)} MiB)`)
+    .join(', ');
   console.log(
-    `sitemap OK: ${urlBlocks.length} URLs total (${blogCount} blog: ${LANGS.length} homes + ${7 * LANGS.length} hubs + ${articles.length} articles / ${articleUrlCount} article URLs), no duplicates, all trailing-slash, hreflang reciprocal.`
+    `sitemap OK: ${urlBlocks.length} URLs total (${blogCount} blog: ${LANGS.length} homes + ${7 * LANGS.length} hubs + ${articles.length} articles / ${articleUrlCount} article URLs) in ${partInfo.length} parts: ${partSummary}, no duplicates, all trailing-slash, hreflang reciprocal.`
   );
 }
 

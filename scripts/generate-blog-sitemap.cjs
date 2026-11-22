@@ -1,27 +1,42 @@
-// Blog sitemap generator (Batch 2 + Batch 3 + Batch 4) — inserts the blog
-// home (11) + category hub (77) + published article URLs into
-// public/sitemap.xml, idempotently.
+// Blog sitemap generator (Batch 2 + Batch 3 + Batch 4) — builds the blog
+// home (17) + category hub (119) + published article URLs and writes the
+// WHOLE sitemap as an index + parts (see scripts/sitemap-split.cjs).
+//
+// SPLIT (2026-11-22): public/sitemap.xml used to be one 44 MiB file, which
+// Cloudflare Pages rejected (25 MiB/file limit, deploy 894605a1 failed).
+// public/sitemap.xml is now a sitemap-index listing public/sitemap-1.xml
+// ... sitemap-N.xml. The non-blog entries live in
+// scripts/sitemap-nonblog.xml (hand-maintained); this script assembles them
+// with the generated blog block and re-splits. Entries are emitted
+// byte-identical — the split moves them, never rewrites them.
 //
 // SOURCE OF TRUTH: BLOG_CATEGORY_SLUGS + BLOG_ARTICLES in
 // src/data/blogArticles.ts, and each locale's article slugs in
 // src/locales/<lang>/slugs.ts (parsed with regexes — plain literals).
-// Homes are the 11 /<lang>/blog/ paths. Articles get ONE URL per published
+// Homes are the 17 /<lang>/blog/ paths. Articles get ONE URL per published
 // locale (EN + every locale with a slugs.ts entry for that article),
 // alternates = published locales + x-default → EN, per-article lastmod
 // from publishedAt. Batch 3 was EN-only; Batch 4 adds localized URLs.
 //
 // Usage:
-//   node scripts/generate-blog-sitemap.cjs          # insert/update the block
+//   node scripts/generate-blog-sitemap.cjs          # regenerate index + parts
 //   node scripts/generate-blog-sitemap.cjs --check  # exit 1 if stale
 //
-// Writes atomically (temp file + rename) and prints the new URL total.
-// Verify with: node scripts/check-sitemap.cjs
+// Writes atomically (temp file + rename per file) and prints the new URL
+// total. Verify with: node scripts/check-sitemap.cjs
 
 const fs = require('fs');
 const path = require('path');
+const {
+  extractUrlBlocks,
+  buildFileMap,
+  writeSitemapParts,
+  partFileName,
+} = require('./sitemap-split.cjs');
 
 const REPO_ROOT = path.join(__dirname, '..');
-const SITEMAP_PATH = path.join(REPO_ROOT, 'public', 'sitemap.xml');
+const PUBLIC_DIR = path.join(REPO_ROOT, 'public');
+const NONBLOG_PATH = path.join(__dirname, 'sitemap-nonblog.xml');
 const REGISTRY_PATH = path.join(REPO_ROOT, 'src', 'data', 'blogArticles.ts');
 const BASE = 'https://compressmypic.online';
 const LASTMOD = '2026-11-17'; // Batch 2 ship date; Batch 3 uses per-article lastmod
@@ -257,35 +272,51 @@ function main() {
   const expectedBlogUrls = LANGS.length + categoryIds.length * LANGS.length + articleUrlCount;
   const block = buildBlogBlock(slugs, articles, localeSlugs);
 
-  let sitemap = fs.readFileSync(SITEMAP_PATH, 'utf8');
-  const original = sitemap;
-  // Strip any previous blog block (idempotency). The start marker is
-  // matched with any hub count: the count changed 88 -> 77 when the
-  // ai-tools category was removed (2026-11-20), and the strip must still
-  // find blocks written with the old count.
-  const START_RE = '  <!-- Blog \\(Batch 2\\): \\d+ homes \\+ \\d+ category hubs\\. Regenerate with scripts/generate-blog-sitemap\\.cjs\\. -->';
-  const blockRe = new RegExp(
-    `\\n?${START_RE}[\\s\\S]*?${BLOCK_END.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`,
-    'g'
-  );
-  sitemap = sitemap.replace(blockRe, '');
-  if (!sitemap.includes('</urlset>')) throw new Error('public/sitemap.xml has no </urlset>');
-  const next = sitemap.replace('</urlset>', `${block}\n</urlset>`);
-  const urlCount = (next.match(/<url>/g) || []).length;
+  // Non-blog entries: the hand-maintained fragment. The old single-file
+  // public/sitemap.xml held them inline; the split moved them here because
+  // a ~40 MB fragment cannot live in public/ (Cloudflare rejects any file
+  // over 25 MiB). Blog entries come from the generated block above; the
+  // BLOCK_START/BLOCK_END marker comments are not <url> blocks, so the
+  // extractor ignores them.
+  const nonBlogXml = fs.readFileSync(NONBLOG_PATH, 'utf8');
+  const nonBlogEntries = extractUrlBlocks(nonBlogXml);
+  const blogEntries = extractUrlBlocks(block);
+  const entries = [...nonBlogEntries, ...blogEntries];
+  const urlCount = entries.length;
+
+  const { map, parts } = buildFileMap(entries);
+  const partSummary = parts
+    .map((p) => `${p.name} (${p.urls} URLs, ${(p.bytes / 1048576).toFixed(1)} MiB)`)
+    .join(', ');
 
   if (process.argv.includes('--check')) {
-    if (next === original) {
-      console.log(`sitemap OK: ${urlCount} URLs (${expectedBlogUrls} blog).`);
+    const stale = [];
+    for (const [name, contents] of Object.entries(map)) {
+      const p = path.join(PUBLIC_DIR, name);
+      if (!fs.existsSync(p) || fs.readFileSync(p, 'utf8') !== contents) stale.push(name);
+    }
+    // A leftover part file beyond the new count also makes it stale.
+    let i = parts.length + 1;
+    for (;;) {
+      const stalePart = path.join(PUBLIC_DIR, partFileName(i));
+      if (!fs.existsSync(stalePart)) break;
+      stale.push(partFileName(i));
+      i += 1;
+    }
+    if (stale.length === 0) {
+      console.log(
+        `sitemap OK: ${urlCount} URLs (${expectedBlogUrls} blog) in ${parts.length} parts: ${partSummary}.`
+      );
       process.exit(0);
     }
-    console.log(`sitemap STALE: would change (now ${urlCount} URLs). Run without --check.`);
+    console.log(`sitemap STALE: would change: ${stale.join(', ')}. Run without --check.`);
     process.exit(1);
   }
 
-  const tmp = `${SITEMAP_PATH}.tmp`;
-  fs.writeFileSync(tmp, next);
-  fs.renameSync(tmp, SITEMAP_PATH);
-  console.log(`sitemap updated: ${urlCount} URLs (${expectedBlogUrls} blog: ${LANGS.length} homes + ${categoryIds.length * LANGS.length} hubs + ${articleUrlCount} article URLs across ${articles.length} articles).`);
+  writeSitemapParts(entries, PUBLIC_DIR);
+  console.log(
+    `sitemap updated: ${urlCount} URLs (${expectedBlogUrls} blog: ${LANGS.length} homes + ${categoryIds.length * LANGS.length} hubs + ${articleUrlCount} article URLs across ${articles.length} articles) in ${parts.length} parts: ${partSummary}.`
+  );
 }
 
 main();
