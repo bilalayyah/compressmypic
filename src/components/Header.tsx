@@ -35,7 +35,9 @@ import { ThemePreference, useTheme, type ResolvedTheme } from '../utils/theme';
 export interface HeaderStrings {
   home: string; tools: string; howItWorks: string; faq: string; about: string;
   blog: string;
-  categories: string; appearance: string; allTools: string;
+  // Optional: locales that predate the UF-style mobile drawer omit these;
+  // DEFAULT_HEADER_STRINGS fills them in (see the spread at `strings` below).
+  categories?: string; appearance?: string; allTools?: string;
   contact: string; compressImages: string;
   themeLight: string; themeDark: string; themeSystem: string;
   themeLightShort: string; themeDarkShort: string; themeSystemShort: string;
