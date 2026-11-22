@@ -16,6 +16,7 @@ import {EN_PATH_BY_RU} from './locales/ru/slugs';
 import {EN_PATH_BY_JA} from './locales/ja/slugs';
 import {EN_PATH_BY_KO} from './locales/ko/slugs';
 import {EN_PATH_BY_ZH} from './locales/zh/slugs';
+import {EN_PATH_BY_TR} from './locales/tr/slugs';
 import { isBlogEnPath, resolveBlogRoute } from './data/blogArticles';
 
 // SEO audit issue 4 (non-EN CLS 1.2964): the app used to render its first
@@ -43,6 +44,7 @@ const PREFIXED_LANGS: SupportedLang[] = [
   'ja',
   'ko',
   'zh',
+  'tr',
 ];
 
 function localeFromPath(pathname: string): SupportedLang | null {
@@ -89,6 +91,7 @@ const EN_PATH_BY_LANG: Record<string, Record<string, string> | undefined> = {
   ja: EN_PATH_BY_JA,
   ko: EN_PATH_BY_KO,
   zh: EN_PATH_BY_ZH,
+  tr: EN_PATH_BY_TR,
 };
 
 function resolvePageModule(pathname: string): string | null {
@@ -208,8 +211,8 @@ async function start(): Promise<void> {
 // CLS ~0.8 on DE articles). Found by debug logging 2026-11-19:
 // "TypeError: Cannot read properties of undefined (reading '/de')".
 
-// Route -> lazy page-chunk mapping, extracted from App.tsx (137 router branches:
-// 48 tools + 78 localized legal/guide/admin pages + 10 directories; home is
+// Route -> lazy page-chunk mapping, extracted from App.tsx (146 router branches:
+// 48 tools + 87 localized legal/guide/admin pages + 11 directories; home is
 // inline and needs no entry). Regenerate with /tmp/gen-pagemap.cjs if the
 // router changes; a stale entry only costs a missed preload, never a crash.
 // Blog pages (Batch 2) are NOT in these maps: the three blog components are
@@ -364,6 +367,15 @@ const LOCALIZED_PAGE_MODULES: Record<string, string> = {
   'ru|/guides/reduce-image-size-to-100kb': './pages/ru/Guide100kbPageRu.tsx',
   'ru|/privacy': './pages/ru/PrivacyPageRu.tsx',
   'ru|/terms': './pages/ru/TermsPageRu.tsx',
+  'tr|/about': './pages/tr/AboutPageTr.tsx',
+  'tr|/contact': './pages/tr/ContactPageTr.tsx',
+  'tr|/cookie-policy': './pages/tr/CookiePolicyPageTr.tsx',
+  'tr|/disclaimer': './pages/tr/DisclaimerPageTr.tsx',
+  'tr|/guides/compress-images-for-whatsapp': './pages/tr/GuideWhatsAppPageTr.tsx',
+  'tr|/guides/jpg-vs-png-vs-webp': './pages/tr/GuideFormatsPageTr.tsx',
+  'tr|/guides/reduce-image-size-to-100kb': './pages/tr/Guide100kbPageTr.tsx',
+  'tr|/privacy': './pages/tr/PrivacyPageTr.tsx',
+  'tr|/terms': './pages/tr/TermsPageTr.tsx',
   'zh|/about': './pages/zh/AboutPageZh.tsx',
   'zh|/contact': './pages/zh/ContactPageZh.tsx',
   'zh|/cookie-policy': './pages/zh/CookiePolicyPageZh.tsx',
@@ -384,6 +396,7 @@ const DIRECTORY_PAGE_MODULES: Record<string, string> = {
   '/ko/tools': './pages/ko/AllToolsPageKo.tsx',
   '/pt/todas-as-ferramentas': './pages/pt/AllToolsPagePt.tsx',
   '/ru/vse-instrumenty': './pages/ru/AllToolsPageRu.tsx',
+  '/tr/tum-araclar': './pages/tr/AllToolsPageTr.tsx',
   '/zh/all-tools': './pages/zh/AllToolsPageZh.tsx',
 };
 

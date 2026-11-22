@@ -73,6 +73,12 @@ export interface PageZhStrings {
   comparisonModal: ComparisonModalStrings;
   toolUi: Record<string, string>;
 }
+export interface PageTrStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
 
 
 
@@ -92,6 +98,7 @@ interface Props {
   jaStrings?: PageJaStrings;
   koStrings?: PageKoStrings;
   zhStrings?: PageZhStrings;
+  trStrings?: PageTrStrings;
 }
 
 export const HeicToJpgPage: React.FC<Props> = ({
@@ -110,10 +117,13 @@ export const HeicToJpgPage: React.FC<Props> = ({
   jaStrings,
   koStrings,
   zhStrings,
+  trStrings,
 }) => {
   const t = (key: string, fallback: string) =>
     lang === 'zh' && zhStrings?.toolUi
       ? ((zhStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'tr' && trStrings?.toolUi
+      ? ((trStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'ja' && jaStrings?.toolUi
       ? ((jaStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'ko' && koStrings?.toolUi
@@ -160,6 +170,7 @@ export const HeicToJpgPage: React.FC<Props> = ({
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}
       zhStrings={zhStrings}
+      trStrings={trStrings}
       jaStrings={jaStrings}
       koStrings={koStrings}
       esStrings={esStrings}

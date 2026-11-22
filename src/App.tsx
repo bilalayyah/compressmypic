@@ -216,6 +216,7 @@ import { RU_PATH_BY_EN, EN_PATH_BY_RU, RU_HOME_ALIAS, RU_ALL_TOOLS_PATH } from '
 import { JA_PATH_BY_EN, EN_PATH_BY_JA, JA_HOME_ALIAS, JA_ALL_TOOLS_PATH } from './locales/ja/slugs';
 import { KO_PATH_BY_EN, EN_PATH_BY_KO, KO_HOME_ALIAS, KO_ALL_TOOLS_PATH } from './locales/ko/slugs';
 import { ZH_PATH_BY_EN, EN_PATH_BY_ZH, ZH_HOME_ALIAS, ZH_ALL_TOOLS_PATH } from './locales/zh/slugs';
+import { TR_PATH_BY_EN, EN_PATH_BY_TR, TR_HOME_ALIAS, TR_ALL_TOOLS_PATH } from './locales/tr/slugs';
 import { getAlternates, getOgLocale, getOgLocaleAlternates, withTrailingSlash } from './locales/alternates';
 import { BlogContext } from './components/blog/BlogContext';
 import { EN_BLOG_STRINGS } from './components/blog/blogStrings';
@@ -537,6 +538,36 @@ const GuideFormatsPageZh = React.lazy(() =>
 const Guide100kbPageZh = React.lazy(() =>
   import('./pages/zh/Guide100kbPageZh').then((m) => ({ default: m.Guide100kbPageZh }))
 );
+const AboutPageTr = React.lazy(() =>
+  import('./pages/tr/AboutPageTr').then((m) => ({ default: m.AboutPageTr }))
+);
+const ContactPageTr = React.lazy(() =>
+  import('./pages/tr/ContactPageTr').then((m) => ({ default: m.ContactPageTr }))
+);
+const PrivacyPageTr = React.lazy(() =>
+  import('./pages/tr/PrivacyPageTr').then((m) => ({ default: m.PrivacyPageTr }))
+);
+const TermsPageTr = React.lazy(() =>
+  import('./pages/tr/TermsPageTr').then((m) => ({ default: m.TermsPageTr }))
+);
+const DisclaimerPageTr = React.lazy(() =>
+  import('./pages/tr/DisclaimerPageTr').then((m) => ({ default: m.DisclaimerPageTr }))
+);
+const CookiePolicyPageTr = React.lazy(() =>
+  import('./pages/tr/CookiePolicyPageTr').then((m) => ({ default: m.CookiePolicyPageTr }))
+);
+const AllToolsPageTr = React.lazy(() =>
+  import('./pages/tr/AllToolsPageTr').then((m) => ({ default: m.AllToolsPageTr }))
+);
+const GuideWhatsAppPageTr = React.lazy(() =>
+  import('./pages/tr/GuideWhatsAppPageTr').then((m) => ({ default: m.GuideWhatsAppPageTr }))
+);
+const GuideFormatsPageTr = React.lazy(() =>
+  import('./pages/tr/GuideFormatsPageTr').then((m) => ({ default: m.GuideFormatsPageTr }))
+);
+const Guide100kbPageTr = React.lazy(() =>
+  import('./pages/tr/Guide100kbPageTr').then((m) => ({ default: m.Guide100kbPageTr }))
+);
 
 const NotFoundPage = React.lazy(() =>
   import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage }))
@@ -719,6 +750,16 @@ export function parsePath(rawPathname: string): ParsedPath {
     if (enPath && (KNOWN_ROUTES.includes(enPath) || resolveBlogRoute(enPath))) return { path: enPath, lang: 'zh' };
     return { path: p, lang: 'zh', notFound: true }; // unknown path in this language -> 404 page
   }
+  // Turkish prefix: /tr/<turkish-slug>
+  if (p === '/tr' || p.startsWith('/tr/')) {
+    const rest = p === '/tr' ? '/' : p.slice(3); // keep leading '/'
+    if (rest === '/') return { path: '/', lang: 'tr' };
+    if (rest === TR_HOME_ALIAS.slice(3)) return { path: '/', lang: 'tr' }; // /tr/gorsel-sikistir → /tr/
+    if (rest === TR_ALL_TOOLS_PATH.slice(3)) return { path: TR_ALL_TOOLS_PATH, lang: 'tr' };
+    const enPath = EN_PATH_BY_TR[p]; // keys carry the '/tr' prefix (see slug map)
+    if (enPath && (KNOWN_ROUTES.includes(enPath) || resolveBlogRoute(enPath))) return { path: enPath, lang: 'tr' };
+    return { path: p, lang: 'tr', notFound: true }; // unknown path in this language -> 404 page
+  }
   return KNOWN_ROUTES.includes(p) || resolveBlogRoute(p) ? { path: p, lang: 'en' } : { path: p, lang: 'en', notFound: true }; // unknown English path -> 404 page
 }
 
@@ -741,7 +782,8 @@ export function toLocalizedPath(enPath: string, lang: SupportedLang): string {
     enPath === RU_ALL_TOOLS_PATH ||
     enPath === JA_ALL_TOOLS_PATH ||
     enPath === KO_ALL_TOOLS_PATH ||
-    enPath === ZH_ALL_TOOLS_PATH
+    enPath === ZH_ALL_TOOLS_PATH ||
+    enPath === TR_ALL_TOOLS_PATH
   ) {
     return lang === 'es'
       ? ES_ALL_TOOLS_PATH
@@ -761,7 +803,9 @@ export function toLocalizedPath(enPath: string, lang: SupportedLang): string {
                     ? KO_ALL_TOOLS_PATH
                     : lang === 'zh'
                       ? ZH_ALL_TOOLS_PATH
-                      : RU_ALL_TOOLS_PATH;
+                      : lang === 'tr'
+                        ? TR_ALL_TOOLS_PATH
+                        : RU_ALL_TOOLS_PATH;
   }
   if (lang === 'es') return ES_PATH_BY_EN[enPath] ?? enPath;
   if (lang === 'pt') return PT_PATH_BY_EN[enPath] ?? enPath;
@@ -773,6 +817,7 @@ export function toLocalizedPath(enPath: string, lang: SupportedLang): string {
   if (lang === 'ja') return JA_PATH_BY_EN[enPath] ?? enPath;
   if (lang === 'ko') return KO_PATH_BY_EN[enPath] ?? enPath;
   if (lang === 'zh') return ZH_PATH_BY_EN[enPath] ?? enPath;
+  if (lang === 'tr') return TR_PATH_BY_EN[enPath] ?? enPath;
   return enPath;
 }
 
@@ -862,7 +907,15 @@ interface ZhLocale {
   blog: typeof import('./locales/zh/blog').ZH_BLOG_OVERRIDES;
 }
 
-type AnyLocale = EsLocale | PtLocale | FrLocale | DeLocale | ItLocale | IdLocale | RuLocale | JaLocale | KoLocale | ZhLocale;
+interface TrLocale {
+  ui: typeof import('./locales/tr/ui').TR;
+  tools: typeof import('./locales/tr/tools').TOOL_BY_SLUG_TR;
+  categories: typeof import('./locales/tr/tools').TOOL_CATEGORIES_TR;
+  toolUi: typeof import('./locales/tr/ui').TOOL_UI_TR;
+  blog: typeof import('./locales/tr/blog').TR_BLOG_OVERRIDES;
+}
+
+type AnyLocale = EsLocale | PtLocale | FrLocale | DeLocale | ItLocale | IdLocale | RuLocale | JaLocale | KoLocale | ZhLocale | TrLocale;
 
 export default function App({ initialPath }: { initialPath?: string } = {}) {
   const [route, setRoute] = useState<ParsedPath>(() => {
@@ -884,7 +937,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
   // "All Tools" target for the 404 page: every language has a dedicated
   // directory page (EN: /all-tools).
   const allToolsPath =
-    lang === 'es' ? ES_ALL_TOOLS_PATH : lang === 'pt' ? PT_ALL_TOOLS_PATH : lang === 'fr' ? FR_ALL_TOOLS_PATH : lang === 'de' ? DE_ALL_TOOLS_PATH : lang === 'it' ? IT_ALL_TOOLS_PATH : lang === 'id' ? ID_ALL_TOOLS_PATH : lang === 'ru' ? RU_ALL_TOOLS_PATH : lang === 'ja' ? JA_ALL_TOOLS_PATH : lang === 'ko' ? KO_ALL_TOOLS_PATH : lang === 'zh' ? ZH_ALL_TOOLS_PATH : '/all-tools';
+    lang === 'es' ? ES_ALL_TOOLS_PATH : lang === 'pt' ? PT_ALL_TOOLS_PATH : lang === 'fr' ? FR_ALL_TOOLS_PATH : lang === 'de' ? DE_ALL_TOOLS_PATH : lang === 'it' ? IT_ALL_TOOLS_PATH : lang === 'id' ? ID_ALL_TOOLS_PATH : lang === 'ru' ? RU_ALL_TOOLS_PATH : lang === 'ja' ? JA_ALL_TOOLS_PATH : lang === 'ko' ? KO_ALL_TOOLS_PATH : lang === 'zh' ? ZH_ALL_TOOLS_PATH : lang === 'tr' ? TR_ALL_TOOLS_PATH : '/all-tools';
   const [esLocale, setEsLocale] = useState<EsLocale | null>(
     // Tier J: main.tsx stored the preloaded locale in the cache
     // before first render, so the first render is already
@@ -945,12 +998,18 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
     // localized and hydrateRoot can adopt the prerendered DOM.
     () => getCachedLocale<ZhLocale>('zh'),
   );
+  const [trLocale, setTrLocale] = useState<TrLocale | null>(
+    // Tier J: main.tsx stored the preloaded locale in the cache
+    // before first render, so the first render is already
+    // localized and hydrateRoot can adopt the prerendered DOM.
+    () => getCachedLocale<TrLocale>('tr'),
+  );
   const [localeLoading, setLocaleLoading] = useState(false);
 
   // The active non-English locale (null for English). Defined early so the
   // SEO effect below can read tool titles/descriptions from it.
   const activeLocale: AnyLocale | null =
-    lang === 'es' ? esLocale : lang === 'pt' ? ptLocale : lang === 'fr' ? frLocale : lang === 'de' ? deLocale : lang === 'it' ? itLocale : lang === 'id' ? idLocale : lang === 'ru' ? ruLocale : lang === 'ja' ? jaLocale : lang === 'ko' ? koLocale : lang === 'zh' ? zhLocale : null;
+    lang === 'es' ? esLocale : lang === 'pt' ? ptLocale : lang === 'fr' ? frLocale : lang === 'de' ? deLocale : lang === 'it' ? itLocale : lang === 'id' ? idLocale : lang === 'ru' ? ruLocale : lang === 'ja' ? jaLocale : lang === 'ko' ? koLocale : lang === 'zh' ? zhLocale : lang === 'tr' ? trLocale : null;
   const activeUi = activeLocale?.ui ?? null;
 
   // Blog (Batch 2): the resolved blog route for the current EN path (null
@@ -1047,7 +1106,14 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       setCachedLocale('zh', data);
       setLocaleLoading(false);
     }
-  }, [esLocale, ptLocale, frLocale, deLocale, itLocale, idLocale, ruLocale, jaLocale, koLocale, zhLocale]);
+    if (target === 'tr' && (!trLocale || (withBlog && Object.keys(trLocale.blog ?? {}).length === 0))) {
+      setLocaleLoading(true);
+      const data = await loadLocaleData<TrLocale>('tr', { withBlog });
+      setTrLocale(data);
+      setCachedLocale('tr', data);
+      setLocaleLoading(false);
+    }
+  }, [esLocale, ptLocale, frLocale, deLocale, itLocale, idLocale, ruLocale, jaLocale, koLocale, zhLocale, trLocale]);
 
   const [images, setImages] = useState<ImageItem[]>([]);
   const [isCompressing, setIsCompressing] = useState<boolean>(false);
@@ -1444,10 +1510,38 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       '/guides/reduce-image-size-to-100kb': '一张 4 MB 的照片会拖慢你的网站，还会堵塞邮件。把它缩小到约 100KB，页面加载会变快，邮件也能即时发送——而且如果方法得当，没有人能看出差别。',
     };
 
+    const staticTitlesTr: Record<string, string> = {
+      '/': trLocale?.ui.homeMeta.seoTitle ?? '',
+      '/about': 'Hakkımızda – CompressMyPic, ücretsiz çevrimiçi görsel sıkıştırıcı',
+      '/contact': 'İletişim – CompressMyPic',
+      '/privacy': 'Gizlilik Politikası – CompressMyPic',
+      '/terms': 'Hizmet Şartları – CompressMyPic',
+      '/disclaimer': 'Sorumluluk Reddi | CompressMyPic – Ücretsiz Görsel Araçları',
+      '/cookie-policy': 'Çerez Politikası | CompressMyPic – Çerezler Nasıl Kullanılır',
+      [TR_ALL_TOOLS_PATH]: 'Tüm Ücretsiz Görsel Araçları | CompressMyPic',
+      '/guides/compress-images-for-whatsapp': 'WhatsApp için görsel sıkıştırma – kalite kaybı olmadan',
+      '/guides/jpg-vs-png-vs-webp': 'JPG vs PNG vs WebP: Hangi formatı seçmelisiniz?',
+      '/guides/reduce-image-size-to-100kb': 'Web ve e-posta için görseli 100 KB boyutuna nasıl küçültürsünüz',
+    };
+
+    const staticDescriptionsTr: Record<string, string> = {
+      '/disclaimer': 'CompressMyPic sorumluluk reddi: Ücretsiz görsel araçlarımız olduğu gibi sunulur, herhangi bir garanti verilmez. Sorumluluk sınırları ve kılavuzların doğruluğu hakkında bilgi edinin.',
+      '/cookie-policy': 'CompressMyPic çerez politikası: Kendimiz çerez ayarlamıyoruz. Google Analytics’in hangi çerezleri kullandığını ve bunları nasıl kontrol edeceğinizi öğrenin.',
+      '/': trLocale?.ui.homeMeta.seoDescription ?? '',
+      '/about': 'CompressMyPic ücretsiz ve gizlilik odaklı bir görsel sıkıştırıcıdır. JPG, PNG ve WebP görsellerinizi doğrudan tarayıcınızda sıkıştırın — hızlı, güvenli ve dosyalarınızı yüklemeden.',
+      '/contact': 'Sorunuz, geri bildiriminiz veya yardıma mı ihtiyacınız var? Aşağıdaki formdan ekibimize ulaşın ya da doğrudan e-posta gönderin.',
+      '/privacy': 'CompressMyPic ücretsiz bir çevrimiçi görsel sıkıştırıcıdır. Görseller HTML5 Canvas ile tarayıcınızda yerel olarak işlenir — asla sunucularımıza yüklenmez ve görsellerinizi toplamıyor, saklamıyor ya da paylaşmıyoruz.',
+      '/terms': 'CompressMyPic (ücretsiz çevrimiçi görsel sıkıştırıcı) hizmet şartları. Ücretsiz araçların kullanım kurallarını okuyun: adil kullanım, içeriğiniz ve sorumluluk.',
+      [TR_ALL_TOOLS_PATH]: 'CompressMyPic’in 47 ücretsiz görsel aracı: Görselleri tarayıcınızda sıkıştırın, dönüştürün, yeniden boyutlandırın, kırpın ve düzenleyin. Kayıt gerekmez, JPG, PNG, WebP ve HEIC desteğiyle.',
+      '/guides/compress-images-for-whatsapp': 'WhatsApp gönderdiğiniz her fotoğrafı küçültür — çoğu zaman gerekenden çok daha fazla. Önce görseli kendiniz sıkıştırın, sonra doğru şekilde gönderin — fotoğraf net kalır, hızlı gider ve mobil verinizden tasarruf edersiniz.',
+      '/guides/jpg-vs-png-vs-webp': 'Yanlış format seçmek görselinizi gerekenden 10 kat büyük yapabilir — ya da şeffaf logonuzu bozabilir. İşte kolay ve dürüst bir karşılaştırma ve formatı saniyeler içinde değiştirme yöntemi.',
+      '/guides/reduce-image-size-to-100kb': '4 MB’lik bir fotoğraf web sitenizi yavaşlatır ve e-postaları tıkar. Onu yaklaşık 100KB boyutuna küçültün — sayfalar hızlı yüklenir, e-postalar anında gider — ve doğru yaparsanız kimse farkı anlayamaz.',
+    };
+
     const langTitles =
-      lang === 'es' ? staticTitlesEs : lang === 'pt' ? staticTitlesPt : lang === 'fr' ? staticTitlesFr : lang === 'de' ? staticTitlesDe : lang === 'it' ? staticTitlesIt : lang === 'id' ? staticTitlesId : lang === 'ru' ? staticTitlesRu : lang === 'ja' ? staticTitlesJa : lang === 'ko' ? staticTitlesKo : lang === 'zh' ? staticTitlesZh : undefined;
+      lang === 'es' ? staticTitlesEs : lang === 'pt' ? staticTitlesPt : lang === 'fr' ? staticTitlesFr : lang === 'de' ? staticTitlesDe : lang === 'it' ? staticTitlesIt : lang === 'id' ? staticTitlesId : lang === 'ru' ? staticTitlesRu : lang === 'ja' ? staticTitlesJa : lang === 'ko' ? staticTitlesKo : lang === 'zh' ? staticTitlesZh : lang === 'tr' ? staticTitlesTr : undefined;
     const langDescriptions =
-      lang === 'es' ? staticDescriptionsEs : lang === 'pt' ? staticDescriptionsPt : lang === 'fr' ? staticDescriptionsFr : lang === 'de' ? staticDescriptionsDe : lang === 'it' ? staticDescriptionsIt : lang === 'id' ? staticDescriptionsId : lang === 'ru' ? staticDescriptionsRu : lang === 'ja' ? staticDescriptionsJa : lang === 'ko' ? staticDescriptionsKo : lang === 'zh' ? staticDescriptionsZh : undefined;
+      lang === 'es' ? staticDescriptionsEs : lang === 'pt' ? staticDescriptionsPt : lang === 'fr' ? staticDescriptionsFr : lang === 'de' ? staticDescriptionsDe : lang === 'it' ? staticDescriptionsIt : lang === 'id' ? staticDescriptionsId : lang === 'ru' ? staticDescriptionsRu : lang === 'ja' ? staticDescriptionsJa : lang === 'ko' ? staticDescriptionsKo : lang === 'zh' ? staticDescriptionsZh : lang === 'tr' ? staticDescriptionsTr : undefined;
     // --- Blog (Batch 2) ---
     // Title/description come from the registry + locale overrides, per
     // language. The blog home and category hubs use the blog UI strings;
@@ -1677,7 +1771,8 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       currentPath === RU_ALL_TOOLS_PATH ||
       currentPath === JA_ALL_TOOLS_PATH ||
       currentPath === KO_ALL_TOOLS_PATH ||
-      currentPath === ZH_ALL_TOOLS_PATH;
+      currentPath === ZH_ALL_TOOLS_PATH ||
+      currentPath === TR_ALL_TOOLS_PATH;
     const hasLocalizedEquivalent =
       currentPath === '/' ||
       isDirectoryPath ||
@@ -1691,14 +1786,15 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
           RU_PATH_BY_EN[currentPath] ??
           JA_PATH_BY_EN[currentPath] ??
           KO_PATH_BY_EN[currentPath] ??
-          ZH_PATH_BY_EN[currentPath]
+          ZH_PATH_BY_EN[currentPath] ??
+          TR_PATH_BY_EN[currentPath]
       );
     const toolPageOwnedByLayout =
       isToolPage && lang !== 'en' && Boolean(activeLocale?.tools[currentPath]);
     if (blogRoute) {
       // Blog pages: alternates ONLY for published locales (from the slug
       // maps, via the registry helpers) — never a draft locale. The generic
-      // branch below would link all 11 languages, including untranslated
+      // branch below would link all 12 languages, including untranslated
       // ones. A not-yet-translated article gets no hreflang at all — its EN
       // canonical is the only version.
       if (blogRoute.kind === 'article' && blogNoIndex) {
@@ -1730,6 +1826,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
         { lang: 'ja', href: hreflangHref(toLocalizedPath(currentPath, 'ja')) },
         { lang: 'ko', href: hreflangHref(toLocalizedPath(currentPath, 'ko')) },
         { lang: 'zh', href: hreflangHref(toLocalizedPath(currentPath, 'zh')) },
+        { lang: 'tr', href: hreflangHref(toLocalizedPath(currentPath, 'tr')) },
         { lang: 'x-default', href: hreflangHref(enEquivalent) },
       ]);
     } else if (isToolPage && hasLocalizedEquivalent && lang === 'en') {
@@ -2484,7 +2581,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
   // Homepage (compressor app). Extracted so the English and Spanish home
   // branches render the same DOM; `strings` is the Spanish bundle, or null
   // for English (components fall back to their English defaults).
-  const renderHome = (strings: EsLocale['ui'] | PtLocale['ui'] | FrLocale['ui'] | DeLocale['ui'] | ItLocale['ui'] | IdLocale['ui'] | RuLocale['ui'] | JaLocale['ui'] | KoLocale['ui'] | ZhLocale['ui'] | null) => (
+  const renderHome = (strings: EsLocale['ui'] | PtLocale['ui'] | FrLocale['ui'] | DeLocale['ui'] | ItLocale['ui'] | IdLocale['ui'] | RuLocale['ui'] | JaLocale['ui'] | KoLocale['ui'] | ZhLocale['ui'] | TrLocale['ui'] | null) => (
     <>
           {/* Home <main> wraps the whole home page (SEO audit issue 23) so the
               skip link lands on one landmark containing Hero, the compressor,
@@ -2750,6 +2847,10 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
         <main id="main" className="flex-1">
           <AllToolsPageZh onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
         </main>
+      ) : currentPath === TR_ALL_TOOLS_PATH ? (
+        <main id="main" className="flex-1">
+          <AllToolsPageTr onNavigate={handleNavigate} tools={toolsRegistry} categories={categoryLabels} />
+        </main>
       ) : lang === 'es' && currentPath === '/about' ? (
         <main id="main" className="flex-1">
           <AboutPageEs onNavigate={handleNavigate} />
@@ -2789,6 +2890,10 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       ) : lang === 'zh' && currentPath === '/about' ? (
         <main id="main" className="flex-1">
           <AboutPageZh onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'tr' && currentPath === '/about' ? (
+        <main id="main" className="flex-1">
+          <AboutPageTr onNavigate={handleNavigate} />
         </main>
       ) : lang === 'es' && currentPath === '/contact' ? (
         <main id="main" className="flex-1">
@@ -2830,6 +2935,10 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
         <main id="main" className="flex-1">
           <ContactPageZh onNavigate={handleNavigate} />
         </main>
+      ) : lang === 'tr' && currentPath === '/contact' ? (
+        <main id="main" className="flex-1">
+          <ContactPageTr onNavigate={handleNavigate} />
+        </main>
       ) : lang === 'es' && currentPath === '/privacy' ? (
         <main id="main" className="flex-1">
           <PrivacyPageEs onNavigate={handleNavigate} />
@@ -2869,6 +2978,10 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       ) : lang === 'zh' && currentPath === '/privacy' ? (
         <main id="main" className="flex-1">
           <PrivacyPageZh onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'tr' && currentPath === '/privacy' ? (
+        <main id="main" className="flex-1">
+          <PrivacyPageTr onNavigate={handleNavigate} />
         </main>
       ) : lang === 'es' && currentPath === '/terms' ? (
         <main id="main" className="flex-1">
@@ -2982,13 +3095,25 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
         <main id="main" className="flex-1">
           <TermsPageZh onNavigate={handleNavigate} />
         </main>
+      ) : lang === 'tr' && currentPath === '/terms' ? (
+        <main id="main" className="flex-1">
+          <TermsPageTr onNavigate={handleNavigate} />
+        </main>
       ) : lang === 'zh' && currentPath === '/disclaimer' ? (
         <main id="main" className="flex-1">
           <DisclaimerPageZh onNavigate={handleNavigate} />
         </main>
+      ) : lang === 'tr' && currentPath === '/disclaimer' ? (
+        <main id="main" className="flex-1">
+          <DisclaimerPageTr onNavigate={handleNavigate} />
+        </main>
       ) : lang === 'zh' && currentPath === '/cookie-policy' ? (
         <main id="main" className="flex-1">
           <CookiePolicyPageZh onNavigate={handleNavigate} />
+        </main>
+      ) : lang === 'tr' && currentPath === '/cookie-policy' ? (
+        <main id="main" className="flex-1">
+          <CookiePolicyPageTr onNavigate={handleNavigate} />
         </main>
       ) : currentPath === '/about' ? (
         <main id="main" className="flex-1">
@@ -3054,6 +3179,10 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
               <main id="main" className="flex-1">
                 <GuideWhatsAppPageZh onNavigate={handleNavigate} />
               </main>
+            ) : lang === 'tr' && currentPath === '/guides/compress-images-for-whatsapp' ? (
+              <main id="main" className="flex-1">
+                <GuideWhatsAppPageTr onNavigate={handleNavigate} />
+              </main>
             ) : lang === 'es' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
               <main id="main" className="flex-1">
                 <GuideFormatsPageEs onNavigate={handleNavigate} />
@@ -3094,6 +3223,10 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
               <main id="main" className="flex-1">
                 <GuideFormatsPageZh onNavigate={handleNavigate} />
               </main>
+            ) : lang === 'tr' && currentPath === '/guides/jpg-vs-png-vs-webp' ? (
+              <main id="main" className="flex-1">
+                <GuideFormatsPageTr onNavigate={handleNavigate} />
+              </main>
             ) : lang === 'es' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
               <main id="main" className="flex-1">
                 <Guide100kbPageEs onNavigate={handleNavigate} />
@@ -3133,6 +3266,10 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
             ) : lang === 'zh' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
               <main id="main" className="flex-1">
                 <Guide100kbPageZh onNavigate={handleNavigate} />
+              </main>
+            ) : lang === 'tr' && currentPath === '/guides/reduce-image-size-to-100kb' ? (
+              <main id="main" className="flex-1">
+                <Guide100kbPageTr onNavigate={handleNavigate} />
               </main>
             ) : currentPath === '/guides/compress-images-for-whatsapp' ? (
               <main id="main" className="flex-1">
@@ -3254,6 +3391,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-resizer']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-resizer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-converter' ? (
@@ -3361,6 +3508,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/image-converter'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-converter']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-converter'],
                   }
                 : undefined
             }
@@ -3474,6 +3631,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/rotate-flip-image']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/rotate-flip-image'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-to-pdf' ? (
@@ -3581,6 +3748,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/image-to-pdf'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-to-pdf']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-to-pdf'],
                   }
                 : undefined
             }
@@ -3694,6 +3871,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-metadata-viewer']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-metadata-viewer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/remove-image-metadata' ? (
@@ -3801,6 +3988,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/remove-image-metadata'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/remove-image-metadata']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/remove-image-metadata'],
                   }
                 : undefined
             }
@@ -3914,6 +4111,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/favicon-generator']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/favicon-generator'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-color-picker' ? (
@@ -4021,6 +4228,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/image-color-picker'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-color-picker']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-color-picker'],
                   }
                 : undefined
             }
@@ -4134,6 +4351,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-dimensions-checker']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-dimensions-checker'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-cropper' ? (
@@ -4241,6 +4468,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/image-cropper'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-cropper']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-cropper'],
                   }
                 : undefined
             }
@@ -4354,6 +4591,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-watermark']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-watermark'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/blur-pixelate-image' ? (
@@ -4461,6 +4708,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/blur-pixelate-image'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/blur-pixelate-image']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/blur-pixelate-image'],
                   }
                 : undefined
             }
@@ -4574,6 +4831,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/add-text-to-image']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/add-text-to-image'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-border-generator' ? (
@@ -4681,6 +4948,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/image-border-generator'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-border-generator']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-border-generator'],
                   }
                 : undefined
             }
@@ -4794,6 +5071,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/round-image-corners']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/round-image-corners'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-brightness-editor' ? (
@@ -4901,6 +5188,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/image-brightness-editor'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-brightness-editor']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-brightness-editor'],
                   }
                 : undefined
             }
@@ -5014,6 +5311,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-contrast-editor']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-contrast-editor'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-saturation-editor' ? (
@@ -5121,6 +5428,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/image-saturation-editor'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-saturation-editor']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-saturation-editor'],
                   }
                 : undefined
             }
@@ -5234,6 +5551,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-filters']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-filters'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/add-background-to-image' ? (
@@ -5341,6 +5668,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/add-background-to-image'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/add-background-to-image']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/add-background-to-image'],
                   }
                 : undefined
             }
@@ -5454,6 +5791,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-splitter']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-splitter'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/image-dpi-changer' ? (
@@ -5561,6 +5908,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/image-dpi-changer'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-dpi-changer']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-dpi-changer'],
                   }
                 : undefined
             }
@@ -5674,6 +6031,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-to-base64']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-to-base64'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/base64-to-image' ? (
@@ -5781,6 +6148,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/base64-to-image'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/base64-to-image']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/base64-to-image'],
                   }
                 : undefined
             }
@@ -5894,6 +6271,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-color-palette-extractor']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-color-palette-extractor'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/gif-maker' ? (
@@ -6001,6 +6388,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/gif-maker'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/gif-maker']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/gif-maker'],
                   }
                 : undefined
             }
@@ -6114,6 +6511,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/image-collage-maker']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/image-collage-maker'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/compress-image-to-50kb' ? (
@@ -6221,6 +6628,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/compress-image-to-50kb'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/compress-image-to-50kb']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/compress-image-to-50kb'],
                   }
                 : undefined
             }
@@ -6334,6 +6751,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/compress-image-to-100kb']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/compress-image-to-100kb'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/compress-image-to-200kb' ? (
@@ -6444,6 +6871,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/compress-image-to-200kb']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/compress-image-to-200kb'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/compress-image-to-500kb' ? (
@@ -6551,6 +6988,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/compress-image-to-500kb'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/compress-image-to-500kb']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/compress-image-to-500kb'],
                   }
                 : undefined
             }
@@ -6670,6 +7117,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/bulk-image-compressor']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/bulk-image-compressor'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/target-file-size-compressor' ? (
@@ -6777,6 +7234,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/target-file-size-compressor'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/target-file-size-compressor']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/target-file-size-compressor'],
                   }
                 : undefined
             }
@@ -6890,6 +7357,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/bulk-image-resizer']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/bulk-image-resizer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/bulk-image-converter' ? (
@@ -6997,6 +7474,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/bulk-image-converter'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/bulk-image-converter']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/bulk-image-converter'],
                   }
                 : undefined
             }
@@ -7110,6 +7597,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/web-image-optimizer']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/web-image-optimizer'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/gif-compressor' ? (
@@ -7217,6 +7714,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/gif-compressor'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/gif-compressor']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/gif-compressor'],
                   }
                 : undefined
             }
@@ -7330,6 +7837,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/heic-to-jpg']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/heic-to-jpg'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/jpg-to-png' ? (
@@ -7437,6 +7954,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/jpg-to-png'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/jpg-to-png']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/jpg-to-png'],
                   }
                 : undefined
             }
@@ -7550,6 +8077,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/png-to-jpg']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/png-to-jpg'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/jpg-to-webp' ? (
@@ -7657,6 +8194,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/jpg-to-webp'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/jpg-to-webp']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/jpg-to-webp'],
                   }
                 : undefined
             }
@@ -7770,6 +8317,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/webp-to-jpg']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/webp-to-jpg'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/png-to-webp' ? (
@@ -7877,6 +8434,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/png-to-webp'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/png-to-webp']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/png-to-webp'],
                   }
                 : undefined
             }
@@ -7990,6 +8557,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/webp-to-png']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/webp-to-png'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/svg-to-png' ? (
@@ -8097,6 +8674,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/svg-to-png'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/svg-to-png']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/svg-to-png'],
                   }
                 : undefined
             }
@@ -8210,6 +8797,16 @@ zhStrings={
                   }
                 : undefined
             }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/avif-to-jpg']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/avif-to-jpg'],
+                  }
+                : undefined
+            }
           />
         </main>
       ) : currentPath === '/bmp-to-jpg' ? (
@@ -8317,6 +8914,16 @@ zhStrings={
                     uploadZone: zhLocale.ui.uploadZone,
                     comparisonModal: zhLocale.ui.comparisonModal,
                     toolUi: zhLocale.toolUi['/bmp-to-jpg'],
+                  }
+                : undefined
+            }
+trStrings={
+              lang === 'tr' && trLocale && trLocale.tools['/bmp-to-jpg']
+                ? {
+                    layoutUi: trLocale.ui.toolPageLayout,
+                    uploadZone: trLocale.ui.uploadZone,
+                    comparisonModal: trLocale.ui.comparisonModal,
+                    toolUi: trLocale.toolUi['/bmp-to-jpg'],
                   }
                 : undefined
             }

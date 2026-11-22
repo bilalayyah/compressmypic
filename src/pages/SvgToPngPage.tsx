@@ -73,6 +73,12 @@ export interface PageZhStrings {
   comparisonModal: ComparisonModalStrings;
   toolUi: Record<string, string>;
 }
+export interface PageTrStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
 
 
 
@@ -92,6 +98,7 @@ interface SvgToPngPageProps {
   jaStrings?: PageJaStrings;
   koStrings?: PageKoStrings;
   zhStrings?: PageZhStrings;
+  trStrings?: PageTrStrings;
 }
 
 export const SvgToPngPage: React.FC<SvgToPngPageProps> = ({
@@ -110,10 +117,13 @@ export const SvgToPngPage: React.FC<SvgToPngPageProps> = ({
   jaStrings,
   koStrings,
   zhStrings,
+  trStrings,
 }) => {
   const t = (key: string, fallback: string) =>
     lang === 'zh' && zhStrings?.toolUi
       ? ((zhStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'tr' && trStrings?.toolUi
+      ? ((trStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'ja' && jaStrings?.toolUi
       ? ((jaStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'ko' && koStrings?.toolUi
@@ -153,6 +163,7 @@ export const SvgToPngPage: React.FC<SvgToPngPageProps> = ({
     toolRegistry={toolRegistry}
     categoryLabels={categoryLabels}
     zhStrings={zhStrings}
+    trStrings={trStrings}
     jaStrings={jaStrings}
     koStrings={koStrings}
     esStrings={esStrings}

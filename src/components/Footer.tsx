@@ -11,6 +11,7 @@ import { RU_ALL_TOOLS_PATH } from '../locales/ru/slugs';
 import { JA_ALL_TOOLS_PATH } from '../locales/ja/slugs';
 import { KO_ALL_TOOLS_PATH } from '../locales/ko/slugs';
 import { ZH_ALL_TOOLS_PATH } from '../locales/zh/slugs';
+import { TR_ALL_TOOLS_PATH } from '../locales/tr/slugs';
 
 export interface FooterStrings {
   blurb: string;
@@ -167,6 +168,7 @@ export const Footer: React.FC<FooterProps> = ({
     ja: JA_ALL_TOOLS_PATH,
     ko: KO_ALL_TOOLS_PATH,
     zh: ZH_ALL_TOOLS_PATH,
+    tr: TR_ALL_TOOLS_PATH,
   };
   // Localized "All Tools" label for the directory link, loaded from the
   // active locale's own dictionary (toolsDirectory.allTools) so no string
@@ -189,6 +191,7 @@ export const Footer: React.FC<FooterProps> = ({
     ja: () => import('../locales/ja/ui').then((m) => m.JA.toolsDirectory.allTools),
     ko: () => import('../locales/ko/ui').then((m) => m.KO.toolsDirectory.allTools),
     zh: () => import('../locales/zh/ui').then((m) => m.ZH.toolsDirectory.allTools),
+    tr: () => import('../locales/tr/ui').then((m) => m.TR.toolsDirectory.allTools),
   };
   const [directoryLabel, setDirectoryLabel] = useState(directoryLabelProp ?? 'All Tools');
   useEffect(() => {
