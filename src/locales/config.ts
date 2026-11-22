@@ -1,4 +1,4 @@
-// Central language configuration for CompressMyPic — all 11 languages.
+// Central language configuration for CompressMyPic — all 12 languages.
 // Target path in the repo: src/locales/config.ts
 // Adding a language = one entry here + one src/locales/<lang>/ folder
 // (tools.ts, ui.ts, slugs.ts). No router rewrite, no component duplication.
@@ -14,7 +14,8 @@ export type SupportedLang =
   | 'it'
   | 'ru'
   | 'ko'
-  | 'zh';
+  | 'zh'
+  | 'bn';
 
 export type LangStatus = 'live' | 'in-progress' | 'planned';
 
@@ -27,7 +28,7 @@ export interface LanguageMeta {
   nativeName: string;
   /** English name of the language. */
   englishName: string;
-  /** Text direction. All 11 languages on this site are LTR. */
+  /** Text direction. All 12 languages on this site are LTR. */
   dir: 'ltr';
   /** Regional variant to translate into. */
   variant: string;
@@ -53,6 +54,7 @@ export const SUPPORTED_LANGUAGES: LanguageMeta[] = [
   { code: 'ja', prefix: 'ja', nativeName: '日本語', englishName: 'Japanese', dir: 'ltr', variant: 'Natural modern Japanese', phase: 5, status: 'live', directoryPath: '/ja/tools' },
   { code: 'ko', prefix: 'ko', nativeName: '한국어', englishName: 'Korean', dir: 'ltr', variant: 'Standard South Korean', phase: 5, status: 'live', directoryPath: '/ko/tools' },
   { code: 'zh', prefix: 'zh', nativeName: '简体中文', englishName: 'Chinese (Simplified)', dir: 'ltr', variant: 'Simplified Mandarin Chinese', phase: 6, status: 'live', directoryPath: '/zh/all-tools' },
+  { code: 'bn', prefix: 'bn', nativeName: 'বাংলা', englishName: 'Bengali', dir: 'ltr', variant: 'Standard Bengali', phase: 8, status: 'in-progress', directoryPath: '/bn/sob-tools' },
 ];
 
 export const SUPPORTED_LANGS: SupportedLang[] = SUPPORTED_LANGUAGES.map((l) => l.code);
