@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, Mail, Globe, Target, CheckCircle2, Layers, Gauge } from 'lucide-react';
 import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
+import { GuideRelatedLinks } from '../../components/GuideRelatedLinks';
 
 interface Guide100kbPageJaProps {
   onNavigate: (path: string) => void;
@@ -231,14 +232,14 @@ export const Guide100kbPageJa: React.FC<Guide100kbPageJaProps> = ({ onNavigate }
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
-          <button
-            type="button"
-            onClick={() => onNavigate('/ja/')}
+          <a
+            href="/ja/"
+            onClick={(e) => { e.preventDefault(); onNavigate('/ja/'); }}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>画像圧縮ツールに戻る</span>
-          </button>
+          </a>
         </div>
 
         {/* Page Title */}
@@ -436,40 +437,42 @@ export const Guide100kbPageJa: React.FC<Guide100kbPageJaProps> = ({ onNavigate }
           <section className="space-y-3">
             <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">関連ガイド</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <button
-                type="button"
-                onClick={() => onNavigate('/ja/gaido/whatsapp-yo-gazo-asshuku')}
+              <a
+                href="/ja/gaido/whatsapp-yo-gazo-asshuku"
+                onClick={(e) => { e.preventDefault(); onNavigate('/ja/gaido/whatsapp-yo-gazo-asshuku'); }}
                 className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">WhatsApp用に画質を落とさず画像を圧縮する方法</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">まず自分で写真を小さくし、ドキュメントとして送ることで、WhatsAppにぼやけさせない方法を解説します。</p>
-              </button>
-              <button
-                type="button"
-                onClick={() => onNavigate('/ja/gaido/jpg-vs-png-vs-webp')}
+              </a>
+              <a
+                href="/ja/gaido/jpg-vs-png-vs-webp"
+                onClick={(e) => { e.preventDefault(); onNavigate('/ja/gaido/jpg-vs-png-vs-webp'); }}
                 className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG・PNG・WebPの違いと使い分け｜どれを選ぶべき？</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">ファイルサイズ、画質、透明対応を比較し、毎回正しい形式を選べるようにします。</p>
-              </button>
+              </a>
             </div>
           </section>
 
+          <GuideRelatedLinks guide="100kb" lang="ja" onNavigate={onNavigate} />
+
           <div className="pt-2 flex flex-col sm:flex-row gap-3">
-            <button
-              type="button"
-              onClick={() => onNavigate('/ja/')}
+            <a
+              href="/ja/"
+              onClick={(e) => { e.preventDefault(); onNavigate('/ja/'); }}
               className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               無料で画像を圧縮する
-            </button>
-            <button
-              type="button"
-              onClick={() => onNavigate('/ja/gaido/jpg-vs-png-vs-webp')}
+            </a>
+            <a
+              href="/ja/gaido/jpg-vs-png-vs-webp"
+              onClick={(e) => { e.preventDefault(); onNavigate('/ja/gaido/jpg-vs-png-vs-webp'); }}
               className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               JPG・PNG・WebPの違い
-            </button>
+            </a>
           </div>
         </div>
       </div>

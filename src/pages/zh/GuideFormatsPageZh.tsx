@@ -8,6 +8,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, FileImage, Camera, Layers, Globe, CheckCircle2, Scale } from 'lucide-react';
 import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
+import { GuideRelatedLinks } from '../../components/GuideRelatedLinks';
 
 interface GuideFormatsPageZhProps {
   onNavigate: (path: string) => void;
@@ -234,14 +235,14 @@ export const GuideFormatsPageZh: React.FC<GuideFormatsPageZhProps> = ({ onNaviga
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
-          <button
-            type="button"
-            onClick={() => onNavigate('/zh/')}
+          <a
+            href="/zh/"
+            onClick={(e) => { e.preventDefault(); onNavigate('/zh/'); }}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>返回图片压缩器</span>
-          </button>
+          </a>
         </div>
 
         {/* Page Title */}
@@ -463,40 +464,42 @@ export const GuideFormatsPageZh: React.FC<GuideFormatsPageZhProps> = ({ onNaviga
           <section className="space-y-3">
             <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">相关指南</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <button
-                type="button"
-                onClick={() => onNavigate('/zh/zhinan/whatsapp-tupian-yasuo')}
+              <a
+                href="/zh/zhinan/whatsapp-tupian-yasuo"
+                onClick={(e) => { e.preventDefault(); onNavigate('/zh/zhinan/whatsapp-tupian-yasuo'); }}
                 className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">如何在 WhatsApp 上压缩图片而不损失画质</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">先自己缩小照片，再作为文件发送，这样 WhatsApp 就无法再模糊它们。</p>
-              </button>
-              <button
-                type="button"
-                onClick={() => onNavigate('/zh/zhinan/jiang-tupian-yasuo-zhi-100kb')}
+              </a>
+              <a
+                href="/zh/zhinan/jiang-tupian-yasuo-zhi-100kb"
+                onClick={(e) => { e.preventDefault(); onNavigate('/zh/zhinan/jiang-tupian-yasuo-zhi-100kb'); }}
                 className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">如何把图片压缩到 100KB，用于网站和邮件</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">分步指南，帮你达到 100KB 而不毁掉照片。</p>
-              </button>
+              </a>
             </div>
           </section>
 
+          <GuideRelatedLinks guide="formats" lang="zh" onNavigate={onNavigate} />
+
           <div className="pt-2 flex flex-col sm:flex-row gap-3">
-            <button
-              type="button"
-              onClick={() => onNavigate('/zh/')}
+            <a
+              href="/zh/"
+              onClick={(e) => { e.preventDefault(); onNavigate('/zh/'); }}
               className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               免费压缩图片
-            </button>
-            <button
-              type="button"
-              onClick={() => onNavigate('/zh/zhinan/whatsapp-tupian-yasuo')}
+            </a>
+            <a
+              href="/zh/zhinan/whatsapp-tupian-yasuo"
+              onClick={(e) => { e.preventDefault(); onNavigate('/zh/zhinan/whatsapp-tupian-yasuo'); }}
               className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               为 WhatsApp 压缩
-            </button>
+            </a>
           </div>
         </div>
       </div>

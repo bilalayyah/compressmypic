@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, MessageCircle, Send, Smartphone, CheckCircle2, FileWarning, Layers } from 'lucide-react';
 import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
+import { GuideRelatedLinks } from '../../components/GuideRelatedLinks';
 
 interface GuideWhatsAppPageKoProps {
   onNavigate: (path: string) => void;
@@ -235,14 +236,14 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
-          <button
-            type="button"
-            onClick={() => onNavigate('/ko/')}
+          <a
+            href="/ko/"
+            onClick={(e) => { e.preventDefault(); onNavigate('/ko/'); }}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>이미지 압축기로 돌아가기</span>
-          </button>
+          </a>
         </div>
 
         {/* Page Title */}
@@ -427,40 +428,42 @@ export const GuideWhatsAppPageKo: React.FC<GuideWhatsAppPageKoProps> = ({ onNavi
           <section className="space-y-3">
             <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">관련 가이드</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <button
-                type="button"
-                onClick={() => onNavigate('/ko/gaideu/jpg-vs-png-vs-webp')}
+              <a
+                href="/ko/gaideu/jpg-vs-png-vs-webp"
+                onClick={(e) => { e.preventDefault(); onNavigate('/ko/gaideu/jpg-vs-png-vs-webp'); }}
                 className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG vs PNG vs WebP — 어떤 형식을 사용해야 할까요?</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">파일 크기, 화질, 투명도를 비교해 매번 올바른 형식을 선택하세요.</p>
-              </button>
-              <button
-                type="button"
-                onClick={() => onNavigate('/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi')}
+              </a>
+              <a
+                href="/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi"
+                onClick={(e) => { e.preventDefault(); onNavigate('/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi'); }}
                 className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">웹사이트와 이메일용 이미지 크기를 100KB로 줄이는 방법</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">사진을 망치지 않고 100KB에 도달하는 단계별 가이드입니다.</p>
-              </button>
+              </a>
             </div>
           </section>
 
+          <GuideRelatedLinks guide="whatsapp" lang="ko" onNavigate={onNavigate} />
+
           <div className="pt-2 flex flex-col sm:flex-row gap-3">
-            <button
-              type="button"
-              onClick={() => onNavigate('/ko/')}
+            <a
+              href="/ko/"
+              onClick={(e) => { e.preventDefault(); onNavigate('/ko/'); }}
               className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               이미지 무료 압축하기
-            </button>
-            <button
-              type="button"
-              onClick={() => onNavigate('/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi')}
+            </a>
+            <a
+              href="/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi"
+              onClick={(e) => { e.preventDefault(); onNavigate('/ko/gaideu/imiji-keugi-reul-100kb-ro-juligi'); }}
               className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               이미지를 100KB로 줄이기
-            </button>
+            </a>
           </div>
         </div>
       </div>
