@@ -75,6 +75,12 @@ export interface PageZhStrings {
   comparisonModal: ComparisonModalStrings;
   toolUi: Record<string, string>;
 }
+export interface PageViStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
 
 interface BrightnessEditorPageProps {
   onNavigate: (path: string) => void;
@@ -92,6 +98,7 @@ interface BrightnessEditorPageProps {
   jaStrings?: PageJaStrings;
   koStrings?: PageKoStrings;
   zhStrings?: PageZhStrings;
+  viStrings?: PageViStrings;
 }
 
 export const BrightnessEditorPage: React.FC<BrightnessEditorPageProps> = ({
@@ -110,6 +117,7 @@ export const BrightnessEditorPage: React.FC<BrightnessEditorPageProps> = ({
   jaStrings,
   koStrings,
   zhStrings,
+  viStrings,
 }) => {
   return (
     <ToneEditorTool
@@ -129,6 +137,7 @@ export const BrightnessEditorPage: React.FC<BrightnessEditorPageProps> = ({
       jaStrings={jaStrings}
       koStrings={koStrings}
       zhStrings={zhStrings}
+      viStrings={viStrings}
     />
   );
 };

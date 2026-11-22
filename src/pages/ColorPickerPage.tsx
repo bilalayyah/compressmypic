@@ -16,6 +16,7 @@ import { toRussianPath } from '../locales/ru/slugs';
 import { toJapanesePath } from '../locales/ja/slugs';
 import { toKoreanPath } from '../locales/ko/slugs';
 import { toChinesePath } from '../locales/zh/slugs';
+import { toVietnamesePath } from '../locales/vi/slugs';
 import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
@@ -108,6 +109,12 @@ export interface PageZhStrings {
   comparisonModal: ComparisonModalStrings;
   toolUi: Record<string, string>;
 }
+export interface PageViStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
 
 interface ColorPickerPageProps {
   onNavigate: (path: string) => void;
@@ -125,6 +132,7 @@ interface ColorPickerPageProps {
   jaStrings?: PageJaStrings;
   koStrings?: PageKoStrings;
   zhStrings?: PageZhStrings;
+  viStrings?: PageViStrings;
 }
 
 function rgbToColorValues(r: number, g: number, b: number, x: number, y: number): ColorValues {
@@ -187,10 +195,12 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
   jaStrings,
   koStrings,
   zhStrings,
+  viStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG['/image-color-picker'];
   const t = (key: string, fallback: string) => {
     if (lang === 'zh' && zhStrings?.toolUi) return (zhStrings.toolUi[key] as string | undefined) ?? fallback;
+    if (lang === 'vi' && viStrings?.toolUi) return (viStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'ja' && jaStrings?.toolUi) return (jaStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'ko' && koStrings?.toolUi) return (koStrings.toolUi[key] as string | undefined) ?? fallback;
     if (lang === 'id' && idStrings?.toolUi) return (idStrings.toolUi[key] as string | undefined) ?? fallback;
@@ -332,8 +342,8 @@ export const ColorPickerPage: React.FC<ColorPickerPageProps> = ({
       tool={activeTool}
       onNavigate={onNavigate}
       lang={lang}
-      ui={lang === 'zh' ? zhStrings?.layoutUi : lang === 'ja' ? jaStrings?.layoutUi : lang === 'ko' ? koStrings?.layoutUi : lang === 'id' ? idStrings?.layoutUi : lang === 'ru' ? ruStrings?.layoutUi : lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
-      canonicalPath={lang === 'zh' ? toChinesePath(activeTool.slug) : lang === 'ja' ? toJapanesePath(activeTool.slug) : lang === 'ko' ? toKoreanPath(activeTool.slug) : lang === 'id' ? toIndonesianPath(activeTool.slug) : lang === 'ru' ? toRussianPath(activeTool.slug) : lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
+      ui={lang === 'vi' ? viStrings?.layoutUi : lang === 'zh' ? zhStrings?.layoutUi : lang === 'ja' ? jaStrings?.layoutUi : lang === 'ko' ? koStrings?.layoutUi : lang === 'id' ? idStrings?.layoutUi : lang === 'ru' ? ruStrings?.layoutUi : lang === 'de' ? deStrings?.layoutUi : lang === 'it' ? itStrings?.layoutUi : lang === 'pt' ? ptStrings?.layoutUi : lang === 'fr' ? frStrings?.layoutUi : esStrings?.layoutUi}
+      canonicalPath={lang === 'vi' ? toVietnamesePath(activeTool.slug) : lang === 'zh' ? toChinesePath(activeTool.slug) : lang === 'ja' ? toJapanesePath(activeTool.slug) : lang === 'ko' ? toKoreanPath(activeTool.slug) : lang === 'id' ? toIndonesianPath(activeTool.slug) : lang === 'ru' ? toRussianPath(activeTool.slug) : lang === 'de' ? toGermanPath(activeTool.slug) : lang === 'it' ? toItalianPath(activeTool.slug) : lang === 'es' ? toSpanishPath(activeTool.slug) : lang === 'pt' ? toPortuguesePath(activeTool.slug) : lang === 'fr' ? toFrenchPath(activeTool.slug) : undefined}
       alternates={lang !== 'en' ? getAlternates(activeTool.slug) : undefined}
       toolRegistry={toolRegistry}
       categoryLabels={categoryLabels}

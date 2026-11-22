@@ -18,6 +18,7 @@ import { RU_PATH_BY_EN } from './ru/slugs';
 import { JA_PATH_BY_EN } from './ja/slugs';
 import { KO_PATH_BY_EN } from './ko/slugs';
 import { ZH_PATH_BY_EN } from './zh/slugs';
+import { VI_PATH_BY_EN } from './vi/slugs';
 
 const BASE = 'https://compressmypic.online';
 
@@ -52,6 +53,7 @@ const PATH_BY_EN_BY_LANG: Record<string, Record<string, string>> = {
   ja: JA_PATH_BY_EN,
   ko: KO_PATH_BY_EN,
   zh: ZH_PATH_BY_EN,
+  vi: VI_PATH_BY_EN,
 };
 
 /**
@@ -83,6 +85,7 @@ export function getAlternates(enPath: string): HreflangAlternate[] {
   const ja = JA_PATH_BY_EN[enPath];
   const ko = KO_PATH_BY_EN[enPath];
   const zh = ZH_PATH_BY_EN[enPath];
+  const vi = VI_PATH_BY_EN[enPath];
   const items: HreflangAlternate[] = [{ lang: 'en', href: `${BASE}${withTrailingSlash(enPath)}` }];
   if (es) items.push({ lang: 'es', href: `${BASE}${withTrailingSlash(es)}` });
   if (pt) items.push({ lang: 'pt', href: `${BASE}${withTrailingSlash(pt)}` });
@@ -94,6 +97,7 @@ export function getAlternates(enPath: string): HreflangAlternate[] {
   if (ja) items.push({ lang: 'ja', href: `${BASE}${withTrailingSlash(ja)}` });
   if (ko) items.push({ lang: 'ko', href: `${BASE}${withTrailingSlash(ko)}` });
   if (zh) items.push({ lang: 'zh', href: `${BASE}${withTrailingSlash(zh)}` });
+  if (vi) items.push({ lang: 'vi', href: `${BASE}${withTrailingSlash(vi)}` });
   items.push({ lang: 'x-default', href: `${BASE}${withTrailingSlash(enPath)}` });
   return items;
 }
@@ -115,6 +119,7 @@ export const OG_LOCALE_BY_LANG: Record<string, string> = {
   ja: 'ja_JP',
   ko: 'ko_KR',
   zh: 'zh_CN',
+  vi: 'vi_VN',
 };
 
 /** og:locale value for a language code (falls back to en_US). */

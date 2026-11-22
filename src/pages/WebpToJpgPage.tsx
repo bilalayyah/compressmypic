@@ -73,6 +73,12 @@ export interface PageZhStrings {
   comparisonModal: ComparisonModalStrings;
   toolUi: Record<string, string>;
 }
+export interface PageViStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
 
 
 
@@ -92,6 +98,7 @@ interface WebpToJpgPageProps {
   jaStrings?: PageJaStrings;
   koStrings?: PageKoStrings;
   zhStrings?: PageZhStrings;
+  viStrings?: PageViStrings;
 }
 
 export const WebpToJpgPage: React.FC<WebpToJpgPageProps> = ({
@@ -110,9 +117,12 @@ export const WebpToJpgPage: React.FC<WebpToJpgPageProps> = ({
   jaStrings,
   koStrings,
   zhStrings,
+  viStrings,
 }) => {
   const t = (key: string, fallback: string) =>
-    lang === 'zh' && zhStrings?.toolUi
+    lang === 'vi' && viStrings?.toolUi
+      ? ((viStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'zh' && zhStrings?.toolUi
       ? ((zhStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'ja' && jaStrings?.toolUi
       ? ((jaStrings.toolUi[key] as string | undefined) ?? fallback)
@@ -150,6 +160,7 @@ export const WebpToJpgPage: React.FC<WebpToJpgPageProps> = ({
     toolRegistry={toolRegistry}
     categoryLabels={categoryLabels}
     zhStrings={zhStrings}
+    viStrings={viStrings}
     jaStrings={jaStrings}
     koStrings={koStrings}
     esStrings={esStrings}

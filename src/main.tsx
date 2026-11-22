@@ -16,6 +16,7 @@ import {EN_PATH_BY_RU} from './locales/ru/slugs';
 import {EN_PATH_BY_JA} from './locales/ja/slugs';
 import {EN_PATH_BY_KO} from './locales/ko/slugs';
 import {EN_PATH_BY_ZH} from './locales/zh/slugs';
+import {EN_PATH_BY_VI} from './locales/vi/slugs';
 import { isBlogEnPath, resolveBlogRoute } from './data/blogArticles';
 
 // SEO audit issue 4 (non-EN CLS 1.2964): the app used to render its first
@@ -43,6 +44,7 @@ const PREFIXED_LANGS: SupportedLang[] = [
   'ja',
   'ko',
   'zh',
+  'vi',
 ];
 
 function localeFromPath(pathname: string): SupportedLang | null {
@@ -89,6 +91,7 @@ const EN_PATH_BY_LANG: Record<string, Record<string, string> | undefined> = {
   ja: EN_PATH_BY_JA,
   ko: EN_PATH_BY_KO,
   zh: EN_PATH_BY_ZH,
+  vi: EN_PATH_BY_VI,
 };
 
 function resolvePageModule(pathname: string): string | null {
