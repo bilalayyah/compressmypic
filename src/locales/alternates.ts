@@ -1,8 +1,8 @@
 // Shared hreflang alternates for CompressMyPic — all language versions of a page.
 // Single module so every page (in any language) lists the FULL reciprocal set:
-// en + es + pt + fr + de + it + id + ru + ja + ko + zh + hi + x-default. The per-language helpers
+// en + es + pt + fr + de + it + id + ru + ja + ko + zh + hi + ar + x-default. The per-language helpers
 // (getEsAlternates, getPtAlternates, getFrAlternates, getDeAlternates,
-// getItAlternates, getIdAlternates, getRuAlternates, getJaAlternates, getKoAlternates, getZhAlternates, getHiAlternates) return only their own pair and must NOT be used for tool
+// getItAlternates, getIdAlternates, getRuAlternates, getJaAlternates, getKoAlternates, getZhAlternates, getHiAlternates, getArAlternates) return only their own pair and must NOT be used for tool
 // pages anymore — a page listing only its own pair makes Google treat the
 // other versions' annotations as non-reciprocal.
 // One-way imports only (this module imports the eleven slug maps; no slug map
@@ -19,6 +19,7 @@ import { JA_PATH_BY_EN } from './ja/slugs';
 import { KO_PATH_BY_EN } from './ko/slugs';
 import { ZH_PATH_BY_EN } from './zh/slugs';
 import { HI_PATH_BY_EN } from './hi/slugs';
+import { AR_PATH_BY_EN } from './ar/slugs';
 
 const BASE = 'https://compressmypic.online';
 
@@ -54,6 +55,7 @@ const PATH_BY_EN_BY_LANG: Record<string, Record<string, string>> = {
   ko: KO_PATH_BY_EN,
   zh: ZH_PATH_BY_EN,
   hi: HI_PATH_BY_EN,
+  ar: AR_PATH_BY_EN,
 };
 
 /**
@@ -86,6 +88,7 @@ export function getAlternates(enPath: string): HreflangAlternate[] {
   const ko = KO_PATH_BY_EN[enPath];
   const zh = ZH_PATH_BY_EN[enPath];
   const hi = HI_PATH_BY_EN[enPath];
+  const ar = AR_PATH_BY_EN[enPath];
   const items: HreflangAlternate[] = [{ lang: 'en', href: `${BASE}${withTrailingSlash(enPath)}` }];
   if (es) items.push({ lang: 'es', href: `${BASE}${withTrailingSlash(es)}` });
   if (pt) items.push({ lang: 'pt', href: `${BASE}${withTrailingSlash(pt)}` });
@@ -98,6 +101,7 @@ export function getAlternates(enPath: string): HreflangAlternate[] {
   if (ko) items.push({ lang: 'ko', href: `${BASE}${withTrailingSlash(ko)}` });
   if (zh) items.push({ lang: 'zh', href: `${BASE}${withTrailingSlash(zh)}` });
   if (hi) items.push({ lang: 'hi', href: `${BASE}${withTrailingSlash(hi)}` });
+  if (ar) items.push({ lang: 'ar', href: `${BASE}${withTrailingSlash(ar)}` });
   items.push({ lang: 'x-default', href: `${BASE}${withTrailingSlash(enPath)}` });
   return items;
 }
@@ -120,6 +124,7 @@ export const OG_LOCALE_BY_LANG: Record<string, string> = {
   ko: 'ko_KR',
   zh: 'zh_CN',
   hi: 'hi_IN',
+  ar: 'ar_SA',
 };
 
 /** og:locale value for a language code (falls back to en_US). */

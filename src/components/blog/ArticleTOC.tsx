@@ -20,7 +20,7 @@ export function ArticleTOC({ body }: ArticleTOCProps) {
       <p className="text-sm font-bold mb-3">{strings.tableOfContents}</p>
       <ul className="space-y-2 text-sm">
         {headings.map((h) => (
-          <li key={h.id} className={h.level === 3 ? 'pl-4' : ''}>
+          <li key={h.id} className={h.level === 3 ? 'ps-4' : ''}>
             <a href={`#${h.id}`} className="text-[var(--ink-2)] hover:text-[#dc2626] transition-colors">
               {h.text}
             </a>

@@ -27,6 +27,7 @@ import { toJapanesePath } from '../locales/ja/slugs';
 import { toKoreanPath } from '../locales/ko/slugs';
 import { toChinesePath } from '../locales/zh/slugs';
 import { toHindiPath } from '../locales/hi/slugs';
+import { toArabicPath } from '../locales/ar/slugs';
 import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from './ToolPageLayout';
 import { UploadZone } from './UploadZone';
@@ -186,6 +187,13 @@ export interface PageHiStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageArStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 interface ToneEditorToolProps {
   tool?: ToolDefinition;
   mode: ToneMode;
@@ -204,6 +212,7 @@ interface ToneEditorToolProps {
   koStrings?: PageKoStrings;
   zhStrings?: PageZhStrings;
   hiStrings?: PageHiStrings;
+  arStrings?: PageArStrings;
 }
 
 // English slug per mode — only used for the English tool-registry fallback
@@ -255,13 +264,14 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
   koStrings,
   zhStrings,
   hiStrings,
+  arStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG[MODE_SLUG[mode]];
   const cfg = MODE_CONFIG[mode];
   const ModeIcon = cfg.Icon;
   // Active language's page-strings bundle (zh/ja/ko/id/ru/de/it/es/pt/fr); English uses defaults.
   const pageStrings =
-    lang === 'hi' ? hiStrings : lang === 'zh' ? zhStrings : lang === 'ja' ? jaStrings : lang === 'ko' ? koStrings : lang === 'id' ? idStrings : lang === 'ru' ? ruStrings : lang === 'de' ? deStrings : lang === 'it' ? itStrings : lang === 'pt' ? ptStrings : lang === 'fr' ? frStrings : lang === 'es' ? esStrings : undefined;
+    lang === 'hi' ? hiStrings : lang === 'zh' ? zhStrings : lang === 'ja' ? jaStrings : lang === 'ko' ? koStrings : lang === 'id' ? idStrings : lang === 'ru' ? ruStrings : lang === 'de' ? deStrings : lang === 'it' ? itStrings : lang === 'pt' ? ptStrings : lang === 'fr' ? frStrings : lang === 'es' ? esStrings :     lang === 'ar' ? arStrings : undefined;
   const activeToolUi = pageStrings?.toolUi;
   const t = (key: string, fallback: string) =>
     activeToolUi ? (activeToolUi[key] as string | undefined) ?? fallback : fallback;
@@ -440,6 +450,8 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
       canonicalPath={
         lang === 'hi'
           ? toHindiPath(activeTool.slug)
+        : lang === 'ar'
+          ? toArabicPath(activeTool.slug)
           : lang === 'zh'
           ? toChinesePath(activeTool.slug)
           : lang === 'ja'
@@ -644,7 +656,7 @@ export const ToneEditorTool: React.FC<ToneEditorToolProps> = ({
                       key={preset.label}
                       type="button"
                       onClick={() => setValue(preset.value)}
-                      className={`px-3 py-2 text-xs font-semibold rounded-[11px] border text-left transition-colors cursor-pointer ${
+                      className={`px-3 py-2 text-xs font-semibold rounded-[11px] border text-start transition-colors cursor-pointer ${
                         value === preset.value
                           ? 'bg-[#fee2e2] dark:bg-[#dc2626]/25 border-[#dc2626] dark:border-[#ef4444] text-[#b91c1c] dark:text-[#fecaca]'
                           : 'bg-[var(--surface-2)] border-[var(--line)] text-[var(--ink-2)] hover:border-[var(--line-strong)] hover:text-[var(--ink)]'

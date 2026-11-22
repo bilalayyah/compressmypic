@@ -80,6 +80,13 @@ export interface PageHiStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageArStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 
 
 interface Props {
@@ -99,6 +106,7 @@ interface Props {
   koStrings?: PageKoStrings;
   zhStrings?: PageZhStrings;
   hiStrings?: PageHiStrings;
+  arStrings?: PageArStrings;
 }
 
 export const TargetFileSizePage: React.FC<Props> = ({
@@ -118,6 +126,7 @@ export const TargetFileSizePage: React.FC<Props> = ({
   koStrings,
   zhStrings,
   hiStrings,
+  arStrings,
 }) => (
   <TargetSizeCompressorTool
     slug="/target-file-size-compressor"
@@ -130,6 +139,7 @@ export const TargetFileSizePage: React.FC<Props> = ({
     categoryLabels={categoryLabels}
     zhStrings={zhStrings}
     hiStrings={hiStrings}
+    arStrings={arStrings}
     jaStrings={jaStrings}
     koStrings={koStrings}
     esStrings={esStrings}

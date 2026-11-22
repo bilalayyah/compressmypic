@@ -170,6 +170,20 @@ export async function loadLocaleData<T>(
         blog: blogMod ? blogMod.HI_BLOG_OVERRIDES : {},
       } as T;
     }
+    case 'ar': {
+      const [uiMod, toolsMod, blogMod] = await Promise.all([
+        import('./ar/ui'),
+        import('./ar/tools'),
+        withBlog ? import('./ar/blog') : Promise.resolve(null),
+      ]);
+      return {
+        ui: uiMod.AR,
+        tools: toolsMod.TOOL_BY_SLUG_AR,
+        categories: toolsMod.TOOL_CATEGORIES_AR,
+        toolUi: uiMod.TOOL_UI_AR,
+        blog: blogMod ? blogMod.AR_BLOG_OVERRIDES : {},
+      } as T;
+    }
     default:
       // 'en' has no locale data (English is the built-in default); App and
       // main.tsx both guard against calling this for 'en'.

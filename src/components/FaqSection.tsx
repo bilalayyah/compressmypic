@@ -163,7 +163,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({
                   type="button"
                   onClick={() => toggleFaq(item.id)}
                   aria-expanded={isOpen}
-                  className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
+                  className="w-full flex items-center justify-between gap-3 px-5 py-4 text-start transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                 >
                   <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">
                     {item.question}

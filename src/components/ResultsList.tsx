@@ -144,12 +144,12 @@ export const ResultsList: React.FC<ResultsListProps> = ({
                 </span>
                 {overallPercentage > 0 ? (
                   <span className="text-xl font-extrabold font-mono text-[#15803d] dark:text-[#4ade80] tabular-nums flex items-center">
-                    <ArrowDown className="w-5 h-5 mr-0.5 inline" />
+                    <ArrowDown className="w-5 h-5 me-0.5 inline" />
                     {overallPercentage}%
                   </span>
                 ) : (
                   <span className="text-xl font-extrabold font-mono text-[#ea580c] dark:text-[#fb923c] tabular-nums flex items-center">
-                    <ArrowUp className="w-5 h-5 mr-0.5 inline" />
+                    <ArrowUp className="w-5 h-5 me-0.5 inline" />
                     +{Math.abs(overallPercentage)}%
                   </span>
                 )}
@@ -302,7 +302,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({
 
                 {/* Middle Column: Quantitative Metrics */}
                 {isDone && image.compressedSize !== null && (
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2.5 px-3 sm:px-4 bg-[var(--surface-2)] border border-[var(--line)] rounded-xl w-full md:w-auto text-center md:text-left">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2.5 px-3 sm:px-4 bg-[var(--surface-2)] border border-[var(--line)] rounded-xl w-full md:w-auto text-center md:text-start">
                     <div>
                       <span className="text-xs text-[var(--ink-3)] block font-medium">{strings?.original ?? 'Original'}</span>
                       <span className="text-xs sm:text-sm font-semibold font-mono text-[var(--ink-2)] tabular-nums">

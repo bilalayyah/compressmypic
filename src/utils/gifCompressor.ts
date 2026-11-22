@@ -149,6 +149,15 @@ const GIF_ERROR_ZH: Record<GifErrorKey, string> = {
   errorCanvasContext: '无法初始化 2D 画布上下文。',
 };
 
+const GIF_ERROR_AR: Record<GifErrorKey, string> = {
+  errorTooSmall: 'الملف صغير جدًا بحيث لا يمكن أن يكون ملف GIF صالحًا.',
+  errorNotValidGif: 'الملف المحدد ليس رسمًا متحركًا صالحًا بصيغة GIF87a أو GIF89a.',
+  errorInvalidDims: 'يحتوي ملف GIF على أبعاد لوحة 0×0 غير صالحة.',
+  errorTruncatedColorTable: 'جدول الألوان العام لملف GIF مقطوع.',
+  errorNoFrames: 'تعذّر فك ترميز أي إطارات صور من ملف GIF هذا.',
+  errorCanvasContext: 'تعذّر تهيئة سياق اللوحة ثنائي الأبعاد.',
+};
+
 function gifError(key: GifErrorKey, lang?: SupportedLang): string {
   switch (lang) {
     case 'es':
@@ -171,6 +180,8 @@ function gifError(key: GifErrorKey, lang?: SupportedLang): string {
       return GIF_ERROR_KO[key];
     case 'zh':
       return GIF_ERROR_ZH[key];
+    case 'ar':
+      return GIF_ERROR_AR[key];
     default:
       return GIF_ERROR_EN[key];
   }

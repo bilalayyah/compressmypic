@@ -358,7 +358,7 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
               </span>
               <span>获得最佳效果的小技巧</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
+            <ul className="space-y-2 list-disc ps-5 text-sm sm:text-base">
               <li>只压缩一次，而且仅此一次。把已经压缩过的照片再压缩一次，几乎省不了体积，却会丢掉细节。</li>
               <li>如果画质重要，一定要把压缩后的文件作为文件发送——这是阻止 WhatsApp 再次压缩它的唯一办法。</li>
               <li>用相同设置一次压缩多张照片，然后用“全部下载（ZIP）”按钮全部下载。</li>
@@ -386,7 +386,7 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
               </span>
               <span>要避免的常见错误</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
+            <ul className="space-y-2 list-disc ps-5 text-sm sm:text-base">
               <li>压缩后仍然作为照片发送——WhatsApp 会再压缩一次，让你的努力白费。</li>
               <li>把有人脸的照片画质降到 40% 以下——低画质下皮肤和精细细节很快就会出现色块。</li>
               <li>相机照片用 PNG——PNG 的照片文件比 JPG 大得多，在 WhatsApp 上没有任何好处。</li>
@@ -414,7 +414,7 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-start transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
                       <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
@@ -437,7 +437,7 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
               <button
                 type="button"
                 onClick={() => onNavigate('/zh/zhinan/jpg-vs-png-vs-webp')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG、PNG 与 WebP 对比——应该用哪种格式？</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">对比文件体积、画质与透明支持，帮你每次都选对格式。</p>
@@ -445,7 +445,7 @@ export const GuideWhatsAppPageZh: React.FC<GuideWhatsAppPageZhProps> = ({ onNavi
               <button
                 type="button"
                 onClick={() => onNavigate('/zh/zhinan/jiang-tupian-yasuo-zhi-100kb')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">如何把图片压缩到 100KB，用于网站和邮件</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">分步指南，帮你达到 100KB 而不毁掉照片。</p>

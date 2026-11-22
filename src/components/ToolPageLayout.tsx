@@ -23,6 +23,7 @@ import { RU_ALL_TOOLS_PATH } from '../locales/ru/slugs';
 import { JA_ALL_TOOLS_PATH } from '../locales/ja/slugs';
 import { KO_ALL_TOOLS_PATH } from '../locales/ko/slugs';
 import { ZH_ALL_TOOLS_PATH } from '../locales/zh/slugs';
+import { AR_ALL_TOOLS_PATH } from '../locales/ar/slugs';
 import { getPastelCardClass, getPastelTileClass } from '../utils/pastel';
 import { ToolRelatedArticles } from './blog/ToolRelatedArticles';
 import { ShareButtons, type ShareButtonLabels } from './ShareButtons';
@@ -377,6 +378,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
       ja: JA_ALL_TOOLS_PATH,
       ko: KO_ALL_TOOLS_PATH,
       zh: ZH_ALL_TOOLS_PATH,
+      ar: AR_ALL_TOOLS_PATH,
     };
     const directoryPath = directoryPathByLang[lang];
     const breadcrumbItems: Record<string, unknown>[] = [
@@ -472,7 +474,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
   return (
     <div ref={layoutRootRef} className="bg-[var(--bg)]">
       {/* Left-Aligned Tool Page Header */}
-      <section className="pt-8 pb-6 sm:pt-11 sm:pb-8 px-4 sm:px-6 max-w-[1180px] mx-auto text-left">
+      <section className="pt-8 pb-6 sm:pt-11 sm:pb-8 px-4 sm:px-6 max-w-[1180px] mx-auto text-start">
         {/* Grey Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
@@ -488,9 +490,9 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
           >
             {ui.home}
           </a>
-          <ChevronRight className="w-3.5 h-3.5 text-[var(--ink-3)]" />
+          <ChevronRight className="w-3.5 h-3.5 text-[var(--ink-3)] rtl:rotate-180" />
           <span className="text-[var(--ink-3)]">{categoryLabel}</span>
-          <ChevronRight className="w-3.5 h-3.5 text-[var(--ink-3)]" />
+          <ChevronRight className="w-3.5 h-3.5 text-[var(--ink-3)] rtl:rotate-180" />
           <span className="text-[var(--ink-navy)] font-semibold">{tool.name}</span>
         </nav>
 
@@ -631,7 +633,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                       type="button"
                       onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
                       aria-expanded={isOpen}
-                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left hover:bg-white/30 dark:hover:bg-white/5 transition-colors cursor-pointer"
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-start hover:bg-white/30 dark:hover:bg-white/5 transition-colors cursor-pointer"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">
                         {faq.question}
@@ -708,7 +710,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                 >
                   <div className="flex items-start gap-3.5 min-w-0">
                     <span className={`w-9 h-9 rounded-lg ${getPastelTileClass(idx * 2)} flex items-center justify-center shrink-0 text-xs font-bold`}>
-                      <ArrowRight className="w-4 h-4" />
+                      <ArrowRight className="w-4 h-4 rtl:rotate-180" />
                     </span>
                     <div className="min-w-0">
                       <h3 className="font-sans text-base font-bold text-[var(--ink-navy)] group-hover:text-[#dc2626] dark:group-hover:text-[#fca5a5] transition-colors">

@@ -328,7 +328,7 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
             <div className="overflow-x-auto pt-1">
               <table className="w-full text-sm border border-[var(--line)] rounded-2xl overflow-hidden bg-[var(--surface)] shadow-[var(--shadow)]">
                 <thead>
-                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-left border-b border-[var(--line)]">
+                  <tr className="bg-[var(--bg-soft)] text-[var(--ink-navy)] text-start border-b border-[var(--line)]">
                     <th className="px-4 py-3 font-semibold">目标</th>
                     <th className="px-4 py-3 font-semibold">典型画质</th>
                     <th className="px-4 py-3 font-semibold">适合</th>
@@ -370,7 +370,7 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
               </span>
               <span>网站与邮件小技巧</span>
             </h2>
-            <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
+            <ul className="space-y-2 list-disc ps-5 text-sm sm:text-base">
               <li>网站请用 WebP 输出——它是达到 100KB 的最快方式，而且所有现代浏览器都支持它。</li>
               <li>邮件请用 JPG，它是最安全的格式，因为所有邮件应用都能打开它。一张 100KB 的 JPG 可以即时添加附件，绝不会因为体积而被退回。</li>
               <li>把同一页面或同一封邮件的所有照片一起压缩，然后用“全部下载（ZIP）”按钮全部下载。</li>
@@ -423,7 +423,7 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
                       type="button"
                       onClick={() => toggleFaq(item.id)}
                       aria-expanded={isOpen}
-                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
+                      className="w-full flex items-center justify-between gap-3 px-5 py-4 text-start transition-colors cursor-pointer hover:bg-white/30 dark:hover:bg-white/5"
                     >
                       <span className="text-sm sm:text-base font-bold text-[var(--ink-navy)]">{item.question}</span>
                       <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dc2626] dark:text-[#fca5a5]' : 'text-[var(--ink-3)]'}`} />
@@ -446,7 +446,7 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
               <button
                 type="button"
                 onClick={() => onNavigate('/zh/zhinan/whatsapp-tupian-yasuo')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">如何在 WhatsApp 上压缩图片而不损失画质</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">先自己缩小照片，再作为文件发送，这样 WhatsApp 就无法再模糊它们。</p>
@@ -454,7 +454,7 @@ export const Guide100kbPageZh: React.FC<Guide100kbPageZhProps> = ({ onNavigate }
               <button
                 type="button"
                 onClick={() => onNavigate('/zh/zhinan/jpg-vs-png-vs-webp')}
-                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
+                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG、PNG 与 WebP 对比——应该用哪种格式？</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">对比文件体积、画质与透明支持，帮你每次都选对格式。</p>

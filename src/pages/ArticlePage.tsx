@@ -182,7 +182,7 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
       </div>
 
       <div
-        className="blog-body mt-8 text-base leading-relaxed [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:mb-4 [&_ul]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:mb-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-1.5 [&_a]:text-[#dc2626] [&_a]:underline [&_strong]:font-bold [&_img]:rounded-2xl [&_img]:my-6 [&_blockquote]:border-l-4 [&_blockquote]:border-[#dc2626]/40 [&_blockquote]:pl-4 [&_blockquote]:my-4 [&_blockquote]:text-[var(--ink-2)] [&_code]:bg-[var(--surface-2)] [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-sm [&_table]:block [&_table]:overflow-x-auto [&_table]:max-w-full [&_table]:my-6 [&_table]:text-sm [&_table]:border-collapse [&_th]:text-left [&_th]:font-bold [&_th]:px-3 [&_th]:py-2 [&_th]:border [&_th]:border-[var(--line)] [&_th]:bg-[var(--surface-2)] [&_th]:whitespace-normal [&_td]:px-3 [&_td]:py-2 [&_td]:border [&_td]:border-[var(--line)] [&_td]:whitespace-normal [&_td]:break-words"
+        className="blog-body mt-8 text-base leading-relaxed [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:mb-4 [&_ul]:mb-4 [&_ul]:list-disc [&_ul]:ps-6 [&_ol]:mb-4 [&_ol]:list-decimal [&_ol]:ps-6 [&_li]:mb-1.5 [&_a]:text-[#dc2626] [&_a]:underline [&_strong]:font-bold [&_img]:rounded-2xl [&_img]:my-6 [&_blockquote]:border-s-4 [&_blockquote]:border-[#dc2626]/40 [&_blockquote]:ps-4 [&_blockquote]:my-4 [&_blockquote]:text-[var(--ink-2)] [&_code]:bg-[var(--surface-2)] [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-sm [&_table]:block [&_table]:overflow-x-auto [&_table]:max-w-full [&_table]:my-6 [&_table]:text-sm [&_table]:border-collapse [&_th]:text-start [&_th]:font-bold [&_th]:px-3 [&_th]:py-2 [&_th]:border [&_th]:border-[var(--line)] [&_th]:bg-[var(--surface-2)] [&_th]:whitespace-normal [&_td]:px-3 [&_td]:py-2 [&_td]:border [&_td]:border-[var(--line)] [&_td]:whitespace-normal [&_td]:break-words"
         dangerouslySetInnerHTML={{ __html: body }}
       />
 
@@ -284,7 +284,7 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
           {next ? (
             <a
               href={getBlogArticleUrl(next, lang)}
-              className="group p-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#dc2626]/40 transition-[border-color] text-right"
+              className="group p-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow)] hover:border-[#dc2626]/40 transition-[border-color] text-end"
             >
               <span className="block text-xs font-semibold text-[var(--ink-3)]">
                 {strings.nextArticle}
