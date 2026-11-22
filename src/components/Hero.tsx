@@ -154,7 +154,7 @@ export const Hero: React.FC<HeroProps> = ({
                       {tool.shortDescription}
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-[#dc2626] shrink-0 opacity-70 group-hover:translate-x-0.5 group-hover:opacity-100 transition-[transform,opacity]" />
+                  <ArrowRight className="w-4 h-4 text-[#dc2626] shrink-0 opacity-70 group-hover:translate-x-0.5 group-hover:opacity-100 transition-[transform,opacity] rtl:rotate-180" />
                 </button>
               ))
             )}
@@ -176,7 +176,7 @@ export const Hero: React.FC<HeroProps> = ({
           className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold btn-purple-pill shadow-sm cursor-pointer"
         >
           <span>Compress Images Now</span>
-          <ArrowRight className="w-4 h-4" />
+          <ArrowRight className="w-4 h-4 rtl:rotate-180" />
         </button>
         <button
           type="button"

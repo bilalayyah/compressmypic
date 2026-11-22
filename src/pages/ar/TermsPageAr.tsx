@@ -21,7 +21,7 @@ export const TermsPageAr: React.FC<TermsPageArProps> = ({ onNavigate }) => {
             onClick={() => onNavigate('/')}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] transition-colors cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-4 h-4 rtl:rotate-180" />
             <span>العودة إلى ضاغط الصور</span>
           </button>
         </div>
