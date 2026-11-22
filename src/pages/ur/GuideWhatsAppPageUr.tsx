@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, MessageCircle, Send, Smartphone, CheckCircle2, FileWarning, Layers } from 'lucide-react';
 import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
+import { GuideRelatedLinks } from '../../components/GuideRelatedLinks';
 
 interface GuideWhatsAppPageUrProps {
   onNavigate: (path: string) => void;
@@ -235,14 +236,14 @@ export const GuideWhatsAppPageUr: React.FC<GuideWhatsAppPageUrProps> = ({ onNavi
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
-          <button
-            type="button"
-            onClick={() => onNavigate('/ur/')}
+          <a
+            href="/ur/"
+            onClick={(e) => { e.preventDefault(); onNavigate('/ur/'); }}
             className="inline-flex items-center gap-1.5 py-2 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 rtl:rotate-180" />
             <span>تصویر کمپریسر پر واپس جائیں</span>
-          </button>
+          </a>
         </div>
 
         {/* Page Title */}
@@ -427,40 +428,42 @@ export const GuideWhatsAppPageUr: React.FC<GuideWhatsAppPageUrProps> = ({ onNavi
           <section className="space-y-3">
             <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">متعلقہ گائیڈز</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <button
-                type="button"
-                onClick={() => onNavigate('/ur/rehnumai/jpg-vs-png-vs-webp/')}
-                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
+              <a
+                href="/ur/rehnumai/jpg-vs-png-vs-webp/"
+                onClick={(e) => { e.preventDefault(); onNavigate('/ur/rehnumai/jpg-vs-png-vs-webp/'); }}
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG بمقابلہ PNG بمقابلہ WebP — آپ کو کون سا فارمیٹ استعمال کرنا چاہیے؟</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">فائل سائز، معیار اور شفافیت کا موازنہ، تاکہ آپ ہر بار صحیح فارمیٹ چنیں۔</p>
-              </button>
-              <button
-                type="button"
-                onClick={() => onNavigate('/ur/rehnumai/tasveer-ka-size-100kb-tak-kam-karein/')}
-                className={`text-start p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
+              </a>
+              <a
+                href="/ur/rehnumai/tasveer-ka-size-100kb-tak-kam-karein/"
+                onClick={(e) => { e.preventDefault(); onNavigate('/ur/rehnumai/tasveer-ka-size-100kb-tak-kam-karein/'); }}
+                className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">ویب سائٹس اور ای میل کے لیے تصویر کا سائز 100KB تک کیسے کم کریں</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">اپنی تصویر خراب کیے بغیر 100KB تک پہنچنے کی مرحلہ بہ مرحلہ گائیڈ۔</p>
-              </button>
+              </a>
             </div>
           </section>
 
+          <GuideRelatedLinks guide="whatsapp" lang="ur" onNavigate={onNavigate} />
+
           <div className="pt-2 flex flex-col sm:flex-row gap-3">
-            <button
-              type="button"
-              onClick={() => onNavigate('/ur/')}
+            <a
+              href="/ur/"
+              onClick={(e) => { e.preventDefault(); onNavigate('/ur/'); }}
               className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               تصویریں مفت کمپریس کریں
-            </button>
-            <button
-              type="button"
-              onClick={() => onNavigate('/ur/rehnumai/tasveer-ka-size-100kb-tak-kam-karein/')}
+            </a>
+            <a
+              href="/ur/rehnumai/tasveer-ka-size-100kb-tak-kam-karein/"
+              onClick={(e) => { e.preventDefault(); onNavigate('/ur/rehnumai/tasveer-ka-size-100kb-tak-kam-karein/'); }}
               className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               تصویر کو 100KB تک کم کریں
-            </button>
+            </a>
           </div>
         </div>
       </div>

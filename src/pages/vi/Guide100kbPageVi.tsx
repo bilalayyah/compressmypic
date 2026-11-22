@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, Mail, Globe, Target, CheckCircle2, Layers, Gauge } from 'lucide-react';
 import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
+import { GuideRelatedLinks } from '../../components/GuideRelatedLinks';
 
 interface Guide100kbPageViProps {
   onNavigate: (path: string) => void;
@@ -231,14 +232,14 @@ export const Guide100kbPageVi: React.FC<Guide100kbPageViProps> = ({ onNavigate }
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
-          <button
-            type="button"
-            onClick={() => onNavigate('/vi/')}
+          <a
+            href="/vi/"
+            onClick={(e) => { e.preventDefault(); onNavigate('/vi/'); }}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Quay lại công cụ nén ảnh</span>
-          </button>
+          </a>
         </div>
 
         {/* Page Title */}
@@ -436,40 +437,42 @@ export const Guide100kbPageVi: React.FC<Guide100kbPageViProps> = ({ onNavigate }
           <section className="space-y-3">
             <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">Hướng dẫn liên quan</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <button
-                type="button"
-                onClick={() => onNavigate('/vi/huong-dan/nen-anh-cho-whatsapp')}
+              <a
+                href="/vi/huong-dan/nen-anh-cho-whatsapp"
+                onClick={(e) => { e.preventDefault(); onNavigate('/vi/huong-dan/nen-anh-cho-whatsapp'); }}
                 className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Cách nén ảnh cho WhatsApp mà không mất chất lượng</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Hãy tự giảm ảnh trước rồi gửi dưới dạng tài liệu để WhatsApp không thể làm mờ ảnh của bạn.</p>
-              </button>
-              <button
-                type="button"
-                onClick={() => onNavigate('/vi/huong-dan/jpg-vs-png-vs-webp')}
+              </a>
+              <a
+                href="/vi/huong-dan/jpg-vs-png-vs-webp"
+                onClick={(e) => { e.preventDefault(); onNavigate('/vi/huong-dan/jpg-vs-png-vs-webp'); }}
                 className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG vs PNG vs WebP: bạn nên dùng định dạng nào?</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">So sánh dung lượng tệp, chất lượng và độ trong suốt để bạn chọn đúng định dạng mỗi lần.</p>
-              </button>
+              </a>
             </div>
           </section>
 
+          <GuideRelatedLinks guide="100kb" lang="vi" onNavigate={onNavigate} />
+
           <div className="pt-2 flex flex-col sm:flex-row gap-3">
-            <button
-              type="button"
-              onClick={() => onNavigate('/vi/')}
+            <a
+              href="/vi/"
+              onClick={(e) => { e.preventDefault(); onNavigate('/vi/'); }}
               className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               Nén ảnh miễn phí
-            </button>
-            <button
-              type="button"
-              onClick={() => onNavigate('/vi/huong-dan/jpg-vs-png-vs-webp')}
+            </a>
+            <a
+              href="/vi/huong-dan/jpg-vs-png-vs-webp"
+              onClick={(e) => { e.preventDefault(); onNavigate('/vi/huong-dan/jpg-vs-png-vs-webp'); }}
               className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               JPG vs PNG vs WebP
-            </button>
+            </a>
           </div>
         </div>
       </div>

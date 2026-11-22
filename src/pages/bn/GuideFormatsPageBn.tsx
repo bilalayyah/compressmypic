@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, FileImage, Camera, Layers, Globe, CheckCircle2, Scale } from 'lucide-react';
 import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
+import { GuideRelatedLinks } from '../../components/GuideRelatedLinks';
 
 interface GuideFormatsPageBnProps {
   onNavigate: (path: string) => void;
@@ -227,14 +228,14 @@ export const GuideFormatsPageBn: React.FC<GuideFormatsPageBnProps> = ({ onNaviga
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
-          <button
-            type="button"
-            onClick={() => onNavigate('/bn/')}
+          <a
+            href="/bn/"
+            onClick={(e) => { e.preventDefault(); onNavigate('/bn/'); }}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>ইমেজ কম্প্রেসরে ফিরে যান</span>
-          </button>
+          </a>
         </div>
 
         {/* Page Title */}
@@ -456,40 +457,42 @@ export const GuideFormatsPageBn: React.FC<GuideFormatsPageBnProps> = ({ onNaviga
           <section className="space-y-3">
             <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">সম্পর্কিত গাইড</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <button
-                type="button"
-                onClick={() => onNavigate('/bn/guides/whatsapp-er-jonno-image-compress-korun')}
+              <a
+                href="/bn/guides/whatsapp-er-jonno-image-compress-korun"
+                onClick={(e) => { e.preventDefault(); onNavigate('/bn/guides/whatsapp-er-jonno-image-compress-korun'); }}
                 className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">কোয়ালিটি না হারিয়ে WhatsApp-এর জন্য ইমেজ কীভাবে কম্প্রেস করবেন</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">প্রথমে নিজে ছবি কমান এবং তারপর ডকুমেন্ট হিসেবে পাঠান যাতে WhatsApp সেগুলো ঝাপসা না করতে পারে।</p>
-              </button>
-              <button
-                type="button"
-                onClick={() => onNavigate('/bn/guides/image-100kb-te-chhoto-kivabe-korben')}
+              </a>
+              <a
+                href="/bn/guides/image-100kb-te-chhoto-kivabe-korben"
+                onClick={(e) => { e.preventDefault(); onNavigate('/bn/guides/image-100kb-te-chhoto-kivabe-korben'); }}
                 className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">ওয়েবসাইট ও ইমেলের জন্য ইমেজের সাইজ 100 KB-তে কীভাবে কমাবেন</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">আপনার ছবি নষ্ট না করে 100 KB-তে পৌঁছানোর ধাপে ধাপে গাইড।</p>
-              </button>
+              </a>
             </div>
           </section>
 
+          <GuideRelatedLinks guide="formats" lang="bn" onNavigate={onNavigate} />
+
           <div className="pt-2 flex flex-col sm:flex-row gap-3">
-            <button
-              type="button"
-              onClick={() => onNavigate('/bn/')}
+            <a
+              href="/bn/"
+              onClick={(e) => { e.preventDefault(); onNavigate('/bn/'); }}
               className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               বিনামূল্যে ইমেজ কম্প্রেস করুন
-            </button>
-            <button
-              type="button"
-              onClick={() => onNavigate('/bn/guides/whatsapp-er-jonno-image-compress-korun')}
+            </a>
+            <a
+              href="/bn/guides/whatsapp-er-jonno-image-compress-korun"
+              onClick={(e) => { e.preventDefault(); onNavigate('/bn/guides/whatsapp-er-jonno-image-compress-korun'); }}
               className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               WhatsApp-এর জন্য কম্প্রেস করুন
-            </button>
+            </a>
           </div>
         </div>
       </div>

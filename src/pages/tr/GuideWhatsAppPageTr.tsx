@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ChevronDown, MessageCircle, Send, Smartphone, CheckCircle2, FileWarning, Layers } from 'lucide-react';
 import { getPastelCardClass, getPastelTileClass } from '../../utils/pastel';
+import { GuideRelatedLinks } from '../../components/GuideRelatedLinks';
 
 interface GuideWhatsAppPageTrProps {
   onNavigate: (path: string) => void;
@@ -235,14 +236,14 @@ export const GuideWhatsAppPageTr: React.FC<GuideWhatsAppPageTrProps> = ({ onNavi
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-6">
-          <button
-            type="button"
-            onClick={() => onNavigate('/tr/')}
+          <a
+            href="/tr/"
+            onClick={(e) => { e.preventDefault(); onNavigate('/tr/'); }}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Görsel sıkıştırıcıya dön</span>
-          </button>
+          </a>
         </div>
 
         {/* Page Title */}
@@ -427,40 +428,42 @@ export const GuideWhatsAppPageTr: React.FC<GuideWhatsAppPageTrProps> = ({ onNavi
           <section className="space-y-3">
             <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-[var(--ink-navy)] tracking-tight">İlgili rehberler</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <button
-                type="button"
-                onClick={() => onNavigate('/tr/rehberler/jpg-vs-png-vs-webp')}
+              <a
+                href="/tr/rehberler/jpg-vs-png-vs-webp"
+                onClick={(e) => { e.preventDefault(); onNavigate('/tr/rehberler/jpg-vs-png-vs-webp'); }}
                 className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(0)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">JPG, PNG ve WebP: Hangi formatı kullanmalısınız?</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Dosya boyutunu, kaliteyi ve şeffaflığı karşılaştırdık; böylece her seferinde doğru formatı seçersiniz.</p>
-              </button>
-              <button
-                type="button"
-                onClick={() => onNavigate('/tr/rehberler/gorsel-boyutunu-100kb-ye-dusur')}
+              </a>
+              <a
+                href="/tr/rehberler/gorsel-boyutunu-100kb-ye-dusur"
+                onClick={(e) => { e.preventDefault(); onNavigate('/tr/rehberler/gorsel-boyutunu-100kb-ye-dusur'); }}
                 className={`text-left p-5 rounded-2xl border shadow-[var(--shadow)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)] transition-all cursor-pointer ${getPastelCardClass(2)}`}
               >
                 <div className="font-sans font-bold text-[var(--ink-navy)] text-sm">Web siteleri ve e-posta için bir görselin boyutunu 100 KB'a düşürme</div>
                 <p className="text-xs text-[var(--ink-2)] mt-1.5 leading-relaxed">Fotoğrafınızı bozmadan 100 KB'a ulaşmak için adım adım rehber.</p>
-              </button>
+              </a>
             </div>
           </section>
 
+          <GuideRelatedLinks guide="whatsapp" lang="tr" onNavigate={onNavigate} />
+
           <div className="pt-2 flex flex-col sm:flex-row gap-3">
-            <button
-              type="button"
-              onClick={() => onNavigate('/tr/')}
+            <a
+              href="/tr/"
+              onClick={(e) => { e.preventDefault(); onNavigate('/tr/'); }}
               className="flex-1 px-5 py-3 rounded-[12px] btn-purple-grad text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               Görselleri ücretsiz sıkıştır
-            </button>
-            <button
-              type="button"
-              onClick={() => onNavigate('/tr/gorsel-100kb-ye-sikistir')}
+            </a>
+            <a
+              href="/tr/gorsel-100kb-ye-sikistir"
+              onClick={(e) => { e.preventDefault(); onNavigate('/tr/gorsel-100kb-ye-sikistir'); }}
               className="flex-1 px-5 py-3 rounded-[12px] bg-[var(--surface)] text-[var(--ink-navy)] text-sm font-semibold border border-[var(--line-strong)] shadow-xs hover:border-[#dc2626]/40 hover:bg-[var(--bg-soft)] transition-colors cursor-pointer"
             >
               Bir görseli 100 KB'a küçült
-            </button>
+            </a>
           </div>
         </div>
       </div>
