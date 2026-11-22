@@ -26,6 +26,7 @@ import { RU_PATH_BY_EN } from '../locales/ru/slugs';
 import { JA_PATH_BY_EN } from '../locales/ja/slugs';
 import { KO_PATH_BY_EN } from '../locales/ko/slugs';
 import { ZH_PATH_BY_EN } from '../locales/zh/slugs';
+import { HI_PATH_BY_EN } from '../locales/hi/slugs';
 import { ThemePreference, useTheme, type ResolvedTheme } from '../utils/theme';
 
 export interface HeaderStrings {
@@ -142,6 +143,7 @@ export const Header: React.FC<HeaderProps> = ({
     ja: JA_PATH_BY_EN,
     ko: KO_PATH_BY_EN,
     zh: ZH_PATH_BY_EN,
+    hi: HI_PATH_BY_EN,
   };
   const localizedMap = PATH_BY_EN_BY_LANG[lang];
   const homeUrl = lang === 'en' ? '/' : `/${lang}/`;
