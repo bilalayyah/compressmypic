@@ -86,6 +86,12 @@ export interface PageArStrings {
   comparisonModal: ComparisonModalStrings;
   toolUi: Record<string, string>;
 }
+export interface PageTrStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
 
 
 
@@ -107,6 +113,7 @@ interface PngToWebpPageProps {
   zhStrings?: PageZhStrings;
   hiStrings?: PageHiStrings;
   arStrings?: PageArStrings;
+  trStrings?: PageTrStrings;
 }
 
 export const PngToWebpPage: React.FC<PngToWebpPageProps> = ({
@@ -127,6 +134,7 @@ export const PngToWebpPage: React.FC<PngToWebpPageProps> = ({
   zhStrings,
   hiStrings,
   arStrings,
+  trStrings,
 }) => {
   const t = (key: string, fallback: string) =>
     lang === 'hi' && hiStrings?.toolUi
@@ -135,6 +143,8 @@ export const PngToWebpPage: React.FC<PngToWebpPageProps> = ({
       ? ((arStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'zh' && zhStrings?.toolUi
       ? ((zhStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'tr' && trStrings?.toolUi
+      ? ((trStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'ja' && jaStrings?.toolUi
       ? ((jaStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'ko' && koStrings?.toolUi
@@ -172,6 +182,7 @@ export const PngToWebpPage: React.FC<PngToWebpPageProps> = ({
     zhStrings={zhStrings}
     hiStrings={hiStrings}
     arStrings={arStrings}
+    trStrings={trStrings}
     jaStrings={jaStrings}
     koStrings={koStrings}
     esStrings={esStrings}

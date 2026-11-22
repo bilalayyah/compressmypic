@@ -86,6 +86,12 @@ export interface PageArStrings {
   comparisonModal: ComparisonModalStrings;
   toolUi: Record<string, string>;
 }
+export interface PageTrStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
 
 
 
@@ -107,6 +113,7 @@ interface AvifToJpgPageProps {
   zhStrings?: PageZhStrings;
   hiStrings?: PageHiStrings;
   arStrings?: PageArStrings;
+  trStrings?: PageTrStrings;
 }
 
 export const AvifToJpgPage: React.FC<AvifToJpgPageProps> = ({
@@ -127,6 +134,7 @@ export const AvifToJpgPage: React.FC<AvifToJpgPageProps> = ({
   zhStrings,
   hiStrings,
   arStrings,
+  trStrings,
 }) => {
   const t = (key: string, fallback: string) =>
     lang === 'hi' && hiStrings?.toolUi
@@ -135,6 +143,8 @@ export const AvifToJpgPage: React.FC<AvifToJpgPageProps> = ({
       ? ((arStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'zh' && zhStrings?.toolUi
       ? ((zhStrings.toolUi[key] as string | undefined) ?? fallback)
+      : lang === 'tr' && trStrings?.toolUi
+      ? ((trStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'ja' && jaStrings?.toolUi
       ? ((jaStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'ko' && koStrings?.toolUi
@@ -176,6 +186,7 @@ export const AvifToJpgPage: React.FC<AvifToJpgPageProps> = ({
     zhStrings={zhStrings}
     hiStrings={hiStrings}
     arStrings={arStrings}
+    trStrings={trStrings}
     jaStrings={jaStrings}
     koStrings={koStrings}
     esStrings={esStrings}

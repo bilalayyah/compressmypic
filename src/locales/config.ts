@@ -15,7 +15,7 @@ export type SupportedLang =
   | 'ru'
   | 'ko'
   | 'zh'
-  | 'hi' | 'ar';
+  | 'hi' | 'ar' | 'tr';
 
 export type LangStatus = 'live' | 'in-progress' | 'planned';
 
@@ -56,6 +56,7 @@ export const SUPPORTED_LANGUAGES: LanguageMeta[] = [
   { code: 'zh', prefix: 'zh', nativeName: '简体中文', englishName: 'Chinese (Simplified)', dir: 'ltr', variant: 'Simplified Mandarin Chinese', phase: 6, status: 'live', directoryPath: '/zh/all-tools' },
   { code: 'hi', prefix: 'hi', nativeName: 'हिन्दी', englishName: 'Hindi', dir: 'ltr', variant: 'Standard Hindi', phase: 7, status: 'in-progress', directoryPath: '/hi/sabhi-tools' },
   { code: 'ar', prefix: 'ar', nativeName: 'العربية', englishName: 'Arabic', dir: 'rtl', variant: 'Modern Standard Arabic', phase: 7, status: 'live', directoryPath: '/ar/jami-al-adawat' },
+  { code: 'tr', prefix: 'tr', nativeName: 'Türkçe', englishName: 'Turkish', dir: 'ltr', variant: 'Standard Turkish', phase: 7, status: 'in-progress', directoryPath: '/tr/tum-araclar' },
 ];
 
 export const SUPPORTED_LANGS: SupportedLang[] = SUPPORTED_LANGUAGES.map((l) => l.code);

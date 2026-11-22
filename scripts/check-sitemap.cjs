@@ -29,10 +29,10 @@ const REPO_ROOT = path.join(__dirname, '..');
 const SITEMAP_PATH = path.join(REPO_ROOT, 'public', 'sitemap.xml');
 const REGISTRY_PATH = path.join(REPO_ROOT, 'src', 'data', 'blogArticles.ts');
 const BASE = 'https://compressmypic.online';
-const LANGS = ['en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'hi', 'ar'];
-const PRE_BLOG_BASELINE = 754; // <url> count before Batch 2 (b0afe1b) was 626; +22 legal pages (Disclaimer + Cookie Policy × 11 locales) + 1 EN /all-tools/ hub (audit fix 2026-11-18); -11 remove-background tool URLs (removal 2026-11-20); +58 Hindi non-blog URLs (i18n/hindi-cmp-2026-11-22); +58 Arabic non-blog URLs (47 tools + home + 4 legal + Disclaimer + Cookie Policy + 3 guides + all-tools hub, 2026-11-22)
+const LANGS = ['en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'hi', 'ar', 'tr'];
+const PRE_BLOG_BASELINE = 812; // <url> count before Batch 2 (b0afe1b) was 626; +22 legal pages (Disclaimer + Cookie Policy × 11 locales) + 1 EN /all-tools/ hub (audit fix 2026-11-18); -11 remove-background tool URLs (removal 2026-11-20); +58 Hindi non-blog URLs (i18n/hindi-cmp-2026-11-22); +58 Arabic non-blog URLs (47 tools + home + 4 legal + Disclaimer + Cookie Policy + 3 guides + all-tools hub, 2026-11-22); +58 Turkish non-blog URLs (2026-11-22)
 // EXPECTED_BLOG_URLS is computed in main() from the registry:
-// 1 home + 7 category hubs per locale + <published articles>.
+// LANGS.length homes + 7*LANGS.length hubs + <published articles>.
 
 const failures = [];
 const fail = (msg) => failures.push(msg);

@@ -30,6 +30,7 @@ import { toKoreanPath } from '../locales/ko/slugs';
 import { toChinesePath } from '../locales/zh/slugs';
 import { toHindiPath } from '../locales/hi/slugs';
 import { toArabicPath } from '../locales/ar/slugs';
+import { toTurkishPath } from '../locales/tr/slugs';
 import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from './ToolPageLayout';
 import { UploadZone } from './UploadZone';
@@ -135,6 +136,12 @@ export interface PageArStrings {
   comparisonModal: ComparisonModalStrings;
   toolUi: Record<string, string>;
 }
+export interface PageTrStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
 
 interface TargetSizeCompressorToolProps {
   slug: string;
@@ -157,6 +164,7 @@ interface TargetSizeCompressorToolProps {
   zhStrings?: PageZhStrings;
   hiStrings?: PageHiStrings;
   arStrings?: PageArStrings;
+  trStrings?: PageTrStrings;
 }
 
 export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> = ({
@@ -180,11 +188,12 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
   zhStrings,
   hiStrings,
   arStrings,
+  trStrings,
 }) => {
   const activeTool = tool ?? TOOL_BY_SLUG[slug];
   // Active language's page-strings bundle (zh/ja/ko/id/ru/de/it/es/pt/fr); English uses defaults.
   const pageStrings =
-    lang === 'hi' ? hiStrings : lang === 'zh' ? zhStrings : lang === 'ja' ? jaStrings : lang === 'ko' ? koStrings : lang === 'id' ? idStrings : lang === 'ru' ? ruStrings : lang === 'de' ? deStrings : lang === 'it' ? itStrings : lang === 'pt' ? ptStrings : lang === 'fr' ? frStrings : lang === 'es' ? esStrings :     lang === 'ar' ? arStrings : undefined;
+    lang === 'hi' ? hiStrings : lang === 'zh' ? zhStrings : lang === 'ja' ? jaStrings : lang === 'ko' ? koStrings : lang === 'id' ? idStrings : lang === 'ru' ? ruStrings : lang === 'de' ? deStrings : lang === 'it' ? itStrings : lang === 'pt' ? ptStrings : lang === 'fr' ? frStrings : lang === 'es' ? esStrings :     lang === 'ar' ? arStrings : lang === 'tr' ? trStrings : undefined;
   const activeToolUi = pageStrings?.toolUi;
   const t = (key: string, fallback: string) =>
     activeToolUi ? (activeToolUi[key] as string | undefined) ?? fallback : fallback;
@@ -551,6 +560,8 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
           ? toHindiPath(activeTool.slug)
         : lang === 'ar'
           ? toArabicPath(activeTool.slug)
+        : lang === 'tr'
+          ? toTurkishPath(activeTool.slug)
           : lang === 'zh'
           ? toChinesePath(activeTool.slug)
           : lang === 'ja'
