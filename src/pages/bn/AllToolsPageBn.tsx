@@ -29,10 +29,10 @@ export interface AllToolsPageStrings {
 const BN_STRINGS: AllToolsPageStrings = {
   heading: 'সব টুলস',
   subheading:
-    'CompressMyPic-এর সব 47টি বিনামূল্যের টুল — আপনার ব্রাউজারেই ইমেজ কম্প্রেস, কনভার্ট ও এডিট করুন৤',
+    'CompressMyPic-এর সব 47টি বিনামূল্যের টুল — আপনার ব্রাউজারেই ইমেজ কম্প্রেস, কনভার্ট ও এডিট করুন।',
   searchPlaceholder: 'টুল খুঁজুন…',
   allLabel: 'সব',
-  noResults: 'এই নামে কোনো টুল পাওয়া যায়নি৤',
+  noResults: 'এই নামে কোনো টুল পাওয়া যায়নি।',
   openTool: 'টুল খুলুন',
 };
 
