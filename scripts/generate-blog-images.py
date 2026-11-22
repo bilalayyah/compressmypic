@@ -47,6 +47,11 @@ FONT_BOLD = "/usr/share/fonts/truetype/noto/NotoSans-Bold.ttf"
 FONT_REGULAR = "/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf"
 # Arabic: Noto Sans Arabic (raqm shaping; see text_kwargs below).
 FONT_AR_BOLD = "/usr/share/fonts/truetype/noto/NotoSansArabic-Bold.ttf"
+# Urdu: Noto Nastaliq Urdu (raqm shaping, RTL; same run-splitting as Arabic
+# because Nastaliq has NO Latin glyphs — only digits. Verified on this
+# machine: fc-list shows NotoNastaliqUrdu-Regular/Bold; cmap check confirms
+# A-Z absent, 0-9 present, all Urdu letters present. No download needed.)
+FONT_UR_BOLD = "/usr/share/fonts/truetype/noto/NotoNastaliqUrdu-Bold.ttf"
 # CJK fallback for ja/ko/zh titles (Noto Sans CJK if present, else Serif CJK).
 CJK_BOLD_CANDIDATES = [
     "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc",
@@ -71,6 +76,20 @@ def text_kwargs(lang):
 
 
 # Arabic script ranges (letters, marks, punctuation, presentation forms).
+def text_kwargs(lang):
+    """PIL kwargs for shaped text. Arabic and Urdu need raqm shaping + RTL
+    direction; without them the letters render isolated and in the wrong
+    order. All other languages render exactly as before (empty kwargs)."""
+    if lang == "ar":
+        return {"direction": "rtl", "language": "ar"}
+    if lang == "ur":
+        return {"direction": "rtl", "language": "ur"}
+    return {}
+
+
+# Arabic-script ranges (letters, marks, punctuation, presentation forms).
+# Covers Urdu too: every Urdu letter (ے ھ ہ ی ں گ ڈ ڑ ٹ چ ژ ک etc.) lives
+# in U+0600–U+06FF. Digits and Latin letters fall outside -> Latin runs.
 _AR_RANGES = [(0x0600, 0x06FF), (0x0750, 0x077F), (0x08A0, 0x08FF),
               (0xFB50, 0xFDFF), (0xFE70, 0xFEFF)]
 
@@ -86,6 +105,15 @@ def _split_ar_runs(text):
     NO Latin glyphs: a Latin token (KB, JPG, WebP, 'وEXIF' -> 'و' + 'EXIF')
     inside an Arabic title would render as tofu boxes if drawn with the
     Arabic font, and an Arabic word would be tofu in the Latin font."""
+def _split_runs(text):
+    """Split text into maximal same-script runs: (is_arabic_script, run),
+    with each space as its own (None, ' ') run. Needed because Noto Sans
+    Arabic and Noto Nastaliq Urdu have NO Latin glyphs: a Latin token (KB,
+    JPG, WebP, 'وEXIF' -> 'و' + 'EXIF') inside an Arabic/Urdu title would
+    render as tofu boxes if drawn with the RTL font, and an Arabic/Urdu
+    word would be tofu in the Latin font. (Nastaliq DOES have digits 0-9,
+    but digits travel with their Latin token, e.g. '50KB', so they stay in
+    the Latin run — same rendering either way.)"""
     runs = []
     cur_ar = None
     cur = []
@@ -119,6 +147,15 @@ def _ar_textlength(draw, text, font_ar, font_lat):
             total += draw.textlength(' ', font=font_ar)
         elif is_ar:
             total += draw.textlength(run, font=font_ar, direction='rtl', language='ar')
+def _rtl_textlength(draw, text, font_rtl, font_lat, lang):
+    """Width of a mixed-script Arabic/Urdu title line: each run measured
+    with the font that can actually render it."""
+    total = 0.0
+    for is_ar, run in _split_runs(text):
+        if is_ar is None:
+            total += draw.textlength(' ', font=font_rtl)
+        elif is_ar:
+            total += draw.textlength(run, font=font_rtl, direction='rtl', language=lang)
         else:
             total += draw.textlength(run, font=font_lat)
     return total
@@ -150,6 +187,31 @@ def _draw_ar_line(draw, line, y, font_ar, font_lat):
             w = draw.textlength(run, font=font_ar, direction='rtl', language='ar')
             draw.text((x_right, baseline), run, font=font_ar, fill=DARK, anchor='rs',
                       direction='rtl', language='ar')
+    """textlength that is mixed-script aware for Arabic/Urdu (else the plain call)."""
+    if lang not in ('ar', 'ur'):
+        return draw.textlength(text, font=font, **text_kwargs(lang))
+    return _rtl_textlength(draw, text, font, font_for('en', font.size, bold=True), lang)
+
+
+def _draw_rtl_line(draw, line, y, font_rtl, font_lat, lang):
+    """Draw one mixed-script Arabic/Urdu title line, centered: runs are laid
+    out right-to-left in logical order (RTL runs shaped with raqm, Latin
+    runs in the Latin font), each right-anchored at the running edge.
+    All runs share ONE baseline (anchor 's' at y + the RTL font's
+    ascent) — anchoring on the ascender instead would misalign the runs,
+    because the two fonts have different ascender metrics (a small Arabic
+    glyph like 'و' would sit visibly lower than a Latin run)."""
+    total = _rtl_textlength(draw, line, font_rtl, font_lat, lang)
+    x_right = (W + total) / 2
+    baseline = y + font_rtl.getmetrics()[0]
+    space_w = draw.textlength(' ', font=font_rtl)
+    for is_ar, run in _split_runs(line):
+        if is_ar is None:
+            x_right -= space_w
+        elif is_ar:
+            w = draw.textlength(run, font=font_rtl, direction='rtl', language=lang)
+            draw.text((x_right, baseline), run, font=font_rtl, fill=DARK, anchor='rs',
+                      direction='rtl', language=lang)
             x_right -= w
         else:
             w = draw.textlength(run, font=font_lat)
@@ -195,6 +257,10 @@ def font_for(lang, size, bold=True):
                 )
             return ImageFont.truetype(BENGALI_BOLD, size)
         return ImageFont.truetype(FONT_REGULAR, size)
+    if lang == "ar" and bold:
+        return ImageFont.truetype(FONT_AR_BOLD, size)
+    if lang == "ur" and bold:
+        return ImageFont.truetype(FONT_UR_BOLD, size)
     if lang in ("ja", "ko", "zh"):
         if bold:
             for path in CJK_BOLD_CANDIDATES:
@@ -304,6 +370,7 @@ def draw_mixed_text(draw, x, y, text, size, fill):
 
 def _split_point(draw, word, font, max_width, lang="en"):
 def _split_point(draw, word, font, max_width, wlen=None):
+def _split_point(draw, word, font, max_width, lang="en"):
     """Largest fitting character prefix (binary search), preferring not to
     split inside a Latin letter/digit run (keeps acronyms like 'PNG'
     together). Backs off to the run start when the prefix stays usable."""
@@ -373,9 +440,38 @@ def wrap_text(draw, text, font, max_width, lang=None):
     return lines
 
 
+# Urdu (Nastaliq) vertical budget: title starts at 272 (icon ends 260),
+# subline sits at title_y + total_h + 22 and must clear the bottom bar
+# (top edge 614). Nastaliq ink is ~2.8x the nominal size tall (measured:
+# max ink 122px at 44px vs metrics ascent+descent 111px), so Urdu sizes
+# are much smaller than Latin (48..30) and line height comes from the
+# font metrics. A 32px Nastaliq line's ink is still ~89px tall — visually
+# as prominent as a 60px Latin line.
+UR_TITLE_Y = 272
+UR_MAX_TITLE_H = 276
+
+
+def _line_h(font, lang):
+    """Pixel height of one title line. Nastaliq's diagonal stacking makes a
+    line's ink ~2.8x the nominal size tall, so its line height must come
+    from the font metrics (ascent+descent+gap), not the 1.18x factor the
+    Latin/Arabic cards use."""
+    if lang == "ur":
+        asc, desc = font.getmetrics()
+        return asc + desc + 10
+    return int(font.size * 1.18)
+
+
 def fit_title(draw, title, lang, max_width, max_lines=3):
-    """Largest bold size (76..44) whose wrapped title fits in max_lines."""
-    for size in range(76, 43, -4):
+    """Largest bold size whose wrapped title fits in max_lines (and, for
+    Urdu, in the vertical budget — otherwise 3 Nastaliq lines would push
+    the subline into the red bottom bar)."""
+    if lang == "ur":
+        sizes = range(48, 29, -2)
+    else:
+        sizes = range(76, 43, -4)
+    max_total_h = UR_MAX_TITLE_H if lang == "ur" else 10 ** 9
+    for size in sizes:
         font = font_for(lang, size, bold=True)
         lines = wrap_text(draw, title, font, max_width, lang)
         if len(lines) <= max_lines and all(
@@ -386,6 +482,13 @@ def fit_title(draw, title, lang, max_width, max_lines=3):
         if len(lines) <= max_lines and all(
             (mixed_textlength(draw, line, size) if lang == 'bn'
              else draw.textlength(line, font=font)) <= max_width for line in lines
+        ):
+        if (
+            len(lines) <= max_lines
+            and len(lines) * _line_h(font, lang) <= max_total_h
+            and all(
+                _textlength(draw, line, font, lang) <= max_width for line in lines
+            )
         ):
             return font, lines
     # Fallback: smallest size, allow overflow lines (should not happen for
@@ -401,7 +504,12 @@ def fit_title(draw, title, lang, max_width, max_lines=3):
         (mixed_textlength(draw, line, 44) if lang == 'bn'
          else draw.textlength(line, font=font)) > max_width for line in lines
     ):
-        print(f"OVERFLOW title needs {len(lines)} lines at 44px: {title!r}", file=sys.stderr)
+    font = font_for(lang, sizes[-1], bold=True)
+    lines = wrap_text(draw, title, font, max_width, lang)
+    if len(lines) > max_lines or any(
+        _textlength(draw, line, font, lang) > max_width for line in lines
+    ):
+        print(f"OVERFLOW title needs {len(lines)} lines at {sizes[-1]}px: {title!r}", file=sys.stderr)
     return font, lines
 
 
@@ -439,6 +547,10 @@ def render_card(title, lang):
     wm_font = font_for('en', 44, bold=True)
     # Latin fonts (a Bengali font would render them as tofu).
     wm_font = font_for("en", 44, bold=True)
+    # wordmark + tagline, top-left — Latin brand strings: always the Latin
+    # font (Noto Sans Arabic / Noto Nastaliq Urdu have no Latin glyphs, so
+    # font_for('ar'/'ur') would render the wordmark as tofu boxes).
+    wm_font = font_for('en', 44, bold=True)
     draw.text((60, 46), "CompressMyPic", font=wm_font, fill=RED)
     tag_font = font_for("en", 21, bold=False)
     draw.text((62, 102), "FREE ONLINE IMAGE TOOLS", font=tag_font, fill=MUTED)
@@ -448,7 +560,7 @@ def render_card(title, lang):
 
     # title, centered, auto-fit, max 3 lines
     title_font, lines = fit_title(draw, title, lang, max_width=1000, max_lines=3)
-    line_h = int(title_font.size * 1.18)
+    line_h = _line_h(title_font, lang)
     total_h = line_h * len(lines)
     y = 292
     if lang == "ar":
@@ -475,13 +587,30 @@ def render_card(title, lang):
             lw = draw.textlength(line, font=title_font)
             draw.text(((W - lw) / 2, y), line, font=title_font, fill=DARK)
         y += line_h
+    # Urdu starts higher (272 vs 292): Nastaliq lines are ~2.8x the nominal
+    # size tall, so the block needs the extra 20px or the subline would hit
+    # the red bottom bar. Icon (ends 260), wordmark and subline stay put.
+    title_y = UR_TITLE_Y if lang == "ur" else 292
+    y = title_y
+    if lang in ("ar", "ur"):
+        # Mixed-script RTL: draw each line run-by-run (RTL runs in the
+        # RTL font, Latin runs in the Latin font) so nothing is tofu.
+        lat_font = font_for('en', title_font.size, bold=True)
+        for line in lines:
+            _draw_rtl_line(draw, line, y, title_font, lat_font, lang)
+            y += line_h
+    else:
+        for line in lines:
+            lw = draw.textlength(line, font=title_font)
+            draw.text(((W - lw) / 2, y), line, font=title_font, fill=DARK)
+            y += line_h
     _ = total_h
 
     # subline, centered below title — Latin-only, always the Latin font
     sub_font = font_for("en", 26, bold=False)
     sub = SUBLINE
     sw = draw.textlength(sub, font=sub_font)
-    draw.text(((W - sw) / 2, 292 + total_h + 22), sub, font=sub_font, fill=MUTED)
+    draw.text(((W - sw) / 2, title_y + total_h + 22), sub, font=sub_font, fill=MUTED)
 
     # red bottom bar
     draw.rectangle([0, H - 16, W, H], fill=RED)

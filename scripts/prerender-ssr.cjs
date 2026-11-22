@@ -49,6 +49,7 @@ const SUPPORTED_LANGS = new Set([
   'en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'tr',
   'en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'vi',
   'en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'bn',
+  'en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'ur',
 ]);
 
 // Script tags the runtime third-party loader used to inject and which must
@@ -255,9 +256,9 @@ async function main() {
     }
     const newHead = refreshHead(headMatch[1], current);
     // Assemble: old document shell, new head, SSR body in #root, lang set.
-    // Arabic is the only RTL language: its snapshots carry dir="rtl" on <html>.
+    // Arabic and Urdu are the RTL languages: their snapshots carry dir="rtl" on <html>.
     let doc = oldHtml;
-    doc = doc.replace(/<html[^>]*>/, lang === 'ar' ? `<html lang="ar" dir="rtl">` : `<html lang="${lang}">`);
+    doc = doc.replace(/<html[^>]*>/, (lang === 'ar' || lang === 'ur') ? `<html lang="${lang}" dir="rtl">` : `<html lang="${lang}">`);
     doc = doc.replace(/<head[^>]*>[\s\S]*?<\/head>/, `<head>${newHead}</head>`);
     const rootRe = /<div id="root">[\s\S]*<\/div>\s*<\/body>/;
     if (!rootRe.test(doc)) {

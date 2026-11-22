@@ -158,6 +158,15 @@ const GIF_ERROR_AR: Record<GifErrorKey, string> = {
   errorCanvasContext: 'تعذّر تهيئة سياق اللوحة ثنائي الأبعاد.',
 };
 
+const GIF_ERROR_UR: Record<GifErrorKey, string> = {
+  errorTooSmall: 'فائل بہت چھوٹی ہے، درست GIF نہیں ہو سکتی۔',
+  errorNotValidGif: 'منتخب کردہ فائل درست GIF87a یا GIF89a اینیمیشن نہیں ہے۔',
+  errorInvalidDims: 'GIF کے کینوس کی پیمائش 0×0 غلط ہے۔',
+  errorTruncatedColorTable: 'GIF کی گلوبل کلر ٹیبل نامکمل ہے۔',
+  errorNoFrames: 'اس GIF فائل سے کوئی امیج فریم ڈی کوڈ نہیں ہو سکا۔',
+  errorCanvasContext: '2D کینوس کانٹیکسٹ شروع نہیں ہو سکا۔',
+};
+
 function gifError(key: GifErrorKey, lang?: SupportedLang): string {
   switch (lang) {
     case 'es':
@@ -182,6 +191,8 @@ function gifError(key: GifErrorKey, lang?: SupportedLang): string {
       return GIF_ERROR_ZH[key];
     case 'ar':
       return GIF_ERROR_AR[key];
+    case 'ur':
+      return GIF_ERROR_UR[key];
     default:
       return GIF_ERROR_EN[key];
   }

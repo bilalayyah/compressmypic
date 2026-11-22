@@ -36,7 +36,7 @@ while ((m = branchRe.exec(router)) !== null) {
   branches.push({ lang: m[1] || null, path: m[2] || null, pathConst: m[3] || null, comp: comp[1] });
 }
 
-const LANG_FROM_CONST = {ES: 'es', PT: 'pt', FR: 'fr', DE: 'de', IT: 'it', ID: 'id', RU: 'ru', JA: 'ja', KO: 'ko', ZH: 'zh', HI: 'hi', AR: 'ar', TR: 'tr', VI: 'vi', BN: 'bn' };
+const LANG_FROM_CONST = {ES: 'es', PT: 'pt', FR: 'fr', DE: 'de', IT: 'it', ID: 'id', RU: 'ru', JA: 'ja', KO: 'ko', ZH: 'zh', HI: 'hi', AR: 'ar', TR: 'tr', VI: 'vi', BN: 'bn', UR: 'ur' };
 const tools = new Map();       // enPath -> glob key (lang-independent)
 const localized = new Map();   // `${lang}|${enPath}` -> glob key
 const dirs = new Map();        // localized directory path -> glob key (filled below; path consts resolved via slugs)

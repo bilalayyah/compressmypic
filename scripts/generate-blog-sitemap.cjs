@@ -25,9 +25,9 @@ const SITEMAP_PATH = path.join(REPO_ROOT, 'public', 'sitemap.xml');
 const REGISTRY_PATH = path.join(REPO_ROOT, 'src', 'data', 'blogArticles.ts');
 const BASE = 'https://compressmypic.online';
 const LASTMOD = '2026-11-17'; // Batch 2 ship date; Batch 3 uses per-article lastmod
-const LANGS = ['en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'hi', 'ar', 'tr', 'vi', 'bn'];
+const LANGS = ['en', 'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh', 'hi', 'ar', 'tr', 'vi', 'bn', 'ur'];
 
-const BLOCK_START = '  <!-- Blog (Batch 2): 16 homes + 112 category hubs. Regenerate with scripts/generate-blog-sitemap.cjs. -->';
+const BLOCK_START = '  <!-- Blog (Batch 2): 17 homes + 119 category hubs. Regenerate with scripts/generate-blog-sitemap.cjs. -->';
 const BLOCK_END = '  <!-- /Blog (Batch 2) -->';
 
 function parseCategorySlugs() {

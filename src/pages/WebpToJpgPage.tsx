@@ -105,6 +105,13 @@ export interface PageBnStrings {
   toolUi: Record<string, string>;
 }
 
+export interface PageUrStrings {
+  layoutUi: ToolPageLayoutStrings;
+  uploadZone: UploadZoneStrings;
+  comparisonModal: ComparisonModalStrings;
+  toolUi: Record<string, string>;
+}
+
 
 
 interface WebpToJpgPageProps {
@@ -128,6 +135,7 @@ interface WebpToJpgPageProps {
   trStrings?: PageTrStrings;
   viStrings?: PageViStrings;
   bnStrings?: PageBnStrings;
+  urStrings?: PageUrStrings;
 }
 
 export const WebpToJpgPage: React.FC<WebpToJpgPageProps> = ({
@@ -151,6 +159,7 @@ export const WebpToJpgPage: React.FC<WebpToJpgPageProps> = ({
   trStrings,
   viStrings,
   bnStrings,
+  urStrings,
 }) => {
   const t = (key: string, fallback: string) =>
     lang === 'hi' && hiStrings?.toolUi
@@ -161,6 +170,8 @@ export const WebpToJpgPage: React.FC<WebpToJpgPageProps> = ({
       ? ((viStrings.toolUi[key] as string | undefined) ?? fallback)
     : lang === 'bn' && bnStrings?.toolUi
       ? ((bnStrings.toolUi[key] as string | undefined) ?? fallback)
+    : lang === 'ur' && urStrings?.toolUi
+      ? ((urStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'zh' && zhStrings?.toolUi
       ? ((zhStrings.toolUi[key] as string | undefined) ?? fallback)
       : lang === 'tr' && trStrings?.toolUi
@@ -206,6 +217,7 @@ export const WebpToJpgPage: React.FC<WebpToJpgPageProps> = ({
     trStrings={trStrings}
     viStrings={viStrings}
     bnStrings={bnStrings}
+    urStrings={urStrings}
     jaStrings={jaStrings}
     koStrings={koStrings}
     esStrings={esStrings}

@@ -15,7 +15,7 @@ export type SupportedLang =
   | 'ru'
   | 'ko'
   | 'zh'
-  | 'hi' | 'ar' | 'tr' | 'vi' | 'bn';
+  | 'hi' | 'ar' | 'tr' | 'vi' | 'bn' | 'ur';
 
 export type LangStatus = 'live' | 'in-progress' | 'planned';
 
@@ -28,7 +28,7 @@ export interface LanguageMeta {
   nativeName: string;
   /** English name of the language. */
   englishName: string;
-  /** Text direction. All languages are LTR except Arabic ('ar'), which is RTL. */
+  /** Text direction. All languages are LTR except Arabic ('ar') and Urdu ('ur'), which are RTL. */
   dir: 'ltr' | 'rtl';
   /** Regional variant to translate into. */
   variant: string;
@@ -59,6 +59,7 @@ export const SUPPORTED_LANGUAGES: LanguageMeta[] = [
   { code: 'tr', prefix: 'tr', nativeName: 'Türkçe', englishName: 'Turkish', dir: 'ltr', variant: 'Standard Turkish', phase: 7, status: 'in-progress', directoryPath: '/tr/tum-araclar' },
   { code: 'vi', prefix: 'vi', nativeName: 'Tiếng Việt', englishName: 'Vietnamese', dir: 'ltr', variant: 'Standard Vietnamese', phase: 7, status: 'in-progress', directoryPath: '/vi/tat-ca-cong-cu' },
   { code: 'bn', prefix: 'bn', nativeName: 'বাংলা', englishName: 'Bengali', dir: 'ltr', variant: 'Standard Bengali', phase: 8, status: 'in-progress', directoryPath: '/bn/sob-tools' },
+  { code: 'ur', prefix: 'ur', nativeName: 'اردو', englishName: 'Urdu', dir: 'rtl', variant: 'Standard Urdu', phase: 7, status: 'in-progress', directoryPath: '/ur/tamam-auzar/' },
 ];
 
 export const SUPPORTED_LANGS: SupportedLang[] = SUPPORTED_LANGUAGES.map((l) => l.code);
