@@ -2640,8 +2640,11 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       route.path === JA_ALL_TOOLS_PATH ||
       route.path === KO_ALL_TOOLS_PATH ||
       route.path === ZH_ALL_TOOLS_PATH ||
+      route.path === HI_ALL_TOOLS_PATH ||
       route.path === AR_ALL_TOOLS_PATH ||
+      route.path === TR_ALL_TOOLS_PATH ||
       route.path === VI_ALL_TOOLS_PATH ||
+      route.path === BN_ALL_TOOLS_PATH ||
       route.path === UR_ALL_TOOLS_PATH;
     const target =
       next === 'en'
@@ -2652,8 +2655,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
     // If the current page has no equivalent in the target language, fall back
     // to that language's home instead of a broken page.
     const mapForNext =
-      next === 'es' ? ES_PATH_BY_EN : next === 'pt' ? PT_PATH_BY_EN : next === 'fr' ? FR_PATH_BY_EN : next === 'de' ? DE_PATH_BY_EN : next === 'it' ? IT_PATH_BY_EN : next === 'id' ? ID_PATH_BY_EN : next === 'ru' ? RU_PATH_BY_EN : next === 'ja' ? JA_PATH_BY_EN : next === 'ko' ? KO_PATH_BY_EN : next === 'zh' ? ZH_PATH_BY_EN : next === 'ar' ? AR_PATH_BY_EN : undefined;
-      next === 'es' ? ES_PATH_BY_EN : next === 'pt' ? PT_PATH_BY_EN : next === 'fr' ? FR_PATH_BY_EN : next === 'de' ? DE_PATH_BY_EN : next === 'it' ? IT_PATH_BY_EN : next === 'id' ? ID_PATH_BY_EN : next === 'ru' ? RU_PATH_BY_EN : next === 'ja' ? JA_PATH_BY_EN : next === 'ko' ? KO_PATH_BY_EN : next === 'zh' ? ZH_PATH_BY_EN : next === 'ur' ? UR_PATH_BY_EN : undefined;
+      next === 'es' ? ES_PATH_BY_EN : next === 'pt' ? PT_PATH_BY_EN : next === 'fr' ? FR_PATH_BY_EN : next === 'de' ? DE_PATH_BY_EN : next === 'it' ? IT_PATH_BY_EN : next === 'id' ? ID_PATH_BY_EN : next === 'ru' ? RU_PATH_BY_EN : next === 'ja' ? JA_PATH_BY_EN : next === 'ko' ? KO_PATH_BY_EN : next === 'zh' ? ZH_PATH_BY_EN : next === 'ar' ? AR_PATH_BY_EN : next === 'hi' ? HI_PATH_BY_EN : next === 'tr' ? TR_PATH_BY_EN : next === 'vi' ? VI_PATH_BY_EN : next === 'bn' ? BN_PATH_BY_EN : next === 'ur' ? UR_PATH_BY_EN : undefined;
     const existsInNext =
       route.path === '/' ||
       isDirectoryPath ||
@@ -3045,15 +3047,17 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       route.path === JA_ALL_TOOLS_PATH ||
       route.path === KO_ALL_TOOLS_PATH ||
       route.path === ZH_ALL_TOOLS_PATH ||
+      route.path === HI_ALL_TOOLS_PATH ||
       route.path === AR_ALL_TOOLS_PATH ||
+      route.path === TR_ALL_TOOLS_PATH ||
       route.path === VI_ALL_TOOLS_PATH ||
+      route.path === BN_ALL_TOOLS_PATH ||
       route.path === UR_ALL_TOOLS_PATH
     ) {
       return true;
     }
     const map =
-      l === 'es' ? ES_PATH_BY_EN : l === 'pt' ? PT_PATH_BY_EN : l === 'fr' ? FR_PATH_BY_EN : l === 'de' ? DE_PATH_BY_EN : l === 'it' ? IT_PATH_BY_EN : l === 'id' ? ID_PATH_BY_EN : l === 'ru' ? RU_PATH_BY_EN : l === 'ja' ? JA_PATH_BY_EN : l === 'ko' ? KO_PATH_BY_EN : l === 'zh' ? ZH_PATH_BY_EN : l === 'ar' ? AR_PATH_BY_EN : undefined;
-      l === 'es' ? ES_PATH_BY_EN : l === 'pt' ? PT_PATH_BY_EN : l === 'fr' ? FR_PATH_BY_EN : l === 'de' ? DE_PATH_BY_EN : l === 'it' ? IT_PATH_BY_EN : l === 'id' ? ID_PATH_BY_EN : l === 'ru' ? RU_PATH_BY_EN : l === 'ja' ? JA_PATH_BY_EN : l === 'ko' ? KO_PATH_BY_EN : l === 'zh' ? ZH_PATH_BY_EN : l === 'ur' ? UR_PATH_BY_EN : undefined;
+      l === 'es' ? ES_PATH_BY_EN : l === 'pt' ? PT_PATH_BY_EN : l === 'fr' ? FR_PATH_BY_EN : l === 'de' ? DE_PATH_BY_EN : l === 'it' ? IT_PATH_BY_EN : l === 'id' ? ID_PATH_BY_EN : l === 'ru' ? RU_PATH_BY_EN : l === 'ja' ? JA_PATH_BY_EN : l === 'ko' ? KO_PATH_BY_EN : l === 'zh' ? ZH_PATH_BY_EN : l === 'ar' ? AR_PATH_BY_EN : l === 'hi' ? HI_PATH_BY_EN : l === 'tr' ? TR_PATH_BY_EN : l === 'vi' ? VI_PATH_BY_EN : l === 'bn' ? BN_PATH_BY_EN : l === 'ur' ? UR_PATH_BY_EN : undefined;
     return map !== undefined && map[route.path] !== undefined;
   };
   const availableLanguages: SupportedLang[] = SUPPORTED_LANGS.filter((l) => pageHasLang(l));
