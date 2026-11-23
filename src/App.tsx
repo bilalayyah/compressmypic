@@ -2243,11 +2243,11 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       currentPath === JA_ALL_TOOLS_PATH ||
       currentPath === KO_ALL_TOOLS_PATH ||
       currentPath === ZH_ALL_TOOLS_PATH ||
-      currentPath === HI_ALL_TOOLS_PATH;
-      currentPath === AR_ALL_TOOLS_PATH;
-      currentPath === TR_ALL_TOOLS_PATH;
-      currentPath === VI_ALL_TOOLS_PATH;
-      currentPath === BN_ALL_TOOLS_PATH;
+      currentPath === HI_ALL_TOOLS_PATH ||
+      currentPath === AR_ALL_TOOLS_PATH ||
+      currentPath === TR_ALL_TOOLS_PATH ||
+      currentPath === VI_ALL_TOOLS_PATH ||
+      currentPath === BN_ALL_TOOLS_PATH ||
       currentPath === UR_ALL_TOOLS_PATH;
     const hasLocalizedEquivalent =
       currentPath === '/' ||
@@ -2290,10 +2290,13 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
     } else if (toolPageOwnedByLayout) {
       // Translated tool page: ToolPageLayout writes the alternates.
     } else if (!isToolPage && hasLocalizedEquivalent) {
-      // A localized directory has no standalone English page — its English
-      // equivalent is the home page (which hosts the tools directory section).
+      // A localized directory's English equivalent is the EN tools hub
+      // /all-tools/ (standalone hub since 2026-11-18; the sitemap declares
+      // en + x-default → /all-tools/ for every directory page, and the
+      // home page is NOT its equivalent — linking en → '/' would break
+      // reciprocity with the hub's own alternates).
       // M1 (re-audit 2026-11-15): hreflang hrefs are trailing-slash URLs.
-      const enEquivalent = isDirectoryPath ? '/' : currentPath;
+      const enEquivalent = isDirectoryPath ? '/all-tools' : currentPath;
       const hreflangHref = (p: string) => `${baseDomain}${withTrailingSlash(p)}`;
       setHreflangLinks([
         { lang: 'en', href: hreflangHref(enEquivalent) },

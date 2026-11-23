@@ -211,7 +211,7 @@ async function main() {
   if (opts.limit) routes = routes.slice(0, opts.limit);
   console.log(`[prerender-ssr] routes: ${routes.length}`);
 
-  const { renderRoute, getArticleFaqPage, getToolPageHead } = await import(SSR_BUNDLE);
+  const { renderRoute, getArticleFaqPage, getToolPageHead, getRouteHreflang } = await import(SSR_BUNDLE);
   let done = 0;
   let skipped = 0;
   const failed = [];
@@ -496,6 +496,150 @@ async function main() {
   }
   console.log(
     `[prerender-ssr] Tool-head refresh: ${toolHeadsRefreshed} heads updated`,
+  );
+
+  // Hreflang + og:locale refresh pass (Defect B, 2026-11-23) — the carried
+  // head is a Chromium-captured snapshot, so its hreflang links predate
+  // the 6 newest locales (hi, ar, tr, vi, bn, ur): static HTML lists 12
+  // alternates while the sitemap declares 18, and og:locale:alternate
+  // lists 10 instead of 16. The SEO tags are set by client-side effects
+  // that do not run under renderToString, so the only way to get the full
+  // set into static HTML is to regenerate it here from the real data
+  // (entry-server getRouteHreflang, which mirrors the App.tsx /
+  // ToolPageLayout effects branch-for-branch). Replaces the whole
+  // hreflang set + og:locale + og:locale:alternate block in the carried
+  // head. Idempotent: a head that already carries exactly the fresh set
+  // is left byte-identical, and routes with no SEO head (null, e.g.
+  // /admin/comments) are never touched.
+  const parseTagAttrs = (tag) => {
+    const attrs = {};
+    for (const m of tag.matchAll(/([\w-]+)="([^"]*)"/g)) attrs[m[1]] = m[2];
+    return attrs;
+  };
+  const hreflangTagRe = /<link\b[^>]*\bhreflang="[^"]*"[^>]*>\n?/g;
+  const ogLocaleAltRe = /<meta\b[^>]*property="og:locale:alternate"[^>]*>\n?/g;
+  const ogLocaleRe = /<meta\b[^>]*property="og:locale"[^>]*>/;
+  let hreflangRefreshed = 0;
+  let hreflangFresh = 0;
+  let hreflangSkipped = 0;
+  for (const route of routes) {
+    let fresh = null;
+    try {
+      fresh = await getRouteHreflang(route);
+    } catch (e) {
+      console.error(
+        `[prerender-ssr] Hreflang lookup failed for ${route}: ${String((e && e.message) || e).slice(0, 120)}`,
+      );
+      continue;
+    }
+    if (!fresh) {
+      hreflangSkipped += 1;
+      continue;
+    }
+    const outPath = outPathFor(route);
+    if (!fs.existsSync(outPath)) continue;
+    let html;
+    try {
+      html = fs.readFileSync(outPath, 'utf8');
+    } catch {
+      continue;
+    }
+    const headMatch = html.match(/<head[^>]*>([\s\S]*?)<\/head>/);
+    if (!headMatch) continue;
+    const head = headMatch[1];
+    // Existing hreflang set, in head order.
+    const existingTags = [...head.matchAll(hreflangTagRe)].map((m) => m[0]);
+    const existingPairs = existingTags.map((t) => {
+      const a = parseTagAttrs(t);
+      return { lang: a.hreflang, href: a.href };
+    });
+    const freshPairs = fresh.alternates.map((a) => ({ lang: a.lang, href: a.href }));
+    const hreflangSame =
+      existingPairs.length === freshPairs.length &&
+      existingPairs.every((p, i) => p.lang === freshPairs[i].lang && p.href === freshPairs[i].href);
+    // Existing og:locale + alternates.
+    const ogLocaleTag = head.match(ogLocaleRe);
+    const ogLocaleSame =
+      !!ogLocaleTag && parseTagAttrs(ogLocaleTag[0]).content === fresh.ogLocale;
+    const existingOgAlts = [...head.matchAll(ogLocaleAltRe)].map(
+      (m) => parseTagAttrs(m[0]).content,
+    );
+    const ogAltsSame =
+      existingOgAlts.length === fresh.ogLocaleAlternates.length &&
+      existingOgAlts.every((v, i) => v === fresh.ogLocaleAlternates[i]);
+    if (hreflangSame && ogLocaleSame && ogAltsSame) {
+      hreflangFresh += 1;
+      continue;
+    }
+    let newHead = head;
+    // Hreflang: drop every existing alternate link, re-insert the fresh
+    // set at the position of the first one (or at the end of the head when
+    // the page had none — the client effect appends new links last).
+    if (!hreflangSame) {
+      const firstIdx = existingTags.length > 0 ? head.indexOf(existingTags[0]) : -1;
+      newHead = newHead.replace(hreflangTagRe, '');
+      const freshTags = freshPairs
+        .map((p) => `<link rel="alternate" hreflang="${p.lang}" href="${p.href}">`)
+        .join('\n');
+      if (freshTags) {
+        if (firstIdx >= 0) {
+          newHead = newHead.slice(0, firstIdx) + freshTags + '\n' + newHead.slice(firstIdx);
+        } else {
+          newHead = `${newHead.replace(/\s*$/, '')}\n${freshTags}\n`;
+        }
+      }
+    }
+    // og:locale: update the content in place (or append if absent).
+    if (!ogLocaleSame) {
+      if (ogLocaleTag) {
+        newHead = newHead.replace(
+          ogLocaleRe,
+          (tag) => tag.replace(/content="[^"]*"/, `content="${fresh.ogLocale}"`),
+        );
+      } else {
+        newHead = `${newHead.replace(/\s*$/, '')}\n<meta property="og:locale" content="${fresh.ogLocale}">\n`;
+      }
+    }
+    // og:locale:alternate: drop all, re-insert the fresh set directly
+    // after the og:locale tag (or at the end of the head if absent).
+    if (!ogAltsSame) {
+      newHead = newHead.replace(ogLocaleAltRe, '');
+      const freshAltTags = fresh.ogLocaleAlternates
+        .map((v) => `<meta property="og:locale:alternate" content="${v}">`)
+        .join('\n');
+      if (freshAltTags) {
+        const localeTag = newHead.match(ogLocaleRe);
+        if (localeTag) {
+          const at = newHead.indexOf(localeTag[0]) + localeTag[0].length;
+          newHead = `${newHead.slice(0, at)}\n${freshAltTags}${newHead.slice(at)}`;
+        } else {
+          newHead = `${newHead.replace(/\s*$/, '')}\n${freshAltTags}\n`;
+        }
+      }
+    }
+    if (newHead === head) {
+      hreflangFresh += 1;
+      continue;
+    }
+    const updated = html.replace(headMatch[0], `<head>${newHead}</head>`);
+    try {
+      const tmpPath = `${outPath}.hreflang-tmp`;
+      fs.writeFileSync(tmpPath, updated, 'utf8');
+      const back = fs.readFileSync(tmpPath, 'utf8');
+      if (back !== updated) throw new Error('read-back mismatch after write');
+      fs.renameSync(tmpPath, outPath);
+      hreflangRefreshed += 1;
+    } catch (e) {
+      try {
+        if (fs.existsSync(`${outPath}.hreflang-tmp`)) fs.unlinkSync(`${outPath}.hreflang-tmp`);
+      } catch {}
+      console.error(
+        `[prerender-ssr] Hreflang write failed for ${route}: ${String((e && e.message) || e).slice(0, 120)}`,
+      );
+    }
+  }
+  console.log(
+    `[prerender-ssr] Hreflang refresh: ${hreflangRefreshed} heads updated, ${hreflangFresh} already fresh, ${hreflangSkipped} no-SEO-head routes skipped`,
   );
 
   console.log(

@@ -36,12 +36,42 @@ import { getBlogBody, getBlogBodyLocale, loadBlogBody, loadBlogBodyLocale } from
 import {
   BLOG_ARTICLES,
   getBlogArticleVersion,
+  getBlogArticleAlternates,
+  getBlogCategoryAlternates,
+  getBlogHomeAlternates,
   isBlogArticlePublishedIn,
   isBlogEnPath,
   resolveBlogRoute,
 } from './data/blogArticles';
 import { EN_BLOG_STRINGS } from './components/blog/blogStrings';
-import { withTrailingSlash } from './locales/alternates';
+import {
+  withTrailingSlash,
+  getAlternates,
+  getOgLocale,
+  getOgLocaleAlternates,
+} from './locales/alternates';
+import type { HreflangAlternate } from './locales/alternates';
+import { TOOL_META_BY_SLUG } from './data/toolsMeta';
+import type { SupportedLang } from './locales/config';
+// Localized tools-directory paths (the router stores a directory route
+// under its localized key, so parsePath() returns the localized path, not
+// the EN one — the hreflang helper needs the full set to recognise them).
+import { ES_ALL_TOOLS_PATH } from './locales/es/slugs';
+import { PT_ALL_TOOLS_PATH } from './locales/pt/slugs';
+import { FR_ALL_TOOLS_PATH } from './locales/fr/slugs';
+import { DE_ALL_TOOLS_PATH } from './locales/de/slugs';
+import { IT_ALL_TOOLS_PATH } from './locales/it/slugs';
+import { ID_ALL_TOOLS_PATH } from './locales/id/slugs';
+import { RU_ALL_TOOLS_PATH } from './locales/ru/slugs';
+import { JA_ALL_TOOLS_PATH } from './locales/ja/slugs';
+import { KO_ALL_TOOLS_PATH } from './locales/ko/slugs';
+import { ZH_ALL_TOOLS_PATH } from './locales/zh/slugs';
+import { HI_ALL_TOOLS_PATH } from './locales/hi/slugs';
+import { AR_ALL_TOOLS_PATH } from './locales/ar/slugs';
+import { TR_ALL_TOOLS_PATH } from './locales/tr/slugs';
+import { VI_ALL_TOOLS_PATH } from './locales/vi/slugs';
+import { BN_ALL_TOOLS_PATH } from './locales/bn/slugs';
+import { UR_ALL_TOOLS_PATH } from './locales/ur/slugs';
 import { buildFaqPageNode } from './utils/faqJsonLd';
 import { TOOL_BY_SLUG } from './data/tools';
 import type { ToolDefinition } from './data/tools';
@@ -191,6 +221,135 @@ export async function getToolPageHead(urlPath: string): Promise<{
     faqNode,
     howToNode,
   };
+}
+
+// Hreflang + og:locale for one route, computed from the real data — the
+// SSR-side counterpart of the App.tsx SEO effect (home/legal/directory/
+// guide/blog pages) and the ToolPageLayout effect (tool pages). Those
+// effects are client-only (useEffect), so the SSR prerender carries heads
+// from old Chromium-captured snapshots that predate the 6 newest locales
+// (hi, ar, tr, vi, bn, ur): the static HTML lists 12 alternates while the
+// sitemap declares 18. This helper lets scripts/prerender-ssr.cjs
+// regenerate the full set from current data, mirroring the effects
+// branch-for-branch (including the directory-page rule: a localized
+// directory's English equivalent is the /all-tools/ hub, and a
+// not-yet-translated article gets no hreflang at all). Returns null for
+// routes with no SEO head (unknown/404 routes such as /admin/comments) —
+// the prerender leaves those heads untouched. An empty `alternates` array
+// means "strip all alternates", exactly as the client effect does.
+export interface RouteHreflang {
+  alternates: HreflangAlternate[];
+  ogLocale: string;
+  ogLocaleAlternates: string[];
+}
+
+/** Non-English languages, in the order the client effects write them. */
+const HREFLANG_LANGS: SupportedLang[] = [
+  'es', 'pt', 'fr', 'de', 'it', 'id', 'ru', 'ja', 'ko', 'zh',
+  'hi', 'ar', 'tr', 'vi', 'bn', 'ur',
+];
+
+/** Every tools-directory path (EN hub + one per locale). */
+const DIRECTORY_PATHS = new Set<string>([
+  '/all-tools',
+  ES_ALL_TOOLS_PATH,
+  PT_ALL_TOOLS_PATH,
+  FR_ALL_TOOLS_PATH,
+  DE_ALL_TOOLS_PATH,
+  IT_ALL_TOOLS_PATH,
+  ID_ALL_TOOLS_PATH,
+  RU_ALL_TOOLS_PATH,
+  JA_ALL_TOOLS_PATH,
+  KO_ALL_TOOLS_PATH,
+  ZH_ALL_TOOLS_PATH,
+  HI_ALL_TOOLS_PATH,
+  AR_ALL_TOOLS_PATH,
+  TR_ALL_TOOLS_PATH,
+  VI_ALL_TOOLS_PATH,
+  BN_ALL_TOOLS_PATH,
+  UR_ALL_TOOLS_PATH,
+]);
+
+export async function getRouteHreflang(
+  urlPath: string,
+): Promise<RouteHreflang | null> {
+  await preloadRoute(urlPath);
+  const parsed = parsePath(urlPath);
+  if (parsed.notFound) return null;
+  const lang = parsed.lang;
+  const currentPath = parsed.path;
+  const ogLocale = getOgLocale(lang);
+  const ogLocaleAlternates = getOgLocaleAlternates(lang);
+
+  const blogRoute = isBlogEnPath(currentPath) ? resolveBlogRoute(currentPath) : null;
+  if (blogRoute) {
+    if (blogRoute.kind === 'article') {
+      const article = BLOG_ARTICLES.find((a) => a.id === blogRoute.articleId);
+      if (!article) return null;
+      if (!isBlogArticlePublishedIn(article, lang)) {
+        return { alternates: [], ogLocale, ogLocaleAlternates };
+      }
+      return {
+        alternates: getBlogArticleAlternates(article),
+        ogLocale,
+        ogLocaleAlternates,
+      };
+    }
+    if (blogRoute.kind === 'category') {
+      return {
+        alternates: getBlogCategoryAlternates(blogRoute.categoryId),
+        ogLocale,
+        ogLocaleAlternates,
+      };
+    }
+    return {
+      alternates: getBlogHomeAlternates(),
+      ogLocale,
+      ogLocaleAlternates,
+    };
+  }
+
+  // '/' is the home entry in the registry, not a tool page (same guard as
+  // the App effect).
+  const isToolPage =
+    currentPath !== '/' && Boolean(TOOL_META_BY_SLUG[currentPath]);
+  if (isToolPage) {
+    // Tool pages: the App effect (EN) and ToolPageLayout (translated) both
+    // write getAlternates() — the full set of existing versions + x-default.
+    return {
+      alternates: getAlternates(currentPath),
+      ogLocale,
+      ogLocaleAlternates,
+    };
+  }
+
+  const isDirectoryPath = DIRECTORY_PATHS.has(currentPath);
+  // Same condition as the App effect: '/' always has equivalents, a
+  // directory page has equivalents by definition, otherwise at least one
+  // locale map must hold the path (getAlternates returns en + x-default
+  // only when no translation exists).
+  const hasLocalizedEquivalent =
+    currentPath === '/' ||
+    isDirectoryPath ||
+    getAlternates(currentPath).length > 2;
+  if (hasLocalizedEquivalent) {
+    const enEquivalent = isDirectoryPath ? '/all-tools' : currentPath;
+    const hreflangHref = (p: string) =>
+      `https://compressmypic.online${withTrailingSlash(p)}`;
+    const alternates: HreflangAlternate[] = [
+      { lang: 'en', href: hreflangHref(enEquivalent) },
+      ...HREFLANG_LANGS.map((l) => ({
+        lang: l,
+        href: hreflangHref(toLocalizedPath(currentPath, l)),
+      })),
+      { lang: 'x-default', href: hreflangHref(enEquivalent) },
+    ];
+    return { alternates, ogLocale, ogLocaleAlternates };
+  }
+
+  // Non-tool page with no localized equivalent: the App effect strips all
+  // alternates. (ToolPageLayout-owned tool pages never reach here.)
+  return { alternates: [], ogLocale, ogLocaleAlternates };
 }
 
 // Warm-up pass: render with renderToPipeableStream and wait for onAllReady,
