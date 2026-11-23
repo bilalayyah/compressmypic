@@ -29,6 +29,14 @@
 //     locales> (869 after Batch 3 EN-only; 2,309 when Batch 4 is complete).
 //     The counts are read from the registry + slugs.ts, so the expectation
 //     follows each Batch 3 category and each Batch 4 language automatically.
+//  8. No duplicate hreflang within any <url> block (Defect A dedupe guard —
+//     a repeated hreflang, same href or not, fails).
+//  9. Generic reciprocity for EVERY entry (blog + non-blog): each alternate
+//     href is itself a <loc> in the sitemap, and the href's entry links
+//     back — for lang != x-default it must list this entry's loc under
+//     this entry's language; x-default hrefs must agree across the pair.
+//     (Checks 5-6 do the same for blog entries against expected sets;
+//     this one catches the non-blog case.)
 // Exit 0 on pass, 1 on any failure (prints every failure, not just the first).
 
 const fs = require('fs');
@@ -330,6 +338,71 @@ function main() {
   const expectedTotal = PRE_BLOG_BASELINE + EXPECTED_BLOG_URLS;
   if (urlBlocks.length !== expectedTotal) {
     fail(`total <url> count ${urlBlocks.length}, expected ${expectedTotal} (${PRE_BLOG_BASELINE} baseline + ${EXPECTED_BLOG_URLS} blog)`);
+  }
+
+  // 8. No duplicate hreflang within any entry: each hreflang value occurs
+  //    at most once per <url> block (the Defect A duplication repeated
+  //    every alternate ~25x; a repeated hreflang with a different href is
+  //    a content error, not a dedupe case). One failure per offending
+  //    entry (with the duplicate count), so a badly duplicated sitemap
+  //    does not produce one failure per duplicated line.
+  for (const b of urlBlocks) {
+    const loc = (b.match(/<loc>([^<]+)<\/loc>/) || [])[1] || '(no loc)';
+    const seenLangs = new Map();
+    let dupLines = 0;
+    let dupExample = '';
+    for (const m of b.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)) {
+      if (seenLangs.has(m[1])) {
+        dupLines += 1;
+        if (!dupExample) dupExample = `${m[1]} (hrefs ${seenLangs.get(m[1])} and ${m[2]})`;
+      } else {
+        seenLangs.set(m[1], m[2]);
+      }
+    }
+    if (dupLines > 0) {
+      fail(`${loc}: ${dupLines} duplicate hreflang line(s), e.g. ${dupExample}`);
+    }
+  }
+
+  // 9. Generic reciprocity for EVERY entry (blog + non-blog): every
+  //    alternate href is itself a <loc> in the sitemap, and the href's
+  //    entry links back — for lang != x-default it must list this
+  //    entry's loc under this entry's language; x-default hrefs must
+  //    agree across the two entries. (Checks 5-6 do the same for blog
+  //    entries against expected sets; this one catches the non-blog
+  //    case — e.g. the 2026-11-23 find where tr/vi/bn/ur entries
+  //    pointed hi at the Arabic URL.)
+  const alternatesByLoc = new Map();
+  for (const b of urlBlocks) {
+    const loc = (b.match(/<loc>([^<]+)<\/loc>/) || [])[1];
+    if (!loc) continue;
+    const map = new Map();
+    for (const m of b.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)) {
+      if (!map.has(m[1])) map.set(m[1], m[2]);
+    }
+    alternatesByLoc.set(loc, map);
+  }
+  const langOfLoc = (loc) => {
+    const first = loc.slice(BASE.length).split('/').filter(Boolean)[0];
+    return first && LANGS.includes(first) ? first : 'en';
+  };
+  for (const [loc, alts] of alternatesByLoc) {
+    const locLang = langOfLoc(loc);
+    for (const [lang, href] of alts) {
+      if (!locSet.has(href)) {
+        fail(`${loc}: hreflang ${lang} href ${href} is not a <loc> in the sitemap`);
+        continue;
+      }
+      const back = alternatesByLoc.get(href);
+      if (!back) continue;
+      if (lang === 'x-default') {
+        if (back.get('x-default') !== alts.get('x-default')) {
+          fail(`${loc}: x-default -> ${href}, but ${href} has x-default ${back.get('x-default') ?? '(missing)'}`);
+        }
+      } else if (back.get(locLang) !== loc) {
+        fail(`${loc}: hreflang ${lang} -> ${href} is not reciprocated (${href} lists ${locLang} as ${back.get(locLang) ?? '(missing)'})`);
+      }
+    }
   }
 
   const blogCount = [...locs].filter((loc) => {

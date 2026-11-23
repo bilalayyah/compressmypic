@@ -7,8 +7,9 @@
 // public/sitemap.xml is now a sitemap-index listing public/sitemap-1.xml
 // ... sitemap-N.xml. The non-blog entries live in
 // scripts/sitemap-nonblog.xml (hand-maintained); this script assembles them
-// with the generated blog block and re-splits. Entries are emitted
-// byte-identical — the split moves them, never rewrites them.
+// with the generated blog block and re-splits. Entries are deduped on
+// write (Defect A, 2026-11-23 — buildFileMap drops duplicated hreflang
+// lines); the blog entries are already unique by construction.
 //
 // SOURCE OF TRUTH: BLOG_CATEGORY_SLUGS + BLOG_ARTICLES in
 // src/data/blogArticles.ts, and each locale's article slugs in
