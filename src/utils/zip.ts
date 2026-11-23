@@ -1,5 +1,10 @@
-import JSZip from 'jszip';
 import { ImageItem } from '../types';
+
+// NOTE (perf quick win 2026-11-23): JSZip (~95 KB) is NOT imported statically
+// here. It is dynamically imported inside the two archive functions below, so
+// the library only downloads when the user actually requests a ZIP — the ~30
+// files that statically import triggerDownload from this module no longer
+// pull JSZip into their chunks.
 
 /**
  * Packs all successfully compressed images into a single ZIP archive
@@ -8,6 +13,7 @@ export async function createZipArchive(
   images: ImageItem[],
   onProgress?: (percent: number) => void
 ): Promise<Blob> {
+  const { default: JSZip } = await import('jszip');
   const zip = new JSZip();
   const folder = zip.folder('compressed_images') || zip;
 
@@ -63,6 +69,7 @@ export async function createFilesZipArchive(
   folderName: string = 'compressmypic_files',
   onProgress?: (percent: number) => void
 ): Promise<Blob> {
+  const { default: JSZip } = await import('jszip');
   const zip = new JSZip();
   const folder = folderName ? zip.folder(folderName) || zip : zip;
 
