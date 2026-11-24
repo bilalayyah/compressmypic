@@ -3883,6 +3883,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-cropper', '/image-resizer', '/image-dimensions-checker', '/'],
+    benefits: [
+      {
+        title: 'For cutting an image into tiles',
+        description:
+          'One large image becomes a grid of smaller tiles — for a puzzle, a map, a social grid, or a print that spans several sheets.',
+      },
+      {
+        title: 'For a grid you choose',
+        description:
+          'Rows and columns are set by you (3×3 by default), so the tiles match the layout you actually need.',
+      },
+      {
+        title: 'For one ZIP instead of many downloads',
+        description:
+          'All tiles pack into a single ZIP, plus individual downloads when you only need one tile.',
+      },
+      {
+        title: 'For private splitting',
+        description:
+          'The image is cut on canvas in your browser. It never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload an image and set the rows and columns — 3×3 by default — and the tool cuts the image into that many equal tiles on canvas, all in your browser. Each tile downloads on its own, or all of them together as one ZIP named for the grid size.\n\nTiles are cut exactly: a 3000×3000 image split 3×3 gives nine 1000×1000 tiles. Nothing is uploaded; the cutting runs on your device.',
+    examples: [
+      {
+        title: 'Instagram grid from one photo',
+        description:
+          'A wide photo is split into a 3×3 grid of tiles, so the nine posts form one big image on the profile grid.',
+      },
+      {
+        title: 'Map tiles for a game',
+        description:
+          'A large map image is cut into equal tiles that a game or an app can load one at a time.',
+      },
+      {
+        title: 'Poster printed on several sheets',
+        description:
+          'A poster is split into tiles that print one per sheet, then assemble into the full image on a wall.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB. Output: one image per tile (same format as the source), downloaded individually or as one ZIP ({name}_{rows}x{cols}_tiles.zip).\n\nRows and columns are set independently, defaulting to 3×3. Tiles are cut on canvas at full resolution.',
+    limitations:
+      'Tiles are equal-sized, so an image whose dimensions do not divide evenly leaves the edge tiles slightly different — the tool handles the remainder, but check the last row and column. Splitting does not add detail: a tile is only as sharp as the source region it came from. Animated GIFs split as a single still frame.',
   },
   {
     slug: '/image-dpi-changer',
@@ -4694,6 +4739,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-collage-maker', '/image-splitter', '/image-resizer', '/'],
+    benefits: [
+      {
+        title: 'For turning photos into a GIF',
+        description:
+          'A sequence of photos becomes a looping animation — a product spin, a before-and-after, a short story told in frames.',
+      },
+      {
+        title: 'For per-frame timing',
+        description:
+          'Each frame can have its own delay, so a frame can linger or flash by. One global delay applies where you do not set one.',
+      },
+      {
+        title: 'For a live preview before you commit',
+        description:
+          'The animation plays in the browser as you build it, so you see the timing and the order before downloading.',
+      },
+      {
+        title: 'For private creation',
+        description:
+          'The frames are encoded in your browser with gifenc. The images never leave your device.',
+      },
+    ],
+    howItWorks:
+      'You upload two or more images as frames, arrange them in order, and set the delay for each frame — or one global delay for all of them. The tool previews the animation live, then encodes the frames into a real animated GIF and downloads it.\n\nGIF is a 256-colour format, so photos will look slightly posterized compared to the originals — that is the format, not a bug. Nothing is uploaded; the encoding runs on your device.',
+    examples: [
+      {
+        title: 'Before-and-after in one GIF',
+        description:
+          'Two photos of a room — before and after a renovation — become a looping GIF that shows the change in a single image.',
+      },
+      {
+        title: 'Product spin for a listing',
+        description:
+          'Six photos of a product from different angles become a GIF that rotates the product on the listing page.',
+      },
+      {
+        title: 'Short tutorial animation',
+        description:
+          'Three screenshots of a workflow become a GIF that plays the steps in a loop inside a help article.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB per file, two or more frames. Output: one animated GIF (.gif). Frame delays are set per frame in milliseconds, or one global delay for all frames.\n\nFrames are encoded locally with gifenc. The GIF loops by default; the delay controls how long each frame shows.',
+    limitations:
+      'GIF holds at most 256 colours per frame, so photographs lose smooth gradients and show banding. Large frames and many frames make a heavy GIF — keep the frames small for the web. Animated input GIFs contribute their first frame only.',
   },
   {
     slug: '/image-collage-maker',
@@ -4863,6 +4953,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/gif-maker', '/image-splitter', '/image-border-generator', '/'],
+    benefits: [
+      {
+        title: 'For a grid of photos in one image',
+        description:
+          'Several photos become one shareable image — a trip, a family gathering, a product range — laid out in a clean grid.',
+      },
+      {
+        title: 'For one image instead of many attachments',
+        description:
+          'A collage is a single file: one upload, one attachment, one post — instead of sending a dozen separate photos.',
+      },
+      {
+        title: 'For a layout that fits the platform',
+        description:
+          'The collage is sized for where it will be posted, so it displays properly instead of being cropped by the platform.',
+      },
+      {
+        title: 'For private creation',
+        description:
+          'The collage is drawn on canvas in your browser. The photos never leave your device.',
+      },
+    ],
+    howItWorks:
+      'You upload the photos, arrange them in the grid, and the tool draws the collage on canvas in your browser. The result downloads as a single image in the format you choose.\n\nA collage works best when the photos share a similar look — mixed orientations and exposures show up side by side. Nothing is uploaded; the drawing runs on your device.',
+    examples: [
+      {
+        title: 'Holiday photos in one post',
+        description:
+          'Six photos from a trip become one collage image for a social post, instead of six separate uploads.',
+      },
+      {
+        title: 'Product range for a listing',
+        description:
+          'Four colour variants of a product are combined into one image for the listing, so shoppers see the range at a glance.',
+      },
+      {
+        title: 'Before-and-after grid',
+        description:
+          'Photos of a project at several stages are laid out in a grid that tells the story in one image.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB per file, multiple photos. Output: one collage image (format selectable at download).\n\nThe collage is rendered on canvas at the size you choose. The original photos are never modified.',
+    limitations:
+      'A collage shrinks every photo to fit the grid, so fine detail in any single photo is lost — it is a summary, not a gallery. Photos with very different aspect ratios are cropped to fit their cells. The output is a single flat image; the layout cannot be edited after download.',
   },
   {
     slug: '/compress-image-to-50kb',
