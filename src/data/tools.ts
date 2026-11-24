@@ -2998,6 +2998,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-contrast-editor', '/image-saturation-editor', '/image-filters', '/'],
+    benefits: [
+      {
+        title: 'For rescuing dark photos',
+        description:
+          'A photo taken indoors or at dusk comes out too dark to see. Raising the brightness reveals the subject without any editing skill.',
+      },
+      {
+        title: 'For taming overexposed shots',
+        description:
+          'A washed-out photo taken in harsh sun gets its detail back when the brightness comes down — skies and highlights recover first.',
+      },
+      {
+        title: 'For a live preview before you commit',
+        description:
+          'The slider updates the preview as you drag, so you see the result before downloading. No guessing, no re-doing.',
+      },
+      {
+        title: 'For private editing',
+        description:
+          'The adjustment runs on canvas in your browser. The photo never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a photo and drag the brightness slider from −100 to +100. The tool redraws the image on canvas with the new brightness applied and shows the result live, side by side with the original. When it looks right, choose the output format — Original, JPG, PNG or WebP — and download.\n\nBrightness shifts every pixel toward white or black by the same amount, so it is the right fix when the whole photo is too dark or too bright. Nothing is uploaded; the adjustment runs on your device.',
+    examples: [
+      {
+        title: 'Indoor photo that came out dark',
+        description:
+          'A birthday photo taken in a dim room is brightened until the faces are clear, then downloaded as a JPG for sharing.',
+      },
+      {
+        title: 'Overexposed beach photo',
+        description:
+          'A photo taken at noon is washed out. Lowering the brightness brings the sky and the sand back into range.',
+      },
+      {
+        title: 'Scanned old photo',
+        description:
+          'A faded scan is brightened slightly to lift the shadows before it is printed again.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB. Output: Original, JPG, PNG or WebP, with a quality slider for JPG and WebP.\n\nThe brightness slider runs from −100 to +100 and applies on canvas. The original file is never modified — the download is a new file.',
+    limitations:
+      'Brightness is a blunt tool: raising it lifts shadows but also washes out highlights, and lowering it darkens everything including the parts that were fine. A photo that is badly overexposed has no detail left to recover in the blown-out areas. For targeted fixes, use the contrast or saturation editors alongside.',
   },
   {
     slug: '/image-contrast-editor',
@@ -3146,6 +3191,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-brightness-editor', '/image-saturation-editor', '/image-filters', '/'],
+    benefits: [
+      {
+        title: 'For flat photos that need punch',
+        description:
+          'A photo shot on a cloudy day looks grey and lifeless. Raising the contrast separates the lights from the darks and the image snaps into focus.',
+      },
+      {
+        title: 'For softening harsh photos',
+        description:
+          'A photo with crushed blacks and blown highlights calms down when the contrast comes down — detail returns to both ends.',
+      },
+      {
+        title: 'For a live preview before you commit',
+        description:
+          'The slider updates the preview as you drag, so you see the result before downloading. No guessing, no re-doing.',
+      },
+      {
+        title: 'For private editing',
+        description:
+          'The adjustment runs on canvas in your browser. The photo never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a photo and drag the contrast slider from −100 to +100. The tool redraws the image on canvas with the new contrast applied and shows the result live, side by side with the original. When it looks right, choose the output format — Original, JPG, PNG or WebP — and download.\n\nContrast stretches or squeezes the gap between the darkest and lightest pixels: raising it makes darks darker and lights lighter, lowering it pulls everything toward the middle. Nothing is uploaded; the adjustment runs on your device.',
+    examples: [
+      {
+        title: 'Cloudy-day photo that looks flat',
+        description:
+          'A landscape shot under grey skies is given more contrast until the hills and the sky separate — the photo gains depth without any colour change.',
+      },
+      {
+        title: 'Portrait with harsh shadows',
+        description:
+          'A portrait taken in direct sun has black shadows on the face. Lowering the contrast softens them until the skin tones read naturally.',
+      },
+      {
+        title: 'Product photo for a listing',
+        description:
+          'A product shot is given a small contrast lift so the product stands out from the background on the shop page.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB. Output: Original, JPG, PNG or WebP, with a quality slider for JPG and WebP.\n\nThe contrast slider runs from −100 to +100 and applies on canvas. The original file is never modified — the download is a new file.',
+    limitations:
+      'Too much contrast clips detail: shadows go pure black and highlights go pure white, and that detail cannot be recovered afterwards. Lowering contrast too far makes the image look foggy. For a photo that is simply too dark or too bright overall, the brightness editor is the better first step.',
   },
   {
     slug: '/image-saturation-editor',
@@ -3294,6 +3384,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-filters', '/image-brightness-editor', '/image-contrast-editor', '/'],
+    benefits: [
+      {
+        title: 'For colours that look washed out',
+        description:
+          'A photo taken in flat light has dull, greyish colours. Raising the saturation brings the reds, greens and blues back to life.',
+      },
+      {
+        title: 'For a black-and-white version in one drag',
+        description:
+          'Dragging the slider all the way down removes every colour — a true greyscale version of the photo, no filter app needed.',
+      },
+      {
+        title: 'For taming oversaturated phone photos',
+        description:
+          'Some phones oversaturate by default. Pulling the slider down a little makes skin tones and skies look natural again.',
+      },
+      {
+        title: 'For private editing',
+        description:
+          'The adjustment runs on canvas in your browser. The photo never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a photo and drag the saturation slider from −100 to +100. The tool redraws the image on canvas with the new saturation applied and shows the result live, side by side with the original. When it looks right, choose the output format — Original, JPG, PNG or WebP — and download.\n\nSaturation controls colour intensity without touching brightness: raising it makes colours richer, lowering it mutes them, and −100 removes colour entirely. Nothing is uploaded; the adjustment runs on your device.',
+    examples: [
+      {
+        title: 'Food photo that looks dull',
+        description:
+          'A dish photographed under kitchen light looks grey. A small saturation lift makes the food look appetising again.',
+      },
+      {
+        title: 'Black-and-white portrait',
+        description:
+          'A portrait is turned greyscale by dragging the slider to −100 — a clean black-and-white version without installing anything.',
+      },
+      {
+        title: 'Oversaturated sunset',
+        description:
+          'A phone photo of a sunset has neon-orange skies. Pulling saturation down slightly restores a natural look.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB. Output: Original, JPG, PNG or WebP, with a quality slider for JPG and WebP.\n\nThe saturation slider runs from −100 to +100 and applies on canvas. The original file is never modified — the download is a new file.',
+    limitations:
+      'Too much saturation makes skin look orange and skies look fake, and it can push colours out of the range a JPG can store cleanly. Saturation does not fix a photo that is too dark or too bright — that is the brightness editor\u2019s job. A greyscale result at −100 is still a colour-format file (JPG/PNG), just with no colour in it.',
   },
   {
     slug: '/image-filters',
