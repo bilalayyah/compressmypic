@@ -2679,6 +2679,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-watermark', '/image-border-generator', '/image-filters', '/'],
+    benefits: [
+      {
+        title: 'For captions on photos',
+        description:
+          'A caption, a date or a name written directly on the photo — for a memory, a meme or a labelled diagram.',
+      },
+      {
+        title: 'For five fonts, not one',
+        description:
+          'Clean sans, meme display, classic serif, monospace and rounded sans — pick the voice that fits the image.',
+      },
+      {
+        title: 'For multiple text layers',
+        description:
+          'More than one line of text, each with its own font, size and colour, placed where you want it.',
+      },
+      {
+        title: 'For private labelling',
+        description:
+          'The text is drawn on canvas in your browser. The photo never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a photo and add text layers: type the text, pick a font from the five on offer, set the size as a percentage of the image width (7% by default) and choose the colour (white by default). Drag each layer where it belongs, and the tool draws the text on canvas and downloads the finished image.\n\nText is drawn at the size you set relative to the image, so it scales sensibly on any photo. Nothing is uploaded; the drawing runs on your device.',
+    examples: [
+      {
+        title: 'Caption on a holiday photo',
+        description:
+          'A place name and date are written on a holiday photo in a clean sans font, so the memory is labelled in the image itself.',
+      },
+      {
+        title: 'Meme text on a photo',
+        description:
+          'Top and bottom text in the Impact meme font turns a photo into a meme in under a minute.',
+      },
+      {
+        title: 'Labelled diagram',
+        description:
+          'Labels are added to a diagram in a monospace font, so each part is named directly on the image.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB. Text: multiple layers, 5 fonts (Inter, Impact, Georgia, Courier New, Trebuchet MS), size as % of image width, any colour.\n\nThe text is drawn on canvas at the size you set. The original file is never modified — the download is a new file.',
+    limitations:
+      'Text is drawn as pixels: it cannot be edited after download, and it will not stay sharp if the image is enlarged later. Very small text on a busy background can be hard to read — use a contrasting colour or a larger size. Only the five built-in fonts are available; custom fonts cannot be uploaded.',
   },
   {
     slug: '/image-border-generator',
@@ -2832,6 +2877,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/round-image-corners', '/add-background-to-image', '/image-filters', '/'],
+    benefits: [
+      {
+        title: 'For a frame that finishes a photo',
+        description:
+          'A border gives a photo a finished edge — like a print in a frame — instead of the image ending abruptly.',
+      },
+      {
+        title: 'For three styles, not one',
+        description:
+          'Solid, gradient or polaroid: a clean line, a colour fade, or the classic white polaroid frame with space at the bottom.',
+      },
+      {
+        title: 'For rounded corners built in',
+        description:
+          'The border path supports rounded corners, so the frame can be soft as well as straight.',
+      },
+      {
+        title: 'For private framing',
+        description:
+          'The border is drawn on canvas in your browser. The photo never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a photo and pick a border style — solid, gradient or polaroid — then set the width and colour. The tool draws the border around the image on canvas (with rounded corners where the style calls for them) and downloads the framed image.\n\nA polaroid border adds the classic white frame with extra space at the bottom, the way an instant photo looks. Nothing is uploaded; the drawing runs on your device.',
+    examples: [
+      {
+        title: 'Photo for a profile',
+        description:
+          'A portrait gets a thin solid border so it stands out from the page background on a profile.',
+      },
+      {
+        title: 'Polaroid-style memory',
+        description:
+          'A holiday photo gets a polaroid border, so it looks like an instant print in a scrapbook.',
+      },
+      {
+        title: 'Gradient frame for a poster',
+        description:
+          'A poster image gets a gradient border that fades between two colours, matching the poster\u2019s own palette.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB. Border: solid, gradient or polaroid, with width and colour controls and rounded corners.\n\nThe border is drawn on canvas around the original image. The original file is never modified — the download is a new file.',
+    limitations:
+      'A border adds pixels around the image, so the output is larger than the input — check the dimensions if a size limit applies. The polaroid style is a fixed look, not a free-form frame. A border cannot be removed from the downloaded file afterwards.',
   },
   {
     slug: '/round-image-corners',
@@ -2985,6 +3075,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-border-generator', '/image-cropper', '/add-background-to-image', '/'],
+    benefits: [
+      {
+        title: 'For photos that fit a round frame',
+        description:
+          'A square photo with rounded corners fits a circular avatar slot, a card or a modern interface without the sharp edges.',
+      },
+      {
+        title: 'For each corner on its own',
+        description:
+          'Top-left, top-right, bottom-right and bottom-left are set separately, so one corner can be round and another square.',
+      },
+      {
+        title: 'For a full circle when you want it',
+        description:
+          'At 100% the corners meet and the image becomes a circle or a pill — the avatar look, in one slider.',
+      },
+      {
+        title: 'For private rounding',
+        description:
+          'The corners are cut on canvas in your browser. The photo never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a photo and set the corner radius — one uniform value (12% by default) or a different percentage for each of the four corners. The radius is a percentage of half the smaller side, so 100% turns the image into a full circle or pill. Choose a transparent background (the default, which needs PNG or WebP output) or a solid colour, and download.\n\nRounded corners are transparency, not a crop: the corner pixels become see-through, so the output must be a format that supports transparency. Nothing is uploaded; the cutting runs on your device.',
+    examples: [
+      {
+        title: 'Avatar photo',
+        description:
+          'A square portrait is rounded to a full circle with a transparent background, so it drops cleanly into a circular avatar slot.',
+      },
+      {
+        title: 'Card image for a website',
+        description:
+          'A product photo gets softly rounded corners to match the cards on the website, at 12% radius.',
+      },
+      {
+        title: 'Pill-shaped banner',
+        description:
+          'A wide banner is rounded to a pill shape at 100% radius, so it reads as a modern interface element.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB. Corner radius: uniform (12% default) or per-corner (TL/TR/BR/BL), as % of half the smaller side; 100% = full circle/pill. Background: transparent (default) or solid. Output: PNG (default), WebP or JPEG.\n\nTransparent output needs PNG or WebP — JPEG has no transparency, so a JPEG with rounded corners gets the solid background instead.',
+    limitations:
+      'Rounded corners need transparency: saving as JPEG fills the corners with the solid background colour. A circle cut from a non-square image becomes an ellipse, not a circle. The cut corners are gone in the download — keep the original if you need the square version back.',
   },
   {
     slug: '/image-brightness-editor',
