@@ -1815,6 +1815,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-resizer', '/rotate-flip-image', '/round-image-corners', '/'],
+    benefits: [
+      {
+        title: 'For exact framing',
+        description:
+          'Cut out distractions at the edge of a photo and keep only the subject, with a drag rectangle you control pixel by pixel.',
+      },
+      {
+        title: 'For social and print ratios',
+        description:
+          'One-click presets for 1:1, 4:3, 16:9, 3:2, 4:5 and 9:16 cover profile pictures, stories, thumbnails and prints without mental math.',
+      },
+      {
+        title: 'For free-form crops',
+        description:
+          'Free mode lets you draw any rectangle at all, for the odd crop no preset covers — a banner slice, a detail close-up, a custom card.',
+      },
+      {
+        title: 'For honest filenames',
+        description:
+          'The cropped file downloads with its exact pixel dimensions in the name, so you can tell at a glance which crop is which.',
+      },
+    ],
+    howItWorks:
+      'You drag a rectangle over your image — or pick an aspect preset and let the rectangle snap to that ratio — and the tool reads only the pixels inside it. It draws exactly that region onto an HTML5 Canvas and encodes the canvas as a new image. Your original file is never modified; the crop is a separate download.\n\nThe preset locks the rectangle\u2019s proportions while you move and resize it, so a 1:1 crop stays square and a 16:9 crop stays widescreen no matter how you drag the corners.',
+    examples: [
+      {
+        title: 'Photo to a 1:1 profile picture',
+        description:
+          'A landscape photo becomes a square avatar: pick the 1:1 preset, slide the square over the face, and download a crop that fits the profile frame exactly.',
+      },
+      {
+        title: 'Video still to a 16:9 thumbnail',
+        description:
+          'A frame grabbed from a video is cropped to 16:9 with the preset, cutting the letterbox bars and leaving only the scene for the thumbnail.',
+      },
+      {
+        title: 'Free crop to remove a stranger',
+        description:
+          'Someone walked into the edge of an otherwise good photo. A free-form rectangle cuts them out while keeping the rest of the scene intact.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB per file. Aspect presets: Free, 1:1, 4:3, 16:9, 3:2, 4:5 and 9:16. The cropped file downloads with its pixel dimensions in the filename (for example, photo_800x600_cropped.png).',
+    limitations:
+      'Cropping only removes pixels — it cannot add back anything outside the original frame, so a badly framed shot cannot be rescued by cropping. A small crop enlarged back to full size softens, because the pixels are stretched. Animated GIFs crop as a single still frame; the animation is not preserved.',
   },
   {
     slug: '/image-watermark',
@@ -5297,6 +5342,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       '/web-image-optimizer',
       '/',
     ],
+    benefits: [
+      {
+        title: 'For whole folders at once',
+        description:
+          'Drop in dozens of photos — a product shoot, an event album, a blog\u2019s image folder — and compress the lot in one pass instead of one file at a time.',
+      },
+      {
+        title: 'For the same controls, in bulk',
+        description:
+          'Quality, output format and matte colour work the same as the single-file compressor, applied consistently to every file in the batch.',
+      },
+      {
+        title: 'For one tidy download',
+        description:
+          'Every compressed file lands in a single ZIP, with a per-file savings list so you can see exactly what each image saved before you download.',
+      },
+      {
+        title: 'For fixing one file without redoing the batch',
+        description:
+          'Recompress a single file at a different quality from the results list, instead of running the whole folder again.',
+      },
+    ],
+    howItWorks:
+      'The bulk compressor runs the same engine as the single-file compressor on each file in turn: it decodes the image in your browser, draws it onto an HTML5 Canvas, and encodes it at your chosen quality and format. Nothing is uploaded, and files are processed on your device.\n\nAs each file finishes, its result appears in the list with its old and new size and the percentage saved. When the batch is done, Download All bundles every compressed file into one ZIP.',
+    examples: [
+      {
+        title: '40 product photos to one ZIP',
+        description:
+          'A shop\u2019s new listings arrive as 40 large photos. One batch at 80% quality compresses them all, and a single ZIP holds the upload-ready set.',
+      },
+      {
+        title: 'Event album for email',
+        description:
+          'A folder of event photos is far too heavy to email. Compressed in bulk, the same images attach easily while still looking good on screen.',
+      },
+      {
+        title: 'Blog images for faster pages',
+        description:
+          'A month of blog images, compressed in one batch, keeps article pages loading quickly without editing each file by hand.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 25 MB per file. Outputs: Original format, JPG, PNG or WebP, at the quality you set. Results download individually or as one ZIP.\n\nHEIC files are decoded locally before compression. When you export to JPG, transparent areas are filled with the matte colour you pick.',
+    limitations:
+      'Animated GIFs compress as a single still frame — only the opening frame is kept, so use the GIF Compressor for animated files. Very large batches use significant browser memory, so extremely large folders are better split into smaller runs. The 25 MB limit applies per file, and a single huge file can still be slow on a phone.',
   },
   {
     slug: '/target-file-size-compressor',
@@ -6472,6 +6562,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/png-to-jpg', '/jpg-to-webp', '/image-converter', '/add-background-to-image'],
+    benefits: [
+      {
+        title: 'For sharp screenshots and graphics',
+        description:
+          'Text, UI and line art stay crisp in PNG. A JPG screenshot softens edges every time it is saved; converting to PNG stops further degradation.',
+      },
+      {
+        title: 'For lossless editing',
+        description:
+          'PNG keeps every pixel exactly, so it is the right base for editing, compositing or print work where another JPG save would throw detail away.',
+      },
+      {
+        title: 'For design and print workflows',
+        description:
+          'Many design tools, printers and document systems expect PNG. Convert the JPG once and the file fits the workflow instead of fighting it.',
+      },
+      {
+        title: 'For a single file, fast',
+        description:
+          'One JPG in, one PNG out, in the browser, with no upload and no batch setup — the quickest route when only one file needs the switch.',
+      },
+    ],
+    howItWorks:
+      'The converter decodes your JPG in the browser and draws its pixels onto an HTML5 Canvas, then encodes the canvas as PNG. PNG is lossless, so the output keeps every pixel of the decoded JPG exactly — but it cannot restore detail the JPG already lost when it was first compressed. The artefacts in the source stay; only new loss is prevented.\n\nBecause PNG stores pixels without loss, the file is usually larger than the JPG you started from. That is the trade you make for pixel-perfect quality: smaller files belong to JPG and WebP, exact pixels belong to PNG.',
+    examples: [
+      {
+        title: 'Screenshot JPG to PNG for a manual',
+        description:
+          'A JPG screenshot of a settings screen looks slightly fuzzy around text. As PNG, the same pixels render sharp, which is what a help article or manual needs.',
+      },
+      {
+        title: 'Photo JPG to PNG before editing',
+        description:
+          'A photo that will be edited several times converts to PNG first, so each edit starts from exact pixels instead of re-compressing a JPG again and again.',
+      },
+      {
+        title: 'JPG logo to PNG for a design file',
+        description:
+          'A logo saved as JPG goes into a design tool that wants PNG. One conversion gives the tool the lossless file it expects, with no background added.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG and JPEG only, up to 25 MB per file. Output: PNG, lossless. This page converts one file at a time — for whole folders, use the Bulk Image Converter.\n\nThe output PNG has the same pixel dimensions as the source JPG. It does not gain transparency: JPG has no alpha channel, so there is nothing to preserve.',
+    limitations:
+      'A PNG output is usually larger than the source JPG, because lossless storage keeps every pixel while JPG discards some. Converting does not improve quality — it only stops further loss, and any blur or artefacts already in the JPG carry over. There is no batch mode on this page, and the input must be a JPG; other formats use their own converter pages.',
   },
   {
     slug: '/png-to-jpg',
