@@ -6311,6 +6311,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       '/bulk-image-converter',
       '/web-image-optimizer',
     ],
+    benefits: [
+      {
+        title: 'For resizing a whole folder at once',
+        description:
+          'A shoot, a product catalogue or a blog batch: dozens of images resized to the same dimensions in one pass, instead of one by one.',
+      },
+      {
+        title: 'For consistent dimensions everywhere',
+        description:
+          'Every image comes out at the same width and height, so a gallery, a feed or a catalogue looks uniform instead of ragged.',
+      },
+      {
+        title: 'For one ZIP instead of dozens of downloads',
+        description:
+          'All resized images pack into a single ZIP, plus individual downloads when you only need one of them.',
+      },
+      {
+        title: 'For private batch work',
+        description:
+          'The resizing runs on canvas in your browser. The images never leave your device.',
+      },
+    ],
+    howItWorks:
+      'You drop a batch of images in and set the target dimensions — width and height, a percentage, or one of the presets — and the tool resizes every image to the same size, all in your browser. Each file keeps its own format unless you change it, and the results download individually or together as one ZIP.\n\nThe same 12,000-pixel cap as the single resizer applies per image, and each file may be up to 25 MB. Nothing is uploaded; the resizing runs on your device.',
+    examples: [
+      {
+        title: 'Product catalogue photos',
+        description:
+          'Forty product photos are resized to 1200×1200 in one batch, so the shop grid is uniform and the pages load fast.',
+      },
+      {
+        title: 'Blog images for a series',
+        description:
+          'A dozen images for a blog series are resized to the same width, so every article in the series looks consistent.',
+      },
+      {
+        title: 'Photos for a social feed',
+        description:
+          'A week of photos is resized to the square format the feed uses, in one pass instead of one at a time.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 25 MB per file, multiple files at once. Output: resized images in the same format, downloaded individually or as one ZIP (bulk_resized_compressmypic.zip).\n\nDimensions, percentage and presets work the same as the single-image resizer. The 12,000-pixel max-side cap applies per image.',
+    limitations:
+      'Resizing up makes a small image bigger, not sharper — the pixels are invented, not recovered. A batch of very large images can take a while and use a lot of memory, especially on a phone; process in smaller groups if the tab slows down. Animated GIFs resize as a single still frame.',
   },
   {
     slug: '/bulk-image-converter',
@@ -6481,6 +6526,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       '/bulk-image-resizer',
       '/web-image-optimizer',
     ],
+    benefits: [
+      {
+        title: 'For converting a whole folder at once',
+        description:
+          'A folder of PNGs becomes WebP, or a set of WebPs becomes JPG, in one pass — instead of converting each file by hand.',
+      },
+      {
+        title: 'For a consistent format across a project',
+        description:
+          'Every image comes out in the same target format, so a website, a document or a presentation stops mixing formats.',
+      },
+      {
+        title: 'For one ZIP instead of dozens of downloads',
+        description:
+          'All converted images pack into a single ZIP, plus individual downloads when you only need one of them.',
+      },
+      {
+        title: 'For private batch work',
+        description:
+          'The conversion runs on canvas in your browser. The images never leave your device.',
+      },
+    ],
+    howItWorks:
+      'You drop a batch of images in, pick the target format — JPG, PNG or WebP — and the tool converts every file to that format, all in your browser. JPG and WebP outputs have a quality slider; PNG is lossless and has none. The results download individually or together as one ZIP named for the target format.\n\nEach file may be up to 25 MB. Nothing is uploaded; the conversion runs on your device.',
+    examples: [
+      {
+        title: 'PNG screenshots to WebP for a site',
+        description:
+          'Thirty PNG screenshots are converted to WebP in one batch, cutting the help centre\u2019s image weight by more than half.',
+      },
+      {
+        title: 'WebP downloads to JPG for an old app',
+        description:
+          'A folder of WebP images is converted to JPG so they open in an older application that does not support WebP.',
+      },
+      {
+        title: 'Mixed formats to one format',
+        description:
+          'A folder with JPGs, PNGs and WebPs is converted entirely to JPG, so the archive is one format from end to end.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 25 MB per file, multiple files at once. Outputs: JPG, PNG or WebP — one target format for the whole batch. JPG and WebP have a quality slider; PNG is lossless.\n\nTransparent images converted to JPG get a matte fill, because JPG has no transparency. The ZIP is named for the target format (bulk_converted_jpg.zip and so on).',
+    limitations:
+      'A batch of very large images can take a while and use a lot of memory, especially on a phone; process in smaller groups if the tab slows down. Converting to JPG is lossy and cannot be undone — keep the originals. Animated GIFs convert as a single still frame.',
   },
   {
     slug: '/web-image-optimizer',
