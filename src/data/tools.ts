@@ -7897,6 +7897,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/webp-to-png', '/jpg-to-webp', '/png-to-jpg', '/image-converter'],
+    benefits: [
+      {
+        title: 'For files that work everywhere',
+        description:
+          'WebP is great on the web but old software, some printers and many desktop apps still do not open it. JPG opens everywhere, on anything.',
+      },
+      {
+        title: 'For sharing without surprises',
+        description:
+          'A WebP sent to someone on an old phone or an old version of an app may not open at all. Converted to JPG, it just works.',
+      },
+      {
+        title: 'For a quality slider, not a guess',
+        description:
+          'JPG output has a quality slider, so you choose the balance between file size and image quality instead of accepting a fixed preset.',
+      },
+      {
+        title: 'For private conversion',
+        description:
+          'The conversion runs on canvas in your browser. The image never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a WebP image and the tool decodes it in your browser and re-encodes it as a JPEG, with a quality slider for JPG output. The original WebP is never modified — the download is a new .jpg file.\n\nWebP is a modern web format, but compatibility is its weak spot: older software, email clients and printers may refuse it. JPG is the universal fallback. Nothing is uploaded; the conversion runs on your device.',
+    examples: [
+      {
+        title: 'WebP from a website that will not print',
+        description:
+          'An image saved from a website is a WebP and the photo printer refuses it. Converted to JPG, it prints normally.',
+      },
+      {
+        title: 'WebP for an old app',
+        description:
+          'A WebP attachment will not open in an older version of a messaging app. As a JPG it opens on the first try.',
+      },
+      {
+        title: 'WebP for a form upload',
+        description:
+          'A form accepts JPG and PNG but not WebP. The image is converted to JPG and the upload goes through.',
+      },
+    ],
+    supportedFormats:
+      'Input: WebP only, up to 25 MB per file. Output: JPEG (.jpg), with a quality slider. Transparent WebP images get a matte fill on conversion, because JPG has no transparency.\n\nThe conversion is lossless on the decode side — the WebP is fully decoded before it is re-encoded as JPG.',
+    limitations:
+      'JPG is lossy: every conversion loses a little quality, and converting the same file back and forth compounds it. Transparency is lost — a transparent WebP becomes a JPG with a solid background. Animated WebP converts as a single still frame.',
   },
   {
     slug: '/png-to-webp',
@@ -8057,6 +8102,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/webp-to-png', '/jpg-to-webp', '/web-image-optimizer', '/image-converter'],
+    benefits: [
+      {
+        title: 'For smaller images that keep transparency',
+        description:
+          'PNG is lossless but heavy. WebP keeps the transparency and the sharp edges, at a fraction of the file size.',
+      },
+      {
+        title: 'For faster web pages',
+        description:
+          'A PNG logo or screenshot converted to WebP loads noticeably faster, and the page\u2019s total weight drops with every image.',
+      },
+      {
+        title: 'For a quality slider, not a guess',
+        description:
+          'WebP output has a quality slider, so you choose the balance between file size and image quality instead of accepting a fixed preset.',
+      },
+      {
+        title: 'For private conversion',
+        description:
+          'The conversion runs on canvas in your browser. The image never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a PNG image and the tool decodes it in your browser and re-encodes it as WebP, with a quality slider for the output. The original PNG is never modified — the download is a new .webp file.\n\nWebP compresses far better than PNG for photos and screenshots while keeping transparency, which is why it is the standard for web images now. Nothing is uploaded; the conversion runs on your device.',
+    examples: [
+      {
+        title: 'Logo for a website',
+        description:
+          'A 400 KB transparent PNG logo becomes a 90 KB WebP that looks identical on the page and loads four times faster.',
+      },
+      {
+        title: 'Screenshot for a help article',
+        description:
+          'A PNG screenshot of a user interface is converted to WebP so the article page stays fast, with the text in the screenshot still sharp.',
+      },
+      {
+        title: 'Product image with transparency',
+        description:
+          'A product shot with a transparent background is converted to WebP for the shop, keeping the transparency and cutting the file size.',
+      },
+    ],
+    supportedFormats:
+      'Input: PNG only, up to 25 MB per file. Output: WebP (.webp), with a quality slider. Transparency is preserved — WebP supports an alpha channel just like PNG.\n\nThe conversion is lossless on the decode side — the PNG is fully decoded before it is re-encoded as WebP.',
+    limitations:
+      'WebP is lossy at lower quality settings: fine text and sharp edges can soften if the slider is set too low. Very old software may not open WebP — convert back to JPG or PNG for those cases. Animated PNGs (APNG) convert as a single still frame.',
   },
   {
     slug: '/webp-to-png',
@@ -8217,6 +8307,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/webp-to-jpg', '/png-to-webp', '/jpg-to-png', '/image-converter'],
+    benefits: [
+      {
+        title: 'For editing a WebP in any editor',
+        description:
+          'Many image editors still do not open WebP. Converted to PNG, the image opens in any editor, any version, on any system.',
+      },
+      {
+        title: 'For a lossless copy',
+        description:
+          'PNG is lossless, so the converted file keeps every pixel of the decoded WebP exactly — no new compression artefacts.',
+      },
+      {
+        title: 'For transparency that survives',
+        description:
+          'A transparent WebP becomes a transparent PNG, so the alpha channel is still there for the editor or the design tool.',
+      },
+      {
+        title: 'For private conversion',
+        description:
+          'The conversion runs on canvas in your browser. The image never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a WebP image and the tool decodes it in your browser and re-encodes it as a PNG. There is no quality slider, because PNG is lossless — the output keeps every decoded pixel exactly. The original WebP is never modified — the download is a new .png file.\n\nPNG is the format every editor understands, which makes it the right stop before editing, printing or archiving a WebP. Nothing is uploaded; the conversion runs on your device.',
+    examples: [
+      {
+        title: 'WebP that will not open in an editor',
+        description:
+          'An image downloaded as WebP refuses to open in an older photo editor. Converted to PNG, it opens immediately.',
+      },
+      {
+        title: 'WebP for a print job',
+        description:
+          'A WebP is converted to PNG for a print shop, because the shop\u2019s software accepts PNG and the lossless copy keeps every pixel.',
+      },
+      {
+        title: 'Transparent WebP for a design file',
+        description:
+          'A transparent WebP logo is converted to PNG so it can be placed in a design document that does not support WebP.',
+      },
+    ],
+    supportedFormats:
+      'Input: WebP only, up to 25 MB per file. Output: PNG (.png), lossless — no quality slider, because PNG has nothing to lose. Transparency is preserved.\n\nThe conversion is lossless on both sides: the WebP is fully decoded and the PNG stores every pixel exactly.',
+    limitations:
+      'PNG files are bigger than WebP — often much bigger — so do not use this for web pages; convert back to WebP or JPG for the web. Animated WebP converts as a single still frame. A PNG cannot be smaller than the decoded image data, so a very large WebP makes a very large PNG.',
   },
   {
     slug: '/svg-to-png',
