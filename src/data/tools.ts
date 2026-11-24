@@ -8517,6 +8517,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/favicon-generator', '/png-to-webp', '/image-resizer', '/image-converter'],
+    benefits: [
+      {
+        title: 'For using a vector image where only pixels work',
+        description:
+          'An SVG is code, not pixels — many apps, forms and printers cannot use it. Rasterized to PNG, the same graphic works everywhere.',
+      },
+      {
+        title: 'For a lossless raster copy',
+        description:
+          'PNG is lossless, so the converted file keeps every pixel of the rendered SVG exactly — no new compression artefacts.',
+      },
+      {
+        title: 'For transparency that survives',
+        description:
+          'An SVG with a transparent background becomes a transparent PNG, so the alpha channel is still there for the design or the page.',
+      },
+      {
+        title: 'For private conversion',
+        description:
+          'The conversion runs in your browser. The file never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload an SVG file and the tool renders it as a raster image and encodes it as a PNG. The SVG is parsed for its viewBox, width and height, so the PNG comes out at the size the SVG declares. The original SVG is never modified — the download is a new .png file.\n\nSVG is a vector format: it scales perfectly but only works where SVG is supported. PNG is the pixel format every tool understands. Nothing is uploaded; the conversion runs on your device.',
+    examples: [
+      {
+        title: 'Logo for a form that only accepts PNG',
+        description:
+          'A logo exists only as an SVG and the upload form accepts PNG. Converted, the logo uploads with its transparency intact.',
+      },
+      {
+        title: 'Icon for a presentation',
+        description:
+          'An SVG icon is converted to PNG so it can be placed in a slide deck that does not support vector graphics.',
+      },
+      {
+        title: 'Diagram for a document',
+        description:
+          'A diagram drawn as SVG is rasterized to PNG for a Word document, where the vector would not render.',
+      },
+    ],
+    supportedFormats:
+      'Input: SVG only, up to 25 MB per file. Output: PNG (.png), lossless — no quality slider, because PNG has nothing to lose. Transparency is preserved.\n\nThe SVG is parsed for its viewBox and declared width/height, and the PNG is rendered at that size. Scripts inside the SVG are never executed — it is loaded as an image.',
+    limitations:
+      'A PNG is fixed-resolution: unlike the SVG it cannot be scaled up without softening, so convert at the largest size you need. An SVG that references external images or fonts may render differently than in its original context. Very complex SVGs can be slow to render, and the PNG can be large for a detailed graphic.',
   },
   {
     slug: '/avif-to-jpg',
@@ -8677,6 +8722,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/webp-to-jpg', '/heic-to-jpg', '/jpg-to-webp', '/image-converter'],
+    benefits: [
+      {
+        title: 'For AVIF files that will not open',
+        description:
+          'AVIF is the newest image format and many apps still cannot open it. Converted to JPG, the same picture opens everywhere.',
+      },
+      {
+        title: 'For sharing without a compatibility check',
+        description:
+          'A photo saved as AVIF may fail on the recipient\u2019s device. As a JPG it just works — no asking which apps they have.',
+      },
+      {
+        title: 'For a quality slider, not a guess',
+        description:
+          'JPG output has a quality slider, so you choose the balance between file size and image quality instead of accepting a fixed preset.',
+      },
+      {
+        title: 'For private conversion',
+        description:
+          'The conversion runs on canvas in your browser. The image never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload an AVIF image and the tool decodes it in your browser and re-encodes it as a JPEG, with a quality slider for JPG output. The original AVIF is never modified — the download is a new .jpg file.\n\nAVIF compresses beautifully but support is still patchy: older browsers, desktop apps and printers may refuse it. JPG is the universal fallback. Nothing is uploaded; the conversion runs on your device.',
+    examples: [
+      {
+        title: 'AVIF photo that will not open',
+        description:
+          'A photo downloaded as AVIF refuses to open in an older image viewer. Converted to JPG, it opens on the first try.',
+      },
+      {
+        title: 'AVIF for a form upload',
+        description:
+          'A form accepts JPG and PNG but not AVIF. The image is converted to JPG and the upload goes through.',
+      },
+      {
+        title: 'AVIF for a client who uses old software',
+        description:
+          'A client\u2019s old design software cannot import AVIF. The images are converted to JPG before they are sent.',
+      },
+    ],
+    supportedFormats:
+      'Input: AVIF only, up to 25 MB per file. Output: JPEG (.jpg), with a quality slider. Transparent AVIF images get a matte fill on conversion, because JPG has no transparency.\n\nThe conversion is lossless on the decode side — the AVIF is fully decoded before it is re-encoded as JPG.',
+    limitations:
+      'JPG is lossy: every conversion loses a little quality, and converting the same file back and forth compounds it. Transparency is lost — a transparent AVIF becomes a JPG with a solid background. AVIF\u2019s HDR and wide-gamut colour data do not survive a JPG conversion. Animated AVIF converts as a single still frame.',
   },
   {
     slug: '/bmp-to-jpg',
@@ -8837,6 +8927,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/png-to-jpg', '/image-converter', '/bulk-image-converter', '/compress-image-to-100kb'],
+    benefits: [
+      {
+        title: 'For BMP files that are far too big',
+        description:
+          'BMP is uncompressed — a single photo can be tens of megabytes. The same picture as a JPG is a fraction of the size with no visible difference.',
+      },
+      {
+        title: 'For files that work everywhere',
+        description:
+          'BMP is a Windows legacy format. Converted to JPG, the image opens on any device, in any app, on any system.',
+      },
+      {
+        title: 'For a quality slider, not a guess',
+        description:
+          'JPG output has a quality slider, so you choose the balance between file size and image quality instead of accepting a fixed preset.',
+      },
+      {
+        title: 'For private conversion',
+        description:
+          'The conversion runs on canvas in your browser. The image never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a BMP image and the tool decodes it in your browser and re-encodes it as a JPEG, with a quality slider for JPG output. The original BMP is never modified — the download is a new .jpg file.\n\nBMP stores every pixel raw, which is why the files are enormous. JPG compression at a sensible quality keeps the picture looking the same at a tenth of the size. Nothing is uploaded; the conversion runs on your device.',
+    examples: [
+      {
+        title: 'BMP screenshot that is 20 MB',
+        description:
+          'A screenshot saved as BMP is 20 MB. Converted to JPG at quality 85 it is under 1 MB and looks identical.',
+      },
+      {
+        title: 'Old BMP files from a scanner',
+        description:
+          'Scanned images stored as BMP are converted to JPG so they can be emailed and archived without filling the drive.',
+      },
+      {
+        title: 'BMP for a website',
+        description:
+          'A BMP image cannot go on a web page — browsers do not display it well and the file is huge. As a JPG it works everywhere.',
+      },
+    ],
+    supportedFormats:
+      'Input: BMP only, up to 25 MB per file. Output: JPEG (.jpg), with a quality slider. BMP has no transparency, so nothing is lost on that front.\n\nThe conversion is lossless on the decode side — the BMP is fully decoded before it is re-encoded as JPG.',
+    limitations:
+      'JPG is lossy: every conversion loses a little quality, and converting the same file back and forth compounds it. A BMP with sharp text or line art can show JPG artefacts around the edges — for those, PNG is the better target. The 25 MB input limit means very large BMPs may need to be resized first.',
   },
 ];
 
