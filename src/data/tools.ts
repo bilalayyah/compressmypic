@@ -4626,6 +4626,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       '/target-file-size-compressor',
       '/image-resizer',
     ],
+    benefits: [
+      {
+        title: 'For the strictest size caps',
+        description:
+          'Some forms and portals demand 50 KB or less — passport photos, ID uploads, signature images. This target is built for exactly those limits.',
+      },
+      {
+        title: 'For tiny files on slow connections',
+        description:
+          'A 50 KB image loads instantly even on a weak mobile signal, which is what a thumbnail or an avatar needs.',
+      },
+      {
+        title: 'For the same smart engine as 100 KB',
+        description:
+          'The same binary-search iteration finds the highest quality that fits — only the target is tighter, so the trade-offs are made for you.',
+      },
+      {
+        title: 'For predictable results',
+        description:
+          'You name the target and the tool iterates until it fits, instead of guessing quality sliders and re-compressing the same photo five times.',
+      },
+    ],
+    howItWorks:
+      'The tool works in rounds, all in your browser. It first tries the highest quality: if that already fits under 50 KB, it stops there. Otherwise it tests the lowest quality floor, then binary-searches between the two — up to seven rounds — to find the highest quality that still fits the target.\n\nIt prefers keeping your original resolution while quality stays at or above 35%. Only when no quality level fits at full size does it shrink the dimensions, step by step, until the file lands under 50 KB. Nothing is uploaded; every round runs on your device.',
+    examples: [
+      {
+        title: 'Passport photo for a form',
+        description:
+          'A phone photo for an ID form must be under 50 KB. The tool fits it by lowering quality first, and only shrinks the dimensions if quality alone cannot reach the target.',
+      },
+      {
+        title: 'Signature image',
+        description:
+          'A scanned signature is mostly white space with thin lines. Under 50 KB it stays crisp enough to read while uploading instantly.',
+      },
+      {
+        title: 'Thumbnail for a slow connection',
+        description:
+          'A preview image for a listing is compressed under 50 KB so it appears immediately, even before the full-size photos have loaded.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 25 MB per file. Outputs: Original format, JPG, WebP or PNG. The default target is 50 KB; the same tool powers the 100 KB, 200 KB and 500 KB pages with their own targets.\n\nPNG output is lossless, so for very detailed images it may not reach the target without shrinking dimensions — JPG or WebP usually fit more easily.',
+    limitations:
+      '50 KB is a tight target: a very detailed or noisy photo may need significant downscaling as well as low quality, and fine detail can look soft at the lowest levels. Transparent images converted to JPG get a matte fill, because JPG has no transparency. Animated GIFs compress as a single still frame.',
   },
   {
     slug: '/compress-image-to-100kb',
@@ -6767,6 +6812,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/jpg-to-png', '/png-to-webp', '/compress-image-to-100kb', '/image-converter'],
+    benefits: [
+      {
+        title: 'For the smallest widely compatible file',
+        description:
+          'A PNG photo or screenshot can be several megabytes. As a JPG it is a fraction of the size, and JPG opens in every app, form and inbox on earth.',
+      },
+      {
+        title: 'For photos and screenshots',
+        description:
+          'PNG is lossless and heavy; JPG is built for photos. Converting a photographic PNG to JPG at a sensible quality keeps it looking the same while the bytes collapse.',
+      },
+      {
+        title: 'For tools that only accept JPG',
+        description:
+          'Some upload forms, printers and older apps take JPG and nothing else. Convert once and the file passes their check instead of being rejected.',
+      },
+      {
+        title: 'For matte control',
+        description:
+          'Transparent PNG areas get the matte colour you choose — white for documents, black for dark designs — instead of an arbitrary default.',
+      },
+    ],
+    howItWorks:
+      'The converter decodes your PNG in the browser and draws its pixels onto an HTML5 Canvas, then encodes the canvas as JPG at the quality you set. JPG is lossy, so the quality slider decides how much detail is kept: lower quality means a smaller file, higher quality keeps the pixels closer to the original.\n\nPNG transparency cannot survive in JPG, so transparent areas are filled with the matte colour you pick before encoding. The result is a standard JPG with no alpha channel.',
+    examples: [
+      {
+        title: 'PNG screenshot to JPG for email',
+        description:
+          'A 3 MB PNG screenshot becomes a JPG of a few hundred kilobytes at 85% quality — small enough to attach, with text still perfectly readable.',
+      },
+      {
+        title: 'PNG photo to JPG for a listing',
+        description:
+          'A product photo saved as PNG uploads slowly and counts against a size limit. As a JPG it uploads in a second and looks the same in the listing.',
+      },
+      {
+        title: 'Transparent logo to JPG with a white matte',
+        description:
+          'A logo with a transparent background needs a JPG for a form. Picking a white matte fills the background cleanly instead of leaving black.',
+      },
+    ],
+    supportedFormats:
+      'Input: PNG only, up to 25 MB per file. Output: JPG, with a quality slider. This page converts one file at a time — for whole folders, use the Bulk Image Converter.\n\nThe output JPG has the same pixel dimensions as the source PNG. Transparent areas are filled with the matte colour you choose.',
+    limitations:
+      'JPG is lossy: every conversion throws away a little detail, so converting the same file repeatedly degrades it, and sharp text or line art can show artefacts at low quality. Transparency is lost — a transparent PNG becomes a solid-background JPG. There is no batch mode on this page, and the input must be a PNG.',
   },
   {
     slug: '/jpg-to-webp',
@@ -6927,6 +7017,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/webp-to-jpg', '/png-to-webp', '/web-image-optimizer', '/bulk-image-converter'],
+    benefits: [
+      {
+        title: 'For much smaller web images',
+        description:
+          'WebP compresses photos better than JPG at the same visible quality, so pages load faster and use less bandwidth — the main reason the format exists.',
+      },
+      {
+        title: 'For transparency without the PNG weight',
+        description:
+          'Unlike JPG, WebP keeps an alpha channel. A graphic with transparency converts to WebP and stays transparent, at a fraction of a PNG\u2019s size.',
+      },
+      {
+        title: 'For modern browsers',
+        description:
+          'Every current browser reads WebP — Chrome, Firefox, Safari, Edge and mobile browsers alike — so the format is safe to use on a live site today.',
+      },
+      {
+        title: 'For quality control',
+        description:
+          'A quality slider lets you pick the exact trade between file size and visible quality per image, instead of one fixed setting for everything.',
+      },
+    ],
+    howItWorks:
+      'The converter decodes your JPG in the browser and draws its pixels onto an HTML5 Canvas, then encodes the canvas as WebP at the quality you set. WebP\u2019s lossy encoder keeps more detail per byte than JPG\u2019s, which is why the same photo comes out smaller.\n\nThe quality slider works the same way as for JPG: lower quality means a smaller file. The output keeps the source\u2019s pixel dimensions, and nothing is uploaded at any point.',
+    examples: [
+      {
+        title: 'Blog photos JPG to WebP',
+        description:
+          'A blog\u2019s JPG photos become WebP files roughly a third smaller, so article pages load noticeably faster on mobile without any visible change.',
+      },
+      {
+        title: 'Product images for a shop',
+        description:
+          'A shop\u2019s product shots convert to WebP for the storefront, cutting page weight while the photos look identical to shoppers.',
+      },
+      {
+        title: 'Portfolio JPG to WebP',
+        description:
+          'A photographer\u2019s portfolio of JPGs converts to WebP so the gallery loads fast on every visit, while each photo keeps its full resolution and colour.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG and JPEG only, up to 25 MB per file. Output: WebP, with a quality slider. This page converts one file at a time — for whole folders, use the Bulk Image Converter.\n\nThe output WebP has the same pixel dimensions as the source JPG. Very old software that predates WebP support may not open the file.',
+    limitations:
+      'WebP is lossy here, so converting does not restore detail the JPG already lost, and repeated JPG-to-WebP cycles degrade the image further. Some very old tools and systems still do not read WebP — check before sending the file somewhere that cannot be updated. There is no batch mode on this page, and the input must be a JPG.',
   },
   {
     slug: '/webp-to-jpg',
