@@ -303,6 +303,32 @@ export const Footer: React.FC<FooterProps> = ({
                   </a>
                 </li>
               ))}
+              {/* Paddle pages (EN-only): Pricing + Refund Policy — hardcoded
+                  EN paths, not localized, same as UtilityFlow. */}
+              <li>
+                <a
+                  href="/pricing/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/pricing');
+                  }}
+                  className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] transition-colors text-start"
+                >
+                  Pricing
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/refund-policy/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/refund-policy');
+                  }}
+                  className="flex items-center min-h-6 text-[var(--ink-2)] hover:text-[#dc2626] dark:hover:text-[#fca5a5] transition-colors text-start"
+                >
+                  Refund Policy
+                </a>
+              </li>
             </ul>
           </div>
 
