@@ -668,6 +668,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-resizer', '/', '/image-converter', '/remove-image-metadata'],
+    benefits: [
+      {
+        title: 'For photos taken sideways',
+        description:
+          'A photo shot with the phone tilted comes out sideways. One 90° turn fixes it — no editor, no re-shoot.',
+      },
+      {
+        title: 'For mirroring a photo',
+        description:
+          'Flip horizontal to mirror a selfie or a logo, flip vertical to turn an image upside down — in one click.',
+      },
+      {
+        title: 'For a precise angle, not just 90°',
+        description:
+          'A rotation-angle control straightens a horizon that is off by a few degrees, where a 90° turn would be far too much.',
+      },
+      {
+        title: 'For private fixing',
+        description:
+          'The rotation runs on canvas in your browser. The photo never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a photo and rotate it 90° left or right, set a custom rotation angle, or flip it horizontally or vertically. The tool redraws the image on canvas with the transformation applied and shows the result live, then downloads the fixed image.\n\nRotation is lossless in the sense that no compression is added beyond the output format you choose — but a rotated JPEG is re-encoded, so keep the original if you need it. Nothing is uploaded; the transformation runs on your device.',
+    examples: [
+      {
+        title: 'Sideways phone photo',
+        description:
+          'A photo taken with the phone held sideways is rotated 90° right and saved — it now displays correctly everywhere.',
+      },
+      {
+        title: 'Selfie that reads backwards',
+        description:
+          'A selfie with text on a shirt reads backwards. Flipping it horizontally mirrors the image so the text reads correctly.',
+      },
+      {
+        title: 'Crooked horizon',
+        description:
+          'A landscape photo has a horizon tilted by two degrees. A small custom rotation straightens it without cropping.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB. Output: the rotated or flipped image in the format you choose.\n\nControls: rotate 90° left, rotate 90° right, custom rotation angle, flip horizontal, flip vertical. The original file is never modified.',
+    limitations:
+      'Rotating by an angle other than 90° leaves triangular gaps at the corners, which the tool fills — check the edges before downloading. A rotated JPEG is re-encoded, so a tiny amount of quality is lost each time; rotate once, not repeatedly. Animated GIFs rotate as a single still frame.',
   },
   {
     slug: '/image-to-pdf',
@@ -2238,6 +2283,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/add-text-to-image', '/image-border-generator', '/remove-image-metadata', '/'],
+    benefits: [
+      {
+        title: 'For protecting your photos',
+        description:
+          'A visible watermark marks a photo as yours, so it cannot be reposted as someone else\u2019s work without the credit showing.',
+      },
+      {
+        title: 'For a logo on every image',
+        description:
+          'A logo watermark at a set size and opacity brands every photo in a catalogue or a portfolio consistently.',
+      },
+      {
+        title: 'For text or a logo — your choice',
+        description:
+          'Type a copyright line, or upload your logo as the watermark. Both work, with opacity and position controls.',
+      },
+      {
+        title: 'For private branding',
+        description:
+          'The watermark is drawn on canvas in your browser. The photos never leave your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a photo and choose text or logo mode. In text mode you type the watermark (the default is \u201c\u00a9 CompressMyPic.online\u201d), pick the colour and set the opacity — 55% by default. In logo mode you upload your logo and set its size as a percentage of the image width — 22% by default. The tool draws the watermark on canvas and downloads the marked image.\n\nA watermark is a deterrent, not a lock: it can be cropped out. Place it where it is hard to remove without ruining the photo. Nothing is uploaded; the drawing runs on your device.',
+    examples: [
+      {
+        title: 'Photographer\u2019s portfolio',
+        description:
+          'A photographer adds a small \u00a9 name watermark to every portfolio image, so the work is credited even when it is shared.',
+      },
+      {
+        title: 'Shop product photos',
+        description:
+          'A shop adds its logo watermark to product photos, so competitors cannot reuse the images as their own.',
+      },
+      {
+        title: 'Preview before payment',
+        description:
+          'A client preview is watermarked across the centre, so the full-resolution file is only delivered after payment.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB. Watermark: text (colour + opacity) or an uploaded logo image (size as % of image width). Output: the watermarked image.\n\nText defaults to \u201c\u00a9 CompressMyPic.online\u201d at 55% opacity; the logo defaults to 22% of the image width. The original file is never modified.',
+    limitations:
+      'A watermark can be cropped or painted over — it deters casual reuse, it does not prevent it. Very small or very transparent watermarks are easy to remove; very large ones spoil the photo. The tool draws the watermark once; it cannot be removed from the downloaded file afterwards.',
   },
   {
     slug: '/blur-pixelate-image',
@@ -2391,6 +2481,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/remove-image-metadata', '/image-cropper', '/image-filters', '/'],
+    benefits: [
+      {
+        title: 'For hiding a face or a plate',
+        description:
+          'Paint over a face, a number plate or an address and it becomes unreadable — the privacy fix that actually works, unlike a black bar that can be lifted.',
+      },
+      {
+        title: 'For a soft blur instead of a block',
+        description:
+          'Blur keeps the shape of what is underneath while hiding the detail, so the photo still looks natural.',
+      },
+      {
+        title: 'For a brush or the whole image',
+        description:
+          'Paint the region with a brush, or blur the entire image at once. The brush size is adjustable, so small details get a small brush.',
+      },
+      {
+        title: 'For private redaction',
+        description:
+          'The effect is applied on canvas in your browser. The photo never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a photo and choose blur or pixelate, then either paint the region with a brush or apply the effect to the whole image. The blur radius (18 by default) controls how soft the blur is; the pixel size controls how chunky the pixelation is. The tool composites the effect onto the image on canvas and downloads the result.\n\nBlurring and pixelating destroy information — that is the point. A heavily blurred face cannot be unblurred. Nothing is uploaded; the effect runs on your device.',
+    examples: [
+      {
+        title: 'Face in a photo you want to share',
+        description:
+          'A bystander\u2019s face in a street photo is pixelated with the brush, so the photo can be posted without identifying them.',
+      },
+      {
+        title: 'Number plate in a car photo',
+        description:
+          'A car\u2019s number plate is blurred before the photo goes on a listing site, so the plate is not public.',
+      },
+      {
+        title: 'Whole image as a background',
+        description:
+          'A photo is blurred across the whole frame to become a soft background behind text on a poster.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB. Effect: blur (radius adjustable, default 18) or pixelate (pixel size adjustable). Scope: brush-painted region (brush size adjustable) or the whole image.\n\nThe effect is applied on canvas. The original file is never modified — the download is a new file.',
+    limitations:
+      'A light blur can sometimes be partially reversed by sharpening, so use a strong blur or pixelation for anything sensitive. Pixelation at a small pixel size may still leave text readable — test it before sharing. The brush paints freehand; precise edges need a steady hand and a small brush.',
   },
   {
     slug: '/add-text-to-image',
