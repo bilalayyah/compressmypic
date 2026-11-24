@@ -1210,6 +1210,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-metadata-viewer', '/', '/image-converter', '/image-to-pdf'],
+    benefits: [
+      {
+        title: 'For removing GPS location from photos',
+        description:
+          'Phone photos carry the exact place they were taken. Stripping that before sharing means a photo of your home or your child does not hand out your address.',
+      },
+      {
+        title: 'For cleaning images before publishing',
+        description:
+          'Camera model, lens, software and timestamps are baked into most photos. Clean files publish without leaking details you never meant to share.',
+      },
+      {
+        title: 'For smaller files as a side effect',
+        description:
+          'Metadata is usually small, but a photo with a large thumbnail embedded in its EXIF can shrink noticeably once the metadata is gone.',
+      },
+      {
+        title: 'For private stripping',
+        description:
+          'The whole point is privacy — so the tool strips locally in your browser. The photo never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You drop photos in and the tool removes the metadata — EXIF, GPS coordinates, camera settings, timestamps and embedded thumbnails. Where the format allows it, the strip is lossless: the image pixels are not re-encoded at all, only the metadata segment is removed. Other formats are re-encoded through canvas.\n\nThe cleaned image downloads with the same filename, and the result panel shows which stripping method was used for each file. Nothing is uploaded; the whole job runs on your device.',
+    examples: [
+      {
+        title: 'Photo of your home for a listing',
+        description:
+          'A phone photo of a house carries GPS coordinates in its EXIF. Stripped, it can go on a listing site without revealing the address.',
+      },
+      {
+        title: 'Pictures of children for social media',
+        description:
+          'Before posting photos of your children, strip the location and timestamps so the post does not carry a record of where and when they were taken.',
+      },
+      {
+        title: 'Client photos for a portfolio',
+        description:
+          'A portfolio image is cleaned of camera and software details before publishing, so the work speaks for itself.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: common image formats, up to 20 MB per file, multiple files at once. Output: the same image format with metadata removed, same filename.\n\nJPEGs are stripped losslessly where possible — pixels untouched, only the metadata segment removed. Other formats go through a canvas re-encode.',
+    limitations:
+      'Stripping removes metadata, not the image itself: anything visible in the photo (a street sign, a reflection, a landmark) is still there. A canvas re-encode can slightly change quality for formats that do not support lossless stripping. The tool removes metadata it can parse; unusual or proprietary segments may survive.',
   },
   {
     slug: '/favicon-generator',
@@ -3864,6 +3909,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/base64-to-image', '/favicon-generator', '/image-dimensions-checker', '/'],
+    benefits: [
+      {
+        title: 'For embedding images in code',
+        description:
+          'A data URI lets you inline a small image directly in HTML, CSS or JSON — no separate file, no extra request, no broken link when the file moves.',
+      },
+      {
+        title: 'For single-file documents',
+        description:
+          'An HTML email, a standalone page or a config file can carry its images inside it. Base64 is how you do that.',
+      },
+      {
+        title: 'For quick sharing in text',
+        description:
+          'A Base64 string is plain text: paste it into a chat, a ticket or a code snippet and the image travels with the message.',
+      },
+      {
+        title: 'For private conversion',
+        description:
+          'The file is read and encoded in your browser. The image never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You drop an image in and the tool reads its bytes and encodes them as a Base64 string, prefixed with the data URI header (data:image/png;base64,…) so browsers and code can use it directly. The encoding is reversible — the reverse tool turns the string back into the image.\n\nA Base64 string is about a third larger than the original file, so this is for small images, not photographs. Nothing is uploaded; the encoding runs on your device.',
+    examples: [
+      {
+        title: 'Logo in a CSS file',
+        description:
+          'A 4 KB logo becomes a data URI pasted into a stylesheet. The page renders the logo with no extra image request.',
+      },
+      {
+        title: 'Icon in an HTML email',
+        description:
+          'An email client that blocks remote images still shows an embedded Base64 icon, because the image travels inside the email itself.',
+      },
+      {
+        title: 'Image in a JSON config',
+        description:
+          'A small avatar is stored as a Base64 string in a JSON file, so one file carries both the data and the image.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, GIF, BMP, SVG, ICO and AVIF, up to 15 MB per file. Output: a Base64 data URI string (data:image/…;base64,…), copied to the clipboard.\n\nThe output is plain text. Keep it for small images: Base64 is roughly 33% larger than the original bytes.',
+    limitations:
+      'Base64 makes files bigger, not smaller — a 15 MB photo becomes a ~20 MB string, which most places will not accept. Use it for icons, logos and small graphics, not photographs. The tool encodes one image at a time.',
   },
   {
     slug: '/base64-to-image',
@@ -6507,6 +6597,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/gif-maker', '/bulk-image-compressor', '/image-resizer', '/'],
+    benefits: [
+      {
+        title: 'For GIFs that load fast',
+        description:
+          'An animated GIF from a screen recording can be tens of megabytes. Fewer colours, a smaller scale or fewer frames brings it down to a size a page can actually load.',
+      },
+      {
+        title: 'For keeping the motion',
+        description:
+          'Unlike converting to a video or a still image, this tool keeps the animation. The GIF still moves — it just carries fewer frames or colours to do it.',
+      },
+      {
+        title: 'For three levers, not one',
+        description:
+          'Colour count, scale and frame step each shrink the file a different way, so you can trade smoothness, size and palette to fit the GIF you have.',
+      },
+      {
+        title: 'For private compression',
+        description:
+          'Frames are decoded and re-encoded in your browser. A personal GIF never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'The tool decodes your GIF into its frames locally in your browser, then rebuilds it with the settings you chose. Reducing the colour palette (fewer colours per frame), scaling the frames down, or dropping frames with the frame step (every 2nd or 3rd frame) each cut the file size — and you can combine all three.\n\nThe rebuilt GIF keeps the animation and the original timing as far as the settings allow. Nothing is uploaded; decoding and re-encoding both happen on your device.',
+    examples: [
+      {
+        title: 'Screen recording GIF for a help article',
+        description:
+          'A 20 MB recording of a workflow becomes a 3 MB GIF by cutting colours to 128 and halving the scale — small enough to embed in the article, still clear enough to follow.',
+      },
+      {
+        title: 'Reaction GIF for a chat',
+        description:
+          'A long reaction GIF is trimmed by dropping every 2nd frame. It still reads as the same motion, at roughly half the file size.',
+      },
+      {
+        title: 'Animated banner for a page',
+        description:
+          'A banner GIF is scaled to the width it will actually display at, instead of shipping full-size frames the page never shows.',
+      },
+    ],
+    supportedFormats:
+      'Input: GIF only, up to 30 MB per file. Output: GIF, animated. Controls: colour palette size, scale percentage, and frame step (keep every frame, every 2nd, or every 3rd).\n\nFrames are decoded locally in your browser before compression. The output keeps the animation; it is still a GIF, not a video.',
+    limitations:
+      'GIF is an old format with a 256-colour limit per frame, so smooth gradients and photographs will always show banding after compression — fewer colours make it more visible. Dropping frames makes motion choppier; there is no motion interpolation to smooth it back. Very long GIFs with hundreds of frames take a while to decode and rebuild, especially on a phone.',
   },
   {
     slug: '/heic-to-jpg',

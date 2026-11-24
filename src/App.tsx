@@ -2032,10 +2032,14 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
         blogTitle = `${blogStrings.categoryGuidesHeading.replace('{category}', catLabel)} | CompressMyPic`;
         // P2-2 (master audit 2026-11-24): hubs used to share the blog-home
         // description (136 duplicate pages). Each category has its own
-        // localized description in the locale category list — use it.
-        blogDesc =
-          catLabelsForSeo.find((c) => c.id === blogRoute.categoryId)?.description ??
-          blogStrings.homeSubheading;
+        // localized description in the locale category list — use it,
+        // prefixed with the hub heading so the description is a full
+        // sentence, not a bare fragment. The P2-2 backfill script applies
+        // this same formula to the prerendered hub HTML.
+        const catDesc = catLabelsForSeo.find((c) => c.id === blogRoute.categoryId)?.description;
+        blogDesc = catDesc
+          ? `${blogStrings.categoryGuidesHeading.replace('{category}', catLabel)} — ${catDesc}`
+          : blogStrings.homeSubheading;
       } else if (blogRoute.kind === 'article' && blogArticle) {
         const version = getBlogArticleVersion(blogArticle, lang, blogOverrides);
         blogTitle = `${version.title} | CompressMyPic`;
