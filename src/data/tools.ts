@@ -1723,6 +1723,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-color-palette-extractor', '/favicon-generator', '/image-dimensions-checker', '/image-resizer'],
+    benefits: [
+      {
+        title: 'For the exact colour of anything in a photo',
+        description:
+          'Click a pixel and get its exact hex and RGB values — the colour of a wall, a shirt, a logo, anything in the image.',
+      },
+      {
+        title: 'For matching a brand colour',
+        description:
+          'A logo in a photo can be sampled to the exact hex code, so the website or the document matches it perfectly.',
+      },
+      {
+        title: 'For a palette you can download',
+        description:
+          'Pinned colours download as a CSS file with variables (`--color-1: #hex;`), ready to paste into a stylesheet.',
+      },
+      {
+        title: 'For private sampling',
+        description:
+          'The colours are read from the canvas in your browser. The image never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload an image and click anywhere on it to pin that pixel\u2019s colour. The tool reads the exact colour from the canvas and shows its hex and RGB values, with the image dimensions shown alongside so you know where you clicked. Pin as many colours as you need, then download them all as a CSS file of variables.\n\nThe colour you get is the pixel\u2019s actual value — not an average of the area around it. Nothing is uploaded; the sampling runs on your device.',
+    examples: [
+      {
+        title: 'Brand colour from a logo photo',
+        description:
+          'A photo of a shop sign is clicked on the logo to get its exact hex code, so the new website uses the same colour.',
+      },
+      {
+        title: 'Paint colour from a wall',
+        description:
+          'A photo of a painted wall is sampled to find the exact shade, so the same paint can be bought for another room.',
+      },
+      {
+        title: 'Palette for a design',
+        description:
+          'Several colours are pinned from a photograph and downloaded as CSS variables, giving the design its palette.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB. Output: pinned colours as hex + RGB, downloadable as a CSS file (`picked-colors.css`) with `--color-N` variables.\n\nClicking pins one colour per click; the image dimensions are shown so you can find the same spot again. The original file is never modified.',
+    limitations:
+      'The colour is a single pixel\u2019s value — on a noisy or compressed photo, neighbouring pixels can differ noticeably, so click the flattest area you can find. A JPEG\u2019s compression can shift a colour slightly from the original. The tool samples colours; it does not edit the image.',
   },
   {
     slug: '/image-dimensions-checker',
@@ -4000,6 +4045,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/round-image-corners', '/image-border-generator', '/image-resizer', '/'],
+    benefits: [
+      {
+        title: 'For a photo that fits a square post',
+        description:
+          'A landscape photo on a square feed gets cropped or stretched. A background fills the empty space instead, so the whole photo shows.',
+      },
+      {
+        title: 'For three backgrounds, not one',
+        description:
+          'Solid colour, a gradient, or a blurred copy of the photo itself — pick the look that fits the post.',
+      },
+      {
+        title: 'For a blurred backdrop that matches',
+        description:
+          'A blurred copy of the same photo as the background always matches, because it IS the photo — softened.',
+      },
+      {
+        title: 'For private framing',
+        description:
+          'The background is drawn on canvas in your browser. The photo never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a photo and pick a backdrop mode: a solid colour (light grey by default), a gradient, or a blurred cover of the photo itself. The tool draws the photo centred on the new background on canvas and downloads the result as `{name}_background.{ext}`.\n\nThe blurred mode scales the photo to cover the frame and blurs it, so the background is a soft version of the image — the look social apps use for portrait photos in square posts. Nothing is uploaded; the drawing runs on your device.',
+    examples: [
+      {
+        title: 'Landscape photo for a square post',
+        description:
+          'A wide photo is placed on a blurred copy of itself, so the square post shows the whole photo instead of cropping the sides.',
+      },
+      {
+        title: 'Product photo on a clean background',
+        description:
+          'A product shot is placed on a solid white background, so the listing looks clean and consistent.',
+      },
+      {
+        title: 'Portrait for a story',
+        description:
+          'A portrait photo is set on a gradient background for a story post, so the image fills the frame without stretching.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB. Backdrop: solid colour, gradient, or blurred image cover. Output: the photo on its new background, downloaded as `{name}_background.{ext}`.\n\nThe solid colour defaults to a light grey (#f8fafc). The original file is never modified.',
+    limitations:
+      'The background is part of the downloaded image — it cannot be separated afterwards. A blurred background is a soft copy of the photo, not a separate image, so it carries the same colours and shapes. Very small photos on a large canvas will look soft when enlarged.',
   },
   {
     slug: '/image-splitter',
@@ -4840,6 +4930,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-color-picker', '/favicon-generator', '/add-background-to-image', '/'],
+    benefits: [
+      {
+        title: 'For the colours that define a photo',
+        description:
+          'A photo\u2019s dominant colours — the ones your eye actually sees — extracted as a palette, instead of guessing from a colour wheel.',
+      },
+      {
+        title: 'For a design palette from a photo',
+        description:
+          'A photograph becomes a ready-made palette for a website, a slide deck or a room: the colours already go together, because they came from one image.',
+      },
+      {
+        title: 'For a palette you can download',
+        description:
+          'The extracted swatches download as a file, so the palette travels with the project instead of living in a screenshot.',
+      },
+      {
+        title: 'For private extraction',
+        description:
+          'The colours are computed on canvas in your browser. The image never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload an image and set how many colours you want, and the tool analyses the pixels on canvas and pulls out the dominant colours — the ones that appear most and matter most — as a row of swatches with their hex values. The palette downloads as a file for use in a design tool or a stylesheet.\n\nDominant does not mean most frequent alone: the extraction weighs the colours that define the image, so a small bright accent can make the palette even when it covers few pixels. Nothing is uploaded; the analysis runs on your device.',
+    examples: [
+      {
+        title: 'Website palette from a hero photo',
+        description:
+          'A hero photo\u2019s dominant colours become the website\u2019s palette, so the buttons and headings match the photograph.',
+      },
+      {
+        title: 'Slide deck colours from a photo',
+        description:
+          'A keynote photo is analysed for its five dominant colours, and the slides are built around them.',
+      },
+      {
+        title: 'Room colours from a photo',
+        description:
+          'A photo of a room you like is turned into a palette, so the paint and furniture can match it.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB. Output: a palette of dominant colours as swatches with hex values, downloadable as a file.\n\nThe number of colours is adjustable. The original file is never modified.',
+    limitations:
+      'A palette is a summary: it cannot capture a gradient or a subtle shift, only the dominant stops. Very busy photos produce a muddy palette — the tool reports what is there, not what looks good. The extraction reads the decoded pixels, so a heavily compressed JPEG can shift the colours slightly.',
   },
   {
     slug: '/gif-maker',
