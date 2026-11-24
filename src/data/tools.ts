@@ -3897,6 +3897,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-saturation-editor', '/image-brightness-editor', '/image-border-generator', '/'],
+    benefits: [
+      {
+        title: 'For a look in one click',
+        description:
+          'Twelve presets — from Grayscale to Golden Hour — give a photo a finished look without touching a single slider.',
+      },
+      {
+        title: 'For a live preview of every preset',
+        description:
+          'Each preset shows on the photo before you commit, so you compare the looks side by side and pick the one that fits.',
+      },
+      {
+        title: 'For a consistent style across photos',
+        description:
+          'The same preset on every photo in a set gives the whole series one style — a feed, a gallery or a presentation.',
+      },
+      {
+        title: 'For private styling',
+        description:
+          'The preset is applied pixel by pixel on canvas in your browser. The photo never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a photo and pick one of twelve presets — Original, Grayscale, Sepia, Vintage, Warm, Cool, High Contrast, Matte Fade, Dramatic, B&W Noir, Golden Hour or Invert. The tool applies the preset pixel by pixel on canvas (the same tone engine as the brightness, contrast and saturation editors, combined into one look) and shows the result live, then downloads it.\n\nA preset is a fixed recipe, not a filter that learns: the same preset on the same photo always gives the same result. Nothing is uploaded; the processing runs on your device.',
+    examples: [
+      {
+        title: 'Vintage look for old photos',
+        description:
+          'A scanned family photo gets the Sepia preset, so it looks like it was taken in the era it shows.',
+      },
+      {
+        title: 'Golden Hour for a dull afternoon',
+        description:
+          'A photo taken on a grey afternoon gets the Golden Hour preset, warming the light as if it were shot at sunset.',
+      },
+      {
+        title: 'Black-and-white set for a gallery',
+        description:
+          'A series of photos is given the B&W Noir preset, so the whole gallery shares one dramatic monochrome style.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB. Presets: Original, Grayscale, Sepia, Vintage, Warm, Cool, High Contrast, Matte Fade, Dramatic, B&W Noir, Golden Hour, Invert.\n\nPresets are applied pixel by pixel on canvas. The original file is never modified — the download is a new file.',
+    limitations:
+      'A preset is all-or-nothing: its strength cannot be adjusted, so a look that is too strong has to be softened with the brightness or saturation editors afterwards. Invert flips every colour, which is a special effect, not a correction. A preset on a photo that is already heavily edited can push colours out of range.',
   },
   {
     slug: '/add-background-to-image',
@@ -4436,6 +4481,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-metadata-viewer', '/image-dimensions-checker', '/remove-image-metadata', '/'],
+    benefits: [
+      {
+        title: 'For print-ready images',
+        description:
+          'A printer wants 300 DPI. Changing the DPI tag tells the printer how large to print the image, without touching a single pixel.',
+      },
+      {
+        title: 'For the right print size',
+        description:
+          'The same pixels at 72 DPI print huge and at 300 DPI print small. Setting the DPI sets the physical size on paper.',
+      },
+      {
+        title: 'For five presets that cover the cases',
+        description:
+          '72 for screen, 96 for Windows, 150 for draft print, 300 for high print, 600 for archival — pick the one the job needs.',
+      },
+      {
+        title: 'For private metadata work',
+        description:
+          'The DPI tag is rewritten in your browser. The image never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a JPEG or PNG and pick a DPI value — 72, 96, 150, 300 or 600, or a custom number. The tool rewrites the DPI metadata in the file: the JFIF APP0 header or the EXIF data for JPEGs, the pHYs chunk for PNGs. The pixels are not touched at all, so the image looks identical — only the print size changes.\n\nDPI is metadata, not resolution: changing it does not add or remove detail. It tells software how densely to lay the existing pixels on paper. Nothing is uploaded; the rewrite runs on your device.',
+    examples: [
+      {
+        title: 'Photo for a print shop',
+        description:
+          'A photo for a print job is set to 300 DPI, so the shop prints it at the right physical size instead of guessing.',
+      },
+      {
+        title: 'Image for a document',
+        description:
+          'An image pasted into a document prints too large because its DPI tag says 72. Set to 300 and it prints at the intended size.',
+      },
+      {
+        title: 'Scan for an archive',
+        description:
+          'A scanned document is tagged at 600 DPI for archival, so the archive records it as a high-resolution scan.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPEG and PNG, up to 20 MB. DPI values: presets 72 (Screen), 96 (Windows), 150 (Draft Print), 300 (High Print), 600 (Archival), or a custom number.\n\nJPEGs carry DPI in the JFIF APP0 header or EXIF data; PNGs carry it in the pHYs chunk. The tool reads the current DPI first and shows it before you change it.',
+    limitations:
+      'DPI is only metadata: it changes the print size, not the image quality or the pixel count. A 72 DPI photo set to 300 DPI does not gain detail — it just prints smaller. Formats other than JPEG and PNG have no DPI header, so the tool reports that instead of changing anything. Some software ignores DPI tags entirely and uses its own defaults.',
   },
   {
     slug: '/image-to-base64',
@@ -4777,6 +4867,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-to-base64', '/image-converter', '/image-dimensions-checker', '/'],
+    benefits: [
+      {
+        title: 'For turning text back into an image',
+        description:
+          'A Base64 string pasted from code, a chat or a document becomes the image again — the reverse of the encoder, in one paste.',
+      },
+      {
+        title: 'For recovering an embedded image',
+        description:
+          'An image trapped inside an HTML file, a CSS file or a JSON blob is freed back into a real image file.',
+      },
+      {
+        title: 'For a format detected automatically',
+        description:
+          'The tool reads the data URI header or the decoded bytes to work out whether the image is a PNG or a JPG, and names the download accordingly.',
+      },
+      {
+        title: 'For private decoding',
+        description:
+          'The string is decoded in your browser. Nothing is uploaded.',
+      },
+    ],
+    howItWorks:
+      'You paste a Base64 string — with or without the data URI header (data:image/png;base64,…) — and the tool decodes it back into image bytes, works out the format from the header or the decoded bytes, and downloads the image. A string without a header defaults to PNG.\n\nBase64 is about a third larger than the image it carries, so the decoded file is smaller than the string you pasted. Nothing is uploaded; the decoding runs on your device.',
+    examples: [
+      {
+        title: 'Image from an HTML email',
+        description:
+          'An image embedded as a data URI in an HTML email is copied out and pasted here, and the original image downloads as a PNG.',
+      },
+      {
+        title: 'Image from a code snippet',
+        description:
+          'A Base64 string found in a code file is pasted in and decoded, so the image it carries can be used directly.',
+      },
+      {
+        title: 'Image from a chat message',
+        description:
+          'A Base64 string sent in a chat is pasted in and the image is recovered as a file, instead of staying as text.',
+      },
+    ],
+    supportedFormats:
+      'Input: a Base64 string, with or without the data URI header. Output: the decoded image as PNG or JPG, chosen by the detected format (PNG when the format cannot be determined).\n\nThe tool accepts the full data URI or the bare string. Whitespace in the pasted string is ignored.',
+    limitations:
+      'A Base64 string that is truncated or corrupted will not decode — the tool reports an error instead of a broken image. The format is detected from the header or the bytes, so an unusual format may be saved with the wrong extension. Very large strings can be slow to paste and decode on a phone.',
   },
   {
     slug: '/image-color-palette-extractor',
