@@ -717,7 +717,7 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#fee2e2] dark:bg-[#dc2626]/20 border border-[#fecaca] dark:border-[#ef4444]/35 text-[#b91c1c] dark:text-[#fecaca]">
                     <Target className="w-4 h-4 text-[#dc2626] dark:text-[#fca5a5]" />
                     <span className="text-sm font-extrabold font-mono">{targetLabel}</span>
-                    <span className="text-xs text-[#dc2626] dark:text-[#fca5a5] font-medium">
+                    <span className="text-xs text-[#b91c1c] dark:text-[#fca5a5] font-medium">
                       {t('targetMaxSuffix', '({bytes} max)').replace(
                         '{bytes}',
                         formatBytes(effectiveTargetBytes)

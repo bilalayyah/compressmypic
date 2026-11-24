@@ -761,7 +761,7 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                         e.preventDefault();
                         onNavigate(rel.slug);
                       }}
-                      className="font-semibold text-[#dc2626] dark:text-[#fca5a5] hover:text-[#b91c1c] dark:hover:text-[#fecaca] underline underline-offset-2"
+                      className="font-semibold text-[#b91c1c] dark:text-[#fca5a5] hover:text-[#991b1b] dark:hover:text-[#fecaca] underline underline-offset-2"
                     >
                       {rel.name}
                     </a>
