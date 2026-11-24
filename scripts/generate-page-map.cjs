@@ -48,8 +48,6 @@ const EN_STATIC_PATHS = new Set([
   '/terms',
   '/disclaimer',
   '/cookie-policy',
-  '/pricing',
-  '/refund-policy',
   '/all-tools',
   '/guides/compress-images-for-whatsapp',
   '/guides/jpg-vs-png-vs-webp',
@@ -80,8 +78,9 @@ for (const [prefix, lang] of Object.entries(LANG_FROM_CONST)) {
 console.log(`// branches parsed: ${branches.length} (tools ${tools.size}, localized ${localized.size}, dirs ${dirs.size})`);
 if (tools.size !== 47) { console.error('EXPECTED 47 tools, got', tools.size); process.exit(1); }
 // Localized = 6 legal pages x 17 locales (102) + 3 guides x 17 (51) +
-// 3 EN-only static (/all-tools, /pricing, /refund-policy/) + 1 admin.
-if (localized.size !== 102 + 51 + 3 + 1) { console.error('EXPECTED 157 localized (102 legal + 51 guides + 3 EN static + admin), got', localized.size); process.exit(1); }
+// 1 EN-only static (/all-tools) + 1 admin. (/pricing/ + /refund-policy/
+// removed 2026-11-24 with the paid plan.)
+if (localized.size !== 102 + 51 + 1 + 1) { console.error('EXPECTED 155 localized (102 legal + 51 guides + 1 EN static + admin), got', localized.size); process.exit(1); }
 if (dirs.size !== 16) { console.error('EXPECTED 16 dirs, got', dirs.size); process.exit(1); }
 const sorted = (map) => [...map.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1));
 const obj = (map) => '{\n' + sorted(map).map(([k, v]) => `  '${k}': '${v}',`).join('\n') + '\n}';

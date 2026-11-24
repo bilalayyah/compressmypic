@@ -2879,25 +2879,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-  <!-- EN-only Paddle pages (2026-11-24): exist in EN only, not in every
-       locale — 1 URL each, with en + x-default alternates only (same as
-       UtilityFlow's /pricing/ + /refund-policy/). -->
-  <url>
-    <loc>https://compressmypic.online/pricing/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/pricing/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/pricing/" />
-    <lastmod>2026-11-24</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://compressmypic.online/refund-policy/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/refund-policy/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://compressmypic.online/refund-policy/" />
-    <lastmod>2026-11-24</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
   <url>
     <loc>https://compressmypic.online/es/politica-de-cookies/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://compressmypic.online/cookie-policy/" />

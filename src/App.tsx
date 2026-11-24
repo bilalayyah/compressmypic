@@ -15,7 +15,6 @@ const ComparisonModal = React.lazy(() =>
 );
 import { EducationalContent, HOW_IT_WORKS_STEPS } from './components/EducationalContent';
 import { FaqSection, FAQ_DATA } from './components/FaqSection';
-import { PricingSection } from './components/PricingSection';
 import { Footer } from './components/Footer';
 // Route pages are lazy-loaded (code-split): each tool / legal / guide /
 // localized page ships as its own chunk, fetched only when its route opens.
@@ -39,12 +38,6 @@ const DisclaimerPage = React.lazy(() =>
 );
 const CookiePolicyPage = React.lazy(() =>
   import('./pages/CookiePolicyPage').then((m) => ({ default: m.CookiePolicyPage }))
-);
-const PricingPage = React.lazy(() =>
-  import('./pages/PricingPage').then((m) => ({ default: m.PricingPage }))
-);
-const RefundPolicyPage = React.lazy(() =>
-  import('./pages/RefundPolicyPage').then((m) => ({ default: m.RefundPolicyPage }))
 );
 const AllToolsPage = React.lazy(() =>
   import('./pages/AllToolsPage').then((m) => ({ default: m.AllToolsPage }))
@@ -748,8 +741,6 @@ const KNOWN_ROUTES = [
   '/terms',
   '/disclaimer',
   '/cookie-policy',
-  '/pricing',
-  '/refund-policy',
   '/all-tools',
   '/admin/comments',
   '/guides/compress-images-for-whatsapp',
@@ -1561,8 +1552,6 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       '/terms': 'Terms of Service | CompressMyPic – Free Image Tools Rules',
       '/disclaimer': 'Disclaimer | CompressMyPic – Free Image Tools',
       '/cookie-policy': 'Cookie Policy | CompressMyPic – How Cookies Are Used',
-      '/pricing': 'Pricing | CompressMyPic – Free vs Lifetime Premium',
-      '/refund-policy': 'Refund Policy | CompressMyPic – 14-Day Refunds',
       '/all-tools': 'All Image Tools | CompressMyPic – Free Image Tools',
       '/admin/comments': 'Comments Admin | CompressMyPic (Private Page)',
       '/guides/compress-images-for-whatsapp': 'Compress Images for WhatsApp Without Losing Quality',
@@ -1578,8 +1567,6 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       '/terms': 'Terms of Service for CompressMyPic: fair use, your content, liability and service changes for our free online image tools. Plain rules, no legal jargon.',
       '/disclaimer': 'Disclaimer for CompressMyPic: our free image tools are provided as-is, without warranty. Read the limits of liability and accuracy of our guides.',
       '/cookie-policy': 'Cookie Policy for CompressMyPic: we set no cookies ourselves. Learn which cookies Google Analytics uses, and how to control them.',
-      '/pricing': 'CompressMyPic pricing: free forever, or Lifetime Premium for a one-time payment of $11.99. No subscription, no recurring fees.',
-      '/refund-policy': 'CompressMyPic refund policy: Lifetime Premium purchases can be refunded within 14 days of purchase. Refunds are processed by Paddle.',
       '/all-tools': 'All 47 free CompressMyPic image tools in one place — compress, convert, resize, crop and edit images in your browser. No signup, no watermark.',
       '/admin/comments': 'Private admin page for moderating CompressMyPic comments. This page is not for public use — please use the contact page for help, feedback or bug reports.',
       '/guides/compress-images-for-whatsapp': 'Learn how to compress images for WhatsApp without losing quality. Free, private, no signup — shrink photos before sending so they stay sharp and send fast.',
@@ -3225,10 +3212,6 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
         </div>
       </section>
 
-      {/* Pricing Section — Free vs Lifetime Premium $11.99 one-time (EN, like
-          UtilityFlow). No purchase button: "Secure checkout is coming soon". */}
-      <PricingSection onNavigate={handleNavigate} />
-
       <div style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 1000px' }}>
         <FaqSection
           heading={strings?.faqSection.heading}
@@ -3797,14 +3780,6 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       ) : currentPath === '/cookie-policy' ? (
         <main id="main" className="flex-1">
           <CookiePolicyPage onNavigate={handleNavigate} />
-        </main>
-      ) : currentPath === '/pricing' ? (
-        <main id="main" className="flex-1">
-          <PricingPage onNavigate={handleNavigate} />
-        </main>
-      ) : currentPath === '/refund-policy' ? (
-        <main id="main" className="flex-1">
-          <RefundPolicyPage onNavigate={handleNavigate} />
         </main>
             ) : lang === 'es' && currentPath === '/guides/compress-images-for-whatsapp' ? (
               <main id="main" className="flex-1">
