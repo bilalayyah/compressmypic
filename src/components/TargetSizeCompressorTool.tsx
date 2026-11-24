@@ -38,7 +38,6 @@ import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from './ToolPageLayout';
 import { UploadZone } from './UploadZone';
 import { ComparisonModal } from './ComparisonModal';
-import { ResultExportPanel } from './export/ResultExportPanel';
 import { ImageFormat, ImageItem, OutputFormatChoice } from '../types';
 import {
   EXTENDED_ALLOWED_EXT_REGEX,
@@ -1119,13 +1118,6 @@ export const TargetSizeCompressorTool: React.FC<TargetSizeCompressorToolProps> =
         )}
       </div>
 
-      {slug === '/compress-image-to-100kb' && items.length > 0 && (
-        <ResultExportPanel
-          items={items}
-          toolSlug="compress-image-to-100kb"
-          toolName={activeTool?.name ?? 'Compress Image to 100KB'}
-        />
-      )}
 
       {comparisonTarget && (
         <ComparisonModal

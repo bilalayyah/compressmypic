@@ -17,7 +17,6 @@ import type { SupportedLang } from '../locales/config';
 import type { ToolPageLayoutStrings } from '../components/ToolPageLayout';
 import type { UploadZoneStrings } from '../components/UploadZone';
 import type { ComparisonModalStrings } from '../components/ComparisonModal';
-import { ResultExportPanel } from '../components/export/ResultExportPanel';
 import { toSpanishPath } from '../locales/es/slugs';
 import { toPortuguesePath } from '../locales/pt/slugs';
 import { toFrenchPath } from '../locales/fr/slugs';
@@ -883,13 +882,6 @@ export const ImageResizerPage: React.FC<ImageResizerPageProps> = ({
         )}
       </div>
 
-      {items.length > 0 && (
-        <ResultExportPanel
-          items={items}
-          toolSlug="image-resizer"
-          toolName="Image Resizer"
-        />
-      )}
 
       {comparisonTarget && (
         <ComparisonModal
