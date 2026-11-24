@@ -35,6 +35,7 @@ import { getAlternates } from '../locales/alternates';
 import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import { ComparisonModal } from '../components/ComparisonModal';
+import { ResultExportPanel } from '../components/export/ResultExportPanel';
 import { ImageItem } from '../types';
 import {
   EXTENDED_ALLOWED_EXT_REGEX,
@@ -672,6 +673,14 @@ export const ImageConverterPage: React.FC<ImageConverterPageProps> = ({
           </div>
         )}
       </div>
+
+      {items.length > 0 && (
+        <ResultExportPanel
+          items={items}
+          toolSlug="image-converter"
+          toolName={activeTool?.name ?? 'Image Converter'}
+        />
+      )}
 
       {comparisonTarget && (
         <ComparisonModal

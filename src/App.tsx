@@ -10,6 +10,7 @@ import { Hero } from './components/Hero';
 import { UploadZone } from './components/UploadZone';
 import { CompressionControls } from './components/CompressionControls';
 import { ResultsList } from './components/ResultsList';
+import { ResultExportPanel } from './components/export/ResultExportPanel';
 const ComparisonModal = React.lazy(() =>
   import('./components/ComparisonModal').then((m) => ({ default: m.ComparisonModal }))
 );
@@ -3154,6 +3155,13 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
                   isZipping={isZipping}
                   zipProgress={zipProgress}
                   strings={strings?.resultsList}
+                />
+              )}
+              {images.length > 0 && (
+                <ResultExportPanel
+                  items={images}
+                  toolSlug="image-compressor"
+                  toolName="Image Compressor"
                 />
               )}
             </div>

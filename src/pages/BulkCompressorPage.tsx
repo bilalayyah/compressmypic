@@ -29,6 +29,7 @@ import { ToolPageLayout } from '../components/ToolPageLayout';
 import { UploadZone } from '../components/UploadZone';
 import { CompressionControls } from '../components/CompressionControls';
 import { ResultsList } from '../components/ResultsList';
+import { ResultExportPanel } from '../components/export/ResultExportPanel';
 import { ComparisonModal } from '../components/ComparisonModal';
 import { CompressionSettings, ImageFormat, ImageItem } from '../types';
 import {
@@ -620,6 +621,14 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({
             isZipping={isZipping}
             zipProgress={zipProgress}
             strings={lang === 'ar' ? arStrings?.resultsList : lang === 'zh' ? zhStrings?.resultsList : lang === 'ja' ? jaStrings?.resultsList : lang === 'ko' ? koStrings?.resultsList : lang === 'id' ? idStrings?.resultsList : lang === 'ru' ? ruStrings?.resultsList : lang === 'de' ? deStrings?.resultsList : lang === 'it' ? itStrings?.resultsList : lang === 'pt' ? ptStrings?.resultsList : lang === 'fr' ? frStrings?.resultsList : lang === 'ur' ? urStrings?.resultsList : esStrings?.resultsList}
+          />
+        )}
+
+        {images.length > 0 && (
+          <ResultExportPanel
+            items={images}
+            toolSlug="bulk-image-compressor"
+            toolName="Bulk Image Compressor"
           />
         )}
       </div>
