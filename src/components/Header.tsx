@@ -15,6 +15,7 @@ import { SiteLogo } from './Logo';
 import { TOOLS_META, TOOL_CATEGORIES } from '../data/toolsMeta';
 import type { ToolMeta } from '../data/toolsMeta';
 import { SUPPORTED_LANGUAGES, type SupportedLang } from '../locales/config';
+import { withTrailingSlash } from '../locales/alternates';
 import { ES_PATH_BY_EN } from '../locales/es/slugs';
 import { PT_PATH_BY_EN } from '../locales/pt/slugs';
 import { FR_PATH_BY_EN } from '../locales/fr/slugs';
@@ -159,9 +160,9 @@ export const Header: React.FC<HeaderProps> = ({
   };
   const localizedMap = PATH_BY_EN_BY_LANG[lang];
   const homeUrl = lang === 'en' ? '/' : `/${lang}/`;
-  const aboutUrl = localizedMap?.['/about'] ?? '/about';
-  const blogUrl = localizedMap?.['/blog'] ?? '/blog';
-  const contactUrl = localizedMap?.['/contact'] ?? '/contact';
+  const aboutUrl = withTrailingSlash(localizedMap?.['/about'] ?? '/about');
+  const blogUrl = withTrailingSlash(localizedMap?.['/blog'] ?? '/blog');
+  const contactUrl = withTrailingSlash(localizedMap?.['/contact'] ?? '/contact');
 
   const { preference, resolvedTheme, setPreference } = useTheme();
 
@@ -330,7 +331,7 @@ export const Header: React.FC<HeaderProps> = ({
                         {catTools.map((tool) => (
                           <a
                             key={tool.slug}
-                            href={localizedMap?.[tool.slug] ?? tool.slug}
+                            href={withTrailingSlash(localizedMap?.[tool.slug] ?? tool.slug)}
                             onClick={(e) => {
                               e.preventDefault();
                               handleNav(tool.slug);
@@ -666,7 +667,7 @@ export const Header: React.FC<HeaderProps> = ({
               {matchingTools.map((tool) => (
                 <a
                   key={tool.slug}
-                  href={localizedMap?.[tool.slug] ?? tool.slug}
+                  href={withTrailingSlash(localizedMap?.[tool.slug] ?? tool.slug)}
                   onClick={(e) => {
                     e.preventDefault();
                     handleNav(tool.slug);
@@ -688,7 +689,7 @@ export const Header: React.FC<HeaderProps> = ({
       {mobileMenuOpen && (
         <div id="mobile-menu" className="lg:hidden border-t border-[var(--line)] bg-[var(--surface)] px-4 py-4 space-y-2">
           <a
-            href={localizedMap?.['/all-tools'] ?? '/all-tools'}
+            href={withTrailingSlash(localizedMap?.['/all-tools'] ?? '/all-tools')}
             onClick={(e) => {
               e.preventDefault();
               handleNav(localizedMap?.['/all-tools'] ?? '/all-tools');
@@ -698,7 +699,7 @@ export const Header: React.FC<HeaderProps> = ({
             {strings.tools}
           </a>
           <a
-            href={`${localizedMap?.['/all-tools'] ?? '/all-tools'}#categories`}
+            href={`${withTrailingSlash(localizedMap?.['/all-tools'] ?? '/all-tools')}#categories`}
             onClick={(e) => {
               e.preventDefault();
               handleNav('/all-tools/#categories');
@@ -708,7 +709,7 @@ export const Header: React.FC<HeaderProps> = ({
             {strings.categories}
           </a>
           <a
-            href={localizedMap?.['/blog'] ?? '/blog'}
+            href={blogUrl}
             onClick={(e) => {
               e.preventDefault();
               handleNav(localizedMap?.['/blog'] ?? '/blog');

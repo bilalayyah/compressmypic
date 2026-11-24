@@ -34,12 +34,9 @@ declare global {
 
 /**
  * GA4 measurement ID for compressmypic.online.
- *
- * TODO (coordinator, wave 2): replace '' with the real measurement ID copied
- * from the GA4 property's web data stream, e.g. 'G-XXXXXXXXXX'.
- * NEVER invent an ID here — a made-up ID silently sends data nowhere (or to
- * someone else's property) and is worse than no ID at all. Leave it '' until
- * the real property exists; until then every function below is a no-op.
+ * Live property 'CompressMyPic' (PirateWay account), wired 2026-11-15 and
+ * verified in live HTML. Never invent an ID here — a made-up ID silently
+ * sends data nowhere (or to someone else's property).
  */
 export const MEASUREMENT_ID = 'G-NW1G6KEZZY';
 

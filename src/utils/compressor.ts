@@ -187,11 +187,20 @@ export async function compressSingleImage(
     throw new Error('Image has invalid dimensions (0x0).');
   }
 
+  // P3-8 (master audit 2026-11-24): cap the canvas at 12,000 px max side,
+  // like resizeImageFile — a full-size canvas for a 12k+ panorama allocates
+  // hundreds of MB and can crash mobile browsers. Only images above the cap
+  // are downscaled (aspect preserved); normal images are untouched.
+  const MAX_SIDE = 12000;
+  const scale = Math.min(1, MAX_SIDE / Math.max(width, height));
+  const outWidth = Math.max(1, Math.round(width * scale));
+  const outHeight = Math.max(1, Math.round(height * scale));
+
   const { mimeType, extension } = resolveOutputFormat(formatChoice, imageItem.originalType);
 
   const canvas = document.createElement('canvas');
-  canvas.width = width;
-  canvas.height = height;
+  canvas.width = outWidth;
+  canvas.height = outHeight;
 
   const ctx = canvas.getContext('2d', { alpha: true });
   if (!ctx) {
@@ -202,7 +211,7 @@ export async function compressSingleImage(
   const willLoseTransparency = mimeType === 'image/jpeg' && imageItem.hasAlpha;
   if (mimeType === 'image/jpeg' || willLoseTransparency) {
     ctx.fillStyle = backgroundColor;
-    ctx.fillRect(0, 0, width, height);
+    ctx.fillRect(0, 0, outWidth, outHeight);
   }
 
   // Enable high-quality image smoothing
@@ -210,7 +219,7 @@ export async function compressSingleImage(
   ctx.imageSmoothingQuality = 'high';
 
   // Draw image at exact original dimensions (preserves aspect ratio without stretching)
-  ctx.drawImage(img, 0, 0, width, height);
+  ctx.drawImage(img, 0, 0, outWidth, outHeight);
 
   // Normalize quality float for canvas.toBlob: 0.1 to 1.0
   const qualityFactor = Math.max(0.1, Math.min(1.0, qualityValue / 100));
@@ -246,8 +255,8 @@ export async function compressSingleImage(
     blob: compressedBlob,
     previewUrl,
     size: compressedSize,
-    width,
-    height,
+    width: outWidth,
+    height: outHeight,
     outputType: mimeType,
     outputExtension: extension,
     outputFilename,

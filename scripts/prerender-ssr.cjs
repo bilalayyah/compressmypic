@@ -189,6 +189,39 @@ function verifyFile(filePath, newEntry, oldEntry) {
   return null;
 }
 
+// P2-1 (master audit 2026-11-24): internal page links in prerendered HTML
+// were slash-less, so ~95% of internal links paid a 308 hop (Cloudflare
+// enforces trailing slashes on directory routes). The React tree emits
+// slash-less hrefs from blog-body HTML strings, guide pages and other spots
+// that do not go through localizePath(), so this post-process normalizes
+// them in the emitted HTML on every prerender run. Only href="..."
+// attributes outside <script> blocks are touched. Skipped: absolute URLs,
+// //-protocol-relative, asset paths (/assets/*, /blog-images/*) and file
+// URLs (last segment has an extension). Anchors/queries keep working — the
+// slash is inserted before the # or ?. Idempotent: a second run changes
+// nothing.
+function normalizeInternalHrefs(html) {
+  // Split out <script> blocks so href-like strings inside JS are untouched.
+  const parts = html.split(/(<script\b[^>]*>[\s\S]*?<\/script>)/g);
+  let fixed = 0;
+  const rewritten = parts.map((part) => {
+    if (part.startsWith('<script')) return part;
+    return part.replace(
+      /href="(\/[^"#?]*?)((?:#[^"]*)?|(?:\?[^"]*)?)"/g,
+      (whole, p, suffix) => {
+        if (p === '/' || p.endsWith('/')) return whole;
+        if (p.startsWith('//')) return whole;
+        if (p.startsWith('/assets/') || p.startsWith('/blog-images/')) return whole;
+        const last = p.split('/').pop();
+        if (last.includes('.')) return whole; // file URL (favicon.svg, sitemap.xml, ...)
+        fixed += 1;
+        return `href="${p}/${suffix}"`;
+      },
+    );
+  });
+  return { html: rewritten.join(''), fixed };
+}
+
 async function main() {
   const opts = parseArgs(process.argv.slice(2));
   if (!fs.existsSync(SSR_BUNDLE)) {
@@ -641,6 +674,27 @@ async function main() {
   console.log(
     `[prerender-ssr] Hreflang refresh: ${hreflangRefreshed} heads updated, ${hreflangFresh} already fresh, ${hreflangSkipped} no-SEO-head routes skipped`,
   );
+
+  // P2-1: normalize trailing slashes on internal page hrefs in ALL emitted
+  // HTML (covers blog bodies + guide pages that bypass localizePath).
+  let hrefFiles = 0;
+  let hrefFixed = 0;
+  const walkHtml = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) { walkHtml(full); continue; }
+      if (!entry.name.endsWith('.html')) continue;
+      const before = fs.readFileSync(full, 'utf8');
+      const { html: after, fixed } = normalizeInternalHrefs(before);
+      if (fixed > 0) {
+        fs.writeFileSync(full, after, 'utf8');
+        hrefFiles += 1;
+        hrefFixed += fixed;
+      }
+    }
+  };
+  walkHtml(PUBLIC_DIR);
+  console.log(`[prerender-ssr] Trailing-slash hrefs: ${hrefFixed} fixed in ${hrefFiles} files`);
 
   console.log(
     `[prerender-ssr] FINISHED routes=${routes.length} rendered=${done} skipped=${skipped} failed=${failed.length} elapsed=${Math.round((Date.now() - t0) / 1000)}s`,

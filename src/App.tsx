@@ -2030,7 +2030,12 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
       } else if (blogRoute.kind === 'category') {
         const catLabel = getBlogCategoryLabel(blogRoute.categoryId, catLabelsForSeo);
         blogTitle = `${blogStrings.categoryGuidesHeading.replace('{category}', catLabel)} | CompressMyPic`;
-        blogDesc = blogStrings.homeSubheading;
+        // P2-2 (master audit 2026-11-24): hubs used to share the blog-home
+        // description (136 duplicate pages). Each category has its own
+        // localized description in the locale category list — use it.
+        blogDesc =
+          catLabelsForSeo.find((c) => c.id === blogRoute.categoryId)?.description ??
+          blogStrings.homeSubheading;
       } else if (blogRoute.kind === 'article' && blogArticle) {
         const version = getBlogArticleVersion(blogArticle, lang, blogOverrides);
         blogTitle = `${version.title} | CompressMyPic`;

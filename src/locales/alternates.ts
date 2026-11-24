@@ -74,8 +74,8 @@ const PATH_BY_EN_BY_LANG: Record<string, Record<string, string>> = {
  * exist. Home is NOT handled here — use localizedHomePath() for it.
  */
 export function localizePath(enPath: string, lang: string): string {
-  if (!lang || lang === 'en') return enPath;
-  return PATH_BY_EN_BY_LANG[lang]?.[enPath] ?? enPath;
+  if (!lang || lang === 'en') return withTrailingSlash(enPath);
+  return withTrailingSlash(PATH_BY_EN_BY_LANG[lang]?.[enPath] ?? enPath);
 }
 
 /** Localized home URL for a language: '/' for EN, '/<lang>/' otherwise. */
