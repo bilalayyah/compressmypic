@@ -26,6 +26,12 @@ export interface ToolPageLayoutStrings {
   howToTitle: string; // contains {name}
   howToIntro: string;
   featuresTitle: string; // contains {name}
+  /** Phase 18 section headings (optional — fall back to EN_STRINGS). */
+  benefitsTitle?: string;
+  howItWorksTitle?: string; // contains {name}
+  examplesTitle?: string;
+  supportedFormatsTitle?: string;
+  limitationsTitle?: string;
   faqTitle: string; // contains {name}
   relatedTitle: string;
   /** Lead-in for the contextual related-tool links under the FAQ list. */
@@ -59,6 +65,11 @@ export const EN_STRINGS: ToolPageLayoutStrings = {
   howToTitle: 'How to Use {name}',
   howToIntro: 'Follow these simple steps to complete your task — right inside your browser.',
   featuresTitle: 'Why Use CompressMyPic {name}?',
+  benefitsTitle: 'Benefits & Use Cases',
+  howItWorksTitle: 'How {name} Works',
+  examplesTitle: 'Examples',
+  supportedFormatsTitle: 'Supported Formats',
+  limitationsTitle: 'Accuracy & Limitations',
   faqTitle: '{name} — Frequently Asked Questions',
   relatedTitle: 'Related Free Image Tools',
   relatedLinksIntro: 'You may also need:',
@@ -585,6 +596,112 @@ export const ToolPageLayout: React.FC<ToolPageLayoutProps> = ({
                     </div>
                   </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Phase 18: Benefits & Use Cases — renders only when the tool defines them */}
+      {tool.benefits && tool.benefits.length > 0 && (
+        <section className="py-12 sm:py-16 border-t border-[var(--line)] bg-[var(--bg-soft)]">
+          <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
+            <h2 className="font-sans text-2xl sm:text-3xl font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
+              {ui.benefitsTitle ?? EN_STRINGS.benefitsTitle}
+            </h2>
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {tool.benefits.map((b, idx) => (
+                <div
+                  key={b.title}
+                  className={`border rounded-2xl p-5 shadow-[var(--shadow)] ${idx % 2 === 0 ? 'pastel-card-1' : 'pastel-card-3'}`}
+                >
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-[#dc2626] dark:text-[#fca5a5] shrink-0 mt-0.5" />
+                    <div>
+                      <h3 className="font-sans text-base font-bold text-[var(--ink-navy)]">{b.title}</h3>
+                      <p className="mt-1.5 text-sm text-[var(--ink-2)] leading-relaxed">
+                        {b.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Phase 18: How It Works — mechanism explainer, distinct from How-to steps */}
+      {tool.howItWorks && (
+        <section className="py-12 sm:py-16 border-t border-[var(--line)] bg-[var(--bg)]">
+          <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
+            <h2 className="font-sans text-2xl sm:text-3xl font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
+              {(ui.howItWorksTitle ?? EN_STRINGS.howItWorksTitle ?? 'How {name} Works').replace(
+                '{name}',
+                tool.name,
+              )}
+            </h2>
+            <div className="mt-4 max-w-3xl space-y-4 text-base text-[var(--ink-2)] leading-relaxed">
+              {tool.howItWorks.split('\n\n').map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Phase 18: Examples — renders only when the tool defines them */}
+      {tool.examples && tool.examples.length > 0 && (
+        <section className="py-12 sm:py-16 border-t border-[var(--line)] bg-[var(--bg-soft)]">
+          <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
+            <h2 className="font-sans text-2xl sm:text-3xl font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
+              {ui.examplesTitle ?? EN_STRINGS.examplesTitle}
+            </h2>
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {tool.examples.map((ex, idx) => (
+                <div
+                  key={ex.title}
+                  className={`border rounded-2xl p-5 shadow-[var(--shadow)] ${idx % 2 === 0 ? 'pastel-card-0' : 'pastel-card-2'}`}
+                >
+                  <div>
+                    <h3 className="font-sans text-base font-bold text-[var(--ink-navy)]">{ex.title}</h3>
+                    <p className="mt-1.5 text-sm text-[var(--ink-2)] leading-relaxed">
+                      {ex.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Phase 18: Supported Formats — renders only when the tool defines it */}
+      {tool.supportedFormats && (
+        <section className="py-12 sm:py-16 border-t border-[var(--line)] bg-[var(--bg)]">
+          <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
+            <h2 className="font-sans text-2xl sm:text-3xl font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
+              {ui.supportedFormatsTitle ?? EN_STRINGS.supportedFormatsTitle}
+            </h2>
+            <div className="mt-4 max-w-3xl space-y-4 text-base text-[var(--ink-2)] leading-relaxed">
+              {tool.supportedFormats.split('\n\n').map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Phase 18: Accuracy & Limitations — renders only when the tool defines it */}
+      {tool.limitations && (
+        <section className="py-12 sm:py-16 border-t border-[var(--line)] bg-[var(--bg-soft)]">
+          <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
+            <h2 className="font-sans text-2xl sm:text-3xl font-extrabold text-[var(--ink-navy)] tracking-[-0.02em]">
+              {ui.limitationsTitle ?? EN_STRINGS.limitationsTitle}
+            </h2>
+            <div className="mt-4 max-w-3xl space-y-4 text-base text-[var(--ink-2)] leading-relaxed">
+              {tool.limitations.split('\n\n').map((para, i) => (
+                <p key={i}>{para}</p>
               ))}
             </div>
           </div>

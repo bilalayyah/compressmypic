@@ -36,6 +36,14 @@ export interface ToolDefinition {
   features: { title: string; description: string }[];
   faqs: ToolFaq[];
   relatedSlugs: string[];
+  /** Phase 18 (2026-11-24): optional new sections. EN-only for now — locale
+   *  registries omit them and ToolPageLayout simply does not render the
+   *  section. Headings come from ToolPageLayoutStrings (EN fallback). */
+  benefits?: { title: string; description: string }[]; // Benefits & Use Cases
+  howItWorks?: string; // mechanism explainer, distinct from How-to steps ('\n\n' = new paragraph)
+  examples?: { title: string; description: string }[]; // example scenarios
+  supportedFormats?: string; // supported formats / units / sizes ('\n\n' = new paragraph)
+  limitations?: string; // accuracy & limitations ('\n\n' = new paragraph)
 }
 
 export const TOOL_CATEGORIES: ToolCategoryMeta[] = [
@@ -232,6 +240,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/', '/image-converter', '/rotate-flip-image', '/image-dimensions-checker'],
+    benefits: [
+      {
+        title: 'For online sellers',
+        description:
+          'Bring product photos to the exact square or ratio a marketplace expects — 1080×1080 for a shop grid, for example — without opening a desktop editor for every listing.',
+      },
+      {
+        title: 'For social media',
+        description:
+          'One-click presets cover the sizes platforms actually want: Instagram Post and Story, YouTube thumbnails, Facebook covers and X headers, all filled in automatically.',
+      },
+      {
+        title: 'For bloggers and web designers',
+        description:
+          'Match images to your layout width before publishing, so pages load the pixels they display instead of shipping a 4000 px photo into a 800 px slot.',
+      },
+      {
+        title: 'For bulk jobs',
+        description:
+          'Drop in a whole folder of photos, apply one size to all of them, and download everything as a single ZIP instead of resizing files one by one.',
+      },
+    ],
+    howItWorks:
+      'The resizer reads your file in the browser and decodes it with the browser\u2019s own image decoder — nothing is uploaded. It then draws the image onto an HTML5 Canvas at the size you asked for, using high-quality smoothing, and encodes the canvas back to JPG, PNG or WebP.\n\nIn By Percentage mode the canvas is scaled proportionally from the original size. In By Pixels mode you set the exact width and height; with Aspect Ratio Locked the other side follows automatically, and with it unlocked you choose how a mismatched ratio is handled — Contain fits the whole image inside the box, Cover crops the overflow to fill it exactly, and Stretch Exact forces the box at the cost of proportion.',
+    examples: [
+      {
+        title: 'Phone photo to Instagram square',
+        description:
+          'A 4000×3000 photo from your phone, run through the Instagram Post preset (1080×1080) with Cover, becomes a square post that fills the frame without black bars.',
+      },
+      {
+        title: 'Halve a batch for email',
+        description:
+          'A folder of screenshots at 50% keeps every image readable while cutting each side in half — roughly a quarter of the pixels — so the batch attaches easily.',
+      },
+      {
+        title: 'Any image to a YouTube thumbnail',
+        description:
+          'Pick the YouTube Thumb preset (1280×720) and any landscape image is reframed to the exact 16:9 size a thumbnail needs, ready to upload.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, iPhone HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB per file. Outputs: Original format, JPG, PNG or WebP. Pixel inputs accept widths and heights up to 12,000 px; percentage scaling runs from 10% to 200%.\n\nHEIC files are decoded locally in your browser before resizing. When you export to JPG, transparent areas are filled with the matte colour you pick, because JPG has no transparency.',
+    limitations:
+      'Enlarging past an image\u2019s original resolution softens edges: Canvas interpolation stretches existing pixels, it does not invent new detail, so a small logo blown up to 4000 px will look blurry. Animated GIFs are resized as a single still frame — the animation is not preserved. Very large canvases near the 12,000 px cap use significant browser memory, especially on phones, so staying within 4,000–6,000 px keeps processing quick.',
   },
   {
     slug: '/image-converter',
@@ -401,6 +454,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/', '/image-resizer', '/image-to-pdf', '/favicon-generator'],
+    benefits: [
+      {
+        title: 'For the one-off conversion',
+        description:
+          'One photo for an email, one logo for a deck, one screenshot for a ticket — convert a single file with no batch setup and no waiting behind a queue.',
+      },
+      {
+        title: 'For compatibility',
+        description:
+          'Turn iPhone HEIC photos into JPGs any app can open, or WebP images into JPGs for tools that still do not read WebP, without installing anything.',
+      },
+      {
+        title: 'For transparency control',
+        description:
+          'Keep alpha when you convert to PNG or WebP, and pick the exact matte colour that fills transparent areas when the target is JPG.',
+      },
+      {
+        title: 'For quality control',
+        description:
+          'A quality slider for JPG and WebP lets you trade file size against visible quality per file, instead of accepting one fixed setting for everything.',
+      },
+    ],
+    howItWorks:
+      'The converter decodes your file in the browser — HEIC files go through a local decoder, everything else through the browser\u2019s own image decoder — then draws the pixels onto an HTML5 Canvas and encodes the canvas to the format you picked. Nothing is uploaded at any point.\n\nJPG and WebP are lossy, so the quality slider decides how much detail is kept: lower quality means a smaller file. PNG is lossless, so it has no quality setting and keeps every pixel exactly. When the target is JPG, transparent areas are filled with the matte colour you choose, because JPG cannot store transparency.',
+    examples: [
+      {
+        title: 'iPhone HEIC to JPG',
+        description:
+          'A photo straight from an iPhone arrives as HEIC and will not open in an older app or form. Convert it to JPG and it opens everywhere, with the same pixels.',
+      },
+      {
+        title: 'Logo PNG to WebP',
+        description:
+          'A PNG logo with transparency becomes a WebP that is noticeably smaller on a website, while the transparent background stays transparent.',
+      },
+      {
+        title: 'Screenshot BMP to PNG',
+        description:
+          'A BMP screenshot is uncompressed and huge. Converting it to PNG keeps it pixel-perfect and lossless, at a fraction of the file size.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, HEIC/HEIF, SVG, BMP, GIF and AVIF, up to 20 MB per file. Outputs: JPG, PNG or WebP. This page converts one file at a time — for whole folders, use the Bulk Image Converter.\n\nThe quality slider appears for JPG and WebP only. PNG is lossless and has no quality setting.',
+    limitations:
+      'JPG and WebP conversion is lossy: every re-encode throws away a little detail, so avoid converting the same file from JPG to JPG again and again. A PNG output can be larger than the JPG you started from, because lossless PNG keeps every pixel while JPG discards some. Animated GIFs convert as a single still frame — the animation is not preserved. SVG files are rasterized into pixels at their declared size; the output is always a raster image, never a vector file.',
   },
   {
     slug: '/rotate-flip-image',
@@ -4651,6 +4749,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       '/web-image-optimizer',
       '/target-file-size-compressor',
     ],
+    benefits: [
+      {
+        title: 'For uploads with a size cap',
+        description:
+          'Job portals, government forms and university applications often reject anything over 100 KB. Set the target once and the file comes out under the limit, ready to upload.',
+      },
+      {
+        title: 'For email attachments',
+        description:
+          'Photos that bounce or crawl through a slow mailbox shrink to a size that sends in seconds, without you guessing at quality sliders.',
+      },
+      {
+        title: 'For faster pages',
+        description:
+          'A hero image under 100 KB loads quickly even on a weak mobile connection, which is exactly what a blog or shop page needs.',
+      },
+      {
+        title: 'For predictable results',
+        description:
+          'You name the target and the tool iterates until it fits — no trial and error, no re-compressing the same photo five times.',
+      },
+    ],
+    howItWorks:
+      'The tool works in rounds, all in your browser. It first tries the highest quality: if that already fits under 100 KB, it stops there. Otherwise it tests the lowest quality floor, then binary-searches between the two — up to seven rounds — to find the highest quality that still fits the target.\n\nIt prefers keeping your original resolution while quality stays at or above 35%. Only when no quality level fits at full size does it shrink the dimensions, step by step, until the file lands under 100 KB. Nothing is uploaded; every round runs on your device.',
+    examples: [
+      {
+        title: '2 MB phone photo for a job portal',
+        description:
+          'A 2 MB photo from your phone is far over a portal\u2019s 100 KB cap. The tool finds the highest quality that fits — usually by lowering quality first, not by shrinking the photo.',
+      },
+      {
+        title: 'Screenshot for a support ticket',
+        description:
+          'A PNG screenshot is lossless and heavy. Converted toward JPG under 100 KB, it stays readable and attaches to the ticket without an error.',
+      },
+      {
+        title: 'Blog hero image',
+        description:
+          'A large landscape photo for a blog header is compressed under 100 KB so the article page loads fast on mobile, while the image still fills the header.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 25 MB per file. Outputs: Original format, JPG, WebP or PNG. The default target is 100 KB; the same tool powers the 50 KB, 200 KB and 500 KB pages with their own targets.\n\nPNG output is lossless, so for very detailed images it may not reach the target without shrinking dimensions — JPG or WebP usually fit more easily.',
+    limitations:
+      'Hitting the target is not always possible without a visible trade-off: a very detailed or noisy photo may need smaller dimensions, not just lower quality, to fit under 100 KB, and fine detail can look soft at the lowest quality levels. Transparent images converted to JPG get a matte fill, because JPG has no transparency. Animated GIFs compress as a single still frame.',
   },
   {
     slug: '/compress-image-to-200kb',
@@ -7110,7 +7253,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         question: 'Can a WebP file without an extension be converted?',
         answer:
-          'Not directly — this page filters inputs by the .webp extension and WebP MIME type, so rename the file to end in .webp first. If the file is actually a JPG or PNG mislabeled by the site, use the matching converter instead.',
+          'Not directly — this page filters uploads by the .webp extension and the WebP MIME type, so add .webp to the filename first. That matters here because the output is PNG: if the file is actually a JPG or PNG that a site saved without an extension, convert it with the matching tool instead of forcing it through WebP to PNG.',
       },
       {
         question: 'Why would a designer need PNG instead of WebP?',
@@ -7450,7 +7593,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         question: 'Does the converter strip AVIF metadata?',
         answer:
-          'Yes. Drawing pixels onto HTML5 Canvas strips embedded EXIF, XMP, and ICC profile data, so output JPGs are lean and free of hidden location or camera details.',
+          'Yes. AVIF files can carry EXIF, XMP and colour-profile data just like JPGs do, and drawing the pixels onto HTML5 Canvas drops all of it. The JPG you download contains only the image itself — no hidden location, camera or editing history.',
       },
     ],
     relatedSlugs: ['/webp-to-jpg', '/heic-to-jpg', '/jpg-to-webp', '/image-converter'],
@@ -7550,7 +7693,7 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       {
         question: 'Can I convert BMP files without an internet connection once the page is open?',
         answer:
-          'Yes. Once the page has loaded in your browser, conversion runs entirely in local JavaScript and HTML5 Canvas with no server calls. You only need the internet again to load the page itself or to download the finished files.',
+          'Yes. BMP files are uncompressed, so a large screenshot can be several megabytes — but once this page has loaded, the conversion runs entirely in your browser with no server calls and no upload wait. You only need the internet again to load the page itself or to download the finished JPGs.',
       },
       {
         question: 'Will the JPG open in any program?',
