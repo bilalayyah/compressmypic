@@ -66,7 +66,6 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
               <li>All current tools, plus future tools</li>
               <li>Unlimited standard usage</li>
               <li>No daily caps</li>
-              <li>No watermarks on exported files</li>
             </ul>
             <p className="mt-6 text-sm font-semibold text-[var(--ink-navy)]">Secure checkout is coming soon.</p>
           </div>
