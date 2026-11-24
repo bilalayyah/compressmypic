@@ -5095,6 +5095,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       '/web-image-optimizer',
       '/bulk-image-compressor',
     ],
+    benefits: [
+      {
+        title: 'For WordPress and CMS uploads',
+        description:
+          'WordPress and most content systems accept larger files than a form, but a 200 KB featured image keeps the article fast. This target sits right in that sweet spot.',
+      },
+      {
+        title: 'For shop listings that still look sharp',
+        description:
+          'Product photos under 200 KB load quickly on a shop page while keeping enough quality for a customer to judge the product — the balance shops actually want.',
+      },
+      {
+        title: 'For blog images with breathing room',
+        description:
+          'Twice the budget of the 100 KB target means photos keep more detail. A landscape header or a food shot survives at 200 KB where 100 KB would soften it.',
+      },
+      {
+        title: 'For predictable results',
+        description:
+          'You name the target and the tool iterates until it fits, instead of guessing quality sliders and re-compressing the same photo five times.',
+      },
+    ],
+    howItWorks:
+      'The tool works in rounds, all in your browser. It first tries the highest quality: if that already fits under 200 KB, it stops there. Otherwise it tests the lowest quality floor, then binary-searches between the two — up to seven rounds — to find the highest quality that still fits the target.\n\nAt 200 KB the trade-offs are gentle: most phone photos fit by lowering quality alone, and dimensions are rarely touched. It prefers keeping your original resolution while quality stays at or above 35%, and only shrinks the image step by step when no quality level fits at full size. Nothing is uploaded; every round runs on your device.',
+    examples: [
+      {
+        title: 'WordPress featured image',
+        description:
+          'A 3 MB photo for a WordPress post is far too heavy for the media library. Under 200 KB it uploads cleanly and the article page stays fast.',
+      },
+      {
+        title: 'Shop product photo',
+        description:
+          'A product shot for a listing needs to look good and load fast. At 200 KB it does both — sharp enough to sell, light enough to browse.',
+      },
+      {
+        title: 'Blog header photo',
+        description:
+          'A wide landscape header for a travel post compresses under 200 KB without the softening a 100 KB target would force on the same image.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 25 MB per file. Outputs: Original format, JPG, WebP or PNG. The default target is 200 KB; the same tool powers the 50 KB, 100 KB and 500 KB pages with their own targets.\n\nPNG output is lossless, so for very detailed images it may not reach the target without shrinking dimensions — JPG or WebP usually fit more easily.',
+    limitations:
+      'A 200 KB budget is comfortable for most photos, but a very detailed or noisy image may still need smaller dimensions to fit, and fine detail can soften at the lowest quality levels. Transparent images converted to JPG get a matte fill, because JPG has no transparency. Animated GIFs compress as a single still frame.',
   },
   {
     slug: '/compress-image-to-500kb',
@@ -5261,6 +5306,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       '/bulk-image-compressor',
       '/',
     ],
+    benefits: [
+      {
+        title: 'For high-quality web sharing',
+        description:
+          'Half a megabyte keeps a photo looking close to the original while cutting a typical phone photo to a quarter of its size — the right budget when quality matters more than squeezing bytes.',
+      },
+      {
+        title: 'For client previews and portfolios',
+        description:
+          'A photographer sending proofs, or a designer sharing a preview, wants the image to look good, not just small. 500 KB leaves room for real detail.',
+      },
+      {
+        title: 'For social posts that stay sharp',
+        description:
+          'Social platforms recompress everything you upload. Starting from a clean 500 KB file means the platform\u2019s own compression has more to work with.',
+      },
+      {
+        title: 'For predictable results',
+        description:
+          'You name the target and the tool iterates until it fits, instead of guessing quality sliders and re-compressing the same photo five times.',
+      },
+    ],
+    howItWorks:
+      'The tool works in rounds, all in your browser. It first tries the highest quality: if that already fits under 500 KB, it stops there — and most photos do. Otherwise it tests the lowest quality floor, then binary-searches between the two — up to seven rounds — to find the highest quality that still fits the target.\n\nAt 500 KB the quality usually stays high and dimensions are almost never touched: the engine prefers keeping your original resolution while quality stays at or above 35%, and only shrinks the image step by step when no quality level fits at full size. Nothing is uploaded; every round runs on your device.',
+    examples: [
+      {
+        title: 'Portfolio preview',
+        description:
+          'A photographer\u2019s 4 MB shot becomes a 500 KB preview that still shows fine detail — good enough for a client to approve, light enough to email.',
+      },
+      {
+        title: 'Social post that stays sharp',
+        description:
+          'A photo for a social post is compressed to 500 KB first, so the platform\u2019s own recompression starts from a clean file instead of a heavy original.',
+      },
+      {
+        title: 'Blog gallery image',
+        description:
+          'A gallery photo for a blog post fits under 500 KB with its detail intact, where a 100 KB target would have visibly softened the same shot.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 25 MB per file. Outputs: Original format, JPG, WebP or PNG. The default target is 500 KB; the same tool powers the 50 KB, 100 KB and 200 KB pages with their own targets.\n\nPNG output is lossless, so for very detailed images it may not reach the target without shrinking dimensions — JPG or WebP usually fit more easily.',
+    limitations:
+      '500 KB is a generous target, but a very large or noisy photo can still exceed it at full resolution, and the tool will then shrink dimensions step by step. Transparent images converted to JPG get a matte fill, because JPG has no transparency. Animated GIFs compress as a single still frame.',
   },
   {
     slug: '/bulk-image-compressor',
@@ -5644,6 +5734,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       '/compress-image-to-200kb',
       '/compress-image-to-500kb',
     ],
+    benefits: [
+      {
+        title: 'For any exact size cap',
+        description:
+          'A forum allows 300 KB, a portal allows 1 MB, a CMS allows 750 KB. Type the number and the tool hits it — no more hunting for the preset closest to your limit.',
+      },
+      {
+        title: 'For the keep-original safety net',
+        description:
+          'If your file is already under the target, it clears immediately at top quality — and if re-encoding would make it bigger, Keep Original keeps the lighter source file.',
+      },
+      {
+        title: 'For one tool instead of four',
+        description:
+          'The fixed 50, 100, 200 and 500 KB pages cover common caps, but a custom target covers everything else. One page, any number.',
+      },
+      {
+        title: 'For predictable results',
+        description:
+          'You name the target and the tool iterates until it fits, instead of guessing quality sliders and re-compressing the same photo five times.',
+      },
+    ],
+    howItWorks:
+      'You type the target size — the page starts at 150 KB — and the tool works in rounds, all in your browser. It first tries the highest quality: if that already fits, it stops there. Otherwise it tests the lowest quality floor, then binary-searches between the two — up to seven rounds — to find the highest quality that still fits your number.\n\nIt prefers keeping your original resolution while quality stays at or above 35%, and only shrinks the dimensions step by step when no quality level fits at full size. If your file is already under the target, it clears immediately at top quality, and the Keep Original button is there when re-encoding would only make the file bigger. Nothing is uploaded; every round runs on your device.',
+    examples: [
+      {
+        title: 'Forum avatar with a 300 KB cap',
+        description:
+          'A forum allows avatars up to 300 KB — a size no preset covers. Type 300 and the photo fits exactly, without guessing at a slider.',
+      },
+      {
+        title: 'Email attachment under 1 MB',
+        description:
+          'A mailbox caps attachments at 1 MB. Set the target to 1000 KB and a batch of photos compresses to fit, each at the best quality that still fits.',
+      },
+      {
+        title: 'CMS upload with a 750 KB limit',
+        description:
+          'A content system rejects anything over 750 KB. A custom target of 750 lands the image just under the line at the highest quality possible.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 25 MB per file. Outputs: Original format, JPG, WebP or PNG. The default target is 150 KB; type any target you need.\n\nPNG output is lossless, so for very detailed images it may not reach the target without shrinking dimensions — JPG or WebP usually fit more easily.',
+    limitations:
+      'A custom target is only as good as the image allows: a very detailed photo at a very small target will need significant downscaling, and fine detail softens at the lowest quality levels. Transparent images converted to JPG get a matte fill, because JPG has no transparency. Animated GIFs compress as a single still frame.',
   },
   {
     slug: '/bulk-image-resizer',
