@@ -837,6 +837,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-converter', '/', '/remove-image-metadata', '/image-resizer'],
+    benefits: [
+      {
+        title: 'For documents from photos',
+        description:
+          'Turn phone photos of receipts, notes or whiteboards into a single PDF you can file, email or print, instead of sending a loose pile of images.',
+      },
+      {
+        title: 'For multi-page scans',
+        description:
+          'Add several images and each one becomes a page in the same PDF, in the order you choose — a quick scanner without a scanner.',
+      },
+      {
+        title: 'For exact page sizes',
+        description:
+          'A4, US Letter or fit-to-image: pick the page size the printer or the form expects, with orientation and margins you control.',
+      },
+      {
+        title: 'For private conversion',
+        description:
+          'The PDF is assembled in your browser from your images. Nothing is uploaded, so a sensitive document never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You add one or more images, choose a page size — A4, US Letter, or fit-to-image — plus orientation, margins and how each image fits the page, and the tool builds the PDF locally. Each image becomes a page, scaled to fit without stretching, and the file downloads as a standard PDF.\n\nThe PDF is generated on your device from the image data itself. There is no server round-trip, no account, and no watermark added to any page.',
+    examples: [
+      {
+        title: 'Receipt photos to one PDF',
+        description:
+          'Three photos of receipts for an expense claim become a three-page A4 PDF, in order, ready to attach to the claim form.',
+      },
+      {
+        title: 'Whiteboard notes to a handout',
+        description:
+          'Photos of a whiteboard after a meeting go into a Letter-size PDF with margins, so the team gets a clean handout instead of crooked photos.',
+      },
+      {
+        title: 'Artwork to a fit-to-image PDF',
+        description:
+          'A drawing photographed on a phone becomes a PDF exactly the size of the image, with no white page borders around it.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB per file. Output: a standard PDF. Page sizes: A4 (210 × 297 mm), US Letter (8.5 × 11 in), or Fit to Image Size, with orientation, margin and fit controls and a quality setting.\n\nAdd as many images as you need — each one becomes a page in the PDF, in the order you added them.',
+    limitations:
+      'The PDF contains images, not selectable text — there is no OCR, so a photo of a page cannot be searched or copied as text. Very large images are scaled to fit the page, which can soften fine print. The tool builds the PDF from image pixels only; it cannot merge existing PDF files.',
   },
   {
     slug: '/image-metadata-viewer',
@@ -6113,6 +6158,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       '/image-resizer',
       '/image-converter',
     ],
+    benefits: [
+      {
+        title: 'For website images that load fast',
+        description:
+          'Pick the job — hero banner, product shot, thumbnail, social image — and the preset applies the size, format and quality that job actually needs.',
+      },
+      {
+        title: 'For shops and blogs',
+        description:
+          'Product photos at 1200 px WebP and card thumbnails at 640 px WebP keep a storefront or a blog light without anyone fiddling with settings per image.',
+      },
+      {
+        title: 'For social sharing',
+        description:
+          'The Social OG preset sizes an image to 1200 px as a JPG, which is what link previews and email clients display best.',
+      },
+      {
+        title: 'For retina screens',
+        description:
+          'The Retina preset keeps 1920 px at WebP 88%, so graphics stay sharp on high-density displays instead of going soft.',
+      },
+    ],
+    howItWorks:
+      'You pick a preset for the job the image will do, and the tool applies that preset\u2019s maximum edge, output format and quality in one step. It decodes your file in the browser, draws it onto an HTML5 Canvas at the preset\u2019s size, and encodes it to WebP or JPG.\n\nEach preset is a tested combination: Hero caps at 1600 px in WebP at 80%, Product at 1200 px in WebP at 82%, Thumbnail at 640 px in WebP at 75%, Social OG at 1200 px in JPG at 82%, and Retina at 1920 px in WebP at 88%. Nothing is uploaded.',
+    examples: [
+      {
+        title: 'Hero banner for a homepage',
+        description:
+          'A 4000 px photo becomes a 1600 px WebP hero at 80% quality — large enough to fill the banner, small enough to load quickly.',
+      },
+      {
+        title: 'Product shots for a shop',
+        description:
+          'A batch of product photos runs through the E-Commerce preset at 1200 px WebP, so the shop\u2019s pages stay fast while the products look sharp.',
+      },
+      {
+        title: 'Thumbnail for a card layout',
+        description:
+          'A full-size photo becomes a 640 px WebP thumbnail at 75% quality — tiny in bytes, still clear at card size.',
+      },
+    ],
+    supportedFormats:
+      'Inputs: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB per file. Presets: Hero / Banner (max 1600 px, WebP 80%), E-Commerce Product (max 1200 px, WebP 82%), Card / Thumbnail (max 640 px, WebP 75%), Social OG / Email (max 1200 px, JPG 82%), Retina 2× Graphic (max 1920 px, WebP 88%).\n\nImages smaller than the preset\u2019s maximum edge are not enlarged. The output keeps the source\u2019s aspect ratio.',
+    limitations:
+      'A preset is a fixed recipe: you cannot change its size, format or quality individually — for full control, use the Image Resizer or Image Converter instead. Upscaling is not done: an image smaller than the preset\u2019s cap stays at its original size. Animated GIFs optimize as a single still frame.',
   },
   {
     slug: '/gif-compressor',
@@ -6447,6 +6537,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-converter', '/bulk-image-converter', '/jpg-to-webp', '/remove-image-metadata'],
+    benefits: [
+      {
+        title: 'For iPhone photos anywhere',
+        description:
+          'iPhones save photos as HEIC by default, and plenty of apps, forms and older systems cannot open them. Convert to JPG and the photo works everywhere.',
+      },
+      {
+        title: 'For sharing without a fuss',
+        description:
+          'A HEIC attached to an email may arrive unreadable. As a JPG it opens on the recipient\u2019s phone, computer or printer without any extra app.',
+      },
+      {
+        title: 'For uploads that demand JPG',
+        description:
+          'Portals, printers and some social tools accept JPG and nothing else. One conversion gets an iPhone photo past their format check.',
+      },
+      {
+        title: 'For private conversion',
+        description:
+          'HEIC files are decoded in your browser with WebAssembly. Your photos never leave your device, which matters for personal pictures.',
+      },
+    ],
+    howItWorks:
+      'HEIC is a modern format that browsers cannot decode natively, so this page uses heic2any — a WebAssembly build of the libheif decoder — running entirely in your browser. It reads the HEIC or HEIF file, decodes the pixels, draws them onto an HTML5 Canvas, and encodes the canvas as a JPG.\n\nThe decode happens locally, which is why the first conversion of a large HEIC can take a moment: the WebAssembly decoder is loading and working on your device, not on a server. The output is a standard JPG with the same pixel dimensions as the source.',
+    examples: [
+      {
+        title: 'iPhone photo to JPG for a form',
+        description:
+          'A photo taken on an iPhone is HEIC and a government form rejects it. Converted to JPG, the same photo uploads without an error.',
+      },
+      {
+        title: 'HEIC to JPG for printing',
+        description:
+          'A print shop\u2019s system cannot read HEIC. The converted JPG prints exactly like the original photo, with no quality surprise.',
+      },
+      {
+        title: 'HEIC screenshots to JPG for a ticket',
+        description:
+          'Screenshots saved as HEIC will not preview in a support ticket. As JPGs they preview inline, so the support team sees the problem immediately.',
+      },
+    ],
+    supportedFormats:
+      'Input: HEIC and HEIF only, up to 25 MB per file. Output: JPG, with a quality slider. This page converts one file at a time — for whole folders, use the Bulk Image Converter.\n\nDecoding uses client-side WebAssembly (heic2any). The output JPG has the same pixel dimensions as the source HEIC.',
+    limitations:
+      'JPG is lossy, so converting throws away a little detail, and the quality slider decides how much. Transparency is not preserved — HEIC alpha becomes a matte fill in JPG. Live Photos carry a short video alongside the still image; only the still photo is converted, the video part is not. Very large HEIC files can take noticeably longer to decode on a phone.',
   },
   {
     slug: '/jpg-to-png',
