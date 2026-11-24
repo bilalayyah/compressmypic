@@ -1046,6 +1046,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/remove-image-metadata', '/image-dimensions-checker', '/', '/image-converter'],
+    benefits: [
+      {
+        title: 'For seeing what a photo hides',
+        description:
+          'A photo carries camera model, lens, exposure, timestamps and often GPS coordinates. This tool shows all of it before you share the file.',
+      },
+      {
+        title: 'For the GPS warning',
+        description:
+          'If a photo has location coordinates, the tool flags them in plain sight — so you never post a picture that gives away where it was taken.',
+      },
+      {
+        title: 'For checking before you publish',
+        description:
+          'A quick metadata check before uploading tells you whether the file needs cleaning, and exactly what would be shared with it.',
+      },
+      {
+        title: 'For private inspection',
+        description:
+          'The metadata is read in your browser. The photo never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You drop an image in and the tool parses its EXIF and metadata segments locally — camera make and model, lens, exposure settings, date and time, and GPS coordinates when present — and lists every tag it finds. When GPS coordinates are detected, they are highlighted with a warning, and when nothing is found the tool says so plainly: no EXIF, GPS or hidden camera tags detected.\n\nReading metadata never changes the file. Nothing is uploaded; the parsing runs on your device.',
+    examples: [
+      {
+        title: 'Photo before posting online',
+        description:
+          'A holiday photo is checked first: the viewer shows GPS coordinates embedded in it, so the photo is cleaned with the metadata remover before posting.',
+      },
+      {
+        title: 'Camera settings for a shot you liked',
+        description:
+          'A photo that came out well is inspected to see the aperture, shutter speed and ISO the camera used, so the settings can be repeated.',
+      },
+      {
+        title: 'Used camera listing check',
+        description:
+          'A photo from a camera you are selling is checked to confirm no personal metadata — like the owner name some cameras embed — is still in the file.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB. Output: a readable list of every EXIF and metadata tag found, with GPS coordinates highlighted when present.\n\nEXIF lives mostly in JPEGs and some TIFF-based formats; PNGs and WebP carry less. A file with no metadata simply reports that none was found.',
+    limitations:
+      'The viewer can only show metadata the file actually contains — a screenshot or a re-saved image may have had its metadata stripped already. GPS coordinates are shown as numbers, not on a map. The tool reads metadata; it does not remove it (use the metadata remover for that).',
   },
   {
     slug: '/remove-image-metadata',
@@ -1424,6 +1469,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-resizer', '/image-converter', '/image-color-picker', '/'],
+    benefits: [
+      {
+        title: 'For a favicon from any image',
+        description:
+          'Any logo or photo becomes a proper favicon in seconds — no design tool, no plugin, no hunting for the right sizes.',
+      },
+      {
+        title: 'For one file that covers every tab',
+        description:
+          'The favicon.ico packs 16×16, 32×32 and 48×48 frames into a single file, so browsers pick the size they need and old browsers still work.',
+      },
+      {
+        title: 'For the full set, not just the .ico',
+        description:
+          'The ZIP carries the individual PNG sizes too, so the same source image serves the tab icon, the bookmark and the home-screen tile.',
+      },
+      {
+        title: 'For private generation',
+        description:
+          'Your logo is resized and encoded in your browser. It never leaves your device.',
+      },
+    ],
+    howItWorks:
+      'You upload a logo or image and the tool renders it at 16×16, 32×32 and 48×48 pixels, then packs the three frames into a standard multi-frame Windows .ico file — the format browsers have used for favicons for decades. The individual PNG sizes and a ZIP of everything are offered alongside, with a live tab preview so you can see how the icon reads at real size.\n\nA good favicon starts from a simple, high-contrast source: fine detail disappears at 16 pixels. Nothing is uploaded; the resizing and ICO encoding run on your device.',
+    examples: [
+      {
+        title: 'Logo for a new website',
+        description:
+          'A 512 px logo becomes a favicon.ico in one upload. Drop it in the site root and every tab shows the brand mark.',
+      },
+      {
+        title: 'Icon for a web app',
+        description:
+          'The ZIP gives the .ico for the tab plus the PNG sizes for the home-screen icon, so the app looks right wherever it is saved.',
+      },
+      {
+        title: 'Favicon refresh after a rebrand',
+        description:
+          'A new logo is turned into a fresh favicon set in a minute, replacing the old icon everywhere at once.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB. Output: favicon.ico (16×16, 32×32 and 48×48 frames in one file), individual PNGs, and a ZIP of the full set.\n\nThe .ico is a real multi-frame Windows icon file, built from PNG frames in your browser. For best results start from a square, simple image.',
+    limitations:
+      'A favicon is tiny: 16 pixels cannot show a detailed logo, a face or small text — simplify the source image first. The tool does not write HTML link tags or a web manifest; you add the files to your site yourself. Transparent PNGs keep their transparency in the ICO frames.',
   },
   {
     slug: '/image-color-picker',
@@ -1752,6 +1842,51 @@ export const TOOLS_REGISTRY: ToolDefinition[] = [
       },
     ],
     relatedSlugs: ['/image-resizer', '/image-metadata-viewer', '/image-color-picker', '/'],
+    benefits: [
+      {
+        title: 'For checking an image before you use it',
+        description:
+          'A photo that looks right can still be 800 pixels wide — too small for a hero, too big for a thumbnail. The exact dimensions tell you in one second.',
+      },
+      {
+        title: 'For matching a size requirement',
+        description:
+          'A portal wants 1200×628, a form wants at least 1024 wide. Check the numbers first instead of uploading and being rejected.',
+      },
+      {
+        title: 'For quick checks on many files',
+        description:
+          'Drop several images in and read each one\u2019s width, height and aspect ratio at a glance, without opening an editor.',
+      },
+      {
+        title: 'For private checking',
+        description:
+          'Dimensions are read in your browser. The images never leave your device.',
+      },
+    ],
+    howItWorks:
+      'You drop images in and the tool reads each file\u2019s width and height from its header and decoded pixels, then lists them with the aspect ratio — all locally in your browser. No compression, no conversion, no editing: it only reads and reports.\n\nThe check is instant for most files because the browser decodes the image header without any upload. Nothing leaves your device.',
+    examples: [
+      {
+        title: 'Hero image for a homepage',
+        description:
+          'A photo is checked before it becomes the hero: 1920×1080 is wide enough, but a 900×600 version would have looked soft stretched across the page.',
+      },
+      {
+        title: 'Upload that must be 1200×628',
+        description:
+          'A social card image is verified at exactly 1200×628 before upload, so the platform accepts it instead of cropping it.',
+      },
+      {
+        title: 'Sorting a folder of mixed images',
+        description:
+          'A folder of downloaded images is checked in one pass to find the ones that are actually high resolution and the ones that are thumbnails.',
+      },
+    ],
+    supportedFormats:
+      'Input: JPG, PNG, WebP, HEIC/HEIF, GIF, BMP, SVG and AVIF, up to 20 MB per file, multiple files at once. Output: width, height and aspect ratio for each image.\n\nDimensions are read from the decoded image, so the numbers match what an editor would report — not just what the file header claims.',
+    limitations:
+      'The tool reports dimensions only — it does not resize, compress or convert. An SVG reports its viewBox or declared size, which can differ from how a browser renders it. A corrupted file that cannot be decoded reports an error instead of dimensions.',
   },
   {
     slug: '/image-cropper',
