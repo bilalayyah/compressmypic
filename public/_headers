@@ -7,7 +7,7 @@
   Cross-Origin-Resource-Policy: same-origin
   Cross-Origin-Embedder-Policy: credentialless
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Access-Control-Allow-Origin: https://compressmypic.online
+  ! Access-Control-Allow-Origin
   Cache-Control: public, max-age=0, must-revalidate
   Content-Security-Policy: default-src 'self'; script-src 'self' blob: 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://www.google.com https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' blob: https://compressmypic-comments.bilalayyah.workers.dev https://formsubmit.co https://static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com; frame-src https://www.google.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co; frame-ancestors 'self'
 

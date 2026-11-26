@@ -324,6 +324,7 @@ export const FaviconGeneratorPage: React.FC<FaviconGeneratorPageProps> = ({
               </span>
             </>
           }
+          subtitleText={`${t('uploadSubtitlePrefix', 'Square PNG or SVG recommended · ')}${t('uploadBrowseFile', 'browse file')}`}
         />
 
         {errorMsg && (

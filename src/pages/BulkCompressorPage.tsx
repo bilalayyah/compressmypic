@@ -255,6 +255,12 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({
     backgroundColor: '#ffffff',
   });
 
+  // Phase 2 (master audit 2026-11-26, preset-flip UX trap — same fix as
+  // App.tsx): an output-affecting settings change re-compresses
+  // automatically (debounced), and a newer run supersedes one in flight.
+  const recompressTimerRef = useRef<number | null>(null);
+  const compressRunRef = useRef(0);
+
   useEffect(() => {
     return () => {
       imagesRef.current.forEach((img) => {
@@ -265,7 +271,27 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({
   }, []);
 
   const handleUpdateSettings = (newSettings: Partial<CompressionSettings>) => {
-    setSettings((prev) => ({ ...prev, ...newSettings }));
+    const next: CompressionSettings = { ...settings, ...newSettings };
+    const outputChanged =
+      (newSettings.quality !== undefined && newSettings.quality !== settings.quality) ||
+      (newSettings.preset !== undefined && newSettings.preset !== settings.preset) ||
+      (newSettings.format !== undefined && newSettings.format !== settings.format) ||
+      (newSettings.backgroundColor !== undefined && newSettings.backgroundColor !== settings.backgroundColor) ||
+      (newSettings.fillTransparentBackground !== undefined && newSettings.fillTransparentBackground !== settings.fillTransparentBackground);
+    setSettings(next);
+    if (
+      outputChanged &&
+      !isCompressing &&
+      images.some((img) => img.status === 'done' && img.compressedBlob)
+    ) {
+      if (recompressTimerRef.current !== null) {
+        window.clearTimeout(recompressTimerRef.current);
+      }
+      recompressTimerRef.current = window.setTimeout(() => {
+        recompressTimerRef.current = null;
+        void handleCompressAll(next);
+      }, 350);
+    }
   };
 
   const processImage = useCallback(
@@ -402,6 +428,7 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({
   const handleCompressAll = async (overrideSettings?: CompressionSettings) => {
     const activeSettings = overrideSettings || settings;
     if (images.length === 0) return;
+    const runId = ++compressRunRef.current;
 
     setIsCompressing(true);
     setProcessedCount(0);
@@ -424,11 +451,13 @@ export const BulkCompressorPage: React.FC<BulkCompressorPageProps> = ({
         continue;
       }
       const compressed = await processImage(img, activeSettings);
+      if (runId !== compressRunRef.current) return; // superseded by a newer run
       updatedList.push(compressed);
       done++;
       setProcessedCount(done);
     }
 
+    if (runId !== compressRunRef.current) return; // superseded by a newer run
     setImages(updatedList);
     setIsCompressing(false);
   };

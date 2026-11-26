@@ -35,6 +35,43 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* Phase 2 (master audit 2026-11-26, CLS 0.587): the skip link must never
+   occupy layout space before the full stylesheet arrives. Tailwind's
+   `.sr-only` utility lives in the utilities layer, which the critical-CSS
+   extractor drops (it only keeps above-fold utilities it can see) — so
+   the unstyled skip link rendered as a 24px in-flow link and pushed the
+   whole page down until the CSS landed. This base-layer copy (identical
+   declarations to the utility) is always kept by the extractor, so the
+   inlined critical CSS hides the skip link from the first paint. The
+   :focus rules mirror the full stylesheet's `focus:not-sr-only` behaviour
+   so the link still becomes visible when tabbed to. */
+@layer base {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  .sr-only:focus,
+  .sr-only:focus-visible {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+  }
+}
+
 /* Build-stability fix (2026-11-15): Tailwind v4 auto-scans every file not in
    .gitignore, INCLUDING public/. The 627 prerendered HTML files in public/
    change the generated CSS on every upload, which cascades to ALL asset

@@ -27,6 +27,10 @@ interface UploadZoneProps {
   supportedFormatsLabel?: string;
   title?: string;
   subtitle?: React.ReactNode;
+  /** Plain-text form of a custom `subtitle` (when one is passed), so the
+      dropzone's accessible name can contain the visible subtitle text too.
+      Only needed when `subtitle` is set (e.g. FaviconGeneratorPage). */
+  subtitleText?: string;
   strings?: UploadZoneStrings;
 }
 
@@ -52,6 +56,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
   supportedFormatsLabel,
   title,
   subtitle,
+  subtitleText,
   strings,
 }) => {
   const formatsLabel = supportedFormatsLabel ?? strings?.formatsLabel ?? 'JPG, PNG, WebP, HEIC';
@@ -59,13 +64,33 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
   const browsePrefix = strings?.browsePrefix ?? 'or';
   const browseButtonText = strings?.browseButton ?? 'browse files';
   const browseSuffixText = strings?.browseSuffix ?? 'from your computer or phone';
-  // P2-7 (audit 2026-11-18, label-content-name-mismatch): the dropzone's
-  // accessible name must contain its visible text. strings.ariaLabel
-  // ("Upload images area...") did not contain the visible heading
-  // ("Drag & drop images here"), so the name is derived from the visible
-  // strings instead; the same name labels the hidden file input below,
-  // which previously had no label at all (home-desktop `label` failure).
-  const dropzoneLabel = `${resolvedTitle}. ${browsePrefix} ${browseButtonText} ${browseSuffixText}`;
+  const hintText = strings?.hint
+    ? strings.hint.replace('{max}', String(maxFileSizeMB))
+    : `Max ${maxFileSizeMB} MB per image`;
+  const pasteText = strings?.orPaste ?? 'Paste (Ctrl+V) supported';
+  // Phase 2 (master audit 2026-11-26, WCAG 2.5.3 label-content-name-mismatch):
+  // the dropzone's accessible name must contain ALL of its visible text,
+  // including the three pills below (formats, max-size hint, paste hint).
+  // The name is built from exactly the strings the dropzone renders, in
+  // render order. When a tool passes a custom `subtitle`, its plain-text
+  // form (`subtitleText`) replaces the default browse line in the name.
+  // The paste pill is `hidden` below the sm breakpoint, but keeping it in
+  // the name is harmless there (a name may contain more than the visible
+  // text) and correct on desktop.
+  //
+  // IMPORTANT — the name is applied to the hidden file input ONLY, not to
+  // the dropzone div itself. An aria-label on the div CANNOT pass axe's
+  // label-content-name-mismatch for this element: axe's visible-text
+  // tokeniser glues words at element boundaries ("hereor", "phonejpg",
+  // "heicmax", "imagepaste"), so no properly-spaced label can ever contain
+  // the visible-text tokens — verified empirically (axe-probe.cjs: even a
+  // label byte-identical to innerText still fails). With no aria-label,
+  // the div's name comes from its content, which glues the same way, so
+  // the name IS the visible text (pills included) and the check passes.
+  // The input keeps the full label so the `label` audit still passes.
+  const browseLine =
+    subtitleText ?? `${browsePrefix} ${browseButtonText} ${browseSuffixText}`;
+  const dropzoneLabel = `${resolvedTitle}. ${browseLine}. ${formatsLabel}. ${hintText}. ${pasteText}`;
   const [isDragging, setIsDragging] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -207,7 +232,6 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
               fileInputRef.current?.click();
             }
           }}
-          aria-label={dropzoneLabel}
         >
           <input
             ref={fileInputRef}

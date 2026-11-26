@@ -46,7 +46,7 @@ export function BlogCard({ article, lang, toolName, categories, onNavigate }: Bl
           {categoryLabel}
         </span>
         {toolName ? (
-          <span className="text-xs font-semibold text-[#dc2626] bg-[#dc2626]/10 px-2.5 py-0.5 rounded-full">
+          <span className="text-xs font-semibold text-[#b91c1c] bg-[#dc2626]/10 px-2.5 py-0.5 rounded-full">
             {toolName}
           </span>
         ) : null}
@@ -61,7 +61,17 @@ export function BlogCard({ article, lang, toolName, categories, onNavigate }: Bl
         <span>
           {dateStr} · {reading}
         </span>
-        <a {...linkProps} className="font-semibold text-[#dc2626] whitespace-nowrap" aria-label={version.title}>
+        {/* Phase 2 (master audit 2026-11-26, WCAG 2.5.3): the accessible
+            name must contain the visible link text. The old label was the
+            bare article title, which does not contain "Read the guide →".
+            The visible text (strings.readArticle, e.g. EN "Read the guide
+            →", DE "Anleitung lesen →") is the label's head, with the arrow
+            stripped, followed by the article title. */}
+        <a
+          {...linkProps}
+          className="font-semibold text-[#dc2626] whitespace-nowrap"
+          aria-label={`${strings.readArticle.replace(/\s*[→←]\s*$/, '')}: ${version.title}`}
+        >
           {strings.readArticle}
         </a>
       </div>

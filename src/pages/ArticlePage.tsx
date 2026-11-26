@@ -143,7 +143,7 @@ export function ArticlePage({ lang, article, onNavigate, tools, categories }: Ar
       <div className="mt-6">
         <a
           href={categoryUrl}
-          className="inline-block text-xs font-semibold text-[#dc2626] bg-[#dc2626]/10 px-2.5 py-0.5 rounded-full"
+          className="inline-block text-xs font-semibold text-[#b91c1c] bg-[#dc2626]/10 px-2.5 py-0.5 rounded-full"
         >
           {categoryLabel}
         </a>

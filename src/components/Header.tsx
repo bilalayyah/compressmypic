@@ -272,7 +272,12 @@ export const Header: React.FC<HeaderProps> = ({
       ref={headerRef}
       className="sticky top-0 z-40 header-pastel-band border-b border-[var(--line)] shadow-xs"
     >
-      <div className="max-w-[1220px] mx-auto px-2 sm:px-6 h-[68px] flex items-center justify-between gap-2 sm:gap-4 min-w-0">
+      {/* Phase 2 (master audit 2026-11-26, 320px overflow): at <360px the
+          logo + right cluster ran ~37px off the right edge (scrollWidth
+          357). At that width the theme button hides (the mobile drawer
+          still offers Appearance), the icon buttons shrink to 36px and
+          gaps/padding tighten — 390px and up are untouched. */}
+      <div className="max-w-[1220px] mx-auto px-2 max-[359px]:px-1.5 sm:px-6 h-[68px] flex items-center justify-between gap-1 min-[360px]:gap-2 sm:gap-4 min-w-0">
         {/* Zone 1: Brand Wordmark */}
         <a
           href={homeUrl}
@@ -281,7 +286,7 @@ export const Header: React.FC<HeaderProps> = ({
             handleNav(homeUrl);
           }}
           aria-label={strings.homeAriaLabel}
-          className="flex items-center gap-2 sm:gap-2.5 whitespace-nowrap shrink-0 group py-1"
+          className="flex items-center gap-1.5 min-[360px]:gap-2 sm:gap-2.5 whitespace-nowrap shrink-0 group py-1 min-w-0"
         >
           <SiteLogo />
         </a>
@@ -402,7 +407,7 @@ export const Header: React.FC<HeaderProps> = ({
         </nav>
 
         {/* Zone 3: Desktop Search + Language Pill + Theme Pill + All Tools Pill / Mobile Menu */}
-        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <div className="flex items-center gap-1 min-[360px]:gap-1.5 sm:gap-2 shrink-0">
           {/* Header Desktop Search Input + Purple Search Button */}
           <div className="hidden xl:block relative">
             <form
@@ -460,7 +465,7 @@ export const Header: React.FC<HeaderProps> = ({
                 setThemeMenuOpen(false);
                 setSearchOpen(false);
               }}
-              aria-label={strings.languageLabel}
+              aria-label={`${strings.languageLabel}: ${lang.toUpperCase()}`}
               aria-expanded={langMenuOpen}
               aria-haspopup="menu"
               title={strings.languageLabel}
@@ -533,8 +538,10 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </div>
 
-          {/* Theme Switcher Button (UtilityFlow-style) */}
-          <div className="relative">
+          {/* Theme Switcher Button (UtilityFlow-style). Hidden below 360px
+              (320px overflow fix): the mobile drawer still offers the
+              Appearance segmented control, so theme stays reachable. */}
+          <div className="relative max-[359px]:hidden">
             <button
               type="button"
               onClick={() => {
@@ -610,7 +617,7 @@ export const Header: React.FC<HeaderProps> = ({
               setThemeMenuOpen(false);
               setLangMenuOpen(false);
             }}
-            className="lg:hidden h-10 w-10 sm:h-11 sm:w-11 grid place-items-center rounded-lg border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:bg-[var(--surface-2)] cursor-pointer shrink-0"
+            className="lg:hidden h-10 w-10 max-[359px]:h-9 max-[359px]:w-9 sm:h-11 sm:w-11 grid place-items-center rounded-lg border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:bg-[var(--surface-2)] cursor-pointer shrink-0"
             aria-label="Search tools"
             aria-expanded={mobileSearchOpen}
           >
@@ -625,7 +632,7 @@ export const Header: React.FC<HeaderProps> = ({
               setThemeMenuOpen(false);
               setLangMenuOpen(false);
             }}
-            className="lg:hidden h-10 w-10 sm:h-11 sm:w-11 grid place-items-center rounded-lg border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:bg-[var(--surface-2)] cursor-pointer shrink-0"
+            className="lg:hidden h-10 w-10 max-[359px]:h-9 max-[359px]:w-9 sm:h-11 sm:w-11 grid place-items-center rounded-lg border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:bg-[var(--surface-2)] cursor-pointer shrink-0"
             aria-label={strings.menuAriaLabel}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"

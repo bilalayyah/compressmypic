@@ -1464,6 +1464,13 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
 
   const toolRef = useRef<HTMLDivElement>(null);
 
+  // Phase 2 (master audit 2026-11-26, preset-flip UX trap): flipping a
+  // preset re-compresses automatically (debounced, so a quality-slider
+  // drag collapses into one run). compressRunRef lets a newer run
+  // supersede one still in flight, so the last settings always win.
+  const recompressTimerRef = useRef<number | null>(null);
+  const compressRunRef = useRef(0);
+
   // Handle client-side routing and browser back/forward buttons
   useEffect(() => {
     const handlePopState = () => {
@@ -2365,6 +2372,17 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
           ? [...howToSection.bullets]
           : [];
       const graph: Record<string, unknown>[] = [];
+      // Phase 2 (master audit 2026-11-26, issue #11): the home page had
+      // Organization + HowTo + FAQPage + WebApplication but no WebSite
+      // block. One site-level block, same URL/language as the page.
+      // scripts/refresh-prerender-heads.cjs mirrors this entry into the
+      // prerendered home HTML (effects do not run under renderToString).
+      graph.push({
+        '@type': 'WebSite',
+        name: 'CompressMyPic',
+        url: nextCanonical,
+        inLanguage: lang,
+      });
       const howToSteps = activeUi
         ? howToBullets.map((bullet, i) => {
             const { title, description } = splitBullet(bullet);
@@ -2689,6 +2707,9 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
   // Revoke object URLs on unmount or removal
   useEffect(() => {
     return () => {
+      if (recompressTimerRef.current !== null) {
+        window.clearTimeout(recompressTimerRef.current);
+      }
       images.forEach((img) => {
         if (img.originalPreviewUrl) URL.revokeObjectURL(img.originalPreviewUrl);
         if (img.compressedPreviewUrl) URL.revokeObjectURL(img.compressedPreviewUrl);
@@ -2697,7 +2718,36 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
   }, []);
 
   const handleUpdateSettings = (newSettings: Partial<CompressionSettings>) => {
-    setSettings((prev) => ({ ...prev, ...newSettings }));
+    const next: CompressionSettings = { ...settings, ...newSettings };
+    // Phase 2 (master audit 2026-11-26, issue #10): flipping a preset (or
+    // the quality / format / background) used to update the Quality Target
+    // while the summary and Download kept the OLD result until "Re-compress
+    // All" was clicked. Now an output-affecting change re-compresses
+    // automatically once the change settles (350ms debounce, so a slider
+    // drag is one run, not one per tick) — but only when images already
+    // have a compressed result and no compression is running. Changing
+    // only maxFileSizeMB never re-compresses (it affects validation, not
+    // the output bytes).
+    const outputChanged =
+      (newSettings.quality !== undefined && newSettings.quality !== settings.quality) ||
+      (newSettings.preset !== undefined && newSettings.preset !== settings.preset) ||
+      (newSettings.format !== undefined && newSettings.format !== settings.format) ||
+      (newSettings.backgroundColor !== undefined && newSettings.backgroundColor !== settings.backgroundColor) ||
+      (newSettings.fillTransparentBackground !== undefined && newSettings.fillTransparentBackground !== settings.fillTransparentBackground);
+    setSettings(next);
+    if (
+      outputChanged &&
+      !isCompressing &&
+      images.some((img) => img.status === 'done' && img.compressedBlob)
+    ) {
+      if (recompressTimerRef.current !== null) {
+        window.clearTimeout(recompressTimerRef.current);
+      }
+      recompressTimerRef.current = window.setTimeout(() => {
+        recompressTimerRef.current = null;
+        void handleCompressAll(next);
+      }, 350);
+    }
   };
 
   /**
@@ -2860,10 +2910,16 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
   };
 
   /**
-   * Re-compress all loaded images with updated settings
+   * Re-compress all loaded images with updated settings. Accepts an
+   * explicit settings object (used by the preset auto re-compress, which
+   * runs after setSettings — the `settings` state would still hold the
+   * old values in that closure). A newer run supersedes one still in
+   * flight: the stale run returns without writing its results.
    */
-  const handleCompressAll = async () => {
+  const handleCompressAll = async (overrideSettings?: CompressionSettings) => {
+    const activeSettings = overrideSettings ?? settings;
     if (images.length === 0) return;
+    const runId = ++compressRunRef.current;
     setIsCompressing(true);
 
     setImages((prev) =>
@@ -2879,7 +2935,8 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
         updatedList.push(img);
         continue;
       }
-      const compressed = await processImage(img, settings);
+      const compressed = await processImage(img, activeSettings);
+      if (runId !== compressRunRef.current) return; // superseded by a newer run
       updatedList.push(compressed);
     }
 
@@ -2892,11 +2949,12 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
         file_count: doneRecompressed.length,
         original_size_bytes: doneRecompressed.reduce((sum, img) => sum + img.originalSize, 0),
         compressed_size_bytes: doneRecompressed.reduce((sum, img) => sum + (img.compressedSize ?? 0), 0),
-        output_format: settings.format === 'original' ? undefined : settings.format,
-        quality: settings.quality,
+        output_format: activeSettings.format === 'original' ? undefined : activeSettings.format,
+        quality: activeSettings.quality,
       });
     }
 
+    if (runId !== compressRunRef.current) return; // superseded by a newer run
     setImages(updatedList);
     setIsCompressing(false);
   };

@@ -3,30 +3,18 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
-// Tier D (speed fix, 2026-11-19): load the app stylesheet asynchronously.
-// The critical above-fold CSS is inlined in index.html (see
-// scripts/extract-critical-css.cjs), so the full stylesheet must not block
-// first paint. Same media=print trick the Google Fonts links already use
-// (CSP allows the inline onload handler — script-src has 'unsafe-inline').
-// The <noscript> fallback keeps the page styled when JavaScript is off.
-// The prerender sanitizer resets the link to media="print" in snapshots
-// (the onload flips it to 'all' while the page renders).
-function asyncAppCss() {
-  return {
-    name: 'async-app-css',
-    transformIndexHtml(html: string) {
-      return html.replace(
-        /<link rel="stylesheet"([^>]*href="\/assets\/[^"]+\.css"[^>]*)>/,
-        (_m, attrs) =>
-          `<link rel="stylesheet"${attrs} media="print" onload="this.media='all'"><noscript><link rel="stylesheet"${attrs}></noscript>`,
-      );
-    },
-  };
-}
-
+// Phase 2 (master audit 2026-11-26, CLS 0.587): the app stylesheet is
+// deliberately RENDER-BLOCKING again. The Tier D async-CSS trick
+// (media="print" onload) let the browser paint before the CSS applied, so
+// the unstyled skip link rendered as a 24px in-flow link and the whole
+// page jumped up 24px when the CSS landed — desktop CLS 0.587 on
+// /compress-image-to-100kb/. The inlined critical CSS in index.html still
+// paints the above-fold content fast; the full stylesheet now applies
+// before first paint, so nothing renders unstyled. Do NOT re-introduce
+// the async pattern without re-measuring desktop CLS on that page.
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss(), asyncAppCss()],
+    plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
         '@': path.resolve(import.meta.dirname, '.'),

@@ -23,13 +23,16 @@
 // at least one class in their selector was seen above the fold.
 //
 // Fallback (per the speed-fix plan): if the extracted CSS is absurdly
-// large (>32 KiB) or the extraction fails, do NOT ship it — use the
+// large (>34 KiB) or the extraction fails, do NOT ship it — use the
 // preload-only approach instead and report honestly.
 // (Limit raised 30 -> 32 KiB on 2026-11-25: the self-hosted @font-face
 // rules for Inter / JetBrains Mono / Great Vibes must live in the critical
 // CSS for the first paint to use Inter, and they add ~1 KiB. The previous
 // critical CSS was already 30,112 bytes, so the old 30 KiB cap would reject
-// a correct extraction. 32 KiB inline CSS is still small.)
+// a correct extraction. Raised again 32 -> 34 KiB on 2026-11-26: the
+// Phase 2 CLS fix adds the base-layer .sr-only rules plus the <360px
+// header variants, ~2 KiB of above-fold rules. 34 KiB inline CSS is still
+// small.)
 'use strict';
 const fs = require('node:fs');
 const os = require('node:os');
@@ -293,12 +296,20 @@ async function main() {
   }
   console.log(`[critical-css] ${allClasses.size} unique classes above the fold (all routes/viewports)`);
 
+  // Phase 2 (master audit 2026-11-26, CLS 0.587): always keep the
+  // skip-link utilities. The 1x1 sr-only link is easy for the
+  // above-fold collector to miss (and the base-layer copy in
+  // src/index.css is the primary guard), but a future re-extraction must
+  // never drop these again — an unstyled skip link renders as a 24px
+  // in-flow link and shifts the whole page.
+  for (const c of ['sr-only', 'not-sr-only']) allClasses.add(c);
+
   const { css: critical, total, kept } = filterCss(css, allClasses);
   const bytes = Buffer.byteLength(critical, 'utf8');
   console.log(`[critical-css] kept ${kept}/${total} rules, ${bytes} bytes`);
-  if (bytes > 32 * 1024) {
+  if (bytes > 34 * 1024) {
     console.error(
-      `[critical-css] WARNING: critical CSS is ${bytes} bytes (>32 KiB) — the extractor kept too much. ` +
+      `[critical-css] WARNING: critical CSS is ${bytes} bytes (>34 KiB) — the extractor kept too much. ` +
         'Do NOT ship this; fall back to the preload-only approach (see the script header).',
     );
     process.exit(3);

@@ -168,6 +168,37 @@ function refreshHead(head, current) {
     if (src && STRIP_SRC_PATTERNS.some((re) => re.test(src[1]))) return '';
     return tag;
   });
+  // Phase 2 (master audit 2026-11-26, CLS 0.587): the captured snapshot
+  // heads carry the app stylesheet TWICE — the old async
+  // media="print" onload link plus the <noscript> fallback serialised as
+  // a bare link — which let the browser paint before the CSS applied.
+  // Collapse to exactly one render-blocking link at the first occurrence.
+  // (The vite async-CSS plugin is gone, so fresh dist/index.html has one
+  // plain link; this dedupes the stale snapshot heads the prerender
+  // carries forward.)
+  out = out.replace(
+    /<noscript>\s*<link[^>]*href="\/assets\/index-[^"]+\.css"[^>]*>\s*<\/noscript>/g,
+    '',
+  );
+  const cssLinks = [
+    ...out.matchAll(
+      /<link[^>]*rel="stylesheet"[^>]*href="(\/assets\/index-[^"]+\.css)"[^>]*>/g,
+    ),
+  ];
+  if (cssLinks.length > 0) {
+    const href = cssLinks[0][1];
+    let seen = false;
+    out = out.replace(
+      /<link[^>]*rel="stylesheet"[^>]*href="\/assets\/index-[^"]+\.css"[^>]*>/g,
+      () => {
+        if (!seen) {
+          seen = true;
+          return `<link rel="stylesheet" crossorigin href="${href}">`;
+        }
+        return '';
+      },
+    );
+  }
   return out;
 }
 
